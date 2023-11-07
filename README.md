@@ -17,26 +17,19 @@ git-annex for the big files and other things are committed to git.
 
 ## git-annex setup
 
-Only do this if you are pulling the big video files.
+Only do this if you are pulling the big video files: otherwise, you
+can use git normally.
 
-Note that the git-annex info on which computers have which files get
+Privacy notice: the git-annex info on which computers have which files get
 publicly distributed through the repository (including through
 Github).  The info about your computer is the UUID and the
 `MY-COMPUTER-NAME` which is in the repo.
 
+To set up your computer:
 ```
-git remote add triton triton:/scratch/scicomp/video/linux-shell-2023
-git config remote.origin.annex-shell /share/apps/git-annex/10.20230228.path/git-annex-shell
+git remote add triton triton.aalto.fi:/scratch/scicomp/video/linux-shell-2023
+git config remote.triton.annex-shell /share/apps/git-annex/10.20230228.path/git-annex-shell
 git annex init MY-COMPUTER-NAME
 git annex sync --content
 git annex get python-for-scicomp/2023/raw/FILE.mkv
-```
-
-### Triton HPC cluster setup
-If you are using Triton:
-```
-git annex init MY-COMPUTER-NAME
-git config remote.triton.annex-shell /share/apps/git-annex/10.20230228.path/git-annex-shell
-git annex wanted . present
-git annex sync --content
 ```
