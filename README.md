@@ -58,7 +58,7 @@ Github).  The info about your computer is the UUID and the
 
 To set up your computer:
 ```
-git remote add triton triton.aalto.fi:/scratch/scicomp/video/linux-shell-2023
+git remote add triton triton.aalto.fi:/scratch/scicomp/video-processing/
 git config remote.triton.annex-shell /share/apps/git-annex/10.20230228.path/git-annex-shell
 git annex init MY-COMPUTER-NAME
 git annex sync --content
