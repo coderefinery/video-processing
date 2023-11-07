@@ -1,0 +1,1760 @@
+1
+00:00:00,000 --> 00:00:06,360
+Okay, hello. Welcome back. So, we will continue with pandas. So, yes, pandas. So, it's a Python
+
+2
+00:00:06,360 --> 00:00:18,120
+package that builds on NumPy and allows us to do many more fancy operations that are
+
+3
+00:00:18,120 --> 00:00:30,280
+basically involving tabular data. That'll involve tabular data. So we will see this
+
+4
+00:00:30,280 --> 00:00:36,800
+has lots of different built-in functions and things like that.
+
+5
+00:00:36,800 --> 00:00:42,720
+So Pandas is one of these things that, at least for me,
+
+6
+00:00:42,720 --> 00:00:44,760
+I know the basics of Pandas.
+
+7
+00:00:44,760 --> 00:00:49,000
+But for almost everything I do, I will do a web search
+
+8
+00:00:49,000 --> 00:00:50,880
+and then figure out, OK, how do I
+
+9
+00:00:50,880 --> 00:00:59,040
+do this particular thing to find the functions I need to do it?
+
+10
+00:00:59,040 --> 00:01:01,520
+And yeah, that's the same for me.
+
+11
+00:01:01,520 --> 00:01:02,020
+Yeah.
+
+12
+00:01:02,020 --> 00:01:05,080
+I'm sure there's some people that know it really well
+
+13
+00:01:05,080 --> 00:01:07,200
+and do things.
+
+14
+00:01:07,200 --> 00:01:09,120
+But yeah.
+
+15
+00:01:09,120 --> 00:01:11,960
+In fact, I wanted to add an exercise here,
+
+16
+00:01:11,960 --> 00:01:14,120
+which was specifically about doing this web
+
+17
+00:01:14,120 --> 00:01:16,200
+search to learn more.
+
+18
+00:01:16,200 --> 00:01:17,120
+So what's the point?
+
+19
+00:01:17,120 --> 00:01:25,240
+So the point is, be aware, this is the starting point
+
+20
+00:01:25,240 --> 00:01:28,680
+for this lesson.
+
+21
+00:01:28,680 --> 00:01:30,840
+So there's three exercises.
+
+22
+00:01:30,840 --> 00:01:37,800
+We do two exercises today, hopefully in about 20 minutes,
+
+23
+00:01:37,800 --> 00:01:43,080
+and then one tomorrow, where we'll continue.
+
+24
+00:01:43,080 --> 00:01:46,800
+So yes, let's get started.
+
+25
+00:01:46,800 --> 00:01:51,840
+Here you should see my screen, yes.
+
+26
+00:01:51,840 --> 00:01:55,400
+There's a lot of different getting started guides here.
+
+27
+00:01:55,400 --> 00:01:58,280
+And really, I'd say we have an overview,
+
+28
+00:01:58,280 --> 00:02:02,000
+But you're going to have to be reading these quick start
+
+29
+00:02:02,000 --> 00:02:06,240
+guides and so on things anyway.
+
+30
+00:02:06,240 --> 00:02:09,000
+Can someone add a pandas section to the notes?
+
+31
+00:02:09,000 --> 00:02:12,960
+I can't do that right now because I'm talking.
+
+32
+00:02:12,960 --> 00:02:15,160
+OK.
+
+33
+00:02:15,160 --> 00:02:17,120
+Yeah, so the pandas overview.
+
+34
+00:02:17,120 --> 00:02:23,560
+It's conventionally imported by `import pandas as pd`,
+
+35
+00:02:23,560 --> 00:02:25,680
+as a shorthand.
+
+36
+00:02:25,680 --> 00:02:28,000
+And then it provides lots of functions.
+
+37
+00:02:28,000 --> 00:02:30,960
+Like, for example, reading from CSV,
+
+38
+00:02:30,960 --> 00:02:34,480
+which I think NumPy also provides CSV reading.
+
+39
+00:02:34,480 --> 00:02:41,440
+But it actually does a lot more and provides lots of summary
+
+40
+00:02:41,440 --> 00:02:43,800
+information and things like this.
+
+41
+00:02:43,800 --> 00:02:46,840
+But now, [name] will be the one doing typing.
+
+42
+00:02:46,840 --> 00:02:49,200
+So let's switch to [name]'s screen.
+
+43
+00:02:49,200 --> 00:02:50,600
+Yeah.
+
+44
+00:02:50,600 --> 00:02:54,600
+So I guess the main difference between or in terms
+
+45
+00:02:54,600 --> 00:03:02,120
+a greeting CSV file. In NumPy, an array will always have all the data in the array will
+
+46
+00:03:02,120 --> 00:03:06,240
+be the same type. If there's one integer, it's all integers. If it's one floating-word
+
+47
+00:03:06,240 --> 00:03:10,920
+number, it's all floating-word numbers. And Pandas has different kinds of columns, so
+
+48
+00:03:10,920 --> 00:03:19,400
+it reads the column header and has a lot more information about different types of data.
+
+49
+00:03:19,400 --> 00:03:20,400
+So let's show this.
+
+50
+00:03:20,400 --> 00:03:21,400
+So we've got a...
+
+51
+00:03:21,400 --> 00:03:23,200
+I guess, yeah, first things first.
+
+52
+00:03:23,200 --> 00:03:30,080
+So I guess I'll start by importing it.
+
+53
+00:03:30,080 --> 00:03:37,640
+And we'll be going relatively fast here, so you can try to follow along, but at some point
+
+54
+00:03:37,640 --> 00:03:40,440
+we'll probably get ahead of you.
+
+55
+00:03:40,440 --> 00:03:46,480
+And then stop, watch what we're doing, and come back to it during the exercises.
+
+56
+00:03:46,480 --> 00:03:56,800
+Okay, so then there is this address in the notes, which I will mostly copy, although
+
+57
+00:03:56,800 --> 00:04:01,320
+I think I missed .csv.
+
+58
+00:04:01,320 --> 00:04:08,440
+So I'm just setting this string to a variable, and this contains a CSV file.
+
+59
+00:04:08,440 --> 00:04:14,160
+And then, again, I didn't create it, okay.
+
+60
+00:04:14,160 --> 00:04:19,800
+So this could be also a file on your computer just as well.
+
+61
+00:04:19,800 --> 00:04:24,320
+So what we're seeing here is loading the data directly
+
+62
+00:04:24,320 --> 00:04:25,840
+from the web.
+
+63
+00:04:25,840 --> 00:04:27,200
+Yeah.
+
+64
+00:04:27,200 --> 00:04:29,720
+So I will call the data frame Titanic
+
+65
+00:04:29,720 --> 00:04:33,520
+because it is about passengers on Titanic.
+
+66
+00:04:33,520 --> 00:04:36,960
+And let's just read CSV function to read it.
+
+67
+00:04:36,960 --> 00:04:39,920
+The mouse is hovering over the text.
+
+68
+00:04:39,920 --> 00:04:40,720
+OK.
+
+69
+00:04:40,720 --> 00:04:45,920
+And the URL is, I think, set here.
+
+70
+00:04:45,920 --> 00:04:49,520
+And I will also tell it to use an index column.
+
+71
+00:04:52,480 --> 00:04:54,680
+What is an index column?
+
+72
+00:04:54,680 --> 00:04:59,120
+So well, let's show the next line, the Titanic.head,
+
+73
+00:04:59,120 --> 00:05:01,160
+and we can see.
+
+74
+00:05:01,160 --> 00:05:08,800
+So every pandas array has columns and rows.
+
+75
+00:05:08,800 --> 00:05:12,840
+But notice the first row here is an index.
+
+76
+00:05:12,840 --> 00:05:13,400
+It's bold.
+
+77
+00:05:13,400 --> 00:05:18,160
+And the first column, this one's the name column here.
+
+78
+00:05:18,160 --> 00:05:19,080
+Yeah.
+
+79
+00:05:19,080 --> 00:05:22,760
+So basically, in NumPy, we'd access these rows
+
+80
+00:05:22,760 --> 00:05:26,320
+by rows 0, 1, 2, and so on.
+
+81
+00:05:26,320 --> 00:05:30,200
+In Pandas, we can also access it by these names
+
+82
+00:05:30,200 --> 00:05:33,800
+here, which we will see a little bit later.
+
+83
+00:05:33,800 --> 00:05:34,480
+Yeah, OK.
+
+84
+00:05:34,480 --> 00:05:35,520
+Let's do another one.
+
+85
+00:05:35,520 --> 00:05:38,760
+So another very useful function to start with
+
+86
+00:05:38,760 --> 00:05:48,840
+is describe with describe yes that's spelled correctly yeah okay so we see there's summary
+
+87
+00:05:48,840 --> 00:06:06,040
+statistics here so how much data actually exists and um i guess the um yeah these are the um
+
+88
+00:06:08,760 --> 00:06:12,600
+Percentile, 25%, 50%, 75%.
+
+89
+00:06:12,600 --> 00:06:14,560
+They're not that useful for passenger ID,
+
+90
+00:06:14,560 --> 00:06:17,440
+but let's say if you look at age, for example,
+
+91
+00:06:17,440 --> 00:06:19,440
+then it makes some sense.
+
+92
+00:06:19,440 --> 00:06:20,360
+Yeah.
+
+93
+00:06:20,360 --> 00:06:22,320
+So let's go on.
+
+94
+00:06:22,320 --> 00:06:24,000
+There's two more things here.
+
+95
+00:06:24,000 --> 00:06:27,600
+We will show them, but not explain what they do.
+
+96
+00:06:27,600 --> 00:06:31,840
+So these two commands show how you can
+
+97
+00:06:31,840 --> 00:06:34,600
+do some pretty fancy things.
+
+98
+00:06:34,600 --> 00:06:40,160
+So the group by means if they survived or not.
+
+99
+00:06:40,160 --> 00:06:43,020
+We separate them to two groups and then
+
+100
+00:06:43,020 --> 00:06:45,520
+take the age of those groups.
+
+101
+00:06:45,520 --> 00:06:50,200
+And then we find the average age of these people.
+
+102
+00:06:50,200 --> 00:06:56,920
+OK, so group by survived, take the age,
+
+103
+00:06:56,920 --> 00:06:59,400
+and take the mean of the age.
+
+104
+00:06:59,400 --> 00:06:59,960
+There we go.
+
+105
+00:06:59,960 --> 00:07:05,240
+OK, so we see the average ages for survived 1
+
+106
+00:07:05,240 --> 00:07:09,120
+and didn't survive 0 is pretty similar.
+
+107
+00:07:09,120 --> 00:07:10,400
+And let's do the next one.
+
+108
+00:07:10,400 --> 00:07:13,240
+So this histogram.
+
+109
+00:07:13,240 --> 00:07:15,080
+OK, that's slightly so titanic.
+
+110
+00:07:15,080 --> 00:07:20,840
+Which I think basically probably needs to be.
+
+111
+00:07:20,840 --> 00:07:21,920
+OK, yeah.
+
+112
+00:07:21,920 --> 00:07:23,280
+So age column.
+
+113
+00:07:23,280 --> 00:07:29,480
+So this is going to make a histogram of the ages.
+
+114
+00:07:29,480 --> 00:07:33,160
+And there'll be two groups, the passengers who survived
+
+115
+00:07:33,160 --> 00:07:36,200
+and didn't survive, and then some other parameters,
+
+116
+00:07:36,200 --> 00:07:38,800
+like the number of bins, the layout, and so on.
+
+117
+00:07:38,800 --> 00:07:40,460
+I wonder how important these parameters
+
+118
+00:07:40,460 --> 00:07:41,920
+are for this example.
+
+119
+00:07:41,920 --> 00:07:43,520
+I'll just copy.
+
+120
+00:07:43,520 --> 00:07:46,040
+Yeah, I would say just copy.
+
+121
+00:07:46,040 --> 00:07:54,640
+So figure size, layout, some ordering, shared x-axis.
+
+122
+00:07:54,640 --> 00:07:56,720
+Let's just go on.
+
+123
+00:07:56,720 --> 00:07:59,920
+At this point, we aren't knowing what these things mean.
+
+124
+00:08:05,120 --> 00:08:07,760
+OK, so positional argument follows keyword argument.
+
+125
+00:08:07,760 --> 00:08:10,840
+There's by equals survived there.
+
+126
+00:08:10,840 --> 00:08:13,000
+Oh, this needs to have an equal sign.
+
+127
+00:08:13,000 --> 00:08:15,960
+OK, yes, OK.
+
+128
+00:08:15,960 --> 00:08:18,000
+And we see these two figures.
+
+129
+00:08:18,000 --> 00:08:22,000
+So 0 didn't survive, and 1 did survive.
+
+130
+00:08:22,000 --> 00:08:26,160
+And this is showing the histogram of age.
+
+131
+00:08:26,160 --> 00:08:29,640
+So we're not going into the details here now,
+
+132
+00:08:29,640 --> 00:08:31,720
+because this is just a preview.
+
+133
+00:08:31,720 --> 00:08:36,600
+But now let's go to the actual details of what just happened.
+
+134
+00:08:36,600 --> 00:08:37,600
+OK.
+
+135
+00:08:37,600 --> 00:08:41,720
+So what's in the data frame?
+
+136
+00:08:41,720 --> 00:08:45,840
+Maybe start with the info function, I guess.
+
+137
+00:08:45,840 --> 00:08:51,560
+Can you go to the screen or the lesson again?
+
+138
+00:08:51,560 --> 00:08:53,200
+Yes.
+
+139
+00:08:53,200 --> 00:08:55,480
+There's a picture there.
+
+140
+00:08:55,480 --> 00:08:59,920
+Yeah, OK, yeah, so this is what a data frame looks like.
+
+141
+00:08:59,920 --> 00:09:05,200
+So we see it consists of rows and columns with column names
+
+142
+00:09:05,200 --> 00:09:07,760
+instead of just numbers at the top
+
+143
+00:09:07,760 --> 00:09:14,720
+and an index column on the left side.
+
+144
+00:09:14,720 --> 00:09:16,960
+So each of these columns themselves
+
+145
+00:09:16,960 --> 00:09:20,320
+is a pandas.series object.
+
+146
+00:09:20,320 --> 00:09:24,480
+And the data itself inside of these series objects
+
+147
+00:09:24,480 --> 00:09:28,840
+is stored as NumPy arrays.
+
+148
+00:09:28,840 --> 00:09:29,560
+OK.
+
+149
+00:09:29,560 --> 00:09:33,840
+So should we go back to the Jupyter
+
+150
+00:09:33,840 --> 00:09:37,960
+and let's run Titanic.info?
+
+151
+00:09:37,960 --> 00:09:41,720
+The head looks a lot like the picture,
+
+152
+00:09:41,720 --> 00:09:43,720
+although a little bit different.
+
+153
+00:09:43,720 --> 00:09:44,220
+Yes.
+
+154
+00:09:44,220 --> 00:09:46,080
+It's also the info function, which
+
+155
+00:09:46,080 --> 00:09:52,240
+tells you what columns exist and what types those are.
+
+156
+00:09:52,240 --> 00:09:57,000
+So these are the series that exist in this data frame.
+
+157
+00:09:57,000 --> 00:10:00,080
+And these data types are, in fact,
+
+158
+00:10:00,080 --> 00:10:05,720
+the NumPy data types there, at least in 64 and Float64.
+
+159
+00:10:05,720 --> 00:10:07,880
+So once we have this, we can do things,
+
+160
+00:10:07,880 --> 00:10:11,000
+like we can extract out single columns.
+
+161
+00:10:11,000 --> 00:10:15,440
+For example, we can do Titanic and then slice the age.
+
+162
+00:10:15,440 --> 00:10:18,320
+And then take the age.
+
+163
+00:10:18,320 --> 00:10:22,200
+And we can index it now by the name, the column name.
+
+164
+00:10:22,200 --> 00:10:22,700
+Yes.
+
+165
+00:10:22,700 --> 00:10:24,960
+Yeah, the column name, age.
+
+166
+00:10:24,960 --> 00:10:26,800
+Age is useful.
+
+167
+00:10:26,800 --> 00:10:29,800
+And we see, so notice it's pulled out
+
+168
+00:10:29,800 --> 00:10:34,440
+both the names and the ages, because this index got
+
+169
+00:10:34,440 --> 00:10:38,560
+preserved in the series itself.
+
+170
+00:10:38,560 --> 00:10:41,000
+And then we can, there's another shorthand here,
+
+171
+00:10:41,000 --> 00:10:45,200
+titanic.age with the column name.
+
+172
+00:10:45,200 --> 00:10:48,320
+So this doesn't work when age is also
+
+173
+00:10:48,320 --> 00:10:51,560
+an attribute of the data frame, but it's
+
+174
+00:10:51,560 --> 00:10:54,560
+convenient for shorthands.
+
+175
+00:10:54,560 --> 00:10:57,000
+So this is the same thing, basically?
+
+176
+00:10:57,000 --> 00:10:58,320
+Yeah.
+
+177
+00:10:58,320 --> 00:10:59,640
+OK.
+
+178
+00:10:59,640 --> 00:11:02,560
+We can list all the columns with titanic.columns.
+
+179
+00:11:05,560 --> 00:11:06,320
+OK.
+
+180
+00:11:06,320 --> 00:11:07,720
+So now it returns a list.
+
+181
+00:11:07,720 --> 00:11:09,480
+Otherwise, this is the same information
+
+182
+00:11:09,480 --> 00:11:13,000
+as in the .info function.
+
+183
+00:11:13,000 --> 00:11:16,560
+But it's a list, so you can, for example,
+
+184
+00:11:16,560 --> 00:11:18,680
+do a for loop over it.
+
+185
+00:11:18,680 --> 00:11:20,240
+Yeah.
+
+186
+00:11:20,240 --> 00:11:23,880
+I guess it doesn't contain the index.
+
+187
+00:11:23,880 --> 00:11:29,200
+So we have the name as an index, so you can also
+
+188
+00:11:29,200 --> 00:11:31,520
+take the index.
+
+189
+00:11:31,520 --> 00:11:32,020
+Yes.
+
+190
+00:11:32,020 --> 00:11:34,360
+Although this will now be a list of the names.
+
+191
+00:11:34,360 --> 00:11:35,280
+Yeah.
+
+192
+00:11:35,280 --> 00:11:38,240
+The name of the index column is name.
+
+193
+00:11:38,240 --> 00:11:42,000
+This is, in fact, a NumPy array inside of it also.
+
+194
+00:11:42,000 --> 00:11:42,600
+Yeah.
+
+195
+00:11:42,600 --> 00:11:46,280
+So we can get a single individual values
+
+196
+00:11:46,280 --> 00:11:47,760
+different ways.
+
+197
+00:11:47,760 --> 00:11:51,320
+So for example, this .loc method,
+
+198
+00:11:51,320 --> 00:11:58,240
+titanic.loc, we can give it a position by the index
+
+199
+00:11:58,240 --> 00:11:59,920
+and then column name.
+
+200
+00:11:59,920 --> 00:12:03,560
+So now I'm, so the index is the name again,
+
+201
+00:12:03,560 --> 00:12:05,240
+so I'm typing a name in.
+
+202
+00:12:05,240 --> 00:12:07,040
+And then column name is age.
+
+203
+00:12:07,040 --> 00:12:08,800
+It's easy to make a spelling mistake here,
+
+204
+00:12:08,800 --> 00:12:12,200
+so it might actually be good to, OK, key error.
+
+205
+00:12:12,200 --> 00:12:15,600
+I think lamb is capitalized.
+
+206
+00:12:15,600 --> 00:12:16,800
+Yeah.
+
+207
+00:12:16,800 --> 00:12:17,640
+OK.
+
+208
+00:12:17,640 --> 00:12:18,140
+None.
+
+209
+00:12:18,140 --> 00:12:18,640
+OK.
+
+210
+00:12:18,640 --> 00:12:24,720
+Well, that was the age is not recorded in the data frame.
+
+211
+00:12:24,720 --> 00:12:28,200
+So there is a little bit more here.
+
+212
+00:12:28,200 --> 00:12:32,680
+I think we don't have time to go into all these details.
+
+213
+00:12:32,680 --> 00:12:38,720
+But we can do things like using at.
+
+214
+00:12:38,720 --> 00:12:46,720
+we can set a value so okay let's do that yes
+
+215
+00:12:50,800 --> 00:12:55,920
+um okay well i'm not going to use the index method here so i'll just copy the name
+
+216
+00:12:57,360 --> 00:13:03,440
+yes should we set the age of age it says set age to 42
+
+217
+00:13:08,720 --> 00:13:15,200
+Well, I mean, I said it's 40 instead of 42, but that's fine.
+
+218
+00:13:15,200 --> 00:13:19,760
+We don't actually know the age.
+
+219
+00:13:19,760 --> 00:13:26,280
+So one thing that's taken me some time to get used to is you can use this loc and add
+
+220
+00:13:26,280 --> 00:13:33,340
+method to get values based on the names in the indexes.
+
+221
+00:13:33,340 --> 00:13:36,660
+But you can use the iloc and iat functions
+
+222
+00:13:36,660 --> 00:13:41,500
+to get values based on first row, second row, first column,
+
+223
+00:13:41,500 --> 00:13:43,980
+second column, and so on.
+
+224
+00:13:43,980 --> 00:13:47,500
+And these both have different uses in different cases.
+
+225
+00:13:47,500 --> 00:13:50,340
+For example, if there's a big time series,
+
+226
+00:13:50,340 --> 00:13:57,460
+then it makes sense to extract what happened on this day.
+
+227
+00:13:57,460 --> 00:13:59,260
+But if you're iterating through, maybe it
+
+228
+00:13:59,260 --> 00:14:02,300
+makes sense to get the first row, then second row,
+
+229
+00:14:02,300 --> 00:14:09,900
+and so on okay so basically it depends on if you're doing something for all the columns
+
+230
+00:14:09,900 --> 00:14:14,780
+then or splitting it in some way by numbers then just use the numbers otherwise it's more
+
+231
+00:14:14,780 --> 00:14:25,180
+readable to use the names usually yeah okay um we can do the boolean indexing just like numpy
+
+232
+00:14:25,180 --> 00:14:32,940
+raised. So for example, let's get the... So I guess I'll do it in a couple of steps.
+
+233
+00:14:32,940 --> 00:14:39,500
+So did you want to get any something other than this age thing? Let's go. So let's extract the
+
+234
+00:14:39,500 --> 00:14:46,780
+passengers that are older than age 70. So this returns a boolean thing, which is mostly false.
+
+235
+00:14:46,780 --> 00:14:56,220
+most people are not over 70 years old. But I can use that as an index for the array and just take
+
+236
+00:14:58,060 --> 00:15:02,940
+the passengers who are older than 70 years old. Yes, five of them.
+
+237
+00:15:04,220 --> 00:15:09,020
+So this is just now all passengers older than 70.
+
+238
+00:15:09,020 --> 00:15:20,700
+Okay, and this looks a lot like the NumPy syntax because it's designed around that.
+
+239
+00:15:20,700 --> 00:15:27,340
+Yeah, it's good that things work in a similar way.
+
+240
+00:15:27,340 --> 00:15:32,140
+So there's a lot more things to demonstrate here.
+
+241
+00:15:32,140 --> 00:15:35,380
+For example, we can get all the NA values.
+
+242
+00:15:35,380 --> 00:15:38,580
+We can remove the NA values.
+
+243
+00:15:38,580 --> 00:15:42,980
+we can replace the missing data with other things.
+
+244
+00:15:42,980 --> 00:15:46,620
+Which one would you like to demonstrate?
+
+245
+00:15:46,620 --> 00:15:47,620
+Maybe let's.
+
+246
+00:15:50,660 --> 00:15:53,460
+So, OK, what you would mostly need to do
+
+247
+00:15:53,460 --> 00:15:59,780
+is often you just need to drop the none values.
+
+248
+00:15:59,780 --> 00:16:02,060
+This doesn't create a new data frame.
+
+249
+00:16:02,060 --> 00:16:05,060
+This does not override the data frame.
+
+250
+00:16:05,060 --> 00:16:07,800
+It creates a new one and returns that.
+
+251
+00:16:07,800 --> 00:16:11,600
+So we don't actually change this Titanic data frame now.
+
+252
+00:16:11,600 --> 00:16:12,840
+Yeah.
+
+253
+00:16:12,840 --> 00:16:16,080
+But it's often useful to get the data frame that
+
+254
+00:16:16,080 --> 00:16:20,200
+only contains non-defined values.
+
+255
+00:16:20,200 --> 00:16:22,000
+Of course, you can also, you might
+
+256
+00:16:22,000 --> 00:16:24,000
+want to first take a set of columns
+
+257
+00:16:24,000 --> 00:16:26,280
+and then drop the values, or drop the rows
+
+258
+00:16:26,280 --> 00:16:28,400
+where those columns are not defined.
+
+259
+00:16:28,400 --> 00:16:30,880
+Because this is dropping everything
+
+260
+00:16:30,880 --> 00:16:34,400
+where even any value in any column is none.
+
+261
+00:16:34,400 --> 00:16:35,160
+This is dropping it.
+
+262
+00:16:37,800 --> 00:16:47,000
+Okay, so we are going a little bit fast here, but that's by design to give you more time
+
+263
+00:16:47,000 --> 00:16:48,000
+for exercises.
+
+264
+00:16:48,000 --> 00:16:52,840
+So again, we're just summarizing the biggest high level things.
+
+265
+00:16:52,840 --> 00:17:01,400
+Okay, the next section, so now there's exercises, but instead we're going to cover the next
+
+266
+00:17:01,400 --> 00:17:08,760
+little section, well not so little, but then have you do two exercises at once.
+
+267
+00:17:08,760 --> 00:17:18,120
+So now there's tidy data. So this is not purely panda stuff itself, but also
+
+268
+00:17:19,400 --> 00:17:28,360
+it's about how you arrange the data itself. So in tidy data the idea is that every column
+
+269
+00:17:28,360 --> 00:17:33,560
+is a variable and each variable has its own column and each observation is a row.
+
+270
+00:17:35,000 --> 00:17:46,040
+So for example down here we're making a sample thing about runners and if [name] creates that.
+
+271
+00:17:46,760 --> 00:17:52,760
+Yes let's go back to demonstrating. So I will again just copy this data in
+
+272
+00:17:52,760 --> 00:18:00,760
+But it contains three runners and some values for, I guess, run times.
+
+273
+00:18:00,760 --> 00:18:06,760
+And now runners is a data frame.
+
+274
+00:18:06,760 --> 00:18:13,040
+Okay, so distances and times for those distances run.
+
+275
+00:18:13,040 --> 00:18:16,760
+So is this tidy data?
+
+276
+00:18:16,760 --> 00:18:19,280
+No.
+
+277
+00:18:19,280 --> 00:18:24,040
+So there's multiple measurements per row here.
+
+278
+00:18:24,040 --> 00:18:31,760
+It's measuring run times for four different, possibly different runs, but at least in four
+
+279
+00:18:31,760 --> 00:18:36,080
+different places in the same run, possibly.
+
+280
+00:18:36,080 --> 00:18:39,280
+But in any case, four different measurements.
+
+281
+00:18:39,280 --> 00:18:45,400
+So basically, yes, every row contains the results from four different races.
+
+282
+00:18:45,400 --> 00:18:46,600
+So what's next?
+
+283
+00:18:46,600 --> 00:18:49,200
+this melt function.
+
+284
+00:18:49,200 --> 00:18:53,880
+OK, so maybe it's better to comment while I write it.
+
+285
+00:18:53,880 --> 00:18:58,720
+So we'll replace the runners data frame.
+
+286
+00:18:58,720 --> 00:19:01,120
+pandas.melt is the function.
+
+287
+00:19:01,120 --> 00:19:05,640
+And we put the current runners data frame in.
+
+288
+00:19:05,640 --> 00:19:15,160
+And then we have to define a set of variables that, well,
+
+289
+00:19:15,160 --> 00:19:17,840
+I mean, these are kept in the rows, in every row.
+
+290
+00:19:17,840 --> 00:19:23,440
+So this is something that identifies the runner
+
+291
+00:19:23,440 --> 00:19:29,200
+or the experiment or the subject,
+
+292
+00:19:29,200 --> 00:19:33,440
+experimental subject, something you want to keep.
+
+293
+00:19:33,440 --> 00:19:35,000
+And this is not a measure.
+
+294
+00:19:35,000 --> 00:19:36,960
+This is not something you measure.
+
+295
+00:19:36,960 --> 00:19:40,240
+This is something that identifies the measurement.
+
+296
+00:19:40,240 --> 00:19:44,240
+So the name of the runner is not something you measure.
+
+297
+00:19:44,240 --> 00:19:52,080
+it's something that identifies the measurement and then I guess value variables and those
+
+298
+00:19:52,080 --> 00:20:04,480
+are then the numbers so these are the columns that contain actual measured values
+
+299
+00:20:07,120 --> 00:20:11,040
+so these we want to split into separate rows and these we do not
+
+300
+00:20:14,240 --> 00:20:17,120
+I guess then we need a name for this new variable.
+
+301
+00:20:20,240 --> 00:20:24,960
+So we split this into multiple rows so that creates a new column.
+
+302
+00:20:24,960 --> 00:20:26,240
+We want a name for that column.
+
+303
+00:20:26,240 --> 00:20:29,120
+So what is the name for these numbers?
+
+304
+00:20:29,120 --> 00:20:31,680
+I guess distance run.
+
+305
+00:20:38,560 --> 00:20:43,600
+And what is the name for the thing that we're measuring here?
+
+306
+00:20:43,600 --> 00:20:44,320
+That's time.
+
+307
+00:20:50,320 --> 00:20:52,640
+Okay, hopefully, oh, not quite right.
+
+308
+00:20:57,680 --> 00:20:59,120
+It's not present.
+
+309
+00:21:00,960 --> 00:21:03,040
+These variables are not present in the data frame.
+
+310
+00:21:03,600 --> 00:21:06,000
+400, 800, okay, maybe they are strings.
+
+311
+00:21:07,760 --> 00:21:08,260
+Maybe.
+
+312
+00:21:13,600 --> 00:21:25,200
+Can you so I'll give you coffee from the lesson.
+
+313
+00:21:25,200 --> 00:21:26,200
+Let's see.
+
+314
+00:21:26,200 --> 00:21:27,200
+Yeah.
+
+315
+00:21:27,200 --> 00:21:28,200
+Let's see.
+
+316
+00:21:28,200 --> 00:21:38,240
+I think we should try to go well, it did work now.
+
+317
+00:21:38,240 --> 00:21:39,240
+Yeah.
+
+318
+00:21:39,240 --> 00:21:50,880
+Okay. So it was some spelling error somewhere. Okay. So what did it do? It took all of these
+
+319
+00:21:50,880 --> 00:21:59,120
+numbers and made a row for each of them. And then we have identifying information. So this
+
+320
+00:21:59,120 --> 00:22:03,200
+run a name, and this column title
+
+321
+00:22:03,200 --> 00:22:06,200
+go here as identifying information
+
+322
+00:22:06,200 --> 00:22:07,520
+for that measurement.
+
+323
+00:22:10,240 --> 00:22:11,120
+Yeah.
+
+324
+00:22:11,120 --> 00:22:13,600
+OK.
+
+325
+00:22:13,600 --> 00:22:15,480
+And this is now tidy data.
+
+326
+00:22:15,480 --> 00:22:20,200
+And the reason is that each row is only one observation.
+
+327
+00:22:20,200 --> 00:22:25,480
+An observation is the amount of time it took on a race.
+
+328
+00:22:25,480 --> 00:22:29,280
+And this lets us do things like the group by we saw before.
+
+329
+00:22:29,280 --> 00:22:33,280
+So basically, by using the other operations,
+
+330
+00:22:33,280 --> 00:22:36,640
+we can do cool stuff on this.
+
+331
+00:22:36,640 --> 00:22:41,680
+But we need to carry on now.
+
+332
+00:22:41,680 --> 00:22:45,920
+So again, this is a thing that there's a linked article
+
+333
+00:22:45,920 --> 00:22:49,640
+that you should probably read.
+
+334
+00:22:49,640 --> 00:22:51,920
+It has a lot more and really convinced me
+
+335
+00:22:51,920 --> 00:22:55,320
+why this is a good idea.
+
+336
+00:22:55,320 --> 00:23:01,800
+Okay, working with data frames. So there's a lot of other stuff we can do with them.
+
+337
+00:23:02,360 --> 00:23:08,920
+And I propose that you all can read this as well as we can say it right here.
+
+338
+00:23:10,520 --> 00:23:16,040
+Um, is there anything to comment on? Um, there's
+
+339
+00:23:16,040 --> 00:23:22,340
+is, yeah, there's an example of making a data frame that
+
+340
+00:23:22,340 --> 00:23:29,180
+has a date range index where all the index values are
+
+341
+00:23:29,180 --> 00:23:31,100
+a certain date.
+
+342
+00:23:31,100 --> 00:23:35,540
+And then ones with other things, and shows
+
+343
+00:23:35,540 --> 00:23:41,120
+how we can combine them, merge them, and so on.
+
+344
+00:23:41,120 --> 00:23:43,760
+Yeah, I propose we go to the exercises now
+
+345
+00:23:43,760 --> 00:23:47,440
+and leave the 20 minutes for them.
+
+346
+00:23:47,440 --> 00:23:49,520
+So we'll come back at 52.
+
+347
+00:23:52,240 --> 00:23:58,240
+And we can go into more details about things tomorrow
+
+348
+00:23:59,040 --> 00:24:00,400
+and after we get back.
+
+349
+00:24:01,760 --> 00:24:02,640
+Does that sound good?
+
+350
+00:24:05,680 --> 00:24:06,720
+Yeah, that sounds good.
+
+351
+00:24:07,440 --> 00:24:08,400
+Okay, great.
+
+352
+00:24:08,400 --> 00:24:20,400
+Alright, so let's go to the exercises, until 52, and see you then.
+
+353
+00:24:20,400 --> 00:24:21,920
+Okay, bye.
+
+354
+00:24:26,000 --> 00:24:31,080
+Hello, we are back.
+
+355
+00:24:32,840 --> 00:24:37,200
+We have a little bit of wrap-up for the day,
+
+356
+00:24:37,200 --> 00:24:42,040
+and we know this was a rather rough lesson,
+
+357
+00:24:42,040 --> 00:24:46,200
+So, like I tried to motivate when we started,
+
+358
+00:24:46,200 --> 00:24:50,960
+pandas is the kind of thing that even we are always going through
+
+359
+00:24:50,960 --> 00:24:56,400
+and reading about it to figure out how to do things.
+
+360
+00:24:56,400 --> 00:25:02,360
+So this is sort of an impossible lesson to teach.
+
+361
+00:25:02,360 --> 00:25:07,280
+So we can either go so slow that we don't show anything interesting,
+
+362
+00:25:07,280 --> 00:25:11,240
+or show some cool stuff,
+
+363
+00:25:11,240 --> 00:25:14,680
+But you need to go back and read to figure out how it works
+
+364
+00:25:15,440 --> 00:25:17,440
+yourself later and
+
+365
+00:25:17,960 --> 00:25:22,440
+we tried to have a little mix in here and
+
+366
+00:25:23,560 --> 00:25:25,720
+Well, it didn't work that well
+
+367
+00:25:26,720 --> 00:25:28,720
+That's um
+
+368
+00:25:29,360 --> 00:25:36,260
+Well, it's unfortunate, but we'll try to do better next time but it's sort of how it is
+
+369
+00:25:36,260 --> 00:25:50,380
+So, by the way, at the bottom of the notes here, you have a place you can vote about
+
+370
+00:25:50,380 --> 00:25:51,780
+what you thought of the lesson.
+
+371
+00:25:51,780 --> 00:25:58,660
+So use this poll to say what you thought of it, and please give us comments.
+
+372
+00:25:58,660 --> 00:26:00,660
+And we'll go look at those quickly.
+
+373
+00:26:00,660 --> 00:26:07,380
+So, any comments from the exercises or what we can do?
+
+374
+00:26:07,380 --> 00:26:16,260
+Let's take a look.
+
+375
+00:26:16,260 --> 00:26:30,900
+So this thing here, so the problem with this we see, and the solution here.
+
+376
+00:26:30,900 --> 00:26:33,800
+So the difference is these are in parentheses here.
+
+377
+00:26:33,800 --> 00:26:40,820
+So basically Python gets this order of operations wrong, where it would try to do the ampersand
+
+378
+00:26:40,820 --> 00:26:43,660
+first and then the comparison.
+
+379
+00:26:43,660 --> 00:26:48,740
+I know this has tripped me a lot, many times in the past.
+
+380
+00:26:48,740 --> 00:26:55,020
+It's so much in fact that I just, nowadays if I type a number and I also type the parenthesis
+
+381
+00:26:55,020 --> 00:27:01,060
+around both sides, just automatically, because otherwise it will usually fail.
+
+382
+00:27:01,060 --> 00:27:01,560
+Yeah.
+
+383
+00:27:01,560 --> 00:27:02,060
+Yeah.
+
+384
+00:27:04,340 --> 00:27:04,840
+OK.
+
+385
+00:27:08,340 --> 00:27:12,180
+And yeah, so there's this convention in Python
+
+386
+00:27:12,180 --> 00:27:16,700
+that when you're slicing things, the first index is included,
+
+387
+00:27:16,700 --> 00:27:21,420
+and the second one is not included.
+
+388
+00:27:21,420 --> 00:27:26,500
+And that's, well, Python or Pandas
+
+389
+00:27:26,500 --> 00:27:28,740
+follows the Python convention.
+
+390
+00:27:28,740 --> 00:27:35,220
+And you can read there the debate on which one is better or worse.
+
+391
+00:27:37,700 --> 00:27:43,060
+Well, it's an interesting question, and let's not get into that.
+
+392
+00:27:43,060 --> 00:27:44,180
+We can write by chat.
+
+393
+00:27:45,380 --> 00:27:53,620
+Are there any other questions or comments here?
+
+394
+00:27:53,620 --> 00:27:56,100
+So [name], what's your overall summary of Pandas?
+
+395
+00:27:56,100 --> 00:28:01,220
+what should someone have gotten from this lesson?
+
+396
+00:28:02,580 --> 00:28:06,660
+Well one thing is just that it exists that the
+
+397
+00:28:06,660 --> 00:28:11,540
+how the data frames work also there is a python library that's really good at
+
+398
+00:28:11,540 --> 00:28:16,980
+this sort of table like data and you can do kind of magical things
+
+399
+00:28:16,980 --> 00:28:19,380
+with it.
+
+400
+00:28:20,660 --> 00:28:25,060
+Well I guess that last part of the sentence was the second one so
+
+401
+00:28:25,060 --> 00:28:33,620
+You don't need to remember how to do this, all of these things. It's mostly you will look through,
+
+402
+00:28:36,580 --> 00:28:41,060
+do a web search for what you want to do and look through the documentation.
+
+403
+00:28:43,060 --> 00:28:50,900
+But yeah, so it is, it can do kind of similar things to what a spreadsheet can do,
+
+404
+00:28:50,900 --> 00:28:54,420
+but a lot faster and you can save it as script.
+
+405
+00:28:57,540 --> 00:29:03,540
+Maybe my summary would be if you're making things that have a bunch of numpy arrays,
+
+406
+00:29:03,540 --> 00:29:10,500
+one for each effective column, or you have these deeply recursive dictionaries of list
+
+407
+00:29:10,500 --> 00:29:17,460
+or list of dictionaries or things like that, then maybe pandas with all this extra structure,
+
+408
+00:29:17,460 --> 00:29:23,300
+Like the indexes, the names, the way you can slice different things can do it better.
+
+409
+00:29:24,580 --> 00:29:28,020
+And we'll see another example of this tomorrow.
+
+410
+00:29:29,300 --> 00:29:33,700
+But as of now, we have this feedback of the day.
+
+411
+00:29:33,700 --> 00:29:39,380
+So please, please comment here.
+
+412
+00:29:39,380 --> 00:29:41,860
+It's the only way we have to improve things.
+
+413
+00:29:41,860 --> 00:29:55,780
+So, there will be videos produced for tomorrow, hopefully.
+
+414
+00:29:55,780 --> 00:30:01,060
+If you would like to help with that, please let us know.
+
+415
+00:30:01,060 --> 00:30:08,900
+There is, yeah, and if you can do the stuff of today, then tomorrow should be okay.
+
+416
+00:30:08,900 --> 00:30:14,580
+more important to have JupyterLab or similar because we do visualization and we need to show
+
+417
+00:30:14,580 --> 00:30:19,300
+these graphics in the notebooks. And if there are any problems with the software today,
+
+418
+00:30:20,020 --> 00:30:23,060
+you should make sure you install this for tomorrow.
+
+419
+00:30:23,060 --> 00:30:41,060
+Yes, not this. Any positive feedback kinds of things.
+
+420
+00:30:41,060 --> 00:30:48,060
+So yeah, I mean, this is, if you're completely new to Python now, like, you're still using the Python syntax a little bit.
+
+421
+00:30:48,060 --> 00:30:58,060
+today will have been really hard. But don't let that discourage you, because I mean this is a
+
+422
+00:30:58,780 --> 00:31:07,020
+medium, like an intermediate kind of course. But hopefully you can stop, take a step back,
+
+423
+00:31:07,020 --> 00:31:14,060
+and watch and see what we're doing, and use this as inspiration when you're learning on your own
+
+424
+00:31:14,060 --> 00:31:16,060
+later on.
+
+425
+00:31:22,060 --> 00:31:24,060
+Any other comments?
+
+426
+00:31:24,060 --> 00:31:26,060
+A lot of this is an overview of
+
+427
+00:31:26,060 --> 00:31:28,060
+a lot of stuff
+
+428
+00:31:28,060 --> 00:31:30,060
+that
+
+429
+00:31:30,060 --> 00:31:32,060
+will probably be
+
+430
+00:31:32,060 --> 00:31:34,060
+useful at some point in the future.
+
+431
+00:31:34,060 --> 00:31:36,060
+So there is one comment that there
+
+432
+00:31:36,060 --> 00:31:38,060
+is a lot of material and that
+
+433
+00:31:38,060 --> 00:31:40,060
+can stress
+
+434
+00:31:40,060 --> 00:31:42,060
+you out.
+
+435
+00:31:42,060 --> 00:31:51,060
+But the idea is not that we cover or that you learn all of the material. It's a selection. You can go for what you're interested in.
+
+436
+00:31:51,060 --> 00:31:59,060
+And yeah, not everything will be useful immediately. You will not learn everything immediately, but you can always come back.
+
+437
+00:31:59,060 --> 00:32:15,700
+Yeah, okay, so, um, well, it's time to stop, so let's go with that.
+
+438
+00:32:15,700 --> 00:32:24,900
+See you all tomorrow, same time, a little bit early for icebreakers and initial discussion,
+
+439
+00:32:24,900 --> 00:32:27,900
+And thank you for attending.
+
+440
+00:32:27,900 --> 00:32:28,900
+Bye.
+

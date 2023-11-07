@@ -1,0 +1,1288 @@
+1
+00:00:00,000 --> 00:00:08,580
+So, welcome back, everyone, after the break.
+
+2
+00:00:08,580 --> 00:00:14,580
+Hello, should we say something about ourselves?
+
+3
+00:00:14,580 --> 00:00:22,220
+Yes, we should. So my name is [name]. I work at the PDC Center for High Performance
+
+4
+00:00:22,220 --> 00:00:27,900
+Computing in Stockholm. And with me here is [name].
+
+5
+00:00:27,900 --> 00:00:34,020
+Hi, I'm [name]. I'm a staff scientist at Aalto and I work with [name] and others at Aalto
+
+6
+00:00:34,020 --> 00:00:39,540
+scientific computing and I'm sure you will receive some emails from me regarding links
+
+7
+00:00:39,540 --> 00:00:46,420
+and other details for the course. So, nice to see so many of you here. So, [name], numpy.
+
+8
+00:00:47,140 --> 00:00:57,380
+Yes. So, as you can see here, we have opened here a Jupyter notebook. So, we will continue
+
+9
+00:00:57,380 --> 00:01:04,820
+this tool that you were introduced to in the previous lesson. And we see that you have
+
+10
+00:01:04,820 --> 00:01:13,940
+been posting, continue to post questions in the HackMD, and we will answer them continuously.
+
+11
+00:01:13,940 --> 00:01:23,420
+So [name], why would we need something, we do have support of lists and various data
+
+12
+00:01:23,420 --> 00:01:27,420
+types in regular Python from the beginning.
+
+13
+00:01:27,420 --> 00:01:32,140
+So why would we need a library like NumPy?
+
+14
+00:01:32,140 --> 00:01:36,220
+Yeah, I think that the issue with Python list,
+
+15
+00:01:36,220 --> 00:01:40,220
+with the kind of basic supported Python list,
+
+16
+00:01:40,220 --> 00:01:43,940
+is that they, as you can see here in this example,
+
+17
+00:01:43,940 --> 00:01:48,260
+there is one, 2.5, some string, some Boolean.
+
+18
+00:01:48,260 --> 00:01:53,160
+So it's a bit of a mixed bag of different types.
+
+19
+00:01:53,160 --> 00:01:58,680
+you can guess already that maybe this is not the most efficient way to deal with data,
+
+20
+00:01:59,240 --> 00:02:05,960
+especially if you need to do fast computation with it. So I think that the NumPy,
+
+21
+00:02:06,520 --> 00:02:09,880
+is it a NumPy? I think that it stands for numerical Python, isn't it?
+
+22
+00:02:09,880 --> 00:02:18,600
+Yes, indeed. And NumPy is a library used for scientific computing and it's something that
+
+23
+00:02:18,600 --> 00:02:26,240
+that we will use a lot here now in the course, and often it's so that even if you don't explicitly
+
+24
+00:02:26,240 --> 00:02:31,200
+work with NumPy, you might have it under the hood. So it will, for instance, come in under
+
+25
+00:02:31,200 --> 00:02:37,520
+the hood when we look on the Matplotlib visualization tomorrow.
+
+26
+00:02:37,520 --> 00:02:46,320
+So one of the core objects in NumPy are the arrays, which is a construction that can work
+
+27
+00:02:46,320 --> 00:02:53,600
+with a regular set of values. You can call them a grid. And all of the elements have
+
+28
+00:02:53,600 --> 00:03:03,480
+the same data type. This data type have indices, which are non-negative numbers. And these
+
+29
+00:03:03,480 --> 00:03:11,600
+indices can be in one or more dimension that is natively supported. If you look on the
+
+30
+00:03:11,600 --> 00:03:19,240
+The properties that the array elements have, or the arrays have, they have a dtype, and
+
+31
+00:03:19,240 --> 00:03:23,400
+an intrinsic property they have is that they have a shape. So, for instance, you can have
+
+32
+00:03:23,400 --> 00:03:30,160
+a two-dimensional array, three times two. You can have a three-dimensional array, three
+
+33
+00:03:30,160 --> 00:03:37,600
+times two, type 500. There's also the corner case of having a zero-dimensional array indexed
+
+34
+00:03:37,600 --> 00:03:41,360
+here by square brackets.
+
+35
+00:03:41,360 --> 00:03:43,480
+An important aspect is that we have
+
+36
+00:03:43,480 --> 00:03:47,280
+the data stored as raw memory, and it
+
+37
+00:03:47,280 --> 00:03:50,440
+can be passed to C and Fortran code
+
+38
+00:03:50,440 --> 00:03:53,960
+for efficient calculations.
+
+39
+00:03:53,960 --> 00:03:56,680
+So is it, [name], can you, do you
+
+40
+00:03:56,680 --> 00:04:02,040
+have some examples of when you combine C and Python?
+
+41
+00:04:02,040 --> 00:04:06,200
+Well, I mean, this is, NumPy is maybe the greatest example
+
+42
+00:04:06,200 --> 00:04:11,200
+of having so much sea power under the hood.
+
+43
+00:04:12,020 --> 00:04:13,180
+But what do you think,
+
+44
+00:04:13,180 --> 00:04:16,620
+should we show the power of NumPy?
+
+45
+00:04:16,620 --> 00:04:17,460
+Yes, yes.
+
+46
+00:04:19,700 --> 00:04:24,500
+So I'm gonna type so that also you,
+
+47
+00:04:24,500 --> 00:04:26,980
+whoever wants to type can do the same.
+
+48
+00:04:26,980 --> 00:04:29,380
+So basically we are creating a list
+
+49
+00:04:29,380 --> 00:04:32,380
+and this is range and it's 10,000.
+
+50
+00:04:32,380 --> 00:04:43,940
+All right. And that's the first list. And then we have another list. It's called B.
+
+51
+00:04:43,940 --> 00:04:49,780
+And this is now in regular Pythons. This is still not NumPy.
+
+52
+00:04:49,780 --> 00:04:55,340
+Yep. All right.
+
+53
+00:04:55,340 --> 00:05:06,420
+Yes. So let's see here what happens if you take the elements of the list A and you square
+
+54
+00:05:06,420 --> 00:05:12,220
+them and assign the value to B. It's a long list.
+
+55
+00:05:12,220 --> 00:05:18,380
+Yeah, it's a long list. So in this small example here, we basically
+
+56
+00:05:18,380 --> 00:05:23,860
+need to build a for loop, right? So that it will go through each of the elements of A
+
+57
+00:05:23,860 --> 00:05:32,340
+and assign them to b and then we use this magic time it which is very useful for basically
+
+58
+00:05:32,340 --> 00:05:38,500
+telling us the performance of the piece of code in the cell that we see here so we said
+
+59
+00:05:38,500 --> 00:05:47,220
+that we do a for loop in the range of the length of the list a and then we want to
+
+60
+00:05:47,220 --> 00:05:58,820
+do that the ith element of b is equal to the ith element of a square i think it's correct right
+
+61
+00:05:58,820 --> 00:06:07,860
+should we check that that was correct so what's the timing for this so it's saying 2.68 milliseconds
+
+62
+00:06:09,060 --> 00:06:15,620
+per loop so well one could think that it's even you know relatively fast 2.8 millisecond
+
+63
+00:06:15,620 --> 00:06:18,620
+Now, should we try the NumPy version?
+
+64
+00:06:18,620 --> 00:06:19,620
+Yes.
+
+65
+00:06:19,620 --> 00:06:25,620
+So there's now a new command that we have not used yet, which is import.
+
+66
+00:06:25,620 --> 00:06:31,620
+This is practically saying to Python that now I'm importing a library.
+
+67
+00:06:31,620 --> 00:06:40,620
+And often we even nickname that instead of using `numpy`, often it is nicknamed as `np` for brevity.
+
+68
+00:06:40,620 --> 00:06:44,620
+So you can save typing time.
+
+69
+00:06:44,620 --> 00:06:56,620
+and now we basically redo what we did earlier but this time we use this function so np.arange
+
+70
+00:06:57,900 --> 00:07:05,500
+with 10 000 and for the b we initialize it to zeros
+
+71
+00:07:07,740 --> 00:07:13,580
+and again 10 000 so basically we have recreated what we were doing earlier
+
+72
+00:07:13,580 --> 00:07:21,340
+with this but now they're not lists anymore now they are NumPy arrays and
+
+73
+00:07:21,340 --> 00:07:28,300
+now we can do you can already see how compact is the NumPy version of it so
+
+74
+00:07:28,300 --> 00:07:35,940
+we want to time it again and then we want to make sure that the array B will
+
+75
+00:07:35,940 --> 00:07:42,780
+contain the square the element y square of array A and let's see how long it
+
+76
+00:07:42,780 --> 00:07:52,660
+it takes. Okay, this was 3.42 microns [microseconds]. So I'm not good with math, but we are talking
+
+77
+00:07:52,660 --> 00:07:56,420
+at order of magnitude, three order of magnitudes of difference. So it's...
+
+78
+00:07:56,420 --> 00:08:00,220
+Yeah, yeah. This is quite a bit faster.
+
+79
+00:08:00,220 --> 00:08:10,340
+It's quite a bit different. So we showed some functions like this np.arange and np.zeros.
+
+80
+00:08:10,340 --> 00:08:14,200
+or are these related to this creating arrays, [name]?
+
+81
+00:08:14,200 --> 00:08:16,040
+Yes, exactly.
+
+82
+00:08:16,040 --> 00:08:21,040
+So there are a few different ways that one can create arrays.
+
+83
+00:08:21,400 --> 00:08:26,400
+So the arange, here we had as an argument 10,000
+
+84
+00:08:28,520 --> 00:08:31,120
+and so perhaps we can look at `a`.
+
+85
+00:08:31,120 --> 00:08:32,080
+So what does it start with?
+
+86
+00:08:32,080 --> 00:08:35,040
+Does it start with one or does it start with zero?
+
+87
+00:08:36,400 --> 00:08:37,960
+In this `a` here?
+
+88
+00:08:37,960 --> 00:08:38,800
+Yeah.
+
+89
+00:08:38,800 --> 00:08:46,200
+So, it starts with zero.
+
+90
+00:08:46,200 --> 00:08:48,440
+It starts with zero, yeah.
+
+91
+00:08:48,440 --> 00:08:52,120
+And also, I mean, the first element also has the index of zero.
+
+92
+00:08:52,120 --> 00:08:53,120
+Yeah.
+
+93
+00:08:53,120 --> 00:09:02,840
+So, this is then compatible with C, but it's then another convention than what is used
+
+94
+00:09:02,840 --> 00:09:07,000
+in, for instance, in Fortran.
+
+95
+00:09:07,000 --> 00:09:16,240
+So we could also have that we assign a distinct set of elements. So perhaps if you would like
+
+96
+00:09:16,240 --> 00:09:28,440
+to have just numbering up to six, but have it in a three-dimensional array, in a two-dimensional
+
+97
+00:09:28,440 --> 00:09:29,440
+array.
+
+98
+00:09:29,440 --> 00:09:30,440
+Yeah.
+
+99
+00:09:30,440 --> 00:09:34,800
+I think you have an example there for `b`.
+
+100
+00:09:34,800 --> 00:09:46,400
+So yep, so mparray and now I'm passing like in this example here I'm actually passing
+
+101
+00:09:46,400 --> 00:09:54,120
+a matrix basically row one and row two so I need many square brackets now this is the
+
+102
+00:09:54,120 --> 00:10:03,560
+first row and then there's a comma and then there's the second row four five and six all
+
+103
+00:10:03,560 --> 00:10:06,420
+All right, let's have a look at `b also.
+
+104
+00:10:06,420 --> 00:10:09,700
+All right, yeah, this is now like a square matrix
+
+105
+00:10:09,700 --> 00:10:11,860
+or not square, but two-dimensional.
+
+106
+00:10:11,860 --> 00:10:13,740
+Rectangular, yeah.
+
+107
+00:10:13,740 --> 00:10:14,780
+Now we have these attributes
+
+108
+00:10:14,780 --> 00:10:17,260
+that we can inspect the array with.
+
+109
+00:10:17,260 --> 00:10:20,700
+So yeah, b.shape, okay.
+
+110
+00:10:20,700 --> 00:10:22,420
+Pings back then that the shape of the object
+
+111
+00:10:22,420 --> 00:10:26,880
+is two rows and three columns.
+
+112
+00:10:28,100 --> 00:10:30,700
+And the size will give us the number of elements.
+
+113
+00:10:31,620 --> 00:10:32,460
+I see.
+
+114
+00:10:32,460 --> 00:10:42,940
+So, there are many alternatives to how to create arrays. So, we have here, for instance,
+
+115
+00:10:42,940 --> 00:10:50,660
+you can create all zeros. You can create all ones. Or assign all elements to some arbitrary
+
+116
+00:10:50,660 --> 00:10:59,580
+amounts. For instance, this np.full, 2, 2, and then 7, which then will assign all elements
+
+117
+00:10:59,580 --> 00:11:14,020
+to 7. You will see here soon in the exercises that you can manipulate the elements. So we
+
+118
+00:11:14,020 --> 00:11:20,740
+can yeah perhaps you can first show that how one can save and then read in again
+
+119
+00:11:20,740 --> 00:11:30,100
+yeah so let's see if we have something stored maybe a can be this
+
+120
+00:11:30,100 --> 00:11:57,060
+Yes, now we want to save it and be don't say I call it a.npy just because so that's the
+
+121
+00:11:57,060 --> 00:12:05,220
+a native format. Let's give it file.npy and the variable a this is actually like I'm coming
+
+122
+00:12:05,220 --> 00:12:11,540
+from a MATLAB past this is very similar to the save MATLAB where you have the name of
+
+123
+00:12:11,540 --> 00:12:16,500
+the file and then the variable and then of course I guess we can load things back. So
+
+124
+00:12:16,500 --> 00:12:22,900
+now I'm loading to a different variables called x and p dot load and the name of the
+
+125
+00:12:22,900 --> 00:12:27,900
+the file, which was file.mpy and let's see if it works.
+
+126
+00:12:29,180 --> 00:12:31,660
+Yeah, no, the same way.
+
+127
+00:12:35,020 --> 00:12:39,480
+So we would, should we already go to the,
+
+128
+00:12:39,480 --> 00:12:41,140
+or do we need, do you want to mention something
+
+129
+00:12:41,140 --> 00:12:43,060
+about this data type?
+
+130
+00:12:43,060 --> 00:12:48,060
+Yes, so one can change the data type.
+
+131
+00:12:48,060 --> 00:12:56,600
+change the data type. So, the data types here are dynamic. So, if you assign an element
+
+132
+00:12:56,600 --> 00:13:04,680
+or elements to be integers, then the array will be an array of integers. But you can
+
+133
+00:13:04,680 --> 00:13:09,240
+cast it into something else.
+
+134
+00:13:09,240 --> 00:13:20,680
+So, I'm making now an array of booleans just for the fun and let's see if it looks okay.
+
+135
+00:13:20,680 --> 00:13:26,840
+Yeah, so this is basically true and now we want to cast this. So, casting meaning that
+
+136
+00:13:26,840 --> 00:13:34,680
+we don't want to treat this as booleans anymore but we want to see them as integers. Let's
+
+137
+00:13:34,680 --> 00:13:42,320
+see if this works. Yes, so now there are 1s. Of course, we didn't actually modify D because
+
+138
+00:13:42,320 --> 00:13:51,680
+we didn't. So, D still has the, you know, we didn't store the output of D.
+
+139
+00:13:51,680 --> 00:13:59,160
+Yeah, exactly. Okay. So, now it's time for you to start exploring this on your own. So,
+
+140
+00:13:59,160 --> 00:14:07,120
+We are coming here to exercise one, where you get four tasks and you will explore how
+
+141
+00:14:07,120 --> 00:14:17,460
+to create with arrays and also how to create arrays that fill random numbers, how arrays
+
+142
+00:14:17,460 --> 00:14:24,320
+can be reshaped and also how arrays can be written to file and read from file.
+
+143
+00:14:24,320 --> 00:14:33,600
+And for this exercise, we will give you 15 minutes to work on it.
+
+144
+00:14:33,600 --> 00:14:40,240
+So that means that they will reconvene at 31 past the hour.
+
+145
+00:14:40,240 --> 00:14:42,640
+Okay.
+
+146
+00:14:42,640 --> 00:14:48,640
+And feel free, of course, to write on the notes document if you have any blockers.
+
+147
+00:14:48,640 --> 00:14:53,920
+And for those who want more advanced things, you can already jump to the next exercises
+
+148
+00:14:53,920 --> 00:14:57,120
+if this is too simple for you.
+
+149
+00:14:57,120 --> 00:15:01,760
+OK, I'll see you all in 15 minutes.
+
+150
+00:15:07,000 --> 00:15:15,080
+Hello, welcome back, hopefully you had enough time to do these exercises.
+
+151
+00:15:15,080 --> 00:15:20,600
+You must have noticed already that there's a solution box there so that, you know, if
+
+152
+00:15:20,600 --> 00:15:25,960
+you are not sure if you are, it's good to learn also from the answer so you can click
+
+153
+00:15:25,960 --> 00:15:30,780
+the box and it will expand. I'll just briefly comment on one exercise because at least looking
+
+154
+00:15:30,780 --> 00:15:38,800
+at the notes document maybe it wasn't clear that the output of np.arange is a little bit
+
+155
+00:15:38,800 --> 00:15:44,720
+different than the output of np.linspace and the difference as you might have noticed is
+
+156
+00:15:44,720 --> 00:15:54,240
+on the type so in practice one can set you know like we did earlier here with this casting
+
+157
+00:15:54,240 --> 00:16:04,040
+or if you look at the linspace function there's also a way to pass the type into as a argument
+
+158
+00:16:04,040 --> 00:16:09,560
+for the linspace so we will not cover all the exercises because hopefully the solutions
+
+159
+00:16:09,560 --> 00:16:17,080
+are good for you. So, should we talk about array maths and vectorization, [name]?
+
+160
+00:16:17,080 --> 00:16:28,680
+Yes, indeed. And first we can point out is that NumPy is fast as the backend of it is
+
+161
+00:16:28,680 --> 00:16:37,200
+done in C or in Fortran. That it has in common with other high level languages such as R
+
+162
+00:16:37,200 --> 00:16:49,660
+and MATLAB. So one important notion is that by default basic arithmetic such as plus minus
+
+163
+00:16:49,660 --> 00:16:57,740
+multiply and division is element by element. So this is something that we already saw this
+
+164
+00:16:57,740 --> 00:17:06,320
+when we calculated the square of a and assigned it to the variable b. So the default is that
+
+165
+00:17:06,320 --> 00:17:10,620
+it will perform the operation for each element in the array
+
+166
+00:17:10,620 --> 00:17:13,720
+and you don't need to explicitly write a loop.
+
+167
+00:17:16,520 --> 00:17:21,520
+And if you have run other languages such as MATLAB,
+
+168
+00:17:22,420 --> 00:17:26,400
+you might then notice that in MATLAB,
+
+169
+00:17:26,400 --> 00:17:29,840
+if you have the star for multiplication symbol,
+
+170
+00:17:29,840 --> 00:17:31,940
+that means matrix multiplication.
+
+171
+00:17:32,940 --> 00:17:34,680
+So this is then different in NumPy
+
+172
+00:17:34,680 --> 00:17:39,680
+because the star then means that you do it element-wise.
+
+173
+00:17:40,680 --> 00:17:44,400
+So NumPy, instead we are using the at symbol
+
+174
+00:17:44,400 --> 00:17:46,600
+to perform multiplication.
+
+175
+00:17:46,600 --> 00:17:48,680
+So perhaps we can have a look on some examples.
+
+176
+00:17:48,680 --> 00:17:52,560
+So if you create two arrays, A and B.
+
+177
+00:17:52,560 --> 00:17:56,220
+So the first array is a square matrix.
+
+178
+00:17:57,760 --> 00:17:58,800
+First row.
+
+179
+00:18:01,000 --> 00:18:02,800
+And then the second row.
+
+180
+00:18:04,680 --> 00:18:12,080
+and then I close the row and let's sure that it's like it should be okay then we
+
+181
+00:18:12,080 --> 00:18:22,800
+do or be five and six seven and eight
+
+182
+00:18:25,240 --> 00:18:33,080
+okay so now we can for example sum the two arrays just with a plus oh yes no
+
+183
+00:18:33,080 --> 00:18:42,440
+need to write any for loop a plus b and let's have a look at the output yes that
+
+184
+00:18:42,440 --> 00:18:47,980
+seems to be as intended yes so each element in the respective position has
+
+185
+00:18:47,980 --> 00:18:52,660
+been added to each other so is there some other way you can write this
+
+186
+00:18:52,660 --> 00:19:01,680
+instead of using the plus operator yeah there is this add function in practice
+
+187
+00:19:01,680 --> 00:19:08,080
+it's kind of the same but the advantage of having a function is that there will be more
+
+188
+00:19:08,080 --> 00:19:15,040
+parameters and more options but yes now we store it in the output D and we can have a
+
+189
+00:19:15,040 --> 00:19:20,240
+look at D and yes it's the same.
+
+190
+00:19:20,240 --> 00:19:28,160
+So how then if you want to perform the matrix multiplication of A and B?
+
+191
+00:19:28,160 --> 00:19:31,240
+So we said that it's this at,
+
+192
+00:19:31,240 --> 00:19:34,160
+or maybe I used the function notation,
+
+193
+00:19:34,160 --> 00:19:37,640
+at B dot dot, A and B.
+
+194
+00:19:37,640 --> 00:19:40,040
+And now it will store in E.
+
+195
+00:19:41,040 --> 00:19:43,480
+And it's been a few years,
+
+196
+00:19:43,480 --> 00:19:45,640
+I haven't done matrix multiplication,
+
+197
+00:19:45,640 --> 00:19:49,080
+but this looks like one, two, five and seven.
+
+198
+00:19:49,080 --> 00:19:52,920
+Yes, it is five plus 14, so 19.
+
+199
+00:19:52,920 --> 00:19:54,120
+Yeah, that's correct.
+
+200
+00:19:54,120 --> 00:20:02,240
+Good, so here you can see there's an exercise tool here, but we will, for now, we will move
+
+201
+00:20:02,240 --> 00:20:11,600
+on and look on indices and slicing. So this is core functionality when working with arrays.
+
+202
+00:20:11,600 --> 00:20:18,120
+So there are a few modalities how you can extract values. So you can extract single
+
+203
+00:20:18,120 --> 00:20:29,120
+elements that you then put in brackets. You can select rows or columns, or you could actually
+
+204
+00:20:29,120 --> 00:20:35,200
+take subvolumes of the array. So, for instance, if you have a two-dimensional array, you can
+
+205
+00:20:35,200 --> 00:20:43,480
+take out a rectangle that is within the full two-dimensional data range. So, I think we
+
+206
+00:20:43,480 --> 00:20:50,480
+can see how this goes in practice. So, I already started typing.
+
+207
+00:20:50,480 --> 00:20:51,480
+Yes, exactly.
+
+208
+00:20:51,480 --> 00:21:00,040
+I couldn't wait. So, with this np.arange. So, this will create an array with 16 elements.
+
+209
+00:21:00,040 --> 00:21:05,000
+And now we append the other function reshape. So, that instead of having, you know, kind
+
+210
+00:21:05,000 --> 00:21:12,000
+of a one dimensional 16 elements array, it will be a matrix. And so, and yes, it's a
+
+211
+00:21:12,000 --> 00:21:19,200
+times 4 matrix and now we can slice it we can take out whatever we need so the very first element
+
+212
+00:21:20,480 --> 00:21:29,120
+will be the first row because it works for wise which is also something that is a bit different
+
+213
+00:21:29,120 --> 00:21:34,800
+than matlab matlab prefers column wise so at least for me something that i had to remember
+
+214
+00:21:34,800 --> 00:21:43,840
+at the beginning but of course we can also get the first column yes and let's see if we get it
+
+215
+00:21:45,120 --> 00:21:46,720
+yes it's the first column
+
+216
+00:21:49,920 --> 00:21:57,200
+then there's another example here that we want to take kind of the middle two times two array
+
+217
+00:21:57,200 --> 00:22:05,960
+yeah so let me type it without errors from 1 to 3 in the rows and from 1 to 3
+
+218
+00:22:05,960 --> 00:22:13,040
+in the columns and then here how many element did we extract here so you had
+
+219
+00:22:13,040 --> 00:22:21,080
+the in this specified 1:3 and we see here that what we for the row and
+
+220
+00:22:21,080 --> 00:22:26,080
+And for the columns, we were picking out from index one,
+
+221
+00:22:26,400 --> 00:22:28,360
+but then up and until two.
+
+222
+00:22:29,760 --> 00:22:32,160
+So three is in the upper range,
+
+223
+00:22:32,160 --> 00:22:35,780
+but you don't include that in the selected elements.
+
+224
+00:22:35,780 --> 00:22:36,620
+Yeah.
+
+225
+00:22:38,400 --> 00:22:40,200
+Which again, I mentioned MATLAB again,
+
+226
+00:22:40,200 --> 00:22:42,560
+because there were many people
+
+227
+00:22:42,560 --> 00:22:44,160
+also in the registration asking.
+
+228
+00:22:44,160 --> 00:22:46,920
+So it's different, very different behavior than in MATLAB,
+
+229
+00:22:46,920 --> 00:22:50,160
+which instead it would have an indexes
+
+230
+00:22:50,160 --> 00:22:58,560
+would be 1, 2 and 3. All right, what else do we have here? We also have Boolean indexing.
+
+231
+00:23:01,120 --> 00:23:07,120
+So, what are these Boolean indexing? Let's see the first line and hopefully it will be clear.
+
+232
+00:23:07,680 --> 00:23:16,480
+So, now I'm basically saying a larger than 0 and a actually has one element that is 0.
+
+233
+00:23:16,480 --> 00:23:27,000
+Yeah, so then we can expect that this relation will come out as true, yes, for all of them
+
+234
+00:23:27,000 --> 00:23:31,860
+apart from the first one, the first element, yeah.
+
+235
+00:23:31,860 --> 00:23:40,440
+And now we can use this Boolean matrix as indexes, isn't it? So this is a good way
+
+236
+00:23:40,440 --> 00:23:50,440
+of filtering based on a value. So, a of idx, yeah, now it doesn't have the first element
+
+237
+00:23:50,440 --> 00:23:51,440
+anymore.
+
+238
+00:23:51,440 --> 00:23:54,200
+Ah, yeah, yeah, this is very, this is very neat, yeah.
+
+239
+00:23:54,200 --> 00:24:04,080
+So we basically filtered, maybe we could have, to make it clear, let's say a bigger than seven,
+
+240
+00:24:04,080 --> 00:24:13,080
+right and now let's see what is this filter and you see we only have those elements that
+
+241
+00:24:13,080 --> 00:24:22,040
+are bigger than seven so we are quite good with our timings is it now time for some more
+
+242
+00:24:22,040 --> 00:24:31,080
+exercises yes indeed so the idea is now if you scroll up so we will do exercise number
+
+243
+00:24:31,080 --> 00:24:45,240
+number 2 on matrix multiplication. And you will also do the exercise 3 which is on view
+
+244
+00:24:45,240 --> 00:24:58,940
+versus copy. And for this we intend to have 10 minutes exercises and then we will cover
+
+245
+00:24:58,940 --> 00:25:04,060
+the last sections of the lesson after this exercise.
+
+246
+00:25:04,060 --> 00:25:05,060
+Yeah.
+
+247
+00:25:05,060 --> 00:25:09,780
+Or should we give a bit more than 10 minutes if there's three exercises?
+
+248
+00:25:09,780 --> 00:25:13,460
+I think we can do it in 10 minutes.
+
+249
+00:25:13,460 --> 00:25:14,460
+Okay.
+
+250
+00:25:14,460 --> 00:25:15,460
+Yeah.
+
+251
+00:25:15,460 --> 00:25:16,460
+All right.
+
+252
+00:25:16,460 --> 00:25:23,260
+So we will be back at 52 past the hour.
+
+253
+00:25:23,260 --> 00:25:26,820
+Okay.
+
+254
+00:25:26,820 --> 00:25:31,780
+So good luck with the exercises and see you in 10 minutes.
+
+255
+00:25:31,780 --> 00:25:32,540
+Bye.
+
+256
+00:25:39,000 --> 00:25:47,980
+Hello, nice to see that you had time to try the exercises.
+
+257
+00:25:47,980 --> 00:25:52,540
+Something that was a bit puzzling, and I can totally understand if you come from other
+
+258
+00:25:52,540 --> 00:25:59,180
+programming languages like Matlab or R, is this view versus copy.
+
+259
+00:25:59,180 --> 00:26:04,620
+I will cover it a little bit later when I'll show you about other materials that we have
+
+260
+00:26:04,620 --> 00:26:11,540
+that we will not cover it today but in practice you can think it that B is like a pointer to
+
+261
+00:26:11,540 --> 00:26:19,700
+the memory allocated by A so hopefully I didn't use too much jargon in this maybe those familiar
+
+262
+00:26:19,700 --> 00:26:28,340
+with C and C++ they can understand what I mean but in it is actually useful to only
+
+263
+00:26:28,340 --> 00:26:31,420
+edit some elements of the same original array.
+
+264
+00:26:31,420 --> 00:26:33,700
+Instead, when you need the full copy,
+
+265
+00:26:33,700 --> 00:26:36,900
+there is actually a common call np.copy
+
+266
+00:26:36,900 --> 00:26:39,860
+that would basically clone the array A
+
+267
+00:26:39,860 --> 00:26:43,700
+into a new part of the memory to store a copy.
+
+268
+00:26:44,540 --> 00:26:47,740
+But yes, we have a few minutes to wrap up everything
+
+269
+00:26:47,740 --> 00:26:51,980
+and show you some future paths for you for self-learning.
+
+270
+00:26:53,660 --> 00:26:56,100
+Maybe something that is important to talk about NumPy
+
+271
+00:26:56,100 --> 00:26:58,580
+are the so-called universal functions.
+
+272
+00:26:58,580 --> 00:27:01,980
+Fancy names to basically saying that these are functions,
+
+273
+00:27:01,980 --> 00:27:05,660
+these are operations that can happen element-wise.
+
+274
+00:27:05,660 --> 00:27:09,300
+And we already tested them when we were doing A plus B,
+
+275
+00:27:09,300 --> 00:27:12,020
+you know, we didn't need to write a for loop
+
+276
+00:27:12,020 --> 00:27:15,620
+like we would have done with standard Python lists
+
+277
+00:27:15,620 --> 00:27:18,140
+because basically the function add
+
+278
+00:27:18,140 --> 00:27:19,820
+was one of these universal function
+
+279
+00:27:19,820 --> 00:27:22,820
+going through all the elements of the arrays.
+
+280
+00:27:22,820 --> 00:27:29,980
+Another very interesting thing that maybe if you're, you know, I sometimes never think
+
+281
+00:27:29,980 --> 00:27:36,420
+about this just because I'm a NumPy user without knowing, without really paying too much attention
+
+282
+00:27:36,420 --> 00:27:42,620
+what's going on under the hood, but we have something called like broadcasting which becomes
+
+283
+00:27:42,620 --> 00:27:47,140
+really practical when, for example, you need to sum things that are not exactly of the
+
+284
+00:27:47,140 --> 00:27:54,980
+same shape so it's not just a simple element wise but numpy is clever enough for example you see
+
+285
+00:27:54,980 --> 00:28:05,220
+in here that given the size of the array of b numpy understands that you want to kind of broadcast
+
+286
+00:28:05,220 --> 00:28:12,100
+it so that you want that each of the row of the vector of the array a of the matrix a actually
+
+287
+00:28:12,100 --> 00:28:14,340
+is summed with the matrix B.
+
+288
+00:28:16,020 --> 00:28:21,460
+This is something I would say that this is by no way obvious that you will have this behavior.
+
+289
+00:28:22,260 --> 00:28:27,300
+So before you feel confident in using it then I mean
+
+290
+00:28:29,380 --> 00:28:33,780
+be very careful and verify that you actually get the intended behavior.
+
+291
+00:28:35,460 --> 00:28:40,100
+Yeah this is maybe one good thing one positive thing about Jupyter notebooks is that
+
+292
+00:28:40,100 --> 00:28:44,380
+that you can actually you know when you are building your code when you are when you are
+
+293
+00:28:44,380 --> 00:28:50,180
+developing your method you can easily test that it's doing what you're expecting and
+
+294
+00:28:50,180 --> 00:28:57,640
+then maybe even write a test for what you are actually building.
+
+295
+00:28:57,640 --> 00:29:05,160
+So what else. Well we will leave exercise for you because our time is out for NumPy
+
+296
+00:29:05,160 --> 00:29:14,120
+today. In general, NumPy is under the hood on so many Python libraries, so that if your
+
+297
+00:29:14,120 --> 00:29:19,840
+needs are more into, you know, mathematics, signal processing, another thing, there are
+
+298
+00:29:19,840 --> 00:29:26,880
+lots of linear algebra functions already in NumPy, but another good library is SciPy,
+
+299
+00:29:26,880 --> 00:29:33,080
+which has all these type of functions for doing, you know, signal processing and other
+
+300
+00:29:33,080 --> 00:29:41,160
+more advanced numerical things in general for this last minutes that we have there's additional
+
+301
+00:29:41,160 --> 00:29:47,240
+exercises that if you have time of course and if you want to learn you could do them and if you
+
+302
+00:29:47,240 --> 00:29:52,760
+don't want to do them it's also interesting to just look at the solution and try to understand
+
+303
+00:29:52,760 --> 00:30:00,520
+what's going on and maybe get curious and try to run them try to run them yourself also last year
+
+304
+00:30:00,520 --> 00:30:06,360
+we cover this other lesson here that you see now where I'm here in the bottom and I click next
+
+305
+00:30:07,960 --> 00:30:13,320
+and so we have the recording from last year of this advanced NumPy for those who want to
+
+306
+00:30:13,320 --> 00:30:19,640
+understand for example like in this exercise 3 what is going on under the hood when we have a
+
+307
+00:30:19,640 --> 00:30:27,640
+view of the array A into something called B and actually here if you spend time going through this
+
+308
+00:30:27,640 --> 00:30:33,640
+lesson by yourself or watching the video from last year we are actually covering exactly this case of
+
+309
+00:30:33,640 --> 00:30:41,000
+the exercise 3 where let me find the picture yeah so you see that basically in the definition of
+
+310
+00:30:41,000 --> 00:30:48,600
+array A the memory a part of memory is allocated for A but in the moment where we take a view a
+
+311
+00:30:48,600 --> 00:30:56,040
+different view for another array B it was it's basically just a pointer to a subset of the
+
+312
+00:30:56,040 --> 00:31:04,200
+of the memory allocated by A. And this has the benefit then of being more efficient in two
+
+313
+00:31:04,200 --> 00:31:12,520
+regards so both that you're reusing actually memory so that's economic and also that you
+
+314
+00:31:12,520 --> 00:31:21,080
+don't need to in this case you don't need to make the copy. Yeah especially if you have a very big
+
+315
+00:31:21,080 --> 00:31:28,120
+matrix copy can be very very expensive even just the copy itself might take lots of seconds yeah
+
+316
+00:31:28,120 --> 00:31:36,120
+precisely so i think we cover everything and please keep on writing more questions or doubts
+
+317
+00:31:36,120 --> 00:31:44,200
+that you have in our share notes we could maybe start already the break right now and so we will
+
+318
+00:31:44,200 --> 00:31:51,720
+come back in about 10 minutes to continue with Bandas. So, thank you for listening.
+
+319
+00:31:51,720 --> 00:31:54,800
+Thank you, [name], for being here with me.
+
+320
+00:31:54,800 --> 00:31:56,800
+Yeah, thank you, [name].
+
+321
+00:31:56,800 --> 00:32:01,200
+And we will see you later. Bye.
+
+322
+00:32:01,200 --> 00:32:02,000
+Bye.
+
