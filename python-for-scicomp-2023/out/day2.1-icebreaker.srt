@@ -1,0 +1,380 @@
+1
+00:00:00,000 --> 00:00:00,520
+Hi.
+
+2
+00:00:00,520 --> 00:00:05,560
+So, welcome to day two.
+
+3
+00:00:05,560 --> 00:00:09,920
+We see the notes here, as usual.
+
+4
+00:00:09,920 --> 00:00:15,640
+So, should we talk a little bit about yesterday?
+
+5
+00:00:15,640 --> 00:00:26,360
+many people were here yesterday or not? How about we add a poll? I'm writing it now.
+
+6
+00:00:33,160 --> 00:00:43,400
+So yeah, you see right here. If you were here, then add an oh yes or on the no part or partly
+
+7
+00:00:43,400 --> 00:00:51,140
+and let's see. Are there any other cool questions we can ask for starting off?
+
+8
+00:00:51,140 --> 00:01:04,620
+Yes, today's topic is Matplotlib and mainly that's the big one and the data formats,
+
+9
+00:01:04,620 --> 00:01:29,380
+Good morning, are we already streaming?
+
+10
+00:01:29,380 --> 00:01:30,380
+Yes we are live.
+
+11
+00:01:30,380 --> 00:01:31,380
+Hello everyone.
+
+12
+00:01:31,380 --> 00:01:32,180
+Good morning, everybody.
+
+13
+00:01:37,620 --> 00:01:38,120
+Yes.
+
+14
+00:01:43,780 --> 00:01:44,280
+OK.
+
+15
+00:01:50,660 --> 00:01:55,940
+OK, so there I added a poll about how big of data use
+
+16
+00:01:55,940 --> 00:01:58,500
+was Python, which relates to several things today.
+
+17
+00:02:01,380 --> 00:02:06,780
+Yeah, so any other questions and follow-ups from yesterday?
+
+18
+00:02:06,780 --> 00:02:10,180
+Let's see.
+
+19
+00:02:10,180 --> 00:02:13,460
+Someone asked anything special to know from Tuesday.
+
+20
+00:02:13,460 --> 00:02:21,140
+So if you ask me, the Tuesday session was a pretty, like it really was covering basic
+
+21
+00:02:21,140 --> 00:02:22,840
+kind of things.
+
+22
+00:02:22,840 --> 00:02:28,740
+So the first lessons were about Jupiter and NumPy, which was sort of setting everyone
+
+23
+00:02:28,740 --> 00:02:31,140
+at the same starting level.
+
+24
+00:02:31,140 --> 00:02:42,920
+If they're new to you, it's worth reviewing them, but if you use them a little bit, it's
+
+25
+00:02:42,920 --> 00:02:44,440
+probably okay.
+
+26
+00:02:44,440 --> 00:02:50,040
+And also, it's okay—I mean, it's always worth learning more about numpy and pandas,
+
+27
+00:02:50,040 --> 00:02:56,880
+but you're probably okay for the rest of the lesson.
+
+28
+00:02:56,880 --> 00:03:04,360
+The last lesson from yesterday was pandas, and we continue with pandas in a few minutes
+
+29
+00:03:04,360 --> 00:03:06,520
+now.
+
+30
+00:03:06,520 --> 00:03:18,640
+So for that, we really had this high-level overview, because we had to talk both quickly
+
+31
+00:03:18,640 --> 00:03:28,360
+and also rather it was a bad combination of speaking quickly
+
+32
+00:03:28,360 --> 00:03:32,360
+and giving a high and low level overview at the same time.
+
+33
+00:03:32,360 --> 00:03:37,440
+But that's because there is so much to talk about there.
+
+34
+00:03:37,440 --> 00:03:41,720
+So all we hope to give was a starting point
+
+35
+00:03:41,720 --> 00:03:45,280
+and then motivating you to read more yourself.
+
+36
+00:03:45,280 --> 00:03:48,280
+And if Pandas seems like the kind of thing you need,
+
+37
+00:03:48,280 --> 00:03:56,640
+I'd really recommend reading these tutorials, like 10 minutes to pandas and so on.
+
+38
+00:03:56,640 --> 00:04:02,880
+So today we'll basically start from scratch and do something else, so it's not that necessary
+
+39
+00:04:02,880 --> 00:04:08,000
+to look through yesterday if you want to see today's thing, because it is the first thing,
+
+40
+00:04:08,000 --> 00:04:10,900
+so you have four minutes.
+
+41
+00:04:10,900 --> 00:04:15,760
+It's fine.
+
+42
+00:04:15,760 --> 00:04:20,440
+Did anyone notice the videos are published?
+
+43
+00:04:20,440 --> 00:04:25,120
+So I've slightly refined the video making system.
+
+44
+00:04:25,120 --> 00:04:33,040
+So it's a little bit quicker for us now, which is good.
+
+45
+00:04:33,040 --> 00:04:35,020
+There's a good question here.
+
+46
+00:04:35,020 --> 00:04:42,380
+In part of the course, so this is on the course page or the lesson page, Python is strongly
+
+47
+00:04:42,380 --> 00:04:44,220
+and dynamically typed.
+
+48
+00:04:44,220 --> 00:04:48,940
+means roughly it's not possible to circumvent the type system. Is there any language that
+
+49
+00:04:48,940 --> 00:04:53,180
+behaves the opposite? Does anyone have any answers to that?
+
+50
+00:04:56,700 --> 00:04:57,340
+Well, there's
+
+51
+00:05:00,460 --> 00:05:04,460
+there's plenty of ways of circumventing the type system in C and C++
+
+52
+00:05:04,460 --> 00:05:08,700
+because they're so low level. So I guess they are not as strongly typed.
+
+53
+00:05:08,700 --> 00:05:18,420
+Yeah, so that means, like, reinterpret the memory as a different kind of pointer or something
+
+54
+00:05:18,420 --> 00:05:19,420
+like that.
+
+55
+00:05:19,420 --> 00:05:20,420
+Basically, yes.
+
+56
+00:05:20,420 --> 00:05:21,420
+Okay.
+
+57
+00:05:21,420 --> 00:05:28,420
+I'm casting to a different subclass of a class.
+
+58
+00:05:28,420 --> 00:05:30,420
+Okay, okay.
+
+59
+00:05:30,420 --> 00:05:31,420
+Yeah.
+
+60
+00:05:31,420 --> 00:05:32,420
+Yeah.
+
+61
+00:05:32,420 --> 00:05:44,300
+Really, I don't think there's anything that's weakly and statically typed, because that,
+
+62
+00:05:44,300 --> 00:05:45,300
+I don't know.
+
+63
+00:05:45,300 --> 00:05:48,580
+I mean, that never makes sense.
+
+64
+00:05:48,580 --> 00:05:54,260
+But there are weakly typed languages where there just are no types, like JavaScript is
+
+65
+00:05:54,260 --> 00:05:56,380
+rather weakly typed.
+
+66
+00:05:56,380 --> 00:06:03,580
+And then there are statically tied, where you have to declare all the types, like C
+
+67
+00:06:03,580 --> 00:06:04,580
+and C++.
+
+68
+00:06:04,580 --> 00:06:05,580
+Yeah.
+
+69
+00:06:05,580 --> 00:06:16,420
+Yeah, that's the kind of thing that I haven't really gone that much into the theory of different
+
+70
+00:06:16,420 --> 00:06:22,020
+types of programming paradigms and so on.
+
+71
+00:06:22,020 --> 00:06:28,780
+Anyway, any other questions we should discuss?
+
+72
+00:06:33,900 --> 00:06:35,900
+No comments from the audience.
+
+73
+00:06:45,180 --> 00:06:46,820
+Yeah, I don't see anything.
+
+74
+00:06:46,820 --> 00:06:48,140
+It's also one minute, too.
+
+75
+00:06:52,020 --> 00:06:57,340
+How's our volume level doing?
+
+76
+00:06:57,340 --> 00:06:59,700
+Should we do our standard test?
+
+77
+00:06:59,700 --> 00:07:07,180
+So one, one, two, two, three, three.
+
+78
+00:07:07,180 --> 00:07:08,900
+Okay.
+
+79
+00:07:08,900 --> 00:07:11,900
+What do you think?
+
+80
+00:07:11,900 --> 00:07:18,300
+If there's no comments on audio, I guess.
+
+81
+00:07:18,300 --> 00:07:19,300
+Okay.
+
+82
+00:07:19,300 --> 00:07:20,260
+Audio levels are good.
+
+83
+00:07:23,340 --> 00:07:27,500
+So yeah, so the big picture of today,
+
+84
+00:07:27,500 --> 00:07:31,500
+first we start with a little bit more of Pandas.
+
+85
+00:07:31,500 --> 00:07:34,980
+So we'll show about time series stuff
+
+86
+00:07:34,980 --> 00:07:39,140
+and an overview of something from last time.
+
+87
+00:07:39,140 --> 00:07:43,300
+And then we have a big, long lesson
+
+88
+00:07:43,300 --> 00:07:48,300
+on matplotlib, which is the core plotting library.
+
+89
+00:07:48,300 --> 00:07:54,860
+And that's sort of the basis of all the other plotting stuff.
+
+90
+00:07:54,860 --> 00:08:00,380
+And then there is a quick summary of data formats,
+
+91
+00:08:00,380 --> 00:08:04,020
+and then a slightly longer description of productivity
+
+92
+00:08:04,020 --> 00:08:11,580
+tools for Python, things like linters and stuff like that.
+
+93
+00:08:11,580 --> 00:08:13,380
+OK, but with that being said, let's start.
+
+94
+00:08:13,380 --> 00:08:15,980
+So I will switch to [name]'s screen.
+
+95
+00:08:18,300 --> 00:08:23,000
+Where's all my pointers. So, there we go. Okay. So, we are continuing with pandas. So,
+
