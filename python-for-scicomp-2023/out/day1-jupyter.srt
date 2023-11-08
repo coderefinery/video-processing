@@ -1,0 +1,840 @@
+1
+00:00:00,000 --> 00:00:04,940
+So, so the first lesson is Jupyter.
+
+2
+00:00:04,940 --> 00:00:11,100
+And I guess one main reason, one big reason to talk about Jupyter is that we will use
+
+3
+00:00:11,100 --> 00:00:12,100
+it a lot.
+
+4
+00:00:12,100 --> 00:00:17,660
+It's a convenient way of teaching and showing things.
+
+5
+00:00:17,660 --> 00:00:25,020
+[name], do you want to say anything about why Jupyter is good to learn before we start?
+
+6
+00:00:25,020 --> 00:00:30,940
+I think it's great at the very beginning when you are starting to write your Python
+
+7
+00:00:30,940 --> 00:00:31,940
+scripts.
+
+8
+00:00:31,940 --> 00:00:37,860
+It's easier to, it's more readable.
+
+9
+00:00:37,860 --> 00:00:43,900
+I find it easier to debug as well, but I would say, I mean, if you're used to IPython or
+
+10
+00:00:43,900 --> 00:00:47,140
+just running it from the command line, that is great as well.
+
+11
+00:00:47,140 --> 00:00:50,180
+So it's really a matter of preference.
+
+12
+00:00:50,180 --> 00:00:54,500
+If you are used to Python and you have a favorite way of using it, then just go ahead and use
+
+13
+00:00:54,500 --> 00:00:58,380
+that instead.
+
+14
+00:00:58,380 --> 00:01:00,700
+So getting started with Jupyter.
+
+15
+00:01:00,700 --> 00:01:03,100
+So let's just show one way of opening it.
+
+16
+00:01:03,100 --> 00:01:07,260
+is how I will use it.
+
+17
+00:01:07,500 --> 00:01:13,420
+And just to note, so in the installation
+
+18
+00:01:13,420 --> 00:01:16,220
+instructions that you hopefully did take a look at
+
+19
+00:01:16,220 --> 00:01:19,500
+before the course, if you didn't just ask questions, but
+
+20
+00:01:19,500 --> 00:01:24,380
+if you did, there is also instructions for how to open Jupyter for
+
+21
+00:01:24,380 --> 00:01:28,700
+whatever method of installing it you chose.
+
+22
+00:01:28,700 --> 00:01:31,660
+So, I will activate a conda environment in my terminal.
+
+23
+00:01:36,220 --> 00:01:40,780
+And while [name] is doing this, I will mention that you can also open it from the Anaconda
+
+24
+00:01:40,780 --> 00:01:48,300
+navigator. So, if you prefer that, that's perfectly okay. And if you're using Anaconda
+
+25
+00:01:48,300 --> 00:01:53,260
+and did not create a special environment, then you don't need to activate anything. You just run
+
+26
+00:01:53,260 --> 00:01:59,300
+on this command, jupyter lab.
+
+27
+00:01:59,300 --> 00:02:05,980
+And this opens a new browser window or a new tab in the browser.
+
+28
+00:02:05,980 --> 00:02:08,460
+And there's a lot of stuff here.
+
+29
+00:02:08,460 --> 00:02:14,300
+That's probably not the most useful information at this point.
+
+30
+00:02:14,300 --> 00:02:18,420
+So oh, I'm running it in my main folder.
+
+31
+00:02:18,420 --> 00:02:22,500
+Is there a way of easily going to another folder here, or should I just restart?
+
+32
+00:02:22,500 --> 00:02:26,980
+Maybe I'll just go to Python for SciComp.
+
+33
+00:02:26,980 --> 00:02:30,300
+Okay, that works.
+
+34
+00:02:30,300 --> 00:02:34,740
+Also, there is a file browser here.
+
+35
+00:02:34,740 --> 00:02:40,820
+You can clearly go to into folders, I will use it to delete my previous version of this
+
+36
+00:02:40,820 --> 00:02:41,820
+session.
+
+37
+00:02:41,820 --> 00:02:47,700
+Okay, so now I have no files in the folder.
+
+38
+00:02:47,700 --> 00:02:54,340
+And if you have nothing open, it will automatically open this launcher, which will show you what
+
+39
+00:02:54,340 --> 00:03:00,820
+kinds of programming languages you can use in Jupyter, basically.
+
+40
+00:03:00,820 --> 00:03:04,500
+So this is a Python 3 kernel, and it's the only one I have.
+
+41
+00:03:04,500 --> 00:03:07,820
+So I can open a Python 3 notebook here.
+
+42
+00:03:07,820 --> 00:03:13,620
+If you don't see this, you can open this view by pressing this plus button here.
+
+43
+00:03:13,620 --> 00:03:22,140
+Okay. So, I will open a new one and immediately I will rename it. So, right-clicking here
+
+44
+00:03:22,140 --> 00:03:25,260
+and rename. I will call it demo.
+
+45
+00:03:25,260 --> 00:03:31,500
+Yeah. That's always a good practice. Although I have a lot of untitled documents as well.
+
+46
+00:03:31,500 --> 00:03:38,100
+Yeah. So, it will automatically – oh, it's showing like it didn't save it. Okay. Well,
+
+47
+00:03:38,100 --> 00:03:43,420
+I mean that blue dot – that dot in my mind means it didn't save it, but maybe it's because
+
+48
+00:03:43,420 --> 00:03:53,660
+it's empty. Okay so we have this notebook and what we can do here we can write Python code and run it
+
+49
+00:03:53,660 --> 00:04:01,980
+and it will show the output immediately or we can use markdown to write a narrative so you can
+
+50
+00:04:02,780 --> 00:04:09,020
+essentially you can make this a document where you write some description and then you write the code
+
+51
+00:04:09,020 --> 00:04:14,220
+code, and then you write some more description and then some more code and so on.
+
+52
+00:04:14,220 --> 00:04:19,420
+So that makes it nicer for sharing your code or sharing your workflow with other people.
+
+53
+00:04:19,420 --> 00:04:26,540
+They can immediately see what you've done and see the code actually in the document.
+
+54
+00:04:26,540 --> 00:04:29,100
+So it says code here.
+
+55
+00:04:29,100 --> 00:04:33,140
+It refers to this one, well, they could have multiple cells here.
+
+56
+00:04:33,140 --> 00:04:36,640
+It's a plus button, so now you have multiple cells.
+
+57
+00:04:36,640 --> 00:04:41,360
+So this code refers to this particular cell that I have selected.
+
+58
+00:04:41,360 --> 00:04:44,240
+I will change it into Markdown.
+
+59
+00:04:44,240 --> 00:04:50,680
+Markdown is the language that we use in the collaborative document, in the notes.
+
+60
+00:04:50,680 --> 00:04:54,880
+So it should look relatively straightforward.
+
+61
+00:04:54,880 --> 00:04:57,400
+If it doesn't, that's fine.
+
+62
+00:04:57,400 --> 00:05:04,320
+The point is not to learn Markdown, but you can do formatting in addition to text with
+
+63
+00:05:04,320 --> 00:05:05,320
+Markdown.
+
+64
+00:05:05,320 --> 00:05:14,280
+this one hash means title this is like the biggest title available so this is a title
+
+65
+00:05:15,400 --> 00:05:21,400
+and make sure that it's the same markdown that we are using for the notes document yeah and you
+
+66
+00:05:21,400 --> 00:05:27,720
+don't have to be great at it to to use it i mean i think you can just learn a few syntaxes and
+
+67
+00:05:27,720 --> 00:05:33,720
+that's okay so this is some text i'll just write that and maybe i'll do like we do the questions
+
+68
+00:05:33,720 --> 00:05:36,920
+so a bullet point.
+
+69
+00:05:40,840 --> 00:05:44,840
+So it actually does some, just like the notes, it does some
+
+70
+00:05:44,840 --> 00:05:48,680
+syntax highlighting here so that you see there's a title and the bullets
+
+71
+00:05:48,680 --> 00:05:52,120
+they're different. But now if I press play here it will
+
+72
+00:05:52,120 --> 00:05:55,000
+actually run this markdown code which means
+
+73
+00:05:55,000 --> 00:06:00,600
+generate a formatted text area here.
+
+74
+00:06:00,600 --> 00:06:06,600
+Okay, now I can also do Python code. So this is just markdown, code, or raw text. Code in this
+
+75
+00:06:06,600 --> 00:06:11,720
+case means Python code because this was a Python notebook. So let's just do a simple one, one plus
+
+76
+00:06:11,720 --> 00:06:17,560
+one. Run that. And if you install a different kernel, let's say you work with Julia instead,
+
+77
+00:06:18,280 --> 00:06:26,760
+then the kernel is going to interpret what they said that you are marking as code will
+
+78
+00:06:26,760 --> 00:06:34,680
+be interpreted by the kernel that you have chosen. Yeah, actually I will steal this
+
+79
+00:06:35,560 --> 00:06:44,680
+notes from here for a while. Okay, so what else should we try? So just a quick intro to Python,
+
+80
+00:06:44,680 --> 00:06:53,480
+I suppose. So we can do a for loop and if we do for loop for starting from the value of i
+
+81
+00:06:53,480 --> 00:06:59,720
+starts from 0 and goes up to 2, we use the range function and actually write the number 3. So it's
+
+82
+00:06:59,720 --> 00:07:07,720
+0, 1, 2. That's three different numbers. So that's kind of the logic. And let's just print
+
+83
+00:07:09,000 --> 00:07:15,320
+the number and run this cell. So I should print the numbers 0, 1, and 2.
+
+84
+00:07:15,320 --> 00:07:26,080
+Or you can do sum of range from 0 to 5.
+
+85
+00:07:26,080 --> 00:07:31,960
+So now I'm not using print, but it will still print the last thing that happens, the output
+
+86
+00:07:31,960 --> 00:07:33,440
+of the last line.
+
+87
+00:07:33,440 --> 00:07:38,160
+So just like here in 1 plus 1 it printed 2, it prints 10 here.
+
+88
+00:07:38,160 --> 00:07:44,720
+Okay, so this is essentially most of Jupyter.
+
+89
+00:07:44,720 --> 00:07:49,360
+Let's quickly also show a magic function.
+
+90
+00:07:49,360 --> 00:07:55,240
+So there are a few commands that don't exist in Python, but are very useful in Jupyter.
+
+91
+00:07:55,240 --> 00:07:58,120
+And they start with a percentage.
+
+92
+00:07:58,120 --> 00:08:02,000
+So we can print the directory we are at.
+
+93
+00:08:02,000 --> 00:08:04,120
+So this stands for print working directory.
+
+94
+00:08:04,120 --> 00:08:13,960
+And if you use a Unix terminal in Linux or in Mac OS, this will be a familiar command.
+
+95
+00:08:13,960 --> 00:08:17,880
+So this is where we are right now in my file system.
+
+96
+00:08:17,880 --> 00:08:19,880
+But not all Unix commands exist here.
+
+97
+00:08:19,880 --> 00:08:26,440
+So there's another command called bash, which will run.
+
+98
+00:08:26,440 --> 00:08:29,440
+So bash is essentially a terminal.
+
+99
+00:08:29,440 --> 00:08:31,960
+So you can run any terminal command here
+
+100
+00:08:31,960 --> 00:08:34,160
+to host name, for example.
+
+101
+00:08:34,160 --> 00:08:36,040
+So this will print the name of my computer,
+
+102
+00:08:36,040 --> 00:08:40,120
+which is some string of numbers and characters.
+
+103
+00:08:40,120 --> 00:08:44,600
+But I guess the thing I want to demonstrate
+
+104
+00:08:44,600 --> 00:08:48,760
+is that even though this doesn't exist as a magic command,
+
+105
+00:08:48,760 --> 00:08:50,740
+so this is what an error looks like,
+
+106
+00:08:50,740 --> 00:08:55,740
+it does exist inside this bash command.
+
+107
+00:08:58,620 --> 00:09:02,440
+Also, everything now in this cell is this magic command
+
+108
+00:09:02,440 --> 00:09:06,280
+because it starts with two percentage signs.
+
+109
+00:09:07,140 --> 00:09:10,060
+So that changes how the cell works in general.
+
+110
+00:09:10,120 --> 00:09:19,960
+Yeah, exactly. So for one line, it's one percentage for the whole cell, you should use two percentages
+
+111
+00:09:19,960 --> 00:09:25,320
+followed by the magic. And maybe I could add that, I mean, using this magic commands is
+
+112
+00:09:25,320 --> 00:09:33,240
+a great way of integrating Bash and running other programs that you have compiled within
+
+113
+00:09:33,240 --> 00:09:38,800
+your Jupyter notebook. So you could integrate, for example, R or C or Fortran and run it
+
+114
+00:09:38,800 --> 00:09:44,960
+from the cell. But you just need to make sure that you do have the correct environment when
+
+115
+00:09:44,960 --> 00:09:54,160
+you're trying to do that. But yeah. One command which I think is very nice as well is the ls
+
+116
+00:09:54,160 --> 00:10:00,560
+magic one. If you could show it. And that will print all the magic commands that are available.
+
+117
+00:10:00,560 --> 00:10:02,880
+Oh, is it just one word?
+
+118
+00:10:02,880 --> 00:10:08,080
+ls magic one word. It's always one word for the command. And then you may have options
+
+119
+00:10:08,080 --> 00:10:15,680
+following. And then if you, yes, expand, then you can see everything that is available as
+
+120
+00:10:15,680 --> 00:10:23,040
+line magic or cell magic. I think that line magic is with one percentage sign and cell magic is for
+
+121
+00:10:23,040 --> 00:10:30,320
+two. Exactly. Yeah. And this may not be so instructive, but you could use, for example,
+
+122
+00:10:30,320 --> 00:10:39,280
+magic or quick breath one word to know more about them or you can just Google for them
+
+123
+00:10:39,280 --> 00:10:48,240
+or check in there. Yes, exactly. In the documentation. So that's that's okay. It's like find it quite
+
+124
+00:10:48,240 --> 00:10:59,880
+but very long cheat sheet. But was there a magic command called pip? Let's see. So I
+
+125
+00:10:59,880 --> 00:11:05,280
+I mean, sometimes it is very useful to be able to also install packages from, so yeah,
+
+126
+00:11:05,280 --> 00:11:06,280
+there is.
+
+127
+00:11:06,280 --> 00:11:07,280
+There is.
+
+128
+00:11:07,280 --> 00:11:13,320
+And there is Conda as well, as a magical.
+
+129
+00:11:13,320 --> 00:11:15,640
+Okay.
+
+130
+00:11:15,640 --> 00:11:23,000
+Should we demonstrate the sort of the biggest problem that people were running to or should
+
+131
+00:11:23,000 --> 00:11:26,040
+we just go to the exercises first?
+
+132
+00:11:26,040 --> 00:11:27,040
+We have one minute.
+
+133
+00:11:27,040 --> 00:11:28,040
+Okay.
+
+134
+00:11:28,040 --> 00:11:34,920
+Okay, well, let's just show one thing that might, this is something you might run into that might
+
+135
+00:11:34,920 --> 00:11:41,960
+be a problem. So we have here, we have run a for loop that sets a value for the variable i.
+
+136
+00:11:42,840 --> 00:11:50,600
+So here I can run an i equals 2. Okay, what if I add a cell here
+
+137
+00:11:50,600 --> 00:11:58,420
+here and run this. What do you think should happen? What do you think will happen? Well,
+
+138
+00:11:58,420 --> 00:12:05,300
+the way Jupyter works is that it just runs the cells in the order that you run them in.
+
+139
+00:12:05,300 --> 00:12:11,980
+It doesn't care about what order they're written in. So this will still be equal to 2, this
+
+140
+00:12:11,980 --> 00:12:19,220
+i here. What did I do? Okay. So that might be a problem if somebody else now gets your
+
+141
+00:12:19,220 --> 00:12:25,540
+notebook. If you take your notebook and send it to someone else and they try to run it so
+
+142
+00:12:25,540 --> 00:12:31,700
+there is this very convenient button here that will run all the restart the kernel just forget
+
+143
+00:12:31,700 --> 00:12:38,100
+everything and run all the cells from the beginning. So this is basically what will
+
+144
+00:12:38,100 --> 00:12:42,260
+happen when you give your notebook to someone else. They will run it every cell from the beginning.
+
+145
+00:12:42,260 --> 00:12:51,060
+So, now it ran this cell correctly, but this cell I doesn't mean anything, so it just failed
+
+146
+00:12:51,060 --> 00:12:53,420
+and gave an error.
+
+147
+00:12:53,420 --> 00:12:54,420
+It's a very useful error.
+
+148
+00:12:54,420 --> 00:12:58,860
+Name i is not defined, so you know what's happening.
+
+149
+00:12:58,860 --> 00:13:03,460
+So I will just delete this cell, because this is a problem.
+
+150
+00:13:03,460 --> 00:13:06,580
+It shouldn't be there, it should be here.
+
+151
+00:13:06,580 --> 00:13:07,580
+And let's try again.
+
+152
+00:13:07,580 --> 00:13:12,140
+So it's always useful to do this restart kernel
+
+153
+00:13:12,140 --> 00:13:16,060
+and rerun all the cells in order before sending your notebook
+
+154
+00:13:16,060 --> 00:13:18,100
+to anyone.
+
+155
+00:13:18,100 --> 00:13:20,500
+Oh, host name not found.
+
+156
+00:13:20,500 --> 00:13:21,340
+That's interesting.
+
+157
+00:13:21,340 --> 00:13:22,860
+OK, right, because that was it.
+
+158
+00:13:22,860 --> 00:13:25,300
+Actually, I was showing you that it doesn't exist.
+
+159
+00:13:25,300 --> 00:13:29,300
+OK, let's remove that error as well.
+
+160
+00:13:29,300 --> 00:13:31,580
+OK, now everything worked.
+
+161
+00:13:31,580 --> 00:13:34,380
+All the cells worked correctly.
+
+162
+00:13:34,380 --> 00:13:37,180
+OK, so I guess we'll go to the exercises
+
+163
+00:13:37,180 --> 00:13:49,980
+then. So let's do exercise one is almost at the top. So starting
+
+164
+00:13:49,980 --> 00:13:57,940
+and exploring Jupyter. And if you are new to Jupyter, it's
+
+165
+00:13:58,500 --> 00:14:03,260
+very much enough to just do that. There are some I mean,
+
+166
+00:14:03,260 --> 00:14:06,620
+it's good if you get to this first one, which is run some
+
+167
+00:14:06,620 --> 00:14:15,820
+code in Jupyter. The rest are some a bit more slightly more complicated exercises and if you
+
+168
+00:14:15,820 --> 00:14:19,500
+get all the way to the end, I mean I don't really expect you to get all the way to the end
+
+169
+00:14:19,500 --> 00:14:28,300
+necessarily, if you do then go on to exercise three. It's an optional discussion exercise so
+
+170
+00:14:28,300 --> 00:14:34,540
+you can write things into the notes or you can discuss with people close to you if they are also
+
+171
+00:14:34,540 --> 00:14:46,940
+done with all the exercises. So we'll give you 15 minutes and then we'll do a quick wrap-up. So go ahead.
+
+172
+00:14:51,980 --> 00:14:56,140
+Should we write some information in the notes about the exercise time?
+
+173
+00:14:56,140 --> 00:14:57,100
+Yes, I just...
+
+174
+00:14:58,000 --> 00:15:08,100
+Okay, welcome back. I hope you had a good time with the exercises and got Jupyter running.
+
+175
+00:15:08,100 --> 00:15:17,620
+So we had a couple of questions and I think the biggest issue is that bash indeed doesn't
+
+176
+00:15:17,620 --> 00:15:26,900
+work on Windows. It's an operating system specific thing. So there is a magic command,
+
+177
+00:15:26,900 --> 00:15:32,580
+how was the percentage sign there called CMD that should work on Windows
+
+178
+00:15:34,020 --> 00:15:39,780
+so you can use that one instead it will not work on my system so
+
+179
+00:15:41,300 --> 00:15:49,540
+you can try running it but yeah it does not exist. Yeah but sorry yes we missed that so
+
+180
+00:15:49,540 --> 00:15:59,060
+but bash equivalent in windows should be cmd so whatever we tried in the bash magic
+
+181
+00:16:00,340 --> 00:16:03,060
+in the bash cell then you could try that with cmd
+
+182
+00:16:05,300 --> 00:16:11,140
+okay so that's everything about jupyter for now we will be using it for the
+
+183
+00:16:11,700 --> 00:16:14,180
+a lot of the course so you will get used to it
+
+184
+00:16:14,180 --> 00:16:28,180
+it. Is there any other notable questions to bring up? There's a lot of questions and a
+
+185
+00:16:28,180 --> 00:16:38,660
+lot of answers which is great. Yes I think most of them are answered so maybe we can
+
+186
+00:16:38,660 --> 00:16:44,420
+just wrap up with when to use Jupyter and when is it not so great.
+
+187
+00:16:46,980 --> 00:16:49,060
+Yeah, so do you use Jupyter a lot?
+
+188
+00:16:50,420 --> 00:16:55,780
+It's actually mostly for teaching and for visualizing plots.
+
+189
+00:16:56,900 --> 00:17:03,300
+Yeah, it's really useful for visualizing because you can, it can display the plots or any images
+
+190
+00:17:03,300 --> 00:17:11,620
+inside the notebook. So, it's kind of inlining it. So, that's useful. It's good for quickly
+
+191
+00:17:11,620 --> 00:17:17,460
+changing a single cell. You don't have to rerun the whole thing. So, if you have a really – if
+
+192
+00:17:17,460 --> 00:17:24,500
+you have a processor that takes a few minutes to run and you want to work on the very last
+
+193
+00:17:24,500 --> 00:17:29,780
+10 seconds of it, you may not want to run the whole thing every time you're testing it. So,
+
+194
+00:17:29,780 --> 00:17:35,060
+just run the last couple of cells. And why should you not use Jupyter?
+
+195
+00:17:38,340 --> 00:17:43,140
+There's a few actually, a few good reasons to not use Jupyter as well.
+
+196
+00:17:45,460 --> 00:17:50,500
+I think the main most important one is the top most one here, so they don't promote modularity.
+
+197
+00:17:51,060 --> 00:17:57,300
+So yeah, writing functions in Jupyter notebooks or moving things into
+
+198
+00:17:57,300 --> 00:18:05,860
+to importable files is, I mean, it doesn't happen automatically. It's something you need
+
+199
+00:18:05,860 --> 00:18:11,540
+to think about when you're writing the notebooks.
+
+200
+00:18:11,540 --> 00:18:22,260
+Yes. And one thing I would mention here, it's also written in the material is that the nbdime
+
+201
+00:18:22,260 --> 00:18:28,980
+extension. That's really great if you are versioning and controlling your notebooks
+
+202
+00:18:28,980 --> 00:18:36,580
+and you should do that. So that will allow you to see differences between different notebooks,
+
+203
+00:18:36,580 --> 00:18:45,660
+which is not straightforward. Or rather, version controls the tool.
+
+204
+00:18:46,460 --> 00:18:52,780
+Okay and yeah there's some other things written down here but so you can read on your own time.
+
+205
+00:18:53,420 --> 00:19:02,380
+Now it's time for a break so do take a break you can come back to the exercises or any part of this
+
+206
+00:19:03,980 --> 00:19:11,580
+later but it is it's actually very useful for or very important for learning that you also
+
+207
+00:19:11,580 --> 00:19:22,780
+take breaks if you were really working on this one then take some time off to take your hands
+
+208
+00:19:22,780 --> 00:19:28,620
+off your keyboard and walk around and then come back. So we'll take nine minutes and then we'll
+
+209
+00:19:28,620 --> 00:19:38,300
+come back at the short. Let's come back two minutes past. And we'll continue with NumPy.
+
+210
+00:19:41,580 --> 00:19:45,560
+Alright, so see you after the break. Bye
+
