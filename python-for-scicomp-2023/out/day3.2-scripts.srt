@@ -1,0 +1,1632 @@
+1
+00:00:00,000 --> 00:00:01,040
+In general. Okay, so what's our first lesson of today?
+
+2
+00:00:01,040 --> 00:00:06,520
+The first lesson of today will be scripts, so going from the
+
+3
+00:00:06,520 --> 00:00:14,640
+Jupyter Notebooks more into a command line area, and kind of
+
+4
+00:00:14,640 --> 00:00:20,120
+the very, very first step to make code really reusable without
+
+5
+00:00:20,120 --> 00:00:21,720
+modifying the code itself.
+
+6
+00:00:21,720 --> 00:00:26,360
+And that's related to this first icebreaker or second icebreaker
+
+7
+00:00:26,360 --> 00:00:27,000
+question here.
+
+8
+00:00:27,000 --> 00:00:30,200
+How do you run the same thing over and over, but with slightly
+
+9
+00:00:30,200 --> 00:00:33,400
+different parameters, like the same code with different data.
+
+10
+00:00:36,000 --> 00:00:40,440
+So should I share my screen and we
+
+11
+00:00:40,440 --> 00:00:42,040
+can get straight to the lesson?
+
+12
+00:00:42,040 --> 00:00:42,760
+Yep.
+
+13
+00:00:42,760 --> 00:00:44,560
+Sounds like a plan.
+
+14
+00:00:44,560 --> 00:00:49,280
+I will push a button here.
+
+15
+00:00:49,280 --> 00:00:52,800
+And it transfers.
+
+16
+00:00:52,800 --> 00:00:56,080
+I adjust that.
+
+17
+00:00:56,080 --> 00:00:59,680
+OK, so as a reminder for the schedule
+
+18
+00:00:59,680 --> 00:01:05,200
+Coming to scripts here, I open this.
+
+19
+00:01:05,200 --> 00:01:07,200
+So what does the word script even mean?
+
+20
+00:01:10,040 --> 00:01:16,120
+To me, script means a kind of self-contained, very small
+
+21
+00:01:16,120 --> 00:01:21,360
+program that doesn't have a lot of interactions yet,
+
+22
+00:01:21,360 --> 00:01:25,000
+but that's just some very small thing.
+
+23
+00:01:25,000 --> 00:01:28,240
+It can call additional libraries, but in itself,
+
+24
+00:01:28,240 --> 00:01:34,800
+it doesn't provide a lot of code.
+
+25
+00:01:34,800 --> 00:01:39,320
+That's what I think of when I'm talking about a script.
+
+26
+00:01:39,320 --> 00:01:41,840
+When it gets more complex, I would rather
+
+27
+00:01:41,840 --> 00:01:42,680
+talk about a program.
+
+28
+00:01:45,840 --> 00:01:50,040
+So is this lesson really about scripts or programs or?
+
+29
+00:01:53,720 --> 00:01:55,040
+I think both.
+
+30
+00:01:55,040 --> 00:01:56,280
+Yeah.
+
+31
+00:01:56,280 --> 00:01:58,920
+I guess how it's about the transition
+
+32
+00:01:58,920 --> 00:02:06,360
+from different systems of using code.
+
+33
+00:02:06,360 --> 00:02:07,840
+Yes.
+
+34
+00:02:07,840 --> 00:02:08,720
+And exactly.
+
+35
+00:02:08,720 --> 00:02:12,200
+So the point is, this lesson, so far we've
+
+36
+00:02:12,200 --> 00:02:13,880
+been showing things in Jupyter.
+
+37
+00:02:13,880 --> 00:02:16,080
+So basically, you can click and run things
+
+38
+00:02:16,080 --> 00:02:18,040
+in whatever order you want.
+
+39
+00:02:18,040 --> 00:02:20,440
+So now that we have scripts here,
+
+40
+00:02:20,440 --> 00:02:27,400
+we'll be able to plug our code into other things
+
+41
+00:02:27,400 --> 00:02:28,280
+a little bit better.
+
+42
+00:02:31,160 --> 00:02:38,560
+Yeah, or at least we will be able to rerun our code
+
+43
+00:02:38,560 --> 00:02:43,880
+with different parameter sets without actually modifying
+
+44
+00:02:43,880 --> 00:02:44,380
+the code.
+
+45
+00:02:44,380 --> 00:02:48,320
+Because if you're modifying a Python script or the Jupyter
+
+46
+00:02:48,320 --> 00:02:52,920
+notebook by editing your initial conditions or the source
+
+47
+00:02:52,920 --> 00:02:53,840
+files or whatever.
+
+48
+00:02:53,840 --> 00:02:56,680
+You're always modifying the code.
+
+49
+00:02:56,680 --> 00:02:58,240
+Yeah.
+
+50
+00:02:58,240 --> 00:03:00,280
+OK.
+
+51
+00:03:00,280 --> 00:03:02,920
+So up here, there's the section on why scripts.
+
+52
+00:03:02,920 --> 00:03:07,480
+So if you had to convince the people listening here
+
+53
+00:03:07,480 --> 00:03:11,600
+that you should consider making a script or a program out
+
+54
+00:03:11,600 --> 00:03:13,840
+of your code.
+
+55
+00:03:13,840 --> 00:03:17,040
+Well, the main reason, I would say,
+
+56
+00:03:17,040 --> 00:03:23,040
+It very often comes down to, I have a certain pipeline
+
+57
+00:03:23,040 --> 00:03:26,640
+that I've developed for one example.
+
+58
+00:03:26,640 --> 00:03:31,080
+And now people want to use this pipeline
+
+59
+00:03:31,080 --> 00:03:35,920
+for multiple different data sets.
+
+60
+00:03:35,920 --> 00:03:39,360
+Of course, if I have that in a Jupyter Notebook,
+
+61
+00:03:39,360 --> 00:03:43,360
+I can, every time, change the Jupyter Notebook,
+
+62
+00:03:43,360 --> 00:03:48,080
+change the input variables, and run it for their data set.
+
+63
+00:03:48,080 --> 00:03:53,120
+But that needs me to do it again, and again, and again.
+
+64
+00:03:53,120 --> 00:03:59,160
+And I will likely do typos and whatnot in there.
+
+65
+00:03:59,160 --> 00:04:02,240
+So I'd rather have some kind of folder
+
+66
+00:04:02,240 --> 00:04:05,000
+where I have the data sets, and I
+
+67
+00:04:05,000 --> 00:04:07,320
+want to go through all the files in that folder.
+
+68
+00:04:07,320 --> 00:04:15,320
+And potentially, I want to run this on a cluster or something.
+
+69
+00:04:15,320 --> 00:04:17,320
+Yeah, that's a good way to say it.
+
+70
+00:04:17,320 --> 00:04:22,320
+Some people come and want to use our cluster to run tens.
+
+71
+00:04:22,320 --> 00:04:24,320
+They have hundreds of input data sets.
+
+72
+00:04:24,320 --> 00:04:26,320
+Let's say I have this Jupyter Notebook.
+
+73
+00:04:26,320 --> 00:04:30,320
+How do I run it on 100 different things in parallel?
+
+74
+00:04:30,320 --> 00:04:31,320
+That's sort of hard.
+
+75
+00:04:31,320 --> 00:04:36,320
+But if you make a script out of it, then we can make a thing that
+
+76
+00:04:36,320 --> 00:04:40,080
+extremely easy to just run it with 100 different input
+
+77
+00:04:40,080 --> 00:04:41,080
+parameters.
+
+78
+00:04:41,080 --> 00:04:42,760
+Yeah.
+
+79
+00:04:42,760 --> 00:04:46,200
+And that's where scripts or the transition to Python scripts
+
+80
+00:04:46,200 --> 00:04:49,560
+from a Python notebook comes in.
+
+81
+00:04:49,560 --> 00:04:55,240
+So we have two exercises prepared for today.
+
+82
+00:04:55,240 --> 00:04:59,120
+The first one is coming up shortly.
+
+83
+00:04:59,120 --> 00:05:05,080
+So it's just about converting a Python notebook or a Jupyter
+
+84
+00:05:05,080 --> 00:05:07,720
+notebook to a Python script.
+
+85
+00:05:07,720 --> 00:05:08,760
+Yeah.
+
+86
+00:05:08,760 --> 00:05:10,400
+I guess here's our short-term road map.
+
+87
+00:05:10,400 --> 00:05:15,240
+So I will do a demonstration of converting a notebook
+
+88
+00:05:15,240 --> 00:05:17,280
+to a Python script.
+
+89
+00:05:17,280 --> 00:05:20,280
+And then you'll have five minutes to try this yourself.
+
+90
+00:05:20,280 --> 00:05:22,720
+Then we'll come back, talk, demonstrate more,
+
+91
+00:05:22,720 --> 00:05:25,400
+and then there'll be a much longer exercise
+
+92
+00:05:25,400 --> 00:05:30,880
+where you can finish up number one and try some more things.
+
+93
+00:05:30,880 --> 00:05:32,240
+Does that sound good?
+
+94
+00:05:32,240 --> 00:05:33,840
+Yeah, at least to me.
+
+95
+00:05:33,840 --> 00:05:36,640
+because that's what we're going to do.
+
+96
+00:05:36,640 --> 00:05:40,600
+OK, so I'll show my JupyterLab here.
+
+97
+00:05:40,600 --> 00:05:51,320
+So yeah, essentially, it should be.
+
+98
+00:05:51,320 --> 00:05:52,700
+So this is the instructions here.
+
+99
+00:05:52,700 --> 00:05:56,000
+Should we go to the exercise and show?
+
+100
+00:05:56,000 --> 00:05:59,880
+Yeah, you can also just download it now.
+
+101
+00:05:59,880 --> 00:06:07,240
+Okay, so I'll use the same trick I used before. I will right click here and do copy link
+
+102
+00:06:08,120 --> 00:06:15,560
+and come into JupyterLab and do file open from URL and paste it here.
+
+103
+00:06:18,360 --> 00:06:25,640
+And it both downloads it as you see on the side here and it's opened it in JupyterLab.
+
+104
+00:06:25,640 --> 00:06:30,640
+Should I try running it to show that it works?
+
+105
+00:06:30,640 --> 00:06:33,640
+Yes.
+
+106
+00:06:33,640 --> 00:06:38,640
+Okay, there we go.
+
+107
+00:06:38,640 --> 00:06:45,640
+Okay, and now you essentially want to export this into a Python file.
+
+108
+00:06:45,640 --> 00:06:52,640
+The easiest is just going to File, Save and Export Notebook as.
+
+109
+00:06:52,640 --> 00:06:57,640
+So, this will download it to my computer?
+
+110
+00:06:57,640 --> 00:07:00,640
+Yep.
+
+111
+00:07:00,640 --> 00:07:03,640
+And not save file as, save and export.
+
+112
+00:07:03,640 --> 00:07:06,640
+File...
+
+113
+00:07:06,640 --> 00:07:09,640
+Further down. Save and export.
+
+114
+00:07:09,640 --> 00:07:12,640
+As executable script.
+
+115
+00:07:12,640 --> 00:07:15,640
+Executable script.
+
+116
+00:07:15,640 --> 00:07:18,640
+Okay.
+
+117
+00:07:18,640 --> 00:07:24,640
+But this is downloaded, and where is it now?
+
+118
+00:07:24,640 --> 00:07:25,640
+Yeah.
+
+119
+00:07:25,640 --> 00:07:26,640
+Okay.
+
+120
+00:07:26,640 --> 00:07:36,680
+So, another, I suppose we also do, we try it from the command line here.
+
+121
+00:07:36,680 --> 00:07:42,120
+So I think that what I'm about to show will work for more people.
+
+122
+00:07:42,120 --> 00:07:43,120
+I'll go to file.
+
+123
+00:07:43,120 --> 00:07:46,160
+Or at least it's easier that way.
+
+124
+00:07:46,160 --> 00:07:55,280
+launcher and from the new launcher I start the terminal and I see this is the directory where
+
+125
+00:07:55,280 --> 00:08:00,240
+I'm doing course things. So this may be the first introduction to command line for some people.
+
+126
+00:08:00,240 --> 00:08:06,000
+So for some people this may seem impossibly hard and for some people will be impossibly easy.
+
+127
+00:08:06,640 --> 00:08:14,800
+That's just sort of how it goes unfortunately. So if it's too hard take this lesson as a demo
+
+128
+00:08:14,800 --> 00:08:18,240
+and work slowly and come back to it later now that you're inspired.
+
+129
+00:08:19,280 --> 00:08:27,520
+That's all I can recommend. So I'm copying this line here and I will paste it.
+
+130
+00:08:28,720 --> 00:08:35,920
+And for me ctrl shift v works. I think just ctrl v might do something.
+
+131
+00:08:36,640 --> 00:08:38,160
+Ctrl v actually does work.
+
+132
+00:08:38,160 --> 00:08:49,520
+Anyway, so if I run this, then it converts it.
+
+133
+00:08:49,520 --> 00:08:55,280
+So it says it's writing data to weatherObservations.py.
+
+134
+00:08:55,280 --> 00:08:58,720
+You can try if it works.
+
+135
+00:08:58,720 --> 00:09:06,000
+If I open the file browser, I see weatherObservations.py here.
+
+136
+00:09:06,000 --> 00:09:10,880
+if we come here, we can try running it this way. Python.
+
+137
+00:09:18,320 --> 00:09:26,160
+Oh, it looks like it ran. Yeah, and if you now type ls or dir, depending on the operating system,
+
+138
+00:09:26,160 --> 00:09:31,520
+you see that there is a weather.png being created. It wasn't there before. Let's come
+
+139
+00:09:31,520 --> 00:09:35,920
+come back to the file browser, and we see weather.png.
+
+140
+00:09:35,920 --> 00:09:37,760
+And if I click on this, I see it.
+
+141
+00:09:37,760 --> 00:09:42,880
+The same image that was generated before.
+
+142
+00:09:42,880 --> 00:09:44,600
+The same.
+
+143
+00:09:44,600 --> 00:09:45,520
+OK, so it showed it.
+
+144
+00:09:45,520 --> 00:09:49,800
+It was also generated from the notebook,
+
+145
+00:09:49,800 --> 00:09:52,560
+but it was updated, as you can see.
+
+146
+00:09:52,560 --> 00:09:55,280
+It was created seconds ago.
+
+147
+00:09:55,280 --> 00:09:56,000
+OK.
+
+148
+00:09:56,000 --> 00:09:59,080
+It actually works.
+
+149
+00:09:59,080 --> 00:10:12,680
+So, let's give our, sorry for the videos hiding, well I would say let's give our viewers
+
+150
+00:10:12,680 --> 00:10:18,760
+five minutes to just repeat this again and see that that works on their machine.
+
+151
+00:10:18,760 --> 00:10:25,640
+So we'll give you five minutes, yeah, if things go horribly wrong then
+
+152
+00:10:25,640 --> 00:10:30,320
+Then, well, we're sorry,
+
+153
+00:10:30,320 --> 00:10:35,440
+something's gone wrong and sit back and do this as a demo.
+
+154
+00:10:35,640 --> 00:10:41,360
+Thanks. Five minutes. See you shortly. Bye.
+
+155
+00:10:45,000 --> 00:10:49,600
+And there we should be back on track.
+
+156
+00:10:49,600 --> 00:10:57,320
+And now coming more to what the actual use is of doing this
+
+157
+00:10:57,320 --> 00:10:58,800
+and putting it in a script.
+
+158
+00:10:58,800 --> 00:10:59,300
+Yeah.
+
+159
+00:10:59,300 --> 00:11:02,720
+So reading through the notes, there's
+
+160
+00:11:02,720 --> 00:11:06,320
+some different problems here.
+
+161
+00:11:06,320 --> 00:11:10,280
+And this is sort of, I mean, this is expected.
+
+162
+00:11:10,280 --> 00:11:12,040
+So of course, we don't want problems.
+
+163
+00:11:12,040 --> 00:11:18,240
+But there's always some places where
+
+164
+00:11:18,240 --> 00:11:20,680
+like someone's own computer is different,
+
+165
+00:11:20,680 --> 00:11:22,640
+or with different operating systems,
+
+166
+00:11:22,640 --> 00:11:26,040
+or I have a feeling that there is some cloud service which
+
+167
+00:11:26,040 --> 00:11:30,280
+is not working and doesn't provide shell access.
+
+168
+00:11:30,280 --> 00:11:37,200
+And this is, well, yeah, in that case.
+
+169
+00:11:37,200 --> 00:11:40,520
+Not much we can do about that, especially
+
+170
+00:11:40,520 --> 00:11:43,000
+if Jupyter is run on a web service,
+
+171
+00:11:43,000 --> 00:11:46,480
+then it's mostly out of our control, unfortunately.
+
+172
+00:11:48,240 --> 00:11:53,240
+Yeah. So if it doesn't work, just watch.
+
+173
+00:11:53,240 --> 00:11:54,240
+Okay.
+
+174
+00:11:54,240 --> 00:11:59,240
+Or if it doesn't work, what I would suggest is you download the file,
+
+175
+00:11:59,240 --> 00:12:04,240
+copy the data from the file into
+
+176
+00:12:04,240 --> 00:12:09,240
+a new file that you call .py
+
+177
+00:12:09,240 --> 00:12:14,240
+because it mainly is exactly the same.
+
+178
+00:12:14,240 --> 00:12:18,560
+But that Jupyter Notebook is mainly Python code.
+
+179
+00:12:21,240 --> 00:12:23,360
+And doesn't contain a lot of other stuff.
+
+180
+00:12:23,360 --> 00:12:24,720
+Yeah.
+
+181
+00:12:24,720 --> 00:12:26,160
+OK.
+
+182
+00:12:26,160 --> 00:12:28,360
+So let's continue.
+
+183
+00:12:28,360 --> 00:12:28,880
+Yeah.
+
+184
+00:12:28,880 --> 00:12:36,440
+So the nice thing with having this as a script
+
+185
+00:12:36,440 --> 00:12:40,920
+is that we now have access to command line arguments.
+
+186
+00:12:40,920 --> 00:12:43,400
+So if you run this from the command line like [Name] just
+
+187
+00:12:43,400 --> 00:12:48,280
+did when he was in the terminal, we
+
+188
+00:12:48,280 --> 00:12:51,680
+can add additional information in.
+
+189
+00:12:55,440 --> 00:12:59,320
+And that information is accessible inside the code
+
+190
+00:12:59,320 --> 00:13:09,600
+via the sys.argv, or via the sys object and via sys.argv.
+
+191
+00:13:09,600 --> 00:13:13,720
+And it's interesting to know that the first value,
+
+192
+00:13:13,720 --> 00:13:17,520
+so this argv stands for argument values.
+
+193
+00:13:17,520 --> 00:13:21,280
+The first argument value is always the program,
+
+194
+00:13:21,280 --> 00:13:26,000
+or the script name that you're calling,
+
+195
+00:13:26,000 --> 00:13:30,360
+because it's actually the arguments to Python
+
+196
+00:13:30,360 --> 00:13:33,280
+that you're getting there.
+
+197
+00:13:33,280 --> 00:13:35,000
+Yeah.
+
+198
+00:13:35,000 --> 00:13:37,520
+So basically, I could run something
+
+199
+00:13:37,520 --> 00:13:42,220
+like Python weather observations, as an example.
+
+200
+00:13:42,220 --> 00:13:42,720
+Hello.
+
+201
+00:13:45,280 --> 00:13:47,360
+Hello.png.
+
+202
+00:13:47,360 --> 00:13:52,580
+And the code can figure out that this hello.png is
+
+203
+00:13:52,580 --> 00:13:56,440
+where I should save the figure.
+
+204
+00:13:56,440 --> 00:13:59,640
+Needs to be modified accordingly, but yes.
+
+205
+00:13:59,640 --> 00:14:03,520
+So from the command line, we have a and b arguments.
+
+206
+00:14:03,520 --> 00:14:10,800
+And from the code, we have it accessible as sys.argv[1] and sys.argv[2].
+
+207
+00:14:10,800 --> 00:14:12,880
+So should I do it?
+
+208
+00:14:16,440 --> 00:14:18,200
+Yes.
+
+209
+00:14:18,200 --> 00:14:23,200
+The example I'll go also adds the time range,
+
+210
+00:14:23,200 --> 00:14:26,040
+because we are looking for something
+
+211
+00:14:26,040 --> 00:14:27,680
+with weather observations that maybe we
+
+212
+00:14:27,680 --> 00:14:32,960
+want to change what times we actually want to look at.
+
+213
+00:14:32,960 --> 00:14:37,160
+But yeah, we can also first just change it
+
+214
+00:14:37,160 --> 00:14:41,360
+so that it just changes the output name.
+
+215
+00:14:41,360 --> 00:14:45,200
+So I will come, I will open the script itself.
+
+216
+00:14:45,200 --> 00:14:50,400
+So here, the icon is a Python script thing.
+
+217
+00:14:50,400 --> 00:14:59,520
+So I double click this, and I've opened now weather.py.
+
+218
+00:14:59,520 --> 00:15:00,400
+And I see the script.
+
+219
+00:15:00,400 --> 00:15:05,000
+So it looks a lot like the Python code in 1,
+
+220
+00:15:05,000 --> 00:15:08,040
+in 2, where the cells were.
+
+221
+00:15:08,040 --> 00:15:09,920
+So what do I change?
+
+222
+00:15:09,920 --> 00:15:15,560
+So if you want to change that, the first input argument
+
+223
+00:15:15,560 --> 00:15:21,320
+is the we will depart from the code that's
+
+224
+00:15:21,320 --> 00:15:23,400
+in here a little bit at the moment,
+
+225
+00:15:23,400 --> 00:15:27,440
+just to make people aware of that.
+
+226
+00:15:27,440 --> 00:15:31,440
+So if we want to have the first input argument as the output
+
+227
+00:15:31,440 --> 00:15:37,320
+file name, then we would need to go to, essentially,
+
+228
+00:15:37,320 --> 00:15:40,640
+to the end of the script, where it says fig.savefig.
+
+229
+00:15:40,640 --> 00:15:45,040
+Well, let's do what it shows here in the screen share.
+
+230
+00:15:45,040 --> 00:15:47,160
+So OK, then, the first thing we need to do
+
+231
+00:15:47,160 --> 00:15:53,040
+is we need to actually import the system information.
+
+232
+00:15:53,040 --> 00:15:57,000
+And that's just to know that, OK, now
+
+233
+00:15:57,000 --> 00:15:58,800
+we can access this system information.
+
+234
+00:15:58,800 --> 00:16:03,480
+It's a package that's always available in Python
+
+235
+00:16:03,480 --> 00:16:06,960
+because it's a basic package.
+
+236
+00:16:06,960 --> 00:16:08,960
+But we still need to import it so that we
+
+237
+00:16:08,960 --> 00:16:11,320
+can access the information.
+
+238
+00:16:11,320 --> 00:16:14,520
+And so now, if you're watching, if you're still
+
+239
+00:16:14,520 --> 00:16:18,720
+working on the exercise, stop and just listen to us.
+
+240
+00:16:18,720 --> 00:16:23,040
+So that's what I'd recommend.
+
+241
+00:16:23,040 --> 00:16:26,560
+We will change it so that we can set the start and end
+
+242
+00:16:26,560 --> 00:16:29,560
+for always the first and second argument.
+
+243
+00:16:29,560 --> 00:16:30,560
+Arguments are always,
+
+244
+00:16:30,560 --> 00:16:33,560
+command line arguments are always separated by spaces.
+
+245
+00:16:33,560 --> 00:16:38,560
+So the first in that instance actually is number one
+
+246
+00:16:38,560 --> 00:16:41,560
+because zero, as we said before, is the script name.
+
+247
+00:16:42,560 --> 00:16:44,560
+So that's sys.argv[1].
+
+248
+00:16:44,560 --> 00:16:47,560
+And the second and the end date would be sys.argv[2].
+
+249
+00:16:50,560 --> 00:16:53,560
+And then we want to have the third argument
+
+250
+00:16:53,560 --> 00:16:55,560
+being the output file name.
+
+251
+00:16:55,560 --> 00:17:03,600
+And we can either directly say here, sys.argv[3],
+
+252
+00:17:03,600 --> 00:17:10,040
+or we can create a variable in between that indicates
+
+253
+00:17:10,040 --> 00:17:10,880
+the output file name.
+
+254
+00:17:17,680 --> 00:17:20,080
+OK, here we go.
+
+255
+00:17:20,080 --> 00:17:21,840
+I've saved it.
+
+256
+00:17:21,840 --> 00:17:26,800
+And if you now go back to the terminal.
+
+257
+00:17:26,800 --> 00:17:28,200
+Terminal.
+
+258
+00:17:28,200 --> 00:17:37,880
+So Python weather observations from the 1st of March, 2021,
+
+259
+00:17:37,880 --> 00:17:38,720
+the end of May.
+
+260
+00:17:43,480 --> 00:17:44,440
+Let's see.
+
+261
+00:17:44,440 --> 00:17:47,120
+Did it work?
+
+262
+00:17:47,120 --> 00:17:49,440
+Let's come back to the file browser.
+
+263
+00:17:49,440 --> 00:17:56,240
+And I see there's an image now called Spring in Tapiola.
+
+264
+00:17:56,240 --> 00:18:01,960
+And it looks different, for sure.
+
+265
+00:18:01,960 --> 00:18:08,040
+And it's still quite cold and dirty water.
+
+266
+00:18:08,040 --> 00:18:10,360
+It doesn't look that bad, though.
+
+267
+00:18:10,360 --> 00:18:13,160
+Actually, there's something odd here.
+
+268
+00:18:13,160 --> 00:18:18,080
+Might be that the data actually doesn't contain the March part,
+
+269
+00:18:18,080 --> 00:18:21,800
+because it only starts at somewhere beginning of May.
+
+270
+00:18:26,600 --> 00:18:32,800
+OK, so yeah.
+
+271
+00:18:32,800 --> 00:18:36,840
+OK, so now what do we get from this?
+
+272
+00:18:36,840 --> 00:18:41,440
+Well, we get the option that we can now essentially modify
+
+273
+00:18:41,440 --> 00:18:47,480
+or call the same code, but use different input variables
+
+274
+00:18:47,480 --> 00:18:51,280
+without going back into the code and modifying the script.
+
+275
+00:18:51,280 --> 00:18:54,640
+So you can run this script multiple times
+
+276
+00:18:54,640 --> 00:18:57,160
+with different input parameters.
+
+277
+00:18:57,160 --> 00:18:59,800
+That has the advantage that you can essentially
+
+278
+00:18:59,800 --> 00:19:02,840
+call it from some other tool, or you
+
+279
+00:19:02,840 --> 00:19:08,960
+can call it in another script and can automatically
+
+280
+00:19:08,960 --> 00:19:15,000
+call it with a list of things, making it a bit more
+
+281
+00:19:15,000 --> 00:19:18,480
+robust to potential changes.
+
+282
+00:19:18,480 --> 00:19:19,720
+Yeah.
+
+283
+00:19:19,720 --> 00:19:24,800
+So now, before we go to the exercise,
+
+284
+00:19:24,800 --> 00:19:26,840
+there's a little bit more.
+
+285
+00:19:26,840 --> 00:19:32,680
+So here, what we've done in this code is very basic.
+
+286
+00:19:32,680 --> 00:19:38,080
+So we're just using the system directly.
+
+287
+00:19:38,080 --> 00:19:40,400
+But there's more advanced modules to do this.
+
+288
+00:19:40,400 --> 00:19:42,320
+So what can you tell us about that?
+
+289
+00:19:42,320 --> 00:19:46,120
+Well, there are a lot of so-called command-line argument
+
+290
+00:19:46,120 --> 00:19:48,640
+parses.
+
+291
+00:19:48,640 --> 00:19:53,240
+All of them have their advantages and disadvantages.
+
+292
+00:19:53,240 --> 00:19:57,760
+Essentially, the more complex stuff you want to do,
+
+293
+00:19:57,760 --> 00:20:04,520
+the more complex code you have to write in the end.
+
+294
+00:20:04,520 --> 00:20:07,920
+For simple programs, I think argparse
+
+295
+00:20:07,920 --> 00:20:16,240
+is quite efficient, because it doesn't need a lot of details.
+
+296
+00:20:16,240 --> 00:20:18,320
+But it's not as flexible.
+
+297
+00:20:18,320 --> 00:20:23,680
+So if you have some requirements where, yeah,
+
+298
+00:20:23,680 --> 00:20:26,400
+you can have requirements that just are not
+
+299
+00:20:26,400 --> 00:20:27,720
+achievable with argparse.
+
+300
+00:20:27,720 --> 00:20:40,720
+All of these parsers commonly give some kind of positional arguments or named arguments.
+
+301
+00:20:40,720 --> 00:20:47,200
+Named arguments help you to, if you have multiple arguments and you have some default values,
+
+302
+00:20:47,200 --> 00:20:55,400
+you don't want to have to make sure that, okay, position one is always that, position
+
+303
+00:20:55,400 --> 00:21:00,280
+2 is always that and always have to check okay is it the right thing but you can essentially write
+
+304
+00:21:00,280 --> 00:21:07,080
+okay in the end or you can in the end write um whether observations by minus minus
+
+305
+00:21:08,120 --> 00:21:13,080
+start date and give the start date minus minus end date give the end date minus minus
+
+306
+00:21:14,120 --> 00:21:22,280
+um output file or output file name or something and the output file name um making the
+
+307
+00:21:22,280 --> 00:21:27,720
+the command line arguments or the command line call
+
+308
+00:21:27,720 --> 00:21:35,560
+that you give a lot more readable and a lot less prone
+
+309
+00:21:35,560 --> 00:21:38,840
+to, oh, that was the wrong position.
+
+310
+00:21:38,840 --> 00:21:41,200
+Yeah.
+
+311
+00:21:41,200 --> 00:21:44,040
+So I believe the next exercise is
+
+312
+00:21:44,040 --> 00:21:48,240
+having you try to modify this weather script to do
+
+313
+00:21:48,240 --> 00:21:53,600
+what we just demonstrated and also use argparse.
+
+314
+00:21:53,600 --> 00:21:54,280
+Let's see.
+
+315
+00:21:54,280 --> 00:21:56,920
+Yes.
+
+316
+00:21:56,920 --> 00:22:03,160
+So there's some, well, it's up to you what you work on.
+
+317
+00:22:03,160 --> 00:22:07,320
+So you can keep working on the first part if needed.
+
+318
+00:22:07,320 --> 00:22:09,280
+You can try to do what we just did.
+
+319
+00:22:09,280 --> 00:22:13,440
+You can use argparse if you want and have extra time.
+
+320
+00:22:13,440 --> 00:22:26,440
+Then there's another exercise at the very bottom which we won't talk about but you can try working on it now.
+
+321
+00:22:26,440 --> 00:22:31,440
+Okay, should we go to the exercise now?
+
+322
+00:22:31,440 --> 00:22:37,440
+I think so, and when we come back we'll quickly discuss a few more details.
+
+323
+00:22:37,440 --> 00:22:48,160
+Yes, so this is 15 minutes, so a relatively long amount of time.
+
+324
+00:22:48,160 --> 00:22:49,640
+Okay, great.
+
+325
+00:22:49,640 --> 00:22:54,000
+So see you at 45.
+
+326
+00:22:54,000 --> 00:22:57,760
+Okay, bye.
+
+327
+00:23:00,000 --> 00:23:06,680
+Hello, we're back.
+
+328
+00:23:06,680 --> 00:23:09,800
+So let's see.
+
+329
+00:23:09,800 --> 00:23:15,340
+So from the note, it was clear there were lots of different problems in here.
+
+330
+00:23:15,340 --> 00:23:24,220
+that's sort of that's unfortunate but I mean it's this really is a pretty
+
+331
+00:23:25,100 --> 00:23:30,300
+interesting and difficult thing because this is the first time we're going from pure Python
+
+332
+00:23:31,100 --> 00:23:36,380
+to going and connecting to the bigger operating system you're running on and there's so many
+
+333
+00:23:36,380 --> 00:23:43,980
+different variations there there's things like can't access pandas for example so that means
+
+334
+00:23:43,980 --> 00:23:49,900
+your Python on the command line is running in a different environment from that on the
+
+335
+00:23:53,660 --> 00:23:56,540
+the... Python on the program, yeah.
+
+336
+00:23:58,860 --> 00:24:09,260
+So if you're having really big problems here, don't give up. So take it and basically
+
+337
+00:24:09,260 --> 00:24:16,500
+Basically, go to one of your colleagues who can sit there with your screen and ask, okay,
+
+338
+00:24:16,500 --> 00:24:19,380
+so I'm trying to do this lesson.
+
+339
+00:24:19,380 --> 00:24:22,820
+Can you tell me what's going on here?
+
+340
+00:24:22,820 --> 00:24:27,540
+And you can get some help that way, and it will work much better.
+
+341
+00:24:27,540 --> 00:24:33,820
+As long as you sort of understand the general idea of what we've done here, and why these
+
+342
+00:24:33,820 --> 00:24:38,860
+scripts should be used, then you've gotten to the main points.
+
+343
+00:24:38,860 --> 00:24:45,100
+So with that being said, what have we learned here in the end?
+
+344
+00:24:45,100 --> 00:24:49,700
+Well, I hope we have learned that you can,
+
+345
+00:24:49,700 --> 00:24:57,540
+by changing the notebook into a script or into pure Python,
+
+346
+00:24:57,540 --> 00:25:02,380
+use command line arguments to modify
+
+347
+00:25:02,380 --> 00:25:08,700
+what your program does without modifying the program's code.
+
+348
+00:25:08,700 --> 00:25:14,340
+And yeah, I think I would call it program, because in the end,
+
+349
+00:25:14,340 --> 00:25:19,860
+this is exactly what kind of distinguishes things.
+
+350
+00:25:19,860 --> 00:25:23,060
+Here, if you have command line arguments,
+
+351
+00:25:23,060 --> 00:25:26,540
+that's something that you kind of always
+
+352
+00:25:26,540 --> 00:25:28,980
+have to call a program with.
+
+353
+00:25:28,980 --> 00:25:33,620
+Because any other part is self-contained,
+
+354
+00:25:33,620 --> 00:25:38,580
+but a program you can call with different arguments.
+
+355
+00:25:38,580 --> 00:25:39,080
+Yeah.
+
+356
+00:25:39,080 --> 00:25:39,580
+Yeah.
+
+357
+00:25:42,300 --> 00:25:44,260
+So if someone comes to us and wants
+
+358
+00:25:44,260 --> 00:25:49,060
+to run some code with a program on our cluster
+
+359
+00:25:49,060 --> 00:25:51,980
+on many different input files, how would we approach that?
+
+360
+00:25:54,780 --> 00:25:58,580
+That depends a little bit.
+
+361
+00:25:58,580 --> 00:26:04,540
+So if the input files have a certain naming convention
+
+362
+00:26:04,540 --> 00:26:07,380
+or are just numbered, then it's relatively simple
+
+363
+00:26:07,380 --> 00:26:10,140
+because you can essentially just go through the numbers
+
+364
+00:26:10,140 --> 00:26:14,940
+and have a for loop in a batch script
+
+365
+00:26:14,940 --> 00:26:20,620
+where you, with that for loop, call the individual files
+
+366
+00:26:20,620 --> 00:26:24,180
+or call your script with the individual files as file names.
+
+367
+00:26:24,180 --> 00:26:27,540
+If they are not ordered in a specific way,
+
+368
+00:26:27,540 --> 00:26:31,580
+you probably need to either provide
+
+369
+00:26:31,580 --> 00:26:36,380
+a file that contains the file names
+
+370
+00:26:36,380 --> 00:26:44,780
+and you read those in or you might go into well either write an additional python script or you
+
+371
+00:26:44,780 --> 00:26:50,940
+or you provide a or you change your your script so that it reads in a certain file and if
+
+372
+00:26:51,580 --> 00:26:57,180
+or a certain folder and goes through the folder but if each each of the computations is quite
+
+373
+00:26:57,180 --> 00:27:02,460
+expensive so you can't just do this in one python script or it would take ages but you want to
+
+374
+00:27:02,460 --> 00:27:08,140
+parallelize the computation, you will likely
+
+375
+00:27:08,140 --> 00:27:09,980
+write some additional script that
+
+376
+00:27:09,980 --> 00:27:15,460
+loops through those files, and then provides them
+
+377
+00:27:15,460 --> 00:27:20,780
+as inputs for your script at the end.
+
+378
+00:27:20,780 --> 00:27:25,100
+And those inputs are then run individually,
+
+379
+00:27:25,100 --> 00:27:28,260
+and each use one job on the cluster.
+
+380
+00:27:28,260 --> 00:27:37,460
+Yeah, so there is no clear this and that because it depends a lot on your situation.
+
+381
+00:27:37,460 --> 00:27:46,940
+But one thing that happens quite regularly is that people have input parameters and want
+
+382
+00:27:46,940 --> 00:27:52,700
+to go through, let's say, a thousand different input parameters that they have more or less
+
+383
+00:27:52,700 --> 00:27:53,700
+predefined.
+
+384
+00:27:53,700 --> 00:27:59,140
+have them predefined, they can, in the script, define them once.
+
+385
+00:27:59,140 --> 00:28:05,460
+And then the input parameter, or the command line argument,
+
+386
+00:28:05,460 --> 00:28:07,340
+would be the position of that parameter
+
+387
+00:28:07,340 --> 00:28:10,780
+in the list of parameters that they have defined.
+
+388
+00:28:10,780 --> 00:28:17,260
+And each run will take one input parameter set, for example.
+
+389
+00:28:17,260 --> 00:28:23,260
+Okay. So with that being said, should we go to a break?
+
+390
+00:28:23,260 --> 00:28:27,260
+I would
+
+391
+00:28:27,260 --> 00:28:31,260
+give a few more words about
+
+392
+00:28:31,260 --> 00:28:35,260
+additional options like using configuration files
+
+393
+00:28:35,260 --> 00:28:39,260
+because I think the problem with
+
+394
+00:28:39,260 --> 00:28:43,260
+command line arguments is that at some point the command line string gets
+
+395
+00:28:43,260 --> 00:28:45,460
+It's really long.
+
+396
+00:28:45,460 --> 00:28:49,980
+And even if you have an argument parser or something,
+
+397
+00:28:49,980 --> 00:28:54,220
+it becomes not really well-readable anymore,
+
+398
+00:28:54,220 --> 00:28:55,220
+the individual call.
+
+399
+00:28:55,220 --> 00:28:57,540
+So we are running out of time.
+
+400
+00:28:57,540 --> 00:29:00,740
+So please continue, but let's try to be quick.
+
+401
+00:29:00,740 --> 00:29:04,340
+And I just want to mention that there are then
+
+402
+00:29:04,340 --> 00:29:07,780
+methods that you can have a look at later on
+
+403
+00:29:07,780 --> 00:29:12,420
+to write the configurations for your program
+
+404
+00:29:12,420 --> 00:29:18,340
+into a configuration file and use that as and just be given a configuration file as input argument
+
+405
+00:29:18,340 --> 00:29:25,540
+that is then parsed. That's just what I wanted to mention. Yeah, so like here for example we've
+
+406
+00:29:25,540 --> 00:29:36,260
+defined all the parameters for the plot and it can be generated. Okay, great. So let's take a break
+
+407
+00:29:36,260 --> 00:29:45,860
+until two minutes past the hour and we'll see you back for the next episode. Thanks and bye for now.
+
+408
+00:29:45,860 --> 00:29:47,540
+Bye-bye!
+

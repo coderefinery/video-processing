@@ -1,0 +1,1104 @@
+1
+00:00:00,000 --> 00:00:09,180
+Hello, welcome back from the breaks.
+
+2
+00:00:09,180 --> 00:00:17,800
+So we'll now move on to something about the library ecosystem, how the Python libraries
+
+3
+00:00:17,800 --> 00:00:19,000
+are set up.
+
+4
+00:00:19,000 --> 00:00:24,580
+And also after that, we'll move on to dependency management.
+
+5
+00:00:24,580 --> 00:00:27,700
+[name], have you introduced yourself already?
+
+6
+00:00:27,700 --> 00:00:30,700
+Yeah, I introduced myself yesterday.
+
+7
+00:00:30,700 --> 00:00:32,620
+Have you?
+
+8
+00:00:32,620 --> 00:00:34,420
+Yes, so my name is [Name].
+
+9
+00:00:34,420 --> 00:00:36,420
+So disclaimer, I'm not a Python programmer,
+
+10
+00:00:36,420 --> 00:00:41,460
+but I support users on our high-performance computer
+
+11
+00:00:41,460 --> 00:00:42,820
+systems.
+
+12
+00:00:42,820 --> 00:00:47,140
+My current job is as the manager of the Norwegian AI Cloud.
+
+13
+00:00:47,140 --> 00:00:51,620
+But I also contribute to Code Refinery and Alto
+
+14
+00:00:51,620 --> 00:00:55,660
+and all the partners when I can.
+
+15
+00:00:55,660 --> 00:01:00,580
+So this library ecosystem, [Name], is
+
+16
+00:01:00,580 --> 00:01:08,580
+that when you want to achieve a certain task,
+
+17
+00:01:08,580 --> 00:01:12,780
+somebody might have already made some code
+
+18
+00:01:12,780 --> 00:01:15,660
+that you can achieve the thing you want to do.
+
+19
+00:01:15,660 --> 00:01:20,540
+So instead of you try to write it again,
+
+20
+00:01:20,540 --> 00:01:24,380
+you could reuse others' work.
+
+21
+00:01:24,380 --> 00:01:29,740
+In the first introduction, there was this interview
+
+22
+00:01:29,740 --> 00:01:31,060
+with the student.
+
+23
+00:01:31,060 --> 00:01:35,460
+So when we study, it seems people tell you
+
+24
+00:01:35,460 --> 00:01:37,060
+not to take others' work.
+
+25
+00:01:37,060 --> 00:01:39,860
+You have to do everything yourself.
+
+26
+00:01:39,860 --> 00:01:43,100
+But when you come to the real research,
+
+27
+00:01:43,100 --> 00:01:47,060
+practically, you can't do, quote, everything you want.
+
+28
+00:01:47,060 --> 00:01:50,580
+For example, if you want some matrix transformation
+
+29
+00:01:50,580 --> 00:01:56,660
+or Fourier transformation, some array sorting kind of thing,
+
+30
+00:01:56,660 --> 00:01:58,620
+it's already there out there.
+
+31
+00:01:58,620 --> 00:02:00,700
+So you have to use them.
+
+32
+00:02:00,700 --> 00:02:06,060
+So we will talk about how to reuse work.
+
+33
+00:02:06,060 --> 00:02:10,420
+So this is not like stealing other people's work.
+
+34
+00:02:10,420 --> 00:02:14,140
+This is actually reusing and collaboration.
+
+35
+00:02:14,140 --> 00:02:16,220
+Do you use a lot of libraries, [Name]?
+
+36
+00:02:17,020 --> 00:02:24,300
+Yes, all the time. So I would say that why Python is so popular, especially in scientific
+
+37
+00:02:24,300 --> 00:02:30,940
+context, is because of this library ecosystem. Python is not the perfect language for scientific
+
+38
+00:02:30,940 --> 00:02:37,660
+computation, like what, for example, [name] said at the Icebreaker session this morning, that
+
+39
+00:02:37,660 --> 00:02:43,260
+there are languages that are designed for scientific computing. Python is not one of them.
+
+40
+00:02:43,260 --> 00:02:49,660
+But Python is a very general language. It has all kinds of things. And the library ecosystem
+
+41
+00:02:49,660 --> 00:02:57,500
+makes it possible to have various things. So, like [name] said, in a job interview or something,
+
+42
+00:02:57,500 --> 00:03:01,980
+you might be asked to do a quicksort algorithm or something. But I would never trust my own
+
+43
+00:03:01,980 --> 00:03:07,340
+algorithm compared to something that is in a library ecosystem that has been validated by
+
+44
+00:03:07,340 --> 00:03:13,660
+hundreds or thousands of users. So yes, I use a lot of libraries all the time. I don't want to
+
+45
+00:03:13,660 --> 00:03:23,020
+reinvent the wheel if somebody already has perfected it. Correct. So if you were there
+
+46
+00:03:23,020 --> 00:03:28,060
+in the first day when [Name] and [Name] were introducing some beautiful introduction to the
+
+47
+00:03:28,060 --> 00:03:34,140
+course. So [Name] asked from [Name], when did you start using Python? And I know for a fact that
+
+48
+00:03:34,140 --> 00:03:37,340
+Yano is a very heavy user of this Python.
+
+49
+00:03:37,340 --> 00:03:39,660
+But he has to think a little bit.
+
+50
+00:03:39,660 --> 00:03:41,780
+When did I actually use Python?
+
+51
+00:03:41,780 --> 00:03:44,780
+So that's a very important thing that you mentioned, [Name].
+
+52
+00:03:44,780 --> 00:03:51,140
+That means Python itself is not a very useful part of it.
+
+53
+00:03:51,140 --> 00:03:53,740
+It is just what people made out of Python.
+
+54
+00:03:53,740 --> 00:03:57,460
+So earlier, if you remember that,
+
+55
+00:03:57,460 --> 00:04:01,060
+I don't know when you were young how you learned programming.
+
+56
+00:04:01,060 --> 00:04:04,180
+they taught us pseudocode, you know,
+
+57
+00:04:04,180 --> 00:04:07,740
+and you had to learn how the programming tactics
+
+58
+00:04:07,740 --> 00:04:09,900
+in order to actually write a big,
+
+59
+00:04:09,900 --> 00:04:11,900
+by the time you end up writing some code,
+
+60
+00:04:11,900 --> 00:04:13,780
+you have learned about a semester of,
+
+61
+00:04:13,780 --> 00:04:16,140
+you know, what programming is.
+
+62
+00:04:16,140 --> 00:04:18,820
+So this Python made it more democratic.
+
+63
+00:04:18,820 --> 00:04:20,460
+It doesn't matter where you come from.
+
+64
+00:04:20,460 --> 00:04:22,700
+We have come from biology, mathematics,
+
+65
+00:04:22,700 --> 00:04:25,180
+space science, or whatever it is.
+
+66
+00:04:25,180 --> 00:04:28,540
+You can just start achieving something.
+
+67
+00:04:28,540 --> 00:04:32,380
+So that achievement comes from the library ecosystem, as you said.
+
+68
+00:04:33,220 --> 00:04:33,580
+Yes.
+
+69
+00:04:33,580 --> 00:04:40,420
+And also I would add here that, like, for example, my first start in Python,
+
+70
+00:04:40,420 --> 00:04:44,420
+when I started working on it, I was in a summer job in Aalto University, actually.
+
+71
+00:04:44,420 --> 00:04:48,940
+And I had to convert a code that was using Python numeric, which was
+
+72
+00:04:48,940 --> 00:04:50,860
+this really old library, to NumPy.
+
+73
+00:04:51,380 --> 00:04:56,420
+So I had to convert this code that used this old library to a new library.
+
+74
+00:04:56,420 --> 00:05:02,980
+And the reason behind is that NumPy, like we have spoken already, underneath it, it's
+
+75
+00:05:02,980 --> 00:05:05,380
+C and Fortran, like underneath it.
+
+76
+00:05:05,380 --> 00:05:07,060
+But nobody wants to touch that part.
+
+77
+00:05:07,060 --> 00:05:12,300
+Like nobody wants to see that part because it's harder to write and more laborious to
+
+78
+00:05:12,300 --> 00:05:13,300
+write.
+
+79
+00:05:13,300 --> 00:05:15,420
+It's much easier to work with the NumPy.
+
+80
+00:05:15,420 --> 00:05:19,480
+And that's why like Python is so popular.
+
+81
+00:05:19,480 --> 00:05:23,060
+You can write these like other things on top of other things.
+
+82
+00:05:23,060 --> 00:05:27,980
+So at the bottom, you can have the C stuff and the Fortran stuff and that sort of thing,
+
+83
+00:05:27,980 --> 00:05:29,980
+but you don't ever have to necessarily touch it.
+
+84
+00:05:29,980 --> 00:05:33,880
+You can just interact with Python things and that's fine.
+
+85
+00:05:33,880 --> 00:05:40,740
+And that still gives you most of the speed that C and Fortran would give, but much more
+
+86
+00:05:40,740 --> 00:05:41,740
+usability.
+
+87
+00:05:41,740 --> 00:05:42,740
+Correct.
+
+88
+00:05:42,740 --> 00:05:47,660
+So it is not the time you first tried the Hello World, you know, it's not the Python
+
+89
+00:05:47,660 --> 00:05:48,660
+usage.
+
+90
+00:05:48,660 --> 00:05:52,920
+People actually use Python when they use a library and do something.
+
+91
+00:05:52,920 --> 00:05:55,120
+So that's why people think a little bit,
+
+92
+00:05:55,120 --> 00:05:56,480
+when did I actually use Python?
+
+93
+00:05:56,480 --> 00:05:58,640
+So it's not the Python hello world print,
+
+94
+00:05:58,640 --> 00:06:00,920
+it's actually the libraries ecosystem.
+
+95
+00:06:00,920 --> 00:06:04,200
+And then it is very nice that we have placed
+
+96
+00:06:04,200 --> 00:06:08,160
+all these terms in the same screen
+
+97
+00:06:09,080 --> 00:06:11,000
+because taking them alone,
+
+98
+00:06:11,000 --> 00:06:12,840
+libraries, packages, and dependencies,
+
+99
+00:06:12,840 --> 00:06:15,640
+sometimes it's hard to sort of comprehend
+
+100
+00:06:15,640 --> 00:06:16,680
+what this is about.
+
+101
+00:06:17,560 --> 00:06:22,560
+So I like to think of libraries as like a screwdriver.
+
+102
+00:06:22,560 --> 00:06:35,680
+you can it's it's not like well documented or well sort of made for like there's no big description
+
+103
+00:06:35,680 --> 00:06:40,880
+of how to do it but people who know how to use it they know how to use it but the package is more
+
+104
+00:06:40,880 --> 00:06:46,480
+like a tool set with a set of screwdrivers and there are some instruction and there are different
+
+105
+00:06:46,480 --> 00:06:51,880
+different gauges, different lengths. So you have this difference. So is that a good way
+
+106
+00:06:51,880 --> 00:06:57,480
+to look at it, these libraries and packages? So how do you look at it?
+
+107
+00:06:57,480 --> 00:07:03,760
+Yeah, like libraries, when we talk about libraries, we can often mean multiple things. So for
+
+108
+00:07:03,760 --> 00:07:10,040
+example, like library can be, like usually everything in Python is a module also. Like
+
+109
+00:07:10,040 --> 00:07:14,320
+I'm not completely certain what module means in the context of Python, because it's used
+
+110
+00:07:14,320 --> 00:07:19,680
+so many places so that it becomes a bit more like, like it's used so often that it loses
+
+111
+00:07:19,680 --> 00:07:20,980
+the meaning.
+
+112
+00:07:20,980 --> 00:07:25,600
+Like if you say a certain word enough, you don't know what it means anymore.
+
+113
+00:07:25,600 --> 00:07:31,320
+But usually like libraries are like, libraries and modules, they can be a bit like all over
+
+114
+00:07:31,320 --> 00:07:38,520
+the place, unless they have been like packaged together and made into like a complete set
+
+115
+00:07:38,520 --> 00:07:40,760
+of like tools.
+
+116
+00:07:40,760 --> 00:07:47,880
+and like usually when we talk about packages, we mean that there's like a bunch of code and
+
+117
+00:07:47,880 --> 00:07:52,280
+you don't want to look what necessarily what's inside of it if it works correctly. But you want
+
+118
+00:07:52,280 --> 00:07:58,600
+to interact with that code with certain like functions or objects or certain things that it
+
+119
+00:07:59,160 --> 00:08:05,320
+presents you. So, for example, like you NumPy arrays have a lot of like hidden things inside
+
+120
+00:08:05,320 --> 00:08:08,840
+of the hidden attributes and that sort of thing. But you don't want to work with those because they
+
+121
+00:08:08,840 --> 00:08:15,240
+are inside the package. You want to work with the functions that the arrays present you or what the
+
+122
+00:08:15,240 --> 00:08:21,720
+developers of the package present you. So, you want to only deal with the outermost layer of
+
+123
+00:08:21,720 --> 00:08:27,080
+the package because that's what the developers of the package want to give you. And that's how it
+
+124
+00:08:27,080 --> 00:08:32,760
+usually goes, that you have an outermost layer of nice things that you can use and inside there's
+
+125
+00:08:33,800 --> 00:08:38,600
+a whole mess of stuff. But you don't necessarily need to worry about that because that's the
+
+126
+00:08:38,600 --> 00:08:43,280
+the packet manager's problem, or developer's problem.
+
+127
+00:08:43,280 --> 00:08:46,560
+Yeah, you are presented with an easier interface
+
+128
+00:08:46,560 --> 00:08:48,200
+for what you want to achieve.
+
+129
+00:08:48,200 --> 00:08:49,760
+And when it becomes dependencies,
+
+130
+00:08:49,760 --> 00:08:52,000
+it's also like libraries and packages.
+
+131
+00:08:52,000 --> 00:08:53,960
+If you are building something, let's
+
+132
+00:08:53,960 --> 00:08:55,880
+say if you were to build a table,
+
+133
+00:08:55,880 --> 00:08:57,800
+you need nails and bolts.
+
+134
+00:08:57,800 --> 00:09:01,240
+So these nails and bolts are sort of like dependencies.
+
+135
+00:09:01,240 --> 00:09:04,160
+So the table could not be made without those things.
+
+136
+00:09:04,160 --> 00:09:07,760
+And then these nails, they are specific length, type,
+
+137
+00:09:07,760 --> 00:09:12,440
+and gurge, you know, not all nails will fit all joints.
+
+138
+00:09:12,440 --> 00:09:14,560
+So there are, when it comes to dependencies,
+
+139
+00:09:14,560 --> 00:09:17,660
+it's about other things that you need to,
+
+140
+00:09:18,840 --> 00:09:20,280
+for your code to work.
+
+141
+00:09:20,280 --> 00:09:22,120
+And also there are some specifications
+
+142
+00:09:22,120 --> 00:09:24,520
+that we will go on later on.
+
+143
+00:09:24,520 --> 00:09:28,160
+And then we talk about this sci-fi,
+
+144
+00:09:28,160 --> 00:09:30,800
+scientific Python ecosystem.
+
+145
+00:09:30,800 --> 00:09:35,800
+This is maybe the ecosystem most of the research community,
+
+146
+00:09:35,800 --> 00:09:41,400
+they get, they would think that they start using Python, you know, when they start using this.
+
+147
+00:09:42,360 --> 00:09:49,000
+So we have this NumPy, SciPi, Matplotlib, Pandas for data structures, you know, Pandas could,
+
+148
+00:09:49,720 --> 00:09:55,400
+when people work, researchers work with data, it could do wonders, they get, you know, really amazed
+
+149
+00:09:55,400 --> 00:10:01,320
+how Pandas could help them, you know, they could scrape web pages for tables, they could create
+
+150
+00:10:01,320 --> 00:10:08,840
+data frames and then you have the NumPy with all the optimized array functions and all the
+
+151
+00:10:08,840 --> 00:10:16,280
+mathematical functions there. So this is kind of the ecosystem that people start actually
+
+152
+00:10:16,280 --> 00:10:22,760
+interacting, not all people, but researchers that we interact with. And yes, [Name]?
+
+153
+00:10:22,760 --> 00:10:27,800
+Yeah, and I'll just mention quickly that also this ecosystem is highly influential to other
+
+154
+00:10:27,800 --> 00:10:37,160
+packages. Yesterday, there was questions in the chat, for example, about [?] or[?], which
+
+155
+00:10:37,160 --> 00:10:42,840
+are built upon pandas, but do pandas more efficiently or more in parallel or something like
+
+156
+00:10:42,840 --> 00:10:49,320
+that? But they usually build upon the syntax and the ideas behind these packages. So there are
+
+157
+00:10:49,320 --> 00:10:56,520
+lots of packages that do the same thing again, but they try to reuse as much of the language that
+
+158
+00:10:56,520 --> 00:11:01,720
+NumPy and Pandas and Matplotlib. They do similar kinds of things, but they might do it a bit
+
+159
+00:11:01,720 --> 00:11:09,240
+differently or better or something like that, or efficiently or in parallel. But they usually
+
+160
+00:11:09,240 --> 00:11:15,880
+reuse the language. They reuse the same kinds of concepts. So if you learn these core concepts
+
+161
+00:11:15,880 --> 00:11:24,440
+around the NumPy ecosystem, you can then transfer them to other things or in other ecosystems
+
+162
+00:11:24,440 --> 00:11:27,440
+or in other tools that use this?
+
+163
+00:11:27,440 --> 00:11:32,440
+Yes. So in addition, there are other packages like scikit-learn.
+
+164
+00:11:32,440 --> 00:11:35,440
+This is not like an exhaustive list here.
+
+165
+00:11:35,440 --> 00:11:37,440
+So this is a part of it.
+
+166
+00:11:37,440 --> 00:11:40,440
+So if you're doing some classification machine learning,
+
+167
+00:11:40,440 --> 00:11:45,440
+even scikit-learn is using these packages.
+
+168
+00:11:45,440 --> 00:11:50,440
+And if you extend things like PyTorch has an optimized version of NumPy
+
+169
+00:11:50,440 --> 00:11:57,160
+by manipulations for machine learning related operations.
+
+170
+00:11:57,160 --> 00:11:59,840
+And the rest is really similar.
+
+171
+00:11:59,840 --> 00:12:05,520
+This is for people to read about the packages.
+
+172
+00:12:05,520 --> 00:12:08,400
+So I would not spend time on reading through this
+
+173
+00:12:08,400 --> 00:12:10,640
+because I think the next lesson of dependency
+
+174
+00:12:10,640 --> 00:12:13,960
+we can talk a little bit more.
+
+175
+00:12:13,960 --> 00:12:17,240
+Only thing before I give it to you, I want to mention
+
+176
+00:12:17,240 --> 00:12:23,240
+is this connected to Python to other languages,
+
+177
+00:12:23,240 --> 00:12:27,080
+because we'll talk about Conda, for example, next.
+
+178
+00:12:27,080 --> 00:12:29,680
+So connected to other languages, the library
+
+179
+00:12:29,680 --> 00:12:32,760
+that we were talking about, NumPy, is a good example.
+
+180
+00:12:32,760 --> 00:12:38,320
+So there are certain things Python, they could do it,
+
+181
+00:12:38,320 --> 00:12:41,760
+but there are other programming languages like C
+
+182
+00:12:41,760 --> 00:12:43,640
+could do it better.
+
+183
+00:12:43,640 --> 00:12:48,480
+For initially, when the code you write,
+
+184
+00:12:48,480 --> 00:12:51,120
+it could write on your laptop, run on laptop.
+
+185
+00:12:51,120 --> 00:12:53,520
+But if you want to go to a high-performance computer
+
+186
+00:12:53,520 --> 00:12:57,720
+system, or a bigger server, or to achieve bigger things,
+
+187
+00:12:57,720 --> 00:13:00,240
+you have to use the resources optimally,
+
+188
+00:13:00,240 --> 00:13:03,320
+and also to understand the underlying hardware.
+
+189
+00:13:03,320 --> 00:13:07,920
+For example, how wide is your processor's registry width,
+
+190
+00:13:07,920 --> 00:13:08,960
+for example.
+
+191
+00:13:08,960 --> 00:13:10,800
+That kind of things we don't worry about when
+
+192
+00:13:10,800 --> 00:13:12,680
+you do Python programming.
+
+193
+00:13:12,680 --> 00:13:16,120
+So Python provides these libraries.
+
+194
+00:13:16,120 --> 00:13:21,420
+Behind the scenes, they use C or Fortran or other languages.
+
+195
+00:13:21,420 --> 00:13:23,120
+For example, [Name] slightly mentioned
+
+196
+00:13:23,120 --> 00:13:28,080
+that you have this one data, one program that you want
+
+197
+00:13:28,080 --> 00:13:30,440
+to introduce different data sets.
+
+198
+00:13:30,440 --> 00:13:34,920
+So we call this the SIMD, single instruction multiple data
+
+199
+00:13:34,920 --> 00:13:37,320
+kind of work.
+
+200
+00:13:37,320 --> 00:13:40,680
+So those are better done in other languages than Python.
+
+201
+00:13:40,680 --> 00:13:43,000
+But you don't have to learn all those things.
+
+202
+00:13:43,000 --> 00:13:45,920
+You only need to learn how to call those.
+
+203
+00:13:45,920 --> 00:13:50,920
+So if you want to do some vectorization, for example,
+
+204
+00:13:50,920 --> 00:13:54,280
+if you have a loop that goes through 10 things,
+
+205
+00:13:54,280 --> 00:13:55,960
+you could do Python loop.
+
+206
+00:13:55,960 --> 00:13:58,400
+But if the loop is going through 100,000 things,
+
+207
+00:13:58,400 --> 00:14:01,680
+you don't want to go through the 100,000 steps one by one.
+
+208
+00:14:01,680 --> 00:14:05,880
+You want to go 100 steps at a time or 1,000 steps at a time.
+
+209
+00:14:05,880 --> 00:14:09,440
+So those kind of things we call loop vectorization
+
+210
+00:14:09,440 --> 00:14:15,200
+could be handled by this code, but you could still use them inside your Python environment.
+
+211
+00:14:16,960 --> 00:14:20,880
+Is there anything else that you want to mention here before I give it to you?
+
+212
+00:14:20,880 --> 00:14:25,360
+Yeah, I'll quickly mention this last chapter about evaluating Python packages.
+
+213
+00:14:25,360 --> 00:14:31,920
+So how do you know what is good? If you go to GitHub, there's like a million packages.
+
+214
+00:14:31,920 --> 00:14:37,680
+And there is no single way of determining what is good or something is bad. What I usually do
+
+215
+00:14:37,680 --> 00:14:46,160
+is like, let's say our user wants to solve a certain problem and they wonder if they should
+
+216
+00:14:46,160 --> 00:14:53,200
+re-implement an algorithm or if there already exists an algorithm that does it. I try to find
+
+217
+00:14:53,200 --> 00:14:59,520
+with the corresponding keywords, like a git repository or something in GitHub that would
+
+218
+00:14:59,520 --> 00:15:04,560
+provide such a package. And then I look for various factors, like is there a community around
+
+219
+00:15:04,560 --> 00:15:10,880
+this package? Has it been validated scientifically? Is there papers published from the package?
+
+220
+00:15:10,880 --> 00:15:15,840
+Are there lots of stars? When was the last commit? These sort of things. You need to usually check
+
+221
+00:15:16,640 --> 00:15:22,960
+what is the community around it? Is it a trustworthy source? Is it some random guy
+
+222
+00:15:22,960 --> 00:15:29,280
+somewhere? Can I actually myself validate it? Of course, I cannot validate, let's say, NumPy. I
+
+223
+00:15:29,280 --> 00:15:31,880
+I don't have time to read the whole source code,
+
+224
+00:15:31,880 --> 00:15:35,480
+but if it's like one page long,
+
+225
+00:15:35,480 --> 00:15:37,480
+maybe I can see what it does.
+
+226
+00:15:37,480 --> 00:15:39,960
+And these sort of things, there's various factors.
+
+227
+00:15:39,960 --> 00:15:42,440
+And here's some questions that you can ask yourself
+
+228
+00:15:42,440 --> 00:15:44,520
+when you're trying to validate.
+
+229
+00:15:44,520 --> 00:15:46,360
+And I would say that it's always a good idea
+
+230
+00:15:46,360 --> 00:15:48,840
+to first look if somebody else has done it
+
+231
+00:15:48,840 --> 00:15:51,720
+and maybe check if you can extend upon it.
+
+232
+00:15:51,720 --> 00:15:54,520
+Like, for example, many frameworks,
+
+233
+00:15:54,520 --> 00:15:56,520
+like, for example, Scikit-learn,
+
+234
+00:15:56,520 --> 00:15:58,840
+they provide a very comprehensive way
+
+235
+00:15:58,840 --> 00:16:01,880
+of extending their own things so that you can,
+
+236
+00:16:01,880 --> 00:16:03,840
+like if you write the way they write,
+
+237
+00:16:03,840 --> 00:16:06,560
+they're like models and that sort of thing,
+
+238
+00:16:06,560 --> 00:16:10,000
+you can reuse all of the other tools that they provide.
+
+239
+00:16:10,000 --> 00:16:13,760
+And then you don't have to like figure out
+
+240
+00:16:13,760 --> 00:16:16,000
+how to do like a cross-validation
+
+241
+00:16:16,000 --> 00:16:17,280
+or something like that yourself,
+
+242
+00:16:17,280 --> 00:16:18,520
+because you can use the algorithm
+
+243
+00:16:18,520 --> 00:16:20,480
+that they use for cross-validation
+
+244
+00:16:20,480 --> 00:16:22,680
+for your model or something like that.
+
+245
+00:16:22,680 --> 00:16:24,440
+So it's usually a good idea to check
+
+246
+00:16:24,440 --> 00:16:27,360
+what the packages provide, how to extend.
+
+247
+00:16:27,360 --> 00:16:30,060
+Usually there's like a development document somewhere
+
+248
+00:16:30,060 --> 00:16:32,500
+where they say that, okay, how to extend these packets.
+
+249
+00:16:32,500 --> 00:16:35,140
+And then they provide like guide
+
+250
+00:16:35,140 --> 00:16:37,700
+on how to write my own stuff
+
+251
+00:16:37,700 --> 00:16:40,220
+on top of already existing library.
+
+252
+00:16:40,220 --> 00:16:41,780
+And it's usually not that hard.
+
+253
+00:16:41,780 --> 00:16:45,060
+It's usually much harder to start something from scratch.
+
+254
+00:16:45,060 --> 00:16:46,820
+And of course, sometimes it's needed,
+
+255
+00:16:46,820 --> 00:16:49,820
+but a lot of times you can build upon
+
+256
+00:16:49,820 --> 00:16:51,780
+what other people have done.
+
+257
+00:16:51,780 --> 00:16:54,580
+Yes, so I will only comment about the security part
+
+258
+00:16:54,580 --> 00:16:57,380
+because you mentioned the list,
+
+259
+00:16:57,380 --> 00:16:59,420
+there could be malicious packages as well.
+
+260
+00:16:59,420 --> 00:17:03,460
+So there is trust, so research is based on trust actually.
+
+261
+00:17:03,460 --> 00:17:07,860
+So when you use a library,
+
+262
+00:17:07,860 --> 00:17:10,940
+especially if the library concerns like web security,
+
+263
+00:17:10,940 --> 00:17:13,220
+for example, you can't just use a,
+
+264
+00:17:13,220 --> 00:17:15,700
+just because it's doing the thing what you do,
+
+265
+00:17:15,700 --> 00:17:17,260
+you need to have a proper understanding
+
+266
+00:17:17,260 --> 00:17:19,460
+of what it actually do.
+
+267
+00:17:19,460 --> 00:17:21,860
+And also there could be malicious libraries,
+
+268
+00:17:21,860 --> 00:17:24,140
+misspelled malicious libraries.
+
+269
+00:17:24,140 --> 00:17:28,360
+you have NumPy and you like NumDy or something,
+
+270
+00:17:28,360 --> 00:17:29,400
+just to elude you.
+
+271
+00:17:29,400 --> 00:17:32,520
+So you have to be a little cautious as well.
+
+272
+00:17:32,520 --> 00:17:35,000
+Then I think we should go to the next lesson
+
+273
+00:17:35,000 --> 00:17:38,520
+about how we manage dependencies.
+
+274
+00:17:38,520 --> 00:17:40,920
+Yeah, yeah, let's jump to that.
+
+275
+00:17:40,920 --> 00:17:42,900
+So I'll take the screen share.
+
+276
+00:17:43,880 --> 00:17:47,860
+If [Name] can then switch to mine.
+
