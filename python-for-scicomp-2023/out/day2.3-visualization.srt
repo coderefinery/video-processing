@@ -1,0 +1,2436 @@
+1
+00:00:00,000 --> 00:00:00,180
+Thanks a lot.
+
+2
+00:00:00,180 --> 00:00:01,420
+And good morning, everybody.
+
+3
+00:00:01,420 --> 00:00:03,540
+Maybe we should, what I'm unsure about
+
+4
+00:00:03,540 --> 00:00:08,100
+is whether my microphone volume level is all right.
+
+5
+00:00:08,100 --> 00:00:12,860
+but so give us feedback somewhere on one of these chats.
+
+6
+00:00:13,900 --> 00:00:15,020
+But let's start with an introduction.
+
+7
+00:00:15,020 --> 00:00:16,220
+So my name is [name].
+
+8
+00:00:16,220 --> 00:00:19,340
+I'm super excited that I will teach
+
+9
+00:00:19,340 --> 00:00:21,300
+data visualization here with [Name].
+
+10
+00:00:21,300 --> 00:00:24,540
+We will talk about data visualization and Map.lib,
+
+11
+00:00:24,540 --> 00:00:26,420
+two topics I really like to talk about.
+
+12
+00:00:26,420 --> 00:00:29,380
+I work in Norway, in Tromsø.
+
+13
+00:00:30,300 --> 00:00:32,100
+I do research software engineering
+
+14
+00:00:32,100 --> 00:00:35,680
+and I like to help researchers with improving their code.
+
+15
+00:00:36,560 --> 00:00:40,320
+And I like to teach Python and different things. And with me is [Name].
+
+16
+00:00:41,360 --> 00:00:46,800
+Yeah, good morning, everyone. My name is [Name]. I work at the PDC Center for
+
+17
+00:00:46,800 --> 00:00:53,920
+High Performance Computing in Stockholm. But right now I'm sitting here from Uppsala.
+
+18
+00:00:56,480 --> 00:01:00,720
+And I realized that I should take the screen and arrange it. Let me do that.
+
+19
+00:01:00,720 --> 00:01:05,720
+Just a sec, he, no, that's not right.
+
+20
+00:01:07,560 --> 00:01:09,100
+Almost double range.
+
+21
+00:01:15,560 --> 00:01:17,400
+And while I opened the sharing window,
+
+22
+00:01:17,400 --> 00:01:19,220
+I will close my physical window.
+
+23
+00:01:21,080 --> 00:01:22,480
+All right.
+
+24
+00:01:22,480 --> 00:01:23,320
+Good.
+
+25
+00:01:25,680 --> 00:01:26,520
+Good.
+
+26
+00:01:26,520 --> 00:01:29,360
+We will talk about data visualization.
+
+27
+00:01:30,720 --> 00:01:35,720
+And let me first tell you how the best way to participate.
+
+28
+00:01:37,720 --> 00:01:38,880
+So what to expect.
+
+29
+00:01:39,920 --> 00:01:44,000
+It's good if you have your JupyterLab open,
+
+30
+00:01:44,000 --> 00:01:45,480
+and I understand you have that already
+
+31
+00:01:45,480 --> 00:01:47,000
+if you were following the Pandas episode,
+
+32
+00:01:47,000 --> 00:01:48,900
+but if you joined later,
+
+33
+00:01:48,900 --> 00:01:51,280
+it's a good moment to open up your JupyterLab.
+
+34
+00:01:51,280 --> 00:01:52,120
+We will be using it.
+
+35
+00:01:52,120 --> 00:01:55,940
+So we will be doing data visualization inside Jupyter.
+
+36
+00:01:55,940 --> 00:01:58,600
+And we will also explain why that is such a good fit.
+
+37
+00:01:58,600 --> 00:02:03,600
+And we also, you can open up this episode,
+
+38
+00:02:07,100 --> 00:02:08,680
+the data visualization with matplotlib,
+
+39
+00:02:08,680 --> 00:02:12,400
+which is also linked in our collaborative notes.
+
+40
+00:02:12,400 --> 00:02:14,880
+And [Name] and me, we will look at these notes.
+
+41
+00:02:15,780 --> 00:02:18,840
+So that's a good place to ask us questions.
+
+42
+00:02:18,840 --> 00:02:22,300
+And in a different window on my screen, I have them open,
+
+43
+00:02:22,300 --> 00:02:25,160
+and we will try to react to questions live.
+
+44
+00:02:25,160 --> 00:02:26,960
+So please keep the questions coming.
+
+45
+00:02:27,920 --> 00:02:31,000
+We plan to do a bit of introduction
+
+46
+00:02:31,000 --> 00:02:32,800
+for the first 15 minutes.
+
+47
+00:02:33,800 --> 00:02:36,220
+We will then do an exercise block.
+
+48
+00:02:36,220 --> 00:02:40,280
+So you will get 20 minutes to try this on your own.
+
+49
+00:02:40,280 --> 00:02:41,520
+We will then do a break.
+
+50
+00:02:43,800 --> 00:02:48,400
+And after the break, we will do something,
+
+51
+00:02:48,400 --> 00:02:53,400
+we will talk about how to make plots even prettier.
+
+52
+00:02:53,920 --> 00:02:56,120
+And then we will have another exercise block.
+
+53
+00:02:56,960 --> 00:03:06,840
+And now the question is, should you, should you, as we, as we show you how this works
+
+54
+00:03:06,840 --> 00:03:11,360
+in a notebook, you can, you can either try that with us.
+
+55
+00:03:11,360 --> 00:03:15,180
+So if I add something to the notebook, you can do it as well.
+
+56
+00:03:15,180 --> 00:03:20,800
+If that is cognitively a bit too much to listen and also go into a different window and type
+
+57
+00:03:20,800 --> 00:03:27,240
+something it's also totally fine to just watch what we do and you will have enough time in
+
+58
+00:03:27,240 --> 00:03:41,520
+the exercise box to try it yourself good so let's first motivate why we do this and why
+
+59
+00:03:41,520 --> 00:03:47,800
+we chose matplotlib and why we do that in a jupyter notebook let me just arrange the
+
+60
+00:03:47,800 --> 00:03:50,920
+to Windows here on my side so that I can see your questions.
+
+61
+00:03:52,600 --> 00:03:54,280
+Let me also zoom in here a bit.
+
+62
+00:03:57,760 --> 00:03:59,460
+Data visualization with Matplotlib.
+
+63
+00:04:00,760 --> 00:04:02,880
+So our goal is not becoming experts
+
+64
+00:04:02,880 --> 00:04:05,660
+and knowing everything that can be done with Matplotlib,
+
+65
+00:04:05,660 --> 00:04:08,440
+but we want to give you a really good overview
+
+66
+00:04:08,440 --> 00:04:12,440
+of how to find help, how do we use it,
+
+67
+00:04:14,760 --> 00:04:17,560
+and what are good starting points,
+
+68
+00:04:17,560 --> 00:04:20,960
+and how does it connect to the previous episodes
+
+69
+00:04:20,960 --> 00:04:22,320
+like pandas?
+
+70
+00:04:22,320 --> 00:04:23,320
+So that's our goal.
+
+71
+00:04:24,800 --> 00:04:28,320
+In total, we will spend one and a half hours on this topic.
+
+72
+00:04:32,280 --> 00:04:34,920
+So not only being able to start,
+
+73
+00:04:34,920 --> 00:04:38,520
+we also want to show you how can you tweak,
+
+74
+00:04:38,520 --> 00:04:41,960
+how can you improve plots without remembering
+
+75
+00:04:41,960 --> 00:04:43,320
+all the options and the commands
+
+76
+00:04:43,320 --> 00:04:45,320
+because we don't remember them either.
+
+77
+00:04:45,320 --> 00:04:53,200
+The application interface of Matplotlib is, is really big.
+
+78
+00:04:53,200 --> 00:05:00,600
+And it's also so that, so [name], is Matplotlib the only Python package for visualization or
+
+79
+00:05:00,600 --> 00:05:01,600
+are there more?
+
+80
+00:05:01,600 --> 00:05:02,600
+No.
+
+81
+00:05:02,600 --> 00:05:03,600
+Opportunities?
+
+82
+00:05:03,600 --> 00:05:06,360
+So there are many.
+
+83
+00:05:06,360 --> 00:05:10,160
+Here are the ones that we know, that we know.
+
+84
+00:05:10,160 --> 00:05:13,800
+So there are probably even more.
+
+85
+00:05:13,800 --> 00:05:20,080
+I have tested most of them and I use them in different contexts.
+
+86
+00:05:20,080 --> 00:05:21,080
+So there is matplotlib.
+
+87
+00:05:21,080 --> 00:05:23,640
+This is the one that we will show you.
+
+88
+00:05:23,640 --> 00:05:31,840
+There is also, and it is probably the most popular one, but there is Seaborn, which builds
+
+89
+00:05:31,840 --> 00:05:32,920
+on top of matplotlib.
+
+90
+00:05:32,920 --> 00:05:40,240
+There is Vega out there, plotly, ggplot, and then there are different libraries for more
+
+91
+00:05:40,240 --> 00:05:42,800
+special use cases.
+
+92
+00:05:42,800 --> 00:05:50,140
+I would consider the top four here or the top five really general.
+
+93
+00:05:50,140 --> 00:05:56,060
+So there are many libraries and also Python is not the only language that can do plotting.
+
+94
+00:05:56,060 --> 00:06:00,220
+So why do, why do we do matplotlib?
+
+95
+00:06:00,220 --> 00:06:06,620
+So I would say one, one very, very good thing with matplotlib is that, I mean, as Python
+
+96
+00:06:06,620 --> 00:06:11,140
+is a completely free ecosystem, it is transferable.
+
+97
+00:06:11,140 --> 00:06:14,460
+So if you write the plotting scripts in matplotlib,
+
+98
+00:06:14,460 --> 00:06:16,220
+you can share them with your colleagues
+
+99
+00:06:16,220 --> 00:06:19,020
+and also with the community at large.
+
+100
+00:06:20,060 --> 00:06:22,460
+This can be done a little bit in contrast
+
+101
+00:06:22,460 --> 00:06:25,100
+with some commercial packages for plotting
+
+102
+00:06:25,100 --> 00:06:26,860
+where you might have a lock-in effect
+
+103
+00:06:26,860 --> 00:06:29,340
+that you prepare your scripting and then you share it
+
+104
+00:06:29,340 --> 00:06:33,660
+and others cannot, perhaps they can read the script file,
+
+105
+00:06:33,660 --> 00:06:35,180
+but they cannot make use of it
+
+106
+00:06:35,180 --> 00:06:36,820
+because they do not have the program.
+
+107
+00:06:36,820 --> 00:06:37,660
+Yeah.
+
+108
+00:06:39,060 --> 00:06:41,740
+And it may even be the same person or you
+
+109
+00:06:41,740 --> 00:06:43,020
+in a different job in future.
+
+110
+00:06:43,020 --> 00:06:46,040
+And so the fact that it is free,
+
+111
+00:06:46,040 --> 00:06:48,620
+that both Python is free and open source
+
+112
+00:06:48,620 --> 00:06:50,460
+and that matplotlib is free and open source
+
+113
+00:06:50,460 --> 00:06:52,380
+is really important.
+
+114
+00:06:52,380 --> 00:06:54,780
+And it's really important for reusability
+
+115
+00:06:54,780 --> 00:06:56,780
+and reproducibility.
+
+116
+00:06:56,780 --> 00:07:01,780
+And I like to, so when I talk about data visualization,
+
+117
+00:07:03,580 --> 00:07:05,020
+I like to start with this quote,
+
+118
+00:07:05,020 --> 00:07:06,700
+which I took from this fantastic book
+
+119
+00:07:06,700 --> 00:07:09,740
+by Claus Wilke, Fundamentals of Data Visualization,
+
+120
+00:07:09,740 --> 00:07:12,100
+which you can browse, the book is online.
+
+121
+00:07:13,300 --> 00:07:14,420
+And it is this quote here,
+
+122
+00:07:14,420 --> 00:07:17,660
+that one thing I have learned over the years
+
+123
+00:07:17,660 --> 00:07:19,360
+is that automation is our friend.
+
+124
+00:07:20,340 --> 00:07:22,500
+I think figures should be auto-generated
+
+125
+00:07:22,500 --> 00:07:24,660
+as part of a data analysis pipeline,
+
+126
+00:07:25,580 --> 00:07:27,140
+and they should come out of the pipeline
+
+127
+00:07:27,140 --> 00:07:30,500
+ready to be sent to the printer with,
+
+128
+00:07:30,500 --> 00:07:34,300
+and here I paraphrase, with minimal post-processing needed.
+
+129
+00:07:34,300 --> 00:07:39,300
+And this is because when we generate plots for posters
+
+130
+00:07:39,460 --> 00:07:44,300
+or publications or theses, at least in my experience,
+
+131
+00:07:44,300 --> 00:07:46,520
+I never do it only once.
+
+132
+00:07:46,520 --> 00:07:48,060
+I do it at least twice.
+
+133
+00:07:48,060 --> 00:07:50,620
+I do it once and then I do it again
+
+134
+00:07:50,620 --> 00:07:55,100
+one day before the deadline because something changed.
+
+135
+00:07:55,100 --> 00:07:59,340
+I want to modify the color or I get new data
+
+136
+00:07:59,340 --> 00:08:02,040
+or I realized that there was a tiny mistake
+
+137
+00:08:02,040 --> 00:08:04,840
+and I need to change the figure.
+
+138
+00:08:04,840 --> 00:08:08,140
+And if this is not automated, it's hard.
+
+139
+00:08:10,800 --> 00:08:13,200
+Might need different versions of your figures.
+
+140
+00:08:13,200 --> 00:08:17,400
+So the precise size and shape of a figure
+
+141
+00:08:17,400 --> 00:08:20,240
+that you have in a manuscript might be different
+
+142
+00:08:20,240 --> 00:08:22,640
+from what you then need to go on a poster
+
+143
+00:08:22,640 --> 00:08:25,640
+or on slides for presentation.
+
+144
+00:08:25,640 --> 00:08:27,160
+Then if you have that in script form,
+
+145
+00:08:27,160 --> 00:08:30,000
+you can then tune to the appropriate format
+
+146
+00:08:30,000 --> 00:08:31,940
+and then reuse your work.
+
+147
+00:08:32,040 --> 00:08:35,480
+Yeah. Or new data comes in and you want to update the figure.
+
+148
+00:08:35,480 --> 00:08:38,760
+And we will see that if we use tools like Matplotlib
+
+149
+00:08:39,640 --> 00:08:46,040
+in combination with tools like Jupyter Notebook, this becomes a really nice combination.
+
+150
+00:08:49,560 --> 00:08:57,400
+So we will now focus on Matplotlib, but you can browse, of course, all the other ones as well.
+
+151
+00:08:57,400 --> 00:09:08,400
+Well, at the end of the session, we might also have a look at one of the other libraries.
+
+152
+00:09:08,400 --> 00:09:12,820
+Why did we start with matplotlib? We motivated a little bit. It's also, so it is the most
+
+153
+00:09:12,820 --> 00:09:21,620
+popular library. It is, if you come from Matlab, it will feel familiar because it, it takes
+
+154
+00:09:21,620 --> 00:09:26,420
+a lot of inspiration from how plotting is in MATLAB.
+
+155
+00:09:26,420 --> 00:09:32,220
+Even if you choose to not use Matplotlib, maybe you prefer Seaborn.
+
+156
+00:09:32,220 --> 00:09:34,420
+Many of these libraries build on top of Matplotlib.
+
+157
+00:09:34,420 --> 00:09:39,300
+And then if you want to tweak it, improve it, it helps to have an understanding of Matplotlib
+
+158
+00:09:39,300 --> 00:09:45,940
+to be able to improve your plots.
+
+159
+00:09:45,940 --> 00:09:54,980
+But it is relatively low level, low level in terms of we can really modify everything.
+
+160
+00:09:54,980 --> 00:10:03,260
+So in terms of abstraction, it doesn't provide statistical functions.
+
+161
+00:10:03,260 --> 00:10:06,980
+Some of the some of the other libraries do.
+
+162
+00:10:06,980 --> 00:10:12,220
+But the advantage of my book is that you can adjust everything, you can really make things
+
+163
+00:10:12,220 --> 00:10:14,260
+publication ready.
+
+164
+00:10:14,260 --> 00:10:15,960
+and can be configured and modified.
+
+165
+00:10:18,060 --> 00:10:19,640
+And speaking of statistics,
+
+166
+00:10:19,640 --> 00:10:21,460
+which is not containing matplotlib,
+
+167
+00:10:21,460 --> 00:10:26,140
+I mean, you can naturally combine the matplotlib scripting
+
+168
+00:10:26,140 --> 00:10:28,940
+that you do with other Python packages,
+
+169
+00:10:28,940 --> 00:10:33,500
+such as numpy, scipy, and then mostly pandas
+
+170
+00:10:33,500 --> 00:10:35,540
+that we have been talking about earlier.
+
+171
+00:10:38,500 --> 00:10:41,420
+And I'm having just a quick look on the questions.
+
+172
+00:10:41,420 --> 00:10:45,020
+Thanks for coming, raising them.
+
+173
+00:10:45,020 --> 00:10:46,060
+For instance, question nine,
+
+174
+00:10:46,060 --> 00:10:51,060
+when should I use X and when should I use PLT?
+
+175
+00:10:51,060 --> 00:10:52,700
+This is something that confused me a lot
+
+176
+00:10:52,700 --> 00:10:56,320
+when learning and using maplotlib.
+
+177
+00:10:56,320 --> 00:10:57,460
+And we will comment on that.
+
+178
+00:10:57,460 --> 00:10:58,700
+So we will clarify that.
+
+179
+00:11:00,300 --> 00:11:02,860
+This is something I realized maybe 10 years into using it,
+
+180
+00:11:02,860 --> 00:11:04,980
+that there were these different interfaces.
+
+181
+00:11:04,980 --> 00:11:06,620
+So we will comment on it.
+
+182
+00:11:06,620 --> 00:11:08,580
+Also, another really good question is,
+
+183
+00:11:09,460 --> 00:11:14,460
+how is matplotlib built on top, built using,
+
+184
+00:11:16,860 --> 00:11:18,860
+so how does it connect to pandas?
+
+185
+00:11:18,860 --> 00:11:22,220
+And also this is something we will discuss.
+
+186
+00:11:22,220 --> 00:11:27,220
+Some of the plotting libraries interface with pandas
+
+187
+00:11:29,660 --> 00:11:32,740
+in a more nice way or less,
+
+188
+00:11:32,740 --> 00:11:34,700
+but also with matplotlib it is possible
+
+189
+00:11:34,700 --> 00:11:37,580
+to use pandas data frames.
+
+190
+00:11:37,580 --> 00:11:38,820
+we will come back to that.
+
+191
+00:11:40,940 --> 00:11:43,060
+But I think we are ready to open up the notebook
+
+192
+00:11:43,060 --> 00:11:46,380
+and start creating our first plot.
+
+193
+00:11:46,380 --> 00:11:50,700
+At this moment, you can either do it as well
+
+194
+00:11:50,700 --> 00:11:51,820
+if you have enough screen space
+
+195
+00:11:51,820 --> 00:11:54,940
+and enough cognitive management,
+
+196
+00:11:54,940 --> 00:11:56,540
+but you can also watch what we do.
+
+197
+00:11:56,540 --> 00:11:58,700
+You will have the chance to test it out
+
+198
+00:11:58,700 --> 00:12:00,060
+in the exercise block.
+
+199
+00:12:01,380 --> 00:12:03,260
+I will open up a new notebook.
+
+200
+00:12:03,260 --> 00:12:05,300
+So let's start with a new notebook.
+
+201
+00:12:05,300 --> 00:12:07,300
+Let's not continue from one from before.
+
+202
+00:12:07,580 --> 00:12:14,980
+I will open up a new one and also good first reflex is to rename it.
+
+203
+00:12:14,980 --> 00:12:19,580
+I don't want to have my notebooks untitled, untitled 1, untitled 2.
+
+204
+00:12:19,580 --> 00:12:20,700
+I want to give it a good name.
+
+205
+00:12:20,700 --> 00:12:21,860
+I will rename it.
+
+206
+00:12:21,860 --> 00:12:23,140
+Right click, rename notebook.
+
+207
+00:12:23,140 --> 00:12:29,620
+Let's call it plotting.
+
+208
+00:12:29,620 --> 00:12:32,860
+And back to the material.
+
+209
+00:12:32,860 --> 00:12:37,860
+I will copy paste the code here from this block.
+
+210
+00:12:38,100 --> 00:12:39,220
+I will run it in a notebook,
+
+211
+00:12:39,220 --> 00:12:41,520
+but let's also explain then what is happening.
+
+212
+00:12:43,020 --> 00:12:43,860
+Let me copy.
+
+213
+00:12:49,220 --> 00:12:50,220
+So I copied the whole block.
+
+214
+00:12:50,220 --> 00:12:52,020
+Let's see whether this works at all.
+
+215
+00:12:55,220 --> 00:12:58,420
+Yeah, you're in the Python for SciComp
+
+216
+00:12:58,420 --> 00:13:00,460
+Python environment, I guess.
+
+217
+00:13:00,460 --> 00:13:01,300
+Yes.
+
+218
+00:13:02,860 --> 00:13:11,340
+or anaconda environment yes yes so at this moment all we import is a library called matplotlib
+
+219
+00:13:13,660 --> 00:13:18,780
+which is part of the python for scicomp it is also part of an anaconda base environment
+
+220
+00:13:21,100 --> 00:13:26,060
+so if you get here an error that matplotlib not found then you are probably in a different
+
+221
+00:13:26,060 --> 00:13:36,860
+environment. And I ran this code, I got a first plot, which shows some dots. I have
+
+222
+00:13:36,860 --> 00:13:44,500
+an x axis, I have a y axis and a title, they are not very concrete yet. And now let's inspect
+
+223
+00:13:44,500 --> 00:13:50,740
+the corresponding code. What did what did we do, we imported the functionality. I am
+
+224
+00:13:50,740 --> 00:13:59,220
+I defined two lists of numbers x values y values
+
+225
+00:13:59,220 --> 00:14:06,420
+and these values take they are part of the so-called arms come squatted which is a really
+
+226
+00:14:06,420 --> 00:14:09,940
+important data set
+
+227
+00:14:09,940 --> 00:14:14,340
+because it is used to motivate why we even do data visualization because it's it's for
+
+228
+00:14:14,340 --> 00:14:16,540
+data sets which
+
+229
+00:14:16,540 --> 00:14:19,440
+really look very different when we plot them.
+
+230
+00:14:19,440 --> 00:14:23,120
+But when you look at the statistical values,
+
+231
+00:14:23,120 --> 00:14:26,960
+like the mean, the sample variance, the correlation,
+
+232
+00:14:26,960 --> 00:14:31,640
+the regression, the statistical values are the same.
+
+233
+00:14:31,640 --> 00:14:32,740
+So if I didn't plot these,
+
+234
+00:14:32,740 --> 00:14:34,880
+if I would only look at the numbers at the table,
+
+235
+00:14:34,880 --> 00:14:37,240
+I would maybe have less insight.
+
+236
+00:14:39,320 --> 00:14:43,160
+But back to the example, what else can we discuss here?
+
+237
+00:14:46,540 --> 00:14:55,580
+This is the important part. These two lines, we, we set up a figure and we set up axes.
+
+238
+00:14:55,580 --> 00:15:04,540
+These are objects, which we then can use to, for instance, do a scatter plot. And here
+
+239
+00:15:04,540 --> 00:15:10,460
+I sent the data X into, I said, these are the X values. These are the Y values. And
+
+240
+00:15:10,460 --> 00:15:15,460
+I define a color, which in a really weird format here,
+
+241
+00:15:16,580 --> 00:15:18,380
+but I will later comment on why we do this.
+
+242
+00:15:18,380 --> 00:15:20,500
+Instead, I could also use a named color.
+
+243
+00:15:20,500 --> 00:15:21,780
+I could say red.
+
+244
+00:15:23,200 --> 00:15:25,780
+And if I run that, then the dots will be red.
+
+245
+00:15:28,780 --> 00:15:30,480
+And this is self-descriptive here.
+
+246
+00:15:33,180 --> 00:15:35,220
+Just having a look at the questions.
+
+247
+00:15:35,220 --> 00:15:52,260
+using just import matplotlib instead of matplotlib.pyplot.
+
+248
+00:15:52,260 --> 00:15:58,340
+So why I do this here? Because there is more in matplotlib than the pyplot. Pyplot is one
+
+249
+00:15:58,340 --> 00:16:05,140
+of the interfaces that Matplotlib provides.
+
+250
+00:16:05,140 --> 00:16:14,460
+I could also import Matplotlib and then here I would have matplotlib.pyplot.plt.
+
+251
+00:16:14,460 --> 00:16:18,440
+I could do that as well and it would also work.
+
+252
+00:16:18,440 --> 00:16:23,580
+It wouldn't be on any noticeable penalty, maybe a little bit more typing.
+
+253
+00:16:23,580 --> 00:16:28,660
+I chose this way because this is often what people do and this is often what you find
+
+254
+00:16:28,660 --> 00:16:43,060
+when you look for examples on the internet or if you ask one of these AI chat solutions.
+
+255
+00:16:43,060 --> 00:16:48,780
+Just looking at the other, so question 15, is it better to use this way of doing it rather
+
+256
+00:16:48,780 --> 00:16:49,780
+than the PLT?
+
+257
+00:16:49,780 --> 00:16:50,780
+We will comment on that.
+
+258
+00:16:50,780 --> 00:16:53,020
+So we will come to this.
+
+259
+00:16:53,020 --> 00:16:58,820
+recommend to do it this way. So we show you the more robust way and but we need
+
+260
+00:16:58,820 --> 00:17:04,940
+to then also explain why this is possibly more robust. I think we will do
+
+261
+00:17:04,940 --> 00:17:07,860
+that after the exercise.
+
+262
+00:17:14,780 --> 00:17:22,420
+To go into the first exercise, so should we perhaps present it? Yes, so now you
+
+263
+00:17:22,420 --> 00:17:26,060
+you have all the tools ready to do the first exercise block.
+
+264
+00:17:26,060 --> 00:17:28,540
+Your goal, I mean, here it says 15 minutes,
+
+265
+00:17:28,540 --> 00:17:30,240
+but we really want to give you 20
+
+266
+00:17:31,620 --> 00:17:33,540
+until five minutes past the hour,
+
+267
+00:17:33,540 --> 00:17:36,180
+but I need to explain also clearly.
+
+268
+00:17:36,180 --> 00:17:39,940
+Your goal will be to do what we did here with [Name].
+
+269
+00:17:39,940 --> 00:17:43,220
+Open a notebook, copy the block, get it to run.
+
+270
+00:17:45,140 --> 00:17:48,500
+But once you get the image that we got here,
+
+271
+00:17:49,380 --> 00:17:55,460
+you are asked to extend it, you should add a second data set
+
+272
+00:17:58,020 --> 00:18:08,580
+and then yet another data set which is this one multiplied by two. And here we wanted to show you
+
+273
+00:18:08,580 --> 00:18:14,020
+also that this is a way to multiply all numbers. This is one of the many ways in Python to multiply
+
+274
+00:18:14,020 --> 00:18:25,700
+a list by a factor. Then you will get a plot that looks like this. And another thing that
+
+275
+00:18:25,700 --> 00:18:31,780
+you can try to do is browse the documentation, find out, so you can have a look at the quick
+
+276
+00:18:31,780 --> 00:18:39,060
+start guide and try to find out how can you get a label, sorry, a legend into the plot
+
+277
+00:18:39,060 --> 00:18:42,740
+that we can then link to the data values.
+
+278
+00:18:42,740 --> 00:18:44,780
+And at the end, it should look like this.
+
+279
+00:18:45,980 --> 00:18:49,180
+You can also experiment changing, modifying the colors.
+
+280
+00:18:49,180 --> 00:18:53,060
+And if you get stuck, there is a solution here.
+
+281
+00:18:53,060 --> 00:18:54,660
+So if I would open this up,
+
+282
+00:18:54,660 --> 00:18:55,980
+but I will do it only very quickly
+
+283
+00:18:55,980 --> 00:18:58,660
+because we don't want to have a spoiler,
+
+284
+00:18:58,660 --> 00:19:00,860
+but you find a solution for this exercise.
+
+285
+00:19:00,860 --> 00:19:04,900
+And then we can come back five minutes after the hour.
+
+286
+00:19:04,900 --> 00:19:09,900
+And after that, we will send you into a break.
+
+287
+00:19:13,700 --> 00:19:14,700
+And if you are curious about
+
+288
+00:19:14,700 --> 00:19:16,860
+why did we choose these particular colors,
+
+289
+00:19:16,860 --> 00:19:18,020
+here is an explanation.
+
+290
+00:19:21,580 --> 00:19:24,940
+Do we have everything we need for the exercise block?
+
+291
+00:19:24,940 --> 00:19:28,760
+So your goal is this exercise number matplotlib one.
+
+292
+00:19:28,760 --> 00:19:31,620
+And I will add instructions into the document
+
+293
+00:19:31,620 --> 00:19:35,580
+And we will be back five minutes after the hour.
+
+294
+00:19:38,580 --> 00:19:40,680
+All right, good luck and see you in a bit.
+
+295
+00:19:41,820 --> 00:19:42,660
+Bye.
+
+296
+00:19:42,660 --> 00:19:43,480
+Bye.
+
+297
+00:19:44,000 --> 00:19:48,620
+And welcome back from the break.
+
+298
+00:19:48,620 --> 00:19:53,100
+We will continue with Matplotlib.
+
+299
+00:19:53,100 --> 00:19:56,980
+I wanted to also show you the result of the exercise session.
+
+300
+00:19:56,980 --> 00:20:01,420
+So hopefully you get the result that looks like this.
+
+301
+00:20:01,420 --> 00:20:07,140
+You also find this in the solution.
+
+302
+00:20:07,140 --> 00:20:16,140
+So here we have plotted three sets of X and Y values with different colors.
+
+303
+00:20:16,140 --> 00:20:19,380
+I want to save the notebook.
+
+304
+00:20:19,380 --> 00:20:25,260
+I just wanted to remind a really good practice that I find very useful is that before I save
+
+305
+00:20:25,260 --> 00:20:32,820
+a notebook and before I share a notebook with other people, I like to run all cells from
+
+306
+00:20:32,820 --> 00:20:33,820
+top to bottom.
+
+307
+00:20:33,820 --> 00:20:40,100
+If the notebook is not too long, I would recommend to do the restart kernel.
+
+308
+00:20:40,100 --> 00:20:41,100
+Yeah.
+
+309
+00:20:41,100 --> 00:20:46,580
+This is even better because this will reset and run everything from top to bottom because
+
+310
+00:20:46,580 --> 00:20:49,080
+this is exactly what the next person will do.
+
+311
+00:20:49,080 --> 00:20:52,920
+Because the next person opening the notebook will not have anything in memory.
+
+312
+00:20:52,920 --> 00:20:53,920
+It will...
+
+313
+00:20:53,920 --> 00:20:59,160
+They will run the notebook from top to bottom and I want to make sure that it still produces
+
+314
+00:20:59,160 --> 00:21:03,600
+the results that I want it.
+
+315
+00:21:03,600 --> 00:21:06,120
+This will prevent me from having to run the notebook
+
+316
+00:21:06,120 --> 00:21:08,820
+in a very particular order that nobody will remember.
+
+317
+00:21:08,820 --> 00:21:09,840
+And now I can save.
+
+318
+00:21:11,980 --> 00:21:12,820
+Super.
+
+319
+00:21:12,820 --> 00:21:15,800
+And before I hand over to [Name],
+
+320
+00:21:15,800 --> 00:21:19,720
+and before we talk about now, how can we improve a plot?
+
+321
+00:21:19,720 --> 00:21:21,520
+How can we customize it?
+
+322
+00:21:21,520 --> 00:21:23,360
+I wanted to comment on the question
+
+323
+00:21:23,360 --> 00:21:25,400
+that we got a couple of times,
+
+324
+00:21:25,400 --> 00:21:30,400
+which is which of the two possible ways
+
+325
+00:21:30,800 --> 00:21:32,900
+that one can use Matplotlib should we use?
+
+326
+00:21:34,080 --> 00:21:40,320
+and why. And I admit, sorry I need to zoom in here, I admit that although I was using
+
+327
+00:21:40,320 --> 00:21:44,640
+Matplotlib for quite a while, it wasn't clear to me that there were actually two different interfaces.
+
+328
+00:21:45,440 --> 00:21:51,120
+And I got really confused because every time I was asking the internet for how do I do something in
+
+329
+00:21:51,120 --> 00:21:56,560
+Matplotlib, I saw an answer but it always looked different than what I remembered. And I was
+
+330
+00:21:56,560 --> 00:22:01,360
+doubting myself for a long while until I learned that there are actually two ways to run Matplotlib.
+
+331
+00:22:01,360 --> 00:22:11,740
+One way is the so-called object oriented way, or also called the explicit interface.
+
+332
+00:22:11,740 --> 00:22:15,880
+And in this explicit interface, we create these objects.
+
+333
+00:22:15,880 --> 00:22:17,820
+And then we use them.
+
+334
+00:22:17,820 --> 00:22:21,700
+This is the method that we use in this lesson.
+
+335
+00:22:21,700 --> 00:22:25,780
+This is also the method that we recommend.
+
+336
+00:22:25,780 --> 00:22:31,300
+There is another method, which is the so-called pi plot way of doing things, or the so-called
+
+337
+00:22:31,300 --> 00:22:38,180
+implicit interface, which looks shorter. So there is less to type. I don't have to create
+
+338
+00:22:38,180 --> 00:22:45,380
+the figure object. I don't have to create the axis object. I can do this directly. So
+
+339
+00:22:45,380 --> 00:22:53,000
+it looks easier. The downside is that now that we start customizing. So if I now change
+
+340
+00:22:53,000 --> 00:23:02,200
+the the line width and the format and colors and settings. I will affect
+
+341
+00:23:02,200 --> 00:23:08,680
+the settings for all my plots that come later in the notebook or in my Python code. And
+
+342
+00:23:08,680 --> 00:23:18,040
+sometimes this is not what you want. So this will be more practical. If you
+
+343
+00:23:18,040 --> 00:23:27,820
+Once you start putting this into a function, because then when you change settings, you
+
+344
+00:23:27,820 --> 00:23:32,620
+change settings only for the for the function that you want and for the plots that you wanted
+
+345
+00:23:32,620 --> 00:23:37,300
+instead of changing it implicitly for everything.
+
+346
+00:23:37,300 --> 00:23:43,220
+So that's why we recommend this way, but we show you both ways because so that again,
+
+347
+00:23:43,220 --> 00:23:46,160
+You know, if you then search Stack Overflow
+
+348
+00:23:47,280 --> 00:23:49,560
+or you ask chat GPT for,
+
+349
+00:23:49,560 --> 00:23:51,520
+how do I do something with my potlip?
+
+350
+00:23:51,520 --> 00:23:54,280
+You might get, you might see this kind of an answer.
+
+351
+00:23:54,280 --> 00:23:56,840
+And then you know why this is different
+
+352
+00:23:56,840 --> 00:23:58,400
+than what we have just learned.
+
+353
+00:24:00,880 --> 00:24:04,320
+Here's also an explanation why we even spent
+
+354
+00:24:04,320 --> 00:24:06,320
+now a couple of minutes emphasizing this.
+
+355
+00:24:06,320 --> 00:24:18,820
+And with this, [Name] will now take over and guide us through styling and customizing plots.
+
+356
+00:24:18,820 --> 00:24:23,160
+And we continue watching the collaborative notes.
+
+357
+00:24:23,160 --> 00:24:26,440
+And please continue asking questions, we really appreciate it.
+
+358
+00:24:26,440 --> 00:24:36,340
+Yes, thank you, Ranaan. So, we will now touch upon the topic of styling and customization
+
+359
+00:24:36,340 --> 00:24:46,120
+plots. And a starting notion here is this, that this is also an aspect of reproducibility.
+
+360
+00:24:46,120 --> 00:24:55,080
+Because I used myself earlier in the days to often do plots with, yeah, often with MATLAB.
+
+361
+00:24:55,080 --> 00:25:02,400
+And I would then get a certain feel and look of the figures, and perhaps do something which
+
+362
+00:25:02,400 --> 00:25:08,720
+needed to be tuned a little bit, and I might then do it in a drawing program.
+
+363
+00:25:08,720 --> 00:25:14,400
+That's fine if you do it once or twice, but if you need to do it for 10 figures, it's
+
+364
+00:25:14,400 --> 00:25:18,160
+a lot of extra work.
+
+365
+00:25:18,160 --> 00:25:25,440
+So matplotlib and other libraries, they allow to customize almost every aspect of a plot.
+
+366
+00:25:25,440 --> 00:25:29,720
+And it's going to be good to know what are the different matplotlib parts of a figure
+
+367
+00:25:29,720 --> 00:25:42,960
+so that we know what we can search for when to customize things. So we open up this. And
+
+368
+00:25:42,960 --> 00:25:45,880
+This is here for a two-dimensional figure.
+
+369
+00:25:45,880 --> 00:25:51,720
+So you can see here that in the object-oriented modality,
+
+370
+00:25:51,720 --> 00:25:55,680
+we have all of these variables.
+
+371
+00:25:55,680 --> 00:25:59,160
+So you have the axis set minor locator.
+
+372
+00:25:59,160 --> 00:26:02,400
+You have a major tick label.
+
+373
+00:26:02,400 --> 00:26:06,120
+You have the markers that you can change.
+
+374
+00:26:06,120 --> 00:26:08,880
+And you have a legend.
+
+375
+00:26:08,880 --> 00:26:10,840
+And one thing that can be very convenient,
+
+376
+00:26:10,840 --> 00:26:12,800
+which you can show later in the notebook,
+
+377
+00:26:12,800 --> 00:26:17,800
+is that in order to see what are the different properties
+
+378
+00:26:17,880 --> 00:26:20,280
+that are available, you can use the help command.
+
+379
+00:26:21,680 --> 00:26:24,540
+Yes, and it's also nice to know how is this even called?
+
+380
+00:26:24,540 --> 00:26:27,320
+Like if I want to web search for something,
+
+381
+00:26:27,320 --> 00:26:29,080
+I really like this figure because then I know
+
+382
+00:26:29,080 --> 00:26:31,800
+that I need to search for something called
+
+383
+00:26:31,800 --> 00:26:34,120
+Minotic or Legend.
+
+384
+00:26:36,040 --> 00:26:38,840
+Yes, yeah, good point.
+
+385
+00:26:38,840 --> 00:26:42,940
+There's also, yeah, below here on the same webpage,
+
+386
+00:26:42,940 --> 00:26:44,780
+you also have an extensive listing
+
+387
+00:26:44,780 --> 00:26:47,520
+on what are these properties in web format.
+
+388
+00:26:50,540 --> 00:26:54,860
+So, from this paragraph here,
+
+389
+00:26:54,860 --> 00:26:56,940
+we also have a resource here,
+
+390
+00:26:56,940 --> 00:26:59,100
+which is, this is a to a Github repository
+
+391
+00:26:59,100 --> 00:27:02,700
+with matplotlib cheat sheets.
+
+392
+00:27:02,700 --> 00:27:05,860
+So this is something that you can explore later.
+
+393
+00:27:05,860 --> 00:27:14,940
+There is also a number of predefined style sheets that you can activate with the use
+
+394
+00:27:14,940 --> 00:27:38,040
+command. We can show some of these. So these are with the different collections of colors
+
+395
+00:27:38,040 --> 00:27:47,120
+and marker styles and line styles that you then can choose from. And these are designed
+
+396
+00:27:47,120 --> 00:27:54,000
+so that they have a good, good collection of colors, which is something that is very
+
+397
+00:27:54,000 --> 00:28:00,080
+important because it is not uncommon that a reader or a viewer of your figures might
+
+398
+00:28:00,080 --> 00:28:11,640
+have a limited capability to be colorblind, red, green colorblind, or other vision impairments.
+
+399
+00:28:11,640 --> 00:28:21,200
+And then it's good to have a color palette that works also when you are working in a
+
+400
+00:28:21,200 --> 00:28:29,460
+gray in gray scale so that you have light. You have that the color range ranges from
+
+401
+00:28:29,460 --> 00:28:40,320
+lighter up until the darker yeah one like during my PhD one recommendation was always
+
+402
+00:28:40,320 --> 00:28:46,720
+to print print your plot in black and white on a printer to see how it looks then if somebody
+
+403
+00:28:46,720 --> 00:28:51,120
+later prints the paper on a black and white printer then later I thought well that doesn't
+
+404
+00:28:51,120 --> 00:28:54,640
+make any sense anymore because I think nobody's reading papers anymore in paper, people read
+
+405
+00:28:54,640 --> 00:28:59,760
+it on in a computer. But now again, I know that it does make sense because it can help
+
+406
+00:28:59,760 --> 00:29:11,080
+us identify any sort of color problems for color vision deficiencies.
+
+407
+00:29:11,080 --> 00:29:19,480
+So we will now have an hands on example of exercises and styling and I will do it as
+
+408
+00:29:19,480 --> 00:29:22,640
+as a demo, you will also have time to do
+
+409
+00:29:22,640 --> 00:29:25,400
+the in the exercise session.
+
+410
+00:29:25,400 --> 00:29:30,160
+So what we'll do here is that we'll import a data set
+
+411
+00:29:30,160 --> 00:29:33,840
+from using pandas.
+
+412
+00:29:35,840 --> 00:29:37,400
+So the exercise is this one,
+
+413
+00:29:37,400 --> 00:29:40,800
+customization one, log scale in map.lib.
+
+414
+00:29:43,360 --> 00:29:46,440
+And I will now switch over to do it in the,
+
+415
+00:29:46,440 --> 00:29:59,400
+in the notebook. So, I start with copying this text snippet here.
+
+416
+00:29:59,400 --> 00:30:05,120
+And please remind me because I was so distracting answering something. Should we now all do
+
+417
+00:30:05,120 --> 00:30:08,800
+the same thing as you or should we watch? You can watch.
+
+418
+00:30:08,800 --> 00:30:13,680
+Okay. Yeah. So, this is now imported a data set. This
+
+419
+00:30:13,680 --> 00:30:25,080
+is about the statistics of countries. It's the gapminder dataset. And we will then use
+
+420
+00:30:25,080 --> 00:30:32,840
+a plot command that we go into the plot. It's, we can maybe reconnect to the previous lesson
+
+421
+00:30:32,840 --> 00:30:40,840
+about pandas. So what people see here is that we load a CSV file from the internet, but then
+
+422
+00:30:40,840 --> 00:30:43,040
+is this read CSV command,
+
+423
+00:30:43,040 --> 00:30:47,000
+which we have seen in the previous episode.
+
+424
+00:30:47,000 --> 00:30:48,840
+And at the same time, there is dot query.
+
+425
+00:30:48,840 --> 00:30:52,480
+So we filter out and we are only interested
+
+426
+00:30:52,480 --> 00:30:55,180
+in the data for the year 2007.
+
+427
+00:30:55,180 --> 00:30:57,640
+And here we have four different countries.
+
+428
+00:30:57,640 --> 00:30:59,900
+We have the life expectancy,
+
+429
+00:31:01,240 --> 00:31:04,600
+and we are interested in GDP, the gross domestic product.
+
+430
+00:31:04,600 --> 00:31:09,280
+So roughly how wealthy the country is.
+
+431
+00:31:10,840 --> 00:31:34,080
+So, I now take this snippet here and I paste it in here and execute it and what we get
+
+432
+00:31:34,080 --> 00:31:44,680
+here is that what we choose to work with here is the life expect. We will visualize life
+
+433
+00:31:44,680 --> 00:31:57,160
+expectancy as a function of the GDP per capita in terms of perching parity. The PPP, what's
+
+434
+00:31:57,160 --> 00:32:08,240
+Yeah, so it's some like inflation adjusted US dollars that are also adjusted to have
+
+435
+00:32:08,240 --> 00:32:15,480
+a more fair comparison. So it's not US dollars, but for our purposes, we can think of like
+
+436
+00:32:15,480 --> 00:32:17,440
+inflation adjusted US dollars.
+
+437
+00:32:17,440 --> 00:32:26,440
+Yes. And what we note here is that the data is here and distributed so that it's seen here.
+
+438
+00:32:26,440 --> 00:32:39,560
+a lot of it is along the vertical, along the vertical line here, and then around this horizontal
+
+439
+00:32:39,560 --> 00:32:44,680
+line here, horizontal region here in uppermost in the plot. So the question is here, how
+
+440
+00:32:44,680 --> 00:32:53,320
+can we make better use of the visualization to highlight the data here? So do you have
+
+441
+00:32:53,320 --> 00:32:55,840
+When you suggest another one, what could be?
+
+442
+00:32:56,760 --> 00:32:58,440
+Yeah, so one step that we can do
+
+443
+00:32:58,440 --> 00:33:02,400
+is we can try a logarithmic axis, which will then,
+
+444
+00:33:02,400 --> 00:33:04,000
+because we have such a big difference
+
+445
+00:33:04,000 --> 00:33:07,240
+in orders of magnitude on the x-axis.
+
+446
+00:33:08,140 --> 00:33:11,120
+So by switching to, from a linear to a log axis,
+
+447
+00:33:11,120 --> 00:33:15,320
+it will, we will probably see the trend hopefully clear.
+
+448
+00:33:17,600 --> 00:33:22,600
+Exactly, so we need then to set the axis scale
+
+449
+00:33:23,320 --> 00:33:39,120
+to a logarithmic one. And this will do by setting this attribute, the setXScale to log.
+
+450
+00:33:39,120 --> 00:33:54,840
+that line. And I go to the notebook. And add it there. Set X dot set scale underscore X
+
+451
+00:33:54,840 --> 00:34:09,000
+scale log. Yes. And now we have the logarithmic scale on the X axis here. And yeah, what we
+
+452
+00:34:09,000 --> 00:34:19,000
+have here is much more much more evenly distributed within the canvas. There's
+
+453
+00:34:19,000 --> 00:34:24,760
+also here one attribute, the alpha attribute, that we can play around with
+
+454
+00:34:24,760 --> 00:34:32,120
+here. So the alpha attribute is at first it's a half. You can see what happens if
+
+455
+00:34:32,120 --> 00:34:43,620
+If you change it to 0.8, yeah, then you can see that this affects the, the, the transparency
+
+456
+00:34:43,620 --> 00:34:44,620
+of points.
+
+457
+00:34:44,620 --> 00:34:57,180
+So by using this higher value, we have a more dense visualization of all the thoughts.
+
+458
+00:34:57,180 --> 00:34:58,180
+Great.
+
+459
+00:34:58,180 --> 00:34:59,180
+And a question to both of us.
+
+460
+00:34:59,180 --> 00:35:05,540
+So do, do you remember all of these things like how to set a log axis, how to, what,
+
+461
+00:35:05,540 --> 00:35:09,940
+how to do the trust, how to set the transparency? Like I admit that I don't, so I almost never
+
+462
+00:35:09,940 --> 00:35:17,300
+remember this. I always have to look it up. Yes, that's a good point. And one can then,
+
+463
+00:35:17,300 --> 00:35:21,220
+so we have here, if you see here, what, what, what are the objects that they've created?
+
+464
+00:35:21,220 --> 00:35:27,860
+They've created the handle fig and they've created the handle X and the logarithmic scale
+
+465
+00:35:27,860 --> 00:35:31,940
+is something that is set by working with the axe object.
+
+466
+00:35:33,460 --> 00:35:40,980
+And let's see what attributes do we have here for this object. So, we can type help and axe.
+
+467
+00:35:45,220 --> 00:35:55,300
+And then we can see that we have a very lengthy listing. Here's a description of what the object
+
+468
+00:35:55,300 --> 00:36:01,500
+these, what class it is. And then you can see that we have all of these listings. And
+
+469
+00:36:01,500 --> 00:36:08,980
+among these listings here, we will have then the logarithmic scale. Or the opportunity
+
+470
+00:36:08,980 --> 00:36:11,020
+to set a logarithmic scale.
+
+471
+00:36:13,860 --> 00:36:14,700
+That's neat.
+
+472
+00:36:20,260 --> 00:36:21,100
+Good.
+
+473
+00:36:22,820 --> 00:36:23,940
+We will now have,
+
+474
+00:36:26,380 --> 00:36:27,220
+we will,
+
+475
+00:36:29,900 --> 00:36:32,260
+not now, so we'll let you go into the exercise session
+
+476
+00:36:32,260 --> 00:36:35,380
+where you will play around with
+
+477
+00:36:35,380 --> 00:36:45,840
+customization of figures. And yeah, should we perhaps introduce the exercises. Here it's
+
+478
+00:36:45,840 --> 00:36:55,420
+working with the same datasets. Your task is that you will make the ticks marks and the
+
+479
+00:36:55,420 --> 00:37:04,060
+axis labels fonts larger. And you need you can search on the web for what are these attributes
+
+480
+00:37:04,060 --> 00:37:14,980
+that you need to work with. And the target that you're aiming for is to arrive to a figure
+
+481
+00:37:14,980 --> 00:37:21,380
+which is looking like this. So this is one of the exercise that you can do. And the second
+
+482
+00:37:21,380 --> 00:37:28,100
+exercise that you could, oh, we should hide the solution there. The third exercise that
+
+483
+00:37:28,100 --> 00:37:38,860
+you can work with here is that you can adopt a gallery example. And here we have some links
+
+484
+00:37:38,860 --> 00:37:45,900
+to some of the other resources that are, yeah, like Seaborn, which is based on Matlocklib.
+
+485
+00:37:45,900 --> 00:37:54,100
+And then there's also Vega Altair, which is a standalone Python package for visualization.
+
+486
+00:37:54,100 --> 00:38:02,940
+So people will choose exercise two or three.
+
+487
+00:38:02,940 --> 00:38:09,340
+And the exercise three is really close to at least how I work in real life.
+
+488
+00:38:09,340 --> 00:38:11,780
+So in real life, I don't remember all of these commands.
+
+489
+00:38:11,780 --> 00:38:19,220
+I often look through the gallery examples for something that looks similar to what I
+
+490
+00:38:19,220 --> 00:38:21,980
+have in mind.
+
+491
+00:38:21,980 --> 00:38:32,620
+And here you will try to first, I often take the example and I'll try to run it on my computer.
+
+492
+00:38:32,620 --> 00:38:36,800
+And then once I get it to work, then I try to change the data.
+
+493
+00:38:36,800 --> 00:38:41,280
+And then I try to put in my data, and then I tweak.
+
+494
+00:38:41,280 --> 00:38:45,000
+So that can that can be a really fun exploration, which is at least close to how I work.
+
+495
+00:38:45,000 --> 00:38:49,000
+I don't know about you, Juan, but I can't remember on almost anything.
+
+496
+00:38:49,000 --> 00:38:51,800
+I always start from something that already works
+
+497
+00:38:51,800 --> 00:38:53,000
+that somebody else created.
+
+498
+00:38:53,000 --> 00:38:54,920
+That's also how I do it.
+
+499
+00:38:54,920 --> 00:38:59,920
+So looking at this galleries
+
+500
+00:39:00,920 --> 00:39:02,600
+is a very good source of inspiration.
+
+501
+00:39:02,600 --> 00:39:05,280
+And that's also where you then get exposed
+
+502
+00:39:05,280 --> 00:39:09,160
+to what are the different functions and attributes
+
+503
+00:39:09,160 --> 00:39:10,520
+that you can work with.
+
+504
+00:39:12,960 --> 00:39:16,320
+So is there anything that we can bring up from the HackMD?
+
+505
+00:39:19,000 --> 00:39:21,960
+For now, I'm looking.
+
+506
+00:39:27,480 --> 00:39:29,400
+So most questions are answered
+
+507
+00:39:29,400 --> 00:39:30,800
+and they are relatively detailed.
+
+508
+00:39:30,800 --> 00:39:32,520
+One bigger picture question was
+
+509
+00:39:32,520 --> 00:39:35,500
+whether we will talk about interactive plots.
+
+510
+00:39:35,500 --> 00:39:38,980
+So plots where you can, you don't get just an image
+
+511
+00:39:38,980 --> 00:39:41,000
+but you get something that you can interact with
+
+512
+00:39:41,000 --> 00:39:42,060
+like with a slider.
+
+513
+00:39:43,080 --> 00:39:46,400
+And I believe that we will not do it in this course
+
+514
+00:39:46,400 --> 00:39:50,620
+but I will link to a lesson where this is demonstrated.
+
+515
+00:39:55,360 --> 00:39:57,720
+But I think we are almost ready for exercise session.
+
+516
+00:39:57,720 --> 00:39:59,880
+It will be customization two or three.
+
+517
+00:40:00,920 --> 00:40:03,600
+Until what time, like when we will be back?
+
+518
+00:40:05,080 --> 00:40:10,080
+We will take 20 minutes for this exercise.
+
+519
+00:40:12,280 --> 00:40:14,480
+All right, so we'll be back at 55 past
+
+520
+00:40:14,480 --> 00:40:15,840
+and then we will summarize,
+
+521
+00:40:15,840 --> 00:40:18,400
+we will connect this a bit with pandas data frames
+
+522
+00:40:18,400 --> 00:40:20,580
+and then hand over to the next episode.
+
+523
+00:40:22,600 --> 00:40:26,360
+So exercise customization two or three starting now,
+
+524
+00:40:26,360 --> 00:40:28,040
+see you again in 20 minutes.
+
+525
+00:40:29,480 --> 00:40:30,320
+Bye.
+
+526
+00:40:30,320 --> 00:40:31,140
+Bye.
+
+527
+00:40:33,000 --> 00:40:37,480
+All right, we are back.
+
+528
+00:40:37,480 --> 00:40:44,320
+Five more minutes of matplotlib. So we want to wrap up the session and then we will go into
+
+529
+00:40:44,320 --> 00:40:49,720
+a break and then we will go into something else. And we thought that in the five minutes
+
+530
+00:40:49,720 --> 00:40:57,520
+we could try to do this exploration together on an example. And I also realized now during
+
+531
+00:40:57,520 --> 00:41:03,120
+the exercise session that the solution that we have listed here doesn't match anymore
+
+532
+00:41:03,120 --> 00:41:10,640
+perfectly the gallery of seaborne because they changed their examples anyway let's try this
+
+533
+00:41:10,640 --> 00:41:18,000
+together i will now take seaborne which is something that builds on top of matplotlib
+
+534
+00:41:19,120 --> 00:41:25,600
+and i will i will take that for a specific reason that i will come back to before the hour is over
+
+535
+00:41:26,800 --> 00:41:32,320
+so this is often how i start i open up one of these libraries i go to the gallery and i look
+
+536
+00:41:32,320 --> 00:41:35,480
+look for an example that looks close to what I have in mind.
+
+537
+00:41:37,380 --> 00:41:41,520
+And here I will, I will take,
+
+538
+00:41:43,840 --> 00:41:47,620
+I will try to be somehow close to the exercise.
+
+539
+00:41:47,620 --> 00:41:49,620
+I will, I want to do a violin plot,
+
+540
+00:41:49,620 --> 00:41:54,040
+which is a way to show distribution of points
+
+541
+00:41:54,040 --> 00:41:57,540
+and a statistical spread.
+
+542
+00:41:59,340 --> 00:42:00,780
+And so this is something,
+
+543
+00:42:00,780 --> 00:42:03,120
+I want to have something like this.
+
+544
+00:42:03,120 --> 00:42:06,480
+Here, this is what it looks, and there is an example code.
+
+545
+00:42:06,480 --> 00:42:10,120
+And the way I start often is I take what they have
+
+546
+00:42:10,120 --> 00:42:13,080
+and I try to run it on my computer first.
+
+547
+00:42:15,080 --> 00:42:16,080
+Let's try that.
+
+548
+00:42:17,040 --> 00:42:20,920
+Seaborn is a library that should be in your environment.
+
+549
+00:42:20,920 --> 00:42:22,720
+It is in the Python for SciComp.
+
+550
+00:42:22,720 --> 00:42:26,360
+It is also a part of Anaconda base environment.
+
+551
+00:42:26,360 --> 00:42:28,920
+And now I'm crossing fingers and running the cell.
+
+552
+00:42:30,780 --> 00:42:33,740
+and I get a plot that looks like what they have.
+
+553
+00:42:33,740 --> 00:42:35,780
+So that's already a big success story.
+
+554
+00:42:38,860 --> 00:42:41,500
+I don't fully understand what's going on here,
+
+555
+00:42:41,500 --> 00:42:44,180
+but my next step often is to,
+
+556
+00:42:44,180 --> 00:42:47,220
+I want to get an insight into the data
+
+557
+00:42:47,220 --> 00:42:49,540
+because I want to replace it with my own data.
+
+558
+00:42:52,940 --> 00:42:55,140
+And here I have a feeling that,
+
+559
+00:42:55,140 --> 00:42:57,740
+so load the example tips data set.
+
+560
+00:42:57,740 --> 00:43:01,380
+This is some data set about some bird.
+
+561
+00:43:01,380 --> 00:43:05,020
+No, it's about some smoking and not smoking.
+
+562
+00:43:07,220 --> 00:43:10,120
+But what I do, because I don't know this data set,
+
+563
+00:43:12,660 --> 00:43:17,340
+I would often, I would actually split,
+
+564
+00:43:18,700 --> 00:43:20,260
+split the cell into two.
+
+565
+00:43:23,620 --> 00:43:27,460
+And here I would print, I can do either this,
+
+566
+00:43:27,740 --> 00:43:31,760
+or if I'm in a notebook, I can do this directly tips.
+
+567
+00:43:32,900 --> 00:43:33,940
+I want to see how it looks.
+
+568
+00:43:33,940 --> 00:43:35,320
+Let's run all cells.
+
+569
+00:43:38,140 --> 00:43:40,740
+And this turns out to be, we already recognize this.
+
+570
+00:43:40,740 --> 00:43:45,740
+This is a pandas data frame with columns and rows.
+
+571
+00:43:50,940 --> 00:43:52,580
+And I think this data set shows
+
+572
+00:43:53,540 --> 00:43:57,220
+the different tipping behavior of smokers and non-smokers.
+
+573
+00:43:57,740 --> 00:44:06,660
+And now I also maybe understand that what this library is able to do is that we load
+
+574
+00:44:06,660 --> 00:44:13,260
+the data set and then we can map X values to a certain column and we can map the Y values
+
+575
+00:44:13,260 --> 00:44:22,020
+to a different column and we can map the color to a yet different column.
+
+576
+00:44:22,020 --> 00:44:27,560
+And now I would go in and instead of using this data set, I would try to put in my own
+
+577
+00:44:27,560 --> 00:44:36,560
+pandas data frame and I will try to plot that and only then I would start tweaking and adjusting
+
+578
+00:44:36,560 --> 00:44:43,840
+and customizing and here I wanted to show you that Seaborn is a library that is able
+
+579
+00:44:43,840 --> 00:44:55,160
+to really use pandas data frames directly and map columns to visual channels x y color
+
+580
+00:44:55,160 --> 00:44:58,440
+Can we do the same thing in map.lib?
+
+581
+00:44:58,440 --> 00:45:03,000
+And back to our lesson.
+
+582
+00:45:03,000 --> 00:45:08,880
+And I learned very recently that you can do almost the same thing in map.lib.
+
+583
+00:45:08,880 --> 00:45:18,480
+So instead of what we were doing, that we were sending a slice, a column of data into
+
+584
+00:45:18,480 --> 00:45:23,460
+defined as X or as Y, we can use this instead.
+
+585
+00:45:23,460 --> 00:45:26,820
+I can say the data is a data frame.
+
+586
+00:45:28,100 --> 00:45:33,100
+And then I can map X values to particular column,
+
+587
+00:45:33,180 --> 00:45:34,740
+Y values to a different column.
+
+588
+00:45:37,980 --> 00:45:38,820
+So that's very nice.
+
+589
+00:45:38,820 --> 00:45:40,260
+If you then try to do a bit more,
+
+590
+00:45:40,260 --> 00:45:43,260
+like if you try to map color to continent,
+
+591
+00:45:44,220 --> 00:45:46,540
+then it becomes a little bit harder.
+
+592
+00:45:46,540 --> 00:45:49,780
+And these are, so we wanted you to know
+
+593
+00:45:49,780 --> 00:45:52,180
+that there are libraries in Python
+
+594
+00:45:52,180 --> 00:46:00,420
+that make this easier and this is also for those of you who come from R and ggplot2
+
+595
+00:46:02,260 --> 00:46:06,820
+you can do the same things in Python with in libraries like Seaborn, Altair-Vega
+
+596
+00:46:09,140 --> 00:46:10,500
+but I see now that we are out of time
+
+597
+00:46:12,500 --> 00:46:17,620
+we will continue answering the questions so please keep asking questions about plotting
+
+598
+00:46:17,620 --> 00:46:21,620
+about Matplotlib and we will continue answering but I don't want to eat into the future sessions
+
+599
+00:46:22,180 --> 00:46:29,680
+So, thanks from my side, [Name], any concluding words here?
+
+600
+00:46:29,680 --> 00:46:30,680
+You covered it all.
+
+601
+00:46:30,680 --> 00:46:34,200
+And as I said, we will continue to answer questions on the HackMD.
+
+602
+00:46:34,200 --> 00:46:35,200
+Yeah.
+
+603
+00:46:35,200 --> 00:46:38,480
+More details there, I will answer there.
+
+604
+00:46:38,480 --> 00:46:39,880
+Thanks so much, everybody, for listening.
+
+605
+00:46:39,880 --> 00:46:43,160
+Thanks to [Name] for co-teaching and looking forward to the next sessions.
+
+606
+00:46:43,160 --> 00:46:47,920
+And I think now we go into a break, into a 10-minute break, if I understand correctly.
+
+607
+00:46:47,920 --> 00:46:51,000
+Yeah, break to 11 past the hour.
+
+608
+00:46:51,000 --> 00:46:52,000
+Yep.
+
+609
+00:46:52,000 --> 00:46:54,000
+Bye.
+

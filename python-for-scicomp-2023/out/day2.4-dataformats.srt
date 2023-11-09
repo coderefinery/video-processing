@@ -1,0 +1,492 @@
+1
+00:00:00,000 --> 00:00:08,000
+Hello, we are back.
+
+2
+00:00:08,000 --> 00:00:33,000
+So yes, so now for the rest of the day, we have two lessons, one on data formats, which we're not actually going to much detail. We give this really high level summary that addresses some of the questions which people have been asking yesterday and today, and then we go on to productivity tools.
+
+3
+00:00:33,000 --> 00:00:39,080
+But we did teach this course, or this lesson, in full last year, and you can find it from
+
+4
+00:00:39,080 --> 00:00:43,720
+the playlist of the course last year, linked from the main page.
+
+5
+00:00:43,720 --> 00:00:45,440
+So [Name], where do we start with...
+
+6
+00:00:45,440 --> 00:00:46,440
+Yeah.
+
+7
+00:00:46,440 --> 00:00:49,440
+So maybe I'll introduce myself.
+
+8
+00:00:49,440 --> 00:00:50,440
+My name is [name].
+
+9
+00:00:50,440 --> 00:00:55,680
+I'm from Aalto Scientific Computing, and I've been working with Python for, well, 15 years
+
+10
+00:00:55,680 --> 00:00:59,040
+at this point or something, so a long time.
+
+11
+00:00:59,040 --> 00:01:02,640
+So in the chat, in the HackMD, there
+
+12
+00:01:02,640 --> 00:01:06,840
+were lots of good questions about NumPy and Pandas.
+
+13
+00:01:06,840 --> 00:01:10,280
+And what it means, like what are the columns in Pandas?
+
+14
+00:01:10,280 --> 00:01:13,320
+And there were questions about tidy format also,
+
+15
+00:01:13,320 --> 00:01:16,760
+which is popular in R's TidyVerse.
+
+16
+00:01:16,760 --> 00:01:19,800
+And we'll quickly explain these concepts.
+
+17
+00:01:19,800 --> 00:01:23,960
+But like [Name] said, we had a longer dive on this last year.
+
+18
+00:01:23,960 --> 00:01:27,240
+So if you want to see that, you should check the video.
+
+19
+00:01:27,240 --> 00:01:30,440
+but let's teach the main concepts.
+
+20
+00:01:30,440 --> 00:01:33,440
+So when we're talking about data frames,
+
+21
+00:01:33,440 --> 00:01:35,560
+like data frames are like,
+
+22
+00:01:35,560 --> 00:01:39,240
+like I figure out this analog of like a hardware store.
+
+23
+00:01:39,240 --> 00:01:40,720
+So if you go to a hardware store,
+
+24
+00:01:40,720 --> 00:01:43,160
+you have like hammers in one aisle,
+
+25
+00:01:43,160 --> 00:01:44,680
+you have nails in one aisle,
+
+26
+00:01:44,680 --> 00:01:47,040
+you have nuts and bolts at one aisle
+
+27
+00:01:47,040 --> 00:01:48,360
+and wrenches in one aisle.
+
+28
+00:01:48,360 --> 00:01:51,320
+So you have different aisles of different things
+
+29
+00:01:51,320 --> 00:01:52,920
+and lawnmowers in like,
+
+30
+00:01:52,920 --> 00:01:55,240
+you can have completely different things in one aisle
+
+31
+00:01:55,240 --> 00:01:58,320
+and another aisle can have a completely different thing.
+
+32
+00:01:59,160 --> 00:02:01,080
+This is basically what a data frame is.
+
+33
+00:02:01,080 --> 00:02:03,200
+So data frame is organized in columns.
+
+34
+00:02:03,200 --> 00:02:06,440
+So each column has one type of a thing.
+
+35
+00:02:06,440 --> 00:02:11,440
+So it has integers or it has timestamps or it has strings.
+
+36
+00:02:11,960 --> 00:02:16,600
+So in the code example there, you don't have to write it.
+
+37
+00:02:16,600 --> 00:02:19,200
+We have an example data frame that has like strings
+
+38
+00:02:19,200 --> 00:02:22,160
+and timestamps and integers and floating point numbers.
+
+39
+00:02:22,160 --> 00:02:23,520
+And all of these can be like
+
+40
+00:02:23,520 --> 00:02:28,320
+some sort of a correspondence, of course, so you can have like temperature or pressure or something,
+
+41
+00:02:28,320 --> 00:02:34,400
+or you can, like if we go to the hardware store analogy, if you go down one aisle and you find
+
+42
+00:02:34,400 --> 00:02:40,960
+a certain kind of a nut and you know that, okay, I need a corresponding wrench to tighten this nut,
+
+43
+00:02:40,960 --> 00:02:47,360
+then you go to the wrench aisle and you go to that place. In pandas, you usually have the
+
+44
+00:02:47,360 --> 00:02:53,680
+corresponding things in the same place. So, in the same row, you would have the nuts that
+
+45
+00:02:53,680 --> 00:02:59,520
+correspond to a certain branch, and then you can easily find the things you're looking for.
+
+46
+00:02:59,520 --> 00:03:04,480
+And this is basically what a data frame is. So, you have multiple of these columns that
+
+47
+00:03:04,480 --> 00:03:12,080
+are collected together, and they are collected into this tidy data format. So, below in the
+
+48
+00:03:12,080 --> 00:03:18,480
+[Name]'s share, we have this view of this tidy data format. So, you have each column
+
+49
+00:03:19,200 --> 00:03:24,880
+is a variable. So, temperature, pressure, time, I don't know, like it can be whatever.
+
+50
+00:03:25,760 --> 00:03:32,320
+And in each row, you have an observation. So, at a certain time, the pressure and temperature was
+
+51
+00:03:32,320 --> 00:03:40,000
+this. And the idea behind this is that if you keep this format, it's easy to write tools
+
+52
+00:03:40,000 --> 00:03:47,040
+that you work with this format. So you can easily calculate an average. You don't usually
+
+53
+00:03:47,600 --> 00:03:53,200
+want to calculate average of time, pressure, and temperature. I mean, you don't want to calculate
+
+54
+00:03:53,200 --> 00:03:58,480
+because that doesn't make any sense. But you want to calculate an average of, let's say,
+
+55
+00:03:58,480 --> 00:04:03,680
+one column. You want to calculate temperature over time or something. You want to calculate
+
+56
+00:04:03,680 --> 00:04:10,640
+an average of that. So some operations are written for columns and some operations are
+
+57
+00:04:10,640 --> 00:04:18,720
+written for rows. And because everybody keeps the same format, it's very easy to manage these tools.
+
+58
+00:04:18,720 --> 00:04:29,120
+And this is why pandas and similar kinds of things like tidyverse are popular. And this is
+
+59
+00:04:29,120 --> 00:04:34,720
+important. Even though you might have a table where you just have a table and what does it
+
+60
+00:04:34,720 --> 00:04:40,880
+matter? Is it organized in what way? It's organized in a certain way because people
+
+61
+00:04:41,680 --> 00:04:45,360
+expect it to be in that way because all of the tools have been written that way. So, you should
+
+62
+00:04:45,360 --> 00:04:51,760
+just do it like the other people do. And this is basically how data frames are organized.
+
+63
+00:04:51,760 --> 00:04:56,080
+And NumPy arrays are a bit different. So, all of the columns are usually NumPy arrays.
+
+64
+00:04:56,080 --> 00:05:02,000
+NumPy arrays can be multidimensional. They're always one data type, so you might have one
+
+65
+00:05:02,000 --> 00:05:08,240
+dimensional array like a column, or you might have a two-dimensional array like a matrix
+
+66
+00:05:08,240 --> 00:05:16,880
+or just an array of numbers or multiple things. But usually you have, let's say, a temperature
+
+67
+00:05:16,880 --> 00:05:21,280
+in x and y directions or something like that. Or you might have a three-dimensional array
+
+68
+00:05:21,280 --> 00:05:29,680
+of like pressure at different altitudes and different places in the world.
+
+69
+00:05:29,680 --> 00:05:36,440
+So in NumPy, you have this one big blob of same kind of data, so organized in this one
+
+70
+00:05:36,440 --> 00:05:39,360
+blob.
+
+71
+00:05:39,360 --> 00:05:44,320
+And what does this mean is that, yeah, so [Name].
+
+72
+00:05:44,320 --> 00:05:50,800
+And like you would do the same kind of operations across every row, column, and rank, I guess.
+
+73
+00:05:50,800 --> 00:05:56,400
+Yes. So what you would usually do is like you would do, let's say you calculate, you
+
+74
+00:05:56,400 --> 00:06:01,760
+take a matrix or take an array and then you multiply it by some constant and then you
+
+75
+00:06:01,760 --> 00:06:08,920
+do it, apply for it, all of them, or you calculate the sum of certain rows or certain columns
+
+76
+00:06:08,920 --> 00:06:15,200
+or something like that. But, okay, so you have these two different formats and they
+
+77
+00:06:15,200 --> 00:06:24,480
+are different. They're fundamentally different, but in some sense they are the same, but they
+
+78
+00:06:24,480 --> 00:06:33,760
+are different. It's very hard to explain, maybe. But the main thing is that for all of these
+
+79
+00:06:33,760 --> 00:06:42,560
+different things... Sorry? Well, go ahead. Yeah. But for both of these things, they are tools
+
+80
+00:06:42,560 --> 00:06:47,920
+that are designed around these formats. So, for example, you don't do matrix multiplications in
+
+81
+00:06:47,920 --> 00:06:55,200
+Pandas. You do matrix multiplications from NumPy arrays because for tables, it doesn't make any
+
+82
+00:06:55,200 --> 00:07:00,560
+sense to do matrix multiplication. But for array, it makes sense. And there are tools for these,
+
+83
+00:07:00,560 --> 00:07:07,680
+and then there are ways of storing this data that are designed for these things.
+
+84
+00:07:07,680 --> 00:07:13,280
+And for pandas, there are many, many tools that are designed, many formats, like file formats,
+
+85
+00:07:14,640 --> 00:07:22,560
+that are designed for certain kind of data, and for NumPy as well. And usually,
+
+86
+00:07:22,560 --> 00:07:29,600
+the situation goes like this. You might have seen this XKCD comic, that they are competing
+
+87
+00:07:29,600 --> 00:07:35,040
+standards, and then somebody's like, okay, let's just write a new standard that fixes all of the
+
+88
+00:07:35,040 --> 00:07:39,040
+This is not perfect. Let's do something that does what both of these does.
+
+89
+00:07:39,040 --> 00:07:43,840
+Yeah. And then you have one more. And this is how it always goes. So, you have a huge
+
+90
+00:07:43,840 --> 00:07:50,160
+amount of competing standards. So, there were people asking about R. If you want to move
+
+91
+00:07:50,160 --> 00:07:56,000
+data from R to Python, either you can use CSV, for example, or you can use Parquet or Feather.
+
+92
+00:07:56,000 --> 00:08:01,920
+There's mentions in the article about these different formats. If you want to use Matlab,
+
+93
+00:08:01,920 --> 00:08:08,160
+you can use math files, which are like these HDF5 files. If you want to use Python and,
+
+94
+00:08:08,160 --> 00:08:15,920
+let's say, Fortran code, you might need to use HDF5 or use the Fortran file. There's a million
+
+95
+00:08:15,920 --> 00:08:23,760
+file formats. And, yeah, we don't want to give too long to talk about it. So, let's just say
+
+96
+00:08:23,760 --> 00:08:29,280
+that they are. And if you want to see more about these formats, there's a huge list here. And more
+
+97
+00:08:29,280 --> 00:08:35,680
+will be added here as well. And use the formats that your tools use, basically. Choose the file
+
+98
+00:08:35,680 --> 00:08:43,280
+formats that your tools use and your data is optimized for. Yeah. And I guess you could say,
+
+99
+00:08:43,280 --> 00:08:50,960
+I mean, talk to people. Like, I guess our main message here isn't use this or don't use that,
+
+100
+00:08:50,960 --> 00:08:56,560
+but actually do take a little bit of time to think about it before you go too deep into your work.
+
+101
+00:08:56,560 --> 00:08:57,560
+work.
+
+102
+00:08:57,560 --> 00:08:58,560
+Yeah.
+
+103
+00:08:58,560 --> 00:08:59,560
+Yeah, basically.
+
+104
+00:08:59,560 --> 00:09:03,960
+And do some searching, do some thinking.
+
+105
+00:09:03,960 --> 00:09:09,720
+The pandas and NumPy, they already have good interfaces for all of these different data
+
+106
+00:09:09,720 --> 00:09:10,720
+formats.
+
+107
+00:09:10,720 --> 00:09:15,440
+So, check the documentation, like in this page, there's mentions about it, but check
+
+108
+00:09:15,440 --> 00:09:17,480
+the documentation on pandas and NumPy.
+
+109
+00:09:17,480 --> 00:09:23,240
+Don't write your own data reader, because somebody has written it already.
+
+110
+00:09:23,240 --> 00:09:25,120
+Like somebody has written a CSV reader.
+
+111
+00:09:25,120 --> 00:09:30,920
+don't need to open a CSV file in Python yourself. You can use NumPy or Pandas to read it based
+
+112
+00:09:30,920 --> 00:09:40,920
+on what sort of data you have in the CSV file. There's also a question in the chat why Excel
+
+113
+00:09:40,920 --> 00:09:47,920
+isn't good human readable. Excel is a binary format. Have you opened it with an editor?
+
+114
+00:09:47,920 --> 00:09:53,960
+But it's a good point, like many of these arguments are complicated.
+
+115
+00:09:53,960 --> 00:09:59,760
+And what human-negatable means is, yeah, it's a complicated thing.
+
+116
+00:09:59,760 --> 00:10:00,760
+Yeah.
+
+117
+00:10:00,760 --> 00:10:01,760
+Yeah.
+
+118
+00:10:01,760 --> 00:10:02,760
+Okay.
+
+119
+00:10:02,760 --> 00:10:10,520
+So, maybe we can keep answering these questions by the text, and we can go on.
+
+120
+00:10:10,520 --> 00:10:14,160
+And if you want more, watch the video from last year.
+
+121
+00:10:14,160 --> 00:10:24,240
+someone could link it here. Yeah. Yeah. Okay. Yeah. We ask questions in the chat. We'll try
+
+122
+00:10:24,240 --> 00:10:28,720
+to answer as many of them. There's some really good questions there and we'll happily answer them.
+
+123
+00:10:30,480 --> 00:10:33,000
+So what's next? It's productivity tools. So I will open that.
+

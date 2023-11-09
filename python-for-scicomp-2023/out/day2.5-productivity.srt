@@ -1,0 +1,1888 @@
+1
+00:00:00,000 --> 00:00:05,600
+So [Name], what do we mean by productivity tools? What kind of productivity?
+
+2
+00:00:06,960 --> 00:00:14,240
+Yeah, so throughout the day you have run many of the exercises already and examples
+
+3
+00:00:14,240 --> 00:00:20,880
+and you have encountered probably many errors and you have encountered many like when you
+
+4
+00:00:20,880 --> 00:00:26,480
+have a wrong code you get an error or something in your code and of course when we are talking
+
+5
+00:00:26,480 --> 00:00:35,600
+about, for example, exercises in this course, these are small programs that you run. But when
+
+6
+00:00:35,600 --> 00:00:43,280
+you start to write your own program, we'll talk about scripts tomorrow, so a bit more about how
+
+7
+00:00:43,280 --> 00:00:49,600
+do you write, and also about modules and libraries, how do you write bigger programs. And when it comes
+
+8
+00:00:49,600 --> 00:00:59,360
+to these, for writing these bigger programs, you usually have the situation where it's a big thing
+
+9
+00:01:00,240 --> 00:01:06,480
+and you can have errors in multiple places. And we are all humans, so we don't write perfect code.
+
+10
+00:01:08,240 --> 00:01:15,760
+Nobody writes perfect code and that's completely normal. And for that, programmers and people who
+
+11
+00:01:15,760 --> 00:01:25,520
+write programs, they have written things that help with the tool, help with dealing these
+
+12
+00:01:26,400 --> 00:01:32,960
+problems. And well, the most common is like if you have an editor that has syntax highlighting,
+
+13
+00:01:33,840 --> 00:01:36,960
+like Jupyter has. So if you have...
+
+14
+00:01:36,960 --> 00:01:42,400
+So it's basically, it's tools that make your human effort more effective.
+
+15
+00:01:42,400 --> 00:01:53,040
+Yes, so let's say you have a VScode or something and it can give you auto-completion or something.
+
+16
+00:01:53,040 --> 00:01:58,720
+These are already productivity tools, they improve your productivity when you code.
+
+17
+00:01:58,720 --> 00:02:03,960
+But there's different colors of productivity tools or different types of productivity
+
+18
+00:02:03,960 --> 00:02:06,840
+tools and these are the most common ones, of course.
+
+19
+00:02:06,840 --> 00:02:12,960
+But then there's other tools that are specifically designed to fix certain things about your
+
+20
+00:02:12,960 --> 00:02:17,680
+programs, or help you fix certain things about your programs.
+
+21
+00:02:17,680 --> 00:02:23,400
+So for example, let's think about what the Python language is.
+
+22
+00:02:23,400 --> 00:02:30,960
+So if you want to give a terminal, or Python terminal, and run the first example that
+
+23
+00:02:30,960 --> 00:02:34,980
+we have there in the code.
+
+24
+00:02:34,980 --> 00:02:38,500
+So if you try to run what we have in the...
+
+25
+00:02:38,500 --> 00:02:41,700
+A terminal or Jupyter Notebook?
+
+26
+00:02:41,700 --> 00:02:44,700
+You can take a notebook as well.
+
+27
+00:02:44,700 --> 00:02:45,700
+Okay.
+
+28
+00:02:45,700 --> 00:02:46,700
+Sure.
+
+29
+00:02:46,700 --> 00:02:47,700
+Yeah.
+
+30
+00:02:47,700 --> 00:02:48,700
+So...
+
+31
+00:02:48,700 --> 00:02:51,700
+I have to set a name.
+
+32
+00:02:51,700 --> 00:02:54,700
+This is a follow along.
+
+33
+00:02:54,700 --> 00:02:57,620
+You don't need to type in this, by the way.
+
+34
+00:02:57,620 --> 00:03:00,020
+So each language has a syntax.
+
+35
+00:03:00,020 --> 00:03:04,340
+So like program language has a syntax.
+
+36
+00:03:04,340 --> 00:03:10,220
+And sometimes you might do something that is not permitted in that language.
+
+37
+00:03:10,220 --> 00:03:17,460
+So for example, here you cannot assign true to be one because you're not allowed to change
+
+38
+00:03:17,460 --> 00:03:18,980
+the true value.
+
+39
+00:03:18,980 --> 00:03:20,620
+So you have to get a syntax error.
+
+40
+00:03:20,620 --> 00:03:25,220
+So you have a problem in the syntax of what you have been writing.
+
+41
+00:03:25,220 --> 00:03:29,680
+Like the programming language doesn't understand what they're doing.
+
+42
+00:03:29,680 --> 00:03:33,620
+Of course, in this case, it's like a trivial problem.
+
+43
+00:03:33,620 --> 00:03:42,940
+But if you have a big program and you forget to write one extra bracket or one extra comma
+
+44
+00:03:42,940 --> 00:03:49,420
+somewhere or something, you get the same syntax error, and it can be really tedious to find
+
+45
+00:03:49,420 --> 00:03:54,580
+out this, especially if it's at the end of your program.
+
+46
+00:03:54,580 --> 00:04:00,540
+I guess it's better to know right away rather than have to save it.
+
+47
+00:04:00,540 --> 00:04:05,140
+And for this reason, people have written these linters.
+
+48
+00:04:05,140 --> 00:04:07,940
+So they remove lint.
+
+49
+00:04:07,940 --> 00:04:11,000
+I think that's the name why they have been written.
+
+50
+00:04:11,000 --> 00:04:15,820
+So they remove extra stuff and bad stuff from the code.
+
+51
+00:04:15,820 --> 00:04:18,500
+And they can spot these syntax errors.
+
+52
+00:04:18,500 --> 00:04:23,460
+So some popular linters are this rough i-lint and flake-8.
+
+53
+00:04:23,460 --> 00:04:29,940
+But for this example, let's try with pylint, which should be installed in the example.
+
+54
+00:04:29,940 --> 00:04:31,540
+For example, yeah.
+
+55
+00:04:31,540 --> 00:04:34,580
+OK, so I'll type.
+
+56
+00:04:34,580 --> 00:04:39,300
+So in order to open the script, so we'll
+
+57
+00:04:39,300 --> 00:04:40,980
+talk more about this tomorrow.
+
+58
+00:04:44,260 --> 00:04:45,100
+Here's what I can do.
+
+59
+00:04:45,100 --> 00:04:48,100
+I can right click and copy the link.
+
+60
+00:04:48,100 --> 00:04:53,580
+And in JupyterLab, go to File, open from URL,
+
+61
+00:04:53,580 --> 00:04:55,580
+and paste the link.
+
+62
+00:04:55,580 --> 00:04:59,180
+OK, I have to use Control-V. And click Open.
+
+63
+00:04:59,940 --> 00:05:08,820
+And here it is. So it's both saved the file and has opened it in the JupyterLab here.
+
+64
+00:05:08,820 --> 00:05:15,380
+Yeah. And this program, usually when you get programs on the internet, when you use code by
+
+65
+00:05:15,380 --> 00:05:19,780
+other people, or if you write the code, you might write it as a script. Like in this case, it's an
+
+66
+00:05:19,780 --> 00:05:27,860
+example script. And by quick glance, it looks like Python code. So what's the problem? But let's try
+
+67
+00:05:27,860 --> 00:05:35,620
+to use PyLint to check if there's any problems here. So, the examples here use the command line.
+
+68
+00:05:36,580 --> 00:05:42,900
+So, there is possibility of getting these linters working in JupyterLab, but unfortunately,
+
+69
+00:05:42,900 --> 00:05:49,460
+well, you need to install specific packages for that. And for this example, let's try with the
+
+70
+00:05:50,020 --> 00:05:55,860
+terminal. So, we're showing from the command line. We think we've made this where if you're using
+
+71
+00:05:55,860 --> 00:06:00,220
+the Anaconda that should work on all operating systems.
+
+72
+00:06:00,220 --> 00:06:03,260
+But if not, then take a step back, watch us,
+
+73
+00:06:03,260 --> 00:06:04,340
+and don't worry.
+
+74
+00:06:04,340 --> 00:06:10,620
+Yeah, you don't need to run these examples while we are.
+
+75
+00:06:10,620 --> 00:06:14,340
+So I've made a new terminal here.
+
+76
+00:06:14,340 --> 00:06:17,540
+And I can scoot this down here.
+
+77
+00:06:17,540 --> 00:06:18,860
+So it shows I'm in.
+
+78
+00:06:18,860 --> 00:06:24,540
+Oh, I wanted this to open in the terminal.
+
+79
+00:06:24,540 --> 00:06:30,700
+If I click plus here, OK, so opening it this way
+
+80
+00:06:30,700 --> 00:06:34,060
+has put me at the right place where my Python stuff is.
+
+81
+00:06:36,500 --> 00:06:37,940
+OK, so what do I do?
+
+82
+00:06:37,940 --> 00:06:39,140
+I try running the lint.
+
+83
+00:06:39,140 --> 00:06:42,260
+Yeah, let's try running pylint and run the example.
+
+84
+00:06:45,940 --> 00:06:48,060
+Pylint, lint example.
+
+85
+00:06:48,060 --> 00:06:52,140
+So I push tab, it filled out the name.
+
+86
+00:06:52,140 --> 00:06:56,740
+I push enter, and okay, error.
+
+87
+00:06:56,740 --> 00:06:58,420
+So now we get an error.
+
+88
+00:06:58,420 --> 00:07:08,020
+So we see that there's first the name of the file, lint_example.py, then we get a line number
+
+89
+00:07:08,020 --> 00:07:12,420
+4, and then we get a 31.
+
+90
+00:07:12,420 --> 00:07:14,860
+I'm not certain what the 31 actually is.
+
+91
+00:07:14,860 --> 00:07:18,300
+I think it's called column 31.
+
+92
+00:07:18,300 --> 00:07:26,560
+And then we get an error code, like E something, like an error 0001, parsing failed, unmatched
+
+93
+00:07:26,560 --> 00:07:33,620
+bracket. So if we now look at line four of the code and scroll down, we notice that there's
+
+94
+00:07:33,620 --> 00:07:40,200
+an extra bracket there. Well, actually, the JupyterLab highlights it for us. It marks
+
+95
+00:07:40,200 --> 00:07:47,240
+it as read already, which is nice, and which probably would help you not make this error.
+
+96
+00:07:47,240 --> 00:07:55,640
+But it's easy to see that, okay, now that we see it, we can remove it.
+
+97
+00:07:55,640 --> 00:07:57,520
+So let's remove that and save the file.
+
+98
+00:07:57,520 --> 00:07:58,520
+I remove that.
+
+99
+00:07:58,520 --> 00:07:59,520
+I save.
+
+100
+00:07:59,520 --> 00:08:02,520
+How do I save here?
+
+101
+00:08:02,520 --> 00:08:06,880
+File, save all, I guess works.
+
+102
+00:08:06,880 --> 00:08:08,640
+And then we rerun the linter?
+
+103
+00:08:08,640 --> 00:08:12,480
+Yeah, let's rerun it and see what happens.
+
+104
+00:08:12,480 --> 00:08:16,120
+So here in this terminal, I can push the up arrow key instead
+
+105
+00:08:16,120 --> 00:08:18,840
+of typing the whole thing again.
+
+106
+00:08:21,320 --> 00:08:22,520
+Yeah.
+
+107
+00:08:22,520 --> 00:08:27,600
+So now it's running again.
+
+108
+00:08:27,600 --> 00:08:28,960
+Why is it so slow?
+
+109
+00:08:28,960 --> 00:08:30,200
+Yeah, I don't know.
+
+110
+00:08:30,200 --> 00:08:32,920
+And we got plenty of other errors.
+
+111
+00:08:32,920 --> 00:08:36,120
+And let's look at these one by one.
+
+112
+00:08:36,120 --> 00:08:41,120
+So maybe if you can close the tab on the left.
+
+113
+00:08:41,120 --> 00:08:42,240
+Yes, OK.
+
+114
+00:08:42,240 --> 00:08:45,820
+So at the top, we see that, okay, on the line one,
+
+115
+00:08:45,820 --> 00:08:50,820
+we get this C something, missing module doc string.
+
+116
+00:08:50,820 --> 00:08:55,120
+So, okay, now this is like a code style warning
+
+117
+00:08:55,120 --> 00:08:57,340
+that you should have in your module,
+
+118
+00:08:57,340 --> 00:08:59,100
+you should have a documentation string there,
+
+119
+00:08:59,100 --> 00:09:02,540
+but okay, this is not an error, it's just good practice.
+
+120
+00:09:02,540 --> 00:09:05,300
+So let's not look at that too much.
+
+121
+00:09:05,300 --> 00:09:10,300
+On line four, we see, and also on line four,
+
+122
+00:09:10,300 --> 00:09:20,860
+column 4, line 4, column 19, and line 5, column 4, which is undefined variable np.
+
+123
+00:09:22,460 --> 00:09:28,060
+So the linter doesn't understand what np is, it hasn't been defined yet.
+
+124
+00:09:28,700 --> 00:09:35,820
+And this is explained by the last line in the error message, which is that on line 1
+
+125
+00:09:35,820 --> 00:09:44,860
+we have an unused import NumPy. So we imported NumPy, just import NumPy instead of import
+
+126
+00:09:44,860 --> 00:09:52,380
+NumPy as np. So that's why we got this error, but it was hard to spot because it was valid code.
+
+127
+00:09:52,380 --> 00:09:59,420
+Like it looked valid, but we had a mistake in the code because we did the import wrong.
+
+128
+00:09:59,420 --> 00:10:01,580
+Should I fix it?
+
+129
+00:10:01,580 --> 00:10:09,740
+Yes, let's fix it. If you look at also the end of the output for the pylint-er, you see that
+
+130
+00:10:09,740 --> 00:10:14,700
+it gave a code rating. And the code rating was zero because it knows that, okay, this code won't
+
+131
+00:10:14,700 --> 00:10:21,740
+run. So, let's give it a zero rating. Like, it's zero out of ten bad code. And now that we have
+
+132
+00:10:21,740 --> 00:10:29,580
+fixed it, let's try running the linter again. Okay. I save all and push up arrow key again.
+
+133
+00:10:31,580 --> 00:10:45,460
+So, now we see that it shows that it's still missing the module doc string, so it gives
+
+134
+00:10:45,460 --> 00:10:53,460
+a code warning on it, but the other problems have been solved, so now it grades it as 8.33
+
+135
+00:10:53,460 --> 00:10:58,860
+out of 10, and it shows the previous run, so what was the improvement.
+
+136
+00:10:58,860 --> 00:11:05,540
+And this is, to me, the most fun part of Linter, because it gamifies the coding, like how high
+
+137
+00:11:05,540 --> 00:11:08,340
+can your score go?
+
+138
+00:11:08,340 --> 00:11:12,660
+Can you get the 10 out of 10 for the Linter?
+
+139
+00:11:12,660 --> 00:11:16,780
+And basically, the idea behind the Linter is that it allows you to spot the errors and
+
+140
+00:11:16,780 --> 00:11:23,340
+fix this kind of coding style and coding problems that you might have in your code before you
+
+141
+00:11:23,340 --> 00:11:25,380
+even run the code.
+
+142
+00:11:25,380 --> 00:11:33,700
+So you get coding done faster and you get a better result out of it.
+
+143
+00:11:33,700 --> 00:11:44,420
+So should we go to the first exercise already maybe, or do we have any questions in there?
+
+144
+00:11:44,420 --> 00:11:45,660
+There's a good question.
+
+145
+00:11:45,660 --> 00:11:49,420
+Why can't the linter show all errors to begin with?
+
+146
+00:11:49,420 --> 00:11:54,020
+So why does it only show the syntax error first?
+
+147
+00:11:54,020 --> 00:11:59,220
+Yeah, so that's a good question. And I think that is related to,
+
+148
+00:12:00,980 --> 00:12:07,540
+like, yeah, that's a good question. That's probably how the linter has been designed
+
+149
+00:12:07,540 --> 00:12:13,140
+internally. There's different kinds of syntax errors. There's egregious ones, for example,
+
+150
+00:12:13,140 --> 00:12:19,860
+the true equals one, or the brackets. If it doesn't know how to parse the input.
+
+151
+00:12:19,860 --> 00:12:24,660
+Basically, in the first example, we had the extra bracket there.
+
+152
+00:12:24,660 --> 00:12:31,620
+So the linter didn't know that, okay, how should I pass this, even this text?
+
+153
+00:12:31,620 --> 00:12:36,620
+Because I don't understand what's happening here, because suddenly we get an extra bracket
+
+154
+00:12:36,620 --> 00:12:43,060
+and I don't understand, is this valid code?
+
+155
+00:12:43,060 --> 00:12:44,060
+It doesn't understand the input.
+
+156
+00:12:44,060 --> 00:12:47,700
+And in the second example, there's something wrong in the input.
+
+157
+00:12:47,700 --> 00:12:54,060
+So it's like there's a first kind of an error, which is like, okay, yeah, yeah, it doesn't
+
+158
+00:12:54,060 --> 00:12:59,580
+understand what, like in the context of the language, it doesn't understand that, okay,
+
+159
+00:12:59,580 --> 00:13:00,580
+what is NumPy?
+
+160
+00:13:00,580 --> 00:13:04,200
+Like this hasn't been said before to me.
+
+161
+00:13:04,200 --> 00:13:09,460
+But of course, like Linter doesn't capture all errors because like we said at the beginning
+
+162
+00:13:09,460 --> 00:13:16,900
+of the day, Python is strongly typed, but not like not enforced.
+
+163
+00:13:16,900 --> 00:13:21,900
+So you might modify the things when the program is running in a way that the linter doesn't
+
+164
+00:13:21,900 --> 00:13:28,660
+know about, and it might not spot those errors, but it will spot a lot of errors.
+
+165
+00:13:28,660 --> 00:13:33,580
+Like the most annoying ones, the trivial errors, the ones that you are like, okay, I should
+
+166
+00:13:33,580 --> 00:13:37,740
+have noticed this, it will spot those.
+
+167
+00:13:37,740 --> 00:13:45,100
+So for our time progress, so we've got 25 minutes left.
+
+168
+00:13:45,100 --> 00:13:48,380
+recombine two exercises together?
+
+169
+00:13:48,380 --> 00:13:49,060
+Or?
+
+170
+00:13:49,060 --> 00:13:51,260
+Yeah.
+
+171
+00:13:51,260 --> 00:13:52,620
+Yeah, maybe we can.
+
+172
+00:13:52,620 --> 00:13:56,260
+Or the second exercise is more of a demo, I would say,
+
+173
+00:13:56,260 --> 00:13:56,900
+anyways.
+
+174
+00:13:56,900 --> 00:13:59,220
+So maybe we should go to exercise one
+
+175
+00:13:59,220 --> 00:14:02,220
+and then go to the format.
+
+176
+00:14:05,060 --> 00:14:07,100
+OK.
+
+177
+00:14:07,100 --> 00:14:09,780
+So exercise one, and how long do we have?
+
+178
+00:14:09,780 --> 00:14:16,940
+So should we, yeah, should we take 10 minutes?
+
+179
+00:14:16,940 --> 00:14:18,900
+It's not that long of a nexus.
+
+180
+00:14:18,900 --> 00:14:19,900
+45.
+
+181
+00:14:19,900 --> 00:14:20,900
+Okay.
+
+182
+00:14:20,900 --> 00:14:21,900
+Yeah.
+
+183
+00:14:21,900 --> 00:14:22,900
+Great.
+
+184
+00:14:22,900 --> 00:14:24,900
+So see you in 10 minutes.
+
+185
+00:14:24,900 --> 00:14:25,900
+Okay.
+
+186
+00:14:25,900 --> 00:14:26,400
+Bye.
+
+187
+00:14:31,780 --> 00:14:38,780
+.
+
+188
+00:14:38,780 --> 00:14:45,780
+.
+
+189
+00:14:45,780 --> 00:14:52,780
+.
+
+190
+00:14:52,780 --> 00:14:59,780
+.
+
+191
+00:14:59,780 --> 00:15:08,000
+if you show the exercise code. This is, by design, an example of an error that the linter
+
+192
+00:15:08,000 --> 00:15:14,960
+doesn't spot. If you look at the code here, it's fairly normal code, but it's so complex
+
+193
+00:15:14,960 --> 00:15:19,200
+that it's hard to say where the errors are. But the error that the linter doesn't spot
+
+194
+00:15:19,200 --> 00:15:26,280
+is in the ax.scater, where you have one T instead of two Ts in that line. The reason
+
+195
+00:15:26,280 --> 00:15:33,400
+why the linter doesn't spot this error is that the linter doesn't actually import anything
+
+196
+00:15:33,400 --> 00:15:38,680
+when it runs. Like, when it runs, it just checks the code. It doesn't actually, like,
+
+197
+00:15:38,680 --> 00:15:44,120
+import pandas. It doesn't import matplotlib or anything like that. So, it doesn't spot
+
+198
+00:15:44,120 --> 00:15:48,320
+that, okay, there's this object that has this attribute that is wrongly named.
+
+199
+00:15:48,320 --> 00:15:50,640
+So, it's, yeah.
+
+200
+00:15:50,640 --> 00:15:53,640
+It doesn't import anything or doesn't go fully deep?
+
+201
+00:15:53,640 --> 00:16:05,320
+Well, yeah. It usually checks like module level stuff. But usually it doesn't go that deep. So,
+
+202
+00:16:05,320 --> 00:16:10,040
+of course, there's other linters that might spot this, but there are various tools that you can use.
+
+203
+00:16:12,600 --> 00:16:18,920
+But this is like an example. Linters are no means perfect, but the thing is that they spot
+
+204
+00:16:18,920 --> 00:16:27,760
+spot a vast majority of the kind of things that humans might not spot, like these kind
+
+205
+00:16:27,760 --> 00:16:29,160
+of like KVL things.
+
+206
+00:16:29,160 --> 00:16:31,160
+I guess it's just...
+
+207
+00:16:31,160 --> 00:16:32,160
+Yeah.
+
+208
+00:16:32,160 --> 00:16:33,160
+Go ahead.
+
+209
+00:16:33,160 --> 00:16:41,040
+I was going to say, it's like, it's, it works well with a human.
+
+210
+00:16:41,040 --> 00:16:44,040
+Like you spot some things easily, but not others.
+
+211
+00:16:44,040 --> 00:16:46,960
+And the computer spots some things that you don't see well.
+
+212
+00:16:46,960 --> 00:16:47,960
+Yeah.
+
+213
+00:16:47,960 --> 00:16:52,280
+And it's a tool. It's a tool that you can use or not use. If you don't like linters,
+
+214
+00:16:52,280 --> 00:16:55,240
+you don't have to, but then you might encounter errors a bit more.
+
+215
+00:16:55,240 --> 00:16:56,680
+Yeah.
+
+216
+00:16:56,680 --> 00:17:01,320
+Okay. But let's move forward to another kind of productivity tool that you can use.
+
+217
+00:17:02,040 --> 00:17:08,520
+And this is about style enforcement. So Python is very flexible when it comes to
+
+218
+00:17:08,520 --> 00:17:12,920
+what sort of programming styles should you use? What sort of naming should you use? So
+
+219
+00:17:12,920 --> 00:17:19,480
+Here's a few examples. You can use different variable naming styles. These are all valid
+
+220
+00:17:19,480 --> 00:17:28,280
+Python, but they are for the reason that it's flexible. It doesn't enforce it,
+
+221
+00:17:28,280 --> 00:17:33,720
+but at the same time, it recommends certain standards, Python developers, because then it
+
+222
+00:17:33,720 --> 00:17:40,840
+makes coding easier to read for other people as well. These major standards are these Python
+
+223
+00:17:40,840 --> 00:17:44,440
+Enhancement protocols. I don't know what these are called. These PEP.
+
+224
+00:17:44,440 --> 00:17:47,880
+Yeah, I think it's Python Enhancement protocols.
+
+225
+00:17:47,880 --> 00:17:51,160
+Yeah, they're like recommendations for the community.
+
+226
+00:17:52,040 --> 00:17:57,240
+And the PEP 8 is one of the most popular ones, which is like set standards of how,
+
+227
+00:17:57,240 --> 00:18:02,600
+like, okay, your code should look like this. And then there's a docstring standard of how
+
+228
+00:18:02,600 --> 00:18:06,920
+the documentation strings should be written. And different people have different standards.
+
+229
+00:18:06,920 --> 00:18:10,120
+For example, for the documentation strings, NumPy has its own standard.
+
+230
+00:18:10,840 --> 00:18:15,480
+and Google has its own standard and different places have their own standards. But what is
+
+231
+00:18:15,480 --> 00:18:22,280
+usually nice is that you can use these different kinds of formatters and linters to enforce a
+
+232
+00:18:22,280 --> 00:18:29,720
+certain standard for your code. So I personally, I don't have that many opinions on my code.
+
+233
+00:18:29,720 --> 00:18:38,200
+I would rather my code be readable than something like, there's this joke about why don't people,
+
+234
+00:18:38,200 --> 00:18:50,640
+people, if they are in a courtroom and they are asked to tell in your own words what happened
+
+235
+00:18:50,640 --> 00:18:55,400
+in the situation, nobody just invents their own words, they use the same words that everybody
+
+236
+00:18:55,400 --> 00:18:56,400
+else uses.
+
+237
+00:18:56,400 --> 00:19:02,040
+They don't just start gobbling up random words, they use the words that other people
+
+238
+00:19:02,040 --> 00:19:03,040
+use.
+
+239
+00:19:03,040 --> 00:19:04,040
+And it's the same thing.
+
+240
+00:19:04,040 --> 00:19:09,560
+standards that other people use, it makes other people easier to read your code and easier to
+
+241
+00:19:09,560 --> 00:19:17,640
+write your code. And it's much easier to let a formatter or linter determine the standard than
+
+242
+00:19:20,680 --> 00:19:26,200
+fix it yourself. So, in the example, let's do the example here. So, we'll use this.
+
+243
+00:19:26,200 --> 00:19:29,400
+Oh. So, do right here.
+
+244
+00:19:29,400 --> 00:19:33,960
+Yeah. So, if you download the code here. So, this code looks pretty awful, right?
+
+245
+00:19:33,960 --> 00:19:41,680
+it's by design, it's supposed to look awful. It works. It's completely working code, but
+
+246
+00:19:41,680 --> 00:19:44,080
+I don't like it. It doesn't look pretty to me.
+
+247
+00:19:44,080 --> 00:19:45,080
+It's spacing weird.
+
+248
+00:19:45,080 --> 00:19:55,000
+Yeah, there's weird spacing, weird variable names, and all sorts of things. It's not pretty.
+
+249
+00:19:55,000 --> 00:19:56,000
+So let's do it.
+
+250
+00:19:56,000 --> 00:19:57,000
+Yeah.
+
+251
+00:19:57,000 --> 00:20:08,880
+copy the link, go to file, open from URL, paste the link, and open. I'm going to move
+
+252
+00:20:08,880 --> 00:20:11,200
+this to the top here.
+
+253
+00:20:11,200 --> 00:20:18,440
+Yeah. So, yeah, it works and it calculates this pi estimate using this target method,
+
+254
+00:20:18,440 --> 00:20:19,440
+but it's...
+
+255
+00:20:19,440 --> 00:20:20,440
+Yeah.
+
+256
+00:20:20,440 --> 00:20:24,280
+And it gives like examples there, but it looks pretty awful.
+
+257
+00:20:24,280 --> 00:20:26,880
+Should I try to run it?
+
+258
+00:20:26,880 --> 00:20:30,880
+Yeah, you can try to run it. Maybe try it from the command line.
+
+259
+00:20:33,880 --> 00:20:35,880
+Yeah, so here's Flake.
+
+260
+00:20:35,880 --> 00:20:40,880
+We'll see more how these scripts work tomorrow, so if this doesn't make sense, don't worry.
+
+261
+00:20:40,880 --> 00:20:44,880
+Yeah, but the main thing is how can we make it better?
+
+262
+00:20:44,880 --> 00:20:47,880
+So let's try first running pylint on it.
+
+263
+00:20:47,880 --> 00:20:50,880
+Sorry, flake8 on it.
+
+264
+00:20:50,880 --> 00:20:58,200
+flake8 is this kind of like linter and code syntax, like checker.
+
+265
+00:20:58,200 --> 00:21:05,160
+And if you look at what sort of things it gives, it gives various of these, like, okay,
+
+266
+00:21:05,160 --> 00:21:08,880
+you should fix this and yeah.
+
+267
+00:21:08,880 --> 00:21:14,880
+And what we can do, of course, is we can manually fix these and it makes the code better.
+
+268
+00:21:14,880 --> 00:21:16,960
+But we can also use a formatter.
+
+269
+00:21:16,960 --> 00:21:22,720
+So one of the most common formatters is this black by Python Software Foundation, which
+
+270
+00:21:22,720 --> 00:21:25,200
+is like this opinionated formatter.
+
+271
+00:21:25,200 --> 00:21:28,480
+So it has its own style and it wants to enforce that style.
+
+272
+00:21:28,480 --> 00:21:33,720
+So it's a play on the Henry Ford's, like, you can have the Model T, the car.
+
+273
+00:21:33,720 --> 00:21:35,800
+Oh, that's where the name comes from.
+
+274
+00:21:35,800 --> 00:21:40,960
+In any color, as long as it's black, like that famous quote.
+
+275
+00:21:40,960 --> 00:21:43,560
+So it tries to enforce its own style.
+
+276
+00:21:43,560 --> 00:21:46,560
+So let's try to run black on this code example.
+
+277
+00:21:46,560 --> 00:21:59,000
+Okay, so, and I have been black, but it's in the, in the environment, in the, it's in
+
+278
+00:21:59,000 --> 00:22:00,000
+the code environment.
+
+279
+00:22:00,000 --> 00:22:04,600
+If you have, if you have installed them, yeah, okay.
+
+280
+00:22:04,600 --> 00:22:05,600
+Yeah.
+
+281
+00:22:05,600 --> 00:22:08,320
+Oh, so now it's reformatted it.
+
+282
+00:22:08,320 --> 00:22:09,320
+Yeah.
+
+283
+00:22:09,320 --> 00:22:14,920
+So you probably need to open the file again or reload it or.
+
+284
+00:22:14,920 --> 00:22:18,520
+Is there a reload Python file from disk?
+
+285
+00:22:18,520 --> 00:22:21,640
+So now we see that things happened.
+
+286
+00:22:21,640 --> 00:22:27,880
+So if we compare what's at the bottom and what's here, suddenly, for example, between
+
+287
+00:22:27,880 --> 00:22:34,160
+the brackets, all of the extra spacing is gone.
+
+288
+00:22:34,160 --> 00:22:41,280
+Some of the spacings are gone and things have been organized in a bit better way.
+
+289
+00:22:41,280 --> 00:22:48,920
+If you now run the Flake 8 again, Hoyt, let's ask it what it says about this.
+
+290
+00:22:48,920 --> 00:22:53,360
+So, I just pushed the up arrow key twice there.
+
+291
+00:22:53,360 --> 00:22:54,360
+Okay.
+
+292
+00:22:54,360 --> 00:22:55,360
+So, one line too long.
+
+293
+00:22:55,360 --> 00:22:56,360
+Yeah.
+
+294
+00:22:56,360 --> 00:22:57,360
+So, it.
+
+295
+00:22:57,360 --> 00:22:58,360
+Line.
+
+296
+00:22:58,360 --> 00:22:59,360
+Yeah.
+
+297
+00:22:59,360 --> 00:23:00,360
+Line five.
+
+298
+00:23:00,360 --> 00:23:04,960
+So, it says that, okay, usually there's this character limit of 80 characters so that it
+
+299
+00:23:04,960 --> 00:23:18,640
+can fit into a terminal. You don't have to enforce any standard, but that's common. In
+
+300
+00:23:18,640 --> 00:23:23,200
+your environment, you probably don't have this pep8 naming package that is in the example
+
+301
+00:23:23,200 --> 00:23:30,560
+and in the example environments, but it doesn't really matter. But it would give, if you scroll
+
+302
+00:23:30,560 --> 00:23:32,560
+a bit up.
+
+303
+00:23:32,560 --> 00:23:33,560
+It's up.
+
+304
+00:23:33,560 --> 00:23:43,720
+like, there. It would give those warnings. So, the name of the package is a bit above.
+
+305
+00:23:43,720 --> 00:23:48,360
+But those are warnings. It would give those warnings. So, you can install into Flake 8
+
+306
+00:23:48,360 --> 00:23:54,000
+these additional style guides. There's a huge amount of these extensions. And one of these
+
+307
+00:23:54,000 --> 00:24:00,680
+extensions gives warnings about variable names that don't abide by the pet8 convention. So,
+
+308
+00:24:00,680 --> 00:24:06,360
+example, it would say that the function name should be lowercase and the variable should
+
+309
+00:24:06,360 --> 00:24:12,200
+be lowercase. So those PI numbers there, because those are basically the standards.
+
+310
+00:24:13,160 --> 00:24:21,240
+But it doesn't really matter. You can go by the standards that you want to. All of these tools
+
+311
+00:24:21,240 --> 00:24:27,480
+are meant for you to enforce what you think is good code. But of course, they're also to
+
+312
+00:24:27,480 --> 00:24:33,800
+to, like, help others read your code, but you don't have to use any of these tools.
+
+313
+00:24:33,800 --> 00:24:39,640
+But usually, like, at least for me, it, like, gives me a peace of mind that, like, I haven't
+
+314
+00:24:39,640 --> 00:24:46,440
+written, like, code that looks bad for other people to read, because, like, then it makes
+
+315
+00:24:46,440 --> 00:24:50,840
+harder for them to use the code that I've written, because it's a collaborative effort,
+
+316
+00:24:50,840 --> 00:24:55,480
+and that's why people use these formatters and linters.
+
+317
+00:24:55,480 --> 00:25:01,480
+So here, well, do we have more or should I ask a philosophical question?
+
+318
+00:25:01,480 --> 00:25:03,480
+Shoot.
+
+319
+00:25:03,480 --> 00:25:13,480
+So my problem with things like code formatters, so for example this 4.11 here.
+
+320
+00:25:13,480 --> 00:25:17,480
+To me, how it is now with these spaces.
+
+321
+00:25:17,480 --> 00:25:25,480
+I would, if I was writing this myself, to me this is clearly easier to read.
+
+322
+00:25:25,480 --> 00:25:26,480
+Yes.
+
+323
+00:25:26,480 --> 00:25:29,480
+And, like, the way that things...
+
+324
+00:25:29,480 --> 00:25:35,480
+So, like, I like the idea, but the implementation...
+
+325
+00:25:35,480 --> 00:25:44,480
+If I'm running Black on my own code, it's usually making it easier to read in places I don't care about and harder to read other places.
+
+326
+00:25:44,480 --> 00:25:49,400
+So what I think, and I tend to use this white space a lot
+
+327
+00:25:49,400 --> 00:25:52,520
+to group things so I can mentally
+
+328
+00:25:52,520 --> 00:25:55,840
+understand what's going on or align things vertically.
+
+329
+00:25:55,840 --> 00:25:58,880
+But my proposed solution to this dilemma
+
+330
+00:25:58,880 --> 00:26:02,120
+is if it's a small issue of my own project,
+
+331
+00:26:02,120 --> 00:26:05,960
+I know I'm formatting it well myself anyway.
+
+332
+00:26:05,960 --> 00:26:08,840
+But whenever it's someone else's project,
+
+333
+00:26:08,840 --> 00:26:13,000
+or if it's a big project, a random contribution coming in
+
+334
+00:26:13,000 --> 00:26:17,240
+is probably worse than I would want.
+
+335
+00:26:17,240 --> 00:26:19,640
+So there it's better to make it uniform,
+
+336
+00:26:19,640 --> 00:26:25,240
+even if the uniform is not exactly what I would want.
+
+337
+00:26:25,240 --> 00:26:27,000
+Do you have any thoughts on this?
+
+338
+00:26:27,000 --> 00:26:28,840
+Yeah, yeah, I completely agree.
+
+339
+00:26:28,840 --> 00:26:32,360
+And I will also mention that there's like,
+
+340
+00:26:32,360 --> 00:26:36,120
+like what I usually myself do is that I usually pick
+
+341
+00:26:36,120 --> 00:26:37,320
+the tools I want to use,
+
+342
+00:26:37,320 --> 00:26:39,720
+like the linters or formaters I want to use.
+
+343
+00:26:39,720 --> 00:26:41,960
+And then you can, all of these tools,
+
+344
+00:26:41,960 --> 00:26:49,160
+you can specify different things that they want to do. There's different flags and configuration
+
+345
+00:26:49,160 --> 00:26:59,560
+parameters. And usually they're like .blackrc or some configuration file that you can specify that,
+
+346
+00:26:59,560 --> 00:27:06,360
+okay, don't care about these things. I want you to worry about these things and not these things.
+
+347
+00:27:06,360 --> 00:27:14,040
+And then you can enforce throughout the project a consistent style, but leaving your own things
+
+348
+00:27:14,040 --> 00:27:19,320
+there. There's also alternative linters that, for example, fix... Google has its own linter that
+
+349
+00:27:19,320 --> 00:27:28,280
+fixes these multiplication things. But I agree. The code, the formatters, it's the same with
+
+350
+00:27:28,280 --> 00:27:34,200
+ChatGPT or something like that. The ChatGPT has seen code and it writes code, but of course,
+
+351
+00:27:34,200 --> 00:27:41,160
+it doesn't understand code in the sense that humans do. So for us, we might have a different
+
+352
+00:27:41,160 --> 00:27:47,000
+kind of perception of the code and see some code to be better than the other one,
+
+353
+00:27:48,520 --> 00:27:52,920
+and more visually pleasing or something. The pattern looks nicer or something.
+
+354
+00:27:54,600 --> 00:27:58,440
+I don't know how much more time we have, but there's a really good question, number 71,
+
+355
+00:27:58,440 --> 00:28:04,920
+do linter spot type mismatches. Should we go to the notes now? Are we done with the lesson?
+
+356
+00:28:04,920 --> 00:28:11,160
+Yeah, I think we're done with the lesson. This is just a quick demo. In the lesson,
+
+357
+00:28:11,160 --> 00:28:17,240
+there's also mentioned about how you can automatically integrate into this to Git
+
+358
+00:28:17,240 --> 00:28:23,160
+so that whenever you run a commit, it will automatically run these linters and it will
+
+359
+00:28:23,160 --> 00:28:28,200
+say to you that, okay, like you have a problem in your commit or something. But, yeah, let's go to
+
+360
+00:28:28,200 --> 00:28:37,080
+the we can go to the, like, the cool down of that. But the idea behind this, there's huge
+
+361
+00:28:37,080 --> 00:28:42,680
+amount of these linters and huge amount of these productivity tools. But they are these tools. Like,
+
+362
+00:28:42,680 --> 00:28:49,080
+that's the most important things. And, like, if you don't know if you feel unsure about your code
+
+363
+00:28:49,080 --> 00:28:52,760
+And if you don't know how you should write your code and that sort of things,
+
+364
+00:28:53,400 --> 00:29:04,680
+the formatters and linters can make you write better code because they can help you with
+
+365
+00:29:05,720 --> 00:29:16,920
+the hard decisions of how should I write my code. And you don't have to worry about the code style
+
+366
+00:29:16,920 --> 00:29:20,920
+that you're using. You just follow what the linter says. And I personally do that a lot,
+
+367
+00:29:20,920 --> 00:29:26,200
+because I don't want to think about... I don't have that many opinions, so I would rather...
+
+368
+00:29:26,200 --> 00:29:31,720
+Like, somebody else has decided the thing already, so it's better to follow their lead.
+
+369
+00:29:31,720 --> 00:29:37,960
+They probably have good reasons for it. I usually follow that sort of paradigm.
+
+370
+00:29:39,320 --> 00:29:46,360
+Yeah. Okay. Sorry, I was looking at other things and adding the feedback to the notes.
+
+371
+00:29:46,920 --> 00:29:53,080
+Did we already answer that do linters detect type mismatches?
+
+372
+00:29:53,080 --> 00:29:59,800
+Yes. I'll mention that. So, like Python, for example, it's not strongly typed. So,
+
+373
+00:29:59,800 --> 00:30:04,840
+the types can change throughout the code runtime. But they are like type hints that you can put
+
+374
+00:30:04,840 --> 00:30:10,440
+into your code. And various programs, for example, or various libraries like NumPy and
+
+375
+00:30:10,440 --> 00:30:18,360
+Matplotlib and everything, they do this in the code. So then you can, if you write your type
+
+376
+00:30:18,360 --> 00:30:25,960
+into your code, you can run the static code checkers that basically go through your code,
+
+377
+00:30:25,960 --> 00:30:32,840
+they run the code, and then they check if the type suddenly changes or if they're incompatible
+
+378
+00:30:32,840 --> 00:30:39,640
+types or whatever. There are tools for this, and it just depends on how production code you want
+
+379
+00:30:39,640 --> 00:30:45,400
+to write. Normally, when we write scientific code, it's not necessarily like
+
+380
+00:30:48,040 --> 00:30:52,360
+you don't have to worry about types that much. But if you write a core library,
+
+381
+00:30:52,360 --> 00:30:55,560
+if you want to write a library that other people are using, then it might be a good
+
+382
+00:30:55,560 --> 00:31:05,720
+idea to add a type in. It becomes more easy for other people to use that.
+
+383
+00:31:05,720 --> 00:31:11,760
+But yeah, like on a normal small program, I don't know if it's necessary to use the type
+
+384
+00:31:11,760 --> 00:31:12,760
+hints.
+
+385
+00:31:12,760 --> 00:31:13,760
+Yeah.
+
+386
+00:31:13,760 --> 00:31:17,040
+It depends on the size of the program and the amount of collaborators as well.
+
+387
+00:31:17,040 --> 00:31:20,920
+Like if you have thousands, like I think somewhere in Black's website, they said that
+
+388
+00:31:20,920 --> 00:31:23,800
+there's 20 million lines of code formatted with Black.
+
+389
+00:31:23,800 --> 00:31:24,800
+20 million?
+
+390
+00:31:24,800 --> 00:31:25,800
+Yeah.
+
+391
+00:31:25,800 --> 00:31:26,800
+Formatted?
+
+392
+00:31:26,800 --> 00:31:27,800
+Formatted, yeah.
+
+393
+00:31:27,800 --> 00:31:28,800
+In the form?
+
+394
+00:31:28,800 --> 00:31:29,800
+Yeah.
+
+395
+00:31:29,800 --> 00:31:35,560
+So there are so many big projects that are using it, like no human would want to do that
+
+396
+00:31:35,560 --> 00:31:38,920
+code formatting for that job, basically.
+
+397
+00:31:38,920 --> 00:31:40,320
+I wouldn't want to do it.
+
+398
+00:31:40,320 --> 00:31:43,960
+I wouldn't want to be a type checker in a big company
+
+399
+00:31:43,960 --> 00:31:47,080
+checking, is the code looking good?
+
+400
+00:31:47,080 --> 00:31:48,880
+But there's tools for that.
+
+401
+00:31:52,800 --> 00:31:54,640
+OK.
+
+402
+00:31:54,640 --> 00:31:58,320
+Any other comments or things to discuss here?
+
+403
+00:32:05,560 --> 00:32:12,280
+So, this question 73, I think you can configure many of the linters for own preferences, like
+
+404
+00:32:12,280 --> 00:32:14,720
+what to ignore, and so on.
+
+405
+00:32:14,720 --> 00:32:21,480
+Also, [Name], I think you hinted at this, can black be configured to not do certain formats?
+
+406
+00:32:21,480 --> 00:32:23,680
+Or is it only one?
+
+407
+00:32:23,680 --> 00:32:34,520
+I think all of them have a huge amount of flags, so usually what you do is you start
+
+408
+00:32:34,520 --> 00:32:37,720
+But start from the basic configuration
+
+409
+00:32:37,720 --> 00:32:40,880
+and then you drop out certain things.
+
+410
+00:32:40,880 --> 00:32:50,640
+So yeah, it's usually like you can skip various things.
+
+411
+00:32:54,760 --> 00:32:56,000
+OK.
+
+412
+00:32:56,000 --> 00:33:00,720
+And this question 74, is it possible to use x with tool y?
+
+413
+00:33:00,720 --> 00:33:03,880
+The answer is usually yes.
+
+414
+00:33:03,880 --> 00:33:08,520
+but the person you ask usually won't know because there's so many combinations.
+
+415
+00:33:08,520 --> 00:33:13,080
+So do your own web searches and probably you can figure out how to.
+
+416
+00:33:13,720 --> 00:33:18,360
+But if you're using any of the popular things like in the question list PyCharm,
+
+417
+00:33:18,360 --> 00:33:25,080
+but if you're using VS Code, Veeam or whatever, there's like a million extensions that combine,
+
+418
+00:33:25,080 --> 00:33:30,280
+like [Name] said, tool X with tool Y. And usually you get like a button that
+
+419
+00:33:30,280 --> 00:33:37,020
+But like, if you press this button, it will run this linter or whatever for your code.
+
+420
+00:33:37,020 --> 00:33:42,140
+And usually many IDEs, they already come with some of these tools.
+
+421
+00:33:42,140 --> 00:33:46,640
+Like they will automatically flag you syntax errors and that sort of thing.
+
+422
+00:33:46,640 --> 00:33:51,580
+But it's important to know that like these tools exist and you can utilize them.
+
+423
+00:33:51,580 --> 00:33:54,820
+And it's not like cheating, like who cares?
+
+424
+00:33:54,820 --> 00:34:00,740
+Not like, yeah, it isn't like you did it the hard way.
+
+425
+00:34:00,740 --> 00:34:02,900
+OK, now you won a medal.
+
+426
+00:34:02,900 --> 00:34:06,660
+Like coding isn't like a competitive video game
+
+427
+00:34:06,660 --> 00:34:07,140
+or something.
+
+428
+00:34:07,140 --> 00:34:14,460
+Like it's like coding is, yeah, you can go the easy route.
+
+429
+00:34:14,460 --> 00:34:16,980
+Your main work isn't a homework assignment
+
+430
+00:34:16,980 --> 00:34:19,940
+where if you don't do it yourself, it's plagiarism.
+
+431
+00:34:19,940 --> 00:34:23,900
+your real work is.
+
+432
+00:34:23,900 --> 00:34:25,020
+Yeah.
+
+433
+00:34:25,020 --> 00:34:30,860
+Like, for example, one would think that, for example, like.
+
+434
+00:34:30,860 --> 00:34:32,720
+We're past the time now.
+
+435
+00:34:32,720 --> 00:34:36,700
+So if we are done with everything for today,
+
+436
+00:34:36,700 --> 00:34:39,260
+we might still hang out talking for a little bit.
+
+437
+00:34:39,260 --> 00:34:41,700
+But thank you for coming.
+
+438
+00:34:41,700 --> 00:34:45,540
+And if you have more, please fill out
+
+439
+00:34:45,540 --> 00:34:46,980
+this feedback for today.
+
+440
+00:34:46,980 --> 00:34:52,740
+it is very important and we always look at it before preparing the next year.
+
+441
+00:34:55,540 --> 00:35:01,540
+Okay, so what were you saying before? Yeah, I was just saying that if you think about,
+
+442
+00:35:03,540 --> 00:35:09,460
+the fresco on Sistine Chapel or something, Michelangelo didn't paint the whole thing.
+
+443
+00:35:09,460 --> 00:35:17,620
+he had a huge amount of helpers planning and doing that painting. Or like David, he had people
+
+444
+00:35:18,580 --> 00:35:27,780
+helping with the initial steps of the work, like applying a low-layer paint and that sort of
+
+445
+00:35:27,780 --> 00:35:34,420
+stuff. So coding is a similar kind of thing. The hard things are what you really want to do with
+
+446
+00:35:34,420 --> 00:35:38,620
+with the code, the easier things of, okay, how do I write this?
+
+447
+00:35:38,900 --> 00:35:44,100
+You can use chat GPT or whatever, like linters and formatters to help you with
+
+448
+00:35:44,100 --> 00:35:50,740
+that, getting the idea across and the, you can, you can get the art out of the
+
+449
+00:35:50,780 --> 00:35:57,180
+marble block, but like, yeah, it's not cheating to use like helper tools.
+
+450
+00:35:57,180 --> 00:36:00,060
+It's, it's just a way of improving the productivity.
+
+451
+00:36:00,860 --> 00:36:01,140
+Yeah.
+
+452
+00:36:03,220 --> 00:36:03,500
+Okay.
+
+453
+00:36:03,500 --> 00:36:04,500
+Hello, [name].
+
+454
+00:36:04,500 --> 00:36:08,860
+Any comments on today before we hang up?
+
+455
+00:36:08,860 --> 00:36:11,620
+I really like this productivity tool session.
+
+456
+00:36:11,620 --> 00:36:13,380
+It was good to edit.
+
+457
+00:36:13,380 --> 00:36:14,900
+So I learned new things.
+
+458
+00:36:14,900 --> 00:36:18,060
+And these are tools I use.
+
+459
+00:36:18,060 --> 00:36:21,420
+Yeah, the only thing I would want to, like next year,
+
+460
+00:36:21,420 --> 00:36:25,180
+we have to figure out how do we add it into the Jupyter.
+
+461
+00:36:25,180 --> 00:36:29,220
+Because, yeah, like just we maybe
+
+462
+00:36:29,220 --> 00:36:31,940
+need to make the environment so it's already there
+
+463
+00:36:31,940 --> 00:36:38,260
+something because it's possible to add these into Jupyter as well. So the exercise will be easier to
+
+464
+00:36:38,260 --> 00:36:46,580
+run without scripts. Yeah, but it's also a good preview for tomorrow since tomorrow we need to do
+
+465
+00:36:46,580 --> 00:36:54,020
+the script stuff. Yeah, tomorrow we'll have a lot of talk about like scripts and also libraries and
+
+466
+00:36:54,020 --> 00:37:00,660
+that sort of stuff. And also there was mentioned about software architecture in the chat. So we'll
+
+467
+00:37:00,660 --> 00:37:05,620
+be talking about that as well. And these productivity tools are, yeah, like [Name] said,
+
+468
+00:37:05,620 --> 00:37:16,100
+tied to that. But yeah, so should we close out the day? Great. Let's close up. See you tomorrow.
+
+469
+00:37:16,100 --> 00:37:22,420
+So remember to prepare for day three. There's some news here, which you probably already read.
+
+470
+00:37:24,660 --> 00:37:29,460
+Remember to give feedback. This session, for example, was a new session, so it would be nice
+
+471
+00:37:29,460 --> 00:37:35,140
+to hear what can we improve and what would you like to hear more in the upcoming years.
+
+472
+00:37:36,340 --> 00:37:49,460
+Yeah. Okay. Thanks a lot. See you tomorrow. Same time. Bye.
+

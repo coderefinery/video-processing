@@ -1,0 +1,656 @@
+1
+00:00:00,000 --> 00:00:12,220
+Where's all my pointers. So, there we go. Okay. So, we are continuing with pandas. So,
+
+2
+00:00:12,220 --> 00:00:20,140
+I'd recommend at the first, for now, you watch us as we type. And then, when it comes time
+
+3
+00:00:20,140 --> 00:00:23,020
+to exercise your work, because we're going to be typing fast.
+
+4
+00:00:23,020 --> 00:00:26,420
+And I don't think you can keep up
+
+5
+00:00:26,420 --> 00:00:30,620
+where this is more a demo than a type log right now.
+
+6
+00:00:30,620 --> 00:00:33,140
+So with that being said, where's our starting point?
+
+7
+00:00:33,140 --> 00:00:40,780
+So we first wanted to demonstrate some extra data
+
+8
+00:00:40,780 --> 00:00:46,300
+frame properties, which was the merging of data frames.
+
+9
+00:00:46,300 --> 00:00:47,660
+Is that correct?
+
+10
+00:00:47,660 --> 00:00:48,980
+Yeah.
+
+11
+00:00:48,980 --> 00:00:56,540
+OK, so a merge, if you know the concept from SQL or things
+
+12
+00:00:56,540 --> 00:01:00,020
+like that, it will make sense.
+
+13
+00:01:00,020 --> 00:01:02,060
+But let's show what it is visually.
+
+14
+00:01:02,060 --> 00:01:04,140
+So we're using the runner examples.
+
+15
+00:01:08,540 --> 00:01:12,300
+So import pandas.
+
+16
+00:01:12,300 --> 00:01:16,140
+So this is from yesterday just.
+
+17
+00:01:16,140 --> 00:01:22,660
+And this is the runner ranking.
+
+18
+00:01:22,660 --> 00:01:23,540
+Yes.
+
+19
+00:01:23,540 --> 00:01:26,620
+And if we run this, what do we see?
+
+20
+00:01:26,620 --> 00:01:28,700
+It's also printed.
+
+21
+00:01:28,700 --> 00:01:33,100
+So we see runners with distance and time.
+
+22
+00:01:33,100 --> 00:01:35,260
+So if we scroll down a little bit
+
+23
+00:01:35,260 --> 00:01:38,220
+under the working with data frames,
+
+24
+00:01:38,220 --> 00:01:43,140
+we see an age data frame, which has different.
+
+25
+00:01:43,140 --> 00:01:45,580
+For each runner, it has the age.
+
+26
+00:01:45,580 --> 00:01:50,140
+So notice the runner column is the same among both of them.
+
+27
+00:01:50,140 --> 00:01:53,540
+So we want to match up these datas and connect.
+
+28
+00:01:53,540 --> 00:01:57,140
+[name], can you close the sidebar?
+
+29
+00:01:57,140 --> 00:01:58,900
+Yes.
+
+30
+00:01:58,900 --> 00:01:59,780
+OK, there we go.
+
+31
+00:02:03,100 --> 00:02:05,180
+OK, so what happens when we merge them?
+
+32
+00:02:05,180 --> 00:02:08,060
+So we take the parent data frame,
+
+33
+00:02:08,060 --> 00:02:11,420
+and what we want to add to it is age.
+
+34
+00:02:11,420 --> 00:02:19,100
+we say we connect age to it and the runner column is the thing that matches up and if we run this
+
+35
+00:02:19,100 --> 00:02:26,460
+we see uh does it return it directly yes it does okay so this returns it directly it probably
+
+36
+00:02:26,460 --> 00:02:34,700
+doesn't modify the original data frames but we see now age has been connected to the runners
+
+37
+00:02:37,020 --> 00:02:37,980
+everywhere it should be
+
+38
+00:02:41,420 --> 00:02:47,100
+And yeah, that's that's the idea of merge. And there's all kinds of these tools that you can
+
+39
+00:02:47,100 --> 00:02:51,980
+find in pandas to do almost everything you can. I mean, it's the same kind of tools you'd find in
+
+40
+00:02:51,980 --> 00:02:58,860
+other things like SQL and so on. But if you ever find yourself going in manually, doing this kind
+
+41
+00:02:58,860 --> 00:03:06,540
+of data processing thing, connecting tabular or tidy data, then maybe take a step back and see
+
+42
+00:03:06,540 --> 00:03:10,580
+see, should we be doing it with pandas instead.
+
+43
+00:03:10,580 --> 00:03:14,580
+So our next demo is about time series.
+
+44
+00:03:14,580 --> 00:03:16,420
+So what does this mean?
+
+45
+00:03:16,420 --> 00:03:18,820
+So a time series is something where
+
+46
+00:03:18,820 --> 00:03:24,500
+there is data which occurs periodically over time.
+
+47
+00:03:24,500 --> 00:03:31,140
+And this is one of the original major use cases of pandas.
+
+48
+00:03:31,140 --> 00:03:35,180
+So it has pretty good support there.
+
+49
+00:03:35,180 --> 00:03:41,540
+So first, we will load this CSV file
+
+50
+00:03:41,540 --> 00:03:46,860
+from the web, which has information on all the Nobel
+
+51
+00:03:46,860 --> 00:03:48,660
+Prize winners.
+
+52
+00:03:48,660 --> 00:03:52,860
+So when we run this, we can see something.
+
+53
+00:03:52,860 --> 00:03:57,100
+And we see there's, well, like we expect, first name, names,
+
+54
+00:03:57,100 --> 00:04:00,860
+born, died, born, country, all these kinds of things.
+
+55
+00:04:00,860 --> 00:04:05,860
+So the thing is that these born and died columns,
+
+56
+00:04:06,740 --> 00:04:08,180
+it looks like dates to us,
+
+57
+00:04:08,180 --> 00:04:10,940
+but the computer doesn't interpret them as dates.
+
+58
+00:04:10,940 --> 00:04:15,940
+So we can tell pandas this should be a date time column.
+
+59
+00:04:16,220 --> 00:04:18,880
+So there's this next little bit here we can copy.
+
+60
+00:04:19,980 --> 00:04:21,060
+There we go.
+
+61
+00:04:21,060 --> 00:04:26,060
+And if we run this and then do a head of the Nobel Prize,
+
+62
+00:04:26,060 --> 00:04:35,420
+Nobel Prize, again. So it looks pretty similar. But if we do an info now, nobel.info.
+
+63
+00:04:38,940 --> 00:04:46,860
+So notice that born, died, and year, they're all now DateTime64 objects. Which means,
+
+64
+00:04:46,860 --> 00:04:53,740
+so before they were object like the other ones. So that means Pandas knows that these are actually
+
+65
+00:04:53,740 --> 00:04:57,580
+DateTime objects. And under the hood, these are actually NumPy types.
+
+66
+00:04:58,140 --> 00:05:04,380
+So we can do some extra things now. So for example, if we do for each of these DateTime
+
+67
+00:05:04,380 --> 00:05:11,180
+columns, there's a .dt attribute, which means interpret this as a Python DateTime.
+
+68
+00:05:11,180 --> 00:05:17,340
+And we can do things like day. Let's see. And it tells us, oh,
+
+69
+00:05:17,340 --> 00:05:18,380
+It's the day of the month.
+
+70
+00:05:18,380 --> 00:05:20,460
+It's the integer of the day out of there.
+
+71
+00:05:20,460 --> 00:05:21,340
+We can do year.
+
+72
+00:05:26,620 --> 00:05:28,700
+Yeah, that looks OK.
+
+73
+00:05:28,700 --> 00:05:31,820
+And even things like weekday, which
+
+74
+00:05:31,820 --> 00:05:37,260
+this comes from the Python date time object.
+
+75
+00:05:37,260 --> 00:05:40,620
+And I guess that will also define what it actually
+
+76
+00:05:40,620 --> 00:05:41,660
+means in there.
+
+77
+00:05:41,660 --> 00:05:49,340
+So it's like, it's Sunday, Monday, Tuesday, and so on.
+
+78
+00:05:49,340 --> 00:05:50,340
+Yeah.
+
+79
+00:05:50,340 --> 00:05:52,700
+But represented as a number.
+
+80
+00:05:52,700 --> 00:05:53,700
+Yeah.
+
+81
+00:05:53,700 --> 00:05:57,460
+So since these are date times, we can do things like arithmetic on them.
+
+82
+00:05:57,460 --> 00:06:02,700
+So the next thing down here is how we can subtract them.
+
+83
+00:06:02,700 --> 00:06:10,220
+So we're subtracting the born and died years, converting it to days, dividing that by 365
+
+84
+00:06:10,220 --> 00:06:15,860
+to make years, and then rounding it by one.
+
+85
+00:06:15,860 --> 00:06:18,780
+So I guess we want to run nopal.head or something
+
+86
+00:06:18,780 --> 00:06:19,660
+like that.
+
+87
+00:06:19,660 --> 00:06:22,540
+OK, yeah.
+
+88
+00:06:22,540 --> 00:06:24,540
+Because this just added a lifespan column.
+
+89
+00:06:27,660 --> 00:06:30,060
+And somewhere there, there's probably lifespan.
+
+90
+00:06:30,060 --> 00:06:31,620
+It's the last one.
+
+91
+00:06:31,620 --> 00:06:36,500
+That seems pretty reasonable looking.
+
+92
+00:06:36,500 --> 00:06:38,940
+So what do we do with this lifespan now?
+
+93
+00:06:38,940 --> 00:06:41,340
+So we have an integer lifespan.
+
+94
+00:06:41,340 --> 00:06:46,020
+So we can do things like plot, like make plots out of it.
+
+95
+00:06:46,020 --> 00:06:48,420
+So for example, let's make this histogram.
+
+96
+00:06:54,140 --> 00:06:59,940
+So column lifespan, we specify some bin size and so on.
+
+97
+00:06:59,940 --> 00:07:05,620
+And OK, yeah, looks like reasonable ages
+
+98
+00:07:05,620 --> 00:07:12,500
+for relatively well-off people from the last century.
+
+99
+00:07:14,540 --> 00:07:18,140
+Next off, let's do something else.
+
+100
+00:07:18,140 --> 00:07:20,260
+Since we have a column that
+
+101
+00:07:20,260 --> 00:07:23,180
+specifies what category or price they've got,
+
+102
+00:07:23,180 --> 00:07:26,340
+there's all kinds of things built in like
+
+103
+00:07:26,340 --> 00:07:33,540
+plotting the lifespan split up by category.
+
+104
+00:07:35,620 --> 00:07:39,620
+So how does this look?
+
+105
+00:07:39,620 --> 00:07:46,620
+Yeah, I mean, seems pretty reasonable.
+
+106
+00:07:46,620 --> 00:07:53,180
+Yeah, the statistics are not that great, so I don't think you can actually draw inferences,
+
+107
+00:07:53,180 --> 00:07:58,620
+but you see some interesting data.
+
+108
+00:07:58,620 --> 00:08:04,620
+Okay, so we're about to go to exercises here, these exercises three.
+
+109
+00:08:04,620 --> 00:08:09,380
+And what have we learned then?
+
+110
+00:08:09,380 --> 00:08:15,020
+So basically, by using Pandas the way it's made, by converting things to the right data
+
+111
+00:08:15,020 --> 00:08:20,940
+types and aligning all the columns and making them tidy, there's all these different powerful
+
+112
+00:08:20,940 --> 00:08:29,660
+things we can take and use, which let us do things very quickly.
+
+113
+00:08:29,660 --> 00:08:33,420
+But remember what I said back at the beginning.
+
+114
+00:08:33,420 --> 00:08:40,640
+So almost every time I do something medium level in Pandas, I do a web search to figure
+
+115
+00:08:40,640 --> 00:08:42,380
+out how I do it.
+
+116
+00:08:42,380 --> 00:08:44,780
+Because I can't keep it all in my mind.
+
+117
+00:08:44,780 --> 00:08:48,660
+I know the basics like slicing stuff and so on.
+
+118
+00:08:48,660 --> 00:08:51,420
+So just keep that in mind.
+
+119
+00:08:51,420 --> 00:08:57,540
+If it seems hard, just take the time, read about it, and the more you use it, the better
+
+120
+00:08:57,540 --> 00:09:10,660
+you'll get at it. Okay. What do you think? Should we go straight there?
+
+121
+00:09:10,660 --> 00:09:16,100
+Yeah. Let's just go to ‑‑ I mean, I don't have anything special to add. It's the
+
+122
+00:09:16,100 --> 00:09:22,140
+same for me. I'm always checking how to do things in pandas rather than remembering.
+
+123
+00:09:22,140 --> 00:09:27,300
+And this goes for basically any library in Python. Usually you don't remember how to
+
+124
+00:09:27,300 --> 00:09:30,900
+do any complicated operations, you check.
+
+125
+00:09:30,900 --> 00:09:37,620
+There's so many things you can do with these libraries.
+
+126
+00:09:37,620 --> 00:09:39,780
+OK, yeah.
+
+127
+00:09:39,780 --> 00:09:41,440
+There's a good question coming up.
+
+128
+00:09:41,440 --> 00:09:43,740
+Can we say something about the difference between pandas
+
+129
+00:09:43,740 --> 00:09:45,380
+and R's tidyverse?
+
+130
+00:09:45,380 --> 00:09:51,860
+So [name], do you know much about R's tidyverse?
+
+131
+00:09:51,860 --> 00:09:54,220
+Not that much.
+
+132
+00:09:54,220 --> 00:09:56,660
+I mean, it's a few more.
+
+133
+00:09:56,660 --> 00:10:02,180
+I propose we go to the exercises. Maybe we can have someone comment a little bit more after the exercises.
+
+134
+00:10:02,180 --> 00:10:10,100
+So, yeah. Okay, let's go. So how long were the exercises supposed to be? 20 minutes or 15 minutes?
+
+135
+00:10:10,100 --> 00:10:22,740
+15 minutes. Okay. 25, and then we come back. Okay, I switch to the notes, and see you soon. Bye.
+
+136
+00:10:25,000 --> 00:10:30,260
+Hello, we're back.
+
+137
+00:10:30,260 --> 00:10:38,900
+So yes, if we look here, we see some good questions in the notes.
+
+138
+00:10:38,900 --> 00:10:44,900
+There's this one about the difference between pandas and R's tidyverse.
+
+139
+00:10:44,900 --> 00:10:52,140
+When us instructors talking, we thought a good metaphor is that pandas is like what
+
+140
+00:10:52,140 --> 00:11:02,600
+R does itself, and tidyverse is a collection of many things around that, like a consistent
+
+141
+00:11:02,600 --> 00:11:10,440
+ecosystem of stuff that works together, and that's sort of like SciPy in Python.
+
+142
+00:11:10,440 --> 00:11:17,480
+But really, the philosophy is very similar of a bunch of stuff
+
+143
+00:11:17,480 --> 00:11:19,800
+consistently trying to work together.
+
+144
+00:11:22,600 --> 00:11:24,720
+There's some compatibility between them,
+
+145
+00:11:24,720 --> 00:11:28,480
+like in the data formats, which we might talk
+
+146
+00:11:28,480 --> 00:11:31,760
+about a little bit later today.
+
+147
+00:11:40,440 --> 00:11:48,080
+Okay. There is various.
+
+148
+00:11:48,080 --> 00:11:56,440
+So one thing maybe to raise is because there are these two functions for accessing columns
+
+149
+00:11:56,440 --> 00:12:05,120
+and rows, lock and add, which we did mention yesterday really quickly, but lock gets you
+
+150
+00:12:05,120 --> 00:12:10,240
+data but it doesn't allow you to set data and at allows you to set the data so that
+
+151
+00:12:14,080 --> 00:12:21,440
+so if you try to say database.log and then equals something it will give you an error
+
+152
+00:12:22,640 --> 00:12:27,200
+and then you should I guess the error message doesn't tell you to use at
+
+153
+00:12:27,200 --> 00:12:33,440
+so you need to remember to use at just a little bit you know annoying it's something you need
+
+154
+00:12:33,440 --> 00:12:45,340
+need to remember yeah okay so there is a little bit more in pandas down at the
+
+155
+00:12:45,340 --> 00:12:52,120
+bottom beyond the basics it's probably not worth us trying to go into the
+
+156
+00:12:52,120 --> 00:13:00,020
+details here but basically the idea is you can do a whole lot here there's
+
+157
+00:13:00,020 --> 00:13:04,020
+Sometimes depending on what you want, you can either get more power, or you can get
+
+158
+00:13:04,020 --> 00:13:14,580
+more optimized, like faster, and so on.
+
+159
+00:13:14,580 --> 00:13:19,940
+And yeah, maybe that's all we've got.
+
+160
+00:13:19,940 --> 00:13:26,340
+And remember, if this seems remotely useful to you, read the 10 minute introductions to
+
+161
+00:13:26,340 --> 00:13:32,820
+pandas and get this perspective.
+
+162
+00:13:32,820 --> 00:13:38,980
+Um, yes, okay. Should we call it good and go to
+
+163
+00:13:38,980 --> 00:13:41,860
+the next part then?
+
+164
+00:13:44,260 --> 00:13:47,000
+Yeah, let's move on.
+
