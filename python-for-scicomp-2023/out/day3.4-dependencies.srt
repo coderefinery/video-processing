@@ -1,0 +1,2676 @@
+1
+00:00:00,000 --> 00:00:00,140
+I'm working on it, something.
+
+2
+00:00:00,140 --> 00:00:01,140
+Yeah.
+
+3
+00:00:01,140 --> 00:00:02,140
+No worries.
+
+4
+00:00:02,140 --> 00:00:08,420
+So, the question here is, like, we've talked about library ecosystem, and libraries are
+
+5
+00:00:08,420 --> 00:00:15,540
+all fine and dandy, but quite often you have a case where you want to install certain libraries
+
+6
+00:00:15,540 --> 00:00:16,540
+for your code.
+
+7
+00:00:16,540 --> 00:00:22,500
+Like, you want certain kind of a situation, and the ecosystem is so big, like the whole
+
+8
+00:00:22,500 --> 00:00:28,620
+Python ecosystem, there's probably hundreds of thousands of packages available for different
+
+9
+00:00:28,620 --> 00:00:34,620
+Python versions and different kinds of different installations, different dependencies and
+
+10
+00:00:34,620 --> 00:00:35,620
+different things.
+
+11
+00:00:35,620 --> 00:00:39,260
+And they are not compatible all at the same time.
+
+12
+00:00:39,260 --> 00:00:42,580
+You cannot install Python, I mean, the whole Python.
+
+13
+00:00:42,580 --> 00:00:43,580
+It's impossible.
+
+14
+00:00:43,580 --> 00:00:45,140
+There's so many packages.
+
+15
+00:00:45,140 --> 00:00:50,140
+You cannot have everything in one installation.
+
+16
+00:00:50,140 --> 00:00:57,540
+So that brings to mind that, okay, how do you manage installing multiple things at the
+
+17
+00:00:57,540 --> 00:00:59,840
+same time for different projects?
+
+18
+00:00:59,840 --> 00:01:04,820
+How do you manage that you get the correct dependencies for certain projects?
+
+19
+00:01:04,820 --> 00:01:13,740
+And there are two major players in this thing, and they are the Python Packaging Index and
+
+20
+00:01:13,740 --> 00:01:15,920
+Anaconda.
+
+21
+00:01:15,920 --> 00:01:17,580
+So they are the major things.
+
+22
+00:01:17,580 --> 00:01:26,460
+So here's a big list of what is the difference between Python Packaging Index and Anaconda.
+
+23
+00:01:26,460 --> 00:01:31,380
+I can try to say it in short form.
+
+24
+00:01:31,380 --> 00:01:41,160
+So Python Packaging Index is this community-like project that basically provides Python packages
+
+25
+00:01:41,160 --> 00:01:46,060
+as these so-called wheels, like wheels of cheese, because everything in Python is a
+
+26
+00:01:46,060 --> 00:01:55,860
+multi-python joke, but it provides packages as these, like you have Python package as
+
+27
+00:01:55,860 --> 00:02:02,320
+one file that you can download from this Python packaging index. These are often used in conjunction
+
+28
+00:02:02,320 --> 00:02:07,000
+with these virtual environments. They don't have to be installed into virtual environments,
+
+29
+00:02:07,000 --> 00:02:13,780
+but they're quite often used so that you can have your own small Python world where you
+
+30
+00:02:13,780 --> 00:02:20,500
+install only the packages you need from the Python pip package. And this is very good.
+
+31
+00:02:20,500 --> 00:02:27,700
+And it was originally developed for sharing Python code. So, Python code written in Python.
+
+32
+00:02:27,700 --> 00:02:34,900
+But like we talked already, much of the Python code is not written in Python. There's underlying
+
+33
+00:02:34,900 --> 00:02:40,900
+layers that are written in C. There might be dependencies. So, for example, NumPy uses these
+
+34
+00:02:40,900 --> 00:02:46,980
+plus linear algebra libraries to run the matrix operations and that sort of stuff.
+
+35
+00:02:46,980 --> 00:02:51,140
+So it uses underlying libraries that are not part of Python.
+
+36
+00:02:52,260 --> 00:02:54,980
+They are not written in Python, they're written in Fortran and C.
+
+37
+00:02:56,740 --> 00:03:00,420
+Providing these is a bit of a complicated thing for the
+
+38
+00:03:00,420 --> 00:03:05,420
+for the PyPI packaging index.
+
+39
+00:03:06,020 --> 00:03:08,780
+So what they do is that they basically
+
+40
+00:03:08,780 --> 00:03:12,420
+put everything into these wheels,
+
+41
+00:03:12,420 --> 00:03:14,420
+and then they provide everything with you,
+
+42
+00:03:14,420 --> 00:03:19,140
+which can result in very big installations quite often.
+
+43
+00:03:19,140 --> 00:03:22,660
+And it's a bit complicated there.
+
+44
+00:03:22,660 --> 00:03:25,940
+How do you share non-Python code?
+
+45
+00:03:25,940 --> 00:03:28,460
+There is a lot of packages that provide that,
+
+46
+00:03:28,460 --> 00:03:30,100
+but it's a bit complicated.
+
+47
+00:03:30,100 --> 00:03:32,280
+Writing these packages is pretty simple.
+
+48
+00:03:32,280 --> 00:03:34,660
+Like you can easily write your own bit packages.
+
+49
+00:03:34,660 --> 00:03:36,460
+We'll talk about it tomorrow.
+
+50
+00:03:36,460 --> 00:03:40,260
+There will be a session on packaging your code.
+
+51
+00:03:40,260 --> 00:03:42,600
+So writing these is pretty simple.
+
+52
+00:03:42,600 --> 00:03:44,580
+Like how do you write them?
+
+53
+00:03:44,580 --> 00:03:46,240
+And then you can publish them
+
+54
+00:03:46,240 --> 00:03:48,040
+in the packaging index yourself.
+
+55
+00:03:48,040 --> 00:03:49,680
+And if you're writing Python code
+
+56
+00:03:49,680 --> 00:03:51,700
+that depends on other Python code.
+
+57
+00:03:51,700 --> 00:03:54,060
+So for example, you write your own thing
+
+58
+00:03:54,060 --> 00:03:56,100
+that depends on other Python things
+
+59
+00:03:56,100 --> 00:03:58,900
+or other libraries like NumPy and that sort of thing.
+
+60
+00:03:58,900 --> 00:04:03,900
+it's very easy to share it in Python Packaging Index
+
+61
+00:04:04,220 --> 00:04:05,860
+and use pip to install it.
+
+62
+00:04:05,860 --> 00:04:09,180
+So pip is the installer tool
+
+63
+00:04:09,180 --> 00:04:11,700
+for Python Packaging Index packages.
+
+64
+00:04:11,700 --> 00:04:14,380
+The other major player is conda.
+
+65
+00:04:14,380 --> 00:04:18,380
+And conda is basically like a solution to the question of,
+
+66
+00:04:18,380 --> 00:04:22,260
+okay, like we have so many of these different dependencies
+
+67
+00:04:22,260 --> 00:04:25,940
+or different packages and they might not work together.
+
+68
+00:04:25,940 --> 00:04:28,180
+So how do we like, how do we make certain
+
+69
+00:04:28,180 --> 00:04:31,720
+that we get like a consistent working environment.
+
+70
+00:04:31,720 --> 00:04:34,600
+And the Anaconda Incorporated,
+
+71
+00:04:34,600 --> 00:04:37,940
+which used to be Continuum Analytics,
+
+72
+00:04:37,940 --> 00:04:39,720
+now it's Anaconda Incorporated,
+
+73
+00:04:39,720 --> 00:04:44,720
+they developed this tool called Konda,
+
+74
+00:04:44,820 --> 00:04:47,840
+which basically is a packaging installer.
+
+75
+00:04:47,840 --> 00:04:51,320
+And then they provide it in this Anaconda installation.
+
+76
+00:04:51,320 --> 00:04:56,200
+So they provide like a wide bunch of already existing tools
+
+77
+00:04:56,200 --> 00:04:58,680
+in one installation, which is this Anaconda installation.
+
+78
+00:04:58,680 --> 00:05:00,680
+Many of you probably already use it,
+
+79
+00:05:01,600 --> 00:05:04,480
+which contains, like, it was basically designed
+
+80
+00:05:04,480 --> 00:05:06,920
+for data science people or people in banks
+
+81
+00:05:06,920 --> 00:05:08,200
+or something like that.
+
+82
+00:05:08,200 --> 00:05:10,680
+Like, you get one installation that contains
+
+83
+00:05:10,680 --> 00:05:12,920
+a lot of already good stuff,
+
+84
+00:05:12,920 --> 00:05:15,600
+but it has moved beyond that.
+
+85
+00:05:15,600 --> 00:05:17,320
+Like, the project has moved beyond that
+
+86
+00:05:17,320 --> 00:05:18,960
+because the community thought that,
+
+87
+00:05:18,960 --> 00:05:21,600
+okay, like, we want more packages there.
+
+88
+00:05:21,600 --> 00:05:22,680
+We want more packages.
+
+89
+00:05:22,680 --> 00:05:25,000
+We want more things.
+
+90
+00:05:25,000 --> 00:05:33,080
+like we don't want to be all dependent on the Anaconda Incorporated. So what happened is that
+
+91
+00:05:33,080 --> 00:05:40,360
+Anaconda also provides their own Anaconda.org, which is this packaging index for Conda packages.
+
+92
+00:05:40,360 --> 00:05:45,640
+And you can have your own channels there where you can provide your own packages.
+
+93
+00:05:45,640 --> 00:05:51,320
+And some of these channels are now bigger, like the CondaForge, which is this open source channel,
+
+94
+00:05:51,320 --> 00:05:55,720
+is a lot bigger than the channels provided by the Anaconda Incorporated.
+
+95
+00:05:56,680 --> 00:06:02,360
+But basically, it's a different world. And what Conda does is that it can manage all of these
+
+96
+00:06:03,160 --> 00:06:11,560
+low-level dependencies as well. So it can install you compilers and tools and different kinds of
+
+97
+00:06:12,200 --> 00:06:18,120
+linear algebra libraries. And especially when it comes to CUDA, like GPU programming,
+
+98
+00:06:18,120 --> 00:06:25,640
+it can install you the correct CUDA toolkits, which are these GPU libraries that your code needs.
+
+99
+00:06:25,640 --> 00:06:30,840
+So it can try to manage this dependency thing. But of course, it's very complicated because
+
+100
+00:06:30,840 --> 00:06:35,560
+there's a huge bunch of these libraries and different combinations.
+
+101
+00:06:36,200 --> 00:06:42,280
+Is it correct to say that the Python package index, PPI index, the things you install in Python
+
+102
+00:06:42,280 --> 00:06:47,280
+with PIP is more or less Python packages and Python APIs.
+
+103
+00:06:47,440 --> 00:06:50,440
+You know, Python packages and other C and Fortran
+
+104
+00:06:50,440 --> 00:06:52,840
+and other code that's called from Python.
+
+105
+00:06:52,840 --> 00:06:54,600
+But we need to come to Conda.
+
+106
+00:06:54,600 --> 00:06:55,640
+In addition to that,
+
+107
+00:06:55,640 --> 00:06:59,160
+you can also rely on system level libraries
+
+108
+00:06:59,160 --> 00:07:00,960
+and also additional tools.
+
+109
+00:07:00,960 --> 00:07:02,600
+For example, the bioinformatics,
+
+110
+00:07:02,600 --> 00:07:04,600
+there are tools like SAM tools.
+
+111
+00:07:04,600 --> 00:07:06,880
+So if you want to analyze something,
+
+112
+00:07:06,880 --> 00:07:09,000
+Conda will also get these tools
+
+113
+00:07:09,000 --> 00:07:10,840
+which are not Python interfaces,
+
+114
+00:07:10,840 --> 00:07:13,720
+but all tools on their own.
+
+115
+00:07:13,720 --> 00:07:17,520
+In addition to that, in PIP, when you install this,
+
+116
+00:07:17,520 --> 00:07:20,480
+they also distribute the source code.
+
+117
+00:07:20,480 --> 00:07:21,880
+For example, a unique system.
+
+118
+00:07:21,880 --> 00:07:24,680
+For Windows and Mac, mostly you have the binaries.
+
+119
+00:07:24,680 --> 00:07:27,640
+In the PIP, if the source code is there,
+
+120
+00:07:27,640 --> 00:07:30,160
+and if you are Ubuntu computer, for example,
+
+121
+00:07:30,160 --> 00:07:33,680
+when you download it, the PIP expects that your computer,
+
+122
+00:07:33,680 --> 00:07:37,240
+your system to have the compiler.
+
+123
+00:07:37,240 --> 00:07:39,680
+But Conta could also bring down the compiler
+
+124
+00:07:39,680 --> 00:07:41,300
+and set up everything.
+
+125
+00:07:42,360 --> 00:07:45,880
+But mostly, maybe all the time,
+
+126
+00:07:45,880 --> 00:07:48,360
+Conda is pre-compiled binaries.
+
+127
+00:07:48,360 --> 00:07:51,760
+You know, they're compiled, so they're ready to be used.
+
+128
+00:07:51,760 --> 00:07:52,600
+Yes, yes.
+
+129
+00:07:52,600 --> 00:07:54,160
+And of course you can combine these.
+
+130
+00:07:54,160 --> 00:07:58,000
+So you can install Pip packages in Conda.
+
+131
+00:07:58,000 --> 00:07:59,960
+Like Conda creates its own environments,
+
+132
+00:07:59,960 --> 00:08:01,680
+which are similar to the virtual environments
+
+133
+00:08:01,680 --> 00:08:05,920
+I've already mentioned, but they're managed by Conda.
+
+134
+00:08:05,920 --> 00:08:08,520
+So there's, to the whole ecosystem,
+
+135
+00:08:08,520 --> 00:08:12,020
+I'll quickly mention this over here.
+
+136
+00:08:12,020 --> 00:08:14,400
+There's this kind of like glossary of different terms.
+
+137
+00:08:14,400 --> 00:08:16,840
+So when we talk about Anaconda and Conda,
+
+138
+00:08:16,840 --> 00:08:19,280
+like you can get headache from just hearing
+
+139
+00:08:19,280 --> 00:08:20,560
+about all of these different terms
+
+140
+00:08:20,560 --> 00:08:22,160
+because there's so many of them.
+
+141
+00:08:23,120 --> 00:08:26,480
+So I'll try to quickly like go through
+
+142
+00:08:26,480 --> 00:08:27,840
+the whole Conda thing.
+
+143
+00:08:27,840 --> 00:08:29,920
+Like what are the different partners
+
+144
+00:08:29,920 --> 00:08:32,160
+basically in the ecosystem?
+
+145
+00:08:32,160 --> 00:08:33,960
+So there's the Anaconda cloud.
+
+146
+00:08:33,960 --> 00:08:38,300
+So this is the place where people store the packages.
+
+147
+00:08:38,300 --> 00:08:42,620
+Then there's CondaForge, which is the largest open source
+
+148
+00:08:42,620 --> 00:08:44,160
+community channel.
+
+149
+00:08:44,160 --> 00:08:46,840
+And Anaconda Cloud also contains like packages
+
+150
+00:08:46,840 --> 00:08:49,840
+by the Anaconda Incorporated,
+
+151
+00:08:49,840 --> 00:08:52,400
+which are in so-called defaults channel
+
+152
+00:08:52,400 --> 00:08:55,640
+or base channel and R channel and those kinds of channels.
+
+153
+00:08:55,640 --> 00:08:58,840
+But they are incompatible usually with CondaForge
+
+154
+00:08:58,840 --> 00:09:00,920
+because CondaForge is basically like a completely
+
+155
+00:09:00,920 --> 00:09:03,420
+different world in the same ecosystem.
+
+156
+00:09:03,420 --> 00:09:05,920
+So Anaconda Cloud contains like two worlds.
+
+157
+00:09:05,920 --> 00:09:08,120
+There's this like open source world with CondaForge
+
+158
+00:09:08,120 --> 00:09:10,240
+And then there's the default world,
+
+159
+00:09:10,240 --> 00:09:15,000
+which is like curated by the company, Anaconda Incorporated.
+
+160
+00:09:15,000 --> 00:09:18,360
+You can use both, but usually you don't want to mix
+
+161
+00:09:18,360 --> 00:09:20,560
+and match them because you can get problems.
+
+162
+00:09:21,840 --> 00:09:23,480
+Then there's the package managers.
+
+163
+00:09:23,480 --> 00:09:27,480
+So peep is the package manager for Python packaging index.
+
+164
+00:09:27,480 --> 00:09:28,760
+So if you install from PyPI,
+
+165
+00:09:28,760 --> 00:09:31,200
+you install it with pip usually.
+
+166
+00:09:31,200 --> 00:09:32,520
+But then there's conda,
+
+167
+00:09:32,520 --> 00:09:36,600
+which is like the package manager for conda environments
+
+168
+00:09:36,600 --> 00:09:39,480
+and Anaconda stuff and that sort of things.
+
+169
+00:09:39,480 --> 00:09:42,320
+And there's a newer version that we usually recommend
+
+170
+00:09:42,320 --> 00:09:44,240
+to our customers called Mamba,
+
+171
+00:09:44,240 --> 00:09:46,320
+which is like a open source,
+
+172
+00:09:46,320 --> 00:09:48,200
+like Konda is open source project as well,
+
+173
+00:09:48,200 --> 00:09:51,480
+but there's a C++ implementation of this.
+
+174
+00:09:51,480 --> 00:09:54,560
+So because like, again, like Conda is written in Python,
+
+175
+00:09:54,560 --> 00:09:55,800
+so it's slow.
+
+176
+00:09:55,800 --> 00:09:58,400
+So when you create this huge environment,
+
+177
+00:09:58,400 --> 00:10:01,360
+sometimes it can take like minutes to figure out
+
+178
+00:10:01,360 --> 00:10:03,340
+how do I match these different packages
+
+179
+00:10:03,340 --> 00:10:04,560
+into the same environment?
+
+180
+00:10:04,560 --> 00:10:06,920
+And that's why people usually use this Mamba,
+
+181
+00:10:06,920 --> 00:10:09,800
+which can do it much faster, this solving.
+
+182
+00:10:09,800 --> 00:10:12,080
+So inside it, it's a mess,
+
+183
+00:10:12,080 --> 00:10:15,000
+but there's like a SAT solver inside the conda.
+
+184
+00:10:15,000 --> 00:10:17,000
+It tries to figure out the correct packages
+
+185
+00:10:17,000 --> 00:10:20,940
+that you need in the environment,
+
+186
+00:10:20,940 --> 00:10:23,520
+because it wants like a working consistent environment.
+
+187
+00:10:23,520 --> 00:10:25,000
+Maybe we will just like,
+
+188
+00:10:25,000 --> 00:10:28,060
+it will just install stuff into the environment.
+
+189
+00:10:29,740 --> 00:10:33,680
+Then there's like the package manager deployments.
+
+190
+00:10:33,680 --> 00:10:36,120
+So basically you can get already existing
+
+191
+00:10:36,120 --> 00:10:40,440
+like a good set of packages if you install the Anaconda.
+
+192
+00:10:40,440 --> 00:10:43,960
+So the Anaconda is like a distribution of lots of packages
+
+193
+00:10:43,960 --> 00:10:46,440
+by Anaconda Incorporated.
+
+194
+00:10:46,440 --> 00:10:49,680
+And it's free for academic and non-commercial use,
+
+195
+00:10:49,680 --> 00:10:52,120
+but for companies it's face money,
+
+196
+00:10:52,120 --> 00:10:56,840
+like the license is not covered,
+
+197
+00:10:56,840 --> 00:10:58,960
+it doesn't cover companies.
+
+198
+00:10:58,960 --> 00:11:01,320
+Then there's Miniconda, which is basically,
+
+199
+00:11:01,320 --> 00:11:03,560
+it's provided by Anaconda Incorporated
+
+200
+00:11:03,560 --> 00:11:08,560
+and it uses default channel by default,
+
+201
+00:11:09,160 --> 00:11:10,880
+like the Anaconda packages,
+
+202
+00:11:10,880 --> 00:11:14,620
+it comes, by default it tries to install them from there
+
+203
+00:11:14,620 --> 00:11:19,320
+and it's like, it only contains the conda installer.
+
+204
+00:11:19,320 --> 00:11:21,680
+So you can use that as like a starting point
+
+205
+00:11:21,680 --> 00:11:24,240
+if you want to like create your own environments
+
+206
+00:11:24,240 --> 00:11:25,560
+or something, you don't have to install
+
+207
+00:11:25,560 --> 00:11:27,720
+the whole Anaconda installation.
+
+208
+00:11:27,720 --> 00:11:30,760
+Then there's also this mini-forge,
+
+209
+00:11:30,760 --> 00:11:35,760
+which is like a conda-forge version of the whole thing,
+
+210
+00:11:37,640 --> 00:11:41,240
+where it basically, it uses the conda-forge by default.
+
+211
+00:11:41,240 --> 00:11:44,880
+So it's an open source version of miniconda basically.
+
+212
+00:11:44,880 --> 00:11:49,080
+And it has Mamba as well installed.
+
+213
+00:11:49,080 --> 00:11:52,540
+So these are some of the words you might hear
+
+214
+00:11:52,540 --> 00:11:55,280
+when you look at webpages and look at installations.
+
+215
+00:11:55,280 --> 00:11:59,040
+So you need to basically choose what you want to use.
+
+216
+00:11:59,040 --> 00:12:01,240
+Usually when people are using, let's say Windows,
+
+217
+00:12:01,240 --> 00:12:03,360
+the Anaconda Navigator is so good
+
+218
+00:12:03,360 --> 00:12:07,240
+that like using that is a good idea.
+
+219
+00:12:07,240 --> 00:12:09,280
+And you can manage packages with that as well.
+
+220
+00:12:09,280 --> 00:12:11,480
+Like you don't have to use these command line tools
+
+221
+00:12:11,480 --> 00:12:13,480
+or anything, you can use the Anaconda Navigator
+
+222
+00:12:13,480 --> 00:12:16,280
+to manage your package installations.
+
+223
+00:12:16,280 --> 00:12:17,760
+If you're using Linux,
+
+224
+00:12:17,760 --> 00:12:21,120
+you often either maybe get the Anaconda installation
+
+225
+00:12:21,120 --> 00:12:24,640
+and just use that and maybe create your own environments
+
+226
+00:12:24,640 --> 00:12:26,680
+that doesn't have the packages you need,
+
+227
+00:12:26,680 --> 00:12:29,520
+or you just take like, let's say MiniForge
+
+228
+00:12:29,520 --> 00:12:32,680
+and then you use that to create your environments.
+
+229
+00:12:32,680 --> 00:12:35,360
+But that's like a more like command line,
+
+230
+00:12:35,360 --> 00:12:39,520
+let's do it like ourselves kind of a way.
+
+231
+00:12:39,520 --> 00:12:42,040
+So there's different ways of installing the packages.
+
+232
+00:12:42,040 --> 00:12:44,040
+Yeah, it's correct to say that regardless
+
+233
+00:12:44,040 --> 00:12:46,560
+of you have installed Anaconda or Miniconda
+
+234
+00:12:46,560 --> 00:12:49,240
+or some packages to get Conda,
+
+235
+00:12:49,240 --> 00:12:52,160
+you can use any of the other package managers,
+
+236
+00:12:52,160 --> 00:12:58,480
+you know, conda to install packets from any source. For example, you know, anaconda and
+
+237
+00:12:58,480 --> 00:13:03,560
+miniconda both could be used to install the same source, but miniconda is lightweight.
+
+238
+00:13:03,560 --> 00:13:10,240
+But when you, wouldn't you recommend that when you distribute the code that need conda,
+
+239
+00:13:10,240 --> 00:13:15,800
+that you'd recommend miniconda to be the requirements. And then you provide the package list other
+
+240
+00:13:15,800 --> 00:13:20,160
+than rather than asking the user to install anaconda and use your package.
+
+241
+00:13:20,160 --> 00:13:26,920
+Yes, usually it's a good idea to provide the minimal example.
+
+242
+00:13:26,920 --> 00:13:30,720
+So usually if you go to a web page and you see like,
+
+243
+00:13:30,720 --> 00:13:34,280
+okay, pip install this, if you have a library or something.
+
+244
+00:13:34,280 --> 00:13:40,240
+What they mean is that this is the minimum needed for the installation,
+
+245
+00:13:40,240 --> 00:13:43,480
+but usually you can have it installed in various other ways.
+
+246
+00:13:43,480 --> 00:13:46,640
+You might install it via conda packets or something.
+
+247
+00:13:46,640 --> 00:13:54,800
+or what they really are saying that, okay, like, create your own environment and then run this bp
+
+248
+00:13:54,800 --> 00:13:59,600
+install command. Because like, if you just run the bp install command, you usually install to whatever
+
+249
+00:13:59,600 --> 00:14:06,000
+environment you currently have. And that's not a good idea. So usually, it's a good idea to choose.
+
+250
+00:14:06,880 --> 00:14:12,960
+Yeah. For the sake of time, shall we show this best practice you are talking about?
+
+251
+00:14:12,960 --> 00:14:15,600
+Yes. What is this environment and why do we have to isolate?
+
+252
+00:14:15,600 --> 00:14:26,040
+So, when we're talking about environments, usually when you start, for example, if you
+
+253
+00:14:26,040 --> 00:14:31,880
+now have started JupyterLab, you might have started it in the base environment of your
+
+254
+00:14:31,880 --> 00:14:36,040
+Anaconda installation, or maybe you have installed the environment that we have provided in the
+
+255
+00:14:36,040 --> 00:14:37,040
+webpage.
+
+256
+00:14:37,040 --> 00:14:42,560
+But the environment, what we mean is that wherever your Python interpreter basically
+
+257
+00:14:42,560 --> 00:14:48,080
+is like what is your Python interpreter that you're running? That determines like Python,
+
+258
+00:14:48,080 --> 00:14:54,320
+based on where it is, it will try to find packages near that. Basically, it goes one
+
+259
+00:14:54,320 --> 00:14:59,920
+folder up and then one folder down and tries to find packages that are present in the system.
+
+260
+00:14:59,920 --> 00:15:04,640
+If the Python is the system Python, it will try to find it from the system libraries.
+
+261
+00:15:04,640 --> 00:15:11,360
+And if it's installed into a completely different place, it will try to find packages from there.
+
+262
+00:15:11,360 --> 00:15:18,720
+So what this environment means is that we create a folder, basically, we get some Python there,
+
+263
+00:15:18,720 --> 00:15:25,840
+and then we install packages relative to that Python. And then they are installed into this
+
+264
+00:15:25,840 --> 00:15:31,840
+own world where they won't interact with others, and we don't have it loaded all the time,
+
+265
+00:15:31,840 --> 00:15:38,960
+but we can load it per case. If we need to do one kind of a thing with certain packages,
+
+266
+00:15:38,960 --> 00:15:45,440
+we can activate this environment. So we basically go into this world of this Python and then we run
+
+267
+00:15:45,440 --> 00:15:49,920
+whatever we want there. And if we are doing a different project, we can activate a different
+
+268
+00:15:49,920 --> 00:15:57,280
+environment. And this is a good idea because it makes it possible to reproduce your code much
+
+269
+00:15:57,280 --> 00:16:03,840
+more and you run into less problems. Because as we mentioned previously, there's so many packages.
+
+270
+00:16:03,840 --> 00:16:09,760
+you cannot get them all working at the same time. So it's better to just have a small world
+
+271
+00:16:09,760 --> 00:16:15,360
+where there's not that many problems that has only the things you need, basically.
+
+272
+00:16:16,400 --> 00:16:26,000
+And that's in the environment. I always start with a new environment whenever there's a problem with
+
+273
+00:16:26,800 --> 00:16:31,680
+Python. You start from scratch and you start building up the environment that you need.
+
+274
+00:16:31,680 --> 00:16:39,880
+need. And you can create an environment by running some commands yourself. But nowadays,
+
+275
+00:16:39,880 --> 00:16:44,760
+and that is often recommended somewhere, but that is like we will, you will find in the
+
+276
+00:16:44,760 --> 00:16:52,320
+exercise, exercise two, you can run it after the course and run the environment yourself.
+
+277
+00:16:52,320 --> 00:16:57,320
+But we don't recommend that way of installing packages in general. So let's jump straight
+
+278
+00:16:57,320 --> 00:17:01,240
+to the correct solution basically, or the better solution.
+
+279
+00:17:01,240 --> 00:17:10,040
+So what you're saying is that, let's say if I want NumPy 1.24 and NumPy 1.23, both versions
+
+280
+00:17:10,040 --> 00:17:15,800
+of NumPy in my same system, rather than just installing pip install NumPy, that there's
+
+281
+00:17:15,800 --> 00:17:20,000
+a better way to do this, which will help me to reproduce this later?
+
+282
+00:17:20,000 --> 00:17:21,000
+Yes.
+
+283
+00:17:21,000 --> 00:17:22,000
+Yes.
+
+284
+00:17:22,000 --> 00:17:25,520
+And this is by recording the dependencies into this environment file, because the problem
+
+285
+00:17:25,520 --> 00:17:30,520
+with, like, if you, for example, with that, of course, you can, like, install NumPy some
+
+286
+00:17:30,520 --> 00:17:36,200
+version. And then you realize, okay, my other code needs another version. So, you can basically
+
+287
+00:17:36,200 --> 00:17:41,080
+install the other version. But now you lost the other one. So, basically, either you need
+
+288
+00:17:41,080 --> 00:17:46,440
+to constantly reinstall stuff. And maybe when you do a reinstall, suddenly some dependency
+
+289
+00:17:46,440 --> 00:17:52,040
+of that package gets reinstalled. And suddenly you're in this mess where, like, the route
+
+290
+00:17:52,040 --> 00:17:59,080
+took to get to the current state of the environment is depending on what commands you run in what
+
+291
+00:17:59,080 --> 00:18:05,160
+order. And then you cannot reproduce it. You cannot anymore. You don't know how you got there.
+
+292
+00:18:05,160 --> 00:18:14,520
+So it's usually better to just create a world where everything is correct at the correct time.
+
+293
+00:18:14,520 --> 00:18:22,360
+And how you do that is that you record the dependencies into either the requirements.txt
+
+294
+00:18:22,360 --> 00:18:27,160
+or environment.yaml. Does it matter what you call this, [Name]?
+
+295
+00:18:27,160 --> 00:18:34,120
+Does it matter what you call these files? Yes. You can, of course, record them. You can
+
+296
+00:18:34,120 --> 00:18:39,960
+name them anything you want. But the thing is that if other people are trying to find them,
+
+297
+00:18:39,960 --> 00:18:45,640
+find, they will look at these files and they think that, okay, these are the files.
+
+298
+00:18:45,640 --> 00:18:50,840
+And these are the ones that the tools will, by default, try to search for.
+
+299
+00:18:50,840 --> 00:18:55,800
+If you try to install via people, for example, it will try to find the requirements.txt.
+
+300
+00:18:55,800 --> 00:19:02,000
+But these are basically like the conventions, so you should abide by the conventions.
+
+301
+00:19:02,000 --> 00:19:07,160
+Of course, if you don't, then let the users know or the other people know that, okay,
+
+302
+00:19:07,160 --> 00:19:12,120
+requirements are in foobar.txt or something, but that's not a good thing.
+
+303
+00:19:12,120 --> 00:19:16,680
+If I visit the GitHub page or GitLab page, if the requirement.txt is there,
+
+304
+00:19:16,680 --> 00:19:19,960
+I know what it is. So it's better that you follow this.
+
+305
+00:19:19,960 --> 00:19:25,640
+Yes, yes, exactly. So you can always look at these. And what the requirements.txt,
+
+306
+00:19:25,640 --> 00:19:31,400
+so the requirements.txt is meant for pip installations. And what it contains is just
+
+307
+00:19:31,400 --> 00:19:35,800
+a list of packages. Usually it can have, we'll talk about versioning a bit later,
+
+308
+00:19:35,800 --> 00:19:42,120
+but it's usually just a list of packages, a text file. And when you tell a peep to install
+
+309
+00:19:42,120 --> 00:19:49,160
+an environment, it will just install these packages. Condor environments are a bit more
+
+310
+00:19:49,160 --> 00:19:56,760
+complicated. Not in a bad way, but they have more information in them. And they're usually
+
+311
+00:19:56,760 --> 00:20:05,160
+called these environment.yml. There's a typo. It's environment.yml, not environments.yml
+
+312
+00:20:05,160 --> 00:20:11,160
+usually. So, and they contain like the name of the environment, usually, what environment you want
+
+313
+00:20:11,160 --> 00:20:17,160
+to use. And then where do you want the packages to come from? I talked about defaults and CondaForge,
+
+314
+00:20:17,160 --> 00:20:22,120
+the channels. So you usually define like, okay, I want the packages for in this case, for example,
+
+315
+00:20:22,120 --> 00:20:27,800
+to come from defaults channel. So the Anaconda incorporated packages. And then you have a list
+
+316
+00:20:27,800 --> 00:20:34,680
+of dependencies that are the packages. And you can usually convert, like you can notice from
+
+317
+00:20:34,680 --> 00:20:41,640
+syntax that you can easily convert PIP packages, PIP requirements txt to environment.yml and
+
+318
+00:20:41,640 --> 00:20:50,120
+other way around. If you just take these and put them into requirements.txt, you can get
+
+319
+00:20:50,120 --> 00:20:55,400
+basically a PIP installation. And the other way around, if you take these, you can convert them
+
+320
+00:20:55,400 --> 00:20:58,440
+quite easily. So which version of NumPy would this install?
+
+321
+00:20:58,440 --> 00:21:06,200
+So in this case, because we haven't specified any versions, like the both tools, they try
+
+322
+00:21:06,200 --> 00:21:08,600
+to get the newest one.
+
+323
+00:21:08,600 --> 00:21:14,480
+Like if there's some other packets that of course creates like a requirement that, okay,
+
+324
+00:21:14,480 --> 00:21:18,920
+I need a lower version, then you might get that lower version.
+
+325
+00:21:18,920 --> 00:21:23,320
+But the point is here is that you let the tools do its job.
+
+326
+00:21:23,320 --> 00:21:26,920
+That like, if you don't know what version you need, if you don't have a specific need
+
+327
+00:21:26,920 --> 00:21:33,520
+for a version, it's usually a good idea to let the tool decide what versions to get.
+
+328
+00:21:33,520 --> 00:21:40,220
+Because if you don't have any specific requirement, it's a good idea to let the solvers figure
+
+329
+00:21:40,220 --> 00:21:45,100
+out what is compatible and what is needed.
+
+330
+00:21:45,100 --> 00:21:50,140
+Because you mentioned that it is easily interchangeable, so I want to mention one thing.
+
+331
+00:21:50,140 --> 00:21:55,860
+So if you have some packages, depending on the channel you select, there might be different
+
+332
+00:21:55,860 --> 00:21:56,860
+versions.
+
+333
+00:21:56,860 --> 00:22:02,540
+pip, it's always the latest version, you know, it might pick up. But depending on the channels you
+
+334
+00:22:02,540 --> 00:22:09,900
+specify, maybe some different versions can be installed. So you also need to, that's why it's
+
+335
+00:22:09,900 --> 00:22:15,100
+important that you specify the channel in your environmental file, rather than depending on what
+
+336
+00:22:15,100 --> 00:22:21,180
+defaults you have. Yes. And also in Conda environment, you can also, let's say, specify
+
+337
+00:22:21,180 --> 00:22:25,900
+the Python version you want to use, and that sort of, you can get more complicated with those.
+
+338
+00:22:25,900 --> 00:22:32,140
+But so why is this important to have the requirements file? Because it makes it
+
+339
+00:22:32,140 --> 00:22:38,700
+possible to recreate the environment quickly. So you can recreate the whole thing. You can
+
+340
+00:22:38,700 --> 00:22:44,140
+remove it and you can recreate it and you should get basically the same kind of situation.
+
+341
+00:22:44,860 --> 00:22:51,260
+Of course, in some cases you want to lock down some versions. So if you need to
+
+342
+00:22:51,260 --> 00:22:59,100
+to reproduce it. Let's say you run something for your paper and you want the collaborators
+
+343
+00:22:59,100 --> 00:23:05,420
+or reviewers or whoever, you want them to be able to reproduce the thing. So then you
+
+344
+00:23:05,420 --> 00:23:10,740
+might want to lock down the versions or pin the versions that you are currently using
+
+345
+00:23:10,740 --> 00:23:19,100
+because you know that those work. And in that case, you can give these versioning numbers.
+
+346
+00:23:19,100 --> 00:23:23,420
+So there's various logic you can give, like larger than, smaller than, that kind of stuff.
+
+347
+00:23:23,420 --> 00:23:29,100
+You can give all kinds of, but you can basically lock down certain versions of packages.
+
+348
+00:23:29,100 --> 00:23:36,260
+So let's say you want these exact versions of numpy, matplotlib, pandas, and scipy.
+
+349
+00:23:36,260 --> 00:23:42,460
+And same with the conda and with the added Python 3.10 here, so that you want it with
+
+350
+00:23:42,460 --> 00:23:44,080
+a certain Python version.
+
+351
+00:23:44,080 --> 00:23:49,480
+So as a best practice, wouldn't you recommend instead of having these exact versions, you
+
+352
+00:23:49,480 --> 00:23:53,880
+would say that something bigger than this version, but less than this, give us some
+
+353
+00:23:53,880 --> 00:23:56,360
+range being very specific?
+
+354
+00:23:56,360 --> 00:23:57,360
+Yes.
+
+355
+00:23:57,360 --> 00:24:02,560
+The versioning, how it goes usually in these packages, if the people abide by it, is so-called
+
+356
+00:24:02,560 --> 00:24:04,360
+semantic versioning.
+
+357
+00:24:04,360 --> 00:24:07,560
+So the first version is usually the major release.
+
+358
+00:24:07,560 --> 00:24:11,920
+So between two major releases, nothing usually works.
+
+359
+00:24:11,920 --> 00:24:17,280
+the number goes from one to two, the first number, it basically means that it's no longer compatible
+
+360
+00:24:17,280 --> 00:24:25,440
+and you should do major changes to it. In the minor version, the second number there,
+
+361
+00:24:25,440 --> 00:24:31,440
+it basically means that they can introduce new features and they can deprecate old features,
+
+362
+00:24:31,440 --> 00:24:37,440
+but they usually give a few versions of leeway where you see these deprecation warnings and
+
+363
+00:24:37,440 --> 00:24:41,920
+and that sort of things. These will go away in the next version or something like that.
+
+364
+00:24:41,920 --> 00:24:50,880
+So, usually, the second version will basically mean that, okay, we are doing some changes between
+
+365
+00:24:50,880 --> 00:24:56,160
+the versions, and some things might not work anymore. But usually, the main things are the
+
+366
+00:24:56,160 --> 00:25:01,680
+same. And the third version is basically a patch version. So, that shouldn't ever affect.
+
+367
+00:25:01,680 --> 00:25:06,800
+Like, if they have done their job correctly, it should never affect your code. It's like fixes
+
+368
+00:25:06,800 --> 00:25:12,640
+for bugs and that sort of thing. But that means that you can usually give quite a bit of a leeway.
+
+369
+00:25:13,600 --> 00:25:19,840
+You can say that it needs to be higher than version one, but less than version two or something. It
+
+370
+00:25:19,840 --> 00:25:26,640
+needs to be version one, but that's all. Or version something, some range of versions.
+
+371
+00:25:27,280 --> 00:25:32,880
+So all the advice you gave, we also need to take care when we distribute packages to stick to
+
+372
+00:25:32,880 --> 00:25:38,160
+those rules, because people expect that. Yes. And it's usually a good idea not to pin yourself
+
+373
+00:25:38,160 --> 00:25:43,200
+too hard to the packages, especially if you're developing something. Because if you're pinning
+
+374
+00:25:43,200 --> 00:25:48,640
+yourself to a certain version, you're basically locked in time. You're at that time moment.
+
+375
+00:25:48,640 --> 00:25:55,520
+And then the world will move onwards, but you are stuck in that time when you created an environment
+
+376
+00:25:55,520 --> 00:26:01,520
+and when you pinned the versions. And in two years, in three years, in four years,
+
+377
+00:26:01,520 --> 00:26:05,920
+Yes, most likely nobody else can recreate that environment anymore.
+
+378
+00:26:05,920 --> 00:26:07,440
+And that's a bad thing.
+
+379
+00:26:07,440 --> 00:26:09,640
+So your code will be stuck in that time.
+
+380
+00:26:09,640 --> 00:26:14,080
+So it's usually not a good idea to do that too often.
+
+381
+00:26:14,080 --> 00:26:15,080
+Yeah.
+
+382
+00:26:15,080 --> 00:26:20,520
+Sometimes we go on sort of bypassing these practices and say, if I have created an environment,
+
+383
+00:26:20,520 --> 00:26:27,760
+is it possible to create this file from an existing environment that I can give to other
+
+384
+00:26:27,760 --> 00:26:28,760
+people?
+
+385
+00:26:28,760 --> 00:26:29,760
+Yes.
+
+386
+00:26:29,760 --> 00:26:40,480
+In this exercise, there's an example how you can freeze an environment, so you can use this
+
+387
+00:26:40,480 --> 00:26:45,040
+conda env export. There's also an additional flag here that you can put
+
+388
+00:26:45,040 --> 00:26:50,480
+dashdash from history, if you want to freeze it based on the commands that you have run previously.
+
+389
+00:26:50,480 --> 00:26:55,760
+And you can also run this pip freeze. But what I usually recommend, if you don't
+
+390
+00:26:55,760 --> 00:27:02,160
+know how you created your environment. I personally start from completely blank slate
+
+391
+00:27:02,160 --> 00:27:07,920
+and then I run the code until I no longer get import errors. Because if you really don't know
+
+392
+00:27:07,920 --> 00:27:15,360
+what the environment has eaten, it's very hard to reproduce it. But you can freeze it
+
+393
+00:27:15,360 --> 00:27:20,880
+if you want to have an environment for posterity or publication or something like that.
+
+394
+00:27:20,880 --> 00:27:33,560
+Should we just show one example while learners could also follow or what do you recommend?
+
+395
+00:27:33,560 --> 00:27:42,680
+Let's do an example. So this will, of course, be dependent on what system you're running.
+
+396
+00:27:42,680 --> 00:27:48,600
+So like in my case, I'm running Linux, so I can use the terminal, for example, in JupyterLab
+
+397
+00:27:48,600 --> 00:27:51,760
+if I start, well, I can start a new one, let's say here.
+
+398
+00:27:52,720 --> 00:27:56,640
+I'll, oops, I'll start a new terminal.
+
+399
+00:27:56,640 --> 00:27:59,720
+If you're running in, let's say, Anaconda Navigator,
+
+400
+00:27:59,720 --> 00:28:04,720
+you can basically, like, point it to the environment file
+
+401
+00:28:05,040 --> 00:28:07,840
+and you can let it work on that.
+
+402
+00:28:07,840 --> 00:28:11,960
+But you can have various different user interfaces.
+
+403
+00:28:11,960 --> 00:28:15,480
+But because I'm using command line,
+
+404
+00:28:15,480 --> 00:28:18,160
+I'll create the environment in this way.
+
+405
+00:28:18,600 --> 00:28:20,520
+So let's say I have an environment YAML.
+
+406
+00:28:20,520 --> 00:28:25,360
+So in this case, it's basically the one over here
+
+407
+00:28:25,360 --> 00:28:28,200
+with the NumPy and Matplotlib and whatever.
+
+408
+00:28:28,200 --> 00:28:36,280
+So I'll run the exercise 4.
+
+409
+00:28:36,280 --> 00:28:40,920
+You can probably run it yourself, but because, yeah.
+
+410
+00:28:40,920 --> 00:28:44,080
+Or you can run it yourself, and I recommend trying it.
+
+411
+00:28:44,080 --> 00:28:47,080
+But because there's differences in environments,
+
+412
+00:28:47,080 --> 00:28:52,080
+it might be complicated if you get it working,
+
+413
+00:28:52,280 --> 00:28:55,300
+but do try if you feel like it.
+
+414
+00:28:56,560 --> 00:28:57,800
+So what I'm going to do,
+
+415
+00:28:57,800 --> 00:29:00,080
+I'm going to create this environment
+
+416
+00:29:00,080 --> 00:29:02,360
+using this `conda env create`,
+
+417
+00:29:02,360 --> 00:29:06,920
+and then I'm going to point it to the environment.yml
+
+418
+00:29:08,120 --> 00:29:09,400
+that I have.
+
+419
+00:29:09,400 --> 00:29:10,880
+Can you show us that file,
+
+420
+00:29:10,880 --> 00:29:12,720
+how it looks like in your-
+
+421
+00:29:12,720 --> 00:29:14,280
+Yes, yes.
+
+422
+00:29:14,280 --> 00:29:17,440
+So the environment, it's just a .yml file.
+
+423
+00:29:17,440 --> 00:29:18,600
+So yaml syntax.
+
+424
+00:29:18,600 --> 00:29:23,080
+So it has this list of packages over here.
+
+425
+00:29:24,120 --> 00:29:26,680
+Or following, it's the teaching material.
+
+426
+00:29:26,680 --> 00:29:27,520
+Oh, yeah.
+
+427
+00:29:27,520 --> 00:29:28,520
+It's a same as.
+
+428
+00:29:28,520 --> 00:29:29,720
+Yeah.
+
+429
+00:29:29,720 --> 00:29:33,680
+I've already have it, so I'm going to remove it.
+
+430
+00:29:33,680 --> 00:29:38,680
+So you can remove the environments with this command.
+
+431
+00:29:38,680 --> 00:29:46,680
+with this command and why it's also very important to do this environment.
+
+432
+00:29:46,680 --> 00:29:52,920
+I usually remove all of my environments every two months or something, and the reason behind
+
+433
+00:29:52,920 --> 00:29:58,700
+is that I'm secure in the knowledge that I can recreate it from the environment files
+
+434
+00:29:58,700 --> 00:29:59,700
+that I have.
+
+435
+00:29:59,700 --> 00:30:08,660
+I don't fear losing my system that I have set up is so fragile that I'm worried that
+
+436
+00:30:08,660 --> 00:30:14,020
+I mess it up, and now I cannot recreate it anymore. And that's a terrible fear to have
+
+437
+00:30:14,020 --> 00:30:20,180
+as a programmer, that you cannot recreate the environment you already have. And that's why
+
+438
+00:30:20,180 --> 00:30:25,780
+it's very important to create the environment file, because then you can let go of that fear.
+
+439
+00:30:25,780 --> 00:30:34,500
+You don't have to worry about that anymore. So typing, installing one by one would be easier.
+
+440
+00:30:34,500 --> 00:30:39,460
+That is the easy way out. But the robust way is that what you're doing. Slightly more work,
+
+441
+00:30:39,460 --> 00:30:47,220
+but you will thank your past self at some point. Yes. Yes. Yes. Yeah. And if you want to like,
+
+442
+00:30:47,220 --> 00:30:51,300
+let's say you want to recreate, like you want to add a new package there. What I usually do is
+
+443
+00:30:51,300 --> 00:30:57,060
+that if I run, let's say the install command in the environment myself, or in the documentation,
+
+444
+00:30:57,060 --> 00:31:03,460
+there's also this, you can update the environment based on an updated environment YAML. You can
+
+445
+00:31:03,460 --> 00:31:05,460
+and instant new packets there,
+
+446
+00:31:05,460 --> 00:31:09,100
+but they always record it into the environment anyway.
+
+447
+00:31:09,100 --> 00:31:12,460
+Because like eventually you mess up the environment anyway.
+
+448
+00:31:12,460 --> 00:31:13,700
+Like everybody does that.
+
+449
+00:31:13,700 --> 00:31:16,380
+Like everybody does a wrong installation or something
+
+450
+00:31:16,380 --> 00:31:19,100
+and then it's broken the environment.
+
+451
+00:31:19,100 --> 00:31:21,220
+And this is unfortunately the side effect
+
+452
+00:31:21,220 --> 00:31:24,340
+of having so many different choices of libraries.
+
+453
+00:31:24,340 --> 00:31:26,980
+But at the same time, you can fix it
+
+454
+00:31:26,980 --> 00:31:31,980
+by having a consistent way of recreating where you are.
+
+455
+00:31:31,980 --> 00:31:38,540
+are. And that is either the environment.yml or the requirements.txt. Of course, the requirements.txt,
+
+456
+00:31:38,540 --> 00:31:46,780
+it works very well if you're only using Python packages and stuff in the pip world.
+
+457
+00:31:46,780 --> 00:31:55,260
+But if you're using GPUs, if you're using more complex things, I recommend checking the conda
+
+458
+00:31:55,260 --> 00:32:00,700
+because it makes it possible to install much more complex environments where everything
+
+459
+00:32:00,700 --> 00:32:06,860
+works together. So it is thinking now, the Konda is thinking and it's solving the environment. You
+
+460
+00:32:06,860 --> 00:32:14,300
+see this timer going on. So when you work on a system and when you create environments like
+
+461
+00:32:14,300 --> 00:32:20,940
+this in the requirement file, the waiting time is also less rather than you add more and more
+
+462
+00:32:20,940 --> 00:32:28,380
+to an existing environment. Because conda needs to figure out all the matching files. And the
+
+463
+00:32:28,380 --> 00:32:33,100
+other thing is when you work on a system for a long time, it might create a big cache,
+
+464
+00:32:34,620 --> 00:32:41,820
+the packages you don't want will get accumulated. So in addition to being reproducible, there are
+
+465
+00:32:41,820 --> 00:32:47,500
+so many other benefits by following the procedure that you are doing now.
+
+466
+00:32:48,860 --> 00:32:54,860
+Yes. And I'll also mention that if you want to share the environment or reproduce it in
+
+467
+00:32:54,860 --> 00:33:00,860
+another system. Usually, the environments are not easy to transfer. There are tools to do this,
+
+468
+00:33:00,860 --> 00:33:08,460
+but it's very finicky. Usually, it's better to just move the environment.yml to a different
+
+469
+00:33:08,460 --> 00:33:13,500
+place and recreate the environments there. It's just one text file, and it's very easy to copy
+
+470
+00:33:13,500 --> 00:33:22,860
+that and then recreate it in another place. Because the environments, if you're doing
+
+471
+00:33:22,860 --> 00:33:26,700
+work with like deep learning or something. The environments can get to like, I don't know,
+
+472
+00:33:26,700 --> 00:33:32,460
+like four gigabytes. You don't want to like move four gigabytes when you can move a text file.
+
+473
+00:33:33,820 --> 00:33:38,460
+That's not usually a good idea. So moving around things on different systems,
+
+474
+00:33:39,340 --> 00:33:45,420
+it would create issues as well because these are pre-compiled binaries. If you want to move
+
+475
+00:33:45,420 --> 00:33:50,300
+something from Windows to a Unix computer, almost it will never work. But if you can move this
+
+476
+00:33:50,300 --> 00:33:55,580
+environmental file and recreate it according to their system, according to your target system.
+
+477
+00:33:55,580 --> 00:33:59,900
+And also you could easily version control this environment file because it's text file,
+
+478
+00:33:59,900 --> 00:34:05,340
+you could have Git and other ways of version control. You can have multiple snapshots.
+
+479
+00:34:06,060 --> 00:34:13,180
+So yeah, that's an important thing. And I should mention that in the Python packaging index,
+
+480
+00:34:13,180 --> 00:34:19,420
+and also in the conduct channels, there's huge amounts of variety based on what operating system
+
+481
+00:34:19,420 --> 00:34:24,940
+you're running. So for example, some packages, usually the packages are built for Mac OS X,
+
+482
+00:34:24,940 --> 00:34:29,820
+they're built for Windows, they're built for Linux, different variants of Linux,
+
+483
+00:34:29,820 --> 00:34:37,020
+different dependencies, and you can have a huge amount of different combinations of the same
+
+484
+00:34:37,020 --> 00:34:43,420
+package. The same package, but it's built in different ways based on where it's going to be
+
+485
+00:34:43,420 --> 00:34:52,780
+installed. These tools make it possible to install it. Of course, this is a bit of a demo
+
+486
+00:34:52,780 --> 00:34:57,820
+effect, but the environment solving takes a long time. This is why the Mamba is so popular.
+
+487
+00:35:00,140 --> 00:35:05,260
+If we have time, I can show you how long it takes with Mamba, but I'm pretty certain it
+
+488
+00:35:05,260 --> 00:35:10,060
+doesn't take this long. But this can also happen in Anaconda Navigator, for example. It's pretty
+
+489
+00:35:10,060 --> 00:35:14,620
+annoying sometimes that it doesn't produce output that often. Like what's it doing?
+
+490
+00:35:14,620 --> 00:35:21,740
+Like it's trying to solve the environment and yeah, it takes a while and it doesn't
+
+491
+00:35:21,740 --> 00:35:26,460
+necessarily produce output so you can think that it's crashed. But yeah, sometimes the
+
+492
+00:35:26,460 --> 00:35:33,900
+solving just takes a long time. Let's see if there's any good questions in the chat.
+
+493
+00:35:33,900 --> 00:35:43,540
+Yeah. So I will also try on my terminal. Let's see. Yes. The one reason could be that you
+
+494
+00:35:43,540 --> 00:35:50,020
+have a lot of, we could, there are ways to clear conda cache, for example, to check less
+
+495
+00:35:50,020 --> 00:35:54,980
+things and also your base environment where this JupyterLab is installed. It might have
+
+496
+00:35:54,980 --> 00:36:00,140
+a certain libraries already installed. So what conda trying to do is it's trying to
+
+497
+00:36:00,140 --> 00:36:04,780
+sort of not to redo things and maybe reuse things and also be compatible.
+
+498
+00:36:05,340 --> 00:36:08,780
+Yeah, and also maybe it's because of the share and that sort of thing.
+
+499
+00:36:09,580 --> 00:36:13,180
+There's other things running on my laptop at this point.
+
+500
+00:36:30,140 --> 00:36:52,100
+Yeah, let's see. Are there any good questions? So where should it be stored? So usually a
+
+501
+00:36:52,100 --> 00:36:57,740
+good idea to, if you're using version control or something, you should usually store the
+
+502
+00:36:57,740 --> 00:37:08,600
+environments and requirements with the code, so that it's easy to reproduce.
+
+503
+00:37:08,840 --> 00:37:14,840
+There's a good question there, honda-update-or, this is a good thing to
+
+504
+00:37:14,840 --> 00:37:20,160
+mention, that updating already existing environments can sometimes be really
+
+505
+00:37:20,160 --> 00:37:25,740
+complicated, like it's, well, for pip it's less complicated because pip usually
+
+506
+00:37:25,740 --> 00:37:30,900
+It just downloads stuff and it doesn't care necessarily.
+
+507
+00:37:30,900 --> 00:37:33,580
+It just will install them.
+
+508
+00:37:33,580 --> 00:37:35,300
+It doesn't look...
+
+509
+00:37:35,300 --> 00:37:41,940
+It just goes YOLO and it just installs packages, which is good in many cases, but it sometimes
+
+510
+00:37:41,940 --> 00:37:44,880
+gets you environments that don't work anymore.
+
+511
+00:37:44,880 --> 00:37:47,140
+What Conda does is the complete opposite.
+
+512
+00:37:47,140 --> 00:37:50,540
+So it tries to make certain that everything works.
+
+513
+00:37:50,540 --> 00:37:58,220
+And if you have like, basically, if you have, let's say, if you have ever been to like a
+
+514
+00:37:58,220 --> 00:38:03,460
+tour or something, like a tourist tour or something, and there's one person who walks
+
+515
+00:38:03,460 --> 00:38:06,500
+slowly, then the whole group needs to walk slowly.
+
+516
+00:38:06,500 --> 00:38:11,420
+And that's basically what can happen with the conda packages, is that there's one package
+
+517
+00:38:11,420 --> 00:38:16,420
+that is basically like, I don't want to update, like I don't like updating, I don't want
+
+518
+00:38:16,420 --> 00:38:18,420
+to like be updated.
+
+519
+00:38:18,420 --> 00:38:21,140
+And then it can hold the whole environment back.
+
+520
+00:38:21,140 --> 00:38:27,020
+And it can create this kind of a situation where, like, the content goes on a tangent
+
+521
+00:38:27,020 --> 00:38:35,180
+and it tries to, like, create an environment which doesn't want to update anymore.
+
+522
+00:38:35,180 --> 00:38:44,220
+So for all of these situations, usually the solution is to just create a new environment.
+
+523
+00:38:44,220 --> 00:38:52,860
+For fun's sake, I created a new environment here. Let's try with Mamba. I'm running it
+
+524
+00:38:52,860 --> 00:39:00,220
+now from my terminal, and it's the same command, exact same command, but this time I'm running it
+
+525
+00:39:01,500 --> 00:39:08,940
+with Mamba. Mamba is much faster, so I'm pretty certain that this will finish before this
+
+526
+00:39:08,940 --> 00:39:19,940
+And it gives more output as well, it tells where it tries to find the packages and what does it download, like what packages and that sort of stuff.
+
+527
+00:39:25,940 --> 00:39:26,940
+Yeah.
+
+528
+00:39:28,940 --> 00:39:31,940
+So now it tells what we are looking for.
+
+529
+00:39:31,940 --> 00:39:38,380
+we are looking for, and soon it should probably give you the answer to what it's, yeah.
+
+530
+00:39:38,380 --> 00:39:40,060
+So now it's already doing the installation.
+
+531
+00:39:40,060 --> 00:39:45,020
+So this is why we usually recommend people to use Mamba when they create environments.
+
+532
+00:39:45,020 --> 00:39:52,620
+So it's already done when the conda is still wondering about, and this is why this is maybe
+
+533
+00:39:52,620 --> 00:39:58,460
+a good demo on why certain tools have been reinvented.
+
+534
+00:39:58,460 --> 00:40:01,860
+But the user interface is basically the same.
+
+535
+00:40:01,860 --> 00:40:07,460
+But maybe we should have, like, do we have anything for this session?
+
+536
+00:40:07,460 --> 00:40:14,980
+Do you want to show something more?
+
+537
+00:40:14,980 --> 00:40:21,020
+Yeah, maybe I'll quickly show how to activate the environment.
+
+538
+00:40:21,020 --> 00:40:28,700
+So, when we often, often in places, we recommend you don't necessarily run this conda init.
+
+539
+00:40:28,700 --> 00:40:29,700
+You can run it.
+
+540
+00:40:29,700 --> 00:40:31,820
+So if you see, let's say you have a terminal
+
+541
+00:40:31,820 --> 00:40:34,060
+and you see, let's say the space over here,
+
+542
+00:40:34,060 --> 00:40:38,460
+it means that your conda is active now
+
+543
+00:40:38,460 --> 00:40:41,540
+and the Python will always be found from that environment.
+
+544
+00:40:41,540 --> 00:40:43,940
+And then this can cause problems in many systems.
+
+545
+00:40:43,940 --> 00:40:45,660
+Like if you want to,
+
+546
+00:40:45,660 --> 00:40:47,500
+if you don't want to always have it active,
+
+547
+00:40:47,500 --> 00:40:50,260
+like if you have a program that tries to use Python,
+
+548
+00:40:50,260 --> 00:40:53,620
+but suddenly it wants to use the Python
+
+549
+00:40:53,620 --> 00:40:57,260
+from the activated conda, that can cause problems.
+
+550
+00:40:57,260 --> 00:41:07,460
+So, we usually recommend that people don't run this conda in it, but you can, of course,
+
+551
+00:41:07,460 --> 00:41:08,460
+run it.
+
+552
+00:41:08,460 --> 00:41:17,300
+And if you run it, you can use this conda activate to activate the environment.
+
+553
+00:41:17,300 --> 00:41:21,060
+And now you have an environment here.
+
+554
+00:41:21,060 --> 00:41:31,820
+But if you, yeah, usually we don't recommend you run it all the time, because then other
+
+555
+00:41:31,820 --> 00:41:36,500
+programs that want to use Python as well, they might find this wrong Python instead
+
+556
+00:41:36,500 --> 00:41:41,780
+of the Python that you want to use.
+
+557
+00:41:41,780 --> 00:41:46,860
+So here in this file that you activated, we didn't mention which version of Python we
+
+558
+00:41:46,860 --> 00:41:47,860
+need.
+
+559
+00:41:47,860 --> 00:41:58,340
+So, we can check what is the version of the Python, so we got 3.12, so in this environment
+
+560
+00:41:58,340 --> 00:42:13,180
+I didn't specify what Python to use, so yeah, I just got the newest Python in this case,
+
+561
+00:42:13,180 --> 00:42:22,380
+if I run which Python, this is like Linux specific command, but you can see that it shows Python from
+
+562
+00:42:22,380 --> 00:42:28,460
+my newly created environment. So in an environment, does it always include a Python as well?
+
+563
+00:42:31,980 --> 00:42:36,380
+Not necessarily. Even if you don't have it, mention it in your requirement file,
+
+564
+00:42:36,380 --> 00:42:41,260
+does it always include a Python? No, no. If there's nothing that requires Python,
+
+565
+00:42:41,260 --> 00:42:45,660
+it doesn't always contain Python. So usually when you create an environment, it might be sometimes
+
+566
+00:42:45,660 --> 00:42:50,780
+a good idea to add, let's say, pip and Python always there so that you always get pip and
+
+567
+00:42:50,780 --> 00:42:57,820
+Python into the environment. But sometimes, like most of the time, you install NumPy or something,
+
+568
+00:42:57,820 --> 00:43:03,660
+and then that has a dependency to Python. So it will bring Python with it. But it's always like
+
+569
+00:43:03,660 --> 00:43:08,700
+this kind of a question of who are the major players? What are the major packages that you
+
+570
+00:43:08,700 --> 00:43:14,540
+want to get. And those are the ones that bring everybody with them. So they're basically like
+
+571
+00:43:14,540 --> 00:43:23,740
+the Taylor Swift going into a restaurant. Other people come because Taylor Swift is at the
+
+572
+00:43:23,740 --> 00:43:29,740
+restaurant. And those are the stars of the environment. Let's say PyTorch or something.
+
+573
+00:43:29,740 --> 00:43:35,900
+PyTorch will bring its friends with it. But nobody's really caring about the friends. They
+
+574
+00:43:35,900 --> 00:43:41,020
+are caring about the PyTorch. And this is usually how you want to think about the environment. So
+
+575
+00:43:41,020 --> 00:43:45,420
+there's usually the major players that you want to, these are the major things that they want
+
+576
+00:43:45,420 --> 00:43:51,020
+the conda to focus on. So to sort of, sort of investigate that, what you said, you know,
+
+577
+00:43:51,020 --> 00:43:56,620
+there might be other packages that pandas needed. Is it possible for you to rephrase this
+
+578
+00:43:56,620 --> 00:44:02,780
+environment and show how that would look like, you know, after creating? Yes, let's, let's,
+
+579
+00:44:02,780 --> 00:44:10,860
+Let's run the conda-env-export.
+
+580
+00:44:10,860 --> 00:44:17,340
+And you notice here that I get this pretty horrible looking environment file, where suddenly
+
+581
+00:44:17,340 --> 00:44:19,940
+there's a huge bunch of stuff here.
+
+582
+00:44:19,940 --> 00:44:23,860
+And this is basically the exact versions I got.
+
+583
+00:44:23,860 --> 00:44:32,980
+And most of these are packages that come as dependencies to, let's say, NumPy.
+
+584
+00:44:32,980 --> 00:44:40,060
+But you don't want to give other people these as an installation instruction, unless they
+
+585
+00:44:40,060 --> 00:44:42,000
+want the exact same environment.
+
+586
+00:44:42,000 --> 00:44:43,200
+But usually you don't want it.
+
+587
+00:44:43,200 --> 00:44:48,660
+You want to give them the actual instructions that you need.
+
+588
+00:44:48,660 --> 00:44:49,660
+The one you use.
+
+589
+00:44:49,660 --> 00:44:50,660
+Yeah, yeah, yeah.
+
+590
+00:44:50,660 --> 00:44:55,900
+So, in fact, this will break in most systems because if you see the hash, like the third,
+
+591
+00:44:55,900 --> 00:45:02,020
+like you have two equal signs, the third hash actually is very unique to the system you
+
+592
+00:45:02,020 --> 00:45:03,020
+are in now.
+
+593
+00:45:03,020 --> 00:45:07,460
+So, there's very likely that it will break on a different system.
+
+594
+00:45:07,460 --> 00:45:08,460
+Yes.
+
+595
+00:45:08,460 --> 00:45:14,660
+So, many of the things here are like, you can read it as you have a package, then you
+
+596
+00:45:14,660 --> 00:45:19,340
+have a package version, and then you have a specific build of that package.
+
+597
+00:45:19,340 --> 00:45:25,820
+For example, in this case, it's for Python 3.12. But yeah, it's very specific. And that's why you
+
+598
+00:45:25,820 --> 00:45:32,060
+usually want to give the broad outline of the environment instead of the exact requirements.
+
+599
+00:45:36,060 --> 00:45:40,380
+Of course, if you want to create the exact same cake that somebody else has created,
+
+600
+00:45:40,380 --> 00:45:48,300
+you can give the exact grams of what flour to get, exact brand of the flour, exact date of the flour
+
+601
+00:45:48,300 --> 00:45:54,140
+when it was made, like exact amount of the flour that is needed. But most of the time,
+
+602
+00:45:54,140 --> 00:45:59,980
+you want to give a generic recipe that says that, okay, just get me flour this amount.
+
+603
+00:46:00,620 --> 00:46:05,340
+So it's like similar, you don't want, you want to give a general recipe, you don't want to give,
+
+604
+00:46:06,860 --> 00:46:09,980
+and the conda is like the cook that can then manage this.
+
+605
+00:46:11,660 --> 00:46:15,980
+Yeah. Then also the file you used, the environment file, you should also give the
+
+606
+00:46:15,980 --> 00:46:19,460
+the others to build upon your package. For example, if they
+
+607
+00:46:19,460 --> 00:46:23,620
+need a, let's say, PyTorch in their program, in addition to
+
+608
+00:46:23,620 --> 00:46:27,740
+what you install, it's easier for them to add PyTorch instead
+
+609
+00:46:27,740 --> 00:46:31,100
+of editing this file. So this is sort of overwhelming. And this
+
+610
+00:46:31,100 --> 00:46:34,340
+is not something you want to show. And it's also very
+
+611
+00:46:34,340 --> 00:46:34,940
+simple.
+
+612
+00:46:35,460 --> 00:46:38,180
+Should we now go to a break before?
+
+613
+00:46:39,700 --> 00:46:45,180
+We have two minutes. I think one minute you can have a look at
+
+614
+00:46:45,180 --> 00:46:51,420
+questions? Yeah, let's look at the questions quickly and then go to a break.
+
+615
+00:46:56,860 --> 00:47:04,700
+So let's see. If you have any more questions, please go and ask them. I will try to answer
+
+616
+00:47:04,700 --> 00:47:10,860
+them. Do you want me to share the questions? Yes, maybe. Yeah, that would be great. Okay, here we go.
+
+617
+00:47:15,180 --> 00:47:23,180
+You can only see on the stream how this goes.
+
+618
+00:47:23,180 --> 00:47:35,180
+I can see the questions on the stream.
+
+619
+00:47:35,180 --> 00:47:43,860
+There's some questions about things like, how do you make the stuff in the environment
+
+620
+00:47:43,860 --> 00:47:44,860
+file?
+
+621
+00:47:44,860 --> 00:47:45,860
+Do you have to do it manually?
+
+622
+00:47:45,860 --> 00:47:48,860
+I think you might have answered that.
+
+623
+00:47:48,860 --> 00:47:54,500
+It usually is a good idea to write it yourself.
+
+624
+00:47:54,500 --> 00:47:56,540
+Where do you store the environment file?
+
+625
+00:47:56,540 --> 00:47:57,540
+Yeah.
+
+626
+00:47:57,540 --> 00:48:04,020
+So I think we have some Mamba installation instructions somewhere as well.
+
+627
+00:48:04,020 --> 00:48:06,180
+So we had to find that and place it.
+
+628
+00:48:06,180 --> 00:48:09,100
+So under question 44, we'll place it
+
+629
+00:48:09,100 --> 00:48:13,060
+as soon as I find the link for the mobile installation.
+
+630
+00:48:13,060 --> 00:48:13,580
+Yes.
+
+631
+00:48:16,300 --> 00:48:22,580
+So about the question, I often think of environments
+
+632
+00:48:22,580 --> 00:48:28,020
+like if you go camping or if you go to a hotel,
+
+633
+00:48:28,020 --> 00:48:30,980
+like you go on a trip, you always
+
+634
+00:48:30,980 --> 00:48:32,420
+pack the usual suspects.
+
+635
+00:48:32,420 --> 00:48:36,780
+like you pack your toothbrush and you pack your shampoo and whatever,
+
+636
+00:48:36,980 --> 00:48:37,860
+like this kind of stuff.
+
+637
+00:48:37,940 --> 00:48:40,420
+And that's basically what most of the environments are.
+
+638
+00:48:40,580 --> 00:48:44,940
+You always get numpies and matplotlibs and scipies and python and beef.
+
+639
+00:48:44,940 --> 00:48:50,060
+And like most of the stuff is like, it rolls off your tongue.
+
+640
+00:48:50,540 --> 00:48:54,540
+Like you know that, okay, I will need these anyway.
+
+641
+00:48:54,540 --> 00:48:56,020
+Like I always want these stuff.
+
+642
+00:48:56,140 --> 00:49:01,660
+And then there's all like, usually like maybe two, three packages that are the
+
+643
+00:49:01,660 --> 00:49:07,980
+actual like meat of the whole thing and they are the special like let's say you need a certain
+
+644
+00:49:07,980 --> 00:49:15,100
+kind of like clothing when you go to a like a trip you need clothing for warm weather or
+
+645
+00:49:16,060 --> 00:49:22,620
+something like that and that's the actual thing there. Yes although it's very interesting our
+
+646
+00:49:22,620 --> 00:49:29,500
+discussion [Name] that we have to stop now. On question number 46 I'll slightly mention something
+
+647
+00:49:29,500 --> 00:49:35,500
+about it especially we see this if it says access denied when you try to install especially on
+
+648
+00:49:35,500 --> 00:49:40,860
+shared HPC systems for example it's always like that you are not allowed to modify the central
+
+649
+00:49:40,860 --> 00:49:46,220
+environment and actually you should not do that try to do that you can use with dash as user
+
+650
+00:49:46,780 --> 00:49:52,540
+as mentioned answer but you should go for this environment what [name] was promoting so create
+
+651
+00:49:52,540 --> 00:49:59,540
+isolated silos where you can add things and have different versions and also delete them
+
+652
+00:49:59,540 --> 00:50:03,540
+if they don't want. So don't try to install it centrally.
+
+653
+00:50:03,540 --> 00:50:09,300
+Yes. So if you install like Anaconda Navigator or something, usually like in that example,
+
+654
+00:50:09,300 --> 00:50:14,100
+you install it into program files and you install it as root or something like that.
+
+655
+00:50:14,100 --> 00:50:18,420
+And you don't have maybe right access to that folder. And that's a good thing because then
+
+656
+00:50:18,420 --> 00:50:23,140
+you cannot mess up the installation. But what you want to do is create a separate realm,
+
+657
+00:50:23,140 --> 00:50:28,020
+separate world, virtual environment, or conda environment, where you then install the stuff.
+
+658
+00:50:28,020 --> 00:50:34,100
+Because if you run, for example, the pip install, it will install into folders where
+
+659
+00:50:34,100 --> 00:50:41,220
+they will always be present. So if some other environment uses the same Python version,
+
+660
+00:50:41,220 --> 00:50:48,340
+it will find the same packages, and then all hell breaks loose, and suddenly nothing works anymore.
+
+661
+00:50:48,340 --> 00:50:56,260
+So, you want to keep the packages that you want in the environment, you want to keep
+
+662
+00:50:56,260 --> 00:51:03,300
+it in a separate silo, like [Name] said, a separate world, and you want to first create
+
+663
+00:51:03,300 --> 00:51:05,580
+the world for it, like the environment.
+
+664
+00:51:05,580 --> 00:51:11,660
+You want to create the world, and you want the packages to that world.
+
+665
+00:51:11,660 --> 00:51:15,020
+And [Name] will take the rest of the questions and the community, and thank you very much
+
+666
+00:51:15,020 --> 00:51:25,020
+Thank you so much for your this great introduction. I think it will be very useful for most of us. [Name], can you please take on.
+
+667
+00:51:25,020 --> 00:51:33,020
+Yes. So, yeah, I guess, um, we will have a break until 23 past hour.
+
+668
+00:51:33,020 --> 00:51:36,020
+So, see you then.
+
+669
+00:51:36,020 --> 00:51:38,080
+you
+

@@ -1,0 +1,1464 @@
+1
+00:00:00,000 --> 00:00:00,560
+So I will switch to [name]'s screen.
+
+2
+00:00:01,040 --> 00:00:05,480
+We are now on the Binder lesson here.
+
+3
+00:00:05,480 --> 00:00:15,800
+So, yeah, so the question is,
+
+4
+00:00:15,800 --> 00:00:19,640
+when is sharing code alone not sufficient?
+
+5
+00:00:19,640 --> 00:00:22,560
+So let's reflect on what just happened in
+
+6
+00:00:22,560 --> 00:00:25,800
+the first two lessons of today.
+
+7
+00:00:25,800 --> 00:00:32,560
+So we had scripts which worked roughly okay for many people,
+
+8
+00:00:32,560 --> 00:00:34,680
+but there were many different problems there.
+
+9
+00:00:34,680 --> 00:00:40,200
+And once we start having these dependencies, everyone's computer is different. So we have
+
+10
+00:00:40,200 --> 00:00:46,840
+people running via Anaconda Navigator, Anaconda Cloud, making own environments, maybe some people
+
+11
+00:00:46,840 --> 00:00:52,760
+on clusters, and multiply this all by three different operating systems. So basically,
+
+12
+00:00:52,760 --> 00:00:58,520
+even if someone has the code, it really doesn't work that well. So look at this picture here.
+
+13
+00:00:58,520 --> 00:01:04,280
+So what looks really simple, so there's we say okay there's this code it says
+
+14
+00:01:04,280 --> 00:01:11,280
+python import pandas. There's all these things underneath and it can all go
+
+15
+00:01:11,280 --> 00:01:18,240
+wrong some different ways. But what happens if we want to make our code a
+
+16
+00:01:18,240 --> 00:01:27,720
+little bit more reusable? So we want to find a way to have code and have someone
+
+17
+00:01:27,720 --> 00:01:33,160
+else to easily be able to try it out even if we aren't giving them all the resources directly.
+
+18
+00:01:33,160 --> 00:01:41,960
+And that leads to this question, which is being shown here. So Leia is a PhD student in
+
+19
+00:01:41,960 --> 00:01:46,680
+computation biology, and after two years of work, she's ready to publish her first paper.
+
+20
+00:01:46,680 --> 00:01:52,040
+The code used for analyzing data is available on GitHub, but the supervisor is an advocate
+
+21
+00:01:52,040 --> 00:01:59,720
+open science and says just sharing this code is not sufficient. So if this code is just on GitHub,
+
+22
+00:01:59,720 --> 00:02:07,560
+what kind of problems could happen? And by the way, GitHub is a version control platform. It's a way
+
+23
+00:02:07,560 --> 00:02:14,680
+to share code and control changes to it. So this course is definitely not about Git and GitHub.
+
+24
+00:02:14,680 --> 00:02:21,880
+Our other big course, Code Refinery, is about this. So don't worry about that name.
+
+25
+00:02:22,040 --> 00:02:28,040
+But what kind of things can go wrong? Please write in notes, and I will flip back there.
+
+26
+00:02:30,040 --> 00:02:32,040
+So what can go wrong?
+
+27
+00:02:39,040 --> 00:02:46,040
+The easiest is probably we miss requirements. We miss dependencies.
+
+28
+00:02:46,040 --> 00:02:47,040
+case.
+
+29
+00:02:47,040 --> 00:02:48,040
+Okay.
+
+30
+00:02:48,040 --> 00:02:56,580
+So, so basically the NumPy or pandas that worked five years ago doesn't work anymore
+
+31
+00:02:56,580 --> 00:02:59,080
+because something has changed.
+
+32
+00:02:59,080 --> 00:03:04,140
+That or we don't even know that it is there or that we need it initially.
+
+33
+00:03:04,140 --> 00:03:05,380
+Yeah.
+
+34
+00:03:05,380 --> 00:03:09,300
+So if there's code that shared but doesn't have this environment file or requirements
+
+35
+00:03:09,300 --> 00:03:15,620
+file, then there's really hardly any chance there.
+
+36
+00:03:15,620 --> 00:03:28,100
+documentation it can be really hard to use. So what about the whole version of Python changes?
+
+37
+00:03:28,100 --> 00:03:33,300
+So for example, a lot of my old codes were written with Python 2 and I never updated them because
+
+38
+00:03:33,300 --> 00:03:38,500
+I'm not doing that anymore. That code is probably effectively dead by now.
+
+39
+00:03:38,500 --> 00:03:48,500
+Very likely, except if someone, well, it's, okay, I would make a distinction. It's dead for current development.
+
+40
+00:03:48,500 --> 00:03:57,500
+It might still work if someone has a Python 2 and their respective dependencies to run it.
+
+41
+00:03:57,500 --> 00:04:04,500
+So the code might still work if you get the right dependencies, if you know which versions are needed for it.
+
+42
+00:04:04,500 --> 00:04:09,500
+But it's probably dead for further development.
+
+43
+00:04:09,500 --> 00:04:14,500
+And then what about the practical difficulties of someone installing these?
+
+44
+00:04:14,500 --> 00:04:19,500
+Let's say you're sharing it with someone that's not an expert in Python and doesn't
+
+45
+00:04:19,500 --> 00:04:24,500
+use environment files and all these things. Is there any way that they can
+
+46
+00:04:24,500 --> 00:04:29,500
+explore this code and do anything with it at all?
+
+47
+00:04:29,500 --> 00:04:39,620
+Well, yeah, there are tools like binders, which essentially provide a virtual environment
+
+48
+00:04:39,620 --> 00:04:43,300
+that is independent of your machine.
+
+49
+00:04:43,300 --> 00:04:49,180
+And if they don't want to care about it, this kind of, yeah, more or less virtual machine
+
+50
+00:04:49,180 --> 00:04:56,420
+for a virtual interpreter can help you there.
+
+51
+00:04:56,420 --> 00:04:59,100
+I wouldn't know of anything else that you could really
+
+52
+00:04:59,100 --> 00:05:02,420
+do if they don't want to install anything.
+
+53
+00:05:05,180 --> 00:05:06,540
+Yeah.
+
+54
+00:05:06,540 --> 00:05:09,340
+So well, anyway, that leads to what
+
+55
+00:05:09,340 --> 00:05:12,380
+our lesson is now, which is sharing computational
+
+56
+00:05:12,380 --> 00:05:14,460
+environments with Binder.
+
+57
+00:05:14,460 --> 00:05:18,020
+So back to [name]'s screen.
+
+58
+00:05:18,020 --> 00:05:21,460
+So this is something where you can try to follow along
+
+59
+00:05:21,460 --> 00:05:23,740
+and do it with us if you want.
+
+60
+00:05:23,740 --> 00:05:31,100
+But for most people I would say don't just watch us and ask questions. And why is that?
+
+61
+00:05:31,100 --> 00:05:38,940
+It requires knowledge of git and the Github account and for a later part is the Zenodo account.
+
+62
+00:05:38,940 --> 00:05:45,740
+And these things are definitely not prerequisites of this course. So we don't expect everyone to be
+
+63
+00:05:45,740 --> 00:05:56,060
+able to do this. So try if you want, but try to get the point of what we're doing and ask questions
+
+64
+00:05:56,060 --> 00:06:03,260
+and get inspired to do this later. So let's see. Let's get started then.
+
+65
+00:06:03,260 --> 00:06:09,940
+and how I'm arranging my screen so I
+
+66
+00:06:09,940 --> 00:06:12,420
+can see what [name] is doing.
+
+67
+00:06:12,420 --> 00:06:19,620
+So we start off with this example
+
+68
+00:06:19,620 --> 00:06:22,140
+we used from a previous lesson.
+
+69
+00:06:22,140 --> 00:06:22,940
+Which lesson was it?
+
+70
+00:06:22,940 --> 00:06:24,340
+The data visualization.
+
+71
+00:06:24,340 --> 00:06:26,020
+So it's a little plot.
+
+72
+00:06:26,020 --> 00:06:27,700
+So we see the code here.
+
+73
+00:06:27,700 --> 00:06:29,220
+It's in a notebook.
+
+74
+00:06:29,220 --> 00:06:32,540
+Can you run it?
+
+75
+00:06:32,540 --> 00:06:35,820
+I hope it works and I didn't do anything wrong, but yeah.
+
+76
+00:06:35,820 --> 00:06:38,780
+Yes, okay, so there's a plot.
+
+77
+00:06:38,780 --> 00:06:45,900
+So we need to... we want to make this reusable by other people.
+
+78
+00:06:45,900 --> 00:06:50,140
+So to do that, the first step is to make a git repository.
+
+79
+00:06:50,140 --> 00:06:54,700
+So we would probably do this from a command line, but instead we're doing it
+
+80
+00:06:54,700 --> 00:06:58,860
+from GitHub. So here we are on github.com.
+
+81
+00:06:58,860 --> 00:07:01,660
+[name] is logged in, and we'll click New.
+
+82
+00:07:04,140 --> 00:07:09,100
+And this allows us to make a new repository. We can call it Binder Demo.
+
+83
+00:07:10,140 --> 00:07:14,620
+Okay, and there's no description needed. Public.
+
+84
+00:07:15,820 --> 00:07:20,060
+It's relatively important that it is public, otherwise Binder might get into problems.
+
+85
+00:07:21,020 --> 00:07:23,660
+Yes, and click Create Repository.
+
+86
+00:07:23,660 --> 00:07:31,820
+So, so far, what we've done is a pretty standard way of using GitHub.
+
+87
+00:07:31,820 --> 00:07:37,180
+And next up, we will find on this page, upload existing file.
+
+88
+00:07:37,180 --> 00:07:39,340
+So we can do everything here.
+
+89
+00:07:39,340 --> 00:07:41,940
+It's right around there.
+
+90
+00:07:41,940 --> 00:07:43,540
+Yes.
+
+91
+00:07:43,540 --> 00:07:45,460
+Okay.
+
+92
+00:07:45,460 --> 00:07:47,380
+Did you save it in JupyterLab?
+
+93
+00:07:47,380 --> 00:07:50,380
+And give it a title?
+
+94
+00:07:50,380 --> 00:07:51,380
+Yes.
+
+95
+00:07:51,380 --> 00:07:52,380
+Or rename the file?
+
+96
+00:07:52,380 --> 00:08:00,220
+It is. I just try navigating there or actually choose your files.
+
+97
+00:08:01,100 --> 00:08:02,780
+So this is a bit.
+
+98
+00:08:04,860 --> 00:08:07,500
+Word finder teaching.
+
+99
+00:08:09,820 --> 00:08:13,260
+There. Called it plotting.
+
+100
+00:08:15,740 --> 00:08:21,020
+So it's been added and we give a git command message.
+
+101
+00:08:21,020 --> 00:08:26,780
+So this is this provides a history and explains what we're doing. So we commit changes.
+
+102
+00:08:29,660 --> 00:08:35,180
+And there we go. There's a notebook. Can we click on it and see what it looks like when we open it?
+
+103
+00:08:36,940 --> 00:08:43,580
+Yep. GitHub has a preview. Okay. Yeah that looks like what we just did.
+
+104
+00:08:44,780 --> 00:08:48,620
+So now in fact maybe someone can copy the link and put it
+
+105
+00:08:48,620 --> 00:08:54,620
+in the notes, but this is something that anyone can see.
+
+106
+00:08:58,260 --> 00:09:00,300
+OK, [name] is doing it.
+
+107
+00:09:00,300 --> 00:09:07,420
+Yeah, just need to find the notes again.
+
+108
+00:09:17,260 --> 00:09:18,300
+OK, there we go.
+
+109
+00:09:19,580 --> 00:09:27,580
+Okay. Okay. Let's go back. So now here we are. So what what's the first minimum step in order
+
+110
+00:09:27,580 --> 00:09:35,260
+for anyone to be able to run this code? Telling what requirements there are. So what other
+
+111
+00:09:35,980 --> 00:09:41,340
+what dependencies it has. Yeah so exactly what we just covered in the lesson. So we'll create a new
+
+112
+00:09:41,340 --> 00:09:49,980
+file. We will call it, we'll copy this,
+
+113
+00:09:50,780 --> 00:09:55,020
+and we paste it and call it requirements.txt.
+
+114
+00:09:55,020 --> 00:09:58,700
+So now we've just made another file in this repository
+
+115
+00:09:58,700 --> 00:10:02,940
+from the github web interface, and we paste it in
+
+116
+00:10:02,940 --> 00:10:06,540
+the requirements.txt version of dependencies.
+
+117
+00:10:06,540 --> 00:10:09,100
+So we can click Commit Changes.
+
+118
+00:10:09,100 --> 00:10:13,380
+It gives us some standard message to create the files.
+
+119
+00:10:13,380 --> 00:10:18,080
+We can do it, and we click Commit Changes.
+
+120
+00:10:18,080 --> 00:10:20,020
+And now if we look at our code, we
+
+121
+00:10:20,020 --> 00:10:24,740
+have plotting.ipynb and requirements.txt.
+
+122
+00:10:24,740 --> 00:10:29,740
+So there we go.
+
+123
+00:10:29,740 --> 00:10:34,460
+So now, OK, so what is Binder?
+
+124
+00:10:34,460 --> 00:10:41,500
+If we go to mybinder.org, which is listed, it's a way where we can...
+
+125
+00:10:42,780 --> 00:10:45,580
+So it's a cloud service that starts Jupyter
+
+126
+00:10:47,660 --> 00:10:53,340
+in the environment specified in the repository. So Binder will read the requirements
+
+127
+00:10:54,140 --> 00:10:58,780
+and make an environment and then start Jupyter in there for anyone online.
+
+128
+00:10:58,780 --> 00:11:12,820
+So, if we copy this URL, yeah, let's copy, actually no, we can copy it from there, and
+
+129
+00:11:12,820 --> 00:11:14,380
+then paste.
+
+130
+00:11:14,380 --> 00:11:21,380
+So, what it tells us to do is not to click launch, but to click the little arrow down
+
+131
+00:11:21,380 --> 00:11:27,100
+below, lower, there.
+
+132
+00:11:27,100 --> 00:11:33,300
+And this gives us a launch binder button, just like we see up there.
+
+133
+00:11:33,300 --> 00:11:40,620
+So copy that, and let's go back to the GitHub repository, and let's make a new README file.
+
+134
+00:11:40,620 --> 00:11:44,340
+And oh, there's this nice button there to do it.
+
+135
+00:11:44,340 --> 00:11:46,000
+So it's called Binder Demo.
+
+136
+00:11:46,000 --> 00:11:49,580
+We can paste this.
+
+137
+00:11:49,580 --> 00:11:52,620
+Maybe we can put it below the title.
+
+138
+00:11:52,620 --> 00:11:56,280
+Okay, yeah.
+
+139
+00:11:56,280 --> 00:11:57,440
+So we see Binder.
+
+140
+00:11:57,440 --> 00:12:03,280
+And if we commit the changes, commit directly.
+
+141
+00:12:11,440 --> 00:12:12,640
+Yes, OK.
+
+142
+00:12:12,640 --> 00:12:15,520
+So now our repository is described.
+
+143
+00:12:15,520 --> 00:12:18,720
+And this readme file would be, like it would say,
+
+144
+00:12:18,720 --> 00:12:22,360
+this is my example code for such and such a project.
+
+145
+00:12:22,360 --> 00:12:24,960
+Here's my citation, stuff like that.
+
+146
+00:12:26,280 --> 00:12:30,280
+And if you're following along online, you will see this there also.
+
+147
+00:12:30,280 --> 00:12:33,280
+And now you can click LaunchBinder, this button.
+
+148
+00:12:33,280 --> 00:12:36,280
+Maybe open it in a new tab.
+
+149
+00:12:36,280 --> 00:12:39,280
+But it's okay.
+
+150
+00:12:39,280 --> 00:12:44,280
+Yeah. So we see a preview of it,
+
+151
+00:12:44,280 --> 00:12:47,280
+and we see it's running some stuff here.
+
+152
+00:12:47,280 --> 00:12:54,280
+So this is building the environment.
+
+153
+00:12:54,280 --> 00:12:55,680
+And can you zoom in a little bit?
+
+154
+00:13:00,320 --> 00:13:03,480
+So we see it's running a bunch of code looking stuff,
+
+155
+00:13:03,480 --> 00:13:08,560
+but it looks like it's trying to install from the requirements.txt
+
+156
+00:13:08,560 --> 00:13:09,060
+file.
+
+157
+00:13:15,920 --> 00:13:17,520
+And it might take a little while.
+
+158
+00:13:17,520 --> 00:13:26,520
+Um, I'm not sure why it took me a long time yesterday.
+
+159
+00:13:26,520 --> 00:13:42,520
+Um, maybe we can take a short break and ask, did you
+
+160
+00:13:42,520 --> 00:13:49,880
+No, I just went over.
+
+161
+00:13:49,880 --> 00:13:50,880
+You went to a new...
+
+162
+00:13:50,880 --> 00:13:51,880
+Okay.
+
+163
+00:13:51,880 --> 00:13:52,880
+Yeah, it's not.
+
+164
+00:13:52,880 --> 00:13:56,480
+So we're just open the git repository again.
+
+165
+00:13:56,480 --> 00:14:01,400
+So if there's any questions, please write in the notes because I'm sure there's all
+
+166
+00:14:01,400 --> 00:14:07,800
+kinds of things here.
+
+167
+00:14:07,800 --> 00:14:20,120
+So yeah, it's still going.
+
+168
+00:14:20,120 --> 00:14:23,960
+Building, let's hope that gets done soonish.
+
+169
+00:14:23,960 --> 00:14:28,280
+Yeah, it took a few minutes for me.
+
+170
+00:14:28,280 --> 00:14:31,160
+So while we're waiting, in what cases
+
+171
+00:14:31,160 --> 00:14:32,480
+is this especially useful?
+
+172
+00:14:32,480 --> 00:14:43,160
+I would say for a relatively well for for research code that you want people
+
+173
+00:14:43,160 --> 00:14:49,960
+to be able to explore and that does not depend too much on particular data sets
+
+174
+00:14:49,960 --> 00:14:55,440
+that you have so as soon as you depend as your code depends on really large
+
+175
+00:14:55,440 --> 00:15:02,460
+data sets it might not be the easiest or best approach yeah because they need to
+
+176
+00:15:02,460 --> 00:15:05,660
+to be stored somewhere and you only
+
+177
+00:15:05,660 --> 00:15:07,740
+have limited resources on Binder.
+
+178
+00:15:07,740 --> 00:15:09,260
+Yeah.
+
+179
+00:15:09,260 --> 00:15:13,340
+So in Code Refinery, we gave an example
+
+180
+00:15:13,340 --> 00:15:15,980
+or we showed a demo, I think.
+
+181
+00:15:15,980 --> 00:15:17,980
+There's a scientific project that
+
+182
+00:15:17,980 --> 00:15:20,500
+was analyzing some data and making
+
+183
+00:15:20,500 --> 00:15:22,540
+some interesting pictures.
+
+184
+00:15:22,540 --> 00:15:30,660
+And they created a Binder repository out of this.
+
+185
+00:15:30,660 --> 00:15:42,500
+So basically anyone else with a little bit of knowledge with Python could start this up and regenerate the figures and see how little changes would affect what the results are.
+
+186
+00:15:43,340 --> 00:15:50,540
+And this was really good for science because the more people that can use your work, the more likely you are to get citations about it.
+
+187
+00:15:51,300 --> 00:15:56,420
+And that is presumably one of your goals here.
+
+188
+00:15:56,420 --> 00:16:03,820
+I mean, of course, it's also good for science if other people can explore and reuse things
+
+189
+00:16:03,820 --> 00:16:07,420
+and stuff like that.
+
+190
+00:16:07,420 --> 00:16:08,660
+There's a good question coming up.
+
+191
+00:16:08,660 --> 00:16:13,660
+So would Binder be suitable for projects where the same project folder has the raw data files
+
+192
+00:16:13,660 --> 00:16:15,520
+used by the study?
+
+193
+00:16:15,520 --> 00:16:19,460
+So yes, I mean, if the data is small, then this makes sense.
+
+194
+00:16:19,460 --> 00:16:23,260
+So you could have the data within the Git repository.
+
+195
+00:16:23,260 --> 00:16:31,020
+I would say it makes sense up to like a few megabytes of data size or something like that.
+
+196
+00:16:32,060 --> 00:16:37,740
+Otherwise, GitHub and Binder Hub might not be very happy because it's basically using their
+
+197
+00:16:37,740 --> 00:16:43,820
+resources to host data. But one thing that can be done is the data is put somewhere else
+
+198
+00:16:43,820 --> 00:16:54,820
+And your notebook itself is made so that it downloads the data
+
+199
+00:16:54,820 --> 00:16:56,540
+whenever it runs.
+
+200
+00:16:56,540 --> 00:16:58,860
+So the code would say, OK, does the data already
+
+201
+00:16:58,860 --> 00:17:00,700
+exist if .downloaded?
+
+202
+00:17:00,700 --> 00:17:03,340
+And then it uses a downloaded file in that directory.
+
+203
+00:17:08,540 --> 00:17:11,020
+Does Binder run on your local machine,
+
+204
+00:17:11,020 --> 00:17:15,860
+Or does the Binder instance run remotely?
+
+205
+00:17:15,860 --> 00:17:17,980
+This is running remotely.
+
+206
+00:17:17,980 --> 00:17:24,060
+So Binder is run by some nonprofit group,
+
+207
+00:17:24,060 --> 00:17:27,540
+which gets donations of the computing resources
+
+208
+00:17:27,540 --> 00:17:33,220
+from Google and other kinds of places.
+
+209
+00:17:33,220 --> 00:17:35,500
+Is it running?
+
+210
+00:17:35,500 --> 00:17:36,380
+It's running.
+
+211
+00:17:36,380 --> 00:17:37,380
+It's installing things.
+
+212
+00:17:37,380 --> 00:17:50,380
+Yeah, so they get donations of these resources, and basically BinderHub is a modified JupyterHub.
+
+213
+00:17:50,380 --> 00:18:00,020
+And it, um, yeah, so it's running in the cloud.
+
+214
+00:18:00,020 --> 00:18:06,540
+So it provides resources for a short time, like after 15 or 30 minutes it would time
+
+215
+00:18:06,540 --> 00:18:15,360
+out and remove everything. So it's not suitable for storing things online for a long period
+
+216
+00:18:15,360 --> 00:18:27,080
+of time. Like not suitable for long term work or doing your main work. You know, if we do
+
+217
+00:18:27,080 --> 00:18:31,640
+this again, maybe we could have a break while the binder is launching.
+
+218
+00:18:31,640 --> 00:18:33,240
+That sounds very reasonable.
+
+219
+00:18:39,240 --> 00:18:41,040
+While we're waiting, we can preview
+
+220
+00:18:41,040 --> 00:18:43,520
+what would happen next.
+
+221
+00:18:43,520 --> 00:18:46,880
+Or actually, maybe we could do it at the same time even.
+
+222
+00:18:49,680 --> 00:18:54,840
+So the next section is about how can I get a DOI from Zenodo.
+
+223
+00:18:54,840 --> 00:18:58,600
+So DOI is Digital Object Identifier.
+
+224
+00:18:58,600 --> 00:19:04,360
+and basically it is what is used to cite papers and other things.
+
+225
+00:19:06,920 --> 00:19:13,560
+So the idea here is that let's say you have a project and you make some code
+
+226
+00:19:13,560 --> 00:19:23,480
+and you want your code to be cited. So Zenodo is a publicly funded data repository.
+
+227
+00:19:23,480 --> 00:19:32,040
+It's funded by the EU for open science purposes. It's run by CERN. But people can upload data
+
+228
+00:19:32,040 --> 00:19:37,160
+there and it gets permanently archived. And then you can refer to this, you can cite it,
+
+229
+00:19:37,800 --> 00:19:40,680
+you don't have to worry about storing it yourself, things like that.
+
+230
+00:19:42,200 --> 00:19:49,560
+And what we will do is we will connect GitHub to this. So basically Zenodo has GitHub integration.
+
+231
+00:19:49,560 --> 00:20:03,940
+So, whenever you go to Zenodo, you can tell it, okay, you can log in with, well, log in
+
+232
+00:20:03,940 --> 00:20:11,340
+with GitHub, and it requests permission to connect there
+
+233
+00:20:11,340 --> 00:20:12,460
+so we can authorize.
+
+234
+00:20:22,260 --> 00:20:25,020
+Firefox is managing the passwords.
+
+235
+00:20:25,020 --> 00:20:33,900
+I am multi-factor authentications.
+
+236
+00:20:33,900 --> 00:20:34,900
+Yes.
+
+237
+00:20:34,900 --> 00:20:35,900
+Okay.
+
+238
+00:20:35,900 --> 00:20:54,620
+And here we are.
+
+239
+00:20:54,620 --> 00:21:04,860
+So this is making the account on Zenodo,
+
+240
+00:21:04,860 --> 00:21:12,980
+complete registration, or whatever.
+
+241
+00:21:12,980 --> 00:21:15,260
+Yeah.
+
+242
+00:21:15,260 --> 00:21:19,420
+This is for the sandbox, so yeah.
+
+243
+00:21:19,420 --> 00:21:23,580
+Yes, so we wouldn't want to do a demo for a course using
+
+244
+00:21:23,580 --> 00:21:27,020
+primary Zenodo because it's permanently archived.
+
+245
+00:21:27,020 --> 00:21:31,540
+But this sandbox.zenodo.org is just for testing purposes
+
+246
+00:21:31,540 --> 00:21:33,780
+and teaching.
+
+247
+00:21:33,780 --> 00:21:34,380
+So OK.
+
+248
+00:21:34,380 --> 00:21:36,660
+As you can see in the recent uploads,
+
+249
+00:21:36,660 --> 00:21:39,660
+big stuff for more downloading.
+
+250
+00:21:39,660 --> 00:21:41,460
+So yeah.
+
+251
+00:21:41,460 --> 00:21:43,540
+Yeah.
+
+252
+00:21:43,540 --> 00:21:50,380
+OK, so if we go to the three line menu at the top right,
+
+253
+00:21:50,380 --> 00:21:52,660
+There is GitHub down below.
+
+254
+00:21:55,780 --> 00:21:58,060
+That's it.
+
+255
+00:21:58,060 --> 00:22:01,460
+So we choose our repository, which would be Binder Demo.
+
+256
+00:22:01,460 --> 00:22:03,420
+We would flip this to on.
+
+257
+00:22:03,420 --> 00:22:11,420
+And it goes and tells GitHub to set up this repository.
+
+258
+00:22:11,420 --> 00:22:15,660
+OK, and now that's all we need to do on the Binder side.
+
+259
+00:22:15,660 --> 00:22:17,540
+Can we go check Binder?
+
+260
+00:22:17,540 --> 00:22:19,140
+OK, that's still running.
+
+261
+00:22:19,140 --> 00:22:21,600
+And I really wonder why this is taking.
+
+262
+00:22:21,600 --> 00:22:24,520
+Actually, I bet it's because we gave it
+
+263
+00:22:24,520 --> 00:22:26,640
+these exact requirements.
+
+264
+00:22:26,640 --> 00:22:29,800
+So maybe it's actually taking a long time
+
+265
+00:22:29,800 --> 00:22:33,080
+to figure out what packages are even
+
+266
+00:22:33,080 --> 00:22:39,960
+compatible with pandas 1.2.3 and matplotlib 3.4.2.
+
+267
+00:22:39,960 --> 00:22:40,960
+Possible.
+
+268
+00:22:40,960 --> 00:22:42,960
+Actually, I bet that's it.
+
+269
+00:22:42,960 --> 00:22:44,800
+Well, it's building the wheel, so it
+
+270
+00:22:44,800 --> 00:22:46,120
+doesn't know what it wants.
+
+271
+00:22:46,120 --> 00:22:48,880
+So it's not at that stage anymore.
+
+272
+00:22:48,880 --> 00:22:57,280
+a compiling pandas or something. Yeah. Well, anyway, we don't know. Okay, so let's go back to GitHub.
+
+273
+00:22:59,360 --> 00:23:04,240
+So here we are. And now in order to make this code appear on GitHub, we have to do
+
+274
+00:23:04,240 --> 00:23:10,800
+what's called a release. So if you look on the right side under releases,
+
+275
+00:23:13,440 --> 00:23:14,880
+there's create a new release.
+
+276
+00:23:14,880 --> 00:23:26,480
+And we would, our first release, we need to choose, yeah.
+
+277
+00:23:26,480 --> 00:23:34,120
+Yeah, there's a good question.
+
+278
+00:23:34,120 --> 00:23:38,040
+How big of datasets can be shared on the Zenodo?
+
+279
+00:23:38,040 --> 00:23:43,080
+And the default limit is 50, but I have a feeling that if you ask, they can allow more.
+
+280
+00:23:43,080 --> 00:23:49,400
+the default has to be small because otherwise it gets filled up with random stuff. Okay,
+
+281
+00:23:49,400 --> 00:23:56,680
+so we can choose a tag towards the top. We would do create a new tag. We have to push the
+
+282
+00:23:57,400 --> 00:24:04,440
+plus button. Yeah, okay, there we go. First release. We can do publish release.
+
+283
+00:24:04,440 --> 00:24:17,760
+Okay, so it has this archive here. It has a zip file and tar.gz of the stuff. And if
+
+284
+00:24:17,760 --> 00:24:38,720
+If we go to Zenodo again, and let's see, if you click on profile, maybe, no, you go to,
+
+285
+00:24:38,720 --> 00:24:40,120
+maybe click there.
+
+286
+00:24:40,120 --> 00:24:42,520
+We have a DOI for this.
+
+287
+00:24:42,520 --> 00:24:46,640
+So after you first release a DOI batch that you can include in GitHub, right, we will appear
+
+288
+00:24:46,640 --> 00:24:48,680
+next to your repository below.
+
+289
+00:24:48,680 --> 00:24:51,120
+So this is our badge.
+
+290
+00:24:51,120 --> 00:24:52,680
+Yeah.
+
+291
+00:24:52,680 --> 00:24:54,120
+Do you want to add this to there?
+
+292
+00:24:54,120 --> 00:24:56,720
+We can copy this.
+
+293
+00:24:56,720 --> 00:24:58,840
+Wait.
+
+294
+00:24:58,840 --> 00:25:03,360
+Which is a bit funny that we do a release
+
+295
+00:25:03,360 --> 00:25:08,040
+and then add the Zenodo badge, which is kind of, yeah, OK,
+
+296
+00:25:08,040 --> 00:25:10,320
+so we are changing the release.
+
+297
+00:25:10,320 --> 00:25:10,960
+But yeah.
+
+298
+00:25:10,960 --> 00:25:21,360
+I mean, the release has the Zenodo thing in there, so anyway, okay.
+
+299
+00:25:31,120 --> 00:25:39,600
+And there we go. So let's click there. Maybe open in new tab. This works. So we see here on Zenodo,
+
+300
+00:25:40,960 --> 00:25:49,360
+the sandbox. We see the thing, we see the files that were there, we can download it,
+
+301
+00:25:49,360 --> 00:26:01,920
+we see the citation for it, we can see it can track different versions when we
+
+302
+00:26:01,920 --> 00:26:10,480
+make more releases. This actually looks a bit more organized than it looked
+
+303
+00:26:10,480 --> 00:26:13,920
+when I was checking before.
+
+304
+00:26:14,480 --> 00:26:18,320
+Anyway. That's the citation.
+
+305
+00:26:19,840 --> 00:26:23,760
+Do you know if this citation updates if you have multiple contributors?
+
+306
+00:26:23,760 --> 00:26:29,520
+That's a good question. I don't know. Maybe someone can answer
+
+307
+00:26:29,520 --> 00:26:34,960
+in the notes. Or someone else can join for our wrap-up.
+
+308
+00:26:34,960 --> 00:26:40,000
+Or someone wants to make a pull request for...
+
+309
+00:26:40,000 --> 00:26:41,120
+Yeah.
+
+310
+00:26:41,120 --> 00:26:42,320
+But yeah.
+
+311
+00:26:42,320 --> 00:26:42,720
+Yeah.
+
+312
+00:26:42,720 --> 00:26:43,200
+OK.
+
+313
+00:26:43,200 --> 00:26:43,760
+OK.
+
+314
+00:26:43,760 --> 00:26:45,360
+Has Binder finished building yet?
+
+315
+00:26:46,560 --> 00:26:47,520
+One second.
+
+316
+00:26:49,360 --> 00:26:49,840
+Binder.
+
+317
+00:26:51,200 --> 00:26:52,480
+Building wheels for map.
+
+318
+00:26:53,360 --> 00:26:53,840
+OK.
+
+319
+00:26:53,840 --> 00:26:55,440
+So I guess it really is just.
+
+320
+00:26:56,240 --> 00:26:57,040
+Slow today.
+
+321
+00:27:01,360 --> 00:27:04,320
+I also remember that this used to be faster.
+
+322
+00:27:05,920 --> 00:27:06,420
+Yeah.
+
+323
+00:27:10,960 --> 00:27:17,840
+So I propose we go back to our notes and we can have a final discussion of today.
+
+324
+00:27:23,280 --> 00:27:31,440
+I will switch to my note screen again and if you see this is built we can switch back to it.
+
+325
+00:27:34,720 --> 00:27:35,760
+Okay here we are.
+
+326
+00:27:35,760 --> 00:27:46,640
+So, yeah, um, we've got plenty of time for a wrap-up today, so what would you all like
+
+327
+00:27:46,640 --> 00:27:56,840
+to discuss?
+
+328
+00:27:56,840 --> 00:28:00,640
+Is there any news for Day 4 before people start leaving?
+
+329
+00:28:00,640 --> 00:28:04,640
+So, I think we go back to...
+
+330
+00:28:04,640 --> 00:28:08,640
+So there is one thing
+
+331
+00:28:08,640 --> 00:28:12,640
+which uses the command line and this other environment
+
+332
+00:28:12,640 --> 00:28:16,640
+a little bit more.
+
+333
+00:28:16,640 --> 00:28:20,640
+But there are two
+
+334
+00:28:20,640 --> 00:28:24,640
+things which can purely be done in JupyterLab.
+
+335
+00:28:24,640 --> 00:28:28,640
+Oh, hello [Name].
+
+336
+00:28:28,640 --> 00:28:41,220
+I heard a bat signal basically with the requirements thing.
+
+337
+00:28:41,220 --> 00:28:49,300
+So what I think is happening is that because you see that it's building wheels, it means
+
+338
+00:28:49,300 --> 00:28:55,680
+that it didn't find the correct versions of matplotlib straight up from pip.
+
+339
+00:28:55,680 --> 00:28:58,940
+So it starts to build it itself from source code.
+
+340
+00:28:58,940 --> 00:29:02,320
+And because the version numbers, I think they are locked down to a previous version.
+
+341
+00:29:02,320 --> 00:29:09,200
+So because you're running like, it's probably running most recent Python, Python 3.12 or
+
+342
+00:29:09,200 --> 00:29:10,200
+something.
+
+343
+00:29:10,200 --> 00:29:16,960
+And because you have an older version, it probably has to rebuild it from scratch.
+
+344
+00:29:16,960 --> 00:29:19,680
+So that might be the reason why you're encountering this.
+
+345
+00:29:19,680 --> 00:29:25,280
+So essentially what it means is we need to update the requirements, the versions that
+
+346
+00:29:25,280 --> 00:29:31,120
+want that or we just remove the version deployments. But now it seems to be finishing,
+
+347
+00:29:31,120 --> 00:29:35,600
+so maybe you don't want to do it at this point. But yeah, this is the kind of stuff,
+
+348
+00:29:35,600 --> 00:29:42,800
+like if you see something like building wheel, it might be a situation where it's like
+
+349
+00:29:42,800 --> 00:29:46,480
+like it actually is doing something from a source code
+
+350
+00:29:46,480 --> 00:29:48,320
+instead of installing from it.
+
+351
+00:29:55,440 --> 00:29:56,560
+But yeah, I have.
+
+352
+00:29:56,560 --> 00:30:01,240
+Yeah, so we're showing [name]'s screen again.
+
+353
+00:30:01,240 --> 00:30:02,480
+And it's pushing.
+
+354
+00:30:02,480 --> 00:30:04,680
+And oh, look, it.
+
+355
+00:30:04,680 --> 00:30:05,880
+Starts the Jupyter.
+
+356
+00:30:05,880 --> 00:30:06,560
+Just started.
+
+357
+00:30:12,800 --> 00:30:16,960
+Yeah, there we go.
+
+358
+00:30:16,960 --> 00:30:22,480
+And we see along the side, there is the plotting notebook.
+
+359
+00:30:22,480 --> 00:30:30,320
+So I guess [name] can click that to open it and then probably
+
+360
+00:30:30,320 --> 00:30:30,800
+run it.
+
+361
+00:30:35,600 --> 00:30:38,000
+And there we go.
+
+362
+00:30:38,000 --> 00:30:40,200
+Yep.
+
+363
+00:30:40,200 --> 00:30:41,080
+Yeah.
+
+364
+00:30:41,080 --> 00:30:49,560
+So, do you want to try the thing without, if you, okay, lack stack requirements, what happens?
+
+365
+00:30:49,560 --> 00:30:52,440
+Yeah, well, we can try that later. Yeah, we can try it later.
+
+366
+00:30:54,360 --> 00:30:56,000
+Yeah, I agree that is very likely the case. Yep.
+
