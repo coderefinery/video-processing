@@ -1,0 +1,556 @@
+1
+00:00:00,000 --> 00:00:08,000
+So, as usual we've got some icebreakers here.
+
+2
+00:00:08,000 --> 00:00:16,280
+Today, we do a bit more than usual with a command line interface, so you can answer
+
+3
+00:00:16,280 --> 00:00:17,960
+the size breaker.
+
+4
+00:00:17,960 --> 00:00:20,640
+This question, I didn't write it very well.
+
+5
+00:00:20,640 --> 00:00:29,100
+How do you run the same things over and over again, but with slightly different parameters?
+
+6
+00:00:29,100 --> 00:00:37,160
+So this is like you have 10 different datasets, and you want to run the same code on all of
+
+7
+00:00:37,160 --> 00:00:48,280
+of them, or you have one data set
+
+8
+00:00:48,280 --> 00:00:50,620
+and you need to run with 10 different values
+
+9
+00:00:50,620 --> 00:00:51,920
+of some parameter.
+
+10
+00:00:51,920 --> 00:00:56,040
+So how would you do that?
+
+11
+00:00:56,040 --> 00:00:58,440
+OK, there's these other questions here,
+
+12
+00:00:58,440 --> 00:01:00,760
+which we can try to answer in a bit.
+
+13
+00:01:00,760 --> 00:01:03,040
+But we have a special guest with us.
+
+14
+00:01:03,040 --> 00:01:11,280
+So Luca, can you introduce yourself?
+
+15
+00:01:11,280 --> 00:01:12,560
+Yeah, sure.
+
+16
+00:01:12,560 --> 00:01:14,120
+Yeah, so I'm Luca Ferranti.
+
+17
+00:01:14,120 --> 00:01:15,480
+I'm based in Finland.
+
+18
+00:01:15,480 --> 00:01:20,840
+And at the moment, I'm finishing my PhD in computer science.
+
+19
+00:01:20,840 --> 00:01:24,920
+And I'm also working in industry as a Julia software developer
+
+20
+00:01:24,920 --> 00:01:28,040
+in a startup for AI.
+
+21
+00:01:28,040 --> 00:01:30,680
+So yeah, I'm a Julia enthusiast.
+
+22
+00:01:30,680 --> 00:01:33,960
+And in Finland, I organized this Julia Users Helsinki.
+
+23
+00:01:33,960 --> 00:01:38,200
+It is a small community of people in Helsinki area, or even outside the Helsinki area,
+
+24
+00:01:38,200 --> 00:01:41,400
+who want to come together and talk about Julia.
+
+25
+00:01:42,280 --> 00:01:47,400
+Yeah. And you may wonder, why do we have a Julia visitor here in a Python course?
+
+26
+00:01:47,400 --> 00:01:51,320
+Yeah. And indeed, I brought the white flag because, you know,
+
+27
+00:01:51,320 --> 00:01:53,720
+I come in peace and also want to live in one piece.
+
+28
+00:01:55,080 --> 00:01:58,280
+But I mean, my answer to that is that, why not?
+
+29
+00:01:58,280 --> 00:02:03,760
+I mean, it's not like one language is better than another
+
+30
+00:02:03,760 --> 00:02:04,800
+for everything.
+
+31
+00:02:04,800 --> 00:02:06,860
+But there's all these different things here.
+
+32
+00:02:06,860 --> 00:02:09,080
+And knowing more about different languages
+
+33
+00:02:09,080 --> 00:02:13,400
+would have helped me in the future some, or in the past.
+
+34
+00:02:13,400 --> 00:02:16,400
+But also, the idea is to have role models
+
+35
+00:02:16,400 --> 00:02:19,680
+of different kinds of career paths.
+
+36
+00:02:19,680 --> 00:02:22,040
+So Luca, can you tell us a little bit about how
+
+37
+00:02:22,040 --> 00:02:23,520
+you got to where you are now?
+
+38
+00:02:23,520 --> 00:02:26,880
+Like, what's your background, and how did you like?
+
+39
+00:02:26,880 --> 00:02:30,880
+Yeah, so my background is more like computer science, signal
+
+40
+00:02:30,880 --> 00:02:34,440
+process, statistical signal processing, that kind of stuff.
+
+41
+00:02:34,440 --> 00:02:38,400
+And I was like, when I think when I started doing my master
+
+42
+00:02:38,400 --> 00:02:42,160
+thesis, I had like the traditional story that I was
+
+43
+00:02:43,280 --> 00:02:45,720
+doing a lot of coding at the beginning, I was doing in a very
+
+44
+00:02:45,720 --> 00:02:48,360
+like painful way, like moving files around, and that felt
+
+45
+00:02:48,360 --> 00:02:52,120
+wrong. So I started like getting more into proper way and got
+
+46
+00:02:53,000 --> 00:02:56,760
+like more into proper scientific computing, and so on. And
+
+47
+00:02:56,760 --> 00:03:02,960
+And also, I heard about open source communities, and I was interested in that.
+
+48
+00:03:02,960 --> 00:03:05,920
+And at some point, Julia came under my radar.
+
+49
+00:03:05,920 --> 00:03:13,020
+So I heard about this Julia language that was meant for scientific computing and researchers.
+
+50
+00:03:13,020 --> 00:03:14,960
+And I was pretty interested in it.
+
+51
+00:03:14,960 --> 00:03:20,360
+But what really sparkled my enthusiasm about Julia wasn't even the technical features of
+
+52
+00:03:20,360 --> 00:03:21,360
+Julia.
+
+53
+00:03:21,360 --> 00:03:23,600
+Because at the beginning, I didn't know anything about it.
+
+54
+00:03:23,600 --> 00:03:25,200
+I didn't know why it was good.
+
+55
+00:03:25,200 --> 00:03:29,560
+I didn't know about internals or multiple dispatch or metaprogramming or whatever.
+
+56
+00:03:29,560 --> 00:03:32,800
+What was cool is that it was beginning 2020.
+
+57
+00:03:32,800 --> 00:03:37,360
+I had started my PhD and as you probably remember, COVID had also started, so I was stuck in
+
+58
+00:03:37,360 --> 00:03:41,220
+my room and I joined the Julia Slack.
+
+59
+00:03:41,220 --> 00:03:48,600
+And then it was pretty cool to see how everybody was very friendly, how everybody was very
+
+60
+00:03:48,600 --> 00:03:49,600
+active.
+
+61
+00:03:49,600 --> 00:03:55,280
+And I was seeing famous people, like people of popular Julia packages, who were sitting
+
+62
+00:03:55,280 --> 00:04:01,920
+there answering my dumb questions and getting me step-by-step, so it was more this community
+
+63
+00:04:01,920 --> 00:04:07,000
+feeling that really got me into open source, so I sticked to Julia.
+
+64
+00:04:07,000 --> 00:04:15,240
+Then I actually started writing documentation, so I was in this Google Summer of Docs for
+
+65
+00:04:15,240 --> 00:04:19,560
+writing documentation, and I started building a web page for a couple of libraries, and
+
+66
+00:04:19,560 --> 00:04:24,120
+writing documentation for libraries. And then I was twice in this Google Summer of Code
+
+67
+00:04:24,120 --> 00:04:29,680
+program, like doing more Julia programming. And after that, I also found a job as a software
+
+68
+00:04:29,680 --> 00:04:34,280
+developer, Julian, like a startup through like people I knew in the Julia community.
+
+69
+00:04:34,280 --> 00:04:38,720
+And I have, of course, like been using Julia in my research also for like for my PhD and
+
+70
+00:04:38,720 --> 00:04:44,200
+for my own research. And yeah,
+
+71
+00:04:44,200 --> 00:04:47,320
+Julian is a pretty new language, right?
+
+72
+00:04:47,320 --> 00:04:50,840
+Yeah, we celebrated the last year's 10 years of Julia
+
+73
+00:04:50,840 --> 00:04:55,860
+There was this a HackMD kind of a yearbook where you could design your experience of 10 years of Julia
+
+74
+00:04:55,940 --> 00:05:02,500
+so it was I think the first commit was from 2009 and the first
+
+75
+00:05:02,900 --> 00:05:08,940
+Public release was from 2012 and it achieved the version 1.0 at the 2018
+
+76
+00:05:09,780 --> 00:05:11,780
+it was developed at MIT and
+
+77
+00:05:11,780 --> 00:05:17,540
+And the goal of Julia was to solve this so-called two-language problem.
+
+78
+00:05:17,540 --> 00:05:21,780
+So, you know, you encounter this problem that you start writing in Python,
+
+79
+00:05:21,780 --> 00:05:26,500
+and then you hit some performance bottlenecks, because Python is an interpreted language,
+
+80
+00:05:26,500 --> 00:05:28,660
+and then you needed to rewrite it in C.
+
+81
+00:05:28,660 --> 00:05:35,060
+Or also, people who use Python, actually, under the hood, TensorFlow is written in C.
+
+82
+00:05:35,060 --> 00:05:38,420
+Or a lot of libraries are written in C or Python.
+
+83
+00:05:38,420 --> 00:05:40,900
+Sorry, in Cython, I meant, not Python.
+
+84
+00:05:40,900 --> 00:05:48,500
+So whereas in Julia, the power about Julia is that it allows to prototype and achieve
+
+85
+00:05:48,500 --> 00:05:54,820
+performance in the same language. So the magic word here is multiple dispatch,
+
+86
+00:05:54,820 --> 00:05:59,700
+and there's a very inspiring talk like the unreasonable effectiveness of multiple dispatch
+
+87
+00:05:59,700 --> 00:06:08,020
+from JuliaCon 2019, which explains how it achieves both dynamicity and performance.
+
+88
+00:06:08,020 --> 00:06:20,020
+Okay. Interesting. Okay, so we're almost where we need to begin the next lesson.
+
+89
+00:06:20,020 --> 00:06:28,020
+Anyone have any questions for Luca? If you do, please write down there.
+
+90
+00:06:28,020 --> 00:06:35,340
+there. So Luca, there's something I always ask people. So what do you know now that you
+
+91
+00:06:35,340 --> 00:06:39,460
+wish someone had told you at the start of your career?
+
+92
+00:06:39,460 --> 00:06:48,260
+Yeah. So what for like more like my open source career, like being involved in the Julia community,
+
+93
+00:06:48,260 --> 00:06:53,380
+like one thing that I really wished people like told me before, which I learned kind
+
+94
+00:06:53,380 --> 00:07:01,300
+of my experience is that you really don't need to be scared to start and you don't need
+
+95
+00:07:01,300 --> 00:07:06,340
+to ask permission. That's a good thing about open source. Also, at the beginning, when
+
+96
+00:07:06,340 --> 00:07:12,780
+I started, I was a bit shy. I was like, okay, maybe a first prototype in closed repository.
+
+97
+00:07:12,780 --> 00:07:18,820
+Should I open it? Will people just say it's dumb or will people steal my job or stuff
+
+98
+00:07:18,820 --> 00:07:23,180
+like that, but this doesn't happen in open source, at least not in Julia communities,
+
+99
+00:07:23,180 --> 00:07:27,060
+like a reasonable size for it not to happen.
+
+100
+00:07:27,060 --> 00:07:31,100
+So just put your code out there and don't be afraid.
+
+101
+00:07:31,100 --> 00:07:34,660
+The best way to get the answer is not to ask the question, it's to post the wrong answer.
+
+102
+00:07:34,660 --> 00:07:37,860
+So just put your code out there, put your work out there, and people will help you.
+
+103
+00:07:37,860 --> 00:07:41,500
+You don't need to be afraid of that.
+
+104
+00:07:41,500 --> 00:07:48,540
+And actually, similarly applies to research, at least like in my field, I don't need to
+
+105
+00:07:48,540 --> 00:07:51,080
+worry that much about scooping.
+
+106
+00:07:51,080 --> 00:07:53,500
+So it's pretty cool that also research
+
+107
+00:07:53,500 --> 00:07:57,120
+I can put my code and my work out there publicly
+
+108
+00:07:57,120 --> 00:07:58,680
+and I just meet new people.
+
+109
+00:07:58,680 --> 00:08:02,440
+So that, and maybe other quick thing about
+
+110
+00:08:02,440 --> 00:08:05,240
+is that open source is not about code, it's about community.
+
+111
+00:08:05,240 --> 00:08:09,200
+So we have already a lot of people coding in open source
+
+112
+00:08:09,200 --> 00:08:10,560
+and of course the more the merrier,
+
+113
+00:08:10,560 --> 00:08:12,560
+but we also need the non-technical people in open source,
+
+114
+00:08:12,560 --> 00:08:14,320
+people helping with writing documentation,
+
+115
+00:08:14,320 --> 00:08:16,620
+people helping with bringing people together,
+
+116
+00:08:16,620 --> 00:08:18,440
+people helping with improving diversity
+
+117
+00:08:18,440 --> 00:08:24,920
+inclusion. So open source is really not about code, but it's more about community. And as I mentioned,
+
+118
+00:08:24,920 --> 00:08:29,640
+like, I got, like, sparkled from truly not because of multiple dispatch, which I didn't know what it
+
+119
+00:08:29,640 --> 00:08:36,600
+was, but because of people friendliness. So, yeah. Yeah. Okay. Great. Thanks. And I can also
+
+120
+00:08:36,600 --> 00:08:43,080
+say about what Luca said about putting your code out there. If you want to be hired somewhere,
+
+121
+00:08:43,080 --> 00:08:48,440
+like whenever I'm looking to hire people, having public code and saying that,
+
+122
+00:08:49,080 --> 00:08:52,440
+like being able to see things, that's a huge benefit there.
+
+123
+00:08:54,120 --> 00:08:57,080
+Okay, but now we need to get started.
+
+124
+00:08:58,520 --> 00:08:59,800
+Thanks for visiting.
+
+125
+00:08:59,800 --> 00:09:04,120
+Yeah, last thing, if you are in Finland, we have every month in Helsinki,
+
+126
+00:09:04,120 --> 00:09:07,320
+this Julia Helsinki meetup, except not this month,
+
+127
+00:09:07,320 --> 00:09:10,680
+but the next one is going to be on the 13th of December,
+
+128
+00:09:10,680 --> 00:09:14,760
+and it's gonna be especially for beginners about Julia, so we're gonna be like intro about Julia
+
+129
+00:09:14,760 --> 00:09:22,200
+and about how to use Julia research and teaching. I also put in the notes, so 13th of December. It's
+
+130
+00:09:22,200 --> 00:09:25,960
+not official, it's not even on the website yet, but I can give you the spoiler of this. Congrats
+
+131
+00:09:25,960 --> 00:09:31,560
+and hope to see you there. Yeah, okay, great, thank you. Yeah, thank you for having me. Bye.
+
+132
+00:09:31,560 --> 00:09:32,120
+Okay, bye.
+
+133
+00:09:37,960 --> 00:09:42,840
+So, with that said, I guess we should get started for the day.
+
+134
+00:09:47,080 --> 00:09:50,840
+Yes, so the first lesson is [name] and I.
+
+135
+00:09:52,200 --> 00:09:55,960
+Hello, [name], have you already introduced yourself? I think so.
+
+136
+00:09:55,960 --> 00:10:02,360
+I don't think so. I think this is my first appearance this year.
+
+137
+00:10:02,360 --> 00:10:09,080
+So yeah, I'm a research software engineer at Arthur University, working in [Name]'s group
+
+138
+00:10:11,080 --> 00:10:15,240
+and in general interested in programming.
+
+139
+00:10:18,360 --> 00:10:20,000
+In general. Okay, so what's our first lesson of today?
+

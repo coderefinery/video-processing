@@ -325,43 +325,58 @@
 
 
 
-## Day 3
-#- input: raw/day3-obs.mkv
-#
-#- output: day3-scripts.mkv
-#  title: 3.1 Scripts
-#  description: >-
-#
-#    Thus far, we have been running Python code from Jupyter notebooks
-#    (though the same principle applies to other environments such as
-#    Spyder or IDSs).  This doesn't easily allow you to scale up or
-#    scale out: if you need to run the same, or slightly different,
-#    code many times, it is hard.  There are ways to do this within
-#    Jupyter, but in the end you will want to escape and make command
-#    line interfaces.  This is the universal interface for automation,
-#    scale-out, and parameterization of work.  We give the quickest
-#    intro to this.
-#
-#    https://aaltoscicomp.github.io/python-for-scicomp/scripts/
-#
-#  editlist:
-#    - start: 00:19:20
-#    - -: Why make scripts?
-#    - 00:23:44: Script example type-along (exercise 1)
-#    - end: 00:28:55
-#    - start: 00:34:56
-#    - -: Command line argument parsing
-#    - 00:52:30: Exercise 2 intro (argparse)
-#    - end: 00:53:36
-#    - start: 01:06:51
-#    - -: Discussion of where we are with command-line argument usage
-#    - 01:08:07: Configuration files
-#    - 01:09:28: Summary
-#    - end: 01:10:35
-#
-#
-##- output: day3-scipy.mkv
-##  title: 3.2 Scipy
+# Day 3
+- input: raw/day3-obs.mkv
+
+- output: day3.1-icebreaker.mkv
+  title: 3.1 Icebreaker
+  description: >-
+    The icebreaker/intro session of the day  You probably don't want
+    to watch this and instead will go to the main material.
+
+    We have a guest, Luca Ferranti, who talks about their path into a
+    career in scientific computing and the Julia programming language.
+
+  editlist:
+    - start: 00:07:20
+    - end: 00:17:40
+
+- output: day3.2-scripts.mkv
+  title: 3.2 Scripts
+  description: >-
+
+    Thus far, we have been running Python code from Jupyter notebooks
+    (though the same principle applies to other environments such as
+    Spyder or IDSs).  This doesn't easily allow you to scale up or
+    scale out: if you need to run the same, or slightly different,
+    code many times, it is hard.  There are ways to do this within
+    Jupyter, but in the end you will want to escape and make command
+    line interfaces.  This is the universal interface for automation,
+    scale-out, and parameterization of work.  We give the quickest
+    intro to this.
+
+    https://aaltoscicomp.github.io/python-for-scicomp/scripts/
+
+  editlist:
+    - start: 00:17:41
+    - -: Why make scripts?
+    - 00:18:45: What is a script?
+    - 00:23:31: Script example type-along (+ exercise 1 to do it yourself)
+    - end: 00:28:26
+    - start: 00:34:02
+    - -: Exercise follow-up
+    - 00:35:42: Command line argument parsing with sys.argv (demo)
+    - 00:42:44: Other parsers (argparse demo)
+    - 00:44:57: Exercise 2 intro (argparse)
+    - end: 00:46:17
+    - start: 01:01:32
+    - -: Summary, Discussion of where we are with command-line argument usage
+    - 01:06:56: Configuration files
+    - end: 01:08:21
+
+
+##- output: day3.3-scipy.mkv
+##  title: 3.3 Scipy
 ##  description: >-
 ##
 ##    Scipy is a Python interface to a large amount of useful code, a
@@ -379,60 +394,111 @@
 ##    - start: 1:52:40
 ##    - -: Post-exercise discussion
 ##    - end: 1:56:40
-#
-#
-#- output: day3-libraries.mkv
-#  title: 3.2 Libraries
-#  description: >-
-#
-#    Your code doesn't exist alone.  It is one part of a large
-#    ecosystem, where many other things exist for you to build off of.
-#    This is (more than anything) a discussion about the broader
-#    ecosystem, what you would want to build off of, and what you can
-#    do to make your code reusable.
-#
-#    https://aaltoscicomp.github.io/python-for-scicomp/libraries/
-#
-#  editlist:
-#    - start: 01:20:52
-#    - -:  Motivation and introduction
-#    - 01:24:38: The SciPy ecosystem
-#    - 01:28:14: Connecting Python to other languages
-#    - 01:30:25: How can you tell if you should use some library?
-##    - 2:06:58: Making your work reuseable
-#    - 01:35:20: Discussion based on exercise (evaluating packages)
-##    - 2:07:55: cython
-##    - 2:09:10: "Q&A: building a package, dependency mismatches"
-#    - end: 01:38:25
-#
-#
-#- output: day3-web-apis.mkv
-#  title: 3.3 Web APIs
-#  description: >-
-#    Often, you need to collect your own data - and often, that data is
-#    online somewhere, and you need to write a program to fetch it.
-#    This talks about the general idea of a web server and making
-#    requests to it and uses the Python "requests" library to demonstrate
-#    some sample requests.  We also discuss the big picture, such as
-#    when you would want to do this and the security and ethical
-#    considerations.
-#
-#    https://aaltoscicomp.github.io/python-for-scicomp/web-apis/
-#
-#  editlist:
-#    - start: 01:38:48
-#    - -: What's a web server?  What's an API?
-#    - 01:44:30: Requests (the Python library)
-#    - 01:46:00: "Demo: requests from a sample API"
-#    - 02:03:08: Exercises
-#    - stop: 02:05:01
-#    - start: 02:14:02
-#    - -: "Q&A and summary"
-#    - stop: 02:22:15
-#
-#
-#- output: day3-parallel.mkv
-#  title: 3.4 Parallel
+
+
+- output: day3.3-libraries.mkv
+  title: 3.3 Libraries
+  description: >-
+
+    Your code doesn't exist alone.  It is one part of a large
+    ecosystem, where many other things exist for you to build off of.
+    This is (more than anything) a discussion about the broader
+    ecosystem, what you would want to build off of, and what you can
+    do to make your code reusable.
+
+    https://aaltoscicomp.github.io/python-for-scicomp/libraries/
+
+  editlist:
+    - start: 01:19:13
+    - -:  Motivation and introduction
+    - 01:25:13: Glossary
+    - 01:28:37: The SciPy ecosystem
+    - 01:31:27: Connecting Python to other languages
+    - 01:33:34: How can you tell if you should use some library?
+#    - 2:06:58: Making your work reuseable
+#    - : Discussion based on exercise (evaluating packages)
+#    - 2:07:55: cython
+#    - 2:09:10: "Q&A: building a package, dependency mismatches"
+    - end: 01:37:01
+
+
+- output: day3.4-dependencies.mkv
+  title: 3.4 Dependencies
+  description: >-
+
+    Dependency management with environments and requirement files in
+    Python.
+
+    When you have projects that depend on other libraries, you need
+    some way of recording and managing these.  Here, we learn of the
+    basic concepts, how to record dependencies (requirements.txt,
+    environment.yml), and how to use the virtual environments/conda
+    environments.
+
+    https://aaltoscicomp.github.io/python-for-scicomp/dependencies/
+
+  editlist:
+    - start: 01:37:14
+    - -: About dependency management
+    - 01:38:18: Python Package Index and Anaconda, pip vs conda, and more.
+    - 01:51:21: Creating isolated environments
+    - 01:55:27: Recording dependencies (requirements.txt and environment.yml)
+    - 02:03:43: 'Exercise 4 (as demo): freezing an environment'
+    - 02:15:56: mamba (since previous attempt was slow)
+    - 02:17:19: Activating environments
+    - 02:23:55: Q&A
+    - end: 02:28:53
+
+
+- output: day3.5-binder.mkv
+  title: 3.5 Binder
+  description: >-
+
+    A demo of the Binder service.
+
+    Binder (mybinder.org) is a cloud service for running Jupyter
+    in a reproducible software environment.  It uses requirements
+    files in various languages (requirements.txt, environment.yml, and
+    similar for other languages) to create an environment out of a
+    repository (Github, Gitlab, Zenodo).
+
+    https://aaltoscicomp.github.io/python-for-scicomp/binder/
+
+  editlist:
+    - start: 02:40:10
+    - -: Why is it sometimes not enough to share your code?
+    - 02:45:26: Demo of binder (begin)
+    - 02:46:13: Getting the notebook
+    - 02:46:48: Making a git repository (Github web interface)
+    - 02:49:34: Adding requirements to the repository
+    - 02:50:38: Making the binder link
+    - 02:52:21: Launching on Binder (this it takes a long time)
+    - 02:58:58: Getting a DOI using Zenodo
+    - 03:06:54: Wrap-up discussion
+    - 03:08:34: Why was Binder slow this time?
+    - 03:09:19: Binder is starting
+    - stop: 03:11:06
+
+
+- output: day3.6-outro.mkv
+  title: 3.6 Outro of day 3
+  description: >-
+
+    Outro of day 3 - general discussion about the course.
+
+  editlist:
+    - start: 03:11:06
+    - -: 'Q&A and summary of the day: why did we do this?'
+    - end: 03:20:36
+
+
+
+
+
+## Day 4
+#- input: raw/day4-obs.mkv
+#- output: day4.1-parallel.mkv
+#  title: 4.1 Parallel
 #  description: >-
 #
 #    Parallel programming: doing more than one thing at a time.  It is
@@ -464,85 +530,11 @@
 #    - end: 3:23:13
 #
 #
-#- output: day3-outro.mkv
-#  title: 3.5 Outro of day 3
-#  description: >-
-#
-#    Outro of day 3 - general discussion about the course.
-#
-#  editlist:
-#    - start: 3:19:55
-#    - end: 3:22:15
-#    - start: 3:23:13
-#    - end: 3:26:35
 
-
-## Day 4
-- input: raw/day4-obs.mkv
-
-#- output: day4-dependencies.mkv
-#  title: 4.1 Dependencies
-#  description: >-
-#
-#    Dependency management with environments and requirement files in
-#    Python.
-#
-#    When you have projects that depend on other libraries, you need
-#    some way of recording and managing these.  Here, we learn of the
-#    basic concepts, how to record dependencies (requirements.txt,
-#    environment.yml), and how to use the virtual environments/conda
-#    environments.
-#
-#    https://aaltoscicomp.github.io/python-for-scicomp/dependencies/
-#
-#  editlist:
-#    - start: 17:19
-#    - 19:45: Demo, two versions of numpy on one computer
-#    - 27:20: Exercise 1, discussion
-#    - 35:01: "conda, pip, and PyPI: installing packages"
-#    - 55:45: "Virtual environments: installing things per-project"
-#    - 59:38: Recording dependencies with requirements.txt and environment.yml
-#    - end: 1:11:43
 #
 #
-#- output: day4-binder.mkv
-#  title: 4.2 Binder
-#  description: >-
-#
-#    A demo of the Binder service.
-#
-#    Binder (mybinder.org) is a cloud service for running Jupyter
-#    in a reproducible software environment.  It uses requirements
-#    files in various languages (requirements.txt, environment.yml, and
-#    similar for other languages) to create an environment out of a
-#    repository (Github, Gitlab, Zenodo).
-#
-#    https://aaltoscicomp.github.io/python-for-scicomp/binder/
-#
-#  editlist:
-#    - start: 1:22:35
-#    - 1:25:10: What is binder?
-#    - 1:28:40: Why is it sometimes not enough to share your code?
-#    - 1:33:58: Demo of Binder (begin)
-#    - 1:34:50: Put the code into the notebook
-#    - 1:36:00: Putting the notebook on Github
-#    - 1:41:10: Adding requirements.txt to the repository
-#    - 1:42:50: Binder's interface
-#    - 1:44:00: Adding binder's badge to the repository's readme file
-#    - 1:44:50: Launching binder, observing installations.
-#    - 1:45:50: Q&A
-#    - 1:48:28: Notebook starts, see what you can do.
-#    - 1:29:20: Zenodo and getting a DOI (begin)
-#    - 1:51:40: Linking Zenodo to Github
-#    - 1:53:00: Making a release on Github
-#    - 1:54:30: Viewing result on Github
-#    - 1:55:10: Binder + Zenodo
-#    - 1:55:45: Further steps/ideas, discussion
-#    - end: 2:00:00
-#
-#
-#- output: day4-packaging.mkv
-#  title: 4.3 Packaging
+#- output: day4.2-packaging.mkv
+#  title: 4.2 Packaging
 #  description: >-
 #
 #    How to package and distribute software you write.
@@ -569,6 +561,33 @@
 #    - 2:40:52: Conda packages
 #    - 2:42:03: "Q&A: pip install -e, installing in other locations"
 #    - end: 2:43:25
+#
+#
+#
+#- output: day4.3-web-apis.mkv
+#  title: 4.3 Web APIs
+#  description: >-
+#    Often, you need to collect your own data - and often, that data is
+#    online somewhere, and you need to write a program to fetch it.
+#    This talks about the general idea of a web server and making
+#    requests to it and uses the Python "requests" library to demonstrate
+#    some sample requests.  We also discuss the big picture, such as
+#    when you would want to do this and the security and ethical
+#    considerations.
+#
+#    https://aaltoscicomp.github.io/python-for-scicomp/web-apis/
+#
+#  editlist:
+#    - start: 01:38:48
+#    - -: What's a web server?  What's an API?
+#    - 01:44:30: Requests (the Python library)
+#    - 01:46:00: "Demo: requests from a sample API"
+#    - 02:03:08: Exercises
+#    - stop: 02:05:01
+#    - start: 02:14:02
+#    - -: "Q&A and summary"
+#    - stop: 02:22:15
+#
 #
 #
 #- output: day4-paneldiscussion.mkv
