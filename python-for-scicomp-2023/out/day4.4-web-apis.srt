@@ -1,0 +1,1136 @@
+1
+00:00:00,000 --> 00:00:07,540
+Thank you very much.
+
+2
+00:00:07,540 --> 00:00:10,540
+We are back.
+
+3
+00:00:10,540 --> 00:00:18,500
+So the last real lesson of the day is now web APIs.
+
+4
+00:00:18,500 --> 00:00:20,860
+So [name], how do we start?
+
+5
+00:00:20,860 --> 00:00:26,100
+Yes, so maybe it's good to start with understanding
+
+6
+00:00:26,100 --> 00:00:28,540
+what do we mean with web API.
+
+7
+00:00:28,540 --> 00:00:32,660
+And I don't know if everybody knows what API means,
+
+8
+00:00:32,660 --> 00:00:36,940
+but most likely everybody knows what UI means, user interface.
+
+9
+00:00:36,940 --> 00:00:42,540
+So for example, most, let's say they want to search something with the browser, with
+
+10
+00:00:42,540 --> 00:00:47,460
+the window, which is your user interface, you go to a website like google.com and that's
+
+11
+00:00:47,460 --> 00:00:49,180
+the interface that you work with.
+
+12
+00:00:49,180 --> 00:00:53,420
+You type something and you get an answer, the search results.
+
+13
+00:00:53,420 --> 00:00:58,360
+So API, the interface now is application program interface.
+
+14
+00:00:58,360 --> 00:01:03,400
+So it's like that the interface is not designed anymore for humans who can, you know, use the
+
+15
+00:01:03,400 --> 00:01:06,600
+mouse and type and do things like that.
+
+16
+00:01:06,600 --> 00:01:09,680
+that we can basically use machines.
+
+17
+00:01:09,680 --> 00:01:13,480
+So basically this kind of goes down
+
+18
+00:01:13,480 --> 00:01:16,440
+to the concept of server.
+
+19
+00:01:16,440 --> 00:01:19,360
+I don't think we need to go into the details
+
+20
+00:01:19,360 --> 00:01:21,520
+what is a server, but in general,
+
+21
+00:01:21,520 --> 00:01:25,160
+we are all using these servers,
+
+22
+00:01:25,160 --> 00:01:29,760
+meaning these softwares that when we ask for a page
+
+23
+00:01:29,760 --> 00:01:31,720
+or when we ask for some information,
+
+24
+00:01:31,720 --> 00:01:35,360
+whether it's with our smartphones or with our computers,
+
+25
+00:01:35,360 --> 00:01:40,360
+we get an answer, so we are served with an answer.
+
+26
+00:01:42,640 --> 00:01:46,280
+So what we are gonna cover here is that sometimes
+
+27
+00:01:46,280 --> 00:01:49,840
+in some cases, it's very useful to interact
+
+28
+00:01:49,840 --> 00:01:53,160
+with these sources of data that are not physically stored
+
+29
+00:01:53,160 --> 00:01:55,080
+on the same machine where you are.
+
+30
+00:01:55,080 --> 00:01:57,880
+Like the example that I gave that you might wanna query
+
+31
+00:01:57,880 --> 00:02:00,760
+something from Google, but instead of looking
+
+32
+00:02:00,760 --> 00:02:04,400
+at the answer yourself, you can have Python
+
+33
+00:02:04,400 --> 00:02:11,440
+look at the at the answer. And then of course there are other more advanced uses of the so-called
+
+34
+00:02:11,440 --> 00:02:17,680
+APIs, meaning that there are companies who might give you access to a specific API to do something.
+
+35
+00:02:18,400 --> 00:02:23,520
+I guess you all have heard about OpenAI and ChatGPT. That's another example that, you know,
+
+36
+00:02:23,520 --> 00:02:31,120
+it would have been possible to store this huge GPT model on your local machine so you can,
+
+37
+00:02:31,120 --> 00:02:38,720
+for example via Python, send the query or like the prompt that you would send to the remote
+
+38
+00:02:38,720 --> 00:02:44,960
+computer and then get an answer back. The most simple way of doing this programmatically with
+
+39
+00:02:44,960 --> 00:02:52,320
+Python is with this package called requests. So request is a Python library that makes
+
+40
+00:02:52,320 --> 00:02:58,800
+requests to web servers as I just gave you some example. You see here in the bottom there is this
+
+41
+00:02:58,800 --> 00:03:07,080
+Basically, the web page for this request is embedded there, and they label it as HTTP
+
+42
+00:03:07,080 --> 00:03:08,080
+for humans.
+
+43
+00:03:08,080 --> 00:03:14,080
+Maybe I could ask [name], what does HTTP mean, even though we type it almost every
+
+44
+00:03:14,080 --> 00:03:15,080
+day?
+
+45
+00:03:15,080 --> 00:03:16,080
+Yeah.
+
+46
+00:03:16,080 --> 00:03:25,680
+So, HTTP means Hypertext Transfer Protocol, and it's basically the way everything communicates
+
+47
+00:03:25,680 --> 00:03:27,440
+with the web server.
+
+48
+00:03:27,440 --> 00:03:32,480
+you send the request saying, I would like to see this web page,
+
+49
+00:03:32,480 --> 00:03:37,080
+and it sends back saying, OK, here's the data you requested.
+
+50
+00:03:37,080 --> 00:03:38,960
+And you can give other parameters,
+
+51
+00:03:38,960 --> 00:03:43,920
+like what languages my web browser is configured to show,
+
+52
+00:03:43,920 --> 00:03:48,360
+or things like that.
+
+53
+00:03:48,360 --> 00:03:51,440
+And for humans, means that request
+
+54
+00:03:51,440 --> 00:03:57,440
+is trying to make it a way that's well that's
+
+55
+00:03:57,440 --> 00:04:00,080
+easily easy to use by humans so they really
+
+56
+00:04:00,080 --> 00:04:02,720
+care about the user interface of this.
+
+57
+00:04:02,720 --> 00:04:06,920
+Exactly, which basically simplifies your work.
+
+58
+00:04:06,920 --> 00:04:09,200
+As usual, maybe one of the biggest lesson
+
+59
+00:04:09,200 --> 00:04:12,120
+here in this course is that often there's
+
+60
+00:04:12,120 --> 00:04:14,120
+no need to reinvent any wheels.
+
+61
+00:04:14,120 --> 00:04:15,800
+There are already very good packages
+
+62
+00:04:15,800 --> 00:04:18,640
+that can do the heavy lifting for you.
+
+63
+00:04:18,640 --> 00:04:22,460
+So here in this retrieve data from API,
+
+64
+00:04:22,460 --> 00:04:26,300
+the introduction text there is basically telling you
+
+65
+00:04:26,300 --> 00:04:28,700
+that there is a list of many
+
+66
+00:04:28,700 --> 00:04:31,180
+of these application program interfaces
+
+67
+00:04:31,180 --> 00:04:33,540
+that can be used without a key.
+
+68
+00:04:33,540 --> 00:04:35,580
+So this is something that if you will start working
+
+69
+00:04:35,580 --> 00:04:39,460
+with external API, sometimes you need to have a key.
+
+70
+00:04:39,460 --> 00:04:42,420
+For example, in the OpenAI chat GPT example
+
+71
+00:04:42,420 --> 00:04:43,620
+that I was giving you earlier,
+
+72
+00:04:43,620 --> 00:04:47,060
+if you want to query the remote model,
+
+73
+00:04:47,060 --> 00:04:51,900
+you need to basically show that it's you through a key,
+
+74
+00:04:51,900 --> 00:04:53,180
+through a token.
+
+75
+00:04:53,180 --> 00:04:56,780
+But in this case, we're gonna use an API called cat fact,
+
+76
+00:04:56,780 --> 00:04:59,620
+which is basically it's going to return
+
+77
+00:04:59,620 --> 00:05:03,140
+some random fact about cats.
+
+78
+00:05:03,140 --> 00:05:06,340
+And so maybe, you know, enough with the talking,
+
+79
+00:05:06,340 --> 00:05:10,340
+should we just get started with some Python?
+
+80
+00:05:12,700 --> 00:05:13,860
+Sure.
+
+81
+00:05:13,860 --> 00:05:16,580
+Okay, I'm arranging things.
+
+82
+00:05:16,580 --> 00:05:17,080
+Yep.
+
+83
+00:05:17,080 --> 00:05:20,900
+So I guess I will make a new notebook in my place
+
+84
+00:05:20,900 --> 00:05:28,740
+and rename it to, OK.
+
+85
+00:05:28,740 --> 00:05:30,060
+So how should I start?
+
+86
+00:05:30,060 --> 00:05:31,740
+Yeah, so if you scroll a bit down,
+
+87
+00:05:31,740 --> 00:05:35,020
+and you can also do the same for those who are watching,
+
+88
+00:05:35,020 --> 00:05:37,660
+there's a section a little bit more down in the materials
+
+89
+00:05:37,660 --> 00:05:43,620
+where we basically start with the import for this library.
+
+90
+00:05:46,580 --> 00:05:51,220
+And then the code will also have this URL.
+
+91
+00:05:51,220 --> 00:05:54,740
+So URL, it means Uniform Resource Locator.
+
+92
+00:05:54,740 --> 00:05:58,580
+It's basically, again, what we normally type daily.
+
+93
+00:05:58,580 --> 00:06:00,920
+It's the address of this,
+
+94
+00:06:00,920 --> 00:06:03,800
+in this case of this remote server API.
+
+95
+00:06:05,940 --> 00:06:07,380
+And then we can use this library,
+
+96
+00:06:07,380 --> 00:06:12,380
+this request library by getting this URL.
+
+97
+00:06:13,940 --> 00:06:16,020
+So what happens?
+
+98
+00:06:16,580 --> 00:06:22,060
+So now there should be something inside this response.
+
+99
+00:06:22,060 --> 00:06:24,940
+So it's a response object.
+
+100
+00:06:28,580 --> 00:06:34,220
+So with objects, you know that with "." and name of the name
+
+101
+00:06:34,220 --> 00:06:36,940
+of the field, you can actually get some content.
+
+102
+00:06:36,940 --> 00:06:41,020
+And here we see basically a string that starts with the B
+
+103
+00:06:41,020 --> 00:06:43,580
+and lots of stuff.
+
+104
+00:06:43,580 --> 00:06:48,580
+So, the string looks like JSON, but it has a B in front.
+
+105
+00:06:48,580 --> 00:06:51,580
+What does the B stand for, [name]?
+
+106
+00:06:51,580 --> 00:06:55,580
+That's a thing I like talking about.
+
+107
+00:06:55,580 --> 00:07:02,580
+So, it looks like a string, but the B in front means Python is interpreting this as binary data.
+
+108
+00:07:02,580 --> 00:07:07,580
+So basically, it's not assuming it has a text encoding.
+
+109
+00:07:07,580 --> 00:07:15,420
+In Python, all the things that look like strings are either unicode strings, meaning they should
+
+110
+00:07:15,420 --> 00:07:22,580
+contain text and can have any unicode character, like each index is a character, or B, which
+
+111
+00:07:22,580 --> 00:07:33,820
+means each position in the string is raw, like a raw byte from 0 to 255.
+
+112
+00:07:33,820 --> 00:07:36,340
+But I think we probably shouldn't go too much into that.
+
+113
+00:07:36,340 --> 00:07:40,260
+It's something you can get deep into later.
+
+114
+00:07:40,260 --> 00:07:44,140
+But then the rest of the whatever comes after the B
+
+115
+00:07:44,140 --> 00:07:45,340
+looks like JSON.
+
+116
+00:07:45,340 --> 00:07:47,740
+Did we introduce before what do we
+
+117
+00:07:47,740 --> 00:07:51,380
+mean with JSON, the JSON format?
+
+118
+00:07:51,380 --> 00:07:51,940
+I don't know.
+
+119
+00:07:51,940 --> 00:07:52,460
+Did we?
+
+120
+00:07:52,460 --> 00:07:56,460
+Maybe I should say again anyway.
+
+121
+00:07:56,460 --> 00:07:57,580
+Yeah.
+
+122
+00:07:57,580 --> 00:08:03,940
+So JSON is a way to turn objects into strings.
+
+123
+00:08:03,940 --> 00:08:08,780
+So this looks like it would be a Python dictionary,
+
+124
+00:08:08,780 --> 00:08:11,460
+but actually, it's all encoded in a string.
+
+125
+00:08:11,460 --> 00:08:14,260
+And basically, JSON is a way to do
+
+126
+00:08:14,260 --> 00:08:18,100
+that encoding in a way that's standardized and shareable
+
+127
+00:08:18,100 --> 00:08:21,500
+among different computers.
+
+128
+00:08:21,500 --> 00:08:26,800
+And many, many APIs that basically will return strings,
+
+129
+00:08:26,800 --> 00:08:29,820
+they will actually give you the answer in JSON.
+
+130
+00:08:29,820 --> 00:08:35,100
+And this is why this response library also has a dot JSON function.
+
+131
+00:08:35,100 --> 00:08:44,800
+So what if we tried the, um, exactly that part of the, so now basically is
+
+132
+00:08:44,800 --> 00:08:52,960
+this like, like, um, dictionary basically, let's see, yes, it is a dictionary.
+
+133
+00:08:54,320 --> 00:08:59,200
+So then we could know easily access, for example, using the keys, the
+
+134
+00:08:59,200 --> 00:09:07,360
+different elements yeah all right instead this this what you did earlier now it's listed
+
+135
+00:09:07,360 --> 00:09:11,600
+as bytes because it's it has to be the yeah
+
+136
+00:09:11,600 --> 00:09:24,800
+so now basically you are you're yeah you're putting the this dictionary into a variable
+
+137
+00:09:24,800 --> 00:09:32,480
+corresponds underscore json and then you're getting the key fact yeah all right so so far so good we
+
+138
+00:09:32,480 --> 00:09:39,200
+saw basically that we can basically get some data and get is one of these terms using this
+
+139
+00:09:39,200 --> 00:09:47,360
+http protocol but sometimes we also want to maybe send or at least tell the remote server that you
+
+140
+00:09:47,360 --> 00:09:52,560
+know maybe we don't want to just get the page like in this specific case but we want to filter
+
+141
+00:09:52,560 --> 00:09:57,560
+according to what the remote API is allowing us.
+
+142
+00:09:57,560 --> 00:10:02,160
+So often you might, again, have seen this
+
+143
+00:10:02,160 --> 00:10:03,880
+when you browse the internet,
+
+144
+00:10:03,880 --> 00:10:07,860
+you might see a URL and then a question mark
+
+145
+00:10:07,860 --> 00:10:12,860
+followed by various values or like key equal values.
+
+146
+00:10:13,960 --> 00:10:15,320
+So these are basically,
+
+147
+00:10:15,320 --> 00:10:19,300
+these are called parameters for the GET query.
+
+148
+00:10:19,300 --> 00:10:22,820
+And in this specific case, for example,
+
+149
+00:10:22,820 --> 00:10:26,220
+we use a remote API that is called
+
+150
+00:10:26,220 --> 00:10:29,580
+universities.hipolabs.com, which is basically
+
+151
+00:10:29,580 --> 00:10:33,420
+providing a list of all the universities in the planet.
+
+152
+00:10:33,420 --> 00:10:35,740
+But you see here that now this URL
+
+153
+00:10:35,740 --> 00:10:40,180
+has a parameter as a question mark, country equal Finland.
+
+154
+00:10:40,180 --> 00:10:49,100
+So if we run this code and we get the request from this URL,
+
+155
+00:10:49,100 --> 00:10:53,340
+Will it most likely give us basically a list
+
+156
+00:10:53,340 --> 00:10:55,940
+of the universities in Finland?
+
+157
+00:10:55,940 --> 00:11:00,540
+And as you can see already, indeed, it does.
+
+158
+00:11:00,540 --> 00:11:03,500
+In this case, why did you put like,
+
+159
+00:11:03,500 --> 00:11:07,380
+can we remind people what is this column 2?
+
+160
+00:11:07,380 --> 00:11:11,620
+And this says it's giving the first two elements
+
+161
+00:11:11,620 --> 00:11:14,420
+of the array.
+
+162
+00:11:14,420 --> 00:11:18,340
+So if I remove it, then it will be a log response.
+
+163
+00:11:18,340 --> 00:11:24,100
+Exactly. And we will see all the list. But then this is the thing. So now we were passing this
+
+164
+00:11:24,100 --> 00:11:32,580
+parameter through this question mark, followed by key, name of the parameter and the value.
+
+165
+00:11:33,300 --> 00:11:36,100
+But this library, the response library is actually,
+
+166
+00:11:38,820 --> 00:11:43,540
+with the response library is also possible to pass the parameters via the Python request.
+
+167
+00:11:43,540 --> 00:11:51,380
+So, should we try this bit of code, [name], where now, instead of, so the URL now is different,
+
+168
+00:11:51,380 --> 00:11:56,960
+it's just a general URL for the API.
+
+169
+00:11:56,960 --> 00:12:02,260
+But now we pass the parameter country equal to Finland, basically.
+
+170
+00:12:02,260 --> 00:12:04,580
+So I've just copied the whole thing.
+
+171
+00:12:04,580 --> 00:12:05,580
+Yeah.
+
+172
+00:12:05,580 --> 00:12:12,060
+I guess the key point here is this parameters equals parameters, which is a dictionary.
+
+173
+00:12:12,060 --> 00:12:13,380
+Exactly.
+
+174
+00:12:13,380 --> 00:12:18,340
+And now it will give the same results, but you can try, for example, with your own country,
+
+175
+00:12:18,340 --> 00:12:23,660
+you can put Sweden, you can put Norway, and then you can get programmatically, you can
+
+176
+00:12:23,660 --> 00:12:32,260
+get the list of all the universities that are at least listed in this remote API.
+
+177
+00:12:32,260 --> 00:12:39,980
+So this is basically the main idea behind this remote APIs.
+
+178
+00:12:39,980 --> 00:12:47,500
+rather than talking we could let people try exercise one it's an exercise where in this
+
+179
+00:12:47,500 --> 00:12:53,500
+case you don't have to how can I say think the solution the solution is actually following
+
+180
+00:12:53,500 --> 00:13:01,060
+after the exercise so it's an opportunity for you to test another API so even copy pasting
+
+181
+00:13:01,060 --> 00:13:07,980
+is fine and exploring the output and when it gives we could assign 10 minutes if these
+
+182
+00:13:07,980 --> 00:13:14,060
+are too short for exercise 1 you can also start with exercise 2 and then later we will
+
+183
+00:13:14,060 --> 00:13:22,540
+comment on what is going on with exercise 2. Does this sound like a good plan, [name]?
+
+184
+00:13:22,540 --> 00:13:26,380
+Yes, it is. Yes, very good.
+
+185
+00:13:26,380 --> 00:13:34,620
+So let's have until 12.23 start with exercise 1 and if you have time do exercise 2 and then
+
+186
+00:13:34,620 --> 00:13:40,140
+we will come back and do a recap and more stuff.
+
+187
+00:13:40,140 --> 00:13:42,540
+OK, sounds good.
+
+188
+00:13:42,540 --> 00:13:45,020
+See you later.
+
+189
+00:13:45,020 --> 00:13:46,580
+Bye.
+
+190
+00:13:49,000 --> 00:14:02,780
+There was a nice interesting question in our notes document, are there any best practices
+
+191
+00:14:02,780 --> 00:14:08,380
+or general guidelines, but when it comes to the coding, the examples that we gave you
+
+192
+00:14:08,380 --> 00:14:16,100
+with this request library, it's a good starting point for working with web APIs.
+
+193
+00:14:16,100 --> 00:14:20,900
+But then one should also consider maybe the ethical and sometimes even the legal aspect.
+
+194
+00:14:20,900 --> 00:14:29,260
+Ethical, it can be in the sense that, you know, are you allowed to use this data?
+
+195
+00:14:29,260 --> 00:14:31,540
+Is it ethical to scrape this data?
+
+196
+00:14:31,540 --> 00:14:41,620
+we do this for research purposes, so we can do these things, we don't break any law.
+
+197
+00:14:41,620 --> 00:14:47,140
+But then there's also the ethics of the fact that you are sending many queries to some
+
+198
+00:14:47,140 --> 00:14:52,100
+remote computer that maybe you don't want to overload the remote server, I don't know,
+
+199
+00:14:52,100 --> 00:15:00,900
+with 1,000 queries every second. So then often if you, let's say that you need to scrape
+
+200
+00:15:00,900 --> 00:15:07,580
+many many web pages and we will soon show briefly a little example on that maybe you
+
+201
+00:15:07,580 --> 00:15:11,900
+don't wanna you know maybe you wanna have a break between every every page so that your
+
+202
+00:15:11,900 --> 00:15:19,380
+Python code could scrape one page wait for a few minutes scrape another page and so on.
+
+203
+00:15:19,380 --> 00:15:27,160
+So there's no comments related to the exercises so most likely they were easy and understandable
+
+204
+00:15:27,160 --> 00:15:34,920
+Maybe regarding exercise two, [name], exercise two talks about something that we didn't really
+
+205
+00:15:34,920 --> 00:15:42,720
+cover before, the headers. In practice, if I understand it correctly, it's like what
+
+206
+00:15:42,720 --> 00:15:47,920
+we tell to the remote server, like I'm on this computer with this operating system and
+
+207
+00:15:47,920 --> 00:15:56,440
+this browser, but do we need to sometimes change these headers?
+
+208
+00:15:56,440 --> 00:16:03,720
+I've done it occasionally. So sometimes the headers can be used for, for example, passing
+
+209
+00:16:03,720 --> 00:16:10,760
+authentication information. So the API knows who you are and that you have permission to access it,
+
+210
+00:16:11,640 --> 00:16:15,640
+but oftentimes there's other things in requests that can handle this for you.
+
+211
+00:16:16,520 --> 00:16:23,640
+Sometimes the headers would say things like what format you want the data in, or things like that.
+
+212
+00:16:23,640 --> 00:16:30,640
+And I can't remember an exact time, but I've probably done it once or twice.
+
+213
+00:16:30,640 --> 00:16:38,800
+Exactly. In the learning materials, there is an example where there are some example
+
+214
+00:16:38,800 --> 00:16:46,760
+of these headers that according to what you need to pass to the server, you need to modify
+
+215
+00:16:46,760 --> 00:16:53,440
+eventually. But often, if your goal is, for example, to scrape materials from the internet,
+
+216
+00:16:53,440 --> 00:17:01,720
+it's okay to use the default headers of the request API, of the request library.
+
+217
+00:17:01,720 --> 00:17:07,160
+And when it comes to scraping exercise three, we don't have time to go through it. So please
+
+218
+00:17:07,160 --> 00:17:15,960
+go, please do it if you have time. So the code that we see here is basically an example
+
+219
+00:17:15,960 --> 00:17:20,960
+where we wanna download the full HTML of a remote server.
+
+220
+00:17:21,480 --> 00:17:24,560
+So now it does not an API in the sense
+
+221
+00:17:24,560 --> 00:17:29,320
+that there's some software that even the parameters
+
+222
+00:17:29,320 --> 00:17:31,680
+that we pass is going to return an answer
+
+223
+00:17:31,680 --> 00:17:33,840
+like we had earlier JSON.
+
+224
+00:17:33,840 --> 00:17:36,360
+But now what is returned is basically
+
+225
+00:17:36,360 --> 00:17:40,080
+the so-called HTML code, which is this structure
+
+226
+00:17:40,080 --> 00:17:44,000
+which is the language of the web pages that you see.
+
+227
+00:17:44,000 --> 00:17:47,360
+So, in practice, with the example that you see here,
+
+228
+00:17:47,360 --> 00:17:51,320
+you request the HTML of some page,
+
+229
+00:17:51,320 --> 00:17:53,620
+in this case, example.com,
+
+230
+00:17:53,620 --> 00:17:55,920
+and then there's another library that is used.
+
+231
+00:17:57,040 --> 00:18:00,720
+If you scroll a little bit more down after this HTML,
+
+232
+00:18:00,720 --> 00:18:02,360
+there is this beautiful soup,
+
+233
+00:18:02,360 --> 00:18:05,120
+which is one package that allows you
+
+234
+00:18:05,120 --> 00:18:09,760
+to basically parse the HTML so that, again,
+
+235
+00:18:09,760 --> 00:18:12,300
+you don't need to invent new wheels
+
+236
+00:18:12,300 --> 00:18:18,840
+to extract the information that you need here basically it creates a structure of all the
+
+237
+00:18:18,840 --> 00:18:25,200
+tags that are contained in this HTML file and for example one can look at the title
+
+238
+00:18:25,200 --> 00:18:33,720
+of the page or look for all the links the links are marked with this tag A and so this
+
+239
+00:18:33,720 --> 00:18:40,040
+is why there you see find all A there so that will search for all the links in this case
+
+240
+00:18:40,040 --> 00:18:47,560
+there was just one link in this web page but it's time to wrap up maybe there's also something
+
+241
+00:18:47,560 --> 00:18:55,000
+else interesting in this web page which is saving the data the example there it's a useful
+
+242
+00:18:55,000 --> 00:19:02,000
+example there's nothing too difficult there but it's a nice example of doing multiple
+
+243
+00:19:02,000 --> 00:19:09,040
+queries one after the other like I mentioned earlier and and you see at the very last line
+
+244
+00:19:09,040 --> 00:19:11,120
+there is this sleep.
+
+245
+00:19:11,120 --> 00:19:12,920
+If you scroll up a bit, yeah.
+
+246
+00:19:12,920 --> 00:19:14,280
+So this is exactly the thing.
+
+247
+00:19:14,280 --> 00:19:17,560
+So we put one second between the multiple queries.
+
+248
+00:19:17,560 --> 00:19:22,080
+In this case, there are three queries to this cat fact API.
+
+249
+00:19:22,920 --> 00:19:23,840
+And then what's happening,
+
+250
+00:19:23,840 --> 00:19:27,680
+this code that this JSON replies from the APIs,
+
+251
+00:19:27,680 --> 00:19:32,280
+they're stored, they're appended to the same text file.
+
+252
+00:19:32,280 --> 00:19:34,880
+And this is a useful way to deal with kind of
+
+253
+00:19:34,880 --> 00:19:36,640
+to basically building a data set.
+
+254
+00:19:36,640 --> 00:19:43,040
+So at the end, you will have a big JSON file
+
+255
+00:19:43,040 --> 00:19:46,040
+that everywhere, every line is a JSON string.
+
+256
+00:19:46,040 --> 00:19:49,080
+And then most likely from this type of data,
+
+257
+00:19:49,080 --> 00:19:51,160
+from this format, maybe you want to move it
+
+258
+00:19:51,160 --> 00:19:55,400
+into a pandas data frame to basically continue
+
+259
+00:19:55,400 --> 00:19:58,240
+your analysis.
+
+260
+00:19:58,240 --> 00:19:59,120
+I think we are done.
+
+261
+00:19:59,120 --> 00:20:04,280
+[name], do you have any comments on this data storage
+
+262
+00:20:04,280 --> 00:20:05,120
+from API?
+
+263
+00:20:05,120 --> 00:20:14,320
+Yes, I would say so how this data storage relates to what we talked about yesterday or two days ago.
+
+264
+00:20:15,520 --> 00:20:22,320
+So you might have different ways of storing data for different purposes.
+
+265
+00:20:22,320 --> 00:20:28,320
+So for example when it's downloading you want a file format where you can easily append
+
+266
+00:20:28,320 --> 00:20:35,760
+expedited to, and it won't get broken, like it can't really get corrupted. So for that,
+
+267
+00:20:35,760 --> 00:20:44,080
+downloading and storing in a giant text file with one line per thing, that's easy and relatively
+
+268
+00:20:44,080 --> 00:20:48,400
+foolproof. But when you're analyzing, then you might convert this to some other format,
+
+269
+00:20:48,400 --> 00:20:55,760
+which is more efficient for your other analysis. There's a comment there, like,
+
+270
+00:20:55,760 --> 00:21:01,520
+what a good way to be to store it in an SQL server of some sort. I mean, it could be done
+
+271
+00:21:02,960 --> 00:21:12,000
+if you have that set up. Many of our researchers have access to a big file system, but not an SQL
+
+272
+00:21:12,000 --> 00:21:21,840
+server. But another thing like saving it to disk first, just so you have it, because the file
+
+273
+00:21:21,840 --> 00:21:30,080
+system is more reliable than SQL server for, well, not getting corrupted.
+
+274
+00:21:30,080 --> 00:21:31,080
+Yeah.
+
+275
+00:21:31,080 --> 00:21:32,080
+Yeah.
+
+276
+00:21:32,080 --> 00:21:37,920
+I guess SQL would be a useful solution if these files, you know, if one is planning
+
+277
+00:21:37,920 --> 00:21:45,680
+to store 1 million JSON files, maybe that's not the best, but, you know.
+
+278
+00:21:45,680 --> 00:21:46,680
+Yeah.
+
+279
+00:21:46,680 --> 00:21:47,680
+Yeah.
+
+280
+00:21:47,680 --> 00:21:50,240
+I mean, it really depends on the site.
+
+281
+00:21:50,240 --> 00:21:55,360
+So even if you're scraping whole internet-level things,
+
+282
+00:21:55,360 --> 00:21:58,080
+you have to really think about this
+
+283
+00:21:58,080 --> 00:22:01,880
+and try to do it really well.
+
+284
+00:22:01,880 --> 00:22:05,640
+And that's not easy.
+

@@ -1,0 +1,1304 @@
+1
+00:00:00,000 --> 00:00:09,200
+Hello. I hope everyone had a good break and is refreshed after 10 minutes. So, let's go
+
+2
+00:00:09,200 --> 00:00:12,400
+to packaging.
+
+3
+00:00:12,400 --> 00:00:15,040
+And yeah, we talked about all the different libraries
+
+4
+00:00:15,040 --> 00:00:17,360
+in the Python ecosystem.
+
+5
+00:00:17,360 --> 00:00:21,720
+Now we are going to add one, or at least add one
+
+6
+00:00:21,720 --> 00:00:25,340
+into the test thing, but show you
+
+7
+00:00:25,340 --> 00:00:27,360
+how to create your own package and how
+
+8
+00:00:27,360 --> 00:00:31,880
+to publish your own code, or at least make it easy for you
+
+9
+00:00:31,880 --> 00:00:35,760
+to use across all of your projects.
+
+10
+00:00:35,760 --> 00:00:42,480
+So should we do some talking first or just jump directly in?
+
+11
+00:00:42,480 --> 00:00:43,600
+I would jump in.
+
+12
+00:00:43,600 --> 00:00:45,120
+Or why are we doing it?
+
+13
+00:00:48,000 --> 00:00:51,000
+Yeah, I guess the main thing is to make it easy for you
+
+14
+00:00:51,000 --> 00:00:53,000
+to use your code.
+
+15
+00:00:53,000 --> 00:00:54,680
+If you have a piece of code that you
+
+16
+00:00:54,680 --> 00:00:57,800
+want to use in multiple projects,
+
+17
+00:00:57,800 --> 00:01:00,000
+make it easy for you to do that.
+
+18
+00:01:00,000 --> 00:01:01,960
+And just have it all in one place
+
+19
+00:01:01,960 --> 00:01:04,240
+where you can maintain that bit.
+
+20
+00:01:04,240 --> 00:01:06,480
+well, you can just maintain it in one place.
+
+21
+00:01:06,480 --> 00:01:08,240
+Or even to get it to the point
+
+22
+00:01:08,240 --> 00:01:10,680
+where other people can use your code
+
+23
+00:01:10,680 --> 00:01:13,200
+and only one person still has to maintain it,
+
+24
+00:01:13,200 --> 00:01:16,760
+which is, it saves time.
+
+25
+00:01:16,760 --> 00:01:18,720
+Other people might even be maintaining your code
+
+26
+00:01:18,720 --> 00:01:20,260
+at some point.
+
+27
+00:01:20,260 --> 00:01:23,320
+I'd actually say that is probably the most important point
+
+28
+00:01:23,320 --> 00:01:24,640
+for packaging in the end,
+
+29
+00:01:24,640 --> 00:01:27,760
+that you make it easy for other people to use it.
+
+30
+00:01:27,760 --> 00:01:28,600
+Yeah.
+
+31
+00:01:28,600 --> 00:01:30,780
+So that it is actually used.
+
+32
+00:01:30,780 --> 00:01:31,620
+Yes.
+
+33
+00:01:31,620 --> 00:01:38,620
+So, what do we need to make a Python package?
+
+34
+00:01:38,620 --> 00:01:43,620
+Well, we need some structure.
+
+35
+00:01:43,620 --> 00:01:49,620
+Well, yeah. There needs to be some structure that everybody knows is going to be there.
+
+36
+00:01:49,620 --> 00:01:54,620
+And that's basically kind of predefined.
+
+37
+00:01:54,620 --> 00:02:03,260
+There will be modules because a Python file is called a module so you will have code in
+
+38
+00:02:03,260 --> 00:02:13,340
+Python files and then we collect related modules into packages and in here we will
+
+39
+00:02:13,340 --> 00:02:19,980
+show how to collect them into a package. Then if you want other people to be able to use your code
+
+40
+00:02:19,980 --> 00:02:24,860
+you need a license. That's also if you want to accept contributions from anyone else you
+
+41
+00:02:24,860 --> 00:02:32,620
+need a license because they need to give you the access to use the code and that the license file
+
+42
+00:02:32,620 --> 00:02:37,420
+is usually in the root of the project the root folder of the project. You need a readme file
+
+43
+00:02:37,420 --> 00:02:43,020
+because you need to tell people what the code is and what it does. It's also good to have
+
+44
+00:02:43,020 --> 00:02:47,980
+other documentation but often in a small project or when you're starting readme is enough
+
+45
+00:02:47,980 --> 00:02:56,380
+documentation but it's also good to have other documentation and automated testing is great
+
+46
+00:02:56,380 --> 00:03:02,220
+because it allows you to check that everything works well at least like the things you are
+
+47
+00:03:02,220 --> 00:03:08,540
+testing work by just running one command. And it helps you a lot in staying backward
+
+48
+00:03:08,540 --> 00:03:13,820
+compatible so that what you're changing doesn't change for earlier results. Yeah,
+
+49
+00:03:13,820 --> 00:03:17,460
+Yeah, that's very important, very useful.
+
+50
+00:03:17,460 --> 00:03:21,060
+Okay, so those are the things we'll cover.
+
+51
+00:03:21,060 --> 00:03:23,940
+I'm actually not sure if we cover testing.
+
+52
+00:03:23,940 --> 00:03:25,460
+Well, let's see.
+
+53
+00:03:25,460 --> 00:03:28,900
+But first we'll start with creating a package.
+
+54
+00:03:28,900 --> 00:03:31,900
+So we'll assume that we have some useful functions
+
+55
+00:03:31,900 --> 00:03:35,140
+we have written that we want to use in other projects.
+
+56
+00:03:36,300 --> 00:03:39,100
+So the first of them is add.
+
+57
+00:03:40,620 --> 00:03:43,220
+Yeah, imagine that this is a useful function.
+
+58
+00:03:43,220 --> 00:03:47,060
+So this will add two numbers together.
+
+59
+00:03:47,060 --> 00:03:47,780
+Here we are.
+
+60
+00:03:47,780 --> 00:03:49,100
+OK, great.
+
+61
+00:03:49,100 --> 00:03:59,700
+Let's also write a subtract.py, or subtracting.py,
+
+62
+00:03:59,700 --> 00:04:01,780
+which will subtract two numbers from each other.
+
+63
+00:04:01,780 --> 00:04:16,740
+Okay, and finally, one thing that's slightly more complicated, which will do a numerical
+
+64
+00:04:16,740 --> 00:04:17,740
+integral.
+
+65
+00:04:17,740 --> 00:04:27,820
+You are cheating a bit, we don't really write the code, we just use a library.
+
+66
+00:04:27,820 --> 00:04:29,780
+Well, yes, but you should not write the code
+
+67
+00:04:29,780 --> 00:04:30,900
+for a numerical integral.
+
+68
+00:04:30,900 --> 00:04:33,780
+You should use SciPy.
+
+69
+00:04:33,780 --> 00:04:35,380
+So there's one question.
+
+70
+00:04:35,380 --> 00:04:37,580
+Can you do this packaging in JupyterLab?
+
+71
+00:04:37,580 --> 00:04:40,700
+So you can write the code in JupyterLab.
+
+72
+00:04:40,700 --> 00:04:42,820
+You can create the files in JupyterLab.
+
+73
+00:04:42,820 --> 00:04:46,900
+So almost everything we do, you can do in JupyterLab.
+
+74
+00:04:46,900 --> 00:04:50,500
+But it is, at least for me, we're
+
+75
+00:04:50,500 --> 00:04:54,580
+dealing with the file system more than with Python code.
+
+76
+00:04:54,580 --> 00:04:57,460
+So it's kind of more natural to do it here.
+
+77
+00:05:01,220 --> 00:05:02,620
+You can also, so, okay.
+
+78
+00:05:02,620 --> 00:05:07,180
+So the point is Jupyter is more made for, I guess, notebooks
+
+79
+00:05:07,180 --> 00:05:08,780
+and the packaging part,
+
+80
+00:05:08,780 --> 00:05:10,940
+like it's about creating Python files
+
+81
+00:05:10,940 --> 00:05:14,040
+and running commands in terminal.
+
+82
+00:05:14,040 --> 00:05:15,940
+So you can do it in Jupyter.
+
+83
+00:05:15,940 --> 00:05:19,000
+It's fine, but it's not using notebooks.
+
+84
+00:05:19,860 --> 00:05:20,700
+Sorry, [name].
+
+85
+00:05:20,700 --> 00:05:25,260
+[name], can you make your fonts bigger?
+
+86
+00:05:25,260 --> 00:05:30,260
+Is that big enough?
+
+87
+00:05:30,260 --> 00:05:32,900
+Well, probably good.
+
+88
+00:05:32,900 --> 00:05:34,980
+We can see what people say.
+
+89
+00:05:34,980 --> 00:05:35,980
+I think it's probably good.
+
+90
+00:05:35,980 --> 00:05:40,660
+I probably can't change them in the editor, at least not quickly.
+
+91
+00:05:40,660 --> 00:05:44,980
+Yeah, the editor will probably follow the terminal font.
+
+92
+00:05:44,980 --> 00:05:46,400
+Let's see.
+
+93
+00:05:46,400 --> 00:05:50,460
+Can you run ls just to see what's in the current directory now?
+
+94
+00:05:50,460 --> 00:05:55,980
+So yeah, we have some Python modules that are useful and we want to use in other places.
+
+95
+00:05:55,980 --> 00:06:00,460
+I think for now, if you scroll down in the notes a little bit, you'll see a general structure
+
+96
+00:06:00,460 --> 00:06:03,140
+for a package or what the folder could look like.
+
+97
+00:06:03,140 --> 00:06:11,760
+I think the first thing we want to do is to create a folder where we put all the modules.
+
+98
+00:06:11,760 --> 00:06:14,540
+So this will essentially be like, this is the Python stuff.
+
+99
+00:06:14,540 --> 00:06:20,500
+This is the thing that's called a package.
+
+100
+00:06:20,500 --> 00:06:22,500
+So this is where all the Python code goes.
+
+101
+00:06:22,500 --> 00:06:24,280
+And it's a folder.
+
+102
+00:06:24,280 --> 00:06:31,140
+It's just a normal folder, and we just move all of the .py files there.
+
+103
+00:06:31,140 --> 00:06:36,540
+So do you want us to start here with the project?
+
+104
+00:06:36,540 --> 00:06:40,580
+So is this what we're currently looking at, the project folder for our example?
+
+105
+00:06:40,580 --> 00:06:42,360
+example?
+
+106
+00:06:42,360 --> 00:06:44,380
+I mean, OK, so you created a folder that
+
+107
+00:06:44,380 --> 00:06:46,180
+will be the project rules.
+
+108
+00:06:46,180 --> 00:06:46,680
+OK.
+
+109
+00:06:46,680 --> 00:06:48,180
+OK, so let's just go there.
+
+110
+00:06:48,180 --> 00:06:54,500
+And then there we create another folder that's the package.
+
+111
+00:06:54,500 --> 00:06:58,460
+I'll just push all of this over so that we.
+
+112
+00:06:58,460 --> 00:07:00,860
+So this is a very common structure in queue.
+
+113
+00:07:00,860 --> 00:07:02,420
+We are back in here, but.
+
+114
+00:07:02,420 --> 00:07:05,220
+Yeah, so now let's create another folder.
+
+115
+00:07:05,220 --> 00:07:08,100
+So basically, the reason for this
+
+116
+00:07:08,100 --> 00:07:11,460
+is we want to have one thing we can import.
+
+117
+00:07:11,460 --> 00:07:14,620
+Like, when you import NumPy, you import all of NumPy.
+
+118
+00:07:14,620 --> 00:07:16,940
+We want to import calculator and be
+
+119
+00:07:16,940 --> 00:07:19,740
+able to import all of these functions at once.
+
+120
+00:07:19,740 --> 00:07:24,100
+But now, actually, we can't quite do that yet.
+
+121
+00:07:24,100 --> 00:07:28,100
+What we can do now is run from calculator import adding,
+
+122
+00:07:28,100 --> 00:07:30,060
+for example.
+
+123
+00:07:30,060 --> 00:07:32,940
+But we need to tell what Python needs to do when
+
+124
+00:07:32,940 --> 00:07:34,380
+we want to import calculator.
+
+125
+00:07:34,380 --> 00:07:41,880
+And we do that by adding this __init__.py.
+
+126
+00:07:41,880 --> 00:07:46,020
+That's something that it's kind of predefined in Python.
+
+127
+00:07:46,020 --> 00:07:51,820
+And it is what turns a folder into a Python package.
+
+128
+00:07:51,820 --> 00:07:58,420
+So here you can import things that you
+
+129
+00:07:58,420 --> 00:08:02,460
+want to be imported when you import this package.
+
+130
+00:08:04,380 --> 00:08:06,300
+And this is just normal Python code, really.
+
+131
+00:08:06,300 --> 00:08:11,380
+So actually, what happens is when you import calculator,
+
+132
+00:08:11,380 --> 00:08:15,660
+when you import this folder or this package,
+
+133
+00:08:15,660 --> 00:08:21,300
+it will run this code that Umesh is now typing.
+
+134
+00:08:21,300 --> 00:08:27,020
+And everything that's then defined in this Python code,
+
+135
+00:08:27,020 --> 00:08:30,460
+all of that will appear as calculator.something.
+
+136
+00:08:30,460 --> 00:08:34,620
+So there will be calculator.add, calculator.subtract,
+
+137
+00:08:34,620 --> 00:08:38,300
+and calculator.integral, and also calculator.version
+
+138
+00:08:38,300 --> 00:08:41,220
+with the underscores.
+
+139
+00:08:41,220 --> 00:08:44,340
+OK, so this looks good.
+
+140
+00:08:44,340 --> 00:08:48,300
+Should we now try importing it just to see?
+
+141
+00:08:48,300 --> 00:08:50,100
+Or, well, yeah, let's import it first,
+
+142
+00:08:50,100 --> 00:08:53,180
+and then we'll add a license and readme.
+
+143
+00:08:53,180 --> 00:08:54,620
+I hope I started the environment.
+
+144
+00:08:54,620 --> 00:08:55,140
+Let's see.
+
+145
+00:08:55,140 --> 00:09:04,140
+Well, right now, it's all in this folder, so you don't actually need to be in the environment.
+
+146
+00:09:04,140 --> 00:09:06,140
+SciPy isn't, potentially.
+
+147
+00:09:06,140 --> 00:09:09,140
+Oh, SciPy might not be there. That's true.
+
+148
+00:09:09,140 --> 00:09:21,140
+Well, if you try to `import calculator`, if there's no SciPy, can you run...
+
+149
+00:09:21,140 --> 00:09:25,620
+run so okay you just run from calculator can you run import calculator
+
+150
+00:09:31,460 --> 00:09:39,380
+no module name calculator is it yeah it has an init file oh uh wait
+
+151
+00:09:43,700 --> 00:09:48,180
+i'm not entirely sure but i think well okay let's see
+
+152
+00:09:48,180 --> 00:09:49,180
+Okay.
+
+153
+00:09:49,180 --> 00:09:50,180
+Nope.
+
+154
+00:09:50,180 --> 00:09:51,180
+Interesting.
+
+155
+00:09:51,180 --> 00:09:53,460
+Did you actually move to the folder?
+
+156
+00:09:53,460 --> 00:09:55,020
+Can you type ls?
+
+157
+00:09:55,020 --> 00:09:56,020
+Okay.
+
+158
+00:09:56,020 --> 00:09:57,020
+I'm in the wrong folder.
+
+159
+00:09:57,020 --> 00:09:58,020
+Yes.
+
+160
+00:09:58,020 --> 00:09:59,020
+You are in the wrong folder.
+
+161
+00:09:59,020 --> 00:10:00,020
+Okay.
+
+162
+00:10:00,020 --> 00:10:01,020
+Okay.
+
+163
+00:10:01,020 --> 00:10:06,180
+So now you can import calculator and you have SciPy.
+
+164
+00:10:06,180 --> 00:10:07,180
+Yep.
+
+165
+00:10:07,180 --> 00:10:09,620
+So it didn't actually, it didn't fail.
+
+166
+00:10:09,620 --> 00:10:10,620
+All right.
+
+167
+00:10:10,620 --> 00:10:15,020
+So yeah, that's why we add this __init__.py and that's why we have all of these files in a
+
+168
+00:10:15,020 --> 00:10:16,420
+single folder.
+
+169
+00:10:16,420 --> 00:10:20,980
+You can, of course, you can have a more nested structure with multiple folders, but the __init__.py
+
+170
+00:10:20,980 --> 00:10:25,060
+makes this a package.
+
+171
+00:10:25,060 --> 00:10:30,860
+And then, well, you can also try, you can do from calculator import add.
+
+172
+00:10:30,860 --> 00:10:38,580
+This actually, actually this does require an input.py, yeah, okay.
+
+173
+00:10:38,580 --> 00:10:39,580
+Seems to work.
+
+174
+00:10:39,580 --> 00:10:42,580
+Yeah, seems to be doing things.
+
+175
+00:10:42,580 --> 00:10:47,660
+So let's exit this interpreter, or if you
+
+176
+00:10:47,660 --> 00:10:50,020
+want to try something else, fine.
+
+177
+00:10:50,020 --> 00:10:52,060
+Try an integral or something.
+
+178
+00:10:52,060 --> 00:10:53,860
+OK, yeah, let's exit the interpreter.
+
+179
+00:10:53,860 --> 00:10:58,300
+And now we don't have a license file or a readme file.
+
+180
+00:10:58,300 --> 00:11:02,100
+So we don't need to decide on a license for this test case,
+
+181
+00:11:02,100 --> 00:11:08,580
+but let's just create the file and a readme file as well.
+
+182
+00:11:08,580 --> 00:11:09,980
+Let's just create them for now.
+
+183
+00:11:12,580 --> 00:11:13,580
+Yeah.
+
+184
+00:11:13,580 --> 00:11:14,580
+They are empty.
+
+185
+00:11:14,580 --> 00:11:15,580
+Okay.
+
+186
+00:11:15,580 --> 00:11:16,580
+So, yeah.
+
+187
+00:11:16,580 --> 00:11:17,580
+Now we have two empty files.
+
+188
+00:11:17,580 --> 00:11:20,580
+If you don't, press again to show what we have.
+
+189
+00:11:20,580 --> 00:11:21,580
+Okay.
+
+190
+00:11:21,580 --> 00:11:24,980
+So, we have calculator, we have license, and readme.
+
+191
+00:11:24,980 --> 00:11:29,580
+Now, the next thing to make this a package, oh, what is the time?
+
+192
+00:11:29,580 --> 00:11:30,580
+22.
+
+193
+00:11:30,580 --> 00:11:32,580
+22 passed.
+
+194
+00:11:32,580 --> 00:11:33,580
+Okay.
+
+195
+00:11:33,580 --> 00:11:45,580
+So, yeah, so the next thing we need to add to make this package installable is this pyproject.toml.
+
+196
+00:11:45,580 --> 00:11:52,740
+And yeah, just create a file and we'll just copy the stuff from the example.
+
+197
+00:11:52,740 --> 00:11:54,740
+And this is what I do anyway.
+
+198
+00:11:54,740 --> 00:12:00,980
+Like when I start a project, I copy a pyproject.toml from somewhere and then I modify it according
+
+199
+00:12:00,980 --> 00:12:03,540
+to like my needs.
+
+200
+00:12:03,540 --> 00:12:06,300
+So you probably want to change my name because,
+
+201
+00:12:07,660 --> 00:12:10,100
+so the reason is we will actually be uploading this
+
+202
+00:12:10,100 --> 00:12:12,020
+to the Python package index,
+
+203
+00:12:12,020 --> 00:12:14,260
+which means you can install it with pip.
+
+204
+00:12:14,260 --> 00:12:19,260
+And that means, yeah, so you don't want,
+
+205
+00:12:19,420 --> 00:12:20,900
+you want a unique name.
+
+206
+00:12:20,900 --> 00:12:23,820
+If you have, if you try with a name that already exists
+
+207
+00:12:23,820 --> 00:12:26,900
+in PyPi, that's already a Python package,
+
+208
+00:12:26,900 --> 00:12:29,140
+then it will not work.
+
+209
+00:12:29,140 --> 00:12:34,260
+So let's just identify it as the package for Python SciComp 2023.
+
+210
+00:12:34,260 --> 00:12:34,980
+That's a good idea.
+
+211
+00:12:35,940 --> 00:12:38,340
+Okay, otherwise everything is okay.
+
+212
+00:12:38,340 --> 00:12:39,540
+It depends on SciPy.
+
+213
+00:12:40,980 --> 00:12:46,180
+There's a quick example, a quick description and readme file.
+
+214
+00:12:49,460 --> 00:12:54,100
+Yeah, so you can also add your name and email if you want to.
+
+215
+00:12:55,540 --> 00:12:57,140
+We could add additional ones.
+
+216
+00:12:57,140 --> 00:13:04,480
+Yeah, you can add multiple authors. You can add more dependencies. That's all. And, yeah,
+
+217
+00:13:04,480 --> 00:13:05,840
+there is something called a long description.
+
+218
+00:13:05,840 --> 00:13:07,840
+I'll leave that at example.org.
+
+219
+00:13:07,840 --> 00:13:15,560
+Okay. Yeah. So, this is it. And what this does, it makes your package installable with
+
+220
+00:13:15,560 --> 00:13:22,480
+pip. So, now we can run pip install. And, well, it's not yet on PyPI. It's not yet in
+
+221
+00:13:22,480 --> 00:13:28,080
+index, so we need to point it by pointing to this folder if we want to install. But let's just
+
+222
+00:13:28,080 --> 00:13:35,840
+demonstrate it quickly. So `pip install .`.   `.` is the current folder. Okay. You don't have pip.
+
+223
+00:13:41,200 --> 00:13:44,560
+Oh, okay. Okay, we will fix this. But that should have worked.
+
+224
+00:13:44,560 --> 00:13:50,160
+And if you are in the Anaconda environment, base environment, I think this should work.
+
+225
+00:13:52,480 --> 00:13:59,840
+I would just pip.
+
+226
+00:13:59,840 --> 00:14:07,420
+So the next thing we do is we go to the exercise which is essentially creating the package
+
+227
+00:14:07,420 --> 00:14:12,300
+we just created and testing that you can install it locally.
+
+228
+00:14:12,300 --> 00:14:20,420
+So we will give you, now we're running a bit late, we'll give you 15 minutes anyway because
+
+229
+00:14:20,420 --> 00:14:27,700
+This is the important part and that means we'll be back at 11.40.
+
+230
+00:14:33,540 --> 00:14:38,900
+All right, so, yeah, good luck and see you in 15 minutes. Bye.
+
+231
+00:14:43,000 --> 00:14:56,620
+Hello. So, yeah, let's go straight into PyPi. This will not take that long. So, we do this
+
+232
+00:14:56,620 --> 00:15:02,220
+as a demonstration, but you can also follow along and upload your package to test PyPi
+
+233
+00:15:02,220 --> 00:15:06,380
+preferably, because unless you have an actual package you're going to want to upload.
+
+234
+00:15:08,300 --> 00:15:14,140
+So yeah, we will be uploading to testPyPi. I guess I should explain what PyPi is, right?
+
+235
+00:15:16,380 --> 00:15:19,900
+So PyPi stands for Python Package Index.
+
+236
+00:15:22,940 --> 00:15:29,820
+And when you type pip install and just the package name instead of a folder, for example,
+
+237
+00:15:29,820 --> 00:15:36,940
+then it will look for that package in PyPi in the Python package index and yeah you can push
+
+238
+00:15:36,940 --> 00:15:42,620
+your packages there and then people can install them with just pip install the name. So it's a
+
+239
+00:15:42,620 --> 00:15:49,260
+very useful thing to have. So yeah we'll show you how to use it and you can follow along if you want
+
+240
+00:15:49,260 --> 00:15:57,740
+to and you can upload something to test PyPi with these instructions. And yeah test PyPi is
+
+241
+00:15:57,740 --> 00:16:03,900
+kind of what it says so it's for testing and your packages will get removed rather quickly.
+
+242
+00:16:03,900 --> 00:16:10,380
+I don't remember how quickly exactly but it's not meant for actual packages. I have the impression
+
+243
+00:16:10,380 --> 00:16:17,420
+it's not that quickly I just found that there's still one that I probably put on there a year ago.
+
+244
+00:16:19,340 --> 00:16:27,260
+Okay I'm kind of surprised but okay well fine. Anyway so it is meant for testing
+
+245
+00:16:27,260 --> 00:16:33,580
+So yeah, so let's just go through the steps on how to get this package into PyPi.
+
+246
+00:16:33,580 --> 00:16:35,740
+So yeah, first you run build.
+
+247
+00:16:37,980 --> 00:16:38,860
+This doesn't work.
+
+248
+00:16:42,860 --> 00:16:43,340
+Okay.
+
+249
+00:16:43,340 --> 00:16:48,860
+Build is a package and cannot be directly executed, but that's kind of the point, isn't it?
+
+250
+00:16:50,380 --> 00:16:50,880
+Should be.
+
+251
+00:16:51,820 --> 00:16:55,420
+Okay, so maybe we need to update the instructions a bit. Let's see.
+
+252
+00:16:57,260 --> 00:17:05,900
+What about twine.build, maybe?
+
+253
+00:17:05,900 --> 00:17:07,340
+OK, that could be.
+
+254
+00:17:07,340 --> 00:17:11,540
+Or, well, OK, let's install twine.
+
+255
+00:17:11,540 --> 00:17:13,940
+Yeah, OK, that's the next step.
+
+256
+00:17:13,940 --> 00:17:22,940
+So Python packaging guide tells you to, oh, come on.
+
+257
+00:17:22,940 --> 00:17:24,620
+And we are using setup tools.
+
+258
+00:17:27,260 --> 00:17:28,260
+Okay.
+
+259
+00:17:28,260 --> 00:17:29,260
+Okay.
+
+260
+00:17:29,260 --> 00:17:42,260
+Well, it tells you to install build using Python, using pip.
+
+261
+00:17:42,260 --> 00:17:44,260
+Let's try that.
+
+262
+00:17:44,260 --> 00:17:52,260
+This is a relatively new site, right?
+
+263
+00:17:52,260 --> 00:17:55,260
+PyPi instructions.
+
+264
+00:17:55,260 --> 00:18:02,540
+Can you try running pip install, or did you try installing Twine and it didn't work?
+
+265
+00:18:02,540 --> 00:18:07,540
+I tried installing Twine and it didn't want to do, so I'm going back to the base environment
+
+266
+00:18:07,540 --> 00:18:08,540
+to see.
+
+267
+00:18:08,540 --> 00:18:09,540
+Oh, okay.
+
+268
+00:18:09,540 --> 00:18:11,740
+This, well, we'll try for another two minutes, say, but.
+
+269
+00:18:11,740 --> 00:18:13,980
+Actually, Twine might just be the uploader.
+
+270
+00:18:13,980 --> 00:18:17,380
+No, pip install Twine.
+
+271
+00:18:17,380 --> 00:18:18,380
+Okay.
+
+272
+00:18:18,380 --> 00:18:19,380
+Okay.
+
+273
+00:18:19,380 --> 00:18:20,380
+Okay.
+
+274
+00:18:20,380 --> 00:18:21,380
+Okay.
+
+275
+00:18:21,380 --> 00:18:23,960
+Okay, and then pip install build.
+
+276
+00:18:29,140 --> 00:18:33,540
+Okay, now let's try Python 3 minus m build.
+
+277
+00:18:37,580 --> 00:18:39,140
+The tree is in the wrong place.
+
+278
+00:18:41,460 --> 00:18:42,300
+Yeah.
+
+279
+00:18:43,740 --> 00:18:46,880
+So there has been a relatively recent change in.
+
+280
+00:18:51,380 --> 00:18:53,860
+OK, that did something.
+
+281
+00:18:53,860 --> 00:18:55,980
+Good?
+
+282
+00:18:55,980 --> 00:18:57,140
+Yeah, that looks correct.
+
+283
+00:19:01,140 --> 00:19:03,780
+OK.
+
+284
+00:19:03,780 --> 00:19:09,020
+And then we'll try Twine upload.
+
+285
+00:19:09,020 --> 00:19:11,820
+So Twine is a Python package that
+
+286
+00:19:11,820 --> 00:19:18,140
+uploads things into the Python package index.
+
+287
+00:19:18,140 --> 00:19:23,740
+here we are specifying to put it into the test index. You do need a username and a password,
+
+288
+00:19:23,740 --> 00:19:29,020
+you need to create an account to upload anything and it will of course be associated with your
+
+289
+00:19:29,020 --> 00:19:47,900
+account. Okay there we are and now we can try installing it. So normally if you put
+
+290
+00:19:47,900 --> 00:19:52,220
+something into PyPi, it's just pip install package name, but in this case we need to
+
+291
+00:19:52,220 --> 00:20:03,100
+tell it to use the test PyPi instead. What was the name? It was underscore after four, I think.
+
+292
+00:20:09,260 --> 00:20:12,460
+I tried like this because it seems like it changed the underscores.
+
+293
+00:20:12,460 --> 00:20:15,260
+Oh, okay. All right, so yeah.
+
+294
+00:20:15,260 --> 00:20:22,460
+underscore is not allowed now it's installing our package yeah and now we should have it
+
+295
+00:20:29,260 --> 00:20:36,220
+so is it now called calculator for pysc 2023 or is it just called calculator we will see
+
+296
+00:20:40,460 --> 00:20:44,620
+oh well they are definitely not with minus signs it changes minus signs to underscores
+
+297
+00:20:45,260 --> 00:20:56,260
+Okay, well, we did run into a couple of problems here, but okay, fine.
+
+298
+00:20:56,260 --> 00:21:03,740
+So we need to update this example a little bit to use SciPy correctly and to, well, I
+
+299
+00:21:03,740 --> 00:21:10,700
+guess the instructions for uploading the PyPi were correct, but somehow it didn't work in
+
+300
+00:21:10,700 --> 00:21:13,140
+that one environment.
+
+301
+00:21:13,140 --> 00:21:18,260
+So something called build was already installed,
+
+302
+00:21:18,260 --> 00:21:19,620
+but it wasn't.
+
+303
+00:21:19,620 --> 00:21:21,460
+Oh, no, no, maybe it just wasn't installed
+
+304
+00:21:21,460 --> 00:21:22,900
+and it was just a folder.
+
+305
+00:21:25,420 --> 00:21:27,860
+In any case, it worked.
+
+306
+00:21:27,860 --> 00:21:31,220
+I have an impression that the SciPy version that
+
+307
+00:21:31,220 --> 00:21:38,740
+is being used here is not really what we want.
+
+308
+00:21:38,740 --> 00:21:39,500
+Could be.
+
+309
+00:21:39,500 --> 00:21:41,860
+Yeah, the SciPy 0.1.
+
+310
+00:21:41,860 --> 00:21:48,500
+0.1 is not what we want. Why would it – oh, because it's from test.py. It got SciPy from
+
+311
+00:21:48,500 --> 00:21:55,060
+test.py. So, it didn't get the latest version. It got whatever they used for testing a long time
+
+312
+00:21:55,060 --> 00:22:06,100
+ago when they tested uploading SciPy last time. All right. In any case, that is how you upload
+
+313
+00:22:06,100 --> 00:22:14,180
+packages to scipy and also to PyPi to the python package index and that makes installing them a lot
+
+314
+00:22:14,180 --> 00:22:22,980
+more straightforward for your friends and collaborators. All right so there's one thing
+
+315
+00:22:22,980 --> 00:22:27,380
+I quickly want to point out this question about what the license and readme files should say.
+
+316
+00:22:28,100 --> 00:22:34,340
+So in the exercise description we added a lot of details about well essentially we just added
+
+317
+00:22:34,340 --> 00:22:42,500
+links to Code Refinery materials which you can read up on your own time or come to the
+
+318
+00:22:42,500 --> 00:22:52,060
+Code Refinery course. We would love to have you there. There's something about documentation
+
+319
+00:22:52,060 --> 00:23:01,900
+in general, so that also tells you some ways of writing README files. In social coding,
+
+320
+00:23:01,900 --> 00:23:08,620
+is a part about software licensing the general instruction the most important thing is use an
+
+321
+00:23:08,620 --> 00:23:15,500
+existing license don't write your own because it's legal language and yeah it's better to leave
+
+322
+00:23:15,500 --> 00:23:24,140
+that for the lawyers and then there's a section on testing automated testing which we mentioned
+
+323
+00:23:24,140 --> 00:23:28,380
+it's nice thing to have in a package but we didn't actually show you how to do it so there
+
+324
+00:23:28,380 --> 00:23:35,580
+is a section on that. Otherwise we are right on time for a break. Anything else?
+
+325
+00:23:37,580 --> 00:23:46,700
+I think not really. All right, so let's take a 10-minute break and then come back for web APIs.
+
+326
+00:23:50,060 --> 00:23:52,780
+All right, bye.
+

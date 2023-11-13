@@ -1,0 +1,876 @@
+1
+00:00:02,440 --> 00:00:05,920
+OK, with that being said, I guess
+
+2
+00:00:05,920 --> 00:00:08,200
+next is our panel discussion.
+
+3
+00:00:08,200 --> 00:00:15,200
+I'll switch to the notes here.
+
+4
+00:00:15,200 --> 00:00:16,200
+Yes.
+
+5
+00:00:16,200 --> 00:00:26,200
+Unfortunately, not all instructors from the first two days were available, but at least
+
+6
+00:00:26,200 --> 00:00:30,200
+we have some Alto people here.
+
+7
+00:00:30,200 --> 00:00:31,200
+Yeah.
+
+8
+00:00:31,200 --> 00:00:39,840
+So it's basically like our team here is answering questions.
+
+9
+00:00:39,840 --> 00:00:40,340
+OK.
+
+10
+00:00:40,340 --> 00:00:44,880
+So yeah, this is something that we tried a year or two ago
+
+11
+00:00:44,880 --> 00:00:46,520
+and worked really well.
+
+12
+00:00:46,520 --> 00:00:59,800
+So basically, yeah, think of what you'd like to discuss
+
+13
+00:00:59,800 --> 00:01:02,400
+and send it.
+
+14
+00:01:12,800 --> 00:01:14,200
+Someone's typing at Jupyter.
+
+15
+00:01:15,000 --> 00:01:15,600
+Question.
+
+16
+00:01:18,200 --> 00:01:19,500
+Do you use Jupyter training?
+
+17
+00:01:21,300 --> 00:01:21,800
+AI?
+
+18
+00:01:22,900 --> 00:01:25,400
+Machine learning image analysis algorithm.
+
+19
+00:01:25,400 --> 00:01:37,200
+I mean, I would start with Jupyter for most, like, for training a relatively simple model,
+
+20
+00:01:37,200 --> 00:01:42,200
+I would start with Jupyter, but then at some point when I'm writing the model, I would
+
+21
+00:01:42,200 --> 00:01:49,720
+probably take the model definition part, for example, and move it into a Python file, a
+
+22
+00:01:49,720 --> 00:01:50,720
+module.
+
+23
+00:01:50,720 --> 00:01:57,440
+Yeah, what a problem can happen with Jupyter is that it's, by design, interactive.
+
+24
+00:01:57,440 --> 00:02:02,560
+And interactive is all fun and dandy if you're actually watching the screen and actually typing
+
+25
+00:02:02,560 --> 00:02:06,480
+commands. And that is, of course, when you're prototyping a model or something like that,
+
+26
+00:02:06,480 --> 00:02:11,040
+you're actually doing it. But when we're talking about longer AI training,
+
+27
+00:02:11,760 --> 00:02:20,080
+usually interactive doesn't cut it. Like if Facebook is writing a llama or something,
+
+28
+00:02:20,080 --> 00:02:26,400
+there's no one guy running Jupyter cells. They have a non-interactive script that they run on
+
+29
+00:02:26,400 --> 00:02:31,440
+a compute cluster. For example, for Lama, they were using two compute clusters with huge amounts
+
+30
+00:02:31,440 --> 00:02:41,200
+of GPU resources. If you're doing a big AI training, you usually don't run it in an interactive mode.
+
+31
+00:02:41,200 --> 00:02:46,320
+You run it non-interactively and then you store the model checkpoints and that sort of stuff.
+
+32
+00:02:46,320 --> 00:02:57,320
+and store results maybe in a TensorBoard or 1 DB or something like that to monitor the training progress.
+
+33
+00:02:57,320 --> 00:03:01,320
+But of course for prototyping and that sort of thing, running Jupyter is good.
+
+34
+00:03:01,320 --> 00:03:05,320
+But then you usually need to have access to a GPU card.
+
+35
+00:03:05,320 --> 00:03:12,320
+And especially in compute clusters, the GPUs are usually demanded by these longer term jobs.
+
+36
+00:03:12,320 --> 00:03:17,920
+term jobs, these jobs that run for days and interactive usage basically means
+
+37
+00:03:17,920 --> 00:03:20,760
+that it's idling, the GPU is idling most of the time.
+
+38
+00:03:21,120 --> 00:03:25,240
+So usually what we recommend is that people who are actively doing
+
+39
+00:03:26,040 --> 00:03:31,080
+modern development, they get a cheap gaming GPU to prototype on with
+
+40
+00:03:31,080 --> 00:03:32,200
+Jupyter or something like that.
+
+41
+00:03:32,240 --> 00:03:35,760
+And then they move on to compute cluster to run the actual
+
+42
+00:03:35,760 --> 00:03:39,440
+training that takes days or even longer.
+
+43
+00:03:42,320 --> 00:03:51,760
+There's one question about benefits or disadvantages of Python versus other scientific or other
+
+44
+00:03:51,760 --> 00:03:53,080
+programming languages.
+
+45
+00:03:53,080 --> 00:03:57,000
+The example given here is Matlab.
+
+46
+00:03:57,000 --> 00:04:04,320
+My personal take would be one big advantage of Python is that it's open source, mostly.
+
+47
+00:04:04,320 --> 00:04:10,480
+There might be some packages where it's a bit more difficult that rely on the proprietary
+
+48
+00:04:10,480 --> 00:04:23,200
+software. But overall, it being open source is a big benefit. I have the impression, at least,
+
+49
+00:04:23,200 --> 00:04:29,760
+that Python is better when it comes to backward compatibility than, for example, Matlab.
+
+50
+00:04:31,440 --> 00:04:37,120
+I think Matlab has a good track record on that. But I'd say that Matlab is basically like,
+
+51
+00:04:37,120 --> 00:04:42,160
+You get what you buy because it's a commercial product. There are many
+
+52
+00:04:43,840 --> 00:04:54,400
+answers and many programs that are designed for doing some coding or calculations or running
+
+53
+00:04:54,400 --> 00:04:59,200
+some simulations. For example, MATLAB is very popular with signal processing people,
+
+54
+00:04:59,200 --> 00:05:05,360
+electrical people and that sort of stuff because it has good support for that in the toolboxes.
+
+55
+00:05:05,360 --> 00:05:12,080
+but it's like if you want to do MATLAB or web scraping that's not like it doesn't have the
+
+56
+00:05:12,080 --> 00:05:18,080
+connections that Python have to other things but it's very good at those things that it's
+
+57
+00:05:18,080 --> 00:05:25,840
+been designed to do and what the developers provide but it's not like a generalist programming language
+
+58
+00:05:26,480 --> 00:05:33,360
+what Python is as well. Well nowadays MATLAB does have a lot of interfaces with other languages
+
+59
+00:05:33,360 --> 00:05:42,160
+So, in the end, it's a bit of a style question.
+
+60
+00:05:42,160 --> 00:05:52,360
+And one clear thing is that if you use MATLAB, whoever you think might want to use your code
+
+61
+00:05:52,360 --> 00:05:54,440
+also has to have MATLAB.
+
+62
+00:05:54,440 --> 00:05:58,240
+And that means they have to pay for it.
+
+63
+00:05:58,240 --> 00:06:09,240
+So, I would assume at least that Python code is more widely used just because there is no financial barrier to using it.
+
+64
+00:06:16,240 --> 00:06:26,240
+I remember once when I was starting in a previous research group, everyone that comes in says, okay, who has the bootleg MATLAB copy.
+
+65
+00:06:26,240 --> 00:06:31,680
+But, you know, I never did that because I use Python and it's free already.
+
+66
+00:06:31,680 --> 00:06:40,520
+So, you know, even though it is available, the fact that you have to deal with licenses
+
+67
+00:06:40,520 --> 00:06:55,160
+and all that makes it harder and your work less reusable.
+
+68
+00:06:55,160 --> 00:07:01,640
+the best way to export plots if you need them as vector graphics. I think Matplotlib does support
+
+69
+00:07:01,640 --> 00:07:09,080
+vector graphics, right? Yeah, like probably most of the plotting libraries you could find a way
+
+70
+00:07:09,080 --> 00:07:19,880
+to export to SVG or PDF or something. So basically, yeah.
+
+71
+00:07:22,920 --> 00:07:27,320
+Let's see. Now we're getting lots of questions here.
+
+72
+00:07:29,320 --> 00:07:35,000
+Are you planning to run a Python course on AI and ML? I had answered that up above a little bit,
+
+73
+00:07:35,000 --> 00:07:40,680
+and my general thought was there's so many courses about AI and machine learning out there that
+
+74
+00:07:42,680 --> 00:07:48,120
+that's not our main target. There's a similar question right below about parallel programming
+
+75
+00:07:48,120 --> 00:07:52,600
+which we I mean we covered a lot of things really quickly and didn't go very deep in a
+
+76
+00:07:52,600 --> 00:07:59,320
+lot of things. There are a lot of courses out there and materials out there and
+
+77
+00:07:59,320 --> 00:08:07,680
+And so, yeah, I'm not sure if we can actually get 500 people or even 100 people in a course
+
+78
+00:08:07,680 --> 00:08:15,400
+about MPI or parallel programming in general, but you can study it and then, like, talk
+
+79
+00:08:15,400 --> 00:08:21,480
+about it with your local IT people, hopefully it will help.
+
+80
+00:08:21,480 --> 00:08:22,480
+Yeah.
+
+81
+00:08:22,480 --> 00:08:25,920
+In both cases, like, I think there's this kind of, like, in the industry as a whole,
+
+82
+00:08:25,920 --> 00:08:32,720
+is kind of a situation where the examples and small courses on how to write an MPI Hello World
+
+83
+00:08:32,720 --> 00:08:44,640
+or how to write a Keras or PyTorch machine learning thing that analyzes the MNIST numbers
+
+84
+00:08:44,640 --> 00:08:52,000
+or something. There's lots of material on the first part of the thing. Then there's usually
+
+85
+00:08:52,000 --> 00:09:01,760
+how do you scale it up? How do you scale MPI up? Or how do you get a big machine learning pipeline
+
+86
+00:09:01,760 --> 00:09:07,280
+or deep learning pipeline, training pipeline working? Then it goes super technical, super
+
+87
+00:09:07,280 --> 00:09:15,760
+quickly. And then it gets into this kind of a valley where usually you cross that valley only
+
+88
+00:09:15,760 --> 00:09:24,720
+by having engineers or somebody, a support person, who actually constructs a huge scaffolding that
+
+89
+00:09:24,720 --> 00:09:31,840
+you can cross the valley. And of course, big companies like Google and Facebook and those
+
+90
+00:09:31,840 --> 00:09:37,440
+kinds of companies, they have engineers who do that kind of scaffolding. But teaching that
+
+91
+00:09:37,440 --> 00:09:42,560
+that scaffolding is very hard, usually.
+
+92
+00:09:42,560 --> 00:09:49,200
+The biggest issue is that teaching that in a general way
+
+93
+00:09:49,200 --> 00:09:51,160
+is often not possible.
+
+94
+00:09:51,160 --> 00:09:53,960
+Because what you need to do depends
+
+95
+00:09:53,960 --> 00:09:58,160
+on your particular field or particular problem.
+
+96
+00:09:58,160 --> 00:10:02,360
+So we can teach basics of MPI, how MPI works with our ranks,
+
+97
+00:10:02,360 --> 00:10:05,680
+what functions are available to you.
+
+98
+00:10:05,680 --> 00:10:14,240
+Then we can talk specifically about your problem, your research field or the program you're writing
+
+99
+00:10:14,240 --> 00:10:23,520
+and talk about how to apply that framework. We can teach how to do MNIST with PyTorch
+
+100
+00:10:25,680 --> 00:10:30,560
+or do image recognition with PyTorch but then you will have a specific case
+
+101
+00:10:30,560 --> 00:10:38,520
+and most of what we – those are – we can give you the basics, but then from there it's
+
+102
+00:10:38,520 --> 00:10:43,980
+too specific, so it really only applies to you and a small group of people.
+
+103
+00:10:43,980 --> 00:10:51,200
+And then we talk with three people in the room and that's fine, but it's not a course.
+
+104
+00:10:51,200 --> 00:10:57,240
+It's a garage session, which is a very useful thing to have.
+
+105
+00:10:57,240 --> 00:11:06,180
+Yeah, many of these things which we're talking about, or these other courses requested, they
+
+106
+00:11:06,180 --> 00:11:10,240
+already exist, or you can find a good tutorial online.
+
+107
+00:11:10,240 --> 00:11:19,580
+And we very carefully targeted this course to things that are important for a junior
+
+108
+00:11:19,580 --> 00:11:26,140
+scientist but are not really taught other places.
+
+109
+00:11:26,140 --> 00:11:30,940
+you might not know about because of course you have to go follow up for most of these things.
+
+110
+00:11:32,220 --> 00:11:35,020
+Can we talk about a little bit about what our daily jobs are?
+
+111
+00:11:36,780 --> 00:11:39,340
+So how do we relate to researchers?
+
+112
+00:11:43,580 --> 00:11:51,100
+Well, I think most of us mainly help researchers with a variety of questions when it comes to
+
+113
+00:11:51,100 --> 00:12:01,500
+programming, but we are mostly, I think we are not solving the scientific question, we are solving
+
+114
+00:12:01,500 --> 00:12:07,740
+the implementation of whatever they come up with, with their solution or enable them to
+
+115
+00:12:08,940 --> 00:12:12,060
+use that solution or make it available to others.
+
+116
+00:12:12,060 --> 00:12:25,860
+Exactly, so that to me at least is one of the issues with specific questions for specific
+
+117
+00:12:25,860 --> 00:12:34,220
+software where I would commonly say, ask an expert in your field, they have a much better
+
+118
+00:12:34,220 --> 00:12:40,260
+chance of having in-depth knowledge of, okay, these are the tools that are currently state
+
+119
+00:12:40,260 --> 00:12:48,120
+of the art when it comes to analyzing tools or analyzing data.
+
+120
+00:12:48,120 --> 00:12:56,960
+We can of course also search things, but we are not commonly using these tools ourselves
+
+121
+00:12:56,960 --> 00:13:00,600
+most of the time.
+
+122
+00:13:00,600 --> 00:13:08,380
+There might be projects where we get in connection and see things, and yeah, if we see that that
+
+123
+00:13:08,380 --> 00:13:15,820
+works well or is well documented or something we can sometimes make suggestions but in a general
+
+124
+00:13:15,820 --> 00:13:26,780
+principle they are specialized highly specialized software where we can help you get into it or
+
+125
+00:13:27,340 --> 00:13:32,780
+if you tell us that you need something or if people tell us that they need something to
+
+126
+00:13:32,780 --> 00:13:37,260
+to something done with a certain software or so,
+
+127
+00:13:37,260 --> 00:13:40,220
+we can probably set up a system that they can use,
+
+128
+00:13:40,220 --> 00:13:42,180
+a kind of building a small prototype
+
+129
+00:13:42,180 --> 00:13:43,480
+that they can then expand.
+
+130
+00:13:44,700 --> 00:13:49,100
+But as, yeah, on a more general level,
+
+131
+00:13:49,100 --> 00:13:54,100
+we are not the experts in the software, I would say.
+
+132
+00:14:00,740 --> 00:14:01,940
+Any other opinions?
+
+133
+00:14:02,780 --> 00:14:13,860
+Yeah, I'd say that throughout this course, you might get this impression that you start
+
+134
+00:14:13,860 --> 00:14:19,320
+with the coding, which is NumPy and Pandas and that, and it quite quickly goes into actually
+
+135
+00:14:19,320 --> 00:14:24,020
+what you're doing is doing library management and installing dependencies.
+
+136
+00:14:24,020 --> 00:14:27,300
+And that's, of course, where we usually help our users.
+
+137
+00:14:27,300 --> 00:14:33,300
+like, if you know about the scientific subject, you know, about the context of like context of
+
+138
+00:14:33,300 --> 00:14:38,420
+the functions you're calling, what, what does it mean to do a Markov chain or whatever?
+
+139
+00:14:38,420 --> 00:14:43,460
+Like, you know, a context of where, where do I use this? Like, I don't know, like,
+
+140
+00:14:45,700 --> 00:14:51,620
+genome splitting function or whatever, like, you, you know, the context of the function,
+
+141
+00:14:51,620 --> 00:14:58,340
+the mathematical context and the subject context. But we usually help with that annoying part,
+
+142
+00:14:58,340 --> 00:15:05,780
+which is like, okay, how can I get this working? And this is unfortunately a big part of the whole
+
+143
+00:15:05,780 --> 00:15:15,540
+field because there's so much available. And of course, everybody wants to utilize the tools
+
+144
+00:15:15,540 --> 00:15:24,580
+because if you've ever tried writing, for example, Fortran code, and then you get some solutions
+
+145
+00:15:24,580 --> 00:15:29,860
+out of it and you store it, then you have to think about, okay, how do I even visualize this?
+
+146
+00:15:29,860 --> 00:15:34,740
+How do I plot this? Because it's like a Fortran binary format or something. Nobody wants to do
+
+147
+00:15:34,740 --> 00:15:40,340
+that. Nobody wants to write their own data readers or CSV readers or that sort of stuff.
+
+148
+00:15:40,340 --> 00:15:44,820
+nobody wants to waste time on that. So you want to use already existing tools. But of course,
+
+149
+00:15:45,540 --> 00:15:52,340
+if you want to use the already existing tools, you encounter a lot of hiccups with those tools.
+
+150
+00:15:52,340 --> 00:15:59,780
+And that's where we usually jump in and help the users. We understand enough of the context
+
+151
+00:15:59,780 --> 00:16:05,300
+to understand what the tools, how are the tools are supposed to be used and that sort of stuff,
+
+152
+00:16:05,300 --> 00:16:08,180
+and what the user wants to do with the tools.
+
+153
+00:16:08,180 --> 00:16:11,740
+But usually, we don't know about the field that much.
+
+154
+00:16:11,740 --> 00:16:16,180
+We mainly know the general idea about it.
+
+155
+00:16:16,180 --> 00:16:19,940
+And then we can figure out how to apply those tools
+
+156
+00:16:19,940 --> 00:16:21,980
+to that specific case.
+
+157
+00:16:26,340 --> 00:16:28,740
+Yeah.
+
+158
+00:16:28,740 --> 00:16:31,420
+I like question 42.
+
+159
+00:16:31,420 --> 00:16:34,340
+Do you think Python will ever become outdated, replaced
+
+160
+00:16:34,340 --> 00:16:39,460
+by a different language, since some people seem to say that R
+
+161
+00:16:39,460 --> 00:16:42,980
+might not be used anymore in the near future.
+
+162
+00:16:42,980 --> 00:16:45,100
+I've put an answer in there.
+
+163
+00:16:45,100 --> 00:16:47,620
+I think it's possible, sure.
+
+164
+00:16:47,620 --> 00:16:49,980
+I don't think it's likely anywhere
+
+165
+00:16:49,980 --> 00:16:58,260
+in the foreseeable future, since the ecosystem has kind of
+
+166
+00:16:58,260 --> 00:17:01,660
+achieved a critical mass, provides
+
+167
+00:17:01,660 --> 00:17:11,260
+so much possibilities and has addressed the issues that the language has.
+
+168
+00:17:11,260 --> 00:17:23,620
+So all these bridging to other languages where you have a lot more efficient ways to do certain
+
+169
+00:17:23,620 --> 00:17:30,140
+and things, make the disadvantages somewhat less.
+
+170
+00:17:32,780 --> 00:17:39,260
+So like, let's say Python seems to have this really good balance
+
+171
+00:17:39,260 --> 00:17:44,060
+between power and user interface,
+
+172
+00:17:44,060 --> 00:17:47,420
+and also a way that it moves slow enough
+
+173
+00:17:47,420 --> 00:17:51,780
+they really think about how the language is developing.
+
+174
+00:17:51,780 --> 00:17:58,460
+It is being actively developed, so yeah, that obviously helps a lot.
+
+175
+00:17:58,460 --> 00:18:06,300
+So there is that one little design choice that it can't do multi-threading, but I mean
+
+176
+00:18:06,300 --> 00:18:12,100
+we make this ways to get around that and multi-threading happens in the libraries anyway, so it's not
+
+177
+00:18:12,100 --> 00:18:13,260
+really a big problem.
+
+178
+00:18:13,260 --> 00:18:20,120
+But yeah, the way I could see any language gets replaced is by the design issues becoming
+
+179
+00:18:20,120 --> 00:18:25,600
+problematic, or by a completely new paradigm becoming problematic.
+
+180
+00:18:25,600 --> 00:18:26,600
+Yeah.
+
+181
+00:18:26,600 --> 00:18:32,400
+Python has this kind of like a tendency of whatever, like people say, like if people
+
+182
+00:18:32,400 --> 00:18:37,160
+say that, okay, they don't like a feature in Python, like suddenly there's like a package
+
+183
+00:18:37,160 --> 00:18:42,440
+that somebody like implements that, like for example, like Python doesn't do static typing,
+
+184
+00:18:42,440 --> 00:18:48,000
+but nowadays people have written extensions that basically like for static typing wherever,
+
+185
+00:18:48,000 --> 00:18:53,600
+or they try to do type hints and they try to do typing as much as possible in Python.
+
+186
+00:18:57,360 --> 00:19:03,040
+Python is object-oriented and it's functional at the same time. There's people who like the
+
+187
+00:19:03,040 --> 00:19:08,160
+functional side and they write functional programming only and they try to implement
+
+188
+00:19:08,160 --> 00:19:14,400
+their stuff as functional programming and they find extensions that provide that. Then there's
+
+189
+00:19:14,400 --> 00:19:19,040
+people who like the object-oriented style and they write extensions that make that easier.
+
+190
+00:19:19,040 --> 00:19:23,600
+And then it's like, is it even the same language anymore? It's like a completely different dialect
+
+191
+00:19:23,600 --> 00:19:32,720
+of the same thing. And it's very hard to say like, yeah, what is the core language in Python
+
+192
+00:19:32,720 --> 00:19:39,200
+is so adaptable. And I think that's the main thing why it's so popular, that you can do all
+
+193
+00:19:39,200 --> 00:19:45,200
+kinds of stuff with them. There are libraries like, I mean, I guess TensorFlow is a great example.
+
+194
+00:19:46,720 --> 00:19:54,960
+It is essentially declarative. So Python is written to be, if you know, there are different
+
+195
+00:19:54,960 --> 00:20:02,640
+programming paradigms and Python is not written as a declarative language, but there are libraries
+
+196
+00:20:02,640 --> 00:20:08,400
+that actually make it declarative. So it can actually, depending on what library you use,
+
+197
+00:20:08,400 --> 00:20:13,120
+it can use a completely different programming paradigm. It's extensible enough.
+
+198
+00:20:14,560 --> 00:20:20,480
+And also the question about when people are asking there about R, I like R in many cases.
+
+199
+00:20:21,040 --> 00:20:26,160
+For statistics, I think R is a wonderful language. I wouldn't, again, do web scraping in R
+
+200
+00:20:26,160 --> 00:20:32,240
+necessarily or web servers or something like that. But again, it's not the forte of the language,
+
+201
+00:20:32,240 --> 00:20:37,920
+but it's very good at what it does. And I think the thing with the languages is same as
+
+202
+00:20:37,920 --> 00:20:44,080
+with natural languages? Are people actually using it in their everyday speech, basically?
+
+203
+00:20:44,080 --> 00:20:50,880
+Are people writing new stuff using that language? Are they creating new things or are they like
+
+204
+00:20:50,880 --> 00:20:56,800
+songs that some old person, like a hundred year old person remembers and that's the only
+
+205
+00:20:56,800 --> 00:21:02,800
+recollection that we have of a language and then we record it on a tape and then we remember that
+
+206
+00:21:02,800 --> 00:21:09,520
+we used to have this sort of a language, like languages are only alive when people use them.
+
+207
+00:21:09,520 --> 00:21:15,440
+Like in a normal, normal case, I think maybe some linguistics might be, might have a different
+
+208
+00:21:15,440 --> 00:21:19,840
+definition, but, but I think for programming language, the main thing is like who are,
+
+209
+00:21:19,840 --> 00:21:25,680
+who other people are using it? Not, not whether I'm using it correctly. If I have nobody to speak
+
+210
+00:21:25,680 --> 00:21:32,080
+with that language, it's not really helping me in any way. It's, it's about the whole like
+
+211
+00:21:32,080 --> 00:21:37,600
+community and ecosystem. And I think Python currently has a very healthy ecosystem. Of course,
+
+212
+00:21:37,600 --> 00:21:42,320
+there might be new things coming, but it's hard to tell. The timelines are so long.
+
+213
+00:21:49,280 --> 00:21:53,760
+Some questions about what to learn next. So there's not just the programming language,
+
+214
+00:21:53,760 --> 00:21:59,600
+but you might have seen a lot of what we're doing here is about how the programming language
+
+215
+00:21:59,600 --> 00:22:05,680
+interacts with the operating system, the data, things like that. And that's another good thing
+
+216
+00:22:05,680 --> 00:22:11,760
+to think about and follow up on, no matter what language you're using.
+
+217
+00:22:17,040 --> 00:22:21,600
+Question 45. If you want to learn Python or any other language, it's good to have a
+
+218
+00:22:21,600 --> 00:22:27,040
+problem and a deadline, and then you should try Advent of Code, just advertising Advent of Code.
+
+219
+00:22:27,040 --> 00:22:31,560
+But it's fun if you have time.
+

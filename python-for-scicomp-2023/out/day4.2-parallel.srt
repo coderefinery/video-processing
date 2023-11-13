@@ -1,0 +1,2068 @@
+1
+00:00:00,000 --> 00:00:00,480
+Okay, are we ready?
+
+2
+00:00:00,480 --> 00:00:01,480
+Yeah.
+
+3
+00:00:01,480 --> 00:00:02,480
+Yeah.
+
+4
+00:00:02,480 --> 00:00:03,480
+So, okay.
+
+5
+00:00:03,480 --> 00:00:07,960
+So, the first topic is parallel programming and that's kind of an interesting topic to
+
+6
+00:00:07,960 --> 00:00:13,400
+talk about in Python and I mean, well, you'll see in a moment, but the main thing, I guess,
+
+7
+00:00:13,400 --> 00:00:21,520
+in Python is that you are using, you're often using Python to connect packages written for
+
+8
+00:00:21,520 --> 00:00:26,720
+you or written by someone else, and possibly written in other languages.
+
+9
+00:00:26,720 --> 00:00:31,200
+The first thing when you start considering making your program faster, or especially
+
+10
+00:00:31,200 --> 00:00:36,900
+if you start thinking about making it parallel, is to check if the libraries you're using
+
+11
+00:00:36,900 --> 00:00:40,400
+already are parallel or not.
+
+12
+00:00:40,400 --> 00:00:44,440
+That's probably the most important point of this lesson.
+
+13
+00:00:44,440 --> 00:00:48,120
+If you come away with just one thing, that's it.
+
+14
+00:00:48,120 --> 00:00:56,720
+But we will talk a bit about how parallel programming actually works, what it actually
+
+15
+00:00:56,720 --> 00:01:00,520
+does and how it can or maybe cannot make your code faster.
+
+16
+00:01:00,520 --> 00:01:04,600
+Sorry, I interrupted you, do you have something?
+
+17
+00:01:04,600 --> 00:01:07,880
+No, no, no, go ahead.
+
+18
+00:01:07,880 --> 00:01:16,280
+So maybe we can ask, I could ask, what do we mean when we talk about parallel?
+
+19
+00:01:16,280 --> 00:01:20,760
+we mean when we talk about parallel programming? Is it like two people on a keyboard?
+
+20
+00:01:22,440 --> 00:01:28,040
+Yeah, right. So that's called pair coding, I guess. That's a slightly different thing.
+
+21
+00:01:28,680 --> 00:01:35,000
+Although that is actually a good, I think that's a pretty good metaphor for what the computer does
+
+22
+00:01:35,000 --> 00:01:40,120
+or what the program does when you run it in parallel. So if you are writing some code
+
+23
+00:01:40,120 --> 00:01:46,080
+code, and you want to do it twice as fast, hiring two programmers will make it faster,
+
+24
+00:01:46,080 --> 00:01:50,320
+I guess, but it might not make it twice as fast.
+
+25
+00:01:50,320 --> 00:01:55,600
+But yeah, so basically, the starting point, if you're thinking about making your code
+
+26
+00:01:55,600 --> 00:01:58,080
+parallel, is that you want to make it run faster.
+
+27
+00:01:58,080 --> 00:02:01,200
+It's taking too much time for one reason or another.
+
+28
+00:02:01,200 --> 00:02:08,120
+Otherwise, you can just run it on a single processor and it will be done.
+
+29
+00:02:08,120 --> 00:02:10,520
+So that's the starting point.
+
+30
+00:02:10,520 --> 00:02:12,120
+We want to make it faster.
+
+31
+00:02:12,120 --> 00:02:17,440
+If your program is fast enough, you don't need to make it parallel.
+
+32
+00:02:17,440 --> 00:02:22,120
+Would you say that the speedup would come from utilizing multiple processors in one
+
+33
+00:02:22,120 --> 00:02:23,440
+computer?
+
+34
+00:02:23,440 --> 00:02:29,560
+Yes, so parallelization specifically, yeah.
+
+35
+00:02:29,560 --> 00:02:35,480
+So you try to make it faster by essentially using multiple computers.
+
+36
+00:02:35,480 --> 00:02:39,480
+There are multiple processors on most computers these days.
+
+37
+00:02:39,480 --> 00:02:42,480
+Basically, if you have a laptop, desktop, you're watching this.
+
+38
+00:02:42,480 --> 00:02:50,480
+It has 4, 6, 8, 12, maybe around 12 processors that are on the same chip,
+
+39
+00:02:50,480 --> 00:02:56,480
+but are essentially running calculations independent of each other at the same time.
+
+40
+00:02:56,480 --> 00:03:02,400
+So, yeah, so making your program parallel basically means all of those processes are
+
+41
+00:03:02,400 --> 00:03:08,240
+doing something at the same time, so in parallel.
+
+42
+00:03:08,240 --> 00:03:09,560
+Okay.
+
+43
+00:03:09,560 --> 00:03:16,080
+So the first thing, though, if your code is too slow, you kind of want to do some, before
+
+44
+00:03:16,080 --> 00:03:21,720
+going into parallel programming, because it can quickly become a complicated thing, is
+
+45
+00:03:21,720 --> 00:03:29,000
+check why your code actually is slow, where are the slow spots, use some profiling tools
+
+46
+00:03:29,000 --> 00:03:35,560
+and then think about can you use existing libraries or somehow make that part faster
+
+47
+00:03:36,600 --> 00:03:42,120
+and then profile it again and see what part is slow now and so on and then when you get to the
+
+48
+00:03:42,120 --> 00:03:49,240
+point where that's no longer helping you may think about parallel programming and then
+
+49
+00:03:49,240 --> 00:03:59,340
+Then there are essentially two different modes of parallelism that people generally use
+
+50
+00:03:59,340 --> 00:04:06,620
+and you can think about whether one or both of those will work actually in your program.
+
+51
+00:04:06,620 --> 00:04:11,360
+So the first thing to check is if there is something that really needs to be running
+
+52
+00:04:11,360 --> 00:04:15,620
+sequentially like you have to know the result of a previous computation to go to the next
+
+53
+00:04:15,620 --> 00:04:19,300
+one, then you can't do those two things at the same time.
+
+54
+00:04:19,300 --> 00:04:21,020
+So it's not really parallelizable.
+
+55
+00:04:21,300 --> 00:04:23,100
+And then you just have to think of something else.
+
+56
+00:04:23,820 --> 00:04:29,180
+Um, so there will be those parts in the code, but there will also be probably
+
+57
+00:04:29,180 --> 00:04:34,020
+some parts in the code that were two calculations can be done at the same
+
+58
+00:04:34,020 --> 00:04:36,140
+time, and then you can parallelize it.
+
+59
+00:04:37,260 --> 00:04:39,220
+So, okay.
+
+60
+00:04:39,220 --> 00:04:43,860
+So then like, and what do you say that like in some cases, like, let's say you
+
+61
+00:04:43,860 --> 00:04:49,480
+have, you want to run the same code or multiple data sets or
+
+62
+00:04:49,480 --> 00:04:50,640
+something like that you want.
+
+63
+00:04:50,640 --> 00:04:52,980
+Yeah, so that's one example. So maybe you just want to run the
+
+64
+00:04:52,980 --> 00:04:57,480
+same code for multiple different parameter values. So
+
+65
+00:04:57,480 --> 00:05:00,000
+you have a bunch of files that you want to process. So that's
+
+66
+00:05:00,000 --> 00:05:04,320
+an example of something embarrassingly parallel. Which
+
+67
+00:05:04,320 --> 00:05:07,720
+is like, I mean, it's an interesting expression, but
+
+68
+00:05:07,740 --> 00:05:12,480
+that's kind of the official term these days. So it's, the reason
+
+69
+00:05:12,480 --> 00:05:16,560
+embarrassing is because you don't need to do anything to make it parallel. It just means
+
+70
+00:05:16,560 --> 00:05:22,240
+you run multiple copies of the program on those different processors, on those different
+
+71
+00:05:22,240 --> 00:05:29,760
+computers. You can do that by running the command multiple times or you can program it in some
+
+72
+00:05:30,560 --> 00:05:37,520
+more fancy way to start multiple copies of the program. We will see ways of doing that,
+
+73
+00:05:37,520 --> 00:05:41,680
+but I mean, there's many ways. Many languages do that.
+
+74
+00:05:42,240 --> 00:05:47,680
+I would say that the embarrassingly parallel is usually like, if you notice that in your code,
+
+75
+00:05:47,680 --> 00:05:52,640
+you happen to have a for loop at the outermost layer and inside the for loop, you have something
+
+76
+00:05:52,640 --> 00:05:58,160
+that run a model or something. You know that you can basically take that for loop and run it
+
+77
+00:05:58,160 --> 00:06:04,800
+outside of the program. So basically run multiple copies of that program. And that's why it's
+
+78
+00:06:04,800 --> 00:06:10,320
+barely called parallelism. It's like, so embarrassingly parallel, you don't need any
+
+79
+00:06:10,320 --> 00:06:15,280
+fancy structures to make it happen. So the main thing about this embarrassingly
+
+80
+00:06:15,280 --> 00:06:21,120
+parallel category is that the different processes, the different copies of your program don't need
+
+81
+00:06:21,120 --> 00:06:25,600
+to communicate at all. They just do their own thing. And when they finish, they finish,
+
+82
+00:06:25,600 --> 00:06:31,760
+the others do not care. That's embarrassingly parallel. And that is the most common situation,
+
+83
+00:06:31,760 --> 00:06:36,640
+I think that's that's what you will usually end up doing. I just run the same thing many times
+
+84
+00:06:36,640 --> 00:06:42,320
+but if that's not possible then there's two other options. There's multi-threading.
+
+85
+00:06:43,040 --> 00:06:47,200
+Multi-threading means that they are running on the same computer but on different
+
+86
+00:06:47,920 --> 00:06:54,560
+processors on that computer so essentially the thing is that they can share memory.
+
+87
+00:06:54,560 --> 00:07:02,880
+when you have a variable in the program's memory, the other copies, so-called copies,
+
+88
+00:07:02,880 --> 00:07:06,720
+or which are called threads really, they have access to that memory.
+
+89
+00:07:08,240 --> 00:07:13,520
+So that makes things a bit easier. That makes sharing information between the processes a bit
+
+90
+00:07:13,520 --> 00:07:21,040
+easier. And then there is message passing or MPI, message passing interface is a
+
+91
+00:07:21,040 --> 00:07:26,960
+common term people use. And a common framework for this. So that means you have a bunch of
+
+92
+00:07:26,960 --> 00:07:32,960
+independent processes that can be running on different computers and then they send messages
+
+93
+00:07:32,960 --> 00:07:40,880
+to each other. They communicate over some kind of network. Or in Python you also have this
+
+94
+00:07:40,880 --> 00:07:48,000
+multi-processing and what it basically means is that Python launches multiple processes and then
+
+95
+00:07:48,000 --> 00:07:55,760
+they communicate by writing small files into memory, and then each process reads the files.
+
+96
+00:07:55,760 --> 00:08:02,080
+But basically, it launches multiple Python interpreters that each run stuff.
+
+97
+00:08:03,200 --> 00:08:14,080
+Yeah, so that's a Python-specific thing that is important, and we'll talk about
+
+98
+00:08:14,080 --> 00:08:19,360
+multiprocessing in a moment. I'm kind of, well, we'll come back to it because I'm kind of struggling
+
+99
+00:08:19,360 --> 00:08:27,520
+with a way of going in. Check the first example of Parallel. Yeah, okay. So if you go down a bit,
+
+100
+00:08:27,520 --> 00:08:32,320
+there's the multithreading example. So this is still like relatively straightforward,
+
+101
+00:08:32,320 --> 00:08:40,480
+especially in Python because essentially Python doesn't do multithreading, but the libraries that
+
+102
+00:08:40,480 --> 00:08:48,080
+are written for Python can do multi-threading. So if you're using NumPy, SciPy, Pandas, and so on,
+
+103
+00:08:49,600 --> 00:08:54,800
+they will be using libraries in the back end that are already multi-threaded.
+
+104
+00:08:55,920 --> 00:09:02,480
+So basically, you don't need to do all that much. Just make sure you're not running a for loop in
+
+105
+00:09:02,480 --> 00:09:11,760
+Python, but rather you are using a NumPy operation if you can. There are complicated enough NumPy
+
+106
+00:09:11,760 --> 00:09:17,440
+operations that you can do most things without a Python for loop. For the technical side,
+
+107
+00:09:17,440 --> 00:09:24,560
+people who want to know how it works, basically NumPy inside it has lots of libraries or it uses
+
+108
+00:09:24,560 --> 00:09:30,240
+lots of libraries like this linear algebra libraries. Also, if you think about a for
+
+109
+00:09:30,240 --> 00:09:36,320
+loop. It's like sum all values in this array or something like that. There's a for loop
+
+110
+00:09:37,520 --> 00:09:44,640
+in many of the NumPy functions, and those for loops have been threaded in NumPy itself.
+
+111
+00:09:45,360 --> 00:09:51,440
+If you just tell NumPy to use multiple processors, whenever you use the NumPy functions,
+
+112
+00:09:51,440 --> 00:09:58,240
+it will try to run these for loops in parallel. It works behind the scenes, so the only thing
+
+113
+00:09:58,240 --> 00:10:08,240
+you need to tell it is this OMP number of threads, which is a pretty cryptic variable,
+
+114
+00:10:08,240 --> 00:10:12,160
+but basically what it tells is that use multiple processors.
+
+115
+00:10:12,160 --> 00:10:19,040
+And this is also MKL and a third possible option. Usually, those are already set so that you don't
+
+116
+00:10:19,680 --> 00:10:26,080
+need to set them. Usually, NumPy will just use multiple threads. You will see that by
+
+117
+00:10:26,080 --> 00:10:32,400
+if you run NumPy and check what your processor load is, that Python process will be using something
+
+118
+00:10:32,400 --> 00:10:40,480
+like 400 or 800 percent of a CPU. So that means it's already running on multiple processors.
+
+119
+00:10:40,480 --> 00:10:44,880
+Threading is also common for web applications and that sort of thing, but because they're not,
+
+120
+00:10:45,440 --> 00:10:53,440
+well, for scientific computing they are not so relevant. We won't be going to that, but
+
+121
+00:10:53,440 --> 00:11:01,040
+But there's like Python has lots of these async things, but they are not relevant.
+
+122
+00:11:01,040 --> 00:11:07,600
+So I'll just mention it, but if you see parallel using that, they are basically mainly for
+
+123
+00:11:07,600 --> 00:11:10,020
+web applications and that sort of thing.
+
+124
+00:11:10,020 --> 00:11:16,000
+So one big thing kind of worth mentioning, like if you are trying to do multi-threading
+
+125
+00:11:16,000 --> 00:11:19,800
+on your own, I said Python doesn't do it.
+
+126
+00:11:19,800 --> 00:11:22,520
+So it's, in fact, something that was kind of a choice that
+
+127
+00:11:22,520 --> 00:11:25,800
+was made when the Python language was developed
+
+128
+00:11:25,800 --> 00:11:27,720
+or is being developed.
+
+129
+00:11:27,720 --> 00:11:30,480
+So there's something called a global interpreter lock.
+
+130
+00:11:30,480 --> 00:11:34,160
+And basically, that means that there can only ever
+
+131
+00:11:34,160 --> 00:11:38,360
+be one thread, one process running Python code.
+
+132
+00:11:38,360 --> 00:11:43,320
+So if you want to run Python code,
+
+133
+00:11:43,320 --> 00:11:45,620
+like have multiple processes running your Python code,
+
+134
+00:11:45,620 --> 00:11:49,680
+you actually need to start multiple Python interpreters,
+
+135
+00:11:49,680 --> 00:11:52,180
+which is exactly what the next thing will do.
+
+136
+00:11:52,180 --> 00:11:53,300
+So this is a way around.
+
+137
+00:11:53,300 --> 00:11:55,580
+Multiprocessing is a Python library,
+
+138
+00:11:55,580 --> 00:12:00,000
+and it's a way around this issue.
+
+139
+00:12:00,000 --> 00:12:03,060
+So if you actually find that whatever libraries
+
+140
+00:12:03,060 --> 00:12:06,540
+you are using are not multithreaded,
+
+141
+00:12:06,540 --> 00:12:09,240
+so you're not doing calculations in NumPy,
+
+142
+00:12:10,220 --> 00:12:12,980
+or you are doing something a bit more complicated in Python
+
+143
+00:12:12,980 --> 00:12:15,620
+and you know that you need to kind of split it
+
+144
+00:12:15,620 --> 00:12:17,180
+into multiple processes,
+
+145
+00:12:17,180 --> 00:12:19,320
+multiprocessing is a way to do it.
+
+146
+00:12:19,680 --> 00:12:25,080
+There's a bunch of nice libraries built upon multiprocessing that might be more useful,
+
+147
+00:12:25,080 --> 00:12:32,900
+but well, I guess we'll write a list into the notes in a moment, but here we'll just
+
+148
+00:12:32,900 --> 00:12:33,900
+try to use multiprocessing.
+
+149
+00:12:33,900 --> 00:12:40,080
+Yeah, let's check on, like, I can run the demo here and see what happens.
+
+150
+00:12:40,080 --> 00:12:41,920
+So here we have an example.
+
+151
+00:12:41,920 --> 00:12:47,280
+So we have a function.
+
+152
+00:12:47,280 --> 00:12:52,080
+So we have a function that – well, maybe you can explain and I can write.
+
+153
+00:12:52,080 --> 00:12:53,080
+Well, yeah.
+
+154
+00:12:53,080 --> 00:12:55,800
+If you type – I mean, this is a very simple function.
+
+155
+00:12:55,800 --> 00:13:00,860
+It just calculates the square of the number that you put in.
+
+156
+00:13:00,860 --> 00:13:04,960
+But this is a Python function on purpose, so we're assuming that it's somehow something
+
+157
+00:13:04,960 --> 00:13:07,920
+we cannot do in NumPy directly.
+
+158
+00:13:07,920 --> 00:13:18,080
+And then map will run that function on every number in the list that you give it.
+
+159
+00:13:18,080 --> 00:13:22,620
+So you notice it gives you the squares of every number.
+
+160
+00:13:22,620 --> 00:13:27,920
+So one squared is one, two squared is four, and so on, six squared is 36.
+
+161
+00:13:27,920 --> 00:13:34,240
+That was really fast because it's a small list, but it was running pure Python code,
+
+162
+00:13:34,240 --> 00:13:37,200
+If it was a big list, it would be a lot slower than, say, numpy.
+
+163
+00:13:38,480 --> 00:13:45,360
+I'll mention here that this might look, for those people who haven't used functional programming
+
+164
+00:13:45,360 --> 00:13:55,280
+kind of things, this might look a bit strange, but it's basically like a for loop in a small space.
+
+165
+00:13:55,280 --> 00:14:01,280
+It is running the same function to every element in the list.
+
+166
+00:14:01,280 --> 00:14:12,480
+Yeah, you might see a more Pythonic version might be something like this.
+
+167
+00:14:14,160 --> 00:14:15,280
+Yeah, okay, that's the same.
+
+168
+00:14:15,840 --> 00:14:18,240
+Yeah, this is basically like a map function.
+
+169
+00:14:18,240 --> 00:14:18,960
+Yeah.
+
+170
+00:14:18,960 --> 00:14:20,080
+Yeah, that's a good example.
+
+171
+00:14:20,080 --> 00:14:27,920
+Yeah, but basically it's the same thing, but using these maps makes sense when we go to the
+
+172
+00:14:27,920 --> 00:14:34,000
+The reason we use the map function there, demonstrated, is because multiprocessing comes
+
+173
+00:14:34,000 --> 00:14:37,120
+with its own version of the map function.
+
+174
+00:14:37,120 --> 00:14:46,280
+So if you now import pool from multiprocessing and then pool contains the map function.
+
+175
+00:14:46,280 --> 00:14:48,760
+Oh, okay.
+
+176
+00:14:48,760 --> 00:14:52,120
+It's from multiprocessing input pool, not with.
+
+177
+00:14:52,120 --> 00:14:53,120
+Oops.
+
+178
+00:14:53,120 --> 00:14:54,120
+Yeah.
+
+179
+00:14:54,120 --> 00:14:55,120
+My mistake.
+
+180
+00:14:55,120 --> 00:14:56,120
+Was looking ahead already.
+
+181
+00:14:56,120 --> 00:14:57,120
+Yeah.
+
+182
+00:14:57,120 --> 00:15:03,060
+And then, yeah, then you need to get a pool or yeah, create a pool.
+
+183
+00:15:05,760 --> 00:15:09,300
+So, so what we have, there's a great way of, of, or a great
+
+184
+00:15:09,300 --> 00:15:12,720
+explanation of why this is called pool, but it's essentially a set of like.
+
+185
+00:15:13,340 --> 00:15:18,260
+So it gives you a set of processors that you can use to run stuff.
+
+186
+00:15:18,620 --> 00:15:21,420
+So you can run this square function with multiple processes.
+
+187
+00:15:22,540 --> 00:15:24,620
+Um, it didn't actually return anything.
+
+188
+00:15:24,620 --> 00:15:27,420
+I guess you have to probably need to store it somewhere.
+
+189
+00:15:27,620 --> 00:15:27,920
+Yeah.
+
+190
+00:15:32,920 --> 00:15:33,220
+Yeah.
+
+191
+00:15:34,320 --> 00:15:34,720
+Okay.
+
+192
+00:15:35,320 --> 00:15:39,220
+So yeah, this does the same thing and you didn't see the
+
+193
+00:15:39,220 --> 00:15:41,120
+speed up of course because it's so fast.
+
+194
+00:15:41,120 --> 00:15:44,820
+Anyway, we could have a much bigger list and then you would
+
+195
+00:15:44,820 --> 00:15:45,220
+see it.
+
+196
+00:15:45,220 --> 00:15:50,520
+But so what the multiprocessing pool does it it takes the
+
+197
+00:15:50,520 --> 00:15:54,520
+list it splits it up between all the processors available.
+
+198
+00:15:54,620 --> 00:16:04,620
+and then runs this function on all of those processes to some part of the work, basically.
+
+199
+00:16:05,580 --> 00:16:12,140
+Yeah, and in general, I would say, here we give a list to it, but map basically works on any kind
+
+200
+00:16:12,140 --> 00:16:17,820
+of iterable thing. So in Python, you see a lot of these iterable things, like something that
+
+201
+00:16:18,380 --> 00:16:23,020
+at least is an iterable thing, but you can have other things as well, like iterators.
+
+202
+00:16:23,020 --> 00:16:29,500
+And what map does is basically take something from the iterator and it runs a function on it.
+
+203
+00:16:29,500 --> 00:16:35,020
+And if you use the normal map function in Python, you do it one by one in one processor,
+
+204
+00:16:35,020 --> 00:16:40,860
+basically. But here we have a processor pool. So, we have multiple processors.
+
+205
+00:16:42,620 --> 00:16:48,540
+Usually the number is decided to be the number of processors in your computer. Of course,
+
+206
+00:16:48,540 --> 00:16:54,780
+you can set it yourself. But you have a number of processors, and we read from the iterator,
+
+207
+00:16:54,780 --> 00:17:00,060
+and then we give each processor one at a time.
+
+208
+00:17:00,060 --> 00:17:00,940
+Send those one by one to the different processors.
+
+209
+00:17:00,940 --> 00:17:01,660
+Yeah.
+
+210
+00:17:01,660 --> 00:17:06,380
+Or really, actually, many at a time, because sending one number is not efficient.
+
+211
+00:17:06,380 --> 00:17:10,860
+Yes, many at a time. Of course, the multiprocessing library then collects the
+
+212
+00:17:10,860 --> 00:17:18,460
+results in the same order back so that you get the same kind of correspondence between the input
+
+213
+00:17:18,460 --> 00:17:26,060
+and the output but but basically now you do the mapping in parallel. Okay so let's now go to the
+
+214
+00:17:26,060 --> 00:17:35,500
+exercise so there's an exercise one where you use multiprocessing and then you can also move
+
+215
+00:17:35,500 --> 00:17:44,300
+on to exercise two which is more of a discussion about running on a cluster. So a cluster is a
+
+216
+00:17:44,300 --> 00:17:54,260
+a supercomputer. It's a system with a lot of computers in a fast network. But yeah,
+
+217
+00:17:54,260 --> 00:18:03,020
+mainly do exercise one, and then if you have extra time, take a look at exercise two.
+
+218
+00:18:03,020 --> 00:18:08,020
+So we'll have 15 minutes for it.
+
+219
+00:18:08,020 --> 00:18:14,580
+During the exercise we'll try to answer any unanswered questions in the notes and we'll
+
+220
+00:18:16,180 --> 00:18:23,300
+bring them up after the if there's anything interesting or any especially good questions
+
+221
+00:18:23,300 --> 00:18:31,780
+we'll raise them up. Okay, so that's it for now. See you in 15 minutes. Bye. Bye.
+
+222
+00:18:34,000 --> 00:18:39,060
+Hey welcome back. So yeah there was one more thing we wanted to mention before MPI.
+
+223
+00:18:40,020 --> 00:18:53,020
+Which is that a lot of the libraries, like we mentioned in the beginning, a lot of the libraries have some sort of parallelism built in, usually multi-threading.
+
+224
+00:18:53,020 --> 00:18:58,020
+And often it just works out of the box.
+
+225
+00:18:58,020 --> 00:19:06,020
+But also there are ways of setting the number of workers and using parallelism through some settings.
+
+226
+00:19:06,020 --> 00:19:16,020
+So, yeah, it's usually usually a good idea to use this like the developers of the packages they have most likely tested that this parallelism actually speeds up the code.
+
+227
+00:19:16,020 --> 00:19:27,020
+So, instead of like making some parallelism outside of what the developers have intended, using their method is most likely the most efficient way of getting parallelism.
+
+228
+00:19:27,020 --> 00:19:33,460
+So, for example, like just like an example library that you might encounter is like a
+
+229
+00:19:33,460 --> 00:19:34,460
+ski kit learn.
+
+230
+00:19:34,460 --> 00:19:41,100
+If you're doing like machine learning or data analysis and that sort of stuff, putting models
+
+231
+00:19:41,100 --> 00:19:42,100
+there.
+
+232
+00:19:42,100 --> 00:19:45,780
+And let's say we are in the user guide, we just go to the user guide.
+
+233
+00:19:45,780 --> 00:19:50,100
+Like this is what, like when people ask about parallelism, this is what I usually do.
+
+234
+00:19:50,100 --> 00:19:56,260
+I open the packet space and then I press control F to search and then I search for parallel
+
+235
+00:19:56,260 --> 00:20:00,040
+And there's like a page on parallelism here.
+
+236
+00:20:00,100 --> 00:20:04,460
+And if we look at here, they mentioned that they're using this job lib library,
+
+237
+00:20:04,520 --> 00:20:07,680
+which is similar to, or it's built upon multi-processing.
+
+238
+00:20:07,720 --> 00:20:08,560
+It's a nice library.
+
+239
+00:20:08,560 --> 00:20:14,380
+We'll mention other tools like this in the notes after the MPI session.
+
+240
+00:20:14,960 --> 00:20:21,480
+But basically it says that there's this end jobs parameter, like on estimators
+
+241
+00:20:21,480 --> 00:20:25,800
+that you can like, you can put it there and then it uses parallelism basically.
+
+242
+00:20:25,800 --> 00:20:31,260
+And then you can, you also use this, uh, this higher level
+
+243
+00:20:31,260 --> 00:20:34,020
+parallelism and these open MP stuff.
+
+244
+00:20:34,020 --> 00:20:39,820
+And they have various ways they explain, like, uh, how do you get the best performance?
+
+245
+00:20:40,140 --> 00:20:44,700
+So it's usually a good idea to check, check the guide, whether it's parallel
+
+246
+00:20:44,700 --> 00:20:50,040
+mentioned anything parallel is the magic world, uh, word usually, uh, that, that
+
+247
+00:20:50,040 --> 00:20:51,840
+can be found in various documentations.
+
+248
+00:20:51,840 --> 00:20:55,840
+And you can then use that.
+
+249
+00:20:55,840 --> 00:21:01,840
+Another thing that in the notes, I think it's good to mention.
+
+250
+00:21:01,840 --> 00:21:11,840
+So at least one person got an error that from multiprocessing,
+
+251
+00:21:11,840 --> 00:21:16,840
+that it cannot pickle the object something.
+
+252
+00:21:16,840 --> 00:21:22,840
+something. And that happens because, like we mentioned, Python actually doesn't allow
+
+253
+00:21:22,840 --> 00:21:30,160
+multiple processes, so they cannot actually just read memory or read the same memory.
+
+254
+00:21:30,160 --> 00:21:37,060
+So what multiprocessing does to get around this is that it essentially writes the function
+
+255
+00:21:37,060 --> 00:21:43,120
+and everything it needs to run that function to disk, starts another Python process, and
+
+256
+00:21:43,120 --> 00:21:47,960
+And then that Python process reads it from the disk or if it's like if the disk can be
+
+257
+00:21:47,960 --> 00:21:48,960
+on RAM.
+
+258
+00:21:48,960 --> 00:21:56,760
+So the file can be in fast memory, but still it needs to be possible to write it to disk.
+
+259
+00:21:56,760 --> 00:22:02,040
+And that the main thing is that that causes some restrictions.
+
+260
+00:22:02,040 --> 00:22:08,520
+So sometimes things just don't work and there's ways of getting around this.
+
+261
+00:22:08,520 --> 00:22:12,880
+You can read the instructions or try to ask people, but it gets a bit complicated.
+
+262
+00:22:12,880 --> 00:22:18,320
+And in general, let's say you have a function that does really complex things and that sort of
+
+263
+00:22:18,320 --> 00:22:23,040
+thing. If you want to run it in parallel, all of the different parallel processes need to know
+
+264
+00:22:23,040 --> 00:22:28,080
+about that function and what the function has eaten. If it uses global variables or whatever,
+
+265
+00:22:28,080 --> 00:22:34,640
+all of that needs to be transferred to that other process. So the more complex your parallel thing
+
+266
+00:22:34,640 --> 00:22:41,760
+is, the harder it is usually to parallelize. So usually it's a good idea to parallelize.
+
+267
+00:22:41,760 --> 00:22:47,360
+Yeah, keep it simple. Have a simple function that will be executed in Parallel and then
+
+268
+00:22:47,360 --> 00:22:50,720
+return to a bigger program or something like that.
+
+269
+00:22:50,720 --> 00:22:57,760
+So basically, if it's a method of a class, it needs the entire class. If it uses a global
+
+270
+00:22:57,760 --> 00:23:03,800
+variable, it needs the entire file. And if you're calling multiprocessing from that same
+
+271
+00:23:03,800 --> 00:23:09,440
+file, it will just fail. So one way around this often is to just move the function that
+
+272
+00:23:09,440 --> 00:23:13,280
+you're running into a different file and often that will help but sometimes not.
+
+273
+00:23:13,280 --> 00:23:16,800
+So just be aware of that.
+
+274
+00:23:16,800 --> 00:23:21,800
+It gets complicated and try to use parallelism from inside the existing libraries rather
+
+275
+00:23:21,800 --> 00:23:24,840
+than writing your own if possible.
+
+276
+00:23:24,840 --> 00:23:34,040
+Now MPI though is usually not built into the libraries for a very important reason which
+
+277
+00:23:34,040 --> 00:23:43,760
+is that it always needs to be run with this MPI run program, basically, that sets up an
+
+278
+00:23:43,760 --> 00:23:45,960
+environment for.
+
+279
+00:23:45,960 --> 00:23:53,140
+So what MPI does, it runs completely separate processes and then tells them some information
+
+280
+00:23:53,140 --> 00:23:56,200
+about the other processes so that they can communicate.
+
+281
+00:23:56,200 --> 00:24:00,440
+So these can be running on completely different parts of completely different computers as
+
+282
+00:24:00,440 --> 00:24:04,580
+As long as they know the IP address to the other computer and there's an Ethernet cable
+
+283
+00:24:04,580 --> 00:24:08,400
+or Wi-Fi connection or something, so that they can communicate.
+
+284
+00:24:08,400 --> 00:24:13,300
+Of course, that would be quite slow if you send a lot of information back and forth.
+
+285
+00:24:13,300 --> 00:24:16,400
+In principle, that is something you can do.
+
+286
+00:24:16,400 --> 00:24:23,580
+So MPI is a very different paradigm because you just run copies of the program.
+
+287
+00:24:23,580 --> 00:24:26,280
+All the copies run everything from the beginning.
+
+288
+00:24:26,280 --> 00:24:30,160
+All the copies run all of your code, basically.
+
+289
+00:24:30,160 --> 00:24:35,120
+the main difference. Whereas in multiprocessing, it just takes the function and tries to put it in
+
+290
+00:24:35,120 --> 00:24:42,560
+a file and read that file and run it. With MPI, all of the copies will run everything unless you
+
+291
+00:24:42,560 --> 00:24:49,680
+tell them specifically to not do that. There are other frameworks as well that work in a similar way
+
+292
+00:24:49,680 --> 00:24:56,000
+that they basically set up some network configuration and they do their own configuration.
+
+293
+00:24:56,000 --> 00:25:01,840
+For example, PyTorch has a Torch run, and there's Ray, which is this parallel library as well.
+
+294
+00:25:01,840 --> 00:25:06,880
+But there's many frameworks that do this. Everybody starts, and then they just know
+
+295
+00:25:06,880 --> 00:25:15,920
+about where the others are. They communicate in some way. In MPI's case, the MPI will handle this,
+
+296
+00:25:15,920 --> 00:25:21,680
+okay, who are you? Where are you? But in many other cases, you might have master processes
+
+297
+00:25:21,680 --> 00:25:24,240
+and clients connecting to the server.
+
+298
+00:25:24,240 --> 00:25:28,520
+So for MPI, I mean, MPI is kind of the lowest level.
+
+299
+00:25:28,520 --> 00:25:31,280
+It's kind of the basis, again, like multiprocessing
+
+300
+00:25:31,280 --> 00:25:34,640
+is the basis of a lot of libraries.
+
+301
+00:25:34,640 --> 00:25:37,280
+MPI also is the basis for a lot of stuff.
+
+302
+00:25:37,280 --> 00:25:40,280
+So, okay, so we'll just show a quick example,
+
+303
+00:25:40,280 --> 00:25:42,400
+but this is something you may not be able to run
+
+304
+00:25:42,400 --> 00:25:45,080
+because it requires that you install
+
+305
+00:25:45,080 --> 00:25:46,440
+not just the Python library,
+
+306
+00:25:46,440 --> 00:25:51,440
+but also you need to install,
+
+307
+00:25:51,440 --> 00:26:00,400
+like MPI as a system-level library. It's not written in Python. So it's possible to do it in
+
+308
+00:26:00,400 --> 00:26:05,600
+Conda, but we don't assume that you have done that. You can try. Maybe you have the functions
+
+309
+00:26:05,600 --> 00:26:14,240
+or not. Okay, so what [name] is doing here is first importing MPI for Pi, and then there's some magic
+
+310
+00:26:14,240 --> 00:26:19,440
+stuff that, I mean, yeah, I could explain what those things are doing. But the main thing is that
+
+311
+00:26:19,440 --> 00:26:25,980
+that, you get the size, which is the number of processors that are running this program.
+
+312
+00:26:25,980 --> 00:26:35,260
+And then you get the rank, which is the unique identifier for this particular copy. It's
+
+313
+00:26:35,260 --> 00:26:42,980
+a number from zero to size, basically. So that's what you have to work with, really.
+
+314
+00:26:42,980 --> 00:26:50,020
+have a single number that identifies this particular copy and then there are MPI functions
+
+315
+00:26:50,020 --> 00:26:53,900
+that allow you to send information to other copies. You have to know the number of the
+
+316
+00:26:53,900 --> 00:27:01,060
+other copy. So from these building blocks, you can build a lot of stuff, of course, but
+
+317
+00:27:01,060 --> 00:27:02,060
+it takes a bit of work.
+
+318
+00:27:02,060 --> 00:27:03,060
+Yeah.
+
+319
+00:27:03,060 --> 00:27:10,620
+Okay, so let's just try this. So this is just printing the rank, the identifier number and
+
+320
+00:27:10,620 --> 00:27:13,460
+the number of processes.
+
+321
+00:27:13,460 --> 00:27:18,740
+And to run an MPI program, you need to use MPI run.
+
+322
+00:27:18,740 --> 00:27:20,740
+And you can give it a number.
+
+323
+00:27:20,740 --> 00:27:21,740
+Okay.
+
+324
+00:27:21,740 --> 00:27:26,620
+Well, I gave it the wrong name.
+
+325
+00:27:26,620 --> 00:27:29,620
+Oh, yes.
+
+326
+00:27:29,620 --> 00:27:35,060
+You need to give it the correct program, it will run better.
+
+327
+00:27:35,060 --> 00:27:38,220
+If you try to run the wrong program, it will not run as well.
+
+328
+00:27:38,220 --> 00:27:39,220
+Yeah, yeah.
+
+329
+00:27:39,220 --> 00:27:41,220
+That's a good hint.
+
+330
+00:27:41,220 --> 00:27:43,220
+Okay, so yeah.
+
+331
+00:27:43,220 --> 00:27:45,220
+So it ran two copies of the program,
+
+332
+00:27:45,220 --> 00:27:47,220
+one of them has identifier 1
+
+333
+00:27:47,220 --> 00:27:49,220
+and the other one has identifier 0.
+
+334
+00:27:49,220 --> 00:27:51,220
+So if you were, for example,
+
+335
+00:27:51,220 --> 00:27:53,220
+doing what we were doing previously,
+
+336
+00:27:53,220 --> 00:27:55,220
+where you split
+
+337
+00:27:55,220 --> 00:27:57,220
+this list into
+
+338
+00:27:57,220 --> 00:27:59,220
+two multiple processes,
+
+339
+00:27:59,220 --> 00:28:01,220
+you would need to have
+
+340
+00:28:01,220 --> 00:28:03,220
+perhaps just, usually you just
+
+341
+00:28:03,220 --> 00:28:05,220
+set it up with
+
+342
+00:28:05,220 --> 00:28:07,220
+process number 0 and then you
+
+343
+00:28:07,220 --> 00:28:11,720
+send a part of you. You actually have to write manually write the code to send the part
+
+344
+00:28:11,720 --> 00:28:19,460
+of the list to the other process. We'll do a different example. Let's just let's just
+
+345
+00:28:19,460 --> 00:28:25,980
+run the example in the notes. It has all of the stuff that we just ran, but it's also
+
+346
+00:28:25,980 --> 00:28:35,300
+yeah, like the different so yeah, okay. So the different identify the different processes
+
+347
+00:28:35,300 --> 00:28:39,780
+are now doing a different thing, and in the end, it's being collected.
+
+348
+00:28:39,780 --> 00:28:46,340
+Yeah, so all of this code, what's important in the code basically, we have the function
+
+349
+00:28:46,340 --> 00:28:55,420
+that all of them will run independently and all of them will do their own part of the
+
+350
+00:28:55,420 --> 00:29:02,300
+whole thing, but the important part is here in the line 39, where we have this communication
+
+351
+00:29:02,300 --> 00:29:08,700
+gather so basically we gather everything and then we have this root so we gather all of that
+
+352
+00:29:08,700 --> 00:29:15,980
+information to the processor zero so you can have this kind of like collective everybody
+
+353
+00:29:15,980 --> 00:29:22,220
+send the information to the process zero and the process zero will then print. So that's an example
+
+354
+00:29:22,220 --> 00:29:26,700
+of one of these functions that allow the processes to communicate with each other.
+
+355
+00:29:26,700 --> 00:29:34,100
+There's also a send, for example, that just means one process sends information to one
+
+356
+00:29:34,100 --> 00:29:37,100
+other process.
+
+357
+00:29:37,100 --> 00:29:41,060
+Okay.
+
+358
+00:29:41,060 --> 00:29:46,020
+I guess we probably don't want to go too much into detail about this because we also
+
+359
+00:29:46,020 --> 00:29:50,220
+want to spend some time on all the rest of the material.
+
+360
+00:29:50,220 --> 00:29:51,220
+Yeah.
+
+361
+00:29:51,220 --> 00:29:55,500
+I'll quickly mention that the MPI is commonly used in scientific codes and that sort of
+
+362
+00:29:55,500 --> 00:30:03,100
+where you might have a grid or collective, like you can't solve some problem in a big grid or
+
+363
+00:30:03,100 --> 00:30:08,700
+something like that, where everybody talks to their neighbors. But the communication,
+
+364
+00:30:08,700 --> 00:30:15,100
+how do you communicate? It depends heavily on the problem. So you need to usually provide the
+
+365
+00:30:15,100 --> 00:30:23,100
+communication. Who tells who what information? Based on your problem, you usually need to
+
+366
+00:30:23,100 --> 00:30:27,140
+to decide yourself how to do it.
+
+367
+00:30:27,140 --> 00:30:29,940
+So there's one big rule of thumb
+
+368
+00:30:29,940 --> 00:30:32,500
+when it comes to multi-threading or multi-processing
+
+369
+00:30:32,500 --> 00:30:36,180
+and MPI, which is because multi-threading
+
+370
+00:30:36,180 --> 00:30:38,980
+and multi-processing usually run a very small path,
+
+371
+00:30:38,980 --> 00:30:41,780
+like a single for loop in parallel,
+
+372
+00:30:41,780 --> 00:30:45,420
+whereas MPI will run all of the code in parallel.
+
+373
+00:30:45,420 --> 00:30:50,420
+So in MPI, you want to split at the highest level possible.
+
+374
+00:30:50,420 --> 00:30:58,420
+So as much as possible get split between the processes and then they're just like occasionally sending messages to each other.
+
+375
+00:30:58,420 --> 00:31:07,420
+In multi-threading, basically you want to parallelize the smallest loop or one loop at a time.
+
+376
+00:31:07,420 --> 00:31:17,420
+So they tend to be used quite differently and that's also the reason why often the libraries are parallelized with this multi-threading,
+
+377
+00:31:17,420 --> 00:31:23,500
+multiprocessing things and not with MPI, but if you're using MPI then you usually have to do it
+
+378
+00:31:23,500 --> 00:31:35,340
+yourself or use something that's specifically intended with MPI. Okay, so another thing is,
+
+379
+00:31:35,340 --> 00:31:43,500
+like we said, a lot of libraries are using multithreading and the reason they can do
+
+380
+00:31:43,500 --> 00:31:50,300
+it efficiently is because they're not written in Python. Python needs to use a multi-processing
+
+381
+00:31:50,300 --> 00:31:57,260
+approach because one process can only run at a time. But in C, C++, Fortran, whatever,
+
+382
+00:31:58,860 --> 00:32:05,500
+in all of these fast compiled languages, you can run multiple threads at a time.
+
+383
+00:32:06,300 --> 00:32:13,260
+Multiple threads can run code at the same time. Almost everything is written, has a back end
+
+384
+00:32:13,500 --> 00:32:21,740
+that runs the fast parts using libraries written in these languages.
+
+385
+00:32:22,780 --> 00:32:27,340
+So if you ended up in a situation where you need to kind of extend those libraries a bit,
+
+386
+00:32:28,220 --> 00:32:38,780
+there's multiple ways of writing C, C++ code for Rust and then calling that from Python
+
+387
+00:32:38,780 --> 00:32:41,780
+to get the thing done.
+
+388
+00:32:41,780 --> 00:32:43,780
+Yeah, there are also...
+
+389
+00:32:43,780 --> 00:32:45,780
+You can just call your library from Python.
+
+390
+00:32:45,780 --> 00:32:47,780
+There are also like Python libraries
+
+391
+00:32:47,780 --> 00:32:50,780
+such as Numba and Jax nowadays
+
+392
+00:32:50,780 --> 00:32:52,780
+that can do stuff like
+
+393
+00:32:52,780 --> 00:32:54,780
+just-in-time compilation
+
+394
+00:32:54,780 --> 00:32:56,780
+where they like take your Python function
+
+395
+00:32:56,780 --> 00:32:58,780
+and then they compile it
+
+396
+00:32:58,780 --> 00:33:00,780
+into a faster C++ function
+
+397
+00:33:00,780 --> 00:33:02,780
+without you ever leaving Python.
+
+398
+00:33:02,780 --> 00:33:04,780
+But they are...
+
+399
+00:33:04,780 --> 00:33:06,780
+They need additional things usually
+
+400
+00:33:06,780 --> 00:33:14,220
+things usually. Your code needs to be written in a way that it can be compiled, not be like
+
+401
+00:33:14,220 --> 00:33:20,300
+generic Python code. It doesn't exactly support general Python. It's a subset of Python that you
+
+402
+00:33:20,300 --> 00:33:25,340
+have to use, but it allows you to write the program, write the function in Python and then
+
+403
+00:33:26,140 --> 00:33:30,780
+run it as if it was written in C, which is really convenient and usually actually the
+
+404
+00:33:30,780 --> 00:33:37,660
+first thing you would want to do or try. Yeah. And before we leave for a break,
+
+405
+00:33:39,660 --> 00:33:46,540
+we can mention Dask as well. So if you're dealing with big pandas data frames,
+
+406
+00:33:46,540 --> 00:33:51,020
+if you have a lot of data that you need to process, Dask is this kind of
+
+407
+00:33:51,020 --> 00:33:58,820
+of like improvement on pandas or more parallelizable version
+
+408
+00:33:58,820 --> 00:34:03,500
+of pandas that allows the probe, like what it does basically
+
+409
+00:34:03,500 --> 00:34:06,820
+is that when you set in your pandas code or whatever,
+
+410
+00:34:06,820 --> 00:34:11,220
+you select certain rows here, calculate average of them,
+
+411
+00:34:11,220 --> 00:34:15,780
+and whatever, you have some operations that you do.
+
+412
+00:34:15,780 --> 00:34:19,020
+Dask can create this kind of like a computational graph
+
+413
+00:34:19,020 --> 00:34:26,460
+of it and then it can execute it in parallel. So let's say it will run like the data in pieces
+
+414
+00:34:26,460 --> 00:34:31,580
+or something like that and it can handle the parallelism on the back end. And if you're
+
+415
+00:34:31,580 --> 00:34:40,460
+dealing with large data sets like big data sets of data frames, it's a very useful tool and it's
+
+416
+00:34:40,460 --> 00:34:46,300
+used in like banks and that sort of stuff because it makes it possible to analyze like huge amounts
+
+417
+00:34:46,300 --> 00:34:50,700
+of, let's say, customer data or something.
+
+418
+00:34:50,700 --> 00:34:58,020
+So I started a list of useful libraries for parallel Python libraries, and I wrote that
+
+419
+00:34:58,020 --> 00:34:59,980
+the task is useful for large data sets.
+
+420
+00:34:59,980 --> 00:35:06,540
+There's also JobLabel, which is, I guess, an easier way of doing maps with multiprocessing.
+
+421
+00:35:06,540 --> 00:35:13,700
+I guess it probably does other things as well.
+
+422
+00:35:13,700 --> 00:35:22,700
+Yes, so we'll continue adding more stuff there, and if you have any more questions, just put them in the notes.
+
+423
+00:35:22,700 --> 00:35:32,700
+Yeah, and please add any library you know of or you use that we may not know of yet, because that's always good to keep up to date.
+
+424
+00:35:32,700 --> 00:35:39,260
+Yeah, and also if you, at the end of the day, if you have some certain cases that you would
+
+425
+00:35:39,260 --> 00:35:43,060
+want us to present or certain libraries you would want us to present in the coming years,
+
+426
+00:35:43,060 --> 00:35:49,380
+let us know, because there's so many of these nowadays, so it's hard to say what are the
+
+427
+00:35:49,380 --> 00:35:52,900
+most important ones for our users.
+
+428
+00:35:52,900 --> 00:35:57,180
+But what sort of use cases you want us to demonstrate.
+
+429
+00:35:57,180 --> 00:36:01,860
+Otherwise, so we intentionally left a good amount of time for discussion here.
+
+430
+00:36:01,860 --> 00:36:12,940
+So I'm looking for questions in the notes that we might want to bring up.
+
+431
+00:36:12,940 --> 00:36:16,500
+There's a good question there, how can I install OpenMPI?
+
+432
+00:36:16,500 --> 00:36:21,640
+Well, Conda has an OpenMPI installation package there in it.
+
+433
+00:36:21,640 --> 00:36:29,580
+So you can just Conda install OpenMPI, at least from Conda Forge, and MPF API as well.
+
+434
+00:36:29,580 --> 00:36:32,460
+that's, I would highly recommend using that compared to like
+
+435
+00:36:32,460 --> 00:36:36,740
+installing an MPI by yourself, unless you're using it in a very
+
+436
+00:36:36,740 --> 00:36:39,600
+large scenario in a computational cluster or
+
+437
+00:36:39,600 --> 00:36:43,060
+something. But if you want to work in in like one machine or
+
+438
+00:36:43,060 --> 00:36:48,900
+something like that, the MPI in the in Conda is good, good
+
+439
+00:36:48,900 --> 00:36:52,940
+enough in most cases, like, or if you have a, if you're working
+
+440
+00:36:52,940 --> 00:36:56,900
+in a computational cluster, the maintenance of that cluster
+
+441
+00:36:56,900 --> 00:36:59,300
+will usually provide you with an MPI already,
+
+442
+00:36:59,300 --> 00:37:03,100
+because it needs extra stuff to be able to do it.
+
+443
+00:37:03,100 --> 00:37:06,100
+There will probably be multiple versions you can choose from.
+
+444
+00:37:09,420 --> 00:37:12,180
+Another one, so this is answered in the notes,
+
+445
+00:37:12,180 --> 00:37:14,740
+but benchmarking libraries,
+
+446
+00:37:14,740 --> 00:37:17,420
+because we talked a good bit in the beginning
+
+447
+00:37:17,420 --> 00:37:20,020
+about how before thinking about parallelizing,
+
+448
+00:37:20,020 --> 00:37:22,540
+you should do benchmarking and try to just make the code
+
+449
+00:37:22,540 --> 00:37:24,420
+faster with the existing libraries,
+
+450
+00:37:24,420 --> 00:37:27,420
+which is usually enough.
+
+451
+00:37:27,420 --> 00:37:34,420
+So if you have one specific function you know you want to benchmark,
+
+452
+00:37:34,420 --> 00:37:37,420
+then timeit is a really good library.
+
+453
+00:37:37,420 --> 00:37:42,420
+And if you have an entire code,
+
+454
+00:37:42,420 --> 00:37:45,420
+or when you're starting you basically just have one entire code,
+
+455
+00:37:45,420 --> 00:37:50,420
+you want to figure out what is the slow part in that code,
+
+456
+00:37:50,420 --> 00:37:52,420
+then scalene is a good option.
+
+457
+00:37:52,420 --> 00:38:01,540
+So, that's on this question, mark this question number nine, but should we, is it easy to
+
+458
+00:38:01,540 --> 00:38:02,540
+find in notes?
+
+459
+00:38:02,540 --> 00:38:07,420
+Yeah, I added to the libraries list.
+
+460
+00:38:07,420 --> 00:38:09,420
+Okay, good.
+
+461
+00:38:09,420 --> 00:38:18,420
+So, it's benchmarking and yeah.
+
+462
+00:38:18,420 --> 00:38:19,420
+Yeah.
+
+463
+00:38:23,420 --> 00:38:27,420
+Guidelines for deciding knowing in what way I should parallelize my code.
+
+464
+00:38:30,420 --> 00:38:35,420
+I would say like the first thing is like check out the embarrassingly parallel.
+
+465
+00:38:35,420 --> 00:38:46,420
+That's usually the most efficient way of parallelization because it's like if you have a natural thing in your code.
+
+466
+00:38:46,420 --> 00:38:54,900
+code that is embarrassingly parallelizable. For example, you run it with multiple parameters,
+
+467
+00:38:54,900 --> 00:38:59,940
+multiple datasets, and that is usually the way to go because that scales infinitely, basically,
+
+468
+00:38:59,940 --> 00:39:04,340
+because you can always launch more processes. As long as you have more data, right?
+
+469
+00:39:04,340 --> 00:39:09,780
+Yeah, as long as you have more data. Yeah. And after that, I would say probably check
+
+470
+00:39:09,780 --> 00:39:12,820
+the libraries that you're using, whether they support parallelization.
+
+471
+00:39:12,820 --> 00:39:19,220
+But yeah, so then if a single case just takes too long to run, like several days,
+
+472
+00:39:20,500 --> 00:39:24,580
+so if you're running on a cluster or on a supercomputer, you can usually reserve it
+
+473
+00:39:24,580 --> 00:39:30,820
+for a few days. But then if something breaks, you might lose everything. So it's important to
+
+474
+00:39:30,820 --> 00:39:38,180
+build in some checkpointing. So write everything to disk so that if you have to restart it,
+
+475
+00:39:38,180 --> 00:39:46,500
+it can continue from where it was. That's already very useful. It's not parallelization exactly,
+
+476
+00:39:46,500 --> 00:39:54,500
+but it just allows you to run for longer. Then if it still takes way too long,
+
+477
+00:39:57,300 --> 00:40:00,500
+then you just need to make it faster and you might need to parallelize in some way.
+
+478
+00:40:00,500 --> 00:40:16,500
+And then, if there's a way of splitting the data, like if you're running a simulation with a grid of points, you can split those points and run independently for each of those points.
+
+479
+00:40:16,500 --> 00:40:20,500
+That's a good case for MPI, possibly.
+
+480
+00:40:20,500 --> 00:40:32,500
+if you have big loops over a lot of small things inside those you might be able to parallelize with multi-threading options.
+
+481
+00:40:32,500 --> 00:40:40,500
+So basically though, well the multi-threading thing basically means use libraries that are multi-threaded,
+
+482
+00:40:40,500 --> 00:40:52,980
+multithreaded, which means NumPy, SciPy, Torch, TensorFlow, whatever. It depends on what you're
+
+483
+00:40:52,980 --> 00:41:00,660
+doing, but almost everything is multithreaded if it does a lot of calculations. So just
+
+484
+00:41:00,660 --> 00:41:06,260
+try to combine calls to NumPy, for example. If you have multiple calls to NumPy with the
+
+485
+00:41:06,260 --> 00:41:13,380
+same data, try to make it one call so that it doesn't get split.
+
+486
+00:41:13,380 --> 00:41:19,420
+One thing also, there's a few questions in the chat about the multiprocessing example,
+
+487
+00:41:19,420 --> 00:41:27,220
+like locking up. It might be due to the Jupyter locking the GL, the global interpreter lock,
+
+488
+00:41:27,220 --> 00:41:32,940
+what we were talking about. Because if you have a Jupyter, you have a JupyterLab running
+
+489
+00:41:32,940 --> 00:41:38,780
+Python interpreter, and then you try to run multiprocessing there, it might be that the
+
+490
+00:41:38,780 --> 00:41:45,140
+Jupyter and how it processes the sales and that sort of thing, it should work, but there
+
+491
+00:41:45,140 --> 00:41:50,700
+might be a situation where it somehow locks the global interpreter lock.
+
+492
+00:41:50,700 --> 00:41:55,500
+So that might happen, but it's hard to say.
+
+493
+00:41:55,500 --> 00:41:57,620
+We will check the examples and we will verify that.
+
+494
+00:41:57,620 --> 00:41:59,900
+There's at least two questions about this.
+
+495
+00:41:59,900 --> 00:42:00,900
+Yeah.
+
+496
+00:42:00,900 --> 00:42:01,900
+So we'll verify.
+
+497
+00:42:01,900 --> 00:42:02,900
+Yeah.
+
+498
+00:42:02,900 --> 00:42:08,820
+solution, like if you take the solution from the web page and it doesn't work, then it
+
+499
+00:42:08,820 --> 00:42:14,500
+might be, yeah, you might want to check compared to the solution.
+
+500
+00:42:14,500 --> 00:42:21,700
+Okay. We are out of time though. So let's take a break and then we'll move on to packaging.
+
+501
+00:42:21,700 --> 00:42:27,420
+Yeah. I'll quickly mention that there was also like a question about pooling, like
+
+502
+00:42:27,420 --> 00:42:35,820
+pool one getting bad results or like using pool was worse than not using pool. And this is
+
+503
+00:42:35,820 --> 00:42:41,660
+exactly what might happen in a case where you parallelize a thing that actually doesn't benefit
+
+504
+00:42:41,660 --> 00:42:47,260
+from parallelization. So the example of course is like a trivial example that we have. So it's a
+
+505
+00:42:47,260 --> 00:42:54,060
+very low, like the processor will just go through it in an instant anyways. Like it's going to be
+
+506
+00:42:54,060 --> 00:43:01,180
+like nanoseconds or microseconds or something to calculate it. So adding the constructions of,
+
+507
+00:43:01,180 --> 00:43:08,780
+okay, we'll construct a parallel pool and then we'll give everyone their own process to run,
+
+508
+00:43:08,780 --> 00:43:15,340
+it's a huge amount of overhead. But the thing happens is that when we are getting to the
+
+509
+00:43:15,340 --> 00:43:23,180
+runtimes of seconds or minutes, then suddenly the overhead isn't that big. But usually you need to
+
+510
+00:43:23,180 --> 00:43:29,660
+figure out what is the part in the code that requires me to parallelize it.
+
+511
+00:43:31,420 --> 00:43:39,180
+And usually, also, I'll mention that, for example, the map thing, writing it as a NumPy array and
+
+512
+00:43:39,180 --> 00:43:44,700
+just squaring the NumPy array would be much faster than any pooling because NumPy already
+
+513
+00:43:44,700 --> 00:43:50,380
+does the parallelization inside. So, not using Python objects, but using NumPy arrays would be
+
+514
+00:43:50,380 --> 00:43:56,060
+always faster than doing the pooling thing. So it's a trivial example, but it's just to
+
+515
+00:43:56,060 --> 00:44:02,780
+demonstrate how to use the tools. Okay. But yeah, so we are out of time. So
+
+516
+00:44:05,420 --> 00:44:13,340
+do take a break and walk around a bit. Let's come back in 10 minutes. All right. Bye.
+
+517
+00:44:13,340 --> 00:44:14,860
+Bye.
+
