@@ -49,11 +49,13 @@ get python-for-scicomp-2023/out/day1.1-icebreaker.mkv (from allas...)
 
 (How was this set up?  Get the environment variables needed for the
 [git-annex S3 special
-remote](https://git-annex.branchable.com/special_remotes/S3/) and run
+remote](https://git-annex.branchable.com/special_remotes/S3/) - I did
+this by running `allas_conf` on one of the CSC computers.  Then run
 `git annex initremote allas type=S3 encryption=none chunk=50MiB
 embedcreds=no host=a3s.fi protocol=https bucket=aaltoscicomp-video
 publicurl=https://aaltoscicomp-video.a3s.fi/ fileprefix=1-
-public=yes`)
+public=yes` - it caches the authentication locally on that computer
+only, it doesn't spread to anywhere else.)
 
 
 
