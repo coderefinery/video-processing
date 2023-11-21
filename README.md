@@ -1,16 +1,28 @@
 # Video processing files
 
 This repo has the files used to do our video processing.  It uses
-git-annex for the big files and other things are committed to git.
-**It provides non-YouTube public access to our videos**, and is also
-our working place for releasing videos (so a lot of the instructions
-below are for those that help processing them).
+[git-annex](https://git-annex.branchable.com/) for the big files and
+other things are committed to git.  **It provides non-YouTube public
+access to our videos**, and is also our working place for releasing
+videos (so a lot of the instructions below are for those that help
+processing them).
+
+We also made [a description of git-annex for data management, targeted
+to scientists and
+researchers](https://scicomp.aalto.fi/scicomp/git-annex/), if you want
+to know what's going on behind the scenes.
 
 
 
-## What is there?
+## What is available here?
 
-Browse the repo.  Currently there is no list.
+Browse the repo - course links are below.  More can be added later
+depending on demand.
+
+* [Python for SciComp
+  2022](https://scicomp.aalto.fi/training/scip/python-for-scicomp-2022/)
+* [Python for SciComp
+  2023](https://scicomp.aalto.fi/training/scip/python-for-scicomp-2023/)
 
 
 
@@ -43,7 +55,6 @@ embedcreds=no host=a3s.fi protocol=https bucket=aaltoscicomp-video
 publicurl=https://aaltoscicomp-video.a3s.fi/ fileprefix=1-
 public=yes` - it caches the authentication locally on that computer
 only, it doesn't spread to anywhere else.)
-
 
 
 
