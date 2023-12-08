@@ -35,8 +35,6 @@ videos you might like:
 
 ```console
 $ git clone https://github.com/coderefinery/video-processing/
-$ git annex init
-$ git annex enableremote allas
 $ git annex get python-for-scicomp-2023/out/day1.1-icebreaker.mkv
 get python-for-scicomp-2023/out/day1.1-icebreaker.mkv (from allas...)
 ```
@@ -53,8 +51,8 @@ this by running `allas_conf` on one of the CSC computers.  Then run
 `git annex initremote allas type=S3 encryption=none chunk=50MiB
 embedcreds=no host=a3s.fi protocol=https bucket=aaltoscicomp-video
 publicurl=https://aaltoscicomp-video.a3s.fi/ fileprefix=1-
-public=yes` - it caches the authentication locally on that computer
-only, it doesn't spread to anywhere else.)
+public=yes autoenable=true` - it caches the authentication locally on
+that computer only, it doesn't spread to anywhere else.)
 
 
 
