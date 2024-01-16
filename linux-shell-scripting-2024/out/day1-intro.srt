@@ -1,0 +1,452 @@
+1
+00:00:01,000 --> 00:00:04,000
+Okay, let's get started. It's already 12 o'clock.
+
+2
+00:00:04,000 --> 00:00:08,000
+So welcome everyone to this second part of the Linux shell course.
+
+3
+00:00:08,000 --> 00:00:11,000
+It's called Linux shell scripting.
+
+4
+00:00:11,000 --> 00:00:15,000
+My name is [name].
+
+5
+00:00:15,000 --> 00:00:20,000
+I'm at Aalto University working for the Aalto scientific computing.
+
+6
+00:00:20,000 --> 00:00:25,000
+And so the practical aspects of this course, a few notes.
+
+7
+00:00:26,640 --> 00:00:29,520
+There will be a couple of documents which we will be using.
+
+8
+00:00:29,520 --> 00:00:32,300
+So one of them is the material itself.
+
+9
+00:00:34,000 --> 00:00:37,520
+It's the, you should have received already an email
+
+10
+00:00:37,520 --> 00:00:39,400
+from [name].
+
+11
+00:00:39,400 --> 00:00:42,640
+So there were a couple of links, including this Zoom link.
+
+12
+00:00:42,640 --> 00:00:44,920
+And on top of that, there were also a link
+
+13
+00:00:44,920 --> 00:00:47,920
+to this AaltoSciComp at GitHub.
+
+14
+00:00:47,920 --> 00:00:52,680
+So here we have our Linux shell course.
+
+15
+00:00:52,680 --> 00:00:54,780
+So that's already the course continuation.
+
+16
+00:00:54,780 --> 00:00:59,780
+The first part was given already in the autumn,
+
+17
+00:00:59,980 --> 00:01:01,980
+but no worries, we will come back to this.
+
+18
+00:01:01,980 --> 00:01:05,300
+I will tell you shortly what we expected.
+
+19
+00:01:05,300 --> 00:01:07,740
+So let's continue with the documents.
+
+20
+00:01:07,740 --> 00:01:12,740
+There will be feedback form for yourself and for ourselves.
+
+21
+00:01:12,740 --> 00:01:20,740
+So this is the HedgeDoc, pretty much like HackMD, just the branch of this.
+
+22
+00:01:20,740 --> 00:01:27,740
+And so here will be your questions, here will be our comments, our references,
+
+23
+00:01:27,740 --> 00:01:32,740
+and we will keep it up to date and updated all the three days.
+
+24
+00:01:32,740 --> 00:01:37,740
+So the second part of this course, I mean this part of this course,
+
+25
+00:01:37,740 --> 00:01:42,740
+it's gonna be the three hours each, three times,
+
+26
+00:01:42,940 --> 00:01:45,380
+today, tomorrow, and after tomorrow.
+
+27
+00:01:45,380 --> 00:01:47,100
+We will start precisely at 12,
+
+28
+00:01:47,100 --> 00:01:48,720
+but then actually the Zoom sessions
+
+29
+00:01:48,720 --> 00:01:51,820
+will be open already a bit in advance.
+
+30
+00:01:51,820 --> 00:01:53,260
+So if you have any question,
+
+31
+00:01:53,260 --> 00:01:58,260
+or if you need some kind of issues to resolve,
+
+32
+00:01:58,760 --> 00:02:02,140
+so you can also join the Zoom session a bit earlier,
+
+33
+00:02:02,140 --> 00:02:05,100
+and we will take a look at your issue.
+
+34
+00:02:05,100 --> 00:02:08,480
+So what is my expectation from your side?
+
+35
+00:02:08,480 --> 00:02:10,880
+I expect that you already somewhat
+
+36
+00:02:13,020 --> 00:02:18,020
+spend some time to get your terminal open
+
+37
+00:02:18,180 --> 00:02:20,200
+so that you have access to Linux.
+
+38
+00:02:21,780 --> 00:02:23,820
+I'm not talking about that you have full type
+
+39
+00:02:23,820 --> 00:02:24,900
+of Linux installation.
+
+40
+00:02:24,900 --> 00:02:27,540
+It's full enough if you have some exercise connection
+
+41
+00:02:27,540 --> 00:02:32,540
+to your, be it interactive server at your university
+
+42
+00:02:33,020 --> 00:02:34,780
+or maybe your workstation.
+
+43
+00:02:34,780 --> 00:02:37,260
+That's enough if you have your own Linux laptop,
+
+44
+00:02:37,260 --> 00:02:39,420
+that's even better.
+
+45
+00:02:39,420 --> 00:02:40,700
+So you can do it locally.
+
+46
+00:02:40,700 --> 00:02:43,300
+So pretty much anything which will give you
+
+47
+00:02:43,300 --> 00:02:47,400
+a Bash session open for you.
+
+48
+00:02:48,300 --> 00:02:49,980
+So that's regarding this one.
+
+49
+00:02:49,980 --> 00:02:52,620
+So what you can expect from this course is that
+
+50
+00:02:52,620 --> 00:02:57,620
+we will go through all the scripting abilities of the Bash.
+
+51
+00:02:57,620 --> 00:03:05,540
+abilities of the bash. So what you expect by the end of the course you should be
+
+52
+00:03:05,540 --> 00:03:09,860
+able to write already your own scripts and we will start with very simple ones
+
+53
+00:03:09,860 --> 00:03:15,260
+like hello bash and then we will continue to keep the increase in the
+
+54
+00:03:15,260 --> 00:03:19,660
+level of complexity and then by the end of the day you should be able to create
+
+55
+00:03:19,660 --> 00:03:26,100
+something which is more or less suitable for your CV and something which you will
+
+56
+00:03:26,100 --> 00:03:33,060
+be able to put finally on the github if you have an account over there. So regarding these notes,
+
+57
+00:03:33,780 --> 00:03:42,020
+notes on the code refinery.org. So if you go there you can easily go to the edit mode
+
+58
+00:03:42,020 --> 00:03:49,620
+or you can have them both and you can see what you are typing in. So just make sure that
+
+59
+00:03:49,620 --> 00:03:57,660
+well if you have any question then you can click the help button and so you
+
+60
+00:03:57,660 --> 00:04:03,860
+will see more or less the references about the syntax of this code and then
+
+61
+00:04:03,860 --> 00:04:10,940
+don't hesitate to ask the questions over here. So we streamed this
+
+62
+00:04:10,940 --> 00:04:17,740
+lecture and that's streaming we're also recording it so you're muted and you do
+
+63
+00:04:17,740 --> 00:04:21,540
+appear on the recording so that's the point why we actually want these
+
+64
+00:04:21,540 --> 00:04:29,340
+questions to be answered to be asked to be answered in this kind of text mode
+
+65
+00:04:29,340 --> 00:04:34,220
+so but feel free it's anonymous you don't need to have any kind of account
+
+66
+00:04:34,220 --> 00:04:40,860
+just go there my setup my setup is going to be as next so our sandbox our
+
+67
+00:04:40,860 --> 00:04:47,460
+working horse will be here the terminal so this is what I have so I have a
+
+68
+00:04:47,460 --> 00:04:53,700
+prompt and I have the blinking cursor which will be waiting for me to start typing the commands.
+
+69
+00:04:54,820 --> 00:05:00,820
+Because of the commands they sometimes provide quite long outputs. So what we've done also,
+
+70
+00:05:00,820 --> 00:05:07,540
+I have another one terminal over here which will automatically output what I'm typing here.
+
+71
+00:05:07,540 --> 00:05:13,620
+So if I'm typing the command like echo test it will appear over here. You will find it useful
+
+72
+00:05:13,620 --> 00:05:20,180
+later when the screen will go off and the will be polluted already by the output of the different
+
+73
+00:05:20,180 --> 00:05:26,740
+and or I will clear the screen somehow of my terminal and so you can still look at these
+
+74
+00:05:26,740 --> 00:05:36,180
+commands over here. That's not it. I have also done this my demo space in my home directory on
+
+75
+00:05:36,180 --> 00:05:47,220
+my local computer as part of my university page. So I have on my university page a directory called
+
+76
+00:05:47,220 --> 00:05:56,660
+shell. If you go to this https users auto.fi my username and shell so you should have this link
+
+77
+00:05:56,660 --> 00:06:02,500
+actually over here on the code refinery so you don't need to type it on your own just click it
+
+78
+00:06:02,500 --> 00:06:08,420
+over there so here you will get first here we'll get all the scripts that we will be preparing
+
+79
+00:06:08,420 --> 00:06:13,460
+they will be automatically added over here to the web page and then also you will hear the whole
+
+80
+00:06:13,460 --> 00:06:20,500
+you will here see the whole bash history it's easy to take it out from here and copy paste it to your
+
+81
+00:06:20,500 --> 00:06:27,620
+on terminal. Okay, by saying that I think I'm pretty much done with it.
+
+82
+00:06:31,220 --> 00:06:38,900
+So this is a hands-on tutorial. So my target over here is to be more or less 50-50. If I'm saying
+
+83
+00:06:38,900 --> 00:06:43,700
+something like for 10 minutes then I expect that we will spend 10 minutes on actually doing
+
+84
+00:06:43,700 --> 00:06:49,060
+something. So there will be lots of doing over here and so it does really make sense that you
+
+85
+00:06:49,060 --> 00:06:57,460
+have your terminal open and you have all the setup ready to go.
+
+86
+00:06:58,500 --> 00:07:01,460
+I think this is pretty much what I had to say about
+
+87
+00:07:01,460 --> 00:07:09,380
+the initial part. If any question is left then please go and type it over here.
+
+88
+00:07:09,380 --> 00:07:12,340
+I'm not alone on this course. I'm the speaking
+
+89
+00:07:12,340 --> 00:07:18,820
+kind of head but there will be several of our team guys
+
+90
+00:07:18,820 --> 00:07:26,020
+helping you and me to answer these questions so if you type the question be sure there will be
+
+91
+00:07:26,020 --> 00:07:33,460
+someone to reply you pretty much immediately so there is will be work done in the background
+
+92
+00:07:34,340 --> 00:07:41,460
+but let's get back to the material so this linux shell basics has been given as i told you already
+
+93
+00:07:41,460 --> 00:07:47,460
+in autumn so now we will be working on the linux shell scripting the material is quite
+
+94
+00:07:47,460 --> 00:07:49,860
+It's comprehensive.
+
+95
+00:07:49,860 --> 00:07:52,220
+This is the one which is online.
+
+96
+00:07:52,220 --> 00:07:54,420
+I will not read you from the slides.
+
+97
+00:07:54,420 --> 00:07:56,420
+I don't have actually any slide over here.
+
+98
+00:07:56,420 --> 00:07:57,880
+I will use its material.
+
+99
+00:07:59,260 --> 00:08:01,260
+And everything what I will be saying,
+
+100
+00:08:01,260 --> 00:08:03,500
+it's more or less somewhere here,
+
+101
+00:08:03,500 --> 00:08:07,380
+but I don't really follow directly the material itself.
+
+102
+00:08:07,380 --> 00:08:11,700
+And the exercises which are part of this material
+
+103
+00:08:11,700 --> 00:08:15,420
+and actually written fully by our team,
+
+104
+00:08:15,420 --> 00:08:17,020
+they will appear over here.
+
+105
+00:08:17,020 --> 00:08:19,920
+So I have an example of first exercise
+
+106
+00:08:19,920 --> 00:08:23,240
+and so that you, when we will come to this,
+
+107
+00:08:23,240 --> 00:08:24,960
+you will see how it will go full.
+
+108
+00:08:25,960 --> 00:08:30,720
+Okay, so the first icebreaker and the starter.
+
+109
+00:08:30,720 --> 00:08:35,420
+So you're told already, if you haven't answered yet
+
+110
+00:08:35,420 --> 00:08:37,840
+the question, please try to do it also over here.
+
+111
+00:08:37,840 --> 00:08:41,040
+So that will give us some picture of what we are doing
+
+112
+00:08:41,040 --> 00:08:42,900
+and who is taking the course.
+
+113
+00:08:42,900 --> 00:08:49,000
+and let's get your hands dirty so my first touch will be actually writing the script
+

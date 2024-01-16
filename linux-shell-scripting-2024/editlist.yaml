@@ -22,14 +22,52 @@
     Aalto Scientific Computing: https://scicomp.aalto.fi/
 
 
-#- input: raw/day1.mp4
-#
-#- output: day1.mkv
-#  title: Day 1 (variables, functions, environments)
-#  description: >-
-#    (1) https://aaltoscicomp.github.io/linux-shell/variables-functions-environments/
-#
-#  editlist:
-#    #- 2:44 intro
-#    - start: 3:42
-#    - stop: 03:06:24
+- input: raw/day1-eglerean.mp4
+
+- output: out/day1-intro.mkv
+  title: Day 1 introduction
+  description: >-
+    The introduction of the day.
+
+  editlist:
+    - start: 00:00:09
+    - stop: 00:08:58
+
+
+- output: out/day1.mkv
+  title: Day 1 (variables, functions, environments)
+  description: >-
+    This day mainly covers ways to bake scripts (basics, like where to
+    put them to be executable), variables, functions, and environment
+    variables.  There is a brief extra bit about redirections.
+
+    Most material https://aaltoscicomp.github.io/linux-shell/variables-functions-environments/
+
+    Redirections: https://aaltoscicomp.github.io/linux-shell/quoting-substitution-aliases/#more-about-redirection-piping-and-process-substitution
+
+  editlist:
+    - start: 00:08:58
+    - -: § Writing scripts, editors
+    - 00:21:47: Exercise prep (basics, ~/bin and PATH)
+    - stop: 00:23:39
+    - start: 00:33:20
+    - -: After the exercise
+    - 00:39:14: § Variables
+    - 00:47:25: Exercise 2 (variable)
+    - stop: 00:49:07
+    - start: 01:10:11
+    - -: After the exercise
+    - -: Magic of bash variables
+    - 01:17:54: Exercise 3 (more variables)
+    - stop: 01:20:01
+    - start: 01:35:19
+    - -: After the exercise
+    - 01:41:59: Wrap-up of variables
+    - 01:42:42: § Functions
+    - 02:05:22: Exercise 4 (functions)
+    - stop: 02:07:18
+    - start: 02:31:40
+    - -: After the exercise
+    - 02:40:57: § Redirections
+    - 02:52:21: Exercise 5 (solution tomorrow)
+    - stop: 02:54:06
