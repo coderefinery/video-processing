@@ -1,0 +1,4668 @@
+1
+00:00:01,000 --> 00:00:06,000
+Can you hear me well?
+
+2
+00:00:10,000 --> 00:00:13,000
+Okay, let's get started. It's already 12 o'clock.
+
+3
+00:00:13,000 --> 00:00:17,000
+So welcome everyone to this second part of the Linux shell course.
+
+4
+00:00:17,000 --> 00:00:20,000
+It's called Linux shell scripting.
+
+5
+00:00:20,000 --> 00:00:24,000
+Myself is [name].
+
+6
+00:00:24,000 --> 00:00:29,000
+I'm at Aalto University working for the Aalto scientific computing.
+
+7
+00:00:29,000 --> 00:00:34,000
+And so the practical aspects of this course, a few notes.
+
+8
+00:00:35,640 --> 00:00:38,520
+There will be a couple of documents which we will be using.
+
+9
+00:00:38,520 --> 00:00:41,300
+So one of them is the material itself.
+
+10
+00:00:43,000 --> 00:00:46,520
+It's the, you should have received already an email
+
+11
+00:00:46,520 --> 00:00:48,400
+from [name].
+
+12
+00:00:48,400 --> 00:00:51,640
+So there were a couple of links, including this Zoom link.
+
+13
+00:00:51,640 --> 00:00:53,920
+And on top of that, there were also a link
+
+14
+00:00:53,920 --> 00:00:56,920
+to this autoski.com at GitHub.
+
+15
+00:00:56,920 --> 00:01:01,680
+So here we have our Linux shell course.
+
+16
+00:01:01,680 --> 00:01:03,780
+So that's already the course continuation.
+
+17
+00:01:03,780 --> 00:01:08,780
+The first part was given already in the autumn,
+
+18
+00:01:08,980 --> 00:01:10,980
+but no worries, we will come back to this.
+
+19
+00:01:10,980 --> 00:01:14,300
+I will tell you shortly what we expected.
+
+20
+00:01:14,300 --> 00:01:16,740
+So let's continue with the documents.
+
+21
+00:01:16,740 --> 00:01:21,740
+There will be feedback form for yourself and for ourselves.
+
+22
+00:01:21,740 --> 00:01:29,740
+So this is the H-Doc, pretty much like HackMD, just the branch of this.
+
+23
+00:01:29,740 --> 00:01:36,740
+And so here will be your questions, here will be our comments, our references,
+
+24
+00:01:36,740 --> 00:01:41,740
+and we will keep it up to date and updated all the three days.
+
+25
+00:01:41,740 --> 00:01:46,740
+So the second part of this course, I mean this part of this course,
+
+26
+00:01:46,740 --> 00:01:51,740
+it's gonna be the three hours each, three times,
+
+27
+00:01:51,940 --> 00:01:54,380
+today, tomorrow, and after tomorrow.
+
+28
+00:01:54,380 --> 00:01:56,100
+We will start precisely at 12,
+
+29
+00:01:56,100 --> 00:01:57,720
+but then actually the Zoom sessions
+
+30
+00:01:57,720 --> 00:02:00,820
+will be open already a bit in advance.
+
+31
+00:02:00,820 --> 00:02:02,260
+So if you have any question,
+
+32
+00:02:02,260 --> 00:02:07,260
+or if you need some kind of issues to resolve,
+
+33
+00:02:07,760 --> 00:02:11,140
+so you can also join the Zoom session a bit earlier,
+
+34
+00:02:11,140 --> 00:02:14,100
+and we will take a look at your issue.
+
+35
+00:02:14,100 --> 00:02:17,480
+So what is my expectation from your side?
+
+36
+00:02:17,480 --> 00:02:19,880
+I expect that you already somewhat
+
+37
+00:02:22,020 --> 00:02:27,020
+spend some time to get your terminal open
+
+38
+00:02:27,180 --> 00:02:29,200
+so that you have access to Linux.
+
+39
+00:02:30,780 --> 00:02:32,820
+I'm not talking about that you have full type
+
+40
+00:02:32,820 --> 00:02:33,900
+of Linux installation.
+
+41
+00:02:33,900 --> 00:02:36,540
+It's full enough if you have some exercise connection
+
+42
+00:02:36,540 --> 00:02:41,540
+to your, be it interactive server at your university
+
+43
+00:02:42,020 --> 00:02:43,780
+or maybe your workstation.
+
+44
+00:02:43,780 --> 00:02:46,260
+That's enough if you have your own Linux laptop,
+
+45
+00:02:46,260 --> 00:02:48,420
+that's even better.
+
+46
+00:02:48,420 --> 00:02:49,700
+So you can do it locally.
+
+47
+00:02:49,700 --> 00:02:52,300
+So pretty much anything which will give you
+
+48
+00:02:52,300 --> 00:02:56,400
+a Bash session open for you.
+
+49
+00:02:57,300 --> 00:02:58,980
+So that's regarding this one.
+
+50
+00:02:58,980 --> 00:03:01,620
+So what you can expect from this course is that
+
+51
+00:03:01,620 --> 00:03:06,620
+we will go through all the scripting abilities of the Bash.
+
+52
+00:03:06,620 --> 00:03:14,540
+abilities of the bash. So what you expect by the end of the course you should be
+
+53
+00:03:14,540 --> 00:03:18,860
+able to write already your own scripts and we will start with very simple ones
+
+54
+00:03:18,860 --> 00:03:24,260
+like hello bash and then we will continue to keep the increase in the
+
+55
+00:03:24,260 --> 00:03:28,660
+level of complexity and then by the end of the day you should be able to create
+
+56
+00:03:28,660 --> 00:03:35,100
+something which is more or less suitable for your CV and something which you will
+
+57
+00:03:35,100 --> 00:03:42,060
+be able to put finally on the github if you have an account over there. So regarding these notes,
+
+58
+00:03:42,780 --> 00:03:51,020
+notes on the code refinery.org. So if you go there you can easily go to the edit mode
+
+59
+00:03:51,020 --> 00:03:58,620
+or you can have them both and you can see what you are typing in. So just make sure that
+
+60
+00:03:58,620 --> 00:04:06,660
+well if you have any question then you can click the help button and so you
+
+61
+00:04:06,660 --> 00:04:12,860
+will see more or less the references about the syntax of this code and then
+
+62
+00:04:12,860 --> 00:04:19,940
+don't hesitate to ask the questions over here. So we streamed this
+
+63
+00:04:19,940 --> 00:04:26,740
+lecture and that's streaming we're also recording it so you're muted and you do
+
+64
+00:04:26,740 --> 00:04:30,540
+appear on the recording so that's the point why we actually want these
+
+65
+00:04:30,540 --> 00:04:38,340
+questions to be answered to be asked to be answered in this kind of text mode
+
+66
+00:04:38,340 --> 00:04:43,220
+so but feel free it's anonymous you don't need to have any kind of account
+
+67
+00:04:43,220 --> 00:04:49,860
+just go there my setup my setup is going to be as next so our sandbox our
+
+68
+00:04:49,860 --> 00:04:56,460
+working horse will be here the terminal so this is what I have so I have a
+
+69
+00:04:56,460 --> 00:05:02,700
+prompt and I have the blinking cursor which will be waiting for me to start typing the commands.
+
+70
+00:05:03,820 --> 00:05:09,820
+Because of the commands they sometimes provide quite long outputs. So what we've done also,
+
+71
+00:05:09,820 --> 00:05:16,540
+I have another one terminal over here which will automatically output what I'm typing here.
+
+72
+00:05:16,540 --> 00:05:22,620
+So if I'm typing the command like echo test it will appear over here. You will find it useful
+
+73
+00:05:22,620 --> 00:05:29,180
+later when the screen will go off and the will be polluted already by the output of the different
+
+74
+00:05:29,180 --> 00:05:35,740
+and or I will clear the screen somehow of my terminal and so you can still look at these
+
+75
+00:05:35,740 --> 00:05:45,180
+commands over here. That's not it. I have also done this my demo space in my home directory on
+
+76
+00:05:45,180 --> 00:05:56,220
+my local computer as part of my university page. So I have on my university page a directory called
+
+77
+00:05:56,220 --> 00:06:05,660
+shell. If you go to this https users auto.fi my username and shell so you should have this link
+
+78
+00:06:05,660 --> 00:06:11,500
+actually over here on the code refinery so you don't need to type it on your own just click it
+
+79
+00:06:11,500 --> 00:06:17,420
+over there so here you will get first here we'll get all the scripts that we will be preparing
+
+80
+00:06:17,420 --> 00:06:22,460
+they will be automatically added over here to the web page and then also you will hear the whole
+
+81
+00:06:22,460 --> 00:06:29,500
+you will here see the whole bash history it's easy to take it out from here and copy paste it to your
+
+82
+00:06:29,500 --> 00:06:36,620
+on terminal. Okay, by saying that I think I'm pretty much done with it.
+
+83
+00:06:40,220 --> 00:06:47,900
+So this is a hands-on tutorial. So my target over here is to be more or less 50-50. If I'm saying
+
+84
+00:06:47,900 --> 00:06:52,700
+something like for 10 minutes then I expect that we will spend 10 minutes on actually doing
+
+85
+00:06:52,700 --> 00:06:58,060
+something. So there will be lots of doing over here and so it does really make sense that you
+
+86
+00:06:58,060 --> 00:07:06,460
+have your terminal open and you have all the setup ready to go.
+
+87
+00:07:07,500 --> 00:07:10,460
+I think this is pretty much what I had to say about
+
+88
+00:07:10,460 --> 00:07:18,380
+the initial part. If any question is left then please go and type it over here.
+
+89
+00:07:18,380 --> 00:07:21,340
+I'm not alone on this course. I'm the speaking
+
+90
+00:07:21,340 --> 00:07:27,820
+kind of head but there will be several of our team guys
+
+91
+00:07:27,820 --> 00:07:35,020
+helping you and me to answer these questions so if you type the question be sure there will be
+
+92
+00:07:35,020 --> 00:07:42,460
+someone to reply you pretty much immediately so there is will be work done in the background
+
+93
+00:07:43,340 --> 00:07:50,460
+but let's get back to the material so this linux shell basics has been given as i told you already
+
+94
+00:07:50,460 --> 00:07:56,460
+in autumn so now we will be working on the linux shell scripting the material is quite
+
+95
+00:07:56,460 --> 00:07:58,860
+It's comprehensive.
+
+96
+00:07:58,860 --> 00:08:01,220
+This is the one which is online.
+
+97
+00:08:01,220 --> 00:08:03,420
+I will not read you from the slides.
+
+98
+00:08:03,420 --> 00:08:05,420
+I don't have actually any slide over here.
+
+99
+00:08:05,420 --> 00:08:06,880
+I will use its material.
+
+100
+00:08:08,260 --> 00:08:10,260
+And everything what I will be saying,
+
+101
+00:08:10,260 --> 00:08:12,500
+it's more or less somewhere here,
+
+102
+00:08:12,500 --> 00:08:16,380
+but I don't really follow directly the material itself.
+
+103
+00:08:16,380 --> 00:08:20,700
+And the exercises which are part of this material
+
+104
+00:08:20,700 --> 00:08:24,420
+and actually written fully by our team,
+
+105
+00:08:24,420 --> 00:08:26,020
+they will appear over here.
+
+106
+00:08:26,020 --> 00:08:28,920
+So I have an example of first exercise
+
+107
+00:08:28,920 --> 00:08:32,240
+and so that you, when we will come to this,
+
+108
+00:08:32,240 --> 00:08:33,960
+you will see how it will go full.
+
+109
+00:08:34,960 --> 00:08:39,720
+Okay, so the first icebreaker and the starter.
+
+110
+00:08:39,720 --> 00:08:44,420
+So you're told already, if you haven't answered yet
+
+111
+00:08:44,420 --> 00:08:46,840
+the question, please try to do it also over here.
+
+112
+00:08:46,840 --> 00:08:50,040
+So that will give us some picture of what we are doing
+
+113
+00:08:50,040 --> 00:08:51,900
+and who is taking the course.
+
+114
+00:08:51,900 --> 00:09:02,540
+and let's get your hands dirty so my first touch will be actually writing the script
+
+115
+00:09:03,660 --> 00:09:09,180
+so that's the what we are here all together so my first script will be
+
+116
+00:09:12,780 --> 00:09:18,060
+let it be the hello bash but before we go actually for writing the script we have to decide or you
+
+117
+00:09:18,060 --> 00:09:21,340
+you have to decide which editor you will use
+
+118
+00:09:21,340 --> 00:09:23,280
+to write your scripts.
+
+119
+00:09:23,280 --> 00:09:25,940
+So you have a number of options over here.
+
+120
+00:09:25,940 --> 00:09:28,860
+There is a very popular, like Emacs.
+
+121
+00:09:28,860 --> 00:09:31,520
+If you're familiar with the Emacs, go with it.
+
+122
+00:09:32,400 --> 00:09:35,300
+There is very popular another one, EIM.
+
+123
+00:09:35,300 --> 00:09:37,540
+It's also the text editor,
+
+124
+00:09:37,540 --> 00:09:42,280
+which is used by many people on Linux.
+
+125
+00:09:42,280 --> 00:09:45,140
+But both of them and Emacs,
+
+126
+00:09:45,140 --> 00:09:46,740
+well, let me put it this way.
+
+127
+00:09:46,740 --> 00:09:51,660
+So it's the Emacs and VIM.
+
+128
+00:09:52,660 --> 00:09:54,100
+They are quite complicated
+
+129
+00:09:54,100 --> 00:09:57,140
+and they require some kind of passion and experience.
+
+130
+00:09:57,140 --> 00:09:59,300
+So when you are becoming the experienced users
+
+131
+00:09:59,300 --> 00:10:01,500
+of Linux Shell, you will definitely,
+
+132
+00:10:01,500 --> 00:10:03,340
+you will pick up one of them.
+
+133
+00:10:03,340 --> 00:10:06,780
+For less experienced people, we suggest Nano.
+
+134
+00:10:07,780 --> 00:10:10,660
+Let me run it and let me show how it works.
+
+135
+00:10:10,660 --> 00:10:13,980
+I would suggest if you are not really experienced
+
+136
+00:10:13,980 --> 00:10:18,900
+with any kind of text editor on the Linux shell,
+
+137
+00:10:18,900 --> 00:10:19,940
+then use that one.
+
+138
+00:10:19,940 --> 00:10:24,940
+It will be the most intuitive, I would say.
+
+139
+00:10:25,060 --> 00:10:27,160
+So when you type here something,
+
+140
+00:10:30,860 --> 00:10:35,420
+type something, and then you want to exit the code.
+
+141
+00:10:35,420 --> 00:10:38,260
+Then you just press Control X.
+
+142
+00:10:38,260 --> 00:10:40,460
+It will ask you, do you want to save it?
+
+143
+00:10:40,460 --> 00:10:46,860
+yes and then it will ask you where you want to save it and for instance I want to save it to the
+
+144
+00:10:46,860 --> 00:10:59,740
+hello bash. Okay and I'm now in my demo space and I've got this hello bash dot shell. So that's the
+
+145
+00:10:59,740 --> 00:11:06,060
+first script I have created. It's not really a script. I have demonstrated how to use nano.
+
+146
+00:11:06,060 --> 00:11:12,740
+it's up to you which one do you prefer I prefer VIM and during this course I
+
+147
+00:11:12,740 --> 00:11:17,820
+will use mostly VIM simply because it have it has really good highlightings it
+
+148
+00:11:17,820 --> 00:11:26,540
+has and I'm just way more experienced with this one so let's try to I will
+
+149
+00:11:26,540 --> 00:11:33,180
+delete this line and then let's try to write your first script your first
+
+150
+00:11:33,180 --> 00:11:42,140
+script ever will come with this cryptic line. What it stands for? It's called the shebang.
+
+151
+00:11:42,860 --> 00:11:50,620
+Shebang is nothing else than the... it says to the program which runs it which
+
+152
+00:11:50,620 --> 00:11:59,340
+interpreter is supposed to be used. So binbash is path to the binary which will run the code
+
+153
+00:11:59,340 --> 00:12:09,260
+which comes after and so and this number sign and exclamation mark is a special two special
+
+154
+00:12:09,260 --> 00:12:14,940
+characters which are widely used on linux especially for the which are used on linux
+
+155
+00:12:14,940 --> 00:12:20,060
+for the shebang mark so in the same way when you'll be writing some python script you will
+
+156
+00:12:20,060 --> 00:12:25,660
+be putting this shebang with the usr being python if you will be writing some tcl or some other
+
+157
+00:12:25,660 --> 00:12:32,900
+something which is just normal text so that will come into use as well in the
+
+158
+00:12:32,900 --> 00:12:40,700
+next let's actually output something which is the hello bash
+
+159
+00:12:41,180 --> 00:12:50,700
+let it be even correct way so now I'm done I'm also able to put here
+
+160
+00:12:50,700 --> 00:12:55,340
+some comment so
+
+161
+00:12:56,700 --> 00:13:03,740
+let me say that it prints hello bash that's that much you're supposed to know
+
+162
+00:13:03,740 --> 00:13:10,380
+so then another one about syntax so this is the comment this is the
+
+163
+00:13:10,380 --> 00:13:14,380
+shebang that's the comment which comes and
+
+164
+00:13:14,380 --> 00:13:19,660
+which outputs the hello bash and then
+
+165
+00:13:19,660 --> 00:13:29,580
+you can continue the string for instance to another line so just put the backslash like this one
+
+166
+00:13:31,180 --> 00:13:36,300
+if the line is pretty long and you want to make it more or less compact and readable you can use it
+
+167
+00:13:36,300 --> 00:13:44,140
+we don't need it right now but just this part of the syntax and then also the indentation if you are
+
+168
+00:13:44,140 --> 00:13:51,340
+a python user so that you know that you need to all these strings especially all these blocks
+
+169
+00:13:51,340 --> 00:13:59,020
+they're supposed to be indented but in case of bash it doesn't really matter so you can put
+
+170
+00:13:59,020 --> 00:14:06,140
+another one command over here like this hello bash again
+
+171
+00:14:06,140 --> 00:14:12,860
+okay typings hello bash again
+
+172
+00:14:15,900 --> 00:14:20,140
+and that will be completely okay you can do it even more compact you can do the
+
+173
+00:14:20,700 --> 00:14:26,940
+with the delimiter it will be also okay you can do it this way it will be also okay from the bash
+
+174
+00:14:26,940 --> 00:14:33,660
+syntax point of view so bash will not tell you anything about your syntax about all these lines
+
+175
+00:14:33,660 --> 00:14:39,980
+so the empty lines that will not be that will be just omitted as usually
+
+176
+00:14:43,260 --> 00:14:48,700
+and this is pretty much everything else this pretty much it that you should supposed to know
+
+177
+00:14:48,700 --> 00:14:54,620
+about the syntax so we will come later to the blocks we will come later to the if statements
+
+178
+00:14:54,620 --> 00:15:00,700
+and this for loops etc and the other stuff and you will see that the actually i will use
+
+179
+00:15:00,700 --> 00:15:06,620
+indentation over there, but it's only for the sake of readability. So let's try to
+
+180
+00:15:06,620 --> 00:15:12,460
+run the script. If I do it like this
+
+181
+00:15:13,100 --> 00:15:20,820
+first command not found. Okay, so what happens over here? You can see that
+
+182
+00:15:20,820 --> 00:15:27,180
+actually from the Linux perspective you can check out what kind of permissions
+
+183
+00:15:27,180 --> 00:15:34,540
+this script has. So even if it's already something with the .shell
+
+184
+00:15:34,540 --> 00:15:40,860
+actually the .shell is nothing else than just the
+
+185
+00:15:41,580 --> 00:15:47,980
+extension. So extension can be any. Bash script is not supposed to use .shell
+
+186
+00:15:47,980 --> 00:15:53,020
+I'm just using .shell because I want to make sure for myself
+
+187
+00:15:53,020 --> 00:15:56,700
+that I know that that's the shell script and it's written by myself
+
+188
+00:15:56,700 --> 00:16:05,100
+so but only because it's text it's supposed to be executable this execution bit over here
+
+189
+00:16:05,100 --> 00:16:09,820
+it's missing so there should be x you remember from the previous course there should be it's
+
+190
+00:16:09,820 --> 00:16:16,940
+readable it's writable but it's not executable so what first i need to do is i need to change mode
+
+191
+00:16:16,940 --> 00:16:26,180
+and say that my script is going to be executable hello bash plus X so now you
+
+192
+00:16:26,180 --> 00:16:32,580
+see I've got this plus X fine it's already executable if I still try to do
+
+193
+00:16:32,580 --> 00:16:39,700
+it like this hello bash nothing is found
+
+194
+00:16:39,700 --> 00:16:49,940
+Why? It's because the bash is actually to not pick up your local files by default.
+
+195
+00:16:49,940 --> 00:16:56,580
+So it expects that your binaries, even including the scripts,
+
+196
+00:16:57,380 --> 00:17:04,420
+they are somewhere in the directory. So you have to call them explicitly. And calling explicitly
+
+197
+00:17:04,420 --> 00:17:10,580
+saying that I need to put the path. In my case it's just enough if I put dot and the slash. That
+
+198
+00:17:10,580 --> 00:17:18,020
+means that in current directory take the hello bash and execute this. So now it has happened.
+
+199
+00:17:18,580 --> 00:17:28,580
+Well this is powerful step. And now what's next? Next I would like to use the good practice
+
+200
+00:17:28,580 --> 00:17:33,580
+and create a directory where I will be putting all my stuff
+
+201
+00:17:35,140 --> 00:17:39,020
+and I'm not only will be keeping all my stuff in there,
+
+202
+00:17:39,020 --> 00:17:42,300
+I will also make it this way that bash will actually look
+
+203
+00:17:42,300 --> 00:17:45,660
+at my directory when I want to execute something
+
+204
+00:17:45,660 --> 00:17:48,560
+and will be executed, the script will be executed
+
+205
+00:17:48,560 --> 00:17:50,380
+without this dot slash.
+
+206
+00:17:50,380 --> 00:17:52,100
+So how to do that?
+
+207
+00:17:52,100 --> 00:17:57,100
+I suggest that you run make dir in your directory
+
+208
+00:17:57,100 --> 00:18:04,780
+where you are been we will come to this during the exercise so I have already
+
+209
+00:18:04,780 --> 00:18:10,900
+been directory so but when you will need to run it just like this so I have
+
+210
+00:18:10,900 --> 00:18:16,260
+already been directory I have even couple of scripts over there which we
+
+211
+00:18:16,260 --> 00:18:26,180
+will be later use no just one but then let me move that bash no hello bash only
+
+212
+00:18:26,180 --> 00:18:30,660
+hello bash over here. So now I have it in bin
+
+213
+00:18:33,940 --> 00:18:44,580
+and it's not yet enough. So what next I need to do? I need to modify the environment variable
+
+214
+00:18:44,580 --> 00:18:53,380
+called path. So if you look at the echo path there should be some directories
+
+215
+00:18:53,380 --> 00:18:57,100
+is where your bash will be looking at
+
+216
+00:18:57,100 --> 00:19:00,460
+to find the binary that you are trying to run.
+
+217
+00:19:00,460 --> 00:19:05,340
+So even the bash itself, it's somewhere in the directory.
+
+218
+00:19:05,340 --> 00:19:09,200
+So in our case, it's bin-bash, yeah?
+
+219
+00:19:10,900 --> 00:19:13,140
+But you see that this bin-bash
+
+220
+00:19:13,140 --> 00:19:15,720
+has been already added by default.
+
+221
+00:19:18,700 --> 00:19:20,340
+So it's already part of the default.
+
+222
+00:19:20,340 --> 00:19:23,500
+so it's bash user, bin bash, et cetera.
+
+223
+00:19:23,500 --> 00:19:26,820
+So it's part of the default and it's always there.
+
+224
+00:19:26,820 --> 00:19:31,820
+But our local bin has never been added to the path.
+
+225
+00:19:33,340 --> 00:19:37,380
+Path is modifiable, so you can edit this
+
+226
+00:19:37,380 --> 00:19:39,460
+and let me do it this way.
+
+227
+00:19:39,460 --> 00:19:42,600
+So I can use the command export.
+
+228
+00:19:43,780 --> 00:19:45,980
+So now don't go deeply into this,
+
+229
+00:19:45,980 --> 00:19:50,220
+just type, you will just use it as is
+
+230
+00:19:50,220 --> 00:19:53,300
+when we will be doing the exercise.
+
+231
+00:19:53,300 --> 00:19:55,080
+Export, and I will say that,
+
+232
+00:19:55,080 --> 00:20:00,080
+export my path and do the changes.
+
+233
+00:20:00,400 --> 00:20:05,400
+So add to my path something which is called demo-space-theme.
+
+234
+00:20:13,240 --> 00:20:14,520
+What will happen after?
+
+235
+00:20:14,520 --> 00:20:15,360
+Let's see.
+
+236
+00:20:16,280 --> 00:20:19,880
+If I take a look at the bash, at the path once again,
+
+237
+00:20:19,880 --> 00:20:22,320
+you will see that actually my directory
+
+238
+00:20:22,320 --> 00:20:27,320
+where I have my scripts has been added to that path.
+
+239
+00:20:27,360 --> 00:20:29,360
+And now it's executable.
+
+240
+00:20:29,360 --> 00:20:33,400
+Now, if I run something like hello bash,
+
+241
+00:20:33,400 --> 00:20:37,100
+it will immediately be executed as next.
+
+242
+00:20:37,100 --> 00:20:39,240
+And I can tell you even more,
+
+243
+00:20:40,280 --> 00:20:44,400
+this command type minus A,
+
+244
+00:20:44,400 --> 00:20:47,360
+this is the utility within the Linux
+
+245
+00:20:47,360 --> 00:20:49,560
+which can always ready to tell you
+
+246
+00:20:49,560 --> 00:20:54,520
+which binary will be run when you type with with no absolute path
+
+247
+00:20:55,480 --> 00:21:00,200
+so in this case it tells me exactly that hello bash is like this
+
+248
+00:21:02,520 --> 00:21:09,080
+okay then what else i was about to tell you
+
+249
+00:21:11,400 --> 00:21:18,600
+so the execution summary a kind of executive summary is that you create the file
+
+250
+00:21:19,560 --> 00:21:23,220
+you make sure that shibank is there,
+
+251
+00:21:24,060 --> 00:21:27,500
+then you don't really care much about syntax.
+
+252
+00:21:27,500 --> 00:21:29,100
+That's a takeaway message.
+
+253
+00:21:29,100 --> 00:21:32,060
+Then if case, that should be enough already
+
+254
+00:21:32,060 --> 00:21:33,420
+to get you running,
+
+255
+00:21:33,420 --> 00:21:38,420
+but then in case if you want to be efficient and productive,
+
+256
+00:21:40,600 --> 00:21:43,700
+so you will organize your own PIN directory
+
+257
+00:21:43,700 --> 00:21:48,700
+and you will add it and export later to the path variable.
+
+258
+00:21:48,700 --> 00:21:53,820
+so that information should be pretty much enough to go for the exercise
+
+259
+00:21:57,660 --> 00:21:59,020
+to go for the exercise
+
+260
+00:22:02,300 --> 00:22:11,420
+let it be test exercise because you are still will be playing with the editor so let us say
+
+261
+00:22:11,420 --> 00:22:21,100
+that it's going to be 10 minutes yeah and now it's 12.22 so that we will go till
+
+262
+00:22:22,620 --> 00:22:29,180
+till till till where was the exercise down we will go the first exercise till
+
+263
+00:22:31,180 --> 00:22:38,220
+32 of your local time so i put here xx because i'm expected some people are not from finland
+
+264
+00:22:38,220 --> 00:22:47,180
+so some people are from somewhere else so it's not uh no sorry the vice verse 30 or let it be
+
+265
+00:22:47,820 --> 00:22:56,780
+three so now it's your time you try it you may succeed you may not not a big trouble just ask
+
+266
+00:22:56,780 --> 00:23:06,460
+your question online and when you're done please put something like this over here or if you see
+
+267
+00:23:06,460 --> 00:23:14,940
+that it's come time is coming so press it over here like this or if you still don't really care
+
+268
+00:23:14,940 --> 00:23:24,780
+you're just listening uh write it over here okay so not 10 minutes is yours and let's go
+
+269
+00:23:24,780 --> 00:23:36,780
+I'll mute myself for a second.
+
+270
+00:23:54,780 --> 00:23:56,840
+you
+
+271
+00:24:24,780 --> 00:24:26,840
+you
+
+272
+00:24:54,780 --> 00:24:56,840
+you
+
+273
+00:25:24,780 --> 00:25:26,840
+you
+
+274
+00:25:54,780 --> 00:25:56,840
+you
+
+275
+00:26:24,780 --> 00:26:26,840
+you
+
+276
+00:26:54,780 --> 00:26:56,840
+you
+
+277
+00:27:24,780 --> 00:27:26,840
+you
+
+278
+00:27:54,780 --> 00:27:56,840
+you
+
+279
+00:28:24,780 --> 00:28:26,840
+you
+
+280
+00:28:54,780 --> 00:28:56,840
+you
+
+281
+00:29:24,780 --> 00:29:26,840
+you
+
+282
+00:29:54,780 --> 00:29:56,840
+you
+
+283
+00:30:24,780 --> 00:30:26,840
+you
+
+284
+00:30:54,780 --> 00:30:56,840
+you
+
+285
+00:31:24,780 --> 00:31:26,840
+you
+
+286
+00:31:54,780 --> 00:32:16,300
+If anyone still needs time, just mark it.
+
+287
+00:32:16,300 --> 00:32:23,020
+I think we can, we are still adapting this, actually the, I think 10 or even 15 minutes
+
+288
+00:32:23,020 --> 00:32:31,820
+just fine. It's just we need to see that what's the level of the and how fast we are.
+
+289
+00:32:33,740 --> 00:32:40,780
+We are flexible, no trouble with the extra five minutes at all. And also I forgot to tell about
+
+290
+00:32:40,780 --> 00:32:47,740
+the breaks. Thanks for reminding me, is that we're going to have the breaks every hour,
+
+291
+00:32:47,740 --> 00:32:52,220
+something like 10 minutes, so no worries about that too.
+
+292
+00:32:58,700 --> 00:33:04,860
+Even though I speak a lot and I'm trying to do it intensive, so it's kind of still intermediate.
+
+293
+00:33:04,860 --> 00:33:21,660
+Okay, I guess most of the people. I will continue. Can you hear me?
+
+294
+00:33:23,900 --> 00:33:26,540
+Hopefully yes. I mean if you can't hear me
+
+295
+00:33:26,540 --> 00:33:30,580
+then just tell me.
+
+296
+00:33:30,580 --> 00:33:34,180
+Okay, so the first exercise has been already done,
+
+297
+00:33:34,180 --> 00:33:35,500
+has been already over.
+
+298
+00:33:35,500 --> 00:33:37,940
+So your hands already dirty,
+
+299
+00:33:37,940 --> 00:33:40,260
+which is good for me and good for you.
+
+300
+00:33:40,260 --> 00:33:42,420
+So welcome to the world of the bash,
+
+301
+00:33:42,420 --> 00:33:43,460
+even though that some of you
+
+302
+00:33:43,460 --> 00:33:45,620
+have already written some scripts.
+
+303
+00:33:45,620 --> 00:33:46,940
+Actually, I wanna,
+
+304
+00:33:46,940 --> 00:33:49,700
+even if this hello world is not so practical,
+
+305
+00:33:50,860 --> 00:33:54,860
+but let me write another script.
+
+306
+00:33:54,860 --> 00:34:01,500
+let me go back to the prompt so if you are a python user for instance then you may think okay
+
+307
+00:34:01,500 --> 00:34:08,220
+i'm writing python and i have a kind of send box where you can test it easily with just
+
+308
+00:34:08,220 --> 00:34:20,380
+writing the command and then for instance you do something like that and you just quite yeah
+
+309
+00:34:20,380 --> 00:34:25,260
+That's fairly easy. And you can think about how to do that with the bash.
+
+310
+00:34:26,300 --> 00:34:31,580
+Well, you're already actually there. So this command line that you have, it is already the
+
+311
+00:34:32,300 --> 00:34:38,620
+kind of ready to go prompt for you. You don't need to put bash, you don't need to put anything else,
+
+312
+00:34:38,620 --> 00:34:42,220
+you just put your commands and everything what you want, you can put over here.
+
+313
+00:34:42,220 --> 00:34:51,460
+so in this way bash is adapted for the interactive usage so scripting is just
+
+314
+00:34:51,460 --> 00:34:57,500
+the kind of fancy addition and the kind of value added to the bash but bash
+
+315
+00:34:57,500 --> 00:35:04,060
+itself is mostly about prompt and most of the commands you can run as is just
+
+316
+00:35:04,060 --> 00:35:09,700
+from the prompt and this is what we will use also over here so some of the
+
+317
+00:35:09,700 --> 00:35:15,380
+statements, some of the expressions, I will just test it from the command line before actually
+
+318
+00:35:15,380 --> 00:35:23,060
+adding them to the script. So scripts are made mostly for the sake of automation.
+
+319
+00:35:23,060 --> 00:35:28,900
+Scripts are made mostly for the sake of if you have a long list of commands, you don't remember
+
+320
+00:35:28,900 --> 00:35:35,620
+all these parameters and you want to make out of this complex construct of some utilities,
+
+321
+00:35:35,620 --> 00:35:39,940
+you want to make out of them some kind of one single command.
+
+322
+00:35:39,940 --> 00:35:42,420
+So this is what for you are using the scripts.
+
+323
+00:35:45,140 --> 00:35:48,180
+Again, and see that for instance,
+
+324
+00:35:48,180 --> 00:35:49,860
+one example that I will show you.
+
+325
+00:35:49,860 --> 00:35:53,420
+So for instance, I will be doing this archive
+
+326
+00:35:53,420 --> 00:35:55,900
+in time to time of my demo space
+
+327
+00:35:55,900 --> 00:36:00,700
+and saying that I want to compress it.
+
+328
+00:36:00,700 --> 00:36:14,140
+and my file name which I want to my archive name will be like demo space tark.gizit
+
+329
+00:36:14,140 --> 00:36:22,220
+so it's the quite common in linux tar utility and the gz compression and then I'm saying that
+
+330
+00:36:22,220 --> 00:36:26,380
+actually my directory which I want to compress that's the demo space
+
+331
+00:36:26,380 --> 00:36:34,380
+so I can just put one single dot but for the sake of readability let me put it this way demo space
+
+332
+00:36:35,100 --> 00:36:43,740
+so I'm doing the compression so these are warnings there just you can skip them so now
+
+333
+00:36:43,740 --> 00:36:51,340
+you see that I have got the file over here I'm not exactly kind of I'm not exactly
+
+334
+00:36:51,340 --> 00:36:56,340
+Actually, it's my colleague over here.
+
+335
+00:36:56,440 --> 00:37:01,440
+So I'm not exactly, maybe wants to do it time to time.
+
+336
+00:37:01,660 --> 00:37:04,260
+So what I want to make over here,
+
+337
+00:37:04,260 --> 00:37:06,580
+that I want to put it to the bin
+
+338
+00:37:07,640 --> 00:37:10,020
+and make it one single command,
+
+339
+00:37:10,020 --> 00:37:12,720
+shorter one and easier to one,
+
+340
+00:37:12,720 --> 00:37:16,440
+and which will serve us for the whole course.
+
+341
+00:37:16,440 --> 00:37:18,920
+So we will do the modification to that.
+
+342
+00:37:18,920 --> 00:37:23,920
+So let me call it tar me, for instance.
+
+343
+00:37:25,440 --> 00:37:28,720
+My shell script will be starting once again
+
+344
+00:37:28,720 --> 00:37:32,200
+with the bin bash, with the shebang.
+
+345
+00:37:33,040 --> 00:37:36,080
+And then I'm putting here my command over here.
+
+346
+00:37:36,080 --> 00:37:39,820
+And as a good practice, remember to have some kind
+
+347
+00:37:39,820 --> 00:37:44,600
+of comments and some kind of revision, a history.
+
+348
+00:37:44,600 --> 00:37:46,680
+So what you've done and when you have done.
+
+349
+00:37:46,680 --> 00:37:51,680
+So I'm saying yet nothing to you about the Git over here,
+
+350
+00:37:53,580 --> 00:37:58,580
+but I'm encouraging you in your entire life after all,
+
+351
+00:37:58,960 --> 00:38:02,600
+use Git for a kind of versioning.
+
+352
+00:38:02,600 --> 00:38:05,160
+Here, we'll just skip this part
+
+353
+00:38:05,160 --> 00:38:10,160
+and make it kind of more simple
+
+354
+00:38:10,720 --> 00:38:13,080
+and the Git part will be covered already
+
+355
+00:38:13,080 --> 00:38:16,440
+by the Code Refiner when you will be there.
+
+356
+00:38:16,440 --> 00:38:21,440
+So, but here I archive my directory.
+
+357
+00:38:25,280 --> 00:38:28,080
+So that's the easy way.
+
+358
+00:38:28,080 --> 00:38:33,080
+And then let's try once again, change mode plus X.
+
+359
+00:38:33,200 --> 00:38:35,800
+And what's good about this, because the,
+
+360
+00:38:38,160 --> 00:38:42,360
+if you put tarmi.shell, you will see that actually
+
+361
+00:38:42,360 --> 00:38:44,920
+it's immediately found from my Bean directory
+
+362
+00:38:44,920 --> 00:38:51,000
+my bin directory has been already added to the path and I don't need to do anything else if I
+
+363
+00:38:51,000 --> 00:38:57,720
+decide to go and make another archive. I just run tar.me and that's it.
+
+364
+00:39:00,040 --> 00:39:07,240
+We will use this further to develop a bigger script. So this will be part of our exercises,
+
+365
+00:39:07,240 --> 00:39:13,640
+it will be part of our demonstrations overall. So this is why I did this right over here.
+
+366
+00:39:14,920 --> 00:39:26,200
+okay sorry variables so definitely what you want to know about the uh when you start programming
+
+367
+00:39:26,200 --> 00:39:32,440
+something how to use the variables within your code so the variables is nothing really specific
+
+368
+00:39:33,080 --> 00:39:41,320
+so let me uh start doing this uh in the prompt and then we will move these variables to the file
+
+369
+00:39:41,320 --> 00:39:53,680
+so variables it can be any it can be just the letters and digits and then
+
+370
+00:39:53,680 --> 00:39:58,800
+minus that could be hashed so there is quite a quite a number of the there is
+
+371
+00:39:58,800 --> 00:40:08,520
+some special characters if you go to the variables a section of this of this
+
+372
+00:40:08,520 --> 00:40:15,040
+material so you will see there were somewhere a list of special characters
+
+373
+00:40:15,040 --> 00:40:18,920
+yeah sure it's here it's coordinate substitution so you these characters
+
+374
+00:40:18,920 --> 00:40:23,520
+cannot be really used in the variables because they are part of the other
+
+375
+00:40:23,520 --> 00:40:30,960
+syntax but then everything else can be used as a variable and so let's see what
+
+376
+00:40:30,960 --> 00:40:38,500
+else so variables for instance assigning the variables you just put the equals
+
+377
+00:40:38,500 --> 00:40:49,540
+sign and say my first bash variable it will be like this it's already there so in order to call
+
+378
+00:40:49,540 --> 00:40:56,820
+that variable it's enough if you put the dollar sign in the front of the name and so you can see
+
+379
+00:40:56,820 --> 00:41:02,740
+echo will give you the output of that variable in the same way you can use this dollar sign variable
+
+380
+00:41:02,740 --> 00:41:10,020
+name within any commands or within any part of your script. It just will be calling and it will
+
+381
+00:41:10,020 --> 00:41:16,100
+be returning you the value of that variable. Variable, there is no kind of definition, there is
+
+382
+00:41:16,100 --> 00:41:26,180
+no points, there is no strings, booleans, integers, etc. So all the variables inside of the bash,
+
+383
+00:41:26,180 --> 00:41:31,460
+they will be used as is. If you are doing this as a string, they will be interpreted as a string.
+
+384
+00:41:31,460 --> 00:41:37,860
+if you are doing something else that there will be if you make the integer summation within the
+
+385
+00:41:37,860 --> 00:41:45,380
+integer expressions then it will be interpreted as an integer etc so bash is really flexible in
+
+386
+00:41:45,380 --> 00:41:51,540
+terms of variables so even if you are not defined it but you still call it it will just return you
+
+387
+00:41:51,540 --> 00:41:57,780
+the empty variable and not the error so be careful about this and this is actually quite
+
+388
+00:41:57,780 --> 00:42:03,220
+common error is that you are misprinting or mistyping the variable and you call it later
+
+389
+00:42:03,220 --> 00:42:09,300
+and then you are surprised that okay nothing comes out. Actually bash doesn't really take
+
+390
+00:42:09,300 --> 00:42:15,300
+care about it. It relies on you and it still thinks that you are making your scripts
+
+391
+00:42:15,940 --> 00:42:21,460
+pretty much robust and checking whether the variable is empty or does it exist at all.
+
+392
+00:42:21,460 --> 00:42:28,340
+so where here it comes the place where the quotation also matters
+
+393
+00:42:29,620 --> 00:42:33,540
+let me open once again the hello script
+
+394
+00:42:36,500 --> 00:42:45,380
+and i will use it as a sandbox for this kind of situation so for instance i want to assign a
+
+395
+00:42:45,380 --> 00:42:55,860
+a variable and let it be some text
+
+396
+00:42:59,700 --> 00:43:06,980
+and then if I go to the echo and want to output that variable that should be enough but then if
+
+397
+00:43:06,980 --> 00:43:11,980
+if my syntax or if my sentence is more or less complex.
+
+398
+00:43:12,820 --> 00:43:15,940
+So if I wanna say that var is,
+
+399
+00:43:15,940 --> 00:43:17,780
+okay, I have to use already,
+
+400
+00:43:17,780 --> 00:43:19,820
+well, not exactly have to use with echo,
+
+401
+00:43:19,820 --> 00:43:23,020
+but let's assume that we have to also with echo.
+
+402
+00:43:23,020 --> 00:43:25,260
+So I have to use the quotations.
+
+403
+00:43:25,260 --> 00:43:28,700
+And here where comes the difference between the quotes.
+
+404
+00:43:28,700 --> 00:43:32,180
+So the echo with the single quotes
+
+405
+00:43:32,180 --> 00:43:40,340
+will produce you exactly the sentence you have it within the single quotes it will not open for you
+
+406
+00:43:40,340 --> 00:43:48,820
+the variables but the double quote quotation will do it for you so here take a note quotation
+
+407
+00:43:48,820 --> 00:43:54,420
+matters so then there are a few other things for instance
+
+408
+00:43:54,420 --> 00:44:00,820
+less complicated cases
+
+409
+00:44:08,980 --> 00:44:17,220
+so let's try it out so now we will actually we can use it we can comment this
+
+410
+00:44:18,660 --> 00:44:24,020
+once just we don't need it and use it as a sandbox
+
+411
+00:44:24,420 --> 00:44:31,220
+so it has been already added to the bin it's executable by default so and now you can see
+
+412
+00:44:31,220 --> 00:44:37,220
+the difference the first line has been using the single quotes and the second line was using the
+
+413
+00:44:37,220 --> 00:44:46,100
+double quotes so yes take it take it into account along with the variables which you
+
+414
+00:44:48,020 --> 00:44:53,300
+kind of create yourself and define yourself there is a bunch of other variables which
+
+415
+00:44:53,300 --> 00:44:58,460
+have been already created for you by the environments, by the bash itself and by
+
+416
+00:44:58,460 --> 00:45:06,700
+Linux itself. You will be surprised if you type this printenv, you will see a
+
+417
+00:45:06,700 --> 00:45:13,900
+long list of all kind of predefined variables. Some of them read-only, some of
+
+418
+00:45:13,900 --> 00:45:21,020
+them are changeable, but most of them you don't really need to touch, except
+
+419
+00:45:21,020 --> 00:45:25,660
+with something which is kind of, I don't know
+
+420
+00:45:29,900 --> 00:45:33,900
+well, I don't know even the exact example when you need to change the
+
+421
+00:45:35,100 --> 00:45:38,300
+variables, well sometimes you end up changing this for instance I've been
+
+422
+00:45:38,300 --> 00:45:42,940
+doing this for the script which is over here but anyway
+
+423
+00:45:42,940 --> 00:45:54,420
+Anyway, so, and a few examples that you may find useful.
+
+424
+00:45:54,420 --> 00:45:59,940
+The first one was already mentioned, that's the path.
+
+425
+00:45:59,940 --> 00:46:04,700
+That gives you the list of the directories where Bash will be looking for the binaries
+
+426
+00:46:04,700 --> 00:46:07,420
+when you type it without absolute path.
+
+427
+00:46:07,420 --> 00:46:11,140
+Then home, it's exactly your home directory.
+
+428
+00:46:11,140 --> 00:46:18,580
+for instance, shell, that's exactly your bash shell which is defined for you. So I
+
+429
+00:46:18,580 --> 00:46:24,540
+said nothing about the other shells but that's probably the good point to do
+
+430
+00:46:24,540 --> 00:46:30,140
+that. So bash is just one of the shells. We were talking about this on
+
+431
+00:46:30,140 --> 00:46:34,620
+the first part of the course. And there are other ones which are perfectly fine
+
+432
+00:46:34,620 --> 00:46:40,620
+to use like zshell or something else like cornshell, it's up to you. But
+
+433
+00:46:40,620 --> 00:46:47,260
+this course is focused on the bash mainly because bash is the most popular nowadays
+
+434
+00:46:47,980 --> 00:46:54,780
+so and this is also the shell number one for us because we are running the big cluster installation
+
+435
+00:46:54,780 --> 00:47:00,300
+triton and so on triton we expect everyone used to bash so this is one and because i'm part of
+
+436
+00:47:00,300 --> 00:47:06,220
+the team so we pushing people to use bash and the whole course is about bash how to change your shell
+
+437
+00:47:06,220 --> 00:47:13,420
+it's the change shell command if you want to do it on your local desktop it's easy to do
+
+438
+00:47:13,420 --> 00:47:17,900
+you do the change shell and you just put the bin bash and your next session will be started
+
+439
+00:47:17,900 --> 00:47:23,980
+with the bin bash okay said that i think we can now jump to the
+
+440
+00:47:27,900 --> 00:47:35,500
+exercise number two so i call it variables and i will give you another 10 minutes
+
+441
+00:47:36,220 --> 00:47:47,100
+to do what first you need to adapt your hello bash shell and assign the hello bash to a variable
+
+442
+00:47:47,100 --> 00:47:54,300
+and print the variable to the output so i've done it already for you during the demo so now try to
+
+443
+00:47:54,300 --> 00:48:01,180
+use your memory don't look yet at my hello bash but try to use your memory and try it out then
+
+444
+00:48:01,180 --> 00:48:07,820
+the next one which haven't been done yet but now you have to implement it on your own so your script
+
+445
+00:48:07,820 --> 00:48:14,220
+which will be placed also in the bin and call it whatever you want i call it here print vars
+
+446
+00:48:14,220 --> 00:48:26,060
+which will print for us the home shell and path one per line so now time is yours and we're 48
+
+447
+00:48:26,060 --> 00:48:33,180
+so let's say that already 49 so that let's go this way we will have both
+
+448
+00:48:35,660 --> 00:48:45,500
+and the how to call it break let's call it joint break and exercise sessions so we will come back
+
+449
+00:48:45,500 --> 00:48:56,940
+to the screen at 13.09 but so 10 minutes for the break 10 minutes for the exercise and you decide
+
+450
+00:48:56,940 --> 00:49:03,340
+how you use in which order. I mute myself and I will add it to the
+
+451
+00:49:15,500 --> 00:49:17,560
+you
+
+452
+00:49:45,500 --> 00:49:47,560
+you
+
+453
+00:50:15,500 --> 00:50:17,560
+you
+
+454
+00:50:45,500 --> 00:50:47,560
+you
+
+455
+00:51:15,500 --> 00:51:17,560
+you
+
+456
+00:51:45,500 --> 00:51:47,560
+you
+
+457
+00:52:15,500 --> 00:52:17,560
+you
+
+458
+00:52:45,500 --> 00:52:47,560
+you
+
+459
+00:53:15,500 --> 00:53:17,560
+you
+
+460
+00:53:45,500 --> 00:53:47,560
+you
+
+461
+00:54:15,500 --> 00:54:17,560
+you
+
+462
+00:54:45,500 --> 00:54:47,560
+you
+
+463
+00:55:15,500 --> 00:55:17,560
+you
+
+464
+00:55:45,500 --> 00:55:47,560
+you
+
+465
+00:56:15,500 --> 00:56:17,560
+you
+
+466
+00:56:45,500 --> 00:56:47,560
+you
+
+467
+00:57:15,500 --> 00:57:17,560
+you
+
+468
+00:57:45,500 --> 00:57:47,560
+you
+
+469
+00:58:15,500 --> 00:58:17,560
+you
+
+470
+00:58:45,500 --> 00:58:47,560
+you
+
+471
+00:59:15,500 --> 00:59:17,560
+you
+
+472
+00:59:45,500 --> 00:59:47,560
+you
+
+473
+01:00:15,500 --> 01:00:17,560
+you
+
+474
+01:00:45,500 --> 01:00:47,560
+you
+
+475
+01:01:15,500 --> 01:01:17,560
+you
+
+476
+01:01:45,500 --> 01:01:47,560
+you
+
+477
+01:02:15,500 --> 01:02:17,560
+you
+
+478
+01:02:45,500 --> 01:02:47,560
+you
+
+479
+01:03:15,500 --> 01:03:17,560
+you
+
+480
+01:03:45,500 --> 01:03:47,560
+you
+
+481
+01:04:15,500 --> 01:04:17,560
+you
+
+482
+01:04:45,500 --> 01:04:47,560
+you
+
+483
+01:05:15,500 --> 01:05:17,560
+you
+
+484
+01:05:45,500 --> 01:05:47,560
+you
+
+485
+01:06:15,500 --> 01:06:17,560
+you
+
+486
+01:06:45,500 --> 01:06:47,560
+you
+
+487
+01:07:15,500 --> 01:07:17,560
+you
+
+488
+01:07:45,500 --> 01:07:47,560
+you
+
+489
+01:08:15,500 --> 01:08:24,460
+If need if there is a need for more time on this just just mark yourself yet need time and
+
+490
+01:08:45,500 --> 01:08:47,560
+you
+
+491
+01:09:15,500 --> 01:09:23,660
+so it's kind of time already so only some people marked us like lagged on
+
+492
+01:09:23,660 --> 01:09:27,020
+do we still need time or should we wait for everyone
+
+493
+01:09:30,780 --> 01:09:33,580
+or if there is any kind of trouble just just ask
+
+494
+01:09:35,020 --> 01:09:38,700
+but definitely we will cover all the questions there was the question about the
+
+495
+01:09:38,700 --> 01:09:43,700
+the bin bash, but this shebang was in the wrong order.
+
+496
+01:10:08,700 --> 01:10:24,860
+Okay, let's get back to the material. So my next stop was actually tell you even more
+
+497
+01:10:24,860 --> 01:10:34,620
+about the variables. This is something which is very specific to the bash. This is what
+
+498
+01:10:34,620 --> 01:10:39,660
+you probably will not see in most of the languages. So when you can do something with the
+
+499
+01:10:40,940 --> 01:10:46,060
+variables on the fly, the construction looks like
+
+500
+01:10:48,940 --> 01:10:58,220
+this curly brackets column and then some kind of cryptic syntax which will do something
+
+501
+01:10:58,220 --> 01:11:05,500
+to the variable as a string so what can be done with the string so you can make it for instance
+
+502
+01:11:07,340 --> 01:11:14,700
+all capital all small you can replace some part of the some part of the variable value
+
+503
+01:11:15,340 --> 01:11:21,740
+then you can for instance check whether this variable exists or not you can redesign it
+
+504
+01:11:21,740 --> 01:11:25,900
+it, redefine it with some default value.
+
+505
+01:11:25,900 --> 01:11:30,900
+So there are quite a number of things that can be done.
+
+506
+01:11:31,800 --> 01:11:35,520
+So I'm not really put everything to this material.
+
+507
+01:11:35,520 --> 01:11:39,440
+So, but the selected of them over here,
+
+508
+01:11:39,440 --> 01:11:41,660
+so you can check them out.
+
+509
+01:11:41,660 --> 01:11:42,920
+And then on top of that,
+
+510
+01:11:42,920 --> 01:11:45,080
+you can also actually forgot to sell.
+
+511
+01:11:45,960 --> 01:11:50,120
+So if you're ever thinking about syntax,
+
+512
+01:11:50,120 --> 01:11:52,360
+if you're ever thinking about some particular commands
+
+513
+01:11:52,360 --> 01:11:56,240
+which have been used within this bash scripting.
+
+514
+01:11:56,240 --> 01:12:00,880
+So all the internal logic is written in the bash manual.
+
+515
+01:12:00,880 --> 01:12:04,940
+If you go for the man bash, you will see the very long,
+
+516
+01:12:04,940 --> 01:12:06,680
+I mean, it's at least 100 pages
+
+517
+01:12:06,680 --> 01:12:09,920
+if you will print it out in a normal font size,
+
+518
+01:12:09,920 --> 01:12:13,480
+but you will see all the details about what else
+
+519
+01:12:13,480 --> 01:12:18,320
+and what kind of options, what kind of arguments
+
+520
+01:12:18,320 --> 01:12:25,600
+given by every single command which I use internally and then what all these magics,
+
+521
+01:12:25,600 --> 01:12:30,320
+all these extensions, all these practical aspects of the bash programming.
+
+522
+01:12:31,760 --> 01:12:35,680
+So the magic I was thinking about is that, for instance,
+
+523
+01:12:37,040 --> 01:12:41,760
+I know that the echo var already exists because I have it designed.
+
+524
+01:12:41,760 --> 01:12:45,040
+Actually, let me tell you one thing, you can unset the variable.
+
+525
+01:12:45,040 --> 01:12:50,400
+so if you don't really want this variable to exist anymore it will exist there as long as
+
+526
+01:12:50,400 --> 01:12:55,440
+your session is there but if you don't want to exist it anymore you just can do it with the
+
+527
+01:12:55,440 --> 01:13:04,480
+unset var and now if you see that I'm trying to address var it doesn't exist anymore bash is not
+
+528
+01:13:04,480 --> 01:13:11,120
+complaining anything about calling the undefined variable but it just returned the empty line
+
+529
+01:13:11,120 --> 01:13:17,920
+which is fine, which is not an error, that's just a feature. So let me say that I want still to
+
+530
+01:13:17,920 --> 01:13:27,040
+define it somehow and for instance it's still undefined but I want to check it out. So my
+
+531
+01:13:28,640 --> 01:13:33,520
+approach would be here checking out for instance
+
+532
+01:13:35,920 --> 01:13:36,420
+this
+
+533
+01:13:36,420 --> 01:13:46,900
+one is pretty simple for the sake of checking out the existence of this variable so you see
+
+534
+01:13:46,900 --> 01:13:55,540
+what will happen so echo or bash on behind of echo it will check that variable exists or not
+
+535
+01:13:55,540 --> 01:14:02,340
+and then give this error message which comes after the question mark so here i'm saying that bash
+
+536
+01:14:02,340 --> 01:14:09,140
+var not defined. So if you use it within the script or within your function it's perfectly
+
+537
+01:14:09,140 --> 01:14:14,340
+enough to make your script more or less robust. There is another one option if you instead of
+
+538
+01:14:14,340 --> 01:14:24,900
+exclamation mark you put something like equal that would check that variable and if it does not exist
+
+539
+01:14:24,900 --> 01:14:30,980
+it will assign some special value or some default value it could be anything
+
+540
+01:14:32,180 --> 01:14:40,740
+then just put default value oh it's up to you what do you decide to do this but then if you see from
+
+541
+01:14:40,740 --> 01:14:49,140
+now on echo var even has it has been defined undefined over here you see you remember that
+
+542
+01:14:49,140 --> 01:14:55,580
+now it already has the value. And the thing to remember with all these
+
+543
+01:14:55,580 --> 01:15:03,020
+major constructions, with all these curly brackets, this do column and the equal
+
+544
+01:15:03,020 --> 01:15:10,420
+sign is the only operator which actually does something to the variable. It
+
+545
+01:15:10,420 --> 01:15:14,940
+changes it. It assigns the default value or another value which you just put it
+
+546
+01:15:14,940 --> 01:15:23,420
+over here all the rest all the rest which are listed here as a selected operators they do
+
+547
+01:15:23,420 --> 01:15:32,220
+really nothing to the variable they just simply extract it or they modify it on the fly and put
+
+548
+01:15:32,220 --> 01:15:39,900
+it to the line to the online give it to the output print it to the output but then they actually do
+
+549
+01:15:39,900 --> 01:15:47,580
+nothing with the variable itself so a variable stays as is so let me let me
+
+550
+01:15:49,500 --> 01:15:59,180
+do the example for instance here i'm grabbing the f path so i'm saying that that's my path
+
+551
+01:15:59,180 --> 01:16:06,620
+to the file and i'm naming that variable accordingly so if you take a look at the f path
+
+552
+01:16:06,620 --> 01:16:13,940
+it's pretty much like that yeah so what I want to say that I want to first get
+
+553
+01:16:13,940 --> 01:16:17,060
+the path
+
+554
+01:16:18,420 --> 01:16:28,100
+for instance here this cryptic says that okay return me everything what is what is
+
+555
+01:16:28,100 --> 01:16:41,620
+before the last slash, or actually everything except what is after the last slash. So now I'm
+
+556
+01:16:41,620 --> 01:16:48,500
+getting the name of the file actually. So you see that I've got rid of this one while the file
+
+557
+01:16:48,500 --> 01:16:54,580
+itself, I mean the fpath, has not been modified. It's only the modification which has happened on
+
+558
+01:16:54,580 --> 01:17:02,100
+the fly and it has been outputted to the script. In order to make it modified actually you have to
+
+559
+01:17:02,100 --> 01:17:10,180
+reassign it to another variable. So if I assign it to another variable and say let's call it fpath2
+
+560
+01:17:11,940 --> 01:17:15,700
+now it's gonna be already something which will be
+
+561
+01:17:15,700 --> 01:17:26,420
+remember it, which will be saved to the memory and which will be part of your global space.
+
+562
+01:17:32,260 --> 01:17:37,620
+And then, for instance, another example, if I want to keep running this fpath thing
+
+563
+01:17:37,620 --> 01:17:48,580
+and want to return only the path. So that's the another approach. So I'm not going any more deeply
+
+564
+01:17:48,580 --> 01:17:55,460
+into this. I want you actually to go this deeper into this thing. So learn this section and let's
+
+565
+01:17:55,460 --> 01:18:03,300
+try it. Let's say that we go for another 10 minutes playing with this variable magix. So
+
+566
+01:18:03,300 --> 01:18:08,660
+what I want you to try I wanted to try in this construct where you have the variable name
+
+567
+01:18:09,300 --> 01:18:15,700
+and then the curly brackets and then something after the variable name late on your own or
+
+568
+01:18:18,580 --> 01:18:20,180
+actually if you will be ready
+
+569
+01:18:22,580 --> 01:18:26,900
+here is my or did I put it over here already
+
+570
+01:18:26,900 --> 01:18:39,940
+So, here is my suggestion for you. So you pick up once again your HelloBash
+
+571
+01:18:41,380 --> 01:18:52,020
+and you change it in such a way that this variable HelloBash will be printed in capitals.
+
+572
+01:18:52,020 --> 01:19:00,340
+that's the first and the second one is that you will wrap once again that
+
+573
+01:19:00,340 --> 01:19:05,620
+fpath variable in the way you want to but I mean you just copy paste from the
+
+574
+01:19:05,620 --> 01:19:10,380
+course material and make your script to return file name only without the full
+
+575
+01:19:10,380 --> 01:19:15,060
+path and extension so the hint over here is that I have said you previously over
+
+576
+01:19:15,060 --> 01:19:23,220
+here is that you will not be able to do it with one single iteration. You will have to do it with
+
+577
+01:19:23,220 --> 01:19:32,500
+two iterations and for that you will have to save one variable to another. So let's see how you will
+
+578
+01:19:32,500 --> 01:19:40,180
+manage this to do. You will have now 10 maybe even 15 minutes because it's gonna be quite
+
+579
+01:19:40,180 --> 01:19:48,880
+quite a challenge for you especially for the first time but then let's go so we
+
+580
+01:19:48,880 --> 01:19:57,680
+will finish when at 1325
+
+581
+01:20:10,180 --> 01:20:12,240
+you
+
+582
+01:20:40,180 --> 01:21:02,340
+sorry I also forgot to mention so here we'll put the
+
+583
+01:21:02,340 --> 01:21:10,340
+the answers, both of them.
+
+584
+01:21:32,340 --> 01:21:54,820
+That's the answers for the previous exercise I'll do the same for the exercise after all
+
+585
+01:22:02,340 --> 01:22:04,400
+you
+
+586
+01:22:32,340 --> 01:22:34,400
+you
+
+587
+01:23:02,340 --> 01:23:04,340
+You
+
+588
+01:23:32,340 --> 01:23:34,400
+you
+
+589
+01:24:02,340 --> 01:24:04,400
+you
+
+590
+01:24:32,340 --> 01:24:34,400
+you
+
+591
+01:25:02,340 --> 01:25:04,400
+you
+
+592
+01:25:32,340 --> 01:25:34,400
+you
+
+593
+01:26:02,340 --> 01:26:04,400
+you
+
+594
+01:26:32,340 --> 01:26:34,400
+you
+
+595
+01:27:02,340 --> 01:27:04,400
+you
+
+596
+01:27:32,340 --> 01:27:34,400
+you
+
+597
+01:28:02,340 --> 01:28:04,400
+you
+
+598
+01:28:32,340 --> 01:28:34,400
+you
+
+599
+01:29:02,340 --> 01:29:04,400
+you
+
+600
+01:29:32,340 --> 01:29:34,400
+you
+
+601
+01:30:02,340 --> 01:30:04,400
+you
+
+602
+01:30:32,340 --> 01:30:34,400
+you
+
+603
+01:31:02,340 --> 01:31:04,400
+you
+
+604
+01:31:32,340 --> 01:31:34,400
+you
+
+605
+01:32:02,340 --> 01:32:04,400
+you
+
+606
+01:32:32,340 --> 01:32:34,400
+you
+
+607
+01:33:02,340 --> 01:33:04,400
+you
+
+608
+01:33:32,340 --> 01:33:34,400
+you
+
+609
+01:34:02,340 --> 01:34:04,400
+you
+
+610
+01:34:32,340 --> 01:34:34,400
+you
+
+611
+01:35:02,340 --> 01:35:23,060
+Okay, we're gonna keep going.
+
+612
+01:35:23,060 --> 01:35:29,920
+So let me demonstrate with you techniques over here.
+
+613
+01:35:29,920 --> 01:35:39,400
+So the first, I will also put it to the answers to this, both exercises, to both tasks of this
+
+614
+01:35:39,400 --> 01:35:45,720
+exercise will be on the notes, but then first let me go with demo.
+
+615
+01:35:45,720 --> 01:35:54,960
+So quick demo for the first one, echo, and then we were expecting some modifications
+
+616
+01:35:54,960 --> 01:36:00,880
+the var so we need the curly brackets and then we need to say what we want
+
+617
+01:36:02,560 --> 01:36:09,760
+so we put two hats over here that should be enough let's see what we get out of this
+
+618
+01:36:12,080 --> 01:36:15,760
+so yeah so you can see that actually the first one was the
+
+619
+01:36:16,720 --> 01:36:20,400
+from the previous version of the script and the second one was already the first
+
+620
+01:36:20,400 --> 01:36:28,800
+they say the other one so regarding the fpath plane so there was a request to do the
+
+621
+01:36:29,600 --> 01:36:36,640
+get the only the archive that was somewhat complicated and complex and I do hope that
+
+622
+01:36:36,640 --> 01:36:46,240
+that place some of you have got already some of this so let me grab this one and say that I
+
+623
+01:36:46,240 --> 01:36:54,800
+go to the bin and I will create my new script. I will call it some kind of fpath
+
+624
+01:36:56,400 --> 01:37:02,160
+and I will play with that and I will say that it's gonna be bash once again
+
+625
+01:37:04,000 --> 01:37:08,560
+and let's see what can be done. So I actually can use pretty much the variables
+
+626
+01:37:09,840 --> 01:37:12,640
+modifications this magic from the
+
+627
+01:37:16,240 --> 01:37:18,240
+from the
+
+628
+01:37:20,240 --> 01:37:22,240
+learning material, but here
+
+629
+01:37:22,240 --> 01:37:24,240
+what I'm getting, I would get it only on the fly
+
+630
+01:37:24,240 --> 01:37:26,240
+I don't really want it on
+
+631
+01:37:26,240 --> 01:37:28,240
+the fly, I want
+
+632
+01:37:28,240 --> 01:37:30,240
+it to be another
+
+633
+01:37:30,240 --> 01:37:32,240
+variable, but here
+
+634
+01:37:32,240 --> 01:37:34,240
+I don't really care about the
+
+635
+01:37:34,240 --> 01:37:36,240
+original fpath, I can
+
+636
+01:37:36,240 --> 01:37:38,240
+simply reassign it
+
+637
+01:37:38,240 --> 01:37:40,240
+in order to make the
+
+638
+01:37:40,240 --> 01:37:42,240
+modification
+
+639
+01:37:42,240 --> 01:37:44,240
+not on the fly, but
+
+640
+01:37:44,240 --> 01:37:52,320
+save them to the variable I can simply unsign it this way and you will see later that actually
+
+641
+01:37:57,920 --> 01:38:00,720
+so let's say that I want to put the fpath
+
+642
+01:38:05,440 --> 01:38:08,000
+and I can say here that's the phase one
+
+643
+01:38:11,200 --> 01:38:12,720
+it's going to be the fpath
+
+644
+01:38:14,240 --> 01:38:22,960
+part which will be, I will take off everything which is behind this one, this slash.
+
+645
+01:38:24,560 --> 01:38:33,920
+So the only thing which will be left to me, that's this one. Okay, and now that's the moment
+
+646
+01:38:33,920 --> 01:38:40,960
+where I can already, if I don't care about what's the final result of leftPath, this is where the
+
+647
+01:38:40,960 --> 01:38:56,080
+moment where I can't put something like this but modify it a little bit so let's say that here
+
+648
+01:38:58,640 --> 01:38:59,760
+I put the comments
+
+649
+01:39:02,240 --> 01:39:04,960
+just to simply here we get
+
+650
+01:39:04,960 --> 01:39:14,560
+archive for the extensions. Okay, you can check it out from the command line. I know that it's
+
+651
+01:39:14,560 --> 01:39:19,200
+going to be like this already because I already checked, so I just put it to my script already
+
+652
+01:39:19,200 --> 01:39:21,040
+directly. So now,
+
+653
+01:39:27,120 --> 01:39:29,920
+so this block is over here, now the next step
+
+654
+01:39:29,920 --> 01:39:36,880
+getArchive out of
+
+655
+01:39:41,440 --> 01:39:44,000
+so now we have to get rid of this
+
+656
+01:39:45,600 --> 01:39:51,200
+two so how to do that is that we can say that okay we don't need dots
+
+657
+01:39:53,600 --> 01:39:55,920
+and we don't need anything out of these dots
+
+658
+01:39:55,920 --> 01:40:07,680
+now the tricky thing because of this syntax so this will allow me to get rid of the only the last one
+
+659
+01:40:07,680 --> 01:40:15,840
+content of which comes after the dot but what i want i want the everything after the after the
+
+660
+01:40:15,840 --> 01:40:23,520
+after the dot so in this case i will have to use the two percentages so that was the complication
+
+661
+01:40:23,520 --> 01:40:29,520
+over here and that was kind of thing that you had to had to find it out from the
+
+662
+01:40:31,680 --> 01:40:36,000
+from the manual page or just to try it to fit with that
+
+663
+01:40:37,840 --> 01:40:46,480
+okay now let's see what's going on change mode let it be okay okay it should be plus x
+
+664
+01:40:46,480 --> 01:40:56,320
+and now I'm ready to run fpath and so in the phase one we got archive.z and
+
+665
+01:40:56,320 --> 01:41:03,160
+after the second one we got the archive so take a look once again it's nowadays
+
+666
+01:41:03,160 --> 01:41:07,640
+looking like this so let me put it to the
+
+667
+01:41:11,720 --> 01:41:21,160
+to the solution part where my 15 minutes functions that's going to be the next one here is the
+
+668
+01:41:21,160 --> 01:41:33,560
+so here's for everyone who wants to take a look at this later on
+
+669
+01:41:36,760 --> 01:41:41,000
+okay now we can if any question please ask
+
+670
+01:41:43,240 --> 01:41:49,320
+if something is yet unclear so i can take rid of this one and we just
+
+671
+01:41:49,320 --> 01:42:02,840
+have actually the part which we need. So saying that, I think I'm done with the variables
+
+672
+01:42:03,960 --> 01:42:10,200
+and you know already pretty much a lot. So you know already how to use the variables, you know
+
+673
+01:42:10,200 --> 01:42:18,360
+how to define them, how to call them. You should now by now know that the variable can be undefined
+
+674
+01:42:19,320 --> 01:42:26,600
+and then you also know this matrix of this bash variables which you can do with the curly brackets
+
+675
+01:42:26,600 --> 01:42:32,200
+and do some modifications on the fly in case you want to do this so if you want to substitute this
+
+676
+01:42:32,200 --> 01:42:38,680
+modified modify variable and put it to the command line so that's the way to do
+
+677
+01:42:40,520 --> 01:42:46,120
+with the curly brackets so now the next one i wanted to try is functions
+
+678
+01:42:46,120 --> 01:42:55,120
+Functions are everywhere, it's just a piece of code, which you can use repeatedly.
+
+679
+01:42:55,120 --> 01:43:05,120
+Usually, I mean, if you know that within the same code, you will use the same snippets,
+
+680
+01:43:05,120 --> 01:43:12,120
+so you can just put them somewhere else to the function and then use them all the time within the code.
+
+681
+01:43:12,120 --> 01:43:17,080
+this is quite normal, this is quite usual, and this is not an exclusion in terms of bash.
+
+682
+01:43:17,800 --> 01:43:24,840
+Functions are there, the only difference, the functionality of the functions is nothing really
+
+683
+01:43:24,840 --> 01:43:31,640
+extraordinary. It's just a piece of the code which will work in the normally global space.
+
+684
+01:43:32,440 --> 01:43:40,600
+So, basically, you will have access to all the variables that you use within the script,
+
+685
+01:43:40,600 --> 01:43:52,600
+You will have access to all the variables, the global space, that would mean that you have access to all the variables that you have assigned within the script itself.
+
+686
+01:43:52,600 --> 01:44:00,600
+And then on top of that, every single modification of that variable that you do within the function will be seen to the end of the script.
+
+687
+01:44:00,600 --> 01:44:08,600
+So just remember this. And this differs this function's functionality from the other languages.
+
+688
+01:44:08,600 --> 01:44:16,100
+On top of that, the function does not really return the result of the modification of this
+
+689
+01:44:16,100 --> 01:44:18,960
+variable with the return command.
+
+690
+01:44:18,960 --> 01:44:24,120
+It does have a return command, but the return command does nothing except returning the exit
+
+691
+01:44:24,120 --> 01:44:25,980
+code.
+
+692
+01:44:25,980 --> 01:44:35,600
+The exit code, this is something which is, I already mentioned it once, and so every
+
+693
+01:44:35,600 --> 01:44:45,720
+Every time when you run some command, for instance, if I run something like echo test,
+
+694
+01:44:45,720 --> 01:44:51,280
+you can expect that this command has returned some exit code.
+
+695
+01:44:51,280 --> 01:45:01,000
+The exit code is saved in the variable called $ and then the question mark.
+
+696
+01:45:01,000 --> 01:45:09,880
+in case of bash if it's zero that means that the action has succeeded and if it's non-zero
+
+697
+01:45:10,520 --> 01:45:16,600
+one two three any other digit so it means that the action actually has failed
+
+698
+01:45:18,040 --> 01:45:21,960
+so this thing to remember and to take a note if you are doing so
+
+699
+01:45:23,720 --> 01:45:30,280
+let me get back to the functions what i suggest to do is that i suggest to organize the file
+
+700
+01:45:30,280 --> 01:45:37,880
+which I would call functions surprise surprise you don't need to put dot shell or anything like this
+
+701
+01:45:37,880 --> 01:45:45,080
+it can be just functions another one surprise that within these functions those the file where
+
+702
+01:45:45,080 --> 01:45:51,960
+you want to define it you don't really need to push the put the shebang I will tell you
+
+703
+01:45:51,960 --> 01:45:58,360
+I will show you how to call the functions later on but just for now it's enough if you just
+
+704
+01:45:58,360 --> 01:46:09,360
+do it without it. So my first example will be for you is the usage of your
+
+705
+01:46:09,360 --> 01:46:18,200
+space. So let me first get out of this and copy-paste the command from the
+
+706
+01:46:18,200 --> 01:46:25,360
+material. You can do it on the same way. So what the command does, it shows you
+
+707
+01:46:25,360 --> 01:46:34,840
+the files in this current directory and sort them out by their size. So in my
+
+708
+01:46:34,840 --> 01:46:42,840
+situation I'm trying to look at the all the files including the hidden ones. So
+
+709
+01:46:42,840 --> 01:46:50,760
+the hidden ones as you remember from the previous course material that's the one
+
+710
+01:46:50,760 --> 01:46:55,880
+which start with a dot. So by default if you don't address them specifically
+
+711
+01:46:57,640 --> 01:47:02,680
+no one of the commands neither ls nor other commands will see them. So this is why they
+
+712
+01:47:02,680 --> 01:47:08,760
+are called hidden even if they are not really hidden in such a way. But you must say explicitly
+
+713
+01:47:08,760 --> 01:47:13,400
+and this is the expression how to address all the hidden files in the current directory.
+
+714
+01:47:14,040 --> 01:47:18,840
+So because no one of the hidden files is found this usage gives me the warning that
+
+715
+01:47:18,840 --> 01:47:25,640
+nothing can be accessed it's completely okay it can be ignored but the other files are over here
+
+716
+01:47:26,360 --> 01:47:33,080
+so I have tested this command and now I want to make a space usage out of this one
+
+717
+01:47:33,800 --> 01:47:35,400
+so let me write a function
+
+718
+01:47:39,400 --> 01:47:43,080
+or did I have a functions okay I probably haven't functions
+
+719
+01:47:43,080 --> 01:47:51,480
+haven't yeah that was empty so now let me go into that function and put the body
+
+720
+01:47:51,480 --> 01:48:02,280
+of my function and then put the actually name etc around so the way you write the
+
+721
+01:48:02,280 --> 01:48:09,080
+function you open the curly brackets so you put the name of the function it
+
+722
+01:48:09,080 --> 01:48:19,080
+should have this brackets, round brackets, and then you put the curly brackets and then you
+
+723
+01:48:19,080 --> 01:48:27,960
+put actually the name of the command itself. So now it has been defined.
+
+724
+01:48:27,960 --> 01:48:36,280
+Now it's in the file and the function file does not need even the execution bit.
+
+725
+01:48:36,280 --> 01:48:41,960
+so if you look at the ls minus l functions you will see that it's nothing
+
+726
+01:48:41,960 --> 01:48:50,680
+else than just normal text file how to source it so you can go to you can just
+
+727
+01:48:50,680 --> 01:48:59,640
+grab that file functions and type source and you will have these functions part of
+
+728
+01:48:59,640 --> 01:49:07,960
+your environment how to check it again you can use type minus a and see that what kind of
+
+729
+01:49:09,000 --> 01:49:16,040
+function is behind the space usage and you will get the list so there are two signs here first
+
+730
+01:49:16,040 --> 01:49:23,320
+space usage is part of your environment by now and second sign that you can see that actually
+
+731
+01:49:23,320 --> 01:49:29,800
+it's supposed to work right away so by now because it's your part of your environment
+
+732
+01:49:30,440 --> 01:49:38,040
+you can run it pretty much like any other binary so now you can see that after running space usage
+
+733
+01:49:39,400 --> 01:49:46,600
+there will be this kind of list exactly that I would have get out of this command but this
+
+734
+01:49:46,600 --> 01:49:53,080
+comment is now has a kind of a nickname space usage the name you come with is just up to you
+
+735
+01:49:53,080 --> 01:49:59,320
+and actually bash doesn't really care as except that you are if you are not trying to rename some
+
+736
+01:49:59,320 --> 01:50:07,640
+real some real binaries and even for that there is medicine i don't tell you yet anything about
+
+737
+01:50:07,640 --> 01:50:16,040
+this but for this there is a medicine as well so let me say that i'm pretty happy with this
+
+738
+01:50:16,040 --> 01:50:23,160
+already one, but there is something else that can be used with the functions. Functions can accept
+
+739
+01:50:23,160 --> 01:50:35,880
+the input parameters. And input parameters, so if let me say that if I call space usage like this
+
+740
+01:50:36,760 --> 01:50:43,240
+and then if I say some argument number one, argument number two, argument number three,
+
+741
+01:50:43,240 --> 01:50:51,640
+and so on, they will immediately be within my function, they will be immediately
+
+742
+01:50:52,360 --> 01:51:02,280
+recognize as $1, $2, $3, etc. And we can use it.
+
+743
+01:51:04,120 --> 01:51:11,480
+Okay, so let's say that we expecting some input arguments, input parameters. And let's say that
+
+744
+01:51:11,480 --> 01:51:20,440
+my space function will be actually expecting a directory so that I don't really go and check
+
+745
+01:51:21,240 --> 01:51:24,200
+the current one but I can check any one
+
+746
+01:51:27,000 --> 01:51:34,840
+now what to do now I know that my directory is going to be like this yeah and so what kind of
+
+747
+01:51:34,840 --> 01:51:42,400
+what kind of thing I can implement over here. So I can say that everything within
+
+748
+01:51:42,400 --> 01:51:50,960
+this directory like this or even more I can say that everything within this
+
+749
+01:51:50,960 --> 01:51:55,840
+directory will be checked. It's already a good progress so we've got already
+
+750
+01:51:55,840 --> 01:52:05,440
+something to solve but in case in case I want to make sure that actually this
+
+751
+01:52:05,440 --> 01:52:11,840
+directory is provided how to check it and here where we can use our magic
+
+752
+01:52:11,840 --> 01:52:19,680
+variables and so we can implement it in a way that okay I keep it like this but
+
+753
+01:52:19,680 --> 01:52:33,840
+I put my curly brackets and I use this operator which will say if it's equal if this one is not
+
+754
+01:52:33,840 --> 01:52:41,920
+defined then let it be my current directory current directory in the bash notations is dot
+
+755
+01:52:41,920 --> 01:52:49,540
+so in the same way I can do it over here if one is not defined then I want to say
+
+756
+01:52:49,540 --> 01:52:57,240
+that to let it be dot now we are good enough to go with the new space usage so
+
+757
+01:52:57,240 --> 01:53:02,880
+now we already have created pretty robust
+
+758
+01:53:02,880 --> 01:53:11,600
+code let me check it once again was it the minus or was it the
+
+759
+01:53:12,240 --> 01:53:20,240
+yeah okay so here i'm doing one thing so i don't want to reassign it but i want
+
+760
+01:53:20,240 --> 01:53:24,320
+to return it so i'm using the minus operator you see
+
+761
+01:53:24,320 --> 01:53:28,320
+what's the difference with the equal with the equal i would
+
+762
+01:53:28,320 --> 01:53:31,520
+reassign it so i don't really want to change and i
+
+763
+01:53:31,520 --> 01:53:39,760
+will not be able to change this special variable $1 but with the minus I will be able to return
+
+764
+01:53:39,760 --> 01:53:44,720
+the dot without changing the variable itself that's the difference
+
+765
+01:53:45,520 --> 01:53:50,640
+okay now we are pretty much robust and now we can even put again
+
+766
+01:53:52,640 --> 01:53:56,640
+return the space usage
+
+767
+01:53:56,640 --> 01:54:09,460
+well, return the space usage with disk usage command. Now let's try. Now we need to
+
+768
+01:54:09,460 --> 01:54:17,800
+source it once again, functions. Now let's try type once again. Now you see that my
+
+769
+01:54:17,800 --> 01:54:23,580
+script function which is now part of my environment has been modified and now
+
+770
+01:54:23,580 --> 01:54:31,580
+let's see how it works. First, I will use it with some variable. So, I want to, for instance, check
+
+771
+01:54:33,980 --> 01:54:42,140
+my demo space. Okay, let's see if it works. So, once again, this warning is just about the
+
+772
+01:54:42,140 --> 01:54:51,820
+dot files. You can simply ignore this. And then, if I put no parameter, what it do for me?
+
+773
+01:54:51,820 --> 01:54:56,540
+Okay, now I can see that actually it's trying to do it the same way
+
+774
+01:54:58,860 --> 01:55:04,380
+like this. So which is pretty much what I have expected out of this function.
+
+775
+01:55:06,780 --> 01:55:07,580
+Say it again.
+
+776
+01:55:10,300 --> 01:55:18,060
+Now you have written the first function which can be used then within the code. So how to do that?
+
+777
+01:55:18,060 --> 01:55:22,860
+Let's say that I want to...
+
+778
+01:55:25,500 --> 01:55:30,540
+I will demonstrate it for the sake of demonstration over here. So now let me do the
+
+779
+01:55:31,500 --> 01:55:36,860
+kind of dummy file. Let me copy functions to some
+
+780
+01:55:39,900 --> 01:55:46,380
+space, whatever, space.shell. So I do it only for the sake of demonstration how to call the
+
+781
+01:55:46,380 --> 01:55:55,100
+function within the code. So I'm now looking at the space. Here I already need this shebang
+
+782
+01:55:56,620 --> 01:56:03,500
+because I'm doing the actual scripting and so again in the previous file which was called
+
+783
+01:56:03,500 --> 01:56:09,660
+functions I was only defining the function, was not executing them. In this situation I want to
+
+784
+01:56:09,660 --> 01:56:16,220
+define it first and execute it after so and that's the way
+
+785
+01:56:16,780 --> 01:56:23,420
+to space usage and then even if I put some arguments I
+
+786
+01:56:23,420 --> 01:56:29,660
+can put the argument right away space usage and then for instance
+
+787
+01:56:29,660 --> 01:56:33,980
+let it be my home yeah like that
+
+788
+01:56:34,700 --> 01:56:38,620
+let's see what it gives us oh I can do it with the
+
+789
+01:56:38,620 --> 01:56:46,780
+more readable format so I can give it with the home so let's see what we will get again we will
+
+790
+01:56:46,780 --> 01:56:54,620
+have to add the execution bit and then because we are already in the bin we don't need anything else
+
+791
+01:56:55,740 --> 01:57:05,660
+space shell so yeah pretty much works okay so now you've got also the idea of how to call
+
+792
+01:57:05,660 --> 01:57:17,900
+the function within the script and again if you are kind of lost and you you still can go to the
+
+793
+01:57:17,900 --> 01:57:25,580
+bin and you can check it from here and see what's going on so I don't really steal all this
+
+794
+01:57:26,700 --> 01:57:29,100
+this of course from you so you have access to them
+
+795
+01:57:29,100 --> 01:57:35,180
+so what else i wanted to tell you about the
+
+796
+01:57:39,580 --> 01:57:44,940
+there are also options how to use the space within these functions how to use them
+
+797
+01:57:45,820 --> 01:57:49,740
+with the local variables we don't really want to check it out
+
+798
+01:57:50,700 --> 01:57:53,420
+one thing that i wanted to introduce you another one
+
+799
+01:57:53,420 --> 01:58:04,780
+beneficial being part of the syntax which is called the command substitution. So let me
+
+800
+01:58:06,700 --> 01:58:11,180
+say that I want to define a function. I want to call this function
+
+801
+01:58:11,180 --> 01:58:19,180
+me.
+
+802
+01:58:19,180 --> 01:58:23,180
+So what I'm doing right here, while defining this function, I'm actually putting to the
+
+803
+01:58:23,180 --> 01:58:27,180
+command line, not the command itself, but the
+
+804
+01:58:27,180 --> 01:58:31,180
+outputs of this command into one single line.
+
+805
+01:58:31,180 --> 01:58:35,180
+So command line substitution means that
+
+806
+01:58:35,180 --> 01:58:39,180
+you actually want to substitute the output
+
+807
+01:58:39,180 --> 01:58:48,060
+output of that command into some part of the code, into some part of the other command that you're
+
+808
+01:58:48,060 --> 01:58:57,740
+typing. It's quite useful. You will see it in the further examples that we will run. And now just
+
+809
+01:58:57,740 --> 01:59:06,300
+one single to show you how it works. So I have created it. So I have it added to the functions
+
+810
+01:59:06,300 --> 01:59:13,820
+and now I can once again with the type minus a see that my function has been
+
+811
+01:59:13,820 --> 01:59:21,380
+added and if I run it you can now see okay host name is not found I didn't
+
+812
+01:59:21,380 --> 01:59:25,260
+check it host name
+
+813
+01:59:25,260 --> 01:59:36,620
+Well, whatever.
+
+814
+01:59:36,620 --> 01:59:45,060
+So okay, actually, I know the problem over here.
+
+815
+01:59:45,060 --> 01:59:48,020
+So it's good that we've got this error message.
+
+816
+01:59:48,020 --> 01:59:50,420
+So what has happened just now?
+
+817
+01:59:50,420 --> 01:59:58,500
+Again, this construction, where you have the round brackets and the sign, dollar sign at
+
+818
+01:59:58,500 --> 02:00:05,860
+the very beginning, it gives you the output of the command and it just prints it to the prompt.
+
+819
+02:00:05,860 --> 02:00:11,460
+So, for instance, I want to check id. Yeah, and I want to check id with the
+
+820
+02:00:11,460 --> 02:00:18,980
+UAN, so I'm just checking my username, basically. If I do it like this, it's completely fine.
+
+821
+02:00:18,980 --> 02:00:28,820
+it will return me the actual output of the command. But if I will try to do it like that
+
+822
+02:00:29,780 --> 02:00:36,660
+without substituting it to the code, without substituting it to the prompt, so I'm getting
+
+823
+02:00:36,660 --> 02:00:45,220
+the error message. Why? Because bash and the ground, it will execute this command substitution,
+
+824
+02:00:45,220 --> 02:00:50,580
+it will put the output of the command substitution to the prompt and it will expect that it's going
+
+825
+02:00:50,580 --> 02:00:56,340
+to be a name of the command, which is not correct. And so this is why you are getting the error.
+
+826
+02:00:57,140 --> 02:01:07,140
+Let me fix that functions and say that actually what I'm looking for is the echo. So what I need,
+
+827
+02:01:07,140 --> 02:01:14,100
+I need to put them all together and then output it to the screen. So let's see what will happen.
+
+828
+02:01:14,100 --> 02:01:21,060
+I have to source it once again. Now I expect that it has been fixed. Yes, now you see that
+
+829
+02:01:21,060 --> 02:01:26,660
+I've got the perfect information about myself. Who am I, what's my group number, what's my
+
+830
+02:01:28,100 --> 02:01:30,420
+group and then also what's my machine name.
+
+831
+02:01:33,140 --> 02:01:40,900
+Cool, so once again now you have at least two functions defined. You know how to do it,
+
+832
+02:01:40,900 --> 02:01:47,620
+you know how to call it you know how to call it function both from the prompt and from the from
+
+833
+02:01:47,620 --> 02:01:56,260
+within the script and then on top of that you also got some impression how to use the command line
+
+834
+02:01:56,260 --> 02:01:59,140
+substitutions.
+
+835
+02:02:01,380 --> 02:02:04,660
+I think we are
+
+836
+02:02:05,300 --> 02:02:08,820
+we are done but
+
+837
+02:02:08,820 --> 02:02:13,460
+not yet fully. I still wanted to add you something
+
+838
+02:02:13,460 --> 02:02:16,740
+with the script because I touched the command substitution
+
+839
+02:02:16,740 --> 02:02:21,860
+and so what I wanted to do I have to I wanted to demonstrate you some other
+
+840
+02:02:21,860 --> 02:02:26,020
+commands. So let me introduce you
+
+841
+02:02:26,020 --> 02:02:31,380
+some practical usage. Well, the me function was also practical, but this is even more practical
+
+842
+02:02:32,260 --> 02:02:39,700
+than it is. So you remember the tar command, which I used just with the
+
+843
+02:02:41,140 --> 02:02:46,820
+explicit, saying explicitly what's the name of the tar archive is going to be, and then saying
+
+844
+02:02:46,820 --> 02:02:55,780
+explicitly which exactly directory I wanted to archive. So here what I'm doing
+
+845
+02:02:55,780 --> 02:03:02,100
+in this command let me explain that so let me make it more readable
+
+846
+02:03:04,260 --> 02:03:08,500
+here what i'm doing i'm using the command substitution
+
+847
+02:03:10,020 --> 02:03:17,860
+for a goat so first of all i'm using date let me say that i save this command for you without
+
+848
+02:03:17,860 --> 02:03:24,260
+executing right away so i know what date will provide to me this format of the date will give me
+
+849
+02:03:24,260 --> 02:03:27,820
+me a year, a month, and a day.
+
+850
+02:03:27,820 --> 02:03:29,460
+Okay, that's what I want.
+
+851
+02:03:29,460 --> 02:03:34,460
+Then what I want else, I want the current directory,
+
+852
+02:03:35,700 --> 02:03:38,580
+but I want to have a current directory
+
+853
+02:03:38,580 --> 02:03:41,540
+only the actual name one.
+
+854
+02:03:41,540 --> 02:03:44,500
+So you remember we've done it with the variables.
+
+855
+02:03:44,500 --> 02:03:47,980
+Now I introduce you another one way to do that.
+
+856
+02:03:47,980 --> 02:03:52,980
+You can use the built-in utility called base name,
+
+857
+02:03:52,980 --> 02:03:57,540
+Oh, maybe it's not built-in, maybe external, but anyway, it's part of the system.
+
+858
+02:03:58,980 --> 02:04:05,780
+So now you see that I'm getting the bean. So out of this one, out of this nested command
+
+859
+02:04:05,780 --> 02:04:10,580
+substitution, so first of all the command substitution can be nested and bash understands
+
+860
+02:04:10,580 --> 02:04:16,740
+this kind of syntax. It's quite clever. So you will get bean, here you will get date,
+
+861
+02:04:16,740 --> 02:04:19,960
+And the rest will be just as normal.
+
+862
+02:04:19,960 --> 02:04:23,700
+Okay, let's try it, and let's see what will happen.
+
+863
+02:04:28,060 --> 02:04:32,100
+That's correct, so we have created some files inside the directory that we're
+
+864
+02:04:32,100 --> 02:04:34,900
+archiving, so tar was given this warning.
+
+865
+02:04:34,900 --> 02:04:39,500
+And now you can see that actually we've got the tar archive, which is named bin,
+
+866
+02:04:39,500 --> 02:04:44,620
+and then the date, which is dynamically perfectly generated name,
+
+867
+02:04:44,620 --> 02:04:46,620
+which can be used for the scripts.
+
+868
+02:04:46,740 --> 02:04:53,220
+so my suggestion that we will use it right away and actually we will go to
+
+869
+02:04:53,220 --> 02:05:01,860
+this what was that something tell me and we will use it actually not as a
+
+870
+02:05:01,860 --> 02:05:05,140
+function but we will use it
+
+871
+02:05:05,140 --> 02:05:14,500
+as a command okay so so
+
+872
+02:05:16,740 --> 02:05:23,300
+pretty good we're already on the functions and i think we are ready yet for another 10 minutes
+
+873
+02:05:23,940 --> 02:05:30,740
+exercise so let me see it's there or maybe even 15 minutes simply because
+
+874
+02:05:30,740 --> 02:05:40,820
+it may take you 15 minutes. So now what I want you, this is the simple one, you can copy paste
+
+875
+02:05:40,820 --> 02:05:48,580
+it as is, just create the bin functions and make sure that space usage in me both are there.
+
+876
+02:05:49,300 --> 02:05:56,900
+And then on top of that what I want you to ask is add yet another one function to that functions
+
+877
+02:05:56,900 --> 02:06:06,420
+files and test it. So let it be called fast find function, just the ff, and what it's supposed to
+
+878
+02:06:06,420 --> 02:06:14,580
+be? You provide with the fast find any search word, any, and it must return all the files and
+
+879
+02:06:14,580 --> 02:06:22,420
+directories in the current folder which name contains this word. And I suggest let it be case
+
+880
+02:06:22,420 --> 02:06:30,260
+insensitive so in case of find you just put this minus i name so basically just use this one
+
+881
+02:06:31,620 --> 02:06:36,660
+put the search word the word i mean if you are not familiar with the find you still have some
+
+882
+02:06:36,660 --> 02:06:44,820
+time to try man find or you can take a look at the course material from the
+
+883
+02:06:44,820 --> 02:06:57,540
+reverse part so you can find some examples of find usage over here and yeah let's say that we get 15
+
+884
+02:06:57,540 --> 02:07:05,780
+minutes because this is I expected that you're back to the functions and you will write something
+
+885
+02:07:05,780 --> 02:07:11,860
+maybe more and then you'll write your first function and make it to work so 15 minutes so
+
+886
+02:07:11,860 --> 02:07:16,460
+so that means that we are back to the at 14.22.
+
+887
+02:07:31,820 --> 02:07:35,780
+I guess [name] is adding it to the bottom,
+
+888
+02:07:35,780 --> 02:07:39,660
+but I mean, if you are up for this,
+
+889
+02:07:39,660 --> 02:07:41,580
+so the text is already over here.
+
+890
+02:07:41,860 --> 02:07:43,920
+you
+
+891
+02:08:11,860 --> 02:08:13,920
+you
+
+892
+02:08:41,860 --> 02:08:43,920
+you
+
+893
+02:09:11,860 --> 02:09:13,920
+you
+
+894
+02:09:41,860 --> 02:10:09,460
+Ah, one addition, let's also have the break.
+
+895
+02:10:09,460 --> 02:10:17,540
+so we set 22 so let it be till 32 so we are including this 10 minutes break
+
+896
+02:10:18,180 --> 02:10:20,820
+sorry that's important just go and stretch your legs
+
+897
+02:10:23,780 --> 02:10:25,300
+or whatever you want to stretch
+
+898
+02:10:39,460 --> 02:10:41,520
+you
+
+899
+02:11:09,460 --> 02:11:11,520
+you
+
+900
+02:11:39,460 --> 02:11:41,520
+you
+
+901
+02:12:09,460 --> 02:12:11,520
+you
+
+902
+02:12:39,460 --> 02:12:41,520
+you
+
+903
+02:13:09,460 --> 02:13:11,520
+you
+
+904
+02:13:39,460 --> 02:13:41,520
+you
+
+905
+02:14:09,460 --> 02:14:11,520
+you
+
+906
+02:14:39,460 --> 02:14:41,520
+you
+
+907
+02:15:09,460 --> 02:15:11,520
+you
+
+908
+02:15:39,460 --> 02:15:41,520
+you
+
+909
+02:16:09,460 --> 02:16:11,520
+you
+
+910
+02:16:39,460 --> 02:16:41,520
+you
+
+911
+02:17:09,460 --> 02:17:11,520
+you
+
+912
+02:17:39,460 --> 02:17:41,520
+you
+
+913
+02:18:09,460 --> 02:18:11,520
+you
+
+914
+02:18:39,460 --> 02:18:41,520
+you
+
+915
+02:19:09,460 --> 02:19:11,520
+you
+
+916
+02:19:39,460 --> 02:19:41,520
+you
+
+917
+02:20:09,460 --> 02:20:11,520
+you
+
+918
+02:20:39,460 --> 02:20:41,520
+you
+
+919
+02:21:09,460 --> 02:21:11,520
+you
+
+920
+02:21:39,460 --> 02:21:41,520
+you
+
+921
+02:22:09,460 --> 02:22:11,520
+you
+
+922
+02:22:39,460 --> 02:22:41,520
+you
+
+923
+02:23:09,460 --> 02:23:11,520
+you
+
+924
+02:23:39,460 --> 02:23:41,520
+you
+
+925
+02:24:09,460 --> 02:24:11,520
+you
+
+926
+02:24:39,460 --> 02:24:41,520
+you
+
+927
+02:25:09,460 --> 02:25:11,520
+you
+
+928
+02:25:39,460 --> 02:25:41,520
+you
+
+929
+02:26:09,460 --> 02:26:11,520
+you
+
+930
+02:26:39,460 --> 02:26:41,520
+you
+
+931
+02:27:09,460 --> 02:27:11,520
+you
+
+932
+02:27:39,460 --> 02:27:41,520
+you
+
+933
+02:28:09,460 --> 02:28:11,520
+you
+
+934
+02:28:39,460 --> 02:28:41,520
+you
+
+935
+02:29:09,460 --> 02:29:11,520
+you
+
+936
+02:29:39,460 --> 02:29:41,520
+you
+
+937
+02:30:09,460 --> 02:30:11,520
+you
+
+938
+02:30:39,460 --> 02:30:41,520
+you
+
+939
+02:31:09,460 --> 02:31:11,520
+you
+
+940
+02:31:39,460 --> 02:31:45,620
+so we have left now already less than 30 minutes to go
+
+941
+02:31:47,060 --> 02:31:51,460
+it's almost 32 so i see that less and less people are actually
+
+942
+02:31:54,100 --> 02:32:00,660
+in time with doing the exercises so we will have a short also questionnaire at the end
+
+943
+02:32:00,660 --> 02:32:08,980
+don't run away we will ask how complicated was the material so on you will actually your opinion
+
+944
+02:32:08,980 --> 02:32:14,660
+will have an impact. So if you think that we are pretty decent for the intermediate level
+
+945
+02:32:15,700 --> 02:32:21,460
+your replies are more than welcome. If you think that it's too complicated or too intensive or etc
+
+946
+02:32:22,340 --> 02:32:27,780
+your replies even more welcome. So I will try to adapt by tomorrow the
+
+947
+02:32:28,580 --> 02:32:36,180
+material if we decide to do so. So let's get back to the functions. So the space usage and me
+
+948
+02:32:36,180 --> 02:32:47,740
+actually the easiest probably was just to go to this demo space which I have
+
+949
+02:32:47,740 --> 02:32:54,420
+posted on my web page copy it from there and there you would get the ready to go
+
+950
+02:32:54,420 --> 02:32:59,740
+functions so please do it if you haven't done yet so or if you were typing on
+
+951
+02:32:59,740 --> 02:33:07,580
+your own, then just consult these functions that this syntax is correct. So one question was
+
+952
+02:33:07,580 --> 02:33:17,100
+why that was returning the error message that the command does not exist. So this was explained in
+
+953
+02:33:17,100 --> 02:33:25,980
+a way that command substitution will print to the prompt the result of the executed command
+
+954
+02:33:25,980 --> 02:33:30,980
+and that result will be already interpreted as a command.
+
+955
+02:33:31,440 --> 02:33:36,440
+And so if you just put your login name on the prompt,
+
+956
+02:33:38,400 --> 02:33:41,960
+then of course there is no command with that name.
+
+957
+02:33:41,960 --> 02:33:45,160
+And so basically you will get the error message
+
+958
+02:33:45,160 --> 02:33:47,160
+that the command doesn't exist.
+
+959
+02:33:47,160 --> 02:33:49,400
+Just a second, I close the room.
+
+960
+02:33:55,980 --> 02:34:12,860
+oops back online uh the other one uh fast found so what i was trying to what i was trying to
+
+961
+02:34:15,020 --> 02:34:24,700
+make it to do so find function where where was it find name so that should be already
+
+962
+02:34:24,700 --> 02:34:28,140
+good enough to get started
+
+963
+02:34:29,500 --> 02:34:33,100
+the only thing that you need to substitute is search word
+
+964
+02:34:33,100 --> 02:34:36,700
+like for instance if i would like to be some kind of word
+
+965
+02:34:36,700 --> 02:34:41,180
+i don't know let's say that i
+
+966
+02:34:41,580 --> 02:34:45,820
+what kind of stuff i have here do we need store bin
+
+967
+02:34:45,820 --> 02:34:51,180
+okay let me find for instance the bash history
+
+968
+02:34:51,180 --> 02:34:57,660
+so now I want to iname and then I want to find something which has bash in name
+
+969
+02:34:58,620 --> 02:35:05,500
+that wouldn't be enough because it will be looking explicitly for something which is named bash
+
+970
+02:35:06,140 --> 02:35:11,100
+but we are looking for something which has bash in the name so we need to put this
+
+971
+02:35:14,780 --> 02:35:19,340
+stars just to make sure that actually we are looking for something which has bash
+
+972
+02:35:19,340 --> 02:35:25,300
+now that should be good enough and we found already bash history which is in
+
+973
+02:35:25,300 --> 02:35:30,100
+the current directory and we also have found the hello bash which is somewhere
+
+974
+02:35:30,100 --> 02:35:36,820
+down there okay now we need to create a function we have already ready to go
+
+975
+02:35:36,820 --> 02:35:42,660
+command we have it tested from the prompt and we are ready to put it to the
+
+976
+02:35:42,660 --> 02:35:48,420
+functions so let me call it
+
+977
+02:35:49,700 --> 02:35:56,900
+fastfound I open this this way and I close it this way and
+
+978
+02:35:56,900 --> 02:36:03,700
+I put my name over here so I also was told that this should pick up
+
+979
+02:36:03,700 --> 02:36:10,340
+any search word not only bash okay so we can
+
+980
+02:36:10,340 --> 02:36:17,380
+remove it from here and then we need to specify what we want. The good practice if we actually use
+
+981
+02:36:18,100 --> 02:36:25,300
+some specific variable over here. Even if you can use this $1 and you expect that variable exists
+
+982
+02:36:26,260 --> 02:36:31,780
+we usually and the the best practice I usually suggest well I'm not sure about we
+
+983
+02:36:31,780 --> 02:36:38,660
+I usually suggest that you use the you reassign this $1 to some other variable
+
+984
+02:36:38,660 --> 02:36:45,220
+it's made in the way that you do not occasionally actually would try to edit
+
+985
+02:36:45,220 --> 02:36:51,340
+this or modify and otherwise you would get error message so in this case that
+
+986
+02:36:51,340 --> 02:37:00,780
+should work perfectly yeah I guess so but let me see the only error over here is
+
+987
+02:37:00,780 --> 02:37:07,900
+that I don't want to use the quotes single quotes I need to use this double
+
+988
+02:37:07,900 --> 02:37:13,660
+quotes. Why? Because I did the explanation at the very beginning of this session. Double quotes
+
+989
+02:37:15,580 --> 02:37:21,660
+make the bash to actually open the variables and substitute the variables. Single quotes will just
+
+990
+02:37:21,660 --> 02:37:27,420
+take the word as is with the dollar sign and nothing would happen. So this is already something
+
+991
+02:37:28,860 --> 02:37:36,700
+and let's say that I want to source it once again and I want to see that
+
+992
+02:37:37,900 --> 02:37:50,300
+type minus a f a and see it's there and if i want to try this again with a bash see whether it works
+
+993
+02:37:50,300 --> 02:37:58,380
+it works if i want to try without bash does it work it does work because find will find you everything
+
+994
+02:37:59,580 --> 02:38:05,500
+even if you provide empty uh string so basically it just we're using this
+
+995
+02:38:07,900 --> 02:38:14,860
+they start to tell you that it has lots of file inside. Okay, we don't really want this kind of
+
+996
+02:38:14,860 --> 02:38:23,020
+situation. So we really want to make sure that actually this word is not empty. What to do in
+
+997
+02:38:23,020 --> 02:38:32,620
+this case? We can use once again a logic, a magic of this variable exchange and then what we do here
+
+998
+02:38:32,620 --> 02:38:44,020
+is that we are supposed to actually give out either the variable itself or the
+
+999
+02:38:44,020 --> 02:38:53,780
+error message and so that we can say here that what was a directory or search
+
+1000
+02:38:53,780 --> 02:39:04,820
+word so sorry we are so short is missing does it work for us yeah i'm pretty sure this would be
+
+1001
+02:39:04,820 --> 02:39:14,100
+already good enough for us but one thing to remember uh we still don't want that this find
+
+1002
+02:39:14,100 --> 02:39:24,340
+will be executed how to do that and this where we come with another one thing uh which i didn't tell
+
+1003
+02:39:24,340 --> 02:39:30,500
+you yet but i will tell you on the next session but i will already use it over here just to make
+
+1004
+02:39:30,500 --> 02:39:37,860
+this kind of function complete so let's say that i will execute it like this and let's see what's
+
+1005
+02:39:37,860 --> 02:39:43,940
+going on. So, source
+
+1006
+02:39:44,980 --> 02:39:48,420
+and then if I run ff search word is missing
+
+1007
+02:39:48,420 --> 02:39:52,820
+so it's already completely correct and so we have just exited the bash so we
+
+1008
+02:39:52,820 --> 02:39:55,860
+don't really need anything over there but then
+
+1009
+02:39:55,860 --> 02:40:02,180
+if you want to be completely sure what's going on actually
+
+1010
+02:40:02,180 --> 02:40:06,100
+let's don't go that far and let's go to the next session
+
+1011
+02:40:06,100 --> 02:40:11,380
+and then I will do the explanation and do the modification to this code already right away
+
+1012
+02:40:12,500 --> 02:40:14,580
+so to have
+
+1013
+02:40:17,780 --> 02:40:30,020
+to have it on the line and go in line with the traditional thing I can put it as a replace
+
+1014
+02:40:30,020 --> 02:40:36,260
+okay here you go
+
+1015
+02:40:40,900 --> 02:40:41,400
+brush
+
+1016
+02:40:45,380 --> 02:40:49,300
+so here you go and let's make it more compact
+
+1017
+02:40:53,220 --> 02:40:53,780
+like this
+
+1018
+02:40:53,780 --> 02:41:03,860
+Good. So let's get back to the material. So my next step was actually touch a little bit the
+
+1019
+02:41:03,860 --> 02:41:11,780
+redirections. So I'm not going to the conditionals yet. So I wanted to tell you something about
+
+1020
+02:41:11,780 --> 02:41:16,980
+redirections because I want to touch a few other things within these subjects. Redirections have
+
+1021
+02:41:16,980 --> 02:41:21,980
+have been actually pretty much covered, I think,
+
+1022
+02:41:23,500 --> 02:41:25,420
+files, directories, command line utilities.
+
+1023
+02:41:25,420 --> 02:41:26,620
+I think they have been, yeah,
+
+1024
+02:41:26,620 --> 02:41:30,180
+redirections have been covered pretty much in the same,
+
+1025
+02:41:30,180 --> 02:41:32,140
+in the previous ones.
+
+1026
+02:41:32,140 --> 02:41:36,340
+And then also we have, it's quite a lot of things
+
+1027
+02:41:36,340 --> 02:41:39,860
+covered also within this material.
+
+1028
+02:41:39,860 --> 02:41:42,260
+So that's a kind of advanced one.
+
+1029
+02:41:42,260 --> 02:41:46,260
+But let me say a few words,
+
+1030
+02:41:46,260 --> 02:41:48,620
+because it's important, even if you know this,
+
+1031
+02:41:48,620 --> 02:41:49,980
+it's still important.
+
+1032
+02:41:49,980 --> 02:41:52,500
+So every time, every time when you are running
+
+1033
+02:41:52,500 --> 02:41:54,900
+some kind of any command,
+
+1034
+02:41:54,900 --> 02:41:57,620
+when you're running any script, whatever program,
+
+1035
+02:41:58,660 --> 02:42:01,180
+lots of happens actually under the hood.
+
+1036
+02:42:01,180 --> 02:42:03,180
+And one of the thing which has happened
+
+1037
+02:42:03,180 --> 02:42:07,860
+is that you are getting along with your running file,
+
+1038
+02:42:07,860 --> 02:42:12,140
+several file descriptors open for you.
+
+1039
+02:42:12,140 --> 02:42:16,380
+some of them are reserved and even enumerated.
+
+1040
+02:42:16,380 --> 02:42:20,340
+So that's the zero, one and two.
+
+1041
+02:42:20,340 --> 02:42:22,740
+And they stands for the standard input,
+
+1042
+02:42:22,740 --> 02:42:27,140
+standard output and standard error output.
+
+1043
+02:42:27,980 --> 02:42:32,380
+And all of those guys there actually can be controlled.
+
+1044
+02:42:32,380 --> 02:42:35,860
+So you can control where by default,
+
+1045
+02:42:35,860 --> 02:42:38,020
+if you type something like echo,
+
+1046
+02:42:38,020 --> 02:42:40,980
+or if you type any commands and hit output something,
+
+1047
+02:42:40,980 --> 02:42:46,660
+goes to your standard output and the standard output is the screen the terminal of your terminal
+
+1048
+02:42:46,660 --> 02:42:52,900
+so you just see it on your on your display basically but you can control where it goes
+
+1049
+02:42:53,540 --> 02:43:02,020
+and one thing to do is to actually do the redirection and you can redefine actually all
+
+1050
+02:43:02,020 --> 02:43:09,220
+of them but let's say that I want to do the redirection of something which I don't want to
+
+1051
+02:43:09,220 --> 02:43:19,540
+see. I can use as an example ping command. So ping one of the google dns servers. What it tells me
+
+1052
+02:43:19,540 --> 02:43:28,260
+that if ping goes through that means I am online. So I don't want this to be interactive. I want to
+
+1053
+02:43:28,260 --> 02:43:33,260
+to just one single packet,
+
+1054
+02:43:33,820 --> 02:43:38,140
+which will be sent and then exited.
+
+1055
+02:43:38,140 --> 02:43:42,140
+But I still don't want this one go to the screen.
+
+1056
+02:43:44,700 --> 02:43:47,340
+I want only the exit code.
+
+1057
+02:43:47,340 --> 02:43:49,140
+And we were talking with you already,
+
+1058
+02:43:49,140 --> 02:43:52,820
+the exit code, even if you don't get any output
+
+1059
+02:43:52,820 --> 02:43:55,580
+of the command, you can always take a look
+
+1060
+02:43:55,580 --> 02:43:59,460
+that what kind of exit code was given by that command.
+
+1061
+02:43:59,460 --> 02:44:03,960
+And if it has succeeded, then the exit code will be zero.
+
+1062
+02:44:03,960 --> 02:44:07,500
+If it's not succeeded, it will be something else than zero.
+
+1063
+02:44:07,500 --> 02:44:10,480
+One, usually one, or it could be two.
+
+1064
+02:44:10,480 --> 02:44:12,740
+It could be even two, five, six.
+
+1065
+02:44:12,740 --> 02:44:14,260
+So that's kind of exit code.
+
+1066
+02:44:14,260 --> 02:44:18,460
+So I think maximum is 256.
+
+1067
+02:44:18,460 --> 02:44:20,700
+That's the maximum, but can be wrong.
+
+1068
+02:44:20,700 --> 02:44:22,740
+So not really sure.
+
+1069
+02:44:22,740 --> 02:44:25,300
+Usually from the programmer perspective,
+
+1070
+02:44:25,300 --> 02:44:32,180
+can, by the number of this output, you can say what exactly has happened and what went wrong.
+
+1071
+02:44:33,060 --> 02:44:37,380
+Okay, but in this case, what I am saying here, I've used the redirection sign.
+
+1072
+02:44:38,180 --> 02:44:46,020
+This says me that I want to redirect the standard output to some other place. So,
+
+1073
+02:44:47,060 --> 02:44:53,380
+you can do it and redirect it to a file and that would be part of the exercise. But you can also
+
+1074
+02:44:53,380 --> 02:44:59,860
+do something else and you can use the special device called null. On Linux that means that
+
+1075
+02:44:59,860 --> 02:45:05,620
+everything what goes to the def null will disappear, it will not be seen anywhere.
+
+1076
+02:45:06,420 --> 02:45:14,100
+So let's see what will happen over here. Pink is okay and then if you see that I can actually check
+
+1077
+02:45:14,100 --> 02:45:19,700
+the status which has been returned. It's zero, so it's correct.
+
+1078
+02:45:21,940 --> 02:45:28,340
+Let's emulate somehow the situation that we didn't reach the ping. So I will not be
+
+1079
+02:45:28,340 --> 02:45:34,580
+disconnecting myself from here, but let me just come with something which does not exist and
+
+1080
+02:45:34,580 --> 02:45:40,820
+which will generate the error message. So in this situation ping actually has returned the error
+
+1081
+02:45:40,820 --> 02:45:47,940
+message it still came to the screen and you see that actually the status the exit code of this
+
+1082
+02:45:47,940 --> 02:45:56,740
+command was something which is not zero which is already from the point of view if you want to for
+
+1083
+02:45:56,740 --> 02:46:04,900
+instance run some kind of if or conditional statement so this will be already good enough
+
+1084
+02:46:04,900 --> 02:46:11,620
+to say that okay it's if it's not succeeded then do that and that okay but we still have
+
+1085
+02:46:11,620 --> 02:46:18,980
+one other problem if there is an error it's still on the screen so what we do by default
+
+1086
+02:46:19,780 --> 02:46:27,940
+this redirection pipe this redirection sign will redirect everything which goes to the standard
+
+1087
+02:46:27,940 --> 02:46:35,300
+output. But we also want to redirect everything which will go to the standard error output.
+
+1088
+02:46:35,300 --> 02:46:42,180
+So how to do that? And we can say explicitly here that please redirect the file descriptor number
+
+1089
+02:46:42,180 --> 02:46:49,220
+two, and here we put the redirection sign, to the one. So what will happen over here?
+
+1090
+02:46:49,220 --> 02:46:57,860
+So, from the bash point of view, both standard output and standard error output will be joined
+
+1091
+02:46:57,860 --> 02:47:06,260
+together and redirected to the standard output, which means they will go directly to def null.
+
+1092
+02:47:06,260 --> 02:47:13,700
+What will happen here is that no error message will appear on the screen and this exit status
+
+1093
+02:47:13,700 --> 02:47:16,660
+is the only one we get because we are just requesting it explicitly.
+
+1094
+02:47:16,660 --> 02:47:26,580
+it's correct, but in the modern version of... so this is the most common syntax for this kind of
+
+1095
+02:47:26,580 --> 02:47:35,300
+notation, but in the modern version of the bash you can also use the compact way
+
+1096
+02:47:35,300 --> 02:47:37,220
+so you can do it the same, but
+
+1097
+02:47:37,220 --> 02:47:46,220
+but probably the other way around.
+
+1098
+02:47:53,220 --> 02:47:56,220
+Yeah, that was the problem, not this one.
+
+1099
+02:47:59,220 --> 02:48:02,220
+Yeah, so here you go.
+
+1100
+02:48:02,220 --> 02:48:16,620
+you actually, you get the output, only the exit output. And what else I wanted to introduce you,
+
+1101
+02:48:16,620 --> 02:48:23,020
+but actually not the introduction, but the kind of remembering from the previous course,
+
+1102
+02:48:23,020 --> 02:48:30,700
+is that this exit status can be used with the logical operands.
+
+1103
+02:48:30,700 --> 02:48:38,300
+That's operands in the bash syntax. That's the logical end and logical or.
+
+1104
+02:48:38,940 --> 02:48:47,340
+So basically end says that if the exit code of the previous command was not zero, was zero,
+
+1105
+02:48:47,340 --> 02:48:55,980
+so if it succeeded then do next and we can say that echo we are online like this yeah
+
+1106
+02:49:00,460 --> 02:49:03,740
+let's put the quotes just to be more readable
+
+1107
+02:49:06,220 --> 02:49:12,300
+essentially we are not uh i mean we are getting the error message we are not getting the error
+
+1108
+02:49:12,300 --> 02:49:19,500
+much we are online and in the same way that if something went wrong we can always say that echo
+
+1109
+02:49:22,300 --> 02:49:24,300
+we are down
+
+1110
+02:49:26,540 --> 02:49:29,980
+okay at the moment we are online but then if something went wrong
+
+1111
+02:49:31,500 --> 02:49:38,620
+whatever so we will be getting the message that we are down so this is my touch on the
+
+1112
+02:49:38,620 --> 02:49:48,980
+redirections and then this logical or logical and and logical or you can use
+
+1113
+02:49:48,980 --> 02:49:54,980
+it within the script easily you can use it from the command line and this is the
+
+1114
+02:49:54,980 --> 02:50:00,940
+most often used how it's most often used on the command line but nothing stops
+
+1115
+02:50:00,940 --> 02:50:06,940
+you from using this on the screen then another one thing which I was about to
+
+1116
+02:50:06,940 --> 02:50:18,780
+tell you is that actually usage of the pipe this is something which stands for this one
+
+1117
+02:50:18,780 --> 02:50:25,020
+so basically output of this command will be redirected from the standard output
+
+1118
+02:50:25,820 --> 02:50:32,220
+of one command to the standard input of the another command and so let's see how it works
+
+1119
+02:50:32,220 --> 02:50:39,260
+so we have had kind of couple of examples like for instance
+
+1120
+02:50:40,300 --> 02:50:44,460
+actually we have had already this disk usage so let's try it once again
+
+1121
+02:50:52,540 --> 02:50:53,040
+okay
+
+1122
+02:50:56,060 --> 02:50:59,500
+what I did so what's happening over here
+
+1123
+02:50:59,500 --> 02:51:07,020
+is that we are redirecting everything what we've got from the disk usage command to the sort
+
+1124
+02:51:08,540 --> 02:51:12,300
+and the tricky thing that if you want to redirect also the
+
+1125
+02:51:14,940 --> 02:51:22,220
+error from the from the command number first you will also do it this way okay
+
+1126
+02:51:22,220 --> 02:51:32,660
+maybe it's the other way around so I was yeah that's the other way around but
+
+1127
+02:51:32,660 --> 02:51:38,180
+actually if I want to get rid of if I want to get rid of for instance this
+
+1128
+02:51:38,180 --> 02:51:45,820
+message you can do it from this exactly situation so I don't really want to get
+
+1129
+02:51:45,820 --> 02:51:51,580
+everything what comes as an error I only want to get something which comes to the
+
+1130
+02:51:51,580 --> 02:51:59,580
+standard output and so you can see that our output is way more clear even if it's harmless
+
+1131
+02:52:00,540 --> 02:52:07,740
+it's still if you want to make your code robust you can do it this way and also I have demonstrated
+
+1132
+02:52:07,740 --> 02:52:14,220
+you how to do that the other way around and I think we're pretty much
+
+1133
+02:52:14,220 --> 02:52:26,660
+what I was thinking about. So we have eight minutes left but if you're up for
+
+1134
+02:52:26,660 --> 02:52:33,460
+the yet another one exercise I was actually planning to finish right on
+
+1135
+02:52:33,460 --> 02:52:38,540
+this exercise so we can try to do it right now and then we will come back to
+
+1136
+02:52:38,540 --> 02:52:48,340
+this on on Wednesday tomorrow at 12 I'll do the explanation so let's say that the
+
+1137
+02:52:48,340 --> 02:52:54,820
+rest of the time you spent playing with the redirection and piping this exercise
+
+1138
+02:52:54,820 --> 02:53:00,260
+do as much as you want as much as you can I'll be here probably for the next 15
+
+1139
+02:53:00,260 --> 02:53:09,660
+minutes at least and we will continue otherwise tomorrow at 12 and [name] if
+
+1140
+02:53:09,660 --> 02:53:14,540
+you want to get something like how complicated material is that's also a
+
+1141
+02:53:14,540 --> 02:53:21,100
+good chance to do it right now but otherwise let's say that our last
+
+1142
+02:53:21,100 --> 02:53:27,020
+exercise for today is this one
+
+1143
+02:53:27,020 --> 02:53:32,660
+redirection and piping so try to do it that should be fairly easy but except
+
+1144
+02:53:32,660 --> 02:53:40,020
+the last one last one will probably take you some time to get to the point but
+
+1145
+02:53:40,020 --> 02:53:44,500
+it's also doable there should be no something
+
+1146
+02:53:44,620 --> 02:53:48,540
+no much of the troubles
+
+1147
+02:53:48,540 --> 02:53:57,500
+okay let's try to do this and then i will get back to the screen
+
+1148
+02:53:58,140 --> 02:54:07,500
+we will be about three minutes late running today but let's hope that's okay
+
+1149
+02:54:18,540 --> 02:54:20,600
+you
+
+1150
+02:54:48,540 --> 02:54:50,600
+you
+
+1151
+02:55:18,540 --> 02:55:20,600
+you
+
+1152
+02:55:48,540 --> 02:55:50,540
+You
+
+1153
+02:56:18,540 --> 02:56:20,600
+you
+
+1154
+02:56:48,540 --> 02:56:50,600
+you
+
+1155
+02:57:18,540 --> 02:57:20,600
+you
+
+1156
+02:57:48,540 --> 02:57:50,600
+you
+
+1157
+02:58:18,540 --> 02:58:20,600
+you
+
+1158
+02:58:48,540 --> 02:58:50,600
+you
+
+1159
+02:59:18,540 --> 02:59:20,600
+you
+
+1160
+02:59:48,540 --> 02:59:50,600
+you
+
+1161
+03:00:18,540 --> 03:00:20,600
+you
+
+1162
+03:00:48,540 --> 03:00:50,600
+you
+
+1163
+03:01:18,540 --> 03:01:20,600
+you
+
+1164
+03:01:48,540 --> 03:01:50,600
+you
+
+1165
+03:02:18,540 --> 03:02:20,600
+you
+
+1166
+03:02:48,540 --> 03:02:50,600
+you
+
+1167
+03:03:18,540 --> 03:03:20,600
+you
+
