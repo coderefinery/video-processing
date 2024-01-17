@@ -16,7 +16,7 @@ aac_wild=$(wildcard raw/*.mkv.aac out/*.mkv.aac raw/*.mp4.aac)
 srt=$(patsubst %.mkv, %.srt, $(videos_mkv)) $(patsubst %.mp4, %.srt, $(videos_mp4))
 
 #WHISPER=whisper --model large
-SRUN=srun --pty --time=0-4 -c 4 --mem=10G -p dgx-common --gpus=1
+SRUN=srun --pty --time=0-4 -c 4 --mem=10G -p dgx-common --gpus=1 -x dgx2
 WHISPER=singularity_wrapper run --model_directory ${large_v2} --device cuda
 
 print:
