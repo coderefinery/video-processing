@@ -1,0 +1,4528 @@
+1
+00:00:00,000 --> 00:00:02,000
+It can be started as well.
+
+2
+00:00:12,000 --> 00:00:14,000
+Yeah, I'm muting my phone as well.
+
+3
+00:00:21,000 --> 00:00:24,000
+So now recording is on.
+
+4
+00:00:24,000 --> 00:00:27,000
+Let's get the executive summary of the previous ones.
+
+5
+00:00:27,000 --> 00:00:30,560
+previous ones, so we went over the previous days,
+
+6
+00:00:30,560 --> 00:00:34,860
+or the day yesterday, there was the loops and conditionals.
+
+7
+00:00:35,760 --> 00:00:37,360
+That was already done.
+
+8
+00:00:37,360 --> 00:00:42,160
+And we went pretty much, lots of details and technical,
+
+9
+00:00:42,160 --> 00:00:45,180
+nicely, things like matching operators,
+
+10
+00:00:45,180 --> 00:00:46,780
+like working with the different,
+
+11
+00:00:48,160 --> 00:00:49,800
+we went through the arithmetics,
+
+12
+00:00:49,800 --> 00:00:52,600
+we went through the how to do the loops
+
+13
+00:00:52,600 --> 00:00:55,880
+with the for loop and with the while loop.
+
+14
+00:00:55,880 --> 00:01:05,800
+now the next step is to proceed through the several practical parts so my thought was that
+
+15
+00:01:05,800 --> 00:01:13,720
+this day we should be able to cover how to work properly with the input and then how to make the
+
+16
+00:01:13,720 --> 00:01:22,440
+traps what's the here docs and here stream operators then I was thinking about tell you
+
+17
+00:01:22,440 --> 00:01:29,800
+and show you several techniques well at least one technique how to make this script run in parallel
+
+18
+00:01:29,800 --> 00:01:33,880
+in bash even though it's not the real parallelization but at least that's kind of
+
+19
+00:01:33,880 --> 00:01:40,360
+emulation of the parallelization and then if we have left time we will cover also how to use the
+
+20
+00:01:40,360 --> 00:01:47,960
+arrays let's see how far we will pass this time so working with the input it's actually an
+
+21
+00:01:47,960 --> 00:01:53,960
+executive summary because we have already touched this subject several times you know somehow how
+
+22
+00:01:53,960 --> 00:02:02,840
+to use with the arguments then we use already the read command so you know how to get the output
+
+23
+00:02:02,840 --> 00:02:10,440
+from the prompt from the command line and then additional to that will be how to read from the
+
+24
+00:02:10,440 --> 00:02:17,240
+standard input. Let me start it to do it one by one. So, I have prepared several things.
+
+25
+00:02:17,880 --> 00:02:23,080
+I'm in my bin directory once again and I have prepared the several things for the
+
+26
+00:02:25,160 --> 00:02:32,920
+input things. So, input parameters. You remember already that everything what comes to the input
+
+27
+00:02:33,560 --> 00:02:39,160
+parameter as the argument is available to the script for several variables. One of these
+
+28
+00:02:39,160 --> 00:02:47,400
+variables as this dollar sign and the number sign it will give you the amount of the line arguments
+
+29
+00:02:48,840 --> 00:02:58,120
+then if you want to just list all of them you will have to address this dollar sign and the
+
+30
+00:02:58,680 --> 00:03:06,600
+at so that's the whole list of the arguments which are given to you as options to your script
+
+31
+00:03:06,600 --> 00:03:14,360
+and then, in case you want to just address them one by one, you're working
+
+32
+00:03:14,360 --> 00:03:17,440
+with the arguments like
+
+33
+00:03:20,000 --> 00:03:29,240
+$1, $2, $3, etc. So this you already know, this you already
+
+34
+00:03:29,240 --> 00:03:33,920
+remember and here I'm making you one single file which makes a summary of
+
+35
+00:03:33,920 --> 00:03:42,880
+these arguments given to your script. The first one is using the
+
+36
+00:03:45,280 --> 00:03:52,720
+arithmetic expression to check out the number of the line arguments. Then I do the counter. I go
+
+37
+00:03:52,720 --> 00:03:58,720
+through every single element and output it on the line. And here I just increment the counter.
+
+38
+00:03:58,720 --> 00:04:07,880
+and this is my demo so if you see amount of arguments is zero list of commands is
+
+39
+00:04:07,880 --> 00:04:13,400
+empty which is correct but let me see that I can do something better and I
+
+40
+00:04:13,400 --> 00:04:19,480
+give some arguments and here you see that I am listening so now these are
+
+41
+00:04:19,480 --> 00:04:26,160
+these are just the some methods how to get those arguments and how to get
+
+42
+00:04:26,160 --> 00:04:33,280
+started with them and how to use them. At the end of this slot I will also mention you some
+
+43
+00:04:33,280 --> 00:04:40,400
+advanced techniques how to use it but before that let's go back to something which is
+
+44
+00:04:43,760 --> 00:04:52,000
+which is more simple. So read command. Read command is actually pretty straightforward
+
+45
+00:04:52,000 --> 00:04:58,400
+you can use it within your file, you can use it from the command line as well
+
+46
+00:05:01,360 --> 00:05:07,920
+pretty much like that. We have had already one example with that and so here I have my
+
+47
+00:05:10,480 --> 00:05:18,960
+read variable, so these are which the variable name can be any, the point is that we just assign it
+
+48
+00:05:22,000 --> 00:05:33,600
+my text whatever it is and so if I wanna have access to that variable I have access to that
+
+49
+00:05:33,600 --> 00:05:40,000
+variable that way so we have had already one example and one exercise so you remember how to
+
+50
+00:05:40,000 --> 00:05:47,760
+use that but let me surprise you actually the read command which we are using right here and which
+
+51
+00:05:47,760 --> 00:05:50,760
+which we are using to give the input from the command line.
+
+52
+00:05:51,600 --> 00:05:53,680
+The original hangar is designed
+
+53
+00:05:53,680 --> 00:05:55,320
+not to read from the command line,
+
+54
+00:05:55,320 --> 00:05:58,200
+but to read from the standard output.
+
+55
+00:05:58,200 --> 00:06:00,160
+And so what happens with the read command?
+
+56
+00:06:00,160 --> 00:06:04,400
+What happens if you, for instance, do some piping?
+
+57
+00:06:04,400 --> 00:06:06,960
+So essential example.
+
+58
+00:06:06,960 --> 00:06:10,720
+So if I want to count,
+
+59
+00:06:10,720 --> 00:06:14,400
+you remember the amount of files and directories
+
+60
+00:06:14,400 --> 00:06:24,560
+my current directory. So this is what I do. I re-address the output of one command to another
+
+61
+00:06:24,560 --> 00:06:29,760
+with the piping. So what happens over here in between those commands is that the standard
+
+62
+00:06:29,760 --> 00:06:40,400
+output of this first command goes as a standard input to the second command. So that's being said
+
+63
+00:06:40,400 --> 00:06:47,120
+how to do next so if I want for instance execute some command and pass it to my
+
+64
+00:06:47,120 --> 00:06:53,120
+script what will happen how to make sure that script will be capable of actually
+
+65
+00:06:53,120 --> 00:06:59,360
+doing something with that input that comes out so let me show you several
+
+66
+00:06:59,360 --> 00:07:07,960
+approaches and I will start with the read command so by default if I just say
+
+67
+00:07:07,960 --> 00:07:14,560
+read all that's what happened read by default will grab everything what comes
+
+68
+00:07:14,560 --> 00:07:21,840
+to the standard input of my script and put it to the all variable so to proof
+
+69
+00:07:21,840 --> 00:07:28,040
+of concept let me do it this way I put read all and echo all so everything else
+
+70
+00:07:28,040 --> 00:07:34,720
+was commented for the for the future explanation but this one is just two
+
+71
+00:07:34,720 --> 00:07:42,640
+commands so let's see what will happen if I produce if I give no input then
+
+72
+00:07:42,640 --> 00:07:45,280
+essentially it will be waiting for the input but then
+
+73
+00:07:45,280 --> 00:07:52,880
+nothing happens but if I keep if I give some kind of
+
+74
+00:07:54,160 --> 00:07:59,840
+some input okay and you will see that actually
+
+75
+00:07:59,840 --> 00:08:03,440
+exactly what I gave to that command to my script
+
+76
+00:08:03,440 --> 00:08:12,640
+will be has been read by a read command and it's now part of the all variable another way to give
+
+77
+00:08:12,640 --> 00:08:19,520
+so piping is just one thing to redirect something to the pipe then you can also do it like this
+
+78
+00:08:19,520 --> 00:08:25,120
+so if you have a file for instance you can redirect as a file or if you don't have a file
+
+79
+00:08:25,120 --> 00:08:34,880
+but you have some some text yeah so I never told you about the process substitution so it's probably
+
+80
+00:08:34,880 --> 00:08:41,920
+the right moment to tell you right now so what's the process substitution is it's a bit
+
+81
+00:08:43,440 --> 00:08:50,960
+it's a bit advanced technique but in case I have a command and result of the command
+
+82
+00:08:50,960 --> 00:08:57,200
+is not saved in any file it's just dynamically generated but I still want
+
+83
+00:08:57,200 --> 00:09:03,720
+to use it as a standard input okay so what can be done over here and I will
+
+84
+00:09:03,720 --> 00:09:09,360
+tell you then later then why it's in some situation the must-to-go method
+
+85
+00:09:09,360 --> 00:09:13,760
+even though most of the kind of things you can do it with the pipe but sometimes
+
+86
+00:09:13,760 --> 00:09:19,280
+you can't really do it with the pipe so what I expect here for instance if I'm
+
+87
+00:09:19,280 --> 00:09:28,080
+doing something like echo some input what will happen over here echo will generate some inputs
+
+88
+00:09:28,080 --> 00:09:38,160
+and this construct the redirection sign and then the uh and then the brackets around what they
+
+89
+00:09:38,160 --> 00:09:44,800
+will give me they will generate a dummy file descriptor and this file descriptor will be
+
+90
+00:09:44,800 --> 00:09:48,640
+be forwarded to my script.
+
+91
+00:09:48,640 --> 00:09:50,840
+And so now let's see what will happen.
+
+92
+00:09:50,840 --> 00:09:53,680
+So we will get exactly the standard input.
+
+93
+00:09:53,680 --> 00:09:56,660
+In the same way, if you have a file, for instance,
+
+94
+00:09:56,660 --> 00:09:59,000
+I have a file like students remember
+
+95
+00:09:59,000 --> 00:10:00,660
+from the previous sessions.
+
+96
+00:10:00,660 --> 00:10:03,520
+So I can just redirect the file if I have it.
+
+97
+00:10:03,520 --> 00:10:07,480
+If I don't have a file, I can use the process substitution.
+
+98
+00:10:07,480 --> 00:10:11,480
+So just to take away message that process substitution
+
+99
+00:10:11,480 --> 00:10:14,920
+will generate a dummy file on your behalf
+
+100
+00:10:14,920 --> 00:10:18,240
+and it will be deleted right after the command is executed.
+
+101
+00:10:19,320 --> 00:10:23,160
+So you don't need to do all the savings all the time.
+
+102
+00:10:23,160 --> 00:10:26,760
+Okay, now you know this, you can put it on your demo.
+
+103
+00:10:26,760 --> 00:10:29,800
+So there was also some additional information
+
+104
+00:10:29,800 --> 00:10:32,720
+in the material if you want to.
+
+105
+00:10:32,720 --> 00:10:36,520
+But here I just, I show you what will happen
+
+106
+00:10:36,520 --> 00:10:40,240
+if I forward this student CSV.
+
+107
+00:10:40,240 --> 00:10:47,200
+What has happened over here is that my read command, which I did over there,
+
+108
+00:10:48,640 --> 00:10:51,680
+actually has read only the very first line
+
+109
+00:10:54,080 --> 00:11:02,080
+of the file, which is correct behavior. So it has read the very first and then it has been
+
+110
+00:11:02,080 --> 00:11:10,720
+assigned to a variable that's it okay but let me see I will come back to this just in a second
+
+111
+00:11:11,600 --> 00:11:19,200
+but I still want to continue with the read command in general so if I want actually to put something
+
+112
+00:11:21,120 --> 00:11:28,240
+into a number of the variables or even into the array I will tell you later about arrays
+
+113
+00:11:28,240 --> 00:11:33,600
+if you will have if you will up to this but now let's just look at this with
+
+114
+00:11:33,600 --> 00:11:39,880
+them several variables so if I put to read and after the read I will put a
+
+115
+00:11:39,880 --> 00:11:49,080
+number of variables what will happen read will use the default IFS
+
+116
+00:11:49,080 --> 00:11:56,240
+telemeter so by default it's just the space on your line so what will happen
+
+117
+00:11:56,240 --> 00:12:05,800
+over here, every single set of characters delimited by the space will be assigned
+
+118
+00:12:05,800 --> 00:12:12,680
+to the first variable, second to the second, third to the
+
+119
+00:12:12,680 --> 00:12:19,360
+third, etc. And then, for instance, if there is not enough variables, then the rest of
+
+120
+00:12:19,360 --> 00:12:24,680
+the line will be assigned to the very last variable. But if variables are too
+
+121
+00:12:24,680 --> 00:12:29,600
+much, then those remaining variables will just stay empty.
+
+122
+00:12:30,660 --> 00:12:32,900
+So let's see what will happen here.
+
+123
+00:12:32,900 --> 00:12:37,900
+So for instance, if I want to do the proper check,
+
+124
+00:12:39,500 --> 00:12:42,560
+yeah, I want to put it like this,
+
+125
+00:12:44,580 --> 00:12:47,520
+just to see that if we got anything empty.
+
+126
+00:12:54,680 --> 00:13:09,400
+okay so now let's see I'm getting back to my input parameter so by default if I run it as is
+
+127
+00:13:09,400 --> 00:13:18,120
+everything is empty actually I can even do the timing so that you know that it's the time out
+
+128
+00:13:18,120 --> 00:13:28,200
+so if nothing is given for say for four seconds then just just die or it can be even one second
+
+129
+00:13:28,200 --> 00:13:35,160
+because I am expecting the pipe it's not the interactive mode so in this case it will be
+
+130
+00:13:35,160 --> 00:13:46,840
+just like that okay if I provide some input and let it be a a b b c c for instance these are
+
+131
+00:13:46,840 --> 00:13:57,080
+three five variables or three five kind of different input snippets of the
+
+132
+00:13:58,120 --> 00:14:01,480
+of the string so you can see that actually what has happened
+
+133
+00:14:05,640 --> 00:14:10,440
+it has been interpreted as one single one because it's in characters
+
+134
+00:14:10,440 --> 00:14:16,600
+no no because pipe is missing here because my pipe is missing my bad
+
+135
+00:14:19,320 --> 00:14:31,400
+so here you go oh this input.s13.sh has got this line as the standard input and what it read has
+
+136
+00:14:31,400 --> 00:14:37,720
+done for me so it has assigned the variable f1 as aa it has assigned a variable f2 as bb
+
+137
+00:14:37,720 --> 00:14:46,520
+f3 as cc and since there is no other variables except the rest so the rest has got the value
+
+138
+00:14:46,520 --> 00:14:55,320
+of the rest of that line okay so far so good but let's see another thing that if variables is not
+
+139
+00:14:55,320 --> 00:15:01,320
+enough then actually the rest will remain just empty it still will be assigned but it will be
+
+140
+00:15:01,320 --> 00:15:10,200
+empty so that's the way input is being given to the file and read by the read command
+
+141
+00:15:11,640 --> 00:15:16,840
+okay but now we were working with one single string in most part of the situation you are
+
+142
+00:15:16,840 --> 00:15:23,480
+not working with the strings you're working with the whole bunch of text the blocks then how to do
+
+143
+00:15:23,480 --> 00:15:33,320
+the blocks. I comment out this part and I go next one. And here where it comes into use the while
+
+144
+00:15:33,960 --> 00:15:41,800
+loop and the approach that we already tried last session. And now I will go in the same way but I
+
+145
+00:15:41,800 --> 00:15:50,040
+just read line by line. So what's happening here? Read is again in action. Read is trying to read
+
+146
+00:15:50,040 --> 00:15:56,920
+everything what comes to the standard input by default and so what I'm saying here minus r is
+
+147
+00:15:56,920 --> 00:16:03,320
+just the it can be basically omitted as well but it's good to have it's just to avoid this
+
+148
+00:16:04,120 --> 00:16:10,120
+all kind of special characters and make sure that the all the lines not in one so we're making sure
+
+149
+00:16:10,120 --> 00:16:18,440
+that ifs is empty so because we are we want really the line by line so line in this case
+
+150
+00:16:18,440 --> 00:16:24,920
+will be the variable it's of your choice it can be any and just remember that exactly the same
+
+151
+00:16:24,920 --> 00:16:32,040
+variable you will be using over here and for a sake of proof of concept I could do whatever I
+
+152
+00:16:32,040 --> 00:16:39,080
+want with the line but I'm just do the numeration so I put the counter over here and increment this
+
+153
+00:16:39,080 --> 00:16:47,320
+counter every single iteration so let's see what will happen now it will expect some bunch of text
+
+154
+00:16:47,320 --> 00:16:55,280
+some bunch of text and so here this is where I can use already my file you can
+
+155
+00:16:55,280 --> 00:17:00,360
+use your own but here is the one which I have already in the ready to go ready to
+
+156
+00:17:00,360 --> 00:17:08,000
+play with and see that actually proof of concept so I went through all these
+
+157
+00:17:08,000 --> 00:17:13,280
+files and they have been numerated so that the kind of proof to you that
+
+158
+00:17:13,280 --> 00:17:20,000
+actually every single line was taken separately. It's not a kind of just taking the whole bunch,
+
+159
+00:17:20,000 --> 00:17:24,720
+the whole block of the information and output it to the back to the standard output. No,
+
+160
+00:17:24,720 --> 00:17:30,960
+it's actually working one by line. And in the same way you remember already from the previous
+
+161
+00:17:30,960 --> 00:17:35,360
+session when we were trying to make the summation of the total number of students,
+
+162
+00:17:35,360 --> 00:17:43,360
+so there were also possibility that you can split them into the variables
+
+163
+00:17:43,360 --> 00:17:51,360
+and actually work with every single line separately and with every single field of that line separately
+
+164
+00:17:51,360 --> 00:17:55,360
+so that's the standard input but that's not yet it
+
+165
+00:17:55,360 --> 00:17:59,360
+so I can come back to this once again
+
+166
+00:17:59,360 --> 00:18:04,360
+there is another methodology quite commonly in use
+
+167
+00:18:04,360 --> 00:18:11,640
+is that when you are checking when you're using the minus p operator so you remember that this
+
+168
+00:18:15,000 --> 00:18:19,480
+double square brackets they have had all this minus d if you want to check that
+
+169
+00:18:19,480 --> 00:18:26,360
+directories x minus f if you want to check that the file exists etc minus n minus zeta
+
+170
+00:18:26,920 --> 00:18:34,040
+so it has also another one operator which is stands for the minus p and you can check whether
+
+171
+00:18:34,360 --> 00:18:42,600
+standard input pipe is existing so what happens when you run a script when you run a script
+
+172
+00:18:42,600 --> 00:18:47,960
+this and bash will automatically it's actually not actually the bash but the linux in general
+
+173
+00:18:47,960 --> 00:18:52,760
+automatically detect whether something comes to the standard input and if something comes
+
+174
+00:18:52,760 --> 00:19:02,280
+to the standard input this standard input blocks pipe will be assigned okay now what we can do
+
+175
+00:19:02,280 --> 00:19:11,480
+we can easily check it and use it. So one way to use it, it could be as well while,
+
+176
+00:19:12,120 --> 00:19:21,160
+like here, it could be read, like here, or it could be just normal cat. So many of commands,
+
+177
+00:19:21,160 --> 00:19:26,440
+not all of them, but many of the commands that you use normally, they are actually expecting
+
+178
+00:19:26,440 --> 00:19:36,360
+some kind of standard input and if within the within the script you run some command without
+
+179
+00:19:36,360 --> 00:19:42,760
+any argument and the one which is expecting standard input it will grab the one which comes to the
+
+180
+00:19:42,760 --> 00:19:53,560
+script itself okay so in this case I can of course say def std it's for a sake of clarity so this way
+
+181
+00:19:53,560 --> 00:19:58,440
+we get kind of clear notation that we are getting the standard input that comes to my script.
+
+182
+00:19:59,480 --> 00:20:04,280
+This is unique, I mean it's this kind of virtual device, so this is unique for every single
+
+183
+00:20:05,080 --> 00:20:13,480
+program. But in general you can simply omit this and just use it without.
+
+184
+00:20:14,440 --> 00:20:22,600
+So let's see what's happening when we use this kind of approach. So if I'm taking
+
+185
+00:20:23,560 --> 00:20:30,120
+if I do nothing it will check that actually no pipe is existing and so nothing will happen
+
+186
+00:20:31,000 --> 00:20:34,200
+and now if I am giving something to the standard input
+
+187
+00:20:37,720 --> 00:20:44,840
+so in my case it's gonna be actually like that echo so it's the it will go through the pipe so
+
+188
+00:20:44,840 --> 00:20:51,880
+this this technique so this technique is expecting pipe so the previously while one was the kind of
+
+189
+00:20:51,880 --> 00:20:56,760
+free direction of the file, but this one is expecting the pipe. So
+
+190
+00:21:00,200 --> 00:21:05,800
+you can see that actually some standard output has been generated. In the same way we can do
+
+191
+00:21:05,800 --> 00:21:13,160
+something else, something huge, I don't know, ls output, so that will be also going as a standard input.
+
+192
+00:21:13,160 --> 00:21:26,160
+Okay, saying that, I must admit that I am pretty much done with the input parameters.
+
+193
+00:21:26,160 --> 00:21:30,160
+Now I want to go and make a demo for you.
+
+194
+00:21:30,160 --> 00:21:37,160
+Make a demo which will give you some impression.
+
+195
+00:21:37,160 --> 00:21:42,160
+Actually, I can make this bigger demo later on.
+
+196
+00:21:42,160 --> 00:21:49,560
+but now we can go to the first exercise so it's already time for the exercise
+
+197
+00:21:49,560 --> 00:21:58,160
+so my very first exercise would be this handler inputs and my idea of this
+
+198
+00:21:58,160 --> 00:22:07,720
+exercise was that you pick up the function which has been early added to
+
+199
+00:22:07,720 --> 00:22:17,880
+this our function commands file and I want you to actually you know here we grab the dollar sign
+
+200
+00:22:18,440 --> 00:22:24,280
+dollar sign one which means that the first argument which is given to the uh to the function
+
+201
+00:22:25,640 --> 00:22:31,560
+given from the command line but now I want you to do something that
+
+202
+00:22:31,560 --> 00:22:43,040
+some kind of piping would work as well. So try to use that minus P and then
+
+203
+00:22:43,040 --> 00:22:52,760
+std and try to do that in the same way but with a pipe. So I think 15
+
+204
+00:22:52,760 --> 00:22:58,360
+minutes should be good enough because subjects is interesting even if the task
+
+205
+00:22:58,360 --> 00:23:04,680
+is only one but I mean it's a little bit more complex than simple running simple ls etc so
+
+206
+00:23:04,680 --> 00:23:14,360
+that's a bit of programming so we will come back at 30 not at 40 30 no 30 39
+
+207
+00:23:15,880 --> 00:23:19,720
+so now it's your time time for the exercise
+
+208
+00:23:24,600 --> 00:23:26,440
+if any question as usual we just ask
+
+209
+00:23:28,360 --> 00:23:30,360
+You
+
+210
+00:23:58,360 --> 00:24:00,420
+you
+
+211
+00:24:28,360 --> 00:24:30,420
+you
+
+212
+00:24:58,360 --> 00:25:00,420
+you
+
+213
+00:25:28,360 --> 00:25:30,420
+you
+
+214
+00:25:58,360 --> 00:26:00,420
+you
+
+215
+00:26:28,360 --> 00:26:30,420
+you
+
+216
+00:26:58,360 --> 00:27:00,420
+you
+
+217
+00:27:28,360 --> 00:27:30,420
+you
+
+218
+00:27:58,360 --> 00:28:00,420
+you
+
+219
+00:28:28,360 --> 00:28:30,420
+you
+
+220
+00:28:58,360 --> 00:29:00,420
+you
+
+221
+00:29:28,360 --> 00:29:30,420
+you
+
+222
+00:29:58,360 --> 00:30:00,420
+you
+
+223
+00:30:28,360 --> 00:30:30,420
+you
+
+224
+00:30:58,360 --> 00:31:00,420
+you
+
+225
+00:31:28,360 --> 00:31:30,420
+you
+
+226
+00:31:58,360 --> 00:32:00,420
+you
+
+227
+00:32:28,360 --> 00:32:30,420
+you
+
+228
+00:32:58,360 --> 00:33:00,420
+you
+
+229
+00:33:28,360 --> 00:33:30,420
+you
+
+230
+00:33:58,360 --> 00:34:00,420
+you
+
+231
+00:34:28,360 --> 00:34:30,420
+you
+
+232
+00:34:58,360 --> 00:35:00,420
+you
+
+233
+00:35:28,360 --> 00:35:30,420
+you
+
+234
+00:35:58,360 --> 00:36:00,420
+you
+
+235
+00:36:28,360 --> 00:36:30,420
+you
+
+236
+00:36:58,360 --> 00:37:00,420
+you
+
+237
+00:37:28,360 --> 00:37:30,420
+you
+
+238
+00:37:58,360 --> 00:38:00,420
+you
+
+239
+00:38:28,360 --> 00:38:31,080
+I will be ready to go.
+
+240
+00:38:34,360 --> 00:38:42,680
+So let me take a look at the append path. So I will just copy paste the ready to go solution.
+
+241
+00:38:42,680 --> 00:38:48,840
+So there were probably you may have it implemented in some other way. So the way you want it.
+
+242
+00:38:49,640 --> 00:38:55,000
+But here is the one of the example of working implementation. Let me copy paste it over here
+
+243
+00:38:55,000 --> 00:39:08,200
+to the right place. So it's over here. So take a look at. So what I'm doing here. So I'm checking
+
+244
+00:39:08,200 --> 00:39:15,400
+that the pipe is existing. So now even if it's a function it's not anymore in the kind of compact
+
+245
+00:39:15,400 --> 00:39:23,400
+way. It's just the kind of if else etc. So more readability. So I'm checking that out. Then I'm
+
+246
+00:39:23,400 --> 00:39:25,480
+I'm reading it into the path.
+
+247
+00:39:25,480 --> 00:39:30,480
+So that's the way to read the stdin to the variable.
+
+248
+00:39:31,520 --> 00:39:35,120
+And then I need to also to check whether this path
+
+249
+00:39:35,120 --> 00:39:37,320
+has been already added previously.
+
+250
+00:39:37,320 --> 00:39:39,400
+This is from the original script.
+
+251
+00:39:40,380 --> 00:39:42,880
+And this is from the original script too.
+
+252
+00:39:42,880 --> 00:39:46,680
+And then it's just the checking if nothing is missing
+
+253
+00:39:46,680 --> 00:39:49,340
+then we put the error message.
+
+254
+00:39:49,340 --> 00:39:53,200
+So the whole thing was over here, here and here.
+
+255
+00:39:53,200 --> 00:39:58,800
+so now you should be ready to go if you want to play with that so you can already actually put
+
+256
+00:39:58,800 --> 00:40:06,880
+both parts together and see what comes from the standard input and see also what comes from the
+
+257
+00:40:08,160 --> 00:40:18,640
+command line okay this is being set so now I want you to actually
+
+258
+00:40:18,640 --> 00:40:28,160
+do some real stuff with me. So I have spent my evening developing the start.id further.
+
+259
+00:40:29,440 --> 00:40:35,040
+So what has happened over here? You remember we were playing with the
+
+260
+00:40:36,080 --> 00:40:42,960
+loops. You remember we were playing already with all these if conditionals and from now on we were
+
+261
+00:40:42,960 --> 00:40:52,000
+also looking at the standard input and all these parts together. So now my parts together would say
+
+262
+00:40:52,000 --> 00:41:00,720
+that I want to be able to tar not only current directory or not only a single directory that
+
+263
+00:41:00,720 --> 00:41:10,560
+I provide to the tar.it but I should be able to make a list of directories and make the archive
+
+264
+00:41:10,560 --> 00:41:16,480
+of multiple directories. I mean, separate one by one, but still multiple within one run.
+
+265
+00:41:17,440 --> 00:41:26,320
+And then my target over here was also, okay, I can also get the names of the directories from the
+
+266
+00:41:28,000 --> 00:41:36,800
+standard input. Essential example over here would be that if I run find and I find some
+
+267
+00:41:36,800 --> 00:41:43,760
+directories within and I just need to pass this list of these directories to my new script
+
+268
+00:41:45,040 --> 00:41:49,840
+everything is here it's pretty much implemented I've got the working version of that
+
+269
+00:41:51,920 --> 00:42:03,600
+but now I have done several kind of mistakes over here so and my next exam for you
+
+270
+00:42:03,600 --> 00:42:10,560
+and we will spend on this another 15 minutes from now. Now you should be able
+
+271
+00:42:10,560 --> 00:42:16,360
+to read this code, now you should be able to analyze this code and now you, I
+
+272
+00:42:16,360 --> 00:42:23,480
+expect that you should be able to find several syntax errors and several
+
+273
+00:42:23,480 --> 00:42:31,200
+logical errors in the code and fix them and get this code to work. So now another
+
+274
+00:42:31,200 --> 00:42:39,840
+one 15 minutes is yours we can give you even more just because this is very interesting
+
+275
+00:42:41,600 --> 00:42:54,960
+so this is once again so you grab my RIT the one which I have in my on my home page and this is all
+
+276
+00:42:54,960 --> 00:43:04,160
+so this is this one and try to work with this
+
+277
+00:43:06,560 --> 00:43:09,840
+so let's say that you have another 15 minutes to go
+
+278
+00:43:12,400 --> 00:43:17,520
+i hope it's enough if not enough we can quit doing all because I think that's actually quite
+
+279
+00:43:17,520 --> 00:43:24,880
+an important topic. So the floor is yours. I can give you several hints over here.
+
+280
+00:43:25,680 --> 00:43:30,000
+For the sake of a simple syntax check you can use
+
+281
+00:43:32,720 --> 00:43:41,920
+bash minus n and then the script name. And for the sake of logical one
+
+282
+00:43:41,920 --> 00:43:52,160
+I can give you another one hint. There is one way to see how the script is being implemented
+
+283
+00:43:53,680 --> 00:43:57,040
+line by line. It's the bash-x.
+
+284
+00:43:59,120 --> 00:44:05,920
+So go ahead and check out what's going on and why some things do not work as they supposed to work.
+
+285
+00:44:05,920 --> 00:44:14,000
+so I'm muting myself and now the floor is black yours for the next 15 minutes
+
+286
+00:44:14,000 --> 00:44:23,640
+and we will be back to the back online at 13 and actually let us join it with
+
+287
+00:44:23,640 --> 00:44:28,960
+the break so let us see 15 minutes for the exercise 10 minutes for the break
+
+288
+00:44:28,960 --> 00:44:35,200
+and then we are back on 13.10. I'll put it over here.
+
+289
+00:44:40,000 --> 00:44:43,200
+Muting myself and stopping the video.
+
+290
+00:44:58,960 --> 00:45:01,020
+you
+
+291
+00:45:28,960 --> 00:45:31,020
+you
+
+292
+00:45:58,960 --> 00:46:01,020
+you
+
+293
+00:46:28,960 --> 00:46:31,020
+you
+
+294
+00:46:58,960 --> 00:47:01,020
+you
+
+295
+00:47:28,960 --> 00:47:31,020
+you
+
+296
+00:47:58,960 --> 00:48:01,020
+you
+
+297
+00:48:28,960 --> 00:48:31,020
+you
+
+298
+00:48:58,960 --> 00:49:01,020
+you
+
+299
+00:49:28,960 --> 00:49:31,020
+you
+
+300
+00:49:58,960 --> 00:50:01,020
+you
+
+301
+00:50:28,960 --> 00:50:31,020
+you
+
+302
+00:50:58,960 --> 00:51:01,020
+you
+
+303
+00:51:28,960 --> 00:51:31,020
+you
+
+304
+00:51:58,960 --> 00:52:01,020
+you
+
+305
+00:52:28,960 --> 00:52:31,020
+you
+
+306
+00:52:58,960 --> 00:53:01,020
+you
+
+307
+00:53:28,960 --> 00:53:31,020
+you
+
+308
+00:53:58,960 --> 00:54:01,020
+you
+
+309
+00:54:28,960 --> 00:54:31,020
+you
+
+310
+00:54:58,960 --> 00:55:01,020
+you
+
+311
+00:55:28,960 --> 00:55:31,020
+you
+
+312
+00:55:58,960 --> 00:56:01,020
+you
+
+313
+00:56:28,960 --> 00:56:31,020
+you
+
+314
+00:56:58,960 --> 00:57:01,020
+you
+
+315
+00:57:28,960 --> 00:57:31,020
+you
+
+316
+00:57:58,960 --> 00:58:01,020
+you
+
+317
+00:58:28,960 --> 00:58:31,020
+you
+
+318
+00:58:58,960 --> 00:59:01,020
+you
+
+319
+00:59:28,960 --> 00:59:31,020
+you
+
+320
+00:59:58,960 --> 01:00:01,020
+you
+
+321
+01:00:28,960 --> 01:00:31,020
+you
+
+322
+01:00:58,960 --> 01:01:01,020
+you
+
+323
+01:01:28,960 --> 01:01:31,020
+you
+
+324
+01:01:58,960 --> 01:02:01,020
+you
+
+325
+01:02:28,960 --> 01:02:31,020
+you
+
+326
+01:02:58,960 --> 01:03:01,020
+you
+
+327
+01:03:28,960 --> 01:03:31,020
+you
+
+328
+01:03:58,960 --> 01:04:01,020
+you
+
+329
+01:04:28,960 --> 01:04:31,020
+you
+
+330
+01:04:58,960 --> 01:05:01,020
+you
+
+331
+01:05:28,960 --> 01:05:31,020
+you
+
+332
+01:05:58,960 --> 01:06:01,020
+you
+
+333
+01:06:28,960 --> 01:06:31,020
+you
+
+334
+01:06:58,960 --> 01:07:01,020
+you
+
+335
+01:07:28,960 --> 01:07:31,020
+you
+
+336
+01:07:58,960 --> 01:08:01,020
+you
+
+337
+01:08:28,960 --> 01:08:31,020
+you
+
+338
+01:08:58,960 --> 01:09:00,960
+Yeah, back online.
+
+339
+01:09:02,960 --> 01:09:04,960
+Hopefully you still can hear me.
+
+340
+01:09:04,960 --> 01:09:06,960
+So, and I do hope
+
+341
+01:09:06,960 --> 01:09:08,960
+you have had fun.
+
+342
+01:09:08,960 --> 01:09:10,960
+So, it's actually, I hate
+
+343
+01:09:10,960 --> 01:09:12,960
+debugging someone's code.
+
+344
+01:09:12,960 --> 01:09:14,960
+I'm not sure about you, but on the other
+
+345
+01:09:14,960 --> 01:09:16,960
+hand, that's the
+
+346
+01:09:16,960 --> 01:09:18,960
+perfect way to
+
+347
+01:09:18,960 --> 01:09:20,960
+learn the things.
+
+348
+01:09:20,960 --> 01:09:22,960
+So, analyzing the code.
+
+349
+01:09:22,960 --> 01:09:24,960
+That was actually quite complicated.
+
+350
+01:09:24,960 --> 01:09:26,960
+I'm pretty sure you are not
+
+351
+01:09:26,960 --> 01:09:34,120
+done most of you, but I'm pretty sure you have spent at least those time with
+
+352
+01:09:34,120 --> 01:09:42,960
+having fun. So I need to find the errors. So probably I should have told you how
+
+353
+01:09:42,960 --> 01:09:48,760
+many errors. I think I have done about four or five, but no more. But these are
+
+354
+01:09:48,760 --> 01:09:55,400
+we will find them out. So my first touch would be let's see the syntax error. So
+
+355
+01:09:55,400 --> 01:09:59,800
+because the logical errors, they are somehow somewhat...
+
+356
+01:10:04,440 --> 01:10:10,280
+Logical errors, they are somehow less intuitive,
+
+357
+01:10:10,280 --> 01:10:13,480
+but at least the syntax error, they can be found right away.
+
+358
+01:10:13,480 --> 01:10:18,520
+So the first error that I have found, that's on line 21.
+
+359
+01:10:18,520 --> 01:10:22,680
+Let's see what's there. Something with the then.
+
+360
+01:10:22,680 --> 01:10:32,360
+21 then yeah essentially that's the one of the errors which is quite often being done so when
+
+361
+01:10:32,360 --> 01:10:38,920
+you are forgetting this semicolon and when you put in the if operator and then operator on the same
+
+362
+01:10:38,920 --> 01:10:47,480
+stream on the same row so let's go and see next are we done yeah the syntax errors are there but
+
+363
+01:10:47,480 --> 01:10:51,400
+I'm pretty sure there are some others, so let me see what's going on.
+
+364
+01:10:53,720 --> 01:10:59,640
+What's happening when I execute the code? So I can try to execute it just like that.
+
+365
+01:10:59,640 --> 01:11:05,560
+So this, remember my expectation from the code analysis, if I run it without anything,
+
+366
+01:11:06,280 --> 01:11:14,360
+I should get the copy of my current directory, archived copy of my current directory.
+
+367
+01:11:14,360 --> 01:11:21,680
+Okay, so command not found on the line 13, so one more error to catch.
+
+368
+01:11:23,120 --> 01:11:26,920
+So let's see what's there on the line 13.
+
+369
+01:11:26,920 --> 01:11:31,880
+On the line 13, we have this construct, and
+
+370
+01:11:31,880 --> 01:11:37,040
+what I would say is wrong here is that this dollar sign.
+
+371
+01:11:37,040 --> 01:11:38,880
+Let me explain why.
+
+372
+01:11:38,880 --> 01:11:41,280
+So this is the arithmetic expression.
+
+373
+01:11:41,280 --> 01:11:42,720
+And as I've told you previously,
+
+374
+01:11:42,720 --> 01:11:50,880
+arithmetic expression if you use just like this just the round brackets it will return you only
+
+375
+01:11:50,880 --> 01:11:58,320
+the exit code and this is what you need so you only need the exit code because after that comes the
+
+376
+01:11:59,840 --> 01:12:06,960
+logical end so it expects nothing else no other output with the dollar sign over here you actually
+
+377
+01:12:06,960 --> 01:12:13,840
+you're producing the output so what you are doing here what what this code is doing here so it's
+
+378
+01:12:13,840 --> 01:12:20,560
+actually producing putting here just the number of the number of the arguments in this case that
+
+379
+01:12:20,560 --> 01:12:29,040
+was empty there was zero so that's still not considered to be a right output for the command
+
+380
+01:12:29,040 --> 01:12:35,840
+line so that's the one and then let's see further what's happening
+
+381
+01:12:38,320 --> 01:12:46,400
+does not exist skipping pvd blah blah blah does not exist there is no line anymore okay
+
+382
+01:12:47,440 --> 01:12:54,960
+so my next step is that I will try to bash minus x so I want to see the execution of the code line
+
+383
+01:12:54,960 --> 01:13:01,680
+by line so I will have better impression what's going on and at which point this pvd does not
+
+384
+01:13:01,680 --> 01:13:08,080
+exist skipping okay echo pvd does not exist and here at some point is checking the pvd
+
+385
+01:13:08,960 --> 01:13:14,080
+which is ridiculous so that should be the directory name let's get back to the code
+
+386
+01:13:15,120 --> 01:13:22,880
+and see that directory name so the only pvd we are using is this line
+
+387
+01:13:22,880 --> 01:13:30,320
+and you can see the error is here the quotes so the quotation is wrong and it
+
+388
+01:13:30,320 --> 01:13:36,120
+does matter as I already stressed you on the very first lecture so if you are
+
+389
+01:13:36,120 --> 01:13:45,200
+using the single quotes you will get the content of this what is behind what is
+
+390
+01:13:45,200 --> 01:13:50,240
+in between those quotes without any substitution but what we expect here we
+
+391
+01:13:50,240 --> 01:13:57,620
+expect here a substituted command so and actually vim is also was able to make
+
+392
+01:13:57,620 --> 01:14:05,120
+your highlights properly this way so we've got already how many free errors I
+
+393
+01:14:05,120 --> 01:14:12,920
+think fixed yes so let's think the next one so what's going on
+
+394
+01:14:12,920 --> 01:14:20,280
+rgz exists, skipping. This is already correct.
+
+395
+01:14:20,840 --> 01:14:25,320
+Something looks like... No, it actually doesn't exist,
+
+396
+01:14:25,320 --> 01:14:28,360
+but it's still skipping.
+
+397
+01:14:30,280 --> 01:14:35,000
+So what's going on? Let's try bash
+
+398
+01:14:35,000 --> 01:14:39,000
+minus x once again, at which point we are skipping.
+
+399
+01:14:39,000 --> 01:14:43,160
+so we are skipping it at the point where we already generate the archive name
+
+400
+01:14:43,960 --> 01:14:51,080
+and we are checking that the archive name exists and it thinks at some point it exists
+
+401
+01:14:51,640 --> 01:15:00,040
+why it doesn't okay let's take a look at the logic of this this is already not anymore a syntax error
+
+402
+01:15:00,040 --> 01:15:07,320
+but that's the logical error and the logical error says here that minus f operator actually returns
+
+403
+01:15:07,320 --> 01:15:17,320
+success. So it returns success if the archive exists. So what we actually need
+
+404
+01:15:17,320 --> 01:15:23,280
+here the negation. So we want to check that if archive does not exist. So the
+
+405
+01:15:23,280 --> 01:15:30,040
+exclamation mark over here tells us that this archive should not exist and only
+
+406
+01:15:30,040 --> 01:15:36,240
+after that we should proceed. Or we also can just swap else and if over here but
+
+407
+01:15:36,240 --> 01:15:41,560
+But in this case, this fix is way faster.
+
+408
+01:15:41,560 --> 01:15:44,200
+So now let's try the next one.
+
+409
+01:15:44,200 --> 01:15:53,600
+All right, so now these are just the errors that come from the tar, they're harmless.
+
+410
+01:15:53,600 --> 01:15:56,720
+And now we should got, we actually got the beam.
+
+411
+01:15:56,720 --> 01:15:58,680
+So at least this part is fixed.
+
+412
+01:15:58,680 --> 01:16:01,880
+But now let's check me.
+
+413
+01:16:01,880 --> 01:16:04,700
+So I remove it to clean it up.
+
+414
+01:16:04,700 --> 01:16:14,700
+I go up and I want to make several directories. So let me do it just from the command line.
+
+415
+01:16:15,900 --> 01:16:25,020
+So my bin and my store. Okay, let's see how it works. Can it take two directories at once?
+
+416
+01:16:27,500 --> 01:16:33,340
+Okay, bin store does not exist, skipping. Well, at least this part does not work. One
+
+417
+01:16:33,340 --> 01:16:39,660
+directory works the current one but when it comes to the when it comes to the
+
+418
+01:16:41,500 --> 01:16:50,140
+a list of the directories it already stops over here so let's see at which step we are so we are
+
+419
+01:16:50,140 --> 01:16:57,260
+minus d bin store so at some point when we are checking the existence of the directory we are
+
+420
+01:16:57,260 --> 01:17:04,540
+checking the not the one directory at once but both directories so this is definitely a mistake
+
+421
+01:17:05,340 --> 01:17:10,700
+okay and now I can see mistakes right from here but let me show you where it's here
+
+422
+01:17:11,340 --> 01:17:17,020
+it's also a common thing oh so that's the thing
+
+423
+01:17:19,340 --> 01:17:21,340
+it's a common thing when you're working with
+
+424
+01:17:21,340 --> 01:17:30,820
+the for loops people keep putting this list of items in quotes I do it time to
+
+425
+01:17:30,820 --> 01:17:36,820
+time also so it's not surprisingly actually here there should be just the
+
+426
+01:17:36,820 --> 01:17:43,940
+list with the with the separator so separator is usually space so it can be
+
+427
+01:17:43,940 --> 01:17:52,420
+any, but usually it's space. If you put something like quotes around, so that means that it's one
+
+428
+01:17:52,420 --> 01:17:58,580
+single item with all these spaces included into it. So that's another one error. It's actually
+
+429
+01:17:58,580 --> 01:18:06,100
+both syntax and logical. And then if you use the other ones, it's already correct. So variable in
+
+430
+01:18:06,100 --> 01:18:16,420
+case of conditionals that should be quoted but for the loop list that should not be quoted either
+
+431
+01:18:16,420 --> 01:18:25,620
+so exception over here if you have a list of some items which are which have special characters
+
+432
+01:18:26,260 --> 01:18:32,820
+and then you have to put into quotes every single item but anyway so between the items there should
+
+433
+01:18:32,820 --> 01:18:41,300
+be a concrete separator so there should be space from now on let's try are we good
+
+434
+01:18:45,380 --> 01:18:48,500
+okay something already exists
+
+435
+01:18:50,660 --> 01:19:01,780
+archiving bean archiving what's what's why this dot is there so let me see what we've got
+
+436
+01:19:02,820 --> 01:19:11,620
+we've got bean story okay it's not exactly what we expect we're expecting two of them
+
+437
+01:19:12,260 --> 01:19:22,100
+so let's see what's going on bash minus x echo exists skipping so somehow the archive name was
+
+438
+01:19:24,180 --> 01:19:32,580
+not generated properly so somehow the archive name was just that dot and without really
+
+439
+01:19:32,580 --> 01:19:39,060
+anything else so let's see what's going on over here so this is already over here
+
+440
+01:19:40,020 --> 01:19:49,620
+for dir in dirs so we don't know yet the directories so we expected that something comes
+
+441
+01:19:50,340 --> 01:19:57,940
+would come from here yeah we expected that this one should go to this one
+
+442
+01:19:57,940 --> 01:20:07,060
+dir dir and archive and this one was missing so what I suggest I suggest that we actually put
+
+443
+01:20:08,100 --> 01:20:16,260
+one echo command over here to see that what's the status of that variable so there is no
+
+444
+01:20:17,220 --> 01:20:23,060
+good debugging tool for the bash scripts you are not in the stage where you're programming
+
+445
+01:20:23,060 --> 01:20:31,140
+on C or Fortran not even the Python one so you cannot really trace the variables one by one
+
+446
+01:20:32,500 --> 01:20:38,340
+so your tracing is just to put in this print in echoes and so let's see what's going on further
+
+447
+01:20:39,540 --> 01:20:48,740
+so my dir is store is correct okay but store somehow is not giving correctly over here
+
+448
+01:20:53,060 --> 01:20:59,540
+Okay, I see the problem. So, the problem is my,
+
+449
+01:21:02,820 --> 01:21:08,260
+the problem is my construct over here. So, I was trying to use this magical,
+
+450
+01:21:09,940 --> 01:21:15,380
+magic of these variables, and was trying to use this curly brackets operator
+
+451
+01:21:15,380 --> 01:21:25,060
+to remove everything which comes before the slash okay uh so what that says to me that actually i
+
+452
+01:21:25,060 --> 01:21:32,980
+was planning to remove the path only but I have actually removed the whole name why because I was
+
+453
+01:21:33,540 --> 01:21:40,820
+giving the by default directory name with the slash so my script does not accept this one
+
+454
+01:21:40,820 --> 01:21:49,540
+and if I remove it see what's going on okay now it's much better now you should have got already
+
+455
+01:21:50,340 --> 01:21:57,140
+two directories archived bin and store both are there and then if I try it once again
+
+456
+01:21:58,740 --> 01:22:05,540
+what will happen I should get that they're existing okay and now let me do one thing
+
+457
+01:22:05,540 --> 01:22:12,980
+I want to make sure that it also works when I
+
+458
+01:22:15,620 --> 01:22:22,260
+provide in through the pipe. So let's say that I will provide bin from the pipe and store
+
+459
+01:22:23,300 --> 01:22:26,820
+from the command line. Let's see
+
+460
+01:22:26,820 --> 01:22:41,620
+Okay, so surprisingly this one works too right away, so I haven't done more errors in this code.
+
+461
+01:22:42,740 --> 01:22:48,500
+So okay, so now we can remove both, but now we have one trouble over here that we have found,
+
+462
+01:22:48,500 --> 01:22:54,420
+but let's see if that's going to be a feature. So we need to get rid of, when we get these arguments,
+
+463
+01:22:54,420 --> 01:23:03,220
+we need to get rid of these leading trails and at some point we will do this but let it be the
+
+464
+01:23:06,020 --> 01:23:11,540
+exercise for the next one. For now we've got pretty much working tar.it
+
+465
+01:23:11,540 --> 01:23:15,780
+and so you can copy and use it as an example or the other
+
+466
+01:23:15,780 --> 01:23:20,780
+the other script writes.
+
+467
+01:23:21,200 --> 01:23:26,200
+So now I'll drop myself to a new thing.
+
+468
+01:23:26,800 --> 01:23:29,600
+So if you still have questions or comments,
+
+469
+01:23:29,600 --> 01:23:31,280
+don't hesitate yet to ask.
+
+470
+01:23:32,400 --> 01:23:34,240
+I don't know, is there any way of going anything?
+
+471
+01:23:34,240 --> 01:23:38,080
+So, but just put them online if you want to.
+
+472
+01:23:39,000 --> 01:23:42,880
+Then my next subject, my next subject,
+
+473
+01:23:43,760 --> 01:23:45,440
+well, what's the time?
+
+474
+01:23:45,440 --> 01:23:50,440
+So my next subject would be Herodox and the placeholders.
+
+475
+01:23:50,920 --> 01:23:52,640
+So what I was about to tell you
+
+476
+01:23:53,920 --> 01:23:58,120
+is that Herodox paradigm is pretty,
+
+477
+01:23:58,120 --> 01:24:00,800
+it's not even Bash, it's Linux in general.
+
+478
+01:24:00,800 --> 01:24:03,060
+So it's in all the other,
+
+479
+01:24:04,760 --> 01:24:06,780
+in all the other,
+
+480
+01:24:06,780 --> 01:24:10,040
+this concept exists in all the other shells as well.
+
+481
+01:24:10,040 --> 01:24:13,600
+So it's not kind of new, nothing surprising.
+
+482
+01:24:13,600 --> 01:24:18,600
+but the thing is that you can actually redirect
+
+483
+01:24:18,600 --> 01:24:23,280
+the output of whole block to a command.
+
+484
+01:24:24,160 --> 01:24:28,500
+So why it can be useful,
+
+485
+01:24:29,360 --> 01:24:31,240
+for instance, if within the script,
+
+486
+01:24:31,240 --> 01:24:33,760
+you need to generate an email
+
+487
+01:24:33,760 --> 01:24:36,440
+or just a pretty long message
+
+488
+01:24:36,440 --> 01:24:38,800
+to the, and output it to the screen.
+
+489
+01:24:38,800 --> 01:24:41,360
+You can, of course, do the echo
+
+490
+01:24:41,360 --> 01:24:45,600
+and just shift the lines from one to another
+
+491
+01:24:45,600 --> 01:24:49,080
+and use this trailing slash,
+
+492
+01:24:49,080 --> 01:24:52,400
+but you can also use this here doc.
+
+493
+01:24:54,280 --> 01:24:56,280
+So let me show how to do that.
+
+494
+01:24:56,280 --> 01:25:01,280
+So I have prepared you one file,
+
+495
+01:25:01,320 --> 01:25:06,320
+one script which actually generates this exactly
+
+496
+01:25:08,320 --> 01:25:09,400
+what we are doing.
+
+497
+01:25:09,400 --> 01:25:14,400
+So a couple of dummy input requests,
+
+498
+01:25:15,840 --> 01:25:19,280
+so asking something from the command line.
+
+499
+01:25:19,280 --> 01:25:23,960
+And now what I'm doing, I'm doing here the here docs.
+
+500
+01:25:23,960 --> 01:25:27,480
+So these are two back redirect signs.
+
+501
+01:25:27,480 --> 01:25:31,040
+I call them back redirects, back directs or by redirects.
+
+502
+01:25:31,040 --> 01:25:34,680
+So you can of course call them less than,
+
+503
+01:25:34,680 --> 01:25:36,120
+greater than, et cetera,
+
+504
+01:25:36,120 --> 01:25:39,000
+but I prefer to call them redirect
+
+505
+01:25:39,000 --> 01:25:46,360
+the back redirect signs so it's just my attitude so what we are doing here when we are redirecting
+
+506
+01:25:47,000 --> 01:25:54,520
+a block of information we are putting just the command and we are putting the
+
+507
+01:25:56,600 --> 01:26:04,120
+back redirect signs over here these two web operators and then we are putting the magic word
+
+508
+01:26:04,120 --> 01:26:10,920
+magic word is a kind of stop word so from now on bash knows that everything what comes from this
+
+509
+01:26:10,920 --> 01:26:22,040
+stop word to the end of this stop word will be piped to that command the benefit over here is
+
+510
+01:26:22,040 --> 01:26:29,080
+that actually on the fly everything which will be piped it will be examined and then the variables
+
+511
+01:26:29,080 --> 01:26:35,720
+common substitutions and whatever you guess here to come they will be placed over here
+
+512
+01:26:36,360 --> 01:26:43,320
+so let me see let me show you how this particular example will work so if I run it
+
+513
+01:26:45,000 --> 01:26:56,760
+it will ask me for my name [name] and then here the new generated text based on
+
+514
+01:26:56,760 --> 01:27:04,280
+that template which was there so you have see now at least three replacements so both variables have
+
+515
+01:27:04,280 --> 01:27:10,680
+been replaced with the existing ones and then also the date substitution command substitution
+
+516
+01:27:10,680 --> 01:27:19,240
+has been replaced take a look once again at this one so if you need any email if you need
+
+517
+01:27:19,240 --> 01:27:27,800
+any latch text if you need to redirect this text to the let's say to the file you will work with
+
+518
+01:27:27,800 --> 01:27:39,240
+pretty much the same thing so let me show you now the example once again here document some name
+
+519
+01:27:39,240 --> 01:27:45,640
+some so name whatever it's called and now we've got the file with exactly the same thing
+
+520
+01:27:45,640 --> 01:27:55,560
+so you can use it as a template okay so I don't need that one but let me get back to this one
+
+521
+01:27:55,560 --> 01:28:04,520
+once again so there is one particular feature is that if you don't really care about all the
+
+522
+01:28:04,520 --> 01:28:10,520
+substitutions you can avoid them you can tell to bash that please do not don't don't make any
+
+523
+01:28:10,520 --> 01:28:17,880
+substitution. So whatever those variables will be, whatever the dollar signs or any special
+
+524
+01:28:17,880 --> 01:28:26,920
+character will come into the text, they will not be touched. So trying again, some name,
+
+525
+01:28:26,920 --> 01:28:31,880
+whatever it is, it doesn't really matter. So now because we expected that there will be no
+
+526
+01:28:31,880 --> 01:28:39,880
+substitution, there are no substitution. It's not a surprise. So probably not what you want,
+
+527
+01:28:39,880 --> 01:28:47,160
+but sometimes it's useful. Another one thing that's maybe useful and how you may think to use it
+
+528
+01:28:48,120 --> 01:28:52,920
+is to make the comments. Usual comments they go like this
+
+529
+01:28:56,600 --> 01:29:04,280
+this number sign number sign and there is not any special syntax in bash where you can make
+
+530
+01:29:04,280 --> 01:29:13,800
+the long commands, but there is this workaround that you can use with the here doc. So now I'm
+
+531
+01:29:13,800 --> 01:29:23,000
+introducing your... well this stop word it can be any, I'm just putting the comment here. I'm
+
+532
+01:29:23,000 --> 01:29:32,040
+introducing you one thing which is called no operation command so this
+
+533
+01:29:32,040 --> 01:29:39,920
+column column operation it does nothing it's literally does nothing so and if
+
+534
+01:29:39,920 --> 01:29:46,880
+you output something to that operator so nothing happens and you can use that to
+
+535
+01:29:46,880 --> 01:29:51,720
+use this as a comment so now what will happen this read read will not be
+
+536
+01:29:51,720 --> 01:30:01,000
+executed. Here you go. So that was just skipped. And then if you ever want some command to run
+
+537
+01:30:01,000 --> 01:30:07,800
+but do nothing, just do it like that. In bash it's perfectly fine. So it's part of the shell.
+
+538
+01:30:09,160 --> 01:30:19,480
+Okay, I think that's what I have to say about this much. What I wanted you to do, I wanted you to
+
+539
+01:30:19,480 --> 01:30:27,320
+play a little bit with the here doc so that something would have left in your memory and say that let's
+
+540
+01:30:30,520 --> 01:30:33,080
+put some
+
+541
+01:30:36,040 --> 01:30:42,600
+something to do ah yeah just another one addition to that one
+
+542
+01:30:42,600 --> 01:30:49,400
+another one in addition to that one so
+
+543
+01:30:51,400 --> 01:30:56,680
+there is also along with the here doc along with this
+
+544
+01:30:56,680 --> 01:31:00,040
+double back redirect there is the triple redirect
+
+545
+01:31:00,040 --> 01:31:05,240
+that stands for the return stream so it will be sending the stream
+
+546
+01:31:05,240 --> 01:31:10,760
+so for instance if you I don't know if you want to see the how the
+
+547
+01:31:10,760 --> 01:31:20,120
+variable is looking like one particular example ifs you can redirect like this so that's uh
+
+548
+01:31:21,800 --> 01:31:28,120
+i don't well I haven't found too much usage of this kind of operator except that for ifs or some
+
+549
+01:31:28,120 --> 01:31:38,520
+other variables but somehow for instance in many cases you can use pipe so you can use ifs but for
+
+550
+01:31:38,520 --> 01:31:42,520
+For instance, in this case, IFS is not really printed properly.
+
+551
+01:31:42,520 --> 01:31:50,220
+Never actually bothered to find why it's this way, what's the echo is doing wrong.
+
+552
+01:31:50,220 --> 01:31:53,620
+But at least here, if you want to avoid anything else,
+
+553
+01:31:53,620 --> 01:32:00,420
+and you want to put the string as a raw standard input-output for the command,
+
+554
+01:32:00,420 --> 01:32:03,420
+that's the way to go with the free ones.
+
+555
+01:32:03,420 --> 01:32:12,780
+I think I will not go any deeper with these ones, so now I have them mentioned
+
+556
+01:32:12,780 --> 01:32:18,860
+and now let's give you 10 minutes just to play with that and just to see that how
+
+557
+01:32:19,980 --> 01:32:26,540
+how these kind of things are being done. So if you are, whatever you are done with this one
+
+558
+01:32:26,540 --> 01:32:33,100
+but and if you still have some time and I want to play so at the end of the material
+
+559
+01:32:34,380 --> 01:32:41,020
+there is example how to use the templates play with that too that's interesting so this is
+
+560
+01:32:41,020 --> 01:32:45,900
+something where you can use as a template and then if you will be later implementing
+
+561
+01:32:47,100 --> 01:32:55,020
+some kind of script which will be working for you as a template this also possible to be done okay
+
+562
+01:32:55,020 --> 01:33:00,020
+Okay, so now let's say that we have 10 minutes to do that,
+
+563
+01:33:00,620 --> 01:33:03,820
+and that means that we are back at 44.
+
+564
+01:33:25,020 --> 01:33:27,080
+you
+
+565
+01:33:55,020 --> 01:33:57,080
+you
+
+566
+01:34:25,020 --> 01:34:27,080
+you
+
+567
+01:34:55,020 --> 01:34:57,080
+you
+
+568
+01:35:25,020 --> 01:35:27,080
+you
+
+569
+01:35:55,020 --> 01:35:57,080
+you
+
+570
+01:36:25,020 --> 01:36:27,080
+you
+
+571
+01:36:55,020 --> 01:36:57,080
+you
+
+572
+01:37:25,020 --> 01:37:27,080
+you
+
+573
+01:37:55,020 --> 01:37:57,080
+you
+
+574
+01:38:25,020 --> 01:38:27,080
+you
+
+575
+01:38:55,020 --> 01:38:57,080
+you
+
+576
+01:39:25,020 --> 01:39:27,080
+you
+
+577
+01:39:55,020 --> 01:39:57,080
+you
+
+578
+01:40:25,020 --> 01:40:27,080
+you
+
+579
+01:40:55,020 --> 01:40:57,080
+you
+
+580
+01:41:25,020 --> 01:41:27,080
+you
+
+581
+01:41:55,020 --> 01:41:57,080
+you
+
+582
+01:42:25,020 --> 01:42:27,080
+you
+
+583
+01:42:55,020 --> 01:43:01,420
+now we're ready to go
+
+584
+01:43:03,100 --> 01:43:07,180
+and I guess so let's continue so the here docs was already there hopefully
+
+585
+01:43:07,180 --> 01:43:10,300
+you also had another part of your fun playing with
+
+586
+01:43:10,300 --> 01:43:13,580
+that so let me show what I was expecting from
+
+587
+01:43:13,580 --> 01:43:18,380
+you so let me say yelp or just
+
+588
+01:43:18,380 --> 01:43:23,260
+end or whatever you call it and
+
+589
+01:43:26,060 --> 01:43:31,340
+forward it to a file and then let's see what happens if I do it
+
+590
+01:43:31,340 --> 01:43:36,060
+from the command line from the command line bash will continue
+
+591
+01:43:36,060 --> 01:43:40,780
+this uh uh this continue asking me what I'm
+
+592
+01:43:40,780 --> 01:43:44,860
+what I want to and so my point was here that
+
+593
+01:43:44,860 --> 01:43:56,780
+i type some text type some text okay then type more text and then I need to finish it at some
+
+594
+01:43:56,780 --> 01:44:02,620
+point and finishing it I need to use this magic stop word so now the
+
+595
+01:44:05,660 --> 01:44:13,020
+cat should have generate this file for me which is there another one thing so if I want to
+
+596
+01:44:14,860 --> 01:44:17,180
+play with
+
+597
+01:44:20,780 --> 01:44:21,980
+variables for instance
+
+598
+01:44:24,380 --> 01:44:27,900
+so and I want to say that variables like home
+
+599
+01:44:31,260 --> 01:44:36,700
+like shell should be here what else was requested
+
+600
+01:44:36,700 --> 01:44:47,660
+uh common substitution like pwd pwd and then is that it okay and
+
+601
+01:44:51,900 --> 01:44:59,980
+ah okay I was trying to do it in the wrong way somehow I have duplicated those commands
+
+602
+01:44:59,980 --> 01:45:05,820
+twice. So now let's try it again
+
+603
+01:45:07,020 --> 01:45:09,340
+home
+
+604
+01:45:09,980 --> 01:45:17,260
+shell and the command substitution pvd and then that's the end
+
+605
+01:45:17,260 --> 01:45:22,460
+so that should be correct file name and here you see that all this
+
+606
+01:45:22,460 --> 01:45:27,900
+information that I have expected okay that was there that was the task
+
+607
+01:45:27,900 --> 01:45:33,580
+for you to play with. My next is traps
+
+608
+01:45:35,980 --> 01:45:43,260
+Nowadays it's quite often that you will start running something
+
+609
+01:45:43,260 --> 01:45:46,940
+well nowadays the hardware is so powerful so that
+
+610
+01:45:46,940 --> 01:45:50,860
+and the codes are so well optimized
+
+611
+01:45:51,180 --> 01:45:56,780
+quoted of course and then but sometimes you have to just try to
+
+612
+01:45:56,780 --> 01:46:03,100
+kill the existing script. So in our particular case we were playing with the tar.it
+
+613
+01:46:03,820 --> 01:46:11,820
+and the tar.it was making the archives and then at some point you realize that actually you're
+
+614
+01:46:11,820 --> 01:46:16,460
+archiving the wrong directory or you are realizing that actually you're archiving
+
+615
+01:46:16,460 --> 01:46:22,220
+the right directory but it is too big and it takes too long or it's taking too much of the
+
+616
+01:46:22,220 --> 01:46:30,300
+IOs of your computer and you wanna kill it. What will happen after? So killing the process in
+
+617
+01:46:30,300 --> 01:46:36,780
+Linux in general, the concept is very simple. You are sending the signals and then the program's
+
+618
+01:46:36,780 --> 01:46:43,180
+supposed to actually react somehow on the signals. A bunch of the signals which come from the
+
+619
+01:46:43,180 --> 01:46:48,380
+operating system or from the user, they are catchable and so the
+
+620
+01:46:48,380 --> 01:46:53,380
+the command and the script can catch the signal
+
+621
+01:46:53,980 --> 01:46:56,740
+and can react this and can do something.
+
+622
+01:46:56,740 --> 01:46:58,700
+There is one signal, maybe more,
+
+623
+01:46:58,700 --> 01:47:00,460
+I don't know exactly, I don't remember,
+
+624
+01:47:00,460 --> 01:47:02,860
+but at least one signal is not catchable at all,
+
+625
+01:47:02,860 --> 01:47:05,540
+so it doesn't make sense to try to react to this.
+
+626
+01:47:05,540 --> 01:47:07,900
+I mean, if Linux is trying to kill it
+
+627
+01:47:07,900 --> 01:47:09,820
+with the signal number nine,
+
+628
+01:47:09,820 --> 01:47:11,980
+the process will be simply killed.
+
+629
+01:47:11,980 --> 01:47:15,760
+But all the other cases, command cases,
+
+630
+01:47:15,760 --> 01:47:23,200
+they can be still uh cached and somehow reacted so let me show how to do the reaction
+
+631
+01:47:24,480 --> 01:47:34,160
+so I don't have any script ready but I can come up with the trap.sh and see
+
+632
+01:47:37,680 --> 01:47:43,280
+bin bash as usually so we always start all the scripts with this one then some comment
+
+633
+01:47:43,280 --> 01:47:56,480
+trap testing and then actually let's do this so what trap wants trap wants some command to be
+
+634
+01:47:56,480 --> 01:48:10,800
+executed echo for instance say we are we are interrupted okay and then the signal which is
+
+635
+01:48:10,800 --> 01:48:18,080
+expect it when we are when we are kind of killed. So the signal in our case I would say it could be
+
+636
+01:48:18,080 --> 01:48:25,520
+one. So this hub when session is disconnected then two for instance it's just the interruptions
+
+637
+01:48:25,520 --> 01:48:29,200
+which when you're trying to kill something with the control c that's exactly what you send
+
+638
+01:48:30,000 --> 01:48:34,880
+and let it be the just termination signal. So that's the first signal when you are trying to
+
+639
+01:48:34,880 --> 01:48:42,160
+kill something, your program will get this signal number 15. And then if you try to kill something
+
+640
+01:48:42,160 --> 01:48:51,120
+concretely, you send the signal number 9. Okay, so let's try this out and let's see what will happen
+
+641
+01:48:51,120 --> 01:48:58,080
+with the script. We also need some kind of body. So trap is a trap, but we need to be some kind of
+
+642
+01:48:58,080 --> 01:49:07,760
+body which we'll be executing so I introduce you the command called sleep so what the sleep is doing
+
+643
+01:49:09,280 --> 01:49:17,280
+sleep is sleeping essentially so when you are sleeping this so that means that you can say
+
+644
+01:49:17,280 --> 01:49:23,440
+that how many seconds you want to be sleep so let it be that we can sleep for 20 seconds just
+
+645
+01:49:23,440 --> 01:49:34,160
+that's good enough for us and so that should be enough just to play with that and see what's
+
+646
+01:49:34,160 --> 01:49:42,560
+happening so let me change mode plus x and let's see what's
+
+647
+01:49:42,560 --> 01:49:54,560
+going on. So we are sleeping. If I press ctrl C, you see what has happened. After ctrl C,
+
+648
+01:49:54,560 --> 01:50:04,640
+this trap has been executed. Okay, it's already something for us. But best practice would be
+
+649
+01:50:04,640 --> 01:50:14,160
+actually not to have a command over here but to define some kind of function. So I can define a
+
+650
+01:50:14,160 --> 01:50:24,880
+function which I called whatever I want. So let it be end or let it be even interrupted.
+
+651
+01:50:27,520 --> 01:50:34,160
+And within this function I can already start doing something and then I will put it over here.
+
+652
+01:50:34,640 --> 01:50:45,600
+and so that would make my code way easier to read, I understand, and so that I know that every time
+
+653
+01:50:45,600 --> 01:50:51,920
+once happens something, when my program is getting one of these signals, this function will be
+
+654
+01:50:52,480 --> 01:50:58,080
+executed. So once again, it could be some text,
+
+655
+01:50:58,080 --> 01:51:06,080
+it could be if you are in the middle of something you can for instance remove some
+
+656
+01:51:07,520 --> 01:51:09,440
+temporary files and directories
+
+657
+01:51:11,120 --> 01:51:18,000
+okay it could be that you kill some other processes
+
+658
+01:51:21,120 --> 01:51:26,480
+because you know that you have to clean up after yourself for instance you know that you are running
+
+659
+01:51:26,480 --> 01:51:32,000
+several processes which are dependable on this one and you want to say to those of them okay
+
+660
+01:51:32,000 --> 01:51:39,520
+something is going on please kill yourself or just clean up after yourself then what else can be done
+
+661
+01:51:39,520 --> 01:51:47,920
+here these are at least something which is very usual so when you need to clean up some temporary
+
+662
+01:51:47,920 --> 01:51:53,920
+files and then you need to kill some other processes which are dependent on you over here but
+
+663
+01:51:53,920 --> 01:51:58,920
+but this is one of the best practices
+
+664
+01:51:59,040 --> 01:52:00,500
+how to work with the traps
+
+665
+01:52:00,500 --> 01:52:03,080
+and how to make your code even more robust.
+
+666
+01:52:04,040 --> 01:52:08,040
+So let me say it once again, trap,
+
+667
+01:52:08,040 --> 01:52:13,040
+if I kill it, so interrupted command not found.
+
+668
+01:52:13,080 --> 01:52:14,840
+Well, let's see what's going on.
+
+669
+01:52:17,760 --> 01:52:19,600
+Okay, it's the,
+
+670
+01:52:19,600 --> 01:52:24,600
+It's the misprint interrupted.
+
+671
+01:52:29,880 --> 01:52:34,200
+Yes, yeah, now that should work.
+
+672
+01:52:34,200 --> 01:52:35,720
+And now what's the bash is doing?
+
+673
+01:52:35,720 --> 01:52:37,760
+Even if there is this kind of issues,
+
+674
+01:52:37,760 --> 01:52:39,980
+it will never tell you before it actually comes
+
+675
+01:52:39,980 --> 01:52:43,120
+to that point, after that it will generate the error.
+
+676
+01:52:43,120 --> 01:52:46,880
+So that's a little bit tricky, some text.
+
+677
+01:52:46,880 --> 01:52:49,640
+So at the moment, we are just killing it
+
+678
+01:52:49,640 --> 01:52:54,640
+and so, and getting the text and nothing else.
+
+679
+01:52:56,200 --> 01:52:57,680
+Practical example.
+
+680
+01:52:57,680 --> 01:53:02,520
+Practical example would be our tar.it.
+
+681
+01:53:03,440 --> 01:53:07,340
+So let's say that we copy our tar.it.
+
+682
+01:53:07,340 --> 01:53:12,340
+So the, what was the latest version we have developed?
+
+683
+01:53:12,360 --> 01:53:13,480
+That was version three.
+
+684
+01:53:13,480 --> 01:53:15,360
+We are copying it to version four
+
+685
+01:53:15,360 --> 01:53:23,120
+and all of them are for the sake of clarity, named like that, so that you would know,
+
+686
+01:53:23,120 --> 01:53:32,040
+would see the development of the stuff that has been done. And now I can try to
+
+687
+01:53:32,040 --> 01:53:39,360
+do it more. So let's say that I will be developing this version number five and I
+
+688
+01:53:39,360 --> 01:53:44,120
+need to define the trap. Trap is usually being defined at the very beginning of
+
+689
+01:53:44,120 --> 01:53:57,160
+the code so that the code would know that exists. And so I define the function and over here
+
+690
+01:53:59,720 --> 01:54:08,600
+over here so my function is looking like so what I want to do here for instance I'm in the middle
+
+691
+01:54:08,600 --> 01:54:16,360
+of archiving something and tar what is doing when it starts to archive something it will create the
+
+692
+01:54:16,360 --> 01:54:25,160
+file and starts to fill it up and if it has been interrupted this semi or even just some partially
+
+693
+01:54:26,520 --> 01:54:31,960
+filled archive file will just remain there so this is definitely what I don't want to
+
+694
+01:54:31,960 --> 01:54:38,480
+so I want to keep everything what has been done but what is ongoing I want to
+
+695
+01:54:38,480 --> 01:54:50,880
+kill and so what I'm doing here is I'm saying precisely we have been interrupted
+
+696
+01:54:50,880 --> 01:54:59,280
+okay and then I'm saying that echo
+
+697
+01:55:01,880 --> 01:55:07,840
+cleaning up the ongoing
+
+698
+01:55:09,840 --> 01:55:16,200
+archive so here I have to put the double quotes just to make sure that archive
+
+699
+01:55:16,200 --> 01:55:22,920
+little bit and then I actually do the cleaning
+
+700
+01:55:24,440 --> 01:55:33,640
+I can also check if it exists so I mean just in case if it's in the process
+
+701
+01:55:34,600 --> 01:55:38,840
+and make it even more robust than it is
+
+702
+01:55:38,920 --> 01:55:43,320
+and then just simple cleanup archive after myself
+
+703
+01:55:43,320 --> 01:55:51,480
+And then I would say that our code is becoming more and more clean and robust. So I'm not really
+
+704
+01:55:51,480 --> 01:55:59,320
+going to check it because there is no any huge directory. Or actually let me check it with...
+
+705
+01:56:00,520 --> 01:56:02,040
+Should I try to play with my home?
+
+706
+01:56:05,240 --> 01:56:12,280
+Okay, I can try it. So first of all let me check the syntax without running bash
+
+707
+01:56:12,280 --> 01:56:20,960
+so the syntax is correct and let me say that I want to go with my home or I can
+
+708
+01:56:20,960 --> 01:56:26,320
+do it even this way so it will definitely take some time so it will
+
+709
+01:56:26,320 --> 01:56:32,040
+try to create some directory over here you can see removing blah blah blah
+
+710
+01:56:32,040 --> 01:56:39,000
+archiving over here I don't want this I decided that I went wrong so I keep
+
+711
+01:56:39,000 --> 01:56:45,160
+control c and what has happened it has been interrupted and cleaning up the ongoing stuff
+
+712
+01:56:45,880 --> 01:56:54,280
+and so there is nothing over here essentially yes robust yes easy to implement of course yes
+
+713
+01:56:54,280 --> 01:57:00,440
+so now you know one technique how to make how to surprise and impress your
+
+714
+01:57:00,440 --> 01:57:11,240
+future employee when you keep doing these things. So my thing I was I was
+
+715
+01:57:11,240 --> 01:57:16,680
+actually thinking to give you this slip stuff to do but I happens that I have it
+
+716
+01:57:16,680 --> 01:57:19,720
+done it already myself
+
+717
+01:57:19,720 --> 01:57:29,160
+let me let me catch for you and slightly do the slightly difference
+
+718
+01:57:30,920 --> 01:57:39,560
+so now the traps so catch signals let's put it this way I create a file
+
+719
+01:57:39,560 --> 01:57:51,480
+create a file any you can use touch something it can touch will do you some empty file
+
+720
+01:57:55,080 --> 01:57:57,720
+you decide what you want file name
+
+721
+01:58:00,440 --> 01:58:04,920
+and then catch any of those signals
+
+722
+01:58:04,920 --> 01:58:19,400
+1, 2, 5, 1, 2, 15. Withdraw and remove the filename.
+
+723
+01:58:23,240 --> 01:58:33,400
+Also put some text when interrupted. Okay, so now you have, I don't think you even need 10 minutes,
+
+724
+01:58:33,400 --> 01:58:41,000
+but let's say that we have 15 minutes altogether the break and the playing
+
+725
+01:58:41,000 --> 01:58:47,840
+with the traps and so you share your time up to you how you do this but just
+
+726
+01:58:47,840 --> 01:58:53,840
+to make sure that we are in time and so we will have still two sections to go
+
+727
+01:58:53,840 --> 01:59:08,040
+okay so now Dex 15 minutes again yours and now we are coming back to 14 to 15
+
+728
+01:59:11,080 --> 01:59:16,280
+so let me copy not sure if
+
+729
+01:59:16,280 --> 01:59:28,000
+Okay, and Rick is doing already or not, or he's not yet.
+
+730
+01:59:28,000 --> 01:59:29,860
+So I'm muting myself.
+
+731
+01:59:29,860 --> 01:59:32,180
+So 15 over, we will come back.
+
+732
+01:59:32,180 --> 01:59:35,940
+So it's the exercise and the break all together.
+
+733
+02:00:02,180 --> 02:00:04,240
+you
+
+734
+02:00:32,180 --> 02:00:34,240
+you
+
+735
+02:01:02,180 --> 02:01:04,240
+you
+
+736
+02:01:32,180 --> 02:01:34,240
+you
+
+737
+02:02:02,180 --> 02:02:04,240
+you
+
+738
+02:02:32,180 --> 02:02:34,240
+you
+
+739
+02:03:02,180 --> 02:03:04,240
+you
+
+740
+02:03:32,180 --> 02:03:34,240
+you
+
+741
+02:04:02,180 --> 02:04:04,240
+you
+
+742
+02:04:32,180 --> 02:04:34,240
+you
+
+743
+02:05:02,180 --> 02:05:04,240
+you
+
+744
+02:05:32,180 --> 02:05:34,240
+you
+
+745
+02:06:02,180 --> 02:06:04,240
+you
+
+746
+02:06:32,180 --> 02:06:34,240
+you
+
+747
+02:07:02,180 --> 02:07:04,240
+you
+
+748
+02:07:32,180 --> 02:07:34,240
+you
+
+749
+02:08:02,180 --> 02:08:04,240
+you
+
+750
+02:08:32,180 --> 02:08:34,240
+you
+
+751
+02:09:02,180 --> 02:09:04,240
+you
+
+752
+02:09:32,180 --> 02:09:34,240
+you
+
+753
+02:10:02,180 --> 02:10:04,240
+you
+
+754
+02:10:32,180 --> 02:10:34,240
+you
+
+755
+02:11:02,180 --> 02:11:04,240
+you
+
+756
+02:11:32,180 --> 02:11:34,240
+you
+
+757
+02:12:02,180 --> 02:12:04,240
+you
+
+758
+02:12:32,180 --> 02:12:34,240
+you
+
+759
+02:13:02,180 --> 02:13:04,240
+you
+
+760
+02:13:32,180 --> 02:13:58,980
+Yep, back online, should be ready to go, hopefully the trap was okay.
+
+761
+02:13:58,980 --> 02:14:09,340
+And I don't think I need to demonstrate anything, it just simply should be ready to go as is
+
+762
+02:14:09,340 --> 02:14:12,860
+with this slip command.
+
+763
+02:14:12,860 --> 02:14:19,580
+Or let me...
+
+764
+02:14:19,580 --> 02:14:27,540
+Instead of this slip, what I was expecting from you is that you touch a file, we can
+
+765
+02:14:27,540 --> 02:14:35,700
+even make it a more professional way. File name, file name
+
+766
+02:14:37,260 --> 02:14:45,580
+let's be kind of less professional, my file and then I touch file name then I
+
+767
+02:14:45,580 --> 02:14:52,060
+don't need this, I'll let it be sleep over there so that it takes some time before
+
+768
+02:14:52,060 --> 02:14:57,660
+we actually do something and then I wanted to remove that filename
+
+769
+02:15:04,300 --> 02:15:10,540
+remove that filename okay so I guess that would be looking like this
+
+770
+02:15:10,540 --> 02:15:31,180
+interrupted yeah with the u not a that should work out I will copy paste it to the to the notes as
+
+771
+02:15:31,180 --> 02:15:41,180
+well
+
+772
+02:15:44,700 --> 02:15:55,180
+okay now we go with the chop analysis another chop
+
+773
+02:16:01,180 --> 02:16:09,740
+And now my next step will be
+
+774
+02:16:12,940 --> 02:16:18,780
+debugging profile. Let's say that we have somewhat covered it already with the
+
+775
+02:16:19,740 --> 02:16:26,300
+code analysis when they did this, but I don't really think there is any sense to tell you more about
+
+776
+02:16:26,300 --> 02:16:34,340
+what can be done except this bash minus X etc so the profiling really sucks and
+
+777
+02:16:34,340 --> 02:16:41,100
+the debugging really sucks with the bash so it's it's where these programming
+
+778
+02:16:41,100 --> 02:16:46,100
+abilities actually ends pretty much or at least I have not heard about any
+
+779
+02:16:46,100 --> 02:16:51,020
+kind of good good debugging tools maybe already exists or because I'm I'm an old
+
+780
+02:16:51,020 --> 02:16:55,900
+school guy need to check it out but at least nothing that I would have heard
+
+781
+02:16:55,900 --> 02:17:04,700
+about essentially. So what I wanted to tell you and show one technique is how to proceed with the
+
+782
+02:17:04,700 --> 02:17:11,420
+parallelization. I'm not talking about any parallelization that you would think from the HPC
+
+783
+02:17:11,420 --> 02:17:17,420
+point of view. It's not the HPC way, so it's not the MPI, it's nothing to do with the shared memory
+
+784
+02:17:17,420 --> 02:17:26,380
+models, if you know what I'm talking about. But it's rather how to make the command executed
+
+785
+02:17:26,380 --> 02:17:34,060
+within one script. So consider this script just normal one, whatever. So let's even get the star
+
+786
+02:17:34,060 --> 02:17:42,620
+id back to the screen. So consider the script that every single command is executed serially.
+
+787
+02:17:42,620 --> 02:17:49,500
+so it waits for the result of the previous command and then will be executed one by one
+
+788
+02:17:49,500 --> 02:17:56,620
+one by one for most part of the code it's completely okay but then when it comes to the
+
+789
+02:17:56,620 --> 02:18:03,900
+body for instance here you decided okay we are running the archive archiving procedure and so
+
+790
+02:18:03,900 --> 02:18:12,900
+So the archive number two will run after archive number one has ended.
+
+791
+02:18:12,900 --> 02:18:18,140
+Sometimes it's okay, sometimes when you don't really care about the amount of time it's
+
+792
+02:18:18,140 --> 02:18:27,880
+spending or maybe it's the amount of time it spends on to execute this thing is so negligible
+
+793
+02:18:27,880 --> 02:18:30,620
+so that you don't really care about this.
+
+794
+02:18:30,620 --> 02:18:39,740
+sometimes you do actually care and in this case you have an option to send your command
+
+795
+02:18:40,620 --> 02:18:47,660
+to the background what that means so the bash has a concept of foreground and background processes
+
+796
+02:18:49,420 --> 02:18:54,540
+everything what is in your screen right now running right now for instance I'm running vim
+
+797
+02:18:54,540 --> 02:19:04,860
+vim is taking my foreground it's taking my terminal so this is why this is what I am interact with
+
+798
+02:19:04,860 --> 02:19:11,260
+and vim is now the process which is running in the foreground but there is a bunch of and huge
+
+799
+02:19:11,260 --> 02:19:17,740
+list of the programs which are running in the background and you can add to them everything
+
+800
+02:19:17,740 --> 02:19:25,100
+what you want. So I can send the vim to the background, I can send whatever I want to the
+
+801
+02:19:25,100 --> 02:19:33,740
+background. You probably already know about this or if you don't then I just send you to this
+
+802
+02:19:33,740 --> 02:19:39,580
+section from the first part of the course which is called processes where this concept has been
+
+803
+02:19:39,580 --> 02:19:48,060
+introduced foreground and background processes. You can go through it on your own, but then I
+
+804
+02:19:48,060 --> 02:19:56,460
+come back to the parallelization technique. So what will happen to my tar-it script
+
+805
+02:19:57,580 --> 02:20:07,260
+if I will send every single tar command to the background? Well, it happens exactly this.
+
+806
+02:20:07,260 --> 02:20:12,780
+this command will go to the background and the script will continue with the new one
+
+807
+02:20:13,980 --> 02:20:20,940
+and this way all the programs all the tar instances they will be running in parallel
+
+808
+02:20:21,500 --> 02:20:27,980
+in the background and the script will be just waiting for them all to end and
+
+809
+02:20:29,100 --> 02:20:37,020
+when they all they have done so the script will end as well so this is kind of emulation of the
+
+810
+02:20:37,020 --> 02:20:43,180
+parallelization so we are basically we in this situation we are using the multi-processing
+
+811
+02:20:44,940 --> 02:20:51,580
+of the ability of the operating system before I actually do any change to the tar.it
+
+812
+02:20:51,580 --> 02:20:59,740
+let me demonstrate you with the sleep command so I think
+
+813
+02:20:59,740 --> 02:21:10,060
+I think I can call it parallel, I would put quads around but bash doesn't really like it
+
+814
+02:21:10,860 --> 02:21:20,140
+so let me see that it's over here, so I still need to put my shebang
+
+815
+02:21:20,140 --> 02:21:31,340
+brush once again fingers a bit faster than tools trap is optional you don't need it but I just
+
+816
+02:21:32,060 --> 02:21:38,060
+for the best practice I kill doing this I will explain what I'm doing here
+
+817
+02:21:38,060 --> 02:21:48,060
+so you see if I go if I do the loop over a number of iterations so I'm using here just the seconds
+
+818
+02:21:48,060 --> 02:21:53,060
+one, three, five, three items as a second.
+
+819
+02:21:54,100 --> 02:21:58,260
+So every time I run a command,
+
+820
+02:21:58,260 --> 02:22:01,220
+so I'm using here the grouping, curly brackets
+
+821
+02:22:01,220 --> 02:22:03,780
+in this situation, they are used as a group.
+
+822
+02:22:03,780 --> 02:22:07,380
+I mean, I group the commands such a way that ampersand,
+
+823
+02:22:07,380 --> 02:22:10,580
+so ampersand at the very end of the command
+
+824
+02:22:10,580 --> 02:22:14,020
+is sending this command to the background.
+
+825
+02:22:14,020 --> 02:22:17,060
+That's the rule.
+
+826
+02:22:17,060 --> 02:22:21,900
+And so in order to sense the whole bunch of this command
+
+827
+02:22:21,900 --> 02:22:25,620
+to the background, I need to group them.
+
+828
+02:22:25,620 --> 02:22:28,740
+And so I'm here having this curly brackets
+
+829
+02:22:28,740 --> 02:22:32,660
+and grouping this command inside the for loop.
+
+830
+02:22:32,660 --> 02:22:34,140
+So what happens over here?
+
+831
+02:22:34,140 --> 02:22:38,840
+Sleep, then one of these seconds is substituted.
+
+832
+02:22:38,840 --> 02:22:39,980
+It will be one process,
+
+833
+02:22:39,980 --> 02:22:41,780
+which will be sleeping for one second,
+
+834
+02:22:41,780 --> 02:22:44,860
+another process, which will be sleeping for three seconds,
+
+835
+02:22:44,860 --> 02:22:51,100
+then another one which sleeping for five seconds let me first see what will happen if I do not
+
+836
+02:22:51,100 --> 02:22:59,340
+send them to the background I will need to I will need to take a time let's see what's going on if i
+
+837
+02:22:59,340 --> 02:23:12,220
+don't send anything to the background so my parallel code change mode plus x and I do the parallel
+
+838
+02:23:12,220 --> 02:23:20,940
+shell and see how long it takes. There is this utility, we have used it already with the
+
+839
+02:23:20,940 --> 02:23:25,660
+gaussian implementation. Let's use it once more. So time will tell me the
+
+840
+02:23:28,300 --> 02:23:35,660
+total time of execution. So you can see that it's executed one by one serially. Altogether it took us
+
+841
+02:23:35,660 --> 02:23:43,860
+9 seconds. So it's okay, 1 plus 3 plus 5 is 9. That's what we expected. But then
+
+842
+02:23:43,860 --> 02:23:49,460
+let's see what will happen if we will send it every single process to the
+
+843
+02:23:49,460 --> 02:23:58,620
+background. Let's see the execution time. Once again time parallel. And now you can
+
+844
+02:23:58,620 --> 02:24:04,100
+see that actually they will be sending to the background all the time. So
+
+845
+02:24:04,100 --> 02:24:08,940
+So basically what we are getting, the execution time went down to the 5 seconds.
+
+846
+02:24:08,940 --> 02:24:14,880
+What that means, that's the longest chain in this for loop.
+
+847
+02:24:14,880 --> 02:24:20,060
+So basically 1, 3 and 5 were executed in parallel.
+
+848
+02:24:20,060 --> 02:24:24,380
+This has ended early, this has ended after, but this was the last one.
+
+849
+02:24:24,380 --> 02:24:33,020
+But again, still the whole cycle took me only 5 seconds, which is more or less in some situation
+
+850
+02:24:33,020 --> 02:24:42,060
+maybe the lifesaver. So if your code really is taking a lot. And one key thing over here
+
+851
+02:24:43,340 --> 02:24:49,660
+is that by default if you just send the stuff to the background,
+
+852
+02:24:51,420 --> 02:24:56,940
+it will be sent to the background and from the bash perspective that would mean that the
+
+853
+02:24:56,940 --> 02:25:06,620
+command came to the end and that means that okay it came to the end and it will be just ended as is
+
+854
+02:25:07,340 --> 02:25:13,900
+so what's happening right now what we really want to we really want to tell to the bash please
+
+855
+02:25:14,700 --> 02:25:22,940
+you have something in the background and check it out and try to wait till they are done
+
+856
+02:25:22,940 --> 02:25:28,220
+and only when these kind of background processes which this script has
+
+857
+02:25:28,220 --> 02:25:33,940
+generated so they will be kind of the child processes of this script only of
+
+858
+02:25:33,940 --> 02:25:40,660
+one only when your child processes are done only at that stage please and the
+
+859
+02:25:40,660 --> 02:25:45,540
+whole thing and so this is exactly what wait command is doing over here so we
+
+860
+02:25:45,540 --> 02:25:52,020
+need this so just remember when you will start applying this concept of the
+
+861
+02:25:52,020 --> 02:25:58,980
+foreground and background jobs, you will have to use the wait as well. And then
+
+862
+02:25:58,980 --> 02:26:05,620
+another one approach which I think is reasonable over here is to kill all. So
+
+863
+02:26:05,620 --> 02:26:11,420
+basically what I'm saying here that find me everything with this command. This
+
+864
+02:26:11,420 --> 02:26:16,020
+command jobs minus p will return me everything which has been created by
+
+865
+02:26:16,020 --> 02:26:24,420
+this script if by some reason by some reason I want to interrupt this script without waiting
+
+866
+02:26:24,420 --> 02:26:31,060
+for the end and if some reason this one of the command is just taking so long or one of the
+
+867
+02:26:31,060 --> 02:26:36,980
+command processes hanging became zombie or something well it's became something that's
+
+868
+02:26:36,980 --> 02:26:44,180
+other difference it's just hanging it just doesn't do anything I want to make sure that I clean up
+
+869
+02:26:44,180 --> 02:26:51,380
+after myself and so that's this jobs what is doing so it will join you a list of the processes which
+
+870
+02:26:51,380 --> 02:26:57,620
+has been created by this script and with the command kill all will kill them all
+
+871
+02:26:58,900 --> 02:27:04,420
+okay and so I'm saying that every time it's the when the signal exit is
+
+872
+02:27:04,420 --> 02:27:16,500
+giving so please do this for me. So that's that easy and now we can also see
+
+873
+02:27:19,540 --> 02:27:27,860
+RIT what can be done over here. So if I would like to implement this within the TAR archive
+
+874
+02:27:27,860 --> 02:27:34,020
+so let me see that I actually copy this one to the
+
+875
+02:27:37,300 --> 02:27:46,980
+it's already version five okay and now I'm doing these changes once again and I'm saying that
+
+876
+02:27:50,740 --> 02:27:56,580
+the most time-consuming part of the script should be executed in parallel
+
+877
+02:27:56,580 --> 02:28:03,620
+so I put the ampersand over here so every time when my script comes to this point it will
+
+878
+02:28:04,580 --> 02:28:12,260
+submit the tar to the background okay and then I need to make the same thing that I would have
+
+879
+02:28:12,260 --> 02:28:23,860
+done it properly so I make to wait it wait till and so I put the comment wait till all our
+
+880
+02:28:26,900 --> 02:28:27,540
+tasks
+
+881
+02:28:30,260 --> 02:28:32,660
+are done okay
+
+882
+02:28:36,100 --> 02:28:39,060
+so we can also put the comment over here just to know
+
+883
+02:28:42,260 --> 02:28:57,460
+yeah we put it into the background we can try to execute it and then yes I would say that this
+
+884
+02:29:02,100 --> 02:29:06,100
+this trap also makes sense to put it over there
+
+885
+02:29:06,100 --> 02:29:16,820
+so the traps can be many that's another one thing for you so here I catch these signals but here I
+
+886
+02:29:16,820 --> 02:29:25,260
+can catch some other signals so the trap commands can be many it's not a big deal over here I can
+
+887
+02:29:25,260 --> 02:29:30,700
+just copy paste it or you can just incorporate it into this one so it's just up to you how you feel
+
+888
+02:29:30,700 --> 02:29:32,860
+it
+
+889
+02:29:33,980 --> 02:29:36,620
+check my
+
+890
+02:29:37,660 --> 02:29:43,900
+syntax and run it for the for a good
+
+891
+02:29:43,900 --> 02:29:47,820
+okay it's correct so again those ones are harmless
+
+892
+02:29:47,820 --> 02:29:52,460
+it's just the simply because I am creating the file and putting the file
+
+893
+02:29:52,460 --> 02:29:56,060
+into the same directory so the tar complains that something has happened in
+
+894
+02:29:56,060 --> 02:30:00,300
+this directory but this is completely fine so
+
+895
+02:30:00,300 --> 02:30:09,980
+rm bin and now I'm a bit because this story etc they're actually
+
+896
+02:30:12,700 --> 02:30:20,060
+they're actually quite small but just trust me that yes we are running a number of the stars
+
+897
+02:30:20,060 --> 02:30:30,060
+in the background so if I do it like for instance I want to have store yeah I
+
+898
+02:30:30,060 --> 02:30:37,020
+want to have been and I want to have my home home will take time so let's see
+
+899
+02:30:37,020 --> 02:30:44,220
+what's going on store have been home run it so now we are
+
+900
+02:30:44,220 --> 02:30:46,980
+archiving store, parallel bean,
+
+901
+02:30:46,980 --> 02:30:50,840
+and then when parallel also archiving my home directory,
+
+902
+02:30:50,840 --> 02:30:52,220
+which is what I wanted.
+
+903
+02:30:53,180 --> 02:30:55,680
+I send it to the background, the whole thing.
+
+904
+02:30:56,800 --> 02:31:00,540
+And now, let me see, with the command jobs,
+
+905
+02:31:00,540 --> 02:31:02,680
+I can actually see what's going on.
+
+906
+02:31:02,680 --> 02:31:07,460
+So I have several processes running over here.
+
+907
+02:31:07,460 --> 02:31:09,700
+So tar-it, tar-it,
+
+908
+02:31:10,800 --> 02:31:12,900
+and then actually they have been stopped
+
+909
+02:31:12,900 --> 02:31:17,660
+because I killed them and sent to the background
+
+910
+02:31:18,740 --> 02:31:21,980
+the original file and there was a trap which was...
+
+911
+02:31:23,860 --> 02:31:27,900
+Okay, but now I just wanna get it back.
+
+912
+02:31:29,220 --> 02:31:33,940
+Well, again, I don't really want to interrupt you much
+
+913
+02:31:33,940 --> 02:31:35,980
+with that because that's a concept
+
+914
+02:31:35,980 --> 02:31:37,900
+which has been already very well explained
+
+915
+02:31:37,900 --> 02:31:38,900
+in the first part.
+
+916
+02:31:38,900 --> 02:31:41,900
+So if you are curious what's that,
+
+917
+02:31:41,900 --> 02:31:46,620
+just go to the host part and take a look at the material over there
+
+918
+02:31:49,420 --> 02:31:53,900
+okay so this part I didn't come up with any good
+
+919
+02:31:55,980 --> 02:32:02,540
+example how to do that so this is why I was thinking to the why I had that I better demonstrate
+
+920
+02:32:02,540 --> 02:32:09,020
+it on myself because it's somewhat complicated and not really covered by this course but hopefully
+
+921
+02:32:09,020 --> 02:32:21,020
+you have found something useful out of this. What I want so well I can clean up it first for myself
+
+922
+02:32:22,300 --> 02:32:29,260
+being this can be killed then this another one which has been created
+
+923
+02:32:30,300 --> 02:32:38,380
+occasional as well and file name I don't need it either so now it's more more or less clear
+
+924
+02:32:39,020 --> 02:32:47,360
+so now the time to ask the questions otherwise I've after last section if you
+
+925
+02:32:47,360 --> 02:32:54,860
+need some specific and you want to yet ask me then please do because that's the
+
+926
+02:32:54,860 --> 02:32:59,540
+last half an hour that we are running the course otherwise I will just jump to
+
+927
+02:32:59,540 --> 02:33:05,900
+the arrays and seems that I have enough time to go through there from this part
+
+928
+02:33:05,900 --> 02:33:11,980
+and we even have time for the exercise, or at least this exercise will be with you as a homework.
+
+929
+02:33:13,100 --> 02:33:24,380
+So, arrays. Arrays, this is something within the bash which has been introduced not recently, but
+
+930
+02:33:25,340 --> 02:33:31,340
+I think many people don't know that arrays are existing in bash. So most of the people are
+
+931
+02:33:31,340 --> 02:33:37,580
+working with the variables. I've seen even the quite advanced users which were really surprised
+
+932
+02:33:37,580 --> 02:33:42,780
+when they heard for the first time about the arrays in the bash. Not that often used, but if
+
+933
+02:33:42,780 --> 02:33:50,620
+you know how to use this, you can definitely make use of them. So array is nothing else than a list
+
+934
+02:33:50,620 --> 02:33:58,140
+of items which are under the same name. So there are two types of arrays in bash. One is known to
+
+935
+02:33:58,140 --> 02:34:05,340
+you is that normal indexed array and then another one which is less known but to those who is
+
+936
+02:34:05,900 --> 02:34:11,980
+running for instance python or php codes they may have heard about the
+
+937
+02:34:16,380 --> 02:34:23,820
+dictionaries and the in case of php that's the associative arrays so this is what is implemented
+
+938
+02:34:23,820 --> 02:34:30,380
+also in bash in bash it's called as well as in php associative arrays so they are one-dimensional
+
+939
+02:34:30,380 --> 02:34:38,140
+both and in case of indexed array so it's where every single item has an index and you can address
+
+940
+02:34:38,140 --> 02:34:47,180
+it by index sorry somebody knocking the door but don't really open so in this case you just open the
+
+941
+02:34:47,180 --> 02:35:08,860
+In this case, what you have to do is that you have to really make a list of elements of this array
+
+942
+02:35:10,140 --> 02:35:16,460
+So for instance, in my case, let me clear first the screen just to not really overwrite with this one
+
+943
+02:35:17,180 --> 02:35:25,580
+So you do the array and you put the list within these rounded brackets over here
+
+944
+02:35:26,460 --> 02:35:33,980
+and every single element of this one will be the will be the index, okay?
+
+945
+02:35:35,340 --> 02:35:40,620
+So let me see what exactly is going on. So the easiest part...
+
+946
+02:35:40,620 --> 02:35:44,060
+oh okay there is something is yet running
+
+947
+02:35:46,060 --> 02:35:50,380
+it's there let me check that is there some jobs still running
+
+948
+02:35:52,860 --> 02:35:53,360
+nope
+
+949
+02:35:58,700 --> 02:36:07,500
+okay no I mean back to the back to the arrays so now I have once again I have defined this one
+
+950
+02:36:07,500 --> 02:36:13,820
+and now for instance if I want to address some elements of the array what do I do?
+
+951
+02:36:14,540 --> 02:36:22,220
+So here where comes the curly brackets back to use once again. So my array elements there just
+
+952
+02:36:22,220 --> 02:36:29,020
+go now name of array within the curly brackets and then the number of the index.
+
+953
+02:36:31,020 --> 02:36:32,940
+So you do echo array
+
+954
+02:36:32,940 --> 02:36:42,300
+and the index element. So in my case, r, you remember, this one was looking like
+
+955
+02:36:42,300 --> 02:36:49,300
+this. So my first element, it's actually marked as 0, so the indexing starts with
+
+956
+02:36:49,300 --> 02:36:54,220
+the 0, it's this one. So my second one
+
+957
+02:36:54,540 --> 02:37:00,740
+is this one. And my, for instance, I don't know, my fourth one
+
+958
+02:37:00,740 --> 02:37:09,940
+there's no fourth okay strange my third one okay yeah of course it's starting from the zero so
+
+959
+02:37:09,940 --> 02:37:16,660
+basically these are elements like that so if I want to assign the new element so assigning new
+
+960
+02:37:16,660 --> 02:37:25,300
+element is pretty much in the same way you can do this r for instance and now I know that the
+
+961
+02:37:25,300 --> 02:37:31,940
+element number four is missing so I'm assigning it like this so new
+
+962
+02:37:34,820 --> 02:37:41,860
+now this element has got also the element number new so the easiest way to declare the easiest way
+
+963
+02:37:41,860 --> 02:37:48,580
+to print it out there's a dirty way there's a command declare which we will use just in a second
+
+964
+02:37:48,580 --> 02:37:53,580
+you can declare and say, print me the archive.
+
+965
+02:37:54,040 --> 02:37:57,080
+Archive, sorry, too much of the tarring.
+
+966
+02:37:57,080 --> 02:37:58,720
+Print me the array.
+
+967
+02:37:58,720 --> 02:38:03,040
+So here you can get kind of very rough overview
+
+968
+02:38:03,040 --> 02:38:05,520
+what elements of the array are existing.
+
+969
+02:38:06,720 --> 02:38:08,520
+Okay, and then
+
+970
+02:38:11,480 --> 02:38:13,520
+the next one is that,
+
+971
+02:38:13,520 --> 02:38:31,200
+For instance, the arrays, these functionalities are pretty much limited.
+
+972
+02:38:31,200 --> 02:38:36,480
+You can assign a lot of stuff, but it's nothing to do with the real languages.
+
+973
+02:38:36,480 --> 02:38:40,120
+So, all these kind of libraries to work with the arrays,
+
+974
+02:38:40,120 --> 02:38:45,120
+like what you have in the different
+
+975
+02:38:46,600 --> 02:38:48,380
+real programming languages,
+
+976
+02:38:48,380 --> 02:38:52,040
+like sorting the arrays, finding the smallest element,
+
+977
+02:38:52,040 --> 02:38:53,760
+or going through the,
+
+978
+02:38:54,960 --> 02:38:59,180
+finding kind of all possible combinations, et cetera.
+
+979
+02:38:59,180 --> 02:39:01,440
+So, everything what you think about
+
+980
+02:39:01,440 --> 02:39:03,120
+is not implemented by default,
+
+981
+02:39:03,120 --> 02:39:05,120
+and it's not part of the really bash.
+
+982
+02:39:05,120 --> 02:39:09,320
+So you will, if you even want to sort,
+
+983
+02:39:09,320 --> 02:39:11,320
+make the sort of the array,
+
+984
+02:39:11,320 --> 02:39:14,120
+so you will have to Google
+
+985
+02:39:14,120 --> 02:39:15,440
+and you will have to find out
+
+986
+02:39:15,440 --> 02:39:20,400
+how to do that properly with the sort command.
+
+987
+02:39:20,400 --> 02:39:23,160
+So it's not even built in functionality,
+
+988
+02:39:23,160 --> 02:39:26,600
+it's the external function or external command
+
+989
+02:39:26,600 --> 02:39:27,660
+that can be used.
+
+990
+02:39:27,660 --> 02:39:32,040
+But again, something is still can be done over here.
+
+991
+02:39:32,040 --> 02:39:34,280
+So now this is the indexed array,
+
+992
+02:39:34,280 --> 02:39:42,280
+has been created you can change every single you can change for instance every single element so
+
+993
+02:39:44,360 --> 02:39:49,320
+i can put it new too yeah and so that you can see that actually this became that
+
+994
+02:39:50,280 --> 02:39:58,760
+this became this has got a new value you can assign some values which are somewhere not
+
+995
+02:39:58,760 --> 02:40:05,720
+on the list and you can see that actually all the other values in between
+
+996
+02:40:05,720 --> 02:40:12,020
+4 and 12 are missing but 12 is here so basically you can do pretty much the
+
+997
+02:40:12,020 --> 02:40:18,980
+same things with area elements as you would do with the variables but they
+
+998
+02:40:18,980 --> 02:40:26,980
+just get the index so a couple of things how to address them properly here is the
+
+999
+02:40:26,980 --> 02:40:34,100
+simple construct, which I can explain to you.
+
+1000
+02:40:34,620 --> 02:40:38,500
+Let me put it to the bin as well.
+
+1001
+02:40:48,260 --> 02:40:55,300
+Okay, I'm missing my exponential mark. So what's happening over here?
+
+1002
+02:40:56,980 --> 02:41:04,820
+I'm printing it out. So what I'm saying here that I'm saying here that please
+
+1003
+02:41:04,820 --> 02:41:12,780
+pick up this array and go through the indexes. So the indexes, these curly
+
+1004
+02:41:12,780 --> 02:41:17,700
+brackets in this case, it's the mark for the explanation mark. So that says that
+
+1005
+02:41:17,700 --> 02:41:20,980
+actually where I'm going through the indexes and not through the values
+
+1006
+02:41:20,980 --> 02:41:26,420
+itself. Otherwise that will give you the values of the array. And so what I'm
+
+1007
+02:41:26,420 --> 02:41:38,820
+saying here that every index has this value. So this is the way to print the array nicely.
+
+1008
+02:41:40,340 --> 02:41:45,700
+But the only thing that I have to, what I have forgotten to say here, so I have forgotten to
+
+1009
+02:41:46,740 --> 02:41:53,460
+define it. So let me just copy paste some dummy example from here. The address of the
+
+1010
+02:41:53,460 --> 02:41:54,980
+university I'm working at
+
+1011
+02:41:57,780 --> 02:42:01,780
+okay and then let it be even more
+
+1012
+02:42:07,060 --> 02:42:07,780
+like this
+
+1013
+02:42:11,780 --> 02:42:12,660
+so let's see
+
+1014
+02:42:16,180 --> 02:42:19,220
+the only thing that I have to change mode once again
+
+1015
+02:42:23,460 --> 02:42:40,260
+oh here you go so my small for loop just went through every single element of that array and
+
+1016
+02:42:40,260 --> 02:42:41,140
+kept it over here
+
+1017
+02:42:44,660 --> 02:42:52,020
+most probably cases where you end up using this it's the assigning of the area elements
+
+1018
+02:42:52,020 --> 02:43:00,820
+from some command output. That's the way it's being done. So again you put the list and then
+
+1019
+02:43:00,820 --> 02:43:06,580
+inside of the list you just expect some command substitution and then that means that you expect
+
+1020
+02:43:06,580 --> 02:43:14,900
+actually some list of some items over here. So they will be automatically assigned to one,
+
+1021
+02:43:14,900 --> 02:43:16,660
+one, two, three, et cetera.
+
+1022
+02:43:16,660 --> 02:43:18,580
+If you need to append elements,
+
+1023
+02:43:18,580 --> 02:43:22,640
+so this arithmetic stuff will work also
+
+1024
+02:43:22,640 --> 02:43:26,160
+for the array elements.
+
+1025
+02:43:26,160 --> 02:43:29,000
+If you want to kill them somehow,
+
+1026
+02:43:29,000 --> 02:43:31,280
+so for instance, you want just empty,
+
+1027
+02:43:31,280 --> 02:43:33,920
+that's enough if you just assign the empty list
+
+1028
+02:43:33,920 --> 02:43:37,000
+to the array, or if you want to unset it completely.
+
+1029
+02:43:37,000 --> 02:43:40,240
+So in the same way as you would do it with the variable,
+
+1030
+02:43:40,240 --> 02:43:43,220
+you can do it with the name of array.
+
+1031
+02:43:43,220 --> 02:43:44,780
+So that should be just there.
+
+1032
+02:43:45,900 --> 02:43:50,900
+And then, if you want to unset, for instance,
+
+1033
+02:43:51,160 --> 02:43:53,340
+just one particular element that's over here,
+
+1034
+02:43:53,340 --> 02:43:57,160
+do you remember I told you that how to make the sorting?
+
+1035
+02:43:57,160 --> 02:44:00,340
+It's not straightforward at all.
+
+1036
+02:44:00,340 --> 02:44:03,740
+So you have to be really, so you are using,
+
+1037
+02:44:03,740 --> 02:44:08,180
+this is where you are using our key string operator.
+
+1038
+02:44:08,180 --> 02:44:12,620
+And so you are using also the, in general,
+
+1039
+02:44:12,620 --> 02:44:21,660
+sort command and then the command substitution so it's not it's not that cool at all
+
+1040
+02:44:24,060 --> 02:44:32,060
+same to say if the normal array indexed array what I'm saying about
+
+1041
+02:44:36,140 --> 02:44:38,300
+let me check it something
+
+1042
+02:44:43,260 --> 02:44:44,780
+something is all going on
+
+1043
+02:44:48,700 --> 02:44:51,980
+but I don't really I didn't kill one of the process
+
+1044
+02:44:51,980 --> 02:44:56,620
+let me see which one I didn't kill and why it's still trying to do something
+
+1045
+02:45:02,620 --> 02:45:07,980
+no there should be nothing strange okay i'll take care about this later
+
+1046
+02:45:07,980 --> 02:45:31,580
+just to be sure okay so let me get back to this so as I told you the index array doesn't need
+
+1047
+02:45:31,580 --> 02:45:40,380
+any declaration. So whenever we have this r equals something, that's enough. But if we're
+
+1048
+02:45:40,380 --> 02:45:46,780
+thinking about associative array, what it looks like? Associative array, it's supposed to be when
+
+1049
+02:45:46,780 --> 02:45:54,460
+instead of index, numerical index, you actually have some real name and the key is a real name.
+
+1050
+02:45:54,460 --> 02:45:59,420
+So this is why sometimes they're called dictionaries like in Python. So basically you're
+
+1051
+02:45:59,420 --> 02:46:07,260
+saying here okay my e is university but the value of this element is the name of the university
+
+1052
+02:46:07,260 --> 02:46:13,500
+so it's kind of meta information and then the subject itself and this is what is called in
+
+1053
+02:46:13,500 --> 02:46:24,300
+the IT world the associative arrays and this what is in the bash world that needs to be declared
+
+1054
+02:46:24,300 --> 02:46:32,860
+so you need to say I mean if I will try to do this right from the command line and do this
+
+1055
+02:46:35,980 --> 02:46:41,180
+associative array right away it will be the error message so what I have to do I have to
+
+1056
+02:46:41,180 --> 02:46:50,220
+put the capital A and say that associative array will be this one now bash knows that I should
+
+1057
+02:46:50,220 --> 02:47:09,340
+be able to assign the array items this way okay syntax broken is address something is broken
+
+1058
+02:47:09,340 --> 02:47:10,300
+okay it's probably
+
+1059
+02:47:10,300 --> 02:47:21,820
+my light has gone off so the system thinks that I am out of this
+
+1060
+02:47:23,100 --> 02:47:25,980
+uh I'm pretty sure it's about the
+
+1061
+02:47:28,940 --> 02:47:29,440
+what
+
+1062
+02:47:33,740 --> 02:47:37,980
+no it's actually all is correct okay so let me
+
+1063
+02:47:40,300 --> 02:47:50,020
+back so now if I want to read it declare minus P in the same way as you would do
+
+1064
+02:47:50,020 --> 02:48:00,780
+it previously so now I have it on the S bar interesting why so let's try to get
+
+1065
+02:48:00,780 --> 02:48:07,500
+it back again syntax error and expression error token is address
+
+1066
+02:48:07,500 --> 02:48:10,460
+um that's becoming interesting
+
+1067
+02:48:12,940 --> 02:48:16,700
+it's probably some misprint somewhere which I don't really see
+
+1068
+02:48:23,500 --> 02:48:28,620
+street address error in expression error token is address
+
+1069
+02:48:37,500 --> 02:48:43,500
+There should be somewhere a misprint which I don't see
+
+1070
+02:48:43,500 --> 02:48:45,500
+Well, anyway
+
+1071
+02:48:49,500 --> 02:48:54,500
+Let me delete at least this part, it has already been...
+
+1072
+02:48:54,500 --> 02:48:58,500
+Yeah, it probably didn't like that part at all
+
+1073
+02:48:58,500 --> 02:49:01,500
+Well, there is only one element, S4
+
+1074
+02:49:01,500 --> 02:49:03,500
+Why?
+
+1075
+02:49:07,500 --> 02:49:20,140
+now I'm in doubt what's going on so that should be pretty much correct so that has been declared
+
+1076
+02:49:21,180 --> 02:49:28,700
+as the associative array ah okay no it hasn't been declared as associative array so I did it in the
+
+1077
+02:49:28,700 --> 02:49:32,460
+wrong way so the name for the which has been declared is this one and the name that I've
+
+1078
+02:49:32,460 --> 02:49:39,580
+been using to assign it is this one so what I'm doing right here so that I will declare the right one
+
+1079
+02:49:42,620 --> 02:49:48,140
+okay it's even doing the converting random fly then I do the assignment
+
+1080
+02:49:48,140 --> 02:49:52,700
+proper one so you see that actually misprints uh-huh once again
+
+1081
+02:49:52,700 --> 02:50:01,820
+as declare ah it says me it cannot convert okay I want to kill it first
+
+1082
+02:50:04,220 --> 02:50:11,660
+like that I want to declare it once again clearly it's okay and now I want to put it like that and
+
+1083
+02:50:11,660 --> 02:50:21,580
+now I should be able to print it as array okay now everything is perfect so you see that sometimes
+
+1084
+02:50:21,580 --> 02:50:28,380
+mistype and lead you to these kind of unpleasant surprises. But anyway, here you go.
+
+1085
+02:50:29,820 --> 02:50:36,060
+And the way you work with them is pretty much the same. So let me demonstrate you on exactly the same
+
+1086
+02:50:36,060 --> 02:50:49,820
+beam beam array and so if I do the assignment we're here that way yeah
+
+1087
+02:50:49,820 --> 02:50:57,180
+and I do the declaration right away and now I do the commenting so you can see
+
+1088
+02:50:57,180 --> 02:51:02,900
+that actually I do the declaration and then assigning of this stuff on the same
+
+1089
+02:51:02,900 --> 02:51:14,340
+line which is correct it can be done as well this way and now I should be able to print associative
+
+1090
+02:51:14,340 --> 02:51:23,220
+array in the same way as I would do it with the index but instead of index I would use keys so
+
+1091
+02:51:23,220 --> 02:51:29,620
+let's see how it goes so it goes perfectly as expected so you can see that the
+
+1092
+02:51:29,620 --> 02:51:39,860
+element the key is here and the element is here and so the only thing that I've lost somehow on
+
+1093
+02:51:39,860 --> 02:51:48,820
+the way this treating the address which is not what I want so this is probably
+
+1094
+02:51:59,620 --> 02:52:07,460
+it could be something like this or it could be better something like this
+
+1095
+02:52:11,140 --> 02:52:19,540
+i think that was there why we didn't get it properly street is addresses why they are missing
+
+1096
+02:52:19,540 --> 02:52:29,140
+Okay, this is a demo effect. I didn't try, I didn't test this script, so
+
+1097
+02:52:31,140 --> 02:52:37,780
+we'll not go deeply into that. Let me spend my last seven minutes better saying you something
+
+1098
+02:52:37,780 --> 02:52:43,700
+more useful. So this is one of the examples which I wanted to tell you, and this is copy-pasted just
+
+1099
+02:52:43,700 --> 02:52:50,580
+from my own bin directory. So this is one of the things which I'm doing more or less
+
+1100
+02:52:52,420 --> 02:53:00,180
+automation for my backups. And in a sense, in parallel, that's a demonstration how to use
+
+1101
+02:53:00,180 --> 02:53:08,420
+the associative arrays. So look at this. So I do the declaration of the associative array called
+
+1102
+02:53:08,420 --> 02:53:15,140
+dirs and then I define for every several items for every single directory which I want to
+
+1103
+02:53:15,780 --> 02:53:21,860
+make a backup I define it like this you can define it some other way I'm just for the sake
+
+1104
+02:53:21,860 --> 02:53:26,820
+of readability do it this way but you can put it everything in one line and that will be also
+
+1105
+02:53:27,620 --> 02:53:34,260
+pretty much working solution now I do something with my rsync so I defined what I want to do with
+
+1106
+02:53:34,260 --> 02:53:41,460
+the where I want to put what kind of options will be given to the rsync and now what I'm
+
+1107
+02:53:41,460 --> 02:53:49,540
+happening over here so that I go through all the indexes in that array all the keys sorry
+
+1108
+02:53:49,540 --> 02:53:56,020
+from that array and syncing them in a way that I just substitute the value of that one
+
+1109
+02:53:56,020 --> 02:54:05,640
+and then everything what comes from here that's that very simple but yet working
+
+1110
+02:54:05,640 --> 02:54:11,940
+solution so nothing would stop you from making a single list but as soon as you
+
+1111
+02:54:11,940 --> 02:54:17,440
+learn how to use arrays I'm pretty sure you will not use the lists anymore you
+
+1112
+02:54:17,440 --> 02:54:20,980
+will start using the arrays so that's kind of advanced techniques and let's
+
+1113
+02:54:20,980 --> 02:54:29,100
+leave those normal lists to newbies and unadvanced users of Bash. So I have five
+
+1114
+02:54:29,100 --> 02:54:38,900
+minutes left, actually four and fifty, so my task was that we would have
+
+1115
+02:54:38,900 --> 02:54:48,140
+done already one more exercise, but I think it's just doesn't make sense to
+
+1116
+02:54:48,140 --> 02:55:01,180
+keep being in a rush, I put the exercise over here. I can say this will remain as a homework
+
+1117
+02:55:02,300 --> 02:55:07,660
+if you want to, if you're really keen on trying something. And if you have any trouble,
+
+1118
+02:55:07,660 --> 02:55:16,700
+please send me an email, I can help you with the code. Then what I would definitely ask you to do
+
+1119
+02:55:16,700 --> 02:55:25,180
+is to go at the very end of this document and give us some feedback so please
+
+1120
+02:55:25,980 --> 02:55:33,020
+I will leave you four minutes of your valuable time to write a couple of words for us which
+
+1121
+02:55:33,020 --> 02:55:36,540
+are important in the sense that we are adapting the material all the time we're adapting the
+
+1122
+02:55:36,540 --> 02:55:42,700
+course the length of the course and the type of the material which we are going which we
+
+1123
+02:55:42,700 --> 02:55:48,940
+you are getting hands-on tutorial etc so otherwise I thank you for the
+
+1124
+02:55:48,940 --> 02:55:54,580
+participation of this course and then also I already mentioned to [name] if
+
+1125
+02:55:54,580 --> 02:55:59,220
+you're up for the credit if you want to go for the credit then just let me know
+
+1126
+02:55:59,220 --> 02:56:07,140
+or let [name] know we have some special assignments really to know these are
+
+1127
+02:56:07,140 --> 02:56:12,460
+quite complicated but I can still provide you and if you are really want
+
+1128
+02:56:12,460 --> 02:56:20,860
+spend more time so you I can make sure that you will spend at least more at least one week doing
+
+1129
+02:56:20,860 --> 02:56:26,460
+some other work for the bash programming and learning some stuff and then I can also promise
+
+1130
+02:56:26,460 --> 02:56:31,980
+for myself that I can help with the special assignment if there will be a need but anyway
+
+1131
+02:56:31,980 --> 02:56:39,820
+that's an option thank you from my side and I'm done so [name] if you want to say something that's
+
+1132
+02:56:39,820 --> 02:56:55,180
+the time. I'm muting myself. Otherwise, when you're done with the feedback, that's it.
+
