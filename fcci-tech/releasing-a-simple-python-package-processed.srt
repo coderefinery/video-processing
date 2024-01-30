@@ -1,0 +1,2720 @@
+1
+00:00:00,000 --> 00:00:14,160
+So today, our research software engineer at Jarno will demonstrate taking some code and extracting it out from another library and publishing it on PyPI, the Python Package Index.
+
+2
+00:00:14,820 --> 00:00:18,900
+So this is basically a common-ish thing we do.
+
+3
+00:00:19,560 --> 00:00:27,580
+It's also common to do most of the steps but not publish it, but it can be installed through a repository directly.
+
+4
+00:00:27,580 --> 00:00:33,660
+but anyway this is hopefully a quick demo of something that basically works so you can follow
+
+5
+00:00:33,660 --> 00:00:39,380
+the steps along later is that a correct introduction so that's what we'll be
+
+6
+00:00:39,380 --> 00:00:47,640
+doing and it's essentially all the steps in um creating an open source publication in python
+
+7
+00:00:47,640 --> 00:00:54,480
+except writing the actual code so I thought it's a pretty good example because
+
+8
+00:00:54,480 --> 00:01:01,160
+So it shows everything you need to know, except the stuff that I cannot know.
+
+9
+00:01:04,700 --> 00:01:05,820
+Should we get started?
+
+10
+00:01:08,860 --> 00:01:11,800
+I will share my screen.
+
+11
+00:01:14,140 --> 00:01:15,320
+Here we go.
+
+12
+00:01:19,140 --> 00:01:20,640
+Okay, that's the right desktop.
+
+13
+00:01:20,640 --> 00:01:28,640
+Okay, so I'm sharing my whole screen. So let me know if the font is too small. Can I even increase the font in this?
+
+14
+00:01:28,640 --> 00:01:45,640
+Oh, well. So I made a really rough plan and you can add questions and add things into the plan as we go, but it's not going to be visible most of the time.
+
+15
+00:01:45,640 --> 00:01:54,040
+the time. I will maybe take a quick look. But the first part is to quickly take a look at the code
+
+16
+00:01:54,040 --> 00:02:04,520
+that we already have and then from there decide what we're going to do. So I will go to the actual
+
+17
+00:02:04,520 --> 00:02:15,080
+Repository. Did you see my screen before this moment? No, now I first see it. Okay, so it took
+
+18
+00:02:15,080 --> 00:02:20,840
+a while to share it. I'll actually show the thing I told you I was showing because I guess you didn't
+
+19
+00:02:20,840 --> 00:02:27,720
+see it. So I mean it's not a very detailed plan but there's some notes here and we can add stuff
+
+20
+00:02:27,720 --> 00:02:39,240
+ as I already explained quickly the plan I guess so actually
+
+21
+00:02:39,240 --> 00:02:46,840
+let's follow the plan and look so the first thing is a quick look at the code and then
+
+22
+00:02:46,840 --> 00:02:53,960
+what do we actually need to publish it so we can think through the steps and start a repository
+
+23
+00:02:54,680 --> 00:03:03,560
+and add what we need. So I'll use VS Code to open this folder and it opens on the wrong screen.
+
+24
+00:03:04,840 --> 00:03:13,080
+Here we are. And the file that was added, there are a lot of files here. This is a big project
+
+25
+00:03:13,080 --> 00:03:21,560
+that has a specific purpose. And the specific purpose importantly is not handling email and
+
+26
+00:03:21,560 --> 00:03:26,560
+and handling this big email inbox files.
+
+27
+00:03:28,840 --> 00:03:33,460
+So one thing we want to do with this project
+
+28
+00:03:33,460 --> 00:03:38,460
+is though to be able to open specifically email inbox files
+
+29
+00:03:39,200 --> 00:03:44,200
+that are exported from Google and do some processing,
+
+30
+00:03:44,980 --> 00:03:49,980
+create some sort of condensed view of email activity
+
+31
+00:03:49,980 --> 00:03:56,460
+activity from that file. And for that, we need to be able to read the email inbox. That's not
+
+32
+00:03:56,460 --> 00:04:02,620
+at all core functionality here in this project, but it is a useful thing you can do. There is
+
+33
+00:04:02,620 --> 00:04:10,000
+a Python package called email, which we're using, but there's some things that we need to do that
+
+34
+00:04:10,000 --> 00:04:15,900
+go beyond what email can do directly. So this is this small bit of code, this one single file that
+
+35
+00:04:15,900 --> 00:04:25,720
+does what we need. Some passing email addresses in a list. So this is a string that is a comma
+
+36
+00:04:25,720 --> 00:04:31,420
+separated list of email addresses. And we want the actual email address, not the name, for example,
+
+37
+00:04:31,420 --> 00:04:39,560
+that often is contained in the string. And this is just for opening and reading specifically the
+
+38
+00:04:39,560 --> 00:04:43,540
+Google's version of a mailbox file.
+
+39
+00:04:43,960 --> 00:04:47,600
+So there is a standard, but the standard is very open
+
+40
+00:04:47,600 --> 00:04:50,060
+and there's differences between inbox files.
+
+41
+00:04:51,680 --> 00:04:55,860
+So basically this one file is what you'd like to split out to another package
+
+42
+00:04:55,860 --> 00:04:57,980
+because it's useful alone.
+
+43
+00:04:58,980 --> 00:05:03,100
+So this is kind of generally possibly useful for others
+
+44
+00:05:03,100 --> 00:05:07,660
+and it is definitely not core functionality for this software
+
+45
+00:05:07,660 --> 00:05:09,320
+that we are looking at.
+
+46
+00:05:09,560 --> 00:05:17,480
+Okay, so to do that, what's the first thing, so we need to publish it somewhere, of course,
+
+47
+00:05:17,480 --> 00:05:19,080
+we need to put the code somewhere.
+
+48
+00:05:19,080 --> 00:05:21,460
+This is already on GitHub, this code.
+
+49
+00:05:21,460 --> 00:05:24,860
+So we're using GitHub.
+
+50
+00:05:24,860 --> 00:05:29,800
+So that it just the code itself will be public somewhere.
+
+51
+00:05:29,800 --> 00:05:34,200
+And we'll need a license and we'll need some documentation or at least a readme.
+
+52
+00:05:34,200 --> 00:05:38,020
+It's a very short, relatively small package.
+
+53
+00:05:38,020 --> 00:05:46,420
+readme is enough. What else do we need? We can of course see what comes to mind
+
+54
+00:05:46,420 --> 00:05:54,900
+as we go. Probably dependencies, right? Dependencies, all the project metadata.
+
+55
+00:05:54,900 --> 00:06:07,020
+Yes, citations.cff file. I think these are the most important part.
+
+56
+00:06:07,020 --> 00:06:11,540
+They didn't show it, but we do have tests for this email reader.
+
+57
+00:06:12,260 --> 00:06:14,240
+So we will include those in the repository.
+
+58
+00:06:16,220 --> 00:06:18,980
+Okay, well, let's go ahead and let's go to GitHub.
+
+59
+00:06:22,280 --> 00:06:24,560
+And for the recording, I hope I don't need to log in.
+
+60
+00:06:24,780 --> 00:06:25,040
+I don't.
+
+61
+00:06:26,280 --> 00:06:30,640
+And so this is the way I would now recommend actually starting.
+
+62
+00:06:30,640 --> 00:06:35,880
+So you go to whatever online thing you want to publish your code in and create a new repository.
+
+63
+00:06:35,880 --> 00:06:38,420
+rather than creating a repository on your laptop
+
+64
+00:06:38,420 --> 00:06:41,680
+and then pushing it to this online thing
+
+65
+00:06:41,680 --> 00:06:44,100
+because now you don't have to worry
+
+66
+00:06:44,100 --> 00:06:46,200
+about initializing an empty repository.
+
+67
+00:06:47,560 --> 00:06:50,780
+So what should we call it?
+
+68
+00:06:53,180 --> 00:06:55,460
+Because email is already a Python package
+
+69
+00:06:55,460 --> 00:06:57,800
+and this is more specific than that.
+
+70
+00:06:58,360 --> 00:07:01,460
+It's something like email utilities or...
+
+71
+00:07:01,460 --> 00:07:04,220
+Google take out email or something.
+
+72
+00:07:05,880 --> 00:07:07,080
+Well, whatever.
+
+73
+00:07:07,460 --> 00:07:10,560
+I guess this can be changed later until it's published.
+
+74
+00:07:18,460 --> 00:07:31,220
+Read around some utilities for the email inbox in.
+
+75
+00:07:32,160 --> 00:07:34,280
+Now I'm actually starting to think.
+
+76
+00:07:35,880 --> 00:07:41,320
+Google takeout so Google takeout comes as a zip file and we do read the zip file in the code but
+
+77
+00:07:41,320 --> 00:07:47,960
+not in this file that I'm thinking of exporting so this is for reading files directly or files
+
+78
+00:07:47,960 --> 00:07:52,680
+that have already been opened with zip file but it would actually be good a good idea to add the
+
+79
+00:07:52,680 --> 00:07:59,080
+ability to read the email directly from this Google takeout zip file but we're not doing it
+
+80
+00:07:59,080 --> 00:08:06,440
+now so it's missing a feature that I think is useful. Let's add a gitignore template for
+
+81
+00:08:07,000 --> 00:08:13,960
+Python. This is super useful if you don't have to worry about files. And already here it's asking
+
+82
+00:08:13,960 --> 00:08:21,720
+for or you can choose a license and I want to use the MIT license. I wrote the whole thing so
+
+83
+00:08:21,720 --> 00:08:28,560
+So it's not, I don't need to think that much about what the license is.
+
+84
+00:08:29,860 --> 00:08:34,560
+But let me still just quickly check what the license is in this original.
+
+85
+00:08:34,760 --> 00:08:35,400
+It is MIT.
+
+86
+00:08:35,840 --> 00:08:40,580
+So definitely taking something from published in MIT and publishing it as MIT is fine.
+
+87
+00:08:45,140 --> 00:08:47,580
+So let's go create a report story.
+
+88
+00:08:48,260 --> 00:08:48,460
+Okay.
+
+89
+00:08:48,460 --> 00:08:56,140
+So here we have a very small initial repository. I'll create a new
+
+90
+00:08:56,140 --> 00:09:15,020
+terminal and clone it. So this is the address. Here we are. And open it. So now
+
+91
+00:09:15,020 --> 00:09:21,980
+I will be copying a bunch of stuff from one place to another. So I'll have two
+
+92
+00:09:21,980 --> 00:09:37,180
+windows side-by-side. Start with the README. We have this little bit of
+
+93
+00:09:37,180 --> 00:09:42,000
+a comment text here that explains what this file does and since the file will
+
+94
+00:09:42,000 --> 00:09:48,420
+be the entire package. This is now essentially the contents of the readme file. Oh, I don't
+
+95
+00:09:48,420 --> 00:09:56,600
+actually want to edit the original repository here. Okay. And probably I want to take out
+
+96
+00:09:56,600 --> 00:10:06,620
+these underscores here and make it a proper title. Let's say this is enough for now. It
+
+97
+00:10:06,620 --> 00:10:13,240
+could contain examples of how to use it and it could tell you how to there's nothing specific
+
+98
+00:10:13,240 --> 00:10:17,420
+about installing it but how to run tests for example but that's also just pytest so
+
+99
+00:10:17,420 --> 00:10:26,520
+we'll get to that but let's say that the readme is enough for now now in this file itself I will
+
+100
+00:10:26,520 --> 00:10:33,940
+create a new file so this is a python package that only contains one file so you could still
+
+101
+00:10:33,940 --> 00:10:41,060
+create a new folder and create an init file and create the put the contents in
+
+102
+00:10:42,820 --> 00:10:50,340
+well you need a separate files or a single file the simplest way is to just create a file
+
+103
+00:10:56,180 --> 00:11:03,300
+a python file like this and now when you install this package this python file can be imported
+
+104
+00:11:03,300 --> 00:11:17,860
+directly okay so whoops I did not copy this so close that okay so we'll need two packages
+
+105
+00:11:19,700 --> 00:11:29,300
+email and regular expressions and I think neither one needs to be installed both of them are in the
+
+106
+00:11:29,300 --> 00:11:37,460
+so that would be you can find out from looking at requirements yeah so both
+
+107
+00:11:37,460 --> 00:11:44,180
+packages exist by our in the default Python installation so we don't actually have any
+
+108
+00:11:44,180 --> 00:11:53,780
+requirements any dependencies for this and then I'll just pick up the code from here
+
+109
+00:11:53,780 --> 00:11:58,280
+at least I think that it doesn't have any dependencies
+
+110
+00:11:58,280 --> 00:12:01,600
+but we'll see
+
+111
+00:12:01,600 --> 00:12:04,660
+there is at least one dependency that we will add in a moment
+
+112
+00:12:04,660 --> 00:12:06,220
+and that's pytest
+
+113
+00:12:06,220 --> 00:12:08,340
+but that's only for development
+
+114
+00:12:08,340 --> 00:12:14,140
+so that's the main package
+
+115
+00:12:14,140 --> 00:12:15,620
+now
+
+116
+00:12:15,620 --> 00:12:20,040
+what else do we need to do here
+
+117
+00:12:20,040 --> 00:12:23,020
+I guess let's go to the tests
+
+118
+00:12:23,020 --> 00:12:30,720
+Oh, let's actually first add the README commit to TurboStory.
+
+119
+00:12:30,720 --> 00:12:31,720
+Sorry?
+
+120
+00:12:31,720 --> 00:12:32,720
+Yeah.
+
+121
+00:12:32,720 --> 00:12:33,720
+Making the initial commit.
+
+122
+00:12:33,720 --> 00:12:34,720
+Oh, yeah.
+
+123
+00:12:34,720 --> 00:12:39,840
+Yeah, there is an initial commit because it came from GitHub.
+
+124
+00:12:39,840 --> 00:12:40,840
+Yeah.
+
+125
+00:12:40,840 --> 00:12:41,840
+Okay.
+
+126
+00:12:41,840 --> 00:12:48,260
+So first you're committing the README update.
+
+127
+00:12:48,260 --> 00:12:50,900
+Yeah.
+
+128
+00:12:50,900 --> 00:12:59,280
+And then I'm, oh, it shows, interesting, okay, this is new for me, it's just incoming and
+
+129
+00:12:59,280 --> 00:13:07,620
+outgoing, so you can, I have changes that are not in the online repository, okay.
+
+130
+00:13:07,620 --> 00:13:19,280
+So Google take out email, and this is just the entire file, so, yeah.
+
+131
+00:13:19,280 --> 00:13:24,740
+And I guess you've made this entire file yourself, so there's no other licensing.
+
+132
+00:13:24,740 --> 00:13:31,220
+It is published as MIT, so that's not actually a concern here anyway, but I did write the
+
+133
+00:13:31,220 --> 00:13:32,000
+whole file myself.
+
+134
+00:13:33,520 --> 00:13:36,980
+I mean, of course, often that can be an important thing to check.
+
+135
+00:13:37,280 --> 00:13:39,500
+You need to ask all the authors before publishing stuff.
+
+136
+00:13:44,440 --> 00:13:44,960
+Okay.
+
+137
+00:13:44,960 --> 00:13:48,720
+so now we have
+
+138
+00:13:48,720 --> 00:13:49,820
+all the basics
+
+139
+00:13:49,820 --> 00:13:52,520
+we can import this
+
+140
+00:13:52,520 --> 00:13:53,540
+and we should probably check
+
+141
+00:13:53,540 --> 00:13:56,520
+that all of those imports are real
+
+142
+00:13:56,520 --> 00:13:58,580
+so that they are
+
+143
+00:13:58,580 --> 00:13:59,600
+actually in this
+
+144
+00:13:59,600 --> 00:14:02,060
+the base Python package
+
+145
+00:14:02,060 --> 00:14:04,160
+so to do that
+
+146
+00:14:04,160 --> 00:14:06,480
+what I will do, and you can do this in many ways
+
+147
+00:14:06,480 --> 00:14:08,400
+in fact there are probably these days
+
+148
+00:14:08,400 --> 00:14:09,800
+better ways that I haven't learned yet
+
+149
+00:14:09,800 --> 00:14:11,500
+I will use conda
+
+150
+00:14:11,500 --> 00:14:14,440
+to create a new
+
+151
+00:14:14,440 --> 00:14:33,540
+environment. Let's just use the name of the folder, activate it and what I will
+
+152
+00:14:33,540 --> 00:14:42,800
+need to install is pip because I want to install dependencies through pip. In the
+
+153
+00:14:42,800 --> 00:14:50,480
+end we will be publishing this on PyPy. So just to be sort of self-contained everything,
+
+154
+00:14:50,480 --> 00:14:56,640
+all the dependencies come from PyPy. PyPy is the tool for installing things from PyPy.
+
+155
+00:14:57,600 --> 00:15:07,520
+And PyPy is the Python package index. But we'll get to that. So now we have PyPy.
+
+156
+00:15:07,520 --> 00:15:15,740
+I'm on one hand assuming that most of these things are familiar to anyone using Python,
+
+157
+00:15:15,740 --> 00:15:21,680
+but on the other hand, it's always good to mention. So we are using the right pip. This
+
+158
+00:15:21,680 --> 00:15:27,140
+is something that you have to do with conda. You have to check that you actually have pip
+
+159
+00:15:27,140 --> 00:15:34,580
+in the conda environment. I don't have any dependencies listed, so I'm not going to use
+
+160
+00:15:34,580 --> 00:15:44,820
+pip to install anything. I will just run Python and try to import. Tab completion doesn't work
+
+161
+00:15:44,820 --> 00:15:53,140
+because I'm not using IPython. Okay. It seems to work.
+
+162
+00:15:53,140 --> 00:15:54,820
+So you're basically testing it interactively.
+
+163
+00:15:54,820 --> 00:15:55,860
+Yeah.
+
+164
+00:15:55,860 --> 00:15:57,860
+So can you...
+
+165
+00:15:57,860 --> 00:16:06,340
+mailbox reader actually started of course it's google take out email dot mailbox reader
+
+166
+00:16:06,340 --> 00:16:10,740
+and it's a class yeah and you would initialize it yeah so you need to give
+
+167
+00:16:10,740 --> 00:16:15,700
+it actually a file handle to a mailbox file or a string that is file name
+
+168
+00:16:18,980 --> 00:16:25,060
+test file doesn't exist so it will give me an error okay
+
+169
+00:16:25,060 --> 00:16:34,440
+Um, right. That's good. Then the next thing is that we need to create these tests. So
+
+170
+00:16:34,440 --> 00:16:39,720
+I get, I will put them in a separate folder, even though there is only one test file. So
+
+171
+00:16:39,720 --> 00:16:49,480
+tests. So in this original code, there is a folder called tests with a bunch of sub
+
+172
+00:16:49,480 --> 00:16:51,160
+folders. And here's the test email.
+
+173
+00:16:52,000 --> 00:16:54,540
+Uh-huh. And you are, so you already have the tests also.
+
+174
+00:16:54,540 --> 00:16:55,540
+Yes.
+
+175
+00:16:55,540 --> 00:16:56,540
+Okay.
+
+176
+00:16:56,540 --> 00:16:57,540
+That's good.
+
+177
+00:16:57,540 --> 00:17:12,220
+Screen new file, test, Google take out email.py.
+
+178
+00:17:12,220 --> 00:17:14,800
+Here we're importing OS.
+
+179
+00:17:14,800 --> 00:17:21,920
+So this config file, the NIMBY is the package that this comes from.
+
+180
+00:17:21,920 --> 00:17:30,000
+So this just tells where the test mailbox file is.
+
+181
+00:17:30,320 --> 00:17:31,620
+So we'll need to change that.
+
+182
+00:17:31,980 --> 00:17:32,120
+Yeah.
+
+183
+00:17:32,680 --> 00:17:34,460
+I guess you need to embed the test data.
+
+184
+00:17:34,880 --> 00:17:35,160
+Yeah.
+
+185
+00:17:35,280 --> 00:17:38,820
+So we need to also move the test data into the package.
+
+186
+00:17:39,380 --> 00:17:42,420
+This is a complication I didn't actually properly prepare for,
+
+187
+00:17:42,420 --> 00:17:45,760
+but we'll have something to refer to.
+
+188
+00:17:46,260 --> 00:17:49,940
+So the main thing I guess here is most of these things,
+
+189
+00:17:50,040 --> 00:17:51,220
+I don't know how to do by heart.
+
+190
+00:17:51,220 --> 00:17:53,800
+I will actually refer to something.
+
+191
+00:17:54,420 --> 00:17:54,980
+Okay, yeah.
+
+192
+00:17:55,720 --> 00:17:56,740
+Just like me.
+
+193
+00:17:57,180 --> 00:18:00,080
+Yes, that's the way you should be doing it.
+
+194
+00:18:01,280 --> 00:18:03,160
+Almost every time I make a new project,
+
+195
+00:18:03,160 --> 00:18:07,060
+I find a recent one that is similar
+
+196
+00:18:07,060 --> 00:18:10,860
+and copy it from myself.
+
+197
+00:18:11,840 --> 00:18:15,360
+So now if I directly import Google Takeout email,
+
+198
+00:18:15,540 --> 00:18:17,160
+that assumes that I have used pip
+
+199
+00:18:17,160 --> 00:18:19,820
+to install it on my system before I run the tests.
+
+200
+00:18:21,220 --> 00:18:26,220
+So another option would be to actually do,
+
+201
+00:18:27,280 --> 00:18:30,600
+well, you could go down a level and import it from there,
+
+202
+00:18:30,600 --> 00:18:35,600
+but I think this is common practice and it works.
+
+203
+00:18:38,840 --> 00:18:41,260
+It just requires that you have it actually,
+
+204
+00:18:41,260 --> 00:18:42,980
+pip installed this package.
+
+205
+00:18:44,280 --> 00:18:48,440
+Okay, so we actually do need a new folder called data
+
+206
+00:18:48,440 --> 00:18:51,200
+or test data.
+
+207
+00:18:56,420 --> 00:18:58,020
+Should it be in the test folder?
+
+208
+00:18:58,880 --> 00:19:00,040
+I guess that makes sense.
+
+209
+00:19:00,120 --> 00:19:00,880
+Kind of makes sense.
+
+210
+00:19:01,600 --> 00:19:03,780
+It's also easier to write out the path.
+
+211
+00:19:04,980 --> 00:19:05,100
+Yeah.
+
+212
+00:19:07,060 --> 00:19:09,180
+Oh, that's okay.
+
+213
+00:19:09,660 --> 00:19:12,260
+So I will simplify the name.
+
+214
+00:19:12,260 --> 00:19:16,740
+So this is actually the name of the mailbox file
+
+215
+00:19:16,740 --> 00:19:17,880
+in the Google takeout.
+
+216
+00:19:18,440 --> 00:19:20,900
+So, I will slightly simplify it.
+
+217
+00:19:24,800 --> 00:19:27,640
+So, we actually need OS.join.
+
+218
+00:19:27,700 --> 00:19:29,040
+Oh, we are using OS.join.
+
+219
+00:19:31,240 --> 00:19:35,580
+This is the function we are calling here is OS.join to get the path correctly.
+
+220
+00:19:35,780 --> 00:19:41,180
+So, the folder is testdata and the file is test.mbox.
+
+221
+00:19:43,920 --> 00:19:46,800
+Here, on the other hand, where is this test?
+
+222
+00:19:48,440 --> 00:19:57,660
+mailbox file here so this is this is a test file this is what a mailbox file
+
+223
+00:19:57,660 --> 00:20:03,940
+looks like there's the content of the body of the message and here's some
+
+224
+00:20:03,940 --> 00:20:10,020
+metadata fields like sender and who is it from who is it to when was it
+
+225
+00:20:10,020 --> 00:20:17,420
+received all of that yes it looks a lot like standard email stuff yeah and it's
+
+226
+00:20:17,420 --> 00:20:30,540
+just text. Okay, so now we have the mailbox file and we have the test. And it will try to read
+
+227
+00:20:31,260 --> 00:20:37,980
+from that file. Now we do need to install some a dependency, but this is a development dependency.
+
+228
+00:20:37,980 --> 00:20:48,220
+so I guess I will call it requirements-dev.txt. Just write down the dependencies. It is always
+
+229
+00:20:48,220 --> 00:20:54,860
+useful to write down all the dependencies anyway. So this is pytest. Here is a dependency and here
+
+230
+00:20:54,860 --> 00:21:04,460
+we find the terminal window. So we in fact should install pytest into this environment.
+
+231
+00:21:04,460 --> 00:21:15,700
+And whoops, pip install, pytest, not just pip pytest. Okay, here we are. And now I
+
+232
+00:21:15,700 --> 00:21:21,020
+think if I just run pytestings and things will not work because I haven't installed
+
+233
+00:21:21,020 --> 00:21:28,660
+this package. Right. I also cannot install it yet because I didn't make it a Python package
+
+234
+00:21:28,660 --> 00:21:50,880
+yet. So let's go there next. Actually, yeah, commit this stuff first. Okay, tests and test
+
+235
+00:21:50,880 --> 00:21:58,360
+data. Just push them already. Okay, so again, I guess, why not use this as reference? In
+
+236
+00:21:58,360 --> 00:22:02,340
+In fact, this is something I didn't write, I will tell you, because this is something
+
+237
+00:22:02,340 --> 00:22:09,060
+Richard wrote.
+
+238
+00:22:09,060 --> 00:22:14,100
+But I will not copy this directly because this is not actually quite exactly what we
+
+239
+00:22:14,100 --> 00:22:16,720
+want to do.
+
+240
+00:22:16,720 --> 00:22:18,720
+I will just use it as reference.
+
+241
+00:22:18,720 --> 00:22:25,020
+So to make a Python package, should we actually do it the modern way and not use setup.py,
+
+242
+00:22:25,020 --> 00:22:26,020
+but use a toml file?
+
+243
+00:22:26,020 --> 00:22:29,520
+Yeah, I can find... Do you have an example to copy from?
+
+244
+00:22:30,240 --> 00:22:33,500
+I have written those.
+
+245
+00:22:33,840 --> 00:22:35,740
+While you're looking, I can explain the background.
+
+246
+00:22:36,040 --> 00:22:43,140
+So what we saw in the old code was a setup.py file, which is probably many years old.
+
+247
+00:22:44,020 --> 00:22:49,400
+It's the old way of storing or of declaring package metadata.
+
+248
+00:22:49,400 --> 00:22:55,160
+data, it's executable Python code, which makes problems because you can't execute it until
+
+249
+00:22:55,160 --> 00:22:58,440
+you have stuff installed already.
+
+250
+00:22:58,440 --> 00:23:06,460
+The new method is a file called pyproject.toml, and it declaratively defines all the same
+
+251
+00:23:06,460 --> 00:23:09,200
+things you see as here.
+
+252
+00:23:09,200 --> 00:23:16,140
+So basically what you need, like, both declares what the build system is and the properties
+
+253
+00:23:16,140 --> 00:23:17,140
+of the project.
+
+254
+00:23:17,140 --> 00:23:28,080
+Okay. I'm unfortunately still looking. I guess I should just find the documentation
+
+255
+00:23:28,080 --> 00:23:29,080
+rather than an example.
+
+256
+00:23:29,080 --> 00:23:34,860
+I have a copy I can paste into the Zoom chat.
+
+257
+00:23:34,860 --> 00:23:35,860
+Okay. Thanks.
+
+258
+00:23:35,860 --> 00:23:36,860
+Okay. There.
+
+259
+00:23:36,860 --> 00:23:45,440
+That's the chat. Now it's open on my shared screen. Oh, okay. So I guess I'll directly
+
+260
+00:23:45,440 --> 00:23:49,940
+copy this and make changes. Yeah, it's made as a
+
+261
+00:23:53,360 --> 00:23:58,720
+Oh, it is an example. Okay. Yeah, it's from my own templates.
+
+262
+00:24:03,320 --> 00:24:09,820
+Okay, so we need to create a PI project dot tumble and I've made
+
+263
+00:24:09,820 --> 00:24:18,540
+spelling error here. Hi project, but that's correct. Okay, so let's just look through this.
+
+264
+00:24:19,340 --> 00:24:26,540
+So this is using flit to actually build the package.
+
+265
+00:24:29,420 --> 00:24:37,420
+Our module name, I guess we have now started using Google take out email, which is fine.
+
+266
+00:24:39,820 --> 00:24:47,180
+Is pip name the same?
+
+267
+00:24:47,180 --> 00:24:51,320
+So I guess I'm assuming this is what you, so you type pip install and this name.
+
+268
+00:24:51,320 --> 00:24:57,440
+So I prefer if it's the same, but people sometimes use a different name.
+
+269
+00:24:57,440 --> 00:25:03,580
+So this is what you import or is it?
+
+270
+00:25:03,580 --> 00:25:06,820
+And this is the name that you install.
+
+271
+00:25:06,820 --> 00:25:18,040
+will also be auto detected. But anyway, yeah. It's better. Okay. Okay. Authors. And you
+
+272
+00:25:18,040 --> 00:25:24,760
+can also give an email in there. But I've never done that. I generally do. But would
+
+273
+00:25:24,760 --> 00:25:37,420
+be an email field like oh it's okay this is I'll check giving my work email here
+
+274
+00:25:37,420 --> 00:25:42,160
+is not a problem because I'm already using it in the example or in the test
+
+275
+00:25:42,160 --> 00:25:57,560
+data yes so it is email just like that yeah read me.md so the way the pyproject file works
+
+276
+00:25:57,560 --> 00:26:02,720
+is it automatically get or the way flit works is it automatically gets most of the metadata
+
+277
+00:26:02,720 --> 00:26:06,400
+data from the repository itself.
+
+278
+00:26:09,320 --> 00:26:16,340
+Okay, so I guess we don't need most of these fields dependent.
+
+279
+00:26:16,640 --> 00:26:20,180
+So I wonder if it finds dependencies directly, but we
+
+280
+00:26:20,180 --> 00:26:24,860
+don't have dependencies. It's an empty list. Right now. We will
+
+281
+00:26:24,860 --> 00:26:31,880
+actually require zip file once I've changed it so that it can
+
+282
+00:26:31,880 --> 00:26:37,880
+open the zip file directly but i'm not doing that now so so right now it's 33 minutes past the hour
+
+283
+00:26:37,880 --> 00:26:45,400
+so maybe yeah okay so yeah we will not do that today I mean in any case the point is not to
+
+284
+00:26:45,400 --> 00:26:51,480
+write the code here the point is to publish the package yeah so this is we don't have a script
+
+285
+00:26:51,480 --> 00:26:56,760
+here so we'll just get rid of that part but here you could you could add a script that you can
+
+286
+00:26:56,760 --> 00:27:02,440
+execute directly from the terminal so that you don't have to import in Python. So that's a
+
+287
+00:27:02,440 --> 00:27:09,960
+useful thing to take a look at. Yeah, option dependencies test, and then a PyTest.
+
+288
+00:27:11,080 --> 00:27:18,680
+We don't have, well, we have a repository URL, I guess, not the separate documentation URL.
+
+289
+00:27:18,680 --> 00:27:23,000
+and the repository URL is
+
+290
+00:27:23,000 --> 00:27:25,880
+somewhere here
+
+291
+00:27:25,880 --> 00:27:28,800
+okay
+
+292
+00:27:28,800 --> 00:27:31,080
+here we are
+
+293
+00:27:31,080 --> 00:27:34,480
+did I close it?
+
+294
+00:27:48,680 --> 00:27:51,760
+Okay. That was the quickest way to find it.
+
+295
+00:27:54,000 --> 00:27:58,780
+Okay. So it's github.com, but this is not how it works.
+
+296
+00:27:58,940 --> 00:28:01,600
+It's name and then...
+
+297
+00:28:01,600 --> 00:28:02,840
+Yeah. Within...
+
+298
+00:28:02,840 --> 00:28:03,020
+Yeah.
+
+299
+00:28:03,340 --> 00:28:03,860
+Okay.
+
+300
+00:28:04,880 --> 00:28:10,800
+Okay. Then there's some information here of how to build it and how to push it.
+
+301
+00:28:11,260 --> 00:28:12,500
+Or how to publish it.
+
+302
+00:28:12,740 --> 00:28:13,660
+Yeah. That's...
+
+303
+00:28:13,660 --> 00:28:14,820
+We will need that in a moment.
+
+304
+00:28:14,820 --> 00:28:19,380
+But now, since we have this, we should be able to pip install dot.
+
+305
+00:28:20,180 --> 00:28:21,900
+The dot is this folder.
+
+306
+00:28:24,260 --> 00:28:25,920
+Okay, that did not work.
+
+307
+00:28:26,620 --> 00:28:27,680
+No docstring.
+
+308
+00:28:29,580 --> 00:28:30,620
+Can you go down?
+
+309
+00:28:30,840 --> 00:28:31,480
+I thought I saw.
+
+310
+00:28:33,840 --> 00:28:35,600
+Please add a docstring to the module.
+
+311
+00:28:36,000 --> 00:28:39,660
+So it automatically gets something from the module.
+
+312
+00:28:39,660 --> 00:28:40,100
+Okay.
+
+313
+00:28:40,100 --> 00:28:45,060
+Okay, so I guess copy the same thing from before.
+
+314
+00:28:47,140 --> 00:28:50,920
+Okay, so this is the module.
+
+315
+00:28:51,440 --> 00:28:52,900
+Yeah, it needs a docstring.
+
+316
+00:28:53,160 --> 00:28:56,600
+It needs a docstring, and I guess it should be on top of the file.
+
+317
+00:28:57,860 --> 00:28:59,340
+Probably, I guess.
+
+318
+00:28:59,920 --> 00:29:03,920
+If it's automatically detecting it, then I'm assuming it needs to be in a standard place.
+
+319
+00:29:04,460 --> 00:29:05,380
+Let's try this way.
+
+320
+00:29:10,100 --> 00:29:12,140
+no
+
+321
+00:29:12,140 --> 00:29:13,760
+need version
+
+322
+00:29:13,760 --> 00:29:15,340
+so
+
+323
+00:29:15,340 --> 00:29:18,700
+so version is not defined anywhere
+
+324
+00:29:18,700 --> 00:29:20,760
+right now
+
+325
+00:29:20,760 --> 00:29:22,820
+and it should be defined
+
+326
+00:29:22,820 --> 00:29:24,600
+somewhere so is there a place
+
+327
+00:29:24,600 --> 00:29:26,880
+it should be defined in the module
+
+328
+00:29:26,880 --> 00:29:28,760
+itself so in google.txt
+
+329
+00:29:28,760 --> 00:29:29,600
+email.py
+
+330
+00:29:29,600 --> 00:29:32,800
+so it needs to be
+
+331
+00:29:32,800 --> 00:29:34,400
+version
+
+332
+00:29:34,400 --> 00:29:36,780
+so we define a variable directly
+
+333
+00:29:36,780 --> 00:29:38,040
+in this
+
+334
+00:29:38,040 --> 00:29:42,160
+and we will call it 0.0.1
+
+335
+00:29:42,160 --> 00:29:45,020
+Yeah, like I usually do
+
+336
+00:29:45,020 --> 00:29:49,460
+Okay, so now we have it installed
+
+337
+00:29:49,460 --> 00:29:50,640
+Great
+
+338
+00:29:50,640 --> 00:29:54,100
+I guess we can point out that where we are now
+
+339
+00:29:54,100 --> 00:29:57,740
+this is even useful if you never publish it to PyPI
+
+340
+00:29:57,740 --> 00:30:00,780
+so you have something which is now self-contained
+
+341
+00:30:00,780 --> 00:30:03,000
+and you can install it yourself
+
+342
+00:30:03,000 --> 00:30:05,460
+and you can install it from GitHub
+
+343
+00:30:05,460 --> 00:30:09,700
+which makes it easier to use things across different projects
+
+344
+00:30:09,700 --> 00:30:11,740
+without setting Python paths and so on.
+
+345
+00:30:11,760 --> 00:30:15,420
+So just, there is one more, one small step before that.
+
+346
+00:30:15,420 --> 00:30:24,200
+So add .string and version to the module.
+
+347
+00:30:24,800 --> 00:30:26,580
+So, I mean, we need to push it to GitHub
+
+348
+00:30:26,580 --> 00:30:28,840
+before we can install it from GitHub, but yeah.
+
+349
+00:30:28,840 --> 00:30:42,240
+okay so now we have synced changes now everything's in on github and now in yeah in
+
+350
+00:30:42,240 --> 00:30:46,580
+principle we could instead of pip install dot we could write the repository url here
+
+351
+00:30:46,580 --> 00:30:55,840
+I think it's git plus the url with https yes and then it will install it from the repository so
+
+352
+00:30:55,840 --> 00:30:58,280
+So you don't actually need to put it on PyPy
+
+353
+00:30:58,280 --> 00:31:00,080
+to install it from a remote.
+
+354
+00:31:01,880 --> 00:31:03,360
+And really most of the time,
+
+355
+00:31:03,660 --> 00:31:05,240
+I don't, if it's just for me
+
+356
+00:31:05,240 --> 00:31:07,200
+or I don't expect it to have a big audience.
+
+357
+00:31:08,180 --> 00:31:08,420
+Yeah.
+
+358
+00:31:08,540 --> 00:31:09,800
+So I guess in this case,
+
+359
+00:31:09,820 --> 00:31:11,980
+I don't really expect it to have a huge audience,
+
+360
+00:31:12,200 --> 00:31:15,280
+but still, why not?
+
+361
+00:31:16,720 --> 00:31:19,560
+Like pushing stuff to PyPy is also not a big step.
+
+362
+00:31:22,220 --> 00:31:23,740
+It might be useful,
+
+363
+00:31:23,740 --> 00:31:26,380
+but it's true also
+
+364
+00:31:26,380 --> 00:31:29,720
+often I would not do this next step
+
+365
+00:31:29,720 --> 00:31:35,380
+unless I want someone to be able to conveniently install the package
+
+366
+00:31:35,380 --> 00:31:37,360
+without having to type in a long URL
+
+367
+00:31:37,360 --> 00:31:39,160
+or copy it from somewhere
+
+368
+00:31:39,160 --> 00:31:42,580
+so that is the main purpose of PyPy
+
+369
+00:31:42,580 --> 00:31:44,800
+the package index
+
+370
+00:31:44,800 --> 00:31:48,540
+you can just type pip install package name
+
+371
+00:31:48,540 --> 00:31:49,560
+and you get the package
+
+372
+00:31:49,560 --> 00:31:50,420
+yeah
+
+373
+00:31:50,420 --> 00:31:53,200
+okay
+
+374
+00:31:53,200 --> 00:31:55,760
+so I have actually not
+
+375
+00:31:55,760 --> 00:31:57,120
+used flit before but
+
+376
+00:31:57,120 --> 00:31:58,060
+your
+
+377
+00:31:58,060 --> 00:32:00,780
+yeah
+
+378
+00:32:00,780 --> 00:32:03,660
+this template had
+
+379
+00:32:03,660 --> 00:32:05,700
+instructions
+
+380
+00:32:05,700 --> 00:32:06,860
+on how to do it
+
+381
+00:32:06,860 --> 00:32:09,640
+we could even open
+
+382
+00:32:09,640 --> 00:32:10,540
+the
+
+383
+00:32:10,540 --> 00:32:16,140
+and actually with pyproject.toml
+
+384
+00:32:16,140 --> 00:32:17,820
+I've hardly ever used
+
+385
+00:32:17,820 --> 00:32:24,140
+flit directly no oh okay I basically always installed it and it's happened in the background
+
+386
+00:32:25,340 --> 00:32:30,540
+and the uploading I haven't done that much yeah okay if you don't upload then you don't need to
+
+387
+00:32:30,540 --> 00:32:37,820
+run flit yeah okay so but in order to build it do we actually need to install flit
+
+388
+00:32:39,820 --> 00:32:43,500
+I suppose we do because I cannot just run it from here yeah if you
+
+389
+00:32:47,820 --> 00:32:50,440
+I could use apt to install it.
+
+390
+00:32:50,440 --> 00:32:53,320
+Or it's probably available from pip.
+
+391
+00:32:53,320 --> 00:32:59,480
+Yeah, I mean, I guess it must be in flip or in pip.
+
+392
+00:33:02,260 --> 00:33:04,240
+It's not a built-in library.
+
+393
+00:33:04,240 --> 00:33:08,420
+But neither is twine, which is the previous option
+
+394
+00:33:08,420 --> 00:33:10,040
+for pushing to PyPi.
+
+395
+00:33:10,040 --> 00:33:12,920
+So this is just not a thing that's built into Python
+
+396
+00:33:12,920 --> 00:33:14,360
+itself.
+
+397
+00:33:14,360 --> 00:33:16,260
+You need to install it separately.
+
+398
+00:33:16,260 --> 00:33:17,780
+But now we have it.
+
+399
+00:33:17,820 --> 00:33:24,300
+so we can it tells us conveniently what we can do with it so we can flip build
+
+400
+00:33:24,300 --> 00:33:34,480
+okay oh it doesn't so the url I wrote here doesn't start with https or http
+
+401
+00:33:34,480 --> 00:33:42,680
+so it's not an actual url yeah oh that should be better oh https let's try again
+
+402
+00:33:42,680 --> 00:33:49,760
+Okay, so now Fleet agrees with me and everything is fine.
+
+403
+00:33:49,860 --> 00:33:55,260
+So it actually checks the metadata in this TOML file, which is great.
+
+404
+00:33:57,720 --> 00:34:01,920
+So it just checks that you didn't make weird spelling mistakes and things make sense.
+
+405
+00:34:02,800 --> 00:34:04,300
+Okay, so what do we have now?
+
+406
+00:34:04,300 --> 00:34:22,960
+We have this dist folder in our project, and this folder contains, essentially, in this case, a wheel file, which is the way you install Python packages, and then a TART version of basically the Python code.
+
+407
+00:34:23,280 --> 00:34:27,500
+Because we only have Python code, we are not actually building any C code or anything.
+
+408
+00:34:27,720 --> 00:34:28,840
+This is relatively straightforward.
+
+409
+00:34:29,680 --> 00:34:32,560
+So this will work with any Python tree, basically.
+
+410
+00:34:34,300 --> 00:34:47,020
+Okay, I didn't actually, yeah, I didn't require any specific Python version here, but it actually does only work with Python tree, I think.
+
+411
+00:34:51,020 --> 00:34:54,640
+Okay, but yeah, so now we have a built version of it.
+
+412
+00:34:57,660 --> 00:35:00,600
+And we can push that, publish that on PyPy.
+
+413
+00:35:00,600 --> 00:35:05,660
+so this command will push it to test
+
+414
+00:35:05,660 --> 00:35:09,460
+PyPy. Most likely this will fail because I'm not
+
+415
+00:35:09,460 --> 00:35:13,600
+logged in. Okay so it's looking
+
+416
+00:35:13,600 --> 00:35:17,660
+for how to log in
+
+417
+00:35:17,660 --> 00:35:21,360
+and there is no
+
+418
+00:35:21,360 --> 00:35:25,480
+test PyPy logging information. So now I have
+
+419
+00:35:25,480 --> 00:35:27,080
+to remind myself how to do this.
+
+420
+00:35:30,600 --> 00:36:00,540
+Okay, so this there should be a pi pi RC file that stores your username and password.
+
+421
+00:36:00,600 --> 00:36:07,440
+Although it didn't ask me, so I guess I have that file.
+
+422
+00:36:07,440 --> 00:36:15,840
+Maybe I should check for that file without showing you the username and password I have.
+
+423
+00:36:15,840 --> 00:36:18,840
+Oh, but I don't have one.
+
+424
+00:36:18,840 --> 00:36:25,840
+Okay, so I'm slightly confused about why it's failing instead of just asking me for the
+
+425
+00:36:25,840 --> 00:36:30,480
+username and password.
+
+426
+00:36:30,480 --> 00:36:34,120
+I can, whoops, I don't want to click that one.
+
+427
+00:36:34,160 --> 00:36:36,160
+So I can set a username and password here.
+
+428
+00:36:36,800 --> 00:36:39,140
+Can you give it the URL on the command line
+
+429
+00:36:39,140 --> 00:36:43,160
+instead of the test PI instead of the name?
+
+430
+00:36:45,760 --> 00:36:49,340
+So the full URL to the, to test PiPi.
+
+431
+00:36:50,820 --> 00:36:52,660
+Okay, so it's here.
+
+432
+00:36:53,180 --> 00:36:55,860
+Oh, actually, here's an example of the PiPi RC.
+
+433
+00:36:55,860 --> 00:36:57,720
+so it should give you
+
+434
+00:36:57,720 --> 00:36:59,260
+you should
+
+435
+00:36:59,260 --> 00:37:01,720
+add your username and
+
+436
+00:37:01,720 --> 00:37:03,240
+the URL there
+
+437
+00:37:03,240 --> 00:37:05,220
+and
+
+438
+00:37:05,220 --> 00:37:07,740
+I've somehow always
+
+439
+00:37:07,740 --> 00:37:10,060
+remembered it prompting me
+
+440
+00:37:10,060 --> 00:37:11,180
+directly so
+
+441
+00:37:11,180 --> 00:37:14,000
+okay so it does want
+
+442
+00:37:14,000 --> 00:37:14,360
+the
+
+443
+00:37:14,360 --> 00:37:17,980
+it will prompt you for a password
+
+444
+00:37:17,980 --> 00:37:19,740
+in any case but
+
+445
+00:37:19,740 --> 00:37:22,020
+you I guess you need to
+
+446
+00:37:22,020 --> 00:37:23,180
+create a PyPyRC
+
+447
+00:37:23,180 --> 00:37:24,680
+file
+
+448
+00:37:24,680 --> 00:37:29,660
+and it needs to list all possible servers
+
+449
+00:37:29,660 --> 00:37:33,060
+then it needs to define
+
+450
+00:37:33,060 --> 00:37:37,220
+the username defined here is of course not my username
+
+451
+00:37:37,220 --> 00:37:42,220
+so I will quickly check it on the other screen
+
+452
+00:37:54,680 --> 00:38:12,020
+also copying the password in case so the username is what I often use it's my
+
+453
+00:38:12,020 --> 00:38:24,000
+github username as well. So it's not exactly private information. Test PyPi
+
+454
+00:38:25,080 --> 00:38:32,240
+directly. I didn't want to copy this because I had already copied the
+
+455
+00:38:32,240 --> 00:38:37,580
+password to PyPi but fine. Okay.
+
+456
+00:38:42,020 --> 00:38:50,520
+I'm not used to how vim works because I've been using code for a while.
+
+457
+00:38:50,520 --> 00:38:53,040
+Okay let's save it.
+
+458
+00:38:53,040 --> 00:39:00,200
+So now it knows where testpypy is and also where no more pypy is.
+
+459
+00:39:00,200 --> 00:39:04,040
+And we should be able to call it this way.
+
+460
+00:39:04,040 --> 00:39:14,280
+And now it asks for the password.
+
+461
+00:39:14,280 --> 00:39:22,920
+I'm not sure that I have a password for TestPyPy, let's see if this, no, this doesn't work.
+
+462
+00:39:22,920 --> 00:39:25,840
+Username password authentication is no longer supported.
+
+463
+00:39:25,840 --> 00:39:27,740
+Migrate to API tokens.
+
+464
+00:39:27,740 --> 00:39:33,740
+Maybe we can stop here and leave it as like, okay, so you would be here.
+
+465
+00:39:33,740 --> 00:39:38,040
+You could upload it to PyPy following different things.
+
+466
+00:39:38,620 --> 00:39:40,780
+You've made the package yourself.
+
+467
+00:39:41,840 --> 00:39:42,060
+Yeah.
+
+468
+00:39:42,340 --> 00:39:49,400
+And I do this rarely enough that I always have to check.
+
+469
+00:39:50,180 --> 00:39:54,380
+But I kind of did want to show it until the end
+
+470
+00:39:54,380 --> 00:39:57,580
+or to get the package on PyPy,
+
+471
+00:39:57,580 --> 00:39:59,540
+although that's not the most important part.
+
+472
+00:39:59,540 --> 00:40:05,100
+so here's instructions
+
+473
+00:40:05,100 --> 00:40:06,860
+on uploading packages
+
+474
+00:40:06,860 --> 00:40:08,260
+from PyPy itself
+
+475
+00:40:08,260 --> 00:40:11,040
+and this is what we should
+
+476
+00:40:11,040 --> 00:40:13,140
+follow to actually
+
+477
+00:40:13,140 --> 00:40:13,860
+get it to work
+
+478
+00:40:13,860 --> 00:40:16,800
+or Flit
+
+479
+00:40:16,800 --> 00:40:18,720
+probably has updated instructions
+
+480
+00:40:18,720 --> 00:40:20,740
+but these instructions
+
+481
+00:40:20,740 --> 00:40:22,100
+don't seem to work
+
+482
+00:40:22,100 --> 00:40:35,380
+so to figure that part out
+
+483
+00:40:35,380 --> 00:40:37,560
+will take a bit more although I think
+
+484
+00:40:37,560 --> 00:40:39,440
+actually doing it with
+
+485
+00:40:39,440 --> 00:40:41,660
+just uploading with wine is just one command
+
+486
+00:40:41,660 --> 00:40:45,760
+if we can figure out how the API keys work
+
+487
+00:40:45,760 --> 00:40:48,320
+but before we go there
+
+488
+00:40:48,320 --> 00:40:50,220
+there was a change in the
+
+489
+00:40:50,220 --> 00:40:56,860
+PyProject. So fix URL in pyproject.toml.
+
+490
+00:40:59,260 --> 00:41:02,220
+We are running out of time when we did all the important parts.
+
+491
+00:41:03,100 --> 00:41:10,620
+So I guess one more important thing is to take a look at the repository again on GitHub.
+
+492
+00:41:10,620 --> 00:41:40,380
+to my repositories or okay let's look for it so no oh come on
+
+493
+00:41:40,380 --> 00:41:45,260
+Okay, here we are. So here is my new package. And yeah, this
+
+494
+00:41:45,260 --> 00:41:50,320
+contains everything we need to install the package and to run
+
+495
+00:41:50,320 --> 00:41:55,620
+the tests. So I guess we didn't quite do that yet. Okay, so we
+
+496
+00:41:55,620 --> 00:42:02,640
+can run the tests. So yeah, they don't quite work, which is
+
+497
+00:42:02,640 --> 00:42:03,480
+understandable.
+
+498
+00:42:03,480 --> 00:42:16,920
+so I mean i'm wondering should we summarize now there's a lot more debugging to do but we've got
+
+499
+00:42:16,920 --> 00:42:26,280
+10 minutes so let's not forget the main like or what someone would be most interested in
+
+500
+00:42:26,280 --> 00:42:36,480
+so here we did the license documentation dependencies this is all somehow linked
+
+501
+00:42:36,480 --> 00:42:42,480
+through both in the repository and also declared in the pyproject.toml file
+
+502
+00:42:42,480 --> 00:42:50,240
+citations you want to comment on the citations some okay we didn't create a citations file yet
+
+503
+00:42:50,240 --> 00:42:59,100
+so this is a way especially so and also this is maybe not this is more of a utility project
+
+504
+00:42:59,100 --> 00:43:08,080
+but if someone uses your code specifically to, I mean to in some scientific publication for
+
+505
+00:43:08,080 --> 00:43:16,760
+example they should be able to cite your code right because it is a it is a scientific output
+
+506
+00:43:16,760 --> 00:43:18,220
+kind of like a paper.
+
+507
+00:43:19,040 --> 00:43:23,460
+So the citation.cff file
+
+508
+00:43:23,460 --> 00:43:27,100
+tells how you cite a project.
+
+509
+00:43:27,700 --> 00:43:30,200
+I can show an example of one
+
+510
+00:43:30,200 --> 00:43:33,320
+relatively quickly.
+
+511
+00:43:35,180 --> 00:43:39,760
+So this would be...
+
+512
+00:43:39,760 --> 00:43:42,440
+Now I find the rest of RepoStories.
+
+513
+00:43:43,060 --> 00:43:44,740
+Somehow I didn't previously find it.
+
+514
+00:43:46,760 --> 00:43:51,760
+Did we move it?
+
+515
+00:44:10,960 --> 00:44:12,100
+Okay, sorry.
+
+516
+00:44:12,100 --> 00:44:24,280
+How did I? Okay. How did I not find it? Right. So here's an example of a citation.cff file.
+
+517
+00:44:24,280 --> 00:44:34,520
+This is also a Python project. And it lists essentially a message, please cite this software
+
+518
+00:44:34,520 --> 00:44:41,240
+below and then lists the authors and you can add a DOI which you have from Zenodo
+
+519
+00:44:42,200 --> 00:44:49,320
+and a URL to the publication the software and importantly you can also cite things here so
+
+520
+00:44:49,320 --> 00:44:54,840
+if you if you use something if you use a scientific publication or software that you can cite
+
+521
+00:44:55,400 --> 00:44:59,560
+you can then list them below in this file.
+
+522
+00:45:01,080 --> 00:45:08,120
+And there's tools for tracking citations using this, including in GitHub itself.
+
+523
+00:45:11,400 --> 00:45:16,840
+So that's just useful for you, of course, to track citations to your project,
+
+524
+00:45:16,840 --> 00:45:23,720
+but also it's important for others when they use your code for doing some science.
+
+525
+00:45:24,440 --> 00:45:26,360
+they can then actually cite your work.
+
+526
+00:45:28,760 --> 00:45:32,280
+It kind of allows them to use it in a scientific publication.
+
+527
+00:45:36,360 --> 00:45:46,520
+Okay, so we didn't quite get it on PyPI, but that only makes it slightly easier to install.
+
+528
+00:45:46,520 --> 00:45:55,360
+So do you want to demonstrate installing from GitHub with the URL?
+
+529
+00:45:55,540 --> 00:45:55,800
+Yeah.
+
+530
+00:45:55,940 --> 00:45:57,760
+And maybe that's a good ending point.
+
+531
+00:45:58,160 --> 00:45:58,420
+Yeah.
+
+532
+00:45:59,160 --> 00:46:06,600
+I actually just thought about something.
+
+533
+00:46:06,780 --> 00:46:10,960
+We didn't quite add the data file into the package yet,
+
+534
+00:46:11,100 --> 00:46:13,140
+and that is why the tests are not working.
+
+535
+00:46:13,140 --> 00:46:26,140
+So adding a data file to the package is something that you sometimes need to do, but most of the time not, and that's a separate issue.
+
+536
+00:46:26,140 --> 00:46:31,140
+So this is a Google takeout email.
+
+537
+00:46:31,140 --> 00:46:39,140
+So what I'm looking for is the correct URL to the repository.
+
+538
+00:46:39,140 --> 00:46:44,740
+And now we can install it from pip, using install it with pip.
+
+539
+00:46:44,940 --> 00:46:46,360
+So pip install as usual.
+
+540
+00:46:46,860 --> 00:46:50,920
+And then we say git plus and then the HTTPS address.
+
+541
+00:46:52,700 --> 00:46:55,580
+I often make a mistake here, but I think this is correct.
+
+542
+00:46:55,800 --> 00:46:56,140
+Let's see.
+
+543
+00:46:56,380 --> 00:46:57,080
+Looks good.
+
+544
+00:46:58,480 --> 00:46:59,660
+Okay, so it clones.
+
+545
+00:47:00,080 --> 00:47:01,340
+Okay, so yeah.
+
+546
+00:47:02,220 --> 00:47:06,100
+So it first clones the Git repository.
+
+547
+00:47:06,100 --> 00:47:08,220
+Okay, it says cloning.
+
+548
+00:47:09,140 --> 00:47:13,000
+and then it does some filtering of the branches
+
+549
+00:47:13,000 --> 00:47:14,940
+and also it doesn't want all of the data
+
+550
+00:47:14,940 --> 00:47:16,940
+but the important thing that is
+
+551
+00:47:16,940 --> 00:47:19,640
+it's getting the repository from online
+
+552
+00:47:19,640 --> 00:47:23,760
+and then it's following as usual
+
+553
+00:47:23,760 --> 00:47:25,060
+to installing dependencies
+
+554
+00:47:25,060 --> 00:47:27,880
+getting requirements to building a wheel file
+
+555
+00:47:27,880 --> 00:47:30,580
+and then installing it and getting metadata
+
+556
+00:47:30,580 --> 00:47:35,320
+so this is exactly the same thing that happens
+
+557
+00:47:35,320 --> 00:47:36,980
+if you install from PyPy
+
+558
+00:47:36,980 --> 00:47:38,700
+so if you type pip install numpy
+
+559
+00:47:38,700 --> 00:47:40,960
+it just gets
+
+560
+00:47:40,960 --> 00:47:42,900
+the file from a different location
+
+561
+00:47:42,900 --> 00:47:47,080
+and you have to specify the full URL
+
+562
+00:47:47,080 --> 00:47:48,980
+here too so that it knows
+
+563
+00:47:48,980 --> 00:47:49,520
+the location
+
+564
+00:47:49,520 --> 00:47:52,740
+okay well
+
+565
+00:47:52,740 --> 00:47:55,120
+is there anything
+
+566
+00:47:55,120 --> 00:47:56,520
+else to comment before we go
+
+567
+00:47:56,520 --> 00:47:58,940
+it would be nice to
+
+568
+00:47:58,940 --> 00:48:01,160
+get it to
+
+569
+00:48:01,160 --> 00:48:03,220
+PyPy and to get the data stuff to work
+
+570
+00:48:03,220 --> 00:48:04,980
+but that would have taken more than an hour
+
+571
+00:48:04,980 --> 00:48:05,960
+so
+
+572
+00:48:05,960 --> 00:48:09,160
+So, I mean, we focused on the important part.
+
+573
+00:48:09,920 --> 00:48:12,500
+We can have the, people can look at the repo later
+
+574
+00:48:12,500 --> 00:48:13,320
+for the full thing.
+
+575
+00:48:13,460 --> 00:48:13,560
+Yeah.
+
+576
+00:48:15,440 --> 00:48:18,720
+So I have shown the URL, but let's actually
+
+577
+00:48:18,720 --> 00:48:23,000
+copy the URL here.
+
+578
+00:48:28,200 --> 00:48:31,740
+And this is basically, like basically this is not that hard.
+
+579
+00:48:32,420 --> 00:48:33,000
+So if you-
+
+580
+00:48:33,000 --> 00:48:34,260
+Yeah, that's the main thing.
+
+581
+00:48:34,260 --> 00:48:42,560
+the code yourself you can easily find a pyproject.toml file copy it make it semi-installable
+
+582
+00:48:42,560 --> 00:48:51,800
+and add stuff later and I really do this for most of my projects these days yeah so for license we
+
+583
+00:48:51,800 --> 00:49:01,120
+just selected it when creating the repository and there's some differences but it's they're
+
+584
+00:49:01,120 --> 00:49:06,580
+not huge, anyway. Well, read me a documentation is a part that
+
+585
+00:49:06,580 --> 00:49:09,940
+you have to write yourself, but it is only it is a description
+
+586
+00:49:09,940 --> 00:49:16,000
+of the project of you just describe what you're doing. Some
+
+587
+00:49:16,000 --> 00:49:20,740
+examples are nice, of course. Listing dependencies is maybe
+
+588
+00:49:20,740 --> 00:49:25,000
+the well, it's something you should do anyway, because it is
+
+589
+00:49:25,000 --> 00:49:34,920
+very useful but it is kind of also the thing that that is non-trivial here
+
+590
+00:49:36,840 --> 00:49:42,440
+then citations which I showed so you can copy a template again from anywhere
+
+591
+00:49:45,880 --> 00:49:52,520
+and tests are in their python functions so there's nothing that nothing especially
+
+592
+00:49:52,520 --> 00:50:00,200
+intimidating here and it only took us an hour to do the main steps maybe in another 10 minutes
+
+593
+00:50:00,200 --> 00:50:05,560
+or so we could add the data file to correct place and in another 10 minutes or so we could figure
+
+594
+00:50:05,560 --> 00:50:13,320
+out how pi pi has changed so that the fleet no longer works as instructed but yeah that stuff
+
+595
+00:50:13,320 --> 00:50:23,400
+happened so okay yeah so that those are the important parts yeah well thanks for watching and
+
+596
+00:50:26,680 --> 00:50:32,920
+yeah thanks for watching thanks we'll update the repository and video description with
+
+597
+00:50:32,920 --> 00:50:37,160
+anything that's been missing okay with that bye bye
+
+598
+00:50:37,160 --> 00:50:48,680
+hello so we are back uh later in the afternoon and we will finish the demo now that we've figured
+
+599
+00:50:48,680 --> 00:50:55,260
+it out it wasn't that hard anyway Jarno so now we will try to complete the publishing to test
+
+600
+00:50:55,260 --> 00:51:03,240
+pi pi yeah so there were two issues one was the data file and the other one was that uh publishing
+
+601
+00:51:04,200 --> 00:51:12,680
+didn't work as it seemed from the documentation. So I figured both things out. So for the data
+
+602
+00:51:12,680 --> 00:51:17,240
+file, we don't actually need to have it in the package because we will only use it for testing.
+
+603
+00:51:17,880 --> 00:51:25,480
+And when you're running the tests, you will clone to repository. So we will just have the data file
+
+604
+00:51:25,480 --> 00:51:31,160
+in the repository. The problem was that this is not the correct path depending on where you're
+
+605
+00:51:31,160 --> 00:51:36,600
+running the test from. This is not the path to the data file if you're running it from the
+
+606
+00:51:39,080 --> 00:51:42,600
+main folder of the repository. But we'll make it even better than that
+
+607
+00:51:43,960 --> 00:51:57,560
+because we can get the full path to the test folder. So I just copied this from my notes,
+
+608
+00:51:57,560 --> 00:52:04,320
+but I will quickly explain. So this file means, well, this current file, the file containing these
+
+609
+00:52:04,320 --> 00:52:11,800
+test functions. We take the absolute path to it, and then we take the directory name of that,
+
+610
+00:52:12,220 --> 00:52:19,640
+which gives us the full path to the folder where the tests are. And then we just join it here in
+
+611
+00:52:19,640 --> 00:52:26,220
+the beginning. So now we have the directory where the tests are, and from there we go to
+
+612
+00:52:26,220 --> 00:52:33,620
+test data folder, and there we take the mailbox file. So yeah, a little bit complicated, but
+
+613
+00:52:33,620 --> 00:52:37,300
+we always get the correct file, no matter where we are in the file system.
+
+614
+00:52:39,560 --> 00:52:46,940
+And that, in fact, did work the last time I tried. So the tests run correctly now. I run
+
+615
+00:52:46,940 --> 00:52:53,120
+pytest, and there's three tests that it runs, and they all work. So that's one thing.
+
+616
+00:52:53,120 --> 00:53:03,600
+the other one is then publishing it so right okay so that is a example of what the
+
+617
+00:53:04,420 --> 00:53:11,800
+pi pi rc file should look like so what uh what I needed to do is go to the
+
+618
+00:53:11,800 --> 00:53:20,340
+pi pi.org and test.pi.org separately and for both of them create a an api token
+
+619
+00:53:20,340 --> 00:53:23,480
+and then authentication happens
+
+620
+00:53:23,480 --> 00:53:27,040
+so that the password is the token that you generate
+
+621
+00:53:27,040 --> 00:53:30,620
+and the username is underscore token.
+
+622
+00:53:33,540 --> 00:53:36,080
+So it looks similar to before,
+
+623
+00:53:36,240 --> 00:53:39,600
+but really what you need is this authentication token.
+
+624
+00:53:40,400 --> 00:53:44,700
+I'm not 100% sure what the purpose of the change is,
+
+625
+00:53:44,860 --> 00:53:47,420
+but it is more secure with the token.
+
+626
+00:53:47,420 --> 00:53:53,100
+it just, you could change the structure of the file to make it clearer. But in any case, this
+
+627
+00:53:53,100 --> 00:53:58,540
+is what it looks like. So let's just close that example. That was of course an example because
+
+628
+00:53:58,540 --> 00:54:11,340
+I'm not showing my actual token here. So otherwise there's no change and we can go to the terminal
+
+629
+00:54:11,340 --> 00:54:14,320
+and run
+
+630
+00:54:14,320 --> 00:54:18,260
+flit publish
+
+631
+00:54:18,260 --> 00:54:20,660
+so in fact
+
+632
+00:54:20,660 --> 00:54:24,480
+let's find the
+
+633
+00:54:24,480 --> 00:54:27,440
+yes
+
+634
+00:54:27,440 --> 00:54:30,400
+so flit publish repository test
+
+635
+00:54:30,400 --> 00:54:30,880
+pi pi
+
+636
+00:54:30,880 --> 00:54:35,400
+oh great
+
+637
+00:54:35,400 --> 00:54:37,120
+a new one
+
+638
+00:54:37,120 --> 00:54:41,260
+so flit wants you to
+
+639
+00:54:41,260 --> 00:54:49,200
+have everything tracked with git so there's no risk of unintended stuff being published
+
+640
+00:54:49,200 --> 00:54:57,160
+okay so what is it what is it saying it's not tracked the bottom one can you do git status
+
+641
+00:54:57,160 --> 00:55:04,840
+maybe okay oh it is actually complaining probably about this example file that I created this pi
+
+642
+00:55:04,840 --> 00:55:10,920
+so this is not the real pi pi rc file this is the example I just showed you so let's just remove it
+
+643
+00:55:10,920 --> 00:55:18,060
+Okay, so now it works.
+
+644
+00:55:18,060 --> 00:55:28,000
+So we already ran flit build.
+
+645
+00:55:28,000 --> 00:55:30,680
+So I will come back to that error in a second.
+
+646
+00:55:30,680 --> 00:55:35,320
+We already ran flit build, everything's fine.
+
+647
+00:55:35,320 --> 00:55:37,780
+And then you run flit publish.
+
+648
+00:55:37,780 --> 00:55:42,160
+It is now complaining because the file already exists.
+
+649
+00:55:42,160 --> 00:55:44,200
+I have already uploaded it.
+
+650
+00:55:44,200 --> 00:55:52,540
+I can probably get around this and demonstrate this by updating the version number.
+
+651
+00:55:52,540 --> 00:56:07,020
+So let's do flit build, okay, fine, flit build, publish, okay.
+
+652
+00:56:07,020 --> 00:56:12,260
+And now to publish in actual PyPy, you just remove this part.
+
+653
+00:56:12,500 --> 00:56:17,460
+So just flit publish, and it goes to the actual Python package index.
+
+654
+00:56:19,100 --> 00:56:20,100
+Here we go.
+
+655
+00:56:22,820 --> 00:56:23,460
+Okay.
+
+656
+00:56:23,460 --> 00:56:32,460
+And now that it's in the actual Python package index, you can install it with...
+
+657
+00:56:32,460 --> 00:56:41,620
+So pip install package name, and it worked.
+
+658
+00:56:41,620 --> 00:56:45,800
+So now we upgraded from, oh, already satisfied point also.
+
+659
+00:56:45,800 --> 00:56:49,700
+So yeah, I didn't ask it to upgrade, it just, it is already installed.
+
+660
+00:56:49,700 --> 00:56:50,700
+Yeah.
+
+661
+00:56:50,700 --> 00:56:51,700
+Yeah.
+
+662
+00:56:51,700 --> 00:56:52,700
+All right.
+
+663
+00:56:52,700 --> 00:56:53,700
+So that is everything.
+
+664
+00:56:53,700 --> 00:57:03,220
+Now the project does have its own page on PyPy if you want to take a look.
+
+665
+00:57:03,220 --> 00:57:07,520
+This is maybe the last interesting thing to demonstrate.
+
+666
+00:57:07,520 --> 00:57:14,360
+So all of this information comes from the toml file and readme.
+
+667
+00:57:14,360 --> 00:57:18,260
+So it found the readme in the repository.
+
+668
+00:57:18,260 --> 00:57:23,300
+And in the TAMO file, it has the URL to the GitHub page.
+
+669
+00:57:24,280 --> 00:57:30,140
+Well, this is my PyPy account, but authors are listed here.
+
+670
+00:57:30,320 --> 00:57:31,320
+License is here.
+
+671
+00:57:31,620 --> 00:57:34,520
+So it found the license file and so on.
+
+672
+00:57:34,540 --> 00:57:35,920
+So yeah, it's relatively smart.
+
+673
+00:57:35,920 --> 00:57:39,240
+It found a lot of things just from the files in the project.
+
+674
+00:57:41,280 --> 00:57:42,660
+But yeah, so there it is.
+
+675
+00:57:43,960 --> 00:57:47,220
+People can now install this package and use it.
+
+676
+00:57:48,260 --> 00:57:54,580
+Yeah, and I guess all our other talking was done before, so thanks a lot.
+
+677
+00:57:54,760 --> 00:57:54,900
+Yeah.
+
+678
+00:57:56,040 --> 00:57:56,480
+Thanks.
+
+679
+00:57:57,220 --> 00:57:57,560
+Bye.
+
+680
+00:57:58,320 --> 00:57:58,680
+Bye.
+

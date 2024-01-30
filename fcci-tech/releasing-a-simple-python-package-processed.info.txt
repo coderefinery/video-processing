@@ -1,0 +1,48 @@
+Separating Python code and releasing it as a PyPI package
+
+A demonstration of publishing a package on PyPI, by taking some code in a larger library that deserves its own package.  This is designed to be simple and go through the main points, but also is "live" so you'll see where we actually run in to problems (and how we debugged them).  The general contents is below.
+
+Most of what you see here, you can see in pyproject.toml in this repository or the many things online.  This is released mainly because it might be interesting to see the thought process, but you can find the same info in shorter form plenty of other places.
+
+The finished repository: https://github.com/rantahar/google_takeout_email
+
+flit: https://flit.pypa.io/en/stable/
+
+pyproject.toml in flit:  https://flit.pypa.io/en/stable/pyproject_toml.html
+
+Github Actions upload (not covered in this talk): https://github.com/marketplace/actions/pypi-publish
+
+
+
+Presenter: Jarno Rantaharju, Aalto University
+
+Part of FCCI Tech: https://scicomp.aalto.fi/tech/
+
+00:00 Introduction
+01:34 The rough plan
+03:08 Looking at the original code
+05:14 What do we need to do?
+06:19 Making empty repository (on Github) and cloning it
+09:09 Coping the code to the new repo, add README
+10:23 Copying the code (think about license and dependencies)
+13:56 Conda environment for test installation
+15:34 Try importing it with Python
+16:19 Realize we need some test data, create proper tests
+20:35 Development dependencies
+22:14 Creating the pyproject.toml file
+28:15 Try to install and realize we need a docstring and version
+29:44 Try to install with `pip install .` and it works - discussion
+31:54 Trying to upload to PyPI (build, upload)
+36:39 .pypirc and debugging the upload... went a bit off track here.
+36:53 Skip this part unless you want to see debugging...
+42:08 Summary
+43:18 Citations with citations.cff
+45:35 Demonstration of installing from Github
+48:26 More summary
+50:39 We are back!  We figured out how to do the upload
+50:55 What went wrong?
+51:09 Adding the data file for the tests and demonstrate running the tests
+52:52 API tokens for PyPI
+54:09 Uploading with `flit publish`
+56:24 Installing with `pip install`
+56:50 Final wrap up, looking at what we got
