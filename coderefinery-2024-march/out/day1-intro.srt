@@ -1,0 +1,1188 @@
+1
+00:00:00,000 --> 00:00:21,280
+Hello and welcome everyone to this CodeRefinery workshop.
+
+2
+00:00:21,280 --> 00:00:28,920
+We're going to spend the next six half days together, not one after another, but within
+
+3
+00:00:28,920 --> 00:00:34,280
+these next two weeks to learn about fair research software development practices.
+
+4
+00:00:35,560 --> 00:00:43,560
+So just a quick recap of why are we here and who am I. Hi, I'm Samantha. I work at
+
+5
+00:00:43,560 --> 00:00:49,320
+CSC in Finland and I'm connecting today from Lohja in southern Finland.
+
+6
+00:00:50,920 --> 00:00:57,400
+So Coderfinery is an addition to the general coding classes you might have at university. So
+
+7
+00:00:57,400 --> 00:01:00,000
+So we are not gonna teach you how to code here,
+
+8
+00:01:00,000 --> 00:01:02,500
+but we are trying to support you
+
+9
+00:01:02,500 --> 00:01:05,560
+in making your code more reproducible.
+
+10
+00:01:05,560 --> 00:01:08,840
+And we found this wonderful graphic here
+
+11
+00:01:08,840 --> 00:01:12,080
+by Heidi Seibold to describe
+
+12
+00:01:12,080 --> 00:01:14,200
+the Code Refinery Workshop quite well.
+
+13
+00:01:14,200 --> 00:01:17,020
+So six helpful, partly smaller,
+
+14
+00:01:17,020 --> 00:01:18,800
+partly a little bit bigger steps
+
+15
+00:01:18,800 --> 00:01:23,800
+that you can go towards more reproducible research,
+
+16
+00:01:23,800 --> 00:01:25,560
+getting your files in order,
+
+17
+00:01:25,560 --> 00:01:29,080
+finding good names for things, documenting with care
+
+18
+00:01:29,080 --> 00:01:31,240
+that we will talk about in week two,
+
+19
+00:01:31,240 --> 00:01:34,400
+version control will be the topic of this week,
+
+20
+00:01:34,400 --> 00:01:38,040
+then stabilizing the computing environment and software
+
+21
+00:01:38,960 --> 00:01:42,040
+and publishing your research outputs
+
+22
+00:01:42,040 --> 00:01:43,940
+apart from your normal publications,
+
+23
+00:01:43,940 --> 00:01:46,320
+also publishing your code.
+
+24
+00:01:47,360 --> 00:01:49,080
+So, and what is Code Refinery?
+
+25
+00:01:49,080 --> 00:01:52,600
+We are a Nordic project to teach these kind of basic
+
+26
+00:01:52,600 --> 00:01:54,880
+scientific computing tools.
+
+27
+00:01:54,880 --> 00:01:58,040
+and we are funded by the Nordic e-Infrastructure Collaboration
+
+28
+00:01:58,040 --> 00:01:59,320
+NAIC.
+
+29
+00:01:59,320 --> 00:02:01,600
+And we are running this workshop,
+
+30
+00:02:01,600 --> 00:02:05,360
+and then we also have a bunch of other partnering workshops
+
+31
+00:02:05,360 --> 00:02:08,040
+that we are involved in.
+
+32
+00:02:08,040 --> 00:02:11,440
+And basically, what we are is a community of research software
+
+33
+00:02:11,440 --> 00:02:13,920
+enthusiasts, and you will meet many of the people that
+
+34
+00:02:13,920 --> 00:02:16,560
+are involved in the project during this workshop
+
+35
+00:02:16,560 --> 00:02:19,960
+as instructors or behind the scenes.
+
+36
+00:02:19,960 --> 00:02:22,280
+You can find all the information on our web page,
+
+37
+00:02:22,280 --> 00:02:29,160
+CodeRefinery.org. CodeRefinery in general is a partnership of different universities and
+
+38
+00:02:30,680 --> 00:02:36,680
+institutions. From Finland we have Aalto University and CSC. From Denmark we have
+
+39
+00:02:36,680 --> 00:02:40,760
+the Center for Humanities Computing and the Danish E-Infrastructure Corporation.
+
+40
+00:02:41,400 --> 00:02:49,480
+From Sweden we have ENCCS and NICE. And from Norway NRIS. And if you're interested in joining
+
+41
+00:02:49,480 --> 00:02:55,000
+the project you can find all the information in our join page for how for example to join our
+
+42
+00:02:55,800 --> 00:03:02,360
+chat or the organization of these kind of workshops. Then who is here today? So apart
+
+43
+00:03:02,360 --> 00:03:09,000
+from me there's also 10 more course coordinators, instructors and expert helpers, some of
+
+44
+00:03:09,800 --> 00:03:14,120
+who you will meet during the lessons and they will introduce themselves then at the time.
+
+45
+00:03:14,120 --> 00:03:24,120
+Then we have about six or more team leaders who are together with their team watching this stream and collaborating on the exercises.
+
+46
+00:03:24,120 --> 00:03:34,120
+And then we have 250 participants from about 25 different countries with many different backgrounds, many different levels.
+
+47
+00:03:34,120 --> 00:03:39,960
+So, this workshop, how does this work?
+
+48
+00:03:39,960 --> 00:03:46,640
+If you have made it here, you are basically ready for this, because this is a live stream.
+
+49
+00:03:46,640 --> 00:03:48,480
+This is a live streamed workshop.
+
+50
+00:03:48,480 --> 00:03:55,000
+Everyone, no matter how you are watching this, you will watch the live stream, where we have
+
+51
+00:03:55,000 --> 00:04:03,360
+the instructors talking, showing and showing demos, and interacting with you.
+
+52
+00:04:03,360 --> 00:04:10,320
+week one there will also be exercises and those you can do in two mainly two ways either on your own
+
+53
+00:04:11,120 --> 00:04:16,880
+or if you have already gathered a team or you are in a room with a team then you can also do them
+
+54
+00:04:16,880 --> 00:04:23,920
+with your team. One thing that is new compared to previous workshops is that we don't have dedicated
+
+55
+00:04:23,920 --> 00:04:29,120
+team exercise times in week two but we have a lot of collaboration possibilities with our
+
+56
+00:04:29,120 --> 00:04:35,840
+collaborative document and I will show that in a moment. Then we plan on having a minimum of 10
+
+57
+00:04:35,840 --> 00:04:42,400
+minute breaks every hour. If we ever should forget about that or you think it's time
+
+58
+00:04:43,040 --> 00:04:47,040
+for a break, please let us know. I'll show you in a moment how to do that.
+
+59
+00:04:48,880 --> 00:04:53,920
+The materials are always available for everyone and are linked from the workshop page.
+
+60
+00:04:53,920 --> 00:04:57,760
+That's the page where you also registered.
+
+61
+00:04:57,760 --> 00:05:03,040
+So from there you can find all the links to everything you need.
+
+62
+00:05:03,040 --> 00:05:09,560
+And then because we are streaming this without any danger of participants appearing in the
+
+63
+00:05:09,560 --> 00:05:17,120
+stream, the recordings will be available also right away on Twitch and usually the day after
+
+64
+00:05:17,120 --> 00:05:19,000
+latest also on YouTube.
+
+65
+00:05:19,000 --> 00:05:26,760
+So you can watch something that you missed or watch something again if you want to.
+
+66
+00:05:26,760 --> 00:05:33,680
+Then our interaction tool is our collaborative document.
+
+67
+00:05:33,680 --> 00:05:42,920
+So even though this is a live stream, there is this tool to connect to the instructors
+
+68
+00:05:42,920 --> 00:05:46,340
+and how we can also connect with you.
+
+69
+00:05:46,340 --> 00:05:51,700
+So we use it to distribute information to you, show you some links on where you can
+
+70
+00:05:51,700 --> 00:05:56,420
+find, for example, the material that we are going through right now.
+
+71
+00:05:56,420 --> 00:06:04,740
+And we also use it as a chat and that is maybe for you the most interesting use of the document.
+
+72
+00:06:04,740 --> 00:06:09,680
+So whenever there's any accessibility issues, you can let us know there.
+
+73
+00:06:09,680 --> 00:06:14,700
+But then also you can ask questions at all times, whatever comes to mind.
+
+74
+00:06:14,700 --> 00:06:20,840
+You can just put in the document and either our instructors will pick it up on the stream
+
+75
+00:06:20,840 --> 00:06:26,160
+or our team behind the scenes will make sure that your questions get answers.
+
+76
+00:06:26,160 --> 00:06:32,440
+And you can also answer other people's questions if there is something that you know about.
+
+77
+00:06:32,440 --> 00:06:35,960
+So let's take a look.
+
+78
+00:06:35,960 --> 00:06:41,840
+You should all have gotten the link with the registration information.
+
+79
+00:06:41,840 --> 00:06:46,260
+So when you registered, you got an email, the link was in there, and then you also probably
+
+80
+00:06:46,260 --> 00:06:50,560
+got another email where this link was also part of.
+
+81
+00:06:50,560 --> 00:07:00,760
+You can also, okay, and in this document you can find all the important links of this workshop.
+
+82
+00:07:00,760 --> 00:07:06,560
+You can find the agenda for today with also here behind the welcome and practicalities
+
+83
+00:07:06,560 --> 00:07:09,820
+the link to the document that I was showing before.
+
+84
+00:07:09,820 --> 00:07:12,820
+And then the link to materials for today.
+
+85
+00:07:12,820 --> 00:07:17,040
+And then we have a little icebreaker for you, which many of you already filled in.
+
+86
+00:07:17,040 --> 00:07:19,200
+That's very nice to see.
+
+87
+00:07:19,200 --> 00:07:21,400
+So let's see if we can do that as well.
+
+88
+00:07:21,400 --> 00:07:25,480
+I can see that already 102 of you are also online here.
+
+89
+00:07:25,480 --> 00:07:27,820
+So let's see how that goes.
+
+90
+00:07:27,820 --> 00:07:34,420
+So when you join this document, you'll probably see something like me here, nicely rendered.
+
+91
+00:07:34,420 --> 00:07:36,980
+But now we want to also add something to this document.
+
+92
+00:07:36,980 --> 00:07:41,660
+For that, you can usually find this little pen symbol up left.
+
+93
+00:07:41,660 --> 00:07:43,700
+If you have a slightly different view,
+
+94
+00:07:43,700 --> 00:07:45,260
+it might also be somewhere up right,
+
+95
+00:07:45,260 --> 00:07:48,980
+but it's always like this pen or edit symbol.
+
+96
+00:07:48,980 --> 00:07:53,820
+When we click that, we switch into edit mode.
+
+97
+00:07:54,060 --> 00:07:57,420
+Then we can scroll around and see,
+
+98
+00:07:57,420 --> 00:08:02,500
+okay, here, this is now the raw text for our rendered document.
+
+99
+00:08:02,500 --> 00:08:03,460
+We have the links here,
+
+100
+00:08:03,460 --> 00:08:05,300
+we have the agenda here,
+
+101
+00:08:05,300 --> 00:08:07,660
+and then we have the icebreaker.
+
+102
+00:08:07,660 --> 00:08:10,500
+Where are you connecting from and how's the weather there?
+
+103
+00:08:10,500 --> 00:08:13,420
+Let me add that here also.
+
+104
+00:08:13,420 --> 00:08:16,860
+I sit in Lohja in Finland,
+
+105
+00:08:16,860 --> 00:08:24,060
+and the weather is sunny with some clouds.
+
+106
+00:08:25,660 --> 00:08:32,380
+Now, you can go also please here and get used to this document.
+
+107
+00:08:32,380 --> 00:08:39,580
+We'll add a few more possibilities here. You can see where others are with these little
+
+108
+00:08:40,780 --> 00:08:46,940
+markers here, so try to find a line where there's only you. Add some more if you need them.
+
+109
+00:08:48,620 --> 00:08:53,100
+This is a very good way to now get used to the document because we will use it
+
+110
+00:08:53,100 --> 00:08:58,540
+throughout the whole course and it's really our main communication channel.
+
+111
+00:08:58,540 --> 00:09:02,140
+You can see this is going well.
+
+112
+00:09:07,020 --> 00:09:09,540
+And then we have another question for you,
+
+113
+00:09:09,540 --> 00:09:13,100
+because today it's all about version control.
+
+114
+00:09:13,100 --> 00:09:16,060
+So here we want to know how you used git before,
+
+115
+00:09:16,060 --> 00:09:20,060
+and it is no problem if you have never heard what git is,
+
+116
+00:09:20,060 --> 00:09:22,780
+then you can put your little O here.
+
+117
+00:09:22,780 --> 00:09:24,140
+Don't know what git is?
+
+118
+00:09:24,140 --> 00:09:26,540
+I vote for this one.
+
+119
+00:09:26,540 --> 00:09:34,060
+If you know what it is and have used it and want to specify it a little bit more,
+
+120
+00:09:34,060 --> 00:09:41,820
+so I have, for example, used git via the command line, so I will add my O here.
+
+121
+00:09:43,180 --> 00:09:48,940
+And if your option is not available here, you can also add it below here and our instructors
+
+122
+00:09:49,660 --> 00:09:56,220
+then get a little view of where you are and where they need to pick you up for this course.
+
+123
+00:09:56,540 --> 00:09:59,460
+If you then scroll a little bit down.
+
+124
+00:10:01,380 --> 00:10:06,180
+Um, here you can already ask questions and I see you have
+
+125
+00:10:06,260 --> 00:10:09,500
+already been very busy asking questions.
+
+126
+00:10:09,500 --> 00:10:13,220
+About this session, the welcome and practicalities and then when
+
+127
+00:10:13,280 --> 00:10:16,660
+we later go on to the introduction with version control,
+
+128
+00:10:16,660 --> 00:10:18,980
+you can ask your questions here.
+
+129
+00:10:21,100 --> 00:10:25,100
+So yeah, go ahead, add your questions there whenever you
+
+130
+00:10:25,180 --> 00:10:25,780
+need to.
+
+131
+00:10:25,780 --> 00:10:32,780
+And then you can switch to view mode to see this nicely rendered version.
+
+132
+00:10:32,780 --> 00:10:37,780
+And usually we suggest whenever you're not editing to switch to this view mode.
+
+133
+00:10:37,780 --> 00:10:42,780
+Okay, so that was the collaborative document.
+
+134
+00:10:42,780 --> 00:10:47,780
+And we ask you to please not use the Twitch chat for any questions about the content,
+
+135
+00:10:47,780 --> 00:10:50,780
+because we will not be watching this.
+
+136
+00:10:50,780 --> 00:10:54,460
+We'll collect all the questions in this collaborative document.
+
+137
+00:10:57,060 --> 00:10:59,780
+OK, I've shown this.
+
+138
+00:10:59,780 --> 00:11:04,220
+Then practical set up for the workshop.
+
+139
+00:11:04,220 --> 00:11:07,140
+One thing that we would suggest you to do, you don't have to,
+
+140
+00:11:07,140 --> 00:11:10,980
+but we suggest you to create a directory or folder
+
+141
+00:11:10,980 --> 00:11:13,100
+for this course on your computer.
+
+142
+00:11:13,100 --> 00:11:16,740
+In that way, you can have all the exercise material in one place,
+
+143
+00:11:16,740 --> 00:11:19,860
+and that makes it much easier to clean up later.
+
+144
+00:11:19,860 --> 00:11:22,760
+So that is a good thing to do right now,
+
+145
+00:11:22,760 --> 00:11:24,280
+while you're listening with one ear
+
+146
+00:11:24,280 --> 00:11:27,520
+to what I have to tell here
+
+147
+00:11:27,520 --> 00:11:30,160
+during the next few minutes still.
+
+148
+00:11:30,160 --> 00:11:33,720
+Then you might have noticed that within Twitch,
+
+149
+00:11:33,720 --> 00:11:36,960
+we are sharing a vertical window.
+
+150
+00:11:36,960 --> 00:11:39,880
+So that means it is quite nice for you
+
+151
+00:11:39,880 --> 00:11:42,800
+that you can give half the screen to us
+
+152
+00:11:42,800 --> 00:11:45,180
+with the Twitch view.
+
+153
+00:11:45,180 --> 00:11:47,120
+And then the other half is for you
+
+154
+00:11:47,120 --> 00:11:49,160
+where you can keep open, for example,
+
+155
+00:11:49,160 --> 00:11:52,560
+the collaborative document to ask questions.
+
+156
+00:11:52,560 --> 00:11:55,560
+If you are doing the exercises,
+
+157
+00:11:55,560 --> 00:12:01,680
+you can keep your terminal or your browser open.
+
+158
+00:12:01,680 --> 00:12:05,460
+In that way, you can even
+
+159
+00:12:05,460 --> 00:12:09,600
+participate in this course with only a laptop screen.
+
+160
+00:12:10,080 --> 00:12:13,480
+For Twitch, you can hide the chat and then use
+
+161
+00:12:13,480 --> 00:12:16,480
+the theater mode to have it in this kind of setup,
+
+162
+00:12:16,480 --> 00:12:18,980
+and all of our instructors will share it this way.
+
+163
+00:12:21,040 --> 00:12:22,160
+Okay, now you might say,
+
+164
+00:12:22,160 --> 00:12:23,840
+oh, this is so much information,
+
+165
+00:12:23,840 --> 00:12:26,840
+so much things that I need to keep track of.
+
+166
+00:12:26,840 --> 00:12:28,680
+So where to focus?
+
+167
+00:12:28,680 --> 00:12:31,400
+Well, your first priority should be the live stream.
+
+168
+00:12:31,400 --> 00:12:33,520
+This is where everything happens.
+
+169
+00:12:33,520 --> 00:12:35,960
+Then whenever you have a question,
+
+170
+00:12:35,960 --> 00:12:39,200
+it's good to have the collaborative document there.
+
+171
+00:12:39,200 --> 00:12:40,920
+And then the lesson material webpage,
+
+172
+00:12:40,920 --> 00:12:43,860
+you usually don't need much.
+
+173
+00:12:43,860 --> 00:12:45,400
+It's good to have it open.
+
+174
+00:12:45,400 --> 00:12:47,560
+So if you missed like a command or something,
+
+175
+00:12:47,560 --> 00:12:49,440
+you can check it up there,
+
+176
+00:12:49,440 --> 00:12:51,780
+but you don't need to have it open at all times
+
+177
+00:12:51,780 --> 00:12:55,500
+if it's all too much to do at the same time.
+
+178
+00:12:57,860 --> 00:13:00,140
+And if you know some of the materials already
+
+179
+00:13:00,140 --> 00:13:02,020
+that we were presenting here,
+
+180
+00:13:02,020 --> 00:13:04,380
+then please help us also answering the question
+
+181
+00:13:04,380 --> 00:13:05,700
+in the collaborative document,
+
+182
+00:13:05,700 --> 00:13:08,860
+because as you have seen, we have about 250 people here.
+
+183
+00:13:10,060 --> 00:13:12,820
+So in order to give everyone the answers
+
+184
+00:13:12,820 --> 00:13:16,340
+and maybe even discuss some different viewpoints
+
+185
+00:13:16,340 --> 00:13:21,340
+about questions, please help us fill in here.
+
+186
+00:13:23,100 --> 00:13:25,120
+And for that, please keep in mind
+
+187
+00:13:25,120 --> 00:13:27,180
+that everyone is at different level
+
+188
+00:13:27,180 --> 00:13:28,360
+and that's also expected.
+
+189
+00:13:28,360 --> 00:13:31,120
+We have this course open for everyone.
+
+190
+00:13:31,120 --> 00:13:34,300
+So everyone is also both a teacher and a learner.
+
+191
+00:13:34,300 --> 00:13:38,440
+And when here on stream,
+
+192
+00:13:38,440 --> 00:13:40,440
+something isn't quite going right,
+
+193
+00:13:40,440 --> 00:13:45,440
+like some issues with audio or any of these things,
+
+194
+00:13:47,240 --> 00:13:49,680
+then you can always use the collaborative document
+
+195
+00:13:49,680 --> 00:13:51,840
+to let us know quickly.
+
+196
+00:13:51,840 --> 00:13:55,320
+And then also the instructors will get to know about it.
+
+197
+00:13:55,320 --> 00:13:56,840
+We have a code of conduct in place
+
+198
+00:13:56,840 --> 00:13:59,560
+that you can find behind this link here.
+
+199
+00:13:59,560 --> 00:14:02,200
+And there's also a form to fill out
+
+200
+00:14:02,200 --> 00:14:04,900
+if there has been violations of the code of conduct.
+
+201
+00:14:05,920 --> 00:14:07,640
+We have a few things that can
+
+202
+00:14:07,640 --> 00:14:10,840
+and quite possibly will go wrong in this course.
+
+203
+00:14:12,320 --> 00:14:15,280
+One are these accessibility problems.
+
+204
+00:14:15,280 --> 00:14:16,840
+So we have tried to do a sound check,
+
+205
+00:14:16,840 --> 00:14:19,360
+but it might always happen that a microphone
+
+206
+00:14:20,400 --> 00:14:22,200
+does something weird or something.
+
+207
+00:14:22,200 --> 00:14:24,480
+Let us know as quickly as possible
+
+208
+00:14:24,480 --> 00:14:26,040
+if you notice anything like this,
+
+209
+00:14:26,040 --> 00:14:29,300
+or if the font is not big enough or these kinds of things.
+
+210
+00:14:30,600 --> 00:14:34,360
+Then also our instructors are only human
+
+211
+00:14:34,360 --> 00:14:36,040
+and they might make mistakes.
+
+212
+00:14:36,040 --> 00:14:38,700
+No one knows everything.
+
+213
+00:14:38,700 --> 00:14:42,700
+Seeing how these mistakes happen and how they can get fixed
+
+214
+00:14:42,700 --> 00:14:44,580
+is also really part of this course.
+
+215
+00:14:44,580 --> 00:14:47,300
+It's part of the pedagogy of this course.
+
+216
+00:14:47,300 --> 00:14:51,660
+So please, be nice to everyone.
+
+217
+00:14:51,660 --> 00:14:55,660
+If you get overloaded with information, don't worry.
+
+218
+00:14:55,660 --> 00:14:57,500
+You can change your watching style,
+
+219
+00:14:57,500 --> 00:15:01,260
+meaning you can even step away from the computer for a while,
+
+220
+00:15:01,260 --> 00:15:04,540
+get back, and use the replay function in Twitch
+
+221
+00:15:04,540 --> 00:15:06,180
+to watch where you left off.
+
+222
+00:15:08,780 --> 00:15:11,940
+If the collaborative document gets too fast to follow,
+
+223
+00:15:11,940 --> 00:15:14,300
+you noticed it already now during the icebreaker,
+
+224
+00:15:14,300 --> 00:15:18,420
+it can get quite chaotic, then just leave it be.
+
+225
+00:15:18,420 --> 00:15:21,420
+And you can always look at it later.
+
+226
+00:15:21,420 --> 00:15:23,460
+If you have a question, you can put it there
+
+227
+00:15:23,460 --> 00:15:26,220
+and then put it aside and come back later
+
+228
+00:15:26,220 --> 00:15:28,880
+to review the answers to the questions.
+
+229
+00:15:30,460 --> 00:15:34,280
+Sometimes it may also be that we cannot solve your problem
+
+230
+00:15:34,280 --> 00:15:37,800
+because there is something deeper than what we have access
+
+231
+00:15:37,800 --> 00:15:40,060
+to via the collaborative document.
+
+232
+00:15:40,060 --> 00:15:43,680
+Then it's good to contact your local IT support,
+
+233
+00:15:43,680 --> 00:15:45,920
+for example, or if you are in a team room
+
+234
+00:15:45,920 --> 00:15:48,320
+to ask your helper in the break
+
+235
+00:15:48,320 --> 00:15:51,440
+or after the course for some help.
+
+236
+00:15:51,440 --> 00:15:54,480
+We also have this bring your own code sessions
+
+237
+00:15:55,520 --> 00:15:58,640
+every Tuesday after this workshop for two times.
+
+238
+00:15:59,680 --> 00:16:01,200
+You can find it in the schedule
+
+239
+00:16:01,200 --> 00:16:03,700
+where we can look at these kinds of issues.
+
+240
+00:16:04,280 --> 00:16:12,720
+And you can always watch the materials also without doing any exercises.
+
+241
+00:16:12,720 --> 00:16:18,880
+If we deviate from the schedule, then it's probably something that didn't go as planned.
+
+242
+00:16:18,880 --> 00:16:23,360
+And then we try to leave out some subtopic that maybe is not that important.
+
+243
+00:16:23,360 --> 00:16:27,720
+But the material is there for you, so you can review it if this is an important topic
+
+244
+00:16:27,720 --> 00:16:30,640
+for you that we might have to leave out.
+
+245
+00:16:30,640 --> 00:16:34,840
+But we try, of course, our best to stay on track.
+
+246
+00:16:34,840 --> 00:16:41,880
+Then it might be that the collaborative document lags and text goes wrong or everything looks
+
+247
+00:16:41,880 --> 00:16:44,960
+somehow weird.
+
+248
+00:16:44,960 --> 00:16:49,880
+That can happen with very high load if really everyone tries to do something at the same
+
+249
+00:16:49,880 --> 00:16:50,880
+time.
+
+250
+00:16:50,880 --> 00:16:55,520
+So, please, everyone, then switch to view mode and wait for it for a moment to calm
+
+251
+00:16:55,520 --> 00:16:56,520
+down.
+
+252
+00:16:56,520 --> 00:17:00,640
+So that's why it's always good to keep it also in view mode when you are not editing
+
+253
+00:17:00,640 --> 00:17:02,380
+it.
+
+254
+00:17:02,380 --> 00:17:10,000
+And then we also have our colleagues in the background that will move stuff of the document
+
+255
+00:17:10,000 --> 00:17:17,680
+to an archive so that we can keep the active document quite short.
+
+256
+00:17:17,680 --> 00:17:20,800
+If the stream suddenly dies, that can also happen.
+
+257
+00:17:20,800 --> 00:17:26,960
+We have Richard here, our broadcaster, and if his computer just decides to give up, then
+
+258
+00:17:26,960 --> 00:17:36,440
+just wait a moment, and we will resume in about five minutes to get it set back up.
+
+259
+00:17:36,440 --> 00:17:44,000
+Then for the exercises, it's important that you have some software set up and configured,
+
+260
+00:17:44,000 --> 00:17:47,040
+and if you haven't done that, it's okay.
+
+261
+00:17:47,040 --> 00:17:52,260
+You can just watch and see how other people are working it and maybe fix it for the next
+
+262
+00:17:52,260 --> 00:17:53,260
+day.
+
+263
+00:17:53,260 --> 00:17:57,740
+And we have installation instructions to see what might be missing or how you can get the
+
+264
+00:17:57,740 --> 00:17:59,680
+parts together.
+
+265
+00:17:59,680 --> 00:18:02,660
+If you can't attend every day, it's not a problem.
+
+266
+00:18:02,660 --> 00:18:06,900
+You can always just attend the parts that you are interested in or where you don't have
+
+267
+00:18:06,900 --> 00:18:09,620
+other meetings or anything like that.
+
+268
+00:18:09,620 --> 00:18:11,500
+The materials are always available.
+
+269
+00:18:11,500 --> 00:18:14,820
+The videos are also available.
+
+270
+00:18:14,820 --> 00:18:20,260
+have cats visiting some of the instructors, then everyone just stay calm and wait for a moment
+
+271
+00:18:20,260 --> 00:18:26,500
+till the danger passes. And if the course is too cool and you want to know more,
+
+272
+00:18:26,500 --> 00:18:31,860
+then we will have some hints for you in the workshop outro in the end of day six. You can,
+
+273
+00:18:31,860 --> 00:18:37,780
+for example, join as a team leader next time or advertise to your organization to become a
+
+274
+00:18:37,780 --> 00:18:43,700
+partner of the Code Refinery Workshop. And then before we jump into version control,
+
+275
+00:18:43,700 --> 00:18:51,700
+some final notes. Please register if you haven't yet. That means that you will get emails from us
+
+276
+00:18:51,700 --> 00:18:56,900
+with updates about what happened every day and what needs to be done in preparation for the next
+
+277
+00:18:56,900 --> 00:19:04,500
+day. It helps us with our reporting. And you will also get the link to the collaborative document,
+
+278
+00:19:04,500 --> 00:19:12,740
+for example, and the registration goes via the workshop page. About privacy, since we are here
+
+279
+00:19:12,740 --> 00:19:17,940
+on stream, only the instructors, there's no way for your audio or video to end up broadcasted or
+
+280
+00:19:17,940 --> 00:19:24,420
+recorded. The only way where this can happen is via our collaborative documents, so that's why
+
+281
+00:19:24,420 --> 00:19:30,820
+we ask you to not put any names or identifiable info in this collaborative document, because
+
+282
+00:19:30,820 --> 00:19:35,940
+instructors may show it to answer some of your questions, for example, and that will end up on
+
+283
+00:19:35,940 --> 00:19:45,380
+stream. And the contents of the document will be screened after every course day and then they will
+
+284
+00:19:45,380 --> 00:19:50,500
+be posted on the course page. So then it is definitely without names, but it makes our
+
+285
+00:19:50,500 --> 00:19:56,740
+tasks easier if you don't put them there in the first place. And then if you would like a
+
+286
+00:19:56,740 --> 00:20:00,580
+certificate for the course. I think I've seen already a question about that also in the
+
+287
+00:20:00,580 --> 00:20:06,820
+collaborative documents. In the local teams at universities, for example, ask from your team
+
+288
+00:20:06,820 --> 00:20:12,500
+leader and then you can find some general instructions for these certificates behind
+
+289
+00:20:12,500 --> 00:20:22,580
+this link on our work page. And then once more CodeRefiner is an open project, you can get
+
+290
+00:20:22,580 --> 00:20:29,380
+involved you can join our chat. We have some manuals on how we organize these workshops and
+
+291
+00:20:29,380 --> 00:20:35,460
+we always need volunteers and partners to continue making this also a success in the future and we
+
+292
+00:20:35,460 --> 00:20:42,500
+are very happy to also welcome new institutional partners. And then if you like this workshop
+
+293
+00:20:42,500 --> 00:20:51,300
+please share your experiences about it on social media with this Code Refinery hashtag and we are
+
+294
+00:20:51,300 --> 00:20:54,660
+are also on Mustard on Twitter and LinkedIn.
+
+295
+00:20:54,660 --> 00:20:57,020
+And now I've already taken a few too many minutes,
+
+296
+00:20:57,020 --> 00:21:01,180
+so I will give over right away to Radovan and Gregor,
+
+297
+00:21:01,180 --> 00:21:06,180
+who will guide you to our first steps into version control.
+
