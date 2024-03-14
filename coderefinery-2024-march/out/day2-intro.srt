@@ -1,0 +1,380 @@
+1
+00:00:00,000 --> 00:00:00,540
+Let's see if this works.
+
+2
+00:00:04,540 --> 00:00:11,540
+Okay, we are back.
+
+3
+00:00:11,540 --> 00:00:18,540
+Okay. Hello, and welcome to day two of the Code Refinery workshop.
+
+4
+00:00:18,540 --> 00:00:28,540
+So we had an intense day yesterday, learning about the introduction to version control.
+
+5
+00:00:28,540 --> 00:00:31,540
+And I see there might be an issue with the audio.
+
+6
+00:00:31,540 --> 00:00:34,340
+Is there? Should I wait to continue?
+
+7
+00:00:39,380 --> 00:00:41,540
+I don't think so.
+
+8
+00:00:43,620 --> 00:00:44,580
+I'll continue.
+
+9
+00:00:44,580 --> 00:00:45,060
+Go ahead.
+
+10
+00:00:45,700 --> 00:00:48,020
+And you let me know if...
+
+11
+00:00:48,020 --> 00:00:48,500
+Keep going.
+
+12
+00:00:49,140 --> 00:00:50,420
+Okay, seems okay.
+
+13
+00:00:52,020 --> 00:00:57,220
+All right, so a short recap of the day one of the introduction to version control.
+
+14
+00:00:57,220 --> 00:01:03,700
+So we learned about a few things yesterday and I intentionally use here the Git terminology to
+
+15
+00:01:03,700 --> 00:01:08,580
+make you aware that these are the things that we learned about yesterday and maybe you can
+
+16
+00:01:08,580 --> 00:01:13,620
+understand this now and if not then don't worry you can always go back and review them.
+
+17
+00:01:13,620 --> 00:01:20,740
+And we will also make use of them today and tomorrow so that they will get more into the
+
+18
+00:01:20,740 --> 00:01:23,520
+routine of your words you should usage.
+
+19
+00:01:23,520 --> 00:01:25,920
+So first we had a motivation for
+
+20
+00:01:25,920 --> 00:01:28,120
+version control and what it is.
+
+21
+00:01:28,120 --> 00:01:29,600
+Cloning and forking repositories,
+
+22
+00:01:29,600 --> 00:01:31,480
+committing changes and pull requests.
+
+23
+00:01:31,480 --> 00:01:34,920
+And for today we will move from what we
+
+24
+00:01:34,920 --> 00:01:37,500
+did yesterday in the web interface
+
+25
+00:01:37,500 --> 00:01:40,260
+to more local work so to follow
+
+26
+00:01:40,260 --> 00:01:43,200
+along for today you will need either
+
+27
+00:01:43,200 --> 00:01:45,700
+VS code installation or a command
+
+28
+00:01:45,700 --> 00:01:48,080
+line terminal setup and you can
+
+29
+00:01:48,080 --> 00:01:50,480
+find instructions for that in this.
+
+30
+00:01:50,480 --> 00:01:57,600
+behind this link, but many of the parts can also be done through the GitHub web interface.
+
+31
+00:01:57,600 --> 00:02:02,600
+And even if you don't have anything set up, it's still fine to watch.
+
+32
+00:02:02,600 --> 00:02:04,400
+Please don't run away.
+
+33
+00:02:04,400 --> 00:02:08,400
+There's a lot of things that you can learn also by just watching other people do stuff
+
+34
+00:02:08,400 --> 00:02:10,040
+here.
+
+35
+00:02:10,040 --> 00:02:15,000
+And then we had a lot of comments yesterday in the feedback, for example, also that we
+
+36
+00:02:15,000 --> 00:02:23,160
+some R users that would like to see how Git can be used from, for example, RStudio. So we tried to
+
+37
+00:02:23,160 --> 00:02:30,440
+add at least a basic getting started version for RStudio for today already. So you can take a look
+
+38
+00:02:30,440 --> 00:02:38,920
+and see if that helps you and you can follow along the exercises. For anyone who joins today for the
+
+39
+00:02:38,920 --> 00:02:44,520
+first time, how this workshop works briefly. So this is a live streamed workshop. Everyone will
+
+40
+00:02:44,520 --> 00:02:51,880
+watch the live stream of the instructors talking and showing demos on Twitch. This week there will
+
+41
+00:02:51,880 --> 00:02:57,080
+also be exercises which you can do either by yourself or in a team that you might be in a
+
+42
+00:02:57,080 --> 00:03:05,320
+room with or in a Zoom call. And in week two there are no dedicated exercise times but you can always
+
+43
+00:03:05,320 --> 00:03:10,760
+interact with the instructors via the collaborative document which I will show in a moment.
+
+44
+00:03:10,760 --> 00:03:15,760
+And then we plan on having a minimum of 10-minute break every hour.
+
+45
+00:03:15,760 --> 00:03:19,760
+If we should forget, please let us know in the collaborative document.
+
+46
+00:03:19,760 --> 00:03:24,760
+So even though this is a live stream workshop, you are never alone.
+
+47
+00:03:24,760 --> 00:03:30,760
+And you are always in contact with the team behind the scenes and also the instructors.
+
+48
+00:03:30,760 --> 00:03:36,760
+This collaborative document now shows you now briefly how that works.
+
+49
+00:03:36,760 --> 00:03:39,760
+So we use it to distribute information to you.
+
+50
+00:03:39,760 --> 00:03:44,560
+information to you, we tell you about links, we tell you about the agenda, and then this
+
+51
+00:03:44,560 --> 00:03:52,040
+is also used for questions. You have gotten the link to this document in the registration
+
+52
+00:03:52,040 --> 00:03:57,560
+confirmation email or an email after that. So if you haven't registered to this workshop,
+
+53
+00:03:57,560 --> 00:04:03,760
+please do so on the Code Refinery web page. So this is how the document looks. We have
+
+54
+00:04:03,760 --> 00:04:09,740
+a few informations here, some questions already, and then some icebreakers. So let's go and
+
+55
+00:04:09,740 --> 00:04:16,380
+answer that. To edit the document you find this little pen symbol which might be up here or up in
+
+56
+00:04:16,380 --> 00:04:25,100
+the right depending on how you're viewing it. You click that one, you scroll down to the icebreaker
+
+57
+00:04:25,100 --> 00:04:32,300
+question and there we have one first one. What's your spirit animal? Today I feel like a penguin
+
+58
+00:04:32,300 --> 00:04:38,780
+so I'm going to put penguin here and I'll leave some space for everyone else to add their
+
+59
+00:04:38,780 --> 00:04:42,260
+spirit animal here as well.
+
+60
+00:04:42,260 --> 00:04:45,060
+Then we have a second icebreaker question,
+
+61
+00:04:45,060 --> 00:04:48,400
+which types of project can you use Git,
+
+62
+00:04:48,400 --> 00:04:53,040
+and which will you use it for in the future?
+
+63
+00:04:53,040 --> 00:04:55,100
+Now we have learned already something about Git,
+
+64
+00:04:55,100 --> 00:05:01,380
+so maybe you've got some ideas of what this can be useful for,
+
+65
+00:05:01,380 --> 00:05:07,100
+and maybe I can put here all our code refinery work is on Git,
+
+66
+00:05:07,100 --> 00:05:13,020
+or most of ours, we write like the materials, presentations, the web page, everything is on Git,
+
+67
+00:05:13,020 --> 00:05:23,500
+so that's a good use for it also apart from code. Put it like this. And then you can see here
+
+68
+00:05:23,500 --> 00:05:27,980
+already some people have already added questions. This is where you can always ask questions.
+
+69
+00:05:27,980 --> 00:05:34,620
+Please like. No question is too stupid. No question is too basic or anything. We have a whole team
+
+70
+00:05:34,620 --> 00:05:42,380
+here behind the scenes that will answer those for you and because it will be shown on stream
+
+71
+00:05:42,380 --> 00:05:47,180
+once in a while please don't put any names or other identifying information in that document.
+
+72
+00:05:49,020 --> 00:05:55,260
+You can find all the materials linked from the workshop page so if you know where you registered
+
+73
+00:05:55,260 --> 00:06:01,260
+you can scroll down here to the schedule where there is day two introduction to
+
+74
+00:06:01,260 --> 00:06:06,380
+version control this is where you can find the materials for today.
+
+75
+00:06:06,380 --> 00:06:10,540
+And they will also be available after the workshop and
+
+76
+00:06:10,540 --> 00:06:14,140
+well I can't say forever but for a long time.
+
+77
+00:06:14,140 --> 00:06:21,020
+So don't worry. Then you can also find the unedited recordings of for example
+
+78
+00:06:21,020 --> 00:06:25,260
+yesterday on Twitch still for a week I think.
+
+79
+00:06:25,260 --> 00:06:29,500
+And then with about one day delay we also have the edited
+
+80
+00:06:29,500 --> 00:06:35,900
+recordings with subtitles and so on on the Code Refinery YouTube channel.
+
+81
+00:06:37,580 --> 00:06:44,620
+If you want some certificates, a certificate for this course, we are currently updating the
+
+82
+00:06:44,620 --> 00:06:51,980
+instructions for that, so please stay tuned. It's also on the workshop web page. There is this link
+
+83
+00:06:51,980 --> 00:06:57,260
+up here, certificates, where you'll find instructions on what you need to do to get one.
+
+84
+00:06:57,260 --> 00:07:05,260
+And then I would like to highlight just one more thing that we have on March 26th and April 2nd.
+
+85
+00:07:05,260 --> 00:07:17,260
+These Bring Your Own Code sessions. This is a time where many of the instructors of this workshop and also people behind the scenes will hang around in Zoom for about two hours.
+
+86
+00:07:17,260 --> 00:07:29,260
+And everyone who joined this workshop or also previous workshops can join, bring your own code and get help from experts and specialists in implementing these concept learns in this workshop.
+
+87
+00:07:29,260 --> 00:07:45,260
+So if you have a question like this more detailed question that we had here on the collaborative document before, and you would like to just have a quick chat about it with one of the instructors, for example, then these sessions are a very good time to join us.
+
+88
+00:07:45,260 --> 00:07:48,900
+And that was the short, quick introduction.
+
+89
+00:07:48,900 --> 00:07:52,220
+So now I will give over to [Name] and [Name].
+
+90
+00:07:52,220 --> 00:07:57,220
+who will lead you through today's materials.
+
+91
+00:07:58,400 --> 00:07:59,240
+Thank you.
+
+92
+00:08:02,300 --> 00:08:03,220
+Thanks so much, [Name].
+
+93
+00:08:03,220 --> 00:08:04,060
+Thanks for the intro.
+
+94
+00:08:04,060 --> 00:08:05,260
+Thanks [Name].
+
+95
+00:08:05,260 --> 00:08:08,000
+Thanks everybody helping also in the document.
+
