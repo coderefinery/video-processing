@@ -1,0 +1,508 @@
+1
+00:00:00,000 --> 00:00:00,200
+So any ideas?
+
+2
+00:00:00,200 --> 00:00:06,840
+And someone has reminded me, today is not completely the last day of Code Refinery.
+
+3
+00:00:06,840 --> 00:00:14,480
+It's the last day of streaming, but the teaching continues with the Bring Your Own Code sessions,
+
+4
+00:00:14,480 --> 00:00:24,040
+where you can, well, bring your stuff and you ask us questions and we look live at things
+
+5
+00:00:24,040 --> 00:00:32,320
+and give advice.
+
+6
+00:00:32,320 --> 00:00:49,080
+So from these icebreakers, what's the worst bug you've seen or experienced?
+
+7
+00:00:49,080 --> 00:00:55,720
+So anyone want to go first?
+
+8
+00:00:55,720 --> 00:01:01,240
+The ones that are resolved by restarting your computer.
+
+9
+00:01:01,240 --> 00:01:05,440
+The ones that you cannot pinpoint why they happen.
+
+10
+00:01:05,440 --> 00:01:08,000
+They just happen and then they are not there anymore.
+
+11
+00:01:08,000 --> 00:01:12,760
+And then you're like, okay, is this fine?
+
+12
+00:01:12,760 --> 00:01:18,960
+So I wrote down my answer, but it was a memory issue in the C code, which is always.
+
+13
+00:01:18,960 --> 00:01:23,040
+very hard to figure out.
+
+14
+00:01:23,040 --> 00:01:36,960
+But also at that time, I was not using either version control or tests, so just I was working
+
+15
+00:01:36,960 --> 00:01:45,440
+on something for a day and something else broke and I have no idea what's going on.
+
+16
+00:01:45,440 --> 00:01:48,360
+At least with C, I think that's a relatively common experience.
+
+17
+00:01:48,360 --> 00:01:56,080
+I had something similar once, and the only way I fixed it was by running the code in
+
+18
+00:01:56,080 --> 00:02:02,640
+a loop a thousand times, which would some sort of reliably cause an error message when
+
+19
+00:02:02,640 --> 00:02:08,560
+quitting, and then commenting out half my code until I could narrow it down to one
+
+20
+00:02:08,560 --> 00:02:09,560
+line.
+
+21
+00:02:09,560 --> 00:02:16,600
+I'm sure there's better ways, but that was what I knew how to do at the time.
+
+22
+00:02:16,600 --> 00:02:26,720
+Yeah, unfortunately, this was a problem where the code runs from the beginning to the end
+
+23
+00:02:26,720 --> 00:02:31,280
+and produces incorrect results, but also in a statistical way.
+
+24
+00:02:31,280 --> 00:02:37,480
+So you have to run it a bunch of times before you can notice that it's slightly off.
+
+25
+00:02:37,480 --> 00:02:41,240
+It really was the worst kind of problem.
+
+26
+00:02:41,240 --> 00:02:42,960
+Yeah.
+
+27
+00:02:42,960 --> 00:02:54,720
+So my worst bugs, or you could say maybe what's been worst to solve, has been things like
+
+28
+00:02:54,720 --> 00:02:59,440
+I'm editing some code, but that code isn't even running because the bug is somewhere
+
+29
+00:02:59,440 --> 00:03:00,440
+else.
+
+30
+00:03:00,440 --> 00:03:07,440
+Like once I made a, was it debugging or testing tutorial or something, and I had the same
+
+31
+00:03:07,440 --> 00:03:21,280
+code in my same code was in the file twice the same function was defined twice and people were
+
+32
+00:03:21,280 --> 00:03:26,640
+editing the first one and towards the second definition took precedence and it wasn't even
+
+33
+00:03:26,640 --> 00:03:37,200
+running and yeah there's another one um that i think is kind of a good lead-in
+
+34
+00:03:37,200 --> 00:03:46,720
+for today's topics. So this was that I wrote a measurement for a high-performance computing
+
+35
+00:03:47,840 --> 00:03:57,440
+program that we were spending millions of hours to run, like hundreds of thousands of euros worth
+
+36
+00:03:57,440 --> 00:04:03,360
+of computing time. And I wrote a measurement that calculates A, B, and C, and then it should
+
+37
+00:04:03,360 --> 00:04:08,640
+add A, B, and C together and print the result. I added B and C together and printed the result
+
+38
+00:04:08,640 --> 00:04:16,640
+instead and never printed A anywhere in the program. That wasted some time.
+
+39
+00:04:18,240 --> 00:04:23,920
+It's also one of those things that no matter how well you test A, it's not going to help.
+
+40
+00:04:28,800 --> 00:04:32,000
+Properly testing the program before starting to run it would have been
+
+41
+00:04:32,000 --> 00:04:33,600
+and very helpful.
+
+42
+00:04:35,800 --> 00:04:36,640
+Yeah.
+
+43
+00:04:50,000 --> 00:04:54,400
+So, how do you make sure your code continues to work
+
+44
+00:04:54,400 --> 00:04:56,040
+when collaborating with others?
+
+45
+00:05:02,000 --> 00:05:08,000
+Like, if it works one day, how does it work tomorrow?
+
+46
+00:05:11,000 --> 00:05:21,000
+Have you ever had these kind of bugs where something worked, it was nicely tested, but then it got changed and broke, and then everything...
+
+47
+00:05:21,000 --> 00:05:36,480
+I guess that memory issue in C is one of these things, you can easily break something in
+
+48
+00:05:36,480 --> 00:05:50,160
+a completely different place of the code.
+
+49
+00:05:50,160 --> 00:05:59,120
+also just manually running it and printing some variables values brings me quite far.
+
+50
+00:06:01,360 --> 00:06:06,080
+And I guess that's quite often the starting point of testing,
+
+51
+00:06:07,840 --> 00:06:15,040
+manually looking at prints. I guess as a spoiler alert, we're going to talk about exactly this
+
+52
+00:06:15,040 --> 00:06:22,800
+kind of stuff today, and you'll see what we tend to do these days because it's best practice.
+
+53
+00:06:27,200 --> 00:06:31,440
+So I didn't see a good suggestion for what to say. Someone suggested
+
+54
+00:06:32,480 --> 00:06:40,960
+Sally Scripps' sleek software solution swiftly, but we need something quick and easy to say,
+
+55
+00:06:40,960 --> 00:06:47,040
+not that we're gonna trip us up. What if we say fair software? So me, [name], [name],
+
+56
+00:06:47,040 --> 00:06:55,600
+I'll repeat fair software. Fair software. Fair software. Fair software. Fair software. Fair
+
+57
+00:06:55,600 --> 00:07:05,520
+software. Fair software. Okay, is it balanced? To me, [name] might have been a little bit louder
+
+58
+00:07:05,520 --> 00:07:08,640
+than [name].
+
+59
+00:07:08,640 --> 00:07:13,880
+But I'm only here for a very short time, so it's better that you are balanced.
+
+60
+00:07:13,880 --> 00:07:15,920
+But it's 10.
+
+61
+00:07:15,920 --> 00:07:19,400
+Should we start with Jingle?
+
+62
+00:07:19,400 --> 00:07:21,400
+Yeah.
+
+63
+00:07:21,400 --> 00:07:23,400
+Yeah.
+
+64
+00:07:23,400 --> 00:07:25,400
+Okay.
+
+65
+00:07:25,400 --> 00:07:29,400
+Let's go.
+
+66
+00:07:29,400 --> 00:07:31,400
+Hello.
+
+67
+00:07:31,400 --> 00:07:33,400
+Welcome.
+
+68
+00:07:33,400 --> 00:07:38,400
+Hello. Welcome. And we have [name] for the introduction.
+
+69
+00:07:38,400 --> 00:07:49,400
+Already here. Okay. Yeah. Hello. And very welcome to this last day of streaming of the Code Refinery workshop.
+
+70
+00:07:49,400 --> 00:07:56,460
+So we are in the last day of the teaching sessions of this workshop,
+
+71
+00:07:56,460 --> 00:08:04,220
+and yesterday we looked at documentation and Jupyter and saw some demos.
+
+72
+00:08:04,220 --> 00:08:09,820
+Today, this goes on and it basically wraps everything up.
+
+73
+00:08:09,820 --> 00:08:13,780
+So everything comes together again in today's sessions.
+
+74
+00:08:13,780 --> 00:08:17,780
+Now in the morning, we have a session about automated testing.
+
+75
+00:08:17,780 --> 00:08:21,980
+So really putting all the Git and GitHub things together,
+
+76
+00:08:21,980 --> 00:08:26,660
+and implement tests that can check
+
+77
+00:08:26,660 --> 00:08:31,260
+your code when you are collaborating with others or working by yourself.
+
+78
+00:08:31,260 --> 00:08:33,240
+Then in the afternoon,
+
+79
+00:08:33,240 --> 00:08:37,140
+we will have a session on modular code development,
+
+80
+00:08:37,140 --> 00:08:43,940
+which is a live coding session where we take a code that is right now
+
+81
+00:08:43,940 --> 00:08:46,620
+in Jupyter and plot something,
+
+82
+00:08:46,620 --> 00:08:51,220
+and then show live how to make this more modular
+
+83
+00:08:51,220 --> 00:08:53,960
+so that it can be more easily reused
+
+84
+00:08:53,960 --> 00:08:56,180
+by you and others in the future.
+
+85
+00:08:57,460 --> 00:08:59,100
+And this is highly interactive,
+
+86
+00:08:59,100 --> 00:09:02,740
+so we are kind of dependent a little bit on you there
+
+87
+00:09:02,740 --> 00:09:07,060
+to give us hints in what to do with the codes
+
+88
+00:09:07,060 --> 00:09:08,380
+in the collaborative document,
+
+89
+00:09:08,380 --> 00:09:10,940
+and I'll show in a moment how to do that.
+
+90
+00:09:10,940 --> 00:09:17,780
+But also, please stay until the end because we will tell you a little bit about what can
+
+91
+00:09:17,780 --> 00:09:23,460
+come after this Code Refinery workshop and also talk a little bit more about our Bring
+
+92
+00:09:23,460 --> 00:09:29,780
+Your Own Code sessions, which you might have seen in the schedule already for next week
+
+93
+00:09:29,780 --> 00:09:33,340
+and the week after, Tuesday afternoon.
+
+94
+00:09:33,340 --> 00:09:38,020
+So if you're new here, if you're joining us today for the first time, this is a live-streamed
+
+95
+00:09:38,020 --> 00:09:45,300
+workshop so everyone will watch the live stream here on Twitch and then you can interact with
+
+96
+00:09:45,300 --> 00:09:51,380
+the instructors and with some people behind the scenes also via our collaborative document.
+
+97
+00:09:51,380 --> 00:09:58,580
+For that you need to register to this workshop via the Code Refinery web page and then you will
+
+98
+00:09:58,580 --> 00:10:03,700
+get the link to this document which looks something like this. So here we have some
+
+99
+00:10:03,700 --> 00:10:07,940
+information for you where you can find all the questions and answers, the workshop web page,
+
+100
+00:10:07,940 --> 00:10:14,580
+the schedule and the link to the lesson materials and then we also have some icebreaker question
+
+101
+00:10:14,580 --> 00:10:22,420
+for this morning and the way you can add your answers there is to find this little pen symbol
+
+102
+00:10:22,420 --> 00:10:27,940
+which might be here or somewhere to the right depending on how you're looking at this page.
+
+103
+00:10:27,940 --> 00:10:29,720
+So you click the pen symbol,
+
+104
+00:10:29,720 --> 00:10:32,800
+you switch into edit mode,
+
+105
+00:10:32,800 --> 00:10:37,960
+and then you can scroll down here to the questions,
+
+106
+00:10:37,960 --> 00:10:41,840
+what's the worst bug you have seen or experienced,
+
+107
+00:10:41,840 --> 00:10:46,400
+and then find these little three dot lines
+
+108
+00:10:46,400 --> 00:10:49,400
+here and add your own answer to the question,
+
+109
+00:10:49,400 --> 00:10:53,200
+and the same for the next ones that we have here.
+
+110
+00:10:53,200 --> 00:11:01,200
+And then we will have titles here about each section and underneath here you can ask your question.
+
+111
+00:11:01,200 --> 00:11:12,200
+Is this the place to ask questions? And then hopefully someone will answer. Yes, there's someone answering.
+
+112
+00:11:12,200 --> 00:11:19,200
+And we will provide these documents after the course. You can find them on the course web page.
+
+113
+00:11:19,200 --> 00:11:23,460
+course webpage so you can go back and see what have others asked, what may help
+
+114
+00:11:23,460 --> 00:11:30,640
+your understanding. We'll also have breaks about 10 minutes every hour and
+
+115
+00:11:30,640 --> 00:11:36,800
+all the lesson materials that you might see during this day are available and
+
+116
+00:11:36,800 --> 00:11:41,920
+linked from the workshop page and they will also be available afterwards and
+
+117
+00:11:41,920 --> 00:11:48,560
+And you can also reuse them to do your own workshops, for example.
+
+118
+00:11:48,560 --> 00:11:52,960
+The recordings will stay online on Twitch for some days, and then they will also be
+
+119
+00:11:52,960 --> 00:11:59,640
+available approximately tomorrow or today on the YouTube channel.
+
+120
+00:11:59,640 --> 00:12:04,680
+If you're interested in certificates, you can find instructions on that also on the
+
+121
+00:12:04,680 --> 00:12:05,680
+workshop page.
+
+122
+00:12:05,680 --> 00:12:07,840
+Maybe I can show that briefly.
+
+123
+00:12:07,840 --> 00:12:18,640
+there's up here this certificates tab where you can find this and all the materials are linked here
+
+124
+00:12:19,280 --> 00:12:26,800
+behind the schedule. And then yeah the bring your own code sessions we'll talk about
+
+125
+00:12:26,800 --> 00:12:35,600
+a little bit about this more in the end of today. And now over to our instructors for today
+
+126
+00:12:35,600 --> 00:12:42,000
+[name] and [name]. Great, thanks [name].
+
+127
+00:12:42,640 --> 00:12:43,000
+Okay, I will take over the screen share.
+
