@@ -1,6 +1,23 @@
 - workshop_title: Tuesday tools and techniques for HPC
 - workshop_description: >
-    Workshop description here
+    Do you use supercomputers in your research work? Are you curious
+    about making your computing faster and more efficient? Join us for
+    TTT4HPC: four self-contained episodes on best practices in High
+    Performance Computing. This is a great chance to enhance your
+    computational skills. What you will learn is also used a lot
+    outside academia whenever large scale computations are needed.
+
+    Improve your cluster workflows! You've had a basic course on
+    working with a cluster - but what do people actually do? This
+    course shows practical examples and tips which may help you, but
+    aren't usually covered in either basic or advanced courses.
+
+    We won't go so deep into each topic that you know everything about
+    it, but you learn what is possible, see some examples, and know
+    where to follow up on the tools that are right for you. The format
+    is designed to be "fireside chat with experts", a combination of
+    demos, type-along, and independent exercises. You can engage at
+    different levels, depending on your interest.
 
     Links:
 
@@ -14,34 +31,65 @@
 
 - input: raw/day1-obs.mkv
 
-- output: day1.1-icebreaker.mkv
+- output: out/day1.1-icebreaker.mkv
   title: 1.1 Icebreaker
   description: >-
     The icebreaker/intro session of the day  You probably don't want
-    to watch this and instead will go to the main material.
+    to watch this and instead will go to the main material, unless you
+    want the full "fireside chat" experience.
 
   editlist:
     - start: 00:15:20
     - end: 00:24:26
 
-- output: day1-intro.mkv
+- output: out/day1-intro.mkv
   title: 1.2 Intro
   description: >-
-    description
-
-    LINK
+    The practical information of the day.  You probably want to skip
+    this unless you want a full simulation of the course.
 
   editlist:
     - start: 00:24:26
     - end: 00:30:18
 
-- output: day1-resources.mkv
+- output: out/day1-resources.mkv
   title: 1.3 Resources
   description: >-
-    description
+    How do you know how many resources to request on the cluster?
+    This is a good question, but the answer usually isn't obvious (and
+    is usually hand-waved at the start).  The answer is somehow
+    "measure and test" - and that's what you will learn how to do
+    here.
+
+    Learning goals:
+
+    - We understand what the Slurm job scheduler tries to do.
+
+    - We understand the dimensions of a Slurm job and how to specify them.
+
+    - Understand that job parameters affect not only resource use but also how long it will queue.
+
+    - Get a visual understanding of what the Slurm job scheduler does.
+
+    - Being able to reduce the system size to a small enough size to be able to test the scaling of a code.
+
+    - Timing a series of runs with increasing number of cores.
+
+    - How to measure and choose the right amount of memory
+
+    - Reading files is a common bottleneck
+
+    - One large file is usually faster than many small files
+
+    - Local hard disks and ramdisks can be much faster
+
+
+    Materials:
 
     1. https://coderefinery.github.io/TTT4HPC_resource_management/scheduling/
+
     2. https://coderefinery.github.io/TTT4HPC_resource_management/num-cores/
+
     3. https://coderefinery.github.io/TTT4HPC_resource_management/memory/
 
   editlist:
@@ -51,10 +99,21 @@
     - 01:10:15: 3. Choosing the right amount of memory
     - end: 01:24:59
 
-- output: day1-io.mkv
+- output: out/day1-io.mkv
   title: 1.4 I/O
   description: >-
-    Description
+    In this lesson we discuss common I/O problems, diagnosing them and
+    avoiding them. I/O issues are usually about how the workflow is
+    structured and can be fixed or alleviated by restucturing, moving
+    the reads and writes to move convenient times or using the right
+    storage system.
+
+    This lesson is mostly a demonstration, with some general
+    discussion. We recommend you follow the demonstration.
+
+    Main points:
+    - Filesystem can be the slowest part of many jobs
+    - Networked filesystems tend to be best at large files, bad at many small
 
     https://coderefinery.github.io/TTT4HPC_resource_management/io-best-practices/
 
