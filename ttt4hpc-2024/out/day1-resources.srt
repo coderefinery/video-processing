@@ -1,0 +1,2924 @@
+1
+00:00:00,000 --> 00:00:05,860
+Super, I will take the screen share first and then let's introduce ourselves and let's
+
+2
+00:00:05,860 --> 00:00:06,860
+get started.
+
+3
+00:00:06,860 --> 00:00:15,620
+Here, I still need to adjust it a little bit.
+
+4
+00:00:15,620 --> 00:00:18,420
+And a question to the studio, should I make it a little bit wider?
+
+5
+00:00:18,420 --> 00:00:20,540
+It can be a little bit wider.
+
+6
+00:00:20,540 --> 00:00:21,540
+How about this?
+
+7
+00:00:21,540 --> 00:00:22,540
+Looks good.
+
+8
+00:00:22,540 --> 00:00:23,540
+Yeah.
+
+9
+00:00:23,540 --> 00:00:24,540
+Okay.
+
+10
+00:00:24,540 --> 00:00:28,100
+Okay, so then just a little adjustment here.
+
+11
+00:00:28,100 --> 00:00:29,700
+Okay.
+
+12
+00:00:29,700 --> 00:00:31,440
+So first, hello everybody.
+
+13
+00:00:31,440 --> 00:00:32,280
+This is really exciting.
+
+14
+00:00:32,280 --> 00:00:34,820
+First time we do something like this.
+
+15
+00:00:35,940 --> 00:00:37,320
+And it's a pilot.
+
+16
+00:00:38,660 --> 00:00:40,220
+And then later people can say,
+
+17
+00:00:40,220 --> 00:00:42,380
+well, we were there when the pilot happened.
+
+18
+00:00:43,740 --> 00:00:44,740
+Yeah, we are really excited.
+
+19
+00:00:44,740 --> 00:00:45,780
+We are nervous.
+
+20
+00:00:45,780 --> 00:00:47,160
+My name is [name].
+
+21
+00:00:48,180 --> 00:00:49,820
+I will be co-teaching this.
+
+22
+00:00:49,820 --> 00:00:52,980
+So I'm at University of Tromsø doing support
+
+23
+00:00:52,980 --> 00:00:59,140
+in high-performance computing, but also in everything that is programming software development
+
+24
+00:00:59,140 --> 00:01:04,700
+in research. And really looking forward to teach this together with [name] from Sweden.
+
+25
+00:01:04,700 --> 00:01:12,260
+Yeah. Hi. Hi, everyone. I'm [name]. I'm working for Uppmax cluster at Uppsala University
+
+26
+00:01:12,260 --> 00:01:19,140
+in Sweden. Very happy to be here. I'm also doing support for users as [name] been telling
+
+27
+00:01:19,140 --> 00:01:25,380
+a little bit of RSC like. So yeah, really happy to be here. And we'll be teaching this
+
+28
+00:01:25,380 --> 00:01:33,700
+together with [name] and [name]. So [name], maybe they'll introduce themselves later.
+
+29
+00:01:33,700 --> 00:01:41,780
+Yeah. Okay. So the plan now, let me, let me show you where you can find everything. So
+
+30
+00:01:41,780 --> 00:01:46,860
+hopefully you have this document that I'm sharing open. This is the, these are our notes.
+
+31
+00:01:46,860 --> 00:01:49,100
+Please ask questions here.
+
+32
+00:01:49,100 --> 00:01:51,740
+And here you can also find all the links.
+
+33
+00:01:51,740 --> 00:01:56,220
+So if you have one, one thing open somewhere in your browser is this document.
+
+34
+00:01:56,220 --> 00:01:59,560
+And here, please ask us lots of questions, we will be watching this.
+
+35
+00:01:59,560 --> 00:02:05,540
+And this is now the best way to participate in the next two hours, we will have a break.
+
+36
+00:02:05,540 --> 00:02:09,740
+So we will also take a break halfway through.
+
+37
+00:02:09,740 --> 00:02:14,820
+And the next really two hours will be discussions demonstration.
+
+38
+00:02:14,820 --> 00:02:20,740
+And if you scroll up to the top, you can also find all the like the link to the material
+
+39
+00:02:20,740 --> 00:02:26,300
+I will open it up. So I will follow this link here. And if you open up this link, this is
+
+40
+00:02:26,300 --> 00:02:33,420
+the lesson. And just to make it a bit more readable, I will zoom in. So what to expect,
+
+41
+00:02:33,420 --> 00:02:41,540
+We will the next things we will know for the next 45 minutes.
+
+42
+00:02:41,540 --> 00:02:48,960
+We will talk about really what is high performance computing in like two sentences.
+
+43
+00:02:48,960 --> 00:02:50,400
+What is job scheduling?
+
+44
+00:02:50,400 --> 00:02:56,220
+How do we schedule jobs on a high performance computing resource?
+
+45
+00:02:56,220 --> 00:02:59,140
+We we are now on many clusters.
+
+46
+00:02:59,140 --> 00:03:01,900
+I see that you are from different countries, different clusters.
+
+47
+00:03:01,900 --> 00:03:06,960
+One thing that probably all clusters have in common these days is that they use a tool
+
+48
+00:03:06,960 --> 00:03:07,960
+called Slurm.
+
+49
+00:03:07,960 --> 00:03:11,000
+So we will tell you a little bit about the tool.
+
+50
+00:03:11,000 --> 00:03:16,120
+And then using a visual analogy, we will then discuss two things.
+
+51
+00:03:16,120 --> 00:03:21,600
+One is how to choose the number of cores.
+
+52
+00:03:21,600 --> 00:03:23,280
+That's very important.
+
+53
+00:03:23,280 --> 00:03:27,940
+And we will show you a method that almost always works.
+
+54
+00:03:27,940 --> 00:03:31,800
+And then how to measure and choose the right amount of memory.
+
+55
+00:03:31,800 --> 00:03:37,680
+why it matters, and how to do it, again, with a method that almost always works.
+
+56
+00:03:37,680 --> 00:03:40,600
+And then we will discuss a little bit, we will take a break.
+
+57
+00:03:40,600 --> 00:03:49,000
+And after that, we will talk about input output, how to use the disk in a good way.
+
+58
+00:03:49,000 --> 00:03:52,400
+And later, we will have an exercise session, which is optional.
+
+59
+00:03:52,400 --> 00:03:54,600
+The exercise session will not be streamed, not recorded.
+
+60
+00:03:54,600 --> 00:03:57,600
+And then we can try these things out hands on.
+
+61
+00:03:57,600 --> 00:04:04,920
+But now, the best way to participate is to watch what we do and ask us questions.
+
+62
+00:04:04,920 --> 00:04:07,920
+So you don't have to type with us.
+
+63
+00:04:07,920 --> 00:04:18,440
+All right, I will open up the first episode, which is job scheduling and Sloan Basics.
+
+64
+00:04:18,440 --> 00:04:23,120
+And we will show you a few pictures and discuss a little bit.
+
+65
+00:04:23,120 --> 00:04:27,400
+But very soon, I will also open up a terminal, I will log into one of these clusters, and
+
+66
+00:04:27,400 --> 00:04:31,960
+And I will test these things out.
+
+67
+00:04:31,960 --> 00:04:36,460
+The learning goals is that we really understand what the job scheduler tries to do.
+
+68
+00:04:36,460 --> 00:04:39,740
+What is the motivation for a job scheduler?
+
+69
+00:04:39,740 --> 00:04:41,460
+We know what is the motivation for the researcher.
+
+70
+00:04:41,460 --> 00:04:45,300
+The motivation for the researcher is to, you want your calculation to start as soon as
+
+71
+00:04:45,300 --> 00:04:47,380
+possible and to finish as soon as possible.
+
+72
+00:04:47,380 --> 00:04:48,460
+That's what you want.
+
+73
+00:04:48,460 --> 00:04:52,500
+But I will tell you what the job scheduler tries to do, and then we will learn how we
+
+74
+00:04:52,500 --> 00:04:55,620
+we can work together with the computer.
+
+75
+00:04:57,660 --> 00:05:00,500
+What are the dimensions of a job and how to specify them,
+
+76
+00:05:01,780 --> 00:05:06,500
+but also understand that choosing good parameters
+
+77
+00:05:06,500 --> 00:05:08,260
+will not only affect resource use,
+
+78
+00:05:08,260 --> 00:05:11,220
+but also how long you wait in the queue.
+
+79
+00:05:11,220 --> 00:05:13,980
+And these are things where you want to minimize.
+
+80
+00:05:15,160 --> 00:05:17,980
+And what we want to give you is a good visual understanding
+
+81
+00:05:17,980 --> 00:05:19,720
+of what a job scheduler does.
+
+82
+00:05:19,720 --> 00:05:24,220
+And I'm watching the questions, so please keep them coming.
+
+83
+00:05:24,220 --> 00:05:25,880
+Any comments, welcome.
+
+84
+00:05:25,880 --> 00:05:29,560
+What is a supercomputer or a cluster?
+
+85
+00:05:29,560 --> 00:05:33,440
+Probably many of you already know, so I'll try to keep it really short.
+
+86
+00:05:33,440 --> 00:05:35,080
+It's a large collection of computers.
+
+87
+00:05:35,080 --> 00:05:39,280
+They are connected together through a network.
+
+88
+00:05:39,280 --> 00:05:43,680
+And each of these computers is often called a node.
+
+89
+00:05:43,680 --> 00:05:45,880
+And some clusters have thousands of these nodes.
+
+90
+00:05:45,880 --> 00:05:49,240
+They have thousands of these little computers.
+
+91
+00:05:49,240 --> 00:05:53,220
+And these compute nodes often have multiple cores.
+
+92
+00:05:53,220 --> 00:06:01,140
+So when we talk about cores, we often use it synonymous to CPUs.
+
+93
+00:06:01,140 --> 00:06:06,800
+But some of these compute nodes also have graphical processing units.
+
+94
+00:06:06,800 --> 00:06:13,900
+What is surprising to when when people start working on a on a supercomputer or a cluster.
+
+95
+00:06:13,900 --> 00:06:17,080
+And for me, a supercomputer and a cluster is the same thing.
+
+96
+00:06:17,080 --> 00:06:22,840
+But what is surprising to people starting on supercomputers and clusters is that these
+
+97
+00:06:22,840 --> 00:06:28,000
+these cores are often not faster than the ones that are in my laptop.
+
+98
+00:06:28,000 --> 00:06:29,640
+But the difference is there are many more.
+
+99
+00:06:29,640 --> 00:06:35,480
+So in my laptop are I don't know, six, and in on on the supercomputer are there could
+
+100
+00:06:35,480 --> 00:06:37,940
+be 50,000.
+
+101
+00:06:37,940 --> 00:06:42,720
+So it's not faster, it's more sometimes faster.
+
+102
+00:06:42,720 --> 00:06:47,340
+And then the nodes are connected through a high speed network.
+
+103
+00:06:47,340 --> 00:06:53,060
+The other thing that is different is they often share a common file system.
+
+104
+00:06:53,060 --> 00:06:59,220
+So all of these many compute nodes, they can all read and write from a common file system.
+
+105
+00:06:59,220 --> 00:07:07,260
+And we will, we will discuss what that means in the second part of today.
+
+106
+00:07:07,260 --> 00:07:11,700
+And then when we log into clusters to do our work, we typically log in through some of
+
+107
+00:07:11,700 --> 00:07:17,780
+a login node, and then I will submit a job. I submit a calculation which then waits in
+
+108
+00:07:17,780 --> 00:07:25,500
+the queue until it starts and then it runs on the compute node. So that's just for background.
+
+109
+00:07:25,500 --> 00:07:31,620
+And of course, the other comment, if I forget something really essential. Now I said that
+
+110
+00:07:31,620 --> 00:07:36,380
+the one thing that is probably common to all the clusters that we are on today is a tool
+
+111
+00:07:36,380 --> 00:07:44,820
+called slurm is it is a tool that helps scheduling and queuing and monitoring jobs on these compute
+
+112
+00:07:44,820 --> 00:07:51,500
+nodes. Jobs often have to wait a little bit before they start, because the resource is
+
+113
+00:07:51,500 --> 00:07:58,980
+limited. And one analogy is, you can think of slurm as like the matter the inner at the
+
+114
+00:07:58,980 --> 00:08:03,740
+restaurant, so the person who is at the entrance of a restaurant, and if you want, if you come
+
+115
+00:08:03,740 --> 00:08:09,300
+there without a table booking, without a reservation, and you want a table for eight people, you
+
+116
+00:08:09,300 --> 00:08:13,580
+might need to wait a little bit. And Slurm really works the same way. We have a limited
+
+117
+00:08:13,580 --> 00:08:19,020
+resource, we have a lot of demand, and there needs to be somebody in charge of scheduling
+
+118
+00:08:19,020 --> 00:08:26,500
+and making sure that, yeah, just managing the queue. It is, Slurm is the most widely
+
+119
+00:08:26,500 --> 00:08:30,700
+used job scheduler these days. It's not the only one, but I think it's the most widely
+
+120
+00:08:30,700 --> 00:08:37,420
+use one and the visual so there are different analogies you could think
+
+121
+00:08:37,420 --> 00:08:44,060
+about restaurant reservation or hotel reservation the one analogy I will we
+
+122
+00:08:44,060 --> 00:08:49,460
+will use today is if maybe many of you remember playing this game here so the
+
+123
+00:08:49,460 --> 00:08:55,980
+blocks fall from the sky and you need to arrange them to fill up rows so this is
+
+124
+00:08:55,980 --> 00:08:56,980
+It's a Tetris game.
+
+125
+00:09:00,100 --> 00:09:03,180
+And we can think of a job scheduler doing something similar.
+
+126
+00:09:05,060 --> 00:09:07,020
+And here I try to translate it.
+
+127
+00:09:07,020 --> 00:09:09,860
+Like how does a job scheduler look at jobs?
+
+128
+00:09:11,340 --> 00:09:13,300
+These calculations for a job scheduler,
+
+129
+00:09:13,300 --> 00:09:14,700
+they are often rectangular.
+
+130
+00:09:14,700 --> 00:09:19,700
+So we don't have these like stair shape or T shape.
+
+131
+00:09:20,500 --> 00:09:22,100
+All of these calculations
+
+132
+00:09:22,100 --> 00:09:25,860
+are the first approximation rectangular.
+
+133
+00:09:25,860 --> 00:09:29,300
+And here in this plot, I have, there are different colors.
+
+134
+00:09:29,300 --> 00:09:32,740
+And then the job scheduler tries to arrange them.
+
+135
+00:09:32,740 --> 00:09:34,540
+And what the job scheduler really wants to do
+
+136
+00:09:34,540 --> 00:09:37,420
+is to keep the bottom row always full.
+
+137
+00:09:39,940 --> 00:09:43,780
+And here the dimension could be the number of cores
+
+138
+00:09:43,780 --> 00:09:47,380
+or a memory or the number of GPUs.
+
+139
+00:09:48,700 --> 00:09:50,940
+And the other dimension is time.
+
+140
+00:09:50,940 --> 00:09:53,900
+So as time goes on, new blocks fall from the sky
+
+141
+00:09:53,900 --> 00:09:58,060
+And Slurm is constantly busy arranging these blocks.
+
+142
+00:10:02,720 --> 00:10:04,200
+So we can think of that the scheduler
+
+143
+00:10:04,200 --> 00:10:07,160
+tries to keep the bottom row always full.
+
+144
+00:10:07,160 --> 00:10:08,720
+So the motivation for the job scheduler
+
+145
+00:10:08,720 --> 00:10:11,560
+is keep all the cores busy all the time.
+
+146
+00:10:11,560 --> 00:10:15,040
+That's what the computer wants because it was expensive.
+
+147
+00:10:15,040 --> 00:10:19,900
+It would be a waste of taxpayer money to keep them idling.
+
+148
+00:10:19,900 --> 00:10:26,820
+What is the motivation for me as a researcher, I want my job to get started and finished
+
+149
+00:10:26,820 --> 00:10:31,940
+as soon as possible.
+
+150
+00:10:31,940 --> 00:10:38,020
+And then there are long jobs that take a lot of time but maybe only a few course in this
+
+151
+00:10:38,020 --> 00:10:40,260
+case it's this violet job here.
+
+152
+00:10:40,260 --> 00:10:45,360
+So that it takes a number of time units but not too many resources.
+
+153
+00:10:45,360 --> 00:10:52,320
+And then there are the so called wide jobs this green, the green set, which is lots of
+
+154
+00:10:52,320 --> 00:10:56,800
+resources but not very long time.
+
+155
+00:10:56,800 --> 00:11:03,520
+And the cost of a job is the area of this of these rectangles, you can think of it that
+
+156
+00:11:03,520 --> 00:11:05,820
+way.
+
+157
+00:11:05,820 --> 00:11:09,200
+And that is of course just a simplification now imagine there is one more dimension.
+
+158
+00:11:09,200 --> 00:11:14,860
+So here we look at the 2d Tetris but imagine the Tetris is 3d, three dimensional or four
+
+159
+00:11:14,860 --> 00:11:21,940
+dimensional because the third dimension could be memory.
+
+160
+00:11:21,940 --> 00:11:26,460
+So what is maybe more realistic is that the scheduler plays kind of a cubicle Tetris all
+
+161
+00:11:26,460 --> 00:11:28,460
+the time.
+
+162
+00:11:28,460 --> 00:11:31,520
+And some of these jobs crash immediately.
+
+163
+00:11:31,520 --> 00:11:35,900
+Some of these jobs are added to the queue but get canceled.
+
+164
+00:11:35,900 --> 00:11:39,660
+So they never start.
+
+165
+00:11:39,660 --> 00:11:41,140
+And I think that's maybe.
+
+166
+00:11:41,140 --> 00:11:42,560
+So hopefully that's a useful analogy.
+
+167
+00:11:42,560 --> 00:11:45,300
+But now let's, what can we do with this?
+
+168
+00:11:45,300 --> 00:11:53,180
+If we, so first of all, something I want to tell you is that today, now in the next 40
+
+169
+00:11:53,180 --> 00:11:55,020
+minutes, we want to discuss these dimensions.
+
+170
+00:11:55,020 --> 00:11:56,080
+So how do I choose?
+
+171
+00:11:56,080 --> 00:12:02,960
+How do I tell my job whether it should use, you know, five blocks or 20?
+
+172
+00:12:02,960 --> 00:12:05,420
+How do I choose the dimension number of course?
+
+173
+00:12:05,420 --> 00:12:08,680
+How do I choose the number of dimension time?
+
+174
+00:12:08,680 --> 00:12:13,620
+And how do I choose the third dimension that we don't see here, which is the memory?
+
+175
+00:12:13,620 --> 00:12:17,020
+How do I do technically, but also which number should I use?
+
+176
+00:12:17,020 --> 00:12:22,420
+So that's the goal for the first part.
+
+177
+00:12:22,420 --> 00:12:28,220
+Once we accept that this is maybe a useful analogy, we can even understand concepts like
+
+178
+00:12:28,220 --> 00:12:30,140
+backfilling.
+
+179
+00:12:30,140 --> 00:12:37,980
+And to tell you what that means is, so we have this situation currently, currently what
+
+180
+00:12:37,980 --> 00:12:44,740
+is really running the sort of the processes they are busy computing the bottom row.
+
+181
+00:12:44,740 --> 00:12:48,700
+And they just finished the bottom row and now they will switch to the second row. So
+
+182
+00:12:48,700 --> 00:12:54,620
+now they will switch to compute this one here, the second row. And now imagine suddenly this
+
+183
+00:12:54,620 --> 00:13:01,300
+pink, the pink job suddenly crashes. It crashes after two seconds.
+
+184
+00:13:01,300 --> 00:13:05,520
+So what do you think will happen Maybe question to my co instructor
+
+185
+00:13:05,520 --> 00:13:13,080
+Yeah, so then the turquoise top job is going to fill in that space.
+
+186
+00:13:13,080 --> 00:13:19,420
+Yeah, so the schedule with notice that pink jobs crashes suddenly there are eight of these
+
+187
+00:13:19,420 --> 00:13:26,280
+places available. And in this situation, the job schedule doesn't have any it will notice
+
+188
+00:13:26,280 --> 00:13:30,860
+is that, hmm, I can actually move this one down here
+
+189
+00:13:30,860 --> 00:13:32,820
+and it can start immediately.
+
+190
+00:13:33,680 --> 00:13:34,520
+It can backfill.
+
+191
+00:13:34,520 --> 00:13:37,060
+It can even start before the other green job starts
+
+192
+00:13:37,060 --> 00:13:38,740
+because the green cannot start immediately.
+
+193
+00:13:38,740 --> 00:13:40,580
+It doesn't have enough space for it.
+
+194
+00:13:40,580 --> 00:13:42,620
+So something that the job scheduler cannot do,
+
+195
+00:13:42,620 --> 00:13:45,120
+it cannot turn the pieces.
+
+196
+00:13:45,120 --> 00:13:46,020
+It cannot do that.
+
+197
+00:13:47,380 --> 00:13:49,680
+So now we also understand what backfilling means.
+
+198
+00:13:49,680 --> 00:13:51,780
+And what I wanted to tell with this is that
+
+199
+00:13:51,780 --> 00:14:00,100
+It matters how long the time the time a job is scheduled for will matter on how soon it
+
+200
+00:14:00,100 --> 00:14:02,820
+can start.
+
+201
+00:14:02,820 --> 00:14:12,140
+If a job is short, and suddenly, some resources become available, I can go in and and get the
+
+202
+00:14:12,140 --> 00:14:13,860
+get the resources.
+
+203
+00:14:13,860 --> 00:14:19,820
+Okay, and now, how does it look really in real life?
+
+204
+00:14:19,820 --> 00:14:22,180
+Here I have an example slum script.
+
+205
+00:14:22,180 --> 00:14:32,820
+So this is what, this is how we tell the high performance computing cluster of what we want.
+
+206
+00:14:32,820 --> 00:14:33,980
+Here is my computation.
+
+207
+00:14:33,980 --> 00:14:38,700
+I want to compute something currently, let's not focus too much on what we do, but I need
+
+208
+00:14:38,700 --> 00:14:45,100
+to tell now here in this block, I tell the scheduler of what, what will I need?
+
+209
+00:14:45,100 --> 00:14:47,480
+And often you need to specify the account.
+
+210
+00:14:47,480 --> 00:14:53,440
+So this is the, you have like a quota of how many of these jobs you can run and how long
+
+211
+00:14:53,440 --> 00:14:54,440
+they can run.
+
+212
+00:14:54,440 --> 00:14:58,680
+So this is my, this is my account, you give it a name.
+
+213
+00:14:58,680 --> 00:15:01,960
+But here is the one dimension, this is the time dimension.
+
+214
+00:15:01,960 --> 00:15:04,940
+This job here would run for five minutes.
+
+215
+00:15:04,940 --> 00:15:10,160
+So minutes, seconds, hours, days.
+
+216
+00:15:10,160 --> 00:15:15,320
+Often there is a limit on how long you can run on some of clusters in Norway.
+
+217
+00:15:15,320 --> 00:15:18,920
+The limit is either one week or two weeks.
+
+218
+00:15:18,920 --> 00:15:23,480
+But there exists clusters where the limit can be one day.
+
+219
+00:15:23,480 --> 00:15:31,480
+Here is the other dimension and tasks and task is this number of course, approximately.
+
+220
+00:15:31,480 --> 00:15:36,120
+So in this case, I would ask for four course.
+
+221
+00:15:36,120 --> 00:15:39,440
+And here we ask also for the how much memory I need.
+
+222
+00:15:39,440 --> 00:15:43,040
+So this is how you do it technically.
+
+223
+00:15:43,040 --> 00:15:51,000
+So then the question is, is it a good idea to specify the memory needed for the job?
+
+224
+00:15:51,000 --> 00:15:57,000
+On some clusters, you have to, if you don't have to, or you can maybe leave it out.
+
+225
+00:15:57,000 --> 00:16:01,880
+And then it will take, it will assume that you want approximately the memory that the
+
+226
+00:16:01,880 --> 00:16:03,920
+CPU has.
+
+227
+00:16:03,920 --> 00:16:08,480
+On one of the clusters in Norway, where I work, we, we have to specify it because it
+
+228
+00:16:08,480 --> 00:16:15,440
+It depends whether multiple researchers can run their jobs simultaneously on one compute
+
+229
+00:16:15,440 --> 00:16:17,080
+node or not.
+
+230
+00:16:17,080 --> 00:16:23,160
+And if yes, you often need to specify this because this is then also a limited resource.
+
+231
+00:16:23,160 --> 00:16:25,840
+And depending on the cluster, you might need to specify more.
+
+232
+00:16:25,840 --> 00:16:30,520
+Sometimes you need to specify something called partition because there are different partitions
+
+233
+00:16:30,520 --> 00:16:33,860
+in the resource.
+
+234
+00:16:33,860 --> 00:16:34,860
+And you can do a lot more.
+
+235
+00:16:34,860 --> 00:16:38,100
+can specify the number of nodes or how many of the,
+
+236
+00:16:38,100 --> 00:16:41,280
+how many tasks per node one can do a lot.
+
+237
+00:16:44,220 --> 00:16:46,560
+I listed here some more options that might be handy one day,
+
+238
+00:16:46,560 --> 00:16:50,540
+which is how is the, how are the outputs called?
+
+239
+00:16:50,540 --> 00:16:53,760
+You can even make some calculations dependent
+
+240
+00:16:53,760 --> 00:16:55,000
+on other calculations.
+
+241
+00:16:55,000 --> 00:16:58,320
+So if you want one calculation to only start,
+
+242
+00:16:58,320 --> 00:17:02,560
+once the other one finishes, you can define dependencies
+
+243
+00:17:02,560 --> 00:17:07,280
+And you can even submit an entire array of jobs,
+
+244
+00:17:07,280 --> 00:17:09,080
+of very similar jobs.
+
+245
+00:17:09,080 --> 00:17:11,660
+And later in this course, it will not happen today,
+
+246
+00:17:11,660 --> 00:17:13,860
+but one of the future weeks,
+
+247
+00:17:13,860 --> 00:17:18,860
+we will show you how do we split up a computation
+
+248
+00:17:20,760 --> 00:17:23,800
+into smaller pieces so that we can run them as an array.
+
+249
+00:17:27,480 --> 00:17:28,320
+Okay, a few more things,
+
+250
+00:17:28,320 --> 00:17:30,620
+but then I will also demonstrate this.
+
+251
+00:17:30,620 --> 00:17:35,740
+And what I will then also demonstrate that once we have such a so-called run
+
+252
+00:17:35,740 --> 00:17:41,260
+script, once we have the job script run script, then what we will do is we will
+
+253
+00:17:41,260 --> 00:17:46,420
+submit it. And the command that I will use is sbatch. With sbatch I add
+
+254
+00:17:46,420 --> 00:17:51,700
+my job to the queue. And I wait until the job scheduler tells me that
+
+255
+00:17:51,700 --> 00:17:54,700
+now you can start.
+
+256
+00:17:55,060 --> 00:17:59,460
+And instead of putting things into a script you can also specify all of these
+
+257
+00:17:59,460 --> 00:18:05,220
+things on the command line, which I personally recommend not to do because if it's in the
+
+258
+00:18:05,220 --> 00:18:09,380
+script, I don't have to remember it. I can open it up half a year later and I can see
+
+259
+00:18:09,380 --> 00:18:17,300
+what I did. If I did it on the command line, I cannot remember it half a year later.
+
+260
+00:18:17,300 --> 00:18:24,140
+What I would add is that I also like to use the script. The only time when I don't is
+
+261
+00:18:24,140 --> 00:18:28,020
+If I want to do a test, a quick test job,
+
+262
+00:18:28,020 --> 00:18:30,720
+just to see that the inputs I have in my job script
+
+263
+00:18:30,720 --> 00:18:35,460
+are correct, then I would just add in the command line
+
+264
+00:18:35,460 --> 00:18:37,540
+a shorter time for the job,
+
+265
+00:18:37,540 --> 00:18:40,340
+just to see everything is working as it should.
+
+266
+00:18:40,340 --> 00:18:44,560
+And also another exception is when I use dependencies,
+
+267
+00:18:44,560 --> 00:18:46,840
+I have those in the command line,
+
+268
+00:18:46,840 --> 00:18:50,260
+and then I just prepare different job scripts
+
+269
+00:18:50,260 --> 00:19:00,480
+in different folders or as needed for different steps of my workflow.
+
+270
+00:19:00,480 --> 00:19:04,420
+And here I list two more useful things that I use all the time. So I really only remember
+
+271
+00:19:04,420 --> 00:19:10,780
+a handful of these commands. One is to list all my jobs. And sometimes I need to cancel
+
+272
+00:19:10,780 --> 00:19:17,060
+a job and you don't. So to all the other learners here, the goal here is not that we remember
+
+273
+00:19:17,060 --> 00:19:22,420
+all these slum commands. The goal is what [name] and me will try to show you is how
+
+274
+00:19:22,420 --> 00:19:29,100
+do we think about the job? How do we approach a job so that we choose these parameters? Because
+
+275
+00:19:29,100 --> 00:19:35,100
+it's easy to look up, well, how do I specify it here? This is how, but what, what, what
+
+276
+00:19:35,100 --> 00:19:38,980
+is much harder and I find really important. How do I choose the number? Should it be four
+
+277
+00:19:38,980 --> 00:19:44,940
+or should it be 40? And should this be five minutes or should it be five hours? And that
+
+278
+00:19:44,940 --> 00:19:46,420
+is that is the goal of today.
+
+279
+00:19:47,780 --> 00:19:50,580
+So I will scroll down and this is really about
+
+280
+00:19:50,580 --> 00:19:53,040
+how to choose the parameters, not technically.
+
+281
+00:19:53,900 --> 00:19:56,500
+This we can look up, but how do I choose the number?
+
+282
+00:19:58,940 --> 00:20:03,400
+And for the time, well, there are often time limits.
+
+283
+00:20:04,740 --> 00:20:07,580
+And what we recommend is that, well, it's hard to predict.
+
+284
+00:20:07,580 --> 00:20:09,300
+You need to maybe run a series of jobs
+
+285
+00:20:09,300 --> 00:20:11,940
+and get a feeling for how much time it will take.
+
+286
+00:20:11,940 --> 00:20:14,100
+Hopefully you can extrapolate
+
+287
+00:20:14,100 --> 00:20:17,260
+and then maybe add 20%.
+
+288
+00:20:17,260 --> 00:20:20,860
+Don't make it too long just in case.
+
+289
+00:20:20,860 --> 00:20:23,500
+If I know that my job takes five minutes,
+
+290
+00:20:23,500 --> 00:20:26,220
+it's not a good idea to ask for seven days
+
+291
+00:20:26,220 --> 00:20:29,940
+because the job scheduler doesn't look,
+
+292
+00:20:29,940 --> 00:20:31,500
+the job scheduler doesn't know,
+
+293
+00:20:31,500 --> 00:20:34,980
+doesn't understand what I try to do down here.
+
+294
+00:20:34,980 --> 00:20:37,260
+The job scheduler doesn't know my calculation.
+
+295
+00:20:37,260 --> 00:20:40,620
+It doesn't know my code.
+
+296
+00:20:40,620 --> 00:20:42,660
+It will look at what I'm asking for.
+
+297
+00:20:42,660 --> 00:20:46,500
+And if I ask for seven days, then imagine back to Tetris,
+
+298
+00:20:46,500 --> 00:20:50,540
+imagine this gigantically long piece that lasts seven days
+
+299
+00:20:50,540 --> 00:20:53,400
+and it will try to fit it somewhere into the resources.
+
+300
+00:20:55,580 --> 00:20:58,680
+So it might then queue for a very long time.
+
+301
+00:20:58,680 --> 00:21:01,740
+If the job is short, ask for a short time.
+
+302
+00:21:01,740 --> 00:21:03,060
+Also, when you debug a problem,
+
+303
+00:21:03,060 --> 00:21:07,740
+try to reduce the system size to reduce the queue time.
+
+304
+00:21:07,740 --> 00:21:10,840
+And I will show you that in a moment.
+
+305
+00:21:10,840 --> 00:21:17,280
+And then in the next so now in the next half an hour we will really talk about how do I
+
+306
+00:21:17,280 --> 00:21:23,380
+do this if I how do I decide how many course and how do I decide how much memory we will
+
+307
+00:21:23,380 --> 00:21:32,880
+show you that just catching up here with questions whether anything that we should lift and discuss
+
+308
+00:21:32,880 --> 00:21:40,040
+and while I look there I want to give a bit of a preview of what we will also do later
+
+309
+00:21:40,040 --> 00:21:51,560
+in the course. One is that some jobs, if you look at them, they run for a long time, sometimes
+
+310
+00:21:51,560 --> 00:21:56,720
+hours days. But if you really look at them and see what do they really do is that they
+
+311
+00:21:56,720 --> 00:22:02,760
+they compute independent things one after the other. Sometimes there is a loop and we
+
+312
+00:22:02,760 --> 00:22:09,680
+iterate over lots of tasks, lots of little units, but they are independent of each other
+
+313
+00:22:09,680 --> 00:22:11,600
+or mostly independent of each other.
+
+314
+00:22:12,720 --> 00:22:15,460
+And what we will do in,
+
+315
+00:22:16,960 --> 00:22:19,600
+I think it will be the session number four of this course
+
+316
+00:22:19,600 --> 00:22:22,640
+is we will show you how do you split it up
+
+317
+00:22:22,640 --> 00:22:24,780
+into independent jobs.
+
+318
+00:22:26,400 --> 00:22:28,880
+And maybe we also understand what can be the advantage
+
+319
+00:22:28,880 --> 00:22:30,920
+because the advantage of doing that is that
+
+320
+00:22:30,920 --> 00:22:33,440
+now the pieces that are now independent,
+
+321
+00:22:33,440 --> 00:22:37,600
+they can fall down and they can start at the same time.
+
+322
+00:22:37,600 --> 00:22:39,640
+And the scheduler has much more flexibility
+
+323
+00:22:39,640 --> 00:22:46,180
+to fill up all the holes, and we will maybe get the result sooner, the overall result.
+
+324
+00:22:46,180 --> 00:22:52,680
+What is the disadvantage is that we might need to combine the individual results into
+
+325
+00:22:52,680 --> 00:22:58,720
+a combined result. So this is something for later. And one more thing I wanted to show
+
+326
+00:22:58,720 --> 00:23:07,280
+is that I told you that all the jobs are rectangular or cubic cubic. But if you really look at
+
+327
+00:23:07,280 --> 00:23:13,160
+them if you really open them up and see what is the actual resource use so here
+
+328
+00:23:13,160 --> 00:23:17,520
+the gray thing imagine the like the whole rectangle is what I asked for
+
+329
+00:23:17,520 --> 00:23:23,540
+maybe for CPUs and a certain amount of time but if I if I would open up the job
+
+330
+00:23:23,540 --> 00:23:29,000
+and look into it often the resource the actual what is actually used is not
+
+331
+00:23:29,000 --> 00:23:34,400
+rectangular but it varies over time at the beginning it it uses very few CPUs
+
+332
+00:23:34,400 --> 00:23:39,920
+use, then it uses all of the CPUs for a certain amount of time. And then at the end, it uses
+
+333
+00:23:39,920 --> 00:23:49,600
+half the CPUs for a certain amount of time. And why did I show that? Because sometimes
+
+334
+00:23:49,600 --> 00:23:55,880
+it can be beneficial to so how could we solve this? If I some if I look at this job here,
+
+335
+00:23:55,880 --> 00:24:02,040
+we are wasting almost half the resources. And one solution can be that we split up the
+
+336
+00:24:02,040 --> 00:24:08,280
+job into pieces and run them one after the other because the pieces have
+
+337
+00:24:08,280 --> 00:24:13,740
+different demands for resources and one way to cut here would be and I don't
+
+338
+00:24:13,740 --> 00:24:19,040
+know whether you can see like my mouse pointer but I could cut here after two
+
+339
+00:24:19,040 --> 00:24:24,200
+lines and after two lines I need a different resource and then I could cut
+
+340
+00:24:24,200 --> 00:24:29,720
+again after the fourth line after the fourth row sometimes it can be
+
+341
+00:24:29,720 --> 00:24:36,660
+beneficial to cut and then run them as independent, separate steps, separate jobs.
+
+342
+00:24:36,660 --> 00:24:39,400
+And each of them have different resource demands.
+
+343
+00:24:39,400 --> 00:24:45,200
+And I would add that if if they are not independent, then you may use dependencies to ensure that
+
+344
+00:24:45,200 --> 00:24:53,320
+the middle block will start after the first one is finished, for example.
+
+345
+00:24:53,320 --> 00:24:55,400
+Very good question on line 171.
+
+346
+00:24:55,400 --> 00:25:02,460
+So do I have to ask here, I will also make that more visible.
+
+347
+00:25:02,460 --> 00:25:06,360
+This question here, do I have to ask exactly the same amount of time and number of course
+
+348
+00:25:06,360 --> 00:25:10,680
+for a job to start to make a square block.
+
+349
+00:25:10,680 --> 00:25:14,900
+So don't ask exactly for the amount of time, add a little bit more.
+
+350
+00:25:14,900 --> 00:25:19,720
+Because sometimes the CPUs are a little bit busier, it takes a little bit longer.
+
+351
+00:25:19,720 --> 00:25:23,620
+So at 20% 25%.
+
+352
+00:25:23,620 --> 00:25:29,460
+But you ask for a certain amount of course of the amount of memory certain amount of time.
+
+353
+00:25:29,460 --> 00:25:36,660
+And even though your job internally might, the resource use might actually vary.
+
+354
+00:25:36,660 --> 00:25:38,700
+But now we should really look at that.
+
+355
+00:25:38,700 --> 00:25:42,680
+So let's talk about how do I choose the number of course.
+
+356
+00:25:42,680 --> 00:25:45,860
+And let's talk about how do I choose the right amount of memory.
+
+357
+00:25:45,860 --> 00:25:52,200
+And for this, I will open up the material, keep the questions coming, and I will also
+
+358
+00:25:52,200 --> 00:25:57,200
+open up my terminal and we'll try these things out.
+
+359
+00:25:57,200 --> 00:26:06,760
+And why it matters, I will now not go into details, but it matters both for the cluster,
+
+360
+00:26:06,760 --> 00:26:13,120
+because if you use, if you choose well, we will have a better resource use.
+
+361
+00:26:13,120 --> 00:26:16,400
+More calculations will be able to finish.
+
+362
+00:26:16,400 --> 00:26:19,100
+More papers will be published.
+
+363
+00:26:19,100 --> 00:26:24,540
+It also matters for you as a researcher because your computation will start sooner and sooner
+
+364
+00:26:24,540 --> 00:26:31,560
+and you will pay less, although sometimes you don't pay for it.
+
+365
+00:26:31,560 --> 00:26:35,960
+Sometimes it's the taxpayer who pays for it.
+
+366
+00:26:35,960 --> 00:26:38,720
+So you don't want to ask for too many cores.
+
+367
+00:26:38,720 --> 00:26:42,960
+You don't want to ask for too few, depending on what your goal is.
+
+368
+00:26:42,960 --> 00:26:46,120
+And we don't want to waste resources.
+
+369
+00:26:46,120 --> 00:26:51,440
+And the example project that I will use is
+
+370
+00:26:51,440 --> 00:26:55,600
+So I wrote an example code, but we don't have to if you if you want to have a look at it,
+
+371
+00:26:55,600 --> 00:26:58,320
+you can you can look at the code.
+
+372
+00:26:58,320 --> 00:27:01,200
+We don't have to understand it.
+
+373
+00:27:01,200 --> 00:27:05,740
+It's it's a road code written in a language called C.
+
+374
+00:27:05,740 --> 00:27:11,760
+The big picture is that we simulate planets, imagine a galaxy of planets.
+
+375
+00:27:11,760 --> 00:27:16,960
+And they all, there is gravitational force, so all of these planets attract each other.
+
+376
+00:27:16,960 --> 00:27:18,320
+They have random position.
+
+377
+00:27:18,320 --> 00:27:21,740
+They start with a random position and random velocity.
+
+378
+00:27:21,740 --> 00:27:25,760
+And what this code does is that it, it does a little time step.
+
+379
+00:27:25,760 --> 00:27:28,980
+It computes the gravitational force between all of planets.
+
+380
+00:27:28,980 --> 00:27:35,880
+It adjusts the velocity and moves them a little bit.
+
+381
+00:27:35,880 --> 00:27:41,240
+And then again, another time step, it computes gravitational force.
+
+382
+00:27:41,240 --> 00:27:44,080
+It moves the planets a little bit.
+
+383
+00:27:44,080 --> 00:27:53,480
+And we can, the code can use multiple cores and distribute the work across the cores.
+
+384
+00:27:53,480 --> 00:28:02,600
+And then each of the cores will only move a smaller part of the planets.
+
+385
+00:28:02,600 --> 00:28:07,480
+But we still need to exchange the positions of all the planets between the cores.
+
+386
+00:28:07,480 --> 00:28:08,560
+So that's the communication.
+
+387
+00:28:08,560 --> 00:28:13,120
+The cores have to communicate through the high-speed network, and they have to exchange
+
+388
+00:28:13,120 --> 00:28:17,440
+the positions.
+
+389
+00:28:17,440 --> 00:28:21,440
+But whatever, this is just an example.
+
+390
+00:28:21,440 --> 00:28:29,480
+So I will build the code in a moment, we can run it, and the code is called planets.
+
+391
+00:28:29,480 --> 00:28:33,640
+What is nice is that I can here on the command line, I will be able to specify how many planets,
+
+392
+00:28:33,640 --> 00:28:37,800
+So here I have 30,000 random planets in a galaxy.
+
+393
+00:28:37,800 --> 00:28:41,080
+And how many steps I want to run, 10,000 steps.
+
+394
+00:28:41,080 --> 00:28:47,000
+And I can even make the network artificially slower.
+
+395
+00:28:47,000 --> 00:28:54,440
+So I can increase the network penalty and simulate how long will it take if the network
+
+396
+00:28:54,440 --> 00:29:00,480
+communication takes longer or less long.
+
+397
+00:29:00,480 --> 00:29:02,360
+And here, it doesn't matter what the code does.
+
+398
+00:29:02,360 --> 00:29:07,420
+What I want to find out is how on how many cores should I run it here somebody somebody
+
+399
+00:29:07,420 --> 00:29:16,060
+ran the code on four cores, and it took a long time 11,000 seconds.
+
+400
+00:29:16,060 --> 00:29:21,660
+The question that we have here in the next 10 minutes 15 minutes is
+
+401
+00:29:21,660 --> 00:29:27,920
+Should I choose four or 40 or eight or what is the setting, how do we find out
+
+402
+00:29:27,920 --> 00:29:33,680
+And how, so how do you, how do you approach this typically [name], and I can also, if you
+
+403
+00:29:33,680 --> 00:29:37,440
+have such a question, how do we, how do we approach the problem?
+
+404
+00:29:37,440 --> 00:29:45,120
+Whenever, whenever I run a new piece of software, I would start to find a manual or some documentation,
+
+405
+00:29:45,120 --> 00:29:53,720
+some examples, as usual, someone has run this before using a certain size of the problem
+
+406
+00:29:53,720 --> 00:30:00,200
+and it took that much time, I would try to do that, try to do something similar,
+
+407
+00:30:00,200 --> 00:30:06,120
+maybe use the same input, try to play around with different sizes of the resources.
+
+408
+00:30:06,120 --> 00:30:10,680
+I mean, different number of cores, maybe different number of nodes if it's parallelized.
+
+409
+00:30:11,320 --> 00:30:14,600
+And of course, I mean, it may be different because all hardware is different.
+
+410
+00:30:14,600 --> 00:30:16,920
+There are going to be different interconnects.
+
+411
+00:30:16,920 --> 00:30:18,760
+So it's really something that one should test.
+
+412
+00:30:18,760 --> 00:30:31,760
+And once I know how it scales maybe for a certain size of the problem, I should actually also keep in mind that it may scale differently if the size of the problem is different.
+
+413
+00:30:31,760 --> 00:30:42,760
+So just because someone found certain scaling for a certain type of simulation does not mean that it's going to be the same if I change the input.
+
+414
+00:30:42,760 --> 00:30:46,760
+So do your own tests, I would say.
+
+415
+00:30:46,760 --> 00:30:51,520
+So yes, that's more or less what I would do.
+
+416
+00:30:51,520 --> 00:30:55,600
+Thanks and what I try to do here in the meantime is I download the code and I try to compile
+
+417
+00:30:55,600 --> 00:31:02,160
+it and this is so we don't expect here the learners to do that or to even remember how
+
+418
+00:31:02,160 --> 00:31:03,160
+to do that.
+
+419
+00:31:03,160 --> 00:31:05,580
+That's not the point.
+
+420
+00:31:05,580 --> 00:31:07,440
+And it's also really different on different clusters.
+
+421
+00:31:07,440 --> 00:31:10,640
+This is something we can then try later in the exercise session in the exercise session.
+
+422
+00:31:10,640 --> 00:31:13,080
+We can actually all test it.
+
+423
+00:31:13,080 --> 00:31:20,800
+I'm now loading a module on the cluster that I'm on which can then compile the code.
+
+424
+00:31:20,800 --> 00:31:25,560
+And I'm following, I will compile the code.
+
+425
+00:31:25,560 --> 00:31:35,360
+All right, and now I have the, I have the code here that I can run.
+
+426
+00:31:35,360 --> 00:31:42,880
+And if I could now do this, but I don't want to wait 11,000 seconds.
+
+427
+00:31:42,880 --> 00:31:51,720
+So I want to know, take some of these job scripts that I was talking about earlier,
+
+428
+00:31:51,720 --> 00:31:54,160
+and I want to create a job script.
+
+429
+00:31:54,160 --> 00:32:02,080
+And now how do we select the number of course, I will call it run.sh.
+
+430
+00:32:02,080 --> 00:32:09,560
+And inside there, I have this example, I need to specify my project, which for me on my cluster
+
+431
+00:32:09,560 --> 00:32:12,580
+happens to be some name.
+
+432
+00:32:12,580 --> 00:32:15,220
+So this will not work for everybody else.
+
+433
+00:32:15,220 --> 00:32:24,620
+I will start on eight course, nine minutes just though it's just a guess.
+
+434
+00:32:24,620 --> 00:32:34,580
+And the first insight I wanted to everybody to take away is that
+
+435
+00:32:34,580 --> 00:32:39,020
+if I look at this example that somebody gave me 10,000 steps, the first thing I would probably
+
+436
+00:32:39,020 --> 00:32:47,180
+do I will think, do I really need 10,000 steps? And something I would probably test is how
+
+437
+00:32:47,180 --> 00:32:53,180
+long does it take to run 10, 10 steps and 20 steps and 40 steps. And what I would then
+
+438
+00:32:53,180 --> 00:33:02,060
+see is that in this case, the runtime is it scales linearly with the number of steps.
+
+439
+00:33:02,060 --> 00:33:07,340
+Each step approximately cost the same. So I don't need to run 10,000 steps and I don't
+
+440
+00:33:07,340 --> 00:33:14,180
+need to wait for 11,000 seconds to, to try to run this and to study this. So the first
+
+441
+00:33:14,180 --> 00:33:18,820
+thing I will do, and this is also what I did here is I will do some testing and figure
+
+442
+00:33:18,820 --> 00:33:24,980
+out that it might be actually okay to run just 100 tests, 100 steps. And this will,
+
+443
+00:33:24,980 --> 00:33:33,660
+this will take a couple of seconds, minutes. What I try to achieve is a calculation that
+
+444
+00:33:33,660 --> 00:33:39,780
+few minutes I don't want to I don't want to wait hours few minutes in this case
+
+445
+00:33:39,780 --> 00:33:46,220
+it will take maybe a minute and then I often start with something and later I
+
+446
+00:33:46,220 --> 00:33:56,140
+will vary this so I will change from 8 to 4 and 16 and 32 and 64 and 128 and it
+
+447
+00:33:56,140 --> 00:34:00,460
+doesn't have to be a power of 2 but this is just was what computer people like to
+
+448
+00:34:00,460 --> 00:34:12,480
+do. Let me submit this and see what happens as batch. Sorry, what? Sorry for these commands.
+
+449
+00:34:12,480 --> 00:34:20,820
+So what I have this transcript and I can submit it. So now I sent my job to the queue. If
+
+450
+00:34:20,820 --> 00:34:28,420
+I want to see how it is doing, it is now running. Nice. So this was a short job it there was
+
+451
+00:34:28,420 --> 00:34:33,220
+somewhere there was some resource available and it immediately started
+
+452
+00:34:33,220 --> 00:34:37,620
+and now i will impatiently repeat the command
+
+453
+00:34:38,260 --> 00:34:42,740
+and i think it will take i don't know
+
+454
+00:34:44,100 --> 00:34:47,460
+30 seconds 40 seconds
+
+455
+00:34:49,140 --> 00:34:53,940
+and i did that now for eight cores now it should take approximately
+
+456
+00:34:53,940 --> 00:34:56,660
+60 seconds
+
+457
+00:34:58,420 --> 00:35:09,920
+We are going to do this exercise in, in two hours time. So you don't have to do it immediately.
+
+458
+00:35:09,920 --> 00:35:14,480
+So everybody just watch this. And we know that on different clusters, the scripts look
+
+459
+00:35:14,480 --> 00:35:18,440
+slightly different, but we will then help you help you with that. So later in the exercise,
+
+460
+00:35:18,440 --> 00:35:25,480
+you can try this. You can also try this with your own code. So instead of simulating planets,
+
+461
+00:35:25,480 --> 00:35:27,580
+you can try to do this study with your own code.
+
+462
+00:35:27,580 --> 00:35:28,920
+And the two steps were,
+
+463
+00:35:30,020 --> 00:35:32,900
+what is the shortest time that I can get away with
+
+464
+00:35:32,900 --> 00:35:37,900
+and still get a representative answer in terms of timing.
+
+465
+00:35:39,300 --> 00:35:42,060
+And then run it on a series of course.
+
+466
+00:35:44,380 --> 00:35:46,940
+Did my job finish?
+
+467
+00:35:46,940 --> 00:35:48,740
+It finished and then I can,
+
+468
+00:35:50,580 --> 00:35:53,780
+simulation completed.
+
+469
+00:35:55,480 --> 00:36:05,660
+In this case, this took almost a minute on eight cores, and I simulated 30,000 planets
+
+470
+00:36:05,660 --> 00:36:08,260
+and 100 steps.
+
+471
+00:36:08,260 --> 00:36:14,720
+If I would run it for 1000 steps, it will probably take 600 seconds.
+
+472
+00:36:14,720 --> 00:36:20,180
+And something I will not do now, but what we can do later is we can really try it out
+
+473
+00:36:20,180 --> 00:36:26,220
+instead of eight cores, 16 cores and 32 cores and so on and so on.
+
+474
+00:36:26,220 --> 00:36:30,700
+Here I made it a little bit more readable on the table.
+
+475
+00:36:30,700 --> 00:36:32,980
+And what can we see from this table?
+
+476
+00:36:32,980 --> 00:36:37,780
+So the big question is how many cores should I use?
+
+477
+00:36:37,780 --> 00:36:40,180
+And what do I see here?
+
+478
+00:36:40,180 --> 00:36:44,740
+If you run it on one core, it takes 420 seconds.
+
+479
+00:36:44,740 --> 00:36:48,440
+We double the resources, we half the time.
+
+480
+00:36:48,440 --> 00:36:54,360
+We double the resources, we still half the time, we still half the time, still half the
+
+481
+00:36:54,360 --> 00:36:56,000
+time.
+
+482
+00:36:56,000 --> 00:37:00,240
+And now, now it's not any more half the time.
+
+483
+00:37:00,240 --> 00:37:06,540
+You see that I don't doubling the resources at some point doesn't doesn't cut the time
+
+484
+00:37:06,540 --> 00:37:08,420
+in half anymore.
+
+485
+00:37:08,420 --> 00:37:13,440
+And something interesting happens here is that I went to lots of course 256 and the
+
+486
+00:37:13,440 --> 00:37:15,600
+time even goes up.
+
+487
+00:37:15,600 --> 00:37:16,600
+And why is that?
+
+488
+00:37:16,600 --> 00:37:23,440
+point, the communication to update the positions of the planets to communicate between all
+
+489
+00:37:23,440 --> 00:37:29,480
+the CPUs at some point is more costly than the computation. And in this case, where would
+
+490
+00:37:29,480 --> 00:37:33,280
+you how many CPUs would you choose? [name], where would you stop?
+
+491
+00:37:33,280 --> 00:37:39,440
+I would stop at 16. But it also depends on the number of cores on the cluster. Because
+
+492
+00:37:39,440 --> 00:37:48,240
+Because if it's better that we fill up the note, then maybe 42 is a better number.
+
+493
+00:37:48,240 --> 00:37:51,280
+So it really depends on, on the cluster configuration.
+
+494
+00:37:51,280 --> 00:37:54,320
+So yeah, but somewhere there, 16 or 42.
+
+495
+00:37:54,320 --> 00:37:58,480
+And it's important that you're thinking time spent per number of course.
+
+496
+00:37:58,480 --> 00:37:59,480
+Yeah.
+
+497
+00:37:59,480 --> 00:38:04,720
+And if you, if you don't, if you are in no hurry, maybe it is fine too.
+
+498
+00:38:04,720 --> 00:38:10,580
+But we clearly see that in this case, it doesn't make any sense to run this on 256 cores.
+
+499
+00:38:10,580 --> 00:38:18,140
+So here I would also choose 8 or 16, maybe 32 if there is a deadline and PhD has to be
+
+500
+00:38:18,140 --> 00:38:21,700
+ready by Friday afternoon.
+
+501
+00:38:21,700 --> 00:38:24,620
+But we don't move on much further.
+
+502
+00:38:24,620 --> 00:38:27,260
+So what is the takeaway?
+
+503
+00:38:27,260 --> 00:38:32,700
+Here the takeaway is two things.
+
+504
+00:38:32,700 --> 00:38:36,620
+It's both for timing and for debugging.
+
+505
+00:38:36,620 --> 00:38:43,160
+It can be really useful to reduce the time of the job so that it's so that this information
+
+506
+00:38:43,160 --> 00:38:46,040
+is still meaningful.
+
+507
+00:38:46,040 --> 00:38:50,680
+That is one skill and the other skill is run it on a series of course.
+
+508
+00:38:50,680 --> 00:38:53,520
+And you don't have to do this for every job that you try to do.
+
+509
+00:38:53,520 --> 00:39:02,840
+I do this only if I have if I plan to do 100 similar jobs.
+
+510
+00:39:02,840 --> 00:39:08,720
+Then before running these 100 similar jobs, I do this study for one of those.
+
+511
+00:39:08,720 --> 00:39:11,960
+And then all my 99 other jobs, I know what to choose.
+
+512
+00:39:11,960 --> 00:39:13,960
+I know that I should choose 16.
+
+513
+00:39:13,960 --> 00:39:18,720
+And I know that it will take so and so many seconds.
+
+514
+00:39:18,720 --> 00:39:22,020
+So this calibration doesn't have to do for every single job that would be unreasonable
+
+515
+00:39:22,020 --> 00:39:25,300
+as well.
+
+516
+00:39:25,300 --> 00:39:26,420
+And thanks for all the questions.
+
+517
+00:39:26,420 --> 00:39:30,380
+Thanks to my colleagues for answering them.
+
+518
+00:39:30,380 --> 00:39:35,540
+And we have now I would like to take maybe 10 more minutes on talking about the memory
+
+519
+00:39:35,540 --> 00:39:38,180
+part.
+
+520
+00:39:38,180 --> 00:39:43,580
+And then we will take a break and talk about disk.
+
+521
+00:39:43,580 --> 00:39:50,300
+So now I will switch over to this episode here, which is now that we know how to choose
+
+522
+00:39:50,300 --> 00:39:57,380
+the number of cores. And this is really a method that really almost always works. I
+
+523
+00:39:57,380 --> 00:40:05,420
+want to show you how do I choose the memory. Because sometimes you have to especially if
+
+524
+00:40:05,420 --> 00:40:16,760
+you need more memory than the processor has. Let's open this up and let's try this out.
+
+525
+00:40:16,760 --> 00:40:22,680
+Why does it matter similar motivation, it's
+
+526
+00:40:22,680 --> 00:40:27,060
+If you ask for excessive number of memory
+
+527
+00:40:27,060 --> 00:40:31,000
+You might block resources for for other people
+
+528
+00:40:31,000 --> 00:40:35,280
+If you pay for the resource use, you might pay too much
+
+529
+00:40:35,280 --> 00:40:37,080
+And you
+
+530
+00:40:37,080 --> 00:40:41,820
+Your job may wait long or forever in the queue
+
+531
+00:40:41,820 --> 00:40:47,060
+until these resources become available.
+
+532
+00:40:47,060 --> 00:40:52,940
+Also later in the course, we will take a problem and we will chop it up into smaller problems
+
+533
+00:40:52,940 --> 00:40:56,400
+and we will try to run them in parallel at the same time.
+
+534
+00:40:56,400 --> 00:41:05,860
+We will try to have jobs that are independent and can compute simultaneously.
+
+535
+00:41:05,860 --> 00:41:11,580
+And if I'm not careful about the memory, I might severely limit my ability to parallelize
+
+536
+00:41:11,580 --> 00:41:22,620
+is my job. So it matters often. And I will, I want to show you how I do that. And this
+
+537
+00:41:22,620 --> 00:41:30,740
+is a method that maybe I will show you two methods that are probably available on most
+
+538
+00:41:30,740 --> 00:41:36,940
+of the clusters that we are on. So again, before running many similar jobs, I typically
+
+539
+00:41:36,940 --> 00:41:40,120
+To calibrate, I don't do that for every computation,
+
+540
+00:41:40,120 --> 00:41:43,480
+but if I plan to run a hundred similar computations,
+
+541
+00:41:43,480 --> 00:41:44,960
+I do some calibration study.
+
+542
+00:41:44,960 --> 00:41:47,660
+And here, what I want to calibrate here is the memory.
+
+543
+00:41:49,400 --> 00:41:54,400
+And the example code that I will use now is a Python code.
+
+544
+00:41:56,840 --> 00:42:00,960
+Again, this is something you can try later in the exercise.
+
+545
+00:42:00,960 --> 00:42:05,960
+And this Python code, it computes,
+
+546
+00:42:07,460 --> 00:42:10,380
+you can tell it to compute 5,000 random numbers
+
+547
+00:42:11,740 --> 00:42:14,180
+between minus one and one, and to sum them up.
+
+548
+00:42:15,300 --> 00:42:18,900
+You can also give it a certain time to wait
+
+549
+00:42:18,900 --> 00:42:21,320
+between computing and summing.
+
+550
+00:42:22,180 --> 00:42:24,580
+And I will show you why I did that.
+
+551
+00:42:25,740 --> 00:42:28,420
+But let me go to, I will now go to a different cluster
+
+552
+00:42:28,420 --> 00:42:29,500
+for reasons.
+
+553
+00:42:30,960 --> 00:42:35,780
+So now I'm on a different cluster.
+
+554
+00:42:35,780 --> 00:42:40,300
+Again, we are not expected to remember auto-type.
+
+555
+00:42:40,300 --> 00:42:42,100
+I'm on a different Norwegian cluster.
+
+556
+00:42:44,980 --> 00:42:47,100
+I will create a new folder for this.
+
+557
+00:42:49,220 --> 00:42:53,060
+And I will try to run this Python code.
+
+558
+00:42:55,740 --> 00:42:56,900
+Example.
+
+559
+00:43:01,920 --> 00:43:03,840
+We don't have to look at the Python code.
+
+560
+00:43:08,080 --> 00:43:11,440
+The Python code creates random numbers, sums them up, prints the result.
+
+561
+00:43:12,960 --> 00:43:15,280
+Now, I should really...
+
+562
+00:43:17,680 --> 00:43:20,320
+I should run a script for this. I should write a script for this.
+
+563
+00:43:20,320 --> 00:43:32,200
+I should not run it directly on the command line or sorry directly on the login node so
+
+564
+00:43:32,200 --> 00:43:39,000
+I will again write a little script which I will adjust and we will in the exercise adjust
+
+565
+00:43:39,000 --> 00:43:47,280
+to our clusters that we are on I will again call it run.sh
+
+566
+00:43:47,280 --> 00:43:48,840
+Let me discuss what we see here.
+
+567
+00:43:48,840 --> 00:43:50,720
+I need to adjust my account.
+
+568
+00:43:50,720 --> 00:43:53,300
+In my case, it happens to be this one.
+
+569
+00:43:54,720 --> 00:43:57,700
+I give it a name, five minutes, absolutely enough.
+
+570
+00:43:59,280 --> 00:44:01,600
+On this cluster, I have to specify memory.
+
+571
+00:44:02,680 --> 00:44:04,280
+And I don't actually know how much.
+
+572
+00:44:04,280 --> 00:44:08,180
+I will start with something, two and a half gigabyte,
+
+573
+00:44:08,180 --> 00:44:09,660
+2,500 megabyte.
+
+574
+00:44:12,160 --> 00:44:15,880
+For this example, I don't need more than one core.
+
+575
+00:44:15,880 --> 00:44:19,360
+it will be run on one so-called task or one core.
+
+576
+00:44:20,560 --> 00:44:22,400
+And now I could run it like this.
+
+577
+00:44:22,400 --> 00:44:26,200
+I could sum up, here I want to sum up lots of numbers.
+
+578
+00:44:26,200 --> 00:44:27,980
+How many are these?
+
+579
+00:44:27,980 --> 00:44:32,220
+Million, 50 million numbers.
+
+580
+00:44:32,220 --> 00:44:35,320
+I want to sum up 50 million random numbers.
+
+581
+00:44:35,320 --> 00:44:39,080
+I want to wait for 10 seconds and then print me the result.
+
+582
+00:44:39,080 --> 00:44:40,280
+I could run it like this,
+
+583
+00:44:41,640 --> 00:44:44,580
+but one tool that is available almost everywhere,
+
+584
+00:44:44,580 --> 00:44:47,660
+which is really nice is that you can put this one
+
+585
+00:44:47,660 --> 00:44:49,780
+in front of any of your commands
+
+586
+00:44:50,660 --> 00:44:54,340
+and it will measure the so-called high watermark
+
+587
+00:44:56,140 --> 00:44:57,500
+of the memory use.
+
+588
+00:44:57,500 --> 00:45:01,060
+You can think of like when you imagine
+
+589
+00:45:01,060 --> 00:45:03,700
+there is like a flooding, you know, the water goes up
+
+590
+00:45:03,700 --> 00:45:05,820
+and then the water disappears again
+
+591
+00:45:05,820 --> 00:45:08,980
+and then you can see how far did the water reach.
+
+592
+00:45:08,980 --> 00:45:10,500
+So that's a high watermark.
+
+593
+00:45:11,340 --> 00:45:13,620
+And this tool will tell me this.
+
+594
+00:45:13,620 --> 00:45:16,480
+So my code will allocate memory and it will tell me
+
+595
+00:45:16,480 --> 00:45:21,020
+what was the highest memory allocation during the runtime.
+
+596
+00:45:24,980 --> 00:45:29,740
+Let me submit this and let's see what happens.
+
+597
+00:45:29,740 --> 00:45:33,340
+So again, I send it to the queuing system.
+
+598
+00:45:33,340 --> 00:45:35,220
+I send it to Slurm to...
+
+599
+00:45:38,940 --> 00:45:40,620
+And again, it was really short.
+
+600
+00:45:40,620 --> 00:45:41,860
+It needs only one core.
+
+601
+00:45:41,860 --> 00:45:43,120
+It started immediately.
+
+602
+00:45:43,120 --> 00:45:51,480
+nice. I expect this to run. So I asked for 10 seconds, it will actually run for a bit
+
+603
+00:45:51,480 --> 00:45:59,520
+longer than 10 seconds because the allocating 50 allocating and computing 50 million random
+
+604
+00:45:59,520 --> 00:46:03,600
+numbers will take a little bit of time. It takes a few seconds. So it's still running
+
+605
+00:46:03,600 --> 00:46:18,280
+Running 28 seconds, 31 seconds, and it will soon finish.
+
+606
+00:46:18,280 --> 00:46:20,400
+Still running.
+
+607
+00:46:20,400 --> 00:46:25,560
+Well, actually, maybe it will take a minute.
+
+608
+00:46:25,560 --> 00:46:31,200
+But it gives me a chance to look at the questions here on the notes.
+
+609
+00:46:31,200 --> 00:46:35,380
+Thanks a lot for all my colleagues for answering.
+
+610
+00:46:35,380 --> 00:46:38,760
+And thank you all for the good questions.
+
+611
+00:46:38,760 --> 00:46:43,160
+And we are maybe five minutes away from a break.
+
+612
+00:46:43,160 --> 00:46:53,080
+All right, job finished.
+
+613
+00:46:53,080 --> 00:46:58,840
+What we have here is my Python code, my job script, but now I also have an output from
+
+614
+00:46:58,840 --> 00:47:10,420
+slurm and I will let's see what is in this output there is stuff here okay this
+
+615
+00:47:10,420 --> 00:47:19,280
+doesn't belong here but the important thing with when putting /usr/bin/time -v
+
+616
+00:47:19,280 --> 00:47:26,100
+in front of your command you will get this block here and
+
+617
+00:47:26,100 --> 00:47:28,040
+And there are lots of numbers,
+
+618
+00:47:28,040 --> 00:47:30,780
+but the one that I'm interested in is this one.
+
+619
+00:47:30,780 --> 00:47:32,680
+Maximum resident set size.
+
+620
+00:47:33,600 --> 00:47:38,600
+So this tells me that the code used,
+
+621
+00:47:39,080 --> 00:47:41,400
+so this is kilobyte, so this would be,
+
+622
+00:47:43,020 --> 00:47:46,400
+it would be almost 2000 megabytes.
+
+623
+00:47:46,400 --> 00:47:48,280
+So approximately two gigabyte.
+
+624
+00:47:49,400 --> 00:47:51,400
+That was the highest memory allocation
+
+625
+00:47:51,400 --> 00:47:52,800
+during the run of the code.
+
+626
+00:47:52,800 --> 00:47:57,280
+So that's one tool that is almost always available.
+
+627
+00:47:57,280 --> 00:48:01,960
+This is the tool that I use to figure out what is the highest memory allocation and
+
+628
+00:48:01,960 --> 00:48:09,040
+now I know and now for all my jobs I can take this number and maybe add 20% to it just to
+
+629
+00:48:09,040 --> 00:48:15,040
+be on the safe side and then you know if you need to specify it.
+
+630
+00:48:15,040 --> 00:48:20,600
+And in the material I will show you there is one more method which is I think available
+
+631
+00:48:20,600 --> 00:48:25,580
+on all slurm scheduled clusters. I think so too.
+
+632
+00:48:25,580 --> 00:48:29,640
+And I will try that method, it will tell it will give me a similar answer. But there is
+
+633
+00:48:29,640 --> 00:48:38,840
+a risk to it. As act, I think this means maybe as accounting, then the job number, my job
+
+634
+00:48:38,840 --> 00:48:48,120
+number here was this one. And then I am only interested in this maximum resident set size,
+
+635
+00:48:48,120 --> 00:48:52,840
+which is the memory.
+
+636
+00:48:52,840 --> 00:48:56,520
+And in this case, it tells me the result.
+
+637
+00:48:56,520 --> 00:48:59,920
+It's again,
+
+638
+00:48:59,920 --> 00:49:04,760
+almost approximately two gigabytes.
+
+639
+00:49:04,760 --> 00:49:09,920
+The problem with this tool is that it uses sampling.
+
+640
+00:49:09,920 --> 00:49:13,520
+Every on our clusters in Norway, every 30 seconds,
+
+641
+00:49:13,520 --> 00:49:15,320
+it asks the job.
+
+642
+00:49:15,320 --> 00:49:18,360
+What is the memory that you use right now?
+
+643
+00:49:18,360 --> 00:49:21,840
+And 30 seconds later, it asks again.
+
+644
+00:49:21,840 --> 00:49:27,640
+And if the job is shorter than 30 seconds, well, let's try.
+
+645
+00:49:27,640 --> 00:49:31,080
+What happens if the job is shorter than 30 seconds?
+
+646
+00:49:31,080 --> 00:49:32,200
+Let's make it shorter.
+
+647
+00:49:32,200 --> 00:49:36,440
+Let's remove a zero here.
+
+648
+00:49:36,440 --> 00:49:38,640
+Because that will make it shorter.
+
+649
+00:49:38,640 --> 00:49:44,220
+And let's add only, I don't know, five seconds wait time.
+
+650
+00:49:44,220 --> 00:49:47,360
+And I will submit again.
+
+651
+00:49:47,360 --> 00:49:52,420
+It will finish way sooner.
+
+652
+00:49:52,420 --> 00:49:59,220
+Because to compute 10 times less fewer number of sticks, I think it should finish hopefully
+
+653
+00:49:59,220 --> 00:50:00,700
+in very soon.
+
+654
+00:50:00,700 --> 00:50:01,700
+Now it finished.
+
+655
+00:50:01,700 --> 00:50:04,780
+12 seconds in.
+
+656
+00:50:04,780 --> 00:50:12,460
+I have now a second output.
+
+657
+00:50:12,460 --> 00:50:20,700
+The the result from so this number here is still correct.
+
+658
+00:50:20,700 --> 00:50:26,420
+In this case, it the the memory demand was 10 times lower.
+
+659
+00:50:26,420 --> 00:50:30,260
+It's only 200 megabytes.
+
+660
+00:50:30,260 --> 00:50:36,180
+But if I ask Slurm
+
+661
+00:50:36,180 --> 00:50:39,260
+and now I need to replace the number by this number.
+
+662
+00:50:39,260 --> 00:50:44,100
+it will tell me that, whoa, why is that?
+
+663
+00:50:44,100 --> 00:50:47,380
+No, okay, because I made a mistake.
+
+664
+00:50:47,380 --> 00:50:49,000
+It's not 34, it's 44.
+
+665
+00:50:50,620 --> 00:50:52,040
+This is the right number, 44,
+
+666
+00:50:52,040 --> 00:50:54,740
+because what I expected to see that the memory is zero.
+
+667
+00:50:55,760 --> 00:50:58,220
+So this tool tells me that my job consumes zero memory,
+
+668
+00:50:58,220 --> 00:50:59,220
+and that's not true.
+
+669
+00:51:01,260 --> 00:51:02,420
+But to be fair to this tool,
+
+670
+00:51:02,420 --> 00:51:04,700
+this tool uses sampling every 30 seconds.
+
+671
+00:51:04,700 --> 00:51:07,100
+It had no chance to see the memory demand.
+
+672
+00:51:07,100 --> 00:51:09,920
+And what I want you to take away from here
+
+673
+00:51:09,920 --> 00:51:13,400
+is that depending on which tool you use,
+
+674
+00:51:13,400 --> 00:51:15,420
+it might be using sampling.
+
+675
+00:51:16,620 --> 00:51:21,320
+And if there is a memory peak, this tool might miss it.
+
+676
+00:51:22,760 --> 00:51:27,380
+The other one, the other tool, USR Bintime,
+
+677
+00:51:28,400 --> 00:51:32,360
+this one, to my knowledge, in my experience,
+
+678
+00:51:32,360 --> 00:51:35,560
+will always report you the high memory watermark.
+
+679
+00:51:35,560 --> 00:51:36,860
+It doesn't use sampling.
+
+680
+00:51:37,100 --> 00:51:43,540
+Not in the same way.
+
+681
+00:51:43,540 --> 00:51:45,660
+And maybe there are other tools.
+
+682
+00:51:45,660 --> 00:51:46,660
+We can share them on the notes.
+
+683
+00:51:46,660 --> 00:51:49,620
+We can then later share them in the exercise session.
+
+684
+00:51:49,620 --> 00:51:52,780
+And again, in the exercise session, the goal will be that you can try this out with my
+
+685
+00:51:52,780 --> 00:51:55,420
+example Python code.
+
+686
+00:51:55,420 --> 00:51:59,660
+But what is maybe more interesting for you is to try this out with your own code and
+
+687
+00:51:59,660 --> 00:52:02,740
+figure out how much memory does it really use.
+
+688
+00:52:02,740 --> 00:52:05,260
+Yes, exactly.
+
+689
+00:52:05,260 --> 00:52:10,300
+Sometimes it's good that you check the memory requirements
+
+690
+00:52:10,300 --> 00:52:12,180
+for different sizes of your arguments,
+
+691
+00:52:12,180 --> 00:52:15,740
+and maybe try to extrapolate, possibly,
+
+692
+00:52:15,740 --> 00:52:18,300
+and get an idea on what you would actually
+
+693
+00:52:18,300 --> 00:52:20,780
+need for your real simulations.
+
+694
+00:52:20,780 --> 00:52:22,420
+And of course, I mean, this is easier
+
+695
+00:52:22,420 --> 00:52:29,620
+to do if it's linear or square.
+
+696
+00:52:29,620 --> 00:52:34,660
+But it's a good way to try to estimate that.
+
+697
+00:52:34,660 --> 00:52:39,700
+And [name] said, I mean, at different clusters you may have different tools which can do this
+
+698
+00:52:40,500 --> 00:52:46,020
+memory profiling. And we'll definitely talk about more in the exercise session. So.
+
+699
+00:52:46,740 --> 00:52:50,980
+Yeah. And sometimes we get asked for a lot of memory.
+
+700
+00:52:52,580 --> 00:52:56,660
+And sometimes the answer is to change the code. And many of the people who work in,
+
+701
+00:52:58,580 --> 00:53:01,300
+who are instructors here and in the Code Refinery project,
+
+702
+00:53:01,300 --> 00:53:05,000
+really like to help you also improve the code.
+
+703
+00:53:05,000 --> 00:53:07,580
+So for those of you who write Python,
+
+704
+00:53:09,580 --> 00:53:11,560
+there is a little bonus that you can see that
+
+705
+00:53:11,560 --> 00:53:14,360
+just by changing two characters in the code,
+
+706
+00:53:14,360 --> 00:53:17,840
+memory demand can go from a lot to almost zero.
+
+707
+00:53:19,480 --> 00:53:21,240
+And good questions there can be,
+
+708
+00:53:21,240 --> 00:53:23,680
+is there any way that we can change the sampling?
+
+709
+00:53:24,640 --> 00:53:27,080
+To my knowledge, the user cannot change it.
+
+710
+00:53:27,080 --> 00:53:29,680
+We can change the configuration of the cluster,
+
+711
+00:53:29,680 --> 00:53:31,860
+but it happens to be configured for 30 seconds.
+
+712
+00:53:31,860 --> 00:53:35,560
+So at least to my knowledge, it's not something I can change
+
+713
+00:53:35,560 --> 00:53:37,320
+but please correct me if I'm wrong.
+
+714
+00:53:38,440 --> 00:53:40,120
+And I don't want to eat more into the break time.
+
+715
+00:53:40,120 --> 00:53:43,040
+I think so many good questions, so many good answers.
+
+716
+00:53:43,040 --> 00:53:46,720
+I suggest we take a break and then we talk about disk.
+
+717
+00:53:48,240 --> 00:53:49,760
+And how long will the break be?
+
+718
+00:53:49,760 --> 00:53:53,760
+Maybe my studio colleagues can help me.
+
+719
+00:53:53,760 --> 00:53:55,220
+Is it 15 minutes?
+
+720
+00:53:55,220 --> 00:54:02,500
+Should we be back at 15 past the hour, but is that also right for the instructors who
+
+721
+00:54:02,500 --> 00:54:04,380
+come after me?
+
+722
+00:54:04,380 --> 00:54:07,380
+Maybe they can have a say?
+
+723
+00:54:07,380 --> 00:54:11,420
+Yeah, 15 minutes works.
+
+724
+00:54:11,420 --> 00:54:12,420
+Good.
+
+725
+00:54:12,420 --> 00:54:18,420
+So then we'll be back 15 minutes past the hour, we will talk about DISC, and I will also then
+
+726
+00:54:18,420 --> 00:54:21,660
+here have a look at all your questions and add more answers to it.
+
+727
+00:54:21,660 --> 00:54:23,740
+Thanks so much for listening.
+
+728
+00:54:23,740 --> 00:54:28,860
+the big picture got clear, the thinking got clear, the details we can always look up.
+
+729
+00:54:28,860 --> 00:54:33,740
+Thanks to [name] also for doing this here for going through the lesson here with me.
+
+730
+00:54:33,740 --> 00:54:37,100
+See you in now 14 minutes.
+
+731
+00:54:37,100 --> 00:54:37,660
+See you.
+

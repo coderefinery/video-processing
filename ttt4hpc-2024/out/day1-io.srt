@@ -1,0 +1,1868 @@
+1
+00:00:00,000 --> 00:00:11,900
+Hey welcome back. So we'll go back to the materials and talk about I.O. in a moment.
+
+2
+00:00:11,900 --> 00:00:20,380
+Let's first do some quick introduction. So I'm [name]. I work at Aalto University so
+
+3
+00:00:20,380 --> 00:00:29,380
+So I'm mostly familiar with the Triton cluster, and yeah, I work there as a software engineer.
+
+4
+00:00:29,380 --> 00:00:30,380
+Yeah.
+
+5
+00:00:30,380 --> 00:00:33,740
+Hi, my name is [name].
+
+6
+00:00:33,740 --> 00:00:38,280
+I'm also from Aalto, so the same stuff.
+
+7
+00:00:38,280 --> 00:00:44,940
+And today we'll talk a bit about IO best practices, or like IO in general.
+
+8
+00:00:44,940 --> 00:00:51,740
+Yeah. So should we go just directly into the material?
+
+9
+00:00:51,740 --> 00:00:53,260
+Yeah, let's do that.
+
+10
+00:00:53,260 --> 00:00:55,620
+So I'll open this.
+
+11
+00:00:57,020 --> 00:01:04,180
+So what we really want to go into is just,
+
+12
+00:01:04,180 --> 00:01:10,820
+we want to give a model of how input and output works,
+
+13
+00:01:10,820 --> 00:01:18,660
+and why it can be, or when it can be a bottleneck for your program.
+
+14
+00:01:18,660 --> 00:01:26,660
+So, well, let's just go into it, because it's probably just better to show
+
+15
+00:01:26,660 --> 00:01:31,140
+and show and tell rather than go through the objectives here.
+
+16
+00:01:31,140 --> 00:01:35,780
+So compared to CPU and RAM that was mentioned previously,
+
+17
+00:01:35,780 --> 00:01:43,380
+IO is a bit of this kind of like the eternal wallflower or like something that is not
+
+18
+00:01:43,380 --> 00:01:52,500
+often discussed or it's not so heavily like it's not maintained by the Slurm. So Slurm doesn't
+
+19
+00:01:52,500 --> 00:01:59,860
+necessarily know about the IO in the same way that memory and CPUs are like
+
+20
+00:01:59,860 --> 00:02:09,620
+their resources. So with the IO, you need to be a bit more conscious of what the program
+
+21
+00:02:09,620 --> 00:02:18,420
+does underneath it. And for this, we want to show first, what is file? And let's start
+
+22
+00:02:18,420 --> 00:02:27,900
+with that. What is a file in a Linux file system? And file is metadata and file contents.
+
+23
+00:02:27,900 --> 00:02:34,840
+And this metadata here doesn't mean metadata as in your dataset has metadata with it.
+
+24
+00:02:34,840 --> 00:02:37,220
+Your dataset describes what's in the data.
+
+25
+00:02:37,220 --> 00:02:42,780
+It means metadata as in who owns the file, when was it last modified, how big is the
+
+26
+00:02:42,780 --> 00:02:46,180
+file, and this kind of stuff.
+
+27
+00:02:46,180 --> 00:02:50,900
+And then the file contents is the actual byte data inside of it.
+
+28
+00:02:50,900 --> 00:02:57,060
+So that is the metadata that you would think about when you write, let's say, explanation
+
+29
+00:02:57,060 --> 00:03:04,180
+what your data set has. But the file system sees stuff like this. So file system sees the metadata
+
+30
+00:03:04,180 --> 00:03:10,820
+and the file contents. And when the metadata is accessed, this is done using these so-called
+
+31
+00:03:10,820 --> 00:03:21,540
+stat calls. So they check the stats or the status of the file. And the file contents are modified
+
+32
+00:03:21,540 --> 00:03:29,540
+by opening so-called file descriptors. So the file is opened. So if you're using like Python or
+
+33
+00:03:29,540 --> 00:03:36,820
+whatever like language, you usually have something like open a file and that is basically it opens
+
+34
+00:03:36,820 --> 00:03:41,780
+the file, it opens a file descriptor and then you can do like read and write calls to the file
+
+35
+00:03:41,780 --> 00:03:48,820
+that actually like take the data in and out of the file. So if we look at below,
+
+36
+00:03:48,820 --> 00:03:57,820
+We can see that, for example, if you run like an ls-l, that doesn't actually look at anything inside the file.
+
+37
+00:03:57,820 --> 00:03:59,820
+It will just check the metadata.
+
+38
+00:03:59,820 --> 00:04:07,820
+It will just show the permissions and ownerships of who owns the files and lists the file metadata.
+
+39
+00:04:07,820 --> 00:04:13,820
+And if you catenate the file with cat, so you just print it to the terminal,
+
+40
+00:04:13,820 --> 00:04:19,900
+know, that basically means that, okay, open the file or read only like file
+
+41
+00:04:19,900 --> 00:04:25,100
+descriptor, read everything that is inside the file and print it out into the
+
+42
+00:04:25,100 --> 00:04:25,860
+standard output.
+
+43
+00:04:26,900 --> 00:04:28,820
+So it will only access the file contents.
+
+44
+00:04:29,060 --> 00:04:32,380
+And if you don't have access to the file, or if you don't have permissions, then,
+
+45
+00:04:32,660 --> 00:04:38,380
+um, it doesn't, it can't, cannot do it, but, um, it, it will just try to access
+
+46
+00:04:38,380 --> 00:04:43,340
+the file contents and let's keep this as, as this kind of a, like a backdrop for
+
+47
+00:04:43,340 --> 00:04:45,420
+what we're about to demo then.
+
+48
+00:04:45,420 --> 00:04:47,540
+So we have a few demos.
+
+49
+00:04:47,540 --> 00:04:50,900
+So [name], do you want to describe the demos a bit?
+
+50
+00:04:50,900 --> 00:04:51,860
+Yeah.
+
+51
+00:04:51,860 --> 00:04:55,100
+So like in the previous one, so these are demonstrations.
+
+52
+00:04:55,100 --> 00:04:59,940
+So the intention is not that you follow along,
+
+53
+00:04:59,940 --> 00:05:02,540
+but that it's not that you type along,
+
+54
+00:05:02,540 --> 00:05:04,380
+but that you follow.
+
+55
+00:05:04,380 --> 00:05:05,620
+But there are instructions here,
+
+56
+00:05:05,620 --> 00:05:07,820
+and this is where the examples are.
+
+57
+00:05:07,820 --> 00:05:12,180
+And after each section,
+
+58
+00:05:12,180 --> 00:05:18,340
+is expected results which should tell you or give you an idea of whether your result if you run the
+
+59
+00:05:18,340 --> 00:05:25,700
+code is what I was expecting when I wrote this. So you can run them on your own and you can see
+
+60
+00:05:25,700 --> 00:05:33,620
+what happens. That's useful to do if you are ahead at the moment or if you want to do them later in
+
+61
+00:05:33,620 --> 00:05:41,300
+the exercise sessions. Okay. So what is the motivation behind the data? What is the,
+
+62
+00:05:42,340 --> 00:05:51,700
+like the, yeah. So let's go into the actual example. So I'll just make this a little bit
+
+63
+00:05:51,700 --> 00:05:58,020
+smaller so that we can see a terminal window here. Okay, maybe not quite that small.
+
+64
+00:05:58,020 --> 00:06:05,380
+And now I am actually in the folder with the examples. Why can't I type into this window?
+
+65
+00:06:05,380 --> 00:06:13,380
+I guess I have a broken connection. Good start. So I guess it's the demo effect.
+
+66
+00:06:14,260 --> 00:06:18,980
+Let's take a connection to the Triton cluster. Yeah, this is not working. Okay.
+
+67
+00:06:18,980 --> 00:06:27,020
+This is also taking a while.
+
+68
+00:06:27,020 --> 00:06:32,460
+So fortunately, I did already run these commands on the cluster and we have the expected results
+
+69
+00:06:32,460 --> 00:06:33,460
+panels.
+
+70
+00:06:33,460 --> 00:06:39,500
+It would still at the very least be nice to run them locally, but can you think of a reason
+
+71
+00:06:39,500 --> 00:06:42,220
+why I couldn't access Triton right now?
+
+72
+00:06:42,220 --> 00:06:47,780
+I don't know, but maybe you have them locally.
+
+73
+00:06:47,780 --> 00:06:52,580
+I do have the examples locally. It's just a very different disk system. It doesn't exactly
+
+74
+00:06:52,580 --> 00:06:59,380
+demonstrate what we wanted to demonstrate. This is a little bit annoying. It might be that login
+
+75
+00:06:59,380 --> 00:07:13,540
+is just slow. It's also slow to me. Okay, well, we can look at the files locally.
+
+76
+00:07:13,540 --> 00:07:19,060
+Oh, here we are. Great. Should I do the source? Okay.
+
+77
+00:07:23,220 --> 00:07:28,180
+So just that we can follow, you can more easily follow along with the commands. I'll do this.
+
+78
+00:07:31,140 --> 00:07:37,620
+So now when I type something here, okay, this is also not updating. Okay, that's fine.
+
+79
+00:07:38,900 --> 00:07:43,460
+So we'll just have this terminal now. That's fine. Can you see the lowest line? Let me know
+
+80
+00:07:43,460 --> 00:07:49,540
+if if the lowest line at the terminal is not visible. Can you make it a white background?
+
+81
+00:07:51,540 --> 00:07:57,860
+I am not sure how to do that. Right click or maybe it's too late to do it. Okay.
+
+82
+00:08:01,380 --> 00:08:04,260
+Okay, so I am in the folder with the examples
+
+83
+00:08:04,260 --> 00:08:10,260
+And the examples, let's also activate the conda repository.
+
+84
+00:08:15,260 --> 00:08:17,260
+I had all of this prepared.
+
+85
+00:08:18,260 --> 00:08:20,260
+But this is how it works, right?
+
+86
+00:08:20,260 --> 00:08:34,180
+Yeah, so in the example data what we have is like we have a code that just creates like a simple
+
+87
+00:08:35,380 --> 00:08:43,140
+example data set motivated by [name]'s like fitness tracker. Yeah, so this is an example,
+
+88
+00:08:43,140 --> 00:08:48,420
+it's a generated example but it's relatively close to what I have seen in actual research projects.
+
+89
+00:08:48,420 --> 00:08:57,300
+And I'm going to be doing things in good ways and bad ways and I don't think that anybody
+
+90
+00:08:57,300 --> 00:09:02,380
+in the research project is actually doing them in such bad ways, but anyway.
+
+91
+00:09:02,380 --> 00:09:07,780
+So there is a script to create this data, but let's just take a look.
+
+92
+00:09:07,780 --> 00:09:09,520
+So there's this data folder.
+
+93
+00:09:09,520 --> 00:09:19,920
+It includes activity data, which represents how much I have been moving according to a
+
+94
+00:09:19,920 --> 00:09:23,920
+fitness watch, for example, at a given time.
+
+95
+00:09:23,920 --> 00:09:33,880
+So let's take a look at 2008 and 10 is the month, so October.
+
+96
+00:09:33,880 --> 00:09:41,200
+And it includes a lot of files, well, it includes one file for each day of the month.
+
+97
+00:09:41,200 --> 00:09:44,000
+Let's look at 30.
+
+98
+00:09:44,000 --> 00:09:46,640
+And let's actually cut it so we'll see the data.
+
+99
+00:09:46,640 --> 00:09:52,920
+So the number here represents the activity level.
+
+100
+00:09:52,920 --> 00:09:57,040
+The last number here, the other one represents hour, and this is actually the index, so it's
+
+101
+00:09:57,040 --> 00:09:59,680
+actually the same as the hour.
+
+102
+00:09:59,680 --> 00:10:01,960
+So for each hour there is a number.
+
+103
+00:10:01,960 --> 00:10:07,640
+It's a single number, it's an integer, and we want to do some analysis on all of these
+
+104
+00:10:07,640 --> 00:10:08,640
+numbers.
+
+105
+00:10:08,640 --> 00:10:12,240
+So if you think about it, there's a large number of files here actually, I did the calculation.
+
+106
+00:10:12,240 --> 00:10:21,680
+So 7,300 files, it's not that bad, it's just my data, but if when I actually start doing
+
+107
+00:10:21,680 --> 00:10:29,000
+the research and I have the data for 200 people, 500 people, 1,000 people, that's a lot.
+
+108
+00:10:29,000 --> 00:10:32,280
+So it can really become a bottleneck, the number of files.
+
+109
+00:10:32,280 --> 00:10:33,640
+So let's go back though.
+
+110
+00:10:33,640 --> 00:10:38,400
+And for these examples, like throughout these examples, we will get some numbers and you
+
+111
+00:10:38,400 --> 00:10:43,320
+have to always think of these numbers like, okay, what are the scales between the different
+
+112
+00:10:43,320 --> 00:10:45,000
+things that we're doing?
+
+113
+00:10:45,000 --> 00:10:46,000
+What happened?
+
+114
+00:10:46,000 --> 00:10:50,680
+Same with the [name]'s MPI example, what is the scaling speed when you increase the number
+
+115
+00:10:50,680 --> 00:10:52,260
+of CPUs?
+
+116
+00:10:52,260 --> 00:10:54,460
+We also have to think about scaling here.
+
+117
+00:10:54,460 --> 00:11:00,180
+So think of these like, let's think that each file, imagine that they are 10 gigabyte files
+
+118
+00:11:00,180 --> 00:11:01,500
+or something like that.
+
+119
+00:11:01,500 --> 00:11:05,840
+So then suddenly we have a huge number, huge amount of data.
+
+120
+00:11:05,840 --> 00:11:10,740
+So then we can think about, okay, what are the savings that we would get if the files
+
+121
+00:11:10,740 --> 00:11:14,540
+would be a lot bigger or the number of files would be a lot larger.
+
+122
+00:11:14,540 --> 00:11:15,540
+Yeah.
+
+123
+00:11:15,540 --> 00:11:21,540
+If there's a, like you could have a measurement per second of this activity level, although
+
+124
+00:11:21,540 --> 00:11:26,020
+So I guess this particular level is really defined on a one-minute interval.
+
+125
+00:11:26,020 --> 00:11:29,900
+But that would already be a lot more text, but of course, it's not the only measurement.
+
+126
+00:11:29,900 --> 00:11:32,460
+You get the heart rate per second, for example.
+
+127
+00:11:32,460 --> 00:11:36,340
+You get a lot of measurements from a device like that.
+
+128
+00:11:36,340 --> 00:11:41,300
+And so you could have a much bigger file, but you can also have a lot more of these
+
+129
+00:11:41,300 --> 00:11:45,340
+really small files, which also is a problem on its own.
+
+130
+00:11:45,340 --> 00:11:49,220
+So let's check like a typical IO pattern now.
+
+131
+00:11:49,220 --> 00:11:50,220
+What happened?
+
+132
+00:11:50,220 --> 00:11:55,900
+The first thing I in fact wrote, and not just as an example. This is not just an example of
+
+133
+00:11:57,180 --> 00:12:04,780
+something that I'm purposely doing it in a bad way. This is actually the first thing I would write.
+
+134
+00:12:07,340 --> 00:12:19,900
+This readfiles.py. So what it does in short is just read all the
+
+135
+00:12:19,900 --> 00:12:26,060
+files in a for loop. We'll list all the files in the data folder. For each folder, list all of
+
+136
+00:12:26,060 --> 00:12:34,380
+these files in there. So this is the CSV files. Open and read. So I'm actually doing it in a
+
+137
+00:12:34,380 --> 00:12:40,860
+slightly better way than my first idea would be. I'm reading the text content and putting it in a
+
+138
+00:12:40,860 --> 00:12:49,580
+list and then turning that into a CSV file and then that into a pandas data frame. Probably the
+
+139
+00:12:49,580 --> 00:12:53,340
+first thing I would do is actually turn it into a pandas data frame here, but that would take a lot
+
+140
+00:12:53,340 --> 00:13:00,540
+of time. And actually, it would kind of obscure the fact that it's reading a lot of stuff because
+
+141
+00:13:01,100 --> 00:13:07,420
+it would be not just reading, but also doing useless computation between every file.
+
+142
+00:13:07,420 --> 00:13:10,860
+Yeah, we want to measure or demonstrate the reading.
+
+143
+00:13:12,300 --> 00:13:17,100
+So, I'm doing it in a much better and faster way than my first idea actually would be, but that's
+
+144
+00:13:17,100 --> 00:13:22,700
+That's partly to not obscure the fact that I'm really doing a lot of reads.
+
+145
+00:13:22,700 --> 00:13:23,700
+Okay.
+
+146
+00:13:23,700 --> 00:13:27,700
+So, now let's try this.
+
+147
+00:13:27,700 --> 00:13:28,700
+Oops.
+
+148
+00:13:28,700 --> 00:13:29,700
+Yeah.
+
+149
+00:13:29,700 --> 00:13:30,700
+Okay.
+
+150
+00:13:30,700 --> 00:13:38,180
+So, this actually does take a while.
+
+151
+00:13:38,180 --> 00:13:43,820
+You might notice that there's also a strange-looking command before the Python thing, and that
+
+152
+00:13:43,820 --> 00:13:52,060
+is the command called trace which is part of Linux system tools that can be used to trace.
+
+153
+00:13:53,580 --> 00:14:00,220
+It can trace different kinds of operations that the programs might do and what it can do is that
+
+154
+00:14:00,220 --> 00:14:06,780
+in this case we want to trace file descriptors so basically whenever files are being accessed or
+
+155
+00:14:06,780 --> 00:14:14,860
+done and then we have this -c there as well to produce like overall results or summaries
+
+156
+00:14:15,820 --> 00:14:20,780
+for the results. So we want to see what the Python program did
+
+157
+00:14:21,900 --> 00:14:30,380
+and what we get is something like this. Yeah so I guess these are how many times a file
+
+158
+00:14:30,380 --> 00:14:39,980
+was opened. That's 8000, so roughly the number of files we have. I guess, so this is asking
+
+159
+00:14:39,980 --> 00:14:48,140
+for file information. Yeah. And looking for a specific place in the file. Yeah. I mean
+
+160
+00:14:48,140 --> 00:14:53,260
+overall lots of operations. Yes, so we can look from the different columns that on the left we
+
+161
+00:14:53,260 --> 00:14:57,820
+can see what took most of the time. So it was the file opening that took most of the time and
+
+162
+00:14:57,820 --> 00:15:02,620
+stacking, so basically figuring out who owns the file, are we allowed to access the file,
+
+163
+00:15:02,620 --> 00:15:10,300
+this sort of stuff. That took the most of the time and you can see how many microseconds it took
+
+164
+00:15:11,580 --> 00:15:18,700
+per call or milliseconds, I don't know. What's the actual, it doesn't really matter.
+
+165
+00:15:18,700 --> 00:15:22,380
+I think it's percent. Yeah, it's percent of the time, so it's not quite seconds.
+
+166
+00:15:22,380 --> 00:15:27,900
+And then how many calls we have, and what is the call at the right side?
+
+167
+00:15:27,900 --> 00:15:30,140
+And the whole thing took five seconds, by the way.
+
+168
+00:15:31,740 --> 00:15:36,940
+So if we think about what the program was inside the program, we had a for loop that
+
+169
+00:15:36,940 --> 00:15:42,700
+opened files in a for loop. So for each file, it had to open the file, it had to access the
+
+170
+00:15:42,700 --> 00:15:48,940
+metadata and the actual data of the file, and it had to do it. And we can see that being reflected
+
+171
+00:15:48,940 --> 00:15:56,540
+here in the output. For each file, we did a lot of these open calls and we did a lot of these
+
+172
+00:15:57,100 --> 00:16:04,380
+stat calls. The files are really small. What we basically did is that we had to do it for all
+
+173
+00:16:04,380 --> 00:16:12,300
+files. Each of these operations was quite small, but they still have a lot of latency with them.
+
+174
+00:16:12,300 --> 00:16:21,300
+So let's, like a normal, normally in this kind of a situation where you want to access all of the data once, like you just want to go through the data.
+
+175
+00:16:21,300 --> 00:16:32,300
+A better solution is to usually bunch up the data into an archive, because then you don't have to like do these individual calls and it will speed up the code grammatically.
+
+176
+00:16:32,300 --> 00:16:38,060
+So one question was why did we have this many more file opens than
+
+177
+00:16:39,980 --> 00:16:46,060
+that we have files or data files and the answer is that we are importing Python libraries which
+
+178
+00:16:46,060 --> 00:16:52,780
+contain a lot of files, .py files and all sorts of different files. So we will actually
+
+179
+00:16:52,780 --> 00:17:00,300
+not get very close to zero at any point. So there's always going to be like a baseline
+
+180
+00:17:00,300 --> 00:17:06,060
+like a startup same with the like NPR programs you have a certain like startup things that you
+
+181
+00:17:06,060 --> 00:17:13,020
+always have to calculate as a part of the whole thing but then you can like... But that's a fixed
+
+182
+00:17:13,820 --> 00:17:20,540
+so when you increase the number of participants that part will not increase so it's kind of
+
+183
+00:17:20,540 --> 00:17:25,740
+yeah a fixed part of the computation. Let's look at the archive reading. So yeah now we have this
+
+184
+00:17:25,740 --> 00:17:33,340
+tar file. A tar file is a single file, but it's essentially just the contents of the files put
+
+185
+00:17:33,340 --> 00:17:39,100
+in right after each other. It's a very simple archive format. This is not even compressed,
+
+186
+00:17:39,100 --> 00:17:43,500
+so it's just actually the full contents of the files with some little bit of metadata in between.
+
+187
+00:17:43,500 --> 00:17:50,300
+Do you want to show the Python code quickly? Yeah, it is relatively straightforward.
+
+188
+00:17:50,300 --> 00:17:56,020
+Well, there is a difference between streaming mode and just read.
+
+189
+00:17:56,020 --> 00:18:01,300
+We want to be streaming because otherwise it will read the file multiple times.
+
+190
+00:18:01,300 --> 00:18:05,660
+That's just this particular tar opening library.
+
+191
+00:18:05,660 --> 00:18:10,700
+Otherwise we open the file once and then we get a list of, well, actually we don't get
+
+192
+00:18:10,700 --> 00:18:16,300
+a list of members because what this is doing is actually it's reading through this list
+
+193
+00:18:16,300 --> 00:18:17,580
+of files, like I said.
+
+194
+00:18:17,580 --> 00:18:23,260
+At the beginning, there's a marker, the file begins, then there's the file name and some
+
+195
+00:18:23,260 --> 00:18:29,900
+other information. This will actually contain the file name. Well, actually, this member.name
+
+196
+00:18:29,900 --> 00:18:36,940
+is the file name. We check that it's a CSV file from that. But then this extract file will just
+
+197
+00:18:36,940 --> 00:18:45,420
+go on and read the chunk of data that is the actual file. Then we read it and we append it
+
+198
+00:18:45,420 --> 00:18:54,940
+again to this list of texts. You notice that in this for loop, previously we had like before
+
+199
+00:18:54,940 --> 00:19:00,300
+we'll have for loop over the folders and then we had a for loop over the files in the folder and
+
+200
+00:19:00,300 --> 00:19:07,100
+then we opened each of them and you might notice that over here we have the open call at the outside
+
+201
+00:19:07,100 --> 00:19:12,940
+of the for loops so basically we open the tar file and then we go through the tar file each file in
+
+202
+00:19:12,940 --> 00:19:20,860
+there. So what we can expect from this is that okay, we probably have less open calls,
+
+203
+00:19:20,860 --> 00:19:27,740
+so maybe we should try it out. Before I do, just more for the audience than you,
+
+204
+00:19:28,460 --> 00:19:34,860
+are you expecting, if we just don't count all of the Python library importing and that stuff,
+
+205
+00:19:35,500 --> 00:19:40,780
+do you expect just one call to open the file and read? It is just one file.
+
+206
+00:19:40,780 --> 00:19:45,980
+Let's see. So I don't know actually how I would answer this question
+
+207
+00:19:45,980 --> 00:19:49,580
+because there are the Python file reads but the answer is not quite one.
+
+208
+00:19:53,420 --> 00:19:58,140
+So that was faster. It actually did take two seconds. So two compared to five.
+
+209
+00:19:59,420 --> 00:20:06,300
+So like it's still not trivial to process the data and to actually like stream it from the file
+
+210
+00:20:06,300 --> 00:20:15,020
+But we can notice that there's a complete difference in what calls are now the most
+
+211
+00:20:15,020 --> 00:20:19,660
+important ones. So now we notice that most of the time was actually just reading the data.
+
+212
+00:20:20,220 --> 00:20:25,980
+This is because now it can just go through the file and just read it from start to finish.
+
+213
+00:20:26,700 --> 00:20:34,540
+And it can read it in bigger blocks. So normally it can read something like 10 kilobytes
+
+214
+00:20:34,540 --> 00:20:40,220
+at a time, whereas previously all of the files were like only like a few hundred bytes or something.
+
+215
+00:20:40,220 --> 00:20:46,860
+So now it can read like multiple files at one time from the file system. So there's less read
+
+216
+00:20:46,860 --> 00:20:54,700
+calls. Previously there were 15 000, now there's only 2 500 and there's much less file open calls.
+
+217
+00:20:55,900 --> 00:21:02,780
+So in practice, if I wanted to answer the question I just started with,
+
+218
+00:21:02,780 --> 00:21:10,540
+it would be the block size of the system so it would be able to read one entire block at a time
+
+219
+00:21:10,540 --> 00:21:15,100
+but the files are stored in blocks so you actually do need to read multiple times
+
+220
+00:21:15,100 --> 00:21:21,740
+if the file is big enough. So at some point if the files are big enough to start
+
+221
+00:21:21,740 --> 00:21:28,940
+actually accumulating the read calls anyway but still you only need to have one stat call
+
+222
+00:21:28,940 --> 00:21:32,740
+for one file.
+
+223
+00:21:32,740 --> 00:21:35,460
+And there's good questions in the chat,
+
+224
+00:21:35,460 --> 00:21:38,380
+like can the tar file trick to use
+
+225
+00:21:38,380 --> 00:21:40,140
+in file transfers as well?
+
+226
+00:21:40,140 --> 00:21:44,300
+And definitely, like combining multiple files,
+
+227
+00:21:44,300 --> 00:21:46,260
+like if you need to do a transfer
+
+228
+00:21:46,260 --> 00:21:49,260
+between let's say your computer and the cluster,
+
+229
+00:21:49,260 --> 00:21:51,540
+and you need to transfer like a hundred files,
+
+230
+00:21:51,540 --> 00:21:55,780
+for each file, the transfer tool of your choice
+
+231
+00:21:55,780 --> 00:22:00,480
+has to write the files, write the metadata,
+
+232
+00:22:00,480 --> 00:22:02,040
+check the permissions, whatever,
+
+233
+00:22:02,040 --> 00:22:04,680
+and also do the transfer through the network.
+
+234
+00:22:04,680 --> 00:22:07,480
+And it's much faster to just process one file.
+
+235
+00:22:07,480 --> 00:22:10,800
+Of course, up to a point where the file is so big
+
+236
+00:22:10,800 --> 00:22:13,900
+that you might get into like,
+
+237
+00:22:16,000 --> 00:22:18,600
+it might just take too long to transfer one file
+
+238
+00:22:18,600 --> 00:22:20,060
+and it might crash or something,
+
+239
+00:22:20,060 --> 00:22:22,680
+but that's up to gigabytes.
+
+240
+00:22:22,680 --> 00:22:26,680
+So, so it's always faster until you reach those places.
+
+241
+00:22:27,360 --> 00:22:29,520
+And also there was a good question.
+
+242
+00:22:30,360 --> 00:22:37,200
+Uh, like, uh, can this be used with pickle objects, for example, in Python?
+
+243
+00:22:37,600 --> 00:22:41,220
+Like, well, there's other data formats that do this kind of stuff as well.
+
+244
+00:22:41,280 --> 00:22:45,720
+Like we will talk about this a bit that later, but this is just like a simple
+
+245
+00:22:45,720 --> 00:22:50,680
+example, but there's other formats that you can use that, that store everything
+
+246
+00:22:50,680 --> 00:22:57,140
+as one file and pickle is one of them, like it will store stuff in one file instead of
+
+247
+00:22:57,140 --> 00:22:58,140
+multiple files.
+
+248
+00:22:58,140 --> 00:23:09,560
+So I guess if you have a large number of pickle files storing different things, then if you
+
+249
+00:23:09,560 --> 00:23:13,080
+have a large number of files, you can use tar, of course, to combine them into one.
+
+250
+00:23:13,080 --> 00:23:18,840
+But of course, you could only create, potentially you could create just one tar file, so you
+
+251
+00:23:18,840 --> 00:23:23,020
+You can stream data into it if it doesn't fit in the memory, if you want to just make
+
+252
+00:23:23,020 --> 00:23:24,840
+one big tar file.
+
+253
+00:23:24,840 --> 00:23:30,520
+And remember here that tar is, like this example uses tar, but it can be other file format.
+
+254
+00:23:30,520 --> 00:23:36,320
+But the main point is that, do you have the files, thousands of files there, or do you
+
+255
+00:23:36,320 --> 00:23:39,080
+have them combined in some format?
+
+256
+00:23:39,080 --> 00:23:44,000
+Like it can be a mat file, it can be like a R data file, it can be a pickle file, it
+
+257
+00:23:44,000 --> 00:23:45,000
+can be whatever.
+
+258
+00:23:45,000 --> 00:23:49,240
+target is something that people quite often use and that's easy to demonstrate.
+
+259
+00:23:50,600 --> 00:23:59,240
+So there was one question, how did I create the tar file? One reason I chose tar here is that
+
+260
+00:23:59,240 --> 00:24:08,360
+it's available on essentially any Unix, POSIX file system. It's a POSIX utility. So there is this tar
+
+261
+00:24:08,360 --> 00:24:14,520
+command. So you can use this command. This is for reading.
+
+262
+00:24:18,920 --> 00:24:23,320
+This one is for creating the tar file from the data.
+
+263
+00:24:23,320 --> 00:24:27,320
+So this command exists on any Linux system but because of course I'm
+
+264
+00:24:31,080 --> 00:24:35,000
+a perfectionist and I wanted to make sure that you can run this even without the tar command
+
+265
+00:24:35,000 --> 00:24:45,800
+and there is also this create_archive, so if you want, you can also do this from Python.
+
+266
+00:24:45,800 --> 00:24:51,640
+But another thing just on that, there is this web dataset example at the end of the notes,
+
+267
+00:24:51,640 --> 00:24:56,160
+which we'll clearly not get into, but let's see.
+
+268
+00:24:56,160 --> 00:25:04,280
+But yeah, so that also uses the tar data format and has a nicer way of creating tar files and
+
+269
+00:25:04,280 --> 00:25:12,040
+these sharded tar files that are large. A large file with a lot of data, but still
+
+270
+00:25:13,000 --> 00:25:16,040
+multiple files so that you can read them in random order and all of that.
+
+271
+00:25:16,760 --> 00:25:21,880
+So that's a nice thing to look into. There was a good follow-up question there also that
+
+272
+00:25:22,680 --> 00:25:27,720
+does creating the tar file just move the slowness of opening files to another script?
+
+273
+00:25:27,720 --> 00:25:32,760
+And of course it does. In order to create the tar file, you first need to open all of the
+
+274
+00:25:32,760 --> 00:25:36,720
+the files, you need to load all of the files and create the target file.
+
+275
+00:25:37,200 --> 00:25:44,720
+But the thing is that, what accumulates, if you do it once, like pre-processing
+
+276
+00:25:44,720 --> 00:25:50,540
+step, instead of having the individual files, you collect them together, like
+
+277
+00:25:50,540 --> 00:25:58,960
+you do it once so that you don't have to do it again, then you can mitigate
+
+278
+00:25:58,960 --> 00:26:06,160
+some of the, like something you can like accumulate if you do it over and over again, like, let's
+
+279
+00:26:06,160 --> 00:26:10,820
+say you want to do the same analysis with different kinds of parameters and you always
+
+280
+00:26:10,820 --> 00:26:16,160
+access all of the files, then suddenly you can do like, I don't know, a thousand times
+
+281
+00:26:16,160 --> 00:26:19,600
+the same IO kind of a thing, and that will like accumulate.
+
+282
+00:26:19,600 --> 00:26:26,440
+If you're running the same thing many times, then it is useful to do this tar command
+
+283
+00:26:26,440 --> 00:26:35,640
+once, even though it of course takes some time. And the other thing is if the whole data doesn't
+
+284
+00:26:35,640 --> 00:26:40,440
+fit into memory once, then you will probably end up reading it multiple times, even in a single run.
+
+285
+00:26:41,160 --> 00:26:48,280
+So this should be common in machine learning. And then using a good data format for reading is
+
+286
+00:26:48,280 --> 00:26:59,320
+important. But let's go to the next example. So the next example is motivated by the machine
+
+287
+00:26:59,320 --> 00:27:06,840
+learning world, where basically quite often you want to load data in a random way. And in this,
+
+288
+00:27:06,840 --> 00:27:11,720
+tar is usually not the best way, unless you use something like the web dataset mentioned by
+
+289
+00:27:11,720 --> 00:27:17,880
+I don't know, because let's demonstrate what happens when you try to read the files in random.
+
+290
+00:27:18,440 --> 00:27:22,440
+WebDataSet kind of uses a trick in that it's not completely randomized.
+
+291
+00:27:23,880 --> 00:27:31,000
+But yeah, so essentially if you try to read random chunks from a file, that usually means you will
+
+292
+00:27:33,800 --> 00:27:41,080
+open the file and then seek until you find the place. It's like running a tape. You read through
+
+293
+00:27:41,080 --> 00:27:47,160
+the file until you find the place that you actually want to read and then you can read that chunk and
+
+294
+00:27:47,160 --> 00:27:53,320
+then you have to open the file again if the part you want to read is earlier. So random access is
+
+295
+00:27:53,320 --> 00:28:03,240
+not a great pattern for reading files in general. Yes. So you can imagine what the Python code
+
+296
+00:28:03,240 --> 00:28:07,240
+looks like. I'm just randomizing the list of files here. So let's just run this.
+
+297
+00:28:07,240 --> 00:28:20,200
+This takes a little bit longer, so here we had 1.73 seconds, 2.8, so not as bad as reading
+
+298
+00:28:20,200 --> 00:28:21,200
+all the files.
+
+299
+00:28:21,200 --> 00:28:30,080
+It ended up actually opening, here we open 580 times, read 2,500, okay.
+
+300
+00:28:30,080 --> 00:28:36,280
+Yeah, it had to open the same amount of, yeah, it had to open the same amount of files, but
+
+301
+00:28:36,280 --> 00:28:41,720
+like [name] said, now it has to like seek the different location where it wants to read.
+
+302
+00:28:41,720 --> 00:28:48,360
+So because the archive is one file, it has to suddenly like seek the correct place in the
+
+303
+00:28:48,360 --> 00:28:53,320
+archive and then read from there. So we get a lot more read calls because sometimes like when you
+
+304
+00:28:53,320 --> 00:29:00,200
+read, you might read a certain amount of data and your data is somewhere in the middle of that
+
+305
+00:29:00,200 --> 00:29:06,760
+like block of data that you want to read. And then you read more than you needed. So you read
+
+306
+00:29:06,760 --> 00:29:11,080
+basically just, you read more than you need, and then you read that part, and then you need to
+
+307
+00:29:11,080 --> 00:29:17,240
+go somewhere else and you need to read again. So that's why we get a lot of SQLs. It's still
+
+308
+00:29:17,240 --> 00:29:24,440
+faster than the individual files, but it's not good either. So for these, there are tools like
+
+309
+00:29:24,440 --> 00:29:31,720
+for random grids you usually want to have the data in some way that you can load the data in a
+
+310
+00:29:31,720 --> 00:29:39,400
+sequential order like as a one block but then randomize it in memory so instead of loading
+
+311
+00:29:40,760 --> 00:29:47,320
+the data from the disk in a random order you want to load the data into memory and randomize it in
+
+312
+00:29:47,320 --> 00:29:53,720
+memory because that is okay so I'll just show the example that comes next because that's the
+
+313
+00:29:54,440 --> 00:30:07,640
+chunked random access. So what we do here is this is a bit of a made-up case in that all of the
+
+314
+00:30:08,680 --> 00:30:14,360
+data actually does fit in the memory. But let's just think that if only 10 files fit in the memory
+
+315
+00:30:14,360 --> 00:30:18,680
+at a time and we want to have it somewhat randomized but not necessarily completely
+
+316
+00:30:18,680 --> 00:30:26,760
+randomized then we can extract the contents of 10 files and then once we have 10 files
+
+317
+00:30:26,760 --> 00:30:34,280
+we take a random permutation of those 10 files. So it's somewhat random but of course it's
+
+318
+00:30:34,280 --> 00:30:40,140
+not reading completely randomly from the file, it's just randomizing each chunk. So this
+
+319
+00:30:40,140 --> 00:30:45,440
+is commonly just good enough and you can also randomize the order of the chunks if you save
+
+320
+00:30:45,440 --> 00:30:52,440
+them in separate files. So that's a common way of doing it and it works well.
+
+321
+00:30:52,440 --> 00:30:57,000
+Yeah, this is what, for example, the web dataset uses. It loads, spreads the... If you have
+
+322
+00:30:57,000 --> 00:31:04,520
+a big dataset, the dataset is split into multiple TAR files in random ways, and then each of
+
+323
+00:31:04,520 --> 00:31:11,320
+those files is opened, read, and then the stuff is shuffled in memory. And because you
+
+324
+00:31:11,320 --> 00:31:15,960
+go load the different target files in the random order you basically get full randomness so you
+
+325
+00:31:15,960 --> 00:31:22,680
+don't have to ever like you don't have to read individual files you can still get one file.
+
+326
+00:31:23,720 --> 00:31:29,560
+Now let's see if the same thing happens as I saw previously and then I can ask you if you
+
+327
+00:31:29,560 --> 00:31:39,400
+can quickly say why it would happen. Yeah so why is this faster than the just reading the whole
+
+328
+00:31:39,400 --> 00:31:45,080
+archive in one go. And significantly faster every time.
+
+329
+00:31:45,080 --> 00:31:54,520
+Yeah. I think the thing here is that when you extract, well, I would guess that when
+
+330
+00:31:54,520 --> 00:32:01,560
+you extract the files or you read multiple chunks into memory, it can optimize the code
+
+331
+00:32:01,560 --> 00:32:09,320
+in a way that it doesn't have to, it can just pipe stuff into the chunks. It can
+
+332
+00:32:09,320 --> 00:32:13,960
+just – it doesn't have to do intermediate processing for each chunk one at a time,
+
+333
+00:32:13,960 --> 00:32:17,720
+but it can do it for multiple at one time. But I'm not certain.
+
+334
+00:32:19,640 --> 00:32:23,000
+Okay, maybe. Python usually doesn't do a lot of…
+
+335
+00:32:23,800 --> 00:32:32,440
+But then again, at this speed, it can be random noise as well. It's just random noise.
+
+336
+00:32:32,440 --> 00:32:38,360
+Yeah, but this is happening every time. This is repeatable. So, I'm just wondering. But okay,
+
+337
+00:32:38,360 --> 00:32:45,560
+Let's move on. One problem here is that the strace output – this is relatively good, I think,
+
+338
+00:32:45,560 --> 00:32:55,640
+but if you try to get all of the file read, for example, and do some proper profiling and not
+
+339
+00:32:55,640 --> 00:33:07,160
+just get the full sum in the end, it's not very readable. We haven't found great tools
+
+340
+00:33:07,160 --> 00:33:12,920
+for reading it. I don't want to say that these are not great. It's great that somebody took
+
+341
+00:33:12,920 --> 00:33:21,080
+the effort, took the time to write this. But there could be something better maybe around.
+
+342
+00:33:21,960 --> 00:33:27,160
+But in any case, these are what we found. It's great that people took the effort to write them.
+
+343
+00:33:30,280 --> 00:33:35,000
+Yeah, those tools can give you a bit more information of what files were accessed and
+
+344
+00:33:35,000 --> 00:33:39,880
+that sort of stuff which might be like if you don't know what your program is doing it might
+
+345
+00:33:39,880 --> 00:33:48,680
+be good to try out these tools. The second one has also like if you're running MPI programs and
+
+346
+00:33:48,680 --> 00:33:56,520
+you want just like only your run space on one of the tasks so you can just monitor one task
+
+347
+00:33:56,520 --> 00:34:03,480
+then that's pretty nice feature as well. But the main thing that we want to come across is that
+
+348
+00:34:03,480 --> 00:34:10,200
+this is what file access looks like and this is what the program tries to do and usually the best
+
+349
+00:34:11,640 --> 00:34:17,240
+like how could I say the best thing to do is to look at your program and see how it tries to access
+
+350
+00:34:17,240 --> 00:34:22,360
+the files if you can like if you if it's not hidden inside the program but but to think about
+
+351
+00:34:22,360 --> 00:34:28,360
+okay what files go into the program and what files come out of the program how many go in how many go
+
+352
+00:34:28,360 --> 00:34:34,760
+out and what is the way that the program tries to interact with the file system, because then you
+
+353
+00:34:34,760 --> 00:34:41,240
+can think about, okay, I can expect that, let's say one file access will cause certain amounts
+
+354
+00:34:41,240 --> 00:34:49,720
+of open calls and it might slow down the whole thing. Next, we could talk a bit about why is
+
+355
+00:34:49,720 --> 00:34:57,080
+this even a problem? If you run on your own computer, you might have a fast NVMe SSD or
+
+356
+00:34:57,080 --> 00:35:02,840
+something like that. Why is this even like a thing? Why are we talking about IO and these file calls?
+
+357
+00:35:04,680 --> 00:35:11,320
+The reason is that all of the HPC clusters, they usually have a network file system. We have a
+
+358
+00:35:11,320 --> 00:35:15,960
+low-structure file system. There might be other file systems in other clusters, but usually it's
+
+359
+00:35:15,960 --> 00:35:25,160
+something similar to what we have. There is a network file system. What happens when you try
+
+360
+00:35:25,160 --> 00:35:29,880
+to access a file there because the program doesn't know, right? The program just thinks that,
+
+361
+00:35:29,880 --> 00:35:34,520
+okay, there's a file system. I will try to do a file system call. It will do the same calls
+
+362
+00:35:34,520 --> 00:35:40,200
+whether you do it on an SSD file system or a network file system. It will do the file opens
+
+363
+00:35:40,200 --> 00:35:48,520
+and file writes and whatever. It doesn't care. It doesn't know what system answers those calls.
+
+364
+00:35:48,520 --> 00:36:01,520
+So, if you open the explanation, there is a diagram of a typical file system, like a network file system.
+
+365
+00:36:01,520 --> 00:36:12,520
+And what they usually are, like a Lustre file system, it's actually that there's multiple metadata servers that serve just the metadata.
+
+366
+00:36:12,520 --> 00:36:16,960
+data. And there's usually like corresponding or there's like
+
+367
+00:36:16,960 --> 00:36:21,120
+object storage service to actually store the data. And
+
+368
+00:36:21,640 --> 00:36:26,280
+whenever you are making a call, like you ask, let's say I want
+
+369
+00:36:26,280 --> 00:36:29,920
+to open this file, there is usually a file system client
+
+370
+00:36:30,080 --> 00:36:35,760
+that basically sends those calls then to the right places. So
+
+371
+00:36:35,780 --> 00:36:38,960
+when you try to access a file, you will send a call to the
+
+372
+00:36:38,960 --> 00:36:42,320
+metadata server that, hey, can I access this file? And we
+
+373
+00:36:42,320 --> 00:36:48,080
+actually is the file, because I don't know where is the actual content of the file, then that
+
+374
+00:36:48,080 --> 00:36:53,360
+response comes back to the client, which then if the response is like, yes, you can access it,
+
+375
+00:36:53,360 --> 00:36:58,880
+it will try to access the object storage server where it tries to access the actual file.
+
+376
+00:36:58,880 --> 00:37:05,120
+And there, the data, it will have to fetch the data from a disk where it actually gets the data
+
+377
+00:37:05,120 --> 00:37:12,800
+into and then it will send the data back. So you can think that there's like lots of overhead here
+
+378
+00:37:12,800 --> 00:37:20,400
+instead of like let's say your SSD in your computer which is fast but it's small and it's
+
+379
+00:37:20,400 --> 00:37:25,360
+not redundant or anything like that that is needed in the high performance computing system. What
+
+380
+00:37:25,360 --> 00:37:31,280
+happens is that instead of the data being right there in the SSD and the cores being served almost
+
+381
+00:37:31,280 --> 00:37:36,960
+immediately there's lots of network interactions like there has to be data transfer through the
+
+382
+00:37:36,960 --> 00:37:45,360
+network back and forth and this will call latency and then all of these individual calls
+
+383
+00:37:46,240 --> 00:37:51,120
+become longer and longer and this means that while they and usually in the programs while the
+
+384
+00:37:51,120 --> 00:37:56,720
+file system calls are being solved the program doesn't do anything like it doesn't continue
+
+385
+00:37:56,720 --> 00:38:02,880
+there's some programs that do like asynchronous file calls that they do stuff on the background
+
+386
+00:38:02,880 --> 00:38:08,480
+and this is of course good because then like it can continue working while the data is still
+
+387
+00:38:08,480 --> 00:38:14,240
+being fetched but but that is more complicated to program so usually it's better to not
+
+388
+00:38:15,440 --> 00:38:20,880
+not get the data or if you get the data from the file system like the shared file system you get
+
+389
+00:38:20,880 --> 00:38:25,840
+it in the right format because then you can minimize these latencies that can slow down the
+
+390
+00:38:25,840 --> 00:38:38,000
+program. Okay so basically is the the reading speed the bandwidth is I guess roughly the same
+
+391
+00:38:38,000 --> 00:38:43,600
+as you would have on a laptop or not that much slower but there's a lot of latency for accessing
+
+392
+00:38:43,600 --> 00:38:49,920
+the file through the network and also while making the stat call which is probably going
+
+393
+00:38:49,920 --> 00:38:56,320
+to a different server? Yeah, the file systems are of course very powerful, but the problem is that
+
+394
+00:38:56,320 --> 00:39:02,240
+there's hundreds of users using them at the same time, right? And there's a lot of people in the
+
+395
+00:39:02,240 --> 00:39:09,440
+network transferring MPI stuff as well, and they can be congested. And the data might just be like,
+
+396
+00:39:09,440 --> 00:39:15,760
+the disk is somewhere that it needs to fetch the data from the disk. So there's always going to be
+
+397
+00:39:15,760 --> 00:39:19,840
+like these intermediate steps that take time so that's why you don't usually want to like
+
+398
+00:39:20,960 --> 00:39:28,880
+waste time computing time to do this kind of IO calls. So that's another thing that
+
+399
+00:39:28,880 --> 00:39:36,240
+is I think good to bring up at bring back at this point so because file systems are not or just like
+
+400
+00:39:36,960 --> 00:39:42,160
+file access is not something you shuttle with Slurm you don't it is not a parameter that you
+
+401
+00:39:42,160 --> 00:39:48,720
+give the slurm and you submit your job. It's just a shared resource. If you manage to slow it down,
+
+402
+00:39:48,720 --> 00:39:52,640
+then you're slowing it down for everyone. You do have to do a lot to slow it down,
+
+403
+00:39:52,640 --> 00:39:56,000
+or multiple people need to be doing a good bit to slow it down.
+
+404
+00:39:58,000 --> 00:40:01,520
+If you have a thousand copies of a job and they all read a bunch of files,
+
+405
+00:40:02,480 --> 00:40:06,960
+that can do some damage. Then it will slow down for everyone. It's not just your job that
+
+406
+00:40:06,960 --> 00:40:15,680
+is slowing down for. That's an important thing to note. What else do we want to cover in six minutes?
+
+407
+00:40:16,880 --> 00:40:22,960
+Well, this is typical file system speeds, but I guess the latency is really the big thing
+
+408
+00:40:23,840 --> 00:40:32,000
+in this case. Because in the example we just did, it was all latency. The speed of reading
+
+409
+00:40:32,000 --> 00:40:36,960
+the file. The amount of data in the files was the same in each case.
+
+410
+00:40:41,040 --> 00:40:48,400
+There was also a good question in the chat about data formats to use. You should always
+
+411
+00:40:48,400 --> 00:40:54,960
+remember that if you can access the files using code, you can use an intermediate data
+
+412
+00:40:54,960 --> 00:41:03,120
+format. Let's say your original data is in CSVs, like [name]'s data. You can still have
+
+413
+00:41:03,120 --> 00:41:07,920
+the original data like that, but while you're working on the data, you can store it in a
+
+414
+00:41:07,920 --> 00:41:13,920
+better format, like a binary format or something like that, and work on it. Then at the end,
+
+415
+00:41:13,920 --> 00:41:18,560
+if you want to publish the results and you want to make it as readable as possible, you can
+
+416
+00:41:18,560 --> 00:41:24,560
+provide it in a different format. But during the processing, when the computations are being done,
+
+417
+00:41:24,560 --> 00:41:32,080
+it's usually important to like convert it into like a good data. So there's one more workflow
+
+418
+00:41:33,040 --> 00:41:40,640
+I want to mention in the last couple of minutes, a workflow thing. So it's kind of a cheat of
+
+419
+00:41:41,360 --> 00:41:49,280
+how to get away from having to deal with Lustre, which is if your cluster has local disks like
+
+420
+00:41:49,280 --> 00:41:57,120
+Triton has some subnodes then it's a very good idea to move your data into the local disk.
+
+421
+00:41:57,120 --> 00:42:01,040
+So by a local disk I mean something that's actually attached to the compute node.
+
+422
+00:42:01,920 --> 00:42:07,600
+You don't have to go through network to do any reading and that is still probably shared with
+
+423
+00:42:07,600 --> 00:42:14,400
+anyone else running on that same node but you don't have to use the network file system,
+
+424
+00:42:14,400 --> 00:42:21,840
+the shared file system. This is especially important for GPU jobs where you're doing like
+
+425
+00:42:21,840 --> 00:42:28,560
+GPU machine learning or whatever. Usually those machines are bought with fast SSDs for this
+
+426
+00:42:28,560 --> 00:42:35,120
+explicit reason because they are so data hungry, the deep learning models, that you need to have
+
+427
+00:42:35,120 --> 00:42:41,840
+the data locally or the GPU will idle. So it just cannot get enough data. So the local disks are
+
+428
+00:42:41,840 --> 00:42:47,200
+very important when you're doing like GP jobs.
+
+429
+00:42:47,200 --> 00:42:52,960
+Okay and there are also these RAM disks so any Linux system will have a
+
+430
+00:42:52,960 --> 00:42:58,080
+/dev/shm [shared memory] and that's also a file system but it's
+
+431
+00:42:58,080 --> 00:43:01,600
+actually in RAM so it's a really fast way of communicating.
+
+432
+00:43:01,600 --> 00:43:04,720
+If you have a lot of RAM you can put all of your
+
+433
+00:43:04,720 --> 00:43:10,320
+data into it but well you need to reserve it when queuing the job
+
+434
+00:43:10,320 --> 00:43:12,200
+and it is limited to RAM.
+
+435
+00:43:12,200 --> 00:43:14,000
+So if your data doesn't fit into RAM,
+
+436
+00:43:14,000 --> 00:43:17,960
+then there's no way you can use this to speed things up.
+
+437
+00:43:17,960 --> 00:43:20,960
+But it is still like, it's good to know about.
+
+438
+00:43:20,960 --> 00:43:23,620
+It can make things a lot easier and faster.
+
+439
+00:43:24,600 --> 00:43:26,440
+Yeah, for example, if your program
+
+440
+00:43:26,440 --> 00:43:29,080
+does like a lot of small intermediate files,
+
+441
+00:43:29,080 --> 00:43:31,520
+but it does them often or something like that,
+
+442
+00:43:31,520 --> 00:43:34,920
+like putting them into the RAM disk might be a good option.
+
+443
+00:43:34,920 --> 00:43:44,040
+Okay, so we are really probably getting right onto the lunch break.
+
+444
+00:43:44,040 --> 00:43:45,760
+One minute to go.
+
+445
+00:43:45,760 --> 00:43:51,120
+So anything you want to say before we wrap up?
+
+446
+00:43:51,120 --> 00:44:00,160
+We do have this web dataset example here which you can take a look at on your own and there
+
+447
+00:44:00,160 --> 00:44:05,520
+are also other exercises, of course, in the exercise session coming up.
+
+448
+00:44:09,120 --> 00:44:15,200
+That's all. Then let's go to the lunch break. If we go to the notes, there is some
+
+449
+00:44:16,240 --> 00:44:21,920
+feedback there. One minute while I switch. Okay, I've switched.
+
+450
+00:44:21,920 --> 00:44:38,920
+So, for some other daily notes, if you're registered, there's this bring your own code session. You can come and ask us questions. Or no, it's an exercise session, isn't it?
+
+451
+00:44:38,920 --> 00:44:47,920
+Well, I mean, you can come to have exercises, but also please do exercise code, basically, any kind of mentoring and individual follow up.
+
+452
+00:44:47,920 --> 00:44:59,920
+Also, many, and probably all of the partners you see listed on the website would be very happy to receive questions from about anything we discussed today.
+
+453
+00:44:59,920 --> 00:45:01,600
+anything we discussed today.
+
+454
+00:45:01,600 --> 00:45:05,800
+So go there, ask about how this applies to your cluster,
+
+455
+00:45:05,800 --> 00:45:10,800
+ask for help in how to configure things,
+
+456
+00:45:10,800 --> 00:45:12,480
+actually do it, all that stuff.
+
+457
+00:45:15,160 --> 00:45:18,800
+So the stream will stop now, right?
+
+458
+00:45:18,800 --> 00:45:21,960
+And we go only to Zoom after the lunch break.
+
+459
+00:45:21,960 --> 00:45:23,120
+Isn't that correct?
+
+460
+00:45:25,480 --> 00:45:27,800
+Yes, I think so.
+
+461
+00:45:27,800 --> 00:45:32,800
+Okay, so please fill in this feedback here.
+
+462
+00:45:32,920 --> 00:45:36,360
+Let us know all that stuff and have a good lunch.
+
+463
+00:45:36,360 --> 00:45:37,640
+See you later then.
+
+464
+00:45:39,540 --> 00:45:40,840
+See you.
+
+465
+00:45:40,840 --> 00:45:41,680
+Okay, bye.
+
+466
+00:45:41,680 --> 00:45:42,520
+Bye.
+
+467
+00:45:42,520 --> 00:45:43,340
+See you.
+
