@@ -1,0 +1,5432 @@
+1
+00:00:00,000 --> 00:00:08,000
+All right, but it's now 1 past 10 in Finland and 1 past 9 in the Central European summertime.
+
+2
+00:00:08,000 --> 00:00:10,960
+Should we officially start?
+
+3
+00:00:10,960 --> 00:00:12,680
+Yes.
+
+4
+00:00:12,680 --> 00:00:21,560
+Alright, so welcome to the second episode of Tuesday's Tools and Techniques for High
+
+5
+00:00:21,560 --> 00:00:26,960
+Performance Computing. I'm [name], I'm a staff scientist at Aalto University
+
+6
+00:00:26,960 --> 00:00:32,600
+and here with me today there are other colleagues from Aalto. [name], do you want to mention
+
+7
+00:00:32,600 --> 00:00:33,920
+something about yourself?
+
+8
+00:00:33,920 --> 00:00:42,480
+Yeah, so I'm [name]. I've worked in my current team here with [name] for about,
+
+9
+00:00:44,080 --> 00:00:53,040
+what, seven or eight years now, I guess. And I started off as a, well, HPC
+
+10
+00:00:54,240 --> 00:00:58,960
+system kind of person. But over time, we've gone more and more towards user support.
+
+11
+00:00:58,960 --> 00:01:02,960
+And now I'm part of the research software engineer team.
+
+12
+00:01:02,960 --> 00:01:11,960
+And with us today, there's also [name], who is actually one of the research software engineers.
+
+13
+00:01:11,960 --> 00:01:14,960
+[name], do you want to mention something about yourself?
+
+14
+00:01:14,960 --> 00:01:19,960
+Well, I'm one of the research software engineers.
+
+15
+00:01:19,960 --> 00:01:23,960
+What else is there to say?
+
+16
+00:01:23,960 --> 00:01:25,960
+That's good.
+
+17
+00:01:25,960 --> 00:01:29,360
+Good, and [name], do you want to say hi?
+
+18
+00:01:29,360 --> 00:01:32,600
+Hello everyone, yes, I'm also one of our teams.
+
+19
+00:01:32,600 --> 00:01:33,440
+Excellent.
+
+20
+00:01:34,360 --> 00:01:37,120
+So if you watched the previous episode,
+
+21
+00:01:37,120 --> 00:01:39,360
+the structure of the day is pretty similar.
+
+22
+00:01:39,360 --> 00:01:44,360
+We have two hours of kind of lecture-based streaming.
+
+23
+00:01:44,400 --> 00:01:46,400
+And after that in the afternoon,
+
+24
+00:01:46,400 --> 00:01:49,640
+for those who want to try what is being shown
+
+25
+00:01:49,640 --> 00:01:53,160
+during the morning, we can actually do it all together
+
+26
+00:01:53,160 --> 00:01:55,480
+in a Zoom session.
+
+27
+00:01:55,480 --> 00:02:00,920
+so because of this the morning will be recorded and the afternoon of course will not be recorded
+
+28
+00:02:00,920 --> 00:02:08,520
+so that people can interact. Other practicalities for the days you have all if you register for this
+
+29
+00:02:08,520 --> 00:02:15,880
+course you have received this notes share notes document at this notes.coderefinery.org
+
+30
+00:02:17,320 --> 00:02:23,800
+in practice this is like a google docs you can think it like that where by clicking the pencil
+
+31
+00:02:23,800 --> 00:02:29,960
+you can edit it and this is a good way to ask for questions and that's going to be us following your
+
+32
+00:02:29,960 --> 00:02:37,160
+questions or comments and plus other people that are involved with CodeRefinery. What else
+
+33
+00:02:37,160 --> 00:02:46,920
+other practicalities there's the possibility to get some credits one ECTS and for those who are
+
+34
+00:02:46,920 --> 00:02:52,280
+planning to get the credit you can join the zoom session in the afternoon where we can discuss more
+
+35
+00:02:52,280 --> 00:02:59,280
+for the exercises and these other practicalities. Anything else to mention, [name]?
+
+36
+00:02:59,280 --> 00:03:04,280
+Let's see, so what are the things that can go wrong?
+
+37
+00:03:04,280 --> 00:03:13,280
+So if the whole stream dies, that means my computer has crashed, which is very rare but possible.
+
+38
+00:03:13,280 --> 00:03:18,280
+Just hang around and you will return shortly.
+
+39
+00:03:19,240 --> 00:03:23,240
+Assuming that Helsinki still has internet connectivity.
+
+40
+00:03:28,360 --> 00:03:32,600
+Did you say how important it is to ask questions?
+
+41
+00:03:33,640 --> 00:03:40,840
+Yeah, the notes document is very useful. From the last episode last week, it was maybe one of the
+
+42
+00:03:40,840 --> 00:03:47,840
+the most favorite things in the survey after the episode because you can really ask any
+
+43
+00:03:47,840 --> 00:03:53,180
+sort of question. The goal of this course is to make it useful for you. We are not able
+
+44
+00:03:53,180 --> 00:03:59,280
+to cover everything and in two hours it's very difficult to go deep into any specific topic.
+
+45
+00:03:59,280 --> 00:04:04,280
+So feel free to ask even more advanced questions or even you know beginners questions because
+
+46
+00:04:04,280 --> 00:04:11,780
+any question is a good question. Yeah. It's good already if you have tested this document
+
+47
+00:04:11,780 --> 00:04:18,860
+now during this icebreaker, it's good to make sure that you're able to edit and so on. So
+
+48
+00:04:18,860 --> 00:04:25,900
+feel free to test it and type. And I can already ask for whoever in our team is going to edit
+
+49
+00:04:25,900 --> 00:04:31,260
+this that we could now start with the first section.
+
+50
+00:04:31,260 --> 00:04:38,060
+So you have also received the link to the materials and if you didn't receive it, someone
+
+51
+00:04:38,060 --> 00:04:42,020
+will paste it now to this notes document.
+
+52
+00:04:42,020 --> 00:04:49,580
+The material has various sections and the goal of today is to kind of focus on the daily
+
+53
+00:04:49,580 --> 00:04:51,580
+work with the cluster.
+
+54
+00:04:51,580 --> 00:05:00,580
+So not the kind of theory of slurm jobs or whatever resources, CPUs, GPUs, this is literally
+
+55
+00:05:00,580 --> 00:05:06,260
+what you do every day with the cluster. So I'm going to start with a quick motivation
+
+56
+00:05:07,780 --> 00:05:16,340
+that the goal of this this is the kind of lecture lesson that I wish I had 15 years ago when I
+
+57
+00:05:16,340 --> 00:05:23,220
+started working with this thing because yes I got introduced to SLURM, I learned how to submit jobs,
+
+58
+00:05:23,220 --> 00:05:29,620
+I learned the kind of peculiarities of the storage systems attached to the cluster but nobody has
+
+59
+00:05:29,620 --> 00:05:32,620
+has ever told me how to daily, day-to-day work
+
+60
+00:05:32,620 --> 00:05:33,460
+with the cluster.
+
+61
+00:05:33,460 --> 00:05:37,040
+Is it better to work on my computer, to work on the remote?
+
+62
+00:05:37,040 --> 00:05:41,440
+So the whole two hours for this morning are exactly this.
+
+63
+00:05:41,440 --> 00:05:43,640
+How do you work in the cluster?
+
+64
+00:05:43,640 --> 00:05:45,240
+Do you work on your machine?
+
+65
+00:05:45,240 --> 00:05:47,360
+Do you work on the remote machine?
+
+66
+00:05:47,360 --> 00:05:50,000
+Do you transfer the data from your local
+
+67
+00:05:50,000 --> 00:05:51,360
+to the remote all the time?
+
+68
+00:05:51,360 --> 00:05:53,760
+Or do you keep everything in the remote?
+
+69
+00:05:53,760 --> 00:05:55,360
+There's so many ways, and in a way,
+
+70
+00:05:55,360 --> 00:05:59,000
+there's not a right or wrong way to do this.
+
+71
+00:05:59,000 --> 00:06:02,160
+This is also important here because there's many of you,
+
+72
+00:06:02,160 --> 00:06:04,280
+some of you might be in the early days
+
+73
+00:06:04,280 --> 00:06:05,340
+of working with cluster,
+
+74
+00:06:05,340 --> 00:06:07,200
+some of you might have been working with cluster
+
+75
+00:06:07,200 --> 00:06:08,440
+for 20 years.
+
+76
+00:06:08,440 --> 00:06:11,760
+It's important that you also share what is good for you
+
+77
+00:06:11,760 --> 00:06:13,200
+in the notes document,
+
+78
+00:06:13,200 --> 00:06:16,960
+because we are truly learning from each other.
+
+79
+00:06:16,960 --> 00:06:19,560
+We don't need to go through the text of this page,
+
+80
+00:06:19,560 --> 00:06:21,380
+you can read it later if you want,
+
+81
+00:06:21,380 --> 00:06:24,840
+but I want to spend a couple of minutes on this picture.
+
+82
+00:06:24,840 --> 00:06:27,440
+So what I think that many users,
+
+83
+00:06:27,440 --> 00:06:30,940
+What I see also when I'm helping users
+
+84
+00:06:30,940 --> 00:06:32,720
+that are starting to work with cluster
+
+85
+00:06:32,720 --> 00:06:34,520
+is the difficulty in understanding
+
+86
+00:06:34,520 --> 00:06:38,380
+kind of the geography of an HPC cluster.
+
+87
+00:06:38,380 --> 00:06:41,180
+Meaning literally, where are the physical bits
+
+88
+00:06:41,180 --> 00:06:44,320
+and why does it work like that?
+
+89
+00:06:44,320 --> 00:06:46,580
+So in this simple schematic,
+
+90
+00:06:47,760 --> 00:06:49,700
+we have on the left-hand side,
+
+91
+00:06:49,700 --> 00:06:53,460
+basically the internet, this bubble, this cloud,
+
+92
+00:06:53,460 --> 00:06:56,180
+and attached to the internet that might be your laptop
+
+93
+00:06:56,180 --> 00:07:02,900
+home or your workstation in the office and usually through the internet of your university you might
+
+94
+00:07:02,900 --> 00:07:09,780
+have some network drive there's multiple of them whatever your university or research institution
+
+95
+00:07:10,420 --> 00:07:18,100
+uses for storing data on the right hand side there is the cluster of course this is a very simplified
+
+96
+00:07:18,100 --> 00:07:24,660
+picture of a cluster but usually it works like this that there is a login node so it's like a
+
+97
+00:07:24,660 --> 00:07:32,580
+server a remote computer where you can enter the cluster and then once you are in the login node
+
+98
+00:07:32,580 --> 00:07:39,140
+you can basically start working with the cluster you might submit a job so something that is non
+
+99
+00:07:39,140 --> 00:07:45,620
+interactive like we did on the first episode or you might need to do some debugging on the
+
+100
+00:07:45,620 --> 00:07:51,940
+actual cluster so you could request an interactive node so that you move from the login node to some
+
+101
+00:07:51,940 --> 00:07:58,980
+CPU node or maybe GPU node and then what is important to see that this connection between
+
+102
+00:07:58,980 --> 00:08:05,540
+the nodes and between the login nodes these are very fast very fast connections so that the local
+
+103
+00:08:05,540 --> 00:08:11,860
+storage attached to the cluster whether it's this scratch storage very large and very fast
+
+104
+00:08:11,860 --> 00:08:17,940
+or the kind of home folder is very different from what you be what might be the home folder
+
+105
+00:08:17,940 --> 00:08:25,380
+on your machine or other data storage cloud storage that your university is giving you.
+
+106
+00:08:26,580 --> 00:08:33,940
+So of course the speed of this type of connectivity within local cluster comes with some compromises
+
+107
+00:08:34,820 --> 00:08:41,060
+meaning that for example if you would truly need to run some GPU computation that is very fast but
+
+108
+00:08:41,060 --> 00:08:45,860
+the data is stored in the cloud storage of your university you have a bottleneck you have a data
+
+109
+00:08:45,860 --> 00:08:52,340
+transfer bottleneck and it's not going to work. On the other end, cluster comes with the so-called
+
+110
+00:08:52,340 --> 00:08:58,420
+scratch disk, whatever the name might change in different cluster, and usually the scratch disk
+
+111
+00:08:58,420 --> 00:09:05,140
+is really optimized for fast IO, meaning that you don't have GPUs idling, waiting for data to come,
+
+112
+00:09:06,020 --> 00:09:11,140
+but you have to pay this kind of speed with the price of the fact that usually, if not always,
+
+113
+00:09:11,140 --> 00:09:17,220
+scratch is never backed up. So it's fast, it's large, but it's not backed up. And so you understand
+
+114
+00:09:17,220 --> 00:09:24,100
+with this type of physical limitations and technical limitation, one is to build a workflow
+
+115
+00:09:24,100 --> 00:09:30,740
+on top of those, so that you can make sure that maybe when something important is done, it's over
+
+116
+00:09:30,740 --> 00:09:36,260
+and it's in scratch, you need to transfer it back to your university storage or to your laptop.
+
+117
+00:09:36,260 --> 00:09:41,260
+or maybe working interactively with GPU nodes
+
+118
+00:09:41,420 --> 00:09:44,260
+might be very expensive in a sense
+
+119
+00:09:44,260 --> 00:09:47,260
+that your cluster policies might not allow you
+
+120
+00:09:47,260 --> 00:09:50,980
+to stay idle on a GPU node for many hours.
+
+121
+00:09:50,980 --> 00:09:53,740
+So then you need to figure out how to work locally
+
+122
+00:09:53,740 --> 00:09:56,620
+and then deploy on the clusters.
+
+123
+00:09:56,620 --> 00:09:59,960
+So all this will be covered in the next two hours.
+
+124
+00:10:01,580 --> 00:10:05,900
+Just a brief mention that as you can understand now,
+
+125
+00:10:05,900 --> 00:10:08,580
+We are working in a remote system.
+
+126
+00:10:08,580 --> 00:10:12,260
+So it's important, yes, to understand the geography,
+
+127
+00:10:12,260 --> 00:10:14,420
+where you are right now with the terminal.
+
+128
+00:10:14,420 --> 00:10:15,900
+Are you in your local machine?
+
+129
+00:10:15,900 --> 00:10:17,220
+Are you in the login node?
+
+130
+00:10:17,220 --> 00:10:20,220
+Are you in a dedicated node?
+
+131
+00:10:20,220 --> 00:10:21,860
+But what is also important to remember
+
+132
+00:10:21,860 --> 00:10:23,580
+that these are shared system.
+
+133
+00:10:23,580 --> 00:10:26,780
+There's other people connected to the same system.
+
+134
+00:10:26,780 --> 00:10:30,700
+And so it's important to follow the cluster etiquette.
+
+135
+00:10:30,700 --> 00:10:33,900
+There is no, how can I say, 10 simple rules
+
+136
+00:10:33,900 --> 00:10:38,900
+on what to do or how to follow the cluster etiquette.
+
+137
+00:10:39,060 --> 00:10:42,180
+But there's a very nice research software hour episode
+
+138
+00:10:42,180 --> 00:10:43,700
+on this topic.
+
+139
+00:10:43,700 --> 00:10:45,560
+So it's an interesting one.
+
+140
+00:10:46,460 --> 00:10:50,280
+Adapt, of course, with the practices of your cluster.
+
+141
+00:10:50,280 --> 00:10:53,100
+Maybe if there's one thing of the cluster etiquette
+
+142
+00:10:53,100 --> 00:10:54,540
+that you must always remember
+
+143
+00:10:54,540 --> 00:10:58,860
+is to not run computations in the login node.
+
+144
+00:10:58,860 --> 00:11:01,700
+This will be most likely reminded
+
+145
+00:11:01,700 --> 00:11:04,540
+and remember for the next of the day.
+
+146
+00:11:04,540 --> 00:11:06,140
+But this is the most typical mistake
+
+147
+00:11:06,140 --> 00:11:08,880
+that even most advanced user are doing.
+
+148
+00:11:10,740 --> 00:11:13,740
+So, well, we can talk about the homework
+
+149
+00:11:13,740 --> 00:11:15,660
+in the afternoon Zoom.
+
+150
+00:11:17,300 --> 00:11:20,740
+So now [name], let's of course start
+
+151
+00:11:20,740 --> 00:11:23,980
+with project arrangement because your local projects
+
+152
+00:11:23,980 --> 00:11:26,420
+in your laptop might be a bit different
+
+153
+00:11:26,420 --> 00:11:29,940
+than the project in the share system.
+
+154
+00:11:29,940 --> 00:11:34,900
+Yeah, I will try to switch to my screen.
+
+155
+00:11:34,900 --> 00:11:36,980
+Yes, like it worked.
+
+156
+00:11:37,860 --> 00:11:41,900
+So we will head to project arrangement.
+
+157
+00:11:44,660 --> 00:11:46,600
+So yeah, I mean, if you asked me,
+
+158
+00:11:46,600 --> 00:11:48,340
+a lot of the daily work starts
+
+159
+00:11:48,340 --> 00:11:51,380
+with how you organize your projects.
+
+160
+00:11:51,380 --> 00:11:56,380
+And there's definitely some good and bad ways of doing this.
+
+161
+00:11:56,380 --> 00:12:04,780
+this in probably a lot of ways that are good in some cases. And this is something that people
+
+162
+00:12:04,780 --> 00:12:11,180
+rarely talk about. It's like, okay here's your space, go do things. You can treat it like your
+
+163
+00:12:11,180 --> 00:12:18,940
+computer which might be organized well or not organized well. But let's start with a story.
+
+164
+00:12:18,940 --> 00:12:25,660
+So there's a file which I probably have. It's a makefile and I really liked it because I
+
+165
+00:12:25,660 --> 00:12:33,180
+completely automated one of my first projects I ever did when I started my PhD, and I would
+
+166
+00:12:33,180 --> 00:12:38,100
+like to find that file again as a demo of Makefiles, but guess what?
+
+167
+00:12:38,100 --> 00:12:39,700
+I can't find it.
+
+168
+00:12:39,700 --> 00:12:46,660
+Even though I'm pretty sure it's not deleted, and I'm pretty sure it's backed up somewhere.
+
+169
+00:12:46,660 --> 00:12:52,120
+But it was in a directory that probably got compressed, and that was probably in another
+
+170
+00:12:52,120 --> 00:13:02,740
+directory that then also got compressed and is sitting around somewhere.
+
+171
+00:13:02,740 --> 00:13:08,820
+So this is a good metaphor, I think, for what can happen.
+
+172
+00:13:08,820 --> 00:13:19,240
+So if you're not careful when enough time passes, then you can lose track of what you've
+
+173
+00:13:19,240 --> 00:13:20,240
+got.
+
+174
+00:13:20,240 --> 00:13:25,240
+Even you lose track of things, how will anyone else be able to keep track of things?
+
+175
+00:13:25,240 --> 00:13:32,240
+Has anyone else here ever lost a file this way?
+
+176
+00:13:32,240 --> 00:13:40,240
+Like, do any of you have things that are so, well, that you think you have, but you can't find anymore?
+
+177
+00:13:40,240 --> 00:13:47,720
+I mean, there is a whole structure of backup of old computer that contains backup of the
+
+178
+00:13:47,720 --> 00:13:53,920
+previous computer, which contains backup of previous computer. And like everything from
+
+179
+00:13:53,920 --> 00:13:59,040
+high school further should be there somewhere. I have no idea where.
+
+180
+00:13:59,040 --> 00:14:07,400
+For me, I noticed that sometimes when joining a new project, maybe others might not be familiar
+
+181
+00:14:07,400 --> 00:14:11,800
+with the fact that Scratch is not backed up and not familiar that we are sharing the same
+
+182
+00:14:12,680 --> 00:14:19,080
+resources. So I had people deleting my folder because they thought that it was just some
+
+183
+00:14:20,280 --> 00:14:26,040
+temporary. They're like, oh, I didn't make this, so it must not be needed. And then,
+
+184
+00:14:26,040 --> 00:14:29,640
+so I guess that's another thing. When you have multiple people there, you have to
+
+185
+00:14:29,640 --> 00:14:35,800
+have the sharing mechanism and know who's responsible for what. Also, how do you know
+
+186
+00:14:35,800 --> 00:14:42,680
+if you even can clean something up in the future. Well, that's something we can talk about later.
+
+187
+00:14:47,000 --> 00:14:55,240
+So here is something we can start with. So in the notes, please go there and write
+
+188
+00:14:56,360 --> 00:15:02,760
+how your joint projects are organized, if you have any. So while we're talking,
+
+189
+00:15:02,760 --> 00:15:06,840
+please keep adding these and at the end we'll go through and discuss them.
+
+190
+00:15:09,640 --> 00:15:13,560
+There's a good question in the note, should we use English-only local language allowed,
+
+191
+00:15:14,120 --> 00:15:21,560
+only 8.3 format or long file names? Let's get to that at the end, but do keep adding these.
+
+192
+00:15:24,200 --> 00:15:32,680
+So my first thought for keeping things arranged is divide up your work into what goes together.
+
+193
+00:15:32,760 --> 00:15:41,800
+So, for example, this is one project of mine, this is another project of mine, and so on.
+
+194
+00:15:41,800 --> 00:15:47,460
+So one of my original problems was that I put all of my work into one folder, and then
+
+195
+00:15:47,460 --> 00:15:52,500
+in there I had subfolders for different things I was doing, and probably even subfolders
+
+196
+00:15:52,500 --> 00:15:53,640
+in there.
+
+197
+00:15:53,640 --> 00:15:56,120
+So they got recursively compressed.
+
+198
+00:15:56,120 --> 00:16:02,420
+Like I compressed an inside one, then an outside one, and I lost track.
+
+199
+00:16:02,420 --> 00:16:08,520
+So what I'd say is try to keep everything at one top level, decide what goes together,
+
+200
+00:16:08,520 --> 00:16:10,880
+give it a name, and that name is unique.
+
+201
+00:16:10,880 --> 00:16:16,960
+For example, I would call some of my projects like lgm for lattice glass model.
+
+202
+00:16:16,960 --> 00:16:19,160
+And then I had directories called lgm.
+
+203
+00:16:19,160 --> 00:16:27,580
+And wherever I saw that directory name, I knew it was supposed to represent this project.
+
+204
+00:16:27,580 --> 00:16:34,680
+And then once you have the projects in directories, whatever's in one of the project directories
+
+205
+00:16:34,680 --> 00:16:37,200
+is always managed the same way.
+
+206
+00:16:37,200 --> 00:16:43,100
+So for example, you always either use git for it, or you transfer data with rsync or
+
+207
+00:16:43,100 --> 00:16:44,440
+something like that.
+
+208
+00:16:44,440 --> 00:16:47,100
+And we'll talk about that next.
+
+209
+00:16:47,100 --> 00:16:53,120
+And then I'd recommend everything at least have a minimal readme for you that lets you
+
+210
+00:16:53,120 --> 00:16:55,120
+know what's in there.
+
+211
+00:16:55,120 --> 00:17:00,240
+to read me is useful to other people, that's even better. But a little note that says this
+
+212
+00:17:00,240 --> 00:17:07,800
+is what this was and how I was using it. So here's an example that might be from one
+
+213
+00:17:07,800 --> 00:17:17,620
+of my projects. I have something which I call project A, and then it has a bunch of data.
+
+214
+00:17:17,620 --> 00:17:23,160
+So the data is too much, I don't want to store it and track it with the main project things.
+
+215
+00:17:23,160 --> 00:17:27,740
+So I make a different directory called project-a-data.
+
+216
+00:17:27,740 --> 00:17:31,140
+And then whenever I start writing things, different people will have access to that.
+
+217
+00:17:31,140 --> 00:17:35,900
+So I make a separate directory again called project-a-paper1.
+
+218
+00:17:35,900 --> 00:17:36,900
+And so on.
+
+219
+00:17:36,900 --> 00:17:41,700
+And then these aren't subdirectories of each other, but all at the same level.
+
+220
+00:17:41,700 --> 00:17:49,020
+So I can easily find them.
+
+221
+00:17:49,020 --> 00:17:58,880
+When you're sharing these, either everyone has their own local clone with Git, for example,
+
+222
+00:17:58,880 --> 00:18:03,080
+and that's often used for code or papers or things like that.
+
+223
+00:18:03,080 --> 00:18:08,120
+Or there's one shared folder that everyone edits, which basically should only be used
+
+224
+00:18:08,120 --> 00:18:19,960
+for things like data, because people editing the same code is not a good idea.
+
+225
+00:18:19,960 --> 00:18:22,440
+So how do you organize your top-level projects?
+
+226
+00:18:22,440 --> 00:18:29,160
+Do you have these deeply recursive structures or do you try to keep it all flat and so on?
+
+227
+00:18:29,160 --> 00:18:30,160
+Anyone else here?
+
+228
+00:18:30,160 --> 00:18:37,520
+Well, I mean, that's a very good question, and in the code refinery lesson that is linked
+
+229
+00:18:37,520 --> 00:18:45,200
+to this material, we try to basically recommend a usual project structure. I think that the
+
+230
+00:18:45,200 --> 00:18:50,940
+advantage of sharing more or less the same project structure with the subfolders is that
+
+231
+00:18:50,940 --> 00:18:56,400
+others who might join the project later, they might already be familiar with the folder structure
+
+232
+00:18:56,400 --> 00:19:01,240
+or the usual scenario that if you win the lottery and move to a desert island, other
+
+233
+00:19:01,240 --> 00:19:07,040
+people know where to find the different bits. In general, of course, I really like what
+
+234
+00:19:07,040 --> 00:19:13,040
+you mentioned about having multiple kind of project subfolders because it on one hand
+
+235
+00:19:13,040 --> 00:19:19,200
+one can think that okay this is extra work but this is truly data management in practice
+
+236
+00:19:19,200 --> 00:19:24,620
+because you can really have let's say this project a paper one can be you know only couple
+
+237
+00:19:24,620 --> 00:19:28,760
+of users should have read and access there because those are the authors of the paper
+
+238
+00:19:28,760 --> 00:19:34,520
+and project a paper two there will be other people so you don't need to truly share everything
+
+239
+00:19:34,520 --> 00:19:38,000
+with everyone else, which is a bit of an issue
+
+240
+00:19:38,000 --> 00:19:39,880
+that we have noticed in our cluster
+
+241
+00:19:39,880 --> 00:19:43,040
+with these gigantic project folders.
+
+242
+00:19:43,040 --> 00:19:45,680
+But in general, I mean, maybe talking with each other
+
+243
+00:19:45,680 --> 00:19:49,960
+and agreeing on these policies is the best.
+
+244
+00:19:49,960 --> 00:19:52,720
+What is your experience, [name]?
+
+245
+00:19:52,720 --> 00:19:58,360
+Yeah, I mean, it's a good point about the master project
+
+246
+00:19:58,360 --> 00:20:00,960
+folders.
+
+247
+00:20:00,960 --> 00:20:03,160
+Actually, it will get, let's go on
+
+248
+00:20:03,160 --> 00:20:08,600
+maybe we can talk about our own arrangement because there's more of this later on down.
+
+249
+00:20:10,600 --> 00:20:14,920
+Okay, so directories within projects. So once you've got a project,
+
+250
+00:20:14,920 --> 00:20:19,320
+then try to keep stuff organized within that. So this is probably pretty obvious.
+
+251
+00:20:20,040 --> 00:20:30,680
+So for example, within my proj A, I might have the code, some original data, scratch data,
+
+252
+00:20:30,680 --> 00:20:42,360
+which is not tracked and can be deleted, outputs or documentation, the paper stuff, and so on.
+
+253
+00:20:42,920 --> 00:20:48,680
+And of course the arrangement above some of these papers and so on were separated out,
+
+254
+00:20:48,680 --> 00:20:52,760
+but if it is together you'd keep it unique likeness.
+
+255
+00:20:55,560 --> 00:20:59,960
+This is probably pretty obvious. The last thing you want to do is have to come back in
+
+256
+00:20:59,960 --> 00:21:06,200
+five years and someone says please can you share your code and then you have to
+
+257
+00:21:06,200 --> 00:21:11,800
+go looking for code everywhere or you come back in two years like okay we have
+
+258
+00:21:11,800 --> 00:21:15,800
+to delete the original data because of privacy or something like that and you
+
+259
+00:21:15,800 --> 00:21:20,880
+can't find where the original data is because it's mixed with all the other
+
+260
+00:21:20,880 --> 00:21:31,120
+things. So keep it organized at the start. Next is directories for teams. So oftentimes on a
+
+261
+00:21:31,120 --> 00:21:37,360
+cluster, you'll get allocated one directory for your project, which everyone has to share.
+
+262
+00:21:38,240 --> 00:21:44,080
+So same for our cluster. If you're in a group, you get a group directory. Like for example,
+
+263
+00:21:44,080 --> 00:21:55,280
+it might be called networks and for the complex networks group and then um how do you divide this
+
+264
+00:21:55,280 --> 00:22:04,320
+up so for example here we see scratch project with some big number and i think this is similar
+
+265
+00:22:04,320 --> 00:22:13,520
+to the naming scheme on CSC clusters for example and maybe others on our cluster it's text names
+
+266
+00:22:13,520 --> 00:22:20,880
+but that might be unique. So then inside of there, there's often directories for each user.
+
+267
+00:22:20,880 --> 00:22:30,960
+So for example, user1, user2, user3, and user4. And then inside of the user directories is the
+
+268
+00:22:30,960 --> 00:22:38,800
+code for different things. Code for project A, code for project B, user2, code for project A.
+
+269
+00:22:38,800 --> 00:22:44,480
+and then these are tracked and synchronized with git and if you need to
+
+270
+00:22:44,480 --> 00:22:47,880
+you can go directly looking at other people's code but you don't modify it
+
+271
+00:22:47,880 --> 00:22:56,400
+you only use version control or something to track but then what about
+
+272
+00:22:56,400 --> 00:23:01,880
+data sets and so on so then that would be in a different shared folder for
+
+273
+00:23:01,880 --> 00:23:07,760
+example project a common data which is managed manually or however and then the
+
+274
+00:23:07,760 --> 00:23:15,520
+code refers to the data in this location by either the full path or saying ../.. for
+
+275
+00:23:16,160 --> 00:23:17,360
+two parent directories.
+
+276
+00:23:22,400 --> 00:23:32,240
+Yeah, okay. And I think this is probably what most of us instructors do because we're all from the
+
+277
+00:23:32,240 --> 00:23:40,960
+same place. Yeah, we still have a couple of minutes, so how about this code arrangement?
+
+278
+00:23:43,520 --> 00:23:49,600
+Oh, I forgot about this part. So, the installable software packages. So,
+
+279
+00:23:51,040 --> 00:23:59,760
+wait, what's this going to be? So, if you have code directories like this, it works, and they
+
+280
+00:23:59,760 --> 00:24:04,720
+can import each other. But once you start getting a bunch of code that's relatively stable and
+
+281
+00:24:04,720 --> 00:24:12,080
+multiple people use, you can split this off into another separate package separate from your
+
+282
+00:24:12,080 --> 00:24:23,360
+analysis and so on. And then you would package that as, say, a Python package or C package or
+
+283
+00:24:23,360 --> 00:24:30,240
+whatever and then that's tracked separately and we have an example of making a python package here
+
+284
+00:24:31,280 --> 00:24:35,120
+and if you do this you can even install an editable version
+
+285
+00:24:35,120 --> 00:24:39,520
+which means that whenever you modify it the changes are directly visible
+
+286
+00:24:41,360 --> 00:24:48,320
+um i have a feeling something's missing here is this basically i don't know if something's missing
+
+287
+00:24:48,320 --> 00:24:54,320
+but maybe a question that I have that would it be like, let's say that we work in the same
+
+288
+00:24:54,320 --> 00:25:00,720
+research group and we maybe have agreed on a shared conda environment so that we can all
+
+289
+00:25:00,720 --> 00:25:06,320
+stick to the same versions at least for a few papers. Would it be the best to have a shared
+
+290
+00:25:06,320 --> 00:25:11,120
+place where we all store this shared conda environment or maybe even turning this
+
+291
+00:25:11,120 --> 00:25:16,480
+conda environment into a module if it's possible? What would be your recommendation?
+
+292
+00:25:16,480 --> 00:25:23,960
+I think shared Conda environments are a really good idea, and could be done.
+
+293
+00:25:23,960 --> 00:25:30,440
+On the other hand, once I was working on a project, and I had started writing a shared
+
+294
+00:25:30,440 --> 00:25:33,040
+library for this.
+
+295
+00:25:33,040 --> 00:25:38,040
+So a library that would read the data and do some basic preprocessing, and then everyone
+
+296
+00:25:38,040 --> 00:25:40,440
+else would be using this library.
+
+297
+00:25:40,440 --> 00:25:46,000
+But somehow the arrangement got so that people needed to make some changes to this library
+
+298
+00:25:46,000 --> 00:25:56,440
+for their own things. So people would go and do the changes themselves to it, and then
+
+299
+00:25:56,440 --> 00:26:02,500
+it would break things for other people. And I forget, maybe it was in a shared environment
+
+300
+00:26:02,500 --> 00:26:09,240
+on there. So someone would modify the code, and then suddenly other people's code stopped
+
+301
+00:26:09,240 --> 00:26:10,240
+working.
+
+302
+00:26:10,240 --> 00:26:16,960
+So, this is not necessarily a problem with having the shared environment, but versioning
+
+303
+00:26:16,960 --> 00:26:23,880
+the code better and making sure that backwards compatibility is maintained unless it's decided
+
+304
+00:26:23,880 --> 00:26:25,200
+to be broken.
+
+305
+00:26:25,200 --> 00:26:31,120
+But yeah, this is sort of an intrinsic problem when the code is going to be changing, that
+
+306
+00:26:31,120 --> 00:26:38,400
+you need an environment for everyone's own thing.
+
+307
+00:26:38,400 --> 00:26:43,720
+So at the end of the day, it's good to talk with your colleagues and agree on whatever
+
+308
+00:26:43,720 --> 00:26:45,680
+is your preferred policy.
+
+309
+00:26:45,680 --> 00:26:48,800
+So we are perfect with our timings.
+
+310
+00:26:48,800 --> 00:26:57,440
+And I think we could basically move to the next section, which is about data systems.
+
+311
+00:26:57,440 --> 00:27:00,720
+Are there any good questions in the thing?
+
+312
+00:27:00,720 --> 00:27:01,720
+Yeah.
+
+313
+00:27:01,720 --> 00:27:12,280
+Some interesting questions on the folder structures and yeah, yeah.
+
+314
+00:27:12,280 --> 00:27:14,280
+So there's a good comment here.
+
+315
+00:27:14,280 --> 00:27:15,280
+Maybe the last one.
+
+316
+00:27:15,280 --> 00:27:16,280
+Yeah.
+
+317
+00:27:16,280 --> 00:27:17,720
+Do you want to comment exactly on that?
+
+318
+00:27:17,720 --> 00:27:18,720
+The last one.
+
+319
+00:27:18,720 --> 00:27:22,560
+Well, I'm commenting on the one about recursive structures.
+
+320
+00:27:22,560 --> 00:27:27,200
+So yeah, I mean, recursive structure is nice and that's what I originally did.
+
+321
+00:27:27,200 --> 00:27:32,720
+But at some point, once I got too many projects and the recursive structure got too big,
+
+322
+00:27:32,720 --> 00:27:34,680
+it became too hard to find things.
+
+323
+00:27:34,680 --> 00:27:39,120
+So I said flat structure with the main metadata being the name.
+
+324
+00:27:39,120 --> 00:27:46,160
+So for example, now I know on any computer I can list my git directory.
+
+325
+00:27:46,160 --> 00:27:50,200
+And then it will have a list of all projects.
+
+326
+00:27:50,200 --> 00:27:57,080
+Or put it another way, I know on any computer I can list my git directory, or list my research
+
+327
+00:27:57,080 --> 00:28:02,920
+directory, and that will contain every name that I might possibly need to know.
+
+328
+00:28:02,920 --> 00:28:07,000
+And stuff won't be hidden too deeply.
+
+329
+00:28:07,000 --> 00:28:14,040
+So that works for my project directory, or my arrangement, but maybe not others.
+
+330
+00:28:14,040 --> 00:28:16,240
+Maybe it can be kept clean or recursive.
+
+331
+00:28:16,240 --> 00:28:25,000
+So yeah, for searching metadata, well,
+
+332
+00:28:25,000 --> 00:28:28,440
+I try to make sure the name includes everything
+
+333
+00:28:28,440 --> 00:28:31,520
+that I might want to search for with this kind of naming
+
+334
+00:28:31,520 --> 00:28:33,920
+scheme that I showed.
+
+335
+00:28:33,920 --> 00:28:38,080
+And yeah, for the last question, probably the paper directories
+
+336
+00:28:38,080 --> 00:28:42,480
+wouldn't be on this cluster, but by having it
+
+337
+00:28:42,480 --> 00:28:44,160
+as the separate thing, then it doesn't
+
+338
+00:28:44,160 --> 00:28:54,080
+to be there, for example. But yeah, it's more of an example that way. Okay.
+
+339
+00:28:56,080 --> 00:29:05,520
+Excellent. So now it's exactly 30 past, so we could see what would be the next adventure.
+
+340
+00:29:06,160 --> 00:29:09,360
+And I think we're going to talk about moving data around.
+
+341
+00:29:09,360 --> 00:29:18,560
+to Data Sync. Yes, so should I take over the screen share? Yeah, maybe. Let's do. How about
+
+342
+00:29:18,560 --> 00:29:23,440
+I start the introduction and then we'll give you the screen share. Yeah, so.
+
+343
+00:29:26,640 --> 00:29:31,840
+So, yeah, Data Sync. So, can someone add this to the notes?
+
+344
+00:29:31,840 --> 00:29:44,360
+So, we often learn about things like version control for sharing code, which works well
+
+345
+00:29:44,360 --> 00:29:49,880
+and definitely should be used, but what happens once you get gigabytes of data or more that
+
+346
+00:29:49,880 --> 00:29:56,160
+needs to be shared around between multiple clusters, or your own computer and the cluster
+
+347
+00:29:56,160 --> 00:29:57,400
+and so on?
+
+348
+00:29:57,400 --> 00:29:59,520
+How do you transfer this?
+
+349
+00:29:59,520 --> 00:30:08,280
+So obviously there's the answer of SSH, SCP, rsync, and so on, but are there any better
+
+350
+00:30:08,280 --> 00:30:09,280
+ways?
+
+351
+00:30:09,280 --> 00:30:14,480
+And that's what we're going to talk about now, in addition to the basic ways.
+
+352
+00:30:14,480 --> 00:30:20,520
+So first off is make a data plan.
+
+353
+00:30:20,520 --> 00:30:27,920
+So who has ever had a case where you're working on a paper and you email the manuscript to
+
+354
+00:30:27,920 --> 00:30:34,080
+everyone and then you get all the emails back with all the changes and now suddenly you have
+
+355
+00:30:34,880 --> 00:30:42,880
+five different copies. Unfortunately yes. Unfortunately yeah. So of course that's why
+
+356
+00:30:42,880 --> 00:30:50,720
+people these days use things like Overleaf and so on but that's a that's part of the data plan
+
+357
+00:30:50,720 --> 00:31:02,720
+But for data, you can't do the same thing. So first step, think about what you've got.
+
+358
+00:31:02,720 --> 00:31:10,680
+And the different common operations you might have are having original data and making a copy
+
+359
+00:31:10,680 --> 00:31:20,640
+for analysis, archiving data when you're done, moving the data from place to place during
+
+360
+00:31:20,640 --> 00:31:26,880
+the project and moving the data but it might be modified on both sides.
+
+361
+00:31:26,880 --> 00:31:31,800
+And when data might be modified on both sides, that's when you start getting really confusing
+
+362
+00:31:31,800 --> 00:31:32,800
+things happening.
+
+363
+00:31:32,800 --> 00:31:38,360
+And you have to be really careful.
+
+364
+00:31:38,360 --> 00:31:43,500
+So let's get started.
+
+365
+00:31:43,500 --> 00:31:51,700
+So here's an example of a data plan that I might use for a project.
+
+366
+00:31:51,700 --> 00:31:55,700
+So just to summarize, let's say I'm doing some sort of analysis.
+
+367
+00:31:55,700 --> 00:32:01,180
+I've collected data from some instrument, like a microscope or something, and the data
+
+368
+00:32:01,180 --> 00:32:04,740
+is on my computer.
+
+369
+00:32:04,740 --> 00:32:12,420
+And let's say I need so much computing power that I might be using multiple clusters.
+
+370
+00:32:12,420 --> 00:32:20,100
+plan is that the original data can get synced to clusters. So that's this input data. And input
+
+371
+00:32:20,100 --> 00:32:29,700
+data is only modified on my laptop. So anytime in the future, I would only, if I need to change
+
+372
+00:32:29,700 --> 00:32:35,220
+the data, first I update the laptop, then transfer it out everywhere. So that's one way.
+
+373
+00:32:36,500 --> 00:32:40,660
+The cluster can do computing. For example, making these computed directories.
+
+374
+00:32:40,660 --> 00:32:47,660
+And from any cluster, those are only transferred back to my laptop. So there's never a question.
+
+375
+00:32:47,660 --> 00:32:53,140
+So the cluster always has the latest data. And then, for example, analyzed is always
+
+376
+00:32:53,140 --> 00:33:03,500
+then regenerated on my laptop, for example. Okay, and that can keep things organized.
+
+377
+00:33:03,500 --> 00:33:09,780
+So how do we actually transfer? So, [name], are you ready to screen share?
+
+378
+00:33:09,780 --> 00:33:11,780
+Yes.
+
+379
+00:33:11,780 --> 00:33:13,780
+Okay.
+
+380
+00:33:13,780 --> 00:33:17,780
+So, first off is transferring data.
+
+381
+00:33:17,780 --> 00:33:23,780
+And I'll leave it on my screen until I'm ready for the next part.
+
+382
+00:33:23,780 --> 00:33:27,780
+So, transferring data is relatively easy.
+
+383
+00:33:27,780 --> 00:33:34,780
+So you've probably heard of tools like SCP or SFTP, and probably also Rsync.
+
+384
+00:33:34,780 --> 00:33:39,580
+So all of these use SSH as the transport protocol.
+
+385
+00:33:39,580 --> 00:33:44,780
+In fact, well, you'll see here in HPC,
+
+386
+00:33:44,780 --> 00:33:47,340
+almost everything uses SSH.
+
+387
+00:33:47,340 --> 00:33:50,620
+For that, if you set up an SSH config file,
+
+388
+00:33:50,620 --> 00:33:52,580
+which we might see later today,
+
+389
+00:33:52,580 --> 00:33:53,860
+but I won't go through now,
+
+390
+00:33:53,860 --> 00:33:56,460
+it will make things much easier because you can
+
+391
+00:33:56,460 --> 00:34:00,020
+define all the options once and just give a name.
+
+392
+00:34:00,020 --> 00:34:03,340
+If you have data that's very,
+
+393
+00:34:03,340 --> 00:34:08,780
+very massive like multi terabytes you're transferring around Europe then there's
+
+394
+00:34:08,780 --> 00:34:12,620
+some other protocols people might use but if you need those you'll just learn
+
+395
+00:34:12,620 --> 00:34:19,380
+them. And the main thing I've been emphasizing here if you have two copies
+
+396
+00:34:19,380 --> 00:34:23,380
+of the same data be really careful they don't get out of sync which is why I
+
+397
+00:34:23,380 --> 00:34:30,180
+emphasize so much, where can data be edited, and so on.
+
+398
+00:34:30,180 --> 00:34:35,340
+So rsync, [name], what do you like to show?
+
+399
+00:34:35,340 --> 00:34:37,140
+I will switch to your screen.
+
+400
+00:34:37,140 --> 00:34:38,460
+Yeah.
+
+401
+00:34:38,460 --> 00:34:39,260
+OK.
+
+402
+00:34:39,260 --> 00:34:42,780
+And you can make it a little bit wider now.
+
+403
+00:34:42,780 --> 00:34:49,420
+Yes, I can preview.
+
+404
+00:34:49,420 --> 00:34:52,220
+OK.
+
+405
+00:34:52,220 --> 00:34:56,060
+So before you walk me through the example,
+
+406
+00:34:56,060 --> 00:34:57,660
+I'll just show you what I have.
+
+407
+00:34:57,660 --> 00:35:01,940
+Because I have a data folder in one of the example folders.
+
+408
+00:35:01,940 --> 00:35:07,060
+I guess I should have then followed your example
+
+409
+00:35:07,060 --> 00:35:09,940
+and created a code folder separately.
+
+410
+00:35:09,940 --> 00:35:15,100
+But now we have a data folder in here in the web datasets
+
+411
+00:35:15,100 --> 00:35:19,300
+example that we used last week.
+
+412
+00:35:19,300 --> 00:35:26,180
+So, the data folder contains six files and we need to get these to the cluster.
+
+413
+00:35:26,980 --> 00:35:28,900
+Okay, so what should I do?
+
+414
+00:35:30,980 --> 00:35:34,260
+So, do you have SSH set up to the cluster?
+
+415
+00:35:35,220 --> 00:35:35,720
+Yes.
+
+416
+00:35:36,260 --> 00:35:36,760
+Okay.
+
+417
+00:35:37,220 --> 00:35:41,380
+In fact, I have a tab open where I already have SSH to the cluster,
+
+418
+00:35:41,380 --> 00:35:45,940
+because that makes it helpful to have echoing the commands down here.
+
+419
+00:35:47,860 --> 00:35:48,360
+Yes.
+
+420
+00:35:49,300 --> 00:35:59,220
+Okay so right now we're on your computer. So I guess we start with rsync, the command.
+
+421
+00:36:01,300 --> 00:36:07,860
+Yeah. And then the syntax is sort of like copy where it's source to destination.
+
+422
+00:36:09,060 --> 00:36:11,460
+Yeah so I guess we move the entire folder.
+
+423
+00:36:14,180 --> 00:36:17,380
+Did you say first the destination? First the source.
+
+424
+00:36:17,380 --> 00:36:26,100
+right so it goes source to destination so data we do 'data/' everything or
+
+425
+00:36:26,100 --> 00:36:32,380
+that's what I would do yeah we can do recursive if we do 'data/'
+
+426
+00:36:32,380 --> 00:36:39,180
+everything we need to create the folder first so I would recommend as from what
+
+427
+00:36:39,180 --> 00:36:45,860
+I generally do I always use the whole directory names and then a slash ('/') on the
+
+428
+00:36:45,860 --> 00:36:53,060
+end. And then for the destination, also the whole directory name with a slash on the end.
+
+429
+00:36:54,260 --> 00:37:02,180
+Yeah. So sort of like cp, whenever you copy a file with cp, it might put it inside of the
+
+430
+00:37:02,180 --> 00:37:10,180
+destination folder, or it might give it that exact file name as the destination. Yeah,
+
+431
+00:37:10,180 --> 00:37:19,460
+this is something that's always a little bit confusing to me. So yeah, I basically always
+
+432
+00:37:19,460 --> 00:37:25,180
+try twice. Yeah. Fail on the first time. So my recommendation is always use slashes on
+
+433
+00:37:25,180 --> 00:37:35,100
+the end and always give the final name you want. So if we do try to not all the F I colon
+
+434
+00:37:35,100 --> 00:37:36,100
+Scratch.
+
+435
+00:37:36,100 --> 00:37:37,100
+Scratch.
+
+436
+00:37:37,100 --> 00:37:38,100
+Work.
+
+437
+00:37:38,100 --> 00:37:53,100
+Maybe writing this out is not the most interesting thing, but we are already almost there.
+
+438
+00:37:53,100 --> 00:38:00,900
+Now, this is the same io-example/webdataset.
+
+439
+00:38:00,900 --> 00:38:01,900
+Okay.
+
+440
+00:38:01,900 --> 00:38:07,020
+okay but there is no data folder there so we do need either to do it recursively
+
+441
+00:38:07,020 --> 00:38:15,380
+or so if you give it'll automatically make one name on the end so if over this
+
+442
+00:38:15,380 --> 00:38:20,540
+should work if web data set exists and you do and you add a data slash on the
+
+443
+00:38:20,540 --> 00:38:31,140
+end yeah like this yeah so it will make a data directory so it wasn't recursive
+
+444
+00:38:31,140 --> 00:38:42,260
+So maybe this is a difference between our versions or our normal usage but well I will
+
+445
+00:38:42,260 --> 00:38:51,060
+make it recursive -r and it's taking some time
+
+446
+00:38:51,060 --> 00:39:01,100
+here so now it's not I didn't set it to interactive so it's not printing out what it's copying
+
+447
+00:39:01,100 --> 00:39:10,100
+It does take a moment to copy this data and a big part of this actually is just the latency
+
+448
+00:39:10,100 --> 00:39:14,860
+of accessing the cluster, getting a connection to the cluster.
+
+449
+00:39:14,860 --> 00:39:19,940
+You want to control-C and give the -i option.
+
+450
+00:39:19,940 --> 00:39:21,700
+Let's do that.
+
+451
+00:39:21,700 --> 00:39:25,780
+We'll see what's going on.
+
+452
+00:39:25,780 --> 00:39:33,700
+So it already copied the first two files and it's copying the third one.
+
+453
+00:39:33,700 --> 00:39:43,100
+So one cool thing about rsync is it will resume transfers that have already started.
+
+454
+00:39:43,100 --> 00:39:50,100
+It will, if you cancel a transfer in the middle, it doesn't lose the partially transferred
+
+455
+00:39:50,100 --> 00:39:51,100
+file.
+
+456
+00:39:51,100 --> 00:39:55,100
+It can't preserve timestamps.
+
+457
+00:39:55,100 --> 00:39:59,100
+Yeah, so all the existing ones
+
+458
+00:39:59,100 --> 00:40:03,100
+were already there.
+
+459
+00:40:03,100 --> 00:40:07,100
+So you can preserve timestamps, so that way
+
+460
+00:40:07,100 --> 00:40:11,100
+it will see, okay, is the timestamp the same? Then it knows it doesn't
+
+461
+00:40:11,100 --> 00:40:15,100
+need to check it again. It will do checksums on the files.
+
+462
+00:40:15,100 --> 00:40:19,100
+So basically make sure that everything
+
+463
+00:40:19,100 --> 00:40:27,620
+is like it will read through the file, compute a checksum of it
+
+464
+00:40:27,620 --> 00:40:31,700
+to make sure that bit by bit it is exactly identical
+
+465
+00:40:31,700 --> 00:40:33,460
+on the source and the receiver.
+
+466
+00:40:33,460 --> 00:40:36,820
+And if you've changed just a small part of a file,
+
+467
+00:40:36,820 --> 00:40:40,940
+it will only modify those same ones.
+
+468
+00:40:40,940 --> 00:40:42,500
+Should we demonstrate that?
+
+469
+00:40:42,500 --> 00:40:43,820
+Or I guess it's hard to do that.
+
+470
+00:40:43,820 --> 00:40:45,220
+So does it go file by file?
+
+471
+00:40:49,100 --> 00:40:53,100
+Yes, I think by default it goes file by file.
+
+472
+00:40:53,100 --> 00:40:56,380
+You can also do partial transfers and then it splits the file up.
+
+473
+00:40:59,260 --> 00:41:00,940
+What do you mean by partial transfer?
+
+474
+00:41:01,820 --> 00:41:07,980
+So it will split the file into pieces, transfer those pieces one by one,
+
+475
+00:41:07,980 --> 00:41:10,300
+and then reconstitute the file on the other end.
+
+476
+00:41:10,300 --> 00:41:16,060
+So that if for some reason the upload gets cancelled,
+
+477
+00:41:16,060 --> 00:41:20,660
+it doesn't have to restart from – it doesn't have to do the entire file again.
+
+478
+00:41:20,660 --> 00:41:21,660
+Yes.
+
+479
+00:41:21,660 --> 00:41:22,660
+Yes, exactly.
+
+480
+00:41:22,660 --> 00:41:23,660
+Yeah.
+
+481
+00:41:23,660 --> 00:41:30,180
+But that's mainly for the first time you transfer or – I mean, if you have reason to expect
+
+482
+00:41:30,180 --> 00:41:33,820
+that it might get canceled if it's a really big file, then that's useful.
+
+483
+00:41:33,820 --> 00:41:34,820
+But okay.
+
+484
+00:41:34,820 --> 00:41:46,060
+Actually, without breaking the archive, the tar archive, you can modify by just adding
+
+485
+00:41:46,060 --> 00:41:48,700
+stuff to the end.
+
+486
+00:41:48,700 --> 00:41:53,580
+So I'll do this.
+
+487
+00:41:53,580 --> 00:41:58,300
+So this will be modifying the last file in the archive, actually, because I don't know
+
+488
+00:41:58,300 --> 00:42:02,540
+how to write headers for new files, but that's not a problem.
+
+489
+00:42:02,540 --> 00:42:03,540
+That's fine.
+
+490
+00:42:03,540 --> 00:42:14,660
+Okay, so let's just do a new file content, and then the same command again.
+
+491
+00:42:14,660 --> 00:42:19,660
+Yes.
+
+492
+00:42:19,660 --> 00:42:20,660
+That was really quick.
+
+493
+00:42:20,660 --> 00:42:24,140
+Even the last file, I think it did actually a partial.
+
+494
+00:42:24,140 --> 00:42:27,180
+Yeah, it did an update instead of copy.
+
+495
+00:42:27,180 --> 00:42:32,860
+So it checks, it sees what's there, and would only transfer the new stuff.
+
+496
+00:42:32,860 --> 00:42:36,800
+So yeah, basically rsync is the thing to use.
+
+497
+00:42:36,800 --> 00:42:43,420
+It's got options for only transferring files which are newer on the source side than the
+
+498
+00:42:43,420 --> 00:42:56,220
+receiver side, very powerful include and exclude kind of options, preserving timestamps, archiving
+
+499
+00:42:56,220 --> 00:42:58,620
+everything, including timestamps, remissions,
+
+500
+00:42:58,620 --> 00:43:00,220
+that kind of things.
+
+501
+00:43:00,220 --> 00:43:02,980
+Dry run, so it would print what would happen before you
+
+502
+00:43:02,980 --> 00:43:08,220
+actually do it, and so on.
+
+503
+00:43:08,220 --> 00:43:11,260
+Anyway, we can play with that some more later.
+
+504
+00:43:11,260 --> 00:43:14,500
+Should we go to the two-way syncing?
+
+505
+00:43:14,500 --> 00:43:16,900
+Yeah, so this was only one way, and that's
+
+506
+00:43:16,900 --> 00:43:18,300
+the main downside with our sync.
+
+507
+00:43:18,300 --> 00:43:19,460
+Yeah.
+
+508
+00:43:19,460 --> 00:43:20,900
+OK.
+
+509
+00:43:20,900 --> 00:43:26,180
+So if I delete a file or modify a file on the other side,
+
+510
+00:43:26,180 --> 00:43:34,420
+Yeah, it doesn't get overwritten, I guess, unless there's a change on my laptop.
+
+511
+00:43:34,420 --> 00:43:37,620
+But yeah, so let's do the two-way example.
+
+512
+00:43:37,620 --> 00:43:43,620
+So whoever has done two-way syncing of data for clusters and stuff like that?
+
+513
+00:43:43,620 --> 00:43:55,700
+I mean, I did set it up once on my laptop, on my laptop and cluster, but I think I just
+
+514
+00:43:55,700 --> 00:43:59,060
+After I changed laptops, I just never did it again.
+
+515
+00:44:02,180 --> 00:44:05,940
+It was really useful as long as the network connection worked.
+
+516
+00:44:07,700 --> 00:44:14,340
+Okay, so the thing with syncing data two ways is that you have to remember what's updated.
+
+517
+00:44:14,900 --> 00:44:20,260
+So imagine you sync things. Do you always take the file that has the newer timestamp?
+
+518
+00:44:20,260 --> 00:44:24,500
+Well, what if it's been modified on both sides?
+
+519
+00:44:24,500 --> 00:44:35,440
+Then you would lose the fact that they've both been modified without warning.
+
+520
+00:44:35,440 --> 00:44:40,940
+So any kind of good enough two-way syncing needs to record the state of what was last
+
+521
+00:44:40,940 --> 00:44:41,980
+there.
+
+522
+00:44:41,980 --> 00:44:46,000
+And the program I've used for this before is called Unison.
+
+523
+00:44:46,000 --> 00:44:47,940
+So there's a different thing called Unison.
+
+524
+00:44:47,940 --> 00:44:52,940
+So make sure you get the right one.
+
+525
+00:44:52,940 --> 00:45:00,820
+Actually, yeah, there is a link there.
+
+526
+00:45:00,820 --> 00:45:08,220
+So I did prepare by installing Unison, but is there, do you want to make some points
+
+527
+00:45:08,220 --> 00:45:11,900
+about installing it before we continue?
+
+528
+00:45:11,900 --> 00:45:17,140
+So Unison is something that's not usually installed on clusters.
+
+529
+00:45:17,140 --> 00:45:24,740
+It is in typical Linux package repositories.
+
+530
+00:45:24,740 --> 00:45:29,300
+So it used to be Unison needed to have the exact same version on both sides, which was
+
+531
+00:45:29,300 --> 00:45:31,180
+a bit of a problem.
+
+532
+00:45:31,180 --> 00:45:36,660
+But since the latest ones, that's not necessary anymore.
+
+533
+00:45:36,660 --> 00:45:41,940
+But we can look at installation into exercise sessions.
+
+534
+00:45:41,940 --> 00:45:43,420
+That's not interesting now.
+
+535
+00:45:43,420 --> 00:45:44,420
+Yeah.
+
+536
+00:45:44,420 --> 00:45:45,420
+Okay.
+
+537
+00:45:45,420 --> 00:45:50,580
+The thing that I did notice is that my version at least still requires exactly the same version
+
+538
+00:45:50,580 --> 00:45:52,300
+on both sides.
+
+539
+00:45:52,300 --> 00:45:58,700
+So I have set it up correctly, but that happens.
+
+540
+00:45:58,700 --> 00:46:01,580
+So what options do you use here?
+
+541
+00:46:01,580 --> 00:46:06,100
+That's a good question.
+
+542
+00:46:06,100 --> 00:46:10,380
+I could check what I used when I was trying, but I think just the folder names.
+
+543
+00:46:10,380 --> 00:46:11,780
+Do I need anything else?
+
+544
+00:46:11,780 --> 00:46:19,900
+So the folder name for the source, and then it needs to be 'ssh://'.
+
+545
+00:46:19,900 --> 00:46:20,900
+Oh, right.
+
+546
+00:46:20,900 --> 00:46:21,900
+Ssh.
+
+547
+00:46:21,900 --> 00:46:22,900
+Ssh.
+
+548
+00:46:22,900 --> 00:46:26,300
+And then the address, and another '//'.
+
+549
+00:46:26,300 --> 00:46:27,300
+And now the path.
+
+550
+00:46:27,300 --> 00:46:28,300
+Yes.
+
+551
+00:46:28,300 --> 00:46:29,300
+On the other side.
+
+552
+00:46:29,300 --> 00:46:30,300
+Okay.
+
+553
+00:46:30,300 --> 00:46:31,300
+Okay.
+
+554
+00:46:31,300 --> 00:46:41,260
+Does it already exist on the other side?
+
+555
+00:46:41,260 --> 00:46:43,740
+It seems to have noticed some changes.
+
+556
+00:46:43,740 --> 00:46:46,420
+So I think it already exists on the other side.
+
+557
+00:46:46,420 --> 00:46:50,260
+Because isn't it the same place you've just rsynced it?
+
+558
+00:46:50,260 --> 00:46:51,180
+Yes.
+
+559
+00:46:51,180 --> 00:46:52,620
+OK.
+
+560
+00:46:52,620 --> 00:47:00,580
+OK, so on the server side, it is a new directory.
+
+561
+00:47:00,580 --> 00:47:04,220
+It has been deleted since the last time I used Unison.
+
+562
+00:47:04,220 --> 00:47:08,620
+OK, but I could give it a completely new directory.
+
+563
+00:47:08,620 --> 00:47:13,620
+So let's call it data unison, just as a demo.
+
+564
+00:47:13,660 --> 00:47:14,500
+Yeah.
+
+565
+00:47:15,460 --> 00:47:18,340
+So now it can start from scratch.
+
+566
+00:47:21,100 --> 00:47:21,940
+Yes.
+
+567
+00:47:21,940 --> 00:47:25,180
+Okay, so we get this blurb of text
+
+568
+00:47:28,040 --> 00:47:30,780
+and I guess it's just warning that it's a,
+
+569
+00:47:30,780 --> 00:47:32,860
+it's not finding the last date.
+
+570
+00:47:32,860 --> 00:47:36,420
+So it's a completely new.
+
+571
+00:47:36,420 --> 00:47:37,420
+Yeah.
+
+572
+00:47:37,420 --> 00:47:38,260
+Yeah.
+
+573
+00:47:38,620 --> 00:47:51,700
+Okay, and here, it will prompt for every single directory, the new things, what is new.
+
+574
+00:47:51,700 --> 00:47:54,220
+And F means follow the recommendation.
+
+575
+00:47:54,220 --> 00:47:59,980
+So it sees that locally you have something, on the cluster you have nothing.
+
+576
+00:47:59,980 --> 00:48:05,460
+So if you push F, it will propagate it to the cluster.
+
+577
+00:48:05,460 --> 00:48:10,460
+and then push y to accept and there it's transferring.
+
+578
+00:48:11,860 --> 00:48:13,780
+And I guess it will take a while.
+
+579
+00:48:13,780 --> 00:48:14,620
+Yeah.
+
+580
+00:48:14,620 --> 00:48:16,820
+So now it's copying all of the files across.
+
+581
+00:48:18,140 --> 00:48:18,980
+Yes.
+
+582
+00:48:18,980 --> 00:48:20,460
+It asked only about the folder,
+
+583
+00:48:20,460 --> 00:48:22,020
+but it's copying all the files.
+
+584
+00:48:23,900 --> 00:48:24,740
+Yeah.
+
+585
+00:48:27,940 --> 00:48:29,300
+I mean, yeah, it will take a while.
+
+586
+00:48:29,300 --> 00:48:33,100
+I guess we don't have to wait for it to finish because...
+
+587
+00:48:33,100 --> 00:48:33,940
+Okay.
+
+588
+00:48:33,940 --> 00:48:36,740
+We can move on to the next thing.
+
+589
+00:48:36,740 --> 00:48:37,240
+Yes.
+
+590
+00:48:41,020 --> 00:48:45,780
+And this will transfer all five files, I guess.
+
+591
+00:48:45,780 --> 00:48:47,900
+Yeah, all six of them.
+
+592
+00:48:47,900 --> 00:48:49,220
+Yeah.
+
+593
+00:48:49,220 --> 00:48:51,060
+In the exercise session, I guess we
+
+594
+00:48:51,060 --> 00:48:59,860
+can demonstrate working on how you can modify things.
+
+595
+00:48:59,860 --> 00:49:00,380
+Oh, OK.
+
+596
+00:49:00,380 --> 00:49:02,220
+So yeah, if I'm.
+
+597
+00:49:02,220 --> 00:49:05,620
+Maybe let's wait for it to finish to demonstrate the syncing.
+
+598
+00:49:05,620 --> 00:49:06,940
+Yeah.
+
+599
+00:49:06,940 --> 00:49:11,100
+So there's something more to demonstrate with Unix.
+
+600
+00:49:11,100 --> 00:49:13,420
+And then we can just wait, because it's almost done.
+
+601
+00:49:13,420 --> 00:49:15,540
+Yeah.
+
+602
+00:49:15,540 --> 00:49:18,300
+So once it's done, can you delete one file
+
+603
+00:49:18,300 --> 00:49:22,500
+from the cluster and then modify one file locally?
+
+604
+00:49:22,500 --> 00:49:26,620
+OK, so in the data folder, we have these files.
+
+605
+00:49:26,620 --> 00:49:31,220
+I already modified file number 5.
+
+606
+00:49:31,220 --> 00:49:35,820
+So let's do that.
+
+607
+00:49:35,820 --> 00:49:38,540
+So I locally modified file number five.
+
+608
+00:49:38,540 --> 00:49:42,500
+Here I'm on the cluster.
+
+609
+00:49:42,500 --> 00:49:44,900
+And I have the data unison folder here.
+
+610
+00:49:44,900 --> 00:49:46,060
+That's the correct one.
+
+611
+00:49:46,060 --> 00:49:50,700
+So let's delete file number zero.
+
+612
+00:49:50,700 --> 00:49:51,500
+OK.
+
+613
+00:49:51,500 --> 00:49:52,900
+OK.
+
+614
+00:49:52,900 --> 00:49:54,980
+And now I should be able to run it on either side,
+
+615
+00:49:54,980 --> 00:49:56,860
+I guess, because it's a two-way thing.
+
+616
+00:49:56,860 --> 00:49:59,220
+But let's do it here.
+
+617
+00:49:59,220 --> 00:50:01,060
+So now I'm sorry.
+
+618
+00:50:01,060 --> 00:50:09,940
+on the laptop side here. Now you go back to laptop and it notices it's deleted. Okay, I'll press F
+
+619
+00:50:12,980 --> 00:50:22,180
+and there's a change. Number five has changed so accept and then Y. Oh, I need to press Y. Okay
+
+620
+00:50:22,180 --> 00:50:24,820
+Okay, and there it goes.
+
+621
+00:50:24,820 --> 00:50:26,780
+Yeah, it's all done.
+
+622
+00:50:26,780 --> 00:50:29,380
+Yeah, so Unison is pretty cool.
+
+623
+00:50:30,420 --> 00:50:33,580
+But I guess that for the afternoon,
+
+624
+00:50:33,580 --> 00:50:34,800
+if people wanna try this,
+
+625
+00:50:34,800 --> 00:50:37,140
+we will be there in the Zoom to help them.
+
+626
+00:50:38,020 --> 00:50:41,260
+Maybe we still have nine minutes before the break.
+
+627
+00:50:41,260 --> 00:50:44,500
+I was thinking that it would be nice to continue
+
+628
+00:50:44,500 --> 00:50:46,140
+and stay on this data section
+
+629
+00:50:46,140 --> 00:50:50,980
+to at least mention git-annex that is there in the material.
+
+630
+00:50:50,980 --> 00:50:53,100
+We will not have time to demo it,
+
+631
+00:50:53,100 --> 00:50:58,100
+but I really like the mounting data from place to place,
+
+632
+00:50:58,140 --> 00:51:00,820
+which in practice is SSHFS.
+
+633
+00:51:00,820 --> 00:51:02,980
+So we still have eight minutes.
+
+634
+00:51:02,980 --> 00:51:05,740
+[name] and [name], would you like to continue
+
+635
+00:51:05,740 --> 00:51:07,020
+and wrap up this section?
+
+636
+00:51:07,020 --> 00:51:07,940
+And then later-
+
+637
+00:51:07,940 --> 00:51:08,940
+Yes. We continue.
+
+638
+00:51:08,940 --> 00:51:09,780
+Sounds good.
+
+639
+00:51:09,780 --> 00:51:13,500
+Maybe I'll switch to my screen to talk about git-annex.
+
+640
+00:51:13,500 --> 00:51:15,180
+Okay.
+
+641
+00:51:15,180 --> 00:51:19,180
+So git-annex is a tool
+
+642
+00:51:20,980 --> 00:51:35,900
+So, it uses git, obviously, but it allows you to track large files.
+
+643
+00:51:35,900 --> 00:51:43,700
+So it doesn't check the large files into git, but only remembers the metadata about things.
+
+644
+00:51:43,700 --> 00:51:49,660
+And then it allows you to move these files separate from all the git history.
+
+645
+00:51:49,660 --> 00:51:58,240
+So maybe I won't show the whole demo because it's here, but basically I have this repository
+
+646
+00:51:58,240 --> 00:52:01,180
+called video processing.
+
+647
+00:52:01,180 --> 00:52:08,480
+If I went in here and ran git annex list ttt4hpc, it shows all these files.
+
+648
+00:52:08,480 --> 00:52:11,780
+So notice there's a raw file here.
+
+649
+00:52:11,780 --> 00:52:15,940
+And so that's a folder name in the video processing.
+
+650
+00:52:15,940 --> 00:52:16,940
+Correct.
+
+651
+00:52:16,940 --> 00:52:17,940
+Yes.
+
+652
+00:52:17,940 --> 00:52:18,940
+Yeah.
+
+653
+00:52:18,940 --> 00:52:24,740
+And here we see git annex has tracked, these are all the large files, and they are all
+
+654
+00:52:24,740 --> 00:52:28,740
+on here, which is my desktop.
+
+655
+00:52:28,740 --> 00:52:39,260
+They're also all on Triton, which is the cluster, and the output files are in Allas, which is
+
+656
+00:52:39,260 --> 00:52:45,420
+the web, the object storage.
+
+657
+00:52:45,420 --> 00:52:50,740
+So this allows us to have a git repository with all the videos and people to help with
+
+658
+00:52:50,740 --> 00:53:02,620
+processing them, but the data itself is stored only on places designed for big data.
+
+659
+00:53:02,620 --> 00:53:07,900
+There's some advanced stuff you can do here, exercises if you want, but we didn't really
+
+660
+00:53:07,900 --> 00:53:13,820
+intend to talk about this because it can take its whole other lesson.
+
+661
+00:53:13,820 --> 00:53:14,820
+Okay.
+
+662
+00:53:14,820 --> 00:53:22,900
+So I guess the really cool thing here is that you can version control everything like in
+
+663
+00:53:22,900 --> 00:53:28,260
+Git and use Git commands here, but then just download one file at a time so you don't need
+
+664
+00:53:28,260 --> 00:53:30,100
+to have all of them.
+
+665
+00:53:30,100 --> 00:53:33,420
+So it's very easy to get the data file that you need.
+
+666
+00:53:33,420 --> 00:53:34,420
+Yeah.
+
+667
+00:53:34,420 --> 00:53:41,500
+And the biggest comparison with Git LFS, Git LFS has one place you can store the files.
+
+668
+00:53:41,500 --> 00:53:49,180
+So the metaphor I use is Git LFS is made by GitHub, so with Git LFS you can only store
+
+669
+00:53:49,180 --> 00:53:56,260
+the large files in one place, which is GitHub, while Git Annex is truly distributed.
+
+670
+00:53:56,260 --> 00:54:00,220
+And it's a lot more complicated, but that's because there's this whole other layer of
+
+671
+00:54:00,220 --> 00:54:07,440
+understanding where all the big files are, and giving rules for storing some files in
+
+672
+00:54:07,440 --> 00:54:16,440
+some places but not other places and so on. Which is really appropriate for the big scientific
+
+673
+00:54:16,440 --> 00:54:23,360
+data concept. But my recommendation is if you want to use this, come talk to someone
+
+674
+00:54:23,360 --> 00:54:28,560
+that's used it. If you're at Alto, well, that would be me, and we'll help you get set up
+
+675
+00:54:28,560 --> 00:54:33,240
+because it can be confusing otherwise.
+
+676
+00:54:33,240 --> 00:54:34,440
+OK, should we go on?
+
+677
+00:54:41,360 --> 00:54:44,080
+OK, I will scroll on down.
+
+678
+00:54:44,080 --> 00:54:47,040
+So mounting data from place to place, which is SSHFS.
+
+679
+00:54:50,280 --> 00:54:53,640
+OK, OK, should I do the demonstration?
+
+680
+00:54:53,640 --> 00:54:56,840
+Yeah, I'll switch back to [name]'s screen.
+
+681
+00:54:56,840 --> 00:55:04,040
+Okay, so I'm really essentially staying on the laptop side here. Let's do pwd again.
+
+682
+00:55:06,360 --> 00:55:12,520
+Maybe I want to mount the entire web dataset folder so that I can access the project.
+
+683
+00:55:13,080 --> 00:55:20,600
+So can you clear your screen so we can be sure? Yeah. Okay, so I'm currently in my
+
+684
+00:55:21,240 --> 00:55:25,080
+local copy of the web dataset folder, but I want to navigate out of it.
+
+685
+00:55:25,080 --> 00:55:41,640
+it and create a new folder. This will be the web dataset folder on the cluster. And it's
+
+686
+00:55:41,640 --> 00:55:52,320
+obviously empty. So what do I do to get it to actually have the data from the Triton
+
+687
+00:55:52,320 --> 00:56:03,680
+folder. Should I just go on my side or do you want to? Yeah, so to do the mount the command
+
+688
+00:56:03,680 --> 00:56:10,720
+on Linux is sshfs. Yeah, okay. And then it's the source and the destination.
+
+689
+00:56:11,600 --> 00:56:13,040
+Okay, this is the other way around.
+
+690
+00:56:13,040 --> 00:56:19,040
+compared to the previous two commands.
+
+691
+00:56:19,040 --> 00:56:23,040
+But it's still the source and destination.
+
+692
+00:56:23,040 --> 00:56:27,040
+So it's going from...
+
+693
+00:56:27,040 --> 00:56:31,040
+Oh, right. It is. The source is now on Triton
+
+694
+00:56:31,040 --> 00:56:34,040
+and the destination is the laptop.
+
+695
+00:56:34,040 --> 00:56:37,040
+The meaning of source and destination are backwards.
+
+696
+00:56:37,040 --> 00:56:39,040
+Okay.
+
+697
+00:56:39,040 --> 00:56:49,120
+Made it clear, so sorry, let me get the path to the folder.
+
+698
+00:56:49,120 --> 00:56:50,840
+OK.
+
+699
+00:56:50,840 --> 00:56:56,920
+So it's the cluster name, and then colon path to the folder,
+
+700
+00:56:56,920 --> 00:57:00,000
+and then the local folder name.
+
+701
+00:57:00,000 --> 00:57:01,960
+And the local folder now needs to be empty
+
+702
+00:57:01,960 --> 00:57:03,400
+because it's a mount point.
+
+703
+00:57:03,400 --> 00:57:04,760
+Yes.
+
+704
+00:57:04,760 --> 00:57:05,260
+OK.
+
+705
+00:57:05,260 --> 00:57:06,120
+OK.
+
+706
+00:57:06,120 --> 00:57:08,120
+So here we go.
+
+707
+00:57:08,120 --> 00:57:12,240
+And that was fast because no data is being transferred.
+
+708
+00:57:12,240 --> 00:57:16,720
+It did an SSH connection, but not much more than that.
+
+709
+00:57:16,720 --> 00:57:23,960
+So now we can list and list the files in the WebData Triton, and it actually contains files.
+
+710
+00:57:23,960 --> 00:57:25,420
+So that's nice.
+
+711
+00:57:25,420 --> 00:57:29,480
+So what you're seeing here is actually on the cluster.
+
+712
+00:57:29,480 --> 00:57:30,480
+Every time you list...
+
+713
+00:57:30,480 --> 00:57:34,000
+So we have the unison folder here.
+
+714
+00:57:34,000 --> 00:57:36,160
+So every time you list this directory,
+
+715
+00:57:36,160 --> 00:57:38,400
+it's actually listing on the cluster
+
+716
+00:57:38,400 --> 00:57:41,880
+and transferring the results back to you.
+
+717
+00:57:41,880 --> 00:57:44,200
+Any time you open a file, then it's
+
+718
+00:57:44,200 --> 00:57:49,520
+also opening on the cluster and transferring it back to you.
+
+719
+00:57:49,520 --> 00:57:52,680
+Yeah, it is pretty fast.
+
+720
+00:57:52,680 --> 00:57:55,400
+It really works almost like it's local.
+
+721
+00:57:57,960 --> 00:58:00,480
+OK, so yeah, this is also nice.
+
+722
+00:58:00,480 --> 00:58:02,240
+All the data is now in one place,
+
+723
+00:58:02,240 --> 00:58:04,840
+but I can edit them locally on my laptop.
+
+724
+00:58:04,840 --> 00:58:06,480
+Yeah.
+
+725
+00:58:06,480 --> 00:58:10,400
+And this is good when you need to open and quickly browse
+
+726
+00:58:10,400 --> 00:58:11,800
+small files.
+
+727
+00:58:11,800 --> 00:58:14,160
+Like say you're opening up images that
+
+728
+00:58:14,160 --> 00:58:15,920
+plot that you're making.
+
+729
+00:58:15,920 --> 00:58:18,440
+But it's not good for opening big data
+
+730
+00:58:18,440 --> 00:58:21,360
+because if you opened a 1 gigabyte file,
+
+731
+00:58:21,360 --> 00:58:24,400
+it would have to transfer that whole 1 gigabyte file
+
+732
+00:58:24,400 --> 00:58:26,560
+before it opened on your side.
+
+733
+00:58:26,560 --> 00:58:29,440
+And that would probably be a little bit slow.
+
+734
+00:58:29,440 --> 00:58:32,320
+anything bigger, well, it gets even slower.
+
+735
+00:58:34,960 --> 00:58:39,760
+But I can run any program that I have on my laptop with the data in these files.
+
+736
+00:58:43,360 --> 00:58:51,840
+And I can unmount it so that I don't, oops, I can unmount it so that I don't break my file system
+
+737
+00:58:51,840 --> 00:59:05,120
+when if I disconnect from the internet yeah okay okay so um yeah and that's basically
+
+738
+00:59:06,480 --> 00:59:15,680
+the summary here should we look at any any good questions we've got I'll switch to the notes
+
+739
+00:59:15,680 --> 00:59:20,760
+Well, there were good questions in the notes document.
+
+740
+00:59:20,760 --> 00:59:22,960
+Most of them were already answered.
+
+741
+00:59:22,960 --> 00:59:28,760
+Maybe we could have a break now, 10 minutes, and then eventually consider some of the questions
+
+742
+00:59:28,760 --> 00:59:29,760
+that we received.
+
+743
+00:59:29,760 --> 00:59:30,760
+That's good.
+
+744
+00:59:30,760 --> 00:59:35,820
+So keep on writing questions, exactly.
+
+745
+00:59:35,820 --> 00:59:40,720
+And we can be back in the stream at 10 past the hour.
+
+746
+00:59:40,720 --> 00:59:43,360
+Yeah, there's good stuff here.
+
+747
+00:59:43,360 --> 00:59:44,360
+Okay.
+
+748
+00:59:44,360 --> 00:59:45,360
+See you later.
+
+749
+00:59:45,360 --> 00:59:46,360
+Bye team.
+
+750
+00:59:46,360 --> 00:59:47,360
+Bye.
+
+751
+00:59:47,360 --> 00:59:49,360
+Bye.
+
+752
+00:59:50,000 --> 01:00:01,560
+Hey, welcome back.
+
+753
+01:00:01,560 --> 01:00:04,480
+So we are a little bit behind on schedule.
+
+754
+01:00:04,480 --> 01:00:09,240
+Should we take a quick moment to look at the questions though or just get back to them
+
+755
+01:00:09,240 --> 01:00:10,880
+at the end?
+
+756
+01:00:10,880 --> 01:00:15,320
+I've been answering many through the break.
+
+757
+01:00:15,320 --> 01:00:17,680
+I think we can go on.
+
+758
+01:00:17,680 --> 01:00:19,880
+Okay, let's move on.
+
+759
+01:00:19,880 --> 01:00:28,640
+So the next section here is code sync and the main thing here to talk about, so I will
+
+760
+01:00:28,640 --> 01:00:36,720
+skip the demo, but the main thing to talk about is why is code different or when is code different?
+
+761
+01:00:37,440 --> 01:00:45,120
+And the main point that you already mentioned in the motivation is that code changes quickly
+
+762
+01:00:45,120 --> 01:00:53,040
+and has different versions. So, if you have a code base that you've been using for a while
+
+763
+01:00:53,040 --> 01:00:58,800
+that the whole group is using then there's probably multiple branches and if you have
+
+764
+01:00:58,800 --> 01:01:07,000
+one shared repository on the cluster then you can't just go and do git branch my stuff
+
+765
+01:01:07,000 --> 01:01:10,720
+because everybody else will see the same change.
+
+766
+01:01:10,720 --> 01:01:20,360
+So you want to give multiple copies for each person and some global repository where all
+
+767
+01:01:20,360 --> 01:01:29,240
+of the different versions exist at the same time. You probably also have different environments,
+
+768
+01:01:29,240 --> 01:01:36,220
+different prerequisites or different requirements for all of these versions. That's why a lot
+
+769
+01:01:36,220 --> 01:01:41,840
+of the time just the things we did with the data just are syncing it from one place to
+
+770
+01:01:41,840 --> 01:01:52,400
+another place doesn't really work. Unison works okay, but Git does the same job better.
+
+771
+01:01:52,400 --> 01:01:57,840
+If you use Unison, you can have a cluster branch and a laptop branch. You just have
+
+772
+01:01:57,840 --> 01:02:03,400
+one set of files reflected on both sides, and it will get confused if you change the
+
+773
+01:02:03,400 --> 01:02:09,600
+the branch, it will be moving a lot of files back and forth.
+
+774
+01:02:09,600 --> 01:02:17,200
+So what I do to develop code on the cluster, SSH, I should mention, SSHFS works quite well.
+
+775
+01:02:17,200 --> 01:02:21,720
+So you can just use your local editor to edit the code on the cluster.
+
+776
+01:02:21,720 --> 01:02:26,480
+But I have often an unreliable internet connection or had in the past or had some bad experiences
+
+777
+01:02:26,480 --> 01:02:32,080
+with it, just kind of freezing the disk or the file system.
+
+778
+01:02:32,080 --> 01:02:39,840
+ways around that, but it's a bit of a pain. So what I do is not the best thing, is to just have
+
+779
+01:02:39,840 --> 01:02:50,400
+one repository online. In this case, we have the examples repository in GitHub, and you can have
+
+780
+01:02:51,920 --> 01:02:57,920
+one version on the cluster, one Git repository on the cluster for yourself, one on your laptop
+
+781
+01:02:57,920 --> 01:03:06,480
+for yourself and one that's in this case on GitHub that's for everybody and then you make
+
+782
+01:03:06,480 --> 01:03:11,840
+your changes on the laptop, you commit and push and then you go to the cluster and you
+
+783
+01:03:11,840 --> 01:03:17,400
+pull and then you run whatever you need to run the cluster.
+
+784
+01:03:17,400 --> 01:03:21,920
+Maybe you can come up with a better way of doing it, but it works.
+
+785
+01:03:21,920 --> 01:03:29,520
+make sure that it's always up to date on in the main version. And it is a convenient way
+
+786
+01:03:29,520 --> 01:03:36,560
+of transferring stuff between multiple different systems. So that's my workflow.
+
+787
+01:03:37,440 --> 01:03:46,320
+Yeah. Okay. So do you ever get to a place where you need to edit more frequently and
+
+788
+01:03:46,320 --> 01:03:54,440
+and you don't want to have to commit, push, pull, and rerun?
+
+789
+01:03:54,440 --> 01:03:58,280
+I do often make small changes on the cluster
+
+790
+01:03:58,280 --> 01:04:03,040
+that I then have to remember to commit and push.
+
+791
+01:04:03,040 --> 01:04:09,120
+Then just using some text editor that may be SSHFS,
+
+792
+01:04:09,120 --> 01:04:10,560
+maybe some of the graphical things
+
+793
+01:04:10,560 --> 01:04:13,040
+that we will show later, but mostly just Vim.
+
+794
+01:04:13,040 --> 01:04:14,480
+And I'm not very good at Vim.
+
+795
+01:04:14,480 --> 01:04:17,800
+So, I mean, there are people who use Vim as the main editor,
+
+796
+01:04:17,800 --> 01:04:19,360
+but I'm not very good at it.
+
+797
+01:04:19,360 --> 01:04:23,240
+So, I only do it for very small changes.
+
+798
+01:04:25,640 --> 01:04:27,360
+So, yeah, I mean, it is perfectly fine
+
+799
+01:04:27,360 --> 01:04:29,620
+to do editing on the cluster.
+
+800
+01:04:29,620 --> 01:04:32,640
+And I think kind of the main part of this section
+
+801
+01:04:32,640 --> 01:04:34,480
+is about editing on the cluster
+
+802
+01:04:35,920 --> 01:04:39,160
+and not doing it on the laptop.
+
+803
+01:04:39,160 --> 01:04:43,360
+So, but this is one good way.
+
+804
+01:04:43,360 --> 01:04:50,560
+It has the big upside that you can have multiple different versions and you always keep the
+
+805
+01:04:51,360 --> 01:04:55,200
+main version up to date. All of your branches are always getting pushed
+
+806
+01:04:55,920 --> 01:04:59,360
+to the main repository and pulled from there.
+
+807
+01:05:02,560 --> 01:05:10,400
+But should we move on to what I think is a better way? There is the demonstration there
+
+808
+01:05:10,400 --> 01:05:18,720
+and exercises, you can do those in the exercise session. Not quite there yet, not quite in the
+
+809
+01:05:18,720 --> 01:05:26,640
+better way yet, but from this one I want to do a demonstration of how to run small-ish
+
+810
+01:05:28,800 --> 01:05:38,480
+graphical things on the cluster. So I would not necessarily use this for a big text editor
+
+811
+01:05:38,480 --> 01:05:45,040
+unless i'm moving stuff around sorry unless you have a good internet connection and
+
+812
+01:05:47,360 --> 01:05:50,000
+all the people who run the cluster recommend doing it this way
+
+813
+01:05:50,560 --> 01:05:57,040
+but this is good for small like one window looking at the pot and it can be very convenient
+
+814
+01:05:57,040 --> 01:06:01,280
+when you're doing interactive development on the cluster how often do you use it
+
+815
+01:06:01,280 --> 01:06:11,000
+When I was doing research, not as a software engineer but also as a researcher, I would
+
+816
+01:06:11,000 --> 01:06:15,160
+use it very often to look at plots.
+
+817
+01:06:15,160 --> 01:06:23,320
+Essentially my SSH command was an alias to ssh -X or ssh -X because I would just want to use
+
+818
+01:06:23,320 --> 01:06:30,480
+GNU plot to run, to look at all of my plots and what is currently happening on the cluster
+
+819
+01:06:30,480 --> 01:06:38,000
+to look at just the state of the current run by looking at the plot. So yeah, I did use this very
+
+820
+01:06:38,000 --> 01:06:44,400
+often. So basically throwing up an image viewer or plot viewer was quite useful. Yeah, basically.
+
+821
+01:06:45,920 --> 01:06:56,960
+Okay, so I will bring up the terminal again. And I just tested that if I run ssh -X
+
+822
+01:06:56,960 --> 01:07:07,260
+Triton, it will stop echoing the command here, which is expected.
+
+823
+01:07:07,260 --> 01:07:08,880
+So I will not run the command.
+
+824
+01:07:08,880 --> 01:07:12,000
+I will switch to here where I've already run the command.
+
+825
+01:07:12,000 --> 01:07:13,000
+Okay.
+
+826
+01:07:13,000 --> 01:07:15,000
+So now you're on the cluster.
+
+827
+01:07:15,000 --> 01:07:16,000
+Yes.
+
+828
+01:07:16,000 --> 01:07:23,200
+So host name tells me that I'm on Triton, and I'm actually in my home folder now.
+
+829
+01:07:23,200 --> 01:07:24,200
+Okay.
+
+830
+01:07:24,200 --> 01:07:29,800
+No, it's not in my home folder, so I need to go to the IO examples.
+
+831
+01:07:29,800 --> 01:07:37,680
+And here we have this R example, which mainly I want to go to because there's this GNUplot
+
+832
+01:07:37,680 --> 01:07:40,680
+file plotting script here.
+
+833
+01:07:40,680 --> 01:07:50,640
+Actually, let's do a really simple demo first, just to check that it's actually able to open
+
+834
+01:07:50,640 --> 01:07:52,520
+a window.
+
+835
+01:07:52,520 --> 01:07:58,040
+So everybody should see a pair of eyes looking at my mouse right now over here.
+
+836
+01:07:58,040 --> 01:08:02,440
+It's not echoing the command, so okay.
+
+837
+01:08:02,440 --> 01:08:03,440
+That's too bad.
+
+838
+01:08:03,440 --> 01:08:04,440
+That's okay.
+
+839
+01:08:04,440 --> 01:08:15,400
+Now I'll have to actually stop this to get back to my terminal.
+
+840
+01:08:15,400 --> 01:08:20,440
+So the more useful thing to do is, of course, run the GNU plot script.
+
+841
+01:08:20,440 --> 01:08:29,960
+So I'm looking at this data file that exists for this R example.
+
+842
+01:08:29,960 --> 01:08:40,080
+It needs a -c. Unrecognized option -c. What did I do wrong?
+
+843
+01:08:40,080 --> 01:08:41,080
+Sorry.
+
+844
+01:08:41,080 --> 01:08:50,080
+I do not remember enough about GNUPlot.
+
+845
+01:08:50,080 --> 01:08:55,080
+Could GNUPlot be different there somehow?
+
+846
+01:08:55,080 --> 01:09:05,080
+GNU Plot is not a module, it's just normal GNUPlot.
+
+847
+01:09:05,080 --> 01:09:18,280
+plot. Okay, so I will not do that much debugging here. I don't have a new plot here. Okay,
+
+848
+01:09:18,280 --> 01:09:26,840
+so I must have run it on this side. So, let's look at the file. Set x11 terminal, set auto
+
+849
+01:09:26,840 --> 01:09:29,520
+title, that's fine. Okay, plot input.
+
+850
+01:09:29,520 --> 01:09:30,520
+So that's the only thing.
+
+851
+01:09:30,520 --> 01:09:38,040
+input file doesn't exist. Sorry. Yes. Okay. And I, in fact, did that on purpose because
+
+852
+01:09:38,040 --> 01:09:45,000
+one of the demonstrations that we didn't do was modifying this file. So, yes. I need to change
+
+853
+01:09:45,000 --> 01:09:53,560
+that so that the examples work independent of each other. Okay. So, now we can quickly open a window,
+
+854
+01:09:54,600 --> 01:09:58,200
+take a look at the data. It's showing some growing numbers.
+
+855
+01:10:00,520 --> 01:10:04,160
+Everything seems fine. Good.
+
+856
+01:10:07,240 --> 01:10:12,240
+What this -x option is doing is it's actually running
+
+857
+01:10:12,240 --> 01:10:15,440
+the whole thing on the cluster and then sending
+
+858
+01:10:15,440 --> 01:10:20,600
+the contents of this window to my laptop which displays it.
+
+859
+01:10:20,600 --> 01:10:24,520
+You can imagine if you have anything more complicated
+
+860
+01:10:24,520 --> 01:10:27,080
+that has more objects in the view,
+
+861
+01:10:27,080 --> 01:10:35,440
+it's going to get unmanageable quickly unless you have a really good internet connection.
+
+862
+01:10:35,440 --> 01:10:41,280
+So it does work and if you're locally close to your cluster, then it works really well.
+
+863
+01:10:41,280 --> 01:10:49,440
+So compared to modern good internet connections, how good does it have to be to be smooth?
+
+864
+01:10:49,440 --> 01:10:53,600
+I'm actually surprised that it's so good on my system now because I don't have a very
+
+865
+01:10:53,600 --> 01:10:59,040
+good connection, but it's also a really simple thing. I would just say experiment with it
+
+866
+01:10:59,040 --> 01:11:12,400
+if it's something you want to do. What would probably have been better to do is to somehow
+
+867
+01:11:12,400 --> 01:11:20,960
+copy this data file to my laptop and then run the script here. If you can instead run
+
+868
+01:11:20,960 --> 01:11:23,840
+the thing locally with local data, that's, of course, faster.
+
+869
+01:11:27,120 --> 01:11:35,360
+Yeah, but I guess when there's things like remote desktops and so on, those use a different
+
+870
+01:11:35,360 --> 01:11:42,720
+protocol, which is much faster. So what you can do, you run the remote desktop at your
+
+871
+01:11:42,720 --> 01:11:48,280
+your organization and then you SSH -X from there.
+
+872
+01:11:48,280 --> 01:11:49,840
+Let's go back here.
+
+873
+01:11:49,840 --> 01:11:51,520
+Oh, that's a good point.
+
+874
+01:11:51,520 --> 01:11:52,920
+Yeah. So if you have
+
+875
+01:11:52,920 --> 01:11:56,520
+a local desktop thing that has a fast connection to
+
+876
+01:11:56,520 --> 01:11:59,880
+your cluster then you can use
+
+877
+01:11:59,880 --> 01:12:04,360
+that remote desktop to run SSH -X.
+
+878
+01:12:04,520 --> 01:12:09,120
+Another thing that you can take a look at if you have it on
+
+879
+01:12:09,120 --> 01:12:12,360
+your cluster is open on-demand or similar,
+
+880
+01:12:12,360 --> 01:12:22,360
+CSC has a similar interface and there are predefined apps you can run so for example
+
+881
+01:12:22,360 --> 01:12:31,640
+the RStudio app on Triton. So you can run a graphical user interfaces much more efficiently
+
+882
+01:12:31,640 --> 01:12:40,360
+with a less good internet connection. So this uses the same protocol basically as
+
+883
+01:12:40,360 --> 01:12:44,360
+as a remote desktop would.
+
+884
+01:12:44,360 --> 01:12:47,400
+So these days, remote desktops do work quite well.
+
+885
+01:12:47,400 --> 01:12:49,080
+I remember when they were always laggy.
+
+886
+01:12:49,080 --> 01:12:53,960
+But now, usually, I don't notice much of a difference.
+
+887
+01:12:53,960 --> 01:12:56,960
+OK, yeah.
+
+888
+01:12:56,960 --> 01:12:57,460
+OK.
+
+889
+01:12:57,460 --> 01:12:58,800
+OK.
+
+890
+01:12:58,800 --> 01:13:01,280
+So should we move on?
+
+891
+01:13:01,280 --> 01:13:03,520
+Yes.
+
+892
+01:13:03,520 --> 01:13:09,760
+So the next section is called not graphical interfaces,
+
+893
+01:13:09,760 --> 01:13:11,200
+But working interactively.
+
+894
+01:13:11,200 --> 01:13:11,700
+Yeah.
+
+895
+01:13:14,400 --> 01:13:18,440
+Who should share their screen here?
+
+896
+01:13:18,440 --> 01:13:22,000
+So if we continue so that I do the demos,
+
+897
+01:13:22,000 --> 01:13:24,920
+is there something you want to say before we go into the demos?
+
+898
+01:13:24,920 --> 01:13:25,720
+Yeah, OK.
+
+899
+01:13:25,720 --> 01:13:28,880
+Should I display this thing that I'm displaying right now?
+
+900
+01:13:28,880 --> 01:13:30,480
+Yes, let's show this.
+
+901
+01:13:30,480 --> 01:13:35,040
+So working interactively from the command line.
+
+902
+01:13:35,040 --> 01:13:44,320
+So these are just a few tricks that are useful. They're not really that advanced,
+
+903
+01:13:44,320 --> 01:13:54,000
+but it's some really good stuff that can put people on the same page. So yeah,
+
+904
+01:13:54,800 --> 01:14:00,800
+there's four things we'll talk about here. And the first one is interactive jobs. So if you're
+
+905
+01:14:00,800 --> 01:14:05,840
+on the cluster and you have to, and let's say you're like me and you're doing some editing on
+
+906
+01:14:05,840 --> 01:14:13,840
+the cluster, you edit your file, you submit the job, you wait maybe a few minutes, you see the
+
+907
+01:14:13,840 --> 01:14:22,000
+output, you modify again, you submit again, you wait. This is really slow. It slows your development
+
+908
+01:14:22,000 --> 01:14:28,800
+down quite a bit. So there actually is a better way to do things and that's called interactive jobs
+
+909
+01:14:28,800 --> 01:14:40,780
+jobs, where instead of submitting your main program as a batch job, you request the resources
+
+910
+01:14:40,780 --> 01:14:49,900
+you need as a shell, and then you run the job yourself on the cluster.
+
+911
+01:14:49,900 --> 01:14:51,500
+So what do you like to show?
+
+912
+01:14:51,500 --> 01:14:55,300
+Yes, okay, so I will mount this.
+
+913
+01:14:55,300 --> 01:14:58,980
+I don't know if other people, other clusters teach this.
+
+914
+01:14:58,980 --> 01:15:03,100
+At our cluster, we actually teach interactive jobs first,
+
+915
+01:15:03,100 --> 01:15:07,260
+partly to show just one thing at a time.
+
+916
+01:15:10,340 --> 01:15:14,780
+Sorry, I'm in the background doing a setup.
+
+917
+01:15:14,780 --> 01:15:17,180
+Yeah.
+
+918
+01:15:17,180 --> 01:15:18,420
+OK, here we go.
+
+919
+01:15:21,180 --> 01:15:23,020
+So we're on the screen.
+
+920
+01:15:23,020 --> 01:15:37,500
+So [name] can run srun, --pty, srun, this, and then bash.
+
+921
+01:15:40,220 --> 01:15:44,700
+And note that different clusters may have different ways of getting interactive jobs.
+
+922
+01:15:44,700 --> 01:15:51,020
+Actually, on our cluster, you can also do sinteractive, and there's a dedicated
+
+923
+01:15:51,020 --> 01:15:55,340
+interactive partition, but this is the simple way that can give you the same
+
+924
+01:15:55,340 --> 01:16:03,140
+resources as anywhere else. So, if [name] pushes enter, hopefully there is a
+
+925
+01:16:03,140 --> 01:16:08,020
+little bit of time. Ah, and now we've got a shell.
+
+926
+01:16:08,020 --> 01:16:11,780
+And the echoing to command is just not working.
+
+927
+01:16:11,780 --> 01:16:13,380
+Okay, yeah.
+
+928
+01:16:13,380 --> 01:16:19,100
+Okay. Right, so where are we now?
+
+929
+01:16:19,100 --> 01:16:26,240
+So, here we are on hostname, so we're actually on one of the compute nodes.
+
+930
+01:16:26,240 --> 01:16:34,060
+And if we had requested, say, five processors and a bunch of memory, we'd have that same
+
+931
+01:16:34,060 --> 01:16:36,540
+amount of resources here.
+
+932
+01:16:36,540 --> 01:16:44,540
+So basically, in a really short loop, we could go and run the job, see if it works or doesn't
+
+933
+01:16:44,540 --> 01:16:51,500
+do an edit, and run the job directly without any additional queuing, which for me when debugging
+
+934
+01:16:51,500 --> 01:16:57,580
+things like crashes and so on that happen really quickly, this is really useful.
+
+935
+01:17:01,500 --> 01:17:03,900
+How often do you use these?
+
+936
+01:17:06,300 --> 01:17:11,580
+I mean, I just said that sometimes I use Vim to develop small changes in the cluster. Whenever
+
+937
+01:17:11,580 --> 01:17:15,140
+or I'm doing that, I'm actually in an interactive job.
+
+938
+01:17:15,140 --> 01:17:16,860
+So you start the interactive job
+
+939
+01:17:16,860 --> 01:17:21,300
+and then you run Vim, the editor inside of the job.
+
+940
+01:17:21,300 --> 01:17:22,140
+Yeah.
+
+941
+01:17:22,140 --> 01:17:22,960
+Okay, yeah.
+
+942
+01:17:22,960 --> 01:17:25,660
+Also, basically whenever I need to develop something
+
+943
+01:17:25,660 --> 01:17:26,780
+that runs on a GPU,
+
+944
+01:17:26,780 --> 01:17:30,500
+because that's how we have access to GPUs mostly,
+
+945
+01:17:30,500 --> 01:17:31,660
+or at least I have,
+
+946
+01:17:31,660 --> 01:17:34,260
+it's the easiest way for me to get access to a GPU.
+
+947
+01:17:35,220 --> 01:17:37,600
+And it is usually for the cluster anyway.
+
+948
+01:17:38,520 --> 01:17:39,360
+That's the end.
+
+949
+01:17:39,360 --> 01:17:43,360
+The end result is that it should run on the cluster.
+
+950
+01:17:43,360 --> 01:17:48,040
+So what are some of the problems here, and what can go wrong?
+
+951
+01:17:48,040 --> 01:17:49,760
+When would you not want to use this?
+
+952
+01:17:49,760 --> 01:17:54,040
+Or put another way, would we combine this with...
+
+953
+01:17:54,040 --> 01:17:56,800
+No, actually, that's later.
+
+954
+01:17:56,800 --> 01:17:59,360
+When would we not want to use this?
+
+955
+01:17:59,360 --> 01:18:08,800
+So I guess the biggest downside from the point of view of the cluster is that I'm now taking
+
+956
+01:18:08,800 --> 01:18:15,680
+a resource. It's only one CPU right now, so that's fine. But if I'm taking a whole GPU
+
+957
+01:18:16,880 --> 01:18:23,760
+and if it's one of the newer ones, it's mostly idling while I'm changing the code.
+
+958
+01:18:25,600 --> 01:18:33,280
+So I guess if you are taking a GPU anyway, whether it's on your laptop or on the cluster,
+
+959
+01:18:33,280 --> 01:18:40,740
+then you are taking one, but if you are taking a new really expensive GPU and just keeping
+
+960
+01:18:40,740 --> 01:18:46,080
+it reserved without running anything on it, that's a bit of a waste.
+
+961
+01:18:46,080 --> 01:18:52,120
+The same goes for having an interactive job with a thousand cores or something, like if
+
+962
+01:18:52,120 --> 01:18:59,520
+you take a really big part of the cluster for an interactive thing, and it's just mostly
+
+963
+01:18:59,520 --> 01:19:05,440
+running idle while you're editing some text file, some editing the code, then that's not really good.
+
+964
+01:19:05,440 --> 01:19:11,120
+So I guess don't take a huge amount of resources and do this, but take enough for testing.
+
+965
+01:19:11,120 --> 01:19:16,640
+Yeah. Okay. So it's a balance. Like if you want to test in a realistic environment,
+
+966
+01:19:17,600 --> 01:19:22,480
+and you can make some quick changes to fix some bugs, but if you're starting to make,
+
+967
+01:19:23,360 --> 01:19:28,720
+actually rewrite some code, then maybe don't do it in an interactive job.
+
+968
+01:19:28,720 --> 01:19:34,640
+or they have a smaller one at least. The other thing is you do need to queue.
+
+969
+01:19:35,280 --> 01:19:40,640
+So I don't use the cluster for big jobs. I use it for development for the cluster. So
+
+970
+01:19:42,320 --> 01:19:47,120
+I never queue for all that long. But if you're actually doing research and running big
+
+971
+01:19:47,120 --> 01:19:50,640
+computational workflows, maybe you need to stick in the queue for quite a while
+
+972
+01:19:51,600 --> 01:19:54,960
+to get the interactive job, get the resources you need.
+
+973
+01:19:54,960 --> 01:19:58,960
+Especially if you need a few GPUs.
+
+974
+01:19:58,960 --> 01:20:02,960
+Okay.
+
+975
+01:20:02,960 --> 01:20:06,960
+So there's a good question in the notes.
+
+976
+01:20:06,960 --> 01:20:10,960
+If we get disconnected from the interactive session, can we get it back?
+
+977
+01:20:10,960 --> 01:20:14,960
+And that's actually what we'll show next.
+
+978
+01:20:14,960 --> 01:20:18,960
+So there's two programs called Screen and Tmux.
+
+979
+01:20:18,960 --> 01:20:22,960
+Maybe more. But this is exactly what it lets you do.
+
+980
+01:20:22,960 --> 01:20:29,840
+log into the cluster. Can we stop the interactive job? Yeah, I will log out from the interactive job.
+
+981
+01:20:30,800 --> 01:20:36,800
+And now you're on the cluster itself. Can you do hostname? Okay, so on the cluster.
+
+982
+01:20:38,800 --> 01:20:48,000
+Can you start? Do you prefer screen or tmux? I usually use screen because I've used it before,
+
+983
+01:20:48,000 --> 01:20:54,640
+but if I had a good opportunity, I would like to learn tmux.
+
+984
+01:20:54,640 --> 01:20:55,640
+Yeah.
+
+985
+01:20:55,640 --> 01:20:56,640
+So let's start.
+
+986
+01:20:56,640 --> 01:20:58,120
+Well, let's do what you know.
+
+987
+01:20:58,120 --> 01:20:59,120
+Let's start screen.
+
+988
+01:20:59,120 --> 01:21:00,120
+Okay.
+
+989
+01:21:00,120 --> 01:21:05,580
+And if we run this, now it looks like there's a new terminal.
+
+990
+01:21:05,580 --> 01:21:08,360
+So this is running inside of screen.
+
+991
+01:21:08,360 --> 01:21:11,720
+If we type hostname, we're still there.
+
+992
+01:21:11,720 --> 01:21:13,200
+And we're still in my home folder.
+
+993
+01:21:13,200 --> 01:21:14,200
+Yeah.
+
+994
+01:21:14,200 --> 01:21:15,200
+Okay.
+
+995
+01:21:15,200 --> 01:21:16,200
+Do you want to run like...
+
+996
+01:21:16,200 --> 01:21:17,200
+So what's different?
+
+997
+01:21:17,200 --> 01:21:19,200
+date command.
+
+998
+01:21:19,200 --> 01:21:21,200
+Date?
+
+999
+01:21:21,200 --> 01:21:23,200
+Yeah.
+
+1000
+01:21:23,200 --> 01:21:25,200
+Okay.
+
+1001
+01:21:25,200 --> 01:21:27,200
+So, we see this. So, what's different
+
+1002
+01:21:27,200 --> 01:21:29,200
+is since we're inside of screen, we can
+
+1003
+01:21:29,200 --> 01:21:31,200
+detach. So, if [name] does
+
+1004
+01:21:31,200 --> 01:21:33,200
+Ctrl-A and the D key,
+
+1005
+01:21:33,200 --> 01:21:35,200
+now
+
+1006
+01:21:35,200 --> 01:21:37,200
+look, it says detached
+
+1007
+01:21:37,200 --> 01:21:39,200
+from this computer.
+
+1008
+01:21:39,200 --> 01:21:45,200
+Now, [name] can log out from the cluster.
+
+1009
+01:21:45,200 --> 01:21:46,200
+Okay.
+
+1010
+01:21:46,200 --> 01:21:47,200
+Okay.
+
+1011
+01:21:47,200 --> 01:21:48,200
+No doubt.
+
+1012
+01:21:48,200 --> 01:21:51,200
+And can we log in again?
+
+1013
+01:21:51,200 --> 01:21:52,200
+Okay.
+
+1014
+01:21:52,200 --> 01:21:53,200
+Let's just do this.
+
+1015
+01:21:53,200 --> 01:21:54,200
+Okay.
+
+1016
+01:21:54,200 --> 01:21:55,200
+So here we are.
+
+1017
+01:21:55,200 --> 01:21:59,200
+Now, everything's blue because of this.
+
+1018
+01:21:59,200 --> 01:22:00,200
+It's fine.
+
+1019
+01:22:00,200 --> 01:22:01,200
+That's okay.
+
+1020
+01:22:01,200 --> 01:22:02,200
+I think.
+
+1021
+01:22:02,200 --> 01:22:05,200
+Can we do screen -ls?
+
+1022
+01:22:05,200 --> 01:22:08,200
+-ls
+
+1023
+01:22:08,200 --> 01:22:09,200
+Yeah.
+
+1024
+01:22:09,200 --> 01:22:12,200
+Let's list what's going there.
+
+1025
+01:22:12,200 --> 01:22:21,680
+And we see there's one detached screen session, so if we do screen -x, or there's other things,
+
+1026
+01:22:21,680 --> 01:22:31,440
+I always do -x, then here we are, we've restored.
+
+1027
+01:22:31,440 --> 01:22:39,880
+And this is really cool, because you can leave stuff running, leave your editor open, leave
+
+1028
+01:22:39,880 --> 01:22:46,280
+several windows of stuff going and come back to it. But when do we not want to do this?
+
+1029
+01:22:52,520 --> 01:22:57,720
+I can't really think of much. It is for leaving stuff running in case you get
+
+1030
+01:22:57,720 --> 01:23:02,120
+disconnected for example. So if there's something you don't want to leave running.
+
+1031
+01:23:03,800 --> 01:23:09,160
+Would you want to start some interactive jobs and leave them running for a long time this way?
+
+1032
+01:23:09,880 --> 01:23:13,800
+Well, that's the same, like, you are then just taking resources.
+
+1033
+01:23:14,760 --> 01:23:20,520
+Fortunately, you probably can't get an interactive job for weeks at a time,
+
+1034
+01:23:20,520 --> 01:23:25,400
+but I don't know what's the limit. You can get it for quite a few hours.
+
+1035
+01:23:26,520 --> 01:23:28,680
+It's probably not a good idea to leave it running.
+
+1036
+01:23:29,480 --> 01:23:36,280
+Yeah, because then if the login node crashes or something goes down, has to be rebooted,
+
+1037
+01:23:36,280 --> 01:23:51,240
+you lose your job. So that's the most important things from here. We should, or should we show,
+
+1038
+01:23:52,520 --> 01:23:59,560
+have you ever used the Python debugger from the command line interface? Yes, we do need
+
+1039
+01:23:59,560 --> 01:24:06,520
+some Python code for it. Yeah. Do you want to, okay, so there is a specific example I guess
+
+1040
+01:24:06,520 --> 01:24:19,400
+that you have in mind. Yeah, but I'm thinking, um, maybe we should go on to the next part.
+
+1041
+01:24:20,040 --> 01:24:28,280
+This can be read. Let's, yeah. So this is, um, also left as an exercise. Yes. Yeah.
+
+1042
+01:24:29,560 --> 01:24:35,480
+Okay, so next up, um, should we check the notes quickly while
+
+1043
+01:24:37,000 --> 01:24:47,000
+[name] is getting ready? Yes, okay. Oh, you mean the... yes. Yeah, so there's some good questions
+
+1044
+01:24:47,000 --> 01:24:53,080
+here. This comment of screen tmux being absolutely one of the most important things
+
+1045
+01:24:53,080 --> 01:25:03,120
+learning with Linux, I would basically agree with that. So it is really useful.
+
+1046
+01:25:03,120 --> 01:25:14,720
+And I usually run it on the login node itself because that means that if your
+
+1047
+01:25:14,720 --> 01:25:20,520
+connection to the login node gets lost, it stays open. And I can, for example, move
+
+1048
+01:25:20,520 --> 01:25:27,520
+from home, move to home, and then resume it, and so on.
+
+1049
+01:25:27,520 --> 01:25:30,360
+OK.
+
+1050
+01:25:30,360 --> 01:25:37,520
+So one thing is that I want to either say for the first time
+
+1051
+01:25:37,520 --> 01:25:39,720
+or reiterate properly.
+
+1052
+01:25:39,720 --> 01:25:43,920
+So we skipped a bunch of things that you can do as exercises,
+
+1053
+01:25:43,920 --> 01:25:46,680
+but that's only if that is a workflow that you actually
+
+1054
+01:25:46,680 --> 01:25:55,640
+want to either just practice or maybe make part of your own workflow, there's a lot
+
+1055
+01:25:55,640 --> 01:26:03,280
+of ways of doing the same thing here, so it really just depends on your preference.
+
+1056
+01:26:03,280 --> 01:26:09,840
+We are trying to demonstrate or at least give you some hints about ways you can do things
+
+1057
+01:26:09,840 --> 01:26:14,840
+or that we do things that might help you.
+
+1058
+01:26:14,840 --> 01:26:18,840
+So the idea is not to do all the exercises
+
+1059
+01:26:18,840 --> 01:26:20,840
+or do all of the demos yourself.
+
+1060
+01:26:20,840 --> 01:26:23,840
+The idea is to see what can make your workflow better.
+
+1061
+01:26:23,840 --> 01:26:26,840
+I guess we are ready for the next part.
+
+1062
+01:26:26,840 --> 01:26:30,840
+Yeah, so...
+
+1063
+01:26:30,840 --> 01:26:32,840
+[name], hi.
+
+1064
+01:26:32,840 --> 01:26:34,840
+So [name]'s here for the last part
+
+1065
+01:26:34,840 --> 01:26:36,840
+to tell us about VS Code.
+
+1066
+01:26:36,840 --> 01:26:42,200
+Can I share my screen?
+
+1067
+01:26:42,200 --> 01:26:44,480
+Yes, please do.
+
+1068
+01:26:44,480 --> 01:26:49,440
+So I will grab it from [name], sorry for that, and I should go with the portion of the screen
+
+1069
+01:26:49,440 --> 01:26:51,440
+as we discussed, right?
+
+1070
+01:26:51,440 --> 01:26:52,440
+Yes.
+
+1071
+01:26:52,440 --> 01:26:53,440
+Okay.
+
+1072
+01:26:53,440 --> 01:26:54,440
+So...
+
+1073
+01:26:54,440 --> 01:26:59,440
+Can you see it now?
+
+1074
+01:26:59,440 --> 01:27:04,380
+Yes, and I will switch to this.
+
+1075
+01:27:04,380 --> 01:27:09,060
+So why are we learning about VS Code here?
+
+1076
+01:27:09,060 --> 01:27:12,500
+Why are we talking about it?
+
+1077
+01:27:12,500 --> 01:27:15,060
+So when we are talking about project development,
+
+1078
+01:27:15,060 --> 01:27:17,500
+I would say there are two approaches that you can do.
+
+1079
+01:27:17,500 --> 01:27:19,740
+There are local versions that we discussed today
+
+1080
+01:27:19,740 --> 01:27:22,620
+that you usually keep track of your project locally
+
+1081
+01:27:22,620 --> 01:27:25,460
+and do occasional bit pool and git push
+
+1082
+01:27:25,460 --> 01:27:28,100
+or transfer it with rsync and everything.
+
+1083
+01:27:28,100 --> 01:27:31,860
+And also you can do completely remote development,
+
+1084
+01:27:31,860 --> 01:27:33,660
+as we're discussing with the terminal.
+
+1085
+01:27:33,660 --> 01:27:39,080
+And, uh, VS Code is like more of like a second approach, but it has
+
+1086
+01:27:39,080 --> 01:27:41,680
+a nice UI and it's also open source.
+
+1087
+01:27:41,900 --> 01:27:43,400
+So we don't have to worry about that.
+
+1088
+01:27:44,000 --> 01:27:46,800
+And, um, yeah, it's like very easy and nice to use.
+
+1089
+01:27:48,280 --> 01:27:52,040
+Um, although like the rsync and code sync and data sync that we've
+
+1090
+01:27:52,040 --> 01:27:57,160
+discussed is a very good way to go, but it adds a bit of overhead to your
+
+1091
+01:27:57,160 --> 01:28:03,160
+full workflow and VS Code can reduce that overhead and so you can focus on
+
+1092
+01:28:03,160 --> 01:28:05,320
+your project development, I would say.
+
+1093
+01:28:05,320 --> 01:28:06,720
+Yeah.
+
+1094
+01:28:06,720 --> 01:28:10,160
+Once we were thinking, this was several years ago,
+
+1095
+01:28:10,160 --> 01:28:13,920
+about how to improve user interfaces for the cluster.
+
+1096
+01:28:13,920 --> 01:28:16,960
+And we realized with VS Code, you
+
+1097
+01:28:16,960 --> 01:28:20,600
+can connect to the cluster by SSH,
+
+1098
+01:28:20,600 --> 01:28:23,560
+which handles some of the SSH complexity for you,
+
+1099
+01:28:23,560 --> 01:28:24,960
+puts it in one place.
+
+1100
+01:28:24,960 --> 01:28:29,200
+That can give you the terminal to submit jobs.
+
+1101
+01:28:29,200 --> 01:28:32,880
+It can give you the editor to edit jobs.
+
+1102
+01:28:32,880 --> 01:28:37,600
+it can let you transfer files up and down relatively easily.
+
+1103
+01:28:37,600 --> 01:28:40,040
+And this was amazing.
+
+1104
+01:28:40,040 --> 01:28:42,960
+We've been thinking, how do we have an easier
+
+1105
+01:28:42,960 --> 01:28:44,200
+interface for the cluster?
+
+1106
+01:28:44,200 --> 01:28:46,600
+And it was right here in front of us.
+
+1107
+01:28:46,600 --> 01:28:48,000
+Yeah.
+
+1108
+01:28:48,000 --> 01:28:50,760
+Although we are not like, although in this session
+
+1109
+01:28:50,760 --> 01:28:52,400
+we are talking about VS Code, but I
+
+1110
+01:28:52,400 --> 01:28:54,840
+would say it's true about most of the IDEs
+
+1111
+01:28:54,840 --> 01:28:57,120
+if you are using PyCharm or JetBrains,
+
+1112
+01:28:57,120 --> 01:28:58,320
+the workflow is the same.
+
+1113
+01:28:58,320 --> 01:29:01,640
+And usually all of the features that we're discussing here
+
+1114
+01:29:01,640 --> 01:29:04,440
+or almost the same in other IDs as well.
+
+1115
+01:29:04,440 --> 01:29:08,520
+So other IDs can also do the remote SSH connection?
+
+1116
+01:29:08,520 --> 01:29:12,080
+At least with PyCharm and I guess JetBrains I have tried,
+
+1117
+01:29:12,080 --> 01:29:14,400
+and yeah, it's mostly the same.
+
+1118
+01:29:14,400 --> 01:29:16,040
+OK, cool.
+
+1119
+01:29:16,040 --> 01:29:17,800
+That's good to know.
+
+1120
+01:29:17,800 --> 01:29:18,480
+Yeah.
+
+1121
+01:29:18,480 --> 01:29:22,080
+OK, so what can we demonstrate first?
+
+1122
+01:29:22,080 --> 01:29:26,760
+So here, as you can see, I have my local VS code.
+
+1123
+01:29:26,760 --> 01:29:28,960
+It's running on my local computer.
+
+1124
+01:29:28,960 --> 01:29:34,640
+and when you want to get connected to a remote server you have to have this
+
+1125
+01:29:34,640 --> 01:29:40,560
+extension which is coming with the vs code but if for some reason it's not you have to go to the
+
+1126
+01:29:40,560 --> 01:29:48,240
+app store and search for something like ssh remote okay and install the plugin which is the
+
+1127
+01:29:49,120 --> 01:29:54,880
+like open ssh extension for the vs code if you are using another ide it would be pretty much the
+
+1128
+01:29:54,880 --> 01:30:03,040
+same but at least for PyCharm I know it's coming with the icon. Once you have it installed you can
+
+1129
+01:30:03,040 --> 01:30:11,760
+see this blue button on the left bottom side. Also you have this remote explorer icon here
+
+1130
+01:30:12,480 --> 01:30:18,560
+and both of them can be used to get connected to a remote host. If you click on here it would
+
+1131
+01:30:18,560 --> 01:30:23,920
+remember all of the hosts that you have been connected to and also the most recent folders
+
+1132
+01:30:23,920 --> 01:30:30,000
+that you have been connected in that specific host. So, for example, unlike Triton, our local
+
+1133
+01:30:30,000 --> 01:30:36,640
+HPC on Aalto, I have been connected to the folder I created for this course and other
+
+1134
+01:30:36,640 --> 01:30:42,400
+folders for other projects that I had. Okay, that's actually new to me. I didn't know of that tab.
+
+1135
+01:30:43,760 --> 01:30:48,240
+Okay, so that lists things, and then you click somewhere.
+
+1136
+01:30:48,240 --> 01:30:54,320
+Yeah, you can go, and for example, if I click here, it would connect to Triton and then
+
+1137
+01:30:54,320 --> 01:31:00,200
+go to that specific folder, but maybe it would be better for demonstration to go from the
+
+1138
+01:31:00,200 --> 01:31:01,200
+beginning.
+
+1139
+01:31:01,200 --> 01:31:02,200
+Right, yes.
+
+1140
+01:31:02,200 --> 01:31:06,760
+So let's say you don't have any host previously, so you would click on this guy, and you have
+
+1141
+01:31:06,760 --> 01:31:12,080
+two options to connect to a new host, which would open it on a new window, or you can
+
+1142
+01:31:12,080 --> 01:31:17,760
+connect to a host with the current window and it would list all of the hosts in
+
+1143
+01:31:17,760 --> 01:31:24,120
+your ssh-config file which is located usually on your home folder and so these
+
+1144
+01:31:24,120 --> 01:31:30,280
+these are the same things in your .ssh/config file so it uses it, opens it
+
+1145
+01:31:30,280 --> 01:31:41,200
+and yeah so if I go to my local file you can see that yeah so it's the same exact
+
+1146
+01:31:41,200 --> 01:31:48,160
+configuration from my ssh config file yeah yeah so you can add new configuration here as well
+
+1147
+01:31:48,160 --> 01:31:54,160
+by by putting the address and also in the username unfortunately you cannot add with ssh key so if
+
+1148
+01:31:54,160 --> 01:32:00,560
+you want to do with ssh key and like put the identity file in the configure as well you have to
+
+1149
+01:32:01,200 --> 01:32:07,840
+manually change the config file but the good thing is if you click on the configuration of
+
+1150
+01:32:07,840 --> 01:32:13,920
+ssh host and select the file you can easily do it inside the vscode so you don't need another
+
+1151
+01:32:13,920 --> 01:32:21,920
+editor. So the adding the ssh adding an ssh host does that automatically add a new entry to the
+
+1152
+01:32:21,920 --> 01:32:31,200
+file? Yes, but you cannot add it with ssh key it's just the username and also the address.
+
+1153
+01:32:31,200 --> 01:32:36,480
+Yeah. That's also new to me. Okay. So let's get connected to Triton.
+
+1154
+01:32:38,960 --> 01:32:46,720
+So this is doing an ssh to Triton and ssh-config expands that to triton.alto.v,
+
+1155
+01:32:46,720 --> 01:32:53,920
+which is our cluster. Yeah. At the moment, in our cluster, it would complain about a very old
+
+1156
+01:32:53,920 --> 01:33:00,720
+OS that we have. It would be removed. You don't see this pop up if you have a newer OS on your
+
+1157
+01:33:00,720 --> 01:33:07,040
+a cluster but it's only a security alert so it doesn't affect any of the functionalities.
+
+1158
+01:33:07,040 --> 01:33:14,320
+Okay. I can go ahead and click allow. So as you can see here on the left, the SSH button here,
+
+1159
+01:33:14,320 --> 01:33:21,200
+we are connected to Triton and I can go ahead and open a terminal. So anything we do here,
+
+1160
+01:33:21,920 --> 01:33:28,320
+open directories, whatever, it's actually opening on the cluster side. Exactly. So the VS Code is
+
+1161
+01:33:28,320 --> 01:33:33,920
+running on my computer, but everything I put down on the terminal and everything I see on the
+
+1162
+01:33:35,120 --> 01:33:41,040
+window is actually running on the login node on the server. On the terminal if I go with hostname
+
+1163
+01:33:41,040 --> 01:33:46,160
+you can see I'm on the login node already. So even opening the terminal is sending it to the
+
+1164
+01:33:46,160 --> 01:33:55,280
+other side automatically? Exactly. Okay, and if you open a directory then? Yeah, I can go ahead
+
+1165
+01:33:55,280 --> 01:34:01,840
+and open a directory. For example, the one that I created. As you can see, it's already the file
+
+1166
+01:34:01,840 --> 01:34:09,920
+explorer for Triton. So, I will go... Okay. This is Triton. Yeah. Yeah. This is completely Triton,
+
+1167
+01:34:09,920 --> 01:34:17,520
+as you can see. And I can go and click okay. And again, for the security, just about the git and
+
+1168
+01:34:17,520 --> 01:34:26,800
+nothing. So now I'm again inside Triton and I'm inside the folder that I had
+
+1169
+01:34:26,800 --> 01:34:32,720
+for this specific course and session. And is everything the same?
+
+1170
+01:34:34,560 --> 01:34:41,600
+What do you mean? Like it's the same VS Code, same interface, is there anything different?
+
+1171
+01:34:41,600 --> 01:34:45,760
+Exactly. No, yeah, but and yeah, it's the same VS Code. It's still
+
+1172
+01:34:45,760 --> 01:34:50,560
+running locally on my computer and now with the remote explorer I have this folder.
+
+1173
+01:34:51,200 --> 01:34:54,880
+So the next time that I want to get connected to this specific folder,
+
+1174
+01:34:54,880 --> 01:34:58,160
+I don't have to get connected to Triton first and then go to File Explorer.
+
+1175
+01:35:00,160 --> 01:35:04,240
+So this File Explorer is very nice because you can list all of the things. You can
+
+1176
+01:35:04,240 --> 01:35:10,400
+create a new file here. For example, I can create something here or I can create a folder.
+
+1177
+01:35:10,400 --> 01:35:18,480
+Another interesting thing is you can do drag and drop from your local computer to here.
+
+1178
+01:35:18,480 --> 01:35:21,520
+For example, I can upload a file very easily.
+
+1179
+01:35:21,520 --> 01:35:24,520
+You will see [name] with a cat.
+
+1180
+01:35:24,520 --> 01:35:26,520
+Is that from another course?
+
+1181
+01:35:26,520 --> 01:35:28,520
+Parallelization, yeah.
+
+1182
+01:35:28,520 --> 01:35:29,520
+Yeah.
+
+1183
+01:35:29,520 --> 01:35:33,520
+So that's what you are missing some days here.
+
+1184
+01:35:33,520 --> 01:35:34,520
+Yeah.
+
+1185
+01:35:34,520 --> 01:35:35,520
+Okay.
+
+1186
+01:35:35,520 --> 01:35:36,520
+Anyway.
+
+1187
+01:35:36,520 --> 01:35:42,440
+Unfortunately, the drag-and-drop from VS Code to your local machine doesn't work, but you
+
+1188
+01:35:42,440 --> 01:35:51,600
+can go and right-click and then click download, so it would download it to your local computer.
+
+1189
+01:35:51,600 --> 01:35:57,100
+The nice thing is it also understands the folder hierarchy, so if you download a folder,
+
+1190
+01:35:57,100 --> 01:36:01,000
+it would create a folder on your local machine and then download all of the things inside
+
+1191
+01:36:01,000 --> 01:36:03,520
+it, which is nice.
+
+1192
+01:36:03,520 --> 01:36:04,520
+Yeah.
+
+1193
+01:36:04,520 --> 01:36:05,520
+Yeah.
+
+1194
+01:36:05,520 --> 01:36:11,680
+Okay, so what happens if the network connection stops or dies?
+
+1195
+01:36:11,680 --> 01:36:15,680
+Like, do you lose your work or is this persistent to any health?
+
+1196
+01:36:18,480 --> 01:36:24,880
+So it would try to get you reconnected and try to keep everything cached and saved.
+
+1197
+01:36:25,600 --> 01:36:29,520
+So if you're in the middle of editing code and you didn't save it,
+
+1198
+01:36:29,520 --> 01:36:35,120
+it would remember the latest changes almost instantly.
+
+1199
+01:36:35,120 --> 01:36:41,840
+so I would say if you don't close the application completely, it would save all of the caches and
+
+1200
+01:36:41,840 --> 01:36:46,880
+if you lost your connection, your changes are still there, but you have to get a connection
+
+1201
+01:36:46,880 --> 01:36:58,960
+again so it would be synced. Okay. So if you reconnect, does it resume where you were or just
+
+1202
+01:36:58,960 --> 01:37:10,960
+If you lose your connection, it would try to get connected to the same exact window with the same exact setup, like the files open and folder.
+
+1203
+01:37:10,960 --> 01:37:14,960
+Is this even the case if you close your laptop and go home, for example?
+
+1204
+01:37:14,960 --> 01:37:22,960
+Exactly. But if you close the VS Code, you would lose all of the changes that you had made, unless you have saved it on the cluster.
+
+1205
+01:37:22,960 --> 01:37:26,960
+I guess that's pretty similar to any other editor.
+
+1206
+01:37:26,960 --> 01:37:36,240
+Yeah. Okay. Got it. Cool. So now let's say you have like a project and you want to do
+
+1207
+01:37:36,880 --> 01:37:43,520
+running and like testing and debugging on the cluster. Okay. Yeah. So of course you can go ahead
+
+1208
+01:37:43,520 --> 01:37:49,680
+and try to run it here but the problem is it would be running it on local node and repo would
+
+1209
+01:37:49,680 --> 01:37:56,400
+send an email that you're running something on the plugin node. Because it's a shared resource
+
+1210
+01:37:56,400 --> 01:38:03,200
+it's not recommended to do any computational heavy tasks on the login node.
+
+1211
+01:38:03,200 --> 01:38:11,360
+Also, this specific program, like estimating the pi, is very, it's not computationally heavy,
+
+1212
+01:38:11,360 --> 01:38:14,400
+so you can, I guess, run it, but it's not recommended.
+
+1213
+01:38:14,400 --> 01:38:18,560
+So I would show you how you can run it on the cluster.
+
+1214
+01:38:18,560 --> 01:38:22,800
+For sure, you can go and open a new terminal, as you can see,
+
+1215
+01:38:22,800 --> 01:38:26,600
+and try to, for example, run it with S run.
+
+1216
+01:38:26,600 --> 01:38:31,600
+For example, I need 10 minutes of time.
+
+1217
+01:38:33,280 --> 01:38:38,280
+And like, yeah, I need one gigabyte of memory.
+
+1218
+01:38:38,320 --> 01:38:40,320
+And I would run the application.
+
+1219
+01:38:45,040 --> 01:38:48,760
+And it also has a mandatory argument here for estimation.
+
+1220
+01:38:48,760 --> 01:38:51,460
+For example, like let's say 10,000 iteration.
+
+1221
+01:38:52,800 --> 01:39:03,600
+Oh, yeah, it should be helpful here, yeah.
+
+1222
+01:39:03,600 --> 01:39:05,240
+So it's like a normal terminal.
+
+1223
+01:39:05,240 --> 01:39:14,880
+It would try to dedicate the resources and run it and show me the results.
+
+1224
+01:39:14,880 --> 01:39:22,760
+I wasn't in the same folder, I guess, or there was a mistake with, oh, yeah.
+
+1225
+01:39:22,760 --> 01:39:37,760
+Yeah, so now the results are out there, but as you can see, I calculated the pi wrong.
+
+1226
+01:39:37,760 --> 01:39:45,160
+So obviously there is a bug in my code, and let's say I want to do a debug.
+
+1227
+01:39:45,160 --> 01:39:52,120
+So the best rule of practice, the best rule of thumb is to try to see what is the interactive
+
+1228
+01:39:52,120 --> 01:39:57,560
+sessions on your local HPC or what are the partitions that are dedicated for testing,
+
+1229
+01:39:57,560 --> 01:40:03,640
+because you can do it on normal computational nodes as well, but you are wasting the resources.
+
+1230
+01:40:03,640 --> 01:40:10,200
+For example, if you are getting one hour of time for debugging, like on a GPU node in our cluster,
+
+1231
+01:40:11,000 --> 01:40:18,920
+Triton, one single GPU would be dedicated to you, but sometimes in like GPU test partitions or
+
+1232
+01:40:18,920 --> 01:40:27,160
+interactive partitions, these kind of resources are shared, so there is less space for resources.
+
+1233
+01:40:28,440 --> 01:40:37,560
+So if I go, for example, with slurm, I can see that we have like a debug partition here,
+
+1234
+01:40:37,560 --> 01:40:43,720
+we have interactive session partition, we have GPU short and I guess GPU test as well,
+
+1235
+01:40:43,720 --> 01:40:49,640
+that you can do the testing. It's like dedicated for these ones. Also, usually there is a limitation
+
+1236
+01:40:49,640 --> 01:40:56,760
+for time in these kind of partitions, so your job would be almost instantly get in the queue and
+
+1237
+01:40:56,760 --> 01:41:06,200
+get executed. So, VS Code has this, like not VS Code, but Microsoft has this
+
+1238
+01:41:06,200 --> 01:41:15,320
+an open source application for debugging for various languages, including Python that we
+
+1239
+01:41:15,320 --> 01:41:18,640
+are using, which is called DebugPy.
+
+1240
+01:41:18,640 --> 01:41:22,340
+And DebugPy is very integrated to VS Code.
+
+1241
+01:41:22,340 --> 01:41:26,960
+So you can, I guess, use other softwares as well, but I will demonstrate DebugPy here.
+
+1242
+01:41:26,960 --> 01:41:27,960
+Okay.
+
+1243
+01:41:27,960 --> 01:41:31,040
+So this is some advanced debugging thing.
+
+1244
+01:41:31,040 --> 01:41:34,760
+Actually, I've never seen it, so I'm interested.
+
+1245
+01:41:34,760 --> 01:41:39,760
+I have to install DebugPy, so let me log into like,
+
+1246
+01:41:39,880 --> 01:41:43,080
+let me activate my, like one of that virtual environment
+
+1247
+01:41:43,080 --> 01:41:44,640
+I created.
+
+1248
+01:41:44,640 --> 01:41:45,480
+Yeah.
+
+1249
+01:41:46,400 --> 01:41:51,240
+For example, let's say this one, I know the name
+
+1250
+01:41:51,240 --> 01:41:54,840
+and I will try to install DebugPy.
+
+1251
+01:41:54,840 --> 01:41:57,320
+I think it has been installed in that specific one,
+
+1252
+01:41:57,320 --> 01:41:58,200
+but let's see.
+
+1253
+01:42:01,040 --> 01:42:03,240
+Oh yeah, so it has been installed already
+
+1254
+01:42:03,240 --> 01:42:08,240
+And I can run it to show you how it works, debugpy.
+
+1255
+01:42:11,640 --> 01:42:14,680
+Yeah, maybe I can close the file explorer
+
+1256
+01:42:14,680 --> 01:42:16,600
+so it would be easier to see.
+
+1257
+01:42:16,600 --> 01:42:20,440
+So the debugpy has two options, like listen and connect.
+
+1258
+01:42:20,440 --> 01:42:24,240
+And you can use it on terminal as well
+
+1259
+01:42:24,240 --> 01:42:26,000
+if you don't want to use VS Code,
+
+1260
+01:42:26,000 --> 01:42:29,160
+but here we would use VS Code.
+
+1261
+01:42:29,160 --> 01:42:32,560
+It also gets a host and a port, like a normal port,
+
+1262
+01:42:32,560 --> 01:42:38,320
+has a default one and I will explain this option and like there are like some options for logging
+
+1263
+01:42:38,320 --> 01:42:45,120
+and the PID number for that specific Python application but I will just demonstrate it.
+
+1264
+01:42:45,120 --> 01:42:51,600
+So the only difference that you have when you want to debug your code the only difference
+
+1265
+01:42:53,120 --> 01:42:59,040
+when you are calling the program is you have to call it with debug.py and debug.py would go to
+
+1266
+01:42:59,040 --> 01:43:06,240
+the resources and run the program and open a port that you are specifying here and it starts
+
+1267
+01:43:06,240 --> 01:43:12,160
+listening to that port. So another DebugPy program that gets connected to that port
+
+1268
+01:43:12,160 --> 01:43:21,840
+and start debugging the application. So I can go ahead and say I want to do a run on, for example,
+
+1269
+01:43:21,840 --> 01:43:29,600
+interactive partition. I still need 10 minutes of time.
+
+1270
+01:43:34,560 --> 01:43:41,600
+For example, one gigabyte of memory. And I will try to run it with debug.py.
+
+1271
+01:43:42,880 --> 01:43:48,960
+Okay, so use the dash m to say run this module, and then that module runs the py program.
+
+1272
+01:43:48,960 --> 01:43:57,360
+Exactly. Okay. And the debug pi has this mandatory option for listen for connect and when you want to
+
+1273
+01:43:58,240 --> 01:44:03,360
+open the debugger from the VS code you should go with the connect option and when you want to
+
+1274
+01:44:03,360 --> 01:44:08,240
+run the program you should go with listen so the debugger would listen to any upcoming debugger
+
+1275
+01:44:08,240 --> 01:44:18,080
+attaching. So I would go for listen to any host coming on a specific port. I think the default
+
+1276
+01:44:18,080 --> 01:44:24,640
+one is five, six, seven, eight, four, five, it's not mandatory, you can change it.
+
+1277
+01:44:27,200 --> 01:44:35,200
+And yeah, and then I can run the program with, for example, again, ten iterations.
+
+1278
+01:44:35,200 --> 01:44:42,000
+However, the problem is when I run this, I would get allocated resources and then debug.py would get
+
+1279
+01:44:43,040 --> 01:44:46,960
+to the program, it would start running and at the same time listening to the board, right?
+
+1280
+01:44:46,960 --> 01:44:52,240
+The problem is because 10,000 is like a very short iteration and I want to see where is the
+
+1281
+01:44:53,040 --> 01:45:02,640
+bug in my program. There is another option called rate for client and the debug pi would not do
+
+1282
+01:45:02,640 --> 01:45:11,040
+anything running the code unless a debugger is attached. So I would go with this option.
+
+1283
+01:45:11,040 --> 01:45:22,040
+Um, the partition line is okay. Interactive. It's not there. There was a 't'
+
+1284
+01:45:25,040 --> 01:45:29,040
+There's an extra 't' there.
+
+1285
+01:45:29,040 --> 01:45:31,040
+Extra t.
+
+1286
+01:45:38,040 --> 01:45:40,440
+I-N-T-E-R.
+
+1287
+01:45:40,440 --> 01:45:43,000
+Yeah, I'm trying.
+
+1288
+01:45:43,000 --> 01:45:43,500
+Yes.
+
+1289
+01:45:46,480 --> 01:45:49,040
+So now the resources has been allocated,
+
+1290
+01:45:49,040 --> 01:45:52,200
+and the debug file is opening the port.
+
+1291
+01:45:52,200 --> 01:45:55,120
+But it's not running anything unless a debugger is
+
+1292
+01:45:55,120 --> 01:45:59,480
+get attached, because I call it with wait for client.
+
+1293
+01:45:59,480 --> 01:46:02,520
+So now I can go to the debug tab here,
+
+1294
+01:46:02,520 --> 01:46:06,600
+and I can go ahead and create a JSON file, which
+
+1295
+01:46:06,600 --> 01:46:13,080
+is how I want to debug my, like, how to go and get the debugger.
+
+1296
+01:46:13,080 --> 01:46:15,680
+So you have to take this and tell it how to connect?
+
+1297
+01:46:15,680 --> 01:46:16,180
+OK.
+
+1298
+01:46:16,180 --> 01:46:16,760
+Exactly.
+
+1299
+01:46:16,760 --> 01:46:21,000
+So I would select debugger, and there are many options.
+
+1300
+01:46:21,000 --> 01:46:23,640
+And one of them is remote attach,
+
+1301
+01:46:23,640 --> 01:46:26,480
+which means attaching a debugger to a remote run.
+
+1302
+01:46:26,480 --> 01:46:27,040
+Yeah.
+
+1303
+01:46:27,040 --> 01:46:30,480
+I would go ahead and it says, like, where is it located,
+
+1304
+01:46:30,480 --> 01:46:31,120
+as you can see.
+
+1305
+01:46:31,120 --> 01:46:31,620
+OK.
+
+1306
+01:46:31,620 --> 01:46:33,840
+So I don't know in which computational node
+
+1307
+01:46:33,840 --> 01:46:35,360
+it's at the moment located.
+
+1308
+01:46:35,360 --> 01:46:42,080
+I have to figure that out first. So I can go ahead and open another terminal and see, for example,
+
+1309
+01:46:42,080 --> 01:46:50,720
+what are my runs. Okay. Yeah. Yeah. And I can see that, uh, in like pe8, uh, the program is running.
+
+1310
+01:46:50,720 --> 01:46:56,960
+So I would go ahead and say, it's like pe8. What is the port? 5, 6, 7, 8, as we said it.
+
+1311
+01:46:57,920 --> 01:47:04,320
+And it would create a normal JSON file for me. Uh, but you can like do it manually as well.
+
+1312
+01:47:05,360 --> 01:47:10,960
+Usually, it's a good idea to change the name because we can have multiple debugger settings.
+
+1313
+01:47:10,960 --> 01:47:15,760
+I would say, like, remote debugger.
+
+1314
+01:47:15,760 --> 01:47:16,480
+Okay, yeah.
+
+1315
+01:47:18,080 --> 01:47:19,200
+Debug attach.
+
+1316
+01:47:20,160 --> 01:47:26,480
+And you don't need the pass mapping because, yeah, you don't need it, but the other,
+
+1317
+01:47:26,480 --> 01:47:30,800
+you can see what the other configuration do, but you don't need the pass mapping for this
+
+1318
+01:47:31,920 --> 01:47:32,800
+specific test.
+
+1319
+01:47:32,800 --> 01:47:33,600
+Okay, okay.
+
+1320
+01:47:33,600 --> 01:47:39,600
+So now I have it and I save the JSON file and you can see that I have multiple debuggers and
+
+1321
+01:47:39,600 --> 01:47:46,720
+the first one is the debugger. I can go ahead and like it creates a breakpoint here in the main
+
+1322
+01:47:46,720 --> 01:47:53,680
+function and I can go ahead and say like run. So you can see this toolbar is getting blue which
+
+1323
+01:47:53,680 --> 01:48:00,240
+means I'm getting connected to that one and the program is exactly paused here. So I can go ahead
+
+1324
+01:48:00,240 --> 01:48:04,320
+and normally go to the next function and create another breakout point.
+
+1325
+01:48:04,880 --> 01:48:11,360
+So the interesting thing is I'm using UI in my local computer and everything is running and
+
+1326
+01:48:11,360 --> 01:48:18,080
+executed on the remote server on the computational node. It's like two levels of remote. There's from
+
+1327
+01:48:18,080 --> 01:48:24,640
+your computer to login node and from login node to the cluster node. Exactly. So you can like watch
+
+1328
+01:48:24,640 --> 01:48:34,720
+all of the valuables and everything. When you disconnect this, the debugger pie would again
+
+1329
+01:48:34,720 --> 01:48:42,480
+run it completely and try to give you the result. However, you can again get connected to
+
+1330
+01:48:44,800 --> 01:48:50,720
+the debugger because still the debugger port is open and until the program is finished,
+
+1331
+01:48:50,720 --> 01:48:59,520
+you can get connected without an issue. Yeah. Okay. So yeah, let me run it. I know where is the
+
+1332
+01:48:59,520 --> 01:49:09,360
+bug and the bug is right here so I can go ahead and fix it and run it completely and even save it.
+
+1333
+01:49:10,960 --> 01:49:17,760
+Excellent. So for those who are able to join over the afternoon session in the Zoom,
+
+1334
+01:49:17,760 --> 01:49:23,400
+So this is exactly the type of thing that you can try especially if you have never tried
+
+1335
+01:49:23,400 --> 01:49:36,480
+it before and so we were checking the notes document and we have written there some feedback
+
+1336
+01:49:36,480 --> 01:49:37,720
+for the day.
+
+1337
+01:49:37,720 --> 01:49:43,200
+So if you want to specify if this was too slow or too fast or too basic or too advanced
+
+1338
+01:49:43,200 --> 01:49:47,200
+Please, mark your...
+
+1339
+01:49:47,200 --> 01:49:50,200
+Anything else to mention, [name]?
+
+1340
+01:49:50,200 --> 01:50:02,200
+Yeah, I guess for help in doing all these things, so a lot of the exercises are basically doing the same things we've done here,
+
+1341
+01:50:02,200 --> 01:50:08,200
+with a little bit of extra stuff, come to the exercise session and we can work it out.
+
+1342
+01:50:08,200 --> 01:50:20,200
+So we resume not in one week, but two weeks from now, because there is a holiday in at least Finland in, well, a week and a day.
+
+1343
+01:50:20,200 --> 01:50:27,200
+And we're talking about containers then, is that correct?
+
+1344
+01:50:27,200 --> 01:50:36,200
+Yeah, on the 7th of May will be an episode dedicated to containers and clusters, specifically Apptainer/Singularity.
+
+1345
+01:50:36,200 --> 01:50:37,200
+Okay.
+
+1346
+01:50:37,200 --> 01:50:40,800
+Yeah, I mean, this was very useful, hopefully, for many of you.
+
+1347
+01:50:40,800 --> 01:50:47,000
+Please write down one good thing that you really liked today and also something to improve.
+
+1348
+01:50:47,000 --> 01:50:49,240
+I guess that's all for us.
+
+1349
+01:50:49,240 --> 01:50:52,120
+Thank you very much, everyone.
+
+1350
+01:50:52,120 --> 01:50:53,760
+And see you.
+
+1351
+01:50:53,760 --> 01:50:54,760
+Yes.
+
+1352
+01:50:54,760 --> 01:50:55,760
+See you.
+
+1353
+01:50:55,760 --> 01:50:56,760
+Thanks.
+
+1354
+01:50:56,760 --> 01:50:57,760
+Later.
+
+1355
+01:50:57,760 --> 01:50:58,760
+Bye.
+
+1356
+01:50:58,760 --> 01:50:59,760
+See you.
+
+1357
+01:50:59,760 --> 01:51:00,760
+Bye.
+
+1358
+01:51:00,760 --> 01:51:01,000
+Bye.
+
