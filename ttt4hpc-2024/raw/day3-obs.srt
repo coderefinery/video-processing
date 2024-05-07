@@ -1,0 +1,5652 @@
+1
+00:00:00,000 --> 00:00:02,000
+CodeRefinery.org
+
+2
+00:00:30,000 --> 00:00:32,060
+you
+
+3
+00:01:00,000 --> 00:01:02,060
+you
+
+4
+00:01:30,000 --> 00:01:32,060
+you
+
+5
+00:02:00,000 --> 00:02:02,060
+you
+
+6
+00:02:30,000 --> 00:02:32,060
+you
+
+7
+00:03:00,000 --> 00:03:02,060
+you
+
+8
+00:03:30,000 --> 00:03:32,060
+you
+
+9
+00:04:00,000 --> 00:04:02,060
+you
+
+10
+00:04:30,000 --> 00:04:32,060
+you
+
+11
+00:05:00,000 --> 00:05:02,060
+you
+
+12
+00:05:30,000 --> 00:05:32,060
+you
+
+13
+00:06:00,000 --> 00:06:02,060
+you
+
+14
+00:06:30,000 --> 00:06:32,060
+you
+
+15
+00:07:00,000 --> 00:07:02,060
+you
+
+16
+00:07:30,000 --> 00:07:32,060
+you
+
+17
+00:08:00,000 --> 00:08:02,060
+you
+
+18
+00:08:30,000 --> 00:08:32,060
+you
+
+19
+00:09:00,000 --> 00:09:19,920
+Hello everyone, so here we are for the third episode of TTT for HPC, Tuesday Tools and
+
+20
+00:09:19,920 --> 00:09:24,160
+techniques for high-performance computing.
+
+21
+00:09:24,160 --> 00:09:30,320
+So we are now in the so-called icebreaker section.
+
+22
+00:09:30,320 --> 00:09:39,080
+We will start at the clock, so in nine minutes, but to break the ice, if you open the link
+
+23
+00:09:39,080 --> 00:09:48,400
+that you actually just received in your email, this is the document that we can use to interact.
+
+24
+00:09:48,400 --> 00:09:53,200
+So it's good that you test right now that you're able to interact with the document.
+
+25
+00:09:53,200 --> 00:10:00,640
+So if you press the pencil, we added some icebreakers.
+
+26
+00:10:00,640 --> 00:10:07,360
+With me here, there's [name] from Oslo.
+
+27
+00:10:07,360 --> 00:10:10,720
+I don't know exactly your department, [name].
+
+28
+00:10:10,720 --> 00:10:14,720
+It's the IT department in the University of Oslo.
+
+29
+00:10:14,720 --> 00:10:15,720
+Yes.
+
+30
+00:10:15,720 --> 00:10:21,320
+And there's also [name] from Aalto, we will do official
+
+31
+00:10:21,360 --> 00:10:26,120
+introduction at the clock in eight minutes. But now to warm
+
+32
+00:10:26,120 --> 00:10:32,240
+up, we wrote this icebreakers. How many times have you seen
+
+33
+00:10:32,240 --> 00:10:38,200
+snow since last summer? How can I count? Even yesterday, I was
+
+34
+00:10:38,200 --> 00:10:39,960
+in a football field, there was still snow here.
+
+35
+00:10:41,200 --> 00:10:45,480
+Just like a public service announcement before we go to the
+
+36
+00:10:45,480 --> 00:10:51,240
+icebreakers if you when you're watching in twitch remember to put the quality of the twitch stream
+
+37
+00:10:51,240 --> 00:11:02,600
+into source so from the gear box you can choose there that the quality will be the 840p the source
+
+38
+00:11:02,600 --> 00:11:11,640
+so that you will you won't get these artifacts when you're watching the stream yeah yeah twitch
+
+39
+00:11:11,640 --> 00:11:19,640
+try to save bandwidth. So, you know, put it that it uses all the bandwidth that you can use.
+
+40
+00:11:21,400 --> 00:11:30,840
+So, where are people watching from? We bit Helsinki, Bergen, Delft, also Switzerland.
+
+41
+00:11:30,840 --> 00:11:39,080
+Okay, that's nice. We are covering one, two, three, four, five countries. I'm sure there's
+
+42
+00:11:39,080 --> 00:11:46,280
+someone from Sweden, maybe they're still warming up. And we have some people using the Triton
+
+43
+00:11:46,280 --> 00:11:53,080
+cluster, the Saga, which is the one, is the Saga actually for all the universities in Norway,
+
+44
+00:11:53,080 --> 00:12:01,000
+[name]? Yes, that's one of our national clusters that we share. Yeah, that's what I thought.
+
+45
+00:12:01,000 --> 00:12:07,880
+It's in here, in Finland, we have the CSC and a couple of clusters that they provide, and Lumi,
+
+46
+00:12:07,880 --> 00:12:09,880
+Of course, that is also kind of CSE.
+
+47
+00:12:11,640 --> 00:12:12,520
+Right, but that's great.
+
+48
+00:12:13,800 --> 00:12:15,400
+For those who are joining right now,
+
+49
+00:12:15,400 --> 00:12:19,960
+it's important that you test this collaborative notes document
+
+50
+00:12:19,960 --> 00:12:21,160
+so they are able to edit it.
+
+51
+00:12:21,720 --> 00:12:24,120
+Again, you press the pencil up there.
+
+52
+00:12:25,160 --> 00:12:28,360
+Today, in my opinion, it's an important lecture
+
+53
+00:12:28,360 --> 00:12:32,120
+that kind of goes even a bit beyond HPC containers
+
+54
+00:12:32,120 --> 00:12:35,480
+because, I mean, HPC usage
+
+55
+00:12:35,480 --> 00:12:41,800
+because apptainer is that kind of technology that is very popular also
+
+56
+00:12:41,800 --> 00:12:49,200
+outside and I would even say especially outside academia and and research but I
+
+57
+00:12:49,200 --> 00:12:54,360
+don't want to of course spoil too much on the actual content of the day I can
+
+58
+00:12:54,360 --> 00:13:01,640
+mention practical details that in the morning we have two hours of kind of
+
+59
+00:13:01,640 --> 00:13:09,240
+lecture-based and of course you're welcome to use this shared document to write your questions or
+
+60
+00:13:10,360 --> 00:13:15,560
+comments or anything that comes to your mind and then we will have one hour lunch break and after
+
+61
+00:13:15,560 --> 00:13:22,840
+the break we if you have registered you will receive you have received the zoom link and
+
+62
+00:13:23,800 --> 00:13:30,600
+and there we can basically try to gather the exercises that we wrote for for this day
+
+63
+00:13:31,640 --> 00:13:43,720
+Some other practicality, well, I think if the stream dies, there can be multiple reasons
+
+64
+00:13:43,720 --> 00:13:44,720
+for that.
+
+65
+00:13:44,720 --> 00:13:45,720
+No panic.
+
+66
+00:13:45,720 --> 00:13:50,920
+We will, if you keep updating, if you keep checking this collaborative notes document,
+
+67
+00:13:50,920 --> 00:13:52,720
+we can give you updates in real time.
+
+68
+00:13:52,720 --> 00:13:58,440
+I think only once over the year, the whole internet went down, a huge part of this content
+
+69
+00:13:58,440 --> 00:14:06,800
+delivery network collapsed and so Twitch was unavailable and many other services. But since
+
+70
+00:14:06,800 --> 00:14:15,240
+it has happened already once, I think it will never happen again, at least in our teaching.
+
+71
+00:14:15,240 --> 00:14:21,400
+Anything else? For those who are planning to get the one credit, there's only a few
+
+72
+00:14:21,400 --> 00:14:27,040
+of you, but come to the Zoom session. If you're not able, send me an email. And don't worry
+
+73
+00:14:27,040 --> 00:14:34,760
+about the exercises the goal is that you are able to try something and see basically something
+
+74
+00:14:34,760 --> 00:14:41,880
+that is useful for you. We still have four minutes before the start.
+
+75
+00:14:41,880 --> 00:14:50,940
+Yeah, I added an icebreaker at the end of asking have you used containers before so
+
+76
+00:14:50,940 --> 00:14:57,260
+if you if you want to vote there and give a vote by adding one of these O's
+
+77
+00:14:58,460 --> 00:15:04,220
+because that will give us a well some information of our audience.
+
+78
+00:15:06,300 --> 00:15:11,980
+Is this session completely new? The material has been planned to be
+
+79
+00:15:13,340 --> 00:15:18,460
+or it's been written in a way that it doesn't assume anything from the audience so it doesn't
+
+80
+00:15:18,460 --> 00:15:23,580
+assume that you know what containers are and even if you know what containers are it will probably
+
+81
+00:15:24,300 --> 00:15:32,060
+tell you something but yeah it would be good to know what sort of an audience are we dealing with.
+
+82
+00:15:36,140 --> 00:15:45,020
+Looks like a 50-50 which is good so of course we will try to be as you know introductory as
+
+83
+00:15:45,020 --> 00:15:50,780
+possible so that everyone understands what are containers and how can they be useful
+
+84
+00:15:50,780 --> 00:15:59,360
+in our daily work. But it's good that you're already familiar with the technology for others
+
+85
+00:15:59,360 --> 00:16:05,000
+and of course we're just showing kind of one aspect of the container technology. There
+
+86
+00:16:05,000 --> 00:16:11,820
+are other things that we will not cover like Docker and all those type of other tools related
+
+87
+00:16:11,820 --> 00:16:22,140
+to docker but that they are very closely close related to what we cover today so the materials
+
+88
+00:16:22,140 --> 00:16:31,740
+for the day if you scroll up in the same notes document here you see them linked there we
+
+89
+00:16:31,740 --> 00:16:37,500
+are still fixing some typos or you know tweaking things but more or less everything that you
+
+90
+00:16:37,500 --> 00:16:44,220
+see there is is stable enough for learning and the materials are also good for you for
+
+91
+00:16:44,220 --> 00:16:51,940
+checking examples that you can immediately apply this type of this type of workflow with
+
+92
+00:16:51,940 --> 00:16:59,700
+your on your HPC cluster.
+
+93
+00:16:59,700 --> 00:17:03,300
+We didn't do the volume check by the way I think seem was a little bit lower than my
+
+94
+00:17:03,300 --> 00:17:14,060
+mic and at least in my ears. So if we could do a round that I say one and [name] says two
+
+95
+00:17:14,060 --> 00:17:30,620
+And [name] says three, so [name], one, two, three, one, two, three.
+
+96
+00:17:31,220 --> 00:17:31,500
+Okay.
+
+97
+00:17:31,700 --> 00:17:32,300
+Let's see.
+
+98
+00:17:33,940 --> 00:17:38,820
+At least on the stream, it, well, it got a bit chaotic playing the stream at the
+
+99
+00:17:38,820 --> 00:17:47,300
+same time as the conference audio but it sounded pretty okay to me.
+
+100
+00:17:52,340 --> 00:17:58,420
+So let's see if someone from the chat is telling us that the audio is fine
+
+101
+00:18:00,100 --> 00:18:07,140
+and then we are ready to start. Okay we got the okay from the audience.
+
+102
+00:18:07,140 --> 00:18:19,420
+Yes. So let's start. Hello, everyone, and welcome to the third episode of Tuesday Tools
+
+103
+00:18:19,420 --> 00:18:24,140
+and Techniques for High-Performance Computing. I'm [name] and I'm a staff scientist
+
+104
+00:18:24,140 --> 00:18:30,620
+at Aalto University. And here with me today, there is [name]. Do you want to say
+
+105
+00:18:30,620 --> 00:18:36,220
+something about yourself, [name]? Yes, [name] from Norway, Oslo, and
+
+106
+00:18:36,220 --> 00:18:41,320
+and work at the IT department in Oslo University.
+
+107
+00:18:41,320 --> 00:18:45,920
+And then with me today there's also my colleague [name]. Do you want to say something
+
+108
+00:18:45,920 --> 00:18:46,920
+about yourself [name]?
+
+109
+00:18:46,920 --> 00:18:53,800
+Yeah, hi, my name is [name]. I'm from the Aalto Scientific Computing where I work
+
+110
+00:18:53,800 --> 00:18:58,040
+on this kind of container stuff all the time.
+
+111
+00:18:58,040 --> 00:19:01,240
+And it's great that you already mentioned the containers because today, the whole day
+
+112
+00:19:01,240 --> 00:19:08,040
+will be focused on containers and especially containers that can be used in on HPC clusters.
+
+113
+00:19:09,000 --> 00:19:15,960
+We will go soon into the details of this but in general this lecture part will last for two hours
+
+114
+00:19:15,960 --> 00:19:21,960
+and then for those who register for this course you can still register if you did not those who
+
+115
+00:19:21,960 --> 00:19:28,120
+register have have have received the link the zoom link for for trying basically what we will show
+
+116
+00:19:28,120 --> 00:19:35,480
+today in the in the morning. Again if you register you have access to this interactive document that
+
+117
+00:19:35,480 --> 00:19:41,800
+you're able to edit and ask questions and so we will check it during the during the lecture.
+
+118
+00:19:42,920 --> 00:19:49,480
+The materials for the course are linked here in this same interactive document and you also have
+
+119
+00:19:49,480 --> 00:19:57,640
+received them via email if you register. And just to give an overview of what we will cover today
+
+120
+00:19:57,640 --> 00:20:04,440
+for the first hour we will cover kind of the introduction containers technology focusing on
+
+121
+00:20:04,440 --> 00:20:12,760
+apptainer/singularity and also kind of the basics of how you can run a container on a cluster
+
+122
+00:20:13,640 --> 00:20:21,000
+and a kind of the terminology about container images and so on. Then we will have a 10 minutes
+
+123
+00:20:21,000 --> 00:20:26,840
+break at the hour so 11 o'clock in Finland 10 o'clock in Central Europe and after that we
+
+124
+00:20:26,840 --> 00:20:29,800
+we will actually get into the, you know,
+
+125
+00:20:29,800 --> 00:20:32,760
+how to build container images,
+
+126
+00:20:32,760 --> 00:20:35,280
+and especially how to build them in your cluster
+
+127
+00:20:35,280 --> 00:20:37,360
+so that you can reuse them.
+
+128
+00:20:37,360 --> 00:20:41,280
+And there's very important things on how to bind,
+
+129
+00:20:41,280 --> 00:20:45,520
+for example, content that is not inside of the container.
+
+130
+00:20:45,520 --> 00:20:47,120
+The material, of course, is longer
+
+131
+00:20:47,120 --> 00:20:49,120
+than what you see here in this lesson.
+
+132
+00:20:49,120 --> 00:20:53,360
+So there are some extras that you can explore on your own.
+
+133
+00:20:53,360 --> 00:20:55,680
+And if we have time, of course, we might cover them,
+
+134
+00:20:55,680 --> 00:20:58,240
+specifically the user GPUs,
+
+135
+00:20:58,240 --> 00:21:02,240
+and how can we make services and apps
+
+136
+00:21:02,240 --> 00:21:06,000
+within the containers and other tips and tricks.
+
+137
+00:21:06,880 --> 00:21:08,040
+Then in the afternoon,
+
+138
+00:21:08,040 --> 00:21:10,340
+we will have a look at the exercises together.
+
+139
+00:21:11,260 --> 00:21:15,520
+In general, the goal here for this type of material
+
+140
+00:21:15,520 --> 00:21:19,380
+from this type of course is that this is useful
+
+141
+00:21:19,380 --> 00:21:21,760
+for those who are using HPC clusters.
+
+142
+00:21:21,760 --> 00:21:23,520
+And soon you will understand
+
+143
+00:21:23,520 --> 00:21:26,240
+what are kind of the usual cases
+
+144
+00:21:26,240 --> 00:21:29,600
+where container technologies are very useful.
+
+145
+00:21:29,600 --> 00:21:31,840
+And in even those cases where basically
+
+146
+00:21:31,840 --> 00:21:33,740
+container technology is necessary.
+
+147
+00:21:34,960 --> 00:21:37,800
+This course is part of a four episode course.
+
+148
+00:21:37,800 --> 00:21:39,680
+We will have another episode,
+
+149
+00:21:39,680 --> 00:21:41,960
+which is the last episode next Tuesday.
+
+150
+00:21:41,960 --> 00:21:44,760
+Next episode will be on parallelization.
+
+151
+00:21:45,880 --> 00:21:49,320
+And in general, everything is being recorded
+
+152
+00:21:49,320 --> 00:21:51,920
+and the videos will be shared
+
+153
+00:21:51,920 --> 00:21:56,320
+in our CodeRefinery YouTube channel.
+
+154
+00:21:56,320 --> 00:21:58,640
+I don't think I forgot anything.
+
+155
+00:21:58,640 --> 00:22:00,160
+Let's just have a look if there's
+
+156
+00:22:00,160 --> 00:22:05,120
+any comment in this share notes document.
+
+157
+00:22:05,120 --> 00:22:08,600
+Looks like no one is writing anything.
+
+158
+00:22:08,600 --> 00:22:13,800
+So maybe we can actually get started.
+
+159
+00:22:13,800 --> 00:22:18,560
+So let's click Next.
+
+160
+00:22:18,560 --> 00:22:19,920
+OK, containers.
+
+161
+00:22:19,920 --> 00:22:26,960
+going to ask [name], what even is a container? Can you let us know what is a container?
+
+162
+00:22:27,520 --> 00:22:36,560
+So a container, like the name implies, the name comes from the idea behind shipping containers.
+
+163
+00:22:36,560 --> 00:22:41,280
+So about a bit of the history of why the container technology even exists is that
+
+164
+00:22:41,280 --> 00:22:49,960
+But back in the day, well, before the cloud days even began, like, you know, the cloud
+
+165
+00:22:49,960 --> 00:22:57,200
+infrastructure in the internet, people in the IT sector were wondering, how can we ship
+
+166
+00:22:57,200 --> 00:23:06,280
+our applications to different ports or different compute systems somewhere in the internet
+
+167
+00:23:06,280 --> 00:23:09,840
+but we can give our, let's say, banking services
+
+168
+00:23:09,840 --> 00:23:11,240
+or something like that.
+
+169
+00:23:12,200 --> 00:23:14,320
+And previously it was done either
+
+170
+00:23:14,320 --> 00:23:19,080
+by just installing multiple servers
+
+171
+00:23:19,080 --> 00:23:21,480
+or using virtual machines.
+
+172
+00:23:21,480 --> 00:23:24,360
+But the virtual machines were, back in those days,
+
+173
+00:23:24,360 --> 00:23:26,080
+especially they were slower.
+
+174
+00:23:26,960 --> 00:23:29,520
+So it was a bit of a pain
+
+175
+00:23:29,520 --> 00:23:31,920
+for many people in the IT industry.
+
+176
+00:23:31,920 --> 00:23:35,080
+So what happened was that Docker,
+
+177
+00:23:35,080 --> 00:23:38,800
+where the name Dock is already in the name.
+
+178
+00:23:38,800 --> 00:23:43,380
+This company, they created with other people
+
+179
+00:23:43,380 --> 00:23:47,480
+from the Linux field,
+
+180
+00:23:47,480 --> 00:23:50,480
+they created this idea of a container.
+
+181
+00:23:50,480 --> 00:23:53,240
+So it's a collaborative effort,
+
+182
+00:23:53,240 --> 00:23:55,520
+but the Docker was really the killer product
+
+183
+00:23:55,520 --> 00:23:58,480
+that got the whole ball rolling.
+
+184
+00:23:58,480 --> 00:24:00,980
+And the idea is that you have this shipping container,
+
+185
+00:24:00,980 --> 00:24:03,960
+basically, you have everything you need
+
+186
+00:24:03,960 --> 00:24:10,360
+for whatever application you want, everything you need and you can put them into this kind of like a
+
+187
+00:24:10,920 --> 00:24:17,240
+shipping container and you can run it wherever you want in whatever like cloud infrastructure
+
+188
+00:24:17,240 --> 00:24:23,720
+you want to use and it's easy to ship it around like you know these like standardized shipping
+
+189
+00:24:23,720 --> 00:24:35,000
+containers that you have on trains, in ships, in trucks, wherever. Because they're standardized and
+
+190
+00:24:35,000 --> 00:24:40,920
+the way you operate these or move these around is standardized, it's very easy to ship them around
+
+191
+00:24:40,920 --> 00:24:45,880
+the world and that's why they're so popular. And basically the idea was the same, that you should
+
+192
+00:24:45,880 --> 00:24:53,800
+put your applications into these shipping containers. Well, this might seem that, okay,
+
+193
+00:24:54,840 --> 00:25:02,040
+is it just like a storage format? A shipping container seems like it's just like a storage
+
+194
+00:25:02,040 --> 00:25:06,120
+format that you put your stuff inside the shipping container and that's it. But in the
+
+195
+00:25:06,120 --> 00:25:13,800
+case of an apptainer, it's more than that. It's a self-contained application that has
+
+196
+00:25:13,800 --> 00:25:22,920
+like all of the tools, but when we're talking about containers, we also mean like the runtime
+
+197
+00:25:22,920 --> 00:25:28,200
+environment and the run, like when the container is being run, when the application is being run,
+
+198
+00:25:28,760 --> 00:25:35,640
+how can you like contain it in its own environment? So like when you run an application,
+
+199
+00:25:36,760 --> 00:25:43,560
+where does the application run? It doesn't run on the machine itself, but it runs in its own like
+
+200
+00:25:43,560 --> 00:25:51,080
+virtual world and this kind of idea that okay the container is it's just not like storing the
+
+201
+00:25:51,080 --> 00:25:58,360
+application it's also the okay I will encapsulate the whole application and whatever the application
+
+202
+00:25:58,360 --> 00:26:06,600
+is doing into its own environment and this is called the container so the way that the container
+
+203
+00:26:06,600 --> 00:26:14,040
+like files are transferred are these so-called container images but and sometimes container
+
+204
+00:26:14,040 --> 00:26:20,040
+can refer to also these container images but container as it's like traditionally known
+
+205
+00:26:20,680 --> 00:26:28,760
+it means the running service or running application that runs in its own world
+
+206
+00:26:28,760 --> 00:26:38,680
+So if you [name] scroll a bit down there's a picture or like a use case that you might have.
+
+207
+00:26:38,680 --> 00:26:44,120
+So let's consider a case where you have an application and you want to put it into another
+
+208
+00:26:44,120 --> 00:26:53,640
+system. Maybe this will like ease you up into the idea of a container. So if you normally have
+
+209
+00:26:53,640 --> 00:26:59,560
+like a computer and that computer has some operating system like let's limit ourselves
+
+210
+00:26:59,560 --> 00:27:06,200
+to let's say linux machines for now but your work computer might have like a ubuntu installation or
+
+211
+00:27:06,200 --> 00:27:12,840
+your department computer in your university it might be like a ubuntu operating system or something
+
+212
+00:27:12,840 --> 00:27:18,920
+and you if you have an application on top of that well then that application usually
+
+213
+00:27:18,920 --> 00:27:27,240
+want something from the operating system or it knows that, okay, I've been installed into Ubuntu
+
+214
+00:27:27,240 --> 00:27:32,120
+operating system or something like that. It might have been installed using the package manager,
+
+215
+00:27:32,120 --> 00:27:39,320
+it might use the libraries from the operating system. If you now try to transfer this into
+
+216
+00:27:39,320 --> 00:27:45,480
+another place, so in our case, because we're dealing in the HPC world, it might be like a
+
+217
+00:27:45,480 --> 00:27:51,400
+compute cluster that your university provides or your country provides or some other place provides.
+
+218
+00:27:52,040 --> 00:27:58,680
+It might have, let's say, Red Hat-based operating system, so like Red Hat or AlmaLinux or whatever.
+
+219
+00:27:59,400 --> 00:28:05,240
+And now if you just try to transfer the application, the application isn't
+
+220
+00:28:05,240 --> 00:28:10,040
+completely the same because the operating system is different in the other system.
+
+221
+00:28:10,040 --> 00:28:19,040
+So it's not the same program that you're running in the other system if you transfer it, like just move the program around.
+
+222
+00:28:19,040 --> 00:28:29,040
+Yeah. And can I ask [name], so what is it that's different? I mean, is the application itself different?
+
+223
+00:28:29,040 --> 00:28:38,040
+Well, even if the application is not different, so let's say you just copy the files around, you copied all of the files in the application,
+
+224
+00:28:38,040 --> 00:28:40,360
+but the application might need something
+
+225
+00:28:40,360 --> 00:28:41,760
+from the operating system.
+
+226
+00:28:41,760 --> 00:28:46,760
+So for example, like many applications might require
+
+227
+00:28:46,960 --> 00:28:50,600
+or use this thing called libc,
+
+228
+00:28:50,600 --> 00:28:55,600
+which is like the base operating system,
+
+229
+00:28:55,760 --> 00:28:58,740
+like libraries on how to, let's say, write files,
+
+230
+00:28:58,740 --> 00:29:01,560
+how to open files and that sort of stuff,
+
+231
+00:29:01,560 --> 00:29:05,440
+and how to calculate arithmetic and that sort of things.
+
+232
+00:29:05,440 --> 00:29:09,840
+And that is different between operating systems, like certain operating system
+
+233
+00:29:10,200 --> 00:29:14,980
+installation, like let's say you have Ubuntu 16.04, it has a completely
+
+234
+00:29:14,980 --> 00:29:19,440
+different version of this libc than Ubuntu 22.04.
+
+235
+00:29:19,460 --> 00:29:25,640
+So if your application needs the other one, it might, like when you usually
+
+236
+00:29:25,640 --> 00:29:30,940
+install an application, it often has like, okay, I have a different installation
+
+237
+00:29:30,940 --> 00:29:36,180
+way for Ubuntu and different installation way for Red Hat.
+
+238
+00:29:36,180 --> 00:29:43,180
+So the application needs usually something from the operating system.
+
+239
+00:29:43,180 --> 00:29:46,380
+Even at the lowest level, it needs something from the operating system.
+
+240
+00:29:46,380 --> 00:29:51,460
+And I guess it might, I mean, if you just try to run the application that you run on
+
+241
+00:29:51,460 --> 00:29:57,060
+your Ubuntu laptop, for example, on another HPC cluster, which is Red Hat, it might not
+
+242
+00:29:57,060 --> 00:29:58,820
+even work at all.
+
+243
+00:29:58,820 --> 00:29:59,820
+Yes.
+
+244
+00:29:59,820 --> 00:30:00,820
+Yes.
+
+245
+00:30:00,820 --> 00:30:06,620
+you work, even if it works, it might work by coincidence, you know, like, like
+
+246
+00:30:06,740 --> 00:30:12,780
+some things might, might work at a certain point in time, but let's say when they
+
+247
+00:30:12,780 --> 00:30:16,900
+up, when somebody upgrades their operating system, you know, like that happens all
+
+248
+00:30:16,900 --> 00:30:20,940
+the time when you upgrade the operating system in your phone or when you upgrade
+
+249
+00:30:20,940 --> 00:30:26,780
+the operating system, some applications just break and, and suddenly like, what
+
+250
+00:30:26,780 --> 00:30:34,460
+do like you cannot really go back in the upgrade or you cannot like do you suddenly have to use
+
+251
+00:30:35,100 --> 00:30:39,340
+really old operating system because you want to just have one application that
+
+252
+00:30:41,260 --> 00:30:47,660
+you need that old operating system for. So usually you don't want to do that
+
+253
+00:30:48,780 --> 00:30:55,100
+and this is why the containers come in and why containers are so popular. So the idea
+
+254
+00:30:55,100 --> 00:31:04,700
+behind the container like when we talked about it's containerized it has everything with it
+
+255
+00:31:05,580 --> 00:31:10,700
+so what it does is that if you consider the picture if you scroll a bit up [name]
+
+256
+00:31:12,940 --> 00:31:20,140
+the on the left side we have the home computer let's say your home computer it has its own
+
+257
+00:31:20,140 --> 00:31:27,820
+operating system then usually we have some container software like when we in traditional
+
+258
+00:31:27,820 --> 00:31:34,940
+containers that would be let's say docker that launches this container and that container
+
+259
+00:31:34,940 --> 00:31:43,580
+has its own operating system inside of it like a small linux installation usually and the application
+
+260
+00:31:43,580 --> 00:31:51,820
+inside the container, then would use everything from that world, everything inside that container
+
+261
+00:31:51,820 --> 00:32:00,060
+to run. And if you would then move this container to another system, let's say the HPC cluster,
+
+262
+00:32:00,060 --> 00:32:05,900
+and the HPC cluster would have the same so-called runtime, so container runtime,
+
+263
+00:32:05,900 --> 00:32:11,020
+or this container software that would, that can be used to launch the container.
+
+264
+00:32:11,020 --> 00:32:24,020
+If that has the same tools, you can then run the exact same container with the exact same operating system and the exact same application because the containers are the same.
+
+265
+00:32:24,020 --> 00:32:30,020
+So even though the host system might be different, the guest system can be the same.
+
+266
+00:32:30,020 --> 00:32:38,100
+same. So usually host refers to the machine that launches these containers and a guest is a machine
+
+267
+00:32:38,100 --> 00:32:44,180
+like this container that is basically like a guest operating system that comes there,
+
+268
+00:32:44,180 --> 00:32:49,780
+it runs some application and then it goes away usually. Once the application closes,
+
+269
+00:32:49,780 --> 00:32:53,940
+you shut down basically this operating system. So you...
+
+270
+00:32:53,940 --> 00:33:00,820
+So I guess that's the whole beauty of it all. I mean, the whole host system can be different
+
+271
+00:33:00,820 --> 00:33:06,900
+from that's the whole point of the case. The two different, two whole systems are different,
+
+272
+00:33:06,900 --> 00:33:14,300
+but the container is just dropped in on each of the whole systems and run equally on both.
+
+273
+00:33:14,300 --> 00:33:22,380
+Yes. So this is what's like, like the big players in the, in the, like if you think
+
+274
+00:33:22,380 --> 00:33:29,540
+about your Azure or Amazon web services or whatever, they provide places where you can
+
+275
+00:33:29,540 --> 00:33:35,940
+run your containers. Of course, they provide virtual machines as well, but quite often
+
+276
+00:33:35,940 --> 00:33:40,900
+they just provide a place where you can run your containers. So you don't even necessarily
+
+277
+00:33:40,900 --> 00:33:47,260
+know what is the host system. You just know that it will run your application. But this
+
+278
+00:33:47,260 --> 00:33:55,580
+is especially popular in the traditional container world. So traditional meaning
+
+279
+00:33:56,540 --> 00:34:01,900
+Docker, Podman, Kubernetes, these kinds of words that you might have heard before.
+
+280
+00:34:03,820 --> 00:34:10,140
+They usually do a lot more than just... When they launch these containers, they usually
+
+281
+00:34:10,140 --> 00:34:16,380
+limit the resources, limit the amount of processors the container can use. They can
+
+282
+00:34:16,380 --> 00:34:22,300
+create our own virtual network for these containers. They do all kinds of extra stuff
+
+283
+00:34:24,300 --> 00:34:33,740
+when they launch a container. But in the case of an HPC situation, it's a bit different
+
+284
+00:34:34,700 --> 00:34:40,620
+because we don't usually need to worry about or we cannot even necessarily do these kinds
+
+285
+00:34:40,620 --> 00:34:48,140
+of operations, because we want to run them as ourselves, not as the root user or the
+
+286
+00:34:49,260 --> 00:34:56,540
+super user of the system. Because in a shared HPC system, like a cluster, you don't have
+
+287
+00:34:56,540 --> 00:35:01,420
+privileges to run these. You don't have privileges to create your own networks and that sort of
+
+288
+00:35:01,420 --> 00:35:10,140
+stuff. So we have this kind of lightweight tool, which is Apptainer, that we'll be talking about.
+
+289
+00:35:10,620 --> 00:35:16,860
+Maybe [name], one question. You mentioned virtual machines and someone is also asking about
+
+290
+00:35:16,860 --> 00:35:22,060
+virtual machines in the shared nodes. What is the difference between virtual machines and
+
+291
+00:35:23,020 --> 00:35:29,260
+containers? So the virtual machines, the difference is that the virtual machine
+
+292
+00:35:30,620 --> 00:35:38,060
+creates a virtual hardware that the machine will run on. So the CPUs and whatever,
+
+293
+00:35:38,060 --> 00:35:55,180
+they are virtualized. There's this more strict difference between the host system or the guest
+
+294
+00:35:55,180 --> 00:36:05,660
+system and the machine. All of the resources, let's say memory and processors, they are
+
+295
+00:36:05,660 --> 00:36:11,820
+are virtualized, so it will see basically like a generic CPU
+
+296
+00:36:11,820 --> 00:36:14,220
+or something inside the virtual machine.
+
+297
+00:36:14,220 --> 00:36:16,260
+But in a container, what happens
+
+298
+00:36:16,260 --> 00:36:19,020
+is that they still use the system resources.
+
+299
+00:36:19,020 --> 00:36:24,060
+They use system CPU and that sort of stuff.
+
+300
+00:36:24,060 --> 00:36:26,260
+They use the same resources.
+
+301
+00:36:26,260 --> 00:36:29,500
+So there's a technical explanation
+
+302
+00:36:29,500 --> 00:36:34,380
+how containers work above, but we won't go through that.
+
+303
+00:36:34,380 --> 00:36:37,260
+because in this HPC situation,
+
+304
+00:36:37,260 --> 00:36:40,220
+we cannot do this kind of more heavy virtualization
+
+305
+00:36:40,220 --> 00:36:43,300
+because we cannot give people access
+
+306
+00:36:43,300 --> 00:36:47,860
+to these kind of like root privileges, so.
+
+307
+00:36:47,860 --> 00:36:49,700
+Yeah, you mentioned this basically,
+
+308
+00:36:49,700 --> 00:36:51,660
+you exactly mentioned this,
+
+309
+00:36:51,660 --> 00:36:54,420
+that because HPC system, a share system,
+
+310
+00:36:54,420 --> 00:36:56,780
+then instead of using technologies like Docker,
+
+311
+00:36:56,780 --> 00:36:59,260
+we need to use something like Apptainer.
+
+312
+00:36:59,260 --> 00:37:01,580
+But here, I'm gonna ask, but it's also written here,
+
+313
+00:37:01,580 --> 00:37:06,580
+What is the intended use case of Apptainer in HPC context?
+
+314
+00:37:09,220 --> 00:37:12,540
+Yeah, so Apptainer is this kind of a technology
+
+315
+00:37:12,540 --> 00:37:17,540
+that arouse from originally, I think it mentioned
+
+316
+00:37:18,020 --> 00:37:19,620
+Lawrence Berkeley National Laboratory
+
+317
+00:37:19,620 --> 00:37:21,800
+was the original place where it was created,
+
+318
+00:37:21,800 --> 00:37:24,540
+but it was like a technology
+
+319
+00:37:24,540 --> 00:37:26,820
+that's like a lightweight container.
+
+320
+00:37:26,820 --> 00:37:30,660
+So instead of doing the whole mess
+
+321
+00:37:30,660 --> 00:37:34,500
+of setting up these kind of like root privilege situations.
+
+322
+00:37:34,500 --> 00:37:38,580
+It's intended to be used in a situation where,
+
+323
+00:37:38,580 --> 00:37:40,620
+like for scientific situations,
+
+324
+00:37:40,620 --> 00:37:44,180
+where you don't have extra access rights
+
+325
+00:37:44,180 --> 00:37:49,180
+and you also want the container image that stores the data.
+
+326
+00:37:51,700 --> 00:37:54,980
+We'll talk about container images later a lot more,
+
+327
+00:37:54,980 --> 00:37:57,380
+but the container image that contains
+
+328
+00:37:57,380 --> 00:38:00,180
+the operating system and application,
+
+329
+00:38:00,180 --> 00:38:12,180
+want that to be easily storable so that you can store your application in a way that you can share
+
+330
+00:38:12,180 --> 00:38:20,580
+it with other researchers. With the Docker technologies, they have a way of transferring
+
+331
+00:38:20,580 --> 00:38:29,300
+these kinds of images around, but it's not very archivable, would I say, or like this. It's not
+
+332
+00:38:30,180 --> 00:38:39,980
+in a sense of reproducible in a way that like scientific code needs to be reproducible.
+
+333
+00:38:39,980 --> 00:38:45,980
+Like scientific code usually needs to be reproducible like years after the original paper has been
+
+334
+00:38:45,980 --> 00:38:47,080
+published.
+
+335
+00:38:47,080 --> 00:38:54,860
+So they wanted to create like a way of both storing the containers in a way that you can
+
+336
+00:38:54,860 --> 00:38:59,140
+then run them long afterwards.
+
+337
+00:38:59,140 --> 00:39:03,780
+And also they wanted to make it so that you can run it in whatever system, you can run
+
+338
+00:39:03,780 --> 00:39:05,380
+it in these shared systems.
+
+339
+00:39:05,380 --> 00:39:06,380
+Yeah.
+
+340
+00:39:06,380 --> 00:39:12,580
+And of course, that's not just for Apptainer, but generally all container-based technology
+
+341
+00:39:12,580 --> 00:39:18,780
+has the same idea or basis for, yeah.
+
+342
+00:39:18,780 --> 00:39:19,780
+Yeah.
+
+343
+00:39:19,780 --> 00:39:27,860
+it's just like it's been, how could I say it, optimized for these kind of scientific cases.
+
+344
+00:39:28,500 --> 00:39:29,000
+Yes.
+
+345
+00:39:31,700 --> 00:39:37,700
+Yeah. And also, as you said, good to use for HPC where this kind of root running
+
+346
+00:39:39,300 --> 00:39:41,940
+with root privileges is more restricted.
+
+347
+00:39:41,940 --> 00:39:49,700
+So, for you, cases where it's very useful is that if you have, let's say, you have a code,
+
+348
+00:39:49,700 --> 00:39:55,060
+well, this can happen to anybody, that you have a paper or a code that somebody, you want to
+
+349
+00:39:55,060 --> 00:40:01,060
+replicate the results from a paper and the paper installation instructions are only given for a
+
+350
+00:40:01,060 --> 00:40:07,860
+specific, let's say Ubuntu installation, and the installation instructions use, let's say,
+
+351
+00:40:07,860 --> 00:40:18,580
+apt to install packages from the Ubuntu package manager. How do you install this in a HPC
+
+352
+00:40:18,580 --> 00:40:24,820
+system? Either you need to figure out how do you get all of these requirements that the code needs
+
+353
+00:40:25,860 --> 00:40:33,620
+from the software provided by the cluster admins usually, or you just create a container
+
+354
+00:40:33,620 --> 00:40:40,100
+with an Ubuntu inside of it, and then you just get it working. And that can ease up many of
+
+355
+00:40:40,100 --> 00:40:45,540
+these complicated installations. Yeah, or you just get the container which that colleague
+
+356
+00:40:46,340 --> 00:40:50,260
+has already made ready for you with everything that's needed inside.
+
+357
+00:40:51,060 --> 00:40:56,660
+Yes, yes. It's very useful if you have a case where you know that, okay, this will be used
+
+358
+00:40:56,660 --> 00:41:02,180
+by multiple people, you can create like a self-contained container, self-contained
+
+359
+00:41:02,180 --> 00:41:10,100
+application that you can then share with other people and they can just run it and you can
+
+360
+00:41:10,100 --> 00:41:17,380
+like even put it as a footnote or like a link in your paper alongside your paper so that you can
+
+361
+00:41:17,380 --> 00:41:22,660
+then like say to people that okay like you don't have to worry about the installation mess because
+
+362
+00:41:22,660 --> 00:41:30,580
+it's already there in the container. In many systems also containers are used to reduce
+
+363
+00:41:30,580 --> 00:41:36,820
+number of files needed. Because the container, what we're going to be talking about, the container
+
+364
+00:41:36,820 --> 00:41:42,420
+image is only one file. And if you have, let's say, a big Python installation, that can be thousands
+
+365
+00:41:42,420 --> 00:41:50,820
+of files. So you might run out of the number of files that you can install or you can have in your
+
+366
+00:41:50,820 --> 00:41:54,660
+file system. So having it in the container can sometimes help with this.
+
+367
+00:41:54,660 --> 00:41:59,100
+Yeah, it's good that you mentioned this because one of the questions in the shared document
+
+368
+00:41:59,100 --> 00:42:03,700
+is what do you mean by storing images using Apptainer?
+
+369
+00:42:03,700 --> 00:42:07,020
+Is this a way around using volumes and mounts?
+
+370
+00:42:07,020 --> 00:42:12,340
+It kind of relates to what you were saying of this large amount of files and...
+
+371
+00:42:12,340 --> 00:42:19,540
+Yes, so we'll talk about like the volumes and mounts like are from the Docker world
+
+372
+00:42:19,540 --> 00:42:27,300
+And in Apptainer world, there are different names, but basically the idea of how do you...
+
+373
+00:42:29,620 --> 00:42:36,420
+Yeah, there's more coming when we go to the... Let's not jump ahead to the image
+
+374
+00:42:36,420 --> 00:42:42,180
+chapter, but when we get to the container images, we'll answer those exact questions.
+
+375
+00:42:42,180 --> 00:42:47,860
+Well, maybe actually we can move to the next session.
+
+376
+00:42:47,860 --> 00:42:55,460
+Yeah, I'll quickly note what [name] is highlighting here, that there is this tool called Singularity
+
+377
+00:42:55,460 --> 00:42:59,060
+as well, which is basically Apptainer.
+
+378
+00:42:59,060 --> 00:43:04,820
+So Apptainer is like Linux Foundation took over the open source project of Singularity,
+
+379
+00:43:04,820 --> 00:43:08,780
+which is like a company project, but they are basically the same tool.
+
+380
+00:43:08,780 --> 00:43:14,060
+you can swap the, if your cluster has single legacy installed, instead of Apptainer, just switch
+
+381
+00:43:14,860 --> 00:43:22,300
+single legacy to Apptainer and Apptainer to single legacy and it will work the same. So it's the same
+
+382
+00:43:22,300 --> 00:43:30,860
+tool. All right, but so I also added the question for everyone who is following on what is your
+
+383
+00:43:30,860 --> 00:43:36,700
+potential use case of Apptainer or containers in general. So it's interesting to hear what people
+
+384
+00:43:36,700 --> 00:43:42,860
+might think could be a good case for them. But then now going inside the basics of such
+
+385
+00:43:42,860 --> 00:43:47,820
+technology, especially for HPC. So what are the different ways that you can run your
+
+386
+00:43:48,700 --> 00:43:55,900
+container, [name]? Yes, so we'll cover throughout this session, we'll cover these main cases that
+
+387
+00:43:55,900 --> 00:44:01,180
+you want to use. So first one is that let's say you have a container that has some default
+
+388
+00:44:01,180 --> 00:44:08,140
+application or some application that the container has been built around it, you can just run the
+
+389
+00:44:08,140 --> 00:44:15,900
+container and what it does depends on the container that you're running. But we'll look into that
+
+390
+00:44:15,900 --> 00:44:22,060
+later. Second one is that you can run an interactive terminal. You can go inside the
+
+391
+00:44:22,060 --> 00:44:28,140
+container and run an interactive session inside of it. And the third one is that you can just run
+
+392
+00:44:28,140 --> 00:44:34,220
+an application from within the container. There are other ways like the services that we don't
+
+393
+00:44:34,220 --> 00:44:39,180
+have probably time to go through. There's other ways of using the containers as well,
+
+394
+00:44:39,180 --> 00:44:44,460
+but these are the main things you want to use. Quite often you have a case where like if you
+
+395
+00:44:44,460 --> 00:44:50,940
+have a ready-made container, you just run it. If you have a case where you want to go inside the
+
+396
+00:44:50,940 --> 00:44:56,380
+container and see what's inside there, you take an interactive shell inside the container.
+
+397
+00:44:56,380 --> 00:45:00,780
+And quite often, if you have built your container yourself,
+
+398
+00:45:00,780 --> 00:45:03,740
+you might just execute some program within the container.
+
+399
+00:45:07,820 --> 00:45:11,100
+But we'll go through all of these one by one.
+
+400
+00:45:11,980 --> 00:45:19,500
+But because there's many of these sub-commands for Apptainer,
+
+401
+00:45:19,500 --> 00:45:26,780
+and it can become quite, well, it can become quite tricky to read the command lines.
+
+402
+00:45:27,820 --> 00:45:34,780
+There's this kind of like syntax highlighting, or how could I say it, like a color highlighting
+
+403
+00:45:34,780 --> 00:45:42,300
+that I formulated for the material. If you have any kind of visual impairment and you don't see
+
+404
+00:45:42,300 --> 00:45:46,220
+the highlighting, let us know because it would be nice to choose colors that are
+
+405
+00:45:46,220 --> 00:45:49,380
+are as inclusive as possible,
+
+406
+00:45:49,380 --> 00:45:51,440
+but these were just colors I chose.
+
+407
+00:45:52,580 --> 00:45:55,060
+But basically, let's go first,
+
+408
+00:45:55,060 --> 00:45:57,400
+before we start going through all of these different ways
+
+409
+00:45:57,400 --> 00:45:58,700
+of running the containers,
+
+410
+00:45:58,700 --> 00:46:00,900
+let's look at what a typical
+
+411
+00:46:02,300 --> 00:46:04,180
+apptainer command looks like.
+
+412
+00:46:05,340 --> 00:46:10,340
+So usually, if you read the command from left to right,
+
+413
+00:46:11,640 --> 00:46:15,660
+in this case, we have apptainer, subcommand,
+
+414
+00:46:15,660 --> 00:46:21,700
+some image.cif, and then we have some additional commands.
+
+415
+00:46:21,700 --> 00:46:24,260
+What we usually have is that at the left side,
+
+416
+00:46:24,260 --> 00:46:27,980
+we have the Apptainer, because we're using Apptainer.
+
+417
+00:46:27,980 --> 00:46:31,540
+So that will always be there, so that you can basically like,
+
+418
+00:46:31,540 --> 00:46:34,060
+you will always run these with Apptainer.
+
+419
+00:46:34,060 --> 00:46:37,140
+So just put Apptainer at the front.
+
+420
+00:46:37,140 --> 00:46:41,340
+The second command is the important one for the Apptainer.
+
+421
+00:46:41,340 --> 00:46:45,220
+So that tells us what feature from Apptainer we want to use.
+
+422
+00:46:45,220 --> 00:46:50,340
+Like this is a subcommand that we
+
+423
+00:46:50,340 --> 00:46:55,980
+will look at different subcommands in this session.
+
+424
+00:46:55,980 --> 00:47:02,260
+Usually, after that, you have the image file.
+
+425
+00:47:02,260 --> 00:47:05,540
+So we'll talk about the image files a bit later.
+
+426
+00:47:05,540 --> 00:47:08,220
+But usually, you have the image file
+
+427
+00:47:08,220 --> 00:47:11,220
+that has the container, that defines the container,
+
+428
+00:47:11,220 --> 00:47:12,900
+basically.
+
+429
+00:47:12,900 --> 00:47:16,900
+you have that, and then that's highlighted in purple.
+
+430
+00:47:16,900 --> 00:47:19,740
+And after that, you might have some additional commands
+
+431
+00:47:19,740 --> 00:47:22,940
+that are then executed within the container.
+
+432
+00:47:22,940 --> 00:47:26,260
+So the Apptainer doesn't care about them anymore,
+
+433
+00:47:26,260 --> 00:47:31,260
+but they are usually like run inside the container.
+
+434
+00:47:33,340 --> 00:47:38,340
+And why this highlighting, like why I wanted to do this
+
+435
+00:47:38,380 --> 00:47:40,300
+is that in many cases,
+
+436
+00:47:40,300 --> 00:47:43,100
+you can have different kinds of flags,
+
+437
+00:47:43,100 --> 00:47:46,180
+like this kind of like arguments,
+
+438
+00:47:46,180 --> 00:47:50,180
+with this like dash dash (--) or just dash (-) arguments
+
+439
+00:47:50,180 --> 00:47:52,660
+for many of the different commands.
+
+440
+00:47:52,660 --> 00:47:55,420
+So you might have arguments for the sub command
+
+441
+00:47:55,420 --> 00:47:59,660
+and it can get really tricky to read some of these commands
+
+442
+00:47:59,660 --> 00:48:01,500
+if you don't have the,
+
+443
+00:48:01,500 --> 00:48:03,820
+if you haven't yet familiarized yourself
+
+444
+00:48:03,820 --> 00:48:05,920
+with like how to read the commands.
+
+445
+00:48:05,920 --> 00:48:09,220
+So for now, the important part is that,
+
+446
+00:48:09,220 --> 00:48:18,260
+blue is just the apptainer, this kind of orange-yellow is the sub-command, and the purple is the image.
+
+447
+00:48:18,260 --> 00:48:26,020
+And you can just keep those in mind when looking at the commands that we'll be running.
+
+448
+00:48:28,260 --> 00:48:38,420
+So for this session, let's try running one container with the different
+
+449
+00:48:38,420 --> 00:48:44,820
+measures that was mentioned before. So let's run the container, let's go inside the container and
+
+450
+00:48:44,820 --> 00:48:51,620
+then execute a program inside of it. So [name], do you want to run the commands while...
+
+451
+00:48:52,660 --> 00:49:00,580
+Yeah, I was actually running the commands while you were talking and the problem is that they're
+
+452
+00:49:00,580 --> 00:49:07,380
+still running. So meaning that something to basically consider is that sometime building the
+
+453
+00:49:08,420 --> 00:49:16,340
+So I've been running in the background this apptainer pull python.sif docker.
+
+454
+00:49:16,340 --> 00:49:20,460
+Maybe the VPN is slow.
+
+455
+00:49:20,460 --> 00:49:22,020
+Now it should be done.
+
+456
+00:49:22,020 --> 00:49:23,860
+So basically I've run this.
+
+457
+00:49:23,860 --> 00:49:27,420
+Let me resize a bit my screens.
+
+458
+00:49:27,420 --> 00:49:31,820
+So I've run the command apptainer pull python.sif and docker.
+
+459
+00:49:31,820 --> 00:49:37,340
+So with what you mentioned earlier, it means that [name] has pulled from docker hub and
+
+460
+00:49:37,340 --> 00:49:41,980
+official Python image. We didn't specify here which version or anything, right?
+
+461
+00:49:42,700 --> 00:49:43,260
+Yeah.
+
+462
+00:49:43,260 --> 00:49:47,100
+And then everything was turned into this python.cif.
+
+463
+00:49:47,820 --> 00:49:55,260
+We'll talk about the way of pulling the images and these images more. So, let's focus first on,
+
+464
+00:49:55,820 --> 00:50:01,260
+like, let's say we have this .sif file. Let's just start from there and we'll talk about
+
+465
+00:50:01,260 --> 00:50:04,300
+the ways we can create the different containers later.
+
+466
+00:50:04,300 --> 00:50:09,900
+All right, so then I type apptainer run python.sif?
+
+467
+00:50:09,900 --> 00:50:10,900
+Yes.
+
+468
+00:50:10,900 --> 00:50:17,740
+So if we are running the container, like in this case, we are running some application
+
+469
+00:50:17,740 --> 00:50:24,980
+that the container creator has created as kind of like a default application.
+
+470
+00:50:24,980 --> 00:50:34,700
+So in this case, because we got the Python container
+
+471
+00:50:34,700 --> 00:50:39,940
+or Python container image from Docker Hub,
+
+472
+00:50:39,940 --> 00:50:43,460
+we can assume that Python is probably
+
+473
+00:50:43,460 --> 00:50:46,660
+the thing that's going to be running when it's running.
+
+474
+00:50:46,660 --> 00:50:51,180
+So this run command is basically when, well,
+
+475
+00:50:51,180 --> 00:50:53,000
+if you would run a Docker image, you
+
+476
+00:50:53,000 --> 00:50:54,420
+would have the same kind of thing.
+
+477
+00:50:54,420 --> 00:51:01,300
+we basically execute it as one executable. And this is very powerful because then you can create
+
+478
+00:51:02,180 --> 00:51:09,940
+easily an application out of your application. You can make your application installation into
+
+479
+00:51:09,940 --> 00:51:17,940
+one file and then you can just run it and it will just run like an application. But of course,
+
+480
+00:51:17,940 --> 00:51:28,660
+you need to remember that you should trust the application. If you run it, if you get a random
+
+481
+00:51:28,660 --> 00:51:35,460
+email and you get an executable, you don't usually run those. It's the same thing with containers,
+
+482
+00:51:35,460 --> 00:51:44,260
+that there are nefarious containers available and that sort of stuff. So always be mindful of
+
+483
+00:51:44,260 --> 00:51:46,260
+what image are you running?
+
+484
+00:51:46,260 --> 00:51:53,140
+Yeah, so the whole point here, when you are using the run command or action or sub-command
+
+485
+00:51:53,140 --> 00:51:59,820
+or what you want to call it, is that you're basically put right into the program that
+
+486
+00:51:59,820 --> 00:52:00,940
+is the default one.
+
+487
+00:52:00,940 --> 00:52:01,940
+And here is Python.
+
+488
+00:52:01,940 --> 00:52:04,780
+You just run the container and go straight into Python.
+
+489
+00:52:04,780 --> 00:52:09,900
+And of course, it can be whatever else, depending on what's in the container.
+
+490
+00:52:09,900 --> 00:52:10,900
+Yes.
+
+491
+00:52:10,900 --> 00:52:14,580
+And if we look at the command here from the diagram,
+
+492
+00:52:14,580 --> 00:52:17,780
+we just apptainer, and the subcommand run
+
+493
+00:52:17,780 --> 00:52:20,060
+just executes basically the image.
+
+494
+00:52:20,060 --> 00:52:22,260
+And if we launch the container,
+
+495
+00:52:22,260 --> 00:52:26,140
+and if you, well, let's look at it a bit later,
+
+496
+00:52:26,140 --> 00:52:29,060
+but basically what you're now doing
+
+497
+00:52:29,060 --> 00:52:31,340
+is that you start the container
+
+498
+00:52:31,340 --> 00:52:34,500
+and you are now in this virtual world.
+
+499
+00:52:35,380 --> 00:52:38,060
+So let's continue.
+
+500
+00:52:38,060 --> 00:52:45,340
+this is basically how you run stuff. But of course, this is the kind of a situation where
+
+501
+00:52:45,340 --> 00:52:50,540
+it depends that the container needs to be well-prepared. Somebody needs to figure out,
+
+502
+00:52:50,540 --> 00:52:58,380
+okay, what the container should run. So, this is the kind of like a best-case scenario where
+
+503
+00:52:58,380 --> 00:53:03,580
+the container has been created well so that the running of the container is as easy as possible.
+
+504
+00:53:03,580 --> 00:53:10,940
+There are cases where that is not the case, but in best case scenarios, this is the kind
+
+505
+00:53:10,940 --> 00:53:13,700
+of container you can have.
+
+506
+00:53:13,700 --> 00:53:14,700
+Yeah.
+
+507
+00:53:14,700 --> 00:53:20,140
+And we'll see just in a minute, you will be showing how to make this run scripts as we
+
+508
+00:53:20,140 --> 00:53:23,820
+call them to get this functionality.
+
+509
+00:53:23,820 --> 00:53:29,180
+So but let's say before we run the container, we might want to look at what's inside of
+
+510
+00:53:29,180 --> 00:53:32,680
+it, just to check what's inside of it.
+
+511
+00:53:32,680 --> 00:53:36,640
+So [name], if you want to run this obtain a shell command,
+
+512
+00:53:36,640 --> 00:53:39,160
+and let's go inside there.
+
+513
+00:53:39,160 --> 00:53:43,000
+So what we now get is we get an interactive terminal
+
+514
+00:53:43,000 --> 00:53:44,640
+inside the container.
+
+515
+00:53:44,640 --> 00:53:48,880
+So now we are, you notice that [name]'s like this
+
+516
+00:53:48,880 --> 00:53:51,200
+terminal prompt changed to this apptainer.
+
+517
+00:53:51,200 --> 00:53:53,240
+So now [name]'s there.
+
+518
+00:53:53,240 --> 00:53:55,920
+And can you type, for example, like,
+
+519
+00:53:55,920 --> 00:54:06,920
+Can you type, for example, echo $USER?
+
+520
+00:54:06,920 --> 00:54:17,920
+Yes, so you can notice that in the container, because we're using Apptainer,
+
+521
+00:54:17,920 --> 00:54:21,920
+and this is this lightweight container world,
+
+522
+00:54:21,920 --> 00:54:29,520
+world. We are still ourselves inside the container. In these Docker worlds, you might become a root
+
+523
+00:54:29,520 --> 00:54:33,520
+user when you're inside the container, but in Apptainer, you're always yourself.
+
+524
+00:54:34,640 --> 00:54:39,920
+You're always, if you type hostname, I wonder if the command is there.
+
+525
+00:54:42,320 --> 00:54:43,520
+It's the same host where I am.
+
+526
+00:54:43,520 --> 00:54:56,400
+Yes, so you notice that [name] is still at the same machine, and [name] still is himself.
+
+527
+00:54:56,400 --> 00:55:01,120
+So it's just like running an application, but now you're in this kind of like a container
+
+528
+00:55:01,120 --> 00:55:09,360
+world where you're running, well, it's a bit different world, and there's different things
+
+529
+00:55:09,360 --> 00:55:10,360
+there.
+
+530
+00:55:10,360 --> 00:55:18,080
+Can you run the `command -v python`?
+
+531
+00:55:18,080 --> 00:55:21,160
+Like Python version?
+
+532
+00:55:21,160 --> 00:55:24,000
+No, but I mean like to check which Python we have.
+
+533
+00:55:26,640 --> 00:55:28,680
+Where does the Python come from?
+
+534
+00:55:28,680 --> 00:55:30,280
+Or which Python?
+
+535
+00:55:30,280 --> 00:55:32,480
+But I'm not certain which is installed there.
+
+536
+00:55:35,040 --> 00:55:37,120
+Yeah.
+
+537
+00:55:37,120 --> 00:55:38,480
+There's no which.
+
+538
+00:55:38,480 --> 00:55:43,480
+Yeah, can you type `command -v python`?
+
+539
+00:55:46,720 --> 00:55:49,720
+So we noticed that the Python interpreter here,
+
+540
+00:55:49,720 --> 00:55:51,520
+like in this image, it's been installed
+
+541
+00:55:51,520 --> 00:55:53,800
+into user local in Python.
+
+542
+00:55:53,800 --> 00:55:57,360
+Like it's up to them to decide the container creators,
+
+543
+00:55:57,360 --> 00:55:59,000
+like where do have the installed Python.
+
+544
+00:55:59,000 --> 00:56:01,920
+But this is like, you can see that this might not be
+
+545
+00:56:01,920 --> 00:56:05,360
+the place where Python is outside of the container.
+
+546
+00:56:05,360 --> 00:56:10,200
+So should we go out and then continue on?
+
+547
+00:56:10,200 --> 00:56:12,960
+So this is where you can go inside the container
+
+548
+00:56:12,960 --> 00:56:16,200
+with the shell, and you can check around what's
+
+549
+00:56:16,200 --> 00:56:17,400
+inside there.
+
+550
+00:56:17,400 --> 00:56:21,720
+And you can look, well, you can get accustomed
+
+551
+00:56:21,720 --> 00:56:25,200
+to what is the container that you're currently using.
+
+552
+00:56:25,200 --> 00:56:27,360
+Especially useful if you don't know
+
+553
+00:56:27,360 --> 00:56:30,440
+what's inside the container, like if you got it
+
+554
+00:56:30,440 --> 00:56:33,480
+from the internet.
+
+555
+00:56:33,480 --> 00:56:36,400
+Let's then check, like, how do you run one application
+
+556
+00:56:36,400 --> 00:56:38,400
+or single program in a container?
+
+557
+00:56:38,400 --> 00:56:40,960
+So if the run script, let's say the run script
+
+558
+00:56:40,960 --> 00:56:43,400
+doesn't contain what you want,
+
+559
+00:56:43,400 --> 00:56:45,200
+or you just want to run something else,
+
+560
+00:56:45,200 --> 00:56:47,520
+but you want to run it inside the container,
+
+561
+00:56:47,520 --> 00:56:49,800
+inside the guest, like operating system
+
+562
+00:56:49,800 --> 00:56:54,800
+and inside the container world, inside the image,
+
+563
+00:56:55,800 --> 00:56:58,800
+we can use this 'exec' to execute it.
+
+564
+00:56:58,800 --> 00:57:03,800
+And this takes as an added, like arguments,
+
+565
+00:57:05,600 --> 00:57:07,760
+whatever command you want to run.
+
+566
+00:57:07,760 --> 00:57:10,640
+So you can read it as like apptainer,
+
+567
+00:57:10,640 --> 00:57:13,040
+then the exec subcommand, and then the image name.
+
+568
+00:57:13,040 --> 00:57:17,160
+And then after the image name, whatever is there,
+
+569
+00:57:17,160 --> 00:57:20,500
+you can check that, okay, this is the,
+
+570
+00:57:22,000 --> 00:57:23,440
+like, this is what we want to run.
+
+571
+00:57:23,440 --> 00:57:26,040
+So when you visualize, okay, like,
+
+572
+00:57:26,040 --> 00:57:33,720
+how should I read this command? After the image file, everything after that, you can just basically
+
+573
+00:57:34,280 --> 00:57:40,920
+take the front side of that command and then ignore it, and the rest of it will be executed
+
+574
+00:57:40,920 --> 00:57:52,280
+inside the container. If you now run this command, this Python container is built upon Debian,
+
+575
+00:57:52,280 --> 00:57:57,880
+So it's not the Ubuntu container, it's built on this Debian operating system.
+
+576
+00:57:57,880 --> 00:58:02,840
+So we can check what is the Debian version and it's Debian version 12, for example.
+
+577
+00:58:02,840 --> 00:58:08,680
+And because [name] is not running Debian over here in the host system,
+
+578
+00:58:08,680 --> 00:58:12,120
+we can definitely see that. Yeah, if you want to try it.
+
+579
+00:58:12,680 --> 00:58:15,960
+Yeah, now I'm running it. Now I'm not inside the container, I'm in this
+
+580
+00:58:15,960 --> 00:58:19,960
+whatever node of the cluster and it's saying no such file directory.
+
+581
+00:58:19,960 --> 00:58:20,960
+Yes.
+
+582
+00:58:20,960 --> 00:58:23,960
+Generally, because it's not Debian.
+
+583
+00:58:23,960 --> 00:58:24,960
+Yeah.
+
+584
+00:58:24,960 --> 00:58:25,960
+Yes.
+
+585
+00:58:25,960 --> 00:58:27,960
+This is interesting.
+
+586
+00:58:27,960 --> 00:58:38,960
+At least when I started using this type of technology, I always felt that when I type something like this, it's like I'm SSH-ing to, you know, a remote machine called python.sif.
+
+587
+00:58:38,960 --> 00:58:43,960
+And then suddenly, you know, what I see here is different than what I see in there.
+
+588
+00:58:43,960 --> 00:58:52,080
+Yeah, that's a completely like you are basically doing that sort of thing, but
+
+589
+00:58:52,080 --> 00:58:56,640
+you are essentially basically to the same machine, but in a different world,
+
+590
+00:58:56,640 --> 00:59:01,040
+like a strange dimension or something like that.
+
+591
+00:59:01,040 --> 00:59:02,040
+Okay.
+
+592
+00:59:02,040 --> 00:59:05,320
+But this is like, it's not very complicated.
+
+593
+00:59:05,320 --> 00:59:09,560
+Like I would say like the most complicated thing about Apptainer and Docker as well,
+
+594
+00:59:09,560 --> 00:59:11,560
+I would say are the command lines.
+
+595
+00:59:11,560 --> 00:59:16,960
+Like the most complicated things, well, the concepts might be complicated, but the concepts
+
+596
+00:59:16,960 --> 00:59:22,760
+are often clouded or like hidden behind the command lines because command lines can get
+
+597
+00:59:22,760 --> 00:59:24,640
+very long.
+
+598
+00:59:24,640 --> 00:59:32,320
+But you shouldn't let that dissuade you from using them.
+
+599
+00:59:32,320 --> 00:59:36,840
+It's just about figuring out what blocks you put there.
+
+600
+00:59:36,840 --> 00:59:40,480
+We have to remind you, of course, to use the Apptainer help.
+
+601
+00:59:40,480 --> 00:59:43,960
+You can maybe write that on the command line now, [name].
+
+602
+00:59:43,960 --> 00:59:51,920
+That will give you, of course, the manual of how to use this.
+
+603
+00:59:51,920 --> 00:59:53,080
+Yes.
+
+604
+00:59:53,080 --> 00:59:56,200
+And there's plenty of these commands, other commands.
+
+605
+00:59:56,200 --> 01:00:00,840
+There's like a good reference guide from Apptainer's page as well.
+
+606
+01:00:00,840 --> 01:00:06,200
+But there's huge amounts of these, and you can get help for each subcommand separately.
+
+607
+01:00:06,200 --> 01:00:12,040
+So if you forget like, okay, what were the flags for one command or another, you can
+
+608
+01:00:12,040 --> 01:00:18,240
+always run apptainer help other way around.
+
+609
+01:00:18,240 --> 01:00:19,240
+Yeah.
+
+610
+01:00:19,240 --> 01:00:22,260
+And then you'll see the syntax typically also.
+
+611
+01:00:22,260 --> 01:00:32,480
+So we use the subcommand help to check, like for example, what is the syntax for that?
+
+612
+01:00:32,480 --> 01:00:33,920
+There's a lot of text there.
+
+613
+01:00:33,920 --> 01:00:34,920
+Some examples.
+
+614
+01:00:34,920 --> 01:00:35,920
+Yeah.
+
+615
+01:00:35,920 --> 01:00:38,280
+should be on your fingertips all the time.
+
+616
+01:00:39,520 --> 01:00:39,880
+Yes.
+
+617
+01:00:42,080 --> 01:00:42,680
+So, okay.
+
+618
+01:00:42,680 --> 01:00:46,440
+So now that we get like a grasp of, okay, it's not so complicated to run.
+
+619
+01:00:46,600 --> 01:00:49,720
+Hopefully it's not so complicated to run a container.
+
+620
+01:00:50,120 --> 01:00:54,240
+We can go a bit back and think about the container images.
+
+621
+01:00:54,640 --> 01:00:57,720
+So what is this .sif file that we suddenly got?
+
+622
+01:00:57,760 --> 01:00:59,720
+And what is, what is container image?
+
+623
+01:00:59,760 --> 01:01:00,760
+What are we talking about?
+
+624
+01:01:00,760 --> 01:01:08,040
+And first, let's look at the terminology again a bit because that helps us understand the thing.
+
+625
+01:01:09,480 --> 01:01:14,360
+So let's first focus on how traditional Docker container images work like Docker.
+
+626
+01:01:14,920 --> 01:01:23,240
+And the name comes from, well the image comes from like actual images, like if you think about
+
+627
+01:01:23,240 --> 01:01:28,920
+an image. So [name], if you want to scroll a bit down to show the picture. So here's like an
+
+628
+01:01:28,920 --> 01:01:37,000
+unfinished painting by Leonardo da Vinci and and the image here has multiple layers you can see
+
+629
+01:01:37,000 --> 01:01:42,840
+them because it's unfinished so you can see that there's like like some areas that are completely
+
+630
+01:01:42,840 --> 01:01:48,280
+white and you should see the background panel like this was like oil on panel or something like that
+
+631
+01:01:48,920 --> 01:01:53,800
+so you can see the background panel like for example the hand of the character or the
+
+632
+01:01:53,800 --> 01:02:01,760
+the lion, you can see that there's like white or almost white space there, and that is like
+
+633
+01:02:01,760 --> 01:02:03,240
+the background.
+
+634
+01:02:03,240 --> 01:02:08,160
+And on top of that, sometimes there's sketches on front of it, there's been something drawn
+
+635
+01:02:08,160 --> 01:02:09,640
+on top of it.
+
+636
+01:02:09,640 --> 01:02:13,620
+And sometimes there's something painted on top of it, like, for example, the background.
+
+637
+01:02:13,620 --> 01:02:21,640
+And sometimes there's like sketches that made on top on front of the background painting,
+
+638
+01:02:21,640 --> 01:02:26,780
+So you have basically like a panel, then you might have a sketch, you might have a paint
+
+639
+01:02:26,780 --> 01:02:30,460
+on top of that sketch, and you might have a sketch on top of that paint.
+
+640
+01:02:30,460 --> 01:02:32,180
+So you have layers.
+
+641
+01:02:32,180 --> 01:02:36,980
+So you have multiple layers in this image.
+
+642
+01:02:36,980 --> 01:02:44,380
+And you can see them here, because it's not yet like a full image, because it's unfinished.
+
+643
+01:02:44,380 --> 01:02:48,620
+And this is how traditional containers work as well.
+
+644
+01:02:48,620 --> 01:02:58,780
+they take the idea of an image build from layers. So you basically take something and then you paint
+
+645
+01:02:58,780 --> 01:03:07,420
+something over it. And then you make another layer paint on top of it. And what are these layers?
+
+646
+01:03:08,220 --> 01:03:15,500
+If you scroll a bit below, there's another diagram.
+
+647
+01:03:15,500 --> 01:03:27,780
+Well, this is a bit smaller, so maybe if you do want to take it full screen, or maybe...
+
+648
+01:03:27,780 --> 01:03:35,620
+So what you have in these containers is that you have something of a base layer.
+
+649
+01:03:35,620 --> 01:03:40,740
+In the case of these containers, it might be an operating system.
+
+650
+01:03:40,740 --> 01:03:45,140
+And then when you do any modifications on that,
+
+651
+01:03:45,140 --> 01:03:47,060
+you paint, basically, another layer
+
+652
+01:03:47,060 --> 01:03:49,460
+on top of that base image.
+
+653
+01:03:49,460 --> 01:03:51,900
+It's often called base image.
+
+654
+01:03:51,900 --> 01:03:54,940
+Let's say you have a Ubuntu installation or something,
+
+655
+01:03:54,940 --> 01:03:56,460
+and that's your base image.
+
+656
+01:03:56,460 --> 01:03:59,380
+So that would be the panel in the painting, basically.
+
+657
+01:03:59,380 --> 01:04:00,980
+And then you paint.
+
+658
+01:04:00,980 --> 01:04:04,780
+Let's say you modify a file or you install an application
+
+659
+01:04:04,780 --> 01:04:05,540
+on top of it.
+
+660
+01:04:05,540 --> 01:04:10,060
+You basically paint on top of this previous image.
+
+661
+01:04:10,060 --> 01:04:15,760
+So you paint on this panel and you, you do some modifications and what
+
+662
+01:04:15,760 --> 01:04:20,780
+these traditional container technology do is that they record the
+
+663
+01:04:20,780 --> 01:04:25,980
+differences, what happened, like when you have the base image and
+
+664
+01:04:25,980 --> 01:04:27,600
+then you do some modification.
+
+665
+01:04:27,600 --> 01:04:30,220
+So you basically paint something on top of the base image.
+
+666
+01:04:30,760 --> 01:04:37,960
+Uh, it records what was painted and then it stores that as a separate layer.
+
+667
+01:04:37,960 --> 01:04:46,960
+So, if you are familiar with Photoshop or Gimp or other of these like image editing
+
+668
+01:04:46,960 --> 01:04:52,160
+tools, they often also work in layers, so you might have multiple layers of images on
+
+669
+01:04:52,160 --> 01:05:01,800
+top of images, and each layer hides something from the below layer, or it might not hide.
+
+670
+01:05:01,800 --> 01:05:08,520
+So for example, in the Leonardo's painting, the hand wasn't painted, so there's nothing
+
+671
+01:05:08,520 --> 01:05:13,480
+hiding, there's nothing painted on top of that area, but some other areas might be
+
+672
+01:05:14,360 --> 01:05:20,520
+painted over. So let's say you take a base image of an Ubuntu installation and you upgrade all of
+
+673
+01:05:20,520 --> 01:05:27,000
+the software inside of there. You now modify multiple files, so you basically create a new
+
+674
+01:05:27,000 --> 01:05:34,040
+layer of the upgrades and what the traditional container world does is that it records these
+
+675
+01:05:34,040 --> 01:05:44,040
+layers and why it does that is that it makes it easy to store a lot of software because
+
+676
+01:05:44,040 --> 01:05:49,960
+let's say think about like let's say docker hub which is this kind of like registry of images
+
+677
+01:05:49,960 --> 01:05:56,520
+in the internet they only have to store a few instances of let's say Ubuntu operating system
+
+678
+01:05:57,000 --> 01:06:03,000
+And then whenever somebody wants to use Ubuntu operating system, they don't
+
+679
+01:06:03,000 --> 01:06:06,140
+have to like store another copy of the Ubuntu operating system.
+
+680
+01:06:06,140 --> 01:06:12,120
+They just copy the, like, they take that base image and then they take whatever
+
+681
+01:06:12,120 --> 01:06:14,540
+differences the other image does.
+
+682
+01:06:15,480 --> 01:06:21,600
+So, so basically they like riff on this previous image, they
+
+683
+01:06:21,600 --> 01:06:23,000
+create another version of that.
+
+684
+01:06:23,000 --> 01:06:37,000
+And how the images are built is that they are done in this kind of way where each command that you run in these kind of Docker files that define how to create the image, they paint another layer.
+
+685
+01:06:37,000 --> 01:06:42,000
+And at the end, you take all of the layers and you call that an image.
+
+686
+01:06:42,000 --> 01:06:49,000
+So basically, you say that, okay, this is my image now, but it's still stored in these layers.
+
+687
+01:06:49,000 --> 01:06:55,000
+It's stored in these kinds of like individual differences of operations.
+
+688
+01:06:55,000 --> 01:07:02,000
+And of course, if you modify like a layer, like if you want, if you create this one image,
+
+689
+01:07:02,000 --> 01:07:09,000
+and then you, let's say, choose a different base image, you need to do all of the differences again.
+
+690
+01:07:09,000 --> 01:07:11,680
+but then it's like a different image.
+
+691
+01:07:11,680 --> 01:07:14,320
+But what they do is that basically they store all
+
+692
+01:07:14,320 --> 01:07:17,500
+of these differences and the image is stored
+
+693
+01:07:17,500 --> 01:07:19,940
+in these so-called squash surface layers.
+
+694
+01:07:19,940 --> 01:07:21,900
+So it's like this kind of like file systems
+
+695
+01:07:21,900 --> 01:07:23,900
+in a file kind of a way.
+
+696
+01:07:24,780 --> 01:07:27,520
+And in the diagram, we see like an example
+
+697
+01:07:27,520 --> 01:07:31,580
+where we have like a container image
+
+698
+01:07:31,580 --> 01:07:33,500
+that might be like a base image.
+
+699
+01:07:33,500 --> 01:07:36,460
+And then on top of that, you might have like an application
+
+700
+01:07:36,460 --> 01:07:38,620
+and another application and they might
+
+701
+01:07:38,620 --> 01:07:52,940
+hide something from the layer before or they might not hide something. You might have a
+
+702
+01:07:52,940 --> 01:08:04,380
+situation where you have something new added by the next layer. This is how traditional containers
+
+703
+01:08:04,380 --> 01:08:11,180
+work. But of course, because in traditional containers, this makes it easy to transfer
+
+704
+01:08:11,180 --> 01:08:18,140
+let's say the same image across multiple cloud infrastructures or something like that because
+
+705
+01:08:18,140 --> 01:08:25,820
+you just need to transfer the layers. You save on storage space and you save on a network space.
+
+706
+01:08:25,820 --> 01:08:32,220
+But it doesn't make it very easy to make it static or make it reproducible. Because like
+
+707
+01:08:32,220 --> 01:08:36,620
+I mentioned that if you change something from the base image, suddenly everything changes.
+
+708
+01:08:36,620 --> 01:08:41,820
+You need to rebuild the whole thing. That's what they often do. They rebuild the whole thing.
+
+709
+01:08:41,820 --> 01:08:49,660
+They rebuild the images automatically. Stuff changes often. It's not very good for scientific
+
+710
+01:08:49,660 --> 01:08:59,100
+code where you might want to run the exact same code in many years. You might want to have a
+
+711
+01:08:59,100 --> 01:09:04,780
+situation where you want to run the exact same thing. So Apptainer has a bit of a different
+
+712
+01:09:04,780 --> 01:09:11,580
+approach, but they still use these. You can still create Apptainer images from these
+
+713
+01:09:11,580 --> 01:09:20,460
+Docker images. And what Apptainer basically does is that when you have an image, like whatever image,
+
+714
+01:09:20,460 --> 01:09:25,020
+let's say a Docker image, it's basically like you take a print of a painting. Instead of having the
+
+715
+01:09:25,020 --> 01:09:31,260
+individual layers there, let's say you take a photo out of it or scan the image and then you
+
+716
+01:09:31,260 --> 01:09:40,220
+print it. If you got it from a printer, it's just one paper with ink on certain spots and there's
+
+717
+01:09:40,220 --> 01:09:49,580
+no layers there from in a printed paper. It's the same. It's just one layer where everything is
+
+718
+01:09:49,580 --> 01:09:55,940
+squashed together. So it takes all of, like, let's say when you create like an image out
+
+719
+01:09:55,940 --> 01:10:01,080
+of a docker image, what you do is that you, or what Apptainter does is that it takes all
+
+720
+01:10:01,080 --> 01:10:06,900
+of the layers and then it basically like squashes them together. So it leaves what you would
+
+721
+01:10:06,900 --> 01:10:15,300
+see, like it will leave the image that you would see, just the top layers.
+
+722
+01:10:15,300 --> 01:10:19,580
+And I guess then you cannot go back and modify one layer in the middle, basically, that's
+
+723
+01:10:19,580 --> 01:10:20,580
+the whole point.
+
+724
+01:10:20,580 --> 01:10:21,580
+Yes.
+
+725
+01:10:21,580 --> 01:10:22,580
+Because that's been already written off.
+
+726
+01:10:22,580 --> 01:10:23,580
+That you could do for Docker.
+
+727
+01:10:23,580 --> 01:10:24,580
+Yes.
+
+728
+01:10:24,580 --> 01:10:25,580
+Yes.
+
+729
+01:10:25,580 --> 01:10:28,700
+And that's like the idea behind it.
+
+730
+01:10:28,700 --> 01:10:35,740
+And then all of that is stored in one file, which is the .sif format, which is this Singularity Image Format.
+
+731
+01:10:35,740 --> 01:10:41,180
+That is basically like, that is the squashfs layer plus some metadata.
+
+732
+01:10:41,180 --> 01:10:48,460
+For example, the original file that was used to create the container, it contains some
+
+733
+01:10:48,460 --> 01:10:58,500
+metadata that explains what version of Apptainer was used to create this image, how was this
+
+734
+01:10:58,500 --> 01:11:05,980
+created and then the actual data or what's there.
+
+735
+01:11:05,980 --> 01:11:11,100
+has some upsides. So it's much more portable, so you can easily transfer it using normal tools.
+
+736
+01:11:11,100 --> 01:11:15,900
+You don't have to use these registries. The traditional containers are transferred using
+
+737
+01:11:15,900 --> 01:11:20,940
+these container registries, or sometimes the layers are stored into these tarballs.
+
+738
+01:11:21,900 --> 01:11:27,100
+But quite often, the transferring of traditional containers is quite tricky.
+
+739
+01:11:28,140 --> 01:11:35,180
+So these are much more portable. You can just use scp or rsync or just copy it from place to
+
+740
+01:11:35,180 --> 01:11:41,420
+place and it's very easy to transfer them and because they're static they're very reproducible
+
+741
+01:11:42,860 --> 01:11:48,940
+and they're very easy to archive. The downside is that because of the squashing process it takes a
+
+742
+01:11:48,940 --> 01:11:54,860
+bit more time to create them and if you need to do it again you need to do the squashing again
+
+743
+01:11:54,860 --> 01:12:03,020
+basically. You need to take the layers again and do the squashing. So building the images can
+
+744
+01:12:03,020 --> 01:12:08,940
+sometimes take a bit more time. And also, you cannot store them into these traditional
+
+745
+01:12:08,940 --> 01:12:13,740
+registers like Docker Hub. There used to be this thing called Singularity Hub,
+
+746
+01:12:14,780 --> 01:12:22,620
+but it's now defunct for storing these singularity images. But most of the time,
+
+747
+01:12:23,740 --> 01:12:28,140
+I don't know, put them to Zenodo or GitHub or whatever.
+
+748
+01:12:28,140 --> 01:12:32,900
+And there's a lot of mention of Docker here.
+
+749
+01:12:32,900 --> 01:12:39,620
+So maybe that's confusing for the listeners, but why is Docker used everywhere when we're
+
+750
+01:12:39,620 --> 01:12:40,620
+talking about Apptainer?
+
+751
+01:12:40,620 --> 01:12:41,620
+Yes.
+
+752
+01:12:41,620 --> 01:12:42,620
+Could you say something?
+
+753
+01:12:42,620 --> 01:12:43,620
+Yes.
+
+754
+01:12:43,620 --> 01:12:53,740
+So the Docker is like, when you Google container, Docker is the tool that you run up.
+
+755
+01:12:53,740 --> 01:13:00,000
+It's up to the point where like Dockerfile is like, how do you write these images is
+
+756
+01:13:00,000 --> 01:13:02,140
+called a Dockerfile.
+
+757
+01:13:02,140 --> 01:13:08,080
+But nowadays it's often systems that are not running Docker, like containers are run without
+
+758
+01:13:08,080 --> 01:13:14,340
+Docker even, but they were basically so popular that it became like a, so it's like a, like
+
+759
+01:13:14,340 --> 01:13:21,140
+in the US you might have a like Kleenex or something like for like a tissue, like you
+
+760
+01:13:21,140 --> 01:13:26,260
+might, the brand name is so popular that is nowadays like referring to like whole industry.
+
+761
+01:13:26,900 --> 01:13:32,580
+So even though Docker is nowadays, like you might have Kubernetes or something,
+
+762
+01:13:32,580 --> 01:13:36,420
+which is very powerful on running containers or Docker Compose.
+
+763
+01:13:38,260 --> 01:13:43,060
+These are like the traditional tools and Docker is the company that made these.
+
+764
+01:13:43,060 --> 01:13:48,820
+And it was so popular that lots of the terminology is still left. And if you Google
+
+765
+01:13:48,820 --> 01:13:54,740
+containers, you will first come to Docker. And that's a different kind of a technology. And
+
+766
+01:13:54,740 --> 01:14:03,540
+that's more like heavyweight compared to apptainer. And also, it's good, because it makes like a
+
+767
+01:14:03,540 --> 01:14:10,980
+standard that is, you know, easier to use. Yes, and also many different starting points.
+
+768
+01:14:11,780 --> 01:14:17,860
+Yes. And also, there's existing infrastructure there. So for example, the image that [name]
+
+769
+01:14:17,860 --> 01:14:23,940
+pulled out the Python image that was provided by Docker Hub, well, the Docker company itself.
+
+770
+01:14:25,460 --> 01:14:32,500
+And they had their, like many software developers, they provide software through Docker Hub or
+
+771
+01:14:34,340 --> 01:14:40,820
+there's other registries like quay.io or GitHub Container Registry. There's many places where
+
+772
+01:14:40,820 --> 01:14:48,980
+people might provide these container images through. You might have heard like a year ago
+
+773
+01:14:48,980 --> 01:14:53,300
+or two years ago there was a big uproar in the open source community when Docker Hub
+
+774
+01:14:54,260 --> 01:15:00,420
+planned on making open source projects like pay money for storing stuff in Docker Hub but they
+
+775
+01:15:01,220 --> 01:15:08,580
+went back on that quite quickly because the open source community uses Docker Hub very
+
+776
+01:15:08,580 --> 01:15:13,380
+commonly to share various applications through there. So there's already lots of applications
+
+777
+01:15:13,380 --> 01:15:19,220
+or lots of base images that you can use to start up your own images. So, for example,
+
+778
+01:15:19,220 --> 01:15:28,900
+you don't need to start installing, I don't know, like CUDA toolkit or some really complicated
+
+779
+01:15:28,900 --> 01:15:34,900
+thing into an image because there's probably an image for that already provided by either
+
+780
+01:15:34,900 --> 01:15:42,180
+the software developers themselves or the underlying technology creators. So there's
+
+781
+01:15:42,180 --> 01:15:54,180
+plenty of existing applications available there. Excellent. So I think we covered everything when
+
+782
+01:15:54,180 --> 01:15:59,300
+it comes to this page. Related to this Apptainer versus Docker, I want to raise one question from
+
+783
+01:15:59,300 --> 01:16:03,620
+the shared document, and please keep on adding your comments or questions there.
+
+784
+01:16:04,180 --> 01:16:11,060
+So, are Apptainer containers lightweight or are Apptainer containers normal and Docker
+
+785
+01:16:11,060 --> 01:16:18,260
+containers heavyweight? So, could you think it like this in an intuitive way?
+
+786
+01:16:18,260 --> 01:16:29,700
+In a sense, basically, Docker containers are like... Let's say you... Docker containers are
+
+787
+01:16:29,700 --> 01:16:37,860
+much more like... They have a more strict list. They have much more options available to them,
+
+788
+01:16:37,860 --> 01:16:44,900
+but you need to be usually the super user to run them. So you can run bigger services or
+
+789
+01:16:44,900 --> 01:16:48,060
+or run multiple containers at one time
+
+790
+01:16:48,060 --> 01:16:50,620
+that discuss with each other in a virtual network
+
+791
+01:16:50,620 --> 01:16:51,460
+or something like that,
+
+792
+01:16:51,460 --> 01:16:53,580
+you can create like this kind of like
+
+793
+01:16:53,580 --> 01:16:57,100
+more complex applications usually with those.
+
+794
+01:16:57,100 --> 01:17:00,000
+And they have like more capabilities
+
+795
+01:17:00,000 --> 01:17:02,420
+and they are in that sense more heavyweight.
+
+796
+01:17:02,420 --> 01:17:04,540
+But the heavyweight also means that
+
+797
+01:17:04,540 --> 01:17:08,700
+you need to have certain things to be able to run them.
+
+798
+01:17:08,700 --> 01:17:10,020
+And when you run them,
+
+799
+01:17:10,020 --> 01:17:14,540
+then you need to like usually like figure out,
+
+800
+01:17:14,540 --> 01:17:18,380
+okay, why is everything off by the root user or something like that?
+
+801
+01:17:18,380 --> 01:17:26,060
+You have a lot more capabilities, but there's also a lot more overhead when creating those.
+
+802
+01:17:26,060 --> 01:17:31,580
+It's a great technology. And if you're interested in web services and whatever,
+
+803
+01:17:32,300 --> 01:17:39,340
+it's a good idea to familiarize yourself with that. But the focus here is more on this, okay,
+
+804
+01:17:39,340 --> 01:17:48,780
+If I take the best or that part in the container technology, that makes it really easy to do
+
+805
+01:17:48,780 --> 01:17:55,340
+HPC stuff or really easy to do scientific software deployments, scientific software
+
+806
+01:17:55,340 --> 01:17:56,580
+installations.
+
+807
+01:17:56,580 --> 01:18:03,140
+If I just take that piece and I try to make a product or a container around that thing,
+
+808
+01:18:03,140 --> 01:18:04,300
+what can I achieve?
+
+809
+01:18:04,300 --> 01:18:09,220
+And that's basically what Apptainer and Singularity try to do, is that they take that one part
+
+810
+01:18:09,220 --> 01:18:16,220
+in the container technology that is very useful in scientific context and just that part.
+
+811
+01:18:16,220 --> 01:18:20,220
+Because then you don't have to worry about the overhead.
+
+812
+01:18:20,220 --> 01:18:24,220
+You don't have to worry about root rights or whatever.
+
+813
+01:18:24,220 --> 01:18:27,220
+You don't have to worry about a lot of stuff.
+
+814
+01:18:27,220 --> 01:18:34,220
+And you can just focus on the app of the app running the application
+
+815
+01:18:34,220 --> 01:18:39,900
+instead of like what network driver should I use or something like that.
+
+816
+01:18:41,940 --> 01:18:45,980
+Great, it's exactly 11 o'clock in Finland, 10 o'clock in Central Europe.
+
+817
+01:18:46,660 --> 01:18:49,220
+So I guess we could have a 10 minutes break.
+
+818
+01:18:50,060 --> 01:18:52,660
+The stream will be back in 10 minutes.
+
+819
+01:18:52,660 --> 01:18:56,220
+You can keep on adding questions or comments to the share notes
+
+820
+01:18:56,860 --> 01:18:59,900
+and see you in 10 minutes. Bye.
+
+821
+01:19:04,220 --> 01:19:06,280
+you
+
+822
+01:19:34,220 --> 01:19:36,280
+you
+
+823
+01:20:04,220 --> 01:20:06,280
+you
+
+824
+01:20:34,220 --> 01:20:36,280
+you
+
+825
+01:21:04,220 --> 01:21:06,280
+you
+
+826
+01:21:34,220 --> 01:21:36,280
+you
+
+827
+01:22:04,220 --> 01:22:06,280
+you
+
+828
+01:22:34,220 --> 01:22:36,280
+you
+
+829
+01:23:04,220 --> 01:23:06,280
+you
+
+830
+01:23:34,220 --> 01:23:36,280
+you
+
+831
+01:24:04,220 --> 01:24:06,280
+you
+
+832
+01:24:34,220 --> 01:24:36,280
+you
+
+833
+01:25:04,220 --> 01:25:06,280
+you
+
+834
+01:25:34,220 --> 01:25:36,280
+you
+
+835
+01:26:04,220 --> 01:26:06,280
+you
+
+836
+01:26:34,220 --> 01:26:36,280
+you
+
+837
+01:27:04,220 --> 01:27:06,280
+you
+
+838
+01:27:34,220 --> 01:27:36,280
+you
+
+839
+01:28:04,220 --> 01:28:06,280
+you
+
+840
+01:28:34,220 --> 01:28:57,580
+Hello and welcome back.
+
+841
+01:28:57,580 --> 01:29:04,300
+So we have covered quite a lot of the basics of containers in general and specifically
+
+842
+01:29:04,300 --> 01:29:08,780
+about Apptainer and why is it useful in HPC.
+
+843
+01:29:08,780 --> 01:29:11,540
+I think it's now time to build some Apptainer images.
+
+844
+01:29:11,540 --> 01:29:12,540
+Right?
+
+845
+01:29:12,540 --> 01:29:13,540
+Yes.
+
+846
+01:29:13,540 --> 01:29:14,540
+See my mic?
+
+847
+01:29:14,540 --> 01:29:15,540
+Yes.
+
+848
+01:29:15,540 --> 01:29:16,540
+Absolutely.
+
+849
+01:29:16,540 --> 01:29:21,420
+Before we go there, I want to address a few questions in the HackMD which were really
+
+850
+01:29:21,420 --> 01:29:30,860
+good about the overhead of running these containers. Does it require extra memory
+
+851
+01:29:30,860 --> 01:29:37,900
+requirement? Do you need anything to that taken into account? Basically, no.
+
+852
+01:29:40,860 --> 01:29:45,500
+How does this work? I don't go into technical details, but they use this tool called
+
+853
+01:29:45,500 --> 01:29:49,260
+like namespaces in the Linux kernel.
+
+854
+01:29:49,260 --> 01:29:54,300
+So what it basically does is that it swaps the indicator container.
+
+855
+01:29:54,300 --> 01:29:59,980
+It basically swaps the operating system with these classes with the kernel.
+
+856
+01:30:00,700 --> 01:30:05,660
+It just swaps that around so that it now uses stuff from the operating system.
+
+857
+01:30:05,660 --> 01:30:09,740
+Instead of taking libraries from the operating system, it gets it from the image,
+
+858
+01:30:09,740 --> 01:30:12,140
+but it's basically transparent.
+
+859
+01:30:12,140 --> 01:30:20,540
+so there's like few megabytes maybe the overhead and it doesn't slow down the computing at all
+
+860
+01:30:20,540 --> 01:30:27,660
+like it's completely like same the speed so even though we are talking about the guest
+
+861
+01:30:27,660 --> 01:30:31,260
+operating system and that sort of stuff it doesn't mean that it like starts up like
+
+862
+01:30:32,620 --> 01:30:37,660
+like GNOME desktop or something like that it doesn't do any it doesn't start this kind of
+
+863
+01:30:37,660 --> 01:30:43,180
+like services it just like swaps out the file system from underneath the application and then
+
+864
+01:30:43,180 --> 01:30:50,300
+it like runs with that same file different file system so it's basically doesn't use any
+
+865
+01:30:51,020 --> 01:30:57,740
+any extra resources there's technical reasons you can look at the first session there's like a
+
+866
+01:30:57,740 --> 01:31:03,100
+extra point about this but but i don't want to go to that because that's that's more in
+
+867
+01:31:03,100 --> 01:31:06,780
+the docker world and we try to keep it in the app tenure world throughout this session
+
+868
+01:31:07,660 --> 01:31:16,420
+All right, so building up the inner images.
+
+869
+01:31:16,420 --> 01:31:22,620
+Yeah, so previously we just bypassed one of these commands that [name] was running, which
+
+870
+01:31:22,620 --> 01:31:24,900
+was this pulling an image.
+
+871
+01:31:24,900 --> 01:31:28,940
+So what do we mean when we pull an image?
+
+872
+01:31:28,940 --> 01:31:32,580
+So this is, again, part of the Docker world.
+
+873
+01:31:32,580 --> 01:31:39,300
+So what we do is that if we have a container registry,
+
+874
+01:31:39,300 --> 01:31:42,700
+for example, Docker Hub, which is very popular,
+
+875
+01:31:42,700 --> 01:31:44,340
+and it has some images.
+
+876
+01:31:44,340 --> 01:31:48,060
+And usually, these images, you can pull them
+
+877
+01:31:48,060 --> 01:31:50,340
+if they are open.
+
+878
+01:31:50,340 --> 01:31:57,780
+You can just basically download the layers,
+
+879
+01:31:57,780 --> 01:32:02,300
+and then you create a container out of those layers.
+
+880
+01:32:02,300 --> 01:32:08,020
+And the pull basically means, OK, just download these layers
+
+881
+01:32:08,020 --> 01:32:10,620
+for me and create me an image out of it,
+
+882
+01:32:10,620 --> 01:32:12,100
+like this .sif image out of it.
+
+883
+01:32:15,940 --> 01:32:18,620
+We can use, like if you go to a Docker Hub
+
+884
+01:32:18,620 --> 01:32:21,540
+and you see like a URL, like a command,
+
+885
+01:32:21,540 --> 01:32:24,780
+that's what they say how to pull the image.
+
+886
+01:32:24,780 --> 01:32:28,140
+So for example, they say, Docker pull Python.
+
+887
+01:32:28,140 --> 01:32:30,780
+So over there.
+
+888
+01:32:30,780 --> 01:32:38,380
+So, in the Singularity or Apptainer world, you just need to put this docker colon slash slash
+
+889
+01:32:38,380 --> 01:32:50,460
+on front of that last part to tell the Apptainer that, okay, you're now trying to pull from a
+
+890
+01:32:50,460 --> 01:32:57,820
+docker image. There's other kinds of registries. You can check the help page for pull. Sorry.
+
+891
+01:32:57,820 --> 01:33:13,020
+Basically, what it does is that it will ask the Docker Hub, what do you mean when I ask
+
+892
+01:33:13,020 --> 01:33:14,020
+for Python?
+
+893
+01:33:14,020 --> 01:33:20,780
+And it will get you the correct tag.
+
+894
+01:33:20,780 --> 01:33:28,500
+And there's this specification for this, so the full path or full name of the registry
+
+895
+01:33:28,500 --> 01:33:34,100
+would be docker.io and then there would be a library Python and latest.
+
+896
+01:33:34,100 --> 01:33:39,120
+So this is important if you're pulling from another registry.
+
+897
+01:33:39,120 --> 01:33:42,500
+You might need to give it a different registry path.
+
+898
+01:33:42,500 --> 01:33:49,940
+But in this case, let's just go with the first command and let's check on this.
+
+899
+01:33:49,940 --> 01:33:54,340
+So the most important part is if you have like a great history that has container images,
+
+900
+01:33:54,340 --> 01:34:00,100
+you can just pull them. So let's try it out. So you have a pull image and then you have the
+
+901
+01:34:01,380 --> 01:34:04,260
+image name and then where do you want to pull it from?
+
+902
+01:34:04,260 --> 01:34:09,140
+So now I already have it here. I'm going to delete it. This Python safe.
+
+903
+01:34:10,740 --> 01:34:16,100
+So that I will build it again. Of course, now I've already run this common one. So there might
+
+904
+01:34:16,100 --> 01:34:22,660
+be some caching, isn't it? Yes, but we're basically saying like
+
+905
+01:34:22,660 --> 01:34:30,820
+apptainer use subcommand pull use image python.sif and then from docker get me python.
+
+906
+01:34:32,980 --> 01:34:42,100
+So use this docker registries and this docker and yeah it is. If you wouldn't have the caches
+
+907
+01:34:42,100 --> 01:34:47,060
+it would download various layers and then it would merge them into the SIF image. And if you now type
+
+908
+01:34:47,060 --> 01:34:53,380
+ls, you probably have the Python SIF errors again. Yeah, even though I deleted it.
+
+909
+01:34:55,220 --> 01:34:59,060
+Well, maybe what if I change the cache, which is next.
+
+910
+01:35:02,820 --> 01:35:09,060
+Yeah, so because the creation of the image, if you think about again, we need to get all of
+
+911
+01:35:09,060 --> 01:35:11,620
+of the different layers of the painting
+
+912
+01:35:11,620 --> 01:35:14,660
+in order to create like the image
+
+913
+01:35:14,660 --> 01:35:16,660
+that we can then print out basically.
+
+914
+01:35:16,660 --> 01:35:20,260
+We can take the print out of that into the .sif file.
+
+915
+01:35:20,260 --> 01:35:22,520
+It needs to download all the layers.
+
+916
+01:35:22,520 --> 01:35:24,860
+Like the Apptainer needs to download all the layers.
+
+917
+01:35:24,860 --> 01:35:26,940
+And by default, it goes to your home folder.
+
+918
+01:35:26,940 --> 01:35:28,300
+So this is kind of something
+
+919
+01:35:28,300 --> 01:35:30,500
+that can easily fill up your home folder
+
+920
+01:35:30,500 --> 01:35:32,800
+if you're in a cluster where your home folder
+
+921
+01:35:32,800 --> 01:35:34,860
+has some small quote or something.
+
+922
+01:35:34,860 --> 01:35:38,140
+So it's usually a good idea to move this cache directory
+
+923
+01:35:38,140 --> 01:35:42,220
+somewhere else. So, for example, if [name] now.
+
+924
+01:35:44,500 --> 01:35:47,420
+I did actually already move my cache folder, so this is, for
+
+925
+01:35:47,420 --> 01:35:51,460
+example, where I have it in this system, so it's not in my
+
+926
+01:35:51,460 --> 01:35:51,780
+home.
+
+927
+01:35:51,860 --> 01:35:52,180
+Yeah.
+
+928
+01:35:52,220 --> 01:35:55,620
+So do you want to move it to the current folder that you have?
+
+929
+01:35:55,620 --> 01:35:58,300
+Yeah, let's make a subfolder like we have in the materials.
+
+930
+01:35:58,700 --> 01:35:59,020
+Yeah.
+
+931
+01:35:59,020 --> 01:36:09,660
+mkdir apptainer_cache and then I export this variable (without the dollar yeah
+
+932
+01:36:11,820 --> 01:36:20,780
+APPTAINER_CACHEDIR=wherever i am ($pwd) /apptainer_cache let's see if I did any typo
+
+933
+01:36:22,060 --> 01:36:26,380
+and now if I will look again at this variable now the path is this new path
+
+934
+01:36:26,380 --> 01:36:35,260
+Yeah, the pwd is the current folder in the Linux terminal, so basically current folder
+
+935
+01:36:36,060 --> 01:36:40,780
+apptainer_cache. So now if you do the pull command again, if you remove the previous image.
+
+936
+01:36:40,780 --> 01:36:49,180
+So let's get rid of the previous image and now arrow up until I find the command and I press enter.
+
+937
+01:36:49,180 --> 01:36:57,740
+Yeah, so now you see that [name] has to download all of the different layers and you can see
+
+938
+01:36:57,740 --> 01:37:04,140
+these blobs, so nice word for these layers, but basically they are stored in these blobs
+
+939
+01:37:04,140 --> 01:37:09,900
+and then they are unpacked and converted and some of the operations might be that they
+
+940
+01:37:09,900 --> 01:37:15,380
+cannot be done for various reasons because we are not running as a root user but it doesn't
+
+941
+01:37:15,380 --> 01:37:22,820
+usually matter, like usually it's easy to convert them and unpack them into these layers.
+
+942
+01:37:23,620 --> 01:37:31,300
+So this will take a while, so we can probably look at the next situation already while this
+
+943
+01:37:31,300 --> 01:37:36,340
+is running. So this is how you get like a ready-made container, like if you, if somebody
+
+944
+01:37:36,340 --> 01:37:43,140
+has created your container and you just want to pull it out, that's usually often the case,
+
+945
+01:37:43,140 --> 01:37:46,820
+but sometimes it's not and you need to create your own container or you want to create your own.
+
+946
+01:37:50,660 --> 01:37:55,780
+So if you want to create your own container, do you mean that we should kind of write the
+
+947
+01:37:56,900 --> 01:37:59,700
+how can I call it the recipe for the container?
+
+948
+01:38:02,020 --> 01:38:08,740
+Yes, I previously mentioned that the docker uses these things called Dockerfile:s
+
+949
+01:38:08,740 --> 01:38:15,780
+and Apptainer doesn't use those. Apptainer uses something called definition file and it's like
+
+950
+01:38:15,780 --> 01:38:23,620
+an Apptainer specific way of writing, like [name] said, the recipe for the container.
+
+951
+01:38:27,060 --> 01:38:33,300
+The important thing to remember is that you can use an existing, let's say a Docker container,
+
+952
+01:38:33,300 --> 01:38:43,460
+as the starting point and then just like spice it up, the recipe. In this example, let's look at
+
+953
+01:38:43,460 --> 01:38:49,380
+this. We have this small Python snippet. Let's say we want to make an application around this Python
+
+954
+01:38:49,380 --> 01:38:54,820
+code that we have here. This is like a small Python code that just sums up numbers that you
+
+955
+01:38:54,820 --> 01:39:01,460
+give it. This could be whatever. In your mind, put your application here, basically.
+
+956
+01:39:01,460 --> 01:39:05,140
+like your application, your codes could be here.
+
+957
+01:39:06,260 --> 01:39:10,140
+And if we want to put this into a container,
+
+958
+01:39:11,560 --> 01:39:15,080
+we might do it in the way that the definition file
+
+959
+01:39:15,080 --> 01:39:17,720
+has been written over there in the documentation.
+
+960
+01:39:17,720 --> 01:39:21,180
+So in the definition file, if we look at that in detail,
+
+961
+01:39:22,840 --> 01:39:26,400
+we have, at the first line,
+
+962
+01:39:26,400 --> 01:39:29,160
+we have this "bootstrap: docker".
+
+963
+01:39:29,160 --> 01:39:32,280
+So that means basically the same thing as we had previously,
+
+964
+01:39:32,280 --> 01:39:35,520
+like the docker:// kind of thing.
+
+965
+01:39:35,520 --> 01:39:38,400
+So we, we want to take stuff from the docker registry.
+
+966
+01:39:38,400 --> 01:39:40,400
+So let's bootstrap the image,
+
+967
+01:39:40,400 --> 01:39:44,080
+like take the first starting point and use docker to do it.
+
+968
+01:39:44,080 --> 01:39:45,200
+You can use other ways.
+
+969
+01:39:45,200 --> 01:39:48,000
+You can use previous singularity images as well
+
+970
+01:39:48,920 --> 01:39:50,120
+to do the bootstrapping.
+
+971
+01:39:50,120 --> 01:39:52,840
+Like you can use a previously existing image,
+
+972
+01:39:52,840 --> 01:39:55,840
+but let's say in this case, we want to use docker.
+
+973
+01:39:55,840 --> 01:39:59,920
+And then we have a from statement there.
+
+974
+01:39:59,920 --> 01:40:04,560
+So this defines, okay, what is the image we want to use?
+
+975
+01:40:04,560 --> 01:40:09,560
+And in this case, it would be the latest Python image.
+
+976
+01:40:09,800 --> 01:40:11,900
+So the one that [name]'s now pulling.
+
+977
+01:40:12,900 --> 01:40:16,540
+And then we have two different, these blocks,
+
+978
+01:40:16,540 --> 01:40:21,540
+and these blocks are shown by these percent signs.
+
+979
+01:40:21,540 --> 01:40:30,540
+So the first block here is files, and this block basically means that, okay, copy these files into the container.
+
+980
+01:40:30,540 --> 01:40:36,540
+So in this case, we have on the left side, we have a summation.py.
+
+981
+01:40:36,540 --> 01:40:40,540
+So that would be this summation.py script.
+
+982
+01:40:40,540 --> 01:40:43,540
+And we have after that, /opt.
+
+983
+01:40:43,540 --> 01:40:47,540
+So it basically says that copy this file to /opt.
+
+984
+01:40:47,540 --> 01:40:59,220
+And then we have another block called run-script, which basically defines the run functionality.
+
+985
+01:40:59,220 --> 01:41:04,580
+Like when we obtain a run this thing, what happens? We define this run-script block.
+
+986
+01:41:04,580 --> 01:41:10,900
+And this is basically just like a shell script, like a bash script that you define there.
+
+987
+01:41:10,900 --> 01:41:21,060
+And over there, we print out what arguments we get and then we execute with Python the summation.
+
+988
+01:41:22,740 --> 01:41:26,260
+And I wanted to put this kind of an example here, because sometimes the
+
+989
+01:41:26,980 --> 01:41:32,580
+argument handling can be a bit tricky. Or if you are not familiar with Bash,
+
+990
+01:41:35,380 --> 01:41:39,700
+giving your arguments to whatever program you want to run there can be tricky. So,
+
+991
+01:41:39,700 --> 01:41:46,340
+you can just copy paste this kind of stuff. So often when you're running or creating an application,
+
+992
+01:41:46,340 --> 01:41:51,540
+you just want to pass whatever extra arguments straight up to the application that you're
+
+993
+01:41:51,540 --> 01:41:56,820
+running. You don't want to do any modifications to them or something like that. You just want
+
+994
+01:41:56,820 --> 01:42:01,860
+to pass them around. And that could typically be, for example, the data you want to run on,
+
+995
+01:42:01,860 --> 01:42:08,340
+which is a very good example. Maybe you have your data on your host machine and you want to just
+
+996
+01:42:08,340 --> 01:42:11,620
+by that as an argument to the application that you're running.
+
+997
+01:42:12,340 --> 01:42:19,220
+Yes, and sometimes also, let's say you have a container that contains the dependencies of
+
+998
+01:42:19,220 --> 01:42:24,660
+your code, let's say like a Python code, but you still modify your code. You want to modify the
+
+999
+01:42:24,660 --> 01:42:31,060
+script that is running in the container. So maybe you want to pass the name of the script there as
+
+1000
+01:42:31,060 --> 01:42:37,060
+well. But we'll talk about how do you get stuff from outside the container into the container
+
+1001
+01:42:37,060 --> 01:42:43,700
+in the next session but for now let's just think that okay that can be whatever like whatever that
+
+1002
+01:42:43,700 --> 01:42:51,380
+you would want to have in your like you would want to pass to your program so let's try creating this
+
+1003
+01:42:53,220 --> 01:42:59,460
+yeah in practice I already did a game for timing reasons yes but I've run this command
+
+1004
+01:42:59,460 --> 01:43:06,340
+apptainer build my_container.sif blah blah using this same definition file that is written here
+
+1005
+01:43:07,220 --> 01:43:14,900
+yes and if you look at the picture here the like again it's like apptainer that's always there
+
+1006
+01:43:15,460 --> 01:43:21,140
+then we subcommand build that is how we build the containers and then we name the definite uh
+
+1007
+01:43:22,180 --> 01:43:27,140
+we first name the image file that we want to create and then we create a definition file
+
+1008
+01:43:27,140 --> 01:43:33,540
+or say the definition file. You can also have these, we don't have time to cover this,
+
+1009
+01:43:33,540 --> 01:43:39,140
+but you can have these build arguments as well. So if you want to create multiple versions of
+
+1010
+01:43:39,140 --> 01:43:45,140
+the same software with different versions installed, you can have these arguments
+
+1011
+01:43:45,140 --> 01:43:51,700
+into this build process that are then gone through in the definition file. But we don't
+
+1012
+01:43:51,700 --> 01:43:56,660
+have time to go to that, but there's plenty of advanced stuff you can do in this build process
+
+1013
+01:43:56,660 --> 01:44:03,860
+as well but okay now that we have let's say like dream that we have run this command
+
+1014
+01:44:05,300 --> 01:44:09,780
+and if we now obtain a run the container see what happens
+
+1015
+01:44:15,700 --> 01:44:16,580
+one and two
+
+1016
+01:44:19,700 --> 01:44:24,340
+yes so yeah if we look at the run script again quickly
+
+1017
+01:44:24,340 --> 01:44:31,080
+So, in the run script, we have first this echo, got arguments, and then there's like
+
+1018
+01:44:31,080 --> 01:44:36,400
+this $* that says, okay, print the arguments, basically.
+
+1019
+01:44:36,400 --> 01:44:41,800
+And then we give the arguments forward to the Python summation.
+
+1020
+01:44:41,800 --> 01:44:43,560
+So, yeah.
+
+1021
+01:44:43,560 --> 01:44:44,560
+Okay.
+
+1022
+01:44:44,560 --> 01:44:46,600
+So, this is how you build it.
+
+1023
+01:44:46,600 --> 01:44:48,200
+Can I just mention one thing also?
+
+1024
+01:44:48,200 --> 01:44:53,760
+So, as you see, if you scroll up to the run script again, [name], the whole point here
+
+1025
+01:44:53,760 --> 01:44:59,760
+is this can be however long, obviously. So you could be running one executable and you could be
+
+1026
+01:44:59,760 --> 01:45:04,800
+doing something and you could be doing another executable afterwards and so on. So yeah,
+
+1027
+01:45:04,800 --> 01:45:08,880
+this is an example showing two, but here there can be one or many.
+
+1028
+01:45:09,680 --> 01:45:16,880
+Yes. But this run script, what's important to notice is that this is executed when the
+
+1029
+01:45:16,880 --> 01:45:19,760
+the containers run.
+
+1030
+01:45:19,760 --> 01:45:23,080
+So this is not done during the build step.
+
+1031
+01:45:23,080 --> 01:45:25,600
+So this is only when the containers run.
+
+1032
+01:45:25,600 --> 01:45:27,400
+Of course, this is stored in the container,
+
+1033
+01:45:27,400 --> 01:45:30,720
+but this is run over there.
+
+1034
+01:45:30,720 --> 01:45:34,640
+But let's say you most likely want
+
+1035
+01:45:34,640 --> 01:45:38,880
+to do some modifications to the container
+
+1036
+01:45:38,880 --> 01:45:39,960
+while you're building it.
+
+1037
+01:45:39,960 --> 01:45:43,400
+So you want to install, let's say, some stuff that is more.
+
+1038
+01:45:43,400 --> 01:45:45,480
+You only want to run it during the build step.
+
+1039
+01:45:45,480 --> 01:45:48,920
+you don't want to run it every time when the container runs.
+
+1040
+01:45:48,920 --> 01:45:51,760
+So for that, we'll need to look at another section
+
+1041
+01:45:51,760 --> 01:45:54,680
+in the definition file.
+
+1042
+01:45:54,680 --> 01:45:59,400
+And this is the next thing we have over here,
+
+1043
+01:45:59,400 --> 01:46:01,980
+which is this post step.
+
+1044
+01:46:01,980 --> 01:46:05,300
+So the post here, post means here,
+
+1045
+01:46:06,520 --> 01:46:10,640
+it's a post building or post bootstrapping.
+
+1046
+01:46:10,640 --> 01:46:13,000
+So it's after the bootstrapping has been done.
+
+1047
+01:46:13,000 --> 01:46:19,240
+After the image has been created, the layers have been squashed, what extra stuff is being run?
+
+1048
+01:46:20,520 --> 01:46:25,800
+Here, for example, we can have people install NumPy here, so to install NumPy into the container.
+
+1049
+01:46:27,560 --> 01:46:33,160
+It's an arbitrary thing over here that we have added, but it's one thing.
+
+1050
+01:46:35,160 --> 01:46:41,320
+What is important to note in this post step is that in the container, when we are building it,
+
+1051
+01:46:41,320 --> 01:46:49,640
+we are running in a mode called fakeroot. What it means is that you appear as root user when
+
+1052
+01:46:49,640 --> 01:46:55,800
+you're running there, even though you're not a root user. It uses these guest namespaces,
+
+1053
+01:46:55,800 --> 01:47:04,200
+and it's a pretty complicated thing, what it does. But basically, if you have installation
+
+1054
+01:47:04,200 --> 01:47:09,560
+instructions that normally have sudo apt install or whatever, this kind of stuff,
+
+1055
+01:47:09,560 --> 01:47:15,480
+you usually need to take the sudo's out because you are already like a super user and like you
+
+1056
+01:47:15,480 --> 01:47:21,720
+are a super user like in this imaginary world you are the god basically when you're running this
+
+1057
+01:47:21,720 --> 01:47:27,720
+and and you can do all kinds of modifications to the image so if you have installation
+
+1058
+01:47:27,720 --> 01:47:33,160
+instructions that have sudo in them you usually need to modify them to take the sudo's out
+
+1059
+01:47:33,160 --> 01:47:41,380
+And of course, when you're creating these post steps, be mindful that don't put anything
+
+1060
+01:47:41,380 --> 01:47:46,740
+into the container that you don't want to have it in the container because once the container
+
+1061
+01:47:46,740 --> 01:47:51,260
+has been written out, anybody can read it.
+
+1062
+01:47:51,260 --> 01:47:59,060
+So don't put your passwords inside there or something like that in the post step.
+
+1063
+01:47:59,060 --> 01:48:02,460
+So [name] is running, I think.
+
+1064
+01:48:02,460 --> 01:48:08,820
+In the background, basically, so I expanded the original recipe definition file.
+
+1065
+01:48:08,820 --> 01:48:12,920
+I added this block post pip install NumPy.
+
+1066
+01:48:12,920 --> 01:48:16,700
+And now here I'm rebuilding, I gave it a new name.
+
+1067
+01:48:16,700 --> 01:48:26,100
+So now it's basically here, you can see creating a new image with the NumPy.
+
+1068
+01:48:26,100 --> 01:48:31,740
+So when this will be done, I will be able to run this apptainer exec, which means run
+
+1069
+01:48:31,740 --> 01:48:39,800
+the command `python -c import numpy` and print, and the expected output would be something
+
+1070
+01:48:39,800 --> 01:48:46,480
+like this that it would say. I don't know now if today NumPy went up to one version,
+
+1071
+01:48:46,480 --> 01:48:49,520
+but basically this is what we would get.
+
+1072
+01:48:49,520 --> 01:48:57,360
+But again, you can imagine that that can be whatever. That can be install or run complicated
+
+1073
+01:48:57,360 --> 01:49:04,560
+installation. Of course, one annoying thing sometimes can be that if you have a very complicated
+
+1074
+01:49:04,560 --> 01:49:10,960
+installation procedure, this post step is done in one block. So basically, you might have a situation
+
+1075
+01:49:10,960 --> 01:49:18,880
+where your installation fails. You forgot to do something and then it took a long time to do.
+
+1076
+01:49:18,880 --> 01:49:24,080
+There are possibility of doing these multi-stage builds where you basically build one container
+
+1077
+01:49:24,080 --> 01:49:30,080
+and then you build one container and then you can make it so that you can spread out
+
+1078
+01:49:30,080 --> 01:49:37,680
+the installation commands, but we won't be focusing on that today. But yeah, this can
+
+1079
+01:49:37,680 --> 01:49:41,360
+sometimes happen. So if you have this kind of a situation where you have really complicated
+
+1080
+01:49:41,360 --> 01:49:46,000
+installation in the post step, you might want to check on that.
+
+1081
+01:49:47,520 --> 01:49:51,760
+It's nice to see now in the background that now it ran the pip install numpy.
+
+1082
+01:49:51,760 --> 01:49:57,360
+And so now I see the output that I would see if I would type that command.
+
+1083
+01:49:57,360 --> 01:50:04,460
+And now it's the last stage, creating this squashfs .sif file.
+
+1084
+01:50:04,460 --> 01:50:11,200
+So in theory, I know that many users of clusters are using conda environments, so in theory
+
+1085
+01:50:11,200 --> 01:50:15,320
+one person could encapsulate the whole conda environment in this way, then instead of having
+
+1086
+01:50:15,320 --> 01:50:20,280
+pip install numpy, I could have something like conda create, blah, blah, blah.
+
+1087
+01:50:20,280 --> 01:50:21,280
+Yes.
+
+1088
+01:50:21,280 --> 01:50:28,320
+And then there will be, hopefully I'll finish the exercise creation after this session,
+
+1089
+01:50:28,320 --> 01:50:34,520
+but there's already existing like a bootstrap definition wrapper that is already in the
+
+1090
+01:50:34,520 --> 01:50:39,800
+tips and tricks session, but there will be exercise about this.
+
+1091
+01:50:39,800 --> 01:50:46,560
+But yeah, you can put like a full environment or whatever inside of the container.
+
+1092
+01:50:46,560 --> 01:50:52,560
+very useful especially in places where you run out of the file spaces or you have a huge amount of
+
+1093
+01:50:52,560 --> 01:50:59,600
+files. And then because this installation kind of creates everything inside the container,
+
+1094
+01:50:59,600 --> 01:51:05,680
+it will be that basically I could then just move this .sif file that has all the container,
+
+1095
+01:51:05,680 --> 01:51:10,000
+sorry, that all the conda environment that I need to another system and it would work, isn't it?
+
+1096
+01:51:10,000 --> 01:51:23,560
+There is some questions already in the chat about how can I add extra stuff on the container.
+
+1097
+01:51:23,560 --> 01:51:30,600
+So we'll talk about binding stuff into the containers a bit later.
+
+1098
+01:51:30,600 --> 01:51:32,920
+So you can put stuff in there.
+
+1099
+01:51:32,920 --> 01:51:37,580
+But another way is, of course, using an existing container and bootstrap on top of that.
+
+1100
+01:51:37,580 --> 01:51:42,660
+So you can choose to use apptainer as bootstrapping method
+
+1101
+01:51:42,660 --> 01:51:46,060
+and use an existing container and bootstrap on top of that
+
+1102
+01:51:46,060 --> 01:51:47,500
+and then just use that one.
+
+1103
+01:51:47,500 --> 01:51:49,300
+That's one way of doing it.
+
+1104
+01:51:49,300 --> 01:51:51,620
+But there are possible ways.
+
+1105
+01:51:51,620 --> 01:51:54,980
+What is the best way depends on your application.
+
+1106
+01:51:54,980 --> 01:52:00,100
+But we can discuss this after the binding session
+
+1107
+01:52:00,100 --> 01:52:02,220
+and also at the end.
+
+1108
+01:52:02,220 --> 01:52:03,700
+But it's a great question.
+
+1109
+01:52:03,700 --> 01:52:19,700
+So other modification that is very common is that almost always you want to do something like this in this example is to modify the environment where you're running.
+
+1110
+01:52:19,700 --> 01:52:31,700
+So let's say your application needs some environment variables that it always needs, but you don't necessarily always want to set manually yourself.
+
+1111
+01:52:31,700 --> 01:52:34,300
+One example is the language things.
+
+1112
+01:52:34,300 --> 01:52:38,700
+So in the container, well, like this happens to me all the time
+
+1113
+01:52:38,700 --> 01:52:42,800
+because I mainly use, I often have like Finnish keyboard settings
+
+1114
+01:52:42,800 --> 01:52:45,200
+and stuff like that, maybe in my terminal.
+
+1115
+01:52:45,200 --> 01:52:48,900
+And then when you go into the container, the container is like,
+
+1116
+01:52:48,900 --> 01:52:51,000
+okay, I don't understand anything about Finnish.
+
+1117
+01:52:51,000 --> 01:52:55,000
+Like it's like I have never heard about this kind of a language
+
+1118
+01:52:55,000 --> 01:52:59,400
+because like the container doesn't necessarily contain the localization
+
+1119
+01:52:59,400 --> 01:53:00,600
+packages needed for this.
+
+1120
+01:53:00,600 --> 01:53:06,600
+So often in the applications, you need to tell via these environment variables that,
+
+1121
+01:53:06,600 --> 01:53:10,600
+Hey, just use whatever language, like, I don't care.
+
+1122
+01:53:10,600 --> 01:53:16,600
+Just use the, like the C language is this kind of like a minimum language that you can have.
+
+1123
+01:53:16,600 --> 01:53:23,600
+So like in this case, for example, you can have in the environment, these variables set.
+
+1124
+01:53:23,600 --> 01:53:24,600
+So that, okay.
+
+1125
+01:53:24,600 --> 01:53:31,560
+Okay, just have these. Set these environment variables when the container runs. This can be,
+
+1126
+01:53:31,560 --> 01:53:37,160
+of course, much more complicated than environment variables, if your application needs certain
+
+1127
+01:53:37,160 --> 01:53:44,680
+things. But if you have this kind of a case or a reason to set the environment variables,
+
+1128
+01:53:44,680 --> 01:53:51,080
+you can set them here. Some of you might be asking, okay, I have these environment variables,
+
+1129
+01:53:51,080 --> 01:53:59,320
+why didn't I set them in the run script? This is because the run script only applies for the run
+
+1130
+01:53:59,320 --> 01:54:05,240
+function. There's multiple ways we can go into the container. We can take the shell route,
+
+1131
+01:54:05,240 --> 01:54:10,120
+we can take the interactive session, we can take the exec route, and we can take the run route.
+
+1132
+01:54:10,680 --> 01:54:16,680
+But the run script is only executed when we run the container. Let's say these language
+
+1133
+01:54:16,680 --> 01:54:23,400
+settings they might be also helpful when we take a shell there. So this is like a broader concept
+
+1134
+01:54:23,400 --> 01:54:30,360
+and these will be always executed when these commands here, when the container is launched,
+
+1135
+01:54:30,360 --> 01:54:41,160
+whatever way it's launched. So again, I will say that just check who has created the containers
+
+1136
+01:54:41,160 --> 01:54:49,480
+you have done because, of course, it could be whatever here. It could be something nefarious
+
+1137
+01:54:49,480 --> 01:54:58,120
+there. So, don't run applications. You don't trust the creator. So, be mindful of that because
+
+1138
+01:55:02,040 --> 01:55:06,360
+check beforehand who has created the application you have done.
+
+1139
+01:55:06,360 --> 01:55:13,480
+but the environment step here is quite often you see stuff like this in the container.
+
+1140
+01:55:15,080 --> 01:55:22,920
+You can also, during the runtime, you can also set the environment variables in the container
+
+1141
+01:55:23,480 --> 01:55:28,840
+by giving these extra flags or setting these extra environment variables.
+
+1142
+01:55:28,840 --> 01:55:36,880
+variables, you can also prepend some, let's say, path variables and that sort of things.
+
+1143
+01:55:36,880 --> 01:55:41,960
+But that's, yeah, again, more complicated than for specific use cases.
+
+1144
+01:55:41,960 --> 01:55:42,960
+Yeah.
+
+1145
+01:55:42,960 --> 01:55:43,960
+Sorry.
+
+1146
+01:55:43,960 --> 01:55:44,960
+Okay.
+
+1147
+01:55:44,960 --> 01:55:45,960
+You first, [name].
+
+1148
+01:55:45,960 --> 01:55:46,960
+Okay.
+
+1149
+01:55:46,960 --> 01:55:47,960
+Yeah.
+
+1150
+01:55:47,960 --> 01:55:48,960
+So these are two different ways of doing it.
+
+1151
+01:55:48,960 --> 01:55:54,320
+One is just typing it on the terminal when you're running your apptainer command.
+
+1152
+01:55:54,320 --> 01:55:57,480
+Then you can pass these arguments and that's handy.
+
+1153
+01:55:57,480 --> 01:56:04,320
+But of course, I mean, rather than typing a long, long command, it might be convenient
+
+1154
+01:56:04,320 --> 01:56:07,160
+just to add it in the definition file.
+
+1155
+01:56:07,160 --> 01:56:09,600
+So that's just the basic difference.
+
+1156
+01:56:09,600 --> 01:56:10,840
+Yes.
+
+1157
+01:56:10,840 --> 01:56:13,520
+One comment that I had related to HPC.
+
+1158
+01:56:13,520 --> 01:56:19,320
+Would this be a good way to pass, for example, the ID of an array job with this --env
+
+1159
+01:56:19,320 --> 01:56:24,960
+if I have to pass it to the container or any other learn variables that I have in
+
+1160
+01:56:24,960 --> 01:56:27,240
+the current environment?
+
+1161
+01:56:27,240 --> 01:56:31,240
+Is this a way to do it?
+
+1162
+01:56:31,240 --> 01:56:32,240
+Yeah.
+
+1163
+01:56:32,240 --> 01:56:33,240
+Yeah.
+
+1164
+01:56:33,240 --> 01:56:37,720
+If you want to pass something to the...
+
+1165
+01:56:37,720 --> 01:56:43,760
+Because sometimes, let's say, the container might override some environment variables that
+
+1166
+01:56:43,760 --> 01:56:46,600
+you have in the host system.
+
+1167
+01:56:46,600 --> 01:56:51,800
+So if you want to make certain that certain environment variables are set in the container,
+
+1168
+01:56:51,800 --> 01:56:55,880
+you can do it via these kinds of flags.
+
+1169
+01:56:55,880 --> 01:56:56,880
+Yeah.
+
+1170
+01:56:56,880 --> 01:57:06,600
+So, but one important thing is about these obtained images is like you can add additional
+
+1171
+01:57:06,600 --> 01:57:13,080
+functionality that like, let's say, that will help you and other users use the containers.
+
+1172
+01:57:13,080 --> 01:57:17,160
+So you can add documentation to the image itself.
+
+1173
+01:57:17,160 --> 01:57:24,720
+And how this works is that you can set these, for example, these labels block, which adds
+
+1174
+01:57:24,720 --> 01:57:32,720
+additional metadata labels that you can then check in the container. And you can also add
+
+1175
+01:57:32,720 --> 01:57:38,880
+these help blocks so that people can check how to use the run function. So of course it's a good
+
+1176
+01:57:38,880 --> 01:57:44,880
+idea probably to have some like --help interface or something like that for the help
+
+1177
+01:57:44,880 --> 01:57:52,000
+function or the run script itself. But if you don't have that it's also a good idea to
+
+1178
+01:57:52,000 --> 01:57:55,080
+to add this help block.
+
+1179
+01:57:55,080 --> 01:57:57,640
+So once you have created these help blocks,
+
+1180
+01:57:57,640 --> 01:58:02,640
+you can then use apptainer inspect and apptainer run help
+
+1181
+01:58:06,360 --> 01:58:11,040
+to view these blocks.
+
+1182
+01:58:11,040 --> 01:58:13,420
+So you can check these.
+
+1183
+01:58:14,360 --> 01:58:16,320
+So if you run this run help,
+
+1184
+01:58:16,320 --> 01:58:20,640
+it will show you the help for the running,
+
+1185
+01:58:20,640 --> 01:58:26,480
+the run script and if you run the inspect it will show you the labels.
+
+1186
+01:58:31,280 --> 01:58:38,480
+Like I'm showing now in this expected results. You can also like see the definition file
+
+1187
+01:58:38,480 --> 01:58:45,040
+because like I mentioned in the image itself the definition file is stored in the .sif format
+
+1188
+01:58:45,040 --> 01:58:49,920
+So it's a bit more complicated, the commands, but they are a bit low and they will produce,
+
+1189
+01:58:51,840 --> 01:59:01,600
+you can view the .sif format itself and you can dump the definition file out of it.
+
+1190
+01:59:02,720 --> 01:59:11,440
+So if you want to run the obtain a .sif dump thing, I forgot to put an expected result there.
+
+1191
+01:59:15,040 --> 01:59:24,040
+So, what it does is that it dumps out the first block in the .sif file, which is the definition file.
+
+1192
+01:59:28,040 --> 01:59:29,040
+.sif?
+
+1193
+01:59:29,040 --> 01:59:30,040
+Yeah.
+
+1194
+01:59:30,040 --> 01:59:34,040
+So, that's the definition file used to create it.
+
+1195
+01:59:34,040 --> 01:59:39,040
+So, basically, you can check what definition file was used to create the image.
+
+1196
+01:59:39,040 --> 01:59:44,560
+You can also like, if you want to share your applications, you can also like cryptographically
+
+1197
+01:59:44,560 --> 01:59:53,600
+sign the container so that the container has like a key and it's signed using that key so that you
+
+1198
+01:59:53,600 --> 02:00:02,160
+can verify the container. But that's like for most users not necessary, I would say, but if you want
+
+1199
+02:00:02,160 --> 02:00:07,200
+you can do that. You can do all kinds of fancy stuff with the container. There's lots of functionality
+
+1200
+02:00:07,200 --> 02:00:20,240
+in the tool. But for many cases, the most important thing is that you want to pull already
+
+1201
+02:00:20,240 --> 02:00:28,960
+existing images, you want to build on top of these images, you want to run an extra post
+
+1202
+02:00:28,960 --> 02:00:35,520
+step on there, you want to change some environment variables, you want to create your own run script,
+
+1203
+02:00:35,520 --> 02:00:42,400
+you want to create your own documentation. That is what more often you want to do when
+
+1204
+02:00:42,400 --> 02:00:47,360
+you build these images. There's other features mentioned here that you can do with Apptainer,
+
+1205
+02:00:47,360 --> 02:00:50,480
+but we don't unfortunately have time to go through all of these.
+
+1206
+02:00:51,680 --> 02:00:55,120
+And exactly, we have a little bit less than 20 minutes left to get there.
+
+1207
+02:00:56,080 --> 02:01:00,880
+Should we have a look, something that you mentioned earlier, that what if I need to access
+
+1208
+02:01:00,880 --> 02:01:06,160
+from the container files that are outside of the container, like loading some data or...
+
+1209
+02:01:06,880 --> 02:01:14,960
+Yes, so the containers are fine and all, but usually you have a situation where you want
+
+1210
+02:01:14,960 --> 02:01:21,840
+the application to be containerized, but then you want to use that application for something,
+
+1211
+02:01:21,840 --> 02:01:30,320
+right? And that something is usually some data or it might be like you want to have a container,
+
+1212
+02:01:30,320 --> 02:01:36,880
+Like when we were talking about, okay, how can I extend the container to have my application?
+
+1213
+02:01:37,600 --> 02:01:42,000
+Let's say you have a code that you're writing, which is like, I don't know,
+
+1214
+02:01:42,000 --> 02:01:49,600
+like Python code or R code, which is interpret code, interpreted. So you use some interpreter
+
+1215
+02:01:49,600 --> 02:01:57,760
+to run the code. You might want to put the dependencies of your code, like the Python
+
+1216
+02:01:57,760 --> 02:02:03,280
+interpreter all of the dependencies and that sort of stuff into a container. But then you can have
+
+1217
+02:02:03,280 --> 02:02:09,920
+the script itself outside of the container so that you can develop it. That's one way of working
+
+1218
+02:02:09,920 --> 02:02:15,200
+with the container. But if you have it outside of the container, how do you get it inside there?
+
+1219
+02:02:18,640 --> 02:02:23,760
+If you don't add it in the post step or in the file step in the definition file, how do you even
+
+1220
+02:02:23,760 --> 02:02:36,080
+get it there. And this brings us to the bind mounts tool or way of working that the containers
+
+1221
+02:02:36,080 --> 02:02:43,760
+do. So what are bind mounts? They're basically like you have a file system inside the container,
+
+1222
+02:02:43,760 --> 02:02:49,440
+like you have an operating system there, you have a file system, and you have folders like
+
+1223
+02:02:49,440 --> 02:02:56,640
+slash home or whatever or scratch or like in the host system you have some folders
+
+1224
+02:02:57,520 --> 02:03:03,040
+and in the file system of the container there's some folders and these are different folders
+
+1225
+02:03:03,040 --> 02:03:10,640
+right like these are different folders in different places but what you can do is that
+
+1226
+02:03:10,640 --> 02:03:18,160
+you can like create like a wormhole from one reality to another reality so you can bind
+
+1227
+02:03:18,160 --> 02:03:24,240
+something from outside the container from the host system into the container to some location.
+
+1228
+02:03:24,800 --> 02:03:30,880
+And Apptainer does this automatically for certain folders already. So if we look at the diagram here
+
+1229
+02:03:31,920 --> 02:03:38,880
+by default home folder is bound to the image so your home folder is the same. So for example your
+
+1230
+02:03:38,880 --> 02:03:45,840
+.bashrc or whatever is the same and your well like stuff in your home folder is the same
+
+1231
+02:03:45,840 --> 02:03:51,280
+because lots of times people have stuff in their home folders when they execute, so it's very easy
+
+1232
+02:03:51,280 --> 02:03:59,920
+to run the same application. And then the current directory is also always bound to the image. So
+
+1233
+02:03:59,920 --> 02:04:07,600
+when you go inside the image, you are in the same folder and that folder is found there.
+
+1234
+02:04:07,600 --> 02:04:17,440
+and also the temp directory slash temp is bound to the image, and there's a few others like run
+
+1235
+02:04:17,440 --> 02:04:26,320
+and whatever, but they are more like technical, nobody uses them really, but then there might
+
+1236
+02:04:26,320 --> 02:04:33,840
+be some other folders that are not in the image. So for example, if you think about your operating
+
+1237
+02:04:33,840 --> 02:04:39,440
+system, the host system that you're running on. You have the root file system, so the /,
+
+1238
+02:04:39,440 --> 02:04:45,920
+just like the / file system, and you might have /usr and /opt, where usually
+
+1239
+02:04:45,920 --> 02:04:52,000
+the software is installed. Those are different, so they are in different colors here in this diagram.
+
+1240
+02:04:52,640 --> 02:04:57,440
+In the container, that's basically the point of the container, right? You need to have the root
+
+1241
+02:04:57,440 --> 02:05:04,240
+file system different than the host file system. So the applications are different there.
+
+1242
+02:05:05,760 --> 02:05:14,400
+So these are different by design, but then you might have some additional folders like
+
+1243
+02:05:14,400 --> 02:05:21,840
+slash m or slash scratch or slash l or whatever, like the network drive systems or
+
+1244
+02:05:21,840 --> 02:05:25,520
+or other local file systems or something like that,
+
+1245
+02:05:25,520 --> 02:05:30,520
+other folders that you use for storing data,
+
+1246
+02:05:30,780 --> 02:05:32,740
+you use storing stuff.
+
+1247
+02:05:33,720 --> 02:05:35,560
+And those are not mounted by default.
+
+1248
+02:05:35,560 --> 02:05:38,780
+Like you don't have them available
+
+1249
+02:05:38,780 --> 02:05:40,980
+in the container by default.
+
+1250
+02:05:40,980 --> 02:05:45,980
+So what you can do is that you can then bind
+
+1251
+02:05:46,900 --> 02:05:49,220
+those folders into the container
+
+1252
+02:05:49,220 --> 02:05:51,540
+so that they appear there in the container.
+
+1253
+02:05:51,840 --> 02:05:57,760
+Yeah. And this could typically be, as you said, where you have your data on an HPC system,
+
+1254
+02:05:57,760 --> 02:06:03,760
+you typically might have a project folder somewhere on the HPC where either you have
+
+1255
+02:06:03,760 --> 02:06:12,080
+shared data files or your own private files. And that's typically what could be useful to
+
+1256
+02:06:12,080 --> 02:06:18,080
+bind into that container to access the data that you have there. So, yeah.
+
+1257
+02:06:18,080 --> 02:06:24,640
+Yes. So you might want to take a folder from the host system that has your project data
+
+1258
+02:06:24,640 --> 02:06:30,080
+and your application is in the container. You want to have that folder appear in the container as
+
+1259
+02:06:30,080 --> 02:06:36,960
+well. And how you can do it is via these bind mounts. So basically you bind them with a
+
+1260
+02:06:37,600 --> 02:06:43,840
+tether or elastic sling or elastic band or something. You bind the two places together.
+
+1261
+02:06:43,840 --> 02:06:51,520
+So you take one folder and then you tie it up into another folder inside the container.
+
+1262
+02:06:51,520 --> 02:06:54,960
+They don't have to be the same folder. So for example, if you have like a
+
+1263
+02:06:56,240 --> 02:07:00,880
+outside of container, you have something in scratch, you can have it in a different place
+
+1264
+02:07:00,880 --> 02:07:07,520
+up here in the container. But the important thing to remember is that these are the same folder.
+
+1265
+02:07:07,520 --> 02:07:12,720
+So when you bind something from outside into the container,
+
+1266
+02:07:12,720 --> 02:07:16,320
+it's not like a layer or an image or something.
+
+1267
+02:07:16,320 --> 02:07:17,960
+It's the actual files.
+
+1268
+02:07:17,960 --> 02:07:21,360
+So whatever you do inside the container
+
+1269
+02:07:21,360 --> 02:07:25,120
+will affect your files in the actual system.
+
+1270
+02:07:25,120 --> 02:07:28,720
+So it is the same folder when you bind it in.
+
+1271
+02:07:28,720 --> 02:07:31,000
+So let's look at the example.
+
+1272
+02:07:31,000 --> 02:07:33,880
+How do you do these bindings?
+
+1273
+02:07:33,880 --> 02:07:42,920
+So here we, in the diagram, we see like, okay, now we maybe start seeing why it might be good
+
+1274
+02:07:42,920 --> 02:07:49,720
+to look at this in this kind of blocks is that the bind is an argument for the subcommand.
+
+1275
+02:07:50,360 --> 02:07:59,800
+So for the exec or run or shell or whatever. So it's not an argument for the apptainer command,
+
+1276
+02:07:59,800 --> 02:08:06,040
+it's like an argument for the subcommand. So that's why it needs to be at that point,
+
+1277
+02:08:06,600 --> 02:08:11,160
+like it needs to be in this area of the command when we write it.
+
+1278
+02:08:11,160 --> 02:08:14,200
+And after the subcommand, basically.
+
+1279
+02:08:14,200 --> 02:08:22,040
+Yes. Yeah. After the subcommand. And if we want to put a folder just inside the container,
+
+1280
+02:08:22,040 --> 02:08:29,000
+we can just have like dash dash bind and then the name of the folder. And then that means that it
+
+1281
+02:08:29,000 --> 02:08:31,200
+it will take the folder from the host system
+
+1282
+02:08:31,200 --> 02:08:35,560
+and it will bind it to the same place in the other system.
+
+1283
+02:08:36,560 --> 02:08:38,400
+Like, sorry, in the container.
+
+1284
+02:08:38,400 --> 02:08:42,160
+It will bind it to the same place in the container.
+
+1285
+02:08:42,160 --> 02:08:44,880
+And the bind mount will,
+
+1286
+02:08:44,880 --> 02:08:48,980
+if there exists a folder called scratch in the container,
+
+1287
+02:08:48,980 --> 02:08:50,200
+it will overwrite it.
+
+1288
+02:08:50,200 --> 02:08:54,160
+So it will overwrite whatever is there.
+
+1289
+02:08:54,160 --> 02:08:56,800
+So that's why you should probably put it into a place
+
+1290
+02:08:56,800 --> 02:09:01,600
+where it's not a place in the container.
+
+1291
+02:09:01,600 --> 02:09:03,600
+You don't want to overwrite,
+
+1292
+02:09:03,600 --> 02:09:05,280
+like unless you want to overwrite,
+
+1293
+02:09:05,280 --> 02:09:07,860
+but usually you don't want to overwrite the container stuff.
+
+1294
+02:09:07,860 --> 02:09:12,400
+So you want to put it into a place where it's like, yeah,
+
+1295
+02:09:12,400 --> 02:09:15,160
+it has its own place.
+
+1296
+02:09:15,160 --> 02:09:17,120
+And if you overwrite it,
+
+1297
+02:09:17,120 --> 02:09:19,840
+can you gain it back again by unmounting
+
+1298
+02:09:19,840 --> 02:09:22,240
+or going when you run it again?
+
+1299
+02:09:22,240 --> 02:09:23,680
+Is it restored? Yes.
+
+1300
+02:09:23,680 --> 02:09:28,460
+Yeah, it will just overlay it on top of the image.
+
+1301
+02:09:28,460 --> 02:09:32,360
+So again, in the image thing, if we think about the layers,
+
+1302
+02:09:32,360 --> 02:09:37,360
+so what we have is that we have the image of the .sif file.
+
+1303
+02:09:38,160 --> 02:09:40,920
+What the bind mount does is that it basically creates
+
+1304
+02:09:40,920 --> 02:09:45,720
+a layer on top of it and it overrides the folders with the,
+
+1305
+02:09:45,720 --> 02:09:48,880
+like, when you go, when you are in the image
+
+1306
+02:09:48,880 --> 02:09:51,980
+and you look at whatever is in /scratch
+
+1307
+02:09:51,980 --> 02:09:56,980
+in this example, it finds the bind mount
+
+1308
+02:09:58,140 --> 02:10:00,420
+and then it will ask it from the host system.
+
+1309
+02:10:00,420 --> 02:10:02,260
+It won't ask it from the .sif file.
+
+1310
+02:10:02,260 --> 02:10:03,820
+But if you do run it again
+
+1311
+02:10:03,820 --> 02:10:05,820
+and this time you don't have the bind mount,
+
+1312
+02:10:05,820 --> 02:10:08,140
+it will try to find it from the image.
+
+1313
+02:10:08,140 --> 02:10:13,020
+So it's again like it hides stuff from the image.
+
+1314
+02:10:13,020 --> 02:10:15,420
+So that's why you usually don't want it to put,
+
+1315
+02:10:17,460 --> 02:10:20,340
+like you want to put it into places where like
+
+1316
+02:10:21,980 --> 02:10:28,220
+stuff should be where you don't have something that you want to keep already.
+
+1317
+02:10:28,220 --> 02:10:29,220
+Yeah.
+
+1318
+02:10:29,220 --> 02:10:33,180
+But like I mentioned, you can also bind it to another place.
+
+1319
+02:10:33,180 --> 02:10:42,940
+So in an example comment below here, if we have a container that wants the stuff to be
+
+1320
+02:10:42,940 --> 02:10:58,140
+be in, I think it's actually mycontainer.sif if I have a wrong name of the container there.
+
+1321
+02:10:58,140 --> 02:11:11,700
+With a colon. You need to have 'scratch:' [see video]. So what we have here is that we have, we bind
+
+1322
+02:11:11,700 --> 02:11:19,060
+mount /scratch and then we have a colon and we have the place where we want to bind it so
+
+1323
+02:11:21,300 --> 02:11:24,660
+yeah now if you look at the data
+
+1324
+02:11:28,180 --> 02:11:36,900
+yeah yeah we see that okay this this wasn't here before like and then so so it's now
+
+1325
+02:11:36,900 --> 02:11:41,540
+bound from the outside system inside the container. And this is a very powerful tool
+
+1326
+02:11:41,540 --> 02:11:46,340
+because you can put stuff there, but you can also do like... There was a question of how do you
+
+1327
+02:11:46,340 --> 02:11:53,460
+upgrade stuff in the container. One dirty trick is to do what you can do sometimes,
+
+1328
+02:11:53,460 --> 02:11:57,620
+is that if you need to modify one file in the container, what you can do is that you can
+
+1329
+02:11:58,420 --> 02:12:03,140
+go inside the container, copy the file from the container, outside of the container,
+
+1330
+02:12:03,140 --> 02:12:06,020
+And then you can modify it and bind it into the container.
+
+1331
+02:12:06,420 --> 02:12:11,100
+So this won't change the container file.
+
+1332
+02:12:11,260 --> 02:12:15,660
+It won't change the image, but you can put stuff, inject basically stuff
+
+1333
+02:12:15,740 --> 02:12:17,980
+into right places in the container.
+
+1334
+02:12:18,220 --> 02:12:24,340
+But this is something you might, you don't want to do it regularly, but in
+
+1335
+02:12:24,340 --> 02:12:26,100
+some cases it might be necessary.
+
+1336
+02:12:27,020 --> 02:12:32,460
+In emergency cases, it will be very messy because you might forget that you did this.
+
+1337
+02:12:33,140 --> 02:12:33,640
+Yes.
+
+1338
+02:12:33,640 --> 02:12:34,140
+Yes.
+
+1339
+02:12:34,140 --> 02:12:36,100
+It's not recommended, but it's possible.
+
+1340
+02:12:36,100 --> 02:12:36,820
+Yes.
+
+1341
+02:12:36,820 --> 02:12:46,060
+And regarding the folders, in Docker world, again, going back a bit to there, in Docker
+
+1342
+02:12:46,060 --> 02:12:52,940
+world, stuff is usually installed as root user, everything is run through root user.
+
+1343
+02:12:52,940 --> 02:12:58,620
+So this means that a lot of the images available in the internet often have a situation where
+
+1344
+02:12:58,620 --> 02:13:02,500
+stuff is installed into the home folder of the root user.
+
+1345
+02:13:02,500 --> 02:13:05,460
+This is a bit of a problematic thing in the container image
+
+1346
+02:13:05,460 --> 02:13:08,020
+because then in the container image,
+
+1347
+02:13:10,100 --> 02:13:14,220
+you might have a situation where you cannot access
+
+1348
+02:13:14,220 --> 02:13:16,500
+the root's home folder or that folder
+
+1349
+02:13:16,500 --> 02:13:18,220
+is not available for you.
+
+1350
+02:13:18,220 --> 02:13:20,820
+So it's usually a good idea to install stuff
+
+1351
+02:13:20,820 --> 02:13:22,220
+to the right places.
+
+1352
+02:13:23,900 --> 02:13:26,500
+In the building images section,
+
+1353
+02:13:26,500 --> 02:13:31,020
+there's a link to how the Linux file system hierarchy
+
+1354
+02:13:31,020 --> 02:13:31,980
+is organized.
+
+1355
+02:13:31,980 --> 02:13:37,780
+So usually you want to put stuff in the opt and user and user local and that sort of places,
+
+1356
+02:13:37,780 --> 02:13:41,620
+so that like that doesn't happen like that.
+
+1357
+02:13:41,620 --> 02:13:47,060
+You don't install stuff into whole folder of a user that might not exist when you run
+
+1358
+02:13:47,060 --> 02:13:48,580
+the container.
+
+1359
+02:13:48,580 --> 02:13:56,760
+But yeah, if you have stuff that you don't have, like if you want stuff in the container,
+
+1360
+02:13:56,760 --> 02:14:01,720
+can use this bind pass to take the stuff into the container.
+
+1361
+02:14:05,240 --> 02:14:12,440
+All right, we have a few minutes left. We can have a quick look at the
+
+1362
+02:14:14,280 --> 02:14:21,080
+questions that you have been writing and of course this is also a good occasion to let us know if
+
+1363
+02:14:21,080 --> 02:14:24,380
+if anything needs to be improved,
+
+1364
+02:14:24,380 --> 02:14:26,480
+because this is the first ever time
+
+1365
+02:14:26,480 --> 02:14:31,480
+that we're running this type of lesson.
+
+1366
+02:14:31,880 --> 02:14:33,360
+There was maybe some interesting,
+
+1367
+02:14:33,360 --> 02:14:34,700
+you kind of touched this already,
+
+1368
+02:14:34,700 --> 02:14:37,440
+but there was an interesting comment here
+
+1369
+02:14:37,440 --> 02:14:40,040
+related to, where did it go?
+
+1370
+02:14:41,320 --> 02:14:45,660
+On containers on HPC systems, trying to find it.
+
+1371
+02:14:47,000 --> 02:14:48,840
+HPC environmental modules
+
+1372
+02:14:48,840 --> 02:14:53,800
+typically implemented as containers. What is the recommended way to install additional packages
+
+1373
+02:14:53,800 --> 02:14:58,760
+when using pre-installed containers or pre-installed modules in this case?
+
+1374
+02:15:00,680 --> 02:15:07,560
+I would say that the easiest way is to find out when you load the module, find out what is the
+
+1375
+02:15:07,560 --> 02:15:16,200
+image that module points to, and then use that as a bootstrap for creating your own container.
+
+1376
+02:15:16,200 --> 02:15:23,560
+Of course, you need to be careful not to, when you create your own container, do not modify the
+
+1377
+02:15:23,560 --> 02:15:31,000
+existing application there too much or it might break the already existing installation. But if
+
+1378
+02:15:31,000 --> 02:15:39,640
+you install your own stuff on top of it, it might work. Or you can just bind your own stuff into
+
+1379
+02:15:39,640 --> 02:15:50,920
+The other thing that you mentioned there about the fake root failures, this fake root feature
+
+1380
+02:15:50,920 --> 02:15:57,840
+that I spoke about, it depends on the host system and the container both having a relatively
+
+1381
+02:15:57,840 --> 02:16:00,320
+new operating system.
+
+1382
+02:16:00,320 --> 02:16:06,020
+So sometimes the fake root thing might fail if you're running a really, you're trying
+
+1383
+02:16:06,020 --> 02:16:09,440
+to install a really old, let's say Ubuntu or something.
+
+1384
+02:16:09,440 --> 02:16:16,480
+are ways of mitigating these. The easiest way is to build the container in your own,
+
+1385
+02:16:17,680 --> 02:16:22,240
+let's say, machine where you have pseudorights and then move it there. That's usually the easiest way
+
+1386
+02:16:22,240 --> 02:16:33,520
+because during the building process, the apptainer needs a bit more privileges to do the stuff that it
+
+1387
+02:16:33,520 --> 02:16:42,000
+does and if the system doesn't provide those privileges or if the container combination
+
+1388
+02:16:42,000 --> 02:16:48,400
+is not correct, like if you're trying to install a really old operating system, you might run into
+
+1389
+02:16:48,400 --> 02:16:58,240
+this problem. So what I would suggest is either ask your system administrators, can they make
+
+1390
+02:16:58,240 --> 02:17:04,960
+it so that it's possible to build this. Try to upgrade the container image to use a more
+
+1391
+02:17:04,960 --> 02:17:13,920
+recent operating system or install Apptainer into your own laptop or like place or ask somebody to
+
+1392
+02:17:13,920 --> 02:17:19,280
+install it for you and then run it in that place. Because usually you can get sudo access to
+
+1393
+02:17:19,280 --> 02:17:24,960
+let's say your own workstation, but you cannot get it in a shared system. So yeah, like you can
+
+1394
+02:17:24,960 --> 02:17:28,880
+build it somewhere else where you have more rights and then you can like move it somewhere
+
+1395
+02:17:28,880 --> 02:17:35,920
+where you have less rights. And this is partially the reason why Apptainer is like popular compared to
+
+1396
+02:17:35,920 --> 02:17:43,280
+like in HPC systems compared to Docker because in Docker you couldn't even run it in the HPC system.
+
+1397
+02:17:45,600 --> 02:17:52,480
+Excellent. So our time is out. Thank you everyone for joining us on the streaming. Thank you [name]
+
+1398
+02:17:52,480 --> 02:17:59,440
+and thank you [name]. There is still a feedback session there in the share notes document so
+
+1399
+02:17:59,440 --> 02:18:06,880
+please spend a couple of minutes to let us know if this was too fast, too slow and especially
+
+1400
+02:18:06,880 --> 02:18:10,880
+mention something that could be improved for the next time because we're still developing
+
+1401
+02:18:11,600 --> 02:18:17,520
+the materials. So thanks again for watching, remember to give us some feedback and for those
+
+1402
+02:18:17,520 --> 02:18:23,360
+joining us in one hour in the zoom we can try all these comments all these comments together you can
+
+1403
+02:18:23,360 --> 02:18:29,120
+try them on your cluster and we can try to also you know debug if something is not working in a
+
+1404
+02:18:29,120 --> 02:18:38,560
+specific system so i see those people in one hour and thanks everyone for watching and see you next
+
+1405
+02:18:38,560 --> 02:18:49,120
+Tuesday for the last episode of TTT4HPC. Thank you. Thank you.
+
+1406
+02:19:08,560 --> 02:19:10,620
+you
+
+1407
+02:19:38,560 --> 02:19:40,620
+you
+
+1408
+02:20:08,560 --> 02:20:10,620
+you
+
+1409
+02:20:38,560 --> 02:20:40,620
+you
+
+1410
+02:21:08,560 --> 02:21:10,620
+you
+
+1411
+02:21:38,560 --> 02:21:40,620
+you
+
+1412
+02:22:08,560 --> 02:22:10,620
+you
+
+1413
+02:22:38,560 --> 02:22:40,620
+you
+
