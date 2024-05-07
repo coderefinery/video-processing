@@ -124,7 +124,6 @@
 
 - input: raw/day2-obs.mkv
 
-
 - output: out/day2-interactive.mkv
   title: 2.1 Day to day cluster work
   description: >-
@@ -164,3 +163,46 @@
     - 02:10:20: "VS Code: debugging (debugpy)"
     - 02:18:31: Wrap up, what is next week
     - end: 02:20:22
+
+
+- input: raw/day3-obs.mkv
+
+- output: out/day3-containers.mkv
+  title: 3.1 Containers on HPC clusters
+  description: >-
+    Containers are a way to run applications in a self-contained
+    environment with all the tools that the specific application
+    needs.  They are very useful for scientific software, which may
+    have difficult dependencies and need to run on a variety of systems
+    with widely varying specifications.
+
+    Unlike most container tutorials you can find, this focuses on HPC
+    and scientific computing use cases, using Apptainer
+    (=Singularity).  We go over both the theory behind containers and
+    the most common operations: pulling, building yourself, running,
+    and bind-mounting.
+
+    Material: https://coderefinery.github.io/ttt4hpc_containers/
+
+  editlist:
+    - start: 00:22:17
+    - -: § Intro to containers
+    - -: What is a container?
+    - 00:36:47: What is the intended use case of Apptainer?
+    - 00:42:46: Apptainer vs Singularity
+    - 00:43:38: § Basics of running containers
+    - 01:00:39: § Intro to container images
+    - stop: 01:19:02
+    - start: 01:28:51
+    - -: "Q&A after the break"
+    - 01:31:13: § Building Apptainer images
+    - 01:31:17: Pulling images (from a Docker registry)
+    - 01:37:24: Creating an image using a specification file (.sif)
+    - 01:45:30: Running additional installation commands during image creation
+    - 01:52:06: Setting environment variables in the image
+    - 01:56:57: Adding documentation to your image
+    - 01:58:28: Examining the container
+    - 02:00:11: Summary of the section
+    - 02:00:56: § Binding folders into your container
+    - 02:14:02: "§ Wrap-up, Q&A, preparation for next week"
+    - stop: 02:18:51
