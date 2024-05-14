@@ -1,0 +1,6048 @@
+1
+00:00:00,000 --> 00:00:02,000
+CodeRefinery.org
+
+2
+00:00:30,000 --> 00:00:32,060
+you
+
+3
+00:01:00,000 --> 00:01:02,060
+you
+
+4
+00:01:30,000 --> 00:01:32,060
+you
+
+5
+00:02:00,000 --> 00:02:02,060
+you
+
+6
+00:02:30,000 --> 00:02:32,060
+you
+
+7
+00:03:00,000 --> 00:03:02,060
+you
+
+8
+00:03:30,000 --> 00:03:32,060
+you
+
+9
+00:04:00,000 --> 00:04:02,060
+you
+
+10
+00:04:30,000 --> 00:04:32,060
+you
+
+11
+00:05:00,000 --> 00:05:02,060
+you
+
+12
+00:05:30,000 --> 00:05:32,060
+you
+
+13
+00:06:00,000 --> 00:06:02,060
+you
+
+14
+00:06:30,000 --> 00:06:59,880
+Hello everybody and welcome to the fourth and
+
+15
+00:06:59,880 --> 00:07:03,960
+final episode of Tuesday Tools and Techniques
+
+16
+00:07:03,960 --> 00:07:08,980
+for High-Performance Computing, TTT for HPC.
+
+17
+00:07:08,980 --> 00:07:15,840
+So we are now in the warming up section.
+
+18
+00:07:15,840 --> 00:07:20,160
+So in these 10 minutes, we can test, for example,
+
+19
+00:07:20,160 --> 00:07:23,760
+this collaborative notes document
+
+20
+00:07:23,760 --> 00:07:26,040
+that we have been using before.
+
+21
+00:07:26,040 --> 00:07:29,520
+I guess that if you have been joining the previous TTT
+
+22
+00:07:29,520 --> 00:07:37,100
+for HPC sections or even the other courses that we arrange you should be already familiar
+
+23
+00:07:37,100 --> 00:07:50,200
+with how we interact with the instructors. Today with me is [name] and [name]
+
+24
+00:07:50,200 --> 00:07:58,400
+both from Alto Scientific Computing. I will of course introduce you how can I say officially
+
+25
+00:07:58,400 --> 00:08:01,120
+at 10, at 10 a.m. finish time.
+
+26
+00:08:02,600 --> 00:08:05,560
+But so yeah, it's important that now you test.
+
+27
+00:08:05,560 --> 00:08:08,720
+One thing to remember is that the Twitch TV
+
+28
+00:08:08,720 --> 00:08:11,360
+automatically tries to limit the bandwidth that you use.
+
+29
+00:08:11,360 --> 00:08:16,000
+So remember to set the quality of the Twitch TV player
+
+30
+00:08:16,000 --> 00:08:17,280
+to source.
+
+31
+00:08:17,280 --> 00:08:20,740
+So basically it's like the full quality.
+
+32
+00:08:21,920 --> 00:08:25,760
+And then you just receive the reminder on your email
+
+33
+00:08:25,760 --> 00:08:29,040
+with the link to this collaborative notes document
+
+34
+00:08:29,040 --> 00:08:31,760
+that [name] is sharing.
+
+35
+00:08:31,760 --> 00:08:35,480
+And so it's good to test that you're able to edit.
+
+36
+00:08:35,480 --> 00:08:40,960
+So if you click the pencil at the top of the document,
+
+37
+00:08:40,960 --> 00:08:47,280
+then you can add three kind of icebreaker questions.
+
+38
+00:08:47,280 --> 00:08:51,520
+So it's good that I'm very curious of the last one,
+
+39
+00:08:51,520 --> 00:08:54,200
+for example, which skill do you want to learn
+
+40
+00:08:54,200 --> 00:09:02,960
+or wish to improve next because we are always trying to read the mind of our researchers
+
+41
+00:09:02,960 --> 00:09:07,960
+that we're trying to help. So it's good to know what you are planning to learn next because
+
+42
+00:09:07,960 --> 00:09:14,280
+then maybe we can learn it together or teach it together or both of them. How are you doing
+
+43
+00:09:14,280 --> 00:09:16,840
+today, [name] and [name]?
+
+44
+00:09:16,840 --> 00:09:23,200
+A bit tired, but it's going okay.
+
+45
+00:09:23,200 --> 00:09:33,360
+this general May tiredness. Everyone is feeling it. I don't know if it's the spring or.
+
+46
+00:09:33,360 --> 00:09:37,120
+I don't even know what to say.
+
+47
+00:09:37,120 --> 00:09:45,720
+It's okay. So let's see how many people are joining. I can see a few people in this note,
+
+48
+00:09:45,720 --> 00:09:48,840
+collaborative notes.
+
+49
+00:09:48,840 --> 00:09:53,520
+And so what do you want to learn next?
+
+50
+00:09:53,520 --> 00:10:01,320
+Yeah, that's a that's a very difficult, difficult question.
+
+51
+00:10:01,320 --> 00:10:02,640
+Is our audio balanced?
+
+52
+00:10:02,640 --> 00:10:07,540
+Well, yeah, we should do a quick check.
+
+53
+00:10:07,540 --> 00:10:15,400
+So I'm going to say one, [name], we say two, and then we will say three, one, two, three,
+
+54
+00:10:15,400 --> 00:10:16,400
+One.
+
+55
+00:10:16,400 --> 00:10:17,400
+Two.
+
+56
+00:10:17,400 --> 00:10:18,400
+Three.
+
+57
+00:10:18,400 --> 00:10:19,400
+One.
+
+58
+00:10:19,400 --> 00:10:20,400
+Two.
+
+59
+00:10:20,400 --> 00:10:21,400
+Three.
+
+60
+00:10:21,400 --> 00:10:34,920
+From looking at this, my audio might be a little bit lower.
+
+61
+00:10:34,920 --> 00:10:39,440
+And of course if you're watching via the Twitch streaming, you can let us know if the audio
+
+62
+00:10:39,440 --> 00:10:40,440
+was balanced.
+
+63
+00:10:40,440 --> 00:10:52,880
+Yeah, I don't know which skill to learn next. It's very difficult. Maybe I could say that
+
+64
+00:10:52,880 --> 00:10:59,400
+sometimes I wish I could help more researchers who are using MPI, but MPI is something that
+
+65
+00:10:59,400 --> 00:11:07,680
+I never really had to learn in my past work. And so, okay, I know the basics. I know whatever
+
+66
+00:11:07,680 --> 00:11:11,640
+Spells, one needs to type to get things running.
+
+67
+00:11:17,040 --> 00:11:23,000
+Yeah, I was also thinking about wanting to learn MPI.
+
+68
+00:11:23,000 --> 00:11:26,280
+But then also, I don't really want to learn that much,
+
+69
+00:11:26,280 --> 00:11:33,680
+like not enough to actually do it since, well,
+
+70
+00:11:33,680 --> 00:11:34,960
+if I needed to, I could.
+
+71
+00:11:34,960 --> 00:11:38,360
+but doesn't seem necessary yet.
+
+72
+00:11:38,860 --> 00:11:39,360
+Yeah.
+
+73
+00:11:41,460 --> 00:11:44,360
+And the same is CUDA that I'm kind of curious.
+
+74
+00:11:45,160 --> 00:11:48,860
+But then again, would I really start implementing something
+
+75
+00:11:49,360 --> 00:11:52,140
+indirectly in CUDA myself when I know that most likely there's
+
+76
+00:11:52,160 --> 00:11:54,560
+already a Python package or?
+
+77
+00:11:54,960 --> 00:11:56,060
+That's a good point.
+
+78
+00:11:56,060 --> 00:11:56,560
+Yeah.
+
+79
+00:11:59,360 --> 00:12:02,660
+Like some of these low-level kind of
+
+80
+00:12:04,960 --> 00:12:10,240
+libraries and programming and not the programming but like the libraries
+
+81
+00:12:10,240 --> 00:12:14,160
+and dependency kind of stuff.
+
+82
+00:12:19,080 --> 00:12:25,080
+But yes I'm curious to see so if you are just joining the stream using the
+
+83
+00:12:25,080 --> 00:12:30,560
+collaborative notes document that you see now in the streaming you can answer
+
+84
+00:12:30,560 --> 00:12:35,200
+question number three on which skill do you want to learn or wish to improve next
+
+85
+00:12:38,480 --> 00:12:43,280
+so that we can get an idea what to prepare for the next academic year
+
+86
+00:12:48,240 --> 00:12:53,360
+yeah so we still have a couple of minutes to go before the official start
+
+87
+00:12:53,360 --> 00:13:03,520
+and what else I also pasted the link to the CodeRefinery YouTube channel there
+
+88
+00:13:03,520 --> 00:13:10,440
+so that you can actually re-watch all these videos and share them of course
+
+89
+00:13:10,440 --> 00:13:15,400
+also with other with other colleagues who couldn't maybe make it and there
+
+90
+00:13:15,400 --> 00:13:18,800
+might be something useful but it's also interesting to see that someone there
+
+91
+00:13:18,800 --> 00:13:22,560
+wrote that more likely to use the written materials.
+
+92
+00:13:22,560 --> 00:13:26,600
+We had a chat yesterday with our code refinery team,
+
+93
+00:13:26,600 --> 00:13:28,680
+and someone raised exactly this point,
+
+94
+00:13:28,680 --> 00:13:31,560
+that the written materials are so good that you don't even
+
+95
+00:13:31,560 --> 00:13:33,000
+need to watch any video.
+
+96
+00:13:33,000 --> 00:13:37,160
+You can just read the materials, follow the materials,
+
+97
+00:13:37,160 --> 00:13:41,040
+and learn on your pace.
+
+98
+00:13:41,040 --> 00:13:43,840
+I guess that's the dream or whatever, isn't it?
+
+99
+00:13:43,840 --> 00:13:45,120
+Yeah.
+
+100
+00:13:45,120 --> 00:13:47,000
+And then the videos can just be.
+
+101
+00:13:47,000 --> 00:13:50,080
+I mean, really, I think that's better.
+
+102
+00:13:50,080 --> 00:13:53,120
+You shouldn't have to watch a long video just to find some stuff.
+
+103
+00:13:53,120 --> 00:13:56,920
+We're not farming for engagement or whatever here.
+
+104
+00:13:56,920 --> 00:14:03,960
+In fact, the less engagement, the better, because that means you already know.
+
+105
+00:14:03,960 --> 00:14:13,720
+That definitely sounds better, at least for me as a kind of, I'm not a learn-by-watching-videos
+
+106
+00:14:13,720 --> 00:14:17,840
+type of person, so yeah.
+
+107
+00:14:17,840 --> 00:14:27,280
+But on the other hand, I think seeing a really good example is useful.
+
+108
+00:14:27,280 --> 00:14:32,520
+I got started in all this video thing where I saw someone explaining something, but instead
+
+109
+00:14:32,520 --> 00:14:37,560
+of screenshots it was a video just explaining, I click here and here and here and here, and
+
+110
+00:14:37,560 --> 00:14:39,360
+then my dataset is on Zenodo.
+
+111
+00:14:39,360 --> 00:14:45,400
+I was like, wow, you know, this is actually makes it seem really easy.
+
+112
+00:14:45,400 --> 00:14:47,480
+We should do more of that.
+
+113
+00:14:47,480 --> 00:14:48,480
+So yeah.
+
+114
+00:14:48,480 --> 00:14:49,480
+All right.
+
+115
+00:14:49,480 --> 00:14:57,160
+But it's 10 a.m. in Finland, 9 a.m. in Central Europe.
+
+116
+00:14:57,160 --> 00:15:01,760
+So I guess we can officially start.
+
+117
+00:15:01,760 --> 00:15:13,200
+Welcome to the last episode of TTT for HPC, Tuesday Tools and Techniques for High-Performance
+
+118
+00:15:13,200 --> 00:15:14,880
+Computing.
+
+119
+00:15:14,880 --> 00:15:17,840
+With me today, there is [name].
+
+120
+00:15:17,840 --> 00:15:20,720
+Do you want to say something about yourself, [name]?
+
+121
+00:15:20,720 --> 00:15:25,360
+I'm, well, I'm [name], as you just heard.
+
+122
+00:15:25,360 --> 00:15:34,400
+I'm a staff scientist at Aalto Scientific Computing here in Helsinki and I do
+
+123
+00:15:35,600 --> 00:15:39,040
+all sorts of stuff but mainly focusing on research software right now.
+
+124
+00:15:41,200 --> 00:15:46,320
+And talking about research software, with us today there is also [name].
+
+125
+00:15:46,320 --> 00:15:51,680
+Do you want to say something about yourself [name]? Yeah, hello, I'm [name]. I'm a research
+
+126
+00:15:51,680 --> 00:16:05,120
+software engineer at Aalto University. I help researchers with their day-to-day software issues.
+
+127
+00:16:07,280 --> 00:16:12,560
+Excellent and I'm [name], staff scientist and I work with [name] and them and others here
+
+128
+00:16:12,560 --> 00:16:21,120
+at Aalto University. So the topic of the last episode of this series is about high performance
+
+129
+00:16:21,120 --> 00:16:28,320
+computing, parallelization and workflows. And we have to mention that most of the material
+
+130
+00:16:28,320 --> 00:16:33,920
+that we will use today was actually written by [name], who is another research software
+
+131
+00:16:33,920 --> 00:16:40,240
+engineer at Aalto, but he couldn't make it today. But I'm sure we will be able to transfer
+
+132
+00:16:40,240 --> 00:16:45,440
+all the knowledge from the materials to your eager brains.
+
+133
+00:16:45,440 --> 00:16:51,680
+If you've been joining the previous section, you might be familiar with the share notes
+
+134
+00:16:51,680 --> 00:16:52,680
+document.
+
+135
+00:16:52,680 --> 00:16:58,080
+For those who are joining today for the first time, you have received the link to a document
+
+136
+00:16:58,080 --> 00:17:02,960
+that is like an online document, kind of thinking like a Google Doc.
+
+137
+00:17:02,960 --> 00:17:09,720
+So at this notes.coderefinery.org, you have this document that reaches now screen sharing.
+
+138
+00:17:09,720 --> 00:17:12,900
+And there at the top, there is a pencil icon.
+
+139
+00:17:12,900 --> 00:17:19,080
+So click on the pencil so you can start editing and for example you see there are some questions,
+
+140
+00:17:19,080 --> 00:17:24,020
+so-called icebreakers, and in general whenever you have questions or comments you can add
+
+141
+00:17:24,020 --> 00:17:27,660
+them at the bottom of the document.
+
+142
+00:17:27,660 --> 00:17:32,060
+If there's something interesting, if there's something that is important to bring on the
+
+143
+00:17:32,060 --> 00:17:37,860
+stream, I will make sure that your answer will be addressed during the two hours this
+
+144
+00:17:37,860 --> 00:17:39,380
+morning.
+
+145
+00:17:39,380 --> 00:17:47,060
+Please remember to set the twitch tv quality to source because otherwise the twitch
+
+146
+00:17:47,060 --> 00:17:52,380
+tv player will just downgrade the quality of the of the streaming in general if you
+
+147
+00:17:52,380 --> 00:17:58,100
+see that the streaming ends for whatever reason once it has happened that the whole internet
+
+148
+00:17:58,100 --> 00:18:07,460
+was was basically down no panic we will try to get back within within few few few minutes
+
+149
+00:18:07,460 --> 00:18:15,780
+Any other practicalities? So this morning session is about more or less two hours, so
+
+150
+00:18:15,780 --> 00:18:25,220
+until 12 o'clock Finnish time, 11 CET. And we will try to kind of be somewhat interactive,
+
+151
+00:18:25,220 --> 00:18:31,580
+but it's more kind of lecture-based. In the afternoon, instead, there will be a Zoom that
+
+152
+00:18:31,580 --> 00:18:34,300
+that you have in your email, a Zoom link.
+
+153
+00:18:34,300 --> 00:18:38,760
+So from 1 p.m. Finnish time, 12 o'clock Central European time,
+
+154
+00:18:38,760 --> 00:18:41,500
+we have a Zoom session that is not recorded.
+
+155
+00:18:41,500 --> 00:18:43,340
+So you are free to join there
+
+156
+00:18:43,340 --> 00:18:47,300
+and try some of the examples that you will see today.
+
+157
+00:18:47,300 --> 00:18:52,300
+And for those who are needing the one ECTS credit,
+
+158
+00:18:52,860 --> 00:18:57,860
+there's a couple of exercises that you can do basically
+
+159
+00:18:57,860 --> 00:19:05,460
+can do basically during this this zoom section in the in the afternoon and now it's four minutes
+
+160
+00:19:06,260 --> 00:19:14,500
+past the hour i think we covered all the details if you want to access the materials for the day
+
+161
+00:19:14,500 --> 00:19:21,300
+at the very top of this collaborative notes document there's the link to this parallel
+
+162
+00:19:21,300 --> 00:19:28,700
+workflows materials and maybe so maybe we should start with some motivation who
+
+163
+00:19:28,700 --> 00:19:35,140
+wants to motivate all of us on why we need to parallelize or should we
+
+164
+00:19:35,140 --> 00:19:45,740
+parallelize once maybe [name] do yeah let's see I will switch to my screen or
+
+165
+00:19:45,740 --> 00:19:48,300
+Or I will try.
+
+166
+00:19:48,300 --> 00:19:49,660
+Yes, here we go.
+
+167
+00:19:52,300 --> 00:19:54,780
+I'll go to the materials.
+
+168
+00:19:57,660 --> 00:20:00,380
+So should we start with the motivation section now?
+
+169
+00:20:00,380 --> 00:20:01,180
+Is that where we are?
+
+170
+00:20:02,460 --> 00:20:06,060
+Yeah, at least get an overview on why are we here.
+
+171
+00:20:06,060 --> 00:20:06,940
+Yeah.
+
+172
+00:20:06,940 --> 00:20:10,300
+Also, interesting notion that [name] brought up,
+
+173
+00:20:10,300 --> 00:20:12,940
+that should we parallelize?
+
+174
+00:20:12,940 --> 00:20:15,420
+Because I hadn't thought about it.
+
+175
+00:20:15,740 --> 00:20:23,940
+Like, I have taken it as a given that we parallelize.
+
+176
+00:20:23,940 --> 00:20:25,300
+Good question.
+
+177
+00:20:25,300 --> 00:20:33,660
+And this lesson, the other name of it is called Parallelizing Without Parallelizing.
+
+178
+00:20:33,660 --> 00:20:39,620
+So what does that mean?
+
+179
+00:20:39,620 --> 00:20:44,060
+And is that sort of what you said about not wanting to parallelize?
+
+180
+00:20:44,060 --> 00:20:59,080
+Yeah. Well, if I jump in here, the parallelizing without parallelizing means that we are not
+
+181
+00:20:59,080 --> 00:21:10,720
+doing parallelization within a language. So, if I have a Python script, I'm not using,
+
+182
+00:21:10,720 --> 00:21:21,800
+For example, Python's multi-processing, multi-threading properties.
+
+183
+00:21:21,800 --> 00:21:28,720
+So that means we're basically running the same thing multiple times, but each individual
+
+184
+00:21:28,720 --> 00:21:32,160
+one doesn't have any special parallelization.
+
+185
+00:21:32,160 --> 00:21:33,160
+Exactly.
+
+186
+00:21:33,160 --> 00:21:34,160
+Okay.
+
+187
+00:21:34,160 --> 00:21:35,160
+Yeah.
+
+188
+00:21:35,160 --> 00:21:43,960
+That sounds like a pretty good deal overall, I mean, if you can get parallelization without
+
+189
+00:21:43,960 --> 00:21:47,040
+having to do it.
+
+190
+00:21:47,040 --> 00:21:57,360
+I think it's a fantastic deal, because you don't have to go into the intricacies of the
+
+191
+00:21:57,360 --> 00:22:05,080
+language, and what you have to do is you have to learn this kind of meta layer of the HPC.
+
+192
+00:22:05,080 --> 00:22:10,360
+how do I efficiently submit basically the same job
+
+193
+00:22:10,360 --> 00:22:13,800
+with a little bit different parameters,
+
+194
+00:22:13,800 --> 00:22:15,160
+like multiple times.
+
+195
+00:22:18,200 --> 00:22:31,720
+So something changed here.
+
+196
+00:22:31,720 --> 00:22:33,120
+Yeah, OK.
+
+197
+00:22:33,120 --> 00:22:38,480
+And it's this sort of what I've heard,
+
+198
+00:22:38,480 --> 00:22:42,160
+like I've got the idea that in a lot of research,
+
+199
+00:22:42,160 --> 00:22:43,600
+this works better.
+
+200
+00:22:43,600 --> 00:22:47,160
+Like for example, when our team is buying GPUs,
+
+201
+00:22:47,160 --> 00:22:52,040
+we can spend extra for these GPUs with fast communication.
+
+202
+00:22:52,040 --> 00:22:56,320
+But the general feeling is, well,
+
+203
+00:22:56,320 --> 00:23:00,600
+people are more likely to just run multiple jobs at once.
+
+204
+00:23:00,600 --> 00:23:07,720
+Like if you need to run 10 GPU simulations,
+
+205
+00:23:07,720 --> 00:23:14,640
+and you can run, let's see, like 10 in one hour,
+
+206
+00:23:14,640 --> 00:23:17,320
+or 10 at the same time, each taking 10 hours,
+
+207
+00:23:17,320 --> 00:23:19,040
+it gets done at the same time.
+
+208
+00:23:19,040 --> 00:23:24,440
+So is that sort of how it is?
+
+209
+00:23:24,440 --> 00:23:28,360
+Yeah, and also from researchers' point of view,
+
+210
+00:23:28,360 --> 00:23:34,760
+learning to use this very low-level parallelization. The learning overhead is
+
+211
+00:23:37,240 --> 00:23:45,720
+something completely different than learning how to do this, well, the embarrassingly parallel one.
+
+212
+00:23:45,720 --> 00:23:50,440
+Yeah. So there's a lot of text here. I guess we can...
+
+213
+00:23:50,440 --> 00:23:58,280
+Yeah, and it's a good text, but I recommend reading it on your own pace.
+
+214
+00:23:58,920 --> 00:24:02,920
+Yeah. So what does this figure here mean?
+
+215
+00:24:06,120 --> 00:24:08,760
+1 to 10, do something in parallel, or...
+
+216
+00:24:11,800 --> 00:24:19,080
+Is this saying that if you control your parallelization, you can do 10 things at once,
+
+217
+00:24:19,080 --> 00:24:32,080
+But if you do 10 things at once, and each of them are trying to use 10 processors, then you've oversubscribed your...
+
+218
+00:24:32,080 --> 00:24:34,080
+Yeah, what does this mean?
+
+219
+00:24:34,080 --> 00:24:45,560
+Yeah, I think that's exactly what it means. So giving in first picture, we are doing 10,
+
+220
+00:24:45,560 --> 00:24:54,560
+like submitting 10 jobs to 10 CPUs, which is very nice from our point of view. It's
+
+221
+00:24:54,560 --> 00:25:01,040
+very understandable what's happening. And it's very nice from the point of view of the
+
+222
+00:25:01,040 --> 00:25:14,240
+hardware because it doesn't have to tangle itself in scheduling. But then I think the
+
+223
+00:25:14,240 --> 00:25:34,000
+The latter picture is, if we also try to do something in parallel, like, in, in the, yeah,
+
+224
+00:25:34,000 --> 00:25:36,280
+I don't even know how to describe it.
+
+225
+00:25:36,280 --> 00:25:37,280
+And that's the problem.
+
+226
+00:25:37,280 --> 00:25:44,800
+I remember this. So sometimes on our cluster, people submit jobs, and they might submit
+
+227
+00:25:44,800 --> 00:25:50,000
+a bunch of jobs, but they don't configure the job. So each job is trying to use every
+
+228
+00:25:50,000 --> 00:25:58,040
+CPU on the computing node. And that means that you're running way more than can fit
+
+229
+00:25:58,040 --> 00:26:06,000
+on there, and it slows down a lot. So I think it's something like that.
+
+230
+00:26:06,000 --> 00:26:18,780
+So each job should be isolated in a sense that they don't try to use the same CPUs.
+
+231
+00:26:18,780 --> 00:26:25,000
+So what does it mean to move the parallelization to the scheduler level?
+
+232
+00:26:25,000 --> 00:26:27,460
+So I guess this is what you've been saying.
+
+233
+00:26:27,460 --> 00:26:30,740
+So the scheduler is SLURM?
+
+234
+00:26:30,740 --> 00:26:33,640
+Yes.
+
+235
+00:26:33,640 --> 00:26:41,240
+on queuing system. Yeah, so basically you tell the scheduler to start many jobs and then
+
+236
+00:26:41,880 --> 00:26:46,200
+slurm does that and each job is not parallel.
+
+237
+00:26:50,040 --> 00:26:57,560
+Yeah, okay. There's a good question in the notes. Sometimes it feels like my laptop
+
+238
+00:26:57,560 --> 00:27:02,680
+multiprocessors are faster than the same amount of processors on HPC. Why is my laptop faster?
+
+239
+00:27:03,640 --> 00:27:11,880
+And that's a good question. I guess I can answer that from our cluster's hardware level.
+
+240
+00:27:12,520 --> 00:27:19,080
+So, I mean, the easy answer is that we don't promise it to be faster. So the cluster is
+
+241
+00:27:19,080 --> 00:27:26,360
+optimized for many processors that have reasonable price that can be run in parallel.
+
+242
+00:27:26,360 --> 00:27:35,840
+So, yeah, I mean, on average, your laptop is about more or less the single processor
+
+243
+00:27:35,840 --> 00:27:38,000
+power as the cluster.
+
+244
+00:27:38,000 --> 00:27:43,520
+The difference is that the cluster has tens of thousands or more of processors, and your
+
+245
+00:27:43,520 --> 00:27:49,880
+laptop has maybe four to eight, something like that.
+
+246
+00:27:49,880 --> 00:27:56,900
+But also for our particular cluster at our university, we keep the hardware as long as
+
+247
+00:27:56,900 --> 00:28:02,400
+it makes sense from the energy efficiency point of view, or until it starts literally
+
+248
+00:28:02,400 --> 00:28:07,600
+falling apart and becoming so unreliable it doesn't work anymore.
+
+249
+00:28:07,600 --> 00:28:12,280
+So that means that you might be running something on the cluster that's on one of the older
+
+250
+00:28:12,280 --> 00:28:18,320
+processors that might be five or more years old, while your laptop is probably not quite
+
+251
+00:28:18,320 --> 00:28:19,320
+that old.
+
+252
+00:28:19,320 --> 00:28:23,960
+So it might have more optimizations and so on there.
+
+253
+00:28:23,960 --> 00:28:27,120
+And that's, well, I mean, from our point of view,
+
+254
+00:28:27,120 --> 00:28:29,840
+we can either remove working hardware
+
+255
+00:28:29,840 --> 00:28:32,600
+and have to buy more or keep it there.
+
+256
+00:28:32,600 --> 00:28:35,720
+And it should always be better to keep it there.
+
+257
+00:28:35,720 --> 00:28:38,320
+And if someone needs newer, they can request newer.
+
+258
+00:28:38,320 --> 00:28:40,040
+And this is still processing power
+
+259
+00:28:40,040 --> 00:28:43,560
+that someone didn't have before.
+
+260
+00:28:43,560 --> 00:28:49,160
+OK, so on a cluster, the point
+
+261
+00:28:49,160 --> 00:29:00,840
+is that a single CPU might not be like super new and it might not be the kind of the best
+
+262
+00:29:00,840 --> 00:29:08,440
+of the bunch, but the point is that when you have like average CPUs in the order of tens
+
+263
+00:29:08,440 --> 00:29:17,640
+of thousands, then you get the kind of the scaling advantage over the laptop.
+
+264
+00:29:17,640 --> 00:29:18,640
+Yeah.
+
+265
+00:29:18,640 --> 00:29:19,640
+Yeah.
+
+266
+00:29:19,640 --> 00:29:28,320
+And I mean, there definitely are clusters that have really high single processor performance.
+
+267
+00:29:28,320 --> 00:29:33,400
+But anyway, I guess we should move on.
+
+268
+00:29:33,400 --> 00:29:37,800
+Next is concepts.
+
+269
+00:29:37,800 --> 00:29:41,480
+So what do I need to know to get started here?
+
+270
+00:29:41,480 --> 00:29:42,480
+Okay.
+
+271
+00:29:42,480 --> 00:29:48,360
+So, first of all, yeah, embarrassingly parallel code.
+
+272
+00:29:48,360 --> 00:29:49,360
+Yeah.
+
+273
+00:29:49,360 --> 00:29:53,520
+What does that mean?
+
+274
+00:29:53,520 --> 00:29:54,520
+Yeah.
+
+275
+00:29:54,520 --> 00:30:02,240
+So this is the most convenient type of parallelization.
+
+276
+00:30:02,240 --> 00:30:08,760
+And then what does it say here in the text?
+
+277
+00:30:08,760 --> 00:30:16,200
+It's code that essentially runs the same function for a large variety of input parameters, where
+
+278
+00:30:16,200 --> 00:30:21,400
+each step does not depend on anything other than the input data.
+
+279
+00:30:21,400 --> 00:30:27,440
+So basically we have jobs that are very similar.
+
+280
+00:30:27,440 --> 00:30:36,720
+They take input parameters, which makes them different, and the results don't depend on
+
+281
+00:30:36,720 --> 00:30:39,400
+the jobs, don't depend on each other.
+
+282
+00:30:39,400 --> 00:30:45,760
+So here, all of these calculates can be done at the same time, in theory.
+
+283
+00:30:45,760 --> 00:30:46,760
+Yes.
+
+284
+00:30:46,760 --> 00:30:50,680
+Or here for the two-dimensional scan, they can all be done separately.
+
+285
+00:30:50,680 --> 00:30:54,680
+So it's the whole point of today that we're going to split these out so all of these can
+
+286
+00:30:54,680 --> 00:30:57,400
+be run at the same time using Slurp?
+
+287
+00:30:57,400 --> 00:30:58,400
+Yes.
+
+288
+00:30:58,400 --> 00:31:00,400
+Or something like that.
+
+289
+00:31:00,400 --> 00:31:01,400
+Okay, yeah.
+
+290
+00:31:01,400 --> 00:31:08,280
+So instead of this being Python code, which is serial, the scheduler does it in parallel.
+
+291
+00:31:08,280 --> 00:31:10,280
+Yes, exactly.
+
+292
+00:31:10,280 --> 00:31:20,360
+So we are basically always moving the loop, looping into the photo scheduler.
+
+293
+00:31:20,360 --> 00:31:27,960
+By the way, the name embarrassingly parallel code or parallel, embarrassingly parallel
+
+294
+00:31:27,960 --> 00:31:38,120
+is a bit, it's a bit funny to me because it has this negative connotation when in fact
+
+295
+00:31:38,120 --> 00:31:44,320
+it is like, it's a super good thing that something is embarrassingly parallel.
+
+296
+00:31:44,320 --> 00:31:50,560
+So like, I would rather call it like happily parallel or something.
+
+297
+00:31:50,560 --> 00:31:51,560
+Easily parallel.
+
+298
+00:31:51,560 --> 00:31:52,560
+Yeah.
+
+299
+00:31:52,560 --> 00:31:53,560
+Yeah.
+
+300
+00:31:53,560 --> 00:31:56,440
+So, but, but this is like, uh, this is standard jargon.
+
+301
+00:31:56,440 --> 00:32:01,860
+So that's why we have adopted the embarrassingly parallel.
+
+302
+00:32:01,860 --> 00:32:06,700
+Is it like embarrassingly parallel because someone gets hired to make something parallel
+
+303
+00:32:06,700 --> 00:32:12,020
+and then they work on it for a year and come back and say, oh yeah, I just parallelized
+
+304
+00:32:12,020 --> 00:32:15,540
+it in the scheduler and didn't modify the code.
+
+305
+00:32:15,540 --> 00:32:16,540
+Yeah.
+
+306
+00:32:16,540 --> 00:32:19,140
+They're like, yeah, something.
+
+307
+00:32:19,140 --> 00:32:20,140
+Something like that.
+
+308
+00:32:20,140 --> 00:32:21,140
+Yeah.
+
+309
+00:32:21,140 --> 00:32:23,420
+But it's just a weird word choice.
+
+310
+00:32:23,420 --> 00:32:24,420
+Yeah.
+
+311
+00:32:24,420 --> 00:32:30,620
+But I guess the point is we always want to do embarrassing parallel if possible.
+
+312
+00:32:30,620 --> 00:32:32,620
+Yes.
+
+313
+00:32:32,620 --> 00:32:34,620
+Okay.
+
+314
+00:32:34,620 --> 00:32:38,100
+What about size of jobs?
+
+315
+00:32:38,100 --> 00:32:50,020
+There, I would say that the first sentence basically summarizes that in general, jobs
+
+316
+00:32:50,020 --> 00:32:55,260
+should not be too short on a cluster.
+
+317
+00:32:55,260 --> 00:33:02,060
+Because if you have tens of thousands of jobs or thousands of jobs and each take only, let's
+
+318
+00:33:02,060 --> 00:33:06,020
+say, a minute to run, then there's
+
+319
+00:33:06,020 --> 00:33:10,860
+going to be a lot of scheduling overhead
+
+320
+00:33:10,860 --> 00:33:15,580
+because the scheduler, or Slurm in our case,
+
+321
+00:33:15,580 --> 00:33:19,340
+needs to do all the scheduling and queuing work.
+
+322
+00:33:19,340 --> 00:33:28,100
+So it is very rough on the cluster itself.
+
+323
+00:33:28,100 --> 00:33:34,660
+So basically, don't make them too short, and I see there's a question in the notes where
+
+324
+00:33:34,660 --> 00:33:43,140
+there's some more details there. So should we go on? Okay, yeah. And I think it is pitfalls,
+
+325
+00:33:44,100 --> 00:33:53,300
+concurrency issues. So there's a lot here. What should I share? I think if we go through the
+
+326
+00:33:53,300 --> 00:34:02,100
+summary, because again, the text here is, which there is kind of a lot. I would recommend
+
+327
+00:34:02,100 --> 00:34:10,660
+going through that in people's own pace, but then we can, let's pick some interesting
+
+328
+00:34:11,940 --> 00:34:16,500
+things from the summary and talk about them. What do I need to know?
+
+329
+00:34:16,500 --> 00:34:26,980
+Well, in general, what does the concurrency issue mean?
+
+330
+00:34:26,980 --> 00:34:38,700
+To me, it means that two or more things like codes are trying to access the same resource,
+
+331
+00:34:38,700 --> 00:34:45,220
+which could be a file or a database.
+
+332
+00:34:45,220 --> 00:34:52,660
+So do you do you agree with this or yeah like I mean I guess you can ask what needs to be
+
+333
+00:34:52,660 --> 00:34:59,080
+accessed concurrently and I guess it's things like reading in input data and maybe writing
+
+334
+00:34:59,080 --> 00:35:05,760
+out data if it's going to the same place I guess the number one rule of a cluster is
+
+335
+00:35:05,760 --> 00:35:12,000
+don't have a bunch of processes all try to write to the same file exactly unless you're
+
+336
+00:35:12,000 --> 00:35:20,640
+carefully managing it. So is that the main? Is it bad to read from the same file multiple times?
+
+337
+00:35:22,080 --> 00:35:34,560
+That's a good question. I think I have Googled this and read the stack overflow
+
+338
+00:35:34,560 --> 00:35:42,720
+discussion like multiple times during my work years. And I think the answer is like reading is
+
+339
+00:35:42,720 --> 00:35:49,040
+fine. Yeah. I've never heard of a problem with reading unless it's, you're completely
+
+340
+00:35:49,040 --> 00:35:55,520
+overloading the system. But at that point, well. Yeah. There's something else also going on there.
+
+341
+00:35:55,520 --> 00:36:05,440
+if you, by reading a file, you overload the system. So yeah, go ahead, sorry.
+
+342
+00:36:05,440 --> 00:36:09,280
+But simultaneous writes, so what about that?
+
+343
+00:36:10,720 --> 00:36:18,880
+Yeah, that is the problem. And like you said, that the main point is don't try to write to the same
+
+344
+00:36:18,880 --> 00:36:29,440
+file at the same time. And the solution here in the summary is given, make sure that you,
+
+345
+00:36:30,160 --> 00:36:37,440
+for example, use when you write to a file that the file name has, for example, the job ID
+
+346
+00:36:37,440 --> 00:36:47,200
+or the parameters in it. So that way you make sure that the results and output files are
+
+347
+00:36:47,200 --> 00:36:50,320
+written to job-specific files.
+
+348
+00:36:50,320 --> 00:36:51,320
+Yeah.
+
+349
+00:36:51,320 --> 00:36:57,440
+Okay, so any time we're doing this embarrassing parallel, if we're saving data somewhere,
+
+350
+00:36:57,440 --> 00:37:02,600
+make sure it's writing it separately, and then combine it later, I guess?
+
+351
+00:37:02,600 --> 00:37:03,600
+Yes.
+
+352
+00:37:03,600 --> 00:37:04,600
+If you need to?
+
+353
+00:37:04,600 --> 00:37:05,600
+Okay.
+
+354
+00:37:05,600 --> 00:37:09,360
+Yeah, combine and use a collection script or...
+
+355
+00:37:09,360 --> 00:37:11,080
+Yeah, okay.
+
+356
+00:37:11,080 --> 00:37:15,880
+Do you know, is it safe to append to files from multiple jobs?
+
+357
+00:37:15,880 --> 00:37:23,720
+Like, if you're only appending and not doing other modifications.
+
+358
+00:37:23,720 --> 00:37:25,880
+I wouldn't.
+
+359
+00:37:25,880 --> 00:37:28,440
+I guess that's the safe answer.
+
+360
+00:37:28,440 --> 00:37:35,880
+I mean, I'm wondering if it's safe, but if it's too big, like, maybe we can ask someone
+
+361
+00:37:35,880 --> 00:37:37,360
+and see.
+
+362
+00:37:37,360 --> 00:37:44,880
+Yeah, and it's like, it's, I know it may sound weird because when you think about writing
+
+363
+00:37:44,880 --> 00:37:51,360
+a line of text, for example, in a file that you think of it like an instant instantaneous
+
+364
+00:37:53,440 --> 00:38:03,920
+thing. But it does take time. And then if you have like multiple scripts writing all the time,
+
+365
+00:38:03,920 --> 00:38:12,080
+then there will be conflicts. And what you end up is, well, I like to think that you end up with
+
+366
+00:38:12,080 --> 00:38:19,120
+corrupted files, but I guess it can be also that everything slows down because...
+
+367
+00:38:19,120 --> 00:38:26,960
+Yeah. From my understanding of Unix, there's certain operations that should be atomic,
+
+368
+00:38:26,960 --> 00:38:33,600
+meaning it all happens before anything else happens. And I'd like to think that appending
+
+369
+00:38:33,600 --> 00:38:40,320
+to a file is one of them. So if you append small enough data, it can always be done in one write.
+
+370
+00:38:40,320 --> 00:38:46,960
+It would work, but I really don't know if once it goes through the network layer and
+
+371
+00:38:46,960 --> 00:38:58,200
+the scratch file system layer, if that would still be the case, but okay, anyway.
+
+372
+00:38:58,200 --> 00:39:01,600
+Should we go on or is there more about this database access?
+
+373
+00:39:01,600 --> 00:39:09,480
+Well, I would think of a database access the same way as the file system, very roughly.
+
+374
+00:39:09,480 --> 00:39:17,440
+But the right database should handle multiple writes at the same time.
+
+375
+00:39:17,440 --> 00:39:19,000
+Yeah, exactly.
+
+376
+00:39:19,000 --> 00:39:30,680
+So that the database will have concurrency, like, not all databases, but...
+
+377
+00:39:30,680 --> 00:39:36,520
+I've heard of some of our users doing things like setting up a database which all the jobs
+
+378
+00:39:36,520 --> 00:39:38,040
+would read or write to.
+
+379
+00:39:38,040 --> 00:39:45,840
+I mean, I guess they can't all do a lot at the same time.
+
+380
+00:39:45,840 --> 00:39:50,240
+You can't have millions of things writing to there because of the database performance,
+
+381
+00:39:50,240 --> 00:39:51,240
+but a few things.
+
+382
+00:39:51,240 --> 00:39:54,560
+That's sort of the point of a database.
+
+383
+00:39:54,560 --> 00:40:04,580
+Yeah. And like you said, that like a proper database, for example, if we name some databases,
+
+384
+00:40:04,580 --> 00:40:15,680
+so if you pick SQLite, that doesn't have concurrency. So that will have the same problem as writing
+
+385
+00:40:15,680 --> 00:40:25,320
+to a file, but if you pick, for example, Postgres, then that will have concurrency handling.
+
+386
+00:40:25,320 --> 00:40:33,080
+So it is definitely better the situation to use the database.
+
+387
+00:40:33,080 --> 00:40:42,200
+So you don't get these conflicts, but there is this kind of like the compromises that
+
+388
+00:40:42,200 --> 00:40:53,280
+You have to set up and admin the database, and also the database will use some resources,
+
+389
+00:40:53,280 --> 00:40:55,200
+has to run somewhere.
+
+390
+00:40:55,200 --> 00:41:00,080
+Okay, should we go on then?
+
+391
+00:41:00,080 --> 00:41:01,080
+Yeah.
+
+392
+00:41:01,080 --> 00:41:02,080
+Okay.
+
+393
+00:41:02,080 --> 00:41:06,940
+Pitfalls, hardware, and server limitations.
+
+394
+00:41:06,940 --> 00:41:10,040
+So I guess let's look at the summary here again.
+
+395
+00:41:10,040 --> 00:41:16,920
+So what about this?
+
+396
+00:41:16,920 --> 00:41:28,000
+What do I need to know?
+
+397
+00:41:28,000 --> 00:41:29,600
+Did my network connection die?
+
+398
+00:41:29,600 --> 00:41:30,600
+No.
+
+399
+00:41:30,600 --> 00:41:31,600
+No, no, no.
+
+400
+00:41:31,600 --> 00:41:32,600
+Okay.
+
+401
+00:41:32,600 --> 00:41:33,600
+I'm reading the summary as well.
+
+402
+00:41:33,600 --> 00:41:34,600
+Okay.
+
+403
+00:41:34,600 --> 00:41:35,600
+So that's why.
+
+404
+00:41:35,600 --> 00:41:36,600
+Yeah.
+
+405
+00:41:36,600 --> 00:41:40,600
+I mean, I guess it's saying...
+
+406
+00:41:40,600 --> 00:41:44,600
+...is caches...
+
+407
+00:41:44,600 --> 00:41:48,600
+This goes a little bit too low-level
+
+408
+00:41:48,600 --> 00:41:52,600
+for me. I guess a lot of it makes sense, like, if you have many small files in parallel,
+
+409
+00:41:52,600 --> 00:41:56,600
+then that becomes a
+
+410
+00:41:56,600 --> 00:42:00,600
+bottleneck for IOSpeed.
+
+411
+00:42:00,600 --> 00:42:04,600
+We already talked about the many
+
+412
+00:42:04,600 --> 00:42:09,200
+small jobs grouping, maybe we'll talk about later.
+
+413
+00:42:09,200 --> 00:42:10,200
+Yeah.
+
+414
+00:42:10,200 --> 00:42:11,200
+So,
+
+415
+00:42:11,200 --> 00:42:12,200
+I guess.
+
+416
+00:42:12,200 --> 00:42:13,200
+Yeah.
+
+417
+00:42:13,200 --> 00:42:27,200
+So, how I read it is that if you have slow type disks that will like spinning disks,
+
+418
+00:42:27,200 --> 00:42:37,040
+they will be slower, and maybe that you should know where you are writing, that what the
+
+419
+00:42:38,560 --> 00:42:45,840
+disks are being used, and maybe that will help you debug some problems if something comes up,
+
+420
+00:42:46,400 --> 00:42:56,320
+that, okay, I have something is going wrong, then maybe it could be something like this.
+
+421
+00:42:57,200 --> 00:42:58,200
+Yeah.
+
+422
+00:42:58,200 --> 00:42:59,200
+Too slow a disk.
+
+423
+00:42:59,200 --> 00:43:00,200
+Yeah.
+
+424
+00:43:00,200 --> 00:43:01,200
+Okay.
+
+425
+00:43:01,200 --> 00:43:02,200
+Should we go on then?
+
+426
+00:43:02,200 --> 00:43:03,200
+Yeah.
+
+427
+00:43:03,200 --> 00:43:10,200
+I was going to say that talk to your favorite cluster administration about this issue.
+
+428
+00:43:10,200 --> 00:43:11,200
+Yeah.
+
+429
+00:43:11,200 --> 00:43:15,960
+I guess every cluster is different, so maybe it's good to see what yours is optimized for.
+
+430
+00:43:15,960 --> 00:43:21,360
+Like I think ours is more optimized for small file access than some of the big ones and
+
+431
+00:43:21,360 --> 00:43:22,360
+so on.
+
+432
+00:43:22,360 --> 00:43:23,360
+Exactly.
+
+433
+00:43:23,360 --> 00:43:24,360
+Okay.
+
+434
+00:43:24,360 --> 00:43:34,660
+So, let's go on then, and maybe we can take a break and look at the notes here.
+
+435
+00:43:34,660 --> 00:43:41,200
+So we've got a lot of good questions here.
+
+436
+00:43:41,200 --> 00:43:45,840
+Some already answered the new questions.
+
+437
+00:43:45,840 --> 00:43:49,720
+Some of these I wrote here, hoping that other people would answer.
+
+438
+00:43:49,720 --> 00:43:53,720
+Is there a Linux command to test the IOSPEED of disks?
+
+439
+00:43:53,720 --> 00:43:55,720
+Hmm...
+
+440
+00:43:55,720 --> 00:44:02,720
+Actually, I would be really happy for a cheat sheet of all of these Linux performance measuring commands,
+
+441
+00:44:02,720 --> 00:44:08,720
+like test disk performance, test CPU performance, and so on.
+
+442
+00:44:08,720 --> 00:44:14,720
+Time definitely does show how much time your program is taking,
+
+443
+00:44:14,720 --> 00:44:20,720
+making, but not the raw capacity of the disks themselves.
+
+444
+00:44:20,720 --> 00:44:21,720
+Hmm.
+
+445
+00:44:21,720 --> 00:44:22,720
+Hmm.
+
+446
+00:44:22,720 --> 00:44:23,720
+Yeah.
+
+447
+00:44:23,720 --> 00:44:24,720
+Okay.
+
+448
+00:44:24,720 --> 00:44:29,120
+But yes, keep them coming.
+
+449
+00:44:29,120 --> 00:44:31,080
+And should we go on?
+
+450
+00:44:31,080 --> 00:44:35,720
+Yeah, just a second.
+
+451
+00:44:35,720 --> 00:44:40,640
+These three here, I...
+
+452
+00:44:40,640 --> 00:44:43,880
+Is that the database out of queue?
+
+453
+00:44:43,880 --> 00:44:48,500
+So yeah, so for this one, basically databases are designed for concurrent access.
+
+454
+00:44:48,500 --> 00:44:53,100
+They have their own internal queues and journaling and stuff like that.
+
+455
+00:44:53,100 --> 00:44:59,200
+So you can basically send all the rights to it and it holds them until it can do it safely
+
+456
+00:44:59,200 --> 00:45:00,920
+and in order.
+
+457
+00:45:00,920 --> 00:45:01,920
+Yeah.
+
+458
+00:45:01,920 --> 00:45:12,320
+So if it receives two requests to write something like simultaneously, it has an inner process
+
+459
+00:45:12,320 --> 00:45:17,520
+to make sure that they are first queued and then written safely.
+
+460
+00:45:17,520 --> 00:45:18,520
+Yeah.
+
+461
+00:45:18,520 --> 00:45:22,280
+Sorry, I think I just, I just repeated what you said.
+
+462
+00:45:22,280 --> 00:45:23,280
+Yeah.
+
+463
+00:45:23,280 --> 00:45:24,280
+Yeah.
+
+464
+00:45:24,280 --> 00:45:25,280
+That's good.
+
+465
+00:45:25,280 --> 00:45:26,280
+On here.
+
+466
+00:45:26,280 --> 00:45:27,280
+Yeah.
+
+467
+00:45:27,280 --> 00:45:28,280
+Someone pointed out the dd command.
+
+468
+00:45:28,280 --> 00:45:31,640
+So dd basically, what does it even stand for?
+
+469
+00:45:31,640 --> 00:45:33,560
+Duplicate data or something like that.
+
+470
+00:45:33,560 --> 00:45:39,160
+It can do raw reads and writes, not raw, but it basically reads and writes data.
+
+471
+00:45:39,160 --> 00:45:46,840
+So you can use it to say, how long does it take to read one gigabyte of data, or so on.
+
+472
+00:45:46,840 --> 00:45:54,160
+But let's let people keep adding in more stuff there.
+
+473
+00:45:54,160 --> 00:45:57,440
+Okay.
+
+474
+00:45:57,440 --> 00:46:03,400
+So now I think we get to the main part of the lesson.
+
+475
+00:46:03,400 --> 00:46:05,240
+Yes.
+
+476
+00:46:05,240 --> 00:46:13,080
+So what's our example for the rest of the time?
+
+477
+00:46:13,080 --> 00:46:18,540
+So from what I understand, I'll be typing out a real example, which is partly a mystery
+
+478
+00:46:18,540 --> 00:46:19,540
+to me.
+
+479
+00:46:19,540 --> 00:46:20,540
+Okay.
+
+480
+00:46:20,540 --> 00:46:21,540
+Yeah.
+
+481
+00:46:21,540 --> 00:46:39,300
+The scenario that we are starting with, it's kind of a reminder of quite a realistic scenario,
+
+482
+00:46:39,300 --> 00:46:50,820
+which is that people are developing their pipeline or workflow in a Jupyter notebook.
+
+483
+00:46:50,820 --> 00:47:03,460
+But in order to use the HPC efficiently, we want to take that one notebook and turn it
+
+484
+00:47:03,460 --> 00:47:16,620
+into scripts, in this case, Python scripts, and factorize it so that we have one script
+
+485
+00:47:16,620 --> 00:47:20,140
+doing one step of the pipeline.
+
+486
+00:47:20,140 --> 00:47:24,660
+So basically, the thing that I often see people needing to do.
+
+487
+00:47:24,660 --> 00:47:29,020
+So they come in with this Jupyter and say, I want to run it on the cluster.
+
+488
+00:47:29,020 --> 00:47:33,820
+Well, they can run it on one processor, but that's defeating the purpose.
+
+489
+00:47:33,820 --> 00:47:34,820
+Yes.
+
+490
+00:47:34,820 --> 00:47:35,820
+Okay.
+
+491
+00:47:35,820 --> 00:47:36,820
+Yeah.
+
+492
+00:47:36,820 --> 00:47:42,900
+When I say efficiently, then yes, I exactly, I meant that we want to use the parallelization
+
+493
+00:47:42,900 --> 00:47:43,900
+for it.
+
+494
+00:47:43,900 --> 00:47:44,900
+Yeah.
+
+495
+00:47:44,900 --> 00:47:45,900
+Okay.
+
+496
+00:47:45,900 --> 00:47:57,100
+And then, so we take a look at, about kind of like the, where, where we end up with our
+
+497
+00:47:57,100 --> 00:48:01,580
+scripts and what kind of workflow it is.
+
+498
+00:48:01,580 --> 00:48:04,740
+It's a simple two-step workflow.
+
+499
+00:48:04,740 --> 00:48:14,180
+And then we will run that workflow on HPC using, where we parallelize what can be parallelized
+
+500
+00:48:14,180 --> 00:48:16,100
+using three different methods.
+
+501
+00:48:16,100 --> 00:48:22,940
+Can you give me a summary of what these methods are just so I'll know what to be looking forward
+
+502
+00:48:22,940 --> 00:48:23,940
+to?
+
+503
+00:48:23,940 --> 00:48:24,940
+Okay.
+
+504
+00:48:24,940 --> 00:48:36,180
+So the first parallelize using scripting is that we basically, we write a Python script
+
+505
+00:48:36,180 --> 00:48:40,780
+or it can be actually anything, R script also.
+
+506
+00:48:40,780 --> 00:48:52,120
+But let's say we have a Python script and we use a sub-process module to submit the
+
+507
+00:48:52,120 --> 00:48:55,720
+job using the Slurm system.
+
+508
+00:48:55,720 --> 00:49:05,600
+So then those things are running, what is in the loop are running parallel.
+
+509
+00:49:05,600 --> 00:49:13,320
+And then the array jobs is kind of like a Slurm native method to parallelize.
+
+510
+00:49:13,320 --> 00:49:27,880
+So we can just modify the Slurm batch script to tell it to that, okay, this needs to be
+
+511
+00:49:27,880 --> 00:49:34,000
+running in parallel, multiple jobs in parallel.
+
+512
+00:49:34,000 --> 00:49:46,520
+And the third one is to parallelize or run the whole workflow using a workflow manager
+
+513
+00:49:46,520 --> 00:49:47,520
+tool.
+
+514
+00:49:47,520 --> 00:49:57,840
+Which in our case will be SnakeMake.
+
+515
+00:49:57,840 --> 00:49:59,800
+So what does workflow manager mean?
+
+516
+00:49:59,800 --> 00:50:05,760
+I've been hearing a lot about how you've been developing the lesson, and I'm really looking
+
+517
+00:50:05,760 --> 00:50:09,920
+forward to hearing the advantages and disadvantages.
+
+518
+00:50:09,920 --> 00:50:27,520
+Yeah, it's a workflow manager tool is, we take kind of a more higher view of the workflow.
+
+519
+00:50:27,520 --> 00:50:45,480
+So we have the whole workflow defined in one file and it is kind of a, when your workflow
+
+520
+00:50:45,480 --> 00:50:53,760
+is starting to get really big, then basically that is when you might want to switch to using
+
+521
+00:50:53,760 --> 00:51:00,400
+to workflow managers. But it works for small workflows as well, of course.
+
+522
+00:51:00,400 --> 00:51:03,600
+Okay, so I look forward to getting there.
+
+523
+00:51:03,600 --> 00:51:04,600
+Yeah.
+
+524
+00:51:04,600 --> 00:51:05,600
+So, do we begin?
+
+525
+00:51:05,600 --> 00:51:11,360
+Yeah, that wasn't a very good explanation, but yeah. You put me on the spot. This is
+
+526
+00:51:11,360 --> 00:51:12,360
+what you got.
+
+527
+00:51:12,360 --> 00:51:18,400
+Yeah, okay. So, should I begin with converting it to the Python script?
+
+528
+00:51:18,400 --> 00:51:21,800
+Yeah, let's start with the notebook.
+
+529
+00:51:21,800 --> 00:51:26,160
+So I click here.
+
+530
+00:51:26,160 --> 00:51:29,440
+OK, so now it's time for me to do typing.
+
+531
+00:51:29,440 --> 00:51:33,760
+So I guess the goal, here I am.
+
+532
+00:51:33,760 --> 00:51:37,760
+I am on our cluster.
+
+533
+00:51:37,760 --> 00:51:41,280
+And I'm in my home directory here.
+
+534
+00:51:44,360 --> 00:51:48,400
+And I'll be doing these examples for almost the first time.
+
+535
+00:51:48,400 --> 00:51:51,240
+So I will try to go as quick as I can.
+
+536
+00:51:51,240 --> 00:51:54,600
+But I'll also be asking questions about what it means
+
+537
+00:51:54,600 --> 00:51:55,920
+and how to do it.
+
+538
+00:51:55,920 --> 00:51:58,280
+Yeah, please do, because, yeah.
+
+539
+00:51:58,280 --> 00:52:02,120
+Do we expect users to follow along at the same time?
+
+540
+00:52:02,120 --> 00:52:03,080
+No.
+
+541
+00:52:03,080 --> 00:52:04,000
+OK.
+
+542
+00:52:04,000 --> 00:52:07,880
+Definitely, definitely not, because there
+
+543
+00:52:07,880 --> 00:52:11,680
+will be enough stuff going on that it will.
+
+544
+00:52:11,680 --> 00:52:13,960
+Yeah.
+
+545
+00:52:13,960 --> 00:52:16,080
+So this is just a demo.
+
+546
+00:52:16,080 --> 00:52:18,360
+Yeah, it's not worth splitting your focus.
+
+547
+00:52:18,360 --> 00:52:20,200
+Yeah, OK.
+
+548
+00:52:20,200 --> 00:52:26,040
+So I'll try to explain or ask questions about the parts that might be tricky, but if it's
+
+549
+00:52:26,040 --> 00:52:28,760
+probably not tricky, I'll just do it as quick as I can.
+
+550
+00:52:29,560 --> 00:52:29,800
+Okay.
+
+551
+00:52:30,440 --> 00:52:30,760
+Okay.
+
+552
+00:52:30,760 --> 00:52:32,440
+But let's see how this goes.
+
+553
+00:52:32,440 --> 00:52:32,600
+Yeah.
+
+554
+00:52:33,480 --> 00:52:37,800
+So the notebook is on GitHub.
+
+555
+00:52:39,640 --> 00:52:45,160
+I guess I can open this and hopefully it renders.
+
+556
+00:52:45,160 --> 00:52:46,760
+Yeah, looks like a notebook.
+
+557
+00:52:46,760 --> 00:52:53,760
+But the conversion is already done.
+
+558
+00:52:53,760 --> 00:52:54,760
+Yes.
+
+559
+00:52:54,760 --> 00:52:56,760
+Is that the same one?
+
+560
+00:52:56,760 --> 00:53:04,760
+So it is mainly that we don't have to now start opening notebooks and running them.
+
+561
+00:53:04,760 --> 00:53:12,760
+So maybe the first thing I will do is make a new directory for my work.
+
+562
+00:53:12,760 --> 00:53:24,120
+TTT for HPC parallel.
+
+563
+00:53:24,120 --> 00:53:36,400
+And I will download the script, and I will do that by copying the raw link, and wginted.
+
+564
+00:53:36,400 --> 00:53:39,400
+Okay.
+
+565
+00:53:39,400 --> 00:53:40,400
+Okay.
+
+566
+00:53:40,400 --> 00:53:41,400
+Yeah.
+
+567
+00:53:41,400 --> 00:53:46,680
+list. I've got it downloaded. Yeah. Okay.
+
+568
+00:53:46,680 --> 00:53:59,080
+So actually I would, now that I, if we go downwards, there might, it might be that the,
+
+569
+00:53:59,080 --> 00:54:08,440
+cause, or actually I would prefer that. Let's, let's look a bit like what, what the notebook
+
+570
+00:54:08,440 --> 00:54:10,480
+actually does or what the code does.
+
+571
+00:54:10,480 --> 00:54:11,480
+Okay.
+
+572
+00:54:11,480 --> 00:54:14,720
+Should I open the notebook or the code?
+
+573
+00:54:14,720 --> 00:54:20,160
+You can open the code because we are now, we have exported it.
+
+574
+00:54:20,160 --> 00:54:23,440
+So what does it do?
+
+575
+00:54:23,440 --> 00:54:28,320
+So in this, this is a pipeline or a workflow.
+
+576
+00:54:28,320 --> 00:54:32,100
+And what we do is that we have two steps.
+
+577
+00:54:32,100 --> 00:54:35,120
+And in the first step, we...
+
+578
+00:54:35,120 --> 00:54:42,800
+Or should I be sharing the screen?
+
+579
+00:54:42,800 --> 00:54:44,040
+Lowering the code.
+
+580
+00:54:44,040 --> 00:54:45,040
+This is the file.
+
+581
+00:54:45,040 --> 00:54:46,040
+The script file.
+
+582
+00:54:46,040 --> 00:54:47,040
+Yes.
+
+583
+00:54:47,040 --> 00:54:48,040
+Yeah.
+
+584
+00:54:48,040 --> 00:54:49,040
+That looks...
+
+585
+00:54:49,040 --> 00:54:59,560
+So this is the notebook converted to a Python script.
+
+586
+00:54:59,560 --> 00:55:13,600
+So there are two steps here, and the first one is called pre-processing data.
+
+587
+00:55:13,600 --> 00:55:20,180
+And it uses the Skykit Learn datasets.
+
+588
+00:55:20,180 --> 00:55:26,700
+It loads this iris flower dataset from there.
+
+589
+00:55:26,700 --> 00:55:36,020
+So these datasets are something that comes bundled with the Skykit Learn datasets.
+
+590
+00:55:36,020 --> 00:55:38,100
+So it's automatic, yeah.
+
+591
+00:55:38,100 --> 00:55:39,100
+Yeah.
+
+592
+00:55:39,100 --> 00:55:47,100
+And then we take two features from there, which are the length of the sepals of the
+
+593
+00:55:47,100 --> 00:55:55,900
+flowers. And then we take the classes, which are different subspecies of viruses.
+
+594
+00:55:55,900 --> 00:56:05,820
+Oops. What? GitHub's popping up Windows. Okay. Yeah. So we have the features and the classes.
+
+595
+00:56:06,540 --> 00:56:13,020
+Yeah. And then when we do the train, we split the data to train and test sets.
+
+596
+00:56:13,020 --> 00:56:18,020
+and then we save all this to disk.
+
+597
+00:56:19,020 --> 00:56:19,860
+Yeah. Okay.
+
+598
+00:56:19,860 --> 00:56:24,540
+So we have the train and test sets and features and classes.
+
+599
+00:56:24,540 --> 00:56:25,540
+Yeah.
+
+600
+00:56:25,540 --> 00:56:29,420
+And it's in the data pre-processed iris pickle file.
+
+601
+00:56:30,500 --> 00:56:32,700
+And this is, so this was the first step.
+
+602
+00:56:32,700 --> 00:56:36,720
+And the second step is that we want to,
+
+603
+00:56:36,720 --> 00:56:48,240
+we want to learn or train these nearest neighbor classifiers or a classifier on this dataset.
+
+604
+00:56:49,600 --> 00:56:58,000
+And then we apply the learned classifier on the whole data, the complete data,
+
+605
+00:56:58,000 --> 00:57:01,840
+and plot the decision boundaries.
+
+606
+00:57:01,840 --> 00:57:02,680
+Okay.
+
+607
+00:57:03,520 --> 00:57:04,600
+Yeah.
+
+608
+00:57:04,600 --> 00:57:06,160
+Yeah.
+
+609
+00:57:06,160 --> 00:57:09,280
+Here we are assuming that that classification
+
+610
+00:57:09,280 --> 00:57:14,280
+is somewhat familiar topic.
+
+611
+00:57:15,800 --> 00:57:16,640
+Okay.
+
+612
+00:57:16,640 --> 00:57:20,720
+So what happens first is we load the preprocessed data
+
+613
+00:57:20,720 --> 00:57:25,240
+and then we have a couple of parameters
+
+614
+00:57:25,240 --> 00:57:33,920
+for the classifier, which is the number of neighbors and the distance metric.
+
+615
+00:57:33,920 --> 00:57:35,960
+Right. Yeah. Okay.
+
+616
+00:57:35,960 --> 00:57:36,960
+Yeah.
+
+617
+00:57:36,960 --> 00:57:42,280
+And, spoiler alert, this is what we're going to be parallelizing over.
+
+618
+00:57:42,280 --> 00:57:43,280
+Yes.
+
+619
+00:57:43,280 --> 00:57:44,280
+Different.
+
+620
+00:57:44,280 --> 00:57:45,280
+Yes.
+
+621
+00:57:45,280 --> 00:57:46,280
+Okay. Yeah.
+
+622
+00:57:46,280 --> 00:57:47,280
+Exactly.
+
+623
+00:57:47,280 --> 00:57:50,280
+And here I see two loops.
+
+624
+00:57:50,280 --> 00:58:00,800
+Yeah. So we have two loops. And what happens is that the, well, like you said, we have
+
+625
+00:58:00,800 --> 00:58:14,020
+a combination of parameters. And those can be run in parallel, the training and plotting,
+
+626
+00:58:14,020 --> 00:58:20,120
+because they don't depend on each other.
+
+627
+00:58:20,120 --> 00:58:25,960
+So we have, OK, this is the training here.
+
+628
+00:58:25,960 --> 00:58:27,240
+Yes.
+
+629
+00:58:27,240 --> 00:58:28,560
+And this is the plotting.
+
+630
+00:58:28,560 --> 00:58:35,640
+And the plotting is just of the respective parameters.
+
+631
+00:58:35,640 --> 00:58:39,880
+It makes a scatterplot with colors of the classes.
+
+632
+00:58:39,880 --> 00:58:42,960
+Yeah, so yes.
+
+633
+00:58:42,960 --> 00:58:46,360
+So important thing here is to, the most important
+
+634
+00:58:46,360 --> 00:58:50,280
+is that for each parameter settings,
+
+635
+00:58:50,280 --> 00:58:54,200
+we will have an output file or a result file,
+
+636
+00:58:54,200 --> 00:58:59,200
+which is, you can see it in the build safe fig.
+
+637
+00:58:59,280 --> 00:59:04,280
+So in a results folder, we have a image file,
+
+638
+00:59:05,720 --> 00:59:10,720
+the boundary decisions named according to the parameters,
+
+639
+00:59:12,840 --> 00:59:15,200
+which is exactly what we were talking about earlier,
+
+640
+00:59:15,200 --> 00:59:20,200
+that we should always, in order not to write over stuff
+
+641
+00:59:23,320 --> 00:59:26,000
+and especially not the same time.
+
+642
+00:59:26,000 --> 00:59:27,280
+Yeah. Okay.
+
+643
+00:59:27,280 --> 00:59:30,440
+Name the output files.
+
+644
+00:59:30,440 --> 00:59:31,280
+Good.
+
+645
+00:59:32,240 --> 00:59:33,080
+Okay.
+
+646
+00:59:33,080 --> 00:59:34,080
+Now I understand.
+
+647
+00:59:34,080 --> 00:59:35,360
+So, yeah.
+
+648
+00:59:35,360 --> 00:59:37,320
+So if we go back,
+
+649
+00:59:38,800 --> 00:59:41,600
+then because we have, here we have two steps
+
+650
+00:59:43,080 --> 00:59:44,920
+or we had two steps.
+
+651
+00:59:44,920 --> 00:59:49,920
+So like we said earlier that we want to factorize the code
+
+652
+00:59:51,160 --> 00:59:53,840
+so that each step is in its own script.
+
+653
+00:59:55,120 --> 01:00:00,120
+And here is exactly what we have done in the next section.
+
+654
+01:00:01,680 --> 01:00:04,520
+So we will have preprocess.py
+
+655
+01:00:04,520 --> 01:00:08,240
+which will have the first portion of the script.
+
+656
+01:00:08,240 --> 01:00:10,520
+So here it opens and saves it.
+
+657
+01:00:10,520 --> 01:00:14,520
+Yes. And the second will be train and plot.
+
+658
+01:00:15,120 --> 01:00:23,820
+Okay, so here it opens the pre-processed data and iterates over.
+
+659
+01:00:25,120 --> 01:00:26,520
+Yeah, here the lists are bigger.
+
+660
+01:00:27,020 --> 01:00:27,220
+Yeah.
+
+661
+01:00:27,320 --> 01:00:27,620
+Okay.
+
+662
+01:00:28,220 --> 01:00:28,520
+Yeah.
+
+663
+01:00:30,820 --> 01:00:37,620
+There are, I think, I think SkyGitLearn has like nine distance metrics that it supports.
+
+664
+01:00:37,620 --> 01:00:40,620
+So, yeah, we have used five.
+
+665
+01:00:40,620 --> 01:00:42,620
+Yeah. Okay.
+
+666
+01:00:42,620 --> 01:00:47,620
+So, number of neighbors goes from 1, 2, 4, 8, 16, 32, 64,
+
+667
+01:00:47,620 --> 01:00:51,620
+and distance matrix goes Euclidean one and L1 one.
+
+668
+01:00:51,620 --> 01:00:52,620
+Yeah.
+
+669
+01:00:52,620 --> 01:00:54,620
+Opposite and cosine.
+
+670
+01:00:54,620 --> 01:00:58,620
+So, should I copy the files from here or split it myself?
+
+671
+01:01:01,620 --> 01:01:03,620
+I think you can copy.
+
+672
+01:01:03,620 --> 01:01:04,620
+Okay.
+
+673
+01:01:04,620 --> 01:01:09,620
+just to make sure that we don't make typos.
+
+674
+01:01:12,540 --> 01:01:13,860
+Mess it up somewhere.
+
+675
+01:01:14,980 --> 01:01:16,980
+So copy, paste.
+
+676
+01:01:22,540 --> 01:01:24,860
+I hope this pasted correctly.
+
+677
+01:01:30,180 --> 01:01:31,320
+Just me or there?
+
+678
+01:01:31,320 --> 01:01:36,200
+There's extra lines in there.
+
+679
+01:01:36,200 --> 01:01:37,200
+Yeah.
+
+680
+01:01:37,200 --> 01:01:44,760
+For some reason, it's doubled the line, the empty lines.
+
+681
+01:01:44,760 --> 01:01:49,120
+Well, let's hope it works.
+
+682
+01:01:49,120 --> 01:01:50,120
+Interesting.
+
+683
+01:01:50,120 --> 01:02:00,200
+Is this a weird feature, or I'm not a weird user?
+
+684
+01:02:00,200 --> 01:02:06,160
+This is actually Emacs, I have the VI program alias to Emacs.
+
+685
+01:02:06,160 --> 01:02:08,600
+So that makes it even more confusing.
+
+686
+01:02:08,600 --> 01:02:09,600
+Confusing, yeah.
+
+687
+01:02:09,600 --> 01:02:19,000
+Okay, well, that's preprocess, and next is train and plot.py.
+
+688
+01:02:19,000 --> 01:02:26,960
+Did it again.
+
+689
+01:02:26,960 --> 01:02:32,120
+Okay, so the two files are there.
+
+690
+01:02:32,120 --> 01:02:33,120
+Yeah.
+
+691
+01:02:33,120 --> 01:02:41,200
+And then the next section here is the update code to run on a cluster.
+
+692
+01:02:41,200 --> 01:02:48,960
+And first, we will need the environment with the dependencies.
+
+693
+01:02:48,960 --> 01:02:58,880
+And that is, we will use this singularity container, or an image, and that has already
+
+694
+01:02:58,880 --> 01:03:01,720
+been created for us.
+
+695
+01:03:01,720 --> 01:03:07,280
+So we should be able to, I think you can run this, yeah.
+
+696
+01:03:07,280 --> 01:03:09,720
+And we can let it run while it's going.
+
+697
+01:03:09,720 --> 01:03:11,760
+So this is what we talked about last week.
+
+698
+01:03:11,760 --> 01:03:12,760
+Yeah, exactly.
+
+699
+01:03:12,760 --> 01:03:17,100
+I did it last night and it worked.
+
+700
+01:03:17,100 --> 01:03:28,100
+People are already experts with containers, so we don't have to go.
+
+701
+01:03:28,100 --> 01:03:38,380
+And then what we mean by running in HPC here is, of course, that we want to do the Slurm
+
+702
+01:03:38,380 --> 01:03:41,540
+submission.
+
+703
+01:03:41,540 --> 01:03:46,100
+And this is the Slurm script to submit our job.
+
+704
+01:03:46,100 --> 01:03:47,100
+Yes.
+
+705
+01:03:47,100 --> 01:03:48,100
+Okay.
+
+706
+01:03:48,100 --> 01:03:49,100
+So, yeah.
+
+707
+01:03:49,100 --> 01:04:05,100
+So what it does, it asks some basic resources, time memory, CPUs per task, and then it runs
+
+708
+01:04:05,100 --> 01:04:08,220
+the two scripts.
+
+709
+01:04:08,220 --> 01:04:14,220
+And importantly, it runs them sequentially.
+
+710
+01:04:14,220 --> 01:04:17,180
+So this is doing all 10 or whatever.
+
+711
+01:04:17,180 --> 01:04:19,180
+Yeah, exactly.
+
+712
+01:04:19,180 --> 01:04:20,180
+Yeah.
+
+713
+01:04:20,180 --> 01:04:26,340
+So in the train and plot.py, we currently have the two for loops.
+
+714
+01:04:26,340 --> 01:04:36,220
+So it will run them all like one by one within the Python script.
+
+715
+01:04:36,220 --> 01:04:44,940
+In a real thing, would we have the preprocess in the same batch script as the training and
+
+716
+01:04:44,940 --> 01:04:47,940
+plotting?
+
+717
+01:04:47,940 --> 01:05:01,780
+I would have different batch scripts for the different scripts, at least for one reason.
+
+718
+01:05:01,780 --> 01:05:08,420
+There might be more, but at least one reason, which is that different steps require different
+
+719
+01:05:08,420 --> 01:05:09,420
+resources.
+
+720
+01:05:09,420 --> 01:05:10,420
+Yeah.
+
+721
+01:05:10,420 --> 01:05:16,420
+So, it might be that our preprocessing step requires a lot of memory and our training
+
+722
+01:05:16,420 --> 01:05:18,220
+doesn't for some reason.
+
+723
+01:05:18,220 --> 01:05:19,220
+Yeah.
+
+724
+01:05:19,220 --> 01:05:26,180
+So, in this case, does the preprocess script, does it need to be, like, can it be done once
+
+725
+01:05:26,180 --> 01:05:28,780
+and never done again?
+
+726
+01:05:28,780 --> 01:05:29,780
+Yes.
+
+727
+01:05:29,780 --> 01:05:35,580
+Okay, so again, if we were doing multiple analyses, we could have it do it once and
+
+728
+01:05:35,580 --> 01:05:39,740
+then just leave it at that.
+
+729
+01:05:39,740 --> 01:05:40,740
+Yes.
+
+730
+01:05:40,740 --> 01:05:41,740
+Okay.
+
+731
+01:05:41,740 --> 01:05:42,740
+Yeah.
+
+732
+01:05:42,740 --> 01:05:43,740
+Yeah.
+
+733
+01:05:43,740 --> 01:05:44,740
+So should I make a script here?
+
+734
+01:05:44,740 --> 01:05:55,420
+Yeah, I think, let's see, or should we do a summary of what we have at the moment?
+
+735
+01:05:55,420 --> 01:05:56,420
+Yeah, sure.
+
+736
+01:05:56,420 --> 01:06:01,420
+So we have the preprocess.py script, Python script.
+
+737
+01:06:01,660 --> 01:06:05,020
+We have the train and plot Python script.
+
+738
+01:06:05,020 --> 01:06:09,420
+And in the train and plot, we do two forward loops.
+
+739
+01:06:09,420 --> 01:06:10,260
+Okay, yeah.
+
+740
+01:06:11,260 --> 01:06:15,300
+And then we have a Slurm script
+
+741
+01:06:15,300 --> 01:06:18,380
+to run the code in like sequentially
+
+742
+01:06:18,380 --> 01:06:20,860
+without any paralysis.
+
+743
+01:06:20,860 --> 01:06:23,300
+Using one CPU, it seems.
+
+744
+01:06:23,300 --> 01:06:28,580
+Yeah. And memory is one giga and time is one hour.
+
+745
+01:06:28,580 --> 01:06:29,620
+Yeah. Okay.
+
+746
+01:06:30,420 --> 01:06:31,060
+Okay.
+
+747
+01:06:31,060 --> 01:06:32,420
+What should I name the script?
+
+748
+01:06:35,860 --> 01:06:38,340
+I think you can name it...
+
+749
+01:06:40,340 --> 01:06:40,980
+Submit.sh.
+
+750
+01:06:41,700 --> 01:06:43,460
+Or submit sequentially.
+
+751
+01:06:45,220 --> 01:06:46,420
+Non-parallel, maybe.
+
+752
+01:06:46,420 --> 01:06:50,740
+Right, yeah. It needs to have that in there.
+
+753
+01:06:50,740 --> 01:06:57,380
+Oh, Nano doesn't have extra lines.
+
+754
+01:06:57,380 --> 01:06:58,380
+Okay, good.
+
+755
+01:06:58,380 --> 01:07:01,500
+So now it's all here.
+
+756
+01:07:01,500 --> 01:07:03,780
+So do we go to the next one now?
+
+757
+01:07:03,780 --> 01:07:06,340
+Should we look at the notes?
+
+758
+01:07:06,340 --> 01:07:08,340
+What questions do people have?
+
+759
+01:07:08,340 --> 01:07:10,780
+Yeah, definitely.
+
+760
+01:07:10,780 --> 01:07:12,420
+Can you see these also?
+
+761
+01:07:12,420 --> 01:07:13,420
+There's questions.
+
+762
+01:07:13,420 --> 01:07:14,420
+SnakeMake, Fireworks...
+
+763
+01:07:14,420 --> 01:07:25,160
+Yeah, the what is the container used in the example. So, so it's a obtainer or a singularity
+
+764
+01:07:25,160 --> 01:07:38,580
+container. And, and yeah, it was made in or been created in advance. And it's okay. Yeah.
+
+765
+01:07:38,580 --> 01:07:42,060
+Yeah, so you made this for this lesson?
+
+766
+01:07:42,060 --> 01:07:44,060
+Yeah, [name] made it.
+
+767
+01:07:44,060 --> 01:07:46,060
+I can't take credit.
+
+768
+01:07:46,060 --> 01:07:48,060
+Yeah, okay.
+
+769
+01:07:48,060 --> 01:07:50,060
+Okay, good.
+
+770
+01:07:52,060 --> 01:07:54,060
+Do we need to make a container?
+
+771
+01:07:54,060 --> 01:07:56,060
+No, it was just easier here.
+
+772
+01:07:57,060 --> 01:08:00,060
+And actually it is kind of nice here.
+
+773
+01:08:00,060 --> 01:08:03,060
+At first I thought, oh, a container, do I want to have to use this?
+
+774
+01:08:03,060 --> 01:08:07,060
+But, you know, I really don't have to do anything else to just one pull command.
+
+775
+01:08:07,060 --> 01:08:10,100
+So yes, that feels kind of good.
+
+776
+01:08:10,100 --> 01:08:11,340
+Yes, exactly.
+
+777
+01:08:11,340 --> 01:08:12,860
+Okay.
+
+778
+01:08:12,860 --> 01:08:14,380
+I agree.
+
+779
+01:08:14,380 --> 01:08:15,220
+Yeah.
+
+780
+01:08:15,220 --> 01:08:18,020
+I was also kind of like, oh man,
+
+781
+01:08:18,020 --> 01:08:22,220
+do we have to like juggle with images,
+
+782
+01:08:22,220 --> 01:08:24,820
+but no, just one pool.
+
+783
+01:08:24,820 --> 01:08:25,660
+Okay.
+
+784
+01:08:26,900 --> 01:08:28,660
+Should we go on then?
+
+785
+01:08:28,660 --> 01:08:29,780
+Yes, yes.
+
+786
+01:08:29,780 --> 01:08:32,060
+So there's seven minutes to the break.
+
+787
+01:08:32,060 --> 01:08:34,980
+We can parallelize using scripting.
+
+788
+01:08:34,980 --> 01:08:36,020
+Yeah.
+
+789
+01:08:36,020 --> 01:08:41,260
+I guess we're running a little bit behind, but that's OK.
+
+790
+01:08:41,260 --> 01:08:44,580
+So what happens here?
+
+791
+01:08:44,580 --> 01:08:50,860
+OK, so even if we are using this happily parallel type
+
+792
+01:08:50,860 --> 01:08:56,740
+of approach, there still needs to be,
+
+793
+01:08:56,740 --> 01:08:58,980
+we need to make modifications.
+
+794
+01:08:58,980 --> 01:09:00,020
+OK.
+
+795
+01:09:00,020 --> 01:09:10,020
+So we can't just like submit stuff and it would automatically work.
+
+796
+01:09:10,020 --> 01:09:14,780
+And I guess this work is going to be needed for all of the methods anyway.
+
+797
+01:09:14,780 --> 01:09:18,360
+Yes, yes.
+
+798
+01:09:18,360 --> 01:09:29,900
+So the point is that if we look at what needs to be done, we have to do the same kind of
+
+799
+01:09:29,900 --> 01:09:36,820
+work in a form or another.
+
+800
+01:09:36,820 --> 01:09:51,060
+So basically, I'm wondering where is the, like, do we list that what we are going to
+
+801
+01:09:51,060 --> 01:09:54,060
+do?
+
+802
+01:09:54,060 --> 01:09:58,740
+I think it's in the intro.
+
+803
+01:09:58,740 --> 01:10:08,660
+So basically, because now we have the parameters hard-coded in the script.
+
+804
+01:10:08,660 --> 01:10:10,460
+So we're removing that.
+
+805
+01:10:10,460 --> 01:10:11,460
+Yeah.
+
+806
+01:10:11,460 --> 01:10:16,260
+So yeah, we don't want the parameters to be hard-coded in the script.
+
+807
+01:10:16,260 --> 01:10:21,020
+We want to give them as command line parameters for the script.
+
+808
+01:10:21,020 --> 01:10:25,820
+So should I basically make these edits in there?
+
+809
+01:10:25,820 --> 01:10:27,820
+Yes.
+
+810
+01:10:27,820 --> 01:10:31,940
+So this is the train and plot one, because that has the loop.
+
+811
+01:10:31,940 --> 01:10:32,940
+Yes.
+
+812
+01:10:32,940 --> 01:10:33,940
+Okay.
+
+813
+01:10:33,940 --> 01:10:42,940
+And how we've got all these extra lines, cool.
+
+814
+01:10:42,940 --> 01:10:48,500
+So we add, so I'm basically adding in the emphasized lines in here, at least on my screen,
+
+815
+01:10:48,500 --> 01:10:54,140
+I can see some of these lines have an extra yellow, yellow.
+
+816
+01:10:54,140 --> 01:11:04,460
+So arg parse is the standard Python command line argument parser.
+
+817
+01:11:04,460 --> 01:11:09,980
+Okay, so here right above load preprocessed data.
+
+818
+01:11:09,980 --> 01:11:13,420
+So I copied this and paste.
+
+819
+01:11:13,420 --> 01:11:14,420
+Yeah.
+
+820
+01:11:14,420 --> 01:11:18,180
+So, well, I know what this means.
+
+821
+01:11:18,180 --> 01:11:23,980
+So this is the standard boilerplate for making an argument parser.
+
+822
+01:11:23,980 --> 01:11:32,060
+giving it one argument, which is the number of neighbors. It's int type, some help text,
+
+823
+01:11:32,860 --> 01:11:40,620
+and here we're getting n neighbors from the command line. Okay. And for metrics,
+
+824
+01:11:41,420 --> 01:11:48,940
+I see we've added more metrics. Or not. They are the same metrics, but note that we are now
+
+825
+01:11:48,940 --> 01:11:55,820
+giving only the number of neighbors as a parameter, and the metrics are still hard-coded as a list.
+
+826
+01:11:57,020 --> 01:11:59,580
+So when we run...
+
+827
+01:12:03,340 --> 01:12:06,460
+Yeah, so I just commented it out for clarity.
+
+828
+01:12:06,460 --> 01:12:18,540
+Yes, yeah, good. So what the script now does is instead of looping over two lists,
+
+829
+01:12:18,940 --> 01:12:26,780
+of neighbors and metrics. Now it will take the number of neighbors as an argument,
+
+830
+01:12:27,420 --> 01:12:31,900
+so it's a single value, and then it loops over the number of neighbors.
+
+831
+01:12:32,460 --> 01:12:41,340
+Okay, so I need to modify down here also. So basically I remove this loop?
+
+832
+01:12:41,340 --> 01:12:59,820
+Yes. Okay. I want to edit this in Emacs. Sorry. Because I know how to do that. I wish I didn't
+
+833
+01:12:59,820 --> 01:13:15,340
+have all these extra lines well you can tell this is a real demo yeah this this
+
+834
+01:13:15,340 --> 01:13:26,320
+was not pre-recorded okay so I remove this loop because now it's done yeah
+
+835
+01:13:26,320 --> 01:13:35,360
+from command line. And then I need to de-indent all of this, which I can do with Emacs like that.
+
+836
+01:13:36,880 --> 01:13:42,800
+By the way, did we read the nNeighbors from the args as a variable?
+
+837
+01:13:43,840 --> 01:13:44,880
+Yeah, it was.
+
+838
+01:13:44,880 --> 01:13:45,680
+Okay, yes.
+
+839
+01:13:45,680 --> 01:13:49,520
+Yeah, it's already done there. Okay, so can I save?
+
+840
+01:13:50,800 --> 01:13:52,000
+I think you can, yeah.
+
+841
+01:13:53,600 --> 01:13:54,640
+Okay, good.
+
+842
+01:13:54,640 --> 01:13:56,200
+Good.
+
+843
+01:13:56,200 --> 01:13:57,040
+Okay.
+
+844
+01:13:57,040 --> 01:13:57,860
+And then.
+
+845
+01:14:00,440 --> 01:14:01,280
+Yeah.
+
+846
+01:14:03,400 --> 01:14:06,120
+Do we need to update the Slurm scripts?
+
+847
+01:14:06,120 --> 01:14:06,960
+Yeah.
+
+848
+01:14:07,880 --> 01:14:08,720
+Okay.
+
+849
+01:14:08,720 --> 01:14:09,540
+Okay.
+
+850
+01:14:09,540 --> 01:14:14,320
+So the first step was the parameters as comment line
+
+851
+01:14:14,320 --> 01:14:15,160
+arguments.
+
+852
+01:14:20,360 --> 01:14:21,880
+Yeah.
+
+853
+01:14:21,880 --> 01:14:25,300
+I'm making the preprocessing submission script now.
+
+854
+01:14:25,300 --> 01:14:26,140
+Yeah.
+
+855
+01:14:26,140 --> 01:14:27,380
+So yeah, this is what I was saying.
+
+856
+01:14:27,380 --> 01:14:30,100
+So yeah, it can be split into two.
+
+857
+01:14:30,100 --> 01:14:31,580
+It can be split into two.
+
+858
+01:14:31,580 --> 01:14:34,560
+And I think here we are requesting
+
+859
+01:14:35,940 --> 01:14:37,940
+differing amounts of resources.
+
+860
+01:14:37,940 --> 01:14:38,980
+Oh yeah.
+
+861
+01:14:38,980 --> 01:14:41,940
+This is 30 minutes and 500 megabytes.
+
+862
+01:14:41,940 --> 01:14:42,780
+Yeah.
+
+863
+01:14:42,780 --> 01:14:45,680
+Which I guess is overkill, but that's how it is.
+
+864
+01:14:46,620 --> 01:14:48,860
+And then what should this one be called?
+
+865
+01:14:48,860 --> 01:14:56,860
+So, that would be Submit Trainer Plot.
+
+866
+01:14:56,860 --> 01:15:04,860
+Okay, I put it there.
+
+867
+01:15:04,860 --> 01:15:06,860
+Yep.
+
+868
+01:15:06,860 --> 01:15:08,860
+Okay.
+
+869
+01:15:08,860 --> 01:15:10,860
+Great.
+
+870
+01:15:10,860 --> 01:15:12,860
+So, make the submission script.
+
+871
+01:15:12,860 --> 01:15:14,860
+Yeah.
+
+872
+01:15:14,860 --> 01:15:16,860
+I see.
+
+873
+01:15:16,860 --> 01:15:28,220
+Yeah, so we could, now we can run the, can you show the submit trainer?
+
+874
+01:15:28,220 --> 01:15:40,180
+Oh, okay, no, yeah.
+
+875
+01:15:40,180 --> 01:15:45,380
+Do we have the submit trainer batch script?
+
+876
+01:15:45,380 --> 01:15:51,380
+Submit trained. Let's see what we have.
+
+877
+01:15:53,740 --> 01:15:56,540
+This should have been an .sh script.
+
+878
+01:15:56,540 --> 01:15:58,460
+Yeah, exactly.
+
+879
+01:15:58,460 --> 01:16:00,540
+Okay.
+
+880
+01:16:00,540 --> 01:16:04,620
+Can you show it?
+
+881
+01:16:05,620 --> 01:16:07,700
+Yes.
+
+882
+01:16:07,700 --> 01:16:12,940
+There is the $1, the number of neighbors.
+
+883
+01:16:12,940 --> 01:16:22,440
+So, this also takes the first argument given to it in the command line, which is the number
+
+884
+01:16:22,440 --> 01:16:23,440
+of neighbors.
+
+885
+01:16:23,440 --> 01:16:32,940
+So, when we do sbatch, we have a Python script here, which for the number of neighbors, submits
+
+886
+01:16:32,940 --> 01:16:42,660
+a separate batch job with the submission.sh script and with a command line argument, which
+
+887
+01:16:42,660 --> 01:16:50,020
+get sent via Slurm to the script, and that becomes this $1.
+
+888
+01:16:50,020 --> 01:17:05,820
+It will not be a Slurm script, but it will, like, it will, yeah, basically what you said
+
+889
+01:17:05,820 --> 01:17:14,460
+was true, but there was this, that it's actually the Python script that calls the sbat submission
+
+890
+01:17:14,460 --> 01:17:22,540
+dot sh as a sub process. And then because it's a sub process, it's a command line command,
+
+891
+01:17:23,980 --> 01:17:33,020
+then the first argument will be the neighbors or I in neighbors. And important thing here is that
+
+892
+01:17:33,020 --> 01:17:42,380
+the sub process, when it loops over the neighbors, the sub process will not care about the
+
+893
+01:17:44,300 --> 01:17:53,340
+result. It will not wait for the result. So, it will submit the job and then immediately go to the
+
+894
+01:17:53,340 --> 01:18:01,980
+next item in the list. Okay. And maybe we can do this when we come back. I just saw a note that
+
+895
+01:18:01,980 --> 01:18:11,100
+it's time. But there is one good comment in the notes here. Isn't this going to be difficult
+
+896
+01:18:11,100 --> 01:18:18,860
+to manage if we submit many independent jobs? Yes, exactly. So what that means is that,
+
+897
+01:18:18,860 --> 01:18:25,740
+let's say that the job for number 16 failed. In order to rerun that, I'd have to go here,
+
+898
+01:18:25,740 --> 01:18:31,820
+edit this list so it just has number 16, rerun it, watch the output, and repeat it again.
+
+899
+01:18:31,980 --> 01:18:41,340
+And that's exactly what will be solved with the WorkflowManager method.
+
+900
+01:18:41,340 --> 01:18:45,660
+And if there were, like, hundreds of these neighbors here, you also wouldn't want to
+
+901
+01:18:45,660 --> 01:18:52,760
+do this because it's submitting many independent batch jobs, I guess.
+
+902
+01:18:52,760 --> 01:18:56,660
+And for that, the next step, the ArrayJobs will be better.
+
+903
+01:18:56,660 --> 01:19:03,660
+Yes, that's also a good point, yeah.
+
+904
+01:19:03,660 --> 01:19:06,660
+Okay, is there anything else before we go to the break?
+
+905
+01:19:06,660 --> 01:19:10,660
+There is a...
+
+906
+01:19:10,660 --> 01:19:17,660
+Maybe we can have a break now and then we can continue later.
+
+907
+01:19:17,660 --> 01:19:18,660
+Yeah, exactly.
+
+908
+01:19:18,660 --> 01:19:21,660
+So let's come back at 14 past the hour.
+
+909
+01:19:21,660 --> 01:19:23,660
+So 10 minutes starting now.
+
+910
+01:19:23,660 --> 01:19:24,660
+Okay.
+
+911
+01:19:24,660 --> 01:19:25,660
+That's good.
+
+912
+01:19:25,660 --> 01:19:26,500
+Bye.
+
+913
+01:19:26,500 --> 01:19:27,340
+Bye.
+
+914
+01:19:55,660 --> 01:19:57,720
+you
+
+915
+01:20:25,660 --> 01:20:27,720
+you
+
+916
+01:20:55,660 --> 01:20:57,720
+you
+
+917
+01:21:25,660 --> 01:21:27,720
+you
+
+918
+01:21:55,660 --> 01:21:57,720
+you
+
+919
+01:22:25,660 --> 01:22:27,720
+you
+
+920
+01:22:55,660 --> 01:22:57,720
+you
+
+921
+01:23:25,660 --> 01:23:27,720
+you
+
+922
+01:23:55,660 --> 01:23:57,720
+you
+
+923
+01:24:25,660 --> 01:24:27,720
+you
+
+924
+01:24:55,660 --> 01:24:57,720
+you
+
+925
+01:25:25,660 --> 01:25:27,720
+you
+
+926
+01:25:55,660 --> 01:25:57,720
+you
+
+927
+01:26:25,660 --> 01:26:27,720
+you
+
+928
+01:26:55,660 --> 01:26:57,720
+you
+
+929
+01:27:25,660 --> 01:27:27,720
+you
+
+930
+01:27:55,660 --> 01:27:57,720
+you
+
+931
+01:28:25,660 --> 01:28:27,720
+you
+
+932
+01:28:55,660 --> 01:28:57,720
+you
+
+933
+01:29:25,660 --> 01:29:39,200
+Hello.
+
+934
+01:29:39,200 --> 01:29:41,200
+thanks again for watching
+
+935
+01:29:41,200 --> 01:29:43,200
+take care
+
+936
+01:29:43,200 --> 01:29:45,200
+and see you on our next video
+
+937
+01:29:45,200 --> 01:29:47,200
+bye
+
+938
+01:29:47,200 --> 01:29:49,200
+bye
+
+939
+01:29:49,200 --> 01:29:51,200
+bye
+
+940
+01:29:51,200 --> 01:29:53,200
+bye
+
+941
+01:29:53,200 --> 01:29:55,200
+bye
+
+942
+01:29:55,200 --> 01:29:57,200
+bye
+
+943
+01:29:57,200 --> 01:29:59,200
+bye
+
+944
+01:29:59,200 --> 01:30:01,200
+bye
+
+945
+01:30:01,200 --> 01:30:03,200
+bye
+
+946
+01:30:03,200 --> 01:30:05,200
+bye
+
+947
+01:30:05,200 --> 01:30:07,200
+bye
+
+948
+01:30:07,200 --> 01:30:36,960
+Yeah, so instead of running the thing, the idea would be that maybe we can run the scripts
+
+949
+01:30:36,960 --> 01:30:40,160
+uh, after lunch together.
+
+950
+01:30:41,160 --> 01:30:41,400
+Yeah.
+
+951
+01:30:41,840 --> 01:30:42,080
+Yeah.
+
+952
+01:30:42,840 --> 01:30:48,560
+Cause, cause running will basically just produce the result,
+
+953
+01:30:49,040 --> 01:30:50,280
+result files and take time.
+
+954
+01:30:52,200 --> 01:30:54,480
+So, yeah.
+
+955
+01:30:54,680 --> 01:30:55,000
+Okay.
+
+956
+01:30:55,000 --> 01:31:02,000
+So, but there is one, uh, uh, what there was this, uh, can you go back to the.
+
+957
+01:31:07,360 --> 01:31:14,560
+Yeah. So there are, there is this post-processing steps kind of note. So
+
+958
+01:31:20,240 --> 01:31:27,920
+yeah. So yeah. So this is not, we don't have a post-processing phase here now, but like
+
+959
+01:31:27,920 --> 01:31:35,920
+this is the, you could basically expand the pipeline or the workflow by the post-processing.
+
+960
+01:31:35,920 --> 01:31:38,080
+and this section talks about that.
+
+961
+01:31:46,960 --> 01:31:51,600
+Okay, do you want to take a look at the comments or
+
+962
+01:31:57,280 --> 01:32:00,560
+the interactive, no, the shared document?
+
+963
+01:32:00,560 --> 01:32:13,600
+Headstock. That's the one. Are there questions that should... Okay.
+
+964
+01:32:13,600 --> 01:32:33,640
+Okay, so next we are actually looking at the RA jobs and there is, and if we go to the,
+
+965
+01:32:33,640 --> 01:32:39,640
+so the last section was parallelized using scripting.
+
+966
+01:32:39,640 --> 01:32:48,000
+And then where, and then the next one would be parallelize using slurm array job.
+
+967
+01:32:48,000 --> 01:32:57,080
+So the, because the preprocessing, the preprocess.py, it has to be run only once.
+
+968
+01:32:57,080 --> 01:33:01,680
+So that situation will not change here.
+
+969
+01:33:01,680 --> 01:33:06,760
+That section or that script will be identical.
+
+970
+01:33:06,760 --> 01:33:22,880
+But the parallelization portion could be done with the array jobs.
+
+971
+01:33:22,880 --> 01:33:27,120
+So what is the array job?
+
+972
+01:33:27,120 --> 01:33:52,920
+It is a Slurm native way to submit these embarrassingly parallel jobs.
+
+973
+01:33:52,920 --> 01:34:06,080
+Is the colon to like every other or no, yeah, I don't know if you can tell, but I don't
+
+974
+01:34:06,080 --> 01:34:15,660
+use array jobs very much because, yeah, and the reason is like related to the question
+
+975
+01:34:15,660 --> 01:34:18,920
+that is this better or worse, the script.
+
+976
+01:34:18,920 --> 01:34:23,920
+Sorry, people couldn't hear me. I was muted.
+
+977
+01:34:23,920 --> 01:34:24,920
+Okay.
+
+978
+01:34:24,920 --> 01:34:25,920
+Yeah. Okay.
+
+979
+01:34:25,920 --> 01:34:33,920
+Okay. So, what was I saying? This relates to the question in the HedgeDoc.
+
+980
+01:34:33,920 --> 01:34:41,920
+Which is preferable? Array jobs or the scripting?
+
+981
+01:34:41,920 --> 01:34:57,520
+And there I would say that both are like viable options, but there are like different advantages
+
+982
+01:34:57,520 --> 01:34:59,240
+here.
+
+983
+01:34:59,240 --> 01:35:08,200
+And the main advantage of using Array Jobs is that because it's learn native, you can
+
+984
+01:35:08,200 --> 01:35:16,000
+add in the sbatch options, you can add, for example, email notification that you get a
+
+985
+01:35:16,000 --> 01:35:24,840
+notification in email when the job has been submitted and when the job is done, either
+
+986
+01:35:24,840 --> 01:35:30,920
+completed or failed.
+
+987
+01:35:30,920 --> 01:35:40,680
+That is one advantage of Array Jobs, but the scripts have one advantage that I really like
+
+988
+01:35:40,680 --> 01:35:49,720
+is that it's really easy to navigate with different kinds of parameters.
+
+989
+01:35:49,720 --> 01:35:58,240
+Because you can give the command line parameters that are eventually given to looped over and
+
+990
+01:35:58,240 --> 01:36:01,920
+given to the Python script here.
+
+991
+01:36:01,920 --> 01:36:06,920
+They can be like integers,
+
+992
+01:36:07,320 --> 01:36:08,760
+like the number of neighbors,
+
+993
+01:36:08,760 --> 01:36:11,920
+or they can be strings, like the distance metrics,
+
+994
+01:36:11,920 --> 01:36:14,100
+or they can be floats and they can be anything,
+
+995
+01:36:14,100 --> 01:36:16,300
+and it's easy to navigate with them.
+
+996
+01:36:18,620 --> 01:36:23,300
+On contrast or in contrast with the array jobs,
+
+997
+01:36:25,380 --> 01:36:27,220
+what we do with the array jobs
+
+998
+01:36:27,220 --> 01:36:32,220
+is that we give this kind of array of indices,
+
+999
+01:36:34,520 --> 01:36:39,520
+which can then be accessed with SLURM_ARRAY_TASK_ID.
+
+1000
+01:36:40,560 --> 01:36:43,280
+And that this gets mapped.
+
+1001
+01:36:43,280 --> 01:36:47,280
+Yes, and there is the, yeah, exactly.
+
+1002
+01:36:47,280 --> 01:36:52,280
+So of course, these are like one, two, three, four, five,
+
+1003
+01:36:52,320 --> 01:36:55,080
+or it can be two, from two to a hundred,
+
+1004
+01:36:55,080 --> 01:37:00,460
+And no, it's not divided by two, but like, okay.
+
+1005
+01:37:00,460 --> 01:37:01,120
+But okay.
+
+1006
+01:37:01,120 --> 01:37:01,620
+Anyways.
+
+1007
+01:37:02,100 --> 01:37:03,900
+So anyways, there are integers.
+
+1008
+01:37:05,180 --> 01:37:10,580
+So if you want to use, if you want to use strings, then you'd need to have this
+
+1009
+01:37:10,620 --> 01:37:12,980
+kind of extra mapping step there.
+
+1010
+01:37:15,540 --> 01:37:20,420
+And so, so there are both.
+
+1011
+01:37:20,420 --> 01:37:30,300
+So, the point is both techniques are viable and valid, but they have, it's a little bit
+
+1012
+01:37:30,300 --> 01:37:32,300
+of a different flavor.
+
+1013
+01:37:32,300 --> 01:37:33,300
+Yeah.
+
+1014
+01:37:33,300 --> 01:37:34,300
+Okay.
+
+1015
+01:37:34,300 --> 01:37:45,540
+So, what, do we do this or is this an exercise?
+
+1016
+01:37:45,540 --> 01:37:46,540
+It is an exercise.
+
+1017
+01:37:46,540 --> 01:37:47,540
+Okay.
+
+1018
+01:37:47,540 --> 01:37:52,260
+This is something users can do themselves, or learners can do themselves.
+
+1019
+01:37:52,260 --> 01:37:53,260
+Yeah.
+
+1020
+01:37:53,260 --> 01:37:54,260
+Okay.
+
+1021
+01:37:54,260 --> 01:37:59,260
+And actually, by the way, there is an exercise in the Parallelize using scripting as well.
+
+1022
+01:37:59,260 --> 01:38:00,260
+Okay.
+
+1023
+01:38:00,260 --> 01:38:03,260
+So this is what we can do after lunch.
+
+1024
+01:38:03,260 --> 01:38:06,060
+Yeah, exactly.
+
+1025
+01:38:06,060 --> 01:38:14,940
+And the exercise there is that instead of looping over the number of neighbors in the
+
+1026
+01:38:14,940 --> 01:38:22,140
+script, we loop over both number of neighbors and the distance
+
+1027
+01:38:22,140 --> 01:38:26,940
+metrics, which is exactly this case that we have different
+
+1028
+01:38:26,940 --> 01:38:32,460
+kinds of parameters. And so with the scripting, it's really
+
+1029
+01:38:32,460 --> 01:38:38,260
+easy to kind of modify your code a little bit. So it takes the
+
+1030
+01:38:38,260 --> 01:38:42,420
+arguments in and loop it over.
+
+1031
+01:38:42,420 --> 01:38:45,540
+Yeah, okay.
+
+1032
+01:38:45,940 --> 01:38:47,780
+Do we go on then?
+
+1033
+01:38:47,780 --> 01:38:49,380
+Uh, yes.
+
+1034
+01:38:49,380 --> 01:38:50,900
+Okay.
+
+1035
+01:38:50,900 --> 01:38:54,020
+So now to the workflow manager one.
+
+1036
+01:38:54,020 --> 01:38:54,740
+Yeah.
+
+1037
+01:38:54,740 --> 01:38:56,740
+And this is where I think it will start
+
+1038
+01:38:56,740 --> 01:38:58,260
+to get interesting,
+
+1039
+01:38:58,260 --> 01:39:00,900
+or at least I hope.
+
+1040
+01:39:00,900 --> 01:39:02,580
+Uh, yeah.
+
+1041
+01:39:02,580 --> 01:39:04,420
+Yeah, because the scripting and
+
+1042
+01:39:04,420 --> 01:39:06,820
+ArrayJobs are very, they are kind of
+
+1043
+01:39:06,820 --> 01:39:24,820
+like the very straightforward ways, or as straightforward as this stuff can be.
+
+1044
+01:39:24,820 --> 01:39:30,980
+Yeah, like it's basically using typical shell scripting in different ways to make loops,
+
+1045
+01:39:30,980 --> 01:39:33,540
+while the workflow manager is really something new.
+
+1046
+01:39:33,540 --> 01:39:48,580
+Yeah, exactly. And I think actually the motivation part here in the workflow manager is quite...
+
+1047
+01:39:48,580 --> 01:39:52,580
+What's the word? Well, complete.
+
+1048
+01:39:52,580 --> 01:39:54,620
+Oops. Okay. Yeah.
+
+1049
+01:39:54,620 --> 01:40:04,620
+So again, to recap, we have the preprocess.py and train-and-plot.py, which are our computational
+
+1050
+01:40:04,620 --> 01:40:14,620
+steps here. And the preprocess.py is run first.
+
+1051
+01:40:14,620 --> 01:40:19,860
+It only needs to be run once.
+
+1052
+01:40:19,860 --> 01:40:22,180
+And needs to be run only once.
+
+1053
+01:40:22,180 --> 01:40:23,180
+Yeah.
+
+1054
+01:40:23,180 --> 01:40:35,980
+So you can, if you move your cursor a bit slower, and then after that, when the preprocess has run,
+
+1055
+01:40:37,100 --> 01:40:44,460
+we have the dataset on the disk, and then we can submit multiple jobs of train and plot
+
+1056
+01:40:45,180 --> 01:40:50,940
+using different number of neighbors and distance metrics values.
+
+1057
+01:40:50,940 --> 01:40:57,860
+And now I see why you made a separate preprocess.py script, because I guess you'll tell SnakeMake
+
+1058
+01:40:57,860 --> 01:41:06,580
+to run this once and run it separately, and it's somehow all...
+
+1059
+01:41:06,580 --> 01:41:14,220
+I think already with the previous scripts, we wanted to have them separately.
+
+1060
+01:41:14,220 --> 01:41:20,820
+Because otherwise, if the pre-processing stuff is in the train and plot script, or they are
+
+1061
+01:41:20,820 --> 01:41:36,900
+in the same script, then for every kind of job or parameter pair we want to run, we will
+
+1062
+01:41:36,900 --> 01:41:40,200
+always do the pre-processing as well.
+
+1063
+01:41:40,200 --> 01:41:48,560
+And that is not necessary and that is just wasting resources because we need to do the
+
+1064
+01:41:48,560 --> 01:41:50,200
+dataset only once.
+
+1065
+01:41:50,200 --> 01:41:51,200
+Yeah.
+
+1066
+01:41:51,200 --> 01:41:52,200
+Okay.
+
+1067
+01:41:52,200 --> 01:41:53,200
+So.
+
+1068
+01:41:53,200 --> 01:41:54,200
+Okay.
+
+1069
+01:41:54,200 --> 01:42:04,600
+So, there is this kind of note that the submission scripts and array jobs work well for this
+
+1070
+01:42:04,600 --> 01:42:09,160
+kind of small workflows and are usually the go-to solution because they are kind of like
+
+1071
+01:42:09,160 --> 01:42:17,400
+low threshold. But however, if the workflow, if our workflow would be larger, so let's
+
+1072
+01:42:17,400 --> 01:42:25,560
+say we have like multiple pre-processing steps, we can have multiple processing steps. So
+
+1073
+01:42:25,560 --> 01:42:33,120
+instead of just one train and plot, we have like multiple training scripts and then we
+
+1074
+01:42:33,120 --> 01:42:38,880
+We have, and then we have post-processing scripts.
+
+1075
+01:42:38,880 --> 01:42:46,560
+So where we gather the results and maybe do a kind of like a summary of the results.
+
+1076
+01:42:46,560 --> 01:42:55,520
+So in that case, the workflow gets larger and more complicated.
+
+1077
+01:42:55,520 --> 01:43:04,120
+And it is, in that case, it may be a situation where we want to have this workflow manager
+
+1078
+01:43:04,120 --> 01:43:05,120
+tool.
+
+1079
+01:43:05,120 --> 01:43:06,120
+Yeah.
+
+1080
+01:43:06,120 --> 01:43:07,120
+Okay.
+
+1081
+01:43:07,120 --> 01:43:17,440
+Although, again, a reminder that you can also use workflow manager for small workflows,
+
+1082
+01:43:17,440 --> 01:43:21,800
+but there's nothing wrong with that.
+
+1083
+01:43:21,800 --> 01:43:25,200
+Yeah, okay.
+
+1084
+01:43:25,200 --> 01:43:31,800
+So what is a workflow manager?
+
+1085
+01:43:31,800 --> 01:43:37,880
+The workflow manager is, this is how I would, this is how I think of it.
+
+1086
+01:43:37,880 --> 01:43:53,840
+So it's a tool where we define the workflow using rules.
+
+1087
+01:43:53,840 --> 01:44:02,180
+And each rule is one of our computational steps.
+
+1088
+01:44:02,180 --> 01:44:08,420
+So pre-processing or pre-process or training plot in our case.
+
+1089
+01:44:08,420 --> 01:44:18,060
+And each of those rules or steps take as an input file or files.
+
+1090
+01:44:18,060 --> 01:44:33,900
+their output is a file or files. So then you have this kind of like a graph where we create
+
+1091
+01:44:35,660 --> 01:44:42,780
+one rule creates a file and then another rule takes that file as input and creates another file
+
+1092
+01:44:42,780 --> 01:44:45,740
+and another step takes that as an input then.
+
+1093
+01:44:45,740 --> 01:44:50,300
+So I guess it's like this concept, you don't say how to do it, you say
+
+1094
+01:44:50,300 --> 01:44:55,980
+what needs to be done, and then let the workflow manager figure out
+
+1095
+01:44:55,980 --> 01:45:01,020
+what's already done, what's not already done, the best order to do it.
+
+1096
+01:45:01,020 --> 01:45:05,260
+It knows how to do stuff at the same time if it doesn't depend on each other.
+
+1097
+01:45:05,260 --> 01:45:06,780
+Yeah, exactly.
+
+1098
+01:45:06,780 --> 01:45:10,620
+Like the declarative programming language versus the
+
+1099
+01:45:10,620 --> 01:45:15,980
+imperative or something like that. Yeah, exactly. Okay. So, so basically you,
+
+1100
+01:45:16,780 --> 01:45:28,780
+and also just to reiterate the idea that we, we do these rules that are the steps and then,
+
+1101
+01:45:29,340 --> 01:45:35,980
+then we have a kind of like a final rule that are the, what are the, what are the final
+
+1102
+01:45:35,980 --> 01:45:43,380
+target files that we want to have after this workflow.
+
+1103
+01:45:43,380 --> 01:45:54,480
+And so when you say that these are the final files that I want to ultimately end up with,
+
+1104
+01:45:54,480 --> 01:46:01,540
+then you can go step back and step back and step back to the beginning and that the workflow
+
+1105
+01:46:01,540 --> 01:46:04,460
+miniature does this automatically.
+
+1106
+01:46:04,460 --> 01:46:05,260
+Yeah, OK.
+
+1107
+01:46:07,940 --> 01:46:09,220
+OK, so.
+
+1108
+01:46:12,900 --> 01:46:16,700
+OK, so there are three points there, so.
+
+1109
+01:46:16,700 --> 01:46:23,180
+So the order, if it already exists, and then doesn't.
+
+1110
+01:46:23,180 --> 01:46:25,900
+Or order and parallelization.
+
+1111
+01:46:25,900 --> 01:46:27,620
+Yeah, so it's, yeah.
+
+1112
+01:46:27,620 --> 01:46:28,120
+Yeah.
+
+1113
+01:46:28,120 --> 01:46:35,240
+So it looks for the order, looks in the past for what should be done in the future.
+
+1114
+01:46:35,240 --> 01:46:36,960
+Well, anyway, I think we've said this enough.
+
+1115
+01:46:36,960 --> 01:46:38,520
+Yeah, yeah, exactly.
+
+1116
+01:46:38,520 --> 01:46:41,720
+Should we start doing it?
+
+1117
+01:46:41,720 --> 01:46:46,400
+Yeah, but one more thing about that.
+
+1118
+01:46:46,400 --> 01:46:55,120
+Here we are using SnakeMake and SnakeMake is very popular,
+
+1119
+01:46:55,120 --> 01:47:00,120
+especially in the, is it bioinformatics field?
+
+1120
+01:47:00,120 --> 01:47:01,400
+Okay.
+
+1121
+01:47:01,400 --> 01:47:06,400
+And it's a, it's written in Python,
+
+1122
+01:47:08,360 --> 01:47:11,760
+but what happens in the computational steps
+
+1123
+01:47:11,760 --> 01:47:13,920
+is like they can be anything.
+
+1124
+01:47:13,920 --> 01:47:15,360
+They don't have to be Python.
+
+1125
+01:47:16,800 --> 01:47:20,120
+And the workflow script that we're gonna see
+
+1126
+01:47:20,120 --> 01:47:22,520
+in just a moment is also,
+
+1127
+01:47:22,520 --> 01:47:26,000
+It's basically Python.
+
+1128
+01:47:26,000 --> 01:47:28,320
+It's a flavor of Python.
+
+1129
+01:47:28,320 --> 01:47:32,360
+So it's a Python-like scripting language.
+
+1130
+01:47:32,360 --> 01:47:33,360
+Yeah.
+
+1131
+01:47:33,360 --> 01:47:34,360
+Okay.
+
+1132
+01:47:34,360 --> 01:47:41,880
+And there are hundreds of workflow miniature tools, but SnakeMake is what we use here.
+
+1133
+01:47:41,880 --> 01:47:47,520
+Do you know why we chose SnakeMake?
+
+1134
+01:47:47,520 --> 01:47:58,320
+Well, people in our proximity have experience with it.
+
+1135
+01:47:58,320 --> 01:47:59,720
+It is well known.
+
+1136
+01:47:59,720 --> 01:48:05,920
+And also because I use Python, I do everything with Python.
+
+1137
+01:48:05,920 --> 01:48:12,360
+So it's kind of like a lowest threshold of, or what is it, barrier of entry?
+
+1138
+01:48:12,360 --> 01:48:13,360
+Yeah.
+
+1139
+01:48:13,360 --> 01:48:14,360
+It's a common thing.
+
+1140
+01:48:14,360 --> 01:48:24,680
+I didn't know the Code Refinery lessons teach it, but I wonder how that was done.
+
+1141
+01:48:24,680 --> 01:48:25,680
+Anyway.
+
+1142
+01:48:25,680 --> 01:48:31,120
+Oh, but that's a good point, because this is Code Refinery as well.
+
+1143
+01:48:31,120 --> 01:48:35,480
+So in this Code Refinery context, when we're talking about workflow manager, we're probably
+
+1144
+01:48:35,480 --> 01:48:37,480
+talking about SnakeMake.
+
+1145
+01:48:37,480 --> 01:48:38,480
+Yeah.
+
+1146
+01:48:38,480 --> 01:48:39,480
+Okay.
+
+1147
+01:48:39,480 --> 01:48:40,480
+Okay.
+
+1148
+01:48:40,480 --> 01:48:43,960
+So, to access SnakeMake.
+
+1149
+01:48:43,960 --> 01:48:49,960
+Yeah, we still don't get to the actual workflow.
+
+1150
+01:48:49,960 --> 01:48:58,880
+This is like a common theme with workflow manager, that there is a lot of tinkering.
+
+1151
+01:48:58,880 --> 01:49:07,360
+And the first question is, okay, we have this Python package, SnakeMake, how do I actually
+
+1152
+01:49:07,360 --> 01:49:10,960
+access it on an HPC cluster.
+
+1153
+01:49:10,960 --> 01:49:17,880
+And if you're on your own laptop and you want to develop locally, then you can just use
+
+1154
+01:49:17,880 --> 01:49:23,720
+BIP to install the SnakeMake.
+
+1155
+01:49:23,720 --> 01:49:33,720
+But then on the HPC clusters, on many clusters, the situation is that you cannot install your
+
+1156
+01:49:33,720 --> 01:49:47,860
+own packages or software. Like, for example, on Triton, Aalto Triton, you can make, create
+
+1157
+01:49:47,860 --> 01:49:57,260
+conda environments. But, for example, on Lumi, there isn't that kind of option.
+
+1158
+01:49:57,260 --> 01:50:02,900
+But since I'm in Aalto, should I do the module load?
+
+1159
+01:50:02,900 --> 01:50:16,300
+Yeah, exactly. So the important thing here is that it is up to the cluster administration
+
+1160
+01:50:16,300 --> 01:50:25,500
+to provide a way to use Snakemake and similar tools.
+
+1161
+01:50:25,500 --> 01:50:32,580
+If someone lets you, can you do pip install stake make yourself on your own cluster?
+
+1162
+01:50:32,580 --> 01:50:37,500
+Yes, if the admins let you.
+
+1163
+01:50:37,500 --> 01:50:38,500
+Yeah.
+
+1164
+01:50:38,500 --> 01:50:39,500
+Okay.
+
+1165
+01:50:39,500 --> 01:50:40,500
+Yeah.
+
+1166
+01:50:40,500 --> 01:50:41,500
+Okay.
+
+1167
+01:50:41,500 --> 01:50:42,500
+So I will come back here.
+
+1168
+01:50:42,500 --> 01:50:45,820
+I can make this smaller.
+
+1169
+01:50:45,820 --> 01:50:54,180
+So there are two examples there, that on CSC Puhti and Aalto Triton, they both have,
+
+1170
+01:50:54,180 --> 01:51:02,140
+CSC Puhti has its own SnakeMake documentation, how to use SnakeMake on Puhti.
+
+1171
+01:51:02,140 --> 01:51:11,220
+And on Aalto Triton, if we do the module load Skype, this generic scientific computing Python
+
+1172
+01:51:11,220 --> 01:51:14,020
+environment, then we will get that.
+
+1173
+01:51:14,020 --> 01:51:15,020
+Oh, okay.
+
+1174
+01:51:15,020 --> 01:51:16,020
+You already did it.
+
+1175
+01:51:16,020 --> 01:51:17,020
+Yeah.
+
+1176
+01:51:17,020 --> 01:51:18,020
+Okay.
+
+1177
+01:51:18,020 --> 01:51:26,020
+So you can actually try it out, like if you write snake make and enter them, it should.
+
+1178
+01:51:26,020 --> 01:51:31,020
+Oh, okay.
+
+1179
+01:51:31,020 --> 01:51:32,020
+There's some.
+
+1180
+01:51:32,020 --> 01:51:33,020
+Okay.
+
+1181
+01:51:33,020 --> 01:51:38,020
+It definitely, it definitely like.
+
+1182
+01:51:38,020 --> 01:51:43,020
+Why is it accessing the license server?
+
+1183
+01:51:43,020 --> 01:51:47,020
+I don't know.
+
+1184
+01:51:47,020 --> 01:51:50,020
+This is something that is very...
+
+1185
+01:51:51,020 --> 01:51:52,020
+Let me try it as well.
+
+1186
+01:51:52,020 --> 01:51:54,020
+It's definitely that.
+
+1187
+01:51:55,020 --> 01:51:59,020
+Let's just hope this doesn't come up when we actually try to run the thing.
+
+1188
+01:51:59,020 --> 01:52:00,020
+Yeah, exactly.
+
+1189
+01:52:00,020 --> 01:52:05,020
+I guess there's not some random snake file here.
+
+1190
+01:52:07,020 --> 01:52:08,020
+Huh.
+
+1191
+01:52:09,020 --> 01:52:14,020
+Maybe it's trying to activate all of these different plugins and...
+
+1192
+01:52:17,020 --> 01:52:18,020
+Yeah.
+
+1193
+01:52:18,020 --> 01:52:19,020
+Yeah.
+
+1194
+01:52:19,020 --> 01:52:20,020
+Oh, okay.
+
+1195
+01:52:20,020 --> 01:52:31,420
+Well, if you run, yeah, if you run snake make help, then it will, it will print less of
+
+1196
+01:52:31,420 --> 01:52:32,420
+that stuff.
+
+1197
+01:52:32,420 --> 01:52:33,420
+Okay.
+
+1198
+01:52:33,420 --> 01:52:34,420
+Yeah.
+
+1199
+01:52:34,420 --> 01:52:35,420
+Okay.
+
+1200
+01:52:35,420 --> 01:52:36,420
+There's a little bit less.
+
+1201
+01:52:36,420 --> 01:52:38,100
+So we have access to snake make.
+
+1202
+01:52:38,100 --> 01:52:39,100
+Yeah.
+
+1203
+01:52:39,100 --> 01:52:40,100
+Okay.
+
+1204
+01:52:40,100 --> 01:52:41,100
+Hmm.
+
+1205
+01:52:41,100 --> 01:52:42,100
+That was interesting.
+
+1206
+01:52:42,100 --> 01:52:43,100
+That was, yeah.
+
+1207
+01:52:43,100 --> 01:52:46,100
+That, that gave me a little bit of, uh, anxiety.
+
+1208
+01:52:46,100 --> 01:52:47,100
+Anxiety.
+
+1209
+01:52:47,100 --> 01:52:48,100
+Okay.
+
+1210
+01:52:48,100 --> 01:52:49,100
+So let's see.
+
+1211
+01:52:49,100 --> 01:52:50,100
+Yeah.
+
+1212
+01:52:50,100 --> 01:52:53,260
+Let's see if the if it works at all then.
+
+1213
+01:52:53,260 --> 01:52:54,260
+Yeah.
+
+1214
+01:52:54,260 --> 01:52:55,260
+Let's make the workflow.
+
+1215
+01:52:55,260 --> 01:52:58,460
+So do I make a new file called snake file?
+
+1216
+01:52:58,460 --> 01:52:59,460
+Yes.
+
+1217
+01:52:59,460 --> 01:53:05,500
+I guess that's a play on make file.
+
+1218
+01:53:05,500 --> 01:53:06,500
+Yes.
+
+1219
+01:53:06,500 --> 01:53:13,500
+And try this is copy all of this into it.
+
+1220
+01:53:13,500 --> 01:53:14,500
+Yeah.
+
+1221
+01:53:14,500 --> 01:53:31,620
+So what we need is two files in the end, which is the snake file, which is the file that
+
+1222
+01:53:31,620 --> 01:53:33,820
+describes and defines the workflow.
+
+1223
+01:53:33,820 --> 01:53:34,820
+Yeah.
+
+1224
+01:53:34,820 --> 01:53:38,100
+So I see metrics, neighbors list, yeah.
+
+1225
+01:53:38,100 --> 01:53:43,140
+And then we need the kind of configuration, aka profile file.
+
+1226
+01:53:43,140 --> 01:53:44,140
+That's here.
+
+1227
+01:53:44,140 --> 01:53:45,140
+Yeah.
+
+1228
+01:53:45,140 --> 01:53:48,820
+And we will check the profile file after this snake file.
+
+1229
+01:53:48,820 --> 01:53:49,820
+Yeah.
+
+1230
+01:53:49,820 --> 01:53:50,820
+Okay.
+
+1231
+01:53:50,820 --> 01:54:00,420
+So, do you want to use the Emacs or like, let's look at what is in there in the...
+
+1232
+01:54:00,420 --> 01:54:01,420
+In which one?
+
+1233
+01:54:01,420 --> 01:54:02,420
+Snakefile?
+
+1234
+01:54:02,420 --> 01:54:03,420
+Snakefile.
+
+1235
+01:54:03,420 --> 01:54:04,420
+Okay.
+
+1236
+01:54:04,420 --> 01:54:09,220
+Well, we could look here, it's colorized.
+
+1237
+01:54:09,220 --> 01:54:17,500
+Yeah, it took so long to get there, so let's look at it.
+
+1238
+01:54:17,500 --> 01:54:27,700
+So what we have here is that first we have the parameter values.
+
+1239
+01:54:27,700 --> 01:54:31,300
+So this looks familiar.
+
+1240
+01:54:31,300 --> 01:54:32,780
+Yes.
+
+1241
+01:54:32,780 --> 01:54:40,480
+And here is the rule all, which we already mentioned.
+
+1242
+01:54:40,480 --> 01:54:53,040
+So we have one rule, which is conventionally called rule all, that actually lists all the
+
+1243
+01:54:53,040 --> 01:55:00,820
+output files that we are like ultimately interested in, that when the workflow is done, then these
+
+1244
+01:55:00,820 --> 01:55:02,900
+These are the files that we want to have.
+
+1245
+01:55:02,900 --> 01:55:03,900
+Okay.
+
+1246
+01:55:03,900 --> 01:55:04,900
+Yeah.
+
+1247
+01:55:04,900 --> 01:55:08,980
+So it's sort of like pooling in all of these, which are the outputs, which will be defined
+
+1248
+01:55:08,980 --> 01:55:09,980
+below.
+
+1249
+01:55:09,980 --> 01:55:10,980
+Yeah.
+
+1250
+01:55:10,980 --> 01:55:11,980
+Okay.
+
+1251
+01:55:11,980 --> 01:55:22,740
+And then here is an example of like, that, like, that this is, it looks a bit like Python,
+
+1252
+01:55:22,740 --> 01:55:26,420
+but it's not Python per se.
+
+1253
+01:55:26,420 --> 01:55:38,220
+And for example, this expand is one of those snake makes own like syntaxes that it's basically
+
+1254
+01:55:38,220 --> 01:55:44,020
+it does a for loop or two for loops in this case.
+
+1255
+01:55:44,020 --> 01:55:53,420
+So for each neighbors and metric, it creates this and it's a list in the end, what comes
+
+1256
+01:55:53,420 --> 01:56:07,420
+out of the expand. And then the next rule is we're kind of like going from the end to
+
+1257
+01:56:07,420 --> 01:56:19,180
+the beginning. So the next rule is train and plot. And what it does, it reads in the data
+
+1258
+01:56:19,180 --> 01:56:32,220
+pre-processed iris pickle. And it will output the results slash neighbors metric image file.
+
+1259
+01:56:33,260 --> 01:56:38,060
+So output, yeah, this is output PNG with the respective stuff.
+
+1260
+01:56:39,260 --> 01:56:46,620
+And this is how it connects to the rule all because this rule's output is the same as
+
+1261
+01:56:46,620 --> 01:56:52,380
+rule all's input. So this is the same file name. Yeah, exactly. And I guess these end
+
+1262
+01:56:52,380 --> 01:57:02,860
+neighbors variables come automatically from here somehow. Yes, yeah, exactly. The snake make will
+
+1263
+01:57:03,820 --> 01:57:15,260
+kind of, it will inject the values from place to another. Yeah.
+
+1264
+01:57:16,620 --> 01:57:26,620
+And then one nice thing about this workflow is that we can just give it the container.
+
+1265
+01:57:26,620 --> 01:57:35,860
+So in our case, the Apptainer container, and what it does, it says to SnakeMake that, okay,
+
+1266
+01:57:35,860 --> 01:57:45,020
+we want this rule to be run in this container, which is really nice because the container
+
+1267
+01:57:45,020 --> 01:57:51,180
+can be different for each room. So if you have computational steps that need to be run
+
+1268
+01:57:51,180 --> 01:57:58,260
+in very different environments, that's no problem. You can make an image or container
+
+1269
+01:57:58,260 --> 01:58:02,100
+image for each of those environments.
+
+1270
+01:58:02,100 --> 01:58:06,740
+And shell is just the command to actually run inside the container, I guess. So it has
+
+1271
+01:58:06,740 --> 01:58:07,740
+Exactly.
+
+1272
+01:58:07,740 --> 01:58:15,740
+Wildcards metric. What's `wildcards.metric`?
+
+1273
+01:58:15,740 --> 01:58:33,740
+Yeah, so the wildcards is again, snake make syntax. And for some reason, when you actually do the shell, or you run the command,
+
+1274
+01:58:33,740 --> 01:58:41,620
+And you want to refer to the parameter.
+
+1275
+01:58:41,620 --> 01:58:44,180
+You need to use these wildcards, don't.
+
+1276
+01:58:44,180 --> 01:58:45,180
+Okay.
+
+1277
+01:58:45,180 --> 01:58:46,180
+Yeah.
+
+1278
+01:58:46,180 --> 01:58:47,180
+I'll just accept that.
+
+1279
+01:58:47,180 --> 01:58:48,180
+Yeah.
+
+1280
+01:58:48,180 --> 01:58:50,540
+As you can see in the output, you don't have to.
+
+1281
+01:58:50,540 --> 01:58:55,140
+In the log file, you don't have to, but in the shell, you have to.
+
+1282
+01:58:55,140 --> 01:58:56,140
+Okay.
+
+1283
+01:58:56,140 --> 01:58:57,140
+Why?
+
+1284
+01:58:57,140 --> 01:58:58,140
+Who knows?
+
+1285
+01:58:58,140 --> 01:58:59,140
+Yeah.
+
+1286
+01:58:59,140 --> 01:59:00,140
+Okay.
+
+1287
+01:59:00,140 --> 01:59:03,180
+Next, I guess, is the preprocessing rule.
+
+1288
+01:59:03,180 --> 01:59:06,580
+And it's basically, from what I've seen above,
+
+1289
+01:59:06,580 --> 01:59:07,900
+I can tell this is the same.
+
+1290
+01:59:07,900 --> 01:59:12,900
+So there's output file, which is input to this rule,
+
+1291
+01:59:13,060 --> 01:59:17,340
+container log, and the shell command.
+
+1292
+01:59:17,340 --> 01:59:18,540
+Yeah.
+
+1293
+01:59:18,540 --> 01:59:19,980
+Okay.
+
+1294
+01:59:19,980 --> 01:59:23,140
+And the container is the same, but it could be different.
+
+1295
+01:59:23,140 --> 01:59:24,740
+Yeah.
+
+1296
+01:59:24,740 --> 01:59:25,580
+Okay.
+
+1297
+01:59:25,580 --> 01:59:29,340
+And how they are connected is that, again,
+
+1298
+01:59:29,340 --> 01:59:35,020
+input of the rule train and plot is the output of the rule pre-process.
+
+1299
+01:59:36,620 --> 01:59:42,220
+Yes. Okay. For the snake make profile file.
+
+1300
+01:59:42,220 --> 01:59:49,260
+Yeah. So what is the snake make profile file? So profile file is basically the configuration
+
+1301
+01:59:49,260 --> 01:59:57,420
+file, and it can have a lot of configuration, but in our case, the most important thing is that
+
+1302
+01:59:57,420 --> 02:00:10,220
+in this profile file, we will tell SnakeMake that when it submits a Slurm job,
+
+1303
+02:00:12,140 --> 02:00:23,420
+what resources to request. And the nice thing here again, is that we can, if you see the,
+
+1304
+02:00:23,420 --> 02:00:32,100
+the, well, let's go from the top. So we tell the executor is learn. So if we would have
+
+1305
+02:00:32,100 --> 02:00:39,860
+a different kind of cluster, it could be something else. And the maximum number of parallel jobs
+
+1306
+02:00:39,860 --> 02:00:47,940
+is 10, which is good to have. It's good to have like a safety net that if you mess something
+
+1307
+02:00:47,940 --> 02:00:55,940
+up, then you don't spam the cluster with tens of thousands of jobs.
+
+1308
+02:00:55,940 --> 02:01:00,940
+Okay. I bet that's happened before.
+
+1309
+02:01:00,940 --> 02:01:02,940
+Yeah.
+
+1310
+02:01:02,940 --> 02:01:04,940
+Yeah.
+
+1311
+02:01:04,940 --> 02:01:06,940
+Yeah.
+
+1312
+02:01:06,940 --> 02:01:08,940
+And then...
+
+1313
+02:01:08,940 --> 02:01:10,940
+So, threats...
+
+1314
+02:01:10,940 --> 02:01:23,380
+Yeah, this is, so I wrote there that in Snakemake threads is equal to CPUs per task, because
+
+1315
+02:01:23,380 --> 02:01:32,740
+there is this kind of like, because the executor can be anything.
+
+1316
+02:01:32,740 --> 02:01:34,620
+I guess it's not just for Slurm.
+
+1317
+02:01:34,620 --> 02:01:35,620
+So yeah, exactly.
+
+1318
+02:01:35,620 --> 02:01:36,620
+More generic variables.
+
+1319
+02:01:36,620 --> 02:01:37,620
+Exactly.
+
+1320
+02:01:37,620 --> 02:01:38,620
+Yeah.
+
+1321
+02:01:38,620 --> 02:01:47,740
+And the nice thing about, if you check the set threads, the really nice thing about is
+
+1322
+02:01:47,740 --> 02:01:54,340
+that you can see the rule names, preprocess and train and plot.
+
+1323
+02:01:54,340 --> 02:02:01,420
+So here we can set different resources for different rules.
+
+1324
+02:02:01,420 --> 02:02:13,700
+So again, to throw back to the, what was it, the parallelization using scripts, then to
+
+1325
+02:02:13,700 --> 02:02:24,700
+throw back there, there we have for each script, we have the sub slurm batch script.
+
+1326
+02:02:24,700 --> 02:02:32,520
+And in that Slurm batch script, we have these resources defined.
+
+1327
+02:02:32,520 --> 02:02:37,780
+So here we have defined the same resources, 500 megabytes of memory and 30 minutes of
+
+1328
+02:02:37,780 --> 02:02:52,300
+runtime and one gigabyte of memory and one and two CPUs per task.
+
+1329
+02:02:52,300 --> 02:02:58,420
+And one more thing, these profile files are configuration files.
+
+1330
+02:02:58,420 --> 02:03:09,220
+So they can like, you can have like default profile file that the snake make looks in
+
+1331
+02:03:09,220 --> 02:03:14,100
+your home folder and that kind of stuff.
+
+1332
+02:03:14,100 --> 02:03:20,020
+So yeah.
+
+1333
+02:03:20,020 --> 02:03:24,780
+But here we only have this one profile file.
+
+1334
+02:03:24,780 --> 02:03:31,980
+And finally, the run comment, or do you have anything to, sorry, I'm kind of like pushing
+
+1335
+02:03:31,980 --> 02:03:32,980
+this.
+
+1336
+02:03:32,980 --> 02:03:33,980
+Yeah.
+
+1337
+02:03:33,980 --> 02:03:37,980
+What should I do?
+
+1338
+02:03:37,980 --> 02:03:38,980
+Yeah.
+
+1339
+02:03:38,980 --> 02:03:43,020
+So do you have anything to comment or ask about?
+
+1340
+02:03:43,020 --> 02:03:45,880
+Where do I make the profile file?
+
+1341
+02:03:45,880 --> 02:03:48,180
+So it is where you put it.
+
+1342
+02:03:48,180 --> 02:03:49,180
+Yeah.
+
+1343
+02:03:49,180 --> 02:03:50,180
+Where do I put it?
+
+1344
+02:03:50,180 --> 02:03:51,180
+Okay.
+
+1345
+02:03:51,180 --> 02:03:54,060
+So you can see it in the run snakemake command.
+
+1346
+02:03:54,060 --> 02:03:55,060
+Here?
+
+1347
+02:03:55,060 --> 02:03:56,060
+Yeah.
+
+1348
+02:03:56,060 --> 02:04:05,720
+So we will put it in this, we will make a dir folder profiles.
+
+1349
+02:04:05,720 --> 02:04:11,880
+And inside that we have the slurm.
+
+1350
+02:04:11,880 --> 02:04:13,280
+So this is a file.
+
+1351
+02:04:13,280 --> 02:04:16,160
+No, that is also a folder.
+
+1352
+02:04:16,160 --> 02:04:17,160
+Okay.
+
+1353
+02:04:17,160 --> 02:04:18,160
+Yeah.
+
+1354
+02:04:18,160 --> 02:04:24,400
+This is a kind of a confusing thing about the snake make profile in my opinion.
+
+1355
+02:04:24,400 --> 02:04:25,400
+Okay.
+
+1356
+02:04:25,400 --> 02:04:26,400
+Yeah.
+
+1357
+02:04:26,400 --> 02:04:29,400
+Because you don't give the profile file that you want.
+
+1358
+02:04:29,400 --> 02:04:35,440
+You give a folder which contains the profile file.
+
+1359
+02:04:35,440 --> 02:04:36,920
+And what should the file name be?
+
+1360
+02:04:36,920 --> 02:04:42,920
+It's config.yaml with an A.
+
+1361
+02:04:42,920 --> 02:04:43,920
+Okay.
+
+1362
+02:04:43,920 --> 02:04:44,920
+Yeah.
+
+1363
+02:04:44,920 --> 02:04:47,920
+It's also important that it has the A.
+
+1364
+02:04:47,920 --> 02:04:48,920
+Okay.
+
+1365
+02:04:48,920 --> 02:04:51,920
+So, I will paste this here.
+
+1366
+02:04:51,920 --> 02:04:52,920
+Yep.
+
+1367
+02:04:52,920 --> 02:04:53,920
+Save.
+
+1368
+02:04:53,920 --> 02:04:54,920
+Exit.
+
+1369
+02:04:54,920 --> 02:04:55,920
+Okay.
+
+1370
+02:04:55,920 --> 02:04:56,920
+Okay.
+
+1371
+02:04:56,920 --> 02:04:59,920
+Should I try running it?
+
+1372
+02:04:59,920 --> 02:05:00,920
+Yeah, let's try.
+
+1373
+02:05:00,920 --> 02:05:03,920
+Do you think it works the first time?
+
+1374
+02:05:03,920 --> 02:05:05,920
+I hope so.
+
+1375
+02:05:05,920 --> 02:05:11,440
+But, yeah, anything can happen.
+
+1376
+02:05:11,440 --> 02:05:20,000
+And also, if it works, and even if it works, the output will be really verbose.
+
+1377
+02:05:20,000 --> 02:05:24,400
+So you might want to, like, make the window bigger.
+
+1378
+02:05:24,400 --> 02:05:25,400
+Ah, okay.
+
+1379
+02:05:25,400 --> 02:05:29,400
+Well, we can let it go.
+
+1380
+02:05:29,400 --> 02:05:30,400
+Okay.
+
+1381
+02:05:30,400 --> 02:05:31,400
+What?
+
+1382
+02:05:31,400 --> 02:05:32,400
+Okay.
+
+1383
+02:05:32,400 --> 02:05:38,400
+Okay, now. Okay. Yeah. Oh, what is this? I wrote password.
+
+1384
+02:05:46,400 --> 02:05:53,400
+I'm trying to set an environment variable and nope. Nope. I haven't encountered this.
+
+1385
+02:05:53,400 --> 02:06:06,960
+So, someone in our chat had wondered, do I, like, is it some other configuration that
+
+1386
+02:06:06,960 --> 02:06:11,240
+I have, but I don't know where it would be?
+
+1387
+02:06:11,240 --> 02:06:13,240
+Yeah.
+
+1388
+02:06:13,240 --> 02:06:42,840
+There's no snake make variables, it's just that that I said.
+
+1389
+02:06:42,840 --> 02:06:49,840
+What could be different in our, well, anything can be different in our configurations, I
+
+1390
+02:06:49,840 --> 02:06:50,840
+guess.
+
+1391
+02:06:50,840 --> 02:07:01,640
+Try reloading the environment.
+
+1392
+02:07:01,640 --> 02:07:10,720
+So we have another cluster admin here in the background, fixing stuff as I'm doing it.
+
+1393
+02:07:10,720 --> 02:07:19,540
+thing. And I've looked in my home directory here in another window and I
+
+1394
+02:07:19,540 --> 02:07:27,880
+don't see anything obvious that looks like that looks like a snake make
+
+1395
+02:07:27,880 --> 02:07:46,800
+make a config file, snake make, can I tell it to not load whatever these other plugins
+
+1396
+02:07:46,800 --> 02:07:47,800
+I'm here.
+
+1397
+02:07:47,800 --> 02:07:48,800
+Oh, okay.
+
+1398
+02:07:48,800 --> 02:07:49,800
+Yeah.
+
+1399
+02:07:49,800 --> 02:07:50,800
+Yeah.
+
+1400
+02:07:50,800 --> 02:08:05,800
+It's trying to load some storage plugin, which I don't know why, because so storage plug-in
+
+1401
+02:08:05,800 --> 02:08:14,160
+meaning that, cause Snakemake may can also incorporate like S3 and those kind of, I would, I would
+
+1402
+02:08:14,160 --> 02:08:28,560
+thinking. Let's see SciBuilder, make storage plugins. But let's, let's give it like one
+
+1403
+02:08:28,560 --> 02:08:36,160
+minute and then, and then let's do a wrap up because this was in a way, this was a perfect
+
+1404
+02:08:36,160 --> 02:08:48,180
+ending for the SnakeMake session. Because this reflects very, very, very well my experience
+
+1405
+02:08:48,180 --> 02:08:49,180
+with SnakeMake.
+
+1406
+02:08:49,180 --> 02:08:52,800
+Do I have any Python packages?
+
+1407
+02:08:52,800 --> 02:09:00,360
+It's a useful tool. This is also something that for those who would like to try the SnakeMake
+
+1408
+02:09:00,360 --> 02:09:07,160
+after the after lunch in one hour basically you can join the zoom and we can we can try to yeah
+
+1409
+02:09:07,160 --> 02:09:14,680
+exactly related to the questions in the notes document um someone's asking docker image or
+
+1410
+02:09:14,680 --> 02:09:21,320
+should be obtainer well the the short answer is that apptainer is the one that will work on a share
+
+1411
+02:09:21,320 --> 02:09:26,920
+system like an hpc system but of course in your in your computer you could you could do it with
+
+1412
+02:09:26,920 --> 02:09:35,080
+docker for example because docker often if not always requires this super user administration
+
+1413
+02:09:35,080 --> 02:09:39,880
+right administrator rights and then snake make will generate the slurm script in a
+
+1414
+02:09:39,880 --> 02:09:45,960
+correct form automatically yeah that's the idea of these plugins if your system is not slurm
+
+1415
+02:09:46,680 --> 02:09:52,360
+do i need some additional custom slurm parameters well i would say that if your system is not slurm
+
+1416
+02:09:52,360 --> 02:09:58,920
+but you're still going to basically use something, I don't know what could be, maybe some Kubernetes
+
+1417
+02:09:58,920 --> 02:10:04,680
+or some other type of cluster. At the end of the day, you can basically tell what would be the
+
+1418
+02:10:04,680 --> 02:10:11,560
+executable for each of the processes that SnakeMake runs. So in theory, even on your own laptop,
+
+1419
+02:10:11,560 --> 02:10:19,800
+if you have multiple CPUs, you can benefit of the parallelization with the multiple CPUs that
+
+1420
+02:10:19,800 --> 02:10:24,480
+you have in your laptop. But in general, I mean, we're showing the SLURM way of doing
+
+1421
+02:10:24,480 --> 02:10:31,240
+it just because most of them, if not all of the clusters that we support and we work with
+
+1422
+02:10:31,240 --> 02:10:39,240
+are basically SLURM based clusters. But it's sometime for wrapping up. We have five minutes
+
+1423
+02:10:39,240 --> 02:10:48,960
+What's left, wasn't that there was some conclusion, take on messages section in the materials?
+
+1424
+02:10:48,960 --> 02:10:52,800
+Let me check.
+
+1425
+02:10:52,800 --> 02:10:57,720
+So what's the conclusions?
+
+1426
+02:10:57,720 --> 02:11:06,600
+I would like first a 30 second conclusion of this workflow miniatures, say, so what
+
+1427
+02:11:06,600 --> 02:11:17,200
+What is the advantage of using a workflow manager compared to...
+
+1428
+02:11:17,200 --> 02:11:25,080
+So there is definitely an advantage, especially if you have a complex workflow, that you kind
+
+1429
+02:11:25,080 --> 02:11:32,680
+of like the workflow manager will take care of the order of execution and that everything
+
+1430
+02:11:32,680 --> 02:11:42,200
+is. And if something is already existing, it won't run it again. And also because we
+
+1431
+02:11:42,200 --> 02:11:50,360
+are using containers and environments, like integrated into the workflow definition, then
+
+1432
+02:11:50,360 --> 02:12:01,160
+it promotes this reproducibility idea. And the disadvantages is that it might be very,
+
+1433
+02:12:01,160 --> 02:12:06,920
+It might be hard to get even started because your cluster may not have SnakeMake installed
+
+1434
+02:12:06,920 --> 02:12:13,600
+and you have to talk to your administration about it, cluster administration.
+
+1435
+02:12:13,600 --> 02:12:20,260
+And the workflow managers have their own syntaxes for the scripting and they have their own
+
+1436
+02:12:20,260 --> 02:12:29,420
+practices and ecosystems and you need to spend time to learn and get into them.
+
+1437
+02:12:29,420 --> 02:12:35,220
+So yeah, there's this learning overhead.
+
+1438
+02:12:35,220 --> 02:12:46,960
+Like I remember [name] saying when preparing for this, today's lesson, that this is going
+
+1439
+02:12:46,960 --> 02:12:54,460
+to be very like, what was it, something about SnakeMake being so hard and having so many
+
+1440
+02:12:54,460 --> 02:13:02,500
+problems when trying to use it and what do you know like here we had a problem it looks
+
+1441
+02:13:02,500 --> 02:13:09,700
+really cool like once we get all these dependencies set up if I had hundreds of different jobs
+
+1442
+02:13:09,700 --> 02:13:17,780
+it would definitely be saving me lots of time yeah yeah and for me the workflow actually
+
+1443
+02:13:17,780 --> 02:13:23,220
+when I when I finally got it working yeah it looks really nice you have snake file and
+
+1444
+02:13:23,220 --> 02:13:31,140
+have profile file and yeah, it just produces the results. But of course it didn't. Now a different
+
+1445
+02:13:31,140 --> 02:13:38,500
+user uses it and there's something in the environment that doesn't work. And yeah,
+
+1446
+02:13:39,860 --> 02:13:46,740
+because I tried it this morning and it worked for me. So I don't know. Okay. So yeah, that was the
+
+1447
+02:13:46,740 --> 02:13:51,740
+the workflow manager comment from me.
+
+1448
+02:13:52,180 --> 02:13:55,020
+Sorry, I took three minutes instead of 30 seconds.
+
+1449
+02:13:55,020 --> 02:13:56,420
+Yeah.
+
+1450
+02:13:56,420 --> 02:13:57,420
+Okay.
+
+1451
+02:13:57,420 --> 02:14:02,420
+So can we wrap up with a couple of take home messages?
+
+1452
+02:14:02,740 --> 02:14:07,380
+And I think you are sharing.
+
+1453
+02:14:09,920 --> 02:14:13,460
+This is the overall conclusions talk here.
+
+1454
+02:14:13,460 --> 02:14:14,300
+Yeah.
+
+1455
+02:14:16,740 --> 02:14:28,540
+So, [name], what should be the take-home message from this day and where can we use them in?
+
+1456
+02:14:28,540 --> 02:14:38,580
+Use very, very simple workflows so that the debugging is easy because there will be problems
+
+1457
+02:14:38,580 --> 02:14:43,580
+when doing parallelization and the simpler your workflows,
+
+1458
+02:14:44,860 --> 02:14:48,180
+then you have a chance of debugging them.
+
+1459
+02:14:52,260 --> 02:14:53,460
+That would be mine.
+
+1460
+02:14:56,060 --> 02:14:57,060
+Take home message.
+
+1461
+02:14:57,060 --> 02:14:58,380
+Take home message.
+
+1462
+02:14:58,380 --> 02:15:00,540
+And in general, I mean, the things we have covered
+
+1463
+02:15:00,540 --> 02:15:04,220
+that especially at this concurrent IO,
+
+1464
+02:15:04,220 --> 02:15:08,420
+if you clearly feel that the parallelization
+
+1465
+02:15:08,420 --> 02:15:15,460
+seems actually to be slower, then maybe it's worth investigating is it an I.O. issue rather
+
+1466
+02:15:15,460 --> 02:15:21,580
+than a computing issue. And so at the end of the day, there's many things that can go
+
+1467
+02:15:21,580 --> 02:15:28,740
+wrong with heavy parallelizations, but it's good to, you know, usually visit your administrator's
+
+1468
+02:15:28,740 --> 02:15:36,660
+help desk and figure out together where would be the good compromise. So I hope this was
+
+1469
+02:15:36,660 --> 02:15:45,700
+a useful two hours overview on our various kind of recipes for parallelizing your code.
+
+1470
+02:15:47,860 --> 02:15:52,740
+In one hour we will have the zoom session so that those who are interested they can actually try
+
+1471
+02:15:52,740 --> 02:15:58,100
+this on their clusters and we will be there together in the zoom to help you trying these
+
+1472
+02:15:58,100 --> 02:16:05,060
+examples and for those who need the credit please join the zoom session and let me know that you're
+
+1473
+02:16:05,060 --> 02:16:13,620
+there so that I can mark your presence. I think this concludes our pilot series of TTT4HPC.
+
+1474
+02:16:14,580 --> 02:16:19,300
+Thank you everyone who has been developing the materials and many people who you actually have
+
+1475
+02:16:19,300 --> 02:16:25,940
+not seen in the in the streams during these four days they have helped so much and we will try to
+
+1476
+02:16:25,940 --> 02:16:35,220
+document all the contributors and managers, whatever. There are also many, many helpers
+
+1477
+02:16:35,220 --> 02:16:41,540
+that have been in building this series that basically took kind of almost two years from
+
+1478
+02:16:41,540 --> 02:16:48,500
+its conception to the actual implementation. This was a pilot run, so we will really need
+
+1479
+02:16:48,500 --> 02:16:56,260
+your feedback in the hack in the notes document there's already a simple feedback form that you
+
+1480
+02:16:56,260 --> 02:17:03,700
+can answer using this share notes and later I will try to send them send a form like a
+
+1481
+02:17:03,700 --> 02:17:11,060
+like a questionnaire so that in general if you can tell us how to improve things for the first run in
+
+1482
+02:17:11,060 --> 02:17:15,800
+in the next fall, that would be great.
+
+1483
+02:17:15,800 --> 02:17:20,000
+So, [name], do you have any last recommendation words?
+
+1484
+02:17:22,720 --> 02:17:23,560
+Really?
+
+1485
+02:17:23,560 --> 02:17:25,080
+Did you say something about credits?
+
+1486
+02:17:25,080 --> 02:17:27,240
+Are we offering credits for this?
+
+1487
+02:17:27,240 --> 02:17:28,800
+Yeah, so for those who need the credit,
+
+1488
+02:17:28,800 --> 02:17:31,000
+please join the Zoom in one hour,
+
+1489
+02:17:31,000 --> 02:17:36,000
+and in the end, exercises that you need to,
+
+1490
+02:17:36,040 --> 02:17:38,360
+like, don't worry about the exercises.
+
+1491
+02:17:38,360 --> 02:17:40,600
+It's more important that you try things out
+
+1492
+02:17:40,600 --> 02:17:43,040
+and you're able to get them working.
+
+1493
+02:17:45,760 --> 02:17:48,320
+All right, thank you [name] and thank you [name].
+
+1494
+02:17:48,320 --> 02:17:49,160
+Thank you.
+
+1495
+02:17:49,160 --> 02:17:50,740
+And thank you everyone for watching
+
+1496
+02:17:50,740 --> 02:17:54,440
+and see you soon for our next streamings
+
+1497
+02:17:54,440 --> 02:17:56,840
+in the CodeRefinery Twitch channel.
+
+1498
+02:17:56,840 --> 02:17:58,480
+Next adventure.
+
+1499
+02:17:58,480 --> 02:17:59,720
+Exactly.
+
+1500
+02:17:59,720 --> 02:18:00,640
+Bye bye.
+
+1501
+02:18:00,640 --> 02:18:01,480
+Thank you.
+
+1502
+02:18:01,480 --> 02:18:02,320
+Bye.
+
+1503
+02:18:10,600 --> 02:18:12,660
+you
+
+1504
+02:18:40,600 --> 02:18:42,660
+you
+
+1505
+02:19:10,600 --> 02:19:12,660
+you
+
+1506
+02:19:40,600 --> 02:19:42,660
+you
+
+1507
+02:20:10,600 --> 02:20:12,660
+you
+
+1508
+02:20:40,600 --> 02:20:42,660
+you
+
+1509
+02:21:10,600 --> 02:21:12,660
+you
+
+1510
+02:21:40,600 --> 02:21:42,660
+you
+
+1511
+02:22:10,600 --> 02:22:12,660
+you
+
+1512
+02:22:40,600 --> 02:22:42,660
+you
+
