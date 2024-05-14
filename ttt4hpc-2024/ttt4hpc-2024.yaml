@@ -206,3 +206,47 @@
     - 02:00:56: § Binding folders into your container
     - 02:14:02: "§ Wrap-up, Q&A, preparation for next week"
     - stop: 02:18:51
+
+
+- input: raw/day4-obs.mkv
+
+- output: out/day4-parallelization.mkv
+  title: 4.1 Parallelization without parallelization
+  description: >-
+    Much is said about parallization of code: but often it focuses on
+    MPI, OpenMP, GPUs (real parallization).  But far more often for
+    typical people is embarrassingly parallel problems: things where you
+    can basically run multiple things separately and combine the
+    results later.  This can be handled at the level of the job
+    scheduler, without extensive code modifications needed.  This is
+    "High Throughput Computing" or HTC.  This lesson is about
+    embarrassingly parallel problems.
+
+    We start with general discussion, and work our way from a Jupyter
+    script to a Snakemake file which can be used for embarrassingly
+    parallel problems.  To get there, we convert Jupyter to a script,
+    then show how it can be submitted multiple times, then show how it
+    can be turned into a batch job, and then how it can be managed
+    with Snakemake.
+
+    Material: https://coderefinery.github.io/TTT4HPC_parallel_workflows/
+
+  editlist:
+    - start: 00:19:56
+    - 00:20:07: § Motivation
+    - 00:29:33: § Concepts
+    - 00:33:41: § Pitfalls (concurrency issues)
+    - 00:41:01: § Pitfalls (hardware/server limitations)
+    - 00:43:32: Q&A
+    - 00:46:06: Summary of the rest of the lesson
+    - 00:51:13: § Jupyter notebook to a Python script
+    - 01:08:30: § Parallelize using scripting
+    - stop: 01:19:29
+    - start: 01:30:31
+    - -: Q&A
+    - 01:32:43: § Parallelize using Slurm array jobs
+    - 01:38:50: § Parallelize using a workflow manager
+    - 02:08:53: Final discussion about workflow managers
+    - 02:10:34: Conclusions about workflow managers
+    - 02:13:56: Wrap-up of the day
+    - stop: 02:18:06
