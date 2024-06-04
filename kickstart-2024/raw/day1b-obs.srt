@@ -1,0 +1,1748 @@
+1
+00:00:00,000 --> 00:00:13,000
+Hello.
+
+2
+00:00:13,000 --> 00:00:14,000
+Hello.
+
+3
+00:00:14,000 --> 00:00:27,000
+Hello.
+
+4
+00:00:27,000 --> 00:00:29,000
+Hello.
+
+5
+00:00:29,000 --> 00:00:33,000
+So I suppose we are back with the streaming.
+
+6
+00:00:33,000 --> 00:00:37,360
+We had a little bit of issues that are not under our control
+
+7
+00:00:37,360 --> 00:00:43,680
+with whatever internet provider is between Twitch TV
+
+8
+00:00:43,680 --> 00:00:47,200
+and the location of the streaming server.
+
+9
+00:00:47,200 --> 00:00:51,880
+But hopefully, you are able to see.
+
+10
+00:00:51,880 --> 00:00:53,600
+It might not look exactly like it
+
+11
+00:00:53,600 --> 00:00:57,840
+used to look at the beginning of the session,
+
+12
+00:00:57,840 --> 00:01:00,000
+but we are back.
+
+13
+00:01:04,960 --> 00:01:10,560
+It is coming on the stream and now we basically see the Canoes room view
+
+14
+00:01:11,520 --> 00:01:12,800
+with the images on the side.
+
+15
+00:01:20,480 --> 00:01:27,280
+Yes, so sorry for this issue but sometimes it's still better than what happened a couple of years
+
+16
+00:01:27,280 --> 00:01:32,400
+ago during code refinement streaming where the whole internet was down or a huge subset of the
+
+17
+00:01:32,400 --> 00:01:39,280
+whole internet. So people of course realized that it wasn't us. It was literally 50% of the internet
+
+18
+00:01:39,280 --> 00:01:45,200
+that was down. Today we only have some part of Helsinki internet. I think what's interesting is
+
+19
+00:01:45,200 --> 00:01:49,280
+that both these incidents happened at the same presentation that I'm about to give here. So
+
+20
+00:01:50,080 --> 00:01:56,400
+it's correlated with this talk. All right, so we have two data points that this presentation
+
+21
+00:01:56,400 --> 00:02:02,720
+coincides with some network outage. Let's see if the third time will happen again.
+
+22
+00:02:03,360 --> 00:02:11,040
+But anyway, let's get to the business. We have now here with us [name], who is the master
+
+23
+00:02:11,040 --> 00:02:16,080
+of everything. Well, master is maybe a big word, but at least one of the biggest drivers of the
+
+24
+00:02:16,080 --> 00:02:21,920
+Code Refinery network and workshop and so on. [name], do you want to say something about
+
+25
+00:02:21,920 --> 00:02:27,360
+yourself? What do you do in your daily? Yeah, so it's so nice to be here. I work in Norway.
+
+26
+00:02:28,800 --> 00:02:36,880
+In Tromsø, I work on code refinery training, training in software development, software tools,
+
+27
+00:02:37,680 --> 00:02:47,920
+in computing. In Norway, I work at the national infrastructure. So there is a national compute,
+
+28
+00:02:47,920 --> 00:02:52,420
+We have National Compute Courses and I provide support
+
+29
+00:02:53,480 --> 00:02:56,160
+and help and training so that researchers
+
+30
+00:02:56,160 --> 00:02:59,420
+get more out of their CPU cycles.
+
+31
+00:03:01,040 --> 00:03:05,240
+And it's nice to be here with this Finland,
+
+32
+00:03:05,240 --> 00:03:10,120
+with this training, which is driven by Aalto,
+
+33
+00:03:11,000 --> 00:03:14,120
+because I really like to collaborate with my Aalto colleagues.
+
+34
+00:03:14,120 --> 00:03:18,240
+we work together on many different training events.
+
+35
+00:03:18,240 --> 00:03:21,200
+And also I really like talking about this topic.
+
+36
+00:03:21,200 --> 00:03:22,940
+And I think it's very, it doesn't matter
+
+37
+00:03:22,940 --> 00:03:25,120
+whether this is now Norway or Finland or a different country.
+
+38
+00:03:25,120 --> 00:03:27,180
+I think some of the,
+
+39
+00:03:29,040 --> 00:03:32,800
+some of the points that we will discuss
+
+40
+00:03:32,800 --> 00:03:35,280
+are really transferable and they,
+
+41
+00:03:35,280 --> 00:03:38,120
+so it will be fun to talk about how we do help TESC
+
+42
+00:03:38,120 --> 00:03:42,520
+and support in here in Tromso, but also at Aalto
+
+43
+00:03:42,520 --> 00:03:44,680
+and how can we improve it?
+
+44
+00:03:44,680 --> 00:03:47,760
+How can we improve the experience for everybody?
+
+45
+00:03:47,760 --> 00:03:51,960
+And this small change here is that I will be presenting
+
+46
+00:03:51,960 --> 00:03:54,080
+this together with [name] because [name] has been
+
+47
+00:03:54,080 --> 00:03:57,180
+heroically restoring the stream in the meantime
+
+48
+00:03:57,180 --> 00:03:58,640
+and had to switch computer.
+
+49
+00:04:00,320 --> 00:04:03,080
+And I will now switch to, so for everybody,
+
+50
+00:04:03,080 --> 00:04:06,440
+the best way to follow the next 20 minutes
+
+51
+00:04:06,440 --> 00:04:07,680
+because we are a little bit behind schedule
+
+52
+00:04:07,680 --> 00:04:11,440
+is you can find the slides, the slide deck here.
+
+53
+00:04:11,440 --> 00:04:14,360
+Is it linked from the schedule?
+
+54
+00:04:14,360 --> 00:04:18,680
+It is also linked here in the notes.
+
+55
+00:04:21,360 --> 00:04:26,360
+And the best way to interact is to watch us presenting
+
+56
+00:04:26,740 --> 00:04:29,800
+and please ask us lots of questions, give comments.
+
+57
+00:04:33,080 --> 00:04:36,800
+And [name] will help me raising some questions
+
+58
+00:04:36,800 --> 00:04:38,680
+that I might overlook.
+
+59
+00:04:38,680 --> 00:04:41,160
+So I will now open up this presentation
+
+60
+00:04:41,160 --> 00:04:44,120
+And when I do that, I already have it here in this browser.
+
+61
+00:04:45,680 --> 00:04:47,560
+We'll just resize a little bit,
+
+62
+00:04:47,560 --> 00:04:49,560
+and I will make sure that I can see your questions
+
+63
+00:04:49,560 --> 00:04:50,520
+here on the bottom.
+
+64
+00:04:51,880 --> 00:04:54,480
+So let's talk about how to ask for help
+
+65
+00:04:54,480 --> 00:04:57,160
+with computers and supercomputers.
+
+66
+00:04:57,160 --> 00:04:58,620
+And it's really about,
+
+67
+00:04:59,960 --> 00:05:04,280
+the goal is to improve your experience
+
+68
+00:05:04,280 --> 00:05:05,760
+when solving issues.
+
+69
+00:05:05,760 --> 00:05:08,240
+And some of the topics that I will talk about
+
+70
+00:05:08,240 --> 00:05:10,260
+is what kind of help is available,
+
+71
+00:05:11,160 --> 00:05:13,880
+when to ask for help,
+
+72
+00:05:13,880 --> 00:05:16,800
+and then how you can formulate your support requests
+
+73
+00:05:16,800 --> 00:05:19,920
+so that you get quick and useful answers.
+
+74
+00:05:20,920 --> 00:05:21,760
+And if we have time,
+
+75
+00:05:21,760 --> 00:05:24,220
+we can talk about reproducible examples
+
+76
+00:05:24,220 --> 00:05:27,560
+and the value of growing your calculation
+
+77
+00:05:27,560 --> 00:05:29,720
+and simplifying problems,
+
+78
+00:05:29,720 --> 00:05:33,920
+how that can help you find answers quicker.
+
+79
+00:05:36,000 --> 00:05:39,360
+And the slide deck is, there's credit.
+
+80
+00:05:39,360 --> 00:05:41,240
+It has, I've learned a lot from other people
+
+81
+00:05:41,240 --> 00:05:45,360
+and some of the persons are here
+
+82
+00:05:45,360 --> 00:05:50,000
+and thanks so much for this input.
+
+83
+00:05:50,000 --> 00:05:52,200
+And I would like to start with this question.
+
+84
+00:05:53,160 --> 00:05:58,160
+There are these many places where you can ask for help
+
+85
+00:05:58,600 --> 00:06:03,600
+and I can ask [name], if you look for help,
+
+86
+00:06:03,720 --> 00:06:06,280
+I mean, if you look for a solution,
+
+87
+00:06:06,280 --> 00:06:08,800
+how do you, like, where do you ask?
+
+88
+00:06:08,800 --> 00:06:10,560
+How do you ask?
+
+89
+00:06:10,560 --> 00:06:14,040
+Yeah, it depends, of course, on the type of issue.
+
+90
+00:06:14,040 --> 00:06:17,240
+But maybe I really like that there's people.
+
+91
+00:06:17,240 --> 00:06:21,640
+So we have this Zulip, which is a system
+
+92
+00:06:21,640 --> 00:06:22,800
+for chatting together.
+
+93
+00:06:22,800 --> 00:06:25,040
+We have one at Aalto, we have one with the Code Refinery.
+
+94
+00:06:25,040 --> 00:06:28,440
+So we have dedicated channels when anyone can ask for help.
+
+95
+00:06:28,440 --> 00:06:30,800
+And when the question is too difficult,
+
+96
+00:06:30,800 --> 00:06:33,920
+the human is the best, in my opinion.
+
+97
+00:06:33,920 --> 00:06:34,760
+What about you?
+
+98
+00:06:36,960 --> 00:06:37,800
+Yes, I really like that.
+
+99
+00:06:37,800 --> 00:06:41,240
+that and I want to highlight here so it can be colleagues also hopefully you have somebody
+
+100
+00:06:41,240 --> 00:06:48,120
+in the corridor who who knows an answer. There are also these at alto it's called the garage.
+
+101
+00:06:48,120 --> 00:06:53,760
+It's a daily help desk session where you can come and ask questions. We have something
+
+102
+00:06:53,760 --> 00:07:01,280
+similar here in terms of weekly office hours. Then we have monthly q&a sessions in Norway.
+
+103
+00:07:01,280 --> 00:07:06,680
+So hopefully, your, like your compute center provides these sessions.
+
+104
+00:07:06,680 --> 00:07:12,440
+So it's really nice to, I think, come and talk to a person.
+
+105
+00:07:12,440 --> 00:07:18,840
+Then there are, I think, very popular these days is to also ask the AI through a chat
+
+106
+00:07:18,840 --> 00:07:20,520
+interface.
+
+107
+00:07:20,520 --> 00:07:25,440
+There is documentation issue tracker.
+
+108
+00:07:25,440 --> 00:07:29,080
+Resource software engineers who can help you with when it's more about the code rather
+
+109
+00:07:29,080 --> 00:07:31,420
+but then about the computation
+
+110
+00:07:31,420 --> 00:07:33,580
+and then mailing this forum stock exchange.
+
+111
+00:07:34,620 --> 00:07:38,020
+I tried to order them a little bit how they are.
+
+112
+00:07:38,860 --> 00:07:41,140
+So the ones on the bottom are at least for me
+
+113
+00:07:41,140 --> 00:07:42,740
+maybe a little bit scarier to ask
+
+114
+00:07:42,740 --> 00:07:44,740
+because then it's, I asked the question
+
+115
+00:07:44,740 --> 00:07:46,340
+to the whole internet.
+
+116
+00:07:46,340 --> 00:07:51,260
+Some people prefer to ask questions more to colleagues.
+
+117
+00:07:51,260 --> 00:07:52,460
+So many places to ask.
+
+118
+00:07:54,580 --> 00:07:57,220
+Oh, thanks for highlighting at CSE,
+
+119
+00:07:57,220 --> 00:07:59,240
+weekly user support sessions.
+
+120
+00:07:59,240 --> 00:08:01,140
+So I think these are great initiatives.
+
+121
+00:08:02,980 --> 00:08:04,940
+Because as I will show later,
+
+122
+00:08:04,940 --> 00:08:06,540
+sometimes an email is not enough
+
+123
+00:08:06,540 --> 00:08:09,900
+because in an email, we have to read between the lines.
+
+124
+00:08:09,900 --> 00:08:14,600
+Sometimes the actual question is not asked
+
+125
+00:08:14,600 --> 00:08:16,860
+and it can help to really discuss in person.
+
+126
+00:08:18,020 --> 00:08:20,920
+When to ask for help, don't hesitate, don't wait too long.
+
+127
+00:08:22,140 --> 00:08:24,580
+Really many people really like helping.
+
+128
+00:08:24,580 --> 00:08:31,240
+But I can also say that as a support staff, I do appreciate when I see that the person
+
+129
+00:08:31,240 --> 00:08:38,600
+who is writing the email, maybe spent two minutes on the problem before asking.
+
+130
+00:08:38,600 --> 00:08:43,920
+And not because it's about like my two minutes of work, but it often makes it open often
+
+131
+00:08:43,920 --> 00:08:49,040
+sharpens the question, it makes it that they think a little bit about about the problem
+
+132
+00:08:49,040 --> 00:08:51,760
+and give me a little bit more context.
+
+133
+00:08:51,760 --> 00:08:58,040
+Oh yeah, also on Lumi every Wednesday of the month, wonderful.
+
+134
+00:08:58,040 --> 00:09:02,680
+So please keep these comments coming and the questions I really like that.
+
+135
+00:09:02,680 --> 00:09:03,680
+Next slide.
+
+136
+00:09:03,680 --> 00:09:11,320
+It's sometimes I give myself a time limit that I tell me that, okay, I will, I will
+
+137
+00:09:11,320 --> 00:09:12,320
+try to fix this.
+
+138
+00:09:12,320 --> 00:09:14,720
+I will give myself one hour.
+
+139
+00:09:14,720 --> 00:09:21,880
+And then if it doesn't work, I will go to the garage, open off office hour or user support
+
+140
+00:09:21,880 --> 00:09:24,720
+session and ask for help there.
+
+141
+00:09:24,720 --> 00:09:29,180
+And it can be also nice to say like, what, what do you want from the help?
+
+142
+00:09:29,180 --> 00:09:30,180
+Would you like advice?
+
+143
+00:09:30,180 --> 00:09:35,240
+Or would you like them to do something for you like to install software or to, to do
+
+144
+00:09:35,240 --> 00:09:41,380
+profiling or do some programming?
+
+145
+00:09:41,380 --> 00:09:42,700
+Who is on the other side?
+
+146
+00:09:42,700 --> 00:09:48,060
+So when I send an email, it's good to know that on the other side, there is a human being.
+
+147
+00:09:48,060 --> 00:09:58,340
+Also when I reply to email, and as a reminder to myself, so when I'm staff and helping others,
+
+148
+00:09:58,340 --> 00:10:01,980
+I want to remind myself, it's not easy to ask for help.
+
+149
+00:10:01,980 --> 00:10:08,940
+The person who's asking me didn't spend the last 25 years with Unix and Linux.
+
+150
+00:10:08,940 --> 00:10:14,860
+Maybe the person on the other side has spent weeks on this problem and waited for my answer.
+
+151
+00:10:14,860 --> 00:10:20,340
+So really, it's important to be respectful.
+
+152
+00:10:20,340 --> 00:10:30,020
+It's good to know for those who ask questions via email, that the support that is helping
+
+153
+00:10:30,020 --> 00:10:32,620
+and answering these might maybe change every week.
+
+154
+00:10:32,620 --> 00:10:34,780
+So in Norway, we are rotating.
+
+155
+00:10:34,780 --> 00:10:38,700
+So every few weeks, there might be different people answering.
+
+156
+00:10:38,700 --> 00:10:43,580
+I answer these questions, I don't know everything. I might sometimes I feel like I'm spending
+
+157
+00:10:43,580 --> 00:10:48,620
+less time on the supercomputing supercomputer than the person asking. So very often, I don't
+
+158
+00:10:48,620 --> 00:10:54,820
+know the answer. But I can we can together try to try to find the answer and solve it.
+
+159
+00:10:54,820 --> 00:11:00,620
+And especially if this is if this is a system with with many users. So on on our systems,
+
+160
+00:11:00,620 --> 00:11:03,480
+we have something around 2000 users.
+
+161
+00:11:03,480 --> 00:11:06,300
+How about Alto?
+
+162
+00:11:06,300 --> 00:11:07,500
+How many users are there?
+
+163
+00:11:10,060 --> 00:11:15,060
+Yeah, many, at least the cluster is 1,500 more.
+
+164
+00:11:15,260 --> 00:11:17,260
+So yeah, same levels.
+
+165
+00:11:17,260 --> 00:11:20,700
+And probably Lumi comparable, CSE comparable,
+
+166
+00:11:20,700 --> 00:11:21,540
+maybe even more.
+
+167
+00:11:21,540 --> 00:11:24,580
+And which means that I might not know the person
+
+168
+00:11:24,580 --> 00:11:25,580
+who's writing the email.
+
+169
+00:11:25,580 --> 00:11:26,740
+I might not have the context.
+
+170
+00:11:26,740 --> 00:11:28,340
+It's good to create this context
+
+171
+00:11:28,340 --> 00:11:32,900
+when asking through like email chat.
+
+172
+00:11:32,900 --> 00:11:35,360
+And I remember my first question,
+
+173
+00:11:35,360 --> 00:11:37,460
+my first ever technical email request
+
+174
+00:11:37,460 --> 00:11:38,580
+that I wrote to somebody.
+
+175
+00:11:38,580 --> 00:11:42,300
+So I wrote a long email to a professor,
+
+176
+00:11:42,300 --> 00:11:45,340
+very respectful, paragraphs and paragraphs.
+
+177
+00:11:46,340 --> 00:11:48,660
+And what I really wanted is I wanted to get access
+
+178
+00:11:48,660 --> 00:11:52,560
+to the source code that they used in a publication.
+
+179
+00:11:53,440 --> 00:11:56,860
+But, and after a while I got this very short email back
+
+180
+00:11:56,860 --> 00:12:00,380
+And the answer was, hi, I guess what you meant asking
+
+181
+00:12:00,380 --> 00:12:02,620
+in between all those paragraphs was,
+
+182
+00:12:02,620 --> 00:12:04,820
+can I please get the code X?
+
+183
+00:12:04,820 --> 00:12:05,660
+And here it is.
+
+184
+00:12:05,660 --> 00:12:06,540
+So I got what I wanted,
+
+185
+00:12:06,540 --> 00:12:08,100
+but I felt a little bit embarrassed
+
+186
+00:12:08,100 --> 00:12:11,980
+because it was just not clear what I wanted.
+
+187
+00:12:11,980 --> 00:12:13,140
+I didn't make it clear.
+
+188
+00:12:17,060 --> 00:12:20,320
+One thing that can help is that in these email requests,
+
+189
+00:12:22,360 --> 00:12:25,620
+oh, email subject is the first thing that I see
+
+190
+00:12:25,620 --> 00:12:30,620
+when trying to help, so to make it descriptive.
+
+191
+00:12:30,780 --> 00:12:34,220
+So if the CML subject is problem, it is not very useful
+
+192
+00:12:34,220 --> 00:12:36,980
+because then everybody needs to open it up
+
+193
+00:12:36,980 --> 00:12:39,240
+and see what is inside.
+
+194
+00:12:39,240 --> 00:12:41,700
+If there is a descriptive subject,
+
+195
+00:12:41,700 --> 00:12:46,220
+it's easier for us to route the email to the right person.
+
+196
+00:12:47,600 --> 00:12:48,780
+Sometimes I don't know the answer,
+
+197
+00:12:48,780 --> 00:12:49,980
+but my colleagues know the answer,
+
+198
+00:12:49,980 --> 00:12:51,860
+and then I can try, it makes it easier for me
+
+199
+00:12:51,860 --> 00:12:53,260
+to find the right colleague.
+
+200
+00:12:55,620 --> 00:13:00,620
+About providing context.
+
+201
+00:13:00,620 --> 00:13:05,700
+So what are the things that can help us to having this context, like having a username,
+
+202
+00:13:05,700 --> 00:13:11,580
+if you are one of the 1500 users or 2000 users, I can probably figure it out, but it will
+
+203
+00:13:11,580 --> 00:13:14,260
+take time.
+
+204
+00:13:14,260 --> 00:13:23,260
+If you talk about storage and location, then it is good to have an explicit path.
+
+205
+00:13:23,260 --> 00:13:30,160
+It's better than saying it is in my home folder or it is in a relative folder because then
+
+206
+00:13:30,160 --> 00:13:33,920
+it means something else for you than for me and I need to find out.
+
+207
+00:13:33,920 --> 00:13:35,080
+It takes some time.
+
+208
+00:13:35,080 --> 00:13:42,240
+And if if there are multiple clusters machines, tell us which machine it is, which software
+
+209
+00:13:42,240 --> 00:13:46,880
+which research field if if relevant.
+
+210
+00:13:46,880 --> 00:13:50,500
+if you modify your software environment
+
+211
+00:13:50,500 --> 00:13:54,220
+in a file like .bashrc,
+
+212
+00:13:55,700 --> 00:13:59,340
+then tell us about it because your .bashrc
+
+213
+00:13:59,340 --> 00:14:01,220
+where you can have your own customization
+
+214
+00:14:01,220 --> 00:14:02,780
+is different than mine.
+
+215
+00:14:02,780 --> 00:14:04,780
+So I might have a different environment.
+
+216
+00:14:08,780 --> 00:14:09,620
+Good.
+
+217
+00:14:09,620 --> 00:14:11,560
+It would be nice to have more questions
+
+218
+00:14:11,560 --> 00:14:13,060
+here in the document.
+
+219
+00:14:14,300 --> 00:14:16,500
+And speaking about questions,
+
+220
+00:14:16,500 --> 00:14:18,780
+One thing that is really good to know is
+
+221
+00:14:18,780 --> 00:14:23,440
+if something doesn't work, tell us, has it ever worked?
+
+222
+00:14:24,760 --> 00:14:26,980
+So is it the first time that you try this
+
+223
+00:14:26,980 --> 00:14:30,620
+or has it worked last Tuesday
+
+224
+00:14:30,620 --> 00:14:32,400
+and today it doesn't work anymore?
+
+225
+00:14:33,340 --> 00:14:35,020
+That's really useful.
+
+226
+00:14:35,020 --> 00:14:36,720
+What are you trying to accomplish?
+
+227
+00:14:38,100 --> 00:14:41,960
+And here, what is your ultimate goal
+
+228
+00:14:41,960 --> 00:14:43,820
+and not the current technical obstacle?
+
+229
+00:14:43,820 --> 00:14:45,680
+And I might return to that point.
+
+230
+00:14:46,500 --> 00:14:48,740
+And what did you do so far?
+
+231
+00:14:48,740 --> 00:14:52,900
+So try to be specific.
+
+232
+00:14:52,900 --> 00:14:59,020
+Copy paste all the commands, so that I can reproduce it.
+
+233
+00:14:59,020 --> 00:15:00,020
+And then what do you need?
+
+234
+00:15:00,020 --> 00:15:01,020
+Do you need a complete solution?
+
+235
+00:15:01,020 --> 00:15:02,020
+Do you need advice?
+
+236
+00:15:02,020 --> 00:15:03,020
+Do you need?
+
+237
+00:15:03,020 --> 00:15:11,880
+It's just that we allocate the right time.
+
+238
+00:15:11,880 --> 00:15:20,060
+It helps me when I see that, like the support email tells me what you have tried, again,
+
+239
+00:15:20,060 --> 00:15:21,060
+has it stopped working?
+
+240
+00:15:21,060 --> 00:15:22,740
+Or has it ever worked?
+
+241
+00:15:22,740 --> 00:15:26,460
+Does it always fail this way, or only sometimes?
+
+242
+00:15:26,460 --> 00:15:39,700
+And if you have tried to simplify the problem, then tell us how and that that helps a lot.
+
+243
+00:15:39,700 --> 00:15:41,220
+And please check documentation at web,
+
+244
+00:15:41,220 --> 00:15:43,340
+but sometimes the web is wrong.
+
+245
+00:15:43,340 --> 00:15:44,420
+So don't hesitate to ask,
+
+246
+00:15:44,420 --> 00:15:46,540
+because sometimes the web gives help
+
+247
+00:15:46,540 --> 00:15:48,580
+on how to solve something on a laptop,
+
+248
+00:15:48,580 --> 00:15:50,340
+and that doesn't work on a cluster.
+
+249
+00:15:54,900 --> 00:15:57,700
+And I think what the comment that comes down,
+
+250
+00:15:57,700 --> 00:16:00,380
+comes here at the bottom is a very good comment,
+
+251
+00:16:00,380 --> 00:16:05,380
+is that sometimes when you ask a question,
+
+252
+00:16:05,380 --> 00:16:14,420
+you get the feeling that support people are bothered and that's really sad if it's like
+
+253
+00:16:14,420 --> 00:16:21,940
+that. So I think the support hub should always be welcoming and understanding. And it is
+
+254
+00:16:21,940 --> 00:16:28,980
+really sad if through the short electronic communication, it feels like people are distracted
+
+255
+00:16:28,980 --> 00:16:35,080
+have bothered. I think it is really our one of our main roles is to help research and
+
+256
+00:16:35,080 --> 00:16:44,560
+help you to to solve computational problems. So unfortunately, that's sometimes true. And
+
+257
+00:16:44,560 --> 00:16:53,680
+I think we we here work hard on on improving this. I mentioned that it's good to know what
+
+258
+00:16:53,680 --> 00:16:58,600
+is your what is your goal, not what is the current technical obstacle. And when we meet
+
+259
+00:16:58,600 --> 00:17:06,720
+in person in during garage and during office hours, it's easier to figure this out. When
+
+260
+00:17:06,720 --> 00:17:11,560
+when we just send an email, it's sometimes hard because so one famous thing is this so
+
+261
+00:17:11,560 --> 00:17:19,360
+called XY problem where imagine a user wants to solve something wants to do something and
+
+262
+00:17:19,360 --> 00:17:27,520
+then searches the internet. And somewhere finds out that in order to do this, you need
+
+263
+00:17:27,520 --> 00:17:36,560
+to do this obstacle. The technical obstacle is why. And then, then the user tries this
+
+264
+00:17:36,560 --> 00:17:45,740
+and hits a problem. And then asks for help with this technical obstacle. And then we
+
+265
+00:17:45,740 --> 00:17:53,340
+spend some time or much interaction, a couple of emails back and forth. And after this couple
+
+266
+00:17:53,340 --> 00:18:00,420
+of interaction, we figure out that this technical obstacle that we solved was not even the suitable
+
+267
+00:18:00,420 --> 00:18:06,460
+solution. And what the user really wanted to do is x, but it was never written, we didn't
+
+268
+00:18:06,460 --> 00:18:10,460
+know, we never knew. And if we knew we would have suggested maybe a completely different
+
+269
+00:18:10,460 --> 00:18:16,800
+solution to do this. So it's really good to to say it, what do you really want to do?
+
+270
+00:18:16,800 --> 00:18:26,760
+And I think I will show two examples in a moment.
+
+271
+00:18:26,760 --> 00:18:30,600
+Maybe good to know what happens with your email when you send it.
+
+272
+00:18:30,600 --> 00:18:34,760
+So on our side in Norway, and I think it's similar in in other places, when you send
+
+273
+00:18:34,760 --> 00:18:40,760
+us an email, it opens up something called a ticket and issue it gets a number.
+
+274
+00:18:40,760 --> 00:18:45,000
+And there we have a place to track it and keep track of it to have a conversation in
+
+275
+00:18:45,000 --> 00:18:53,160
+it to keep a context. And it's good to know that these tickets issues can change hands.
+
+276
+00:18:53,160 --> 00:18:59,080
+That's why we need to really document this context. And good, better formulated requests
+
+277
+00:18:59,080 --> 00:19:04,520
+avoid this lengthy back and forth. And once a problem is resolved, and the ticket or issue
+
+278
+00:19:04,520 --> 00:19:13,800
+gets closed. And I want to show you two, two example requests that they are a little bit
+
+279
+00:19:13,800 --> 00:19:20,460
+redacted but they are real. And we can discuss here with an echo what we like about them.
+
+280
+00:19:20,460 --> 00:19:28,700
+So here's a real request. Hi, I'm a user of some some name on the cluster saga. So that's
+
+281
+00:19:28,700 --> 00:19:33,500
+a that's a cluster here that we have in Norway. And since this morning, I cannot log in anymore.
+
+282
+00:19:33,500 --> 00:19:41,900
+I have tried to log in into some other clusters, and this works. And I use SSH keys to log
+
+283
+00:19:41,900 --> 00:19:46,660
+login, and the error that I get since this morning is the following.
+
+284
+00:19:46,660 --> 00:19:50,860
+And thank you in advance for help advice how to solve this.
+
+285
+00:19:50,860 --> 00:19:52,460
+So what do we like about this request?
+
+286
+00:19:52,460 --> 00:19:54,460
+What is really nice about this?
+
+287
+00:19:54,460 --> 00:20:02,260
+Yeah, I mean, at least I clearly see the problem, the issue, I can already see that the user
+
+288
+00:20:02,260 --> 00:20:09,300
+has tried to do some type of, you know, debugging or whatever you want to call it troubleshooting.
+
+289
+00:20:09,300 --> 00:20:10,300
+Yeah.
+
+290
+00:20:10,300 --> 00:20:15,940
+really good context here. Just from this email I can see that I can see what the
+
+291
+00:20:15,940 --> 00:20:21,860
+user tried. Cannot login anymore but can login on to other clusters
+
+292
+00:20:21,860 --> 00:20:26,700
+which means that it's probably there is a problem probably since this morning on
+
+293
+00:20:26,700 --> 00:20:30,420
+the cluster. Just from this email I can see that it's probably not
+
+294
+00:20:30,420 --> 00:20:34,900
+something on their side. It's something on our side. And there is even an error
+
+295
+00:20:34,900 --> 00:20:38,900
+message which means that from this I get a really good idea of what it might be
+
+296
+00:20:38,900 --> 00:20:45,260
+be. And I might be able to solve it in sort of one shot solution. And the next email is
+
+297
+00:20:45,260 --> 00:20:51,100
+says it's solved. And I can see the time. So I can see that we have maybe maximum five
+
+298
+00:20:51,100 --> 00:20:58,620
+minutes left. So to the moderators here, don't worry, I can see that. I want to show one
+
+299
+00:20:58,620 --> 00:21:06,300
+another example, which is also real. And the email that we got was, hi, I'm not sure I
+
+300
+00:21:06,300 --> 00:21:08,460
+I wrote to the right support line,
+
+301
+00:21:08,460 --> 00:21:10,700
+but what I'm looking for is a virtual machine
+
+302
+00:21:11,620 --> 00:21:14,180
+where we can install a PHP web server
+
+303
+00:21:15,220 --> 00:21:18,380
+with a MySQL database behind it.
+
+304
+00:21:18,380 --> 00:21:20,940
+And what we have in mind is to set up a service
+
+305
+00:21:20,940 --> 00:21:24,420
+where we can share the data from our recent study
+
+306
+00:21:24,420 --> 00:21:26,900
+and the data can be fully public.
+
+307
+00:21:26,900 --> 00:21:30,420
+It's about 2000 records, so not so much data.
+
+308
+00:21:30,420 --> 00:21:33,260
+And we would like to create a web front end
+
+309
+00:21:33,260 --> 00:21:35,760
+where people can search through and plot our data.
+
+310
+00:21:36,300 --> 00:21:39,580
+and looking forward to hear more, whether this is possible.
+
+311
+00:21:41,860 --> 00:21:43,460
+What do you like about this one?
+
+312
+00:21:45,180 --> 00:21:47,860
+Well, I mean, I would say that it looks like
+
+313
+00:21:47,860 --> 00:21:51,060
+they know what they're doing and what they want to do
+
+314
+00:21:51,060 --> 00:21:53,780
+because most likely they might be already familiar
+
+315
+00:21:53,780 --> 00:21:57,060
+with web development and MySQL.
+
+316
+00:21:57,060 --> 00:21:58,940
+What do you think about this one?
+
+317
+00:21:58,940 --> 00:22:01,260
+Yeah, so what I like is that they ask
+
+318
+00:22:01,260 --> 00:22:03,260
+very specific what they want.
+
+319
+00:22:03,260 --> 00:22:05,340
+But what I also like is that they give a context
+
+320
+00:22:05,340 --> 00:22:14,380
+of what they what. So really the goal. So here's the technical things. But here is what
+
+321
+00:22:14,380 --> 00:22:19,580
+they would like to have, they would like to have a web service. I also like that they
+
+322
+00:22:19,580 --> 00:22:25,260
+tell me that it's public data. So immediately, I know I don't have to worry about, it's not
+
+323
+00:22:25,260 --> 00:22:32,580
+something for a sensitive, sensitive data, it's public. Also, I get a good idea of the
+
+324
+00:22:32,580 --> 00:22:33,780
+the size of it.
+
+325
+00:22:33,780 --> 00:22:38,500
+So this will probably not be terabytes and petabytes.
+
+326
+00:22:38,500 --> 00:22:43,500
+And what was good here is that if the question
+
+327
+00:22:43,880 --> 00:22:46,220
+was just this, we would have done it.
+
+328
+00:22:46,220 --> 00:22:47,560
+We would have created a virtual machine
+
+329
+00:22:47,560 --> 00:22:49,600
+and installed exactly what they wanted.
+
+330
+00:22:51,700 --> 00:22:56,300
+But thanks to this paragraph, we, in this particular case,
+
+331
+00:22:56,300 --> 00:22:59,620
+we realized that there was a better way of doing it.
+
+332
+00:22:59,620 --> 00:23:01,700
+And we did something different for them.
+
+333
+00:23:01,700 --> 00:23:02,700
+And they are very happy about it.
+
+334
+00:23:02,700 --> 00:23:07,700
+So we didn't do this because for their example,
+
+335
+00:23:07,780 --> 00:23:10,140
+we found something that was a better fit.
+
+336
+00:23:10,140 --> 00:23:12,880
+But since we had this big picture,
+
+337
+00:23:12,880 --> 00:23:15,660
+we could suggest this other suggestion.
+
+338
+00:23:15,660 --> 00:23:18,580
+And so we did it, everybody's happy.
+
+339
+00:23:18,580 --> 00:23:22,020
+And I liked that it was not just the immediate next step,
+
+340
+00:23:22,020 --> 00:23:24,320
+but it was where do they want to be at the end.
+
+341
+00:23:26,820 --> 00:23:29,100
+Good, we have very few minutes left.
+
+342
+00:23:31,700 --> 00:23:38,260
+Would be nice to have more questions here, please keep them coming.
+
+343
+00:23:38,260 --> 00:23:47,540
+I think the last few slides are some recommendations on how you can create examples that you can
+
+344
+00:23:47,540 --> 00:23:51,140
+share with support to make it easier.
+
+345
+00:23:51,140 --> 00:23:57,020
+And one recommendation that I like to give is that when you are on a new machine, or
+
+346
+00:23:57,020 --> 00:24:03,580
+you have never been on a cluster before, or something is failing.
+
+347
+00:24:03,580 --> 00:24:07,520
+It's it's nice if you can start with a small example.
+
+348
+00:24:07,520 --> 00:24:13,020
+So don't start with a gigantic example with the trends on lots of compute nodes and requires
+
+349
+00:24:13,020 --> 00:24:15,400
+40 hours to run.
+
+350
+00:24:15,400 --> 00:24:20,060
+If the same problem can be reproduced with a small example, then it's really useful for
+
+351
+00:24:20,060 --> 00:24:24,220
+you and it's really useful for the support.
+
+352
+00:24:24,220 --> 00:24:28,900
+And when I'm on a new system that I don't know well, I like to start with something
+
+353
+00:24:28,900 --> 00:24:33,260
+that runs in five minutes, maybe on one core.
+
+354
+00:24:33,260 --> 00:24:38,660
+And then once it works, then I go to more time, more cores, bigger system.
+
+355
+00:24:38,660 --> 00:24:41,980
+And then then I make my calculation longer.
+
+356
+00:24:41,980 --> 00:24:45,920
+That really helps me identifying lots of problems early.
+
+357
+00:24:45,920 --> 00:24:51,460
+And I don't have to wait 40 hours to to figure this out.
+
+358
+00:24:51,460 --> 00:24:58,580
+And then whenever I suggest it, a good comment could be but but wait a bit.
+
+359
+00:24:58,580 --> 00:25:01,340
+Making a small system is not realistic.
+
+360
+00:25:01,340 --> 00:25:06,540
+My my realistic system is big and takes long.
+
+361
+00:25:06,540 --> 00:25:12,580
+And then my advice is that it doesn't have to be realistic.
+
+362
+00:25:12,580 --> 00:25:14,620
+It can be a synthetic example.
+
+363
+00:25:14,620 --> 00:25:19,620
+So very simplified, you remove lots of, you make the,
+
+364
+00:25:21,180 --> 00:25:25,280
+I don't know, smaller resolution, smaller data set,
+
+365
+00:25:25,280 --> 00:25:29,380
+but it can help us to debug lots of technical issues.
+
+366
+00:25:29,380 --> 00:25:31,140
+And then once they are sorted out,
+
+367
+00:25:31,140 --> 00:25:33,780
+then we can go back to the realistic system.
+
+368
+00:25:33,780 --> 00:25:35,740
+So this is a technique that I really like to use
+
+369
+00:25:35,740 --> 00:25:39,660
+and it can make it much, much easier to solve problems.
+
+370
+00:25:39,660 --> 00:25:44,180
+And I think only two, two minutes left.
+
+371
+00:25:45,900 --> 00:25:47,940
+So I really highly recommend to create
+
+372
+00:25:47,940 --> 00:25:49,900
+a small reproducible example
+
+373
+00:25:51,780 --> 00:25:53,860
+for a typical calculation that you run.
+
+374
+00:25:55,360 --> 00:25:58,800
+Because then when this doesn't work anymore,
+
+375
+00:25:58,800 --> 00:26:01,480
+you can quickly verify, is this a problem on your side
+
+376
+00:26:01,480 --> 00:26:03,860
+or is it a problem on the cluster side?
+
+377
+00:26:04,980 --> 00:26:06,420
+And if it's a problem on the cluster side,
+
+378
+00:26:06,420 --> 00:26:08,140
+you can send them this small example
+
+379
+00:26:08,140 --> 00:26:09,420
+and they can run it as well
+
+380
+00:26:09,420 --> 00:26:12,040
+and use it to diagnose the problem.
+
+381
+00:26:12,940 --> 00:26:14,620
+If this is an interactive job,
+
+382
+00:26:15,540 --> 00:26:20,540
+where you type commands and run the job sort of live,
+
+383
+00:26:20,580 --> 00:26:25,020
+then please provide all commands from login to problem.
+
+384
+00:26:25,020 --> 00:26:29,860
+Also, this helps us to diagnose and to reproduce
+
+385
+00:26:29,860 --> 00:26:32,460
+and retrace your steps, step-by-step,
+
+386
+00:26:32,460 --> 00:26:34,880
+precisely as you did.
+
+387
+00:26:34,880 --> 00:26:44,000
+And the smaller examples, they make it, often they simplify the problem.
+
+388
+00:26:44,000 --> 00:26:50,780
+They can help identify the reason they reduce the number of freedoms.
+
+389
+00:26:50,780 --> 00:26:51,780
+It's easier to debug.
+
+390
+00:26:51,780 --> 00:26:58,720
+And also it doesn't queue, it doesn't wait in the queue forever if it's smaller.
+
+391
+00:26:58,720 --> 00:27:03,080
+We as staff, we also have to wait in the queue, like we don't have a prioritized queuing.
+
+392
+00:27:03,080 --> 00:27:06,640
+So if this is a very long example, it's also long for us.
+
+393
+00:27:08,400 --> 00:27:09,920
+And I think my time is up.
+
+394
+00:27:10,880 --> 00:27:13,980
+I think I want to go to the summary slide.
+
+395
+00:27:13,980 --> 00:27:15,360
+You are not alone.
+
+396
+00:27:15,360 --> 00:27:20,360
+Approach, support, and resources for engineers near you.
+
+397
+00:27:20,440 --> 00:27:24,160
+Pop into a garage session or a Q&A help session
+
+398
+00:27:24,160 --> 00:27:26,440
+or an office hour and say hi.
+
+399
+00:27:26,440 --> 00:27:29,400
+It's also a great place to not just ask questions
+
+400
+00:27:29,400 --> 00:27:34,160
+but give suggestions on how we can improve the systems.
+
+401
+00:27:34,160 --> 00:27:38,640
+You are probably not alone experiencing a problem.
+
+402
+00:27:38,640 --> 00:27:43,560
+And the questions are never too stupid, too simple.
+
+403
+00:27:43,560 --> 00:27:45,640
+They are very often good questions.
+
+404
+00:27:45,640 --> 00:27:47,760
+Many people really enjoy helping.
+
+405
+00:27:47,760 --> 00:27:50,040
+And the people who organize this discourse,
+
+406
+00:27:50,040 --> 00:27:53,000
+they really, really enjoy helping and are good at this.
+
+407
+00:27:53,840 --> 00:27:55,920
+It's also okay from time to time to tell us
+
+408
+00:27:55,920 --> 00:27:57,960
+if something is working well.
+
+409
+00:27:57,960 --> 00:27:59,720
+It doesn't happen very often that, you know,
+
+410
+00:27:59,720 --> 00:28:01,560
+at 2 a.m. in the morning, you get an email
+
+411
+00:28:01,560 --> 00:28:02,400
+that somebody's thinking,
+
+412
+00:28:02,400 --> 00:28:05,400
+well, the system is actually working, and thanks.
+
+413
+00:28:05,400 --> 00:28:07,760
+But good to hear that as well.
+
+414
+00:28:09,640 --> 00:28:11,320
+And here, the comment.
+
+415
+00:28:13,920 --> 00:28:17,400
+Yeah, so it can be, you can start with your own team,
+
+416
+00:28:17,400 --> 00:28:18,560
+start with a colleague,
+
+417
+00:28:19,520 --> 00:28:23,640
+and then you can escalate, go to other places.
+
+418
+00:28:24,760 --> 00:28:26,720
+So it can be a progression.
+
+419
+00:28:26,720 --> 00:28:31,720
+What did we miss? Anything I missed to say?
+
+420
+00:28:31,720 --> 00:28:45,720
+No, I think this was super useful, especially considering that I know that let's say half of the participants who are registered for this session are people who just started with their summer internship.
+
+421
+00:28:45,720 --> 00:28:51,720
+So asking for help and getting the most out of it is really important when you're just starting.
+
+422
+00:28:51,720 --> 00:28:52,720
+Wonderful.
+
+423
+00:28:52,720 --> 00:29:00,760
+Thank you so much [name], this was very useful and regarding the streaming, so the connection
+
+424
+00:29:00,760 --> 00:29:05,080
+from the streaming server to the rest of the internet is fine again.
+
+425
+00:29:05,080 --> 00:29:14,920
+So I hear from the back room that we should be able to switch to the better streaming
+
+426
+00:29:14,920 --> 00:29:15,920
+server.
+
+427
+00:29:15,920 --> 00:29:16,920
+Good.
+
+428
+00:29:16,920 --> 00:29:17,920
+So then thanks everybody for listening.
+
+429
+00:29:17,920 --> 00:29:18,920
+Thanks a lot.
+
+430
+00:29:18,920 --> 00:29:23,120
+I give back to the studio, and I will look forward to more.
+
+431
+00:29:23,120 --> 00:29:23,880
+Thank you so much.
+
+432
+00:29:27,520 --> 00:29:33,920
+So let's see if the streaming goes to the new.
+
+433
+00:29:33,920 --> 00:29:34,720
+Yeah, hello.
+
+434
+00:29:38,520 --> 00:29:39,020
+Yeah.
+
+435
+00:29:45,320 --> 00:29:45,820
+OK.
+
+436
+00:29:48,920 --> 00:29:54,360
+wait I need to say that for everyone there will be a short break and it will
+
+437
+00:29:54,360 --> 00:29:59,880
+hopefully be back what is left here
+
