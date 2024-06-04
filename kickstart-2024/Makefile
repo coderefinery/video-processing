@@ -16,8 +16,8 @@ aac_wild=$(wildcard raw/*.mkv.aac out/*.mkv.aac raw/*.mp4.aac)
 srt=$(patsubst %.mkv, %.srt, $(videos_mkv)) $(patsubst %.mp4, %.mp4, $(videos_mp4))
 
 #WHISPER=whisper --model large
-SRUN=srun --pty --time=0-4 -c 4 --mem=10G -p dgx-common,gpu --gpus=1
-WHISPER=apptainer /scratch/work/darstr1/whisper_cuda_23_07_07.sif -B /m:/m -B /l:/l -B /scratch:/scratch --nv run --model_directory /scratch/shareddata/faster-whisper/models--guillaumekln--faster-whisper-large-v2/snapshots/f541c54c566e32dc1fbce16f98df699208837e8b --device cuda
+SRUN=srun --pty --time=0-4 -c 4 --mem=10G --gpus=1
+WHISPER=apptainer run -B /m:/m -B /l:/l -B /scratch:/scratch --nv /scratch/work/darstr1/whisper_cuda_23_07_07.sif --model_directory /scratch/shareddata/faster-whisper/models--guillaumekln--faster-whisper-large-v2/snapshots/f541c54c566e32dc1fbce16f98df699208837e8b --device cuda
 
 print:
 	@echo videos_mkv: ${videos_mkv}
