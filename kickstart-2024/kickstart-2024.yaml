@@ -1,0 +1,559 @@
+- workshop_title: HPC/SciComp Kickstart summer 2023
+- workshop_description: >
+    This is part of the Aalto Scientific Computing "Getting started
+    with Scientific Computing and HPC Kickstart" 2023
+    workshop.  The videos are available to everyone, but may be most
+    useful to the people who attended the workshop and want to review
+    later.
+
+    Playlist: https://www.youtube.com/playlist?list=PLZLVmS9rf3nMKR2jMglaN4su3ojWtWMVw
+
+    Workshop webpage: https://scicomp.aalto.fi/training/scip/kickstart-2023/
+
+    Aalto Scientific Computing: https://scicomp.aalto.fi/
+
+
+- input: day1-obs.mkv
+
+- output: day1-icebreaker.mkv
+  title: 1.1 Icebreaker
+  description: >-
+    General discussion before the workshop starts
+
+  editlist:
+  - start: 00:14:40
+  - end: 00:24:10
+
+
+- output: day1-intro.mkv
+  title: 1.2 Introduction
+  description: >-
+    General introduction to the workshop.
+
+    https://scicomp.aalto.fi/training/kickstart/intro/
+
+  editlist:
+  - start: 00:24:10
+  - end: 00:37:31
+
+
+- output: day1-from-data-storage-to-your-science.mkv
+  title: "1.3 From data storage to your science"
+  description: >-
+    Data is how most computational work starts, whether it is
+    externally collected, simulation code, or generated. And these
+    days, you can work on data even remotely, and these workflows
+    aren't obvious. We discuss how data storage choices lead to
+    computational workflows.
+
+    https://hackmd.io/@AaltoSciComp/SciCompIntro
+
+  editlist:
+  - start: 00:37:43
+  - end: 00:50:05
+
+
+- output: day1-cooking-metaphor-to-parallel-computing.mkv
+  title: 1.4 What is parallel computing?  An analogy with cooking.
+  description: >-
+    In workshops such as this, you will hear lots about parallel
+    computing and how you need it, but rarely get a understandable
+    introduction to how they relate and which are right for you. Here,
+    we give a understandable metaphor with preparing large meals.
+
+    https://docs.google.com/presentation/d/e/2PACX-1vQLTzWkRy7Du3jjPJ6Y9BqKczU_JcSTEL6XsndrNJ7ylzi4RWeEy8lhfWZQu_lpwbAKroh51qqLoPFG/pub
+
+  editlist:
+  - start: 00:50:05
+  - end: 01:13:15
+
+
+- output: day1-how-big-is-my-calculation.mkv
+  title: "1.5 How big is my calculation? Measuring your needs"
+  description: >-
+    People often ask us "How many resources do I need to reserve?"
+    This is a good question to think about even before we get to the
+    cluster itself.  We go over how to think about estimating the
+    resources you are using on your own computer and how that scales to
+    larger problem sizes on the cluster.
+
+    https://scicomp.aalto.fi/triton/usage/program-size/
+  editlist:
+    - start: 01:24:00
+    - stop: 01:55:25
+
+
+- output: day1-the-humans-of-scientific-computing.mkv
+  title: "1.6 The humans of scientific computing"
+  description: >-
+    Who are we that provide these services? What makes it such a
+    fascinating career?  How did we learn what we know?  Learn about
+    what goes on behind the scenes and how you could join us.
+
+  editlist:
+    - start: 01:55:25
+    - stop: 02:18:46
+
+- output: day1-connecting.mkv
+  title: 1.7 Connecting to the cluster
+  description: >-
+    How to connect to the cluster.  This is in preparation for
+    tomorrow, and not needed right now.  We give various demos, but
+    you need to figure it out for yourself later.
+
+    https://scicomp.aalto.fi/triton/tut/connecting/
+
+  editlist:
+    - start: 02:28:17
+    - end: 02:49:58
+
+- output: day1-cluster-shell.mkv
+  title: "1.8 Using the cluster from the command line"
+  description: >-
+      Now that we are connected, we will be doing a lot from the
+      command line interface.  This is a brief overview of what we can
+      do from the command line - with emphasis of what we need for the
+      next days.
+
+      In particular we clone the "hpc-examples" sample git repository
+      (https://github.com/AaltoSciComp/hpc-examples/) which will be
+      used in the future days.  The "shell crash course"
+      (https://scicomp.aalto.fi/scicomp/shell/) has a little bit more
+      stuff.
+
+      https://scicomp.aalto.fi/triton/tut/cluster-shell/
+  editlist:
+    - start: 03:24:00
+    - stop:  03:42:00
+    - start: 03:48:03
+    - stop: 03:49:16
+
+- output: day1-real-examples.mkv
+  title: "1.9 Real examples of cluster usage"
+  description: >-
+    We go straight to show two real examples: array jobs + MPI
+    (message-passing interface) that use the real power of the cluster.
+    We don't explain how, but we'll see that in the next two days.
+
+  editlist:
+    - start: 03:49:23
+    - 03:50:20: Ising model (Array job)
+    - 03:58:50: Lammps (MPI)
+    - end: 04:11:19
+
+- output: day1-qa.mkv
+  title: "1.10 Q&A and final comments, day 1"
+  description: >-
+    The final wrap-up / Q&A of day 1
+  editlist:
+    - start: 04:11:19
+    - stop: 04:26:26
+
+
+
+
+- input: day2-obs.mkv
+- output: day2-icebreker.mkv
+  title: 2.1 Icebreakers and introduction
+  description: >-
+    Introduction of day 2.  Most people will go straight to the other
+    videos.
+  editlist:
+  - start: 00:17:10
+  - 00:26:52: Day 2 plan
+  - end: 00:29:49
+
+- output: day2-about-cluster.mkv
+  title: 2.2 About clusters and using them
+  description: >-
+    What is a cluster and why would we use one?  Brief reminder about
+    the previous day and comments on how to use them and ask for help.
+
+    https://scicomp.aalto.fi/triton/tut/intro/
+
+  editlist:
+  - start: 00:29:49
+  - 00:36:04: How to get help
+  - end: 00:41:04
+
+- output: day2-slurm.mkv
+  title: '2.3 Slurm: the queueing system'
+  description: >-
+    Slurm is the "workload manager" or queuing system which manages
+    all the resources.  It takes requests for jobs (CPU, memory, time,
+    etc) and schedules them among all of the rest of the cluster.
+    We discuss the basics of this system and we'll see how it actually
+    works soon.
+
+    https://scicomp.aalto.fi/triton/tut/slurm/
+
+  editlist:
+  - start: 00:41:13
+  - 00:44:06: 'Another food analogy: the HPC diner'
+  - 00:48:43: The resources Slurm manages
+  - 00:50:06: Partitions
+  - 00:52:00: Going through questions
+  - end: 00:53:35
+
+- output: day2-interactive.mkv
+  title: 2.4 Interactive jobs
+  description: >-
+    Before we get to scripted jobs (like most people use on the
+    cluster), we will talk about interactive jobs.  This lets us get a
+    little bit familiar with the Slurm system.  You shouldn't use this
+    for running real calculations, but for testing and debugging, it is
+    very useful.
+
+    https://scicomp.aalto.fi/triton/tut/interactive/
+  editlist:
+  - start: 00:53:35
+  - 00:55:29: Why interactive jobs?
+  - 00:57:10: Running the jobs
+  - 01:02:50: Checking history
+  - 01:05:05: Exercise introduction and questions
+  - end: 01:08:41
+  - start: 01:35:19
+  - -: Going over the exercises and related questions
+  - end: 01:51:40
+
+- output: day2-serial.mkv
+  title: 2.5 Serial jobs
+  description: >-
+     Running jobs in simple Slurm batch scripts: this is the starting point
+     of everything that comes next.  This is the most important lesson
+     that everything built up to, and everything else will build upon.
+
+     https://scicomp.aalto.fi/triton/tut/serial/
+  editlist:
+  - start: 01:52:01
+  - 01:52:50: Our first batch script
+  - 01:58:30: Writing the script
+  - 02:03:40: Exercises introduction and questions
+  - stop: 02:05:11
+  - start: 02:40:10
+  - -: Going over the exercises and related questions
+  - 02:47:46: 'Example: looking at output while the job is running'
+  - stop: 02:54:20
+
+
+- output: day2-monitoring.mkv
+  title: 2.6 Monitoring jobs (summary)
+  description: >-
+    In order to use large amounts of resources, you need to be able to
+    monitor how many resources you used, so that you can properly adjust
+    the resources you request later.  We go over the main parts: output
+    during the job, time, memory efficiency, CPU efficiency, GPU
+    efficiency, and so on.
+
+    We have already seen most of the content there, but we summarize
+    everything now in one place.
+
+    https://scicomp.aalto.fi/triton/tut/monitoring/
+  editlist:
+  - start: 02:54:31
+  - 02:56:58: Monitoring during queuing
+  - 02:58:00: Monitoring a running job
+  - 03:03:37: Short overview of slurm history
+  - 03:04:30: Checking job efficiency
+  - 03:05:44: Exercises introduction
+  - end: 03:07:09
+  - start: 03:30:24
+  - -: Going over the exercises and questions
+  - stop: 03:39:52
+
+- output: day2-applications.mkv
+  title: '2.7 Applications and Modules: software on the cluster'
+  description: >-
+    Software installation is one of our most time-consuming tasks in
+    supporting cluster usage.  In "Applications", we'll talk about the
+    general principles of managing software on the cluster: can you
+    install things?  Do you need to ask us?  Do both happen at the
+    same time?  Then we look at the `module` command that lets you
+    make other pre-installed software available.
+
+    https://scicomp.aalto.fi/triton/tut/applications/
+
+    https://scicomp.aalto.fi/triton/tut/modules/
+  editlist:
+    - start: 03:39:52
+    - 03:40:48: Different ways of installing software on the cluster
+    - 03:42:17: Software installed by admin (modules)
+    - 03:45:45: Quick overview how software on cluster works
+    - 03:47:43: Short overview of using modules
+    - 03:48:24: 'Example: loading the anaconda module'
+    - end: 03:53:15
+
+#    There are several things we don't go into detail about: the
+#    "module" command, data storage, and remote access to data.  This
+#    is the intro to these sections, and the actual videos come next.
+#
+#    1) "module" is the command you use to make more software available.
+#    Here, we go over the idea behind it, but mainly we leave it to
+#    you to read the tutorial page.
+#
+#    https://scicomp.aalto.fi/triton/tut/modules/
+#
+#    2) We go over data storage on the cluster: why it is important, main
+#    considerations, where to store it, and so on.  We only give a bit of
+#    discussion, and leave you to read for the details.
+#
+#    https://scicomp.aalto.fi/triton/tut/storage/
+#
+#    3) You have data on the cluster, but you need to be able to access it
+#    from outside, or copy new data to the cluster.  This can be
+#    surprisingly frustrating, so we discuss transferring data vs
+#    mounting a remote filesystem for transparent access.
+#
+#    https://scicomp.aalto.fi/triton/tut/remotedata/
+
+- output: day2-data-storage.mkv
+  title: 2.8 Data storage and accessing it remotely
+  description: >-
+    We go over data storage on the cluster: why it is important, main
+    considerations, where to store it, and so on.  We only give a bit of
+    discussion, and leave you to read for the details.
+
+    https://scicomp.aalto.fi/triton/tut/storage/
+
+    You have data on the cluster, but you need to be able to access it
+    from outside, or copy new data to the cluster.  This can be
+    surprisingly frustrating, so we discuss transferring data vs
+    mounting a remote filesystem for transparent access.
+
+    https://scicomp.aalto.fi/triton/tut/remotedata/
+
+  editlist:
+  - start: 03:53:32
+  - -: Different places of storing data
+  - 03:58:17: Overview of options on Triton
+  - 04:02:35: Explaining storage quotas
+  - 04:02:51: 'Remote access to data: basics'
+  - 04:06:17: Remote mounting
+  - 04:07:33: Transfering data
+  - end: 4:09:26
+
+
+- output: day2-outro.mkv
+  title: '2.9 Daily wrap-up, discussion, and Q&A'
+  description: >-
+    Wrap-up of the day, discussion, Q&A, and feedback.
+  editlist:
+  - start: 04:09:26
+  - -: 'Q&A'
+  - 04:09:36: Discussion on data storage workflows
+  - 04:14:22: Question about Rstudio
+  - 04:17:08: Conda environments
+  - 04:17:55: Feedback
+  - 04:22:08: Rushed partial demo of creating a basic conda environment
+  - end: 04:27:31
+
+#- output: day2-modules.mkv
+#  title: 2.8 Software modules
+#  description: >-
+#    "module" is the command you use to make more software available.
+#     Here, we go over the idea behind it, but mainly we leave it to
+#     you to read the tutorial page.
+#
+#     https://scicomp.aalto.fi/triton/tut/modules/
+#  editlist:
+#  - start: 3:48:40
+#  - end: 3:55:00
+#
+#
+#- output: day2-remote-data.mkv
+#  title: 2.10 Remote data access
+#  description: >-
+#    You have data on the cluster, but you need to be able to access it
+#    from outside, or copy new data to the cluster.  This can be
+#    surprisingly frustrating, so we discuss transferring data vs
+#    mounting a remote filesystem for transparent access.
+#
+#    https://scicomp.aalto.fi/triton/tut/remotedata/
+#  editlist:
+#  - start: 4:07:28
+#  - end: 4:17:03
+#
+
+
+
+- input: day3-obs.mkv
+- output: day3-icebreaker.mkv
+  title: 3.1 Icebreaker and intro
+  description: >-
+    Introduction of day 3.  Most people will go straight to the other
+    videos. This segment does however contain some useful discussion
+    about the goals of the course and how you should approach
+    learning scientific computing, given how overwhelming this course
+    can seem.
+  editlist:
+  - start: 00:18:03
+  - 00:23:10: 'Example workflow: processing these videos'
+  - 00:26:58: Icebreakers
+  - 00:27:40: Long discussion about the learning goals of the course
+  - 00:35:56: Funny illustration of day 3
+  - end: 00:37:37
+
+
+- output: day3-parallel.mkv
+  title: 3.2 Different methods of parallel computing
+  description: >-
+    Before we get to how to run parallel jobs, let's talk about the
+    different forms, since a person must keep these straight in order
+    to run them the right way on the cluster.  The forms are listed
+    below.
+
+    https://scicomp.aalto.fi/triton/tut/parallel/
+
+  editlist:
+  - start: 00:38:02
+  - 00:40:25: How to choose your parallelization method.
+  - 00:42:30: Embarassingly parallel / perfectly parallel
+  - 00:44:56: Shared memory parallelism
+  - 00:48:12: MPI parallelism
+  - 00:52:08: GPU parallelization
+  - 00:55:26: How well does your code parallelize
+  - 00:57:01: Wrap-up
+  - end: 00:58:01
+
+
+- output: day3-array.mkv
+  title: 3.3 Array jobs
+  description: >-
+    When there is no dependency or communication among the individual
+    program runs, these individual runs can be run in parallel on
+    separate Slurm jobs called array jobs.
+
+    https://scicomp.aalto.fi/triton/tut/array/
+
+  editlist:
+  - start: 00:58:12
+  - stop: 00:59:56
+# Cuts out richard's audio issues, not sure if the jump is jarring though
+  - start: 01:01:10
+  - 01:01:22: Overview of array jobs
+  - 01:04:50: Your first array job
+  - 01:11:44: Ways to use array jobs
+  - 01:12:46: Exercises introduction
+  - stop: 01:15:02
+  - start: 01:41:31
+  - -: Going over the exercises
+  - 01:42:45: 'Example: exercise 1'
+  - 01:48:55: 'Audience question: How to use array jobs to train llms'
+  - 01:52:10: 'Short example: exercise 5'
+  - stop: 01:54:58
+
+
+- output: day3-shared-memory.mkv
+  title: 3.4 Shared memory parallelism (part 1)
+  description: >-
+    Shared memory or multiprocessing parallelism can scale to one node
+    and allow communication between processors on a node.  This is run
+    with `--cpus-per-task`.
+
+    See the second-to-next talk in the playlist to see us going over
+    the exercises.
+
+    https://scicomp.aalto.fi/triton/tut/parallel-shared/
+  editlist:
+  - start: 01:55:26
+  - -: Overview of shared memory parallelism
+  - 01:56:26: 'Example: running pi.py in parallel'
+  - end: 02:01:51
+
+
+- output: day3-CSC-l2l.mkv
+  title: 3.5 From laptops to LUMI - CSC resources for researchers, CSC
+  description: >-
+    What if you need more than what a university can provide?  In
+    Finland, CSC (https://csc.fi, https://docs.csc.fi) have even more
+    resources, and this is a tour of them.
+
+    Slides from last year, this year's will be updated if we get them:
+    https://github.com/AaltoSciComp/scicomp-docs/raw/master/training/scip/CSC-services_062022.pdf
+  editlist:
+  - start: 02:26:39
+  - -: About this talk, about CSC
+  - 02:28:19: Introduction
+  - 02:29:14: About CSC
+  - 02:37:50: CSC computing services
+  - 02:39:17: CSC cloud computing services
+  - 02:41:04: LUMI overview
+  - 02:42:37: CSC data management and storage services
+  - 02:44:05: Topical trainings
+  - 02:46:23: Getting access to the services
+  - 02:50:52: Puhti web interface
+  - 02:57:23: Q&A
+  - end: 03:09:00
+
+- output: day3-shared-memory2.mkv
+  title: 3.6 Shared memory parallelism (part 2)
+  description: >-
+    A follow up to the shared memory parallelism exercises after the
+    previous talk
+
+    https://scicomp.aalto.fi/triton/tut/parallel-shared/
+  editlist:
+  - start: 03:09:00
+  - -: Further elaboration of shared memory paralellism
+  - 03:10:25: Going over exercises
+  - 03:11:11: 'Example: exercise 1'
+  - 03:16:08: 'Example: exercise 3'
+  - 03:18:50: Exercise related Q&A
+  - end: 03:22:05
+
+
+- output: day3-MPI.mkv
+  title: 3.7 MPI overview
+  description: >-
+    MPI (message-passing interface) is the standard way for jobs to
+    communicate across processes or nodes on a massive scale.  Here,
+    we talk very briefly about how to run MPI jobs on a cluster.
+
+    https://scicomp.aalto.fi/triton/tut/parallel-mpi/
+  editlist:
+  - start: 03:32:31
+  - -: What is MPI?
+  - 03:36:11: 'Example: Running pi in parallel using MPI'
+  - end: 03:40:55
+
+- output: day3-gpus.mkv
+  title: 3.8 GPU computing
+  description: >-
+    GPUs, short for graphical processing unit, are massively-parallel
+    processors that are optimized to perform parallel
+    operations. Computations that might take days to run on CPUs, take
+    substantially less time on GPUs.  We discuss how to use them with
+    Slurm and what are some common pitfalls when running these
+    programs, but we don't go into detail about just how they are
+    programmed or anything like that.
+
+    https://scicomp.aalto.fi/triton/tut/gpu/
+  editlist:
+  - start: 03:41:05
+  - -: What's a GPU and why?
+  - 03:45:35: 'Example: pi again but now with GPUs'
+  - 03:51:30: 'Common pitfall: GPU being bottlenecked by CPUs'
+  - 03:54:06: 'Common pitfall: Loading libraries incorrectly'
+  - 03:55:51: 'Question: running several jobs on a single GPU'
+  - 03:59:32: How to reserve specific GPUs
+  - 04:00:21: Why you should maximize GPU efficiency
+  - 04:03:23: Avoiding CUDA issues
+  - 04:05:25: Keeping GPUs occupied when doing deep learning
+  - 04:09:16: No exercises, still in queue
+  - end: 04:09:41
+
+- output: day3-outro.mkv
+  title: 3.9 General Q&A and day 3 and workshop wrap-up
+  description: >-
+    Wrap up of the workshop, including some hints about what to do
+    next, our future plans, etc.
+  editlist:
+  - start: 04:09:42
+  - -: General Q&A
+  - 04:11:18: Recommended tutorials for doing GPU calculations
+  - 04:15:09: Numpy parallelization
+  - 04:17:33: What are TPUs (Tensor Processing Unit)
+  - 04:20:41: Is gaming GPU useful for calculations?
+  - 04:25:38: Most common mistakes with GPU programs
+  - 04:26:31: Going through feedback
+  - end: 04:32:35
