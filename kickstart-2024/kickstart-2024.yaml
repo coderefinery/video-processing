@@ -1,14 +1,14 @@
-- workshop_title: HPC/SciComp Kickstart summer 2023
+- workshop_title: HPC/SciComp Kickstart summer 2024
 - workshop_description: >
     This is part of the Aalto Scientific Computing "Getting started
-    with Scientific Computing and HPC Kickstart" 2023
+    with Scientific Computing and HPC Kickstart" 2024
     workshop.  The videos are available to everyone, but may be most
     useful to the people who attended the workshop and want to review
     later.
 
     Playlist: https://www.youtube.com/playlist?list=PLZLVmS9rf3nMKR2jMglaN4su3ojWtWMVw
 
-    Workshop webpage: https://scicomp.aalto.fi/training/scip/kickstart-2023/
+    Workshop webpage: https://scicomp.aalto.fi/training/scip/kickstart-2024/
 
     Aalto Scientific Computing: https://scicomp.aalto.fi/
 
@@ -53,42 +53,40 @@
   - end: 00:50:05
 
 
-- output: day1-cooking-metaphor-to-parallel-computing.mkv
-  title: 1.4 What is parallel computing?  An analogy with cooking.
+- output: day1-computational-reproducibility.mkv
+  title: 1.4 (Computational) reproducibility and open science
   description: >-
-    In workshops such as this, you will hear lots about parallel
-    computing and how you need it, but rarely get a understandable
-    introduction to how they relate and which are right for you. Here,
-    we give a understandable metaphor with preparing large meals.
+    Transparency in science is one of the core principles in research integrity. 
+    Did you know that half of published studies are actually not reproducible? 
+    Here we give an overview of CodeRefinery learning materials for those who want 
+    to start picking up good enough practices like git version control, clear 
+    project folder structure, conda environments, containers.
 
-    https://docs.google.com/presentation/d/e/2PACX-1vQLTzWkRy7Du3jjPJ6Y9BqKczU_JcSTEL6XsndrNJ7ylzi4RWeEy8lhfWZQu_lpwbAKroh51qqLoPFG/pub
+    https://coderefinery.github.io/reproducible-research/
 
   editlist:
   - start: 00:50:05
   - end: 01:13:15
 
 
-- output: day1-how-big-is-my-calculation.mkv
-  title: "1.5 How big is my calculation? Measuring your needs"
+- output: day1-the-humans-of-scientific-computing.mkv
+  title: "1.5 The humans of scientific computing"
   description: >-
-    People often ask us "How many resources do I need to reserve?"
-    This is a good question to think about even before we get to the
-    cluster itself.  We go over how to think about estimating the
-    resources you are using on your own computer and how that scales to
-    larger problem sizes on the cluster.
+    Who are we that provide these services? What makes it such a
+    fascinating career?  How did we learn what we know?  Learn about
+    what goes on behind the scenes and how you could join us.
 
-    https://scicomp.aalto.fi/triton/usage/program-size/
   editlist:
     - start: 01:24:00
     - stop: 01:55:25
 
 
-- output: day1-the-humans-of-scientific-computing.mkv
-  title: "1.6 The humans of scientific computing"
+- output: day1-what-can-do-with-cluster.mkv
+  title: "1.6 What can you do with a computational cluster?"
   description: >-
-    Who are we that provide these services? What makes it such a
-    fascinating career?  How did we learn what we know?  Learn about
-    what goes on behind the scenes and how you could join us.
+    A couple of real examples of how people use the cluster 
+    1) Multi-cpu-node computations with LAMMPS, 2) text synthesis 
+    with open source Large Language Models (LLMs)
 
   editlist:
     - start: 01:55:25
@@ -107,38 +105,28 @@
     - start: 02:28:17
     - end: 02:49:58
 
-- output: day1-cluster-shell.mkv
-  title: "1.8 Using the cluster from the command line"
+- output: day1-ask-for-help.mkv
+  title: "1.8 How to ask for help with (super)computers"
   description: >-
-      Now that we are connected, we will be doing a lot from the
-      command line interface.  This is a brief overview of what we can
-      do from the command line - with emphasis of what we need for the
-      next days.
+      It’s dangerous to go alone, take us! Don’t waste time struggling, there are plenty of people here for you. 
 
-      In particular we clone the "hpc-examples" sample git repository
-      (https://github.com/AaltoSciComp/hpc-examples/) which will be
-      used in the future days.  The "shell crash course"
-      (https://scicomp.aalto.fi/scicomp/shell/) has a little bit more
-      stuff.
-
-      https://scicomp.aalto.fi/triton/tut/cluster-shell/
+      https://zenodo.org/records/8392763
+      
   editlist:
     - start: 03:24:00
     - stop:  03:42:00
     - start: 03:48:03
     - stop: 03:49:16
 
-- output: day1-real-examples.mkv
-  title: "1.9 Real examples of cluster usage"
+- output: day1-vscode.mkv
+  title: "1.9 VScode on HPC"
   description: >-
-    We go straight to show two real examples: array jobs + MPI
-    (message-passing interface) that use the real power of the cluster.
-    We don't explain how, but we'll see that in the next two days.
+    How to use cluster resources without the command line interface, but with extra care.
+
+    https://scicomp.aalto.fi/triton/apps/vscode/
 
   editlist:
     - start: 03:49:23
-    - 03:50:20: Ising model (Array job)
-    - 03:58:50: Lammps (MPI)
     - end: 04:11:19
 
 - output: day1-qa.mkv
