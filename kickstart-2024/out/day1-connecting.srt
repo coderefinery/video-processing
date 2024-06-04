@@ -1,0 +1,1104 @@
+1
+00:00:00,000 --> 00:00:04,920
+And welcome back.
+
+2
+00:00:04,920 --> 00:00:12,720
+So now we are essentially at the next stage and we actually want to connect to our clusters.
+
+3
+00:00:12,720 --> 00:00:18,280
+The documents or documentation that we have is mainly for Aalto but conceptually it's the
+
+4
+00:00:18,280 --> 00:00:21,920
+same for any other cluster.
+
+5
+00:00:21,920 --> 00:00:29,280
+are plenty of different ways how you can connect to the clusters and we will talk about two of them.
+
+6
+00:00:29,920 --> 00:00:34,800
+Essentially we will talk about an SSH connection and we will show a bit of the
+
+7
+00:00:35,840 --> 00:00:38,560
+on-demand that [name] has already showed in the last session.
+
+8
+00:00:43,200 --> 00:00:48,640
+So if I scroll down a bit in the materials there's a long list here but some will exist on your
+
+9
+00:00:48,640 --> 00:00:54,080
+cluster and some will not. All of them exist on Aalto, but they show the two main things, I guess.
+
+10
+00:00:54,880 --> 00:01:01,440
+We will, for demonstration purposes, assume that you have direct internet access to your cluster.
+
+11
+00:01:01,440 --> 00:01:07,360
+That means if you are on Aalto, you need to be on the virtual private network because the
+
+12
+00:01:07,360 --> 00:01:19,220
+Sorry, because the Triton cluster is not directly accessible from the internet except the open
+
+13
+00:01:19,220 --> 00:01:22,720
+on demand approach.
+
+14
+00:01:22,720 --> 00:01:31,760
+So if you want to follow and want to type along, you will need to be on the VPN.
+
+15
+00:01:31,760 --> 00:01:39,120
+the question came up before what's the difference between the login node and the compute nodes.
+
+16
+00:01:39,760 --> 00:01:47,280
+I think this image shows it quite well. So the login node is the element that's connected to
+
+17
+00:01:47,280 --> 00:01:56,000
+the net. In this case is the Aalto network. On Lumi or other CSC machines it's directly connected to
+
+18
+00:01:56,000 --> 00:02:03,680
+the internet and this machine is essentially your entry point to the cluster this is the machine
+
+19
+00:02:03,680 --> 00:02:11,360
+where you submit jobs where you get where you put things uh onto onto the cluster or tell the
+
+20
+00:02:11,360 --> 00:02:21,520
+cluster okay i want this to be computed um in general why if you want to connect to the cluster
+
+21
+00:02:21,520 --> 00:02:25,520
+the first thing you have to do is you have to get an account i assume that all of the all of
+
+22
+00:02:25,520 --> 00:02:29,000
+of you have done that for your respective clusters.
+
+23
+00:02:29,000 --> 00:02:33,920
+And we will first go through the SSH connection,
+
+24
+00:02:33,920 --> 00:02:37,960
+and [name] will demonstrate that.
+
+25
+00:02:37,960 --> 00:02:43,520
+OK, so just to be sure, I'll just say again.
+
+26
+00:02:43,520 --> 00:02:49,200
+So I'm connected to the, I mean, the Aalto network through the VPN.
+
+27
+00:02:49,200 --> 00:02:52,760
+[name]'s, there's notes that [name]'s voice is much louder.
+
+28
+00:02:55,520 --> 00:03:08,240
+Okay, well, the only easy way I can access that is from here, so just a moment.
+
+29
+00:03:17,600 --> 00:03:23,280
+Okay, does that change the volume?
+
+30
+00:03:23,280 --> 00:03:28,320
+[name], can you say something? Does it change it?
+
+31
+00:03:30,640 --> 00:03:32,080
+I hope it changed our list.
+
+32
+00:03:36,880 --> 00:03:38,640
+Okay, well.
+
+33
+00:03:41,760 --> 00:03:45,760
+I guess we can, we should move on. Yeah, okay, sounds good.
+
+34
+00:03:46,480 --> 00:03:51,200
+Okay, so I have a terminal open here and yeah, I am on the Aalto network.
+
+35
+00:03:51,200 --> 00:04:09,480
+work. That's important. So what do I do? I will use a standard method. I have some setup
+
+36
+00:04:09,480 --> 00:04:15,760
+here that would make it – I could type a significantly shorter command, but I will
+
+37
+00:04:15,760 --> 00:04:20,820
+try to stick to whatever, something that works on whatever system you're on.
+
+38
+00:04:20,820 --> 00:04:26,880
+So the command is ssh.
+
+39
+00:04:26,880 --> 00:04:33,800
+Actually before I do that, why don't I show where I am right now.
+
+40
+00:04:33,800 --> 00:04:39,100
+So I can type the command hostname.
+
+41
+00:04:39,100 --> 00:04:42,320
+That is the name of my laptop.
+
+42
+00:04:42,320 --> 00:04:43,320
+That's another laptop.
+
+43
+00:04:43,320 --> 00:04:53,040
+have usually a name that's something like this, starting with an l and with a number.
+
+44
+00:04:53,040 --> 00:05:00,960
+I can also show my username, and that is, well, that is my username. It's, again, an
+
+45
+00:05:00,960 --> 00:05:08,240
+Aalto username, so actually you will see the same one on Triton. Maybe it would have been
+
+46
+00:05:08,240 --> 00:05:13,080
+more interesting to see it change, but, well, if you're going from an Aalto machine, you
+
+47
+00:05:13,080 --> 00:05:14,560
+always have the same username.
+
+48
+00:05:14,560 --> 00:05:21,600
+Okay. So I am on this machine and now I will type the command.
+
+49
+00:05:21,600 --> 00:05:28,320
+So username, add,
+
+50
+00:05:28,320 --> 00:05:30,440
+and then the name of the machine.
+
+51
+00:05:30,440 --> 00:05:34,760
+So that's triton.aalto.fi.
+
+52
+00:05:34,760 --> 00:05:37,460
+The important bit here is it's
+
+53
+00:05:37,460 --> 00:05:40,520
+the username that you have on the system that you want to connect.
+
+54
+00:05:40,520 --> 00:05:41,800
+Yes.
+
+55
+00:05:41,800 --> 00:05:44,860
+And you seemingly already have set up SSH keys.
+
+56
+00:05:45,800 --> 00:05:47,200
+Yes, that is true.
+
+57
+00:05:47,200 --> 00:05:50,480
+If you, I'm on the VPN,
+
+58
+00:05:50,480 --> 00:05:52,760
+right, it didn't ask for a password, correct, yes.
+
+59
+00:05:52,760 --> 00:05:55,960
+So should we demonstrate again
+
+60
+00:05:55,960 --> 00:05:58,780
+what it looks like if you haven't set it up?
+
+61
+00:05:58,780 --> 00:06:01,080
+There's not a big change.
+
+62
+00:06:01,080 --> 00:06:03,000
+The main difference is that you will be asked
+
+63
+00:06:03,000 --> 00:06:05,640
+for your password on the machine.
+
+64
+00:06:05,640 --> 00:06:08,360
+And there are actually systems like Lumi
+
+65
+00:06:08,360 --> 00:06:11,080
+where you have to have a ssh keys being set up.
+
+66
+00:06:14,140 --> 00:06:14,980
+Otherwise you can't.
+
+67
+00:06:14,980 --> 00:06:17,040
+So I think the biggest difference,
+
+68
+00:06:17,040 --> 00:06:18,240
+I think that people will see,
+
+69
+00:06:18,240 --> 00:06:20,400
+well, there is that it will ask for a password.
+
+70
+00:06:20,400 --> 00:06:22,680
+It will, if it's the first time connecting
+
+71
+00:06:22,680 --> 00:06:27,080
+to a new server, so a new machine,
+
+72
+00:06:29,040 --> 00:06:33,520
+it will also ask you, it will print this key
+
+73
+00:06:33,520 --> 00:06:40,320
+That's essentially a random string of characters and it will ask you if that is the correct
+
+74
+00:06:40,320 --> 00:06:41,320
+one.
+
+75
+00:06:41,320 --> 00:06:46,360
+So if you're connecting to something for the first time, it's pretty much safe to just
+
+76
+00:06:46,360 --> 00:06:47,480
+type in yes.
+
+77
+00:06:47,480 --> 00:06:50,440
+You can check it somewhere.
+
+78
+00:06:50,440 --> 00:06:51,440
+You can check that it's correct.
+
+79
+00:06:51,440 --> 00:06:52,440
+Yeah.
+
+80
+00:06:52,440 --> 00:06:59,760
+I will put that into the document, at least for Triton.
+
+81
+00:06:59,760 --> 00:07:02,160
+So, I will go to the shared document.
+
+82
+00:07:05,320 --> 00:07:09,200
+For essentially any HPC service,
+
+83
+00:07:09,200 --> 00:07:12,280
+there will be a page where the SSH key fingerprints
+
+84
+00:07:12,280 --> 00:07:13,800
+are being listed.
+
+85
+00:07:13,800 --> 00:07:16,920
+And you can check whether what's being shown to you
+
+86
+00:07:16,920 --> 00:07:19,980
+will be, or is the same as what's listed on there.
+
+87
+00:07:21,400 --> 00:07:24,800
+And if it is, then you are connecting to the correct.
+
+88
+00:07:24,800 --> 00:07:28,640
+Yeah, so this, having this key on the system
+
+89
+00:07:28,640 --> 00:07:33,640
+essentially proves that it is the right machine.
+
+90
+00:07:35,680 --> 00:07:39,120
+Nobody's trying to fake Triton.
+
+91
+00:07:39,120 --> 00:07:41,980
+You are actually in the actual correct Triton machine.
+
+92
+00:07:43,320 --> 00:07:44,520
+The main thing though is,
+
+93
+00:07:44,520 --> 00:07:47,020
+because when you're connecting for the first time,
+
+94
+00:07:48,480 --> 00:07:50,120
+it will just send it to you
+
+95
+00:07:50,120 --> 00:07:52,580
+and your machine has nothing to compare it to.
+
+96
+00:07:53,760 --> 00:07:56,040
+So it will ask you to accept it.
+
+97
+00:07:56,040 --> 00:07:58,320
+From then on, if it ever changes,
+
+98
+00:07:58,320 --> 00:08:01,680
+your machine will either just refuse to connect,
+
+99
+00:08:01,680 --> 00:08:07,840
+or it will at least ask you to check what's going on.
+
+100
+00:08:07,840 --> 00:08:10,920
+And it refuses the connection and tells you,
+
+101
+00:08:10,920 --> 00:08:13,800
+yeah, you can remove the old key there.
+
+102
+00:08:13,800 --> 00:08:16,160
+But that's the point where checking
+
+103
+00:08:16,160 --> 00:08:18,840
+whether the keys have actually changed makes sense.
+
+104
+00:08:18,840 --> 00:08:19,680
+Yes.
+
+105
+00:08:19,680 --> 00:08:24,440
+So if the key changes, it's either something really drastic
+
+106
+00:08:24,440 --> 00:08:27,040
+has happened, like we have a new version of Triton
+
+107
+00:08:27,040 --> 00:08:32,880
+something. It's a completely new machine or someone is actually doing an attack and trying
+
+108
+00:08:32,880 --> 00:08:41,360
+to get you to lock into the wrong system. So if it complains about this, it is a good thing to check
+
+109
+00:08:42,560 --> 00:08:52,000
+but usually it doesn't. But essentially this is how you connect via SSH. Yes. There's really
+
+110
+00:08:52,000 --> 00:09:00,720
+not much more to it. Actually, now in the prompt you do have the name of the machine. It's login4.
+
+111
+00:09:01,280 --> 00:09:09,360
+You do have my username. We can type hostname and see. It's login4.triton.aalto.fi and
+
+112
+00:09:12,480 --> 00:09:18,880
+who am I again? It's the same as before unfortunately, but well that is my username on Aalto.
+
+113
+00:09:18,880 --> 00:09:23,880
+Okay, well, are we going to do anything more here?
+
+114
+00:09:23,880 --> 00:09:25,880
+I guess not much.
+
+115
+00:09:25,880 --> 00:09:32,880
+We will, of course, be using the machine much more in the next two days.
+
+116
+00:09:32,880 --> 00:09:34,880
+Yeah.
+
+117
+00:09:34,880 --> 00:09:36,880
+Okay.
+
+118
+00:09:36,880 --> 00:09:41,880
+Okay, then for the on-demand, which...
+
+119
+00:09:41,880 --> 00:09:44,880
+So this is in the browser.
+
+120
+00:09:44,880 --> 00:09:52,720
+Yeah, this is a way that is quite convenient as well, depending on what you want to do.
+
+121
+00:09:54,400 --> 00:09:59,120
+So essentially, you go to the page that [name] had shown earlier, which is on-demand.
+
+122
+00:10:00,240 --> 00:10:04,400
+Yes, so there is a, well, first of all,
+
+123
+00:10:07,360 --> 00:10:09,760
+there's instructions for connecting with SSH.
+
+124
+00:10:09,760 --> 00:10:14,760
+And then there is a link to ondemand.triton.aalto.fi.
+
+125
+00:10:14,760 --> 00:10:17,760
+It's relatively easy to remember or bookmark.
+
+126
+00:10:17,760 --> 00:10:20,760
+Let's go there.
+
+127
+00:10:20,760 --> 00:10:25,760
+I didn't actually want to close the materials, so I'll open it back up.
+
+128
+00:10:25,760 --> 00:10:31,760
+Okay, so this is what the Triton Open On Demand looks like.
+
+129
+00:10:31,760 --> 00:10:33,760
+I'm already signed in.
+
+130
+00:10:33,760 --> 00:10:35,760
+I'm already logged in.
+
+131
+00:10:35,760 --> 00:10:38,760
+It will ask you to log in with your Aldo credentials.
+
+132
+00:10:38,760 --> 00:10:41,760
+which you have seen many times already.
+
+133
+00:10:41,760 --> 00:10:46,760
+It's using a standard multi-factor authentication for that.
+
+134
+00:10:46,760 --> 00:10:51,760
+So, in here you have multiple different things that you can do.
+
+135
+00:10:51,760 --> 00:10:56,760
+One thing, or the most convenient thing to use is the Triton Shell access,
+
+136
+00:10:56,760 --> 00:10:59,760
+which is essentially another...
+
+137
+00:10:59,760 --> 00:11:04,760
+Shell, this will do exactly the same thing as SSH, except in the browser.
+
+138
+00:11:04,760 --> 00:11:05,260
+browser.
+
+139
+00:11:05,260 --> 00:11:06,460
+Except in the browser.
+
+140
+00:11:06,460 --> 00:11:12,080
+So you don't even need to type in any passwords
+
+141
+00:11:12,080 --> 00:11:14,180
+because it already has your credentials.
+
+142
+00:11:14,180 --> 00:11:17,340
+So that's kind of convenient if you just
+
+143
+00:11:17,340 --> 00:11:22,660
+want to throw in a few commands and you haven't set up
+
+144
+00:11:22,660 --> 00:11:25,460
+the command line in more detail.
+
+145
+00:11:25,460 --> 00:11:27,180
+And this works from outside Aalto.
+
+146
+00:11:27,180 --> 00:11:30,700
+But you do need to log in in the browser
+
+147
+00:11:30,700 --> 00:11:32,500
+with the two-factor authentication.
+
+148
+00:11:32,500 --> 00:11:35,000
+Yep.
+
+149
+00:11:35,000 --> 00:11:41,260
+The second thing is something that [name] has already shown.
+
+150
+00:11:41,260 --> 00:11:43,100
+Essentially, the Triton desktop.
+
+151
+00:11:43,100 --> 00:11:45,820
+This is for any graphical applications.
+
+152
+00:11:45,820 --> 00:11:51,220
+It could also be if you have some software that
+
+153
+00:11:51,220 --> 00:11:53,380
+has a simple graphical installer,
+
+154
+00:11:53,380 --> 00:11:55,300
+you could essentially just request the session
+
+155
+00:11:55,300 --> 00:11:59,060
+and run it there and see if it installs
+
+156
+00:11:59,060 --> 00:12:02,260
+or if it's missing things.
+
+157
+00:12:02,260 --> 00:12:06,300
+If it installs and it's a graphical tool,
+
+158
+00:12:06,300 --> 00:12:11,900
+you might encounter some issues running things later on
+
+159
+00:12:11,900 --> 00:12:13,780
+if you're not running it via Triton desktop,
+
+160
+00:12:13,780 --> 00:12:17,380
+because the desktop does load a couple of libraries that
+
+161
+00:12:17,380 --> 00:12:19,980
+are only available on some of the nodes.
+
+162
+00:12:19,980 --> 00:12:23,300
+Because as mentioned earlier, we want
+
+163
+00:12:23,300 --> 00:12:29,580
+to keep the nodes themselves as nimble as possible
+
+164
+00:12:29,580 --> 00:12:31,460
+so that they are not wasting resources
+
+165
+00:12:31,460 --> 00:12:34,220
+and there are only a limited amount of things now.
+
+166
+00:12:34,220 --> 00:12:37,180
+So I have access now, so I can click through here.
+
+167
+00:12:39,900 --> 00:12:43,500
+There are, well, one or two things
+
+168
+00:12:43,500 --> 00:12:45,500
+that we might want to show.
+
+169
+00:12:45,500 --> 00:12:49,900
+So if you work with Chrome, Chrome
+
+170
+00:12:49,900 --> 00:12:57,580
+has the option to share the clipboard with the browser,
+
+171
+00:12:57,580 --> 00:13:01,260
+which is quite convenient.
+
+172
+00:13:01,260 --> 00:13:03,780
+If you have a browser that doesn't support that,
+
+173
+00:13:03,780 --> 00:13:06,340
+you have this thing on the side where you also
+
+174
+00:13:06,340 --> 00:13:07,540
+have a clipboard.
+
+175
+00:13:07,540 --> 00:13:10,980
+I'm going to copy the address from here,
+
+176
+00:13:10,980 --> 00:13:15,260
+so that it should now be on the clipboard.
+
+177
+00:13:15,260 --> 00:13:18,020
+And indeed, because I am on Chrome,
+
+178
+00:13:18,020 --> 00:13:19,660
+it is here on the clipboard.
+
+179
+00:13:19,660 --> 00:13:22,980
+But if it's not, you can paste it in,
+
+180
+00:13:22,980 --> 00:13:30,540
+and then you have it in a clipboard of this remote system,
+
+181
+00:13:30,540 --> 00:13:32,680
+this Triton session.
+
+182
+00:13:32,680 --> 00:13:36,980
+Might be a convenient thing if you, as I said, want to install some software and have a license
+
+183
+00:13:36,980 --> 00:13:44,100
+key or something like that, you can essentially copy-paste that via this method.
+
+184
+00:13:44,100 --> 00:13:54,300
+Otherwise, if you're used to the Linux desktop environments, this is very familiar.
+
+185
+00:13:54,300 --> 00:13:58,740
+And in general, it's of course very similar to any desktop environment.
+
+186
+00:13:58,740 --> 00:14:03,620
+I can also open a terminal from here or run any other software.
+
+187
+00:14:03,620 --> 00:14:08,660
+Of course, running a terminal from here is not necessarily the easiest way of accessing
+
+188
+00:14:08,660 --> 00:14:12,380
+a terminal in Triton.
+
+189
+00:14:12,380 --> 00:14:19,340
+Now I'm actually on a compute node, which is an interesting difference to the previous
+
+190
+00:14:19,340 --> 00:14:20,340
+one.
+
+191
+00:14:20,340 --> 00:14:21,340
+Yeah.
+
+192
+00:14:21,340 --> 00:14:23,060
+So, this is not the login node.
+
+193
+00:14:23,060 --> 00:14:26,420
+We can do more stuff here.
+
+194
+00:14:26,420 --> 00:14:31,080
+You are essentially only restricted by the amount of resources that you have requested
+
+195
+00:14:31,080 --> 00:14:35,040
+when you were requesting this session.
+
+196
+00:14:35,040 --> 00:14:43,320
+And there's one third thing that I think is worth mentioning on this on-demand, and that's
+
+197
+00:14:43,320 --> 00:14:48,520
+a relatively easy way to transfer files.
+
+198
+00:14:48,520 --> 00:14:52,880
+So we go out of the desktop.
+
+199
+00:14:52,880 --> 00:14:55,320
+I don't know if logging out is very important.
+
+200
+00:14:57,280 --> 00:14:58,960
+Can I go and delete it?
+
+201
+00:14:58,960 --> 00:15:01,680
+You can go and delete it from here as well.
+
+202
+00:15:04,400 --> 00:15:05,240
+Yeah.
+
+203
+00:15:06,160 --> 00:15:07,000
+Yeah.
+
+204
+00:15:07,000 --> 00:15:09,320
+If on demand, you go to this files thing.
+
+205
+00:15:10,320 --> 00:15:11,160
+Yes.
+
+206
+00:15:11,160 --> 00:15:14,020
+[name] has access to a couple of projects, obviously.
+
+207
+00:15:15,380 --> 00:15:17,960
+Normally, you only have your home directory,
+
+208
+00:15:17,960 --> 00:15:20,700
+your work directory, and potentially additional projects
+
+209
+00:15:20,700 --> 00:15:22,240
+that you are a member of.
+
+210
+00:15:22,880 --> 00:15:29,040
+And that is a relatively convenient method to at least upload smaller files and smaller things.
+
+211
+00:15:31,040 --> 00:15:36,480
+If we are getting into the gigabyte range, I would personally recommend to use the command
+
+212
+00:15:36,480 --> 00:15:47,280
+line and things like rsync or similar. But for smaller files, using this file browsing
+
+213
+00:15:47,840 --> 00:15:51,280
+utility for uploading and downloading is absolutely fine.
+
+214
+00:15:52,880 --> 00:16:01,760
+So, that's kind of the two approaches that you can, or the approaches that you can use.
+
+215
+00:16:01,760 --> 00:16:05,600
+On the command line, you have everything that you have on a command line.
+
+216
+00:16:05,600 --> 00:16:15,740
+On OOD, you are somewhat restricted with the connection to your machine by what things
+
+217
+00:16:15,740 --> 00:16:16,740
+can be transferred.
+
+218
+00:16:16,740 --> 00:16:20,640
+And, for example, on the Triton desktop, there's no copy-paste of files.
+
+219
+00:16:20,640 --> 00:16:21,640
+Right.
+
+220
+00:16:21,640 --> 00:16:31,400
+You cannot very easily move a file between the whatever laptop you're working on and Triton
+
+221
+00:16:32,360 --> 00:16:38,120
+from there. But you can go through the files menu here and just upload it there and it will
+
+222
+00:16:38,120 --> 00:16:41,640
+show up on the Triton desktop in the folder that you placed it in.
+
+223
+00:16:42,360 --> 00:16:47,080
+So there are also several applications that are pre-installed here.
+
+224
+00:16:47,080 --> 00:16:56,640
+So, Jupyter, RStudio, Paraview, you know if you want to use them.
+
+225
+00:16:56,640 --> 00:17:04,920
+And Speech2Text, for example, is for translating, well, spoken word into text.
+
+226
+00:17:04,920 --> 00:17:10,360
+So that might be very useful for you.
+
+227
+00:17:10,360 --> 00:17:13,920
+That's purely auto.
+
+228
+00:17:13,920 --> 00:17:25,220
+So yeah, so different clusters will have different ways of accessing, but many of them do have
+
+229
+00:17:25,220 --> 00:17:31,920
+some sort of way, this online system, something very similar to Open On Demand.
+
+230
+00:17:31,920 --> 00:17:38,480
+Let's see, other questions.
+
+231
+00:17:38,480 --> 00:17:44,000
+So the point of the rest of this session is to get connected.
+
+232
+00:17:44,000 --> 00:17:53,320
+And if you have questions, problems, feel free to ask.
+
+233
+00:17:53,320 --> 00:17:55,400
+There is also the help Zoom session.
+
+234
+00:17:55,400 --> 00:17:59,160
+If you are signed up, you should have received a link.
+
+235
+00:17:59,160 --> 00:18:04,800
+There's one question that's already mainly answered, but what if you forget to close
+
+236
+00:18:04,800 --> 00:18:05,880
+the desktop?
+
+237
+00:18:05,880 --> 00:18:13,200
+What I would like to add to the answer that's in the HackMD is,
+
+238
+00:18:13,200 --> 00:18:19,620
+you are essentially built for your time,
+
+239
+00:18:19,620 --> 00:18:22,200
+but not in the sense that you're paying money for it.
+
+240
+00:18:22,200 --> 00:18:24,420
+You're paying in priority, i.e.,
+
+241
+00:18:24,420 --> 00:18:29,200
+how fast you get resources if the resources are in high demand.
+
+242
+00:18:29,200 --> 00:18:33,440
+If you leave something running while it could be closed,
+
+243
+00:18:33,440 --> 00:18:39,600
+you might have to wait longer for resources in the future.
+
+244
+00:18:39,600 --> 00:18:43,520
+So there is this in jobs,
+
+245
+00:18:43,520 --> 00:18:45,500
+you have this active jobs.
+
+246
+00:18:45,500 --> 00:18:47,420
+I don't have any active jobs,
+
+247
+00:18:47,420 --> 00:18:51,900
+but that's one way to find what you have running.
+
+248
+00:18:51,900 --> 00:19:00,680
+Actually, how do I get to the view where I had all of my old jobs as well?
+
+249
+00:19:00,680 --> 00:19:06,840
+Well I mean there was a big red button to delete the job. I mean that will only delete it from the
+
+250
+00:19:06,840 --> 00:19:13,000
+list but if you see a running job there, there will be a button. I think it's a big red button
+
+251
+00:19:13,000 --> 00:19:19,720
+to close that job. So if you close a tab and your desktop is still running, you can always go and
+
+252
+00:19:19,720 --> 00:19:27,000
+close the job from there. I think you can always do it. You can also find it in here if it's still
+
+253
+00:19:27,000 --> 00:19:36,920
+running. And you can close it. Anything else?
+
+254
+00:19:39,480 --> 00:19:45,680
+Okay, it's the big picture. Okay, so our goal is, so there's lots of stuff that
+
+255
+00:19:45,680 --> 00:19:50,480
+can happen here, and you saw a lot of demos. For tomorrow, what do people need
+
+256
+00:19:50,480 --> 00:20:02,640
+know how to do. Well, the main thing is to connect to the cluster in some way. So, find a way to get
+
+257
+00:20:02,640 --> 00:20:12,880
+a terminal running on Triton or on your local cluster. So, either SSH into it or find a way
+
+258
+00:20:12,880 --> 00:20:24,080
+accessing it through a browser either on-demand or similar and open a terminal from there.
+
+259
+00:20:24,080 --> 00:20:34,560
+So the main thing probably would be though to use SSH to access it and there's instructions
+
+260
+00:20:34,560 --> 00:20:41,520
+here for different operating systems that may be slightly different, a few options for
+
+261
+00:20:41,520 --> 00:20:52,560
+Windows, but Windows nowadays has just SSH built in to the command line interface, so it's actually
+
+262
+00:20:52,560 --> 00:21:02,880
+pretty much the same as on Linux and on macOS. So yeah, at least as far as I know, the main thing is
+
+263
+00:21:02,880 --> 00:21:11,040
+to get access to the cluster, get a terminal running on the cluster, and it's nice if
+
+264
+00:21:11,040 --> 00:21:17,840
+you can check out what other features your cluster has and try them out. So if you're on Triton,
+
+265
+00:21:17,840 --> 00:21:26,160
+try OpenOnDemand, see what you like there and how you like to use it. Yeah. Okay. Yeah. And
+
+266
+00:21:26,880 --> 00:21:33,360
+you don't need this after this break, but you need it by tomorrow. So there's plenty of time to
+
+267
+00:21:33,920 --> 00:21:39,840
+keep figuring stuff out and to ask for support tomorrow morning and all that.
+
+268
+00:21:41,040 --> 00:21:58,040
+And so do keep asking stuff in the notes, and we will take a break now until the next hour, so 3 o'clock finish time or 35 minutes away from now.
+
+269
+00:21:58,040 --> 00:22:07,040
+You might come back a bit early, but if you can log in, go take a break and come back. Don't sit here waiting for us.
+
+270
+00:22:07,040 --> 00:22:08,040
+Okay.
+
+271
+00:22:08,040 --> 00:22:09,040
+Okay.
+
+272
+00:22:09,040 --> 00:22:14,040
+If that's all, I'll talk to you later.
+
+273
+00:22:14,040 --> 00:22:15,040
+Bye.
+
+274
+00:22:15,040 --> 00:22:16,040
+Bye.
+
+275
+00:22:16,040 --> 00:22:17,040
+Bye.
+
+276
+00:22:17,040 --> 00:22:18,040
+Bye.
+

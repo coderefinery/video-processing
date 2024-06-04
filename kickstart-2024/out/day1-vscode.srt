@@ -1,0 +1,1124 @@
+1
+00:00:00,000 --> 00:00:01,840
+OK, great.
+
+2
+00:00:01,840 --> 00:00:07,200
+everyone and thanks for joining in this session. I'm joining from the beautiful Switzerland and I'm
+
+3
+00:00:07,200 --> 00:00:16,320
+excited to talk to you about VS Code. So VS Code can be thought as like the UI for the HPC because
+
+4
+00:00:16,320 --> 00:00:22,400
+it has a lot of cool stuff that you can use. And although it doesn't necessarily should be VS Code,
+
+5
+00:00:22,400 --> 00:00:26,640
+we are talking about VS Code because it's like an open source software that you can use. It's
+
+6
+00:00:26,640 --> 00:00:29,320
+It's based on VS Codeum, I guess.
+
+7
+00:00:29,320 --> 00:00:34,080
+It's maintained by Microsoft, but the core and the kernel is open source, so you can
+
+8
+00:00:34,080 --> 00:00:38,560
+use also other IDEs if you want, like PyCharm or anything.
+
+9
+00:00:38,560 --> 00:00:43,400
+And the instructions should be similar, but if you had any problems, feel free to come
+
+10
+00:00:43,400 --> 00:00:47,360
+to Garage and we can help you and walk you through it.
+
+11
+00:00:47,360 --> 00:00:54,080
+So the main idea behind using an IDE is the idea about remote development versus local
+
+12
+00:00:54,080 --> 00:00:55,080
+development.
+
+13
+00:00:55,080 --> 00:00:57,800
+So when we are talking about developing your project,
+
+14
+00:00:57,800 --> 00:01:01,960
+you can either develop all the project on your local machine
+
+15
+00:01:01,960 --> 00:01:04,440
+and then transfer the whole thing on the cluster
+
+16
+00:01:04,440 --> 00:01:06,440
+that you want to do all the calculation,
+
+17
+00:01:06,440 --> 00:01:09,520
+and run your jobs, and see the results.
+
+18
+00:01:09,520 --> 00:01:12,240
+Or you can do also your programming and project
+
+19
+00:01:12,240 --> 00:01:14,280
+development on the cluster.
+
+20
+00:01:14,280 --> 00:01:16,800
+The benefit would be you don't have
+
+21
+00:01:16,800 --> 00:01:18,920
+to go through the git and pull and push
+
+22
+00:01:18,920 --> 00:01:21,560
+and maintaining the project, because all the things are
+
+23
+00:01:21,560 --> 00:01:22,800
+on the cluster.
+
+24
+00:01:22,800 --> 00:01:25,520
+And also, if you are doing remotely,
+
+25
+00:01:25,520 --> 00:01:29,520
+you don't have to go with, like, Nano or Veeam or any IDE
+
+26
+00:01:29,520 --> 00:01:30,800
+that you are not comfortable with.
+
+27
+00:01:30,800 --> 00:01:34,680
+So you are using your local IDE on your local machine,
+
+28
+00:01:34,680 --> 00:01:36,720
+but every calculation that you are running
+
+29
+00:01:36,720 --> 00:01:39,840
+is running on the cluster.
+
+30
+00:01:39,840 --> 00:01:44,240
+So here, as you can see, I have the main page of VS Code.
+
+31
+00:01:44,240 --> 00:01:46,680
+And the first thing that we have to do
+
+32
+00:01:46,680 --> 00:01:48,880
+to get connected to the HPC, in this case,
+
+33
+00:01:48,880 --> 00:01:56,280
+Triton to start the development is to install the remote SSH plugin. It should usually come
+
+34
+00:01:56,280 --> 00:02:01,240
+with a VS Code if you install it and download it from the official pages, but if it's not
+
+35
+00:02:01,240 --> 00:02:09,640
+you can easily go to the App Store and search for like SSH remote or something similar.
+
+36
+00:02:09,640 --> 00:02:15,520
+Then install the SSH plugin. As you can see, I already have installed it and I don't have
+
+37
+00:02:15,520 --> 00:02:18,440
+like anything else to do for here.
+
+38
+00:02:19,440 --> 00:02:24,440
+So when you install the SSH remote plugin in VS Code,
+
+39
+00:02:24,440 --> 00:02:26,560
+you will see this blue button added here.
+
+40
+00:02:26,560 --> 00:02:28,760
+So if you have it already there,
+
+41
+00:02:28,760 --> 00:02:31,140
+you don't have to install any other plugin.
+
+42
+00:02:31,140 --> 00:02:33,440
+So this means that the plugin is installed.
+
+43
+00:02:33,440 --> 00:02:34,880
+And if I go and click here,
+
+44
+00:02:34,880 --> 00:02:37,520
+it would start asking me which cost
+
+45
+00:02:37,520 --> 00:02:39,280
+that I want to get connected to.
+
+46
+00:02:39,280 --> 00:02:41,560
+So if I go ahead and select,
+
+47
+00:02:41,560 --> 00:02:46,100
+like I want to get connected this window to the host,
+
+48
+00:02:46,100 --> 00:02:48,740
+you can see all of the configuration that I have in
+
+49
+00:02:48,740 --> 00:02:53,860
+my SSH config file that you have been seeing previously.
+
+50
+00:02:53,860 --> 00:03:00,180
+You can, of course, go ahead and edit the config here.
+
+51
+00:03:00,180 --> 00:03:03,880
+It would know probably all of the configs that you have,
+
+52
+00:03:03,880 --> 00:03:05,020
+but if it doesn't,
+
+53
+00:03:05,020 --> 00:03:08,020
+you can add it in the settings that the configs that you
+
+54
+00:03:08,020 --> 00:03:13,380
+added in other defaults other than the default directories. So, for example, you can see I have
+
+55
+00:03:13,380 --> 00:03:19,140
+all of the configs here. So, let me go ahead and try to get connected to Triton. Because I'm on
+
+56
+00:03:19,140 --> 00:03:27,700
+all those networks, I can easily get connected to Triton. And when this blue button would say
+
+57
+00:03:27,700 --> 00:03:33,620
+Triton, the hostname that I configured manually, it means that I get connected to Triton. So, if I
+
+58
+00:03:33,620 --> 00:03:40,740
+go ahead and open the terminal here, you can go over the task name, you can see I'm already
+
+59
+00:03:40,740 --> 00:03:52,660
+on the Triton, right? So the cool thing about... I want to quickly go over some steps.
+
+60
+00:03:53,220 --> 00:04:00,820
+So basically, you see the window over here, the IDE is running on your own machine,
+
+61
+00:04:00,820 --> 00:04:07,620
+right? Like in your laptop, like the windowing system. But what is running on the Triton side,
+
+62
+00:04:07,620 --> 00:04:13,300
+in this case, in the login for? What happens when the connection is made?
+
+63
+00:04:14,580 --> 00:04:21,140
+So, the terminal is get connected via SSH and there is an instant running on the login node
+
+64
+00:04:21,140 --> 00:04:28,020
+called VS Code Server. And my local IDE and the VS Code Server are talking to each other
+
+65
+00:04:28,020 --> 00:04:35,220
+to the SSH tunnel. So every command that I put here, it would go to the tunnel to the cluster
+
+66
+00:04:35,220 --> 00:04:39,620
+to Triton and the result would be coming back from the tunnel and I can see it here locally.
+
+67
+00:04:40,420 --> 00:04:47,060
+So I wanted to emphasize this point because the important thing to notice here is that even though
+
+68
+00:04:47,060 --> 00:04:54,820
+the window now is running on [name]ain's computer, whatever he is executing will be executed in that
+
+69
+00:04:54,820 --> 00:05:00,420
+remote machine. So that also means that if you are going to, let's say, execute code or something
+
+70
+00:05:00,420 --> 00:05:07,460
+like that, it will get executed there. And tomorrow we'll be talking more about the queue system, but
+
+71
+00:05:09,540 --> 00:05:17,460
+how we can use that. But the login node that we have is shared among all the users. So remember
+
+72
+00:05:17,460 --> 00:05:21,860
+that whenever you're running something, for example, through the terminal, or if you're
+
+73
+00:05:21,860 --> 00:05:30,260
+running code right now, now it would execute it on the login node. So it would be sharing
+
+74
+00:05:30,260 --> 00:05:35,860
+the resources among multiple users. So you shouldn't necessarily run something that
+
+75
+00:05:36,820 --> 00:05:40,580
+requires huge amounts of resources using, for example, this terminal.
+
+76
+00:05:41,700 --> 00:05:50,820
+Yeah. So let me show some other cool stuff first and then go on the step on what to be aware of
+
+77
+00:05:50,820 --> 00:05:57,460
+and maybe like on like how to run the code and like these kind of stuff that Seymour is mentioning.
+
+78
+00:05:58,420 --> 00:06:02,660
+So as you can see I have my terminal here so I don't have to use like any other terminal.
+
+79
+00:06:02,660 --> 00:06:08,020
+I also can go ahead and like open a folder for example it would like see my home folder where
+
+80
+00:06:08,020 --> 00:06:14,660
+I can go for example to scratch and then my working directory over there and like just
+
+81
+00:06:14,660 --> 00:06:19,860
+open my like any other project that I have. For example like another project let's open the
+
+82
+00:06:20,820 --> 00:06:22,580
+like this one.
+
+83
+00:06:24,020 --> 00:06:29,020
+Would you recommend opening the whole folder
+
+84
+00:06:29,020 --> 00:06:33,660
+or only just the subfolder of the whole work directory?
+
+85
+00:06:33,660 --> 00:06:34,540
+Yeah, good question.
+
+86
+00:06:34,540 --> 00:06:39,300
+So at the moment, we have two known issues
+
+87
+00:06:39,300 --> 00:06:41,700
+with the VS Code that you have to be aware of.
+
+88
+00:06:41,700 --> 00:06:44,540
+The first thing is because this file explorer
+
+89
+00:06:44,540 --> 00:06:45,860
+that you can see here,
+
+90
+00:06:45,860 --> 00:06:48,980
+it would keep track of all of the files on the cluster.
+
+91
+00:06:48,980 --> 00:06:57,340
+So, if I create a new file in another window, another terminal or open on demand, it would
+
+92
+00:06:57,340 --> 00:06:58,940
+almost instantly appear here as well.
+
+93
+00:06:58,940 --> 00:07:02,180
+So, it's trying to keep track of all of the file changes.
+
+94
+00:07:02,180 --> 00:07:09,620
+So, if the folder that you are opening is too large, a lot of files, it would try to
+
+95
+00:07:09,620 --> 00:07:16,460
+keep track of thousands of files and it would run instant that is running 100% or 200% of
+
+96
+00:07:16,460 --> 00:07:22,380
+your allowed CPU allocation on the login node.
+
+97
+00:07:22,380 --> 00:07:29,860
+And it's bad because the login node is a shared resource
+
+98
+00:07:29,860 --> 00:07:32,060
+that we are sharing with all of the researchers.
+
+99
+00:07:32,060 --> 00:07:36,900
+So the main recommendation is to open the file or the project
+
+100
+00:07:36,900 --> 00:07:39,580
+that the folder that it's only one project,
+
+101
+00:07:39,580 --> 00:07:41,860
+or it has limited number of files.
+
+102
+00:07:41,860 --> 00:07:46,060
+For example, don't open a home folder or a folder
+
+103
+00:07:46,060 --> 00:07:49,620
+or project that has the conda environment inside specifically
+
+104
+00:07:49,620 --> 00:07:51,740
+because the conda environment has like thousands
+
+105
+00:07:51,740 --> 00:07:53,860
+or like tens of thousands of files
+
+106
+00:07:53,860 --> 00:07:55,300
+and it would be a nightmare for the VS code
+
+107
+00:07:55,300 --> 00:07:57,100
+to keep track of these all of these.
+
+108
+00:07:59,100 --> 00:08:03,100
+Yeah, so as I mentioned, you can like go ahead here
+
+109
+00:08:03,100 --> 00:08:06,300
+and like create a new file
+
+110
+00:08:06,300 --> 00:08:09,140
+or another cool thing would be you can,
+
+111
+00:08:09,140 --> 00:08:11,380
+I don't know if you can see my desktop or not
+
+112
+00:08:11,380 --> 00:08:15,580
+but I can like easily drag and drop.
+
+113
+00:08:15,580 --> 00:08:18,060
+so upload a file from my local machine.
+
+114
+00:08:18,060 --> 00:08:20,860
+This is an OpenAI local from my desktop.
+
+115
+00:08:20,860 --> 00:08:24,080
+I can easily upload it to this project.
+
+116
+00:08:24,080 --> 00:08:27,180
+As you can see, it's getting uploaded, and now it's here.
+
+117
+00:08:28,200 --> 00:08:30,540
+And I can also go ahead and download it,
+
+118
+00:08:30,540 --> 00:08:34,260
+but the drag and drop doesn't work for downloading,
+
+119
+00:08:34,260 --> 00:08:36,700
+so you have to right-click and go with download.
+
+120
+00:08:36,700 --> 00:08:39,580
+And the cool thing is it understand the hierarchy
+
+121
+00:08:39,580 --> 00:08:40,680
+and the folder hierarchy.
+
+122
+00:08:40,680 --> 00:08:43,780
+So if there is a folder here and I go and download it,
+
+123
+00:08:43,780 --> 00:08:46,420
+it would create a folder on my local machine
+
+124
+00:08:46,420 --> 00:08:48,080
+and all the files inside.
+
+125
+00:08:49,860 --> 00:08:52,820
+Yeah, you can also use this VS Code
+
+126
+00:08:52,820 --> 00:08:54,820
+for Jupyter Notebook as well.
+
+127
+00:08:54,820 --> 00:08:57,580
+Also, personally, as an RSE, I don't recommend it,
+
+128
+00:08:57,580 --> 00:08:59,080
+although you can use it.
+
+129
+00:08:59,080 --> 00:09:02,900
+But Jupyter plugin is one of the most problematic plugins
+
+130
+00:09:02,900 --> 00:09:06,540
+because sometimes it happens that when you close the kernel
+
+131
+00:09:06,540 --> 00:09:09,040
+or stop the kernel, it doesn't stop.
+
+132
+00:09:09,040 --> 00:09:12,020
+So our recommendation is to not use VS Code,
+
+133
+00:09:12,020 --> 00:09:17,020
+like not use Jupyter on VS Code and go to open on demand.
+
+134
+00:09:17,360 --> 00:09:20,400
+But if you have to use it for some reason,
+
+135
+00:09:20,400 --> 00:09:23,160
+just be aware that when you are closing the window
+
+136
+00:09:23,160 --> 00:09:26,920
+of VS Code, the Jupyter kernel does not stop.
+
+137
+00:09:26,920 --> 00:09:30,080
+So you have to go and manually stop the kernel
+
+138
+00:09:30,080 --> 00:09:33,880
+using terminal or like after closing the VS Code.
+
+139
+00:09:34,920 --> 00:09:39,520
+You can think of it like whenever you start the VS Code here
+
+140
+00:09:39,520 --> 00:09:45,440
+what you're seeing is basically just like the shadow of the actual VS Code that is running
+
+141
+00:09:45,440 --> 00:09:51,200
+on the login node. So you're seeing what's over there and whatever modifications you do to the
+
+142
+00:09:51,200 --> 00:09:58,080
+files, whatever commands you run, whatever you start here, it will run somewhere else. It will
+
+143
+00:09:58,080 --> 00:10:04,560
+run on the login node. So you're basically, whenever you save a file over here, it gets
+
+144
+00:10:04,560 --> 00:10:11,440
+automatically transferred to the login node and when you close this window it doesn't necessarily
+
+145
+00:10:11,440 --> 00:10:17,840
+even close the server on the login node so it can stay there running on the background and
+
+146
+00:10:17,840 --> 00:10:22,080
+this can cause problems especially if you have like this kind of situation that Jose mentioned
+
+147
+00:10:22,080 --> 00:10:29,200
+that you are trying to sync with a certain folder that is really big that has millions of files for
+
+148
+00:10:29,200 --> 00:10:33,460
+for example, then VSCode will keep tracking those files,
+
+149
+00:10:33,460 --> 00:10:35,740
+even though nothing is necessarily happening,
+
+150
+00:10:35,740 --> 00:10:39,580
+like it can run on the background there.
+
+151
+00:10:39,580 --> 00:10:41,020
+Yeah.
+
+152
+00:10:41,020 --> 00:10:42,500
+So for example, here in the terminal,
+
+153
+00:10:42,500 --> 00:10:44,860
+I opened the Edge talk to see all of the processes
+
+154
+00:10:44,860 --> 00:10:47,500
+that I am running, I filtered it by my username.
+
+155
+00:10:47,500 --> 00:10:49,780
+And as you can see, like the VSCode server
+
+156
+00:10:49,780 --> 00:10:51,100
+is running on the cluster.
+
+157
+00:10:51,100 --> 00:10:52,620
+And if there are a lot of files,
+
+158
+00:10:52,620 --> 00:10:54,060
+or if there is a Jupyter notebook,
+
+159
+00:10:54,060 --> 00:10:57,700
+or if you are trying to run any code on the login node,
+
+160
+00:10:57,700 --> 00:11:05,540
+would have a resource-heavy job like running on the login node, which we do not recommend.
+
+161
+00:11:06,100 --> 00:11:11,780
+And yeah, please do not do that. Only use the login node for your development or transferring
+
+162
+00:11:11,780 --> 00:11:19,300
+files and keeping track of these kind of things. But I don't think it would be enough time to go to
+
+163
+00:11:19,940 --> 00:11:24,020
+remote debugging because you can do remote debugging on the actual computational nodes.
+
+164
+00:11:24,020 --> 00:11:29,140
+But let me first show you something else we like actually [name] developed this
+
+165
+00:11:29,780 --> 00:11:31,220
+uh
+
+166
+00:11:31,220 --> 00:11:39,620
+Developed this script that it would be request an actual computational node for you when you are trying to access with
+
+167
+00:11:40,160 --> 00:11:44,500
+SSH so when you are trying to get connected to try to on vs code
+
+168
+00:11:44,900 --> 00:11:47,860
+uh before you actually get connected it would
+
+169
+00:11:48,500 --> 00:11:49,380
+uh
+
+170
+00:11:49,380 --> 00:11:54,740
+Actually it get connected first and then it would request for a computational like a cpu job on one of the compute nodes
+
+171
+00:11:55,220 --> 00:11:58,580
+And an interactive, uh compute nodes that we have
+
+172
+00:11:59,300 --> 00:12:01,960
+And then gets connected to that specific
+
+173
+00:12:02,820 --> 00:12:04,820
+Node instead of the login node
+
+174
+00:12:05,460 --> 00:12:13,140
+It it's possible on out on our cluster because when you are requesting a resource and you get allocated a compute node
+
+175
+00:12:13,140 --> 00:12:19,620
+You can SSH to that a specific node so you can actually bypass the login node and get connected to that a specific
+
+176
+00:12:20,340 --> 00:12:22,340
+Compute node as well, right?
+
+177
+00:12:22,740 --> 00:12:26,220
+so if I go ahead and show you the
+
+178
+00:12:28,020 --> 00:12:33,300
+Let me go back and show you the configuration it is in our
+
+179
+00:12:34,580 --> 00:12:40,460
+Documentation so you can read more in details afterwards, but if I show you
+
+180
+00:12:43,140 --> 00:12:45,140
+Um
+
+181
+00:12:45,300 --> 00:12:49,700
+The configuration you can see that we have something called like triton vs code and
+
+182
+00:12:50,100 --> 00:12:53,140
+what happens it would try to get connected to triton and then
+
+183
+00:12:54,020 --> 00:12:57,460
+Run an s script we in this script. We are
+
+184
+00:12:58,000 --> 00:13:00,000
+requesting an interactive job
+
+185
+00:13:00,420 --> 00:13:01,540
+for like
+
+186
+00:13:01,540 --> 00:13:05,620
+An hour and then your vs code and your like your vs code is running locally again
+
+187
+00:13:05,620 --> 00:13:09,060
+But all of the computation that you are running is not on login node anymore
+
+188
+00:13:09,060 --> 00:13:13,100
+is automatically get connected to the compute node.
+
+189
+00:13:13,100 --> 00:13:15,460
+So you can copy and paste this command
+
+190
+00:13:15,460 --> 00:13:17,860
+from the documentation, so don't worry about that.
+
+191
+00:13:17,860 --> 00:13:21,500
+So let me go ahead and show you this one then at the moment.
+
+192
+00:13:21,500 --> 00:13:24,780
+Yes, so with this command,
+
+193
+00:13:24,780 --> 00:13:27,900
+what [name]ain is doing, when he's making the connection,
+
+194
+00:13:27,900 --> 00:13:29,620
+the VS Code will make,
+
+195
+00:13:29,620 --> 00:13:31,700
+take an SSH connection to the login node.
+
+196
+00:13:31,700 --> 00:13:36,700
+It will ask for like a job from the queue system.
+
+197
+00:13:36,700 --> 00:13:43,100
+from the queue system, the job gets running in some compute
+
+198
+00:13:43,100 --> 00:13:47,580
+node, and then it will start running on there.
+
+199
+00:13:50,140 --> 00:13:52,860
+So it might take, it might time out
+
+200
+00:13:52,860 --> 00:13:57,900
+if there's like, if the job doesn't get allocated properly
+
+201
+00:13:57,900 --> 00:13:58,580
+immediately.
+
+202
+00:13:58,580 --> 00:13:59,100
+Yeah.
+
+203
+00:13:59,100 --> 00:14:00,500
+But let's see if it works.
+
+204
+00:14:00,500 --> 00:14:01,620
+It got one time out.
+
+205
+00:14:01,620 --> 00:14:02,100
+Let's see.
+
+206
+00:14:02,100 --> 00:14:02,660
+Yeah.
+
+207
+00:14:02,660 --> 00:14:03,660
+Give me a second.
+
+208
+00:14:03,660 --> 00:14:05,460
+Let me see.
+
+209
+00:14:05,460 --> 00:14:06,260
+Let me try again.
+
+210
+00:14:06,260 --> 00:14:09,340
+Yeah, it got timed out.
+
+211
+00:14:09,340 --> 00:14:13,020
+Let me try to get my tool out more.
+
+212
+00:14:13,020 --> 00:14:17,900
+Let me see also the configuration one more time.
+
+213
+00:14:17,900 --> 00:14:21,220
+So this basically, using this, we'll
+
+214
+00:14:21,220 --> 00:14:32,980
+fix the problem where you have a situation where it will fix
+
+215
+00:14:32,980 --> 00:14:38,980
+situation where you you run something very like if you want to run something heavier in the
+
+216
+00:14:39,860 --> 00:14:47,220
+uh so you want the VS Code session to get a bit more resources so yeah now uh [name] has
+
+217
+00:14:47,220 --> 00:14:54,420
+disconnected so yeah now it's connected I added the partition and uh like we have this if you go
+
+218
+00:14:54,420 --> 00:14:59,220
+ahead in terminal and open the SlurmP you can see that we have this interactive partition which is
+
+219
+00:14:59,220 --> 00:15:05,460
+for these short jobs that you want to do some computational tasks like for maybe for debugging or
+
+220
+00:15:05,460 --> 00:15:10,980
+doing a small computation and see the results before actually submitting a job as we were
+
+221
+00:15:10,980 --> 00:15:18,900
+talking in the last session. And now I asked in the script that I want this interactive session
+
+222
+00:15:18,900 --> 00:15:25,860
+explicitly. So if I go ahead and go with hostname you can see instead of the login node I now get
+
+223
+00:15:25,860 --> 00:15:34,740
+connected to one of the compute nodes. So now it's okay to maybe run a code or try to debug it here
+
+224
+00:15:34,740 --> 00:15:39,140
+because it's not running on the login node anymore. Although a VS Code server is still
+
+225
+00:15:39,140 --> 00:15:44,420
+running on the login node, but all of the computation is not running on the login node
+
+226
+00:15:44,420 --> 00:15:48,900
+and it's actually running on one of the compute nodes. So the tunnel is going from the compute
+
+227
+00:15:48,900 --> 00:15:52,900
+nodes to login node and then from login node to my local machine.
+
+228
+00:15:54,660 --> 00:16:00,820
+Yeah, so this is very useful if you have a situation where let's say you want to interactively
+
+229
+00:16:01,460 --> 00:16:08,260
+check load like or run like a let's say Python interpreter and you want to load like a really
+
+230
+00:16:08,260 --> 00:16:14,820
+big memory like a really big let's say a pandas dataset or something into memory and you cannot
+
+231
+00:16:14,820 --> 00:16:18,740
+do it on the login node but you would still want to do it interactively you could do it
+
+232
+00:16:18,740 --> 00:16:24,500
+with this. You can also use the Jupyter if you're so inclined, but if you want to use VS Code,
+
+233
+00:16:24,500 --> 00:16:33,940
+you could do it like this. But because you're now working in a reservation, you will have only a
+
+234
+00:16:33,940 --> 00:16:41,620
+certain time to work. So this is in a sense that if the normal connection to the login node is
+
+235
+00:16:41,620 --> 00:16:46,980
+something that you can keep open and keep working throughout the day, this would be like, okay,
+
+236
+00:16:46,980 --> 00:16:53,540
+I want to now do something very heavy for a very short time. For an hour, I want to debug
+
+237
+00:16:54,900 --> 00:17:02,500
+this problem that requires me to have a bit more resources interactively. Then, you basically
+
+238
+00:17:02,500 --> 00:17:13,380
+upgrade your plan for a second. Let's say you would use a streaming service to view some
+
+239
+00:17:13,380 --> 00:17:20,580
+some TV show and you want to upgrade to a premium plan to watch, like you want to watch
+
+240
+00:17:20,580 --> 00:17:26,720
+a certain show in 4K, you upgrade your plan and then once you have watched that plan,
+
+241
+00:17:26,720 --> 00:17:31,300
+you basically downgrade immediately because you don't want to pay the additional cost.
+
+242
+00:17:31,300 --> 00:17:36,860
+So this is kind of like a temporary increase in resources by running it in the compute
+
+243
+00:17:36,860 --> 00:17:39,140
+node itself.
+
+244
+00:17:39,140 --> 00:18:07,420
+Exactly, but the good thing is like we had this conversation back and forth to like which way to recommend it. Like if you get connected to login node, you can keep your VS code or any IDE open for the whole day or whole week. Actually, if your connections are stable, but at the same time it happens to people that they kind of forgot that they're not running on the login node and do some small computation to see if their code is working correct or not.
+
+245
+00:18:07,420 --> 00:18:09,420
+so if you are
+
+246
+00:18:10,300 --> 00:18:14,180
+Like it's your first connection or if you are new to this
+
+247
+00:18:14,180 --> 00:18:22,080
+I would personally recommend to ask for an interactive session because if you forgot and you run something it would be
+
+248
+00:18:22,740 --> 00:18:27,400
+Okay, because it's running on the one of the compute nodes and also in the interactive sessions
+
+249
+00:18:27,400 --> 00:18:29,780
+It's okay to run the Jupyter notebook as well
+
+250
+00:18:30,100 --> 00:18:35,040
+Because in the end when the resources like the time that the time limit has been rich
+
+251
+00:18:35,040 --> 00:18:43,520
+rich, the job would be killed by the system, so the process would not be still living there
+
+252
+00:18:43,520 --> 00:18:46,240
+and using a lot of resources.
+
+253
+00:18:46,240 --> 00:18:50,880
+So yeah, if you want to use Jupyter Notebook, go with the interactive connection.
+
+254
+00:18:50,880 --> 00:18:51,880
+Yeah.
+
+255
+00:18:51,880 --> 00:18:52,880
+Go ahead.
+
+256
+00:18:52,880 --> 00:19:03,080
+But for the, what is the main thing to basically, I would say, gather is that it's quite easy
+
+257
+00:19:03,080 --> 00:19:11,800
+to use VS Code to connect to any SSH capable machine. So you can basically use the interface
+
+258
+00:19:11,800 --> 00:19:18,120
+of the VS Code. If you prefer the interface of VS Code to, let's say, using some other terminal
+
+259
+00:19:18,120 --> 00:19:25,160
+application, you can use that to connect there and you can do whatever text editing you want to do.
+
+260
+00:19:25,160 --> 00:19:30,760
+But remember that whenever you're actually executing code or whatever, it's not your
+
+261
+00:19:30,760 --> 00:19:36,680
+computer that carries the load. It's somebody else that has to do the heavy lifting and
+
+262
+00:19:38,040 --> 00:19:45,400
+just be mindful of that or remember that that is the case. That is the most important
+
+263
+00:19:45,400 --> 00:19:50,360
+thing about it. And also whatever plugins you have installed. If you install plugins that
+
+264
+00:19:51,160 --> 00:19:56,120
+color each of your words differently, the coloring plugins and whatever,
+
+265
+00:19:56,120 --> 00:19:58,400
+but they will also run on the remote system.
+
+266
+00:19:58,400 --> 00:19:59,740
+So, yeah.
+
+267
+00:20:02,160 --> 00:20:06,520
+Yeah, I don't think we have the time
+
+268
+00:20:06,520 --> 00:20:08,840
+to go to do the remote debugging.
+
+269
+00:20:08,840 --> 00:20:11,480
+Also, again, you can go ahead
+
+270
+00:20:11,480 --> 00:20:13,760
+and request for an interactive session.
+
+271
+00:20:13,760 --> 00:20:15,560
+And if I now go ahead and run
+
+272
+00:20:15,560 --> 00:20:17,760
+and use the actual debugging tools
+
+273
+00:20:17,760 --> 00:20:19,920
+that we have available in the VS Code,
+
+274
+00:20:19,920 --> 00:20:22,720
+it's running and debugging in the compute node.
+
+275
+00:20:22,720 --> 00:20:23,920
+But there are other ways
+
+276
+00:20:23,920 --> 00:20:30,160
+you can actually request a job and then try to debug your ongoing job and see what's happening
+
+277
+00:20:30,160 --> 00:20:35,040
+there. But I don't think we have time for now, right, because it's only a couple of minutes.
+
+278
+00:20:35,680 --> 00:20:41,440
+Although we did a course a couple of months ago on that, so maybe it would be nice to send the
+
+279
+00:20:41,440 --> 00:20:46,160
+course link to the participants so if they're interested they can go ahead and watch it. Or
+
+280
+00:20:46,160 --> 00:20:53,200
+you can of course come to Garage and ask about remote debugging in more detail if you're interested.
+
+281
+00:20:53,920 --> 00:21:00,000
+Yes, thanks. I think we need to go to the follow-up. I will switch to the notes, I hope.
+
