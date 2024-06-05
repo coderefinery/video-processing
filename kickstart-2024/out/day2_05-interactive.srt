@@ -1,0 +1,1204 @@
+1
+00:00:00,920 --> 00:00:03,720
+And [name], what do we mean with interactive jobs?
+
+2
+00:00:04,920 --> 00:00:12,840
+Yeah, so on the cluster, there's two main types of jobs you can run. So let's say you go to a
+
+3
+00:00:12,840 --> 00:00:19,480
+restaurant. You can go, you can tell the host, I would like to have this kind of table. And you can
+
+4
+00:00:19,480 --> 00:00:25,940
+sit there waiting in the queue, or you can go walk around, do something else, and come
+
+5
+00:00:25,940 --> 00:00:28,300
+back when your table's ready.
+
+6
+00:00:28,300 --> 00:00:32,540
+So this isn't actually perfect because the better metaphor would be coming back once
+
+7
+00:00:32,540 --> 00:00:37,740
+your food is already eaten, which doesn't make sense in that metaphor, but it's the
+
+8
+00:00:37,740 --> 00:00:40,500
+general idea here.
+
+9
+00:00:40,500 --> 00:00:46,340
+So with interactive jobs, we say we'd like these resources, and you wait until they're
+
+10
+00:00:46,340 --> 00:00:48,940
+there and then you can do something yourself.
+
+11
+00:00:48,940 --> 00:00:52,500
+So it requires your time and mental effort.
+
+12
+00:00:52,500 --> 00:00:57,580
+What we'll do next is called batch jobs, where we say we'd like to do this, and then it's
+
+13
+00:00:57,580 --> 00:01:01,580
+submitted and then you come back when it's all done.
+
+14
+00:01:01,580 --> 00:01:05,620
+So we start with interactive jobs because it's easy to understand, it's easy to see
+
+15
+00:01:05,620 --> 00:01:12,260
+what happens, and then we can get familiar with making these different resource requests
+
+16
+00:01:12,260 --> 00:01:16,260
+and so on.
+
+17
+00:01:16,260 --> 00:01:17,220
+Oh, OK.
+
+18
+00:01:17,220 --> 00:01:18,980
+Yeah.
+
+19
+00:01:18,980 --> 00:01:20,700
+Was that a good explanation?
+
+20
+00:01:20,700 --> 00:01:21,900
+Yeah.
+
+21
+00:01:21,900 --> 00:01:23,260
+OK.
+
+22
+00:01:23,260 --> 00:01:25,260
+So we'll actually do it.
+
+23
+00:01:25,260 --> 00:01:26,980
+Yeah, let's do it.
+
+24
+00:01:26,980 --> 00:01:30,580
+So let's look at the following command here.
+
+25
+00:01:30,580 --> 00:01:33,500
+I will make this a bit smaller.
+
+26
+00:01:33,500 --> 00:01:35,740
+So OK, so where are we now?
+
+27
+00:01:35,740 --> 00:01:40,780
+So you can try to follow along and type with us also.
+
+28
+00:01:40,780 --> 00:01:43,220
+Also, we will give you time.
+
+29
+00:01:43,220 --> 00:01:44,940
+We're going to go through some things,
+
+30
+00:01:44,940 --> 00:01:50,620
+you'll have a nice long exercise break where you can try yourself. So, if you can't follow
+
+31
+00:01:50,620 --> 00:01:59,020
+as we're typing now, don't worry. There's time later. And about the setup here, on that
+
+32
+00:01:59,740 --> 00:02:05,500
+window here, I will be typing some commands and [name] will explain them. And on the bottom here,
+
+33
+00:02:05,500 --> 00:02:12,060
+you can see the history of the commands. Yeah. And so, we assume that you already can connect
+
+34
+00:02:12,060 --> 00:02:18,940
+to the cluster by SSH or on-demand or something and get a terminal. This is what we demonstrated
+
+35
+00:02:18,940 --> 00:02:24,860
+yesterday and should have been the homework for today. If you can't already get a terminal that
+
+36
+00:02:24,860 --> 00:02:30,940
+looks like this and type commands, then you're a bit behind and then that's okay.
+
+37
+00:02:31,740 --> 00:02:35,500
+You can watch what we're doing and try to catch up later during the break.
+
+38
+00:02:35,500 --> 00:02:44,220
+So, [name] is there. He has cloned the HPC examples repository using the git version
+
+39
+00:02:44,220 --> 00:02:49,860
+control system. Which is, by the way, a good way of transferring code to the cluster in
+
+40
+00:02:49,860 --> 00:03:05,460
+general. And then has changed into the directory. And then is running Python3 slurm/pi.py 
+
+41
+00:03:05,460 --> 00:03:13,860
+1000. So what does this program do? So this program does like this kind of like a
+
+42
+00:03:13,860 --> 00:03:21,620
+like this is like a common example in like if you do Monte Carlo simulations like this
+
+43
+00:03:21,620 --> 00:03:28,980
+example where we estimate pi by throwing dart at a dartboard and because dartboard is a circle
+
+44
+00:03:28,980 --> 00:03:34,900
+and if we take random numbers from zero to one, like either square, we can basically estimate
+
+45
+00:03:34,900 --> 00:03:43,060
+the pi by the ratio of how many darts hit the dartboard. So this is like a small example code
+
+46
+00:03:43,060 --> 00:03:53,780
+that just does something. And we use it for many examples. So where did this code now run, [name]?
+
+47
+00:03:53,780 --> 00:04:04,780
+Well, we haven't... I don't see anything that looks like it's requesting resources, so this must have just run on the login node, I guess.
+
+48
+00:04:04,780 --> 00:04:08,780
+Like, we didn't give any instructions to the host saying what we wanted.
+
+49
+00:04:10,780 --> 00:04:14,780
+So let's... should we do the interactive request then?
+
+50
+00:04:14,780 --> 00:04:21,780
+Yeah, so let's request from Slurm some resources. So srun is the program to use for it.
+
+51
+00:04:21,780 --> 00:04:29,460
+it. The memory option says we need 100 megabytes of memory, which by the way is very small.
+
+52
+00:04:30,500 --> 00:04:35,620
+We need 10 minutes of time, which is way too much. And then we give all the normal options
+
+53
+00:04:35,620 --> 00:04:41,540
+we would give on the command line. So the program to run, which is Python, the program,
+
+54
+00:04:41,540 --> 00:04:49,460
+which is Py, and 10,000 iterations. So what do I see here? It says srun,
+
+55
+00:04:49,460 --> 00:04:57,460
+Slurm job submit automatically setting partitions is this in the background telling it
+
+56
+00:04:59,140 --> 00:05:07,220
+where it's running somehow yeah so on the on our cluster it might be different in your cluster
+
+57
+00:05:07,220 --> 00:05:12,660
+but on our cluster like the different kinds of hardware that we have is separating the
+
+58
+00:05:12,660 --> 00:05:18,260
+entity set different partitions because like if somebody wants to run on a specific hardware
+
+59
+00:05:19,460 --> 00:05:22,420
+they might want to run only on a specific partition.
+
+60
+00:05:22,420 --> 00:05:27,700
+But if the user doesn't specify what hardware they want to use,
+
+61
+00:05:27,700 --> 00:05:29,780
+there's this automatic script that
+
+62
+00:05:29,780 --> 00:05:32,420
+basically use a sensible default.
+
+63
+00:05:32,420 --> 00:05:35,660
+In your cluster, if you're in a different cluster,
+
+64
+00:05:35,660 --> 00:05:41,820
+you might need to specify this dash-dash partition flag like this.
+
+65
+00:05:41,820 --> 00:05:44,180
+In some sites, you might also
+
+66
+00:05:44,180 --> 00:05:47,020
+need to specify an account that you want to use.
+
+67
+00:05:47,020 --> 00:05:49,460
+So there might be different projects or something
+
+68
+00:05:49,460 --> 00:05:55,860
+that you want to specify that, OK, use
+
+69
+00:05:55,860 --> 00:05:59,900
+this account for the billing of job, basically.
+
+70
+00:05:59,900 --> 00:06:02,340
+We'll talk about the billing in a second.
+
+71
+00:06:02,340 --> 00:06:06,420
+But in our cluster, these are set basically automatically,
+
+72
+00:06:06,420 --> 00:06:08,060
+so you don't necessarily need to do them.
+
+73
+00:06:08,060 --> 00:06:11,820
+But let's say you run it on a CSC machine,
+
+74
+00:06:11,820 --> 00:06:13,220
+you might need to set this.
+
+75
+00:06:13,220 --> 00:06:13,980
+Yeah.
+
+76
+00:06:13,980 --> 00:06:15,660
+But what happened afterwards?
+
+77
+00:06:15,660 --> 00:06:22,780
+So then we see srun job id, thus queued and waiting for resources, job allocated resources,
+
+78
+00:06:23,340 --> 00:06:31,100
+calculating pi, so that's the standard output. So yeah, basically it's telling us it
+
+79
+00:06:32,460 --> 00:06:39,260
+got the resources and then it ran, and I guess it ran on some other computer somewhere.
+
+80
+00:06:39,260 --> 00:06:49,980
+Yes. While it was running, we could have tried to see what was happening in the queue, like
+
+81
+00:06:49,980 --> 00:06:56,980
+how it was doing in the queue. You can either use this squeue command or this slurm q to do it.
+
+82
+00:06:56,980 --> 00:07:04,780
+Because it's so fast to go through the queue, it's very hard to capture this for this specific
+
+83
+00:07:04,780 --> 00:07:12,620
+program, but if you have a program in the queue, you can use this to check the queue status. We'll
+
+84
+00:07:12,620 --> 00:07:21,740
+talk about this more in the monitoring part, but yes, you can do this. Okay. Maybe we can go on
+
+85
+00:07:21,740 --> 00:07:27,900
+and let people explore this more themselves. Yeah. To verify, this is a good example that
+
+86
+00:07:27,900 --> 00:07:34,580
+that if we just run a command like hostname,
+
+87
+00:07:34,580 --> 00:07:37,220
+which tells us which host we are in,
+
+88
+00:07:37,220 --> 00:07:40,820
+we can show that if we run just hostname,
+
+89
+00:07:40,820 --> 00:07:44,700
+we see that we are actually in the login for.
+
+90
+00:07:44,700 --> 00:07:45,780
+Because in the output,
+
+91
+00:07:45,780 --> 00:07:47,440
+we didn't necessarily see that we
+
+92
+00:07:47,440 --> 00:07:49,900
+were in a different place where we were running.
+
+93
+00:07:49,900 --> 00:07:53,180
+But if we run srun hostname,
+
+94
+00:07:53,180 --> 00:07:57,700
+now it just uses some default values for time and memory.
+
+95
+00:07:57,700 --> 00:08:04,180
+But usually we don't want to use the defaults because they are not set by us, but in this
+
+96
+00:08:04,180 --> 00:08:07,420
+case, let's just run it.
+
+97
+00:08:07,420 --> 00:08:12,700
+It's running, waiting for resources, and it has been allocated some compute node.
+
+98
+00:08:12,700 --> 00:08:17,900
+So we know that, okay, this command actually run in some different system.
+
+99
+00:08:17,900 --> 00:08:19,540
+There's a request in the notes.
+
+100
+00:08:19,540 --> 00:08:26,980
+Can we show an srun with huge resource request and show it waiting in the queue?
+
+101
+00:08:26,980 --> 00:08:27,980
+Yes.
+
+102
+00:08:27,980 --> 00:08:30,980
+So, what is big?
+
+103
+00:08:30,980 --> 00:08:33,980
+Can we say 200 gigabytes of memory?
+
+104
+00:08:33,980 --> 00:08:34,980
+Yeah.
+
+105
+00:08:34,980 --> 00:08:39,980
+And then...
+
+106
+00:08:39,980 --> 00:08:46,980
+Yeah, well, it still runs quite quickly because, like, yeah, there's like...
+
+107
+00:08:46,980 --> 00:08:48,980
+It's kind of arranged for that.
+
+108
+00:08:48,980 --> 00:08:51,980
+But let's say we ask for 200 terabytes of memory.
+
+109
+00:08:51,980 --> 00:08:54,980
+Now it says that there's no such node.
+
+110
+00:08:54,980 --> 00:09:00,980
+We don't have a computer that has 200 gigabytes of memory.
+
+111
+00:09:00,980 --> 00:09:01,980
+So, yeah.
+
+112
+00:09:01,980 --> 00:09:08,980
+Could we request 200 gigabytes of memory, 50 processors, and, say, one day of time?
+
+113
+00:09:08,980 --> 00:09:10,980
+Is that huge?
+
+114
+00:09:10,980 --> 00:09:13,980
+Well, let's not do the processors.
+
+115
+00:09:13,980 --> 00:09:17,980
+Let's just say, like, four days of time.
+
+116
+00:09:17,980 --> 00:09:22,980
+So, this is the day syntax.
+
+117
+00:09:22,980 --> 00:09:24,980
+And it still ran immediately.
+
+118
+00:09:24,980 --> 00:09:27,980
+There seems to be like a node...
+
+119
+00:09:27,980 --> 00:09:29,980
+Okay, let's put the CPU.
+
+120
+00:09:33,980 --> 00:09:34,980
+Okay, now it's...
+
+121
+00:09:34,980 --> 00:09:35,980
+Okay, it's still...
+
+122
+00:09:35,980 --> 00:09:36,980
+So, this is...
+
+123
+00:09:36,980 --> 00:09:40,980
+Okay, but there's a free resource for you to take.
+
+124
+00:09:40,980 --> 00:09:44,980
+So, part of the reason why it's running so fast is that
+
+125
+00:09:44,980 --> 00:09:47,980
+[name] hasn't run much lately.
+
+126
+00:09:47,980 --> 00:09:50,980
+And the less you run, the higher your priority is.
+
+127
+00:09:50,980 --> 00:09:55,980
+So basically, [name] hops to the front of the queue and gets anything immediately.
+
+128
+00:09:55,980 --> 00:10:02,980
+And this is also one of the situations that can happen if you are dealing with interactive jobs.
+
+129
+00:10:02,980 --> 00:10:07,980
+If we think about the restaurant metaphor, if we go to an empty restaurant,
+
+130
+00:10:07,980 --> 00:10:10,980
+we can basically choose which table we want to eat anyway, right?
+
+131
+00:10:10,980 --> 00:10:15,980
+We can pick the biggest table, it doesn't really matter if the restaurant is empty.
+
+132
+00:10:15,980 --> 00:10:25,940
+If there is enough free space, then the queue manager can basically fill our strange requests.
+
+133
+00:10:25,940 --> 00:10:33,460
+But if the place is full, it might be that we suddenly need to wait a lot.
+
+134
+00:10:33,460 --> 00:10:39,280
+So let's show the interactive shell and the sinteractive command quickly.
+
+135
+00:10:39,280 --> 00:10:44,300
+So what we did here is we ran a command line program on a node.
+
+136
+00:10:44,300 --> 00:10:50,300
+But we can also request it to run just a normal shell,
+
+137
+00:10:50,300 --> 00:10:53,300
+and then we see things.
+
+138
+00:10:53,300 --> 00:10:56,980
+So here we're making the standard resource request.
+
+139
+00:10:56,980 --> 00:11:00,100
+This time we've told it the interactive partition.
+
+140
+00:11:00,100 --> 00:11:02,900
+And we get this.
+
+141
+00:11:02,900 --> 00:11:04,980
+So now we see it.
+
+142
+00:11:04,980 --> 00:11:06,660
+This is because of the recording thing.
+
+143
+00:11:06,660 --> 00:11:07,780
+Don't worry about that.
+
+144
+00:11:07,780 --> 00:11:10,820
+Like recording the history.
+
+145
+00:11:10,820 --> 00:11:11,860
+Yeah.
+
+146
+00:11:11,860 --> 00:11:12,460
+Yeah.
+
+147
+00:11:12,460 --> 00:11:16,340
+But we see here, if you read this last line,
+
+148
+00:11:16,340 --> 00:11:17,260
+it looks different.
+
+149
+00:11:17,260 --> 00:11:21,100
+It says [name] username and then PE22.
+
+150
+00:11:21,100 --> 00:11:24,780
+And PE22 is the name of one of these compute nodes
+
+151
+00:11:24,780 --> 00:11:26,620
+that's available.
+
+152
+00:11:26,620 --> 00:11:31,180
+So now [name] has waited once and can run things multiple times,
+
+153
+00:11:31,180 --> 00:11:35,340
+like this hostname command and other things.
+
+154
+00:11:35,340 --> 00:11:36,380
+Yeah.
+
+155
+00:11:36,380 --> 00:11:37,140
+Yeah, OK.
+
+156
+00:11:37,140 --> 00:11:40,300
+If I exit them, yeah.
+
+157
+00:11:40,300 --> 00:11:42,300
+I don't know why that history doesn't work.
+
+158
+00:11:43,580 --> 00:11:45,580
+I have an idea, but let's worry about it later.
+
+159
+00:11:45,580 --> 00:11:47,580
+Okay. Yeah. Okay.
+
+160
+00:11:47,580 --> 00:11:49,580
+So, yeah.
+
+161
+00:11:49,580 --> 00:11:53,580
+So, yeah, this is, like, if you want to run multiple commands,
+
+162
+00:11:53,580 --> 00:11:58,380
+like, you can use this if you want to temporarily get, like,
+
+163
+00:11:58,380 --> 00:12:01,580
+let's say you want to do, like, a big installation or something,
+
+164
+00:12:01,580 --> 00:12:06,300
+and the login node doesn't have the resources to do that.
+
+165
+00:12:06,300 --> 00:12:13,980
+like there was a question there in the notes about like if you're doing like a
+
+166
+00:12:13,980 --> 00:12:20,540
+big build on your laptop like it might require lots of resources like that might happen also
+
+167
+00:12:20,540 --> 00:12:25,100
+in the cluster you so you might want to get like temporarily lots of resources but do note that
+
+168
+00:12:25,100 --> 00:12:30,460
+these because these are interactive resources when you're not using them they're basically
+
+169
+00:12:30,460 --> 00:12:36,060
+still reserved for you, so you're reserving resources. So if you're not using them,
+
+170
+00:12:36,060 --> 00:12:40,780
+it's a good idea to usually give them away so that other people can use them instead.
+
+171
+00:12:42,700 --> 00:12:47,100
+And this other command, sinteractive, is it even still installed? Did we
+
+172
+00:12:47,100 --> 00:12:48,940
+install it on the new cluster? Yeah, it's installed.
+
+173
+00:12:48,940 --> 00:12:57,980
+Okay. So this is pretty similar to the srun one, but it sets some other defaults
+
+174
+00:12:57,980 --> 00:13:03,340
+and can allow graphical programs to run. But now we would recommend doing graphical things with
+
+175
+00:13:03,900 --> 00:13:07,500
+open on demand, so wouldn't really recommend this, I guess.
+
+176
+00:13:09,180 --> 00:13:18,540
+Yeah, but if you have a need to do it, then yeah. Yes. Okay. So the error is
+
+177
+00:13:18,540 --> 00:13:24,460
+probably because of the recording script that I'm using. Yeah. Okay.
+
+178
+00:13:27,980 --> 00:13:35,260
+So should we go on and we need to talk about checking the jobs so we can see the history.
+
+179
+00:13:35,260 --> 00:13:42,020
+I'll quickly mention that if you want to see what jobs we had previously run, you can use
+
+180
+00:13:42,020 --> 00:13:44,700
+the slurm history command.
+
+181
+00:13:44,700 --> 00:13:49,580
+I will make the terminal a bit smaller so that I can see it.
+
+182
+00:13:49,580 --> 00:13:58,540
+And it will show me the history of all of the jobs
+
+183
+00:13:58,540 --> 00:14:01,020
+that I have previously run, for example, the interactive jobs
+
+184
+00:14:01,020 --> 00:14:01,940
+and that sort of stuff.
+
+185
+00:14:01,940 --> 00:14:03,700
+We'll talk about this more about when
+
+186
+00:14:03,700 --> 00:14:08,060
+we talk about monitoring jobs, but it
+
+187
+00:14:08,060 --> 00:14:11,060
+is possible to see the history.
+
+188
+00:14:11,060 --> 00:14:12,900
+So but let's scroll down.
+
+189
+00:14:12,900 --> 00:14:13,820
+Yeah, should we?
+
+190
+00:14:13,820 --> 00:14:15,900
+We've got these exercises here.
+
+191
+00:14:15,900 --> 00:14:19,220
+So we'll give you some time to explore this yourself
+
+192
+00:14:19,220 --> 00:14:21,620
+and ask questions.
+
+193
+00:14:21,620 --> 00:14:25,140
+There are how many different things you can try?
+
+194
+00:14:25,140 --> 00:14:26,300
+I count five of them.
+
+195
+00:14:29,140 --> 00:14:30,980
+And you can also try the other things
+
+196
+00:14:30,980 --> 00:14:34,020
+we've demonstrated above here.
+
+197
+00:14:34,020 --> 00:14:34,860
+Give it a try.
+
+198
+00:14:34,860 --> 00:14:38,540
+See how it adapts to your own clusters.
+
+199
+00:14:38,540 --> 00:14:41,100
+Read some more things.
+
+200
+00:14:41,100 --> 00:14:42,780
+Yeah.
+
+201
+00:14:42,780 --> 00:14:46,860
+I will switch to the notes here.
+
+202
+00:14:46,860 --> 00:14:54,140
+And I see that there's many different questions here, and they've been being answered. So do
+
+203
+00:14:54,140 --> 00:15:05,900
+keep asking. Is there anything we want to talk about now? I think most people can probably...
+
+204
+00:15:05,900 --> 00:15:15,900
+The Jupyter Terminal does work, yes.
+
+205
+00:15:15,900 --> 00:15:17,900
+MATLAB.
+
+206
+00:15:17,900 --> 00:15:25,900
+Maybe we'll talk about MATLAB a bit later if someone can answer some default.
+
+207
+00:15:25,900 --> 00:15:29,900
+Yeah, okay, I'd say let's go on to the exercises.
+
+208
+00:15:29,900 --> 00:15:33,900
+How long should people have?
+
+209
+00:15:33,900 --> 00:15:41,900
+Should we have maybe 5 to one?
+
+210
+00:15:41,900 --> 00:15:50,900
+Yeah, maybe 5 to one and then we can do a brief wrap up and then have a break.
+
+211
+00:15:50,900 --> 00:15:51,900
+Yeah.
+
+212
+00:15:51,900 --> 00:15:52,900
+Okay.
+
+213
+00:15:52,900 --> 00:15:53,900
+Sounds good.
+
+214
+00:15:53,900 --> 00:15:55,900
+See you then.
+
+215
+00:15:55,900 --> 00:15:56,900
+Yep.
+
+216
+00:15:56,900 --> 00:16:04,740
+Yep, do keep asking questions and respond with your progress to our poll there.
+
+217
+00:16:04,740 --> 00:16:06,740
+See you later.
+
+218
+00:16:06,740 --> 00:16:08,740
+Bye.
+
+219
+00:16:10,000 --> 00:16:16,740
+Also, I will mention that this goes into the next subject that we are going to be talking
+
+220
+00:16:16,740 --> 00:16:25,780
+about, there's also a question of, can you attach to already existing job? And it goes to,
+
+221
+00:16:26,580 --> 00:16:30,420
+what we're next going to be talking about is these non-interactive jobs.
+
+222
+00:16:30,420 --> 00:16:38,340
+So in many cases, the interactive is fine if you are actually watching. My personal
+
+223
+00:16:39,140 --> 00:16:45,780
+approach is that if I'm not watching the actual screen, I'm not using interactive jobs.
+
+224
+00:16:45,780 --> 00:16:55,780
+Like, if I'm not actually using, like, humanly watching it, I'm not using interactive talks
+
+225
+00:16:55,780 --> 00:16:57,140
+because why?
+
+226
+00:16:57,140 --> 00:16:59,140
+I'm not interacting with it.
+
+227
+00:16:59,140 --> 00:17:03,300
+I realized I forgot to turn on my audio when coming back on stream.
+
+228
+00:17:03,300 --> 00:17:06,660
+But anyway, we're back.
+
+229
+00:17:06,660 --> 00:17:09,180
+What did I say that was the podcast?
+
+230
+00:17:09,180 --> 00:17:16,860
+If you wanted us to do a demo of one of the exercises, put a vote to the exercises.
+
+231
+00:17:16,860 --> 00:17:19,020
+Please vote down here.
+
+232
+00:17:19,020 --> 00:17:26,420
+What else did I say?
+
+233
+00:17:26,420 --> 00:17:32,300
+If you, do you need to close jobs when they're completed?
+
+234
+00:17:32,300 --> 00:17:36,500
+And that is yes.
+
+235
+00:17:36,500 --> 00:17:41,240
+If you don't close one of the ones that gives you a shell, then the resources will stay
+
+236
+00:17:41,240 --> 00:17:48,460
+reserved for you.
+
+237
+00:17:48,460 --> 00:17:51,660
+So there was at least one vote for exercise one.
+
+238
+00:17:51,660 --> 00:17:54,900
+So we can do a quick demo of that.
+
+239
+00:17:54,900 --> 00:17:59,020
+So let's do the most simple one over here.
+
+240
+00:17:59,020 --> 00:18:02,500
+I'm heading to [name]'s screen.
+
+241
+00:18:02,500 --> 00:18:05,420
+Yes.
+
+242
+00:18:05,420 --> 00:18:16,700
+In this exercise, we run this memory use script that uses memory and then we
+
+243
+00:18:20,060 --> 00:18:25,900
+want to see what happens when we increase the memory requirements and with various memory requirements.
+
+244
+00:18:25,900 --> 00:18:35,900
+So let's try first just running with just srun and no any requirements specified,
+
+245
+00:18:37,580 --> 00:18:44,700
+any specific requirements. So let's just try running this and see what happens.
+
+246
+00:18:46,780 --> 00:18:55,820
+So you can see here, yeah maybe I typed it too fast. So I wrote srun and just what I want to run.
+
+247
+00:18:55,900 --> 00:19:02,220
+So just add the SRUN. That's usually this one handy trick that you can use. Just add the SRUN
+
+248
+00:19:02,220 --> 00:19:09,980
+if you don't know what happens. And it was trying to use 50 megabytes of memory and it
+
+249
+00:19:11,740 --> 00:19:18,220
+allocated up to that point. It worked. So let's add an actual memory requirement here.
+
+250
+00:19:18,220 --> 00:19:30,860
+So I press the up arrow to get the previous command and now I will request 500 megabytes.
+
+251
+00:19:30,860 --> 00:19:35,940
+And because it's less than the 50, it still worked quite well.
+
+252
+00:19:35,940 --> 00:19:42,460
+But now let's do the C part where we try to increase the memory limit.
+
+253
+00:19:42,460 --> 00:19:46,620
+So let's try, we have the 500 over here.
+
+254
+00:19:46,620 --> 00:19:50,940
+So let's try like 500 over here.
+
+255
+00:19:50,940 --> 00:19:51,940
+Okay.
+
+256
+00:19:51,940 --> 00:19:52,940
+Ah.
+
+257
+00:19:52,940 --> 00:19:53,940
+Yeah.
+
+258
+00:19:53,940 --> 00:19:59,260
+It's memory killed because it's actually probably using a bit more than the 500.
+
+259
+00:19:59,260 --> 00:20:03,460
+So let's increase the memory limit a bit and let's see how much it actually used even though
+
+260
+00:20:03,460 --> 00:20:05,540
+it tried to use 500.
+
+261
+00:20:05,540 --> 00:20:07,140
+Let's see if 600 works.
+
+262
+00:20:07,140 --> 00:20:08,140
+Okay.
+
+263
+00:20:08,140 --> 00:20:09,300
+600 works.
+
+264
+00:20:09,300 --> 00:20:12,580
+So let's add the sleep parameter there
+
+265
+00:20:12,580 --> 00:20:16,620
+to check what was the actual memory usage.
+
+266
+00:20:21,980 --> 00:20:24,780
+We can use Slurm history to check the memory usage.
+
+267
+00:20:28,140 --> 00:20:32,700
+But we need to, like Slurm captures it only once
+
+268
+00:20:32,700 --> 00:20:35,860
+every 60 seconds or 30 seconds or something.
+
+269
+00:20:35,860 --> 00:20:39,620
+So, we need to let it run a bit longer.
+
+270
+00:20:40,700 --> 00:20:41,540
+Yeah.
+
+271
+00:20:45,100 --> 00:20:46,620
+Right.
+
+272
+00:20:46,620 --> 00:20:48,260
+And you notice here that,
+
+273
+00:20:48,260 --> 00:20:51,340
+let's say I would be running like a long job.
+
+274
+00:20:51,340 --> 00:20:54,700
+This would be really annoying to watch at the screen
+
+275
+00:20:54,700 --> 00:20:57,980
+to keep it open, like the terminal open constantly
+
+276
+00:20:57,980 --> 00:20:59,220
+or the connection open.
+
+277
+00:20:59,220 --> 00:21:02,220
+So, in the next session, we'll talk about
+
+278
+00:21:02,220 --> 00:21:05,500
+how you can avoid this kind of like situation
+
+279
+00:21:05,500 --> 00:21:08,720
+where you have to keep it open while it's running somewhere
+
+280
+00:21:08,720 --> 00:21:09,760
+in the background.
+
+281
+00:21:09,760 --> 00:21:13,800
+So if this would last for, let's say, multiple hours,
+
+282
+00:21:13,800 --> 00:21:17,200
+it would be really annoying to watch at this screen
+
+283
+00:21:17,200 --> 00:21:19,000
+and let it wait.
+
+284
+00:21:19,000 --> 00:21:21,320
+OK, there, it's done.
+
+285
+00:21:21,320 --> 00:21:27,800
+Yeah, I will make it a bit smaller.
+
+286
+00:21:27,800 --> 00:21:29,800
+Hopefully, you can still see the font.
+
+287
+00:21:29,800 --> 00:21:41,320
+So you notice here there is some overhead in the code, so it actually used 518 megabytes.
+
+288
+00:21:43,480 --> 00:21:50,280
+We'll talk about the memory usage and that sort of stuff a bit more later.
+
+289
+00:21:50,280 --> 00:21:57,480
+I guess this is basically how it goes when you don't know how much memory it uses.
+
+290
+00:21:57,480 --> 00:22:04,600
+you try a few things and you see what's happened, what happens, and then yeah. Okay, should we go
+
+291
+00:22:04,600 --> 00:22:09,960
+to a break now? Yeah, I will quickly say that about the interactive stuff, the most important
+
+292
+00:22:09,960 --> 00:22:19,960
+thing to remember is basically this diagram at the top of the documentation here, that when you're
+
+293
+00:22:19,960 --> 00:22:26,520
+using srun or sinteractive, you're no longer in the login node, you're suddenly over here.
+
+294
+00:22:27,480 --> 00:22:32,760
+So you're in the compute node. And that's the most important thing to remember that,
+
+295
+00:22:32,760 --> 00:22:38,280
+okay, if I ask the queue system to place me somewhere, you end up into a different place.
+
+296
+00:22:38,920 --> 00:22:41,800
+And that's basically the most important thing to remember.
+
+297
+00:22:42,440 --> 00:22:45,640
+Yeah. Okay.
+
+298
+00:22:45,640 --> 00:22:46,600
+Okay. Let's...
+
+299
+00:22:46,600 --> 00:22:46,840
+Great.
+
+300
+00:22:46,840 --> 00:22:49,080
+Should we take a 10 minute break until...
+
+301
+00:22:49,080 --> 00:22:58,920
+10-minute break until 13 past. Okay, great. See you later. Bye.
+

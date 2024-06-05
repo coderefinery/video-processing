@@ -1,0 +1,648 @@
+1
+00:00:00,000 --> 00:00:06,040
+Yes. Okay. So next up in the schedule is Slurm, the queuing system.
+
+2
+00:00:08,120 --> 00:00:18,200
+So Slurm is the drink from Futurama, and it's also the simple Linux utility for resource
+
+3
+00:00:18,200 --> 00:00:26,280
+management. I don't even know. I think nowadays it's just a word. I don't think it's an acronym
+
+4
+00:00:26,280 --> 00:00:36,520
+anymore, but that's probably the original one. That was the original one. Yeah. So, we already
+
+5
+00:00:36,520 --> 00:00:48,120
+talked about what's a cluster. Is there anything else to add here? Yeah. So, we mentioned the
+
+6
+00:00:48,200 --> 00:00:51,440
+that there is a cluster and there's lots of resources.
+
+7
+00:00:51,440 --> 00:00:53,840
+And I also already hinted that there's
+
+8
+00:00:53,840 --> 00:00:58,880
+a way of getting access to those resources, and that is Slurm.
+
+9
+00:00:58,880 --> 00:01:03,920
+So we have this nice analog for this, what the Slurm is.
+
+10
+00:01:03,920 --> 00:01:06,320
+And it's this kind of like, the analog
+
+11
+00:01:06,320 --> 00:01:09,640
+is this HPC diner or HPC restaurant.
+
+12
+00:01:09,640 --> 00:01:12,640
+Do you want to, [name], explain the analog?
+
+13
+00:01:12,640 --> 00:01:14,920
+Oh, yeah, that's a good metaphor.
+
+14
+00:01:14,920 --> 00:01:26,520
+So let's say you're going to a restaurant. Do you go to a restaurant to sit at the stove and
+
+15
+00:01:26,520 --> 00:01:31,560
+cooking yourself? Or do you go at the restaurant for someone else to cook for you? Well, for
+
+16
+00:01:31,560 --> 00:01:38,360
+someone else to cook for you. That's the first thing. But when you arrive there, so that way
+
+17
+00:01:38,360 --> 00:01:43,080
+you can do other things while someone is cooking for you. But when you arrive there, do you
+
+18
+00:01:43,080 --> 00:01:48,880
+immediately go and pick any table and sit down? Or is there usually a sign when it's
+
+19
+00:01:48,880 --> 00:01:55,600
+busy that says, please wait to be seated? And what does this person do? You have to
+
+20
+00:01:55,600 --> 00:02:02,840
+tell them how many people you are. Usually you don't tell them how long you'll be eating,
+
+21
+00:02:02,840 --> 00:02:08,560
+but this would be a relevant piece of information if there's another reservation there. And
+
+22
+00:02:08,560 --> 00:02:14,360
+And this host that's there looks at everyone that's in the queue and then tries to assign
+
+23
+00:02:14,360 --> 00:02:19,960
+them to tables so that the most possible number of people can eat at once.
+
+24
+00:02:19,960 --> 00:02:24,200
+So for example, they won't have two people sit at a table for four people if there's
+
+25
+00:02:24,200 --> 00:02:26,400
+space for just two.
+
+26
+00:02:26,400 --> 00:02:31,980
+They won't go, like they'll try to save some big tables for big parties that might come
+
+27
+00:02:31,980 --> 00:02:38,160
+in later, especially if they have a reservation.
+
+28
+00:02:38,160 --> 00:02:43,040
+And this is basically what Slurm is doing.
+
+29
+00:02:43,040 --> 00:02:49,960
+So there's a bunch of people waiting and want to run more jobs than there's time.
+
+30
+00:02:49,960 --> 00:02:56,080
+So the host has the queue, they order the queue in priority somehow, and they try to
+
+31
+00:02:56,080 --> 00:03:07,000
+give something to all the resources in a way that will use them as optimally as possible.
+
+32
+00:03:07,000 --> 00:03:09,320
+Do you think of this metaphor?
+
+33
+00:03:09,320 --> 00:03:11,720
+Yes, I think that is very well put.
+
+34
+00:03:11,720 --> 00:03:19,720
+So in our case, the Slurm, what it considers
+
+35
+00:03:19,720 --> 00:03:22,840
+when you look at what sort of tables are you booking
+
+36
+00:03:22,840 --> 00:03:25,680
+and that sort of stuff, it also takes
+
+37
+00:03:25,680 --> 00:03:28,440
+into account stuff like your priority
+
+38
+00:03:28,440 --> 00:03:32,480
+or how much you have visited there before.
+
+39
+00:03:32,480 --> 00:03:40,240
+Basically, let's say the restaurant is very popular and they try to make certain that as many people
+
+40
+00:03:41,680 --> 00:03:47,280
+have an opportunity to eat at the restaurant. They try to organize it so that it's fair for
+
+41
+00:03:47,280 --> 00:03:57,120
+everybody. If somebody goes there every day and takes a table, they try to book other people as
+
+42
+00:03:57,120 --> 00:04:03,840
+well so that as many as possible have the opportunity to go there. So the queue manager
+
+43
+00:04:04,480 --> 00:04:11,760
+takes into account various things about what sort of things you require, so what sort of
+
+44
+00:04:12,960 --> 00:04:20,960
+things you need. And then it can manage this large, large restaurant from a simple lobby.
+
+45
+00:04:20,960 --> 00:04:25,200
+Yeah. So I guess you have to tell the host what you want if you come in and you say,
+
+46
+00:04:25,200 --> 00:04:30,320
+I'd like a table and they ask you, okay, how many people are you? And you're like, I don't know.
+
+47
+00:04:30,960 --> 00:04:34,880
+Then they'll look at you and wonder what's wrong with this person.
+
+48
+00:04:35,840 --> 00:04:46,960
+Yeah. But the restaurant manager is also very understanding that if you want to book a table
+
+49
+00:04:46,960 --> 00:04:54,480
+for four when there's only two people eating, they will book it, but you're limited to basically then
+
+50
+00:04:54,480 --> 00:05:00,560
+only tables of four. They will try to accommodate every kind of a guest, but at the same time,
+
+51
+00:05:01,360 --> 00:05:08,480
+by, well, the question what you don't need, you might be limited to some place. If we go back
+
+52
+00:05:08,480 --> 00:05:16,880
+into, from this analog, partly back to the actual reality of what is happening, if you, [name],
+
+53
+00:05:16,880 --> 00:05:25,360
+want to show the picture of the cluster. Yeah, if you show the picture of the cluster. So what
+
+54
+00:05:25,360 --> 00:05:33,280
+happens in the cluster is that you go into the login node with an SSH or you take the on-demand
+
+55
+00:05:33,280 --> 00:05:40,480
+connection to login node or VS Code connection. You are there and that is basically the lobby
+
+56
+00:05:40,480 --> 00:05:47,920
+of the restaurant. When you are there, you're in the lobby and now you have the sign in front of
+
+57
+00:05:47,920 --> 00:05:58,480
+you that, okay, wait for seating. And who is the host? That is the SLURM, like the queue manager.
+
+58
+00:05:59,040 --> 00:06:04,640
+And when you ask the queue manager that, hey, I would want to have these sort of resources for
+
+59
+00:06:04,640 --> 00:06:12,320
+this sort of time, aka I would want to have this table with these kind of seatings for this amount
+
+60
+00:06:12,320 --> 00:06:20,480
+of time, then the queue manager will process your request and it will, once the table is free,
+
+61
+00:06:20,480 --> 00:06:29,280
+it will seat you there. So in the case of a cluster, it will find you a computer that has
+
+62
+00:06:29,280 --> 00:06:36,320
+those resources and it will put you into that computer and then it will run your code in that
+
+63
+00:06:36,320 --> 00:06:44,480
+computer. So basically, we go back to the real world, what is happening, that is what's happening
+
+64
+00:06:44,480 --> 00:06:52,160
+in the background. Yeah. So I guess on the cluster, we're not asking for seats for people,
+
+65
+00:06:52,160 --> 00:06:59,760
+But what are we asking for? And that's why we come to here, the resources Slurm manages.
+
+66
+00:07:00,960 --> 00:07:07,840
+Yeah, so the most important or the simplest resources that Slurm considers are the amount
+
+67
+00:07:07,840 --> 00:07:13,920
+of processors you want. Like yesterday, there was talk in notes that do I really need to know
+
+68
+00:07:13,920 --> 00:07:20,000
+about these processors and do I need to really know about how the CPUs are. In a sense, you need.
+
+69
+00:07:20,000 --> 00:07:25,920
+There's, I will, we will show like some shorthands of how you can like estimate these things
+
+70
+00:07:28,000 --> 00:07:34,880
+soon, but you need to know a bit about your program, like you need to know a bit about the
+
+71
+00:07:34,880 --> 00:07:40,240
+like the requirements of your program, that how many processors it needs, how much memory it needs
+
+72
+00:07:40,240 --> 00:07:48,720
+and how much time it needs. So that Slurm can fill you a slot in one of the computers
+
+73
+00:07:48,720 --> 00:07:56,560
+so that your code can then run there. Of course, basically, you can think of Slurm as trying to
+
+74
+00:07:56,560 --> 00:08:02,720
+solve like a Tetris puzzle constantly, and you're just giving it different kinds of blocks all the
+
+75
+00:08:02,720 --> 00:08:12,000
+time. If you don't like the table analogy, another analogy with that. And Slurm tries to get the full
+
+76
+00:08:12,000 --> 00:08:19,360
+Tetris of filling the computers fully and it will consider these kinds of like slots or blocks
+
+77
+00:08:20,240 --> 00:08:28,400
+when it's calculating the jobs. Yeah, actually you have a good picture of this slot concept.
+
+78
+00:08:28,400 --> 00:08:37,600
+Should we show that? If you have it right away then sure why not. So this how big is my program
+
+79
+00:08:37,600 --> 00:08:53,160
+page. Yeah. So this is written last year-ish. Yeah. And yeah, so there's these good pictures.
+
+80
+00:08:53,160 --> 00:08:59,160
+So a typical laptop computer, what's it like? Yeah, a typical laptop, like what you might
+
+81
+00:08:59,160 --> 00:09:05,080
+have, these might be a bit old, maybe they're bigger now, like since last year, but it's
+
+82
+00:09:05,080 --> 00:09:12,680
+It's about four CPUs and 16 gigabytes of RAM, and a workstation might be eight CPUs and
+
+83
+00:09:12,680 --> 00:09:22,880
+maybe 32 gigabytes of RAM, and a typical computational server or compute node, compute node is another
+
+84
+00:09:22,880 --> 00:09:29,080
+way that we just say it's a server, it's about maybe 32 CPUs.
+
+85
+00:09:29,080 --> 00:09:37,420
+Nowadays, it can be up to 128 or 256 CPUs and up to terabytes of RAM or something.
+
+86
+00:09:37,420 --> 00:09:43,200
+But that's about the ballpark, but that's an estimate.
+
+87
+00:09:43,200 --> 00:09:52,500
+So you can say that one server is about four desktop computers or eight laptops.
+
+88
+00:09:52,500 --> 00:09:59,620
+So when you're trying to decide what the resources are
+
+89
+00:09:59,620 --> 00:10:02,220
+that your program needs, it's usually a good idea
+
+90
+00:10:02,220 --> 00:10:05,900
+to use this as sort of a natural measuring stick.
+
+91
+00:10:05,900 --> 00:10:08,900
+That's like, OK, let's just say that.
+
+92
+00:10:08,900 --> 00:10:11,460
+So if you have no idea what to request at all,
+
+93
+00:10:11,460 --> 00:10:13,140
+but you know it works on your laptop,
+
+94
+00:10:13,140 --> 00:10:16,020
+you could start with roughly this amount
+
+95
+00:10:16,020 --> 00:10:19,180
+and then adjust up or down.
+
+96
+00:10:19,180 --> 00:10:20,220
+Yes.
+
+97
+00:10:20,220 --> 00:10:25,900
+And the simplest option is that if you run the program on your computer,
+
+98
+00:10:25,900 --> 00:10:29,340
+if it runs on your computer, you can just check your task manager.
+
+99
+00:10:29,340 --> 00:10:34,140
+Like there's instructions below how you could do it, but basically this is the kind of like
+
+100
+00:10:37,500 --> 00:10:46,060
+natural number or like natural unit that you can use to measure your codes.
+
+101
+00:10:46,060 --> 00:10:49,060
+That's a good starting point.
+
+102
+00:10:49,060 --> 00:10:54,660
+So first ask what your laptop provides and then see how it works.
+
+103
+00:10:54,660 --> 00:10:57,460
+That's usually a good starting point.
+
+104
+00:10:57,460 --> 00:11:07,500
+So what are the resources we'll be requesting in our jobs?
+
+105
+00:11:07,500 --> 00:11:11,380
+What resources does it allocate?
+
+106
+00:11:11,380 --> 00:11:16,740
+So yeah, like we mentioned, there's the CPUs, then the memory, and then the time.
+
+107
+00:11:16,740 --> 00:11:22,300
+We'll be talking about these throughout, like, we'll first start in the first examples that
+
+108
+00:11:22,300 --> 00:11:26,380
+we are going to be running quite shortly, and that you can run as well.
+
+109
+00:11:26,380 --> 00:11:30,620
+We'll be mainly focusing on time and memory, because those are something that always need
+
+110
+00:11:30,620 --> 00:11:33,180
+to be basically set.
+
+111
+00:11:33,180 --> 00:11:37,900
+And then the processor count, when we get to the parallel stuff tomorrow, we'll talk
+
+112
+00:11:37,900 --> 00:11:40,180
+a lot more about the processor count.
+
+113
+00:11:40,180 --> 00:11:47,780
+For now, let's just focus on one CPU jobs, but we can do more on that.
+
+114
+00:11:47,780 --> 00:11:51,060
+There's also, of course, special hardware like GPUs.
+
+115
+00:11:51,860 --> 00:11:58,180
+You might need a machine with a specific hardware, so you might need a GPU.
+
+116
+00:11:58,180 --> 00:12:03,060
+There's also a possibility that if you want to use a certain kind of a CPU,
+
+117
+00:12:03,060 --> 00:12:08,980
+like our cluster, it has multiple generations of CPUs.
+
+118
+00:12:08,980 --> 00:12:15,300
+whenever we buy more machines, we usually don't throw the old ones away. We try to be ecological
+
+119
+00:12:15,300 --> 00:12:21,220
+in a sense like that. So, we use them until they are no longer usable or useful anymore.
+
+120
+00:12:22,900 --> 00:12:27,140
+So, you might want to limit yourself to a certain architecture or something.
+
+121
+00:12:27,140 --> 00:12:33,220
+And in those cases, you can do the limiting. But those are more advanced stuff and we don't
+
+122
+00:12:33,220 --> 00:12:37,140
+necessarily need to focus on that.
+
+123
+00:12:37,700 --> 00:12:41,460
+So maybe, this wasn't exactly asked in the notes, but
+
+124
+00:12:41,460 --> 00:12:46,980
+I questioned, so CPUs and cores and processors, do these all mean the
+
+125
+00:12:46,980 --> 00:12:49,460
+same thing?
+
+126
+00:12:50,580 --> 00:12:56,100
+Well, basically yes, like CPU can have multiple,
+
+127
+00:12:56,100 --> 00:12:59,140
+or CPUs usually have multiple cores, so the
+
+128
+00:12:59,140 --> 00:13:07,540
+actual like physical CPU chip. It usually has multiple cores, but they can be also said to be
+
+129
+00:13:07,540 --> 00:13:14,260
+like CPUs in many cases. So they appear as like separate GPUs in the operating system.
+
+130
+00:13:14,260 --> 00:13:18,820
+So they are usually referred to as cores. So practically speaking, it's the same thing.
+
+131
+00:13:19,540 --> 00:13:26,420
+Yeah, it's like from the user perspective, it's the same thing. And that is, yeah.
+
+132
+00:13:26,420 --> 00:13:32,180
+And then second, there's a good question. The new Mac processors, M1 and so on,
+
+133
+00:13:32,180 --> 00:13:37,860
+seem to have a lot of VRAM, and also a different architecture, and I think more
+
+134
+00:13:37,860 --> 00:13:43,380
+cores than usual. How does this play into this, if it usually works on my laptop?
+
+135
+00:13:45,060 --> 00:13:51,380
+Yeah, so what [name] said, the Mac architecture is different, so it's an ARM-based processor.
+
+136
+00:13:51,380 --> 00:13:57,860
+most of the computing clusters. Well, there are some ARM-based computing clusters in, I think
+
+137
+00:13:57,860 --> 00:14:05,700
+Amazon has some and that sort of stuff, but ours are like the x86, you might have heard that
+
+138
+00:14:05,700 --> 00:14:16,500
+architecture. So they are using that architecture. So they have a different kind of CPU style.
+
+139
+00:14:16,500 --> 00:14:26,060
+still. So they work in a bit different way. And like the VRAM stuff, like Mac has this
+
+140
+00:14:26,060 --> 00:14:31,460
+unified memory architecture that is like a bit different than this kind of like x86.
+
+141
+00:14:31,460 --> 00:14:38,580
+So it's a bit more complicated. But usually that means that's just like, yeah, you cannot
+
+142
+00:14:38,580 --> 00:14:44,240
+run the exact same program because you need two different CPU architecture, but usually
+
+143
+00:14:44,240 --> 00:14:51,280
+can get it working in both systems without any hassle. And I guess understanding the resources
+
+144
+00:14:51,280 --> 00:14:58,160
+your program needs actually is a big part of running on the cluster somehow. Like on your
+
+145
+00:14:58,160 --> 00:15:03,600
+own computer you just do it and it either works or it doesn't. But on the cluster
+
+146
+00:15:05,520 --> 00:15:13,120
+you have to really think about this. I will also mention that when we are going through
+
+147
+00:15:13,120 --> 00:15:18,960
+the examples here. And when you're starting on your work, it's a good idea to request more
+
+148
+00:15:18,960 --> 00:15:27,600
+than less. And we will show you various tools that Slurm provides that you can then monitor
+
+149
+00:15:27,600 --> 00:15:34,240
+what the code actually used. And based on that output, you can try to determine whether your
+
+150
+00:15:34,240 --> 00:15:42,000
+code ran correctly. But as a first step, I would request more than less and then see if I actually
+
+151
+00:15:42,000 --> 00:15:48,080
+managed to use all of that. So if you don't know how many people are coming to your birthday party
+
+152
+00:15:48,080 --> 00:15:54,240
+or something, it's better to book a table that is big enough for the biggest group that you expect
+
+153
+00:15:54,240 --> 00:16:01,840
+instead of maybe just book a small table and then have a problem. Important to realize we're not
+
+154
+00:16:01,840 --> 00:16:07,280
+running things just once usually, so it's better to request more and then look and see what it uses
+
+155
+00:16:07,280 --> 00:16:13,220
+And then for all the future ones, you can adjust and we'll actually talk about monitoring later today
+
+156
+00:16:13,220 --> 00:16:19,380
+So we don't need to go into details, but but there's this is enough theory. Let's go to actual like let's do something
+
+157
+00:16:20,160 --> 00:16:22,480
+So should we move on to the next lesson?
+
+158
+00:16:23,280 --> 00:16:25,540
+Yes to interactive jobs
+
+159
+00:16:26,180 --> 00:16:30,080
+So, okay. So do you want to throw the screen to my screen?
+
+160
+00:16:31,080 --> 00:16:34,720
+Sure. Are you ready for it? Yeah, okay
+
+161
+00:16:37,280 --> 00:16:39,980
+There is your screen.
+
+162
+00:16:39,980 --> 00:16:41,000
+Yes. So before we start looking at the lessons,
+

@@ -1,0 +1,228 @@
+1
+00:00:00,000 --> 00:00:00,140
+it helps you. Yeah. Okay, so let's get started. I will switch to my screen here, I hope. Yes.
+
+2
+00:00:02,300 --> 00:00:07,820
+So as usual, we have our schedule. It should say everything we're doing.
+
+3
+00:00:09,500 --> 00:00:13,740
+If we go down to day two, we begin with about clusters and your work.
+
+4
+00:00:15,100 --> 00:00:23,500
+I will also quickly mention that public service announcement, remember to put the stream to
+
+5
+00:00:23,500 --> 00:00:32,460
+maximum resolution if it's not already there, so that any text will appear as crisp as possible.
+
+6
+00:00:32,460 --> 00:00:39,980
+But we will mostly talk and look at pretty pictures, but there's text sometimes as well.
+
+7
+00:00:39,980 --> 00:00:48,060
+Okay, so yesterday we talked a lot about basic concepts of scientific computing, like where
+
+8
+00:00:48,060 --> 00:00:52,580
+you can store your data, who we are, how to ask for help, things like that.
+
+9
+00:00:52,580 --> 00:00:55,040
+Now we get to the real stuff.
+
+10
+00:00:55,040 --> 00:00:59,740
+The general plan is that today we go into basics.
+
+11
+00:00:59,740 --> 00:01:04,100
+So what is a cluster, what are resources, how to request them, and so on.
+
+12
+00:01:04,100 --> 00:01:08,660
+We get to some of the interesting parallel and GPU stuff tomorrow.
+
+13
+00:01:08,660 --> 00:01:16,840
+But because a cluster is easy to use if you're familiar with the command line Linux, things
+
+14
+00:01:16,840 --> 00:01:22,560
+like that, and hard if not, we're going nice and slow today in order to make sure that
+
+15
+00:01:22,560 --> 00:01:29,760
+everyone can keep up and we have this good solid background.
+
+16
+00:01:29,760 --> 00:01:32,880
+So yeah, what's a cluster?
+
+17
+00:01:32,880 --> 00:01:40,680
+Yeah, so if we think about the cluster, it's basically like a bunch of computers in a trench
+
+18
+00:01:40,680 --> 00:01:45,480
+coat.
+
+19
+00:01:45,480 --> 00:01:47,760
+But it's also a bit more than that.
+
+20
+00:01:47,760 --> 00:01:56,080
+So a cluster is basically a big system that has many features in it.
+
+21
+00:01:56,080 --> 00:02:02,280
+So what we usually have in the cluster is that we first off have a lot of computers
+
+22
+00:02:02,280 --> 00:02:08,840
+there that are meant for computing. So in this diagram that you can see we have the CPU nodes
+
+23
+00:02:08,840 --> 00:02:15,000
+like that is the main thing of the cluster really. We have a lot of hardware there that can be used
+
+24
+00:02:15,000 --> 00:02:23,880
+for computing. There's also specialized hardware like the GPU nodes that have GPU cards
+
+25
+00:02:23,880 --> 00:02:31,720
+that are used for GPU computing. And then usually a cluster has a file system as well
+
+26
+00:02:31,720 --> 00:02:38,120
+So it's own file system, which is connected to these nodes in some fast lane, so that you can
+
+27
+00:02:38,120 --> 00:02:47,080
+have big data flowing into the CPU nodes and the GPU nodes. And then, yeah.
+
+28
+00:02:47,080 --> 00:02:51,640
+So how big is our cluster, just as a reference? So the one at Aalto University.
+
+29
+00:02:51,640 --> 00:03:04,920
+So our is like a medium size, maybe. Medium, small. Medium in Finland, small in international scale.
+
+30
+00:03:04,920 --> 00:03:12,200
+But we have a lot smaller clusters. Some other universities might have a smaller cluster.
+
+31
+00:03:12,200 --> 00:03:17,320
+And for example, the CSC supercomputers, they are a lot bigger. But in our case, it's,
+
+32
+00:03:17,320 --> 00:03:20,520
+Well, I don't know, actually remember the numbers, like a few hundred nodes?
+
+33
+00:03:21,640 --> 00:03:25,640
+Yeah, I think it's like the order of 300-ish.
+
+34
+00:03:26,520 --> 00:03:29,080
+Yeah, and maybe a few hundred GPUs.
+
+35
+00:03:29,720 --> 00:03:35,160
+Yeah, a few hundred GPUs, 10,000 processors roughly, last I remembered.
+
+36
+00:03:37,160 --> 00:03:37,660
+Yeah.
+
+37
+00:03:38,520 --> 00:03:43,480
+But you can already hear from what I'm describing here that the cluster,
+
+38
+00:03:43,480 --> 00:03:49,400
+what is important about the cluster is not necessarily how much there is on the backend
+
+39
+00:03:49,400 --> 00:03:55,320
+or something, it's how you're going to be using it. And you're going to be using it through this
+
+40
+00:03:55,320 --> 00:04:04,440
+login systems, like login node or the on-demand. And then we will talk about how you get access to
+
+41
+00:04:04,440 --> 00:04:11,000
+the resources later on. But for me, at least personally, it's more of like, I know that
+
+42
+00:04:11,000 --> 00:04:16,200
+there's just resources there, I just need to be able to use them. But it doesn't really matter
+
+43
+00:04:16,920 --> 00:04:23,480
+where they come from. They are there on the background and there is a way of
+
+44
+00:04:24,280 --> 00:04:29,960
+getting those resources. And we'll talk about that soon. But basically, there is just a bunch
+
+45
+00:04:29,960 --> 00:04:35,640
+of computers and those computers are connected to each other with a fast network and there's a
+
+46
+00:04:35,640 --> 00:04:42,880
+a storage space for your data and then you can use those computers using certain things
+
+47
+00:04:42,880 --> 00:04:46,120
+that we'll be talking about.
+
+48
+00:04:46,120 --> 00:04:50,680
+So about our own cluster at Aalto University.
+
+49
+00:04:50,680 --> 00:04:59,200
+It was completely upgraded and reinstalled, well, a month ago.
+
+50
+00:04:59,200 --> 00:05:00,880
+And everything has changed.
+
+51
+00:05:00,880 --> 00:05:04,600
+So many of the things you might read might be out of date.
+
+52
+00:05:04,600 --> 00:05:11,320
+trying to update them or add warnings there, but just be aware that things are different now.
+
+53
+00:05:12,680 --> 00:05:19,000
+And we'll talk more about this later. The final thing on this page is asking for help.
+
+54
+00:05:19,000 --> 00:05:24,680
+So it is really hard to go and do everything alone, especially when you're starting.
+
+55
+00:05:25,560 --> 00:05:33,560
+So do read about getting help and come to your local support early if you need it.
+
+56
+00:05:33,560 --> 00:05:40,440
+don't struggle forever. And with that I think we can go on from this page.
+
+57
+00:05:42,920 --> 00:05:44,000
+Yes. Okay. So next up in the schedule is Slurm, the queuing system.
+

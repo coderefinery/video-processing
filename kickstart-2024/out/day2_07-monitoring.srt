@@ -1,0 +1,908 @@
+1
+00:00:00,000 --> 00:00:05,380
+but let's not go that far. Yeah. Okay. So monitoring. Sorry for this short distraction.
+
+2
+00:00:06,020 --> 00:00:10,260
+So we've already did a little bit about monitoring, but what are the main
+
+3
+00:00:10,260 --> 00:00:12,740
+things we might want to watch and what does it mean?
+
+4
+00:00:14,100 --> 00:00:20,020
+Yeah, so for the monitoring, we already talked about how can you watch the queue,
+
+5
+00:00:20,020 --> 00:00:27,220
+how can you monitor, and that's like monitoring basically in a workflow type of monitoring.
+
+6
+00:00:27,220 --> 00:00:34,100
+You monitor that is your work running and that sort of stuff. You're monitoring your workflow
+
+7
+00:00:34,100 --> 00:00:38,500
+and is it going through correctly. And that's, of course, the important part that
+
+8
+00:00:38,500 --> 00:00:44,700
+But did you manage to get your code running and is it running on there?
+
+9
+00:00:44,700 --> 00:00:49,380
+But then there's the question of, okay, is it running like I expected?
+
+10
+00:00:49,380 --> 00:00:53,740
+And is it using the resources like I expected?
+
+11
+00:00:53,740 --> 00:00:58,220
+And for the first part, is it running as I expect it to run?
+
+12
+00:00:58,220 --> 00:01:04,300
+The best way of monitoring is in your code to have monitoring output.
+
+13
+00:01:04,300 --> 00:01:11,580
+Basically, in your code, when there is a specific step that it's doing, it's a good idea that
+
+14
+00:01:11,580 --> 00:01:14,100
+your code prints those outputs.
+
+15
+00:01:14,100 --> 00:01:20,180
+It's a good idea that your code tells that, hey, I'm doing this part.
+
+16
+00:01:20,180 --> 00:01:26,860
+Maybe some timing information as well, like, okay, I'm here, time is this, I'm running
+
+17
+00:01:26,860 --> 00:01:27,860
+this.
+
+18
+00:01:27,860 --> 00:01:31,660
+Maybe at the start of your code, you might want to have output that, okay, I'm running
+
+19
+00:01:31,660 --> 00:01:41,020
+at this machine, I'm running here, that the code itself will tell you what it thinks it's doing.
+
+20
+00:01:41,740 --> 00:01:48,140
+That way, it will make it a lot easier. If you run into a problem, your code crashes or it does
+
+21
+00:01:48,140 --> 00:01:53,820
+something that you don't expect it to do, it's much easier to pinpoint at what part of the code
+
+22
+00:01:53,820 --> 00:01:58,780
+the problem occurred, especially if you're running it non-interactively. If you're running it
+
+23
+00:01:58,780 --> 00:02:04,460
+interactively, and let's say in Jupyter, you're running it cell by cell, it's very easy to see,
+
+24
+00:02:04,460 --> 00:02:10,860
+okay, the cell crashed, like it didn't run, or it crashes when I try to run this cell
+
+25
+00:02:10,860 --> 00:02:18,220
+in the Jupyter. But if you're not running it interactively, you want more output.
+
+26
+00:02:18,220 --> 00:02:24,620
+And usually you want to have the program, got to use some debugging output for yourself.
+
+27
+00:02:24,620 --> 00:02:32,700
+And that is something that is left for basically, we cannot do much for it. It's up to the programmers
+
+28
+00:02:32,700 --> 00:02:37,100
+or the people who run the code to do that. So that's the first thing to remember. It's good
+
+29
+00:02:37,100 --> 00:02:44,300
+to add, especially at key points of your code, what is your code doing? And the second thing
+
+30
+00:02:44,300 --> 00:02:48,060
+about, okay, did it actually use the resources? That's a different question. And that
+
+31
+00:02:48,060 --> 00:02:54,920
+that the queue system can answer, like did it actually use what it was needed.
+
+32
+00:02:54,920 --> 00:02:58,260
+And there are a few tools that you can use.
+
+33
+00:02:58,260 --> 00:03:04,080
+So first one that we already have touched on is the slurm history.
+
+34
+00:03:04,080 --> 00:03:12,340
+So if I look at the slurm history command, I'll make this a bit bigger.
+
+35
+00:03:12,340 --> 00:03:20,660
+So the font will go smaller, and it will overwrite.
+
+36
+00:03:20,660 --> 00:03:23,820
+So Slurm history, or with s-act, you
+
+37
+00:03:23,820 --> 00:03:26,340
+can get the similar kind of information.
+
+38
+00:03:26,340 --> 00:03:33,460
+So from this output, we can also limit to, let's say, 15 min.
+
+39
+00:03:33,460 --> 00:03:35,580
+I think you can, yes.
+
+40
+00:03:35,580 --> 00:03:46,140
+Yeah, okay, so we can tell it for jobs in the last 15 minutes, this is what's run and
+
+41
+00:03:46,140 --> 00:03:47,140
+all the stuff.
+
+42
+00:03:47,140 --> 00:03:49,740
+Yeah, so this is pretty standard, I guess.
+
+43
+00:03:49,740 --> 00:03:56,460
+Yeah, so from this output you can see stuff like, okay, what was the starting time of
+
+44
+00:03:56,460 --> 00:04:07,980
+the job, how much memory you requested, what was the actual memory usage of the job, how
+
+45
+00:04:07,980 --> 00:04:10,380
+much CPU time it used.
+
+46
+00:04:10,380 --> 00:04:19,500
+So the CPU time is basically the time it took, like how much CPU calculation seconds it used
+
+47
+00:04:19,500 --> 00:04:23,420
+basically, like how much actual CPU calculation it used.
+
+48
+00:04:23,420 --> 00:04:27,620
+And the wall time is like the real clock time.
+
+49
+00:04:27,620 --> 00:04:35,860
+So the CPU time, like let's say you ask for four CPUs, you would expect the CPU time to
+
+50
+00:04:35,860 --> 00:04:38,380
+be four times the real time.
+
+51
+00:04:38,380 --> 00:04:44,860
+It might sound a bit confusing here, but basically because you're using four CPUs for the same
+
+52
+00:04:44,860 --> 00:04:46,580
+time you're using.
+
+53
+00:04:46,580 --> 00:04:53,180
+So you can think about it like man hours, like we sometimes calculate stuff in man hours.
+
+54
+00:04:53,180 --> 00:04:59,180
+So, how many man, like if you're working for, yeah, four hours.
+
+55
+00:04:59,180 --> 00:05:00,180
+Yeah.
+
+56
+00:05:00,180 --> 00:05:01,180
+Yeah.
+
+57
+00:05:01,180 --> 00:05:07,460
+So, if something takes 10 man hours, it takes one man 10 hours or two men, five hours.
+
+58
+00:05:07,460 --> 00:05:08,460
+Yeah.
+
+59
+00:05:08,460 --> 00:05:15,820
+Like, because it's like a, so the CPU time is basically how many like CPU hours you used.
+
+60
+00:05:15,820 --> 00:05:19,560
+And you can use this as the starting point.
+
+61
+00:05:19,560 --> 00:05:28,840
+tool provided by Slurm is this seff. I'll make this a bit bigger now. So, if you run seff and a comma,
+
+62
+00:05:28,840 --> 00:05:41,240
+like one of your job IDs, you can get this sort of an output, which tells, okay, how much CPU was
+
+63
+00:05:41,240 --> 00:05:47,080
+utilized and what was the efficiency. So, in the case of these example codes, it's pretty bad
+
+64
+00:05:47,080 --> 00:05:51,560
+because they don't basically do anything and the measurements might be incorrect because they're
+
+65
+00:05:51,560 --> 00:05:58,360
+short. But basically, it will tell how much CPU was used and the same with the memory. So,
+
+66
+00:05:58,360 --> 00:06:06,520
+what is the memory utilization? So, what we talked earlier about how to decide which resources to
+
+67
+00:06:06,520 --> 00:06:12,760
+use, well, a good starting point might be to request as much resource as your own computer has
+
+68
+00:06:12,760 --> 00:06:21,320
+and then after you have run it once, then check what was actually utilized and then lower the
+
+69
+00:06:21,320 --> 00:06:26,920
+resources. It's good to have a bit of overhead, especially in the memory department, but not too
+
+70
+00:06:26,920 --> 00:06:34,840
+much. So like maybe a few gigabytes overhead or something like that. There's a really good
+
+71
+00:06:34,840 --> 00:06:40,120
+question. How reliable is the seff in history utilized resource estimate?
+
+72
+00:06:41,720 --> 00:06:47,800
+That's a great question, because the memory utilization is only measured every...
+
+73
+00:06:49,960 --> 00:06:51,640
+It depends on the cluster.
+
+74
+00:06:51,640 --> 00:07:01,080
+Yeah, every 20 seconds or something. But also, it depends how the measurement is recorded. So,
+
+75
+00:07:01,080 --> 00:07:06,720
+So all measurement is recorded using these so-called control groups, which is a technical
+
+76
+00:07:06,720 --> 00:07:12,880
+thing, but basically it should record it quite accurately, at least the maximum number, but
+
+77
+00:07:12,880 --> 00:07:13,880
+the averages...
+
+78
+00:07:13,880 --> 00:07:16,680
+Did we switch to control groups now?
+
+79
+00:07:16,680 --> 00:07:17,680
+Yeah.
+
+80
+00:07:17,680 --> 00:07:18,680
+Yeah.
+
+81
+00:07:18,680 --> 00:07:19,680
+Okay.
+
+82
+00:07:19,680 --> 00:07:27,840
+At least the maximum requirement, maximum memory requirement should be pretty accurate,
+
+83
+00:07:27,840 --> 00:07:34,320
+But the others, because they're calculated from averages, they might be all like, yeah,
+
+84
+00:07:34,320 --> 00:07:35,800
+it's their averages.
+
+85
+00:07:35,800 --> 00:07:41,920
+So they might not be ... You might have a code that, let's say it requests a huge amount
+
+86
+00:07:41,920 --> 00:07:47,520
+of memory when it loads a dataset or something, and then it does nothing with that afterwards.
+
+87
+00:07:47,520 --> 00:07:53,120
+So you might have a situation where you have a big spike in your memory usage, and these
+
+88
+00:07:53,120 --> 00:07:55,520
+averages don't necessarily capture that.
+
+89
+00:07:55,520 --> 00:08:01,760
+that you need to do a bit more like profiling of the code to capture that sort of behavior.
+
+90
+00:08:01,760 --> 00:08:10,160
+Yeah. Yeah. And monitoring is really a big deal, like getting good accurate measurements of the
+
+91
+00:08:10,160 --> 00:08:15,920
+resources your jobs use is really necessary to get any good performance out. And there's far
+
+92
+00:08:15,920 --> 00:08:23,200
+more things that we can do that we can talk about now. But anyway, I propose we go to an exercise
+
+93
+00:08:23,200 --> 00:08:31,760
+time. So yeah, we can take the break by 10.50 or a bit after.
+
+94
+00:08:32,160 --> 00:08:39,000
+Yeah. So in the exercises we have for you, we have a few
+
+95
+00:08:39,000 --> 00:08:44,680
+exercises, like first, like some verbosity exercises, and then
+
+96
+00:08:45,360 --> 00:08:50,960
+testing out, like checking the how that's how do the seff and
+
+97
+00:08:50,960 --> 00:08:56,760
+and their SLURM history, what do they look like when you actually run something?
+
+98
+00:08:56,760 --> 00:09:02,720
+So of course, these are pretty much a toy problem, but you can try them out and see
+
+99
+00:09:02,720 --> 00:09:04,280
+what the seff looks like.
+
+100
+00:09:04,280 --> 00:09:12,200
+Because for an actual program, they will look pretty much the same, the utilization and
+
+101
+00:09:12,200 --> 00:09:14,800
+those sort of numbers.
+
+102
+00:09:14,800 --> 00:09:27,120
+yeah okay uh i've written this in the notes now um so yeah give it a try i wrote down we can come
+
+103
+00:09:27,120 --> 00:09:38,120
+back at 50. So, good luck and see you soon. Bye.
+
+104
+00:09:41,000 --> 00:09:46,120
+Welcome back.
+
+105
+00:09:46,120 --> 00:09:50,120
+So, um, yeah.
+
+106
+00:09:50,120 --> 00:09:59,120
+I don't know how many people were trying to exercises because there wasn't much comment there but there's definitely some questions about this.
+
+107
+00:09:59,120 --> 00:10:06,120
+Um, did we already talked about how reliable the estimates were right.
+
+108
+00:10:06,120 --> 00:10:08,120
+Yes, yes.
+
+109
+00:10:08,120 --> 00:10:12,120
+Should we do some examples?
+
+110
+00:10:12,120 --> 00:10:14,120
+Yeah, let's do some.
+
+111
+00:10:14,120 --> 00:10:18,120
+How to execute the command run-pi.sh file.
+
+112
+00:10:18,120 --> 00:10:22,120
+Where did that come from?
+
+113
+00:10:22,120 --> 00:10:40,080
+from I think the ssh file, I don't know, like this.
+
+114
+00:10:40,080 --> 00:10:42,200
+Maybe it means sh.
+
+115
+00:10:42,200 --> 00:10:45,280
+Yeah, maybe it means sh.
+
+116
+00:10:45,280 --> 00:10:48,840
+We would need a bit more WebAssembly probably,
+
+117
+00:10:48,840 --> 00:10:50,400
+or WebAssembly example.
+
+118
+00:10:52,120 --> 00:11:02,920
+Okay. Well, let's do some examples. So, what should we look at? Monitoring WAND?
+
+119
+00:11:02,920 --> 00:11:14,520
+Yeah. So, these examples might seem a bit like, okay, they might be simple or self-evident
+
+120
+00:11:14,520 --> 00:11:22,120
+whatever. But I would say that they are only simple and self-evident because the program
+
+121
+00:11:22,120 --> 00:11:29,800
+is simple and self-evident. If you think about if we would be running some really complex program,
+
+122
+00:11:30,920 --> 00:11:38,840
+it would be very much harder to decipher what's happening there. For the simple program,
+
+123
+00:11:38,840 --> 00:11:50,200
+it's of course easy to see, but for a more complex program, this is by no means self-evident.
+
+124
+00:11:53,640 --> 00:11:58,680
+I think it's important to keep in mind that even though these might look simple,
+
+125
+00:12:00,200 --> 00:12:06,840
+you can plug whatever there and it would be immediately much more complex if the script
+
+126
+00:12:06,840 --> 00:12:24,840
+would be much more complex. So, in the serial example, if we, for example, look at the run
+
+127
+00:12:24,840 --> 00:12:34,200
+-pi.sh. So, let's, we can add here, there was already this hello user, but let's add here
+
+128
+00:12:34,200 --> 00:12:45,200
+some echo that says starting analysis now.
+
+129
+00:12:46,160 --> 00:12:53,680
+Very simple. Let's put maybe the date there as well.
+
+130
+00:12:53,680 --> 00:12:57,280
+Okay, yeah.
+
+131
+00:12:57,280 --> 00:13:04,680
+And question mark in parentheses means it runs the date command.
+
+132
+00:13:04,680 --> 00:13:10,440
+So you can also write it like this if you want to utilize the automatic highlighting
+
+133
+00:13:10,440 --> 00:13:11,440
+a bit better.
+
+134
+00:13:11,440 --> 00:13:12,440
+Or automatic.
+
+135
+00:13:12,440 --> 00:13:15,440
+So it shows that this is a command.
+
+136
+00:13:15,440 --> 00:13:21,440
+So let's submit this.
+
+137
+00:13:21,440 --> 00:13:40,880
+So let's say we would have a problem in the, oh, I may still have the error there, yeah.
+
+138
+00:13:40,880 --> 00:13:43,280
+And let's look at the output, yeah.
+
+139
+00:13:43,280 --> 00:13:47,280
+So we would have here the timestamp.
+
+140
+00:13:47,280 --> 00:13:54,720
+This might be really helpful if your program has tens of steps, multiple steps, having something
+
+141
+00:13:54,720 --> 00:14:00,720
+like that might be really good. Let's try this set-x as well. This is very good for debugging.
+
+142
+00:14:01,840 --> 00:14:16,960
+If we open the run-pi and we put here set-x, what that does is that it
+
+143
+00:14:16,960 --> 00:14:28,640
+It tells the bash interpreter to print all of the commands that we are going to be running.
+
+144
+00:14:28,640 --> 00:14:33,660
+So if you have, especially if you have like any sort of like if sentence or something
+
+145
+00:14:33,660 --> 00:14:39,200
+like that, like conditional logic, it might be good to have this because then you can
+
+146
+00:14:39,200 --> 00:14:46,180
+see what the script is actually like executing.
+
+147
+00:14:46,180 --> 00:14:53,700
+it will produce this kind of an output where we will see first the command that is being run
+
+148
+00:14:54,660 --> 00:15:03,700
+and then the output. You can see that before it could run the echo, the script needed to run the
+
+149
+00:15:03,700 --> 00:15:08,820
+date. It has these double pluses over here. It first needed to get the date before it could
+
+150
+00:15:08,820 --> 00:15:11,260
+to create this echo.
+
+151
+00:15:11,260 --> 00:15:15,120
+So that's why we have this double plus over here.
+
+152
+00:15:15,120 --> 00:15:20,120
+So you can use that to produce extra monitoring.
+
+153
+00:15:21,940 --> 00:15:26,620
+Let's maybe check the seff example.
+
+154
+00:15:27,700 --> 00:15:30,380
+Should we do straight up?
+
+155
+00:15:30,380 --> 00:15:34,260
+Like we can all, like tomorrow we'll talk about
+
+156
+00:15:34,260 --> 00:15:37,020
+how to do multiprocessing.
+
+157
+00:15:37,020 --> 00:15:44,620
+Maybe we can do this example as this kind of like a teaser on how do we utilize
+
+158
+00:15:47,900 --> 00:16:00,700
+or can utilize multiple processors. Let's add cpus per task to Python.
+
+159
+00:16:07,020 --> 00:16:09,060
+How many zeros are there?
+
+160
+00:16:09,060 --> 00:16:10,620
+Well, I don't want to count.
+
+161
+00:16:10,620 --> 00:16:13,660
+Let's just copy-paste.
+
+162
+00:16:13,660 --> 00:16:15,620
+OK.
+
+163
+00:16:15,620 --> 00:16:18,940
+So error.
+
+164
+00:16:18,940 --> 00:16:20,100
+Oh, Python 3?
+
+165
+00:16:20,100 --> 00:16:22,060
+There's no, yeah, Python 3.
+
+166
+00:16:22,060 --> 00:16:22,860
+A bit of a mistake.
+
+167
+00:16:22,860 --> 00:16:23,700
+OK.
+
+168
+00:16:23,700 --> 00:16:25,100
+That should be fixed.
+
+169
+00:16:25,100 --> 00:16:25,860
+Yeah.
+
+170
+00:16:25,860 --> 00:16:31,020
+So now it's using two processors to do the calculation.
+
+171
+00:16:31,020 --> 00:16:35,300
+So we'll talk about parallelism tomorrow.
+
+172
+00:16:35,300 --> 00:16:40,620
+So then we'll have a lot more stuff on that.
+
+173
+00:16:40,620 --> 00:16:46,740
+But for now, let's just marvel at the ease
+
+174
+00:16:46,740 --> 00:16:51,220
+of use of multiple processors in this example.
+
+175
+00:16:51,220 --> 00:16:51,980
+OK, yeah.
+
+176
+00:16:55,940 --> 00:16:57,860
+So let's see how long it takes.
+
+177
+00:16:57,860 --> 00:17:02,420
+I would expect that the default would be set, but it's, yeah.
+
+178
+00:17:02,420 --> 00:17:04,900
+OK, so it's done.
+
+179
+00:17:04,900 --> 00:17:08,940
+And if we do storm history, now we
+
+180
+00:17:08,940 --> 00:17:11,180
+should see something interesting.
+
+181
+00:17:11,180 --> 00:17:12,660
+Yeah.
+
+182
+00:17:12,660 --> 00:17:15,220
+I'll make this a bit.
+
+183
+00:17:15,220 --> 00:17:15,860
+Yeah.
+
+184
+00:17:15,860 --> 00:17:20,180
+So the CPU time and wall time is what we want, right?
+
+185
+00:17:20,180 --> 00:17:20,940
+Yes.
+
+186
+00:17:20,940 --> 00:17:24,580
+I'll put here the 15 min as well.
+
+187
+00:17:24,580 --> 00:17:25,660
+OK, that's still too long.
+
+188
+00:17:25,660 --> 00:17:26,540
+Let's hit 5 min.
+
+189
+00:17:26,540 --> 00:17:28,020
+Yeah.
+
+190
+00:17:28,020 --> 00:17:28,820
+One minute?
+
+191
+00:17:28,820 --> 00:17:30,140
+Well, let's, yeah.
+
+192
+00:17:32,820 --> 00:17:33,660
+Yeah, now it's good.
+
+193
+00:17:33,660 --> 00:17:34,420
+OK, there we go.
+
+194
+00:17:34,420 --> 00:17:43,620
+Oh, okay. Here we see the code. So this is the job that we submitted. And we see that the CPU
+
+195
+00:17:43,620 --> 00:17:53,860
+time, total CPU time was one minute and 14 seconds. And the wall time was 38 seconds.
+
+196
+00:17:54,500 --> 00:18:00,580
+So now you can like, there was a question in the notes that like some site doesn't have
+
+197
+00:18:00,580 --> 00:18:07,140
+seff installed. You can get it from GitHub. It's available there. And I think it's part of some
+
+198
+00:18:07,140 --> 00:18:17,060
+Slurm installations as well. But what the seff basically does is that calculates
+
+199
+00:18:20,580 --> 00:18:28,500
+this number multiplied by the number of CPUs. So that would be 38 seconds times two. So
+
+200
+00:18:28,500 --> 00:18:35,900
+So what's it like, 78 seconds, sorry, 76 seconds.
+
+201
+00:18:35,900 --> 00:18:41,700
+So and what we utilized was one minute, 14 seconds.
+
+202
+00:18:41,700 --> 00:18:44,100
+So that's like 74 seconds.
+
+203
+00:18:44,100 --> 00:18:54,660
+So 74 seconds over 76 seconds, we would expect the CPU efficiency to be, well, close to what's
+
+204
+00:18:54,660 --> 00:18:56,960
+it like close to a hundred percent.
+
+205
+00:18:56,960 --> 00:19:02,340
+So let's use seff to do this calculation so that we don't have to do it manually.
+
+206
+00:19:02,340 --> 00:19:06,940
+So yeah, it's 97% utilization.
+
+207
+00:19:06,940 --> 00:19:09,620
+But that's basically the kind of calculation it does.
+
+208
+00:19:09,620 --> 00:19:13,980
+So it takes the wall time, the total time that the job took.
+
+209
+00:19:13,980 --> 00:19:19,580
+It checks how much resources were actually requested, how many CPUs were requested.
+
+210
+00:19:19,580 --> 00:19:29,100
+will calculate the total amount of time used and then it checks how much CPU time was actually
+
+211
+00:19:29,100 --> 00:19:36,780
+utilized. We can see here that the memory utilization is pretty horrendous. This is not
+
+212
+00:19:36,780 --> 00:19:45,900
+nice. It's way overkill. At one gigabyte, it doesn't really matter. It's still quite small,
+
+213
+00:19:45,900 --> 00:19:53,500
+the memory requirement. But the CPU efficiency was pretty good. But these kind of like, okay,
+
+214
+00:19:54,140 --> 00:20:00,220
+you have an assumption how your program behaves. How do you see it in the numbers? This is a quite
+
+215
+00:20:00,220 --> 00:20:07,660
+complex task, actually. And something that you only get familiar the more you do the thing.
+
+216
+00:20:07,660 --> 00:20:15,660
+but basically it's easier to check usually if numbers are like, if the percentages
+
+217
+00:20:15,660 --> 00:20:23,900
+are closer to 100% then it's easier to check like that. Yeah. Okay, so it's time for a break.
+
+218
+00:20:23,900 --> 00:20:30,700
+So we'll be out for 10 minutes and then we'll come back and we'll have some, well basically,
+
+219
+00:20:30,700 --> 00:20:36,940
+lightning talks on several other things which we summarize but you need to read yourself.
+
+220
+00:20:37,660 --> 00:20:47,660
+And then there's a very long Q&A session and you can really ask us anything.
+
+221
+00:20:47,660 --> 00:20:53,660
+So prepare all your questions, bring your friends, whatever, and try to challenge us.
+
+222
+00:20:53,660 --> 00:21:00,660
+Yeah, and during the Q&A session, remember, already you can pepper whatever questions you have,
+
+223
+00:21:00,660 --> 00:21:04,660
+what sort of questions you have, you can already have them in your mind.
+
+224
+00:21:04,660 --> 00:21:07,660
+So, yeah, but let's have a break.
+
+225
+00:21:07,660 --> 00:21:09,660
+Yeah. Okay. 10 minutes.
+
+226
+00:21:09,660 --> 00:21:11,660
+See you later.
+
+227
+00:21:11,660 --> 00:21:13,660
+Bye.
+

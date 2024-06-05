@@ -1,0 +1,1844 @@
+1
+00:00:00,000 --> 00:00:05,120
+Hello.
+
+2
+00:00:05,120 --> 00:00:11,260
+So we are back, and I've remembered to set the audio correct.
+
+3
+00:00:11,260 --> 00:00:16,660
+So were there any more questions while we were waiting?
+
+4
+00:00:16,660 --> 00:00:21,860
+I will quickly mention there were a few questions about various, like for example, the sinteractive
+
+5
+00:00:21,860 --> 00:00:23,340
+and the Slurm commands.
+
+6
+00:00:23,340 --> 00:00:26,620
+So these are like helper scripts that we have created.
+
+7
+00:00:26,620 --> 00:00:31,260
+They are available in GitHub if you are interested.
+
+8
+00:00:31,260 --> 00:00:38,380
+You can ask your admins to set them up or you can set them up yourself if you want to.
+
+9
+00:00:38,380 --> 00:00:44,220
+there's alternatives that they're basically just wrappers for the slurm commands so there's
+
+10
+00:00:44,780 --> 00:00:56,060
+alternatives provided in the notes if you don't have those at your site yeah okay so off to the
+
+11
+00:00:57,580 --> 00:01:05,020
+section on serial jobs and I sent it to [name]'s screen yes
+
+12
+00:01:05,020 --> 00:01:18,700
+Okay, so yeah, a serial or batch job. What does it mean? So I guess I gave the metaphor
+
+13
+00:01:18,700 --> 00:01:24,860
+that you don't have to sit there and wait for it. So how does that go?
+
+14
+00:01:27,020 --> 00:01:33,660
+Yeah, so like if you think about like what you are doing with your computer, like usually of
+
+15
+00:01:33,660 --> 00:01:40,940
+course, there's a lot of coding that you do interactively. You code your code and then you
+
+16
+00:01:40,940 --> 00:01:46,220
+do some modifications. Maybe you use a notebook interface or something like that, and then you
+
+17
+00:01:47,580 --> 00:01:53,820
+constantly run each individual cell in the notebook. You might do most of your job like that.
+
+18
+00:01:54,380 --> 00:02:01,420
+But when it comes to the parts that are actually heavy or computationally, that might take four
+
+19
+00:02:01,420 --> 00:02:07,420
+hours to run that you might need the HPC resources, like the cluster resources for,
+
+20
+00:02:08,620 --> 00:02:13,420
+you don't usually want to be there watching at it, right? It's a waste of your time
+
+21
+00:02:14,220 --> 00:02:19,180
+to basically watch at that. Yeah. And then you can only do one thing at a time.
+
+22
+00:02:20,220 --> 00:02:28,940
+Yes. Yeah. Yeah. You want to usually offload that to something else. So basically,
+
+23
+00:02:28,940 --> 00:02:33,820
+So basically, you want to, like what [name] said about the table reservation, you want
+
+24
+00:02:33,820 --> 00:02:39,940
+to, well, okay, you basically order like takeout.
+
+25
+00:02:39,940 --> 00:02:47,540
+Like you order that the meal be prepared and once it's prepared, let me know so that I
+
+26
+00:02:47,540 --> 00:02:51,420
+can fetch it and just like eat the result.
+
+27
+00:02:51,420 --> 00:02:56,220
+So it's prepared for you on the background, so you don't have to like worry about, you
+
+28
+00:02:56,220 --> 00:02:58,220
+don't have to wait for it.
+
+29
+00:02:58,220 --> 00:02:58,720
+Yeah.
+
+30
+00:03:02,720 --> 00:03:04,880
+And we do this via the batch script.
+
+31
+00:03:04,880 --> 00:03:13,840
+So can you go over what's the general idea here?
+
+32
+00:03:13,840 --> 00:03:16,640
+So we tell the cluster what we want.
+
+33
+00:03:16,640 --> 00:03:21,200
+And we do that by, I guess, this batch script
+
+34
+00:03:21,200 --> 00:03:23,360
+that we're showing here.
+
+35
+00:03:23,360 --> 00:03:26,640
+So can you go over what these lines mean?
+
+36
+00:03:26,640 --> 00:03:33,520
+Yeah, so in the batch script, like we have an example batch script over here that you can look
+
+37
+00:03:33,520 --> 00:03:41,200
+at and over there we have various strange looking lines but these lines basically tell the queue
+
+38
+00:03:41,200 --> 00:03:52,800
+manager, the slurm, what it should do for you on the background. So the first line over here,
+
+39
+00:03:52,800 --> 00:04:06,400
+this line is this so-called shebang line which tells which interpreter, which tool we should
+
+40
+00:04:06,400 --> 00:04:12,720
+use to interpret the script or which program we should use to run the script. Usually,
+
+41
+00:04:12,720 --> 00:04:19,680
+commonly it's the shell, so the bash shell or some other terminal so that it would be basically
+
+42
+00:04:19,680 --> 00:04:31,280
+like, okay, execute these commands. Previously, when we just ran the Python 3, for example,
+
+43
+00:04:32,400 --> 00:04:40,880
+and then we ran the PI example, then we just called commands from the command line.
+
+44
+00:04:41,600 --> 00:04:46,160
+So, basically, this would mean that, okay, just use the command line to run these commands.
+
+45
+00:04:46,160 --> 00:04:57,120
+The next two lines are directives to the queue system.
+
+46
+00:04:57,120 --> 00:05:04,160
+So when we want the queue to manage this script, we want it to get us the resources what we
+
+47
+00:05:04,160 --> 00:05:05,160
+want.
+
+48
+00:05:05,160 --> 00:05:06,500
+And how do we tell it?
+
+49
+00:05:06,500 --> 00:05:11,600
+We usually give these comments in the script, these Sbatch directives.
+
+50
+00:05:11,600 --> 00:05:18,880
+And this is like a format that is very like, you need to write it in this format.
+
+51
+00:05:18,880 --> 00:05:23,520
+So it's not S bash or S batch with a space.
+
+52
+00:05:23,520 --> 00:05:25,600
+So it's written like this.
+
+53
+00:05:25,600 --> 00:05:26,600
+Exactly like that.
+
+54
+00:05:26,600 --> 00:05:27,600
+Yeah.
+
+55
+00:05:27,600 --> 00:05:32,600
+Because like the Slurm, when it takes this script, it will look for these comments and
+
+56
+00:05:32,600 --> 00:05:39,200
+if it sees these comments, then it will interpret what comes after the comment as an argument
+
+57
+00:05:39,200 --> 00:05:46,080
+for the queue manager, basically. Like, okay, I want this time, I want this memory for this job.
+
+58
+00:05:47,520 --> 00:05:54,320
+And afterwards, you can have whatever your code is after that. Like, whatever commands you want
+
+59
+00:05:54,320 --> 00:06:02,800
+the code to run, like the queue manager to run. And what happens is that when we call this 
+
+60
+00:06:02,800 --> 00:06:11,600
+SBATCH and then the script that we have written, we call it, we basically say we are in the login
+
+61
+00:06:11,600 --> 00:06:18,560
+node, we have our terminal or whatever, we have it on the login node. And when we call that command,
+
+62
+00:06:18,560 --> 00:06:25,200
+the queue manager takes that file and then it will like read the comments that, okay, I will,
+
+63
+00:06:25,200 --> 00:06:35,380
+I know that this script needs these resources, and it will find you the correct place on
+
+64
+00:06:35,380 --> 00:06:42,580
+the compute node, in the CPU node, where it can execute that, that has those resources,
+
+65
+00:06:42,580 --> 00:06:45,020
+and then it will just plow through it.
+
+66
+00:06:45,020 --> 00:06:49,340
+It will just run the commands.
+
+67
+00:06:49,340 --> 00:06:52,300
+And it will, like, done it non-interactively.
+
+68
+00:06:52,300 --> 00:06:58,460
+So once you give the queue manager the script, you don't have to, you can just go to something
+
+69
+00:06:58,460 --> 00:07:04,380
+else and the queue manager will run it for you somewhere in the background.
+
+70
+00:07:04,380 --> 00:07:09,540
+There was a good comment in one of the previous notes questions.
+
+71
+00:07:09,540 --> 00:07:11,980
+If you log out, is all your stuff saved?
+
+72
+00:07:11,980 --> 00:07:18,540
+So I guess the synchronization here is everything starts as a file and everything comes out
+
+73
+00:07:18,540 --> 00:07:20,180
+as a file.
+
+74
+00:07:20,180 --> 00:07:24,740
+So your program, if it writes something,
+
+75
+00:07:24,740 --> 00:07:28,980
+if it prints something to the screen, where does that go?
+
+76
+00:07:28,980 --> 00:07:33,900
+Yeah, so if you would run in an interactive session,
+
+77
+00:07:33,900 --> 00:07:36,620
+for example, the Python code that we previously run,
+
+78
+00:07:36,620 --> 00:07:38,260
+it just printed it out there.
+
+79
+00:07:38,260 --> 00:07:40,180
+So it's basically ephemeral.
+
+80
+00:07:40,180 --> 00:07:42,540
+So it just disappears once you close the terminal,
+
+81
+00:07:42,540 --> 00:07:44,340
+because it's just output.
+
+82
+00:07:44,340 --> 00:07:48,380
+But if we run it non-interactively,
+
+83
+00:07:48,380 --> 00:07:54,700
+then Slurm will gather whatever output your code will write, like whatever text output it will
+
+84
+00:07:54,700 --> 00:08:00,940
+print, and it will collect that into a file. Of course, in many cases, you would want your code to
+
+85
+00:08:02,460 --> 00:08:06,700
+let's say read input files in the code and then write maybe some output file.
+
+86
+00:08:07,340 --> 00:08:14,060
+So basically, what happened during the computation is stored in those files.
+
+87
+00:08:14,060 --> 00:08:19,260
+But if you want to record the printed output of your code,
+
+88
+00:08:19,260 --> 00:08:22,900
+it will be recorded by Slurm.
+
+89
+00:08:22,900 --> 00:08:25,580
+Should we run a simple example on this?
+
+90
+00:08:25,580 --> 00:08:26,260
+Yeah, sure.
+
+91
+00:08:26,260 --> 00:08:26,860
+Let's go.
+
+92
+00:08:26,860 --> 00:08:31,140
+So if we scroll down a bit under your first jobscript,
+
+93
+00:08:31,140 --> 00:08:35,060
+I guess we can do the full demo.
+
+94
+00:08:35,060 --> 00:08:40,260
+So the starting point is at the shell, like we've had before.
+
+95
+00:08:40,260 --> 00:08:42,220
+And we need to make a new file.
+
+96
+00:08:42,220 --> 00:08:49,180
+So I guess [name] will use the nano editor to open a file and make it, but you can use any editor
+
+97
+00:08:49,180 --> 00:08:56,540
+you're comfortable with, whether it's VS Code with the remote SSH or through Jupyter or some other
+
+98
+00:08:56,540 --> 00:09:03,580
+command line thing. So [name]'s opened the file and will paste all the contents in there.
+
+99
+00:09:04,460 --> 00:09:07,420
+I'll make it a bit bigger so that it doesn't look so...
+
+100
+00:09:07,420 --> 00:09:16,740
+Okay, so we paste it here and I guess we know what these things mean, time, memory, output
+
+101
+00:09:16,740 --> 00:09:20,140
+is where it writes the output.
+
+102
+00:09:20,140 --> 00:09:33,340
+Yeah, and control X to save and yes to save it into a file name if you are using nano.
+
+103
+00:09:33,340 --> 00:09:41,660
+And then we do sbatch.
+
+104
+00:09:41,660 --> 00:09:44,900
+So sbatch and run-pi.
+
+105
+00:09:44,900 --> 00:09:52,380
+And if we push enter, so we see job submit automatically setting partitions, submitted
+
+106
+00:09:52,380 --> 00:09:53,380
+sbatch job.
+
+107
+00:09:53,380 --> 00:09:55,420
+So we have a job ID.
+
+108
+00:09:55,420 --> 00:09:57,340
+If we do slurm history, what do we see?
+
+109
+00:09:57,340 --> 00:10:00,220
+Or slurm queue, I guess.
+
+110
+00:10:00,220 --> 00:10:02,220
+Well, it already ran.
+
+111
+00:10:02,220 --> 00:10:03,220
+Yeah.
+
+112
+00:10:03,220 --> 00:10:06,220
+We should add some sleep there or something.
+
+113
+00:10:06,220 --> 00:10:08,220
+Let's do that, actually.
+
+114
+00:10:08,220 --> 00:10:13,220
+Just for the demo, let's add a bit of a sleep here.
+
+115
+00:10:13,220 --> 00:10:20,220
+So you can use this command sleep to add, let's say, 10 seconds so that we can capture the output.
+
+116
+00:10:20,220 --> 00:10:25,220
+So I will submit it again.
+
+117
+00:10:25,220 --> 00:10:28,900
+but this time I will run slurm q.
+
+118
+00:10:33,300 --> 00:10:41,780
+You can see it's now running there. Make it a bit smaller so the whole output fits.
+
+119
+00:10:41,780 --> 00:10:51,460
+Yeah.
+
+120
+00:10:51,460 --> 00:11:00,740
+And now in the script itself, if we look at the script again over here, we have this sbatch
+
+121
+00:11:00,740 --> 00:11:01,740
+output.
+
+122
+00:11:01,740 --> 00:11:02,740
+Right.
+
+123
+00:11:02,740 --> 00:11:03,740
+Yeah.
+
+124
+00:11:03,740 --> 00:11:05,100
+Like Slurm has various flags.
+
+125
+00:11:05,100 --> 00:11:06,780
+There's like a huge reference.
+
+126
+00:11:06,780 --> 00:11:10,460
+There's one in our page, but there's also the Slurm's own reference.
+
+127
+00:11:10,460 --> 00:11:15,260
+lots of different parameters you can give it. And this output is basically, if we want to
+
+128
+00:11:15,260 --> 00:11:19,100
+name the output in a certain way, we can do that.
+
+129
+00:11:21,580 --> 00:11:26,540
+Yeah, okay. And can we see the output? If we do ls, do we see things here?
+
+130
+00:11:27,420 --> 00:11:28,620
+Yeah, let's do them.
+
+131
+00:11:28,620 --> 00:11:38,860
+So we see day2.out, pi.out. Yes, so that's the example. And if we use...
+
+132
+00:11:38,860 --> 00:11:41,580
+Do we do cat or less?
+
+133
+00:11:41,580 --> 00:11:43,300
+I guess we can show cat first.
+
+134
+00:11:43,300 --> 00:11:43,780
+Yeah.
+
+135
+00:11:43,780 --> 00:11:46,980
+So cat is, first of, the thing that
+
+136
+00:11:46,980 --> 00:11:49,820
+comes and visits me sometimes.
+
+137
+00:11:49,820 --> 00:11:53,220
+But also, it's the Unix program that
+
+138
+00:11:53,220 --> 00:11:54,940
+is short for concatenate.
+
+139
+00:11:54,940 --> 00:11:58,700
+So it basically writes out what's in the file.
+
+140
+00:11:58,700 --> 00:12:00,580
+And we see.
+
+141
+00:12:00,580 --> 00:12:01,900
+There's an error.
+
+142
+00:12:01,900 --> 00:12:05,140
+Oh, slurm.
+
+143
+00:12:05,140 --> 00:12:06,700
+Yeah, I'm in the wrong folder.
+
+144
+00:12:06,700 --> 00:12:07,860
+That's the reason.
+
+145
+00:12:07,860 --> 00:12:08,580
+Yeah.
+
+146
+00:12:08,580 --> 00:12:15,500
+So let's move the run-pi to HPC examples.
+
+147
+00:12:15,500 --> 00:12:17,100
+Now let's try it again.
+
+148
+00:12:17,100 --> 00:12:18,940
+OK.
+
+149
+00:12:18,940 --> 00:12:21,540
+So I guess this is a common real life thing.
+
+150
+00:12:21,540 --> 00:12:24,420
+You make a job, you submit it, and then you
+
+151
+00:12:24,420 --> 00:12:26,900
+see, oh, there's something wrong.
+
+152
+00:12:26,900 --> 00:12:29,140
+And you adjust it and submit again.
+
+153
+00:12:29,140 --> 00:12:29,940
+It happens.
+
+154
+00:12:29,940 --> 00:12:31,900
+I mean, it's solely iterative.
+
+155
+00:12:31,900 --> 00:12:34,940
+This is often why we start with interactive jobs,
+
+156
+00:12:34,940 --> 00:12:38,140
+just to see quickly, does it even run at all?
+
+157
+00:12:38,140 --> 00:12:40,500
+and then write the commands in there.
+
+158
+00:12:40,500 --> 00:12:43,380
+Slurm q is a shorthand for slurm queue,
+
+159
+00:12:43,380 --> 00:12:48,700
+but you can use either one if you use the slurm command.
+
+160
+00:12:48,700 --> 00:12:52,980
+OK, now we probably have the pi.out.
+
+161
+00:12:52,980 --> 00:12:54,180
+Yeah, OK.
+
+162
+00:12:54,180 --> 00:12:56,580
+So we have pi.out, and yeah.
+
+163
+00:12:56,580 --> 00:12:58,660
+And if you look at the script, that's
+
+164
+00:12:58,660 --> 00:12:59,780
+exactly what it should do.
+
+165
+00:12:59,780 --> 00:13:04,860
+Echo hello user, hello [username], right there.
+
+166
+00:13:04,860 --> 00:13:13,260
+So this line, which might look, if you are not familiar with bash shell scripting might look a
+
+167
+00:13:13,260 --> 00:13:20,540
+bit complicated, but basically this, we often use this bash or this terminal languages because you
+
+168
+00:13:20,540 --> 00:13:26,060
+can do a lot of like housekeeping work with the terminal. Like you can move folders around,
+
+169
+00:13:26,060 --> 00:13:32,700
+you can rename files, you can do whatever stuff in the, like, and you can programmatically
+
+170
+00:13:32,700 --> 00:13:41,420
+do those. Instead of drag and dropping files in your file browser, you can do it in a systematic,
+
+171
+00:13:41,420 --> 00:13:46,860
+programmatic way. That's why we often use the terminal and why it's a powerful tool
+
+172
+00:13:47,500 --> 00:13:55,660
+when you're writing these things. Over here, we always get these parameters called,
+
+173
+00:13:55,660 --> 00:13:59,900
+or these variables called user and host name
+
+174
+00:13:59,900 --> 00:14:03,020
+that tell what is our username
+
+175
+00:14:03,020 --> 00:14:07,100
+and where are we executing this script.
+
+176
+00:14:07,100 --> 00:14:11,060
+And then we here call a program date
+
+177
+00:14:11,060 --> 00:14:12,740
+to get the current date.
+
+178
+00:14:12,740 --> 00:14:14,660
+So that's the output over here.
+
+179
+00:14:14,660 --> 00:14:17,020
+And you notice that it's not in the script,
+
+180
+00:14:17,020 --> 00:14:19,220
+it's like these variables,
+
+181
+00:14:19,220 --> 00:14:21,700
+but they are only filled when the script is run.
+
+182
+00:14:21,700 --> 00:14:24,540
+So they are filled when we are running it
+
+183
+00:14:24,540 --> 00:14:26,460
+in the compute node.
+
+184
+00:14:26,460 --> 00:14:31,900
+So we actually did run it in the compute node.
+
+185
+00:14:31,900 --> 00:14:32,400
+Yes.
+
+186
+00:14:35,500 --> 00:14:43,580
+Should we go to , actually, we have a bit of time.
+
+187
+00:14:43,580 --> 00:14:47,140
+There's a really good question in the notes.
+
+188
+00:14:47,140 --> 00:14:49,620
+If you take the script and you submit it
+
+189
+00:14:49,620 --> 00:14:52,980
+with bash the shell instead of sbatch,
+
+190
+00:14:52,980 --> 00:14:58,660
+it will look like it runs, but it's not taking these resource requests and it's not running
+
+191
+00:14:58,660 --> 00:15:03,300
+on the other thing. Yeah. We can demonstrate this. So, this is something you shouldn't do. Like,
+
+192
+00:15:03,300 --> 00:15:09,780
+it's unfortunate that the sbatch and bash sound so similar. Like, it's an unfortunate thing.
+
+193
+00:15:09,780 --> 00:15:18,180
+But if we, like, Lee, you remember I mentioned about how this is going to be filled when it's
+
+194
+00:15:18,180 --> 00:15:25,300
+going to be running. Now, if we run it with bash, what we expect to happen, bash is the terminal
+
+195
+00:15:25,300 --> 00:15:32,100
+or the terminal emulator or the interpreter for the code language that we have written here.
+
+196
+00:15:32,980 --> 00:15:37,060
+We expect that it heals these according to where we are currently running.
+
+197
+00:15:38,020 --> 00:15:43,060
+Because we are running it on the login node currently, our current host name
+
+198
+00:15:43,060 --> 00:16:07,220
+So, if we now run it, you notice that we are on the login node and we have this strange
+
+199
+00:16:07,220 --> 00:16:13,860
+thing happening where we have job queued and waiting for resources and then job has been
+
+200
+00:16:13,860 --> 00:16:20,260
+allocated to cases. So what happened is that basically we wrote these commands out. So if
+
+201
+00:16:20,260 --> 00:16:27,380
+we would have written these commands into the terminal itself, we would get the same output.
+
+202
+00:16:28,340 --> 00:16:33,220
+So if we run it with bash. So don't run it with bash, that's a different thing.
+
+203
+00:16:33,220 --> 00:16:41,500
+If we use it with sbatch, we give it to the Slurm manager that runs it only when there's
+
+204
+00:16:41,500 --> 00:16:48,500
+the correct space and time to run it in the correct computer to run it.
+
+205
+00:16:48,500 --> 00:16:52,620
+That way, we can make certain that it runs in the correct place.
+
+206
+00:16:52,620 --> 00:16:59,300
+You might also be wondering, why do we have srun over here?
+
+207
+00:16:59,300 --> 00:17:08,100
+do we have srun in the script? Why is it there? And the reason for that is that in some cases,
+
+208
+00:17:09,140 --> 00:17:18,100
+especially if you're using these MPI jobs that are parallel jobs, you might want to call srun
+
+209
+00:17:18,740 --> 00:17:27,700
+so that the Slurm manager can allocate these jobs correctly with the MPI jobs. But also,
+
+210
+00:17:27,700 --> 00:17:34,680
+So if you are using this srun, you will get extra information to the history.
+
+211
+00:17:34,680 --> 00:17:42,680
+So if I look at the Slurm history, when I...
+
+212
+00:17:42,680 --> 00:17:47,880
+Let's first run it once more so that we can get like that.
+
+213
+00:17:47,880 --> 00:17:48,880
+We can just...
+
+214
+00:17:48,880 --> 00:17:49,880
+Yeah.
+
+215
+00:17:49,880 --> 00:17:56,320
+We run it properly with the sbatch, and if we look at the Slurm history afterwards, let's
+
+216
+00:17:56,320 --> 00:17:59,120
+Let's see if I did it already finish.
+
+217
+00:17:59,120 --> 00:17:59,620
+Yes.
+
+218
+00:18:04,360 --> 00:18:07,760
+We can notice here that the, I'll
+
+219
+00:18:07,760 --> 00:18:10,880
+have to make it a bit smaller, I guess.
+
+220
+00:18:10,880 --> 00:18:14,200
+You can also have it run off the edge of your screen.
+
+221
+00:18:14,200 --> 00:18:14,700
+Yeah.
+
+222
+00:18:14,700 --> 00:18:15,520
+Yeah, there.
+
+223
+00:18:15,520 --> 00:18:16,240
+OK, yeah.
+
+224
+00:18:16,240 --> 00:18:21,960
+We notice here that the last job that we run,
+
+225
+00:18:21,960 --> 00:18:27,000
+we see these batch, extern, and zero.
+
+226
+00:18:27,000 --> 00:18:30,880
+So what this batch means is that all the commands that
+
+227
+00:18:30,880 --> 00:18:34,760
+didn't have srun on top of them, what did they run?
+
+228
+00:18:34,760 --> 00:18:39,760
+So basically, all of this stuff, how much resources it used,
+
+229
+00:18:39,760 --> 00:18:44,360
+and then how much resources did the srun call do?
+
+230
+00:18:44,360 --> 00:18:50,760
+We can get more up-to-date resource users information
+
+231
+00:18:50,760 --> 00:18:53,560
+for each individual part of our code.
+
+232
+00:18:53,560 --> 00:18:57,400
+You can do also kinds of fancy stuff for that.
+
+233
+00:18:57,400 --> 00:19:00,600
+But the srun is optional in the sbatch script.
+
+234
+00:19:00,600 --> 00:19:03,560
+But if you want to get more like this kind of
+
+235
+00:19:03,560 --> 00:19:08,800
+gradual resource information, you can use that.
+
+236
+00:19:08,800 --> 00:19:11,240
+So if you have a script and you're running,
+
+237
+00:19:11,240 --> 00:19:12,960
+say, three different steps with
+
+238
+00:19:12,960 --> 00:19:15,300
+different memory and CPU requirements,
+
+239
+00:19:15,300 --> 00:19:18,400
+you can understand them separately.
+
+240
+00:19:18,400 --> 00:19:25,840
+And we'll learn more about this in the next lesson about monitoring jobs.
+
+241
+00:19:25,840 --> 00:19:33,680
+But I think, yeah, what we probably want to do is do more exercises so you can learn how
+
+242
+00:19:33,680 --> 00:19:35,480
+to write these scripts yourself.
+
+243
+00:19:35,480 --> 00:19:41,880
+Because this is like the meat and potatoes of the whole thing.
+
+244
+00:19:41,880 --> 00:19:47,360
+When we go into Parallel Jobs and everything, the power of the cluster comes from the ability
+
+245
+00:19:47,360 --> 00:19:54,480
+of it doing work for you while you're just doing something else. And for that, you need
+
+246
+00:19:54,480 --> 00:20:02,720
+to be able to tell it that they are like, do this for me. And how do you do it? You
+
+247
+00:20:02,720 --> 00:20:10,040
+write these scripts that you execute so that you don't have to like watch what's happening
+
+248
+00:20:10,040 --> 00:20:15,760
+there. So learning this is a very important skill and very useful. So I highly recommend
+
+249
+00:20:15,760 --> 00:20:20,080
+and find the exercises.
+
+250
+00:20:20,080 --> 00:20:20,580
+Yeah.
+
+251
+00:20:23,920 --> 00:20:30,400
+OK, so should I propose we give a nice long time?
+
+252
+00:20:30,400 --> 00:20:34,800
+Should we let it go on until after the break
+
+253
+00:20:34,800 --> 00:20:39,200
+and return at, say, 10 minutes after the hour?
+
+254
+00:20:42,200 --> 00:20:43,000
+Yeah.
+
+255
+00:20:43,000 --> 00:20:48,680
+I will also like one thing we forgot to mention actually is that how do you cancel these jobs?
+
+256
+00:20:48,680 --> 00:20:57,080
+Like once you have submitted a job you can also cancel them. So let's say that I open the pi
+
+257
+00:21:01,080 --> 00:21:04,360
+the run pi script and I put here sleep
+
+258
+00:21:04,360 --> 00:21:11,200
+a long time, and it's not going to finish.
+
+259
+00:21:11,200 --> 00:21:19,560
+And I submit this script here.
+
+260
+00:21:19,560 --> 00:21:28,240
+I can check the queue, and you notice this job, each job gets its own job ID, so that
+
+261
+00:21:28,240 --> 00:21:30,080
+the Slurm can manage them.
+
+262
+00:21:30,080 --> 00:21:32,440
+And once this is running, you can always cancel.
+
+263
+00:21:32,440 --> 00:21:37,120
+If you notice that the job is not going to finish correctly, or you made a mistake or
+
+264
+00:21:37,120 --> 00:21:45,640
+something, you can always use scancel and the job ID to cancel the job.
+
+265
+00:21:45,640 --> 00:21:51,680
+So that way, when you run the scancel, the job will be gone.
+
+266
+00:21:51,680 --> 00:21:56,880
+It will just kill the job.
+
+267
+00:21:56,880 --> 00:22:03,560
+So basically, if you look at the quick reference, you can find all the common control and monitoring
+
+268
+00:22:03,560 --> 00:22:04,560
+things you need.
+
+269
+00:22:04,560 --> 00:22:06,840
+But yeah, read the page.
+
+270
+00:22:06,840 --> 00:22:09,600
+There's a little bit more in there.
+
+271
+00:22:09,600 --> 00:22:10,600
+Yeah.
+
+272
+00:22:10,600 --> 00:22:11,600
+Okay.
+
+273
+00:22:11,600 --> 00:22:19,600
+So, yeah, I'd propose exercises until the hour and then break until 10 minutes past
+
+274
+00:22:19,600 --> 00:22:23,440
+the hour all combined.
+
+275
+00:22:23,440 --> 00:22:30,720
+what we're doing right now is sort of the most important lesson, I'd say. It combines the shell,
+
+276
+00:22:30,720 --> 00:22:36,960
+the batch job, the resource requirements. And from here, it should get much smoother.
+
+277
+00:22:37,920 --> 00:22:46,240
+Yeah. Basically, like I said, what we want to now learn is how can we utilize the resources in the
+
+278
+00:22:46,240 --> 00:22:52,240
+computing cluster. Like there are lots of resources there and this is the way, like these are the,
+
+279
+00:22:52,240 --> 00:22:56,560
+this is the language that the queue manager understands. So we want to learn that language
+
+280
+00:22:56,560 --> 00:23:02,960
+so that we can translate our, whatever we want to run to a language that the queue manager
+
+281
+00:23:02,960 --> 00:23:12,480
+understands. So that the queue manager can do it for us. Yeah. Okay, great. So see you in
+
+282
+00:23:12,480 --> 00:23:23,640
+what, like 30 minutes? Okay, I guess that's all. Keep asking the questions and we'll
+
+283
+00:23:23,640 --> 00:23:31,000
+keep reading and answering. Okay, bye.
+
+284
+00:23:31,000 --> 00:23:34,720
+Hello.
+
+285
+00:23:34,720 --> 00:23:38,240
+We are back.
+
+286
+00:23:38,240 --> 00:23:42,160
+So yeah, how was the exercise?
+
+287
+00:23:42,160 --> 00:23:46,000
+I forgot to add the poll asking how it went.
+
+288
+00:23:49,120 --> 00:23:51,280
+There are some good questions here,
+
+289
+00:23:51,280 --> 00:23:54,040
+including a lot which we're asking
+
+290
+00:23:54,040 --> 00:23:57,320
+about using more resources.
+
+291
+00:23:57,320 --> 00:24:01,520
+For example, more processors at the same time
+
+292
+00:24:01,520 --> 00:24:03,720
+or running several things at once.
+
+293
+00:24:03,720 --> 00:24:14,360
+Yeah, we'll talk about parallel processing tomorrow, so different methods of parallel
+
+294
+00:24:14,360 --> 00:24:15,360
+processing.
+
+295
+00:24:15,360 --> 00:24:27,440
+But for now, the focus is on making certain that your workflow is in a way that you can
+
+296
+00:24:27,440 --> 00:24:33,080
+easily then leave something for the queue system to manage.
+
+297
+00:24:33,080 --> 00:24:38,080
+Like basically, you can write this kind of stuff
+
+298
+00:24:38,080 --> 00:24:40,680
+that the queue system does non-interactively,
+
+299
+00:24:40,680 --> 00:24:44,400
+so you don't have to worry about it.
+
+300
+00:24:44,400 --> 00:24:52,040
+But we're going to do some demos of Serial 3 and 5.
+
+301
+00:24:52,040 --> 00:24:54,800
+I'll switch to [name]'s screen here.
+
+302
+00:24:54,800 --> 00:25:04,720
+Yeah. So, these are pretty helpful examples of showing a couple of interesting...
+
+303
+00:25:06,240 --> 00:25:14,720
+Like this kind of Gedanken experiment, as Einstein would put it. Thinking experiments would make you
+
+304
+00:25:14,720 --> 00:25:19,360
+think about, okay, what's really happening in the background? So, in this example,
+
+305
+00:25:19,360 --> 00:25:27,480
+example, we try to demonstrate basically what happens if you start modifying something that
+
+306
+00:25:27,480 --> 00:25:31,120
+is already submitted.
+
+307
+00:25:31,120 --> 00:25:42,760
+Let's look at the run-pi that we have over here.
+
+308
+00:25:42,760 --> 00:25:54,200
+As per the exercise, let's add sleep 120 there, but I removed this older one at the end, and
+
+309
+00:25:54,200 --> 00:25:59,400
+we put sleep 120 here, so it will sleep for two minutes.
+
+310
+00:25:59,400 --> 00:26:06,160
+Maybe we can put it into one minute so that we don't have to wait that long.
+
+311
+00:26:06,160 --> 00:26:13,320
+And then, after we have submitted it, let's open the script and let's add something to
+
+312
+00:26:13,320 --> 00:26:18,280
+the Slurm script, so to this run-pi script.
+
+313
+00:26:18,280 --> 00:26:23,720
+So I'll prepare myself and I will take this into clipboard already.
+
+314
+00:26:23,720 --> 00:26:29,880
+I'll save the script and I'll submit it.
+
+315
+00:26:29,880 --> 00:26:30,880
+So let's see.
+
+316
+00:26:30,880 --> 00:26:44,160
+it and I'll edit it and I'll add here the line modified and I'll save this okay and now we can
+
+317
+00:26:44,160 --> 00:26:48,720
+use the Slurm queue to check what's happening it's it's now running in the queue so now it's
+
+318
+00:26:48,720 --> 00:26:55,120
+sleeping for a bit okay so what do we expect to happen [name]? So I guess it depends on if
+
+319
+00:26:55,120 --> 00:27:04,520
+if Slurm is remembering, if Slurm already read the file and then runs it, or if it just
+
+320
+00:27:04,520 --> 00:27:11,320
+remembers where the file is. No, actually, no, it's not queuing, it's running. I mean,
+
+321
+00:27:11,320 --> 00:27:15,920
+I guess if it's running, there's no way our modifications could have any effect because
+
+322
+00:27:15,920 --> 00:27:19,080
+Python has already opened it.
+
+323
+00:27:19,080 --> 00:27:24,160
+But also, even if it wouldn't be running, it wouldn't have an effect.
+
+324
+00:27:24,160 --> 00:27:30,260
+Because like Slurm, when you give it the script, what the Slurm sees is that it sees the script,
+
+325
+00:27:30,260 --> 00:27:33,880
+it will copy that script into its memory.
+
+326
+00:27:33,880 --> 00:27:43,600
+You can even later on, if you want, you can view the script for what it keeps in memory.
+
+327
+00:27:43,600 --> 00:27:50,040
+So basically, once you press Sbatch and the script, Slurm will remember the script and
+
+328
+00:27:50,040 --> 00:27:54,200
+after that, you can no longer modify that.
+
+329
+00:27:54,200 --> 00:27:55,200
+You have fired it away.
+
+330
+00:27:55,200 --> 00:28:00,880
+You have written the letter and you have sent it to the post and it's basically, it's there
+
+331
+00:28:00,880 --> 00:28:02,080
+going already.
+
+332
+00:28:02,080 --> 00:28:04,000
+You cannot modify it anymore.
+
+333
+00:28:04,000 --> 00:28:12,200
+So when we look at the output, the pi.out, we cut and edit, we see that there's no co-modified
+
+334
+00:28:12,200 --> 00:28:13,200
+line there.
+
+335
+00:28:13,200 --> 00:28:18,320
+because Slurm already took the script. But if we, yeah, go right ahead.
+
+336
+00:28:18,320 --> 00:28:21,600
+What would happen if instead of modifying the script itself,
+
+337
+00:28:21,600 --> 00:28:26,720
+we modified some of the other libraries or files it imported or ran?
+
+338
+00:28:27,360 --> 00:28:31,840
+Yes, let's do that exactly. So I'll quickly...
+
+339
+00:28:37,360 --> 00:28:40,640
+So I'll remove this modified line over here.
+
+340
+00:28:40,640 --> 00:28:53,480
+here. Save the file. Now, let's submit the run.py. Now, it's basically the exercise four.
+
+341
+00:28:53,480 --> 00:29:04,480
+Let's modify the actual Python script. Let's do that. I'll take this already into the clipboard.
+
+342
+00:29:04,480 --> 00:29:15,760
+I'll sbatch the run-pi, and now I will quickly edit the slurm/pi.py, and I'll add this over
+
+343
+00:29:15,760 --> 00:29:16,760
+here.
+
+344
+00:29:16,760 --> 00:29:17,760
+Okay.
+
+345
+00:29:17,760 --> 00:29:18,760
+Yeah.
+
+346
+00:29:18,760 --> 00:29:29,160
+And we can notice that it's now doing the sleep thing over there.
+
+347
+00:29:29,160 --> 00:29:32,200
+So what do we expect over here now?
+
+348
+00:29:32,200 --> 00:29:34,920
+Like the Slurm is running.
+
+349
+00:29:34,920 --> 00:29:41,720
+It has taken the sh script that we have given it, but it will run through it line by line.
+
+350
+00:29:41,720 --> 00:29:47,440
+And because it's now stuck in the sleep line, it hasn't yet reached the Python line.
+
+351
+00:29:47,440 --> 00:29:51,320
+But we have now modified the Python line, but the Python isn't something that we gave
+
+352
+00:29:51,320 --> 00:29:52,840
+to Slurm.
+
+353
+00:29:52,840 --> 00:29:58,920
+It's something that Slurm will, when it executes the commands, it will find from the disk.
+
+354
+00:29:58,920 --> 00:30:02,720
+So it will find the file that we have modified.
+
+355
+00:30:02,720 --> 00:30:09,360
+So usually it's not recommended to modify either the Slurm script or the script that
+
+356
+00:30:09,360 --> 00:30:16,120
+you are submitting, because you're now changing the state of the system.
+
+357
+00:30:16,120 --> 00:30:26,180
+You're changing either the script or the code, and now it will give a different error.
+
+358
+00:30:26,180 --> 00:30:32,420
+So you can see that if I now print it out, it gives me an exception.
+
+359
+00:30:32,420 --> 00:30:33,420
+Yeah.
+
+360
+00:30:33,420 --> 00:30:34,420
+Okay.
+
+361
+00:30:34,420 --> 00:30:36,620
+Not what we expected because of something else, but still.
+
+362
+00:30:36,620 --> 00:30:37,620
+Yeah.
+
+363
+00:30:37,620 --> 00:30:38,620
+Yeah.
+
+364
+00:30:38,620 --> 00:30:39,620
+Yeah.
+
+365
+00:30:39,620 --> 00:30:40,620
+Okay.
+
+366
+00:30:40,620 --> 00:30:46,180
+So I guess the point of these exercises is basically, once you submit a job, it's been
+
+367
+00:30:46,180 --> 00:30:51,860
+recorded and what you do may or may not have an effect on it, but it's better to leave
+
+368
+00:30:51,860 --> 00:30:52,860
+it alone.
+
+369
+00:30:52,860 --> 00:30:53,860
+Not modify them at all.
+
+370
+00:30:53,860 --> 00:30:58,980
+You have to be very careful to understand what you submitted and what you're modifying and how
+
+371
+00:30:58,980 --> 00:31:04,660
+it will affect things. So, basically, what usually is recommended that you would have,
+
+372
+00:31:04,660 --> 00:31:10,580
+like, let's say for your experiment, you would have an Sbatch script. And for the corresponding
+
+373
+00:31:10,580 --> 00:31:14,820
+to the Sbatch script, you would have your code or your parameters or something. We'll talk about
+
+374
+00:31:14,820 --> 00:31:19,700
+Array jobs tomorrow, if you have a lot of parameters, you can use these fancy things to
+
+375
+00:31:22,340 --> 00:31:29,300
+do lots of code calls at one time. But yeah, that is usually...
+
+376
+00:31:32,740 --> 00:31:39,540
+You want to have a script that is... Basically, it shows how you can replicate the results of your
+
+377
+00:31:39,540 --> 00:31:48,500
+or code. If you want to do a simulation or a run, some compilation or some code run,
+
+378
+00:31:48,500 --> 00:31:54,340
+you can replicate it by using the Sbatch script and you don't want to mess them up while they're
+
+379
+00:31:54,340 --> 00:31:55,340
+running.
+
+380
+00:31:55,340 --> 00:31:59,540
+Okay. So, yeah.
+
+381
+00:31:59,540 --> 00:32:00,540
+Number five.
+
+382
+00:32:00,540 --> 00:32:09,460
+Yeah. So, let's look at the third example. So, let's create a Slurm script that runs
+
+383
+00:32:09,460 --> 00:32:17,300
+this following program that produces some output. So, this ties up neatly to the next section that
+
+384
+00:32:17,300 --> 00:32:28,340
+we have. So, let's call it monitor_output.sh, and I will quickly write the usual lines.
+
+385
+00:32:28,340 --> 00:32:31,540
+Yeah. The usual magic words, I guess.
+
+386
+00:32:31,540 --> 00:32:45,060
+Yeah, once you have written enough of these, these are pretty self. You become familiar with those.
+
+387
+00:32:53,060 --> 00:32:59,060
+Yes, so what we do here is that every 30 seconds we print date and then we,
+
+388
+00:32:59,060 --> 00:33:06,180
+sorry for 30 times we print date and then we sleep for 10 seconds. Okay so
+
+389
+00:33:06,180 --> 00:33:10,900
+this is basically pretending that you're running something and it's periodically
+
+390
+00:33:10,900 --> 00:33:20,700
+outputting the status. Yes. Okay. So let's submit it and now let's it's probably
+
+391
+00:33:20,700 --> 00:33:33,500
+morning. Someone warns that you set the sh files to output file. Oh, did I? That's a good catch.
+
+392
+00:33:33,500 --> 00:33:38,700
+Yeah, that's a good catch. Okay, well then, I'm in trouble. Okay. I'm in danger,
+
+393
+00:33:39,420 --> 00:33:47,340
+like as Aral would say. So, let's cancel this one and let's do another recap.
+
+394
+00:33:47,340 --> 00:33:51,060
+So these can happen, this can happen.
+
+395
+00:33:51,060 --> 00:33:55,420
+Like I said, once you're familiar with these,
+
+396
+00:33:55,420 --> 00:33:59,700
+you can write them really fast, but you can also
+
+397
+00:33:59,700 --> 00:34:03,060
+write problems really fast.
+
+398
+00:34:03,060 --> 00:34:04,260
+Yeah.
+
+399
+00:34:04,260 --> 00:34:05,340
+OK.
+
+400
+00:34:05,340 --> 00:34:06,340
+OK, let's try it again.
+
+401
+00:34:08,860 --> 00:34:12,700
+The repetition makes everything better.
+
+402
+00:34:12,700 --> 00:34:13,300
+Yeah.
+
+403
+00:34:13,300 --> 00:34:18,100
+So now monitor_output.out
+
+404
+00:34:18,100 --> 00:34:18,600
+OK.
+
+405
+00:34:18,600 --> 00:34:19,100
+Yes.
+
+406
+00:34:19,100 --> 00:34:22,940
+And then let's go here.
+
+407
+00:34:22,940 --> 00:34:24,860
+Yes.
+
+408
+00:34:24,860 --> 00:34:26,580
+And let's try it again.
+
+409
+00:34:29,580 --> 00:34:30,340
+Yeah.
+
+410
+00:34:30,340 --> 00:34:31,340
+Here.
+
+411
+00:34:31,340 --> 00:34:31,940
+OK.
+
+412
+00:34:31,940 --> 00:34:33,620
+And it's going.
+
+413
+00:34:33,620 --> 00:34:34,340
+Yeah.
+
+414
+00:34:34,340 --> 00:34:34,840
+And let's.
+
+415
+00:34:34,840 --> 00:34:36,900
+So now, yeah.
+
+416
+00:34:36,900 --> 00:34:39,020
+Now we can catenate the output.
+
+417
+00:34:39,020 --> 00:34:42,100
+So monitor output, cut out.
+
+418
+00:34:42,100 --> 00:34:44,060
+Not the SH.
+
+419
+00:34:44,060 --> 00:34:44,900
+OK.
+
+420
+00:34:44,900 --> 00:34:46,740
+Ah, so there's some stuff running.
+
+421
+00:34:46,740 --> 00:34:47,700
+Yeah.
+
+422
+00:34:47,700 --> 00:34:50,420
+And yeah, so it's appearing.
+
+423
+00:34:50,420 --> 00:34:53,700
+Yeah, so this is typical when you're running something.
+
+424
+00:34:53,700 --> 00:34:56,580
+What we talked earlier, interactivity
+
+425
+00:34:56,580 --> 00:34:58,100
+and non-interactivity.
+
+426
+00:34:58,100 --> 00:35:00,100
+In many cases, there's a situation
+
+427
+00:35:00,100 --> 00:35:04,620
+where do you really need to get the output constantly?
+
+428
+00:35:04,620 --> 00:35:07,060
+Do you really need to watch it?
+
+429
+00:35:07,060 --> 00:35:11,180
+Do I really need to watch this every second
+
+430
+00:35:11,180 --> 00:35:19,740
+of the output. Most likely not. I'm just interested that it runs, it produces reasonable results and
+
+431
+00:35:19,740 --> 00:35:24,380
+then I can leave it running. If I have a longer simulation or something, I can just leave it
+
+432
+00:35:24,380 --> 00:35:30,860
+running and I don't have to look at it constantly. But of course, you want to view the output.
+
+433
+00:35:30,860 --> 00:35:39,020
+So you can either do here, catenate the output. One other option is to use this tail -f and there's
+
+434
+00:35:39,020 --> 00:35:46,460
+other tools as well, but this tail is like follow the end of the file basically, it says here,
+
+435
+00:35:46,460 --> 00:35:53,020
+and it keeps it open. So every time a new line appears it automatically. Okay, yeah.
+
+436
+00:35:53,740 --> 00:36:00,860
+Okay, so if someone submits like a long training job or something, they can check the status this
+
+437
+00:36:00,860 --> 00:36:07,420
+way. Yeah. I will also mention that for some cases, for example with Python, like in many
+
+438
+00:36:07,420 --> 00:36:15,500
+cases, the output is buffered. Once you read a certain amount of output, it will flush the buffer
+
+439
+00:36:16,140 --> 00:36:23,820
+into the file. If your code produces very small amounts of output at the start of the run,
+
+440
+00:36:24,540 --> 00:36:29,420
+it might seem that nothing is happening because it hasn't yet filled the buffer.
+
+441
+00:36:31,340 --> 00:36:37,180
+There are various things that you can say to make certain that the buffers are flushed every
+
+442
+00:36:37,180 --> 00:36:41,660
+now and then, but like there are these certain situations where the output doesn't appear
+
+443
+00:36:41,660 --> 00:36:48,060
+necessarily immediately. Yeah, I mean I'm actually kind of surprised it does appear so quickly here
+
+444
+00:36:48,700 --> 00:36:55,580
+and doesn't get buffered. But anyway, should we go on to the next one?
+
+445
+00:36:56,940 --> 00:37:00,380
+And this is about monitoring, like what we already started to do.
+
+446
+00:37:07,180 --> 00:37:26,140
+Oh, sorry. I'm just adding the link to the notes. There's a good question here. It's
+
+447
+00:37:26,140 --> 00:37:32,980
+still about the... Remember there's a warning on some cluster, never use tail-f or something
+
+448
+00:37:32,980 --> 00:37:33,980
+like that.
+
+449
+00:37:33,980 --> 00:37:40,620
+Yeah, it might differ on the cluster. It's about whether the file system is like how
+
+450
+00:37:40,620 --> 00:37:46,740
+it's syncing, like how the syncing is done, like if there is this kind of like a global
+
+451
+00:37:46,740 --> 00:37:55,380
+lock or not. And it might differ in some clusters. There are then other tools to view the output.
+
+452
+00:37:55,380 --> 00:38:02,500
+But if your cluster says that don't use those, don't use those, just because I said to use
+
+453
+00:38:02,500 --> 00:38:07,580
+because, like, buyer beware or something like that.
+
+454
+00:38:07,580 --> 00:38:12,580
+I mean, you should trust your local admin over me.
+
+455
+00:38:12,580 --> 00:38:16,660
+So at Aalto, we've invested significant resources
+
+456
+00:38:16,660 --> 00:38:20,740
+in having a strong and performant file system.
+
+457
+00:38:20,740 --> 00:38:28,260
+So whenever there is lots of stuff, like, yeah.
+
+458
+00:38:28,260 --> 00:38:31,300
+So basically, it can handle things like tail-f.
+
+459
+00:38:31,300 --> 00:38:39,860
+Yeah, but it's probably a technical reason that other sites wouldn't have the file system capable
+
+460
+00:38:39,860 --> 00:38:43,860
+of doing it. It's probably a technical system regarding the mount and whatever,
+
+461
+00:38:43,860 --> 00:38:46,000
+but let's not go that far. Yeah. Okay. So monitoring. Sorry for this short distraction.
+

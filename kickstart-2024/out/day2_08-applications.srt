@@ -1,0 +1,868 @@
+1
+00:00:00,000 --> 00:00:03,980
+Hello, we are back.
+
+2
+00:00:03,980 --> 00:00:04,980
+Hello.
+
+3
+00:00:04,980 --> 00:00:05,980
+Yeah.
+
+4
+00:00:05,980 --> 00:00:12,620
+So, during the break, we were thinking that, like, hopefully everything appears simple
+
+5
+00:00:12,620 --> 00:00:13,620
+for you.
+
+6
+00:00:13,620 --> 00:00:16,100
+Like, we were thinking that, like, is this simple or is it not?
+
+7
+00:00:16,100 --> 00:00:17,100
+Is this complicated?
+
+8
+00:00:17,100 --> 00:00:18,100
+Or is it not?
+
+9
+00:00:18,100 --> 00:00:19,100
+We don't know.
+
+10
+00:00:19,100 --> 00:00:25,860
+So at the end, remember to put the feedback on so that we know
+
+11
+00:00:25,860 --> 00:00:28,860
+that was everything clear.
+
+12
+00:00:28,860 --> 00:00:31,420
+And do remember to put stuff in the notes
+
+13
+00:00:31,420 --> 00:00:37,940
+as well so that we know what's happening.
+
+14
+00:00:37,940 --> 00:00:41,740
+So [name], what do we have for us
+
+15
+00:00:41,740 --> 00:00:46,220
+at this last lightning round of talks?
+
+16
+00:00:46,220 --> 00:00:51,100
+So there's, as you see from the schedule, there's four things you want to cover.
+
+17
+00:00:51,100 --> 00:00:54,620
+Application, software modules, data storage, remote access to data.
+
+18
+00:00:56,220 --> 00:01:01,740
+Each of these is itself not a very long page, but a bit involved.
+
+19
+00:01:02,460 --> 00:01:08,140
+But behind the scenes, there is so much going on there.
+
+20
+00:01:09,100 --> 00:01:13,020
+So our goal is to give you the summary of why it's important,
+
+21
+00:01:13,020 --> 00:01:16,940
+but you can read it and ask questions on your own time.
+
+22
+00:01:18,860 --> 00:01:24,220
+And that's better than what we've done before when we spent hours on all of these and everyone just
+
+23
+00:01:24,220 --> 00:01:30,780
+gets bored. Yeah, we'll try to like basically provide you with the cliff notes of what is
+
+24
+00:01:33,820 --> 00:01:38,220
+yeah what you should be like basically public service announcement or this kind of like
+
+25
+00:01:38,220 --> 00:01:43,180
+At this point, probably everybody's a bit already like there's so much happening already in the
+
+26
+00:01:43,180 --> 00:01:49,020
+course. So we try to keep it as simple as possible. So let's talk about applications.
+
+27
+00:01:49,020 --> 00:01:54,460
+What are applications, [name]? I mean, I guess whenever anyone wants to run something on the
+
+28
+00:01:54,460 --> 00:02:00,460
+cluster, you want to run some software. And it might be something that you've created completely
+
+29
+00:02:00,460 --> 00:02:09,580
+by yourself, but often it's something that is automatically installed. And for this,
+
+30
+00:02:11,420 --> 00:02:21,740
+what does it mean? So yeah, you log in and you want some software, like you want Python,
+
+31
+00:02:21,740 --> 00:02:27,740
+which appears to be here, or you might want R, or you might want MATLAB, or any number of more
+
+32
+00:02:27,740 --> 00:02:34,460
+specialized things. So if you go to the random page of some random application and ask,
+
+33
+00:02:34,460 --> 00:02:39,740
+how do I install it? That will probably not work on the cluster itself
+
+34
+00:02:41,340 --> 00:02:46,620
+because you don't have admin access there. But there are other things you can do.
+
+35
+00:02:46,620 --> 00:03:04,580
+So, first of all, I would say, like [name] said, the system is shared, so you cannot
+
+36
+00:03:04,580 --> 00:03:06,500
+get the admin access there.
+
+37
+00:03:06,500 --> 00:03:12,020
+But of course, in many cases, the cluster administrators try to install something that
+
+38
+00:03:12,020 --> 00:03:14,260
+will benefit the whole community.
+
+39
+00:03:14,260 --> 00:03:17,580
+So there already exists usually software
+
+40
+00:03:17,580 --> 00:03:19,420
+that has been installed.
+
+41
+00:03:19,420 --> 00:03:22,660
+We'll talk about how these pre-installed software,
+
+42
+00:03:22,660 --> 00:03:26,460
+we use this module system to load these,
+
+43
+00:03:26,460 --> 00:03:28,820
+how these can be loaded.
+
+44
+00:03:28,820 --> 00:03:30,980
+But yeah, this is one option.
+
+45
+00:03:30,980 --> 00:03:31,480
+Yeah.
+
+46
+00:03:34,580 --> 00:03:36,620
+Can you ever install things by yourself?
+
+47
+00:03:36,620 --> 00:03:45,980
+Yeah, I would say like most of the time, yes.
+
+48
+00:03:45,980 --> 00:03:53,620
+But for many programs, especially on Linux that the computers, like these cluster computers
+
+49
+00:03:53,620 --> 00:03:59,260
+usually run, you either need to compile it or you need to get it pre-compiled somewhere
+
+50
+00:03:59,260 --> 00:04:00,260
+else.
+
+51
+00:04:00,260 --> 00:04:04,420
+Like somebody already has done the dirty work for you.
+
+52
+00:04:04,420 --> 00:04:11,140
+If you take it from somewhere else, there are various things you can use. We use Conda nowadays
+
+53
+00:04:11,140 --> 00:04:17,780
+a lot to provide various kinds of softwares. You can use these Apptainer or Singularity containers
+
+54
+00:04:17,780 --> 00:04:25,940
+to install libraries. If your code doesn't require to compile its own libraries, it's
+
+55
+00:04:25,940 --> 00:04:32,820
+like interpreted code, like Matlab code or R code or Python code. In many cases, you can use
+
+56
+00:04:32,820 --> 00:04:37,820
+which is like the already existing software modules that we provide.
+
+57
+00:04:38,020 --> 00:04:39,500
+Yeah.
+
+58
+00:04:41,260 --> 00:04:44,900
+So when someone comes and needs to use something,
+
+59
+00:04:45,100 --> 00:04:48,540
+I guess this page will give the general summary.
+
+60
+00:04:48,740 --> 00:04:52,860
+But first you look and see, is it already there?
+
+61
+00:04:53,060 --> 00:04:56,140
+And then you would decide,
+
+62
+00:04:56,340 --> 00:05:01,660
+do you ask us or do you try to install yourself?
+
+63
+00:05:01,660 --> 00:05:07,660
+and it depends on how good you are at adapting installation instructions.
+
+64
+00:05:09,180 --> 00:05:11,820
+There's also this thing called containers.
+
+65
+00:05:13,180 --> 00:05:17,100
+Yeah, I already mentioned it in passing.
+
+66
+00:05:17,100 --> 00:05:22,780
+So there are these containers, this Apptainer or Singularity containers
+
+67
+00:05:22,780 --> 00:05:24,620
+that can make you so that you can run.
+
+68
+00:05:24,620 --> 00:05:29,420
+So if you're familiar with Docker containers, they're a bit similar but a bit different.
+
+69
+00:05:29,420 --> 00:05:40,420
+If you're interested, we were having this workflows course for high-performance computing
+
+70
+00:05:40,420 --> 00:05:45,780
+and I gave a tutorial on these there.
+
+71
+00:05:45,780 --> 00:05:53,060
+The recording should be in the Code Refinery YouTube page and the course page is linked
+
+72
+00:05:53,060 --> 00:05:54,140
+in that course as well.
+
+73
+00:05:54,140 --> 00:05:56,700
+We can link it into the chat as well.
+
+74
+00:05:56,700 --> 00:06:01,340
+those can be used to install basically if your program only runs on Ubuntu let's say
+
+75
+00:06:01,340 --> 00:06:07,260
+you can install it in a container and run that container in the cluster yeah
+
+76
+00:06:09,420 --> 00:06:17,260
+okay um should we go on so the next up is modules and
+
+77
+00:06:20,300 --> 00:06:24,300
+so module is one of the things that allows you to
+
+78
+00:06:24,300 --> 00:06:32,540
+load software. So you'll often see in order to use Python or R or whatever run the command
+
+79
+00:06:32,540 --> 00:06:41,420
+module load something. So for example we could like let's say we have some MATLAB users already
+
+80
+00:06:41,980 --> 00:06:49,580
+commented there in the in the notes. So if you want to use MATLAB we have MATLAB
+
+81
+00:06:49,580 --> 00:06:57,420
+installations usually. Most of the computing clusters, we all use this lmod module system.
+
+82
+00:06:59,660 --> 00:07:05,420
+In these, there's this command called module spider that you can use to check what versions are
+
+83
+00:07:06,460 --> 00:07:11,980
+installed. For example, MATLAB. You can write the search with the usual terms, for example,
+
+84
+00:07:11,980 --> 00:07:20,460
+module spider R or something. And there's like a R version there. And let's say if we want to use
+
+85
+00:07:20,460 --> 00:07:29,500
+that, we would load that module. So let's say we load that R module. And now we can use command
+
+86
+00:07:29,500 --> 00:07:36,620
+like which to check which R we have. And we notice that it comes from somewhere, a magical place
+
+87
+00:07:36,620 --> 00:07:49,900
+way it suddenly found an R for us. There's a big list of these usually by the module purge
+
+88
+00:07:49,900 --> 00:07:54,940
+cleans up the modules. All of the commands are documented in the page if you want to read it.
+
+89
+00:07:57,100 --> 00:08:03,580
+There's usually a whole bunch of this software that is available on the computing clusters.
+
+90
+00:08:03,580 --> 00:08:16,580
+modules. So if you're looking for something, you might find it already here. So one place
+
+91
+00:08:16,580 --> 00:08:18,860
+to look at it would be over here.
+
+92
+00:08:18,860 --> 00:08:25,060
+Yeah. And there is quite, well, you need to know a little bit about module for almost
+
+93
+00:08:25,060 --> 00:08:29,140
+anything you do. So I'd encourage you to read this page.
+
+94
+00:08:29,140 --> 00:08:36,260
+Yeah, but the modules basically do, like in one sentence, they change various parts in
+
+95
+00:08:36,260 --> 00:08:41,420
+the Linux terminal so that it finds, like when you look for a program, it will find
+
+96
+00:08:41,420 --> 00:08:44,260
+the program in different places.
+
+97
+00:08:44,260 --> 00:08:50,220
+And we use this, instead of installing everything at the same time, we use this so that we can
+
+98
+00:08:50,220 --> 00:08:54,860
+have multiple different software that might not be compatible with each other.
+
+99
+00:08:54,860 --> 00:08:59,100
+So let's say multiple versions of R or multiple versions of Python or something like that.
+
+100
+00:08:59,100 --> 00:09:05,100
+Okay, should we go on to data storage?
+
+101
+00:09:05,100 --> 00:09:12,100
+Now, data storage is a very big thing and complex.
+
+102
+00:09:12,100 --> 00:09:21,100
+I mean, the cluster without data, what's the point?
+
+103
+00:09:21,100 --> 00:09:29,100
+And for the cluster, it's not near as simple as add some hard drives there.
+
+104
+00:09:29,100 --> 00:09:34,100
+Because the cluster has, the storage has to be big. So ours is 5 petabytes.
+
+105
+00:09:34,100 --> 00:09:43,100
+It has to be accessible to hundreds of compute nodes and possibly thousands of jobs at the same time.
+
+106
+00:09:43,100 --> 00:09:46,100
+All of which are reading and writing.
+
+107
+00:09:46,100 --> 00:09:53,820
+Yeah, so you can basically think of it as like a big pile of disks that has some magic
+
+108
+00:09:53,820 --> 00:10:00,340
+that makes it so that it appears as one file system.
+
+109
+00:10:00,340 --> 00:10:06,260
+So it's one big file system and everybody has their own files on that system.
+
+110
+00:10:06,260 --> 00:10:13,580
+And they are usually these, like you can look at the documentation for the places where
+
+111
+00:10:13,580 --> 00:10:21,740
+should put stuff. But in Aalto, for example, you basically always want to work on the scratch
+
+112
+00:10:21,740 --> 00:10:29,500
+file system, which is the work directory, like the big file system that we have. We also have this
+
+113
+00:10:30,940 --> 00:10:42,060
+bit of a legacy home folder that is much smaller and it's not meant for high-performance computing,
+
+114
+00:10:42,060 --> 00:10:46,460
+so the other part is meant to store your actual data.
+
+115
+00:10:48,540 --> 00:10:53,180
+The important things would be to note that usually these file systems have a quota.
+
+116
+00:10:54,220 --> 00:11:01,340
+By default, the home folder has a 10 gigabyte quota and the scratch file system has a 200
+
+117
+00:11:01,340 --> 00:11:09,020
+gigabyte quota, like a personal quota. But then we also provide bigger quotas, especially for
+
+118
+00:11:09,020 --> 00:11:14,540
+projects. So if you belong to a resource project, we can create a shared folder for your project
+
+119
+00:11:14,540 --> 00:11:22,940
+and they can run to terabytes and more, the quotas. So how much files can you store?
+
+120
+00:11:22,940 --> 00:11:27,340
+And if you run out of file storage, then ask us and we can increase it.
+
+121
+00:11:30,460 --> 00:11:34,860
+To me, the most important lesson here is that there's different types of storage for different
+
+122
+00:11:34,860 --> 00:11:41,420
+purposes. So our big Scratch storage is, well, it's called Scratch for a reason. It's not backed
+
+123
+00:11:41,420 --> 00:11:48,140
+up, but it's big. Aalto has other places, for example, this hidden out Aalto network drives
+
+124
+00:11:48,140 --> 00:11:56,700
+here, which are not as higher. Actually, yeah, let's come here. This is good. So for example,
+
+125
+00:11:56,700 --> 00:12:01,980
+Aalto has network drives that are not as big, but they're very backed up. They're backed up,
+
+126
+00:12:01,980 --> 00:12:03,180
+They have snapshots.
+
+127
+00:12:03,180 --> 00:12:06,940
+They have all kinds of, um, yeah.
+
+128
+00:12:06,940 --> 00:12:07,260
+Sorry.
+
+129
+00:12:07,260 --> 00:12:12,980
+I, um, yeah, it's sort of great out there.
+
+130
+00:12:14,060 --> 00:12:14,340
+Yeah.
+
+131
+00:12:14,420 --> 00:12:17,300
+Um, yeah, yeah, yeah, yeah.
+
+132
+00:12:18,580 --> 00:12:23,500
+Uh, so, so whenever you have a bunch of data, you might need to,
+
+133
+00:12:24,020 --> 00:12:26,500
+um, put it in different places.
+
+134
+00:12:26,820 --> 00:12:31,020
+For example, if you're collecting some original data, you would first put it
+
+135
+00:12:31,020 --> 00:12:38,940
+on the project Aalto storage where it's backed up and then make a copy to Triton where it's not
+
+136
+00:12:38,940 --> 00:12:45,340
+backed up but available to everywhere. And same for other things. There's like some of the compute
+
+137
+00:12:45,340 --> 00:12:53,580
+nodes have really fast local disks which are good for some things and so on. Yeah like usually like
+
+138
+00:12:53,580 --> 00:12:58,700
+you want to think about like what is your overall workflow but usually you have something that is
+
+139
+00:12:58,700 --> 00:13:05,420
+important like the starting point of your thing. You want that to be backed up in a project folder
+
+140
+00:13:05,420 --> 00:13:12,780
+in the Aalto network trial and then you want to create a copy of that usually into the work
+
+141
+00:13:12,780 --> 00:13:20,860
+directory or into the cluster so that you can work on that in the fast file system.
+
+142
+00:13:21,500 --> 00:13:28,460
+Then your code might be in a version control system. You might want to put your code into the
+
+143
+00:13:28,460 --> 00:13:34,380
+Git version control so that you can modify it there and you can keep a better check of that.
+
+144
+00:13:35,020 --> 00:13:44,860
+And then you might need to navigate some of these different file systems, but it's not as
+
+145
+00:13:44,860 --> 00:13:51,580
+complicated as it might look initially. Because once you figure out your own workflow,
+
+146
+00:13:51,580 --> 00:13:59,740
+it's usually quite easy to then manage afterwards. Yeah, there's a good comment. Can we...
+
+147
+00:14:02,620 --> 00:14:10,860
+Okay, there was just an explosion or boom outside. Okay, more like something falling.
+
+148
+00:14:11,660 --> 00:14:17,580
+Okay, so someone asked to mention separate quotas for number of files and size. So this is a good
+
+149
+00:14:17,580 --> 00:14:24,780
+point. So on your own computer, you usually think the size is what matters, because your hard disk
+
+150
+00:14:24,780 --> 00:14:34,620
+is a certain number of terabytes. But on a cluster, the number of files is also quite important.
+
+151
+00:14:35,260 --> 00:14:37,900
+And you can have a separate quota for both of these.
+
+152
+00:14:38,780 --> 00:14:46,460
+Yes. So if I run quota command, for example, in our cluster, you notice that I have, well,
+
+153
+00:14:46,460 --> 00:14:51,580
+quite a bit of files. So you can see here that there's these quotas over here.
+
+154
+00:14:52,780 --> 00:14:59,500
+Yeah, let's read this. Yeah, let's make it a bit. Yeah, so under group quotas we see space,
+
+155
+00:15:01,020 --> 00:15:09,500
+quota limit, files, quota limit. Yes, so the space is the actual space that I'm using. So currently
+
+156
+00:15:09,500 --> 00:15:18,540
+because I need to do lots of tests and developments. I need to have a bit bigger
+
+157
+00:15:18,540 --> 00:15:32,940
+quota than normally. My quota is three terabytes and I have two terabytes of data. Then my file
+
+158
+00:15:32,940 --> 00:15:41,580
+quota is three million files, and I'm almost hitting that. I'm pretty certain that 50% of
+
+159
+00:15:41,580 --> 00:15:48,140
+that is different kinds of Conda environment installations. Many of the installations might
+
+160
+00:15:48,860 --> 00:15:57,260
+create huge amounts of files. This can get problematic in many clusters. Many clusters
+
+161
+00:15:57,260 --> 00:16:05,660
+might have different documentations on how you should mitigate problems by having too
+
+162
+00:16:05,660 --> 00:16:14,300
+many files and that sort of stuff. Our file system, luckily, it's designed to pretty much
+
+163
+00:16:14,300 --> 00:16:20,300
+handle it quite well, but the quota can still get quite full at some point. In those cases,
+
+164
+00:16:20,300 --> 00:16:31,340
+I personally just need to do a cleanup at some point. You should be mindful or know about that
+
+165
+00:16:31,340 --> 00:16:37,740
+there's a difference there. There's a number of files and then there's the actual size of
+
+166
+00:16:37,740 --> 00:16:48,140
+those files and both are tracked by the voter. Okay. Should we go to the remote access?
+
+167
+00:16:48,140 --> 00:16:51,740
+Can you scroll down and show the available data storage options?
+
+168
+00:16:51,740 --> 00:16:52,240
+Oh, yeah.
+
+169
+00:16:52,780 --> 00:16:57,340
+So hopefully your cluster has a table that looks something like this
+
+170
+00:16:57,340 --> 00:17:01,900
+and will show the different places that are available and all the different properties.
+
+171
+00:17:02,540 --> 00:17:07,580
+And it's worth looking at this and seeing what fits.
+
+172
+00:17:07,580 --> 00:17:09,420
+But we don't need to go into details now.
+
+173
+00:17:09,420 --> 00:17:09,920
+Yeah.
+
+174
+00:17:10,700 --> 00:17:14,300
+We also have another page for all the provided
+
+175
+00:17:14,300 --> 00:17:17,100
+and it's like double the size because there's so many places
+
+176
+00:17:17,100 --> 00:17:23,260
+is you can put your data. If you're unsure where should you put your data, just come and ask us.
+
+177
+00:17:23,260 --> 00:17:31,820
+That's the easiest way. Yes, I agree. And we enjoy answering these questions because it saves
+
+178
+00:17:31,820 --> 00:17:39,660
+others a lot of time and is quite useful. So remote access. So you somehow need to copy data
+
+179
+00:17:39,660 --> 00:17:45,020
+from wherever you're working to the cluster, unless you edit and write everything directly
+
+180
+00:17:45,020 --> 00:17:50,780
+on there. But most people need to do this. And let's be honest, the copying of data,
+
+181
+00:17:51,660 --> 00:18:00,540
+if you don't use the command line, it can be a little bit tricky and complex. But luckily,
+
+182
+00:18:00,540 --> 00:18:06,940
+we have lots of different ways to do that now. So it's getting better. There's two main different
+
+183
+00:18:06,940 --> 00:18:14,780
+options here. One is remote mounts of data. So mounting means, let's see, where does it come from?
+
+184
+00:18:15,020 --> 00:18:26,060
+like you take a hard drive and okay here we go so basically and you mount the disk into somewhere
+
+185
+00:18:26,060 --> 00:18:32,300
+and then it becomes available on that computer and in this case because we are mounting it through
+
+186
+00:18:32,300 --> 00:18:39,500
+the network but it means that the file is actually in the file system in triton or in your cluster
+
+187
+00:18:39,500 --> 00:18:46,140
+but you basically have the shadow of it in your computer and whenever you request,
+
+188
+00:18:46,140 --> 00:18:50,860
+okay, can I have that file, it will have to transfer it through the network and then if
+
+189
+00:18:50,860 --> 00:18:58,140
+you do a modification, it will have to transfer the file back there. For example, what we talked
+
+190
+00:18:58,140 --> 00:19:06,940
+earlier about VS Code yesterday, VS Code basically, it's running on Triton. If you edit the file on
+
+191
+00:19:06,940 --> 00:19:15,100
+your VS Code editor, it will have to send the modifications back to Triton because it's
+
+192
+00:19:15,100 --> 00:19:18,460
+editing the actual file in the cluster.
+
+193
+00:19:18,460 --> 00:19:22,100
+So that's basically how it works.
+
+194
+00:19:22,100 --> 00:19:23,100
+Yeah.
+
+195
+00:19:23,100 --> 00:19:29,060
+And this is really convenient because as files are being made in some directory, you immediately
+
+196
+00:19:29,060 --> 00:19:32,100
+see it on your own computer.
+
+197
+00:19:32,100 --> 00:19:35,540
+But for opening big files and so on.
+
+198
+00:19:35,540 --> 00:19:36,540
+Yeah.
+
+199
+00:19:36,540 --> 00:19:41,260
+Yeah, you need to transfer the whole file in order to get access to it.
+
+200
+00:19:41,260 --> 00:19:42,260
+Yeah.
+
+201
+00:19:42,260 --> 00:19:47,420
+So, the second picture is transferring data.
+
+202
+00:19:47,420 --> 00:19:48,660
+And this is what it looks like.
+
+203
+00:19:48,660 --> 00:19:52,980
+So there's one copy somewhere and you make another copy somewhere else.
+
+204
+00:19:52,980 --> 00:19:57,060
+And there's a lot of different tools that help you with this.
+
+205
+00:19:57,060 --> 00:20:04,620
+The benefit of this is that once you then start processing the file at your own computer,
+
+206
+00:20:04,620 --> 00:20:10,060
+the results of your simulation or something. You now have it locally, so it's much faster to work
+
+207
+00:20:10,060 --> 00:20:16,220
+on that usually. But the problem might be that now you have two copies and how do you make certain
+
+208
+00:20:16,220 --> 00:20:21,420
+that they are actually in sync, especially if you do modifications or that kind of stuff.
+
+209
+00:20:21,420 --> 00:20:28,460
+There are tools that make transferring these files or syncing these even large files very useful,
+
+210
+00:20:28,460 --> 00:20:34,220
+like Git Annex and DataLAD and various other tools that you can use to do this.
+
+211
+00:20:36,300 --> 00:20:41,580
+But you need to figure out a workflow that suits your specific use case usually.
+
+212
+00:20:43,900 --> 00:20:47,900
+But yeah, if you ever encounter the situation where you're like,
+
+213
+00:20:47,900 --> 00:20:54,940
+okay, I have a file underscore date underscore back or something like that in your folder that
+
+214
+00:20:54,940 --> 00:21:00,300
+everybody has at some point, then you know that, okay, you could probably come and talk to us and
+
+215
+00:21:00,300 --> 00:21:09,340
+we'll figure out a better tool for you to do the copying. Yeah. Okay. And for general purposes,
+
+216
+00:21:09,340 --> 00:21:17,260
+I see many people using the mounting these days for lightweight use and then copying for
+
+217
+00:21:17,260 --> 00:21:19,000
+bigger data. So with that being said, I propose that we go to the Q&A and maybe
+

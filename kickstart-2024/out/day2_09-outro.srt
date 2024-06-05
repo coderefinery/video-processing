@@ -1,0 +1,844 @@
+1
+00:00:00,000 --> 00:00:05,540
+bigger data. So with that being said, I propose that we go to the Q&A and maybe
+
+2
+00:00:05,540 --> 00:00:10,680
+we can start by describing our typical workflows when we were doing research
+
+3
+00:00:10,680 --> 00:00:21,860
+type of things. Does that sound good? Yeah. Okay, so I will switch to the notes here.
+
+4
+00:00:28,260 --> 00:00:33,560
+So yeah, I'll put this in auto-scroll mode.
+
+5
+00:00:45,840 --> 00:00:48,240
+Yeah, okay, so, um,
+
+6
+00:00:50,100 --> 00:00:53,240
+[name], when you were doing research, how did you typically
+
+7
+00:00:53,240 --> 00:00:59,720
+typically deal with data transfers and where was your data stored and stuff like that?
+
+8
+00:00:59,720 --> 00:01:08,760
+Yeah, well, when I was finishing my master's, I had this kind of like horrible setup.
+
+9
+00:01:09,640 --> 00:01:15,160
+So that I think everybody who's doing something eventually ends up if they have a deadline.
+
+10
+00:01:15,160 --> 00:01:26,440
+So, what I had is that I transferred some files from Triton to a virtual machine that
+
+11
+00:01:26,440 --> 00:01:32,200
+I had on my Windows machine, and then I copied them from there to my Windows side where I
+
+12
+00:01:32,200 --> 00:01:40,080
+was writing my latte, like actual the paper, the thesis.
+
+13
+00:01:40,080 --> 00:01:47,200
+Basically, it was like I copied the files from the cluster to a virtual machine where I did
+
+14
+00:01:47,200 --> 00:01:57,360
+plotting that I copied into my Windows machine. It was a mess and I wouldn't dare anybody to
+
+15
+00:01:57,360 --> 00:02:06,480
+replicate it. Workflows are this kind of a thing where you quite quickly end up with a workflow
+
+16
+00:02:06,480 --> 00:02:13,360
+that is bad, but it's your workflow and now you have gotten used to it and now it's too much hassle
+
+17
+00:02:13,360 --> 00:02:19,280
+to change it anymore. But the next time you start a new project, you know that you don't want to
+
+18
+00:02:19,280 --> 00:02:26,080
+replicate it anymore. So, I think this is quite a common occurrence for everybody. So, when you
+
+19
+00:02:26,080 --> 00:02:32,080
+start working on something, you think that, okay, I will just wing it. I will just improvise,
+
+20
+00:02:32,080 --> 00:02:38,800
+whatever. And then later on, you realize, okay, maybe I should have planned this previously.
+
+21
+00:02:43,520 --> 00:02:52,320
+But nowadays, I would say that I do vast majority of my work either straight on Triton or I use
+
+22
+00:02:52,320 --> 00:03:00,560
+Git to sync all of the code so that I don't ever have to copy any code anywhere, hopefully.
+
+23
+00:03:02,080 --> 00:03:10,640
+There's a question, is the cluster the VM?
+
+24
+00:03:10,640 --> 00:03:15,760
+In this case, the virtual machine was running on my Windows desktop, so it was a virtual
+
+25
+00:03:15,760 --> 00:03:21,860
+machine that I run on my Windows desktop, because I needed some plotting things and
+
+26
+00:03:21,860 --> 00:03:26,040
+stuff like that.
+
+27
+00:03:26,040 --> 00:03:27,200
+I don't know why I hadn't.
+
+28
+00:03:27,200 --> 00:03:30,040
+I could have probably installed the tools to the cluster
+
+29
+00:03:30,040 --> 00:03:31,240
+as well.
+
+30
+00:03:31,240 --> 00:03:32,840
+Yeah.
+
+31
+00:03:32,840 --> 00:03:33,360
+Let's see.
+
+32
+00:03:33,360 --> 00:03:34,880
+So what was my workflow?
+
+33
+00:03:34,880 --> 00:03:39,320
+So for many of my projects, I was quite comfortable
+
+34
+00:03:39,320 --> 00:03:46,680
+with SSH and using an editor on Triton.
+
+35
+00:03:46,680 --> 00:03:52,600
+So I would SSH to the cluster and then have all of my,
+
+36
+00:03:52,600 --> 00:03:56,680
+I'd be developing my code right there.
+
+37
+00:03:56,680 --> 00:04:04,920
+And then I would track my code with a version control system, and usually not commit it often
+
+38
+00:04:04,920 --> 00:04:17,160
+enough, although I would always try to. The code gets synced to, um, well, my own computer or
+
+39
+00:04:17,160 --> 00:04:26,360
+to github or something and then I usually wouldn't make good backups of
+
+40
+00:04:26,360 --> 00:04:33,200
+the okay if I had raw data I would store it on one of the Aalto file servers and
+
+41
+00:04:33,200 --> 00:04:39,200
+then make a copy on my own computer but if it was generated data usually the
+
+42
+00:04:39,200 --> 00:04:45,200
+only copy would be on Triton because it could be regenerated if absolutely
+
+43
+00:04:45,200 --> 00:04:52,240
+needed, although this wasn't the best setup, really.
+
+44
+00:04:52,240 --> 00:04:56,960
+But that was pretty typical for many of my things.
+
+45
+00:04:56,960 --> 00:05:01,280
+There's a good question, I think, related to this,
+
+46
+00:05:01,280 --> 00:05:06,520
+because I think things have changed quite a bit.
+
+47
+00:05:06,520 --> 00:05:08,840
+The code transfer is very easy using Git,
+
+48
+00:05:08,840 --> 00:05:11,080
+but there was a question about how
+
+49
+00:05:11,080 --> 00:05:23,120
+you see using VS, Visual Studio connected via SSH to modify the code folders and modify
+
+50
+00:05:23,120 --> 00:05:29,200
+the .sh files and then run from the OOD shell with Sbatch.
+
+51
+00:05:29,200 --> 00:05:34,720
+I think that's something that a lot of people are now just doing more and more.
+
+52
+00:05:34,720 --> 00:05:40,160
+So basically, what I do commonly is that I have terminals, like I use this tool called
+
+53
+00:05:40,160 --> 00:05:47,420
+tmuxinator to create like this templated terminals basically for myself, for anybody who's interested.
+
+54
+00:05:47,420 --> 00:05:53,800
+And I've gotten so accustomed to vim, so I'm basically at this kind of like a situation
+
+55
+00:05:53,800 --> 00:06:01,040
+where it's hard to change learned habits.
+
+56
+00:06:01,040 --> 00:06:06,440
+So I've got my workflow, but I think for many people it's very useful that you can edit
+
+57
+00:06:06,440 --> 00:06:10,060
+your code in the same place where your rest of your stuff is.
+
+58
+00:06:10,060 --> 00:06:13,620
+I think with VS Code it has some problems
+
+59
+00:06:13,620 --> 00:06:17,380
+related to all of the file searching that we talked about yesterday,
+
+60
+00:06:17,380 --> 00:06:20,660
+but it's a very powerful tool and very powerful interface.
+
+61
+00:06:20,660 --> 00:06:24,940
+You can also use the VS Code terminal to also submit the jobs.
+
+62
+00:06:24,940 --> 00:06:27,060
+So you don't necessarily have to go to
+
+63
+00:06:27,060 --> 00:06:32,260
+OOD to submit the jobs if the VS Code works fine for you.
+
+64
+00:06:32,260 --> 00:06:39,940
+And I agree, this VS Code plus open on demand for submitting stuff, that is a very usable
+
+65
+00:06:39,940 --> 00:06:46,740
+workflow. And that's good. We need much more usability in clusters these days.
+
+66
+00:06:46,740 --> 00:07:02,740
+There's a question, like, is it possible to work on Triton directly to files in the disks
+
+67
+00:07:02,740 --> 00:07:05,820
+without moving files to scratch, which is not backed up?
+
+68
+00:07:05,820 --> 00:07:14,460
+So the disks, I assume the disks are, you mean, like, maybe the disks on your own computer
+
+69
+00:07:14,460 --> 00:07:15,460
+or?
+
+70
+00:07:15,460 --> 00:07:20,580
+I mean, to me, this sort of implies people don't want it on Scratch because it's not
+
+71
+00:07:20,580 --> 00:07:21,580
+backed up.
+
+72
+00:07:21,580 --> 00:07:25,900
+But we should say Scratch isn't backed up, but it is reliable.
+
+73
+00:07:25,900 --> 00:07:32,620
+It's a huge rack of probably several hundred disks now that are all grade-sixed.
+
+74
+00:07:32,620 --> 00:07:33,620
+Yeah.
+
+75
+00:07:33,620 --> 00:07:39,620
+So there's a good, like, this is, I think this is a great question because it's like,
+
+76
+00:07:39,620 --> 00:07:44,460
+like, how would, well, I can briefly talk about the technology.
+
+77
+00:07:44,460 --> 00:07:50,460
+So in the system, there's the six of these disk arrays.
+
+78
+00:07:50,460 --> 00:07:54,820
+And each of these disk arrays is in this right setup
+
+79
+00:07:54,820 --> 00:07:57,620
+so that if one of the disks fail,
+
+80
+00:07:57,620 --> 00:08:02,500
+you can lose one complete array out of these six,
+
+81
+00:08:02,500 --> 00:08:04,380
+like complete all of the disks.
+
+82
+00:08:04,380 --> 00:08:05,860
+You could lose all of these.
+
+83
+00:08:05,860 --> 00:08:08,780
+And it's still duplicated.
+
+84
+00:08:08,780 --> 00:08:13,180
+And all of the connections are duplicated.
+
+85
+00:08:13,180 --> 00:08:16,740
+So there's multiple like nodes answering the connections.
+
+86
+00:08:16,740 --> 00:08:20,540
+So it's a very reliable system, but it's not backed up.
+
+87
+00:08:20,540 --> 00:08:26,680
+So the backup doesn't like, you don't have a backup that protects you from human error.
+
+88
+00:08:26,680 --> 00:08:33,060
+You have a basically very reliable system that protects from like system failure kind
+
+89
+00:08:33,060 --> 00:08:34,060
+of a thing.
+
+90
+00:08:34,060 --> 00:08:39,420
+Like it's a very reliable system that protects from hardware failures and that sort of stuff.
+
+91
+00:08:39,420 --> 00:08:47,420
+if you delete the file, it's gone. So it's not backed up in the sense it's very reliable,
+
+92
+00:08:47,420 --> 00:08:56,220
+but it's as reliable as you are. Personally, I don't trust myself that much with not messing up
+
+93
+00:08:56,220 --> 00:09:03,340
+stuff. So that's why taking backups is important. But at the same time, that's why I often think
+
+94
+00:09:03,340 --> 00:09:08,620
+that the most important thing to backup is your thoughts, which is basically your code that you
+
+95
+00:09:08,620 --> 00:09:16,940
+right? If that is under version control, I can lose a lot of stuff. And that makes it much easier
+
+96
+00:09:16,940 --> 00:09:23,660
+to decide what is important and what is not. Because usually the problem is that if you don't
+
+97
+00:09:23,660 --> 00:09:31,980
+know what is important and what is not important, everything is important. If you don't know what
+
+98
+00:09:31,980 --> 00:09:37,260
+you can throw away, you cannot throw anything away basically. And then suddenly you need to
+
+99
+00:09:37,260 --> 00:09:42,620
+back up like everything. But if you know that, okay, this initial data set is very important
+
+100
+00:09:42,620 --> 00:09:48,780
+because I actually need to record measurements from subjects or something like that. If I
+
+101
+00:09:49,660 --> 00:09:55,660
+actually need to do some measurements, then you know that that is important. You can back up
+
+102
+00:09:55,660 --> 00:10:01,420
+that. And let's say the processing code for that is backup, like inversion control. You know that
+
+103
+00:10:01,420 --> 00:10:09,100
+you can reproduce the results with the processing code. Because in science, you're at a problem if
+
+104
+00:10:09,100 --> 00:10:15,180
+you cannot reproduce anyway, right? So, if you have your code backup and your initial data backup,
+
+105
+00:10:15,180 --> 00:10:20,300
+you're already quite good to go. So, you shouldn't worry about the scratch that much.
+
+106
+00:10:20,300 --> 00:10:27,740
+Of course, don't go removing all of your files because then you need to do the preprocessing
+
+107
+00:10:27,740 --> 00:10:35,100
+again or that kind of stuff. But usually it's like you shouldn't worry about it. I should say
+
+108
+00:10:35,100 --> 00:10:42,700
+it's much more secure than the disk in the hard drive. Let's give an example. So on a typical
+
+109
+00:10:42,700 --> 00:10:51,580
+computer, if one hard disk breaks, then you lose all your data. On some computers like mine,
+
+110
+00:10:51,580 --> 00:10:58,060
+it requires two hard disks to break to lose my data because it's mirrored across two disks.
+
+111
+00:10:58,860 --> 00:11:06,380
+On Triton, it requires two disks to break because it's mirrored in a way that is designed this way.
+
+112
+00:11:10,860 --> 00:11:16,940
+Yeah, so it is and my computer is sitting here in my apartment where there could be a fire or
+
+113
+00:11:16,940 --> 00:11:23,100
+anything. But Triton's data is in a nice climate controlled and fire protected machine room.
+
+114
+00:11:23,740 --> 00:11:29,020
+So, yeah. But if this means can it be stored on Aalto network disks,
+
+115
+00:11:29,020 --> 00:11:33,340
+which are backed up and snapshotted and all that stuff, basically
+
+116
+00:11:35,260 --> 00:11:40,700
+no, because it doesn't have performance to be exported to the whole cluster.
+
+117
+00:11:40,700 --> 00:11:48,540
+There's a there's a good question about so what's the difference between cluster workstations
+
+118
+00:11:48,540 --> 00:11:53,260
+or virtual machines they're already like a good answer there so so basically I would
+
+119
+00:11:53,260 --> 00:11:58,620
+just basically read it out loud so the workstation or one computer is like you have an actual
+
+120
+00:11:58,620 --> 00:12:02,780
+computer and you have an operating system on that a virtual machine is that you have
+
+121
+00:12:02,780 --> 00:12:07,660
+an actual hardware like computer but on top of that computer you basically fake another
+
+122
+00:12:07,660 --> 00:12:13,180
+computer. So, and that's like a virtual machine. It's virtual because it's not actually like,
+
+123
+00:12:13,740 --> 00:12:22,140
+it's like created on top of the, like you're in the matrix now, like basically.
+
+124
+00:12:23,980 --> 00:12:30,620
+And then the cluster is this kind of like, you take multiple computers and you stitch them
+
+125
+00:12:30,620 --> 00:12:36,780
+together using these tools that make it possible to like operate across multiple computers.
+
+126
+00:12:37,660 --> 00:12:42,660
+Okay, let's see.
+
+127
+00:12:42,660 --> 00:12:45,420
+The benefits of on-demand for terminals.
+
+128
+00:12:45,420 --> 00:12:49,200
+I think this is pretty accurate, so it's the ease of use.
+
+129
+00:12:49,200 --> 00:12:58,740
+I think for most purposes, if you can, the SSH is probably better overall, or is it even
+
+130
+00:12:58,740 --> 00:13:00,260
+better though?
+
+131
+00:13:00,260 --> 00:13:10,500
+Well, I think it depends, like I personally like, it's this kind of like.
+
+132
+00:13:10,500 --> 00:13:12,060
+You don't have to use a web browser.
+
+133
+00:13:12,060 --> 00:13:19,340
+So if you can use it and directly connect it to your own desktop, that's good.
+
+134
+00:13:19,340 --> 00:13:20,340
+Yeah.
+
+135
+00:13:20,340 --> 00:13:27,660
+Like the terminal is basically like, I would say it's like, it said that in, for example,
+
+136
+00:13:27,660 --> 00:13:35,100
+blues music, it's not the notes you play. It's the notes you don't play. So the terminal is the
+
+137
+00:13:35,100 --> 00:13:45,020
+minimal things, basically. I personally like it because if I didn't say terminal to do something,
+
+138
+00:13:45,020 --> 00:13:50,140
+it didn't do anything, basically. If I click a button in a browser or something,
+
+139
+00:13:50,140 --> 00:13:58,660
+meaning, it usually has some like maybe predefined meaning coded into that button.
+
+140
+00:13:58,660 --> 00:14:03,460
+But if I use a terminal, I can decide like everything.
+
+141
+00:14:03,460 --> 00:14:07,140
+And it's a different kind of like a paradigm of usage.
+
+142
+00:14:07,140 --> 00:14:12,540
+Like the one is like programmatic usage and the other is like interactive usage.
+
+143
+00:14:12,540 --> 00:14:18,300
+Like you click something and it's like more visual and in many cases it's easier.
+
+144
+00:14:18,300 --> 00:14:27,580
+But if the button does a lot of things for you, it's very good, of course.
+
+145
+00:14:27,580 --> 00:14:31,580
+So it's just like complementary approaches, I would say.
+
+146
+00:14:31,580 --> 00:14:35,700
+You can decide which one works for you best.
+
+147
+00:14:35,700 --> 00:14:40,620
+Yeah, okay.
+
+148
+00:14:40,620 --> 00:14:43,180
+Is it precise to say Lumi is a cluster?
+
+149
+00:14:43,180 --> 00:14:44,180
+Yes, definitely.
+
+150
+00:14:44,180 --> 00:14:53,500
+Just a question, can we deploy a robotic simulator in Visio ISAX in a container and run it in
+
+151
+00:14:53,500 --> 00:14:54,500
+cloud mode?
+
+152
+00:14:54,500 --> 00:14:55,500
+Yes.
+
+153
+00:14:55,500 --> 00:15:00,020
+I mean, like that answer says, that's a pretty typical thing that happens.
+
+154
+00:15:00,020 --> 00:15:03,220
+And I think, did we deploy that for other people?
+
+155
+00:15:03,220 --> 00:15:07,220
+Yeah, I've installed it at least once for somebody.
+
+156
+00:15:07,220 --> 00:15:08,220
+Yeah.
+
+157
+00:15:08,220 --> 00:15:09,220
+Yeah.
+
+158
+00:15:09,220 --> 00:15:10,220
+Yeah.
+
+159
+00:15:10,220 --> 00:15:11,220
+So if you're thinking about that.
+
+160
+00:15:11,220 --> 00:15:12,220
+Yeah, go right ahead.
+
+161
+00:15:12,220 --> 00:15:30,220
+I was going to say, if you have this kind of question, it's good to make the issue and say, can I do this? And we can say, well, first you search and see, is it already there? Then you can make an issue and ask us to install it. And we'll decide if it's, yeah.
+
+162
+00:15:30,220 --> 00:15:39,340
+Yeah, like the IsaacSim is a good example of a program that definitely benefits from
+
+163
+00:15:39,340 --> 00:15:43,820
+using the container approach because it's basically like it's a robotic simulation program
+
+164
+00:15:43,820 --> 00:15:47,740
+that also incorporates like computer vision and that sort of stuff.
+
+165
+00:15:47,740 --> 00:15:53,500
+So you need to like create like a virtual environment where the virtual robot can then
+
+166
+00:15:53,500 --> 00:15:55,860
+drive around and that sort of stuff.
+
+167
+00:15:55,860 --> 00:16:01,100
+So it needs visualization tools that are usually like anything
+
+168
+00:16:01,100 --> 00:16:04,260
+involving visualization or that sort of stuff
+
+169
+00:16:04,260 --> 00:16:07,100
+usually requires libraries and things that
+
+170
+00:16:07,100 --> 00:16:08,820
+are quite complex to install.
+
+171
+00:16:08,820 --> 00:16:12,220
+So for that approach, these kind of container approaches
+
+172
+00:16:12,220 --> 00:16:12,900
+are very good.
+
+173
+00:16:19,580 --> 00:16:21,660
+Yeah, what else is there?
+
+174
+00:16:25,860 --> 00:16:33,700
+More questions, like what's the limit between some connected workstations and the cluster?
+
+175
+00:16:33,700 --> 00:16:35,980
+Like this question here.
+
+176
+00:16:35,980 --> 00:16:45,180
+Yeah, like usually the cluster is like a shorthand for the high performance computing cluster
+
+177
+00:16:45,180 --> 00:16:50,620
+or something like that, like what people use, where the high performance computing, that's
+
+178
+00:16:50,620 --> 00:16:53,620
+also like this kind of like, okay, what does this even mean?
+
+179
+00:16:53,620 --> 00:17:01,660
+kind of like a word salad. But the cluster, the idea behind the cluster is that it's usually
+
+180
+00:17:01,660 --> 00:17:08,460
+like multi-user system. Like it's a multi-user system where there's usually some queue manager
+
+181
+00:17:08,460 --> 00:17:16,420
+that manages the thing. So you can create a cluster at a workstation. So there's a thing
+
+182
+00:17:16,420 --> 00:17:28,500
+called, well, I'm blanking out. What's that? It's the Condor. It's the Condor that can
+
+183
+00:17:29,300 --> 00:17:37,460
+create a cluster out of workstations basically. But usually the cluster also implies these kinds
+
+184
+00:17:37,460 --> 00:17:43,300
+of features that you can do. So you have a queue system, you have multi-user setup, you have a
+
+185
+00:17:43,300 --> 00:17:51,220
+shared file system usually. It's basically like you know the story about the elephant and blind
+
+186
+00:17:51,860 --> 00:17:57,780
+men trying out the elephant and one thinks it's a broom and one thinks it's a tree and that sort
+
+187
+00:17:57,780 --> 00:18:04,420
+of stuff. It's the same kind of thing that cluster is a combination of all of these different
+
+188
+00:18:04,980 --> 00:18:11,300
+features. It's compute nodes, it's the shared file system, it's the queue system,
+
+189
+00:18:11,300 --> 00:18:18,940
+system, it's the software stack. It's all the cluster. It means that it's one system
+
+190
+00:18:18,940 --> 00:18:25,660
+designed to utilize all of these features in order to make it possible to run certain
+
+191
+00:18:25,660 --> 00:18:35,500
+kinds of programs which require these features. Especially in Lumi's case, what is a supercomputer
+
+192
+00:18:35,500 --> 00:18:43,180
+and a cluster like supercomputer usually means that it's big first off and there's usually
+
+193
+00:18:45,180 --> 00:18:51,580
+like a certain kind of architecture throughout the computer so you can run like these massive
+
+194
+00:18:51,580 --> 00:18:58,380
+jobs on it like very big jobs and that requires all of the infrastructure what the cluster has
+
+195
+00:18:58,380 --> 00:19:05,020
+but basically Lumi and our cluster is basically similar kind of a system the scale is just
+
+196
+00:19:05,020 --> 00:19:10,940
+different and what's in there, like what software is there and that sort of stuff is different.
+
+197
+00:19:10,940 --> 00:19:17,820
+But both use, for example, same kind of file system, both use same kind of queuing system
+
+198
+00:19:17,820 --> 00:19:25,580
+and both use LMod. So basically, we'll hear tomorrow more about how do you get from laptops
+
+199
+00:19:25,580 --> 00:19:32,540
+to Lumi basically, like how can you scale up. And if you know how to run stuff in your local cluster,
+
+200
+00:19:32,540 --> 00:19:37,500
+it's quite easy to jump or easier to jump to these supercomputers as well.
+
+201
+00:19:38,220 --> 00:19:45,500
+Yeah. And would you say that, well, there is no real strict definition? I mean, there's all
+
+202
+00:19:45,500 --> 00:19:51,500
+different types of things and different people may call them clusters or not and so on.
+
+203
+00:19:53,100 --> 00:19:59,420
+Like, I just think that there's so much technical stuff that is like, like, and everybody's like,
+
+204
+00:19:59,420 --> 00:20:08,380
+I don't know. There's so much technical jargon going in the field, but nobody can decide on
+
+205
+00:20:08,380 --> 00:20:15,020
+what's what. You can call them whatever you want as long as they do what you want.
+
+206
+00:20:20,220 --> 00:20:25,100
+I would think more in the line of, okay, what can I do with that? Instead of, okay,
+
+207
+00:20:25,100 --> 00:20:32,140
+what should I call it? Can I run my code on Lumi? Can I run my code on my local computer?
+
+208
+00:20:32,140 --> 00:20:39,260
+Can I run it? It doesn't really matter what the system is called as long as it produces
+
+209
+00:20:39,260 --> 00:20:42,300
+just the results that I want.
+
+210
+00:20:42,300 --> 00:20:42,800
+Yeah.
+
+211
+00:20:53,860 --> 00:20:54,000
+Yeah.
+
