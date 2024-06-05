@@ -180,115 +180,150 @@
 
 
 
-#- input: day2-obs.mkv
-#- output: out/day2-icebreker.mkv
-#  title: 2.1 Icebreakers and introduction
-#  description: >-
-#    Introduction of day 2.  Most people will go straight to the other
-#    videos.
-#  editlist:
-#  - start: 00:17:10
-#  - 00:26:52: Day 2 plan
-#  - end: 00:29:49
-#
-#- output: out/day2-about-cluster.mkv
-#  title: 2.2 About clusters and using them
-#  description: >-
-#    What is a cluster and why would we use one?  Brief reminder about
-#    the previous day and comments on how to use them and ask for help.
-#
-#    https://scicomp.aalto.fi/triton/tut/intro/
-#
-#  editlist:
-#  - start: 00:29:49
-#  - 00:36:04: How to get help
-#  - end: 00:41:04
-#
-#- output: out/day2-slurm.mkv
-#  title: '2.3 Slurm: the queueing system'
-#  description: >-
-#    Slurm is the "workload manager" or queuing system which manages
-#    all the resources.  It takes requests for jobs (CPU, memory, time,
-#    etc) and schedules them among all of the rest of the cluster.
-#    We discuss the basics of this system and we'll see how it actually
-#    works soon.
-#
-#    https://scicomp.aalto.fi/triton/tut/slurm/
-#
-#  editlist:
-#  - start: 00:41:13
-#  - 00:44:06: 'Another food analogy: the HPC diner'
-#  - 00:48:43: The resources Slurm manages
-#  - 00:50:06: Partitions
-#  - 00:52:00: Going through questions
-#  - end: 00:53:35
-#
-#- output: out/day2-interactive.mkv
-#  title: 2.4 Interactive jobs
-#  description: >-
-#    Before we get to scripted jobs (like most people use on the
-#    cluster), we will talk about interactive jobs.  This lets us get a
-#    little bit familiar with the Slurm system.  You shouldn't use this
-#    for running real calculations, but for testing and debugging, it is
-#    very useful.
-#
-#    https://scicomp.aalto.fi/triton/tut/interactive/
-#  editlist:
-#  - start: 00:53:35
-#  - 00:55:29: Why interactive jobs?
-#  - 00:57:10: Running the jobs
-#  - 01:02:50: Checking history
-#  - 01:05:05: Exercise introduction and questions
-#  - end: 01:08:41
-#  - start: 01:35:19
-#  - -: Going over the exercises and related questions
-#  - end: 01:51:40
-#
-#- output: out/day2-serial.mkv
-#  title: 2.5 Serial jobs
-#  description: >-
-#     Running jobs in simple Slurm batch scripts: this is the starting point
-#     of everything that comes next.  This is the most important lesson
-#     that everything built up to, and everything else will build upon.
-#
-#     https://scicomp.aalto.fi/triton/tut/serial/
-#  editlist:
-#  - start: 01:52:01
-#  - 01:52:50: Our first batch script
-#  - 01:58:30: Writing the script
-#  - 02:03:40: Exercises introduction and questions
-#  - stop: 02:05:11
-#  - start: 02:40:10
-#  - -: Going over the exercises and related questions
-#  - 02:47:46: 'Example: looking at output while the job is running'
-#  - stop: 02:54:20
-#
-#
-#- output: out/day2-monitoring.mkv
-#  title: 2.6 Monitoring jobs (summary)
-#  description: >-
-#    In order to use large amounts of resources, you need to be able to
-#    monitor how many resources you used, so that you can properly adjust
-#    the resources you request later.  We go over the main parts: output
-#    during the job, time, memory efficiency, CPU efficiency, GPU
-#    efficiency, and so on.
-#
-#    We have already seen most of the content there, but we summarize
-#    everything now in one place.
-#
-#    https://scicomp.aalto.fi/triton/tut/monitoring/
-#  editlist:
-#  - start: 02:54:31
-#  - 02:56:58: Monitoring during queuing
-#  - 02:58:00: Monitoring a running job
-#  - 03:03:37: Short overview of slurm history
-#  - 03:04:30: Checking job efficiency
-#  - 03:05:44: Exercises introduction
-#  - end: 03:07:09
-#  - start: 03:30:24
-#  - -: Going over the exercises and questions
-#  - stop: 03:39:52
-#
+- input: raw/day2-obs.mkv
+
+- output: out/day2_01-icebreaker.mkv
+  title: 2.1 Icebreakers and introduction
+  description: >-
+    Icebreaker discussion of day 2.  Most people will go straight to
+    the other videos.
+  editlist:
+  - start: 00:11:27
+  - end: 00:22:05
+
+- output: out/day2_02-about-clusters.mkv
+  title: 2.2 About clusters and using them
+  description: >-
+    What is a cluster and why would we use one?  Brief reminder about
+    the previous day and comments on how to use them and ask for help.
+
+    https://scicomp.aalto.fi/triton/tut/intro/
+
+  editlist:
+  - start: 00:22:05
+  #- 00:36:04: How to get help
+  - end: 00:27:49
+
+- output: out/day2_03-slurm.mkv
+  title: '2.3 Slurm: the queueing system'
+  description: >-
+    Slurm is the "workload manager" or queuing system which manages
+    all the resources.  It takes requests for jobs (CPU, memory, time,
+    etc) and schedules them among all of the rest of the cluster.
+    We discuss the basics of this system and we'll see how it actually
+    works soon.
+
+    https://scicomp.aalto.fi/triton/tut/slurm/
+
+  editlist:
+  - start: 00:27:49
+  - 00:28:47: "Food metaphor: the HPC Diner"
+  - 00:34:40: The resources Slurm manages
+  - end: 00:44:30
+
+- output: out/day2_04-copying-code-to-cluster.mkv
+  title: 2.4 Copy your code to a cluster (git clone)
+  description: >-
+    We describe how to copy your code to the cluster.  We use this
+    later.
+
+    https://scicomp.aalto.fi/triton/tut/cluster-shell/#triton-tut-example-repo
+  editlist:
+    - start: 00:44:30
+    - stop: 00:45:52
+
+- output: out/day2_05-interactive.mkv
+  title: 2.5 Interactive jobs
+  description: >-
+    Before we get to scripted jobs (like most people use on the
+    cluster), we will talk about interactive jobs.  This lets us get a
+    little bit familiar with the Slurm system.  You shouldn't use this
+    for running real calculations, but for testing and debugging, it is
+    very useful.
+
+    https://scicomp.aalto.fi/triton/tut/interactive/
+  editlist:
+  - start: 00:45:52
+  - -: Why and what are interactive jobs?
+  - 00:47:15: Running the jobs and looking at the history
+  - 00:56:24: Interactive shells
+  - 00:59:20: Checking job history
+  - 01:00:03: Exercise introduction and some Q&A
+  - stop: 01:02:02
+  - start: 01:17:12
+  - -: Post-exercise Q&A
+  - 01:19:12: Exercises Interactive-1 as a demo
+  - stop: 01:24:01
+
+- output: out/day2_06-serial.mkv
+  title: 2.6 Serial jobs
+  description: >-
+     Running jobs in simple Slurm batch scripts: this is the starting point
+     of everything that comes next.  This is the most important lesson
+     that everything built up to, and everything else will build upon.
+
+     https://scicomp.aalto.fi/triton/tut/serial/
+  editlist:
+  - start: 01:34:37
+  - 01:42:59: Demo
+  - 01:56:46: Exercises
+  - stop: 01:58:08
+  - start: 02:31:06
+  - -: Q&A and discussion
+  - 02:32:18: Demo of exercises Serial-3 and Serial-5
+  - stop: 02:46:21
+
+
+- output: out/day2_07-monitoring.mkv
+  title: 2.7 Monitoring jobs (summary)
+  description: >-
+    In order to use large amounts of resources, you need to be able to
+    monitor how many resources you used, so that you can properly adjust
+    the resources you request later.  We go over the main parts: output
+    during the job, time, memory efficiency, CPU efficiency, GPU
+    efficiency, and so on.
+
+    We have already seen most of the content there, but we summarize
+    everything now in one place.
+
+    https://scicomp.aalto.fi/triton/tut/monitoring/
+  editlist:
+  - start: 02:46:21
+  - 02:49:19: Slurm history
+  - 02:51:35: seff to look at job efficiency
+  - 02:54:57: Exercise introduction
+  - stop: 02:56:02
+  - start: 03:11:20
+  - -: Post-exercise Q&A
+  - 03:12:30: Monitoring examples as an exercise
+  - stop: 03:22:54
+
+- output: out/day2_08-applications.mkv
+  title: '2.8 Applications, Modules, Data, Remote data'
+  description: >-
+    We give a lightning overview of four topics: applications (how to
+    get software to run), modules (how some software is made
+    available), data storage (there are many options, and each with a
+    different trade-off: you do need to know these), and how to access
+    data remotely and transfer it.  Each of these could easily take
+    much longer time, but we only go over the high-level and then let
+    you read on your own time.
+
+    https://scicomp.aalto.fi/triton/tut/applications/
+
+    https://scicomp.aalto.fi/triton/tut/modules/
+
+    https://scicomp.aalto.fi/triton/tut/storage/
+
+    https://scicomp.aalto.fi/triton/tut/remotedata/
+  editlist:
+    - start: 03:33:23
+    - 03:35:10: Different ways of installing software on the cluster
+    - 03:39:36: Software installed by admin (modules)
+    - 03:42:25: Quick overview how software on cluster works
+    - 03:50:47: Short overview of using modules
+    - end: 03:54:42
+
 #- output: out/day2-applications.mkv
 #  title: '2.7 Applications and Modules: software on the cluster'
 #  description: >-
@@ -311,28 +346,28 @@
 #    - 03:48:24: 'Example: loading the anaconda module'
 #    - end: 03:53:15
 #
-##    There are several things we don't go into detail about: the
-##    "module" command, data storage, and remote access to data.  This
-##    is the intro to these sections, and the actual videos come next.
-##
-##    1) "module" is the command you use to make more software available.
-##    Here, we go over the idea behind it, but mainly we leave it to
-##    you to read the tutorial page.
-##
-##    https://scicomp.aalto.fi/triton/tut/modules/
-##
-##    2) We go over data storage on the cluster: why it is important, main
-##    considerations, where to store it, and so on.  We only give a bit of
-##    discussion, and leave you to read for the details.
-##
-##    https://scicomp.aalto.fi/triton/tut/storage/
-##
-##    3) You have data on the cluster, but you need to be able to access it
-##    from outside, or copy new data to the cluster.  This can be
-##    surprisingly frustrating, so we discuss transferring data vs
-##    mounting a remote filesystem for transparent access.
-##
-##    https://scicomp.aalto.fi/triton/tut/remotedata/
+#    There are several things we don't go into detail about: the
+#    "module" command, data storage, and remote access to data.  This
+#    is the intro to these sections, and the actual videos come next.
+#
+#    1) "module" is the command you use to make more software available.
+#    Here, we go over the idea behind it, but mainly we leave it to
+#    you to read the tutorial page.
+#
+#    https://scicomp.aalto.fi/triton/tut/modules/
+#
+#    2) We go over data storage on the cluster: why it is important, main
+#    considerations, where to store it, and so on.  We only give a bit of
+#    discussion, and leave you to read for the details.
+#
+#    https://scicomp.aalto.fi/triton/tut/storage/
+#
+#    3) You have data on the cluster, but you need to be able to access it
+#    from outside, or copy new data to the cluster.  This can be
+#    surprisingly frustrating, so we discuss transferring data vs
+#    mounting a remote filesystem for transparent access.
+#
+#    https://scicomp.aalto.fi/triton/tut/remotedata/
 #
 #- output: out/day2-data-storage.mkv
 #  title: 2.8 Data storage and accessing it remotely
@@ -359,48 +394,49 @@
 #  - 04:06:17: Remote mounting
 #  - 04:07:33: Transfering data
 #  - end: 4:09:26
-#
-#
-#- output: out/day2-outro.mkv
-#  title: '2.9 Daily wrap-up, discussion, and Q&A'
+
+
+- output: out/day2_09-outro.mkv
+  title: '2.9 Q&A day 2'
+  description: >-
+    Q&A with anything the audience throws at us.
+  editlist:
+  - start: 03:54:42
+  - end: 04:15:36
+- output: out/day2_10-outro.mkv
+  title: '2.10 Daily wrap-up, discussion, and Q&A'
+  description: >-
+    Wrap-up of the day, and preparing for the next day.
+  editlist:
+  - start: 04:15:36
+  - end: 04:19:11
+
+#- output: out/day2-modules.mkv
+#  title: 2.8 Software modules
 #  description: >-
-#    Wrap-up of the day, discussion, Q&A, and feedback.
-#  editlist:
-#  - start: 04:09:26
-#  - -: 'Q&A'
-#  - 04:09:36: Discussion on data storage workflows
-#  - 04:14:22: Question about Rstudio
-#  - 04:17:08: Conda environments
-#  - 04:17:55: Feedback
-#  - 04:22:08: Rushed partial demo of creating a basic conda environment
-#  - end: 04:27:31
+#    "module" is the command you use to make more software available.
+#     Here, we go over the idea behind it, but mainly we leave it to
+#     you to read the tutorial page.
 #
-##- output: out/day2-modules.mkv
-##  title: 2.8 Software modules
-##  description: >-
-##    "module" is the command you use to make more software available.
-##     Here, we go over the idea behind it, but mainly we leave it to
-##     you to read the tutorial page.
-##
-##     https://scicomp.aalto.fi/triton/tut/modules/
-##  editlist:
-##  - start: 3:48:40
-##  - end: 3:55:00
-##
-##
-##- output: out/day2-remote-data.mkv
-##  title: 2.10 Remote data access
-##  description: >-
-##    You have data on the cluster, but you need to be able to access it
-##    from outside, or copy new data to the cluster.  This can be
-##    surprisingly frustrating, so we discuss transferring data vs
-##    mounting a remote filesystem for transparent access.
-##
-##    https://scicomp.aalto.fi/triton/tut/remotedata/
-##  editlist:
-##  - start: 4:07:28
-##  - end: 4:17:03
-##
+#     https://scicomp.aalto.fi/triton/tut/modules/
+#  editlist:
+#  - start: 3:48:40
+#  - end: 3:55:00
+#
+#
+#- output: out/day2-remote-data.mkv
+#  title: 2.10 Remote data access
+#  description: >-
+#    You have data on the cluster, but you need to be able to access it
+#    from outside, or copy new data to the cluster.  This can be
+#    surprisingly frustrating, so we discuss transferring data vs
+#    mounting a remote filesystem for transparent access.
+#
+#    https://scicomp.aalto.fi/triton/tut/remotedata/
+#  editlist:
+#  - start: 4:07:28
+#  - end: 4:17:03
+#
 #
 #
 #
