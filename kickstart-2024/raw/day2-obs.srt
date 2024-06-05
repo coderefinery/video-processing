@@ -88,7 +88,7 @@ you
 
 23
 00:11:00,000 --> 00:11:29,960
-Just say one through three.
+Just say one two three.
 
 24
 00:11:29,960 --> 00:11:39,920
@@ -660,7 +660,7 @@ that are used for GPU computing. And then usually a cluster has a file system as
 
 166
 00:24:36,720 --> 00:24:43,120
-So it's own file system, which is connected to these nodes in some vast lane, so that you can
+So it's own file system, which is connected to these nodes in some fast lane, so that you can
 
 167
 00:24:43,120 --> 00:24:52,080
@@ -672,7 +672,7 @@ So how big is our cluster, just as a reference? So the one at Aalto University.
 
 169
 00:24:56,640 --> 00:25:09,920
-So R is like a medium size, maybe. Medium, small. Medium in Finland, small in international scale.
+So our is like a medium size, maybe. Medium, small. Medium in Finland, small in international scale.
 
 170
 00:25:09,920 --> 00:25:17,200
@@ -1040,7 +1040,7 @@ in the background. Yeah. So I guess on the cluster, we're not asking for seats f
 
 261
 00:34:41,160 --> 00:34:48,760
-But what are we asking for? And that's where we come to here, the resources Slurm manages.
+But what are we asking for? And that's why we come to here, the resources Slurm manages.
 
 262
 00:34:49,960 --> 00:34:56,840
@@ -1656,7 +1656,7 @@ control system. Which is, by the way, a good way of transferring code to the clu
 
 415
 00:48:41,860 --> 00:48:57,460
-general. And then has changed into the directory. And then is running Python 3 Slurm. Slurm.py
+general. And then has changed into the directory. And then is running Python3 slurm/pi.py 
 
 416
 00:48:57,460 --> 00:49:05,860
@@ -1752,7 +1752,7 @@ In your cluster, if you're in a different cluster,
 
 439
 00:51:27,660 --> 00:51:33,820
-you might need to specify this dash-dash partition lag like this.
+you might need to specify this dash-dash partition flag like this.
 
 440
 00:51:33,820 --> 00:51:36,180
@@ -1820,7 +1820,7 @@ Yes. While it was running, we could have tried to see what was happening in the 
 
 456
 00:52:41,980 --> 00:52:48,980
-how it was doing in the queue. You can either use this sq command or this learnq to do it.
+how it was doing in the queue. You can either use this squeue command or this slurm q to do it.
 
 457
 00:52:48,980 --> 00:52:56,780
@@ -1996,7 +1996,7 @@ So, part of the reason why it's running so fast is that
 
 500
 00:55:36,980 --> 00:55:39,980
-CMO hasn't run much lately.
+[name] hasn't run much lately.
 
 501
 00:55:39,980 --> 00:55:42,980
@@ -2004,7 +2004,7 @@ And the less you run, the higher your priority is.
 
 502
 00:55:42,980 --> 00:55:47,980
-So basically, CMO hops to the front of the queue and gets anything immediately.
+So basically, [name] hops to the front of the queue and gets anything immediately.
 
 503
 00:55:47,980 --> 00:55:54,980
@@ -2092,7 +2092,7 @@ it looks different.
 
 524
 00:57:09,260 --> 00:57:13,100
-It says CMOS username and then PE22.
+It says [name] username and then PE22.
 
 525
 00:57:13,100 --> 00:57:16,780
@@ -2104,7 +2104,7 @@ that's available.
 
 527
 00:57:18,620 --> 00:57:23,180
-So now CMOS waited once and can run things multiple times,
+So now [name] has waited once and can run things multiple times,
 
 528
 00:57:23,180 --> 00:57:27,340
@@ -2332,11 +2332,11 @@ How long should people have?
 
 584
 01:01:25,900 --> 01:01:33,900
-Should we have maybe 5-2?
+Should we have maybe 5 to one?
 
 585
 01:01:33,900 --> 01:01:42,900
-Yeah, maybe 5-2 and then we can do a brief wrap up and then have a break.
+Yeah, maybe 5 to one and then we can do a brief wrap up and then have a break.
 
 586
 01:01:42,900 --> 01:01:43,900
@@ -2580,11 +2580,11 @@ Yes.
 
 646
 01:19:07,420 --> 01:19:18,700
-In this exercise, we run this memegause script that uses memory and then we
+In this exercise, we run this memory use script that uses memory and then we
 
 647
 01:19:22,060 --> 01:19:27,900
-want to see what happens when we increase the memegequirements and with various memegequirements.
+want to see what happens when we increase the memory requirements and with various memory requirements.
 
 648
 01:19:27,900 --> 01:19:37,900
@@ -2912,7 +2912,7 @@ So were there any more questions while we were waiting?
 
 729
 01:34:53,660 --> 01:34:58,860
-I will quickly mention there were a few questions about various, like for example, the SA Interactive
+I will quickly mention there were a few questions about various, like for example, the sinteractive
 
 730
 01:34:58,860 --> 01:35:00,340
@@ -3068,7 +3068,7 @@ like, okay, execute these commands. Previously, when we just ran the Python 3, f
 
 768
 01:39:09,400 --> 01:39:17,880
-and then we ran the Py example, then we just called commands from the command line.
+and then we ran the PI example, then we just called commands from the command line.
 
 769
 01:39:18,600 --> 01:39:23,160
@@ -3132,11 +3132,11 @@ And afterwards, you can have whatever your code is after that. Like, whatever co
 
 784
 01:40:31,320 --> 01:40:39,800
-the code to run, like the queue manager to run. And what happens is that when we call this S
+the code to run, like the queue manager to run. And what happens is that when we call this 
 
 785
 01:40:39,800 --> 01:40:48,600
-batch and then the script that we have written, we call it, we basically say we are in the login
+SBATCH and then the script that we have written, we call it, we basically say we are in the login
 
 786
 01:40:48,600 --> 01:40:55,560
@@ -3264,7 +3264,7 @@ Let's go.
 
 817
 01:43:03,860 --> 01:43:08,140
-So if we scroll down a bit under Grfrg's jobscript,
+So if we scroll down a bit under your first jobscript,
 
 818
 01:43:08,140 --> 01:43:12,060
@@ -3312,7 +3312,7 @@ And then we do sbatch.
 
 829
 01:44:18,660 --> 01:44:21,900
-So sbatch and runpy.
+So sbatch and run-pi.
 
 830
 01:44:21,900 --> 01:44:29,380
@@ -3320,7 +3320,7 @@ And if we push enter, so we see job submit automatically setting partitions, sub
 
 831
 01:44:29,380 --> 01:44:30,380
-batch job.
+sbatch job.
 
 832
 01:44:30,380 --> 01:44:32,420
@@ -3364,7 +3364,7 @@ So I will submit it again.
 
 842
 01:45:02,220 --> 01:45:05,900
-but this time I will run slurm-vue.
+but this time I will run slurm q.
 
 843
 01:45:10,300 --> 01:45:18,780
@@ -3376,7 +3376,7 @@ Yeah.
 
 845
 01:45:28,460 --> 01:45:37,740
-And now in the script itself, if we look at the script again over here, we have this sBatch
+And now in the script itself, if we look at the script again over here, we have this sbatch
 
 846
 01:45:37,740 --> 01:45:38,740
@@ -3436,7 +3436,7 @@ Yeah.
 
 860
 01:46:20,780 --> 01:46:23,980
-So cat is, first off, the thing that
+So cat is, first of, the thing that
 
 861
 01:46:23,980 --> 01:46:26,820
@@ -3480,7 +3480,7 @@ Yeah.
 
 871
 01:46:45,580 --> 01:46:52,500
-So let's move the run pi to HPC examples.
+So let's move the run-pi to HPC examples.
 
 872
 01:46:52,500 --> 01:46:54,100
@@ -3528,7 +3528,7 @@ and then write the commands in there.
 
 883
 01:47:17,500 --> 01:47:20,380
-Slurmq is a shorthand for slurmq,
+Slurm q is a shorthand for slurm queue,
 
 884
 01:47:20,380 --> 01:47:25,700
@@ -3536,7 +3536,7 @@ but you can use either one if you use the slurm command.
 
 885
 01:47:25,700 --> 01:47:29,980
-OK, now we probably have the Python out.
+OK, now we probably have the pi.out.
 
 886
 01:47:29,980 --> 01:47:31,180
@@ -3544,7 +3544,7 @@ Yeah, OK.
 
 887
 01:47:31,180 --> 01:47:33,580
-So we have Python out, and yeah.
+So we have pi.out, and yeah.
 
 888
 01:47:33,580 --> 01:47:35,660
@@ -3640,7 +3640,7 @@ Yes.
 
 911
 01:49:12,500 --> 01:49:20,580
-Should we go to a, actually, we have a bit of time.
+Should we go to , actually, we have a bit of time.
 
 912
 01:49:20,580 --> 01:49:24,140
@@ -3660,7 +3660,7 @@ it will look like it runs, but it's not taking these resource requests and it's 
 
 916
 01:49:35,660 --> 01:49:40,300
-on the other thing. Yeah. We can demonstrate this. So, this isn't something you shouldn't do. Like,
+on the other thing. Yeah. We can demonstrate this. So, this is something you shouldn't do. Like,
 
 917
 01:49:40,300 --> 01:49:46,780
@@ -3872,7 +3872,7 @@ Because this is like the meat and potatoes of the whole thing.
 
 969
 01:54:18,880 --> 01:54:24,360
-When we go into ParallelJobs and everything, the power of the cluster comes from the ability
+When we go into Parallel Jobs and everything, the power of the cluster comes from the ability
 
 970
 01:54:24,360 --> 01:54:31,480
@@ -4368,7 +4368,7 @@ Yeah. So, these are pretty helpful examples of showing a couple of interesting..
 
 1093
 02:32:41,240 --> 02:32:49,720
-Like this kind of Gedankenexperiment, as Einstein would put it. Thinking experiments would make you
+Like this kind of Gedanken experiment, as Einstein would put it. Thinking experiments would make you
 
 1094
 02:32:49,720 --> 02:32:54,360
@@ -4384,7 +4384,7 @@ is already submitted.
 
 1097
 02:33:06,120 --> 02:33:17,760
-Let's look at the runpy that we have over here.
+Let's look at the run-pi that we have over here.
 
 1098
 02:33:17,760 --> 02:33:29,200
@@ -4404,7 +4404,7 @@ And then, after we have submitted it, let's open the script and let's add someth
 
 1102
 02:33:48,320 --> 02:33:53,280
-the Slurm script, so to this RunPy script.
+the Slurm script, so to this run-pi script.
 
 1103
 02:33:53,280 --> 02:33:58,720
@@ -4464,7 +4464,7 @@ You can even later on, if you want, you can view the script for what it keeps in
 
 1117
 02:35:18,600 --> 02:35:25,040
-So basically, once you guess S-batch and the script, Slurm will remember the script and
+So basically, once you press Sbatch and the script, Slurm will remember the script and
 
 1118
 02:35:25,040 --> 02:35:29,200
@@ -4488,7 +4488,7 @@ You cannot modify it anymore.
 
 1123
 02:35:39,000 --> 02:35:47,200
-So when we look at the output, the py.out, we cut and edit, we see that there's no co-modified
+So when we look at the output, the pi.out, we cut and edit, we see that there's no co-modified
 
 1124
 02:35:47,200 --> 02:35:48,200
@@ -4524,7 +4524,7 @@ Let's modify the actual Python script. Let's do that. I'll take this already int
 
 1132
 02:36:39,480 --> 02:36:50,760
-I'll sbatch the runpy, and now I will quickly edit the slurm py.py, and I'll add this over
+I'll sbatch the run-pi, and now I will quickly edit the slurm/pi.py, and I'll add this over
 
 1133
 02:36:50,760 --> 02:36:51,760
@@ -4552,7 +4552,7 @@ Like the Slurm is running.
 
 1139
 02:37:09,920 --> 02:37:16,720
-It has taken the SH script that we have given it, but it will run through it line by line.
+It has taken the sh script that we have given it, but it will run through it line by line.
 
 1140
 02:37:16,720 --> 02:37:22,440
@@ -4644,15 +4644,15 @@ it will affect things. So, basically, what usually is recommended that you would
 
 1162
 02:38:39,660 --> 02:38:45,580
-like, let's say for your experiment, you would have an SBatch script. And for the corresponding
+like, let's say for your experiment, you would have an Sbatch script. And for the corresponding
 
 1163
 02:38:45,580 --> 02:38:49,820
-to the SBatch script, you would have your code or your parameters or something. We'll talk about
+to the Sbatch script, you would have your code or your parameters or something. We'll talk about
 
 1164
 02:38:49,820 --> 02:38:54,700
-Agile jobs tomorrow, if you have a lot of parameters, you can use these fancy things to
+Array jobs tomorrow, if you have a lot of parameters, you can use these fancy things to
 
 1165
 02:38:57,340 --> 02:39:04,300
@@ -4668,7 +4668,7 @@ or code. If you want to do a simulation or a run, some compilation or some code 
 
 1168
 02:39:23,500 --> 02:39:29,340
-you can replicate it by using the SBAT script and you don't want to mess them up while they're
+you can replicate it by using the Sbatch script and you don't want to mess them up while they're
 
 1169
 02:39:29,340 --> 02:39:30,340
@@ -4692,7 +4692,7 @@ this following program that produces some output. So, this ties up neatly to the
 
 1174
 02:39:52,300 --> 02:40:03,340
-we have. So, let's call it monitor output.sh, and I will quickly write the usual lines.
+we have. So, let's call it monitor_output.sh, and I will quickly write the usual lines.
 
 1175
 02:40:03,340 --> 02:40:06,540
@@ -4768,7 +4768,7 @@ Yeah.
 
 1193
 02:41:48,300 --> 02:41:53,100
-So now monitor output, cut out.
+So now monitor_output.out
 
 1194
 02:41:53,100 --> 02:41:53,600
@@ -4888,7 +4888,7 @@ running and I don't have to look at it constantly. But of course, you want to vi
 
 1223
 02:43:05,860 --> 02:43:14,020
-So you can either do here, catenate the output. One other option is to use this tail F and there's
+So you can either do here, catenate the output. One other option is to use this tail -f and there's
 
 1224
 02:43:14,020 --> 02:43:21,460
@@ -4976,7 +4976,7 @@ I mean, you should trust your local admin over me.
 
 1245
 02:45:47,580 --> 02:45:51,660
-So at Alta, we've invested significant resources
+So at Aalto, we've invested significant resources
 
 1246
 02:45:51,660 --> 02:45:55,740
@@ -5232,7 +5232,7 @@ Yeah.
 
 1309
 02:51:29,460 --> 02:51:36,820
-Like, because it's like a, so the TPU time is basically how many like CPU hours you used.
+Like, because it's like a, so the CPU time is basically how many like CPU hours you used.
 
 1310
 02:51:36,820 --> 02:51:40,560
@@ -5240,7 +5240,7 @@ And you can use this as the starting point.
 
 1311
 02:51:40,560 --> 02:51:49,840
-tool provided by Slurm is this sf. I'll make this a bit bigger now. So, if you run sf and a comma,
+tool provided by Slurm is this seff. I'll make this a bit bigger now. So, if you run seff and a comma,
 
 1312
 02:51:49,840 --> 02:52:02,240
@@ -5280,7 +5280,7 @@ much. So like maybe a few gigabytes overhead or something like that. There's a r
 
 1321
 02:52:55,840 --> 02:53:01,120
-question. How reliable is the SF in history utilized resource estimate?
+question. How reliable is the seff in history utilized resource estimate?
 
 1322
 02:53:02,720 --> 02:53:08,800
@@ -5380,7 +5380,7 @@ exercises, like first, like some verbosity exercises, and then
 
 1346
 02:55:06,360 --> 02:55:11,960
-testing out, like checking the how that's how do the SF and
+testing out, like checking the how that's how do the seff and
 
 1347
 02:55:11,960 --> 02:55:17,760
@@ -5392,7 +5392,7 @@ So of course, these are pretty much a toy problem, but you can try them out and 
 
 1349
 02:55:23,720 --> 02:55:25,280
-what the SF looks like.
+what the seff looks like.
 
 1350
 02:55:25,280 --> 02:55:33,200
@@ -5560,7 +5560,7 @@ Yeah, let's do some.
 
 1391
 03:11:53,120 --> 03:11:57,120
-How to execute the command runpy.sh file.
+How to execute the command run-pi.sh file.
 
 1392
 03:11:57,120 --> 03:12:01,120
@@ -5568,15 +5568,15 @@ Where did that come from?
 
 1393
 03:12:01,120 --> 03:12:19,080
-from I think the SSH file, I don't know, like this.
+from I think the ssh file, I don't know, like this.
 
 1394
 03:12:19,080 --> 03:12:21,200
-Maybe it means SSH.
+Maybe it means sh.
 
 1395
 03:12:21,200 --> 03:12:24,280
-Yeah, maybe it means SSH.
+Yeah, maybe it means sh.
 
 1396
 03:12:24,280 --> 03:12:27,840
@@ -5624,7 +5624,7 @@ would be much more complex. So, in the serial example, if we, for example, look 
 
 1407
 03:14:03,840 --> 03:14:13,200
-pi.sh. So, let's, we can add here, there was already this hello user, but let's add here
+-pi.sh. So, let's, we can add here, there was already this hello user, but let's add here
 
 1408
 03:14:13,200 --> 03:14:24,200
@@ -5640,7 +5640,7 @@ Okay, yeah.
 
 1411
 03:14:36,280 --> 03:14:43,680
-And question mark in parentheses means it runs the take command.
+And question mark in parentheses means it runs the date command.
 
 1412
 03:14:43,680 --> 03:14:49,440
@@ -5680,15 +5680,15 @@ This might be really helpful if your program has tens of steps, multiple steps, 
 
 1421
 03:15:33,720 --> 03:15:39,720
-like that might be really good. Let's try this setX as well. This is very good for debugging.
+like that might be really good. Let's try this set-x as well. This is very good for debugging.
 
 1422
 03:15:40,840 --> 03:15:55,960
-If we open the run.py and we put here setX, what that does is that it
+If we open the run-pi and we put here set-x, what that does is that it
 
 1423
 03:15:55,960 --> 03:16:07,640
-It tells the BaaS interpreter to print all of the commands that we are going to be running.
+It tells the bash interpreter to print all of the commands that we are going to be running.
 
 1424
 03:16:07,640 --> 03:16:12,660
@@ -5728,7 +5728,7 @@ So you can use that to produce extra monitoring.
 
 1433
 03:17:00,940 --> 03:17:05,620
-Let's maybe check the ESF example.
+Let's maybe check the seff example.
 
 1434
 03:17:06,700 --> 03:17:09,380
@@ -5748,7 +5748,7 @@ Maybe we can do this example as this kind of like a teaser on how do we utilize
 
 1438
 03:17:26,900 --> 03:17:39,700
-or can utilize multiple processors. Let's add cpus.ask to Python.
+or can utilize multiple processors. Let's add cpus per task to Python.
 
 1439
 03:17:46,020 --> 03:17:48,060
@@ -5904,11 +5904,11 @@ So now you can like, there was a question in the notes that like some site doesn
 
 1477
 03:19:39,580 --> 03:19:46,140
-SF installed. You can get it from GitHub. It's available there. And I think it's part of some
+seff installed. You can get it from GitHub. It's available there. And I think it's part of some
 
 1478
 03:19:46,140 --> 03:19:56,060
-Slurm installations as well. But what the SF basically does is that calculates
+Slurm installations as well. But what the seff basically does is that calculates
 
 1479
 03:19:59,580 --> 03:20:07,500
@@ -5936,7 +5936,7 @@ it like close to a hundred percent.
 
 1485
 03:20:35,960 --> 03:20:41,340
-So let's use SF to do this calculation so that we don't have to do it manually.
+So let's use seff to do this calculation so that we don't have to do it manually.
 
 1486
 03:20:41,340 --> 03:20:45,940
@@ -6428,7 +6428,7 @@ commented there in the in the notes. So if you want to use MATLAB we have MATLAB
 
 1608
 03:40:12,580 --> 03:40:20,420
-installations usually. Most of the computing clusters, we all use this A11y module system.
+installations usually. Most of the computing clusters, we all use this lmod module system.
 
 1609
 03:40:22,660 --> 03:40:28,420
@@ -6596,7 +6596,7 @@ purposes. So our big Scratch storage is, well, it's called Scratch for a reason.
 
 1650
 03:45:04,420 --> 03:45:11,140
-up, but it's big. Alto has other places, for example, this hidden out Alto network drives
+up, but it's big. Aalto has other places, for example, this hidden out Aalto network drives
 
 1651
 03:45:11,140 --> 03:45:19,700
@@ -6604,7 +6604,7 @@ here, which are not as higher. Actually, yeah, let's come here. This is good. So
 
 1652
 03:45:19,700 --> 03:45:24,980
-Alto has network drives that are not as big, but they're very backed up. They're backed up,
+Aalto has network drives that are not as big, but they're very backed up. They're backed up,
 
 1653
 03:45:24,980 --> 03:45:26,180
@@ -6644,7 +6644,7 @@ For example, if you're collecting some original data, you would first put it
 
 1662
 03:45:54,020 --> 03:46:01,940
-on the project Alto storage where it's backed up and then make a copy to Triton where it's not
+on the project Aalto storage where it's backed up and then make a copy to Triton where it's not
 
 1663
 03:46:01,940 --> 03:46:08,340
@@ -6664,7 +6664,7 @@ important like the starting point of your thing. You want that to be backed up i
 
 1667
 03:46:28,420 --> 03:46:35,780
-in the Alta network trial and then you want to create a copy of that usually into the work
+in the Aalto network trial and then you want to create a copy of that usually into the work
 
 1668
 03:46:35,780 --> 03:46:43,860
@@ -7128,7 +7128,7 @@ to github or something and then I usually wouldn't make good backups of
 
 1783
 03:59:08,360 --> 03:59:15,200
-the okay if I had raw data I would store it on one of the Alto file servers and
+the okay if I had raw data I would store it on one of the Aalto file servers and
 
 1784
 03:59:15,200 --> 03:59:21,200
@@ -7164,11 +7164,11 @@ but there was a question about how
 
 1792
 03:59:53,080 --> 04:00:05,120
-you see using VS, Visual Studio connected via SH to modify the code folders and modify
+you see using VS, Visual Studio connected via SSH to modify the code folders and modify
 
 1793
 04:00:05,120 --> 04:00:11,200
-the .sh files and then run from the OD shell with Sbatch.
+the .sh files and then run from the OOD shell with Sbatch.
 
 1794
 04:00:11,200 --> 04:00:16,720
@@ -7184,7 +7184,7 @@ tmuxinator to create like this templated terminals basically for myself, for any
 
 1797
 04:00:29,420 --> 04:00:35,800
-And I've gotten so accustomed to Veeam, so I'm basically at this kind of like a situation
+And I've gotten so accustomed to vim, so I'm basically at this kind of like a situation
 
 1798
 04:00:35,800 --> 04:00:43,040
@@ -7220,7 +7220,7 @@ So you don't necessarily have to go to
 
 1806
 04:01:09,060 --> 04:01:14,260
-OD to submit the jobs if the VS Code works fine for you.
+OOD to submit the jobs if the VS Code works fine for you.
 
 1807
 04:01:14,260 --> 04:01:21,940
@@ -7424,7 +7424,7 @@ anything. But Triton's data is in a nice climate controlled and fire protected m
 
 1857
 04:06:05,740 --> 04:06:11,020
-So, yeah. But if this means can it be stored on Alto network disks,
+So, yeah. But if this means can it be stored on Aalto network disks,
 
 1858
 04:06:11,020 --> 04:06:15,340
@@ -7760,11 +7760,11 @@ But both use, for example, same kind of file system, both use same kind of queui
 
 1941
 04:13:59,820 --> 04:14:07,580
-and both use ALMod. So basically, we'll hear tomorrow more about how do you get from laptops
+and both use LMod. So basically, we'll hear tomorrow more about how do you get from laptops
 
 1942
 04:14:07,580 --> 04:14:14,540
-to Rumi basically, like how can you scale up. And if you know how to run stuff in your local cluster,
+to Lumi basically, like how can you scale up. And if you know how to run stuff in your local cluster,
 
 1943
 04:14:14,540 --> 04:14:19,500
