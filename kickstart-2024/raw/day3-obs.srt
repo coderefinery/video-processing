@@ -696,7 +696,7 @@ majority of those were using one of the parallelism methods that we are going to
 
 175
 00:24:59,480 --> 00:25:01,200
-this NPR parallelism.
+this MPI parallelism.
 
 176
 00:25:01,200 --> 00:25:10,060
@@ -1136,7 +1136,7 @@ That would be a good analogy.
 
 285
 00:36:01,480 --> 00:36:06,480
-So what the NPR programs do is that when you start them up, they create this communication
+So what the MPI programs do is that when you start them up, they create this communication
 
 286
 00:36:06,480 --> 00:36:11,420
@@ -1188,7 +1188,7 @@ around the communication also like the algorithms that are used. It's quite ofte
 
 298
 00:37:10,840 --> 00:37:19,320
-physics simulations. So, for example, like CP2K, GPOL lamps, OpenFOAM, many weather models,
+physics simulations. So, for example, like CP2K, GPAW, LAMMPS, OpenFOAM, many weather models,
 
 299
 00:37:19,320 --> 00:37:27,080
@@ -1412,7 +1412,7 @@ But if it doesn't, well, it just doesn't run there.
 
 354
 00:42:01,160 --> 00:42:12,040
-With the TPUs, because why the TPUs are powerful, why they are like that, they originate, of
+With the GPUs, because why the GPUs are powerful, why they are like that, they originate, of
 
 355
 00:42:12,040 --> 00:42:15,680
@@ -1632,7 +1632,7 @@ combine these different methods of parallelization. You can combine, like you ca
 
 409
 00:47:12,060 --> 00:47:17,420
-multiple different simulations, you can run this kind of a Nagai job, this embarrassingly parallel
+multiple different simulations, you can run this kind of an array job, this embarrassingly parallel
 
 410
 00:47:17,420 --> 00:47:28,060
@@ -1756,7 +1756,7 @@ And for Python, there's multiple,
 
 440
 00:49:24,260 --> 00:49:28,860
-like Joblib, and there's parallel.
+like joblib, and there's parallel.
 
 441
 00:49:28,860 --> 00:49:30,660
@@ -1888,11 +1888,11 @@ So we have independent simulations that we can do, but we just want to do them a
 
 473
 00:51:34,240 --> 00:51:41,320
-And what we could do is we could write our SBatch script for each simulation at a time.
+And what we could do is we could write our Sbatch script for each simulation at a time.
 
 474
 00:51:41,320 --> 00:51:48,480
-So we would have like n SBatch scripts to run like serial jobs.
+So we would have like n Sbatch scripts to run like serial jobs.
 
 475
 00:51:48,480 --> 00:51:56,240
@@ -1916,7 +1916,7 @@ but with the key difference that each job gets one number different. So each job
 
 480
 00:52:25,600 --> 00:52:31,920
-SlurmArrayTaskId. So, each one gets its own environment variable, which is the number
+Slurm_Array_Task_Id. So, each one gets its own environment variable, which is the number
 
 481
 00:52:31,920 --> 00:52:40,960
@@ -2060,7 +2060,7 @@ kind of thing. The number assigned to the array randomly done. I'm not sure exac
 
 516
 00:55:08,360 --> 00:55:14,760
-means. So the StormArrayTaskIDs come exactly from this here.
+means. So the Slurm_Array_Task_IDs come exactly from this here.
 
 517
 00:55:17,240 --> 00:55:24,680
@@ -2164,7 +2164,7 @@ And then we have a few of these comments, so if [name], you want to open our edi
 
 542
 00:56:37,360 --> 00:56:42,360
-I've just realized I haven't cloned the HPCExamples repository or gotten set up.
+I've just realized I haven't cloned the HPC Examples repository or gotten set up.
 
 543
 00:56:42,360 --> 00:56:43,360
@@ -2220,7 +2220,7 @@ And after that, we have the output.
 
 556
 00:57:48,420 --> 00:57:55,060
-And this time in the output comment, we have a directive for the S-batch.
+And this time in the output comment, we have a directive for the Sbatch.
 
 557
 00:57:55,060 --> 00:57:57,620
@@ -2228,7 +2228,7 @@ We have a few different characters there.
 
 558
 00:57:57,620 --> 00:58:06,620
-We have this %A and %A, and what these do is that because we now launch multiple jobs
+We have this %A and %a, and what these do is that because we now launch multiple jobs
 
 559
 00:58:06,620 --> 00:58:11,620
@@ -2352,7 +2352,7 @@ And now we already see the output.
 
 589
 01:00:07,860 --> 01:00:19,300
-So we see there that we have generated the overall job ID was 47668.0, and then we have
+So we see there that we have generated the overall job ID was 476680, and then we have
 
 590
 01:00:19,300 --> 01:00:23,140
@@ -2480,7 +2480,7 @@ Press Enter.
 
 621
 01:02:54,640 --> 01:02:59,280
-Okay. I push Enter and then I run SlurmQ immediately.
+Okay. I push Enter and then I run Slurm q immediately.
 
 622
 01:02:59,280 --> 01:03:00,760
@@ -2688,7 +2688,7 @@ So for exercises, what should we recommend people to work on?
 
 673
 01:07:32,500 --> 01:07:41,500
-I would probably say that the exercise XS1 would be probably best.
+I would probably say that the exercise 1 would be probably best.
 
 674
 01:07:41,500 --> 01:07:46,140
@@ -2700,7 +2700,7 @@ that we provide in the page and try
 
 676
 01:07:48,660 --> 01:07:55,620
-to give this pi.pi different seed numbers.
+to give this pi.py different seed numbers.
 
 677
 01:07:55,620 --> 01:07:57,700
@@ -3104,7 +3104,7 @@ answered.
 
 777
 01:40:33,900 --> 01:40:45,540
-There's a good question about how does the program understand SlurmArrayTaskID.
+There's a good question about how does the program understand Slurm_Array_Task_ID.
 
 778
 01:40:45,540 --> 01:40:50,660
@@ -3396,7 +3396,7 @@ So you can just give this dash dash CPUs per task
 
 850
 01:47:04,320 --> 01:47:08,560
-and then a number in this S-batch comment.
+and then a number in this Sbatch comment.
 
 851
 01:47:11,360 --> 01:47:15,680
@@ -3484,7 +3484,7 @@ So, what you usually want to do is you want to check your program, where your pr
 
 872
 01:49:05,000 --> 01:49:12,520
-takes the value of how much packerlism I should use, how much packerlism I should do, and
+takes the value of how much parallelism I should use, how much parallelism I should do, and
 
 873
 01:49:12,520 --> 01:49:17,520
@@ -3532,7 +3532,7 @@ Yeah.
 
 884
 01:49:46,320 --> 01:49:50,880
-So the program here is the same PyScript
+So the program here is the same Py Script
 
 885
 01:49:50,880 --> 01:49:53,120
@@ -3540,11 +3540,11 @@ that we have used as an example.
 
 886
 01:49:53,120 --> 01:49:57,800
-And it has this flag called dash dash n prox.
+And it has this flag called dash dash nprocs.
 
 887
 01:49:57,800 --> 01:49:59,200
-So how many prox?
+So how many procs?
 
 888
 01:49:59,200 --> 01:50:02,240
@@ -3628,7 +3628,7 @@ Okay.
 
 908
 01:51:18,960 --> 01:51:24,800
-In Linux, there's this program called time that you can put, if you put it before the S run.
+In Linux, there's this program called time that you can put, if you put it before the Srun.
 
 909
 01:51:24,800 --> 01:51:26,400
@@ -3708,7 +3708,7 @@ OK, yeah.
 
 928
 01:52:19,120 --> 01:52:22,840
-So we can also use the SF that we previously yesterday
+So we can also use the seff that we previously yesterday
 
 929
 01:52:22,840 --> 01:52:25,680
@@ -3716,7 +3716,7 @@ talked about to see the utilization.
 
 930
 01:52:25,680 --> 01:52:29,440
-So if you use the SF and the job ID,
+So if you use the seff and the job ID,
 
 931
 01:52:29,440 --> 01:52:34,120
@@ -4120,7 +4120,7 @@ Submit it.
 
 1031
 01:59:49,360 --> 01:59:50,560
-XMT, yes.
+Submit, yes.
 
 1032
 01:59:53,480 --> 01:59:54,600
@@ -4172,7 +4172,7 @@ Using two processes, yeah.
 
 1044
 02:00:33,560 --> 02:00:36,400
-OK, should we S method?
+OK, should we seff?
 
 1045
 02:00:36,400 --> 02:00:40,840
@@ -4280,7 +4280,7 @@ And for the queue, the important thing is the CPUs per task.
 
 1071
 02:02:57,600 --> 02:03:09,040
-I run sf on this thing we just did? Sure. And it looks pretty much like before, so not perfect
+I run seff on this thing we just did? Sure. And it looks pretty much like before, so not perfect
 
 1072
 02:03:09,040 --> 02:03:17,440
@@ -4312,11 +4312,11 @@ but the most important thing to me
 
 1079
 02:03:45,960 --> 02:03:50,600
-is that this nprox gets automatically detected
+is that this nprocs gets automatically detected
 
 1080
 02:03:50,600 --> 02:03:51,200
-from Slurp.
+from Slurm.
 
 1081
 02:03:51,200 --> 02:03:54,640
@@ -4328,7 +4328,7 @@ which seems like it would save me a lot of time and effort and doing stuff wrong
 
 1083
 02:04:01,680 --> 02:04:11,120
-Yeah. Below, if we scroll a bit below, there's like this using Slurm CPS per task efficiently.
+Yeah. Below, if we scroll a bit below, there's like this using Slurm CPUs per task efficiently.
 
 1084
 02:04:11,120 --> 02:04:19,520
@@ -4532,7 +4532,7 @@ What else is there?
 
 1134
 02:07:40,920 --> 02:07:43,160
-I think Sima already answered the processes
+I think [name] already answered the processes
 
 1135
 02:07:43,160 --> 02:07:44,360
@@ -4704,7 +4704,7 @@ So break until one minute past the hour.
 
 1177
 02:11:10,240 --> 02:11:13,960
-And then we have to talk on CSE resources.
+And then we have to talk on CSC resources.
 
 1178
 02:11:13,960 --> 02:11:15,960
@@ -4884,7 +4884,7 @@ So go ahead.
 
 1222
 02:22:59,700 --> 02:23:03,340
-Okay, thanks Peter-Jack for introduction.
+Okay, thanks [name] for introduction.
 
 1223
 02:23:03,340 --> 02:23:13,020
@@ -4980,7 +4980,7 @@ within the university, the backbone that's provided by
 
 1246
 02:25:11,220 --> 02:25:17,780
-WNET, pretty much always when you log into your any university web
+FUNET, pretty much always when you log into your any university web
 
 1247
 02:25:17,780 --> 02:25:23,620
@@ -4988,7 +4988,7 @@ services, so you're using account authentication. If you're using Wi-Fi, you're 
 
 1248
 02:25:23,620 --> 02:25:30,740
-Enduro. So these are sort of these other services and I think many of the
+Eduroam. So these are sort of these other services and I think many of the
 
 1249
 02:25:32,500 --> 02:25:39,540
@@ -4996,7 +4996,7 @@ standard administration systems, probably if you look for your course results an
 
 1250
 02:25:39,540 --> 02:25:47,380
-there is very probably some CSE mode also there. And coming back to the computing services,
+there is very probably some CSC mode also there. And coming back to the computing services,
 
 1251
 02:25:47,780 --> 02:25:59,780
@@ -5148,7 +5148,7 @@ how many GPU cores, how many GPUs you can use, how much storage space you have, 
 
 1288
 02:30:12,420 --> 02:30:22,420
-As an example, in Mahti, or actually also in LumiCPU Partition, you can, if you need,
+As an example, in Mahti, or actually also in Lumi CPU Partition, you can, if you need,
 
 1289
 02:30:22,420 --> 02:30:28,420
@@ -5224,7 +5224,7 @@ I think most of the supercomputing sites,
 
 1307
 02:31:54,140 --> 02:31:57,500
-only CSC actually use Shlurm.
+only CSC actually use Slurm.
 
 1308
 02:31:57,500 --> 02:32:01,420
@@ -5432,7 +5432,7 @@ with the AMD CPUs, it's always 128.
 
 1359
 02:35:43,540 --> 02:35:47,020
-Mahdi has also a little bit smaller GPU partition
+Mahti has also a little bit smaller GPU partition
 
 1360
 02:35:48,020 --> 02:35:52,340
@@ -5464,7 +5464,7 @@ power of single GPU you can get only a subset of that and do some useful stuff w
 
 1367
 02:36:23,340 --> 02:36:38,460
-Then, as a sort of flagship, there is also LUMi. LUMi is actually not really a CEC supercomputer,
+Then, as a sort of flagship, there is also LUMi. LUMi is actually not really a CSC supercomputer,
 
 1368
 02:36:38,460 --> 02:36:47,340
@@ -5472,11 +5472,11 @@ so it's actually truly a pan-European supercomputer, funding coming from the Eur
 
 1369
 02:36:47,340 --> 02:36:55,980
-countries belonging to LumiConsortium, but it's hosted in the CSC data center.
+countries belonging to Lumi Consortium, but it's hosted in the CSC data center.
 
 1370
 02:36:57,580 --> 02:37:04,460
-User support is not directly given by CSC, so it's distributed to these LumiConsortium countries,
+User support is not directly given by CSC, so it's distributed to these Lumi Consortium countries,
 
 1371
 02:37:05,420 --> 02:37:12,380
@@ -5504,7 +5504,7 @@ CPU cores also there.
 
 1377
 02:37:50,140 --> 02:37:58,340
-Now with all this multitude of different supercomputers CSE has, you might ask, okay, which one of
+Now with all this multitude of different supercomputers CSC has, you might ask, okay, which one of
 
 1378
 02:37:58,340 --> 02:38:01,700
@@ -5516,7 +5516,7 @@ And as I said, it really depends a bit on what kind of satellite task they have,
 
 1380
 02:38:07,700 --> 02:38:14,700
-As I said, PURTI is maybe more for small or medium scale parallel tasks.
+As I said, Puhti is maybe more for small or medium scale parallel tasks.
 
 1381
 02:38:14,700 --> 02:38:20,700
@@ -5524,7 +5524,7 @@ It has the most extensive software selection available,
 
 1382
 02:38:20,700 --> 02:38:30,700
-while MAHDI, as I said, is more for the larger parallel calculations.
+while Mahti, as I said, is more for the larger parallel calculations.
 
 1383
 02:38:30,700 --> 02:38:35,660
@@ -5592,7 +5592,7 @@ it's in some ways a bit more, in some cases, a bit more complicated to use than
 
 1399
 02:39:22,780 --> 02:39:28,140
-the ones that we have in Puhti and Mahti, which are, I would say, more similar to Trident.
+the ones that we have in Puhti and Mahti, which are, I would say, more similar to Triton.
 
 1400
 02:39:29,340 --> 02:39:44,220
@@ -5640,7 +5640,7 @@ In addition to the kind of traditional HPC services,
 
 1411
 02:40:28,940 --> 02:40:33,940
-CSE provides also some cloud-like resources.
+CSC provides also some cloud-like resources.
 
 1412
 02:40:33,940 --> 02:40:40,940
@@ -5728,7 +5728,7 @@ Archulia. For parallel programming you can use MPI for distributed memory parall
 
 1433
 02:42:25,340 --> 02:42:33,500
-more open MPI for shared memory. There are some high-performance libraries and GPUs.
+more openMP for shared memory. There are some high-performance libraries and GPUs.
 
 1434
 02:42:35,180 --> 02:42:39,980
@@ -5740,7 +5740,7 @@ be readily available in the system or if you want to do the GPU graph on yoursel
 
 1436
 02:42:46,300 --> 02:42:54,780
-you might be using OpenMP offloading, OpenACC, CUDA, the heap. CSC provides also some
+you might be using OpenMP offloading, OpenACC, CUDA, the HIP. CSC provides also some
 
 1437
 02:42:55,420 --> 02:43:02,940
@@ -5800,7 +5800,7 @@ in the file system in the supercomputer.
 
 1451
 02:44:05,340 --> 02:44:10,540
-One data service we have is the ALAS object storage
+One data service we have is the ALLAS object storage
 
 1452
 02:44:10,540 --> 02:44:17,180
@@ -5828,11 +5828,11 @@ shared to other users. Lumi has actually its own optic storage also which is
 
 1458
 02:44:44,300 --> 02:44:52,140
-it's a physically separate from that so if you you can use Arlas either from Lumi or from
+it's a physically separate from that so if you you can use Allas either from Lumi or from
 
 1459
 02:44:52,140 --> 02:44:57,300
-Matti and Puhti. Lumi has this Lumio object storage, which
+Mahti and Puhti. Lumi has this Lumi own object storage, which
 
 1460
 02:44:57,300 --> 02:45:00,860
@@ -5844,7 +5844,7 @@ Okay.
 
 1462
 02:45:03,900 --> 02:45:09,780
-CSE provides also some, I don't know if the data findable
+CSC provides also some, I don't know if the data findable
 
 1463
 02:45:09,820 --> 02:45:16,500
@@ -5864,7 +5864,7 @@ some metadata and there is also some tools for
 
 1467
 02:45:27,220 --> 02:45:34,260
-searching these data sets so CSE has some services
+searching these data sets so CSC has some services
 
 1468
 02:45:34,260 --> 02:45:40,420
@@ -5964,7 +5964,7 @@ background of HPC, so it's quite general level. We have also this ongoing online
 
 1492
 02:47:43,460 --> 02:47:50,740
-how to use CSE computing environment. We're going to have in the June-July time frame,
+how to use CSC computing environment. We're going to have in the June-July time frame,
 
 1493
 02:47:51,460 --> 02:47:57,940
@@ -5980,7 +5980,7 @@ is where you really go through all the basic aspects of how to
 
 1496
 02:48:12,500 --> 02:48:16,660
-do parallel programming with the API, how to use OpenMP, how to
+do parallel programming with the MPI, how to use OpenMP, how to
 
 1497
 02:48:16,660 --> 02:48:23,100
@@ -6088,7 +6088,7 @@ Yeah. And I can say sometimes people come and ask us, oh, what do these question
 
 1523
 02:51:21,780 --> 02:51:27,140
-when applying for resources, but when in doubt, just send an email to the CSE service desk
+when applying for resources, but when in doubt, just send an email to the CSC service desk
 
 1524
 02:51:27,140 --> 02:51:33,860
@@ -6136,7 +6136,7 @@ You can see there.
 
 1535
 02:52:11,860 --> 02:52:22,420
-So us, the Alto Scientific Computing team here, we also do, we support CSC things,
+So us, the Aalto Scientific Computing team here, we also do, we support CSC things,
 
 1536
 02:52:22,980 --> 02:52:30,180
@@ -6256,7 +6256,7 @@ Ah, that's actually, yeah.
 
 1565
 02:55:21,180 --> 02:55:26,180
-This is really good. It's like our daily garage at Alto.
+This is really good. It's like our daily garage at Aalto.
 
 1566
 02:55:26,180 --> 02:55:33,180
@@ -6680,7 +6680,7 @@ because this means that then it's more balanced, the job requirement.
 
 1671
 03:03:55,560 --> 03:04:00,520
-Usually, at least in Triton, you want to use SRUN to run the program because that
+Usually, at least in Triton, you want to use srun to run the program because that
 
 1672
 03:04:00,520 --> 03:04:09,560
@@ -7980,11 +7980,11 @@ The answer is no. You will get the whole GPU memory. Let's say I run here
 
 1996
 03:37:15,960 --> 03:37:23,960
-TPUs 1, NVIDIA, SMI. I will just run the monitoring program.
+GPUs 1, NVIDIA, SMI. I will just run the monitoring program.
 
 1997
 03:37:23,960 --> 03:37:28,900
-RAM.
+.
 
 1998
 03:37:28,900 --> 03:37:34,940
@@ -7996,7 +7996,7 @@ So all of this VRAM in the GPU, it's for mine to use.
 
 2000
 03:37:41,580 --> 03:37:52,220
-And so all of this memory here is mine for use, even though I didn't request CP memory
+And so all of this memory here is mine for use, even though I didn't request CPU memory
 
 2001
 03:37:52,220 --> 03:37:53,220
@@ -8668,7 +8668,7 @@ okay, what is the version of, let's say, PyTorch I want to install? And then let
 
 2168
 03:52:07,920 --> 03:52:20,240
-packaging managers decide what versions of KUDA toolkit I get. The person who decided this thing
+packaging managers decide what versions of CUDA toolkit I get. The person who decided this thing
 
 2169
 03:52:20,240 --> 03:52:28,960
@@ -8676,7 +8676,7 @@ was some guy in GitHub who made the pull request or made the build for a specifi
 
 2170
 03:52:30,640 --> 03:52:36,080
-Some guy in an open source community, most of these are nowadays installed from CondaForge,
+Some guy in an open source community, most of these are nowadays installed from conda forge,
 
 2171
 03:52:36,080 --> 03:52:41,920
@@ -8760,7 +8760,7 @@ Basically, if I would want to do, let's say, machine learning, traditional machi
 
 2191
 03:55:10,800 --> 03:55:15,920
-I wouldn't create my own machine learning framework. I would use something like SkiGit Learn
+I wouldn't create my own machine learning framework. I would use something like Scikit Learn
 
 2192
 03:55:15,920 --> 03:55:22,480
@@ -8904,7 +8904,7 @@ the installation instructions because the technology is so well orchestrated and
 
 2227
 03:59:02,700 --> 03:59:09,660
-existing but for many of these GP codes you need to do a lot more like these kinds of usability
+existing but for many of these GPU codes you need to do a lot more like these kinds of usability
 
 2228
 03:59:09,660 --> 03:59:15,740
@@ -9136,7 +9136,7 @@ that makes it easier to access, let's say GPUs,
 
 2285
 04:04:06,100 --> 04:04:08,300
-or in the case of chat GPT,
+or in the case of ChatGPT,
 
 2286
 04:04:08,300 --> 04:04:12,900
@@ -9808,7 +9808,7 @@ that I had started writing here what would you recommend people to do next
 
 2453
 04:17:58,200 --> 04:18:04,520
-then we can end we have a page Python environment with conda on ski comp Alto
+then we can end we have a page Python environment with conda on SciComp Aalto
 
 2454
 04:18:04,520 --> 04:18:21,960
@@ -9836,11 +9836,11 @@ other workshops, which are by our partners. And while CSC has the big training c
 
 2460
 04:18:55,160 --> 04:19:02,760
-all kinds of advanced things. But for particular pages of Ski Comp Alto fee, people should know
+all kinds of advanced things. But for particular pages of SciComp Aalto fee, people should know
 
 2461
 04:19:02,760 --> 04:19:07,560
-for Alto usage. Is there anything else that we really have to do?
+for Aalto usage. Is there anything else that we really have to do?
 
 2462
 04:19:14,440 --> 04:19:20,440
@@ -9892,7 +9892,7 @@ find this if there's more. Any final words?
 
 2474
 04:21:01,520 --> 04:21:10,800
-I guess not. Okay, thanks a lot, Ben. Yeah, thanks for attending. Yes, thank you.
+I guess not. Okay, thanks a lot, [name]. Yeah, thanks for attending. Yes, thank you.
 
 2475
 04:21:10,800 --> 04:21:14,800
