@@ -1,0 +1,1456 @@
+1
+00:00:00,000 --> 00:00:10,740
+Hello, we are back for the last little bit.
+
+2
+00:00:10,740 --> 00:00:12,000
+So GPUs.
+
+3
+00:00:12,000 --> 00:00:17,620
+So I can say I'm a person that hasn't used GPUs very much.
+
+4
+00:00:17,620 --> 00:00:24,740
+So my main questions from the next sections would be, if I have code that already uses
+
+5
+00:00:24,740 --> 00:00:31,220
+GPU, what options in Slurm do I need?
+
+6
+00:00:31,220 --> 00:00:34,620
+How do I monitor their performance?
+
+7
+00:00:34,620 --> 00:00:43,960
+And what do I need in my own software or Python environments or whatever in order to use these?
+
+8
+00:00:43,960 --> 00:00:45,660
+So do you think we can go over that?
+
+9
+00:00:45,660 --> 00:00:52,660
+Yeah, I think that's a great task list for this session.
+
+10
+00:00:52,660 --> 00:00:55,660
+Do you want to throw into my screen and maybe I can...
+
+11
+00:00:55,660 --> 00:01:00,660
+Sure. Here we go. Okay, there you go.
+
+12
+00:01:00,660 --> 00:01:11,660
+Yeah, so TPUs, this is like a topic with lots of interest and lots of things to cover,
+
+13
+00:01:11,660 --> 00:01:18,860
+But hopefully, we can get through the most important things in this session.
+
+14
+00:01:19,900 --> 00:01:25,580
+So what are TPUs? We already talked about it. They're basically the chicken skewers of the
+
+15
+00:01:29,420 --> 00:01:34,940
+massive parallel processors that do one thing very good. And the one thing that they do good
+
+16
+00:01:34,940 --> 00:01:38,540
+is the matrix multiplication and that sort of stuff.
+
+17
+00:01:38,540 --> 00:01:42,860
+So they do that very well.
+
+18
+00:01:42,860 --> 00:01:45,220
+And that's why they're used in all kinds of codes
+
+19
+00:01:45,220 --> 00:01:48,820
+from physics to deep learning and that sort of stuff.
+
+20
+00:01:48,820 --> 00:01:51,260
+And everybody wants to use them because they make stuff
+
+21
+00:01:51,260 --> 00:01:53,660
+go room, basically.
+
+22
+00:01:53,660 --> 00:02:00,980
+So when we want the GPUs, how Slurm thinks about them,
+
+23
+00:02:00,980 --> 00:02:03,460
+how Slurm knows about them, it knows about them
+
+24
+00:02:03,460 --> 00:02:06,700
+in these so-called generic resources.
+
+25
+00:02:06,700 --> 00:02:11,700
+So you need to specifically request for these resources.
+
+26
+00:02:11,820 --> 00:02:15,620
+There's two ways you can do to request these resources.
+
+27
+00:02:15,620 --> 00:02:20,620
+The old way is the dash-dash-gress GPU one,
+
+28
+00:02:25,500 --> 00:02:28,980
+but the newer way is this dash-dash-GPUs equal one.
+
+29
+00:02:28,980 --> 00:02:36,260
+The newer way, if it's supported, I would personally use that because it also allows
+
+30
+00:02:36,260 --> 00:02:42,180
+you to, like, if you need to do multi-GPU stuff and that sort of stuff later on, there's
+
+31
+00:02:42,180 --> 00:02:46,900
+other flags that you can use to make it so that you can, like, allocate certain number
+
+32
+00:02:46,900 --> 00:02:51,020
+of CPUs per GPU and that sort of stuff.
+
+33
+00:02:51,020 --> 00:02:54,540
+You can make certain that your job gets the correct kind of an allocation.
+
+34
+00:02:54,540 --> 00:02:58,620
+So the newer method has more, like, leeway on that.
+
+35
+00:02:58,620 --> 00:03:04,140
+both work so you can use whichever one you want to use. Some clusters have the
+
+36
+00:03:04,140 --> 00:03:07,420
+GPUs in a separate partition so you might need to
+
+37
+00:03:07,420 --> 00:03:11,260
+ask for a separate partition.
+
+38
+00:03:11,500 --> 00:03:18,140
+So basically just like processors and memory Slurm tracks it
+
+39
+00:03:18,140 --> 00:03:21,980
+and look up your own clusters info for how to request it
+
+40
+00:03:21,980 --> 00:03:26,220
+and then you got it. Okay that's pretty easy.
+
+41
+00:03:26,220 --> 00:03:28,060
+Yeah, and when Slurm allocates the job,
+
+42
+00:03:28,060 --> 00:03:32,340
+it basically makes certain that, OK, you get access to it
+
+43
+00:03:32,340 --> 00:03:34,740
+and nobody else gets access to it.
+
+44
+00:03:34,740 --> 00:03:38,060
+So then you will get access to the GPU.
+
+45
+00:03:38,060 --> 00:03:41,780
+In our cluster, there's also this debug partition
+
+46
+00:03:41,780 --> 00:03:45,820
+that you can use to debug short jobs, which is very nice.
+
+47
+00:03:45,820 --> 00:03:49,780
+If you want to do a small debug, run, see that your code runs,
+
+48
+00:03:49,780 --> 00:03:53,860
+and then just stop it, and then put the actual run going.
+
+49
+00:03:53,860 --> 00:03:55,340
+Because the GPUs are very popular,
+
+50
+00:03:55,340 --> 00:03:57,660
+or sometimes there's a lot of people in the queue.
+
+51
+00:03:59,500 --> 00:04:08,060
+And yeah, let's jump right in and let's start dealing with the actual problems of the GPU
+
+52
+00:04:08,060 --> 00:04:12,300
+computing or the actual things where you need to, what you need to think about.
+
+53
+00:04:13,660 --> 00:04:23,020
+So the first thing you need to think about is that the GPUs, like you cannot simply
+
+54
+00:04:23,020 --> 00:04:26,460
+like talk with the GPU, like you do it,
+
+55
+00:04:26,460 --> 00:04:30,140
+like you cannot write a normal program with them.
+
+56
+00:04:30,140 --> 00:04:31,860
+You need to discuss with the GPU
+
+57
+00:04:31,860 --> 00:04:33,860
+because it's just like a specialized hardware.
+
+58
+00:04:33,860 --> 00:04:34,700
+Okay.
+
+59
+00:04:34,700 --> 00:04:37,300
+You need to use this thing called CUDA toolkit
+
+60
+00:04:37,300 --> 00:04:39,060
+to discuss with that.
+
+61
+00:04:39,060 --> 00:04:42,020
+So like, because there's so many different like hardware,
+
+62
+00:04:42,020 --> 00:04:44,060
+there's different kinds of GPUs
+
+63
+00:04:44,060 --> 00:04:47,580
+and nobody wants to write to a specific like CPU
+
+64
+00:04:47,580 --> 00:04:48,940
+or GPU architecture.
+
+65
+00:04:48,940 --> 00:04:50,980
+Like you don't want to write the machine code
+
+66
+00:04:50,980 --> 00:04:58,660
+only for like certain GPU architecture, what the people at NVIDIA have created and which is
+
+67
+00:04:58,660 --> 00:05:06,180
+probably the best product, like even more important I would say maybe than the actual hardware
+
+68
+00:05:06,740 --> 00:05:15,860
+is this kind of like development kit called CUDA, like CUDA development kit that basically
+
+69
+00:05:15,860 --> 00:05:23,140
+and handle whatever GPU you have underneath it. The CUDA development kit is this kind of
+
+70
+00:05:26,580 --> 00:05:33,780
+thing that makes it possible for your code to discuss with the GPU. If you have a program
+
+71
+00:05:33,780 --> 00:05:42,020
+that is like low-level program, you need to compile your code for the GPU.
+
+72
+00:05:42,020 --> 00:05:49,460
+Okay. So here's an example of a, like, so, so is this like, there's the driver on the
+
+73
+00:05:49,460 --> 00:05:55,080
+node itself, but depending on what GPU you're using, there may be different driver versions.
+
+74
+00:05:55,080 --> 00:06:01,420
+So the toolkit translates your program to what's needed for this particular model of
+
+75
+00:06:01,420 --> 00:06:03,980
+GPU with these particular driver versions.
+
+76
+00:06:03,980 --> 00:06:07,740
+Yeah. Well, maybe I'll show this picture already.
+
+77
+00:06:07,740 --> 00:06:08,740
+Okay.
+
+78
+00:06:08,740 --> 00:06:14,260
+So there's a picture of how the thing actually works.
+
+79
+00:06:14,260 --> 00:06:19,840
+So what there is in the machine,
+
+80
+00:06:19,840 --> 00:06:24,380
+you have the GPU connected to the motherboard of the machine.
+
+81
+00:06:24,380 --> 00:06:26,180
+In the operating system,
+
+82
+00:06:26,180 --> 00:06:27,900
+there's this CUDA driver.
+
+83
+00:06:27,900 --> 00:06:31,480
+This CUDA driver can then discuss with the GPU,
+
+84
+00:06:31,480 --> 00:06:35,700
+but you don't want to code your code for this CUDA driver
+
+85
+00:06:35,700 --> 00:06:38,180
+because the driver might be updated, right?
+
+86
+00:06:38,180 --> 00:06:40,060
+Like [name] said, it might be updated,
+
+87
+00:06:40,060 --> 00:06:42,180
+it might be different.
+
+88
+00:06:42,180 --> 00:06:44,940
+The GPU underneath is different.
+
+89
+00:06:44,940 --> 00:06:46,820
+Like if you go into a different computer,
+
+90
+00:06:46,820 --> 00:06:48,420
+it might be a different GPU.
+
+91
+00:06:48,420 --> 00:06:50,020
+So you don't want to lock yourself
+
+92
+00:06:50,020 --> 00:06:53,620
+only to the specific hardware configuration that you have,
+
+93
+00:06:53,620 --> 00:06:56,340
+a hardware and operating system configuration you want.
+
+94
+00:06:56,340 --> 00:06:58,700
+So what the programs usually do,
+
+95
+00:06:58,700 --> 00:07:01,420
+like for example, PyTorch or something,
+
+96
+00:07:01,420 --> 00:07:05,660
+They don't actually talk with the driver that much.
+
+97
+00:07:05,660 --> 00:07:08,020
+They don't deal with that.
+
+98
+00:07:08,020 --> 00:07:12,420
+They actually are written with respect
+
+99
+00:07:12,420 --> 00:07:16,020
+to the CUDA libraries, so libraries
+
+100
+00:07:16,020 --> 00:07:18,580
+like Kublas and QFT that implement
+
+101
+00:07:18,580 --> 00:07:24,180
+certain mathematical operations that run on GPUs,
+
+102
+00:07:24,180 --> 00:07:26,260
+and then the runtime library that
+
+103
+00:07:26,260 --> 00:07:28,740
+can be called to, let's say, give information,
+
+104
+00:07:28,740 --> 00:07:31,100
+is there a GPU available.
+
+105
+00:07:31,100 --> 00:07:37,980
+So this topmost part is usually specific for your program.
+
+106
+00:07:37,980 --> 00:07:41,300
+So you have a program, and that program
+
+107
+00:07:41,300 --> 00:07:46,980
+needs to be compiled against a certain version of CUDA toolkit
+
+108
+00:07:46,980 --> 00:07:47,860
+usually.
+
+109
+00:07:47,860 --> 00:07:52,100
+And the driver can handle multiple different toolkits
+
+110
+00:07:52,100 --> 00:07:59,180
+and then handle the discussion between the program and the GP
+
+111
+00:07:59,180 --> 00:07:59,740
+basically.
+
+112
+00:07:59,740 --> 00:08:02,900
+and the CUDA toolkit and the GPM.
+
+113
+00:08:02,900 --> 00:08:07,580
+So if we look at the example, if we quickly go show it.
+
+114
+00:08:08,660 --> 00:08:11,900
+So in this example, we are dealing with quite low level
+
+115
+00:08:11,900 --> 00:08:13,580
+like CUDA code.
+
+116
+00:08:13,580 --> 00:08:16,700
+So for this, we need to compile it actually.
+
+117
+00:08:16,700 --> 00:08:21,700
+So for the compilation, I need to load certain modules.
+
+118
+00:08:22,940 --> 00:08:25,700
+So a compiler and a CUDA toolkit.
+
+119
+00:08:25,700 --> 00:08:26,820
+So this CUDA toolkit,
+
+120
+00:08:26,820 --> 00:08:36,820
+I'm now in the login node of the cluster, so this doesn't have a GPU available, but
+
+121
+00:08:36,820 --> 00:08:44,460
+I have a CUDA toolkit, so I can compile my code with respect to this CUDA toolkit, so
+
+122
+00:08:44,460 --> 00:08:46,500
+it's linking to that.
+
+123
+00:08:46,500 --> 00:08:56,100
+And because there's no GPU available, I need to tell my compilation that I need it to work
+
+124
+00:08:56,100 --> 00:09:00,560
+with different kinds of GPU architectures, so I need to give this kind of a monstrosity
+
+125
+00:09:00,560 --> 00:09:07,540
+of a command that, okay, build my code so that it runs on these different kinds of GPU
+
+126
+00:09:07,540 --> 00:09:08,540
+architectures.
+
+127
+00:09:08,540 --> 00:09:13,180
+So, this is the kind of stuff that usually happens, like, that somebody else has done
+
+128
+00:09:13,180 --> 00:09:14,180
+for you.
+
+129
+00:09:14,180 --> 00:09:16,860
+Usually, you don't have to, like, write these kinds of commands.
+
+130
+00:09:16,860 --> 00:09:19,740
+Yeah, that's a pretty crazy long line.
+
+131
+00:09:19,740 --> 00:09:20,740
+Yeah.
+
+132
+00:09:20,740 --> 00:09:25,440
+like you can, there's a link to article about this.
+
+133
+00:09:25,440 --> 00:09:27,800
+Well, what are these architectures?
+
+134
+00:09:27,800 --> 00:09:30,320
+That is great article that I always use as a reference,
+
+135
+00:09:30,320 --> 00:09:35,220
+like to check which GPUs these architectures,
+
+136
+00:09:35,220 --> 00:09:39,800
+like, well, what do they mean?
+
+137
+00:09:39,800 --> 00:09:43,240
+So now that we have the program,
+
+138
+00:09:43,240 --> 00:09:46,040
+like we have this compiled pi.gpu,
+
+139
+00:09:47,000 --> 00:09:48,720
+we can run it with the GPU.
+
+140
+00:09:48,720 --> 00:09:52,280
+So basically what I'm asking is one GPU
+
+141
+00:09:52,280 --> 00:09:54,880
+and then we can run it.
+
+142
+00:09:54,880 --> 00:09:56,120
+Okay, yeah.
+
+143
+00:09:56,120 --> 00:09:58,560
+And it's in the queue and it's done
+
+144
+00:09:58,560 --> 00:10:00,600
+and it's done basically instantaneously.
+
+145
+00:10:00,600 --> 00:10:03,080
+And because GPUs are so fast,
+
+146
+00:10:03,080 --> 00:10:04,800
+so this number is pretty similar
+
+147
+00:10:04,800 --> 00:10:06,400
+that we run with the CPUs.
+
+148
+00:10:06,400 --> 00:10:09,280
+So let's add like few zeros here.
+
+149
+00:10:09,280 --> 00:10:10,120
+Okay, yeah.
+
+150
+00:10:10,120 --> 00:10:12,960
+And let's run it with the GPU and it's basically done.
+
+151
+00:10:12,960 --> 00:10:15,000
+That's still instant, basically.
+
+152
+00:10:15,000 --> 00:10:16,600
+Yeah, it's basically like instant.
+
+153
+00:10:16,600 --> 00:10:20,360
+So this is like a lot faster than the Python code
+
+154
+00:10:20,360 --> 00:10:22,320
+that we previously run.
+
+155
+00:10:22,320 --> 00:10:25,800
+Like in order to get like actual some run time,
+
+156
+00:10:25,800 --> 00:10:27,580
+well, we need to add more zeros.
+
+157
+00:10:27,580 --> 00:10:28,420
+Yeah.
+
+158
+00:10:29,800 --> 00:10:32,240
+But this is a lot of work, right?
+
+159
+00:10:32,240 --> 00:10:36,280
+Like the compilation and that sort of like writing the code
+
+160
+00:10:36,280 --> 00:10:40,900
+as this kind of like C code and then writing the code,
+
+161
+00:10:40,900 --> 00:10:42,800
+like dealing with the CUDA.
+
+162
+00:10:42,800 --> 00:10:46,160
+And most of the programs that use GPUs don't do this.
+
+163
+00:10:46,160 --> 00:10:49,920
+they are built against a certain version of Huda Toolkit.
+
+164
+00:10:49,920 --> 00:10:52,240
+And then we just like...
+
+165
+00:10:52,240 --> 00:10:55,280
+Like they come from whoever else provides them.
+
+166
+00:10:55,280 --> 00:10:57,040
+They're built against a certain version.
+
+167
+00:10:57,040 --> 00:10:57,880
+Okay. Yeah.
+
+168
+00:10:57,880 --> 00:10:59,320
+Yes.
+
+169
+00:10:59,320 --> 00:11:04,320
+So let's say we have this now, this program.
+
+170
+00:11:04,320 --> 00:11:07,080
+The second question you asked at the start of this session
+
+171
+00:11:07,080 --> 00:11:09,240
+was how to do monitoring.
+
+172
+00:11:11,360 --> 00:11:14,200
+And in our cluster, there's this monitoring script
+
+173
+00:11:14,200 --> 00:11:16,500
+but because we did release an installation,
+
+174
+00:11:16,500 --> 00:11:20,180
+it currently doesn't work, but we will fix it.
+
+175
+00:11:20,180 --> 00:11:22,200
+But there's another way that you can do a monitoring,
+
+176
+00:11:22,200 --> 00:11:24,940
+which is like going to the compute node
+
+177
+00:11:24,940 --> 00:11:29,260
+while the job is running.
+
+178
+00:11:29,260 --> 00:11:32,140
+And this works with other jobs as well.
+
+179
+00:11:32,140 --> 00:11:33,060
+In different clusters,
+
+180
+00:11:33,060 --> 00:11:37,540
+you might have a different way of working on it.
+
+181
+00:11:37,540 --> 00:11:40,300
+I'll add a few zeros here so that it actually runs
+
+182
+00:11:42,020 --> 00:11:42,920
+a bit longer.
+
+183
+00:11:44,200 --> 00:11:51,640
+So, you notice that my job is now running, like I have an interactive job running.
+
+184
+00:11:51,640 --> 00:11:58,960
+I'll open a new terminal and I can use the Slurm queue to check which node it is running
+
+185
+00:11:58,960 --> 00:12:01,080
+in.
+
+186
+00:12:01,080 --> 00:12:04,160
+And while the job is running, I'm allowed to go there.
+
+187
+00:12:04,160 --> 00:12:09,280
+And what happens is that I'm basically going to the same reservation, so I'm using the
+
+188
+00:12:09,280 --> 00:12:10,280
+same resources.
+
+189
+00:12:10,280 --> 00:12:16,560
+So, if I start new programs, they are basically taking resources away from the program that
+
+190
+00:12:16,560 --> 00:12:20,040
+I'm currently running in the queue.
+
+191
+00:12:20,040 --> 00:12:28,120
+And in here, I can use this tool called NVIDIA SMI, which is provided by the driver, NVIDIA
+
+192
+00:12:28,120 --> 00:12:29,120
+driver.
+
+193
+00:12:29,120 --> 00:12:35,000
+And it will tell me the usage or the utilization.
+
+194
+00:12:35,000 --> 00:12:38,040
+So if I make this a bit bigger.
+
+195
+00:12:38,040 --> 00:12:46,840
+can see this sort of an output. What we see here is that the GPU name, we have a certain GPU name,
+
+196
+00:12:48,520 --> 00:12:55,320
+we have a GPU number, we have the power usage and that sort of stuff, we have a memory usage,
+
+197
+00:12:56,120 --> 00:13:03,240
+and then we have this GPU utilization. This basically means that is the GPU actually doing
+
+198
+00:13:03,240 --> 00:13:11,080
+something. And below here, we see the processes that are actually using the GPU. So this can be
+
+199
+00:13:11,080 --> 00:13:16,680
+used as this kind of like a measurement thing that you can go there and check is it actually
+
+200
+00:13:16,680 --> 00:13:25,800
+doing something. Yeah. So I see it says 100% usage here. Is that typical? Like do most people's GPU
+
+201
+00:13:25,800 --> 00:13:35,560
+drops hit 100%? No, no. For physics code and that sort of code, it can get to the 100% or close to
+
+202
+00:13:35,560 --> 00:13:42,920
+the 100%. But in many cases, the situation is that you don't necessarily reach the 100%.
+
+203
+00:13:43,880 --> 00:13:51,240
+And the reason for this is that quite often the GPUs need something to work on. So if you're
+
+204
+00:13:51,240 --> 00:13:57,080
+you're dealing with, let's say, a deep learning code,
+
+205
+00:13:57,080 --> 00:14:03,160
+if we look at this picture above here, this one.
+
+206
+00:14:03,160 --> 00:14:06,240
+The program memory RAM.
+
+207
+00:14:06,240 --> 00:14:07,080
+OK, yeah.
+
+208
+00:14:07,080 --> 00:14:07,800
+Yeah.
+
+209
+00:14:07,800 --> 00:14:10,480
+So in many cases, you have a situation
+
+210
+00:14:10,480 --> 00:14:14,240
+where your program, let's say a deep learning code,
+
+211
+00:14:14,240 --> 00:14:18,160
+it will need to parse a data set or process a data set that
+
+212
+00:14:18,160 --> 00:14:28,240
+then used for the deep learning process. And for this to happen, the CPU part of the program
+
+213
+00:14:28,880 --> 00:14:37,040
+usually needs to load data in and process that data and then send it to the GPU for the calculation.
+
+214
+00:14:39,040 --> 00:14:47,760
+And if the GPU doesn't have enough data, it will just idle and wait for the CPU to
+
+215
+00:14:47,760 --> 00:14:55,600
+process the data. So what can happen is that the GPU utilization gets low because the CPU part
+
+216
+00:14:55,600 --> 00:15:03,120
+hasn't done its job fast enough. So it's like, I think something you've said before, the GPU is so
+
+217
+00:15:03,120 --> 00:15:11,360
+fast it can, what's the thing, resource starvation. So the CPUs can't pump data into it fast enough to
+
+218
+00:15:11,360 --> 00:15:12,360
+Yeah.
+
+219
+00:15:12,360 --> 00:15:13,360
+Okay.
+
+220
+00:15:13,360 --> 00:15:19,760
+And that means that in many cases, like when using GPU code, the actual thing you're coding
+
+221
+00:15:19,760 --> 00:15:23,040
+is the left part of this program.
+
+222
+00:15:23,040 --> 00:15:28,640
+You're trying to get, let's say, a data loading system to work so that you get enough data
+
+223
+00:15:28,640 --> 00:15:30,720
+for the GPU.
+
+224
+00:15:30,720 --> 00:15:37,040
+And this also means that when you're going from, let's say, your workstation to working
+
+225
+00:15:37,040 --> 00:15:42,880
+on a cluster, you might encounter a situation where your code is slower again on the GPU.
+
+226
+00:15:43,680 --> 00:15:48,320
+And you might wonder what's happening. I thought these GPUs are really powerful,
+
+227
+00:15:48,320 --> 00:15:54,720
+why is it slower? And the reason isn't that the GPU is bad or slower. The reason is that the data
+
+228
+00:15:54,720 --> 00:16:02,240
+isn't close to the GPU. So often you need to copy, let's say, the data sets to the local
+
+229
+00:16:02,240 --> 00:16:06,240
+local drive in these machines.
+
+230
+00:16:06,240 --> 00:16:10,240
+So all of our GPU machines have a local SSD drive there,
+
+231
+00:16:10,240 --> 00:16:14,240
+so that you can use that as this kind of like a buffer
+
+232
+00:16:14,240 --> 00:16:18,240
+for your data, so that you can fill out the GPU fast enough.
+
+233
+00:16:18,240 --> 00:16:22,240
+Because otherwise the GPU will be starving and it won't
+
+234
+00:16:22,240 --> 00:16:26,240
+get enough data. And often you want to
+
+235
+00:16:26,240 --> 00:16:30,240
+also utilize this multi-CPU, like the shared memory
+
+236
+00:16:30,240 --> 00:16:37,840
+a parallelism thing where you have multiple data loaders feeding one GPU enough stuff.
+
+237
+00:16:39,600 --> 00:16:46,240
+And this is like a whole can of worms. But basically, nowadays, often GPU programming
+
+238
+00:16:46,240 --> 00:16:53,520
+isn't actually programming on the GPU. You have some existing library that uses GPU or framework,
+
+239
+00:16:53,520 --> 00:17:01,360
+like by torch and then you have you try to like make certain that the gpu has enough stuff to do
+
+240
+00:17:01,360 --> 00:17:08,560
+yeah so in the pasta metaphor but if we're in this restaurant we have the chicken cooker
+
+241
+00:17:09,520 --> 00:17:16,800
+and the chicken cooker can cook 20 chickens at once but we don't have enough chickens in our
+
+242
+00:17:16,800 --> 00:17:22,400
+restaurant so every time like oh we don't have enough and you send someone to the store to go
+
+243
+00:17:22,400 --> 00:17:27,040
+buy some and come back and put them on. But by the time they get back, they need even more. So,
+
+244
+00:17:27,040 --> 00:17:31,760
+okay, go to the store again and come back. And data transfer...
+
+245
+00:17:31,760 --> 00:17:32,720
+That's an excellent...
+
+246
+00:17:32,720 --> 00:17:34,000
+Yeah, that's excellent.
+
+247
+00:17:34,000 --> 00:17:39,280
+And compared to the speed of a processor, data transfer is slow, really slow.
+
+248
+00:17:41,440 --> 00:17:45,040
+I linked some slides up above that expanded on the kitchen metaphor,
+
+249
+00:17:45,040 --> 00:17:51,840
+and it was really surprising to me how slow the processing or the data transfer really is.
+
+250
+00:17:51,840 --> 00:17:58,720
+There's this adage in high-performance computing that computing is fast, but pipes are slow.
+
+251
+00:17:59,760 --> 00:18:07,440
+So basically, everything that needs to transfer data, that's the part where the stuff usually
+
+252
+00:18:07,440 --> 00:18:16,800
+gets slow. In the case of a GPU, the problem usually is that the slow part isn't the GPU
+
+253
+00:18:16,800 --> 00:18:24,040
+The slow part isn't the GPU memory or not even the transfer from the CPU memory to the
+
+254
+00:18:24,040 --> 00:18:25,040
+GPU part.
+
+255
+00:18:25,040 --> 00:18:29,520
+The slow part is outside of this picture, some hard drive or something that you need
+
+256
+00:18:29,520 --> 00:18:33,080
+to transfer stuff to the CPU memory.
+
+257
+00:18:33,080 --> 00:18:36,760
+And that's usually the bottleneck in this case situation.
+
+258
+00:18:36,760 --> 00:18:42,080
+There's also a great question in the chat of, do you need to separately reserve a memory
+
+259
+00:18:42,080 --> 00:18:45,600
+for the GPU?
+
+260
+00:18:45,600 --> 00:18:56,240
+The answer is no. You will get the whole GPU memory. Let's say I run here
+
+261
+00:18:56,960 --> 00:19:04,960
+GPUs 1, NVIDIA, SMI. I will just run the monitoring program.
+
+262
+00:19:04,960 --> 00:19:09,900
+.
+
+263
+00:19:09,900 --> 00:19:15,940
+So you notice that this run on a V100 with 16 gigabytes of memory.
+
+264
+00:19:15,940 --> 00:19:22,580
+So all of this VRAM in the GPU, it's for mine to use.
+
+265
+00:19:22,580 --> 00:19:33,220
+And so all of this memory here is mine for use, even though I didn't request CPU memory
+
+266
+00:19:33,220 --> 00:19:34,220
+that much.
+
+267
+00:19:34,220 --> 00:19:38,900
+So unlike the normal processor in one of our computers,
+
+268
+00:19:38,900 --> 00:19:40,500
+which can be shared by many things,
+
+269
+00:19:40,500 --> 00:19:45,420
+the GPU is always one GPU, one person, no sharing.
+
+270
+00:19:45,420 --> 00:19:46,020
+Yeah.
+
+271
+00:19:46,020 --> 00:19:46,660
+OK.
+
+272
+00:19:46,660 --> 00:19:50,600
+And also I will mention that quite often you still
+
+273
+00:19:50,600 --> 00:19:52,220
+need to reserve quite a bit of memory
+
+274
+00:19:52,220 --> 00:19:56,060
+because, for example, in order to load a large language
+
+275
+00:19:56,060 --> 00:19:59,860
+model or something, you need to first load it from the disk,
+
+276
+00:19:59,860 --> 00:20:04,140
+load it into the memory, and then give it to the GPU memory.
+
+277
+00:20:04,140 --> 00:20:10,700
+So you need to reserve enough memory so that the stuff can fit into the CPU's RAM before
+
+278
+00:20:10,700 --> 00:20:13,580
+it's transferred into the GPU's RAM.
+
+279
+00:20:13,580 --> 00:20:20,620
+And these memory considerations are quite important when it comes to these big models
+
+280
+00:20:20,620 --> 00:20:28,460
+or if you want to do large data processing, you need more and more memory.
+
+281
+00:20:28,460 --> 00:20:32,940
+And many of these large language models, for example, they might require so much memory
+
+282
+00:20:32,940 --> 00:20:38,540
+that they don't fit into one GPU. So, you have to use multiple GPUs to run those.
+
+283
+00:20:39,100 --> 00:20:46,860
+Yeah. Okay. I actually feel like I understand more than when I started, especially about the,
+
+284
+00:20:48,220 --> 00:20:53,100
+or mainly about the toolkit and the library things.
+
+285
+00:20:54,460 --> 00:21:00,460
+There's also one excellent question that, can you get an interactive session on a GPU? And the
+
+286
+00:21:00,460 --> 00:21:05,180
+Answer is in principle, yes, but I would highly recommend not doing that.
+
+287
+00:21:05,180 --> 00:21:12,860
+The first thing is that for the reason that the GPUs are very important for many calculations,
+
+288
+00:21:12,860 --> 00:21:19,340
+and they're very expensive, there's internal billing in Slurm that basically your priority
+
+289
+00:21:19,340 --> 00:21:25,740
+in the queue is determined by the resources you use. And because the GPUs are so important,
+
+290
+00:21:25,740 --> 00:21:32,740
+and the billing for the GPUs is higher.
+
+291
+00:21:32,740 --> 00:21:44,700
+So basically, if you use one hour of GPU interactively, you're basically using like 80 hours of CPU
+
+292
+00:21:44,700 --> 00:21:46,380
+time basically.
+
+293
+00:21:46,380 --> 00:21:49,260
+So there's this kind of like a billing factor there.
+
+294
+00:21:49,260 --> 00:21:53,140
+So it will lower your priority a lot.
+
+295
+00:21:53,140 --> 00:21:59,320
+And secondly, again, like if you're using it interactively, nobody else can use it.
+
+296
+00:21:59,320 --> 00:22:05,520
+So what I personally usually like to do is I write my stuff, then I run it with S run
+
+297
+00:22:05,520 --> 00:22:09,060
+or something like that and see how it performs.
+
+298
+00:22:09,060 --> 00:22:13,420
+And let's say I want to do like a deep learning training or something.
+
+299
+00:22:13,420 --> 00:22:18,220
+It's enough for me to know that the training starts to know that my code is correct.
+
+300
+00:22:18,220 --> 00:22:20,540
+And then I can like submit to a longer job.
+
+301
+00:22:20,540 --> 00:22:27,820
+Usually, if I want to just test it out, I can test out half an epoch or one epoch or
+
+302
+00:22:27,820 --> 00:22:34,060
+something like that and test out interactively this very short time and then actually submit
+
+303
+00:22:34,940 --> 00:22:41,020
+it for a longer time and not reserve it constantly because then my priority will suffer
+
+304
+00:22:41,020 --> 00:22:47,740
+and other people cannot use the GPUs. Okay.
+
+305
+00:22:50,540 --> 00:22:51,540
+Yeah.
+
+306
+00:22:51,540 --> 00:22:55,220
+So, was that all the most important things that I had said?
+
+307
+00:22:55,220 --> 00:23:03,100
+So, let's say there's some existing program, like a Python program, that uses GPUs, I want
+
+308
+00:23:03,100 --> 00:23:08,060
+to use PyTorch, so what do I need to do to make that work?
+
+309
+00:23:08,060 --> 00:23:17,540
+Yes, so this is the bane of many people's existence, that what actually happens, and
+
+310
+00:23:17,540 --> 00:23:22,740
+person in the chat was already discussing like they have a specific case where they want to use
+
+311
+00:23:23,380 --> 00:23:29,780
+TensorFlow and PyTorch. Both of these are these kind of like deep learning frameworks and some
+
+312
+00:23:29,780 --> 00:23:35,380
+extra packages on top of it and it's a lot of work to get that installed and getting that working
+
+313
+00:23:35,940 --> 00:23:43,220
+and that is a complicated thing to do and we have some pre-installed environments but they
+
+314
+00:23:43,220 --> 00:23:46,220
+they don't, of course, contain your custom packages.
+
+315
+00:23:46,220 --> 00:23:48,380
+And because it's so complicated,
+
+316
+00:23:48,380 --> 00:23:49,820
+usually we recommend that people
+
+317
+00:23:49,820 --> 00:23:51,840
+install their own environments.
+
+318
+00:23:52,980 --> 00:23:55,260
+In some sites, the recommended way
+
+319
+00:23:55,260 --> 00:23:58,580
+is to install these environments in containers.
+
+320
+00:23:58,580 --> 00:24:01,100
+For example, in CSC, the recommended way,
+
+321
+00:24:01,100 --> 00:24:02,860
+because all of these environments
+
+322
+00:24:02,860 --> 00:24:04,740
+can create millions of files,
+
+323
+00:24:04,740 --> 00:24:07,020
+and it can cause some problems.
+
+324
+00:24:07,020 --> 00:24:10,420
+But the recommended way, usually, is to use these, like...
+
+325
+00:24:10,420 --> 00:24:17,020
+So we, for example, recommend using Conda a lot, which is this kind of like framework
+
+326
+00:24:17,020 --> 00:24:24,460
+that can provide already installed, already compiled binaries for you easily.
+
+327
+00:24:24,460 --> 00:24:26,900
+And yeah, there's a question here.
+
+328
+00:24:26,900 --> 00:24:32,880
+So every time you want to use GPUs, you first need to load module load GCC CUDA.
+
+329
+00:24:32,880 --> 00:24:36,740
+But with Python are things you don't need to.
+
+330
+00:24:36,740 --> 00:24:37,740
+Yes.
+
+331
+00:24:37,740 --> 00:24:50,020
+Yes, so if you want to use GPUs and you want to compile yourself, you need to load the
+
+332
+00:24:50,020 --> 00:24:51,580
+development kit.
+
+333
+00:24:51,580 --> 00:24:55,620
+So basically these parts, this is provided by the module load CUDA.
+
+334
+00:24:55,620 --> 00:25:02,840
+It provides this part and then you can create your program with respect to these.
+
+335
+00:25:02,840 --> 00:25:10,040
+If you have an already existing program, let's say PyTorch or framework like PyTorch or TensorFlow,
+
+336
+00:25:10,040 --> 00:25:16,760
+what you want to do is that you want to install the program and you want that program to decide,
+
+337
+00:25:16,760 --> 00:25:24,200
+okay, I want the CUDA toolkit that I've been compiled against. Instead of going from bottom up,
+
+338
+00:25:24,200 --> 00:25:32,760
+you go from top to bottom. You first decide that, okay, I want PyTorch and what CUDA toolkit does
+
+339
+00:25:32,760 --> 00:25:40,600
+my PyTorch need. And then you let a packaging manager like Gonda decide which CUDA toolkit
+
+340
+00:25:40,600 --> 00:25:47,640
+fits with the PyTorch. So, you don't start with some, like, you don't basically force
+
+341
+00:25:48,440 --> 00:25:58,040
+the program to use a certain CUDA toolkit. You let the program decide what CUDA toolkit it needs.
+
+342
+00:25:58,040 --> 00:26:03,720
+So this is like the dependencies should be declared properly and then it works.
+
+343
+00:26:03,720 --> 00:26:04,720
+Okay.
+
+344
+00:26:04,720 --> 00:26:05,720
+Yeah.
+
+345
+00:26:05,720 --> 00:26:15,040
+So there's some instructions in our pages, in our like Conda page.
+
+346
+00:26:15,040 --> 00:26:22,200
+We have a separate page for how to use Conda in our cluster and how you can get the corresponding
+
+347
+00:26:22,200 --> 00:26:23,200
+CUDA toolkit.
+
+348
+00:26:23,200 --> 00:26:28,520
+If you are using these environments, you should not load the CUDA, because then you have doubled
+
+349
+00:26:28,520 --> 00:26:33,920
+the toolkits and now the programs don't know what they should be using and everything gets
+
+350
+00:26:33,920 --> 00:26:36,080
+like super complicated.
+
+351
+00:26:36,080 --> 00:26:44,520
+You should always have only one CUDA toolkit, either from the module system or provided
+
+352
+00:26:44,520 --> 00:26:51,000
+by the Conda installation.
+
+353
+00:26:51,000 --> 00:26:57,120
+There's also a question about MATLAB, and MATLAB is different because it does just-in-time
+
+354
+00:26:57,120 --> 00:27:04,400
+compilation, so it will use the modules, module CUDA.
+
+355
+00:27:04,400 --> 00:27:11,680
+What MATLAB does is that when you create your MATLAB GPU arrays, for example, it will just-in-time
+
+356
+00:27:11,680 --> 00:27:22,800
+compile these. When it needs them, it will compile a code that uses them when it's running,
+
+357
+00:27:22,800 --> 00:27:35,240
+so it will need the module system once. But this is a bit of a mess. There's so many different
+
+358
+00:27:35,240 --> 00:27:45,300
+ways of getting these toolkits and basically it means that whenever you want to install
+
+359
+00:27:45,300 --> 00:27:50,620
+PyTorch, you need to get like a few gigabytes of toolkits usually.
+
+360
+00:27:50,620 --> 00:27:55,360
+And this is currently the situation, but the reason behind this is that it's so much faster
+
+361
+00:27:55,360 --> 00:28:02,360
+to work with, let's say, a framework like PyTorch or TensorFlow or something and write
+
+362
+00:28:02,360 --> 00:28:09,800
+your code in this higher level language, like Python, instead of going to the C route and
+
+363
+00:28:09,800 --> 00:28:13,400
+writing everything against the CUDA toolkit.
+
+364
+00:28:13,400 --> 00:28:15,000
+Okay. Are we done with GPU? Should we go to the Ask Us Anything and then we can also answer
+

@@ -1,0 +1,1248 @@
+1
+00:00:00,000 --> 00:00:01,220
+So I'll flip back to my screen.
+
+2
+00:00:01,220 --> 00:00:04,060
+Yes.
+
+3
+00:00:04,060 --> 00:00:11,300
+OK, so here we are, to array jobs.
+
+4
+00:00:14,780 --> 00:00:17,420
+So I guess we go like before.
+
+5
+00:00:17,420 --> 00:00:26,780
+So let's look at the abstract here.
+
+6
+00:00:26,780 --> 00:00:28,420
+So what's an array job?
+
+7
+00:00:28,420 --> 00:00:32,140
+So array makes me think a bunch of things in parallel.
+
+8
+00:00:32,140 --> 00:00:36,820
+And from before, I know it's somehow related to embarrassing parallel.
+
+9
+00:00:36,820 --> 00:00:39,500
+So how would you explain it?
+
+10
+00:00:39,500 --> 00:00:40,500
+Yeah.
+
+11
+00:00:40,500 --> 00:00:44,620
+So an array is basically like what the name says.
+
+12
+00:00:44,620 --> 00:00:48,060
+It's like a list of numbers, basically.
+
+13
+00:00:48,060 --> 00:00:52,220
+And in this case, let's say we want
+
+14
+00:00:52,220 --> 00:00:55,860
+to do a simulation with multiple different data sets.
+
+15
+00:00:55,860 --> 00:00:57,060
+We have data set one.
+
+16
+00:00:57,060 --> 00:01:00,020
+We have data set two, data set three, and so forth.
+
+17
+00:01:00,020 --> 00:01:02,500
+We want to do the same simulation with we
+
+18
+00:01:02,500 --> 00:01:06,300
+have something that we want to iterate over, basically.
+
+19
+00:01:06,300 --> 00:01:08,140
+And all of these simulations would
+
+20
+00:01:08,140 --> 00:01:10,480
+be independent of each other.
+
+21
+00:01:10,480 --> 00:01:16,240
+So we have independent simulations that we can do, but we just want to do them all.
+
+22
+00:01:16,240 --> 00:01:23,320
+And what we could do is we could write our Sbatch script for each simulation at a time.
+
+23
+00:01:23,320 --> 00:01:30,480
+So we would have like n Sbatch scripts to run like serial jobs.
+
+24
+00:01:30,480 --> 00:01:38,240
+But what we can do in Slurm, there's this feature called array, where you can give this
+
+25
+00:01:38,240 --> 00:01:44,400
+slurm comment that we previously already see called array and give it a list of numbers or
+
+26
+00:01:44,400 --> 00:01:52,800
+different kinds of numbers and then it will launch basically one job that consists of
+
+27
+00:01:52,800 --> 00:01:56,960
+multiple of these independent jobs. So basically it launches copies of the same job
+
+28
+00:01:58,320 --> 00:02:07,600
+but with the key difference that each job gets one number different. So each job gets its own
+
+29
+00:02:07,600 --> 00:02:13,920
+Slurm_Array_Task_Id. So, each one gets its own environment variable, which is the number
+
+30
+00:02:13,920 --> 00:02:22,960
+of that job's number in that array. So, that job's number in that list of jobs.
+
+31
+00:02:22,960 --> 00:02:31,680
+Yeah. So, this variable right here, this runs 10 times with input underscore one,
+
+32
+00:02:31,680 --> 00:02:39,440
+input underscore 2 and so on up to 10. Okay. So when the job is running, if we look at the
+
+33
+00:02:39,440 --> 00:02:46,400
+minimal example script over here, when the job is running, that number, the slurm array task ID,
+
+34
+00:02:46,400 --> 00:02:52,880
+will go from numbers 1 to 10 because we have specified there in the comment that we want
+
+35
+00:02:52,880 --> 00:03:00,880
+them to run an array from 1 to 10. That number will change. That number then we can, for example,
+
+36
+00:03:00,880 --> 00:03:06,800
+In that code, we can run input one, input two, input three, and they all run independently
+
+37
+00:03:06,800 --> 00:03:14,560
+at the same time. The Slurm will try to allocate all of those into the queue, and they will run
+
+38
+00:03:14,560 --> 00:03:19,920
+independent of each other in different computers, different nodes, and whatever.
+
+39
+00:03:19,920 --> 00:03:25,440
+All of the other requirements that we have specified, if we require a certain amount of
+
+40
+00:03:25,440 --> 00:03:29,920
+of memory, certain amount of time, whatever, they are copied as well.
+
+41
+00:03:29,920 --> 00:03:39,160
+The rest of the script is basically copied between all of the jobs, but the array index
+
+42
+00:03:39,160 --> 00:03:40,160
+is just different.
+
+43
+00:03:40,160 --> 00:03:41,160
+Yeah.
+
+44
+00:03:41,160 --> 00:03:47,960
+So I run sbatch once, but 10 things come out the other end.
+
+45
+00:03:47,960 --> 00:03:48,960
+Yes.
+
+46
+00:03:48,960 --> 00:03:49,960
+Yes, basically.
+
+47
+00:03:49,960 --> 00:03:52,320
+So we can do this.
+
+48
+00:03:52,320 --> 00:03:58,960
+What you can do then, or what is the question usually, is that, okay, you have a number,
+
+49
+00:03:58,960 --> 00:04:06,000
+like the array is a number, and how can you convert that number into something else, let's
+
+50
+00:04:06,000 --> 00:04:07,880
+say a parameter or something.
+
+51
+00:04:07,880 --> 00:04:09,960
+We'll go through a few examples of this.
+
+52
+00:04:09,960 --> 00:04:10,960
+Yeah.
+
+53
+00:04:10,960 --> 00:04:11,960
+Yeah.
+
+54
+00:04:11,960 --> 00:04:12,960
+Maybe we could-
+
+55
+00:04:12,960 --> 00:04:13,960
+Should we do the example?
+
+56
+00:04:13,960 --> 00:04:14,960
+Yeah.
+
+57
+00:04:14,960 --> 00:04:15,960
+Let's do an example.
+
+58
+00:04:15,960 --> 00:04:16,960
+Okay.
+
+59
+00:04:16,960 --> 00:04:18,960
+And run that.
+
+60
+00:04:18,960 --> 00:04:21,160
+There's some good questions in the notes.
+
+61
+00:04:21,160 --> 00:04:29,000
+we can answer those first. Simulation is relatively fast. So yeah, if the array jobs take
+
+62
+00:04:29,880 --> 00:04:37,080
+a few minutes or less, then it's better not to have thousands of them. Try to group them together.
+
+63
+00:04:37,080 --> 00:04:42,840
+And there's some hints about this later in the page. It's exactly like an overall for loop
+
+64
+00:04:42,840 --> 00:04:50,360
+kind of thing. The number assigned to the array randomly done. I'm not sure exactly what that
+
+65
+00:04:50,360 --> 00:04:56,760
+means. So the Slurm_Array_Task_IDs come exactly from this here.
+
+66
+00:04:59,240 --> 00:05:06,680
+And you can skip values. You can choose different number ranges. You can do it like
+
+67
+00:05:06,680 --> 00:05:12,120
+you can do like every fifth number or something like that. There's different
+
+68
+00:05:12,120 --> 00:05:19,480
+syntaxes you can use to which numbers you want to use. But you will get like each of these jobs
+
+69
+00:05:19,480 --> 00:05:25,720
+will get one of those numbers that you have specified in the dash dash array comment.
+
+70
+00:05:26,920 --> 00:05:33,960
+The array jobs result in multiple sessions. Yes, so they can run at the same time,
+
+71
+00:05:33,960 --> 00:05:38,120
+but they might run at different times, and they're all completely independent
+
+72
+00:05:38,120 --> 00:05:40,360
+and have no knowledge of each other.
+
+73
+00:05:40,360 --> 00:05:41,360
+Yes.
+
+74
+00:05:41,360 --> 00:05:42,360
+Okay.
+
+75
+00:05:42,360 --> 00:05:43,360
+Let's go on.
+
+76
+00:05:43,360 --> 00:05:44,360
+So, if I scroll down.
+
+77
+00:05:44,360 --> 00:05:45,360
+Yeah.
+
+78
+00:05:45,360 --> 00:05:48,360
+Let's look at that example.
+
+79
+00:05:48,360 --> 00:05:50,360
+Where's the first example we get?
+
+80
+00:05:50,360 --> 00:05:51,360
+My first array job.
+
+81
+00:05:51,360 --> 00:05:52,360
+Yeah.
+
+82
+00:05:52,360 --> 00:05:54,360
+This seems like the place to start, right?
+
+83
+00:05:54,360 --> 00:05:55,360
+Yes.
+
+84
+00:05:55,360 --> 00:05:56,360
+Okay.
+
+85
+00:05:56,360 --> 00:05:57,360
+Yeah.
+
+86
+00:05:57,360 --> 00:05:58,360
+If we look at the script.
+
+87
+00:05:58,360 --> 00:06:04,360
+So, if we look at the script over here, we have, like, we have the usual suspects.
+
+88
+00:06:04,360 --> 00:06:05,360
+So, we have the first line.
+
+89
+00:06:05,360 --> 00:06:09,360
+We have the shebang, shebang, how it's pronounced.
+
+90
+00:06:09,360 --> 00:06:19,360
+And then we have a few of these comments, so if [name], you want to open our editor and copy the script there.
+
+91
+00:06:19,360 --> 00:06:24,360
+I've just realized I haven't cloned the HPC Examples repository or gotten set up.
+
+92
+00:06:24,360 --> 00:06:25,360
+Yeah.
+
+93
+00:06:25,360 --> 00:06:26,360
+Okay.
+
+94
+00:06:26,360 --> 00:06:27,360
+Yeah.
+
+95
+00:06:27,360 --> 00:06:40,360
+Well, in the meantime, I can, while [name] is copying the repository, I can, oh, yeah,
+
+96
+00:06:40,360 --> 00:06:41,360
+yeah.
+
+97
+00:06:41,360 --> 00:06:45,600
+Actually, for this, you don't need that, yeah.
+
+98
+00:06:45,600 --> 00:06:47,360
+The next ones, maybe, yes.
+
+99
+00:07:00,680 --> 00:07:01,180
+OK.
+
+100
+00:07:05,680 --> 00:07:08,440
+What?
+
+101
+00:07:08,440 --> 00:07:08,940
+Yes.
+
+102
+00:07:08,940 --> 00:07:20,820
+So, in the script, we have the time and the memory requirements at the start.
+
+103
+00:07:20,820 --> 00:07:28,460
+So these are the usual suspects that we always want to give anyways.
+
+104
+00:07:28,460 --> 00:07:30,420
+And after that, we have the output.
+
+105
+00:07:30,420 --> 00:07:37,060
+And this time in the output comment, we have a directive for the Sbatch.
+
+106
+00:07:37,060 --> 00:07:39,620
+We have a few different characters there.
+
+107
+00:07:39,620 --> 00:07:48,620
+We have this %A and %a, and what these do is that because we now launch multiple jobs
+
+108
+00:07:48,620 --> 00:07:53,620
+at the same time, we don't want them all to write in the same output file because it would
+
+109
+00:07:53,620 --> 00:07:58,860
+get really cluttered and it would be really hard to see what each of these would do.
+
+110
+00:07:58,860 --> 00:08:07,780
+What we can do is that we can divert each output into a separate file where the person's
+
+111
+00:08:07,780 --> 00:08:18,020
+capital A is like a shorthand for the job ID as a whole, like the whole array will get
+
+112
+00:08:18,020 --> 00:08:19,900
+one job ID.
+
+113
+00:08:19,900 --> 00:08:27,220
+So that will be the job ID for the array job, for the whole SLURM submission basically.
+
+114
+00:08:27,220 --> 00:08:30,540
+So basically, they all have the same capital A.
+
+115
+00:08:30,540 --> 00:08:31,040
+Yes.
+
+116
+00:08:31,040 --> 00:08:34,460
+The lowercase a is the number from it?
+
+117
+00:08:34,460 --> 00:08:37,100
+Yeah, that's the Slurm array task ID.
+
+118
+00:08:37,100 --> 00:08:41,020
+So each we will get, like if we submit in this example,
+
+119
+00:08:41,020 --> 00:08:44,780
+we submit from 0 to 15, so we get 16 outputs
+
+120
+00:08:44,780 --> 00:08:49,220
+when we calculate them together.
+
+121
+00:08:49,220 --> 00:08:53,380
+So we get 16 output files in this case.
+
+122
+00:08:53,380 --> 00:08:57,780
+And then, in the example, we run this echo.
+
+123
+00:09:02,020 --> 00:09:05,740
+And here, I'm just printing it out.
+
+124
+00:09:05,740 --> 00:09:06,740
+Yes.
+
+125
+00:09:06,740 --> 00:09:09,580
+OK, does this look correct?
+
+126
+00:09:09,580 --> 00:09:11,380
+Yeah, let's try and run it.
+
+127
+00:09:11,380 --> 00:09:17,900
+OK, I Control-X and Y, and Enter to save.
+
+128
+00:09:17,900 --> 00:09:20,460
+If I list, I see array example.
+
+129
+00:09:20,460 --> 00:09:23,300
+So I run with sbatch?
+
+130
+00:09:23,300 --> 00:09:23,800
+Yes.
+
+131
+00:09:27,460 --> 00:09:30,460
+So we do one submission.
+
+132
+00:09:30,460 --> 00:09:35,460
+And now if you run slurmq, we can see, hopefully.
+
+133
+00:09:35,460 --> 00:09:36,780
+It already ran.
+
+134
+00:09:39,740 --> 00:09:42,820
+The thing you saw pending was something I have.
+
+135
+00:09:42,820 --> 00:09:45,980
+Yeah, we need to put maybe a sleep there.
+
+136
+00:09:45,980 --> 00:09:47,460
+But OK, it already ran.
+
+137
+00:09:47,460 --> 00:09:49,860
+And now we already see the output.
+
+138
+00:09:49,860 --> 00:10:01,300
+So we see there that we have generated the overall job ID was 476680, and then we have
+
+139
+00:10:01,300 --> 00:10:05,140
+from 0 to 50 in these output files.
+
+140
+00:10:05,140 --> 00:10:14,100
+If [name] now looks at the output 0, you can see that the task ID is 0.
+
+141
+00:10:14,100 --> 00:10:19,220
+And if you pick, let's say, 1 is 1 and so forth.
+
+142
+00:10:19,220 --> 00:10:24,460
+You can notice that each process, when they were running, or each array task, when they
+
+143
+00:10:24,460 --> 00:10:32,660
+were running, they all got a different number for the slow array task ID.
+
+144
+00:10:32,660 --> 00:10:37,820
+There was a question also in the chat, but can you map this number into two parameters?
+
+145
+00:10:37,820 --> 00:10:43,940
+Yes, you can.
+
+146
+00:10:43,940 --> 00:10:50,740
+You can basically, whatever countable set you have, you can map into that, like whatever,
+
+147
+00:10:50,740 --> 00:10:53,180
+like two dimensions, three dimensions.
+
+148
+00:10:53,180 --> 00:10:59,620
+The question is just like, how complicated does the thing start to be?
+
+149
+00:10:59,620 --> 00:11:05,100
+And usually, we will look at a few examples on what you can do with this or what sort
+
+150
+00:11:05,100 --> 00:11:07,420
+of things you can do with this.
+
+151
+00:11:07,420 --> 00:11:13,260
+But in many cases, if it starts to get really complicated, the mapping, it's easier to just
+
+152
+00:11:13,260 --> 00:11:17,660
+the number to your program and then write it in your program. Okay, what should it do
+
+153
+00:11:17,660 --> 00:11:25,820
+with numbers? So, quite often, let's say it loads a line from a configuration file and
+
+154
+00:11:25,820 --> 00:11:30,380
+then loads the parameters from there or something like that.
+
+155
+00:11:30,380 --> 00:11:38,780
+Yeah. Okay. So, is that basically what there is? Do we, I think...
+
+156
+00:11:38,780 --> 00:11:45,900
+Maybe we could run the same example, but with a sleep in there and just demo, just to verify
+
+157
+00:11:45,900 --> 00:11:51,100
+that it actually runs on separate jobs.
+
+158
+00:11:51,100 --> 00:11:56,420
+I'm pushing the up arrow key to go up in history to find my nano command.
+
+159
+00:11:56,420 --> 00:11:57,420
+Yeah.
+
+160
+00:11:57,420 --> 00:12:00,220
+I push enter.
+
+161
+00:12:00,220 --> 00:12:11,680
+So what we get when we run this, we get 15 different individual jobs that all run the
+
+162
+00:12:11,680 --> 00:12:15,440
+same except the task ID is different.
+
+163
+00:12:15,440 --> 00:12:23,520
+And if we, based on that Slurm task ID, we do something different, or use a different
+
+164
+00:12:23,520 --> 00:12:28,800
+data set or different parameters or something, we will get 15 different results.
+
+165
+00:12:28,800 --> 00:12:29,800
+Yeah.
+
+166
+00:12:29,800 --> 00:12:30,760
+Okay. Should I do it?
+
+167
+00:12:30,760 --> 00:12:31,280
+Yeah.
+
+168
+00:12:31,280 --> 00:12:32,520
+Yes. Let's do it.
+
+169
+00:12:32,520 --> 00:12:34,320
+Press Enter.
+
+170
+00:12:36,640 --> 00:12:41,280
+Okay. I push Enter and then I run Slurm q immediately.
+
+171
+00:12:41,280 --> 00:12:42,760
+Yeah.
+
+172
+00:12:44,760 --> 00:12:48,280
+So here it looks like.
+
+173
+00:12:48,280 --> 00:12:51,200
+Yeah. They all got running immediately.
+
+174
+00:12:51,200 --> 00:12:53,160
+They're all running very quickly.
+
+175
+00:12:53,160 --> 00:12:55,800
+You can notice on the left,
+
+176
+00:12:55,800 --> 00:12:59,680
+you can see that they have this underscore there,
+
+177
+00:12:59,680 --> 00:13:06,240
+where you have the different array indices separated. So you have the same thing running
+
+178
+00:13:06,240 --> 00:13:13,280
+with different indices. And on the right, you can see where the node list is. Some are running in
+
+179
+00:13:13,280 --> 00:13:19,040
+PE40, some are running in PE41, and some are running in PE43, I think, or something.
+
+180
+00:13:19,920 --> 00:13:26,000
+So the computers where they are running might be completely different because they are independent.
+
+181
+00:13:26,000 --> 00:13:35,600
+But using this array thing makes it possible for you to run a lot of simulations at the
+
+182
+00:13:35,600 --> 00:13:41,120
+same time and it also is very nice for the queue manager because the queue manager doesn't
+
+183
+00:13:41,120 --> 00:13:45,240
+now have to consider each job independently.
+
+184
+00:13:45,240 --> 00:13:52,320
+It can consider the array job as a whole and it's much better for the queue manager to
+
+185
+00:13:52,320 --> 00:14:00,480
+do this for you to do this this way you don't get you don't accidentally like cause like a denial
+
+186
+00:14:00,480 --> 00:14:05,120
+of service and this could be the denial of service by submitting like thousands of jobs
+
+187
+00:14:05,120 --> 00:14:12,320
+so many of our users might run arrays that have like hundreds or maybe even maybe thousands of
+
+188
+00:14:12,320 --> 00:14:19,120
+jobs in the array so if they want to do like really big lots of simulations like different
+
+189
+00:14:19,120 --> 00:14:24,120
+random numbers or different parameters or something like that.
+
+190
+00:14:24,120 --> 00:14:30,120
+So there's a question, does it run the same program ten times?
+
+191
+00:14:30,120 --> 00:14:37,120
+Yes, and it has, but your program has to be able to use this variable to do different things each time.
+
+192
+00:14:37,120 --> 00:14:42,120
+If that's what you want. And below, I think we have a bunch of examples of this.
+
+193
+00:14:42,120 --> 00:14:48,120
+So we won't really go through the examples, but maybe we can show the spirit of them.
+
+194
+00:14:48,120 --> 00:14:49,120
+Yeah.
+
+195
+00:14:49,120 --> 00:14:57,260
+Maybe we can show the first two as this kind of like, yeah.
+
+196
+00:14:57,260 --> 00:15:01,240
+So here we see it's the array job.
+
+197
+00:15:01,240 --> 00:15:04,420
+There's 30 things in the array.
+
+198
+00:15:04,420 --> 00:15:09,180
+And I see there's some application that says input.
+
+199
+00:15:09,180 --> 00:15:15,980
+And here every program will take a different piece of input data.
+
+200
+00:15:15,980 --> 00:15:22,060
+if you have your input data all numbered, then that's relatively easy.
+
+201
+00:15:24,060 --> 00:15:30,460
+Yeah, and if you scroll a bit down, there's two examples of how can you map those numbers
+
+202
+00:15:30,460 --> 00:15:39,340
+into some parameters. One example is that you can use this case structure in Bash.
+
+203
+00:15:39,340 --> 00:15:51,460
+If the Slurm array task ID is something, set the seed in this case to be some other value.
+
+204
+00:15:51,460 --> 00:16:00,400
+And there is also below, there's another example where you can use, if you don't want to write,
+
+205
+00:16:00,400 --> 00:16:03,860
+you can write it a bit more concise.
+
+206
+00:16:03,860 --> 00:16:10,020
+you can use this bash array. This is a different array than the slurm array we are talking
+
+207
+00:16:10,020 --> 00:16:17,080
+about. Basically, bash has this list or all this kind of array structure. So, you can
+
+208
+00:16:17,080 --> 00:16:25,940
+list the numbers there and then pick from this array that specific number based on the
+
+209
+00:16:25,940 --> 00:16:29,660
+index of the, like, there.
+
+210
+00:16:29,660 --> 00:16:35,420
+And I guess the whole thing could be done in Python, basically, where you give a single
+
+211
+00:16:35,420 --> 00:16:40,700
+number to your Python or R MATLAB program, whatever, and internally it maps to whatever
+
+212
+00:16:40,700 --> 00:16:42,860
+parameters it's supposed to use.
+
+213
+00:16:42,860 --> 00:16:43,860
+Yes.
+
+214
+00:16:43,860 --> 00:16:44,860
+Okay.
+
+215
+00:16:44,860 --> 00:16:45,860
+Yeah.
+
+216
+00:16:45,860 --> 00:16:53,340
+You can also, like, read a line from a file, like, below this example also, like, if you
+
+217
+00:16:53,340 --> 00:16:58,500
+want to write your different parameters in a file and then read it from there.
+
+218
+00:16:58,500 --> 00:17:02,500
+But maybe we should go into exercises and let people try them out themselves.
+
+219
+00:17:02,500 --> 00:17:03,500
+Yeah, I agree.
+
+220
+00:17:03,500 --> 00:17:07,500
+There's a little bit more here you can read yourself.
+
+221
+00:17:07,500 --> 00:17:14,500
+So for exercises, what should we recommend people to work on?
+
+222
+00:17:14,500 --> 00:17:23,500
+I would probably say that the exercise 1 would be probably best.
+
+223
+00:17:23,500 --> 00:17:28,140
+So you can choose whichever of these previous examples
+
+224
+00:17:28,140 --> 00:17:30,660
+that we provide in the page and try
+
+225
+00:17:30,660 --> 00:17:37,620
+to give this pi.py different seed numbers.
+
+226
+00:17:37,620 --> 00:17:39,700
+So you can try out one of these exercises.
+
+227
+00:17:39,700 --> 00:17:44,740
+I would say that run one of these, at least,
+
+228
+00:17:44,740 --> 00:17:45,660
+and try it out.
+
+229
+00:17:49,220 --> 00:17:50,940
+Also, there was a good question, what
+
+230
+00:17:50,940 --> 00:18:00,780
+a difference between job and a program. Job, in this case, often refers to Slurm job. Basically,
+
+231
+00:18:00,780 --> 00:18:09,260
+like an allocation that Slurm needs to fulfill for you. When you submit with sbatch some script,
+
+232
+00:18:09,260 --> 00:18:13,980
+then Slurm thinks of it as a job that it needs to do. I need to do this thing.
+
+233
+00:18:13,980 --> 00:18:21,860
+thing. I need to execute this thing. If you give it an array job, it knows that, okay,
+
+234
+00:18:21,860 --> 00:18:30,380
+I need to execute this like 100 times, but with different array index each time. That's
+
+235
+00:18:30,380 --> 00:18:40,060
+a slurm job. Inside the script in that job, it can have multiple programs that you run
+
+236
+00:18:40,060 --> 00:18:44,020
+and then one after the other.
+
+237
+00:18:44,020 --> 00:18:46,620
+Yeah.
+
+238
+00:18:46,620 --> 00:18:47,500
+OK.
+
+239
+00:18:47,500 --> 00:18:49,020
+And how long should we give?
+
+240
+00:18:49,020 --> 00:18:51,700
+I guess this has to be combined with the break
+
+241
+00:18:51,700 --> 00:18:55,340
+because it will be break time.
+
+242
+00:18:55,340 --> 00:18:58,620
+So assuming people start 10 minutes from now
+
+243
+00:18:58,620 --> 00:19:02,020
+after the break, should we give 20 minutes maybe?
+
+244
+00:19:02,020 --> 00:19:03,940
+Would you say this is the most important one,
+
+245
+00:19:03,940 --> 00:19:05,780
+so we should give the most time here?
+
+246
+00:19:05,780 --> 00:19:09,860
+I think it would be good to have enough time to really test
+
+247
+00:19:09,860 --> 00:19:16,900
+these examples, because this is something that can give you a lot of power with minimal changes
+
+248
+00:19:16,900 --> 00:19:24,180
+to your code. And that's why this is very good to learn, because you can then utilize it in
+
+249
+00:19:24,180 --> 00:19:31,220
+multiple different ways. So yeah, I would say 20 minutes at least. Yeah. Okay. Sounds good.
+
+250
+00:19:31,220 --> 00:19:39,860
+So I wrote down until 20.
+
+251
+00:19:39,860 --> 00:19:40,620
+20 pounds.
+
+252
+00:19:40,620 --> 00:19:41,120
+So that's.
+
+253
+00:19:41,120 --> 00:19:42,660
+And do ask the questions.
+
+254
+00:19:42,660 --> 00:19:45,860
+It's very good to have the questions in the notes.
+
+255
+00:19:45,860 --> 00:19:47,300
+Yeah.
+
+256
+00:19:47,300 --> 00:19:50,260
+This is the most important interactive lesson
+
+257
+00:19:50,260 --> 00:19:51,220
+we're doing today.
+
+258
+00:19:51,220 --> 00:19:55,700
+So OK, see you in half an hour.
+
+259
+00:19:55,700 --> 00:19:56,420
+Yeah.
+
+260
+00:19:56,420 --> 00:19:57,860
+Thanks.
+
+261
+00:19:57,860 --> 00:19:58,380
+Thanks.
+
+262
+00:19:58,380 --> 00:19:59,940
+Bye.
+
+263
+00:20:00,000 --> 00:20:05,700
+Hello, we're back.
+
+264
+00:20:05,700 --> 00:20:10,900
+And there have been really many very good questions here, and I think most have been
+
+265
+00:20:10,900 --> 00:20:12,900
+answered.
+
+266
+00:20:12,900 --> 00:20:24,540
+There's a good question about how does the program understand Slurm_Array_Task_ID.
+
+267
+00:20:24,540 --> 00:20:29,660
+is called an environment variable and it's not specific to Slurm. Environment variable is a thing
+
+268
+00:20:29,660 --> 00:20:39,660
+which all Unix and probably Windows programs have a concept of and many languages can read
+
+269
+00:20:39,660 --> 00:20:44,300
+them and get the values. We're showing how to do it with Bash but there's other ways too.
+
+270
+00:20:44,300 --> 00:20:55,100
+Yeah, we will quickly mention when in the next session that we start soon, how you can like
+
+271
+00:20:55,740 --> 00:21:00,700
+calculate or get the CPU number, how many CPUs you have allocated in the script,
+
+272
+00:21:02,300 --> 00:21:06,780
+like in your code, how you can get that number and you can use the same kind of structure for the
+
+273
+00:21:06,780 --> 00:21:11,580
+array ID as well. Yeah.
+
+274
+00:21:12,380 --> 00:21:15,740
+There's a good thing here about confusing terminology.
+
+275
+00:21:15,740 --> 00:21:19,180
+And yes, it's confusing. My recommendation is to
+
+276
+00:21:19,180 --> 00:21:22,620
+run it several times and see what happens.
+
+277
+00:21:22,620 --> 00:21:26,860
+And also, I would say that
+
+278
+00:21:26,860 --> 00:21:31,100
+try to look beyond the terminology and look at the
+
+279
+00:21:31,100 --> 00:21:34,780
+functionality. All of these have so
+
+280
+00:21:34,780 --> 00:21:40,700
+many conflicting terms that it's very hard to keep it in check, even in speech. We might
+
+281
+00:21:41,260 --> 00:21:47,900
+use confusing terminologies all the time that are not correct because there's so many different
+
+282
+00:21:47,900 --> 00:21:52,700
+terms. But what I think the most important thing is to keep in mind that, okay, you have
+
+283
+00:21:53,340 --> 00:22:00,220
+this workflow that you might write your serial job. You might do an interactive, first interactive
+
+284
+00:22:00,220 --> 00:22:06,460
+job on your program, then you write it into a serial script. And then when you have run it
+
+285
+00:22:06,460 --> 00:22:12,620
+through the serial script, like we did yesterday, after that, you want to do it with, let's say,
+
+286
+00:22:12,620 --> 00:22:18,860
+multiple parameters or something. So, then you add the array constructor. And then in your code,
+
+287
+00:22:18,860 --> 00:22:25,020
+you write some way that, okay, it understands that there's different things that it needs to do.
+
+288
+00:22:25,020 --> 00:22:28,300
+Yeah, like there's multiple ways of doing that.
+
+289
+00:22:28,300 --> 00:22:33,780
+And usually it's a good idea to recommend a way is that first you launch like one array
+
+290
+00:22:33,780 --> 00:22:34,780
+job.
+
+291
+00:22:34,780 --> 00:22:37,600
+Like I mean, like one array index.
+
+292
+00:22:37,600 --> 00:22:42,300
+So let's say array equals, that's just array equals zero.
+
+293
+00:22:42,300 --> 00:22:45,680
+So you basically launch, it would be basically the serial job, right?
+
+294
+00:22:45,680 --> 00:22:46,680
+Okay.
+
+295
+00:22:46,680 --> 00:22:47,680
+Yeah.
+
+296
+00:22:47,680 --> 00:22:50,580
+Like because you're launching only one of them and you see that, okay, did it work correctly?
+
+297
+00:22:50,580 --> 00:22:56,420
+And then maybe you launch the array, and that's just array equals one, and you launch the
+
+298
+00:22:56,420 --> 00:22:57,420
+next one.
+
+299
+00:22:57,420 --> 00:22:58,420
+Okay.
+
+300
+00:22:58,420 --> 00:22:59,420
+Yeah.
+
+301
+00:22:59,420 --> 00:23:01,220
+And you see that, okay, did it do the different thing that you expected?
+
+302
+00:23:01,220 --> 00:23:05,460
+And then you launch array from zero to thousand or something.
+
+303
+00:23:05,460 --> 00:23:11,300
+Because like, so you basically like copy paste the same code without doing the copy paste.
+
+304
+00:23:11,300 --> 00:23:15,380
+And that's this kind of workflow, once you get hang of that, that is the most important
+
+305
+00:23:15,380 --> 00:23:16,380
+thing.
+
+306
+00:23:16,380 --> 00:23:22,620
+call it is not the most important issue, I would say.
+
+307
+00:23:22,620 --> 00:23:31,260
+Okay, yeah. So what's coming up next?
+
+308
+00:23:31,260 --> 00:23:40,060
+Do we do some examples of the array jobs? Or should we go on?
+
+309
+00:23:40,060 --> 00:23:44,700
+I think we should move on because we have a lot of
+
+310
+00:23:44,700 --> 00:23:50,780
+ground to cover. But, yeah, so maybe we should...
+
+311
+00:23:50,780 --> 00:23:54,460
+My screen. So it's a shared memory parallelism.
+
+312
+00:23:54,460 --> 00:23:58,000
+Yeah. Okay. Yeah. And for the next two, do we give a
+

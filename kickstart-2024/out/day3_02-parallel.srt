@@ -1,0 +1,1196 @@
+1
+00:00:00,000 --> 00:00:11,280
+There we go. So, hello. [name], parallel computing, what does it mean?
+
+2
+00:00:12,800 --> 00:00:21,280
+Yeah, so like [name] said just previously, in many cases you might see a paper or something
+
+3
+00:00:21,280 --> 00:00:27,960
+where somebody says that, okay, we executed, or especially in a talk where people don't
+
+4
+00:00:27,960 --> 00:00:34,080
+have time to explain how they did a thing, they will say that, okay, we did a thing with
+
+5
+00:00:34,080 --> 00:00:38,720
+a massive parallel simulation and we got these results.
+
+6
+00:00:38,720 --> 00:00:46,200
+And then you're left wondering like, okay, how is it done actually behind it?
+
+7
+00:00:46,200 --> 00:00:54,120
+And in many cases, there are these different ways that you can do different things, but
+
+8
+00:00:54,120 --> 00:01:00,760
+they are not differentiated enough so that you can actually say simply that, okay, they
+
+9
+00:01:00,760 --> 00:01:03,680
+use these kinds of ways.
+
+10
+00:01:03,680 --> 00:01:08,020
+And there are multiple ways that you can do parallel computing.
+
+11
+00:01:08,020 --> 00:01:13,920
+And parallel computing in a nutshell is basically just like you run multiple processes at the
+
+12
+00:01:13,920 --> 00:01:23,360
+same time in some way that you can then get the results done faster. There are multiple ways of
+
+13
+00:01:23,360 --> 00:01:32,800
+doing this, like parallel calculations. You can either do them completely independently,
+
+14
+00:01:33,440 --> 00:01:41,520
+somewhat together, or you can do them completely in sync. We are going to be talking about these
+
+15
+00:01:41,520 --> 00:01:45,600
+different methods of parallelization throughout the session.
+
+16
+00:01:48,880 --> 00:01:54,000
+Right now, does anyone need to know what the methods are? Are we expecting any initial knowledge?
+
+17
+00:01:56,720 --> 00:02:04,880
+Not really. Not really. I would just say as a historical footnote,
+
+18
+00:02:04,880 --> 00:02:14,800
+If you were alive back in early 2000s or something around that time, there weren't really that
+
+19
+00:02:14,800 --> 00:02:18,160
+many parallel processors in any of the computers.
+
+20
+00:02:18,160 --> 00:02:24,320
+Most of the computing that was done, they were parallel clusters, of course, and vast
+
+21
+00:02:24,320 --> 00:02:30,480
+majority of those were using one of the parallelism methods that we are going to be talking about,
+
+22
+00:02:30,480 --> 00:02:32,200
+this MPI parallelism.
+
+23
+00:02:32,200 --> 00:02:41,060
+But around the year 2000, you might have heard about Moore's law that tells about the number
+
+24
+00:02:41,060 --> 00:02:47,040
+of transistors in a processor is going to double every two years.
+
+25
+00:02:47,040 --> 00:02:52,600
+Well, as the processors went smaller and smaller, suddenly at some point there was a situation
+
+26
+00:02:52,600 --> 00:02:56,840
+where there's not that much space anymore for the transistors.
+
+27
+00:02:56,840 --> 00:03:03,640
+What many processor manufacturers started to do is to add multiple processors into their computers,
+
+28
+00:03:04,280 --> 00:03:11,560
+like into the CPUs. So your phone might nowadays have like maybe eight processors,
+
+29
+00:03:11,560 --> 00:03:14,840
+and your laptop might have like eight or something like that as well.
+
+30
+00:03:15,880 --> 00:03:23,160
+So this change happened, but the programs didn't necessarily change. So this is kind of like
+
+31
+00:03:23,160 --> 00:03:31,020
+Like, lots of modern programs already are parallel, but lots of older ones might not
+
+32
+00:03:31,020 --> 00:03:32,020
+yet be.
+
+33
+00:03:32,020 --> 00:03:37,340
+And we'll see how these different methods happen.
+
+34
+00:03:37,340 --> 00:03:46,900
+So basically, you're saying that processors haven't gotten much more faster than 20 years
+
+35
+00:03:46,900 --> 00:03:49,020
+ago, but there's more of them.
+
+36
+00:03:49,020 --> 00:03:51,460
+So we have to be able to use more.
+
+37
+00:03:51,460 --> 00:03:52,460
+Yeah.
+
+38
+00:03:52,460 --> 00:03:58,780
+They have gotten faster, but at the same time, they haven't gotten as fast as, let's say,
+
+39
+00:03:58,780 --> 00:04:02,780
+from 60s to 80s or something like that.
+
+40
+00:04:02,780 --> 00:04:06,620
+But there are more of them, a lot more of them nowadays.
+
+41
+00:04:06,620 --> 00:04:12,940
+So if we look at the picture in the screen, we can see that basically in the compute cluster,
+
+42
+00:04:12,940 --> 00:04:15,940
+we of course have lots of processors.
+
+43
+00:04:15,940 --> 00:04:20,700
+So the Triton cluster has about 10,000 processors.
+
+44
+00:04:20,700 --> 00:04:27,860
+So yesterday we were talking what is a core, what is a CPU, well in the case of the computing
+
+45
+00:04:27,860 --> 00:04:35,020
+cluster, there are cores of individual CPUs, but it doesn't really matter.
+
+46
+00:04:35,020 --> 00:04:38,900
+You can just think of it like something that can do computations.
+
+47
+00:04:38,900 --> 00:04:43,100
+We have 10,000 things that can do computations.
+
+48
+00:04:43,100 --> 00:04:49,180
+And if you want to utilize them, we have to try to utilize them in parallel usually to
+
+49
+00:04:49,180 --> 00:04:52,620
+get the most out of the system.
+
+50
+00:04:52,620 --> 00:04:55,740
+So should we go through the different methods quickly?
+
+51
+00:04:55,740 --> 00:04:56,620
+OK, let's see.
+
+52
+00:04:56,620 --> 00:04:59,620
+Can you explain them to me?
+
+53
+00:04:59,620 --> 00:05:03,260
+Pretend I'm a new undergrad student
+
+54
+00:05:03,260 --> 00:05:05,420
+and don't know much about computers.
+
+55
+00:05:05,420 --> 00:05:07,780
+So in various linking parallel, what does that mean?
+
+56
+00:05:07,780 --> 00:05:08,780
+Yeah.
+
+57
+00:05:08,780 --> 00:05:13,780
+Yeah, let's look at the pretty picture about this.
+
+58
+00:05:13,780 --> 00:05:19,780
+So, in this picture, is each red box a single thing that's running?
+
+59
+00:05:20,980 --> 00:05:28,340
+Yes. So, if we think about the cluster that is compromised of different computers and
+
+60
+00:05:28,340 --> 00:05:34,020
+different CPUs, you can think of each of these blocks as, let's say, one core that can take one
+
+61
+00:05:34,020 --> 00:05:46,260
+job each. In the case of an array job, we have this kind of parallelism called an array job.
+
+62
+00:05:46,260 --> 00:05:53,860
+And what that means is that it's basically like a situation where if you want to do something
+
+63
+00:05:53,860 --> 00:06:22,860
+So if you want to do a thing, like let's say I want to cook spaghetti and then I want to cook a different kind of a pasta at the same time, I can do them separately in two different burners, like I don't necessarily have to, you know, I don't have to do the same thing over and over again.
+
+64
+00:06:22,860 --> 00:06:29,220
+I don't necessarily have to put them into the same pot or something like that.
+
+65
+00:06:29,220 --> 00:06:33,680
+So I have, so it's like I want to make five pots of pasta.
+
+66
+00:06:33,680 --> 00:06:38,180
+I can get five people and do it separately and that works perfectly.
+
+67
+00:06:38,180 --> 00:06:39,180
+Yes.
+
+68
+00:06:39,180 --> 00:06:45,420
+So if you have a thing that you can like split up in some way, let's say you have a simulation
+
+69
+00:06:45,420 --> 00:06:50,980
+and you have different parameters for that, you can embarrassingly parallel that or run
+
+70
+00:06:50,980 --> 00:06:56,660
+in an embarrassingly parallel way. There was another term that somebody used that was
+
+71
+00:06:58,020 --> 00:07:04,660
+easily parallelizable or something like that. That basically means that you can split it
+
+72
+00:07:05,700 --> 00:07:12,900
+in some natural way, the computation. You run a different experiment in a different calculation.
+
+73
+00:07:12,900 --> 00:07:18,180
+You can split it among different data sets, different models, something like that. Something
+
+74
+00:07:18,180 --> 00:07:24,660
+that is very easy to split up and what in the embarrassingly parallel way that utilizes these
+
+75
+00:07:24,660 --> 00:07:31,220
+array jobs you can like spread them out throughout the cluster or in different places and you don't
+
+76
+00:07:31,220 --> 00:07:37,060
+necessarily have to worry where they end up they just get done and the question is more about okay
+
+77
+00:07:37,060 --> 00:07:44,100
+how can you manage these jobs so that they can get to the queue how can you put all of your
+
+78
+00:07:44,100 --> 00:07:53,300
+different parameters into the queue. So in the picture here in below, you can see that,
+
+79
+00:07:53,300 --> 00:07:59,380
+let's say we have one of these array jobs that we would submit, some of them might get into
+
+80
+00:07:59,380 --> 00:08:06,500
+one computer and one could get into a different computer and they would be completely independent
+
+81
+00:08:06,500 --> 00:08:13,940
+of each other. And there was a great question in the notes that do they all have their own
+
+82
+00:08:13,940 --> 00:08:20,740
+copies of variables. And yes, they would all be independent. So, basically, there would be
+
+83
+00:08:20,740 --> 00:08:26,820
+something to differentiate them, like some sort of different task that they are supposed to do,
+
+84
+00:08:26,820 --> 00:08:29,940
+but they would all run completely independent of each other.
+
+85
+00:08:29,940 --> 00:08:37,540
+Yeah. Okay. I think I understand this. So, what's the next version?
+
+86
+00:08:37,540 --> 00:08:42,540
+Yeah. So the next version is this so-called shared memory parallelism.
+
+87
+00:08:42,540 --> 00:08:46,540
+So this is basically what your laptop is doing, like if you're running something.
+
+88
+00:08:46,540 --> 00:08:53,540
+So, for example, my Zoom that I'm talking to [name] and to you.
+
+89
+00:08:53,540 --> 00:08:54,540
+Right.
+
+90
+00:08:54,540 --> 00:09:01,540
+Utilizing most likely multiple processors on my computer to encode the video and do all kinds of stuff.
+
+91
+00:09:01,540 --> 00:09:11,540
+And what in the shared memory parallelism, what we do is that we have a process that runs on a computer.
+
+92
+00:09:11,540 --> 00:09:20,540
+And that computer, that process can like spawn multiple other processes and they can work together in the same computer.
+
+93
+00:09:20,540 --> 00:09:23,540
+And why is it called shared memory parallelism?
+
+94
+00:09:23,540 --> 00:09:29,360
+parallelism is that, well, they are physically in the same machine, like they are working
+
+95
+00:09:29,360 --> 00:09:34,840
+like the processes are in the same machine, so they can interact with each other through
+
+96
+00:09:34,840 --> 00:09:39,000
+the shared memory, the shared random access memory they have.
+
+97
+00:09:39,000 --> 00:09:46,320
+So in the image, in the top, you can see that in the shared memory parallelism, we want
+
+98
+00:09:46,320 --> 00:09:55,360
+all of the processes in the same physical machine so that they have access to that shared memory.
+
+99
+00:09:55,360 --> 00:10:00,960
+So that's like when someone in the note says do parallel runs all have their same copy of
+
+100
+00:10:00,960 --> 00:10:07,120
+the variables. So here they do all have the same copy because they access the same memory space.
+
+101
+00:10:08,160 --> 00:10:13,120
+Yes, of course they can have their own local variables. Each process can have their own
+
+102
+00:10:13,120 --> 00:10:20,480
+local variables. But the performance comes in the idea that, okay, they can share information
+
+103
+00:10:20,480 --> 00:10:27,760
+with each other and they can do a calculation together. So if you look at the picture at the
+
+104
+00:10:27,760 --> 00:10:34,320
+bottom, you might have a program, like a main program, and that main program might start
+
+105
+00:10:34,320 --> 00:10:42,400
+multiple processes that each work in a different CPU, and they communicate through the shared
+
+106
+00:10:42,400 --> 00:10:50,720
+memory. This is commonly used, for example, with Python multiprocessing. In R, if you're using
+
+107
+00:10:52,640 --> 00:11:00,160
+parallel. In MATLAB, if you're using parallel pool, those all utilize this sort of a parallelism
+
+108
+00:11:01,120 --> 00:11:07,360
+and various other technologies. One technology is this technology called OpenMP,
+
+109
+00:11:07,360 --> 00:11:16,080
+So open multiprocessing. And it's used in many kinds of libraries underneath many languages.
+
+110
+00:11:16,720 --> 00:11:24,320
+So for example, if you're using Python, there's this NumPy library that utilizes these OpenMP
+
+111
+00:11:27,120 --> 00:11:33,040
+parallelism to do these calculations automatically with multiple CPUs.
+
+112
+00:11:33,040 --> 00:11:36,960
+So I'm trying to think of the metaphor here. So now I have five people cooking pasta,
+
+113
+00:11:36,960 --> 00:11:43,280
+but they're in the same kitchen. And if we want to share the salt or something, I can put it down
+
+114
+00:11:43,280 --> 00:11:49,040
+on the counter and someone else can just pick it up and use it. So we all have the same workspace
+
+115
+00:11:49,760 --> 00:11:57,200
+or something like that. Yeah, that's a great analogy. Okay, so what's the next one?
+
+116
+00:11:58,240 --> 00:12:03,360
+Yeah, so the next one is this, what I already mentioned, this historically
+
+117
+00:12:03,360 --> 00:12:11,200
+used parallelism that is used especially in like the supercomputer kind of a thing,
+
+118
+00:12:12,160 --> 00:12:19,120
+supercomputer systems. And this is called message passing interface parallelism or MPI parallelism.
+
+119
+00:12:19,120 --> 00:12:26,640
+So if you have heard about MPI, this is the thing. So in the message passing interface
+
+120
+00:12:26,640 --> 00:12:35,640
+or MPI parallelism, you have a program that consists of multiple programs.
+
+121
+00:12:35,640 --> 00:12:41,640
+So basically, you start, let's say, a thousand copies of the same program on different computers.
+
+122
+00:12:41,640 --> 00:12:48,640
+And each of those programs knows that, okay, I'm a part of some greater whole.
+
+123
+00:12:48,640 --> 00:12:54,640
+I'm a part of this great MPI program, and I need to work together with my…
+
+124
+00:12:54,640 --> 00:13:05,920
+It's basically like an anthill, like everybody's working together for the common good.
+
+125
+00:13:05,920 --> 00:13:13,000
+In my pasta analogy, so now we can't directly share things, we have to communicate.
+
+126
+00:13:13,000 --> 00:13:18,000
+So is it like we have multiple cooks in different apartments, and if I make something that someone
+
+127
+00:13:18,000 --> 00:13:22,620
+else needs, someone has to get up there, go to the other place, knock on the door, say
+
+128
+00:13:22,620 --> 00:13:28,940
+say, okay, I made this for you, and they answer and receive it, and then we go back or something.
+
+129
+00:13:28,940 --> 00:13:29,940
+Yeah.
+
+130
+00:13:29,940 --> 00:13:30,940
+Yeah.
+
+131
+00:13:30,940 --> 00:13:32,480
+That would be a good analogy.
+
+132
+00:13:32,480 --> 00:13:37,480
+So what the MPI programs do is that when you start them up, they create this communication
+
+133
+00:13:37,480 --> 00:13:42,420
+layer so that they can like, they can share information through each other.
+
+134
+00:13:42,420 --> 00:13:47,280
+And they all like, usually what you would have is that, let's say one process would
+
+135
+00:13:47,280 --> 00:13:55,680
+have its own, let's say, simulation range or certain area of the simulation that they
+
+136
+00:13:55,680 --> 00:13:57,160
+would handle.
+
+137
+00:13:57,160 --> 00:14:03,360
+And what they would communicate to the other processes are the edge regions of that simulation
+
+138
+00:14:03,360 --> 00:14:04,360
+area.
+
+139
+00:14:04,360 --> 00:14:09,680
+So that they would do minimal amount of communication with each other, but they would do stuff collectively
+
+140
+00:14:09,680 --> 00:14:14,160
+to simulate, let's say, a weather model or something like that.
+
+141
+00:14:14,160 --> 00:14:19,920
+Okay yeah so like you divide it up into different domains like physical domains and each edge
+
+142
+00:14:19,920 --> 00:14:27,040
+condition can do things. Yeah. So what is MPI most often used for? It seems a bit harder to use or
+
+143
+00:14:27,040 --> 00:14:35,760
+program. Yes so it is much more complicated because the program usually needs to be designed
+
+144
+00:14:35,760 --> 00:14:41,840
+around the communication also like the algorithms that are used. It's quite often used in like
+
+145
+00:14:41,840 --> 00:14:50,320
+physics simulations. So, for example, like CP2K, GPAW, LAMMPS, OpenFOAM, many weather models,
+
+146
+00:14:50,320 --> 00:14:58,080
+like all weather models usually do that sort of stuff. And you usually need to build the program
+
+147
+00:14:58,080 --> 00:15:05,680
+around the communication layer. So, basically, you need to design your program to be an MPI program.
+
+148
+00:15:05,680 --> 00:15:12,560
+So compared to like the multi-processing thing or the shared memory parallelism
+
+149
+00:15:12,560 --> 00:15:18,720
+where the programs are usually like you can just like quite trivially usually
+
+150
+00:15:19,360 --> 00:15:23,920
+use them in different kinds of contexts, the MPI programs are usually like you need to
+
+151
+00:15:23,920 --> 00:15:29,600
+from ground up design the program to be an MPI program. But it's very powerful when you
+
+152
+00:15:29,600 --> 00:15:34,000
+design a program like that because then you can utilize these supercomputers.
+
+153
+00:15:34,000 --> 00:15:38,240
+Yeah. Okay. Are there any more methods?
+
+154
+00:15:39,680 --> 00:15:40,480
+Well, the last one...
+
+155
+00:15:40,480 --> 00:15:42,080
+Oh, yeah, GPUs. I see.
+
+156
+00:15:42,080 --> 00:15:44,240
+Yeah, you might have heard is GPU
+
+157
+00:15:45,760 --> 00:15:50,880
+parallelism. And it's a different kind of like a parallelism, basically, because
+
+158
+00:15:50,880 --> 00:15:59,440
+like in a GPU, you have like internal parallelism in the GPU card itself. So this graphics processing
+
+159
+00:15:59,440 --> 00:16:08,000
+unit. They are basically like big vector calculators that can do a lot of calculations
+
+160
+00:16:08,000 --> 00:16:17,280
+in parallel. Let's say they can multiply a matrix really fast, but they are in the GPU.
+
+161
+00:16:18,960 --> 00:16:26,400
+Usually, when you have a GPU program, it's parallel in a sense that you have a CPU part
+
+162
+00:16:26,400 --> 00:16:33,000
+And then usually that CPU part tells the GPU program, okay, here's some, let's say, matrix
+
+163
+00:16:33,000 --> 00:16:38,400
+you need to multiply, and here's another matrix that you need to multiply with.
+
+164
+00:16:38,400 --> 00:16:45,500
+And then they are transferred into the GPUs, this VRAM, so this video RAM.
+
+165
+00:16:45,500 --> 00:16:48,500
+The GPUs have their own fast memory that they can access.
+
+166
+00:16:48,500 --> 00:16:56,840
+And then these individual calculating units, they're often called like CUDA cores or compute
+
+167
+00:16:56,840 --> 00:16:58,960
+units or something like that.
+
+168
+00:16:58,960 --> 00:17:01,920
+They do the calculation in parallel.
+
+169
+00:17:01,920 --> 00:17:09,360
+So they work basically like this kind of like a fast calculator for these kinds of programs
+
+170
+00:17:09,360 --> 00:17:16,280
+that can do a lot of stuff in parallel.
+
+171
+00:17:16,280 --> 00:17:22,480
+But they don't, and of course, there's cases where you also have programs where the calculations
+
+172
+00:17:22,480 --> 00:17:28,480
+are done using, let's say, some communication so that you can have multiple GPUs working
+
+173
+00:17:28,480 --> 00:17:29,480
+together.
+
+174
+00:17:29,480 --> 00:17:35,120
+But usually, the GPU parallelism is internal to the program structure.
+
+175
+00:17:35,120 --> 00:17:40,600
+And that also means that your program needs to be designed to use GPUs or, well, it can't
+
+176
+00:17:40,600 --> 00:17:41,600
+use the GPUs.
+
+177
+00:17:41,600 --> 00:17:46,600
+So, what's a good metaphor here with my pasta analogy?
+
+178
+00:17:46,600 --> 00:17:59,480
+Is it like, you have one of these, well, if you want to, let's say you want to make the
+
+179
+00:17:59,480 --> 00:18:05,460
+pasta sauce and you have like an onion slicer or something like that, you just can slice
+
+180
+00:18:05,460 --> 00:18:10,680
+the whole onion with one go, but you cannot really cook pasta with that really, like you
+
+181
+00:18:10,680 --> 00:18:13,880
+You can, it does that one thing in parallel.
+
+182
+00:18:13,880 --> 00:18:15,560
+Instead of chopping with the knife,
+
+183
+00:18:15,560 --> 00:18:20,040
+you can just chop a full onion at one time.
+
+184
+00:18:20,040 --> 00:18:23,200
+Actually, I could show my slide with the GPU metaphor
+
+185
+00:18:23,200 --> 00:18:24,840
+for the pasta thing.
+
+186
+00:18:24,840 --> 00:18:25,520
+OK.
+
+187
+00:18:25,520 --> 00:18:28,040
+I'll switch to my screen here.
+
+188
+00:18:32,440 --> 00:18:33,680
+There.
+
+189
+00:18:33,680 --> 00:18:36,280
+So this is part of some other thing.
+
+190
+00:18:36,280 --> 00:18:39,600
+But in the cooking metaphor, so what we see here
+
+191
+00:18:39,600 --> 00:18:47,040
+is from some restaurant in Switzerland where they're cooking a bunch of chickens on a fire.
+
+192
+00:18:48,080 --> 00:18:55,200
+And here it's designed where you could cook probably 20 chickens at once. And sorry for
+
+193
+00:18:55,200 --> 00:19:01,760
+vegetarians, I am too, but this is, well, the metaphor I found. So with this, with very little
+
+194
+00:19:01,760 --> 00:19:09,440
+effort and quite good efficiency, we can cook so much food at once. But how much pasta can we cook
+
+195
+00:19:09,600 --> 00:19:10,600
+None.
+
+196
+00:19:10,600 --> 00:19:11,600
+Not that many.
+
+197
+00:19:11,600 --> 00:19:12,600
+Yeah.
+
+198
+00:19:12,600 --> 00:19:22,480
+So the GPU is intrinsically suitable for some types of problems, but not all types.
+
+199
+00:19:22,480 --> 00:19:27,400
+So if it matches the GPU model, you can do a whole lot.
+
+200
+00:19:27,400 --> 00:19:32,160
+But if it doesn't, well, it just doesn't run there.
+
+201
+00:19:32,160 --> 00:19:43,040
+With the GPUs, because why the GPUs are powerful, why they are like that, they originate, of
+
+202
+00:19:43,040 --> 00:19:46,680
+course, for historical reasons, designed for computer graphics.
+
+203
+00:19:46,680 --> 00:19:52,880
+And if you do 3D computer graphics, you need to do a lot of rotations and that sort of
+
+204
+00:19:52,880 --> 00:19:58,720
+stuff in order to calculate vector graphics in the computer programs.
+
+205
+00:19:58,720 --> 00:20:04,320
+And that's why the computers or the chips of the GPUs were designed to do lots of these
+
+206
+00:20:04,320 --> 00:20:06,240
+matrix calculations.
+
+207
+00:20:06,240 --> 00:20:14,600
+And then afterwards, people realized that, hey, what if we use these really good matrix
+
+208
+00:20:14,600 --> 00:20:18,560
+calculation units to do all kinds of other computations?
+
+209
+00:20:18,560 --> 00:20:23,520
+And then when, let's say, the deep learning boom started, people realized, okay, we can
+
+210
+00:20:23,520 --> 00:20:27,480
+run these models in GPUs very efficiently.
+
+211
+00:20:27,480 --> 00:20:35,040
+And just today I saw news that NVIDIA has surpassed Apple in the stock price.
+
+212
+00:20:35,040 --> 00:20:40,960
+So they are basically like the GPU trend is ongoing and it's going really fast because
+
+213
+00:20:40,960 --> 00:20:48,400
+these can be utilized as long as you can formulate your program in this kind of like a matrix
+
+214
+00:20:48,400 --> 00:20:53,520
+kind of a way, you can usually utilize GPUs to do these fast calculations.
+
+215
+00:20:53,520 --> 00:20:59,840
+and that's why you said it has to be completely designed around the GPU basically from the start.
+
+216
+00:21:02,480 --> 00:21:08,160
+So before we move forward to the actual first examples and first exercise,
+
+217
+00:21:11,120 --> 00:21:17,760
+I want to talk a bit about what is serial and what is parallel in your code. So not every
+
+218
+00:21:17,760 --> 00:21:26,020
+Every program parallelizes with the GPU parallelization or the shared memory parallelization, because
+
+219
+00:21:26,020 --> 00:21:35,280
+every program by design or by maths, basically, needs to have a serial part or it has some
+
+220
+00:21:35,280 --> 00:21:37,080
+part that is serial part.
+
+221
+00:21:37,080 --> 00:21:39,120
+And then you have some parallel part.
+
+222
+00:21:39,120 --> 00:21:44,840
+And if you parallelize the parallel part, you can get different amounts of speed up
+
+223
+00:21:44,840 --> 00:21:50,760
+based on well how much of the program execution was done in parallel. So for example in the first
+
+224
+00:21:50,760 --> 00:21:58,360
+picture you can see that there's only a small parallel part and if you parallelize that with
+
+225
+00:21:58,360 --> 00:22:03,400
+two CPUs so you basically divide it by half and then you run it with two CPUs you only save a
+
+226
+00:22:03,400 --> 00:22:10,920
+small amount of time but if you have like a larger parallel part and you parallelize it you get a
+
+227
+00:22:10,920 --> 00:22:17,640
+bigger time saver. So it depends on your program. And this is why the embarrassingly parallel is
+
+228
+00:22:17,640 --> 00:22:25,800
+often the best case. Parallelism in many cases. Because not every problem is easy to parallelize
+
+229
+00:22:25,800 --> 00:22:36,440
+in these more advanced ways. And it's not a problem. Not everything goes faster by adding
+
+230
+00:22:36,440 --> 00:22:42,680
+more power to it. So, for example, like Ferrari doesn't go faster in Finnish roads because
+
+231
+00:22:42,680 --> 00:22:47,880
+there's speed limits. Like, you can use an older car as well.
+
+232
+00:22:47,880 --> 00:22:53,640
+What about this metaphor? So, with the pasta thing again. So, if I have two people making
+
+233
+00:22:53,640 --> 00:22:59,960
+pasta in my house, it's probably still okay. Actually, this metaphor isn't perfect. But
+
+234
+00:22:59,960 --> 00:23:06,440
+Let's say I have 50 people making pasta in my home, or in one home, and it has one sink.
+
+235
+00:23:06,440 --> 00:23:11,960
+Eventually, everyone's going to need to use the sink, and there'll be a queue there.
+
+236
+00:23:11,960 --> 00:23:13,600
+That's actually not correct.
+
+237
+00:23:13,600 --> 00:23:19,680
+Yeah, but if you, like, let's say, like, if you break the pasta in half, like, if you
+
+238
+00:23:19,680 --> 00:23:23,320
+break the pasta in half and cook it in two pots, does it cook any faster?
+
+239
+00:23:23,320 --> 00:23:25,800
+Like, do you get it done any faster?
+
+240
+00:23:25,800 --> 00:23:31,280
+Most likely not, because the pasta has a set cooking time that will always, like pasta
+
+241
+00:23:31,280 --> 00:23:38,000
+in a sense is always, it will only cook for certain minutes.
+
+242
+00:23:38,000 --> 00:23:46,840
+You cannot make it faster by spreading, putting it into multiple pots, usually at least.
+
+243
+00:23:46,840 --> 00:23:52,760
+So that's good to keep in mind when doing parallel computations.
+
+244
+00:23:52,760 --> 00:23:55,080
+So should we start doing them?
+
+245
+00:23:55,080 --> 00:23:56,600
+There's one more question, though.
+
+246
+00:23:56,600 --> 00:24:02,920
+So it's a question, running same simulation,
+
+247
+00:24:02,920 --> 00:24:05,880
+different random sets, inside each simulation,
+
+248
+00:24:05,880 --> 00:24:09,920
+I use a GPU for large matrix multiplications.
+
+249
+00:24:09,920 --> 00:24:12,400
+Each simulation is in a different CPU,
+
+250
+00:24:12,400 --> 00:24:15,360
+but how to handle the GPU part?
+
+251
+00:24:15,360 --> 00:24:22,000
+So this is somehow related to the combining
+
+252
+00:24:22,000 --> 00:24:23,520
+different forms of parallelism.
+
+253
+00:24:23,520 --> 00:24:24,020
+Yes.
+
+254
+00:24:24,020 --> 00:24:37,780
+it's not exactly what's there, but yeah. Yeah, so one thing that you can remember is that you can
+
+255
+00:24:37,780 --> 00:24:43,060
+combine these different methods of parallelization. You can combine, like you can run, if you have
+
+256
+00:24:43,060 --> 00:24:48,420
+multiple different simulations, you can run this kind of an array job, this embarrassingly parallel
+
+257
+00:24:48,420 --> 00:24:59,060
+simulation with each job so that each job has a GPU, if your code uses GPUs.
+
+258
+00:24:59,060 --> 00:25:06,060
+In that case, if you have a simulation and then you need to use a GPU to do some part
+
+259
+00:25:06,060 --> 00:25:12,700
+of that simulation, there are methods for that, but it requires a bit more finesse so
+
+260
+00:25:12,700 --> 00:25:17,420
+that the different CPUs can communicate with the GPU.
+
+261
+00:25:17,420 --> 00:25:22,220
+In many cases, you might have a situation where you have one processor that discusses
+
+262
+00:25:22,220 --> 00:25:29,820
+with the GPU, and the other processors are doing the simulation.
+
+263
+00:25:29,820 --> 00:25:35,700
+So you have basically a shared memory part of the simulations, and then you have one
+
+264
+00:25:35,700 --> 00:25:39,540
+part that does the matrix multiplication with the GPU.
+
+265
+00:25:39,540 --> 00:25:46,980
+So you have basically these two linked by one CPU, but this is a special case.
+
+266
+00:25:46,980 --> 00:25:53,860
+But do remember that it's possible to combine all of these methods together.
+
+267
+00:25:53,860 --> 00:25:58,980
+And if you scroll down the page more, it finally says the research software engineers can help
+
+268
+00:25:58,980 --> 00:26:01,020
+with parallel computing.
+
+269
+00:26:01,020 --> 00:26:02,700
+And this is something I'd really recommend.
+
+270
+00:26:02,700 --> 00:26:06,100
+I mean, these things are confusing.
+
+271
+00:26:06,100 --> 00:26:11,220
+Even when I'm doing things, I'll often ask [name] just to make sure that I'm running it
+
+272
+00:26:11,220 --> 00:26:13,860
+correctly or to save me some time.
+
+273
+00:26:13,860 --> 00:26:18,220
+So if you get to the point where you wonder how it works,
+
+274
+00:26:18,220 --> 00:26:20,820
+and you're at Aalto University, we're here.
+
+275
+00:26:20,820 --> 00:26:24,540
+And our job is to save you time figuring out this stuff.
+
+276
+00:26:24,540 --> 00:26:27,420
+So come by and ask.
+
+277
+00:26:27,420 --> 00:26:30,300
+I will also mention that it's always a good idea
+
+278
+00:26:30,300 --> 00:26:32,340
+before creating your own, let's say,
+
+279
+00:26:32,340 --> 00:26:34,300
+computing framework or something.
+
+280
+00:26:34,300 --> 00:26:36,660
+It's always good to check if somebody else has done it
+
+281
+00:26:36,660 --> 00:26:43,500
+before you, because many of these parallel things
+
+282
+00:26:43,500 --> 00:26:47,220
+are complicated to write, so you don't usually
+
+283
+00:26:47,220 --> 00:26:48,380
+want to write your own.
+
+284
+00:26:48,380 --> 00:26:51,660
+There's usually, for example, for R,
+
+285
+00:26:51,660 --> 00:26:53,020
+there's the parallel package.
+
+286
+00:26:53,020 --> 00:26:55,260
+And for Python, there's multiple,
+
+287
+00:26:55,260 --> 00:26:59,860
+like joblib, and there's parallel.
+
+288
+00:26:59,860 --> 00:27:01,660
+My many parallel processing libraries
+
+289
+00:27:01,660 --> 00:27:04,340
+that already do this kind of stuff
+
+290
+00:27:04,340 --> 00:27:05,740
+so that you don't necessarily have
+
+291
+00:27:05,740 --> 00:27:08,540
+to worry about how it's done underneath it.
+
+292
+00:27:08,540 --> 00:27:12,060
+So keep that in mind.
+
+293
+00:27:12,060 --> 00:27:17,980
+whenever using, it's a good idea to use code because like writing the actual like communication
+
+294
+00:27:17,980 --> 00:27:24,300
+and that sort of stuff is super complicated. So most people that are listening to this
+
+295
+00:27:24,300 --> 00:27:29,820
+won't be writing their own parallel code but they'll be using existing libraries or frameworks
+
+296
+00:27:29,820 --> 00:27:37,900
+and yeah I would recommend at least that. You can always write your own but
+
+297
+00:27:37,900 --> 00:27:43,860
+But yeah, so should we move forward to the array jobs
+
+298
+00:27:43,860 --> 00:27:46,500
+and actually get to do something?
+
+299
+00:27:46,500 --> 00:27:49,000
+So I'll flip back to my screen.
+

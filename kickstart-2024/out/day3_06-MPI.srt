@@ -1,0 +1,452 @@
+1
+00:00:00,000 --> 00:00:00,940
+How should we divide this up?
+
+2
+00:00:00,940 --> 00:00:09,420
+Well, I'd say that let's go quickly through the MPI and then spend more of the time in the GPU
+
+3
+00:00:09,420 --> 00:00:14,060
+part, because I think a lot of people are interested in that. But I think Jules' talk was
+
+4
+00:00:14,060 --> 00:00:21,180
+a great introduction to what we are going to be talking about now, because these next technologies,
+
+5
+00:00:21,180 --> 00:00:27,180
+well, GPUs are used everywhere, but MPI is definitely the workhorse in many of the
+
+6
+00:00:27,180 --> 00:00:35,740
+the supercomputers, and this kind of like codes are used in this, especially what [name] was saying
+
+7
+00:00:35,740 --> 00:00:43,820
+about Mahti, which is this kind of like machine designed especially for running these very big
+
+8
+00:00:43,820 --> 00:00:49,740
+parallel programs, and those programs utilize MPI to do the parallelization.
+
+9
+00:00:50,700 --> 00:00:55,180
+Yeah, so what's the most important things to know? Let's say you have a program and you
+
+10
+00:00:55,180 --> 00:01:01,340
+know it uses MPI, because the docs say so. What options do we need for SLURP?
+
+11
+00:01:02,540 --> 00:01:08,860
+So the first thing with the MPI program, if you need to compile it yourself,
+
+12
+00:01:09,420 --> 00:01:16,140
+you need to usually use some MPI libraries that are provided by the system administrators.
+
+13
+00:01:16,140 --> 00:01:21,820
+Because MPI, when we talked about the different packetization strategies,
+
+14
+00:01:21,820 --> 00:01:26,220
+it's message passing. So a lot of stuff is transferred throughout the network.
+
+15
+00:01:26,940 --> 00:01:33,100
+So usually these libraries, these MPI libraries are compiled or created in a way that they can
+
+16
+00:01:33,100 --> 00:01:40,380
+understand the hardware very well. So they can understand the high speed in network that is
+
+17
+00:01:40,380 --> 00:01:47,820
+between the computers. So that's why all of these like high-performance clusters that have these
+
+18
+00:01:47,820 --> 00:01:55,180
+kind of like, or want to run these like big jobs, they have this usually this high-speed network
+
+19
+00:01:55,180 --> 00:02:00,460
+and they have their own MPI installation that knows about this high-speed network.
+
+20
+00:02:01,180 --> 00:02:07,580
+So when you're doing the MPI communication, the program is literally knowing about the
+
+21
+00:02:07,580 --> 00:02:12,220
+low-level hardware and sending messages as fast as possible.
+
+22
+00:02:12,220 --> 00:02:18,300
+in many cases like it tries to bypass the processor itself so in for example when there's
+
+23
+00:02:18,300 --> 00:02:23,980
+communication happening it tries to like go straight from the memory of the computer to
+
+24
+00:02:23,980 --> 00:02:29,100
+to the network card and from there through the network straight into the memory of another
+
+25
+00:02:29,100 --> 00:02:33,980
+computer basically injecting into the memory of another computer without ever going through the
+
+26
+00:02:33,980 --> 00:02:39,660
+processor to speed up these communications and that for that reason there needs to be it's called
+
+27
+00:02:39,660 --> 00:02:43,820
+called like remote data management access.
+
+28
+00:02:44,740 --> 00:02:48,780
+I think like it's the short term, RDMA like anyway,
+
+29
+00:02:48,780 --> 00:02:51,860
+but basically these kinds of things.
+
+30
+00:02:51,860 --> 00:02:53,460
+So you first need to find out,
+
+31
+00:02:53,460 --> 00:02:55,820
+if you need to compile something,
+
+32
+00:02:55,820 --> 00:02:57,940
+you need to find out the MPI libraries
+
+33
+00:02:57,940 --> 00:03:02,540
+that are provided by the system and then use those.
+
+34
+00:03:02,540 --> 00:03:06,780
+Like you need to find those in a module somewhere
+
+35
+00:03:06,780 --> 00:03:08,460
+and you need to remember to load these
+
+36
+00:03:08,460 --> 00:03:11,140
+when you're running the MPI program as well.
+
+37
+00:03:11,140 --> 00:03:14,340
+If you are using pre-existing MPI program
+
+38
+00:03:14,340 --> 00:03:17,980
+that is installed by the system administrators,
+
+39
+00:03:17,980 --> 00:03:21,860
+for example, when I used the LAMPS demo on the first day,
+
+40
+00:03:21,860 --> 00:03:25,300
+I used the LAMPS installation that we had installed.
+
+41
+00:03:25,300 --> 00:03:28,140
+And in that case, you don't have to compile anything,
+
+42
+00:03:28,140 --> 00:03:29,260
+you can just use that.
+
+43
+00:03:29,260 --> 00:03:30,660
+It's same with CSC,
+
+44
+00:03:30,660 --> 00:03:32,620
+like if you want to use something like GROMACS
+
+45
+00:03:32,620 --> 00:03:35,260
+or CP2K or something.
+
+46
+00:03:35,260 --> 00:03:38,540
+In CSC machines, they already have existing installations
+
+47
+00:03:38,540 --> 00:03:40,740
+and it's usually a good idea to use those
+
+48
+00:03:40,740 --> 00:03:43,420
+because those have been tested and designed
+
+49
+00:03:43,420 --> 00:03:47,060
+to use the high-speed interconnects.
+
+50
+00:03:47,060 --> 00:03:51,100
+But from the queue side, what do you need?
+
+51
+00:03:51,100 --> 00:03:54,820
+So from the queue side, you need to tell the queue
+
+52
+00:03:54,820 --> 00:03:59,560
+how many the so-called MPI tasks you need to specify.
+
+53
+00:03:59,560 --> 00:04:02,780
+So again, like there's going to be more terminology.
+
+54
+00:04:02,780 --> 00:04:10,580
+it's unfortunate, but because there's differences in the meaning, there's going to be new terms.
+
+55
+00:04:10,580 --> 00:04:17,540
+So in MPI world, there's going to be these, how many nodes do you want?
+
+56
+00:04:17,540 --> 00:04:24,700
+Usually you want, if all of your tasks fit into one node, so task is usually one CPU,
+
+57
+00:04:24,700 --> 00:04:30,940
+but it can have multiple CPUs in the task.
+
+58
+00:04:30,940 --> 00:04:37,580
+So previously when we asked for multiple CPUs, we had the CPUs per task, and nobody asked
+
+59
+00:04:37,580 --> 00:04:40,980
+what the task is, but basically that's the MPI task.
+
+60
+00:04:40,980 --> 00:04:46,540
+So when we are running this shared memory parallelism, we're asking for CPUs per task,
+
+61
+00:04:46,540 --> 00:04:51,060
+but we're asking for only one task because we're not using MPI.
+
+62
+00:04:51,060 --> 00:04:58,540
+But in the case of MPI, you want to ask for multiple of these MPI tasks.
+
+63
+00:04:58,540 --> 00:05:04,460
+And each of these is typically one CPU, but can be more.
+
+64
+00:05:04,460 --> 00:05:11,960
+And typically, you want to ask for either one node, or you want to divide the program
+
+65
+00:05:11,960 --> 00:05:17,940
+in a way that it's distributed among the computers in some even fashion.
+
+66
+00:05:17,940 --> 00:05:24,200
+So in the abstract, there's nodes and n tasks per node.
+
+67
+00:05:24,200 --> 00:05:32,120
+For example, you would want to have one computer with 20 CPUs and another computer with 20 CPUs,
+
+68
+00:05:32,120 --> 00:05:38,360
+because this means that then it's more balanced, the job requirement.
+
+69
+00:05:41,560 --> 00:05:46,520
+Usually, at least in Triton, you want to use srun to run the program because that
+
+70
+00:05:46,520 --> 00:05:55,560
+tells the program to use this MPI framework that is built into the system, so that the MPI asks
+
+71
+00:05:55,560 --> 00:06:03,720
+the Slurm, where should I place all of my tasks? And it does this communication layer underneath it
+
+72
+00:06:04,680 --> 00:06:11,400
+to do it. But in practice, yeah. For most users, this can all be considered magic,
+
+73
+00:06:11,400 --> 00:06:14,840
+and you know you need these options and that it works.
+
+74
+00:06:14,840 --> 00:06:19,400
+Yeah, like usually I would recommend just checking like the documentation here
+
+75
+00:06:19,400 --> 00:06:25,080
+and just using those like values and try to like allocate
+
+76
+00:06:26,360 --> 00:06:31,480
+like what how many programs you want and try to allocate it in the way that it's mentioned there.
+
+77
+00:06:33,160 --> 00:06:37,720
+So if we look at the example here, do we want to go through it or?
+
+78
+00:06:37,720 --> 00:06:44,120
+I think it's probably not needed. I mean, I'd rather go to the GPUs.
+
+79
+00:06:44,840 --> 00:06:51,480
+Yeah, so the MPI example here is basically just there's like an MPI implementation of the same
+
+80
+00:06:52,520 --> 00:07:00,440
+Pi code, but it uses multiple processors to do it. And basically what you do is you load
+
+81
+00:07:01,160 --> 00:07:05,960
+an MPI installation. In our case, in our cluster, it's OpenMPI that we mainly use.
+
+82
+00:07:05,960 --> 00:07:13,360
+use, and then you compile the code. So, this is C code. So, it's low-level code, and then
+
+83
+00:07:13,360 --> 00:07:19,560
+you run it. But yeah, if your program uses MPI, you'll know it because they mentioned
+
+84
+00:07:19,560 --> 00:07:27,120
+it. So, you'll know about it because it mentions MPI. So, if it doesn't have the letters MP
+
+85
+00:07:27,120 --> 00:07:34,280
+and I somewhere mentioned, it's not using MPI, really. So, try to search the documentation
+
+86
+00:07:34,280 --> 00:07:40,120
+that sort of stuff if you want to do this MPI programs. And come and ask us if you have problems
+
+87
+00:07:40,120 --> 00:07:47,640
+with this. Because all of the network layer and that sort of stuff, this is high-performance
+
+88
+00:07:47,640 --> 00:07:55,960
+computing that basically marries the program with the hardware in a different fashion than
+
+89
+00:07:55,960 --> 00:08:01,240
+the previous programs we were running. Here we have a much more closely knit connection,
+
+90
+00:08:01,240 --> 00:08:07,320
+So that's why there's lots of complications and that's why it's mainly used for these
+
+91
+00:08:07,320 --> 00:08:11,160
+very complex programs that want to run very big simulations.
+
+92
+00:08:11,160 --> 00:08:11,720
+Yeah, yeah.
+
+93
+00:08:13,400 --> 00:08:13,640
+Okay.
+
+94
+00:08:13,640 --> 00:08:16,040
+If you have any questions, then do ask.
+
+95
+00:08:17,720 --> 00:08:23,080
+For those people who don't want to use MPI, I wouldn't touch the nodes and end tasks.
+
+96
+00:08:23,080 --> 00:08:27,320
+I would just know that these are not meant for me.
+
+97
+00:08:27,320 --> 00:08:29,160
+I don't care for those.
+
+98
+00:08:29,160 --> 00:08:32,220
+Because I just want to use multiple processors.
+
+99
+00:08:32,220 --> 00:08:36,220
+I don't care for these tasks, things.
+
+100
+00:08:36,220 --> 00:08:37,220
+Yeah.
+
+101
+00:08:37,220 --> 00:08:38,220
+Okay.
+
+102
+00:08:38,220 --> 00:08:45,300
+There's no questions about this, which is roughly what I'd expect, to be honest.
+
+103
+00:08:45,300 --> 00:08:50,620
+I mean, it's a thing that you'll learn when you need it.
+
+104
+00:08:50,620 --> 00:08:56,060
+And if you're using it, probably there's someone around you that figured this out already.
+
+105
+00:08:56,060 --> 00:09:02,300
+If you know that you want to code with MPI, I highly recommend going to the CSC MPI courses.
+
+106
+00:09:02,300 --> 00:09:10,300
+They are very nice courses. I have taken a few of those myself just to get more information.
+
+107
+00:09:10,940 --> 00:09:12,540
+They are very good courses on that.
+
+108
+00:09:15,180 --> 00:09:18,780
+Okay. Should we go to the break now a little bit early
+
+109
+00:09:18,780 --> 00:09:22,940
+and come back and have a bit more time for GPU stuff?
+
+110
+00:09:23,580 --> 00:09:24,860
+Yeah. Sounds good.
+
+111
+00:09:26,060 --> 00:09:36,060
+until 58. Okay, great. So keep asking questions, if any, and see you in 10 minutes.
+
+112
+00:09:36,060 --> 00:09:37,060
+Yep.
+
+113
+00:09:37,060 --> 00:09:38,060
+Bye.
+
