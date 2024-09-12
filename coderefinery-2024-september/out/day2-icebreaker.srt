@@ -1,0 +1,632 @@
+1
+00:00:00,000 --> 00:00:03,360
+bit of intro and see how it adjusts and then we can check more later. So, welcome everyone
+
+2
+00:00:03,360 --> 00:00:12,980
+to day two. Hopefully you all are as excited to be here as we are. What's the plan for
+
+3
+00:00:12,980 --> 00:00:17,940
+day two. So today it's [name] and [name] teaching. So what do we have in store?
+
+4
+00:00:21,220 --> 00:00:25,060
+It will be more git. I'm just setting up so that I can also see what we are actually streaming.
+
+5
+00:00:26,660 --> 00:00:28,420
+Are we now sharing the notes?
+
+6
+00:00:30,500 --> 00:00:32,340
+Yes, your screen is being shared.
+
+7
+00:00:32,980 --> 00:00:39,220
+Good. Yeah. Yeah, so there will be there will be morgit. And we will today move
+
+8
+00:00:39,220 --> 00:00:45,200
+Both from from the web to our computers and from our computers to the web.
+
+9
+00:00:45,200 --> 00:00:53,300
+So really the two goals are being able to take somebody else's project and continue
+
+10
+00:00:53,300 --> 00:00:54,300
+working on your computer.
+
+11
+00:00:54,300 --> 00:00:55,300
+Goal number one.
+
+12
+00:00:55,300 --> 00:00:59,820
+Goal number two is then be able to share your work with other people through places like
+
+13
+00:00:59,820 --> 00:01:01,600
+GitHub, GitLab.
+
+14
+00:01:01,600 --> 00:01:09,560
+And in between, we will learn a really nice set of tools to navigate in a project created
+
+15
+00:01:09,560 --> 00:01:11,880
+by other people, because that's the situation we are often in.
+
+16
+00:01:11,880 --> 00:01:25,400
+Yeah, so basically it's all about reaching, like someone said yesterday, connecting your
+
+17
+00:01:25,400 --> 00:01:34,440
+computer to the web, and then tomorrow is about using multiple people in projects.
+
+18
+00:01:34,440 --> 00:01:36,360
+Yeah, tomorrow will be a collaboration.
+
+19
+00:01:38,120 --> 00:01:41,320
+And I'm sharing here also two icebreaker questions.
+
+20
+00:01:42,680 --> 00:01:47,080
+One of them is more just for fun, and this is so that you can,
+
+21
+00:01:48,680 --> 00:01:52,920
+we actually want to see that people are able to edit the document.
+
+22
+00:01:52,920 --> 00:01:54,120
+So that's one thing we want to see.
+
+23
+00:01:54,120 --> 00:02:00,520
+and if you are unsure how to find it and how to edit I will say something about that once we
+
+24
+00:02:01,160 --> 00:02:06,280
+officially start in a couple of minutes. But the second question is really important for us
+
+25
+00:02:06,280 --> 00:02:14,280
+and that is which path did you use yesterday to interact with Git? So please let us know
+
+26
+00:02:16,920 --> 00:02:20,920
+and I will come back to this question. So this is really important for us that you vote here
+
+27
+00:02:20,920 --> 00:02:25,400
+and that you also let us know about paths that we should offer in future.
+
+28
+00:02:31,160 --> 00:02:37,400
+Yeah, and maybe you can even help us add some of the extra paths after you've done the course.
+
+29
+00:02:40,600 --> 00:02:46,680
+Yeah, so what was your overall outlook of yesterday?
+
+30
+00:02:46,680 --> 00:02:58,040
+Um, I think it went pretty well from I was really happy with what we achieved a day.
+
+31
+00:02:58,040 --> 00:03:02,920
+The first day is always tricky because we have a lot of us who are completely new to
+
+32
+00:03:02,920 --> 00:03:03,920
+getting it up.
+
+33
+00:03:03,920 --> 00:03:11,840
+We have learners who use it since quite some time and the day one is to really find the
+
+34
+00:03:11,840 --> 00:03:16,480
+the balance of getting everybody on the same page
+
+35
+00:03:16,480 --> 00:03:19,400
+and get like an understanding of what Git is.
+
+36
+00:03:20,680 --> 00:03:22,080
+And we try to find this balance
+
+37
+00:03:22,080 --> 00:03:24,540
+by offering these different paths,
+
+38
+00:03:24,540 --> 00:03:27,400
+like GitHub, like VS Code, like command line.
+
+39
+00:03:27,400 --> 00:03:29,800
+And we offer these different paths
+
+40
+00:03:29,800 --> 00:03:34,520
+because also we know that there is not this one tool
+
+41
+00:03:34,520 --> 00:03:37,200
+that will work for everybody.
+
+42
+00:03:37,200 --> 00:03:42,000
+we want to meet learners where they are.
+
+43
+00:03:43,320 --> 00:03:44,800
+And also among ourselves,
+
+44
+00:03:44,800 --> 00:03:46,240
+I'm sure that we use different tools.
+
+45
+00:03:46,240 --> 00:03:49,920
+And so, yeah, I was really happy with the progress.
+
+46
+00:03:56,880 --> 00:03:57,720
+Yeah.
+
+47
+00:03:59,360 --> 00:04:02,400
+I guess the main thing I got from the feedback
+
+48
+00:04:02,400 --> 00:04:05,120
+is we should have clarified the different paths
+
+49
+00:04:05,120 --> 00:04:07,000
+going together.
+
+50
+00:04:07,000 --> 00:04:10,560
+and made recommendations for which one to take.
+
+51
+00:04:10,560 --> 00:04:13,200
+So yeah.
+
+52
+00:04:13,200 --> 00:04:15,240
+And today we will do that because we need to do it.
+
+53
+00:04:15,240 --> 00:04:20,400
+So today I will spend a little bit of time at the beginning
+
+54
+00:04:20,400 --> 00:04:28,720
+to clarify that and also since today some of us might experiment with a different path
+
+55
+00:04:28,720 --> 00:04:31,880
+and we will show how
+
+56
+00:04:31,880 --> 00:04:34,800
+how you can set it up if you haven't done that already.
+
+57
+00:04:34,800 --> 00:04:39,040
+That's why also the first exercise will be a little bit longer to give people time to
+
+58
+00:04:39,040 --> 00:04:41,000
+set up and configure.
+
+59
+00:04:41,000 --> 00:04:42,000
+Yeah.
+
+60
+00:04:42,000 --> 00:04:43,000
+Okay.
+
+61
+00:04:43,000 --> 00:04:50,440
+I'll just rearrange my windows a little bit.
+
+62
+00:04:50,440 --> 00:04:51,800
+Great.
+
+63
+00:04:51,800 --> 00:05:02,160
+So looking at the icebreakers here, what do we see?
+
+64
+00:05:02,160 --> 00:05:08,920
+of interesting animals there. The person who wrote Homo sapiens wins, especially if it
+
+65
+00:05:08,920 --> 00:05:15,600
+counts ourselves. That's probably actually what most of us should have said.
+
+66
+00:05:15,600 --> 00:05:21,060
+I saw a moose yesterday.
+
+67
+00:05:21,060 --> 00:05:22,060
+Oh, nice.
+
+68
+00:05:22,060 --> 00:05:28,580
+I was driving in the dark and then it jumped over the road.
+
+69
+00:05:28,580 --> 00:05:30,580
+Okay.
+
+70
+00:05:30,580 --> 00:05:32,580
+Oh.
+
+71
+00:05:32,580 --> 00:05:34,580
+Yeah.
+
+72
+00:05:34,580 --> 00:05:44,020
+Yeah, so I guess from the second question, it's about what we would have hoped and the
+
+73
+00:05:44,020 --> 00:05:48,140
+people who tried a combination of different paths,
+
+74
+00:05:48,140 --> 00:05:49,460
+that's actually good.
+
+75
+00:05:49,460 --> 00:05:52,220
+So I agree with what people said.
+
+76
+00:05:52,220 --> 00:05:56,940
+It's hard to do basically all the exercises twice
+
+77
+00:05:56,940 --> 00:06:01,540
+unless you're already really good at one of them.
+
+78
+00:06:01,540 --> 00:06:03,620
+But this is what we want people to be
+
+79
+00:06:03,620 --> 00:06:06,860
+able to see in the end, how these are actually
+
+80
+00:06:06,860 --> 00:06:10,020
+pretty similar going together, and they
+
+81
+00:06:10,020 --> 00:06:13,180
+can all do the same things.
+
+82
+00:06:13,180 --> 00:06:17,100
+and seeing what is the common thing there, but maybe we should also clarify that there was no
+
+83
+00:06:17,100 --> 00:06:21,900
+expectation that people now go through all the paths so that they choose one path. We can also
+
+84
+00:06:21,900 --> 00:06:29,820
+see that we will need something for our studio. The good news is that today I think we will have
+
+85
+00:06:30,780 --> 00:06:36,780
+some options for that. Do you have a preferred path you work through, [name]?
+
+86
+00:06:36,780 --> 00:06:42,460
+or are you using all all types so now for my own work yeah
+
+87
+00:06:44,460 --> 00:06:48,140
+for my own work it's most of the time it's command line
+
+88
+00:06:49,180 --> 00:06:52,540
+but if i can do something quick on the web i will do it quickly on the web
+
+89
+00:06:54,460 --> 00:07:03,260
+so it's command line and a little bit of github um yep have you tried this trick with
+
+90
+00:07:03,260 --> 00:07:11,580
+pressing the dot and then getting an editor on github yes that's a nice trick we should maybe
+
+91
+00:07:11,580 --> 00:07:19,900
+show that uh yeah we could have mentioned it later uh when we when we edit files yeah yeah
+
+92
+00:07:19,900 --> 00:07:30,860
+maybe let's remember to use it um then also today uh it will be possible to to do most of
+
+93
+00:07:30,860 --> 00:07:35,660
+today just with github but there is one portion that
+
+94
+00:07:37,740 --> 00:07:43,820
+for this we will need something to work locally but if if it doesn't work it's not a problem
+
+95
+00:07:43,820 --> 00:07:51,580
+you can then skip it and like 70 percent of today can be done in github alone okay
+
+96
+00:07:55,020 --> 00:08:00,460
+but i think we are ready to start three minutes past so maybe i'll head off and start watching the
+
+97
+00:08:00,860 --> 00:08:08,700
+questions again and leave you all to it yeah okay good great thanks a lot see
+
+98
+00:08:08,700 --> 00:08:14,980
+you later yep it's maybe it'll start by introducing ourselves and then I will
+
+99
+00:08:14,980 --> 00:08:19,580
+introduce this notes document that we are looking at on because that's an
+
+100
+00:08:19,580 --> 00:08:25,700
+important tool for us to so that you can interact and ask questions and give us
+
+101
+00:08:25,700 --> 00:08:33,180
+feedback. But first, yeah, hello here from Northern Norway. My name is [name], and
+
+102
+00:08:33,180 --> 00:08:38,180
+I've been doing these kind of workshops since many years and I really enjoy it. The rest
+
+103
+00:08:38,180 --> 00:08:44,180
+of my time I work with high performance computing and really supporting researchers and students
+
+104
+00:08:44,180 --> 00:08:52,700
+with everything around computing and programming. And with me is my colleague [name] from Tonheim.
+
+105
+00:08:52,700 --> 00:09:00,020
+Yeah, good morning. My name is [name]. I work at the high performance group at the
+
+106
+00:09:00,020 --> 00:09:06,620
+Norwegian University of Technology and Science. So I've been part of cold refinery for quite
+
+107
+00:09:06,620 --> 00:09:14,460
+some years. And I like doing these workshops. So I'm really looking forward to today.
+
+108
+00:09:14,460 --> 00:09:20,340
+Yeah, so let's get started here first.
+
+109
+00:09:20,340 --> 00:09:27,300
+If you joined today, I just wanted to very briefly explain this document here that I'm
+
+110
+00:09:27,300 --> 00:09:30,500
+looking at.
+
+111
+00:09:30,500 --> 00:09:32,960
+And first of all, how do you find it?
+
+112
+00:09:32,960 --> 00:09:40,700
+You find it when you register to the workshop, you either got an email from me a couple of
+
+113
+00:09:40,700 --> 00:09:44,540
+days ago that contains the link.
+
+114
+00:09:44,540 --> 00:09:46,940
+If you registered after, it's also not a problem,
+
+115
+00:09:46,940 --> 00:09:51,940
+then it was in the automatic reply during your registration.
+
+116
+00:09:52,180 --> 00:09:53,860
+So there you can find the link to this document.
+
+117
+00:09:53,860 --> 00:09:58,860
+It's a document, it's like collaborative notes,
+
+118
+00:09:59,100 --> 00:10:00,540
+we can all view and edit.
+
+119
+00:10:01,700 --> 00:10:03,960
+I'm now looking at it in the view mode,
+
+120
+00:10:03,960 --> 00:10:15,240
+but there is somewhere an edit button, edit pen, so if I click on the edit pen it switches
+
+121
+00:10:15,240 --> 00:10:23,560
+to edit mode and in the edit mode I can then edit and please try it so please try to to
+
+122
+00:10:23,560 --> 00:10:33,000
+add something for so I also saw some neighbor cat walking by so test it out
+
+123
+00:10:33,960 --> 00:10:40,760
+And then below here we have this other question that is really important for us and that is
+
+124
+00:10:40,760 --> 00:10:44,880
+which path did you choose yesterday to interact with git.
+
+125
+00:10:44,880 --> 00:10:49,200
+And it's not a problem if you were not here yesterday.
+
+126
+00:10:49,200 --> 00:10:56,080
+You should mention that we try to stay anonymous so we leave out your name so don't add your
+
+127
+00:10:56,080 --> 00:10:57,320
+name to the document.
+
+128
+00:10:57,320 --> 00:11:00,000
+Oh great point yeah.
+
+129
+00:11:00,000 --> 00:11:05,560
+So here I don't use any names, but please ask lots of questions.
+
+130
+00:11:05,560 --> 00:11:12,840
+We will, after each day, we also publish the notes as part of the workshop.
+
+131
+00:11:12,840 --> 00:11:18,640
+So they become part of the workshop outcomes.
+
+132
+00:11:18,640 --> 00:11:25,600
+And I will scroll back to this question here, but below, you can then always find a link
+
+133
+00:11:25,600 --> 00:11:27,160
+to where we will be.
+
+134
+00:11:27,160 --> 00:11:36,360
+will now just post the link on where you can find today's material. So we will be very, very soon
+
+135
+00:11:36,360 --> 00:11:53,800
+starting here. Start today at here. And as we then go through different episodes, we post links to it.
+
+136
+00:11:53,800 --> 00:11:59,080
+it. And what we would really like you to do is to ask lots of questions. And the best
+
+137
+00:11:59,080 --> 00:12:03,920
+place to ask questions is at the bottom of the document, because we will hopefully get
+
+138
+00:12:03,920 --> 00:12:12,520
+I hope that we get at least 100 questions today. You can number the questions. I will
+
+139
+00:12:12,520 --> 00:12:23,080
+make an example here, for instance. Let's start with the question number one. Is this
+
+140
+00:12:23,080 --> 00:12:34,920
+the way, is this the place to ask? And somebody can answer. And somebody's answering. And
+
+141
+00:12:34,920 --> 00:12:40,900
+this is also why we are here, two instructors, plus we have our colleague in the studio,
+
+142
+00:12:40,900 --> 00:12:45,700
+so that we can, we are several people, we watch these questions. We will answer all
+
+143
+00:12:45,700 --> 00:12:53,260
+of them. And some of them we will then lift and we will discuss them in voice. So the
+
+144
+00:12:53,260 --> 00:12:58,340
+more questions, the better. And no question or too simple or too stupid
+
+145
+00:12:58,340 --> 00:13:04,260
+to ask. Ask anything about anything, really. Yeah. If you have a question is very likely
+
+146
+00:13:04,260 --> 00:13:09,780
+that somebody else has the same question and was too afraid to ask. So please ask it. Also
+
+147
+00:13:09,780 --> 00:13:15,060
+Also reminder, we use a code of conduct, so let's be all nice to each other.
+
+148
+00:13:15,060 --> 00:13:18,920
+This is like in any other professional setting.
+
+149
+00:13:18,920 --> 00:13:23,860
+And if you see something that is not right, please point it out.
+
+150
+00:13:23,860 --> 00:13:26,460
+We will also be...
+
+151
+00:13:26,460 --> 00:13:33,560
+We just want to create a really welcoming and nice atmosphere in this workshop.
+
+152
+00:13:33,560 --> 00:13:39,660
+But now that we got the housekeeping done, I will now navigate to this link.
+
+153
+00:13:39,660 --> 00:13:48,060
+can navigate that with me. So maybe the best way to participate today is to on one half of your
+
+154
+00:13:48,060 --> 00:13:55,660
+screen to have the nodes open. And this is also why our screen share is portrait mode and not
+
+155
+00:13:55,660 --> 00:14:03,980
+landscape mode. And on the other half of the screen you can then either have the GitHub open
+
+156
+00:14:03,980 --> 00:14:06,460
+or your editor, or your terminal.
+
+157
+00:14:08,220 --> 00:14:10,500
+And I will now navigate to the lesson material,
+
+158
+00:14:10,500 --> 00:14:13,380
+which, well, you can open somewhere else on your screen.
+

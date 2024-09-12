@@ -1,0 +1,6284 @@
+1
+00:00:00,580 --> 00:00:03,900
+And this is the lesson from yesterday and today.
+
+2
+00:00:03,900 --> 00:00:06,260
+It's about version control with Git.
+
+3
+00:00:08,300 --> 00:00:09,260
+And I will soon zoom in.
+
+4
+00:00:09,260 --> 00:00:12,300
+I just want to give you the big picture for today.
+
+5
+00:00:12,300 --> 00:00:13,340
+We will first,
+
+6
+00:00:14,900 --> 00:00:18,820
+I want to first point you out that we have this episode here
+
+7
+00:00:18,820 --> 00:00:27,140
+about configuring your git command line or editor if you need it. So during the first exercise
+
+8
+00:00:28,020 --> 00:00:34,500
+we will give you the choice to to either try ds code or to try the command line.
+
+9
+00:00:36,020 --> 00:00:42,260
+And if you haven't set it up before the workshop you can then have a look at this configuration
+
+10
+00:00:42,260 --> 00:00:47,620
+episode. And this will be the only place today where you will need it and if it doesn't work
+
+11
+00:00:47,620 --> 00:00:51,980
+Don't worry, you can then watch what we do.
+
+12
+00:00:51,980 --> 00:00:56,540
+And the rest of today you can continue on GitHub.
+
+13
+00:00:56,540 --> 00:01:01,040
+Also yesterday we have covered three episodes.
+
+14
+00:01:01,040 --> 00:01:03,960
+We have started from an existing project.
+
+15
+00:01:03,960 --> 00:01:07,380
+We created some commits and branches.
+
+16
+00:01:07,380 --> 00:01:11,000
+And we have then merged these branches.
+
+17
+00:01:11,000 --> 00:01:17,140
+And we have discussed a little bit how contributing to projects could look like.
+
+18
+00:01:17,140 --> 00:01:23,960
+Today we will cover four episodes, there will be three exercises, there will be one exercise
+
+19
+00:01:23,960 --> 00:01:29,280
+in the first hour, second exercise in the second hour, we will then take a longer break
+
+20
+00:01:29,280 --> 00:01:32,460
+and then there will be a third exercise in the third hour.
+
+21
+00:01:32,460 --> 00:01:40,120
+In the first hour we will start with cloning a git repository and working on it locally.
+
+22
+00:01:40,120 --> 00:01:44,160
+In the second hour, we will explore this toolbox
+
+23
+00:01:44,160 --> 00:01:48,660
+of how we can inspect a repository created by somebody else.
+
+24
+00:01:48,660 --> 00:01:50,400
+This will be a really fun exercise.
+
+25
+00:01:51,540 --> 00:01:52,720
+And then we will conclude today
+
+26
+00:01:52,720 --> 00:01:56,480
+with be able to share our own work,
+
+27
+00:01:56,480 --> 00:01:57,960
+turning it into a Git repository
+
+28
+00:01:57,960 --> 00:02:00,960
+and share it on places like GitHub.
+
+29
+00:02:00,960 --> 00:02:04,260
+And at the end, we will have time to discuss also
+
+30
+00:02:04,260 --> 00:02:06,480
+to give you practical advice
+
+31
+00:02:06,480 --> 00:02:08,760
+of like how much Git is really necessary,
+
+32
+00:02:08,760 --> 00:02:12,720
+where to start and what are typical pitfalls,
+
+33
+00:02:12,720 --> 00:02:16,220
+what to avoid as you progress from beginner
+
+34
+00:02:16,220 --> 00:02:19,820
+to more advanced use.
+
+35
+00:02:19,820 --> 00:02:22,000
+So that's the plan for today.
+
+36
+00:02:22,000 --> 00:02:25,160
+What was the most challenging thing yesterday?
+
+37
+00:02:27,800 --> 00:02:28,640
+Do you think?
+
+38
+00:02:30,440 --> 00:02:32,240
+Yeah, I would like to know from learners.
+
+39
+00:02:32,240 --> 00:02:34,220
+So please let us also know what,
+
+40
+00:02:34,220 --> 00:02:38,000
+is there anything that you would like to have clarified
+
+41
+00:02:38,000 --> 00:02:40,520
+from yesterday because we can, we have time for recap.
+
+42
+00:02:40,520 --> 00:02:41,920
+We can connect to yesterday.
+
+43
+00:02:48,780 --> 00:02:49,640
+So please let us know.
+
+44
+00:02:49,640 --> 00:02:50,760
+We will be watching these questions
+
+45
+00:02:50,760 --> 00:02:52,160
+and we can connect to those.
+
+46
+00:02:54,480 --> 00:02:58,920
+From my perspective, things went relatively well yesterday.
+
+47
+00:03:01,920 --> 00:03:03,840
+But now I want to come back to my question here.
+
+48
+00:03:03,840 --> 00:03:06,680
+Which path did you choose yesterday to interact with Git?
+
+49
+00:03:06,680 --> 00:03:09,440
+So most people used GitHub.
+
+50
+00:03:10,760 --> 00:03:12,280
+Well, in future, we should offer
+
+51
+00:03:12,280 --> 00:03:14,040
+at least RStudio in addition.
+
+52
+00:03:15,640 --> 00:03:20,640
+Some learners participated using VS Code and Command Line.
+
+53
+00:03:22,320 --> 00:03:25,480
+Now, the first episode today, so the next 45 minutes,
+
+54
+00:03:26,440 --> 00:03:29,660
+well, they will be about VS Code and Command Line.
+
+55
+00:03:32,000 --> 00:03:33,600
+So this will be a new thing
+
+56
+00:03:33,600 --> 00:03:36,040
+to all the people who voted here,
+
+57
+00:03:36,040 --> 00:03:38,980
+but it might be a little bit repetitive
+
+58
+00:03:38,980 --> 00:03:42,380
+for those who used VS Code and Command Line yesterday.
+
+59
+00:03:44,020 --> 00:03:45,680
+So for those of you who used VS Code
+
+60
+00:03:45,680 --> 00:03:46,680
+and Command Line yesterday,
+
+61
+00:03:46,680 --> 00:03:49,000
+there will still be, there will be something new.
+
+62
+00:03:49,000 --> 00:03:51,060
+We will understand what cloning means.
+
+63
+00:03:52,320 --> 00:03:53,800
+But if during the exercise,
+
+64
+00:03:53,800 --> 00:03:55,760
+you feel like, hmm, this feels repetitive.
+
+65
+00:03:55,760 --> 00:03:56,920
+I know how to do this.
+
+66
+00:03:58,280 --> 00:04:00,280
+Then I encourage you to explore
+
+67
+00:04:00,280 --> 00:04:02,840
+some of the optional episodes.
+
+68
+00:04:02,840 --> 00:04:05,760
+For instance, undoing and recovering
+
+69
+00:04:05,760 --> 00:04:07,680
+from typical mistakes.
+
+70
+00:04:07,680 --> 00:04:08,840
+This is an optional episode,
+
+71
+00:04:08,840 --> 00:04:11,800
+which we will not cover in the mainstream here.
+
+72
+00:04:14,720 --> 00:04:16,360
+So if the first exercise feels a little bit
+
+73
+00:04:16,360 --> 00:04:17,360
+too repetitive for you,
+
+74
+00:04:17,360 --> 00:04:20,600
+maybe use the time to either look at an optional episode
+
+75
+00:04:20,600 --> 00:04:23,000
+or use the time to help answering some questions
+
+76
+00:04:23,000 --> 00:04:24,280
+that other people might have.
+
+77
+00:04:24,280 --> 00:04:27,240
+So you can also help us with answering questions.
+
+78
+00:04:28,600 --> 00:04:30,240
+But now I think it's a good time to navigate
+
+79
+00:04:30,240 --> 00:04:32,920
+to the first thing we want to do today,
+
+80
+00:04:32,920 --> 00:04:34,280
+cloning a Git repository.
+
+81
+00:04:34,280 --> 00:04:43,640
+And I will also paste the link in the notes so that you know where to find us.
+
+82
+00:04:43,640 --> 00:04:50,800
+We are here and somebody can then help me reformatting it.
+
+83
+00:04:50,800 --> 00:04:53,880
+It will be, thank you.
+
+84
+00:04:53,880 --> 00:05:04,240
+So always at the bottom of the document you can, you can find where we are.
+
+85
+00:05:04,240 --> 00:05:05,600
+Yeah, we should, I think one thing
+
+86
+00:05:05,600 --> 00:05:07,880
+that was a little bit challenging yesterday
+
+87
+00:05:07,880 --> 00:05:10,120
+was that we didn't really clarify so much.
+
+88
+00:05:10,120 --> 00:05:12,920
+We didn't spend much time explaining which track to use.
+
+89
+00:05:14,420 --> 00:05:15,800
+Right.
+
+90
+00:05:15,800 --> 00:05:20,360
+Yeah, and today, again, mostly there will be three tracks.
+
+91
+00:05:20,360 --> 00:05:23,000
+For the first exercise, for the first episode,
+
+92
+00:05:24,120 --> 00:05:25,480
+if you haven't used VS Code
+
+93
+00:05:25,480 --> 00:05:27,560
+and if you haven't used command line,
+
+94
+00:05:27,560 --> 00:05:30,680
+I think I recommend maybe starting with VS Code.
+
+95
+00:05:30,680 --> 00:05:33,440
+It is less to set up
+
+96
+00:05:33,440 --> 00:05:37,620
+and it's maybe easier, easier starting point.
+
+97
+00:05:37,620 --> 00:05:39,260
+The command line is there for those
+
+98
+00:05:39,260 --> 00:05:42,340
+who already use the command line and are familiar with it
+
+99
+00:05:42,340 --> 00:05:43,780
+and would like to stay in the command line
+
+100
+00:05:43,780 --> 00:05:47,160
+and not go to an additional tool.
+
+101
+00:05:53,420 --> 00:05:55,500
+Yeah, good.
+
+102
+00:05:56,580 --> 00:05:58,980
+Objective for now, objective for the next 45 minutes
+
+103
+00:05:58,980 --> 00:06:01,500
+is we want to be able to clone a repository
+
+104
+00:06:01,500 --> 00:06:04,660
+And we also want to understand what cloning even means.
+
+105
+00:06:04,660 --> 00:06:09,300
+And now we, I really like how [name] yesterday
+
+106
+00:06:09,300 --> 00:06:11,780
+rephrased things in terms of roles.
+
+107
+00:06:11,780 --> 00:06:16,060
+So the role that I imagine now that I'm in is
+
+108
+00:06:17,420 --> 00:06:19,420
+I'm a student researcher staff
+
+109
+00:06:20,500 --> 00:06:23,260
+who found an interesting project
+
+110
+00:06:23,260 --> 00:06:27,060
+which does almost what I want it.
+
+111
+00:06:27,060 --> 00:06:29,900
+I need to do some small modifications to it.
+
+112
+00:06:29,900 --> 00:06:31,020
+And the thing I want to do now
+
+113
+00:06:31,020 --> 00:06:34,460
+is I want to be able to copy it to my computer
+
+114
+00:06:34,460 --> 00:06:37,120
+with the project history,
+
+115
+00:06:37,120 --> 00:06:40,460
+and I would like to be able to do commits locally
+
+116
+00:06:40,460 --> 00:06:41,400
+on my computer.
+
+117
+00:06:42,260 --> 00:06:45,300
+And later, maybe I want to share these changes
+
+118
+00:06:46,440 --> 00:06:48,520
+back to GitHub, but I will do that only later.
+
+119
+00:06:48,520 --> 00:06:51,740
+And by later, it will be in two and a half hours.
+
+120
+00:06:53,960 --> 00:06:56,160
+And what we want to show you is that
+
+121
+00:06:56,160 --> 00:06:57,500
+all the things that we did yesterday,
+
+122
+00:06:57,500 --> 00:06:59,880
+we can also do locally.
+
+123
+00:06:59,880 --> 00:07:02,500
+things like making commits, making branches,
+
+124
+00:07:02,500 --> 00:07:05,840
+merging branches, and all of it will stay
+
+125
+00:07:05,840 --> 00:07:08,800
+on our laptops or desktops.
+
+126
+00:07:10,640 --> 00:07:13,120
+And we will get a bit of a feeling what it means,
+
+127
+00:07:13,120 --> 00:07:14,720
+what is a remote repository,
+
+128
+00:07:16,240 --> 00:07:20,560
+but it will only give us a feeling we will spend a lot more
+
+129
+00:07:20,560 --> 00:07:25,560
+on remote repositories tomorrow when we do collaboration.
+
+130
+00:07:25,560 --> 00:07:34,200
+And here is a sketch of what our goal is and we will first explain it and then send you
+
+131
+00:07:34,200 --> 00:07:39,680
+soon into a 25-minute exercise because we will give you a bit more time because it might
+
+132
+00:07:39,680 --> 00:07:46,520
+require some configuration setup installation for those who haven't done it earlier.
+
+133
+00:07:46,520 --> 00:07:50,920
+A clone that's a copy, right?
+
+134
+00:07:50,920 --> 00:07:57,380
+Yeah, I'm also looking at your question six, which is I think related.
+
+135
+00:07:57,380 --> 00:07:59,380
+So cloning is really copying.
+
+136
+00:07:59,380 --> 00:08:03,980
+And we have been copying repositories yesterday, but yesterday we called it fork.
+
+137
+00:08:03,980 --> 00:08:10,200
+So yesterday we were forking and there the copy was within GitHub.
+
+138
+00:08:10,200 --> 00:08:19,400
+It was from CR workshop exercises organization copy into my own user account.
+
+139
+00:08:19,400 --> 00:08:21,600
+But the copy stayed on GitHub.
+
+140
+00:08:21,600 --> 00:08:28,240
+Cloning is very similar, but instead of making the copy on GitHub from one place to another,
+
+141
+00:08:28,240 --> 00:08:32,480
+I make the copy from, for instance, GitHub GitLab.
+
+142
+00:08:32,480 --> 00:08:36,540
+But this time I clone it to my own computer.
+
+143
+00:08:36,540 --> 00:08:43,180
+But technically it's very similar, which means that when you do this, and we will see that,
+
+144
+00:08:43,180 --> 00:08:45,740
+we copy everything.
+
+145
+00:08:45,740 --> 00:08:51,460
+little dots here also all the commits branches everything is copied what when do you fork
+
+146
+00:08:51,460 --> 00:09:04,660
+and when do you clone so when I fork when I want
+
+147
+00:09:04,660 --> 00:09:13,340
+when I if I want to have to copy backed up somewhere on the web then I fork I also fork
+
+148
+00:09:13,340 --> 00:09:19,660
+when I already have an intention that I will probably make a change and probably,
+
+149
+00:09:19,660 --> 00:09:23,820
+at some point, contribute my change back to the original repository.
+
+150
+00:09:24,860 --> 00:09:30,460
+Sometimes I clone if I really just want to use it or I want to make some modifications,
+
+151
+00:09:30,460 --> 00:09:35,820
+but at this point, I'm not sure whether I will contribute anything back.
+
+152
+00:09:35,820 --> 00:09:43,700
+but you can change your mind you can you can first work and then you can clone the fork
+
+153
+00:09:43,700 --> 00:09:49,820
+so cloning is anytime you want to you need to work on the project locally on your computer
+
+154
+00:09:49,820 --> 00:09:56,740
+then you will need to you will need to clone right so it's it's a full copy it's a full
+
+155
+00:09:56,740 --> 00:10:03,980
+backup so if 20 people clone your repository then you have 20 backups
+
+156
+00:10:03,980 --> 00:10:07,500
+You don't see any traces of others' clones, do you?
+
+157
+00:10:10,380 --> 00:10:13,020
+No, I don't know who cloned the repository.
+
+158
+00:10:13,020 --> 00:10:17,100
+So I know, let's go back to our repositories today,
+
+159
+00:10:17,100 --> 00:10:21,740
+see our exercises, and I will go to the one recorded.
+
+160
+00:10:23,700 --> 00:10:26,740
+This was our repository from yesterday,
+
+161
+00:10:26,740 --> 00:10:29,540
+and here I can see that 41 people forked it.
+
+162
+00:10:30,980 --> 00:10:32,940
+That can be interesting because then for your own project,
+
+163
+00:10:32,940 --> 00:10:35,640
+it can be fun to see like who is using it,
+
+164
+00:10:35,640 --> 00:10:37,420
+who is making changes to it.
+
+165
+00:10:37,420 --> 00:10:40,060
+This could be maybe a future collaborator.
+
+166
+00:10:40,060 --> 00:10:41,900
+Maybe they are doing something interesting.
+
+167
+00:10:41,900 --> 00:10:46,900
+And, but when you clone the project,
+
+168
+00:10:47,100 --> 00:10:48,140
+I don't know that you cloned it.
+
+169
+00:10:48,140 --> 00:10:50,740
+So it's on your computers and well, I don't know it.
+
+170
+00:10:54,540 --> 00:10:58,100
+The key is all the files, all the commits,
+
+171
+00:10:58,100 --> 00:11:06,020
+All the branches, all the tags, everything that's part of the repository gets copied.
+
+172
+00:11:06,020 --> 00:11:11,000
+It's a full backup.
+
+173
+00:11:11,000 --> 00:11:18,380
+And once you create a clone and you have a copy on your computer and we will now make
+
+174
+00:11:18,380 --> 00:11:25,660
+commits to it, it's also good to know that these repositories,
+
+175
+00:11:25,660 --> 00:11:29,140
+they are still somewhat connected.
+
+176
+00:11:29,140 --> 00:11:32,500
+And the connection is that my local copy
+
+177
+00:11:32,500 --> 00:11:35,340
+remembers where it was cloned from,
+
+178
+00:11:35,340 --> 00:11:38,220
+but the changes don't automatically synchronize.
+
+179
+00:11:38,220 --> 00:11:39,260
+So we will make commits.
+
+180
+00:11:39,260 --> 00:11:44,340
+There will be more dots here at the end of my local repository,
+
+181
+00:11:44,340 --> 00:11:49,620
+but they will not magically travel back to GitHub.
+
+182
+00:11:49,620 --> 00:11:52,340
+And we will, later on...
+
+183
+00:11:52,340 --> 00:11:55,820
+What about commits from the central?
+
+184
+00:11:55,820 --> 00:11:57,420
+Where is the clone from?
+
+185
+00:11:57,420 --> 00:11:58,740
+Same thing there.
+
+186
+00:11:58,740 --> 00:12:03,140
+So, after I created a clone, if there are new commits,
+
+187
+00:12:03,140 --> 00:12:06,820
+they will not automatically come to my computer.
+
+188
+00:12:06,820 --> 00:12:12,580
+We will then actively pull changes or push changes.
+
+189
+00:12:12,580 --> 00:12:15,700
+So pull whenever I want to update my local copy
+
+190
+00:12:15,700 --> 00:12:18,460
+and push whenever I want to publish my local commits.
+
+191
+00:12:19,380 --> 00:12:21,960
+And these are also techniques that we will learn
+
+192
+00:12:21,960 --> 00:12:24,360
+later today and a lot more tomorrow.
+
+193
+00:12:26,380 --> 00:12:28,560
+Just having a glimpse here at questions
+
+194
+00:12:28,560 --> 00:12:32,100
+and I'm so happy to see that we already have
+
+195
+00:12:32,100 --> 00:12:33,500
+like 10 questions in here.
+
+196
+00:12:33,500 --> 00:12:35,820
+So we are on a good average to break
+
+197
+00:12:35,820 --> 00:12:37,260
+the 100 question barrier.
+
+198
+00:12:37,260 --> 00:12:46,020
+Oh, my microphone is low, interesting.
+
+199
+00:12:46,020 --> 00:12:47,900
+Thanks for pointing it out.
+
+200
+00:12:47,900 --> 00:12:56,580
+I will adjust.
+
+201
+00:12:56,580 --> 00:12:59,100
+Hopefully it's better now.
+
+202
+00:12:59,100 --> 00:13:00,100
+And please let us know.
+
+203
+00:13:00,100 --> 00:13:03,580
+I will also check our internal chat here.
+
+204
+00:13:03,580 --> 00:13:11,820
+Good, thanks for letting us know, let us know if it's still, oh it wasn't me, it was somebody
+
+205
+00:13:11,820 --> 00:13:12,820
+else.
+
+206
+00:13:12,820 --> 00:13:20,440
+Okay, I'm dialing back, good.
+
+207
+00:13:20,440 --> 00:13:23,780
+But this is exactly what we wanted, let us know if things are not right.
+
+208
+00:13:23,780 --> 00:13:30,540
+It could also be like font size, visibility and audio.
+
+209
+00:13:30,540 --> 00:13:35,300
+Is it possible to merge clone back with original repository pull request?
+
+210
+00:13:35,300 --> 00:13:36,500
+That's a great question.
+
+211
+00:13:36,500 --> 00:13:37,500
+So how about pull requests?
+
+212
+00:13:37,500 --> 00:13:43,860
+And pull requests, they happen then within platforms like GitHub or GitLab.
+
+213
+00:13:43,860 --> 00:13:51,480
+So if I make local commits here and I really want to contribute them back, I typically
+
+214
+00:13:51,480 --> 00:13:54,600
+have to go through a fork.
+
+215
+00:13:54,600 --> 00:13:58,660
+So if I'm in the situation and I realize that all these are really good changes, I want
+
+216
+00:13:58,660 --> 00:14:00,740
+to contribute them with a pull request,
+
+217
+00:14:00,740 --> 00:14:02,120
+I will create a fork,
+
+218
+00:14:03,980 --> 00:14:05,540
+push my changes to the fork,
+
+219
+00:14:05,540 --> 00:14:08,240
+and from the fork, I will send a pull request.
+
+220
+00:14:12,420 --> 00:14:13,780
+So what's this exercise about?
+
+221
+00:14:13,780 --> 00:14:16,540
+The exercise will be, again,
+
+222
+00:14:16,540 --> 00:14:18,220
+we design something so that it makes sense.
+
+223
+00:14:18,220 --> 00:14:20,580
+You can work on your own, you can work in teams.
+
+224
+00:14:21,800 --> 00:14:26,660
+It's, conceptually, this should be similar and familiar,
+
+225
+00:14:26,660 --> 00:14:37,500
+But now we want to then take a repository and it's it's our example repository from yesterday
+
+226
+00:14:37,500 --> 00:14:40,580
+and clone it to the computer and then make some changes locally.
+
+227
+00:14:40,580 --> 00:14:45,220
+And since the changes will be local, well, then there is no web track, there is no GitHub
+
+228
+00:14:45,220 --> 00:14:46,260
+track there.
+
+229
+00:14:46,260 --> 00:14:47,260
+Here we offer.
+
+230
+00:14:47,260 --> 00:14:56,420
+So if I scroll down a little bit, we offer three tracks, command line, VSCode, also RStudio.
+
+231
+00:14:56,420 --> 00:14:59,740
+And later we have probably even more tracks.
+
+232
+00:14:59,740 --> 00:15:02,020
+And scrolling back up.
+
+233
+00:15:02,020 --> 00:15:06,580
+So what we want people to do is maybe you need to do some configuration and installation
+
+234
+00:15:06,580 --> 00:15:08,500
+if you haven't done that already.
+
+235
+00:15:08,500 --> 00:15:12,820
+So we will give you some minutes for that.
+
+236
+00:15:12,820 --> 00:15:17,580
+And then you need to decide which repository to clone.
+
+237
+00:15:17,580 --> 00:15:21,660
+Should it be your fork or should it be the original?
+
+238
+00:15:21,660 --> 00:15:23,380
+The original recipe book.
+
+239
+00:15:23,380 --> 00:15:29,740
+By original I mean the one from CR workshop exercises.
+
+240
+00:15:29,740 --> 00:15:33,320
+For this exercise it doesn't matter, it can be either.
+
+241
+00:15:33,320 --> 00:15:35,900
+If you have a fork, clone the fork.
+
+242
+00:15:35,900 --> 00:15:41,260
+If you don't have it, or you were not here yesterday, or you are unsure, you can also
+
+243
+00:15:41,260 --> 00:15:48,260
+clone the original repository, both will work.
+
+244
+00:15:48,260 --> 00:15:52,340
+Then you will create a new branch, but you will do it locally.
+
+245
+00:15:52,340 --> 00:15:55,500
+we'll create a new commit.
+
+246
+00:15:55,500 --> 00:15:59,460
+And we also wanted you to learn how you switch branches
+
+247
+00:15:59,460 --> 00:16:02,740
+locally, and you can then switch back to main,
+
+248
+00:16:02,740 --> 00:16:05,700
+create a couple of commits there,
+
+249
+00:16:05,700 --> 00:16:10,980
+and also experiment with merging branches locally.
+
+250
+00:16:10,980 --> 00:16:13,940
+And after you've done that, we encourage
+
+251
+00:16:13,940 --> 00:16:18,420
+you to compare the graph.
+
+252
+00:16:18,420 --> 00:16:22,180
+By graph, I mean something like this illustration.
+
+253
+00:16:22,180 --> 00:16:24,700
+compare the graph of commits that you have locally
+
+254
+00:16:24,700 --> 00:16:27,860
+and compare it with the graph that is on GitHub.
+
+255
+00:16:27,860 --> 00:16:28,940
+And you will see that they differ
+
+256
+00:16:28,940 --> 00:16:31,060
+because the commits that you created
+
+257
+00:16:31,060 --> 00:16:32,660
+and the branches you created,
+
+258
+00:16:32,660 --> 00:16:34,900
+you will only see them in your local version.
+
+259
+00:16:36,700 --> 00:16:38,540
+And I think that's quite instructive.
+
+260
+00:16:39,460 --> 00:16:43,820
+And then we also wanted you to test out if you can find,
+
+261
+00:16:46,140 --> 00:16:48,340
+so you will see local branches,
+
+262
+00:16:48,340 --> 00:16:49,460
+you will see your main branch
+
+263
+00:16:49,460 --> 00:16:53,540
+and the branch that you created, this one here.
+
+264
+00:16:55,260 --> 00:16:56,860
+But we also want you to find out
+
+265
+00:16:57,900 --> 00:17:01,940
+where are the other branches.
+
+266
+00:17:01,940 --> 00:17:03,740
+And by the other branches, I mean,
+
+267
+00:17:06,180 --> 00:17:11,180
+there are five branches in the central repository
+
+268
+00:17:13,260 --> 00:17:16,300
+and whether you can see them.
+
+269
+00:17:16,300 --> 00:17:18,260
+And we have, for all the steps,
+
+270
+00:17:18,260 --> 00:17:21,060
+Again, we have a solution and walkthrough.
+
+271
+00:17:21,060 --> 00:17:24,420
+And what we will then do afterwards here with [name]
+
+272
+00:17:24,420 --> 00:17:28,900
+is that depending on your questions,
+
+273
+00:17:28,900 --> 00:17:32,660
+and we will show some of the things here also live,
+
+274
+00:17:34,220 --> 00:17:37,220
+either in VS Code or command line or both.
+
+275
+00:17:41,260 --> 00:17:42,740
+So what we will do now,
+
+276
+00:17:42,740 --> 00:17:44,820
+I will just switch back here to notes
+
+277
+00:17:44,820 --> 00:17:50,120
+And scroll all the way down, that's the place where we look for questions.
+
+278
+00:17:50,120 --> 00:18:00,740
+And this is also the place where you find, here you find where the exercise is, 25 minutes.
+
+279
+00:18:00,740 --> 00:18:05,520
+And in 25 minutes we will be back here on stream.
+
+280
+00:18:05,520 --> 00:18:10,940
+And please also let us know during the exercise how it's going, whether you finished or it
+
+281
+00:18:10,940 --> 00:18:14,420
+was confusing or you wish there was more time.
+
+282
+00:18:14,420 --> 00:18:20,500
+helps us to to adjust. Sounds good.
+
+283
+00:18:20,500 --> 00:18:24,420
+Sounds good. I think you covered it all.
+
+284
+00:18:24,420 --> 00:18:31,180
+Excellent. So then we will be back 53 minutes. So seven minutes before the hour. And then
+
+285
+00:18:31,180 --> 00:18:37,140
+together with [name] here, we will answer some questions and show a few things and summarize.
+
+286
+00:18:37,140 --> 00:18:43,180
+But see you in 25 minutes. Back on stream. Good luck.
+
+287
+00:18:43,180 --> 00:18:45,000
+you
+
+288
+00:18:45,000 --> 00:18:53,700
+All right, welcome back, everybody.
+
+289
+00:18:53,700 --> 00:18:58,260
+Just taking a few seconds breather after the exercise.
+
+290
+00:18:58,260 --> 00:19:00,540
+Also thank you for letting us know how it went.
+
+291
+00:19:00,540 --> 00:19:05,500
+I don't know whether this is a representative exit poll, but let us know whether this was
+
+292
+00:19:05,500 --> 00:19:10,900
+doable in the time allocated, or whether you wish there was more time.
+
+293
+00:19:10,900 --> 00:19:16,140
+We saw also on the questions that there were some technical problems.
+
+294
+00:19:16,140 --> 00:19:19,980
+Hopefully we'll be able to solve them.
+
+295
+00:19:19,980 --> 00:19:23,360
+And don't worry if you got stuck, it didn't work.
+
+296
+00:19:23,360 --> 00:19:29,320
+We have designed the rest of today so that we can still continue and we will learn new
+
+297
+00:19:29,320 --> 00:19:36,760
+things and it will work out even if this first exercise didn't work.
+
+298
+00:19:36,760 --> 00:19:42,120
+We will show you some of the steps, both on the command line and if we have time, I already
+
+299
+00:19:42,120 --> 00:19:45,020
+have VS Code open here as well.
+
+300
+00:19:45,020 --> 00:19:48,440
+Before I go there, I wanted to say thank you for...
+
+301
+00:19:48,440 --> 00:19:51,880
+We also saw that some of the learners are answering questions of other learners.
+
+302
+00:19:51,880 --> 00:19:54,020
+So I think that's super cool.
+
+303
+00:19:54,020 --> 00:19:56,320
+And we really encourage that.
+
+304
+00:19:56,320 --> 00:19:57,820
+So thanks a lot for doing that.
+
+305
+00:19:59,820 --> 00:20:02,320
+And my suggestion is that I will now,
+
+306
+00:20:02,320 --> 00:20:05,840
+we switch the screen share to [name] and we have a look,
+
+307
+00:20:05,840 --> 00:20:08,840
+we will go through some of the steps on the command line.
+
+308
+00:20:08,840 --> 00:20:09,800
+And then if we have time,
+
+309
+00:20:09,800 --> 00:20:12,440
+I will also try that here on VS Code.
+
+310
+00:20:12,440 --> 00:20:15,560
+And after that, so in roughly 10 minutes,
+
+311
+00:20:16,600 --> 00:20:18,520
+we plan to start the break.
+
+312
+00:20:18,520 --> 00:20:20,320
+So don't worry, the break is coming.
+
+313
+00:20:21,880 --> 00:20:32,880
+Okay, [name]e. Take the screen. I'll share my screen.
+
+314
+00:20:32,880 --> 00:20:55,880
+I hope you see my screen now. So I'll work on the command line.
+
+315
+00:20:55,880 --> 00:21:05,880
+So I'll clone the central exercise, which is in the CR workshop exercise namespace.
+
+316
+00:21:05,880 --> 00:21:09,480
+Yeah, and I realized that we made actually a little mistake.
+
+317
+00:21:09,480 --> 00:21:13,120
+We should have cloned the recorded one, at least us when we show something here.
+
+318
+00:21:13,120 --> 00:21:14,120
+Yeah, okay.
+
+319
+00:21:14,120 --> 00:21:15,120
+Do we need to do that?
+
+320
+00:21:15,120 --> 00:21:21,080
+No, I don't think we, just that we don't expose any people anywhere.
+
+321
+00:21:21,080 --> 00:21:25,620
+So we will clone the one which is the recipe book minus recorded
+
+322
+00:21:25,620 --> 00:21:36,080
+Should I add the recorded minus recorded? Yes, it's the same thing. It's the same recipe
+
+323
+00:21:36,080 --> 00:21:39,720
+book just but just that's the one that we have been using yesterday on stream
+
+324
+00:21:39,720 --> 00:21:51,840
+Yeah. So then I get a copy. I get a lot of messages from the Git here on accessing the
+
+325
+00:21:51,840 --> 00:22:01,760
+remote and then copying objects to my local storage. And then I'll have a subdirectory
+
+326
+00:22:01,760 --> 00:22:06,760
+called cr-workshop-exercise, no, recipe-book-recorded,
+
+327
+00:22:10,960 --> 00:22:13,720
+you see here, two directories,
+
+328
+00:22:13,720 --> 00:22:17,680
+and the recipe-book-recorded is the one that I cloned now.
+
+329
+00:22:19,400 --> 00:22:20,920
+So it will create a new directory
+
+330
+00:22:20,920 --> 00:22:22,840
+with the same name as the repository.
+
+331
+00:22:22,840 --> 00:22:26,120
+Yeah, so I could have added
+
+332
+00:22:26,120 --> 00:22:38,520
+my own name here at the end, and then I would have gotten a subdirectory called test, if
+
+333
+00:22:38,520 --> 00:22:50,520
+that was the name. Okay, I'll step into the recipe book recorded. And I do a git status
+
+334
+00:22:50,520 --> 00:23:00,040
+and see where i am so i'm on the main branch and nothing to commit the work tree is clean
+
+335
+00:23:03,320 --> 00:23:08,840
+and you can also try now git branch to see which branches are there and yeah and there is only
+
+336
+00:23:08,840 --> 00:23:13,160
+the main branch now which is maybe a bit surprising because that's but it's the
+
+337
+00:23:14,120 --> 00:23:19,080
+we know we see the local branch yeah so we don't see the remote branches
+
+338
+00:23:19,080 --> 00:23:24,360
+And there is somewhere in the exercise step there is also a question about well where
+
+339
+00:23:24,360 --> 00:23:30,320
+are the remote branches and we can see them if we do git branch --remote or if
+
+340
+00:23:30,320 --> 00:23:31,560
+we do git branch --all
+
+341
+00:23:31,560 --> 00:23:39,280
+Dash dash all then I get all the remote branches listed
+
+342
+00:23:39,280 --> 00:23:41,640
+Yes
+
+343
+00:23:41,640 --> 00:23:53,280
+And we see the name is origin, so that is what's the remote repository is named.
+
+344
+00:23:53,280 --> 00:24:03,220
+If I do git remote -v here, I get that the alias origin points to the recipe book recorded
+
+345
+00:24:03,220 --> 00:24:08,120
+in the CR workshop exercise namespace on GitHub.
+
+346
+00:24:08,120 --> 00:24:14,200
+Yeah, because earlier I said that they still, they are connected somehow.
+
+347
+00:24:14,200 --> 00:24:18,760
+And this is the connection, so that our local copy remembers where it was cloned from.
+
+348
+00:24:18,760 --> 00:24:23,720
+And it, it adds this.
+
+349
+00:24:23,720 --> 00:24:28,080
+So the place where we clone from is then called origin.
+
+350
+00:24:28,080 --> 00:24:33,160
+And now somebody asked, all right, so I cloned it, but now how do I modify the files?
+
+351
+00:24:33,160 --> 00:24:47,760
+Yes, I will create a branch here. I use git, I can use git checkout -b, and then I
+
+352
+00:24:47,760 --> 00:25:01,160
+use my username and add another recipe. So that's just the principle that I add my username.
+
+353
+00:25:01,160 --> 00:25:09,720
+So others can see if I push this back to the world, others could see that what I have added
+
+354
+00:25:09,720 --> 00:25:12,320
+as a branch.
+
+355
+00:25:12,320 --> 00:25:16,760
+And what this command did is that you did two things in one go, which is create a new
+
+356
+00:25:16,760 --> 00:25:18,200
+branch and switch to it.
+
+357
+00:25:18,200 --> 00:25:23,080
+And somebody also asked, what is the difference between checkout and switch?
+
+358
+00:25:23,080 --> 00:25:24,480
+They really do the same thing.
+
+359
+00:25:24,480 --> 00:25:26,560
+Traditionally, it was called checkout.
+
+360
+00:25:26,560 --> 00:25:31,000
+There is on more modern Git, you can use switch and it's a little bit more intuitive to switch
+
+361
+00:25:31,000 --> 00:25:40,120
+between branches when i do git status now i i know i'm no longer on the main branch but
+
+362
+00:25:40,120 --> 00:25:45,080
+at the branch that i created in another recipe
+
+363
+00:25:48,040 --> 00:25:52,600
+yes and we cannot see the entire width of the window i don't know if you can
+
+364
+00:25:52,600 --> 00:25:56,760
+make the the one terminal window that we look at if you can make it a little bit more narrow so it
+
+365
+00:25:56,760 --> 00:26:00,600
+it spills a little bit over the, yeah, it wraps around.
+
+366
+00:26:00,600 --> 00:26:04,640
+I think this is maybe okay enough.
+
+367
+00:26:04,640 --> 00:26:06,840
+What is nice is that below on the other window,
+
+368
+00:26:06,840 --> 00:26:09,240
+we can see the commands that [name] has typed.
+
+369
+00:26:10,440 --> 00:26:14,360
+And anyway, we follow the material.
+
+370
+00:26:14,360 --> 00:26:17,440
+Yes, so I'll add a new file.
+
+371
+00:26:18,760 --> 00:26:23,760
+I use the editor normal here and add a main course.
+
+372
+00:26:23,760 --> 00:26:30,520
+a mains course yeah so you create a new file and here the key point is use your favorite
+
+373
+00:26:30,520 --> 00:26:36,760
+editor which can be nano is one of the many different editors we will create a new file
+
+374
+00:26:36,760 --> 00:26:45,880
+or you could modify an existing file and then in a second step we will then create a commit
+
+375
+00:26:45,880 --> 00:26:50,160
+so just creating a new file or just modifying a file doesn't really create new commits we
+
+376
+00:26:50,160 --> 00:26:51,720
+we will have to do it actively.
+
+377
+00:26:54,920 --> 00:26:57,960
+Control X for saving.
+
+378
+00:26:57,960 --> 00:27:02,960
+And I created a new call file called farikal.md.
+
+379
+00:27:04,760 --> 00:27:07,040
+And if I do git status now,
+
+380
+00:27:07,040 --> 00:27:10,480
+I'll see that I have an untracked file,
+
+381
+00:27:11,360 --> 00:27:15,440
+which I now have created with the nano-editor.
+
+382
+00:27:15,440 --> 00:27:17,120
+Yeah, and for the not Norwegians here,
+
+383
+00:27:17,120 --> 00:27:18,560
+farikal is a really tasty,
+
+384
+00:27:18,560 --> 00:27:21,540
+one of the national staple dishes in Norway.
+
+385
+00:27:25,480 --> 00:27:30,480
+So I'll do git add means for the call
+
+386
+00:27:33,360 --> 00:27:35,400
+and then git status again.
+
+387
+00:27:35,400 --> 00:27:38,800
+I will see that it's now stored for,
+
+388
+00:27:38,800 --> 00:27:41,440
+staged for being committed.
+
+389
+00:27:43,120 --> 00:27:44,960
+Yeah, and now it's committed.
+
+390
+00:27:44,960 --> 00:27:49,720
+Commit -m for a message.
+
+391
+00:27:49,720 --> 00:27:51,040
+And the message, that's the same thing
+
+392
+00:27:51,040 --> 00:27:54,600
+that yesterday I was typing in the commit message,
+
+393
+00:27:54,600 --> 00:27:59,440
+which should explain what we did, summarize why we did it.
+
+394
+00:27:59,440 --> 00:28:01,340
+And here we do the same thing locally.
+
+395
+00:28:02,740 --> 00:28:05,920
+But the commit will now only exist on [name]'s computer.
+
+396
+00:28:05,920 --> 00:28:08,000
+I cannot see it, we cannot see it.
+
+397
+00:28:08,000 --> 00:28:11,040
+So now it's committed.
+
+398
+00:28:11,040 --> 00:28:26,880
+And if I do git log --graph -online --decorate --all I get a list
+
+399
+00:28:26,880 --> 00:28:38,880
+of the commits and I see that I have one commit ahead of the original main.
+
+400
+00:28:38,880 --> 00:28:48,680
+the long command that I used now. It can be created as an alias. The recipe is shown later
+
+401
+00:28:48,680 --> 00:28:59,640
+down in the lesson. And it's a very useful command to have.
+
+402
+00:28:59,640 --> 00:29:12,520
+Okay then I'll switch back to the main branch. I'll use main switch this time. So now I'm
+
+403
+00:29:12,520 --> 00:29:39,020
+back on the main branch and I'll modify one, let's see here, I'll modify the tortilla recipe
+
+404
+00:29:39,020 --> 00:29:56,060
+add one teaspoon of salt here and save it. And when I do git status, we can see that
+
+405
+00:29:56,060 --> 00:30:01,060
+the mains tortilla is modified.
+
+406
+00:30:01,820 --> 00:30:06,820
+And I'll do the git add for the mains tortilla.
+
+407
+00:30:10,300 --> 00:30:14,660
+And it's staged and then I commit,
+
+408
+00:30:16,780 --> 00:30:18,240
+write a commit message.
+
+409
+00:30:20,540 --> 00:30:24,980
+Add, oops, what happened here?
+
+410
+00:30:24,980 --> 00:30:26,740
+and we are soon out of time here.
+
+411
+00:30:26,740 --> 00:30:29,660
+So break starts soon, but no stress.
+
+412
+00:30:29,660 --> 00:30:30,500
+Okay.
+
+413
+00:30:30,500 --> 00:30:33,300
+But I think the important thing was that,
+
+414
+00:30:34,940 --> 00:30:37,860
+yeah, we clone, modify files, create commits.
+
+415
+00:30:37,860 --> 00:30:39,100
+They live only locally.
+
+416
+00:30:40,060 --> 00:30:42,380
+I think I will maybe not show the VS code
+
+417
+00:30:43,380 --> 00:30:46,780
+just for the sake of time, but we have screenshots.
+
+418
+00:30:46,780 --> 00:30:48,540
+But if the screenshots are not clear enough,
+
+419
+00:30:48,540 --> 00:30:49,820
+please do ask questions
+
+420
+00:30:49,820 --> 00:30:52,220
+and we will answer the questions on the notes.
+
+421
+00:30:52,220 --> 00:31:02,360
+But I suggest we go to a break and then we can still recap a little bit once we are back.
+
+422
+00:31:02,360 --> 00:31:06,340
+And it will be a 10 minute break, we will be back 15 minutes past the hour and we will
+
+423
+00:31:06,340 --> 00:31:16,620
+also post at the bottom of the notes that it's actually break time so that people know.
+
+424
+00:31:16,620 --> 00:31:19,020
+See you in a bit, 15 minutes past the hour.
+
+425
+00:31:19,020 --> 00:31:22,460
+Have a nice break. Bye.
+
+426
+00:31:23,000 --> 00:31:31,580
+Alright, we are back. 45 minutes left before we take a little bit longer break, which at
+
+427
+00:31:31,580 --> 00:31:35,620
+least in like Central Europe then aligns with with lunch break. So that's why we organize
+
+428
+00:31:35,620 --> 00:31:45,140
+it this way and in the next 45 minutes we will learn how to navigate in our existing repository
+
+429
+00:31:46,180 --> 00:31:54,740
+and this we will do that it can be done locally or it can be done on the web web browser i think
+
+430
+00:31:54,740 --> 00:31:57,540
+before going there i would like to start with this question which is excellent
+
+431
+00:32:00,020 --> 00:32:05,060
+so what would be the main advantage of using the command line over vs code and i think instead of
+
+432
+00:32:05,060 --> 00:32:11,980
+of VS code, we could also say over another integrated development environment.
+
+433
+00:32:11,980 --> 00:32:15,460
+Because for somebody who is maybe new to command line, it can be less intuitive and more difficult
+
+434
+00:32:15,460 --> 00:32:21,540
+to navigate, especially when they are new to commands and trying out, figuring out whether
+
+435
+00:32:21,540 --> 00:32:26,860
+it's worth investing into command line at all.
+
+436
+00:32:26,860 --> 00:32:31,540
+So I have some thoughts there, [name], you want to also comment, [name]?
+
+437
+00:32:31,540 --> 00:32:40,740
+Yeah, well, I think it's worth learning the command lines commands, but when starting
+
+438
+00:32:40,740 --> 00:32:49,060
+out, VS Code is very supportive, so you get to do what you intend to do in a very short
+
+439
+00:32:49,060 --> 00:32:59,940
+time. But in parallel, I think it's worth learning the Git command line commands, so
+
+440
+00:32:59,940 --> 00:33:02,760
+you also can use those.
+
+441
+00:33:05,340 --> 00:33:08,220
+Yeah, I think almost anything people need
+
+442
+00:33:08,220 --> 00:33:11,180
+in like day-to-day work can be done in VS Code.
+
+443
+00:33:11,180 --> 00:33:15,380
+The integration between VS Code and GitHub is excellent.
+
+444
+00:33:15,380 --> 00:33:17,940
+And it's no surprise because, I mean,
+
+445
+00:33:17,940 --> 00:33:20,460
+both of these tools are affiliated with Microsoft.
+
+446
+00:33:20,460 --> 00:33:22,580
+So the integration is really, really good.
+
+447
+00:33:24,580 --> 00:33:25,420
+With the command line,
+
+448
+00:33:25,420 --> 00:33:28,420
+you have a little bit more flexibility you can do,
+
+449
+00:33:28,420 --> 00:33:31,280
+But some of these are really advanced things
+
+450
+00:33:31,280 --> 00:33:32,980
+that maybe you need once per year.
+
+451
+00:33:33,980 --> 00:33:38,980
+If you want to work on a high-performance computing
+
+452
+00:33:41,100 --> 00:33:44,960
+environment, then it's very often in a command line.
+
+453
+00:33:44,960 --> 00:33:47,860
+And maybe that's a moment then to move to the command line.
+
+454
+00:33:49,380 --> 00:33:51,180
+But if people are completely new to this,
+
+455
+00:33:51,180 --> 00:33:54,300
+it's sometimes just easier to use an editor
+
+456
+00:33:54,300 --> 00:33:57,580
+that offers to do it graphically in the same place
+
+457
+00:33:57,580 --> 00:34:05,340
+you modify the files. Some people like me prefer to have different tools for different situations,
+
+458
+00:34:05,340 --> 00:34:10,940
+so I want to have an editor and it just does editing, and then I want to do all the good
+
+459
+00:34:10,940 --> 00:34:16,860
+stuff I want to do somewhere else. So it depends a little bit on preference, but it's important
+
+460
+00:34:16,860 --> 00:34:22,460
+for us to say that the one thing is not better than the other thing. Try something, experiment,
+
+461
+00:34:22,460 --> 00:34:26,140
+and then you can also compare, and that's why also we offer these different tracks.
+
+462
+00:34:28,780 --> 00:34:34,940
+I will now move into this episode here, archaeology, inspecting history,
+
+463
+00:34:36,940 --> 00:34:39,260
+and it's the next one on this page.
+
+464
+00:34:41,500 --> 00:34:48,220
+And this is again something that you can try either on GitHub or on the command line or in VS Code.
+
+465
+00:34:48,220 --> 00:34:56,220
+And I think this is really useful for everybody to...
+
+466
+00:34:56,220 --> 00:35:00,420
+We will show you some commands here, and we want you to know that they exist.
+
+467
+00:35:00,420 --> 00:35:05,420
+And there will be a day when you will remember that, oh yes, there was this command, and
+
+468
+00:35:05,420 --> 00:35:08,700
+I was able to do this and this thing, and then you can come back to this page and find
+
+469
+00:35:08,700 --> 00:35:09,700
+how it worked.
+
+470
+00:35:09,700 --> 00:35:12,920
+So just knowing that this is a possibility.
+
+471
+00:35:12,920 --> 00:35:18,020
+And we will put ourselves in the situation where we browse an existing project written
+
+472
+00:35:18,020 --> 00:35:25,300
+by somebody else, we decided to look at this NetworkX project.
+
+473
+00:35:25,300 --> 00:35:26,940
+This is an open source project.
+
+474
+00:35:26,940 --> 00:35:30,660
+It's a Python project, doesn't matter,
+
+475
+00:35:30,660 --> 00:35:37,740
+that does some graph theory and network things.
+
+476
+00:35:37,740 --> 00:35:40,620
+But we will.
+
+477
+00:35:40,620 --> 00:35:43,620
+So now we imagine that we start.
+
+478
+00:35:43,620 --> 00:35:46,460
+I'm a new student, new PhD student, new postdoc,
+
+479
+00:35:46,460 --> 00:35:53,460
+And I'm entering something and somebody else has already written a lot of code and there is a git repository and I need to navigate in there.
+
+480
+00:35:53,460 --> 00:35:56,660
+And as a warm up, and just for fun.
+
+481
+00:35:56,660 --> 00:36:00,660
+Okay, so I want to open up this repository, you can browse it as well.
+
+482
+00:36:00,660 --> 00:36:03,460
+It's on GitHub.
+
+483
+00:36:03,460 --> 00:36:07,860
+7,000 commits, lots of people contributed there.
+
+484
+00:36:07,860 --> 00:36:15,260
+So I didn't, I have no affiliation with this, I will use it only as an example.
+
+485
+00:36:15,260 --> 00:36:22,460
+And one kind of fun tool is to browse this through this githistory.xyz tool.
+
+486
+00:36:23,340 --> 00:36:27,340
+And in here, you can put in any GitHub repository that is public.
+
+487
+00:36:27,340 --> 00:36:30,780
+So you could replace this to buy your own repository and then
+
+488
+00:36:32,300 --> 00:36:34,140
+browse any file. I will just show you how that looks.
+
+489
+00:36:35,340 --> 00:36:38,060
+Because it's a fun visual way.
+
+490
+00:36:38,940 --> 00:36:43,980
+So this is now, we are looking at the README file of this NetworkX project.
+
+491
+00:36:43,980 --> 00:36:50,620
+And now with left and right arrows on my keyboard, I can now navigate through the history.
+
+492
+00:36:50,620 --> 00:36:52,780
+And we really get a like a visual.
+
+493
+00:36:52,780 --> 00:36:56,660
+But this is a general service from GitHub.
+
+494
+00:36:56,660 --> 00:37:00,380
+It's not connected to the NetworkX repository.
+
+495
+00:37:00,380 --> 00:37:03,940
+So it's, I don't know who wrote it.
+
+496
+00:37:03,940 --> 00:37:05,740
+Somebody wrote it.
+
+497
+00:37:05,740 --> 00:37:09,220
+But here you can put in any repository.
+
+498
+00:37:09,220 --> 00:37:12,440
+So I could put in CR workshop exercises
+
+499
+00:37:12,440 --> 00:37:13,940
+and here could be recipe book.
+
+500
+00:37:15,180 --> 00:37:17,060
+And here could be read me MD.
+
+501
+00:37:17,060 --> 00:37:18,580
+And then with left and right arrows,
+
+502
+00:37:18,580 --> 00:37:21,580
+I could kind of do some time traveling
+
+503
+00:37:21,580 --> 00:37:23,500
+and see how the file evolved.
+
+504
+00:37:23,500 --> 00:37:24,540
+This is just for fun.
+
+505
+00:37:26,620 --> 00:37:28,240
+It's fun to look at.
+
+506
+00:37:28,240 --> 00:37:31,380
+But now I want to go more into the more useful things.
+
+507
+00:37:31,380 --> 00:37:34,420
+And I was wondering now in the break
+
+508
+00:37:34,420 --> 00:37:37,420
+whether I should demonstrate the command line or GitHub.
+
+509
+00:37:39,220 --> 00:37:47,220
+So I would normally personally use command line but maybe just to challenge myself I will demonstrate a couple of these tools on GitHub.
+
+510
+00:37:47,220 --> 00:37:51,220
+And then in the, we will give you an exercise block again.
+
+511
+00:37:51,220 --> 00:37:53,220
+And then you can try these tools.
+
+512
+00:37:53,220 --> 00:38:07,220
+And we give you a little challenge. So there is a little bit of archaeology work. We ask you a few questions to figure out something about this network x repository, and using the tools that I will just demonstrate.
+
+513
+00:38:07,220 --> 00:38:09,640
+And one of these things that you can do,
+
+514
+00:38:09,640 --> 00:38:12,640
+and I think we have tried it also yesterday
+
+515
+00:38:12,640 --> 00:38:15,440
+when we looked for which recipes contain the world,
+
+516
+00:38:16,520 --> 00:38:17,980
+which recipes contain salt,
+
+517
+00:38:19,220 --> 00:38:21,160
+is that you can search,
+
+518
+00:38:21,160 --> 00:38:23,520
+you can search in repositories.
+
+519
+00:38:23,520 --> 00:38:27,640
+And we have instructions on how to do it in command line.
+
+520
+00:38:29,320 --> 00:38:32,240
+You can, if you want, you can now test it in a command line,
+
+521
+00:38:32,240 --> 00:38:34,200
+but I will, otherwise just watch what I do.
+
+522
+00:38:34,200 --> 00:38:36,000
+I will now search something in here.
+
+523
+00:38:36,880 --> 00:38:41,520
+And you can search for, for instance, FixMe.
+
+524
+00:38:41,520 --> 00:38:46,680
+What are all the places that this can be useful?
+
+525
+00:38:46,680 --> 00:38:52,320
+Because sometimes I leave these FixMes in my own projects
+
+526
+00:38:52,320 --> 00:38:55,080
+to remember to fix something.
+
+527
+00:38:55,080 --> 00:39:00,320
+And it will list here all the files that contain this.
+
+528
+00:39:00,320 --> 00:39:03,320
+And then you can browse these files.
+
+529
+00:39:03,320 --> 00:39:08,320
+So I could click on one of these files and browse them.
+
+530
+00:39:12,600 --> 00:39:15,240
+So searching through repositories.
+
+531
+00:39:15,240 --> 00:39:18,100
+And there is also then a command line version of it.
+
+532
+00:39:18,100 --> 00:39:19,600
+Really, really useful.
+
+533
+00:39:19,600 --> 00:39:21,200
+I use it if, for instance,
+
+534
+00:39:21,200 --> 00:39:23,180
+I get an error message from a code
+
+535
+00:39:23,180 --> 00:39:27,820
+and I want to know where in the code does it come from.
+
+536
+00:39:27,820 --> 00:39:29,760
+So then I search for the error message.
+
+537
+00:39:29,760 --> 00:39:41,200
+When you search, you must have the repo and the repository name, so you search with the
+
+538
+00:39:41,200 --> 00:39:44,080
+repo and not the whole GitHub.
+
+539
+00:39:44,080 --> 00:39:47,960
+Yeah, and when I did that here, so when I visited this repo and I clicked on the magnifying
+
+540
+00:39:47,960 --> 00:39:53,480
+glass, it automatically suggests this, but I could replace it.
+
+541
+00:39:53,480 --> 00:39:57,600
+I could search some other repository.
+
+542
+00:39:57,600 --> 00:39:59,520
+But the key is that you can search
+
+543
+00:39:59,520 --> 00:40:01,020
+through the entire repository,
+
+544
+00:40:02,960 --> 00:40:05,420
+through the present version of it.
+
+545
+00:40:05,420 --> 00:40:06,760
+There are also ways that you can,
+
+546
+00:40:06,760 --> 00:40:08,160
+I can search through the whole of the past.
+
+547
+00:40:08,160 --> 00:40:10,840
+So even if something got removed in the past,
+
+548
+00:40:10,840 --> 00:40:11,800
+it's also possible.
+
+549
+00:40:15,760 --> 00:40:18,900
+The next thing I wanted to show you is that if you,
+
+550
+00:40:20,320 --> 00:40:22,440
+that you can browse specific commits.
+
+551
+00:40:22,440 --> 00:40:31,960
+I could click on any of these commits and
+
+552
+00:40:31,960 --> 00:40:38,960
+browse the details of these commits, both what was the change and what is the metadata.
+
+553
+00:40:38,960 --> 00:40:46,760
+If you know a commit identifier, and in this case it's 759D5 long number,
+
+554
+00:40:46,760 --> 00:40:50,420
+you can also put it in directly.
+
+555
+00:40:50,420 --> 00:40:54,260
+So let's remember that 759D58.
+
+556
+00:40:54,260 --> 00:40:58,900
+So I could also do it 759D58.
+
+557
+00:40:58,900 --> 00:41:00,900
+I don't even have to type the whole thing.
+
+558
+00:41:02,220 --> 00:41:05,420
+And this way you can look at any of the commits
+
+559
+00:41:05,420 --> 00:41:07,200
+in the repository.
+
+560
+00:41:09,120 --> 00:41:11,860
+And you can do the same thing then on the command line.
+
+561
+00:41:11,860 --> 00:41:21,060
+The line-by-line annotation, it's super powerful.
+
+562
+00:41:21,060 --> 00:41:25,220
+On the command line, it's called git annotate.
+
+563
+00:41:25,220 --> 00:41:27,260
+On GitLab, it's called annotate.
+
+564
+00:41:27,260 --> 00:41:31,020
+On GitHub, it's unfortunately called blame.
+
+565
+00:41:31,020 --> 00:41:38,060
+But it's so super useful, not to blame anybody, but to find line-by-line annotation.
+
+566
+00:41:38,060 --> 00:41:41,260
+So here I can switch between looking at the code
+
+567
+00:41:41,260 --> 00:41:43,460
+or looking at the code and the annotation.
+
+568
+00:41:45,620 --> 00:41:47,020
+And later in the exercise,
+
+569
+00:41:47,020 --> 00:41:50,840
+we will ask you to find a specific line in a code
+
+570
+00:41:50,840 --> 00:41:53,940
+and then to find out which commit
+
+571
+00:41:53,940 --> 00:41:55,960
+was the one that modified it last.
+
+572
+00:41:59,180 --> 00:42:02,040
+We will also ask you to, can you bring,
+
+573
+00:42:03,900 --> 00:42:06,540
+okay, imagine that you find a problem,
+
+574
+00:42:06,540 --> 00:42:08,680
+you find a bug in the code.
+
+575
+00:42:08,680 --> 00:42:10,920
+And then you find out when was it last modified.
+
+576
+00:42:10,920 --> 00:42:15,040
+And then you want to know how did the code look
+
+577
+00:42:15,040 --> 00:42:17,080
+just before I introduced the bug.
+
+578
+00:42:18,560 --> 00:42:21,280
+So what you want to know is what was the commit
+
+579
+00:42:21,280 --> 00:42:23,760
+just before the problematic commit.
+
+580
+00:42:23,760 --> 00:42:25,760
+And yesterday I learned that there is,
+
+581
+00:42:25,760 --> 00:42:28,000
+and I learned it from somebody writing on the notes,
+
+582
+00:42:28,000 --> 00:42:33,000
+is that there is this blame prior to change feature here.
+
+583
+00:42:33,540 --> 00:42:34,380
+And with this one,
+
+584
+00:42:34,380 --> 00:42:50,580
+navigate to the version just before and you will use that in the exercise
+
+585
+00:42:50,580 --> 00:42:56,940
+there's a question on the shared notes or do I find the commit overview on the github
+
+586
+00:42:56,940 --> 00:42:57,940
+page
+
+587
+00:42:57,940 --> 00:43:07,020
+Oh, the upper part is blocked. Sorry for that. Let me show that again. I will make it less
+
+588
+00:43:07,020 --> 00:43:16,220
+blocked. I will. Well, let's hide this one. I don't matter. I unblocked it already. Okay.
+
+589
+00:43:16,220 --> 00:43:27,900
+So let's go back to I'm back at the repository. And sorry, what I wanted to show is this.
+
+590
+00:43:27,900 --> 00:43:29,980
+We are back at this GitHub repository.
+
+591
+00:43:29,980 --> 00:43:31,980
+And the way I found,
+
+592
+00:43:31,980 --> 00:43:34,100
+if I understood the question correctly,
+
+593
+00:43:34,100 --> 00:43:39,100
+all the commits was to click here on the clock symbol.
+
+594
+00:43:41,460 --> 00:43:44,140
+On the command line, this would be git log.
+
+595
+00:43:44,140 --> 00:43:47,260
+Show me all the commits that existed
+
+596
+00:43:47,260 --> 00:43:49,020
+and it will show you 7,000 commits.
+
+597
+00:43:49,020 --> 00:44:11,820
+And maybe one more tool that is really useful, let's say that I made a specific commit.
+
+598
+00:44:11,820 --> 00:44:14,100
+I found, I'm looking at this commit here,
+
+599
+00:44:14,100 --> 00:44:18,660
+which changed some integers instead of strings.
+
+600
+00:44:22,100 --> 00:44:23,420
+And we have the change.
+
+601
+00:44:23,420 --> 00:44:24,860
+Some files got lines got removed.
+
+602
+00:44:24,860 --> 00:44:27,900
+Some lines got added metadata.
+
+603
+00:44:28,820 --> 00:44:31,980
+But the really cool feature is what if I want to look
+
+604
+00:44:31,980 --> 00:44:36,820
+at the project as it looked, not just this change,
+
+605
+00:44:36,820 --> 00:44:39,140
+but I want to look at the whole project,
+
+606
+00:44:39,140 --> 00:44:44,020
+But at this commit, so how was it on,
+
+607
+00:44:45,100 --> 00:44:48,460
+how did the project look on September 12, 2016?
+
+608
+00:44:49,660 --> 00:44:51,960
+And you can do that here, browse files.
+
+609
+00:44:56,620 --> 00:44:58,780
+So in top left, I will zoom in a little bit.
+
+610
+00:44:58,780 --> 00:45:00,820
+It doesn't say main anymore or master,
+
+611
+00:45:00,820 --> 00:45:03,820
+but it shows, now I'm looking at the project
+
+612
+00:45:03,820 --> 00:45:07,860
+as it was in, at the commit with this identifier,
+
+613
+00:45:07,860 --> 00:45:20,940
+which was in 2016 and you can you can then do some archaeology in there
+
+614
+00:45:20,940 --> 00:45:26,020
+Question 33, let's see what
+
+615
+00:45:26,020 --> 00:45:29,540
+So these red squares and green squares maybe is this one here
+
+616
+00:45:29,540 --> 00:45:33,460
+I think this is a visual representation of how much got removed and how much got added
+
+617
+00:45:33,460 --> 00:45:34,380
+Just a short summary.
+
+618
+00:45:40,180 --> 00:45:41,460
+So this is some tools.
+
+619
+00:45:41,460 --> 00:45:44,060
+And there is no expectation that now you
+
+620
+00:45:44,060 --> 00:45:45,740
+remembered all the steps I did.
+
+621
+00:45:45,740 --> 00:45:48,220
+The nice thing is that we have here,
+
+622
+00:45:48,220 --> 00:45:50,260
+we have step-by-step solution.
+
+623
+00:45:50,260 --> 00:45:52,860
+And you can then also use these screenshots that we have.
+
+624
+00:45:52,860 --> 00:46:00,180
+And you can use the combined line recipes.
+
+625
+00:46:00,180 --> 00:46:05,180
+And I will come back to question 34 in a moment,
+
+626
+00:46:08,980 --> 00:46:13,100
+but during the exercise, we will have 20 minutes.
+
+627
+00:46:13,100 --> 00:46:18,100
+You will explore this repository,
+
+628
+00:46:18,340 --> 00:46:22,500
+which is not something we created.
+
+629
+00:46:23,340 --> 00:46:25,180
+So here, the first steps will be to make sure
+
+630
+00:46:25,180 --> 00:46:29,540
+that you are not still in the same recipe book
+
+631
+00:46:29,540 --> 00:46:31,100
+from this morning.
+
+632
+00:46:31,100 --> 00:46:32,300
+So we will navigate out of it.
+
+633
+00:46:32,300 --> 00:46:33,820
+We will create a new,
+
+634
+00:46:33,820 --> 00:46:35,620
+if you work locally,
+
+635
+00:46:35,620 --> 00:46:37,020
+you will create a new clone.
+
+636
+00:46:40,020 --> 00:46:43,200
+And then your tasks are,
+
+637
+00:46:44,260 --> 00:46:45,660
+okay, in this project that we don't know,
+
+638
+00:46:45,660 --> 00:46:47,740
+we somewhere in the code,
+
+639
+00:46:49,080 --> 00:46:52,160
+there is a file which contains a line
+
+640
+00:46:52,160 --> 00:46:55,060
+and the line says logic error in degree correlation.
+
+641
+00:46:55,060 --> 00:46:56,860
+And we imagined that we are running this thing
+
+642
+00:46:56,860 --> 00:46:58,300
+and we got the error message.
+
+643
+00:46:59,260 --> 00:47:02,380
+And now we need to know more about why is the error there?
+
+644
+00:47:02,380 --> 00:47:03,380
+Can I do something about it?
+
+645
+00:47:03,380 --> 00:47:04,900
+Where in the code does it happen?
+
+646
+00:47:04,900 --> 00:47:08,780
+So you're asked to find where in the code does this happen?
+
+647
+00:47:08,780 --> 00:47:12,980
+And then when was this line modified last or edit?
+
+648
+00:47:12,980 --> 00:47:17,900
+So find the actual commit and inspect the commit.
+
+649
+00:47:20,500 --> 00:47:21,820
+And when you inspect the commit
+
+650
+00:47:21,820 --> 00:47:23,900
+and this connects also to question 33,
+
+651
+00:47:24,820 --> 00:47:27,780
+you don't need to type the entire long identifier
+
+652
+00:47:27,780 --> 00:47:35,420
+40 characters, it's enough to have maybe six or seven if they are unique.
+
+653
+00:47:35,420 --> 00:47:38,580
+So you will look at what is actually in the commit, what is the commit change, what is
+
+654
+00:47:38,580 --> 00:47:47,660
+the commit metadata, and then try to create a branch that points to the past when that
+
+655
+00:47:47,660 --> 00:47:50,180
+commit was created.
+
+656
+00:47:50,180 --> 00:47:57,020
+So our goal is to browse the project as it looked back then, a few years ago, and think
+
+657
+00:47:57,020 --> 00:48:02,060
+a little bit, how would you bring the code back to the version of the code just before
+
+658
+00:48:02,060 --> 00:48:07,340
+that line got modified? And I showed you how to do that on GitHub, but it's also possible
+
+659
+00:48:07,340 --> 00:48:12,420
+to do it on the command line. Okay, somebody's operating a heavy machinery outside. I hope
+
+660
+00:48:12,420 --> 00:48:15,020
+you cannot hear it on the microphone, but let me know if you can.
+
+661
+00:48:15,020 --> 00:48:19,340
+I think it's good. I can hear your voice here.
+
+662
+00:48:19,340 --> 00:48:24,040
+Good. And I'm just checking your questions whether we should clarify anything else before
+
+663
+00:48:24,040 --> 00:48:31,920
+sending people to into a 20 minute exercise. How can you find know the hash of the code?
+
+664
+00:48:31,920 --> 00:48:38,240
+So you may be maybe here, somebody means the hash of the commit. Have a look at some of
+
+665
+00:48:38,240 --> 00:48:45,440
+the hints and steps and it will hopefully become clear but if not, we will clarify more.
+
+666
+00:48:45,440 --> 00:48:50,200
+So thanks a lot for pasting here. Somebody prepares already the the exercise block during
+
+667
+00:48:50,200 --> 00:48:55,360
+During the exercise block, we are silent on stream.
+
+668
+00:48:55,360 --> 00:48:58,520
+And your goal will be to explore these five questions.
+
+669
+00:48:58,520 --> 00:49:04,720
+You will need to start by, if you work locally, you need to start by cloning the repository.
+
+670
+00:49:04,720 --> 00:49:09,280
+But it's possible to do everything on GitHub, and then you don't need to clone anything.
+
+671
+00:49:09,280 --> 00:49:14,320
+And down here, I will click on it, but I will also close it quickly.
+
+672
+00:49:14,320 --> 00:49:17,280
+Spoiler alert, there is some solution.
+
+673
+00:49:17,280 --> 00:49:21,200
+And the solution is here for the command line and GitHub.
+
+674
+00:49:21,200 --> 00:49:26,600
+But you can contribute additional solutions.
+
+675
+00:49:26,600 --> 00:49:29,240
+And then we will be back.
+
+676
+00:49:29,240 --> 00:49:34,960
+And we will then use the remaining seven minutes of the hour to discuss some of these reactor
+
+677
+00:49:34,960 --> 00:49:40,840
+questions and, and summarize this session before we start a longer break.
+
+678
+00:49:40,840 --> 00:49:43,360
+Good.
+
+679
+00:49:43,360 --> 00:49:53,480
+Let's be back at, here you'll find where the exercise is, and we will be back at 53 minutes
+
+680
+00:49:53,480 --> 00:49:54,480
+past.
+
+681
+00:49:54,480 --> 00:49:59,800
+I will just type that in, 53.
+
+682
+00:49:59,800 --> 00:50:01,560
+Please continue asking questions on the notes.
+
+683
+00:50:01,560 --> 00:50:02,600
+Good luck with the exercise.
+
+684
+00:50:02,600 --> 00:50:04,320
+See you in 20 minutes.
+
+685
+00:50:04,320 --> 00:50:05,320
+Bye.
+
+686
+00:50:05,320 --> 00:50:05,600
+Bye.
+
+687
+00:50:07,000 --> 00:50:09,240
+Welcome back from the exercise.
+
+688
+00:50:09,240 --> 00:50:16,520
+We have seven minutes left and we were watching your questions and thanks for asking them.
+
+689
+00:50:16,520 --> 00:50:24,240
+We saw that there were quite many questions about the concept of what does it mean to
+
+690
+00:50:24,240 --> 00:50:26,480
+and browse and edit a local copy?
+
+691
+00:50:27,400 --> 00:50:28,240
+And these are good questions.
+
+692
+00:50:28,240 --> 00:50:31,180
+So I want to show, we will show that we will,
+
+693
+00:50:32,080 --> 00:50:34,180
+we want to really react to these questions.
+
+694
+00:50:35,760 --> 00:50:38,760
+Also, somebody else created a git repository
+
+695
+00:50:38,760 --> 00:50:43,560
+in the wrong place, and we will clarify that,
+
+696
+00:50:43,560 --> 00:50:47,480
+how that can happen and where on my hard drive
+
+697
+00:50:47,480 --> 00:50:48,760
+is even the git repository.
+
+698
+00:50:48,760 --> 00:50:51,160
+So I think this is something we should really clarify.
+
+699
+00:50:54,240 --> 00:51:00,400
+So first thing I want to show, what does it mean to create a local copy on VS Code?
+
+700
+00:51:01,480 --> 00:51:04,800
+And then I want to show, what does it mean to create a local copy in the command line?
+
+701
+00:51:05,800 --> 00:51:08,960
+And we should also have a discussion about, well, where should people start?
+
+702
+00:51:08,960 --> 00:51:10,360
+Should they start in an editor?
+
+703
+00:51:10,360 --> 00:51:11,480
+Should they start in the command line?
+
+704
+00:51:11,480 --> 00:51:14,640
+Should they avoid all of these things and just use the browser?
+
+705
+00:51:14,840 --> 00:51:19,840
+So we should have a discussion around these questions, but let me start in VS Code.
+
+706
+00:51:19,840 --> 00:51:22,720
+And this is, this is an environment that I'm not familiar with.
+
+707
+00:51:22,720 --> 00:51:24,000
+So I'll be a little bit clumsy here.
+
+708
+00:51:24,240 --> 00:51:30,480
+But maybe that's helpful.
+
+709
+00:51:30,480 --> 00:51:35,200
+So if I want to work locally, I have opened up on the bottom of the half of the screen
+
+710
+00:51:35,200 --> 00:51:36,800
+is VSCode.
+
+711
+00:51:36,800 --> 00:51:43,160
+It looks pretty empty because I opened it up in a in a folder that I called course.
+
+712
+00:51:43,160 --> 00:51:48,840
+And now if I want to have this repository locally, what I did is I switched to the source
+
+713
+00:51:48,840 --> 00:51:55,080
+control tab and now maybe your needs to help me how do i find
+
+714
+00:51:55,080 --> 00:51:59,000
+what about switching to the files
+
+715
+00:52:01,080 --> 00:52:02,840
+on file but i want to clone
+
+716
+00:52:04,920 --> 00:52:05,880
+all right just a sec
+
+717
+00:52:08,760 --> 00:52:12,440
+i had that before but why can't i find it now so i want to clone now
+
+718
+00:52:14,840 --> 00:52:15,480
+and i'm now
+
+719
+00:52:18,840 --> 00:52:21,400
+But the upper left symbol
+
+720
+00:52:21,400 --> 00:52:23,400
+Oh, it's maybe because I'm so zoomed in
+
+721
+00:52:23,400 --> 00:52:26,960
+Here, three dots, here we go
+
+722
+00:52:26,960 --> 00:52:29,320
+Clone
+
+723
+00:52:29,320 --> 00:52:31,560
+I want to make a local copy, from where?
+
+724
+00:52:31,560 --> 00:52:34,760
+I will copy it from here, the green button
+
+725
+00:52:34,760 --> 00:52:38,680
+And now there was also a question, well, should it be SSH or HTTPS?
+
+726
+00:52:38,680 --> 00:52:43,240
+In this case, it doesn't matter because I will not contribute any changes back, I just
+
+727
+00:52:43,240 --> 00:52:46,480
+want to browse it locally and make changes locally
+
+728
+00:52:46,480 --> 00:52:53,080
+So I want to copy this clone.
+
+729
+00:52:53,080 --> 00:52:56,000
+This is the address.
+
+730
+00:52:56,000 --> 00:52:57,400
+And just please do it.
+
+731
+00:52:57,400 --> 00:53:00,920
+And now I think it asks me where to place it.
+
+732
+00:53:00,920 --> 00:53:05,280
+I will place it in the same.
+
+733
+00:53:05,280 --> 00:53:12,640
+Yeah, that's interesting because now it wants to place it in a different place than I am
+
+734
+00:53:12,640 --> 00:53:15,400
+right now.
+
+735
+00:53:15,400 --> 00:53:22,680
+in the subdirectory that you were in the course? No, but I will find it. Oh, here we go. So
+
+736
+00:53:22,680 --> 00:53:26,120
+I just need to, now this is, I see that this is outside of your screen, but I'm navigating
+
+737
+00:53:26,120 --> 00:53:37,240
+now to the place where I want it. And now it will put it on, now it's copying it. And
+
+738
+00:53:37,240 --> 00:53:41,440
+what I will be able to see here is that I will be able to see the history and I will
+
+739
+00:53:41,440 --> 00:53:49,640
+be able to then go to each file and make changes to it.
+
+740
+00:53:49,640 --> 00:53:51,280
+Here we go.
+
+741
+00:53:51,280 --> 00:53:55,640
+And this is hard to read because I'm so zoomed in.
+
+742
+00:53:55,640 --> 00:54:02,040
+But this is the project.
+
+743
+00:54:02,040 --> 00:54:05,280
+And I admit I don't know how to browse it because I don't use VS Code so often, but
+
+744
+00:54:05,280 --> 00:54:10,440
+I know that I have it on my hard drive.
+
+745
+00:54:10,440 --> 00:54:16,920
+here. Oh, here it is. So I navigated up here, top left, and here are all the files. And now,
+
+746
+00:54:18,200 --> 00:54:22,680
+I mean, now I could go in and make some changes to the file.
+
+747
+00:54:27,640 --> 00:54:31,480
+And this is what it means to create a local copy and make local changes.
+
+748
+00:54:34,040 --> 00:54:39,480
+And this change should also show up somewhere here. And I think this is
+
+749
+00:54:39,480 --> 00:54:41,160
+This is the place where I can then
+
+750
+00:54:41,160 --> 00:54:44,840
+Yeah you have the number one upper left there
+
+751
+00:54:44,840 --> 00:54:48,080
+It says that you have changed one file
+
+752
+00:54:48,080 --> 00:54:52,920
+What I was hoping is that I can see the change also here and I can commit it
+
+753
+00:54:52,920 --> 00:54:53,920
+Let's make a commit
+
+754
+00:54:53,920 --> 00:55:03,060
+Yeah I can't, I don't know, maybe I need to save
+
+755
+00:55:03,060 --> 00:55:04,280
+And I don't even know how to do that
+
+756
+00:55:04,280 --> 00:55:05,280
+All right so
+
+757
+00:55:05,280 --> 00:55:09,880
+I'll draw this S, I guess, or something.
+
+758
+00:55:09,880 --> 00:55:13,120
+Now saved.
+
+759
+00:55:13,120 --> 00:55:15,480
+Great demo.
+
+760
+00:55:15,480 --> 00:55:18,640
+Let me show you how to do it on the command line.
+
+761
+00:55:18,640 --> 00:55:25,520
+This is the environment that I'm more familiar with.
+
+762
+00:55:25,520 --> 00:55:30,520
+And here, if I want to make a local copy, it starts with...
+
+763
+00:55:30,520 --> 00:55:31,640
+Okay, what do I have here?
+
+764
+00:55:31,640 --> 00:55:32,760
+What kind of directories?
+
+765
+00:55:32,760 --> 00:55:35,840
+I have this network X from before.
+
+766
+00:55:35,840 --> 00:55:39,560
+So if I want to clone now, git clone,
+
+767
+00:55:41,040 --> 00:55:42,280
+I need to give it a different name
+
+768
+00:55:42,280 --> 00:55:43,600
+because I have already one here.
+
+769
+00:55:43,600 --> 00:55:47,760
+So this is the other network X.
+
+770
+00:55:49,520 --> 00:55:51,360
+And the networkx that you have there
+
+771
+00:55:51,360 --> 00:55:52,800
+is from VSCode.
+
+772
+00:55:52,800 --> 00:55:53,640
+Yeah.
+
+773
+00:55:55,360 --> 00:55:56,960
+So this is a way to create a local copy
+
+774
+00:55:56,960 --> 00:55:58,040
+now in the command line.
+
+775
+00:55:58,040 --> 00:56:05,100
+And, and then I can go into, into this new directory and I can open
+
+776
+00:56:05,100 --> 00:56:06,500
+files with my favorite editor.
+
+777
+00:56:06,500 --> 00:56:10,200
+And you have all noticed that I have a different favorite editor because
+
+778
+00:56:10,200 --> 00:56:12,480
+I'm not familiar really with VS code.
+
+779
+00:56:13,680 --> 00:56:16,360
+But the one thing I wanted to show you, which we didn't mention earlier,
+
+780
+00:56:16,360 --> 00:56:23,520
+is that if I now on the command line, navigate to, to this repository.
+
+781
+00:56:25,720 --> 00:56:27,880
+And I can see that we are almost out of time.
+
+782
+00:56:28,040 --> 00:56:31,040
+So, I wanted to show you that,
+
+783
+00:56:36,080 --> 00:56:37,720
+we'll just switch the order here,
+
+784
+00:56:39,120 --> 00:56:44,120
+that there is a hidden directory called .git.
+
+785
+00:56:44,640 --> 00:56:48,880
+And this is the one that contains all the history,
+
+786
+00:56:48,880 --> 00:56:50,280
+all the commits.
+
+787
+00:56:50,280 --> 00:56:52,880
+And for the people who created maybe a git repository,
+
+788
+00:56:52,880 --> 00:56:55,240
+like in the wrong place on your hard drive,
+
+789
+00:56:55,240 --> 00:56:57,280
+you can look for this directory.
+
+790
+00:56:57,280 --> 00:56:58,560
+all the commits, all the branches,
+
+791
+00:56:58,560 --> 00:57:00,400
+everything we create goes into here.
+
+792
+00:57:00,400 --> 00:57:02,520
+This is the local Git repository.
+
+793
+00:57:02,520 --> 00:57:05,080
+And every Git repository has this .git.
+
+794
+00:57:07,520 --> 00:57:08,960
+You have a .git over there?
+
+795
+00:57:08,960 --> 00:57:10,600
+What's that?
+
+796
+00:57:10,600 --> 00:57:13,040
+This is something that came together with NetworkX.
+
+797
+00:57:13,040 --> 00:57:14,240
+This is something they created.
+
+798
+00:57:14,240 --> 00:57:19,080
+And we will see that next week
+
+799
+00:57:19,080 --> 00:57:23,880
+when we do automation to build documentation or run tests.
+
+800
+00:57:23,880 --> 00:57:29,880
+So, we are already one minute over time.
+
+801
+00:57:29,880 --> 00:57:33,840
+Here the goal was not to remember how these commands work, but we wanted to show you that
+
+802
+00:57:33,840 --> 00:57:34,840
+this is possible.
+
+803
+00:57:34,840 --> 00:57:40,520
+It's possible to browse the history and find what is going on in the repository or what
+
+804
+00:57:40,520 --> 00:57:43,520
+has happened in the past.
+
+805
+00:57:43,520 --> 00:57:51,760
+One thing we skipped, but can be a really useful command one day.
+
+806
+00:57:51,760 --> 00:57:58,320
+One day it will save the day and that is a nice tool that can help you to change to find
+
+807
+00:57:58,320 --> 00:58:03,740
+out when something changed in the past.
+
+808
+00:58:03,740 --> 00:58:06,640
+And there is also an exercise but that is completely voluntary.
+
+809
+00:58:06,640 --> 00:58:07,640
+Try it.
+
+810
+00:58:07,640 --> 00:58:10,520
+Try it out sometime.
+
+811
+00:58:10,520 --> 00:58:14,160
+Really useful tool when you are in a situation that you notice that something changed in
+
+812
+00:58:14,160 --> 00:58:17,200
+my project but I'm really unsure when exactly.
+
+813
+00:58:17,200 --> 00:58:22,160
+And this tool will find, will locate the precise commit.
+
+814
+00:58:22,160 --> 00:58:34,080
+Good, but since we are out of time, I recommend we take a good 58 minutes break.
+
+815
+00:58:34,080 --> 00:58:37,600
+And we will be back in 58 minutes.
+
+816
+00:58:37,600 --> 00:58:43,360
+And then there will be then one more exercise block and what we will learn how to do and
+
+817
+00:58:43,360 --> 00:58:49,680
+practice to do is how to turn my own project, which is maybe a bunch of files, it's not
+
+818
+00:58:49,680 --> 00:58:54,920
+in Git yet, how do we turn it into a Git repository and then share it on GitHub? So it will be
+
+819
+00:58:54,920 --> 00:58:59,880
+basically the opposite of what we did this morning. And then there will be a half an
+
+820
+00:58:59,880 --> 00:59:08,160
+hour discussion session. Where to start, what traps to avoid. Anything else important I
+
+821
+00:59:08,160 --> 00:59:12,200
+missed that I should raise before we go into break?
+
+822
+00:59:12,200 --> 00:59:16,240
+Is there any questions that you should have covered?
+
+823
+00:59:16,240 --> 00:59:19,960
+I think we will look at questions and we can also start the next session with a little
+
+824
+00:59:19,960 --> 00:59:20,960
+recap.
+
+825
+00:59:20,960 --> 00:59:23,200
+Yeah, we can do that.
+
+826
+00:59:23,200 --> 00:59:29,360
+So everybody enjoy 57 minutes break, we will be back, back on stream at the next full hour
+
+827
+00:59:29,360 --> 00:59:32,800
+and do more Git.
+
+828
+00:59:32,800 --> 00:59:33,800
+Thanks so much.
+
+829
+00:59:33,800 --> 00:59:34,800
+See you later.
+
+830
+00:59:34,800 --> 00:59:35,800
+Bye.
+
+831
+00:59:35,800 --> 00:59:36,800
+See you later.
+
+832
+00:59:36,800 --> 00:59:37,300
+Bye bye.
+
+833
+00:59:38,000 --> 00:59:42,800
+Welcome back from the break.
+
+834
+00:59:42,800 --> 00:59:49,200
+And how do people like to jiggle?
+
+835
+00:59:49,200 --> 00:59:50,200
+So welcome back to more Git.
+
+836
+00:59:50,200 --> 00:59:54,800
+We have 90 minutes left.
+
+837
+00:59:54,800 --> 01:00:01,760
+There will be one more break session roughly in 55 minutes.
+
+838
+01:00:01,760 --> 01:00:07,940
+We want to now discuss, go a little bit the other way compared to earlier this morning.
+
+839
+01:00:07,940 --> 01:00:11,540
+We want to start with a project that is on my hard drive.
+
+840
+01:00:12,940 --> 01:00:15,060
+Let's imagine it's not on Git yet.
+
+841
+01:00:15,060 --> 01:00:17,100
+How do I make it, turn it into a Git repository?
+
+842
+01:00:17,100 --> 01:00:20,740
+How do I share it so that other people can find it
+
+843
+01:00:20,740 --> 01:00:22,140
+and so that I don't lose it?
+
+844
+01:00:24,140 --> 01:00:26,580
+And you can, it's no problem.
+
+845
+01:00:26,580 --> 01:00:28,140
+I'm encouraged to continue asking questions
+
+846
+01:00:28,140 --> 01:00:30,380
+also about previous topics.
+
+847
+01:00:30,380 --> 01:00:35,060
+We will be watching these questions.
+
+848
+01:00:35,060 --> 01:00:38,580
+And so there will be one more exercise soon,
+
+849
+01:00:38,580 --> 01:00:40,420
+but first we want to well explain it.
+
+850
+01:00:41,860 --> 01:00:45,500
+And then we will round up this day
+
+851
+01:00:45,500 --> 01:00:49,980
+by having a discussion about really where to start
+
+852
+01:00:49,980 --> 01:00:52,580
+and clarifying some of the things
+
+853
+01:00:52,580 --> 01:00:53,980
+that came up during the day.
+
+854
+01:00:55,420 --> 01:00:58,780
+So for me, the optimal thing to close the session today
+
+855
+01:00:58,780 --> 01:01:00,820
+will be if we get lots of questions,
+
+856
+01:01:01,740 --> 01:01:03,540
+let's see if we can get to 100
+
+857
+01:01:03,540 --> 01:01:10,420
+and if the last maybe 20-25 minutes are really like a discussion where we discuss these.
+
+858
+01:01:12,020 --> 01:01:17,380
+So I will now navigate to this next episode which is about sharing
+
+859
+01:01:20,500 --> 01:01:22,660
+and it's this one here. I will zoom in.
+
+860
+01:01:25,540 --> 01:01:31,060
+We want to turn my own coding project, it can be small or large, it can be a single script
+
+861
+01:01:31,060 --> 01:01:37,540
+or it can be a bunch of files finished or unfinished into a git repository.
+
+862
+01:01:39,060 --> 01:01:42,660
+And let's be honest, programming projects never get finished.
+
+863
+01:01:42,660 --> 01:01:48,180
+We always have an idea how to make them nicer next week, next month, next year.
+
+864
+01:01:48,900 --> 01:01:52,980
+But it's good to share them so that they are findable.
+
+865
+01:01:52,980 --> 01:01:55,940
+You should do this rather soon when you start out, really.
+
+866
+01:01:56,740 --> 01:01:57,780
+Yeah, the sooner the better.
+
+867
+01:01:57,780 --> 01:02:02,380
+And I remember first time I uploaded anything to GitHub,
+
+868
+01:02:02,380 --> 01:02:05,840
+I felt like now immediately people will start
+
+869
+01:02:05,840 --> 01:02:09,120
+and browse my projects and criticize it.
+
+870
+01:02:09,120 --> 01:02:10,120
+And that just doesn't happen.
+
+871
+01:02:10,120 --> 01:02:13,140
+It's not a problem to share something unfinished.
+
+872
+01:02:14,460 --> 01:02:16,140
+Because very often the unfinished thing
+
+873
+01:02:16,140 --> 01:02:21,020
+is the thing we use for our daily work.
+
+874
+01:02:22,500 --> 01:02:23,980
+And it's also about backup.
+
+875
+01:02:23,980 --> 01:02:28,740
+And we will share this project on GitHub.
+
+876
+01:02:29,580 --> 01:02:32,060
+But the important point here is not GitHub.
+
+877
+01:02:32,060 --> 01:02:34,240
+The important point here is that it's a place
+
+878
+01:02:34,240 --> 01:02:35,700
+that is not my hard drive.
+
+879
+01:02:36,660 --> 01:02:38,960
+And it's a place that other people can access.
+
+880
+01:02:40,780 --> 01:02:42,940
+So that's just an example.
+
+881
+01:02:42,940 --> 01:02:46,020
+And here is an illustration.
+
+882
+01:02:46,020 --> 01:02:47,580
+So I will start with a bunch of files
+
+883
+01:02:47,580 --> 01:02:50,060
+and I will also show you that
+
+884
+01:02:50,060 --> 01:02:53,700
+because on my hard drive, I created two files.
+
+885
+01:02:53,700 --> 01:02:57,780
+That's my example project, and I want it,
+
+886
+01:02:57,780 --> 01:03:00,060
+so now I'm convinced that Git is a good thing.
+
+887
+01:03:00,060 --> 01:03:02,340
+I want to turn it into a repository
+
+888
+01:03:02,340 --> 01:03:05,420
+and upload it to GitHub GitLab.
+
+889
+01:03:07,900 --> 01:03:11,260
+And this can be, it can be your real project,
+
+890
+01:03:11,260 --> 01:03:14,680
+but maybe you are not ready yet for that.
+
+891
+01:03:14,680 --> 01:03:17,180
+It can be a little example,
+
+892
+01:03:18,340 --> 01:03:21,740
+silly project that we call my project.
+
+893
+01:03:21,740 --> 01:03:30,700
+So then, if you don't have any files yet, you can then, during the exercise session,
+
+894
+01:03:30,700 --> 01:03:38,100
+create a project with, I don't know, one, two, three files in it.
+
+895
+01:03:38,100 --> 01:03:44,220
+And one thing we should clarify, which I think I didn't do really well in the previous episodes
+
+896
+01:03:44,220 --> 01:03:48,140
+is, which track should people use?
+
+897
+01:03:48,140 --> 01:03:54,120
+We have these different tracks using GitHub, VS Code, Command Line, RStudio.
+
+898
+01:03:54,120 --> 01:03:56,120
+And which one do we recommend?
+
+899
+01:03:56,120 --> 01:04:00,740
+It was maybe confusing that we tried to show multiple tracks here.
+
+900
+01:04:00,740 --> 01:04:05,600
+And our recommendation is that if you are completely new to this, if you haven't used
+
+901
+01:04:05,600 --> 01:04:08,800
+any of these tools before, go for GitHub.
+
+902
+01:04:08,800 --> 01:04:13,960
+This will be the simplest way and I will demonstrate it in a moment and we will see that it takes
+
+903
+01:04:13,960 --> 01:04:17,840
+five minutes.
+
+904
+01:04:17,840 --> 01:04:24,820
+The other tracks go use those if you if you have used VS code before and that can mean
+
+905
+01:04:24,820 --> 01:04:28,960
+like yesterday or this morning.
+
+906
+01:04:28,960 --> 01:04:37,280
+Then you can try that command line only if you really either if you know how to navigate
+
+907
+01:04:37,280 --> 01:04:41,060
+in a command line or if you have somebody.
+
+908
+01:04:41,060 --> 01:04:45,700
+Somebody who can help you maybe you have somebody like a support that you can ask questions
+
+909
+01:04:45,700 --> 01:04:50,140
+Maybe you have a team teammate who also uses the command line.
+
+910
+01:04:50,340 --> 01:04:51,820
+Then I would go for these other options.
+
+911
+01:04:52,020 --> 01:04:55,380
+But the goal here is not to try all of them at the same.
+
+912
+01:04:55,580 --> 01:04:57,460
+At the same time.
+
+913
+01:04:58,580 --> 01:05:00,060
+Go for the one that sounds familiar,
+
+914
+01:05:00,260 --> 01:05:03,180
+and if none of them sounds familiar, go for this one.
+
+915
+01:05:06,220 --> 01:05:10,300
+You can also later try some of the different tracks.
+
+916
+01:05:10,500 --> 01:05:12,180
+After the workshop, you can maybe meet up
+
+917
+01:05:12,180 --> 01:05:14,940
+with somebody else, form a little learning group,
+
+918
+01:05:14,940 --> 01:05:17,620
+and then try some of the other tracks together.
+
+919
+01:05:17,620 --> 01:05:19,780
+This can be really, I think, great learning.
+
+920
+01:05:23,500 --> 01:05:25,460
+And before throwing you into the exercise,
+
+921
+01:05:25,460 --> 01:05:28,060
+I thought that I will here demonstrate
+
+922
+01:05:28,060 --> 01:05:30,280
+what is the absolute minimum that we could do,
+
+923
+01:05:30,280 --> 01:05:35,020
+that I could do to share my work on places like GitHub.
+
+924
+01:05:36,260 --> 01:05:37,660
+And don't worry, I will also show you
+
+925
+01:05:37,660 --> 01:05:38,840
+how you can remove it again,
+
+926
+01:05:38,840 --> 01:05:40,700
+so that you don't have to be worried
+
+927
+01:05:40,700 --> 01:05:45,700
+that what we create here is created for eternity.
+
+928
+01:05:45,700 --> 01:05:48,140
+I will share a project and I will show you
+
+929
+01:05:48,140 --> 01:05:49,420
+how I can delete it again.
+
+930
+01:05:52,220 --> 01:05:53,980
+And I will basically follow the screenshot.
+
+931
+01:05:53,980 --> 01:06:01,220
+So I will now, you can just for the moment watch,
+
+932
+01:06:01,220 --> 01:06:03,380
+continue asking questions.
+
+933
+01:06:03,380 --> 01:06:07,100
+And I will now demonstrate this GitHub track.
+
+934
+01:06:07,100 --> 01:06:09,700
+So track is one of these four.
+
+935
+01:06:09,700 --> 01:06:11,540
+So this is what I refer to as track.
+
+936
+01:06:11,540 --> 01:06:12,940
+I will demonstrate this one.
+
+937
+01:06:14,940 --> 01:06:17,700
+So now just lean back and watch, later you can try it.
+
+938
+01:06:17,700 --> 01:06:22,220
+I'm now on my GitHub space under my username
+
+939
+01:06:23,420 --> 01:06:27,080
+and I will create a new empty repository.
+
+940
+01:06:28,680 --> 01:06:29,900
+This is really the simplest way
+
+941
+01:06:29,900 --> 01:06:32,400
+to get anything up here on GitHub, new repository.
+
+942
+01:06:36,460 --> 01:06:39,060
+And I need to decide where it should be.
+
+943
+01:06:39,060 --> 01:06:43,940
+in this case it should be under my username and I can give it a name.
+
+944
+01:06:45,940 --> 01:06:52,500
+How should I call it? My project. My project. Hopefully. Okay, I don't have one yet. If,
+
+945
+01:06:52,500 --> 01:06:59,460
+great. So this is not, doesn't exist yet. I can give it a description. This is just an example.
+
+946
+01:06:59,460 --> 01:07:06,660
+for teaching
+
+947
+01:07:06,660 --> 01:07:10,220
+It will be public because I want other people to be able to find it and browse it
+
+948
+01:07:10,220 --> 01:07:16,460
+Of course if you if you are uncomfortable with that now just for the demonstration purposes
+
+949
+01:07:16,460 --> 01:07:18,260
+you can try this as well
+
+950
+01:07:18,260 --> 01:07:20,900
+I will take public
+
+951
+01:07:20,900 --> 01:07:23,660
+And I want to start with a readme file
+
+952
+01:07:23,660 --> 01:07:24,700
+Yes
+
+953
+01:07:24,700 --> 01:07:28,980
+Because it will then it will not be an empty repository it will already
+
+954
+01:07:28,980 --> 01:07:31,300
+This will create the first commit
+
+955
+01:07:31,300 --> 01:07:32,860
+and there will be a README file.
+
+956
+01:07:34,620 --> 01:07:37,100
+Will you add a license as well?
+
+957
+01:07:37,100 --> 01:07:37,940
+I think we should do that.
+
+958
+01:07:37,940 --> 01:07:39,760
+So license, good idea.
+
+959
+01:07:40,620 --> 01:07:41,460
+Which one?
+
+960
+01:07:41,460 --> 01:07:42,280
+We don't know.
+
+961
+01:07:42,280 --> 01:07:43,120
+I will take MIT.
+
+962
+01:07:44,180 --> 01:07:45,300
+And what these mean
+
+963
+01:07:46,460 --> 01:07:48,620
+and which one we should choose.
+
+964
+01:07:48,620 --> 01:07:51,340
+And also the fact that there are many more licenses
+
+965
+01:07:51,340 --> 01:07:52,620
+we will discuss next Tuesday
+
+966
+01:07:52,620 --> 01:07:55,460
+when we talk about social coding and licensing.
+
+967
+01:07:55,460 --> 01:07:57,860
+I will now go for MIT license.
+
+968
+01:07:57,860 --> 01:08:01,300
+but really good reflex to start immediately with a license
+
+969
+01:08:01,300 --> 01:08:04,180
+because then other people who understand
+
+970
+01:08:04,180 --> 01:08:05,540
+what this license means,
+
+971
+01:08:05,540 --> 01:08:08,180
+they know what they can do with my code.
+
+972
+01:08:08,180 --> 01:08:09,820
+What is this gitignore?
+
+973
+01:08:09,820 --> 01:08:11,700
+We will discuss this a little bit
+
+974
+01:08:11,700 --> 01:08:14,940
+in our discussion session later.
+
+975
+01:08:14,940 --> 01:08:16,380
+So I have a README, I have a license,
+
+976
+01:08:16,380 --> 01:08:17,820
+everything looks pretty good.
+
+977
+01:08:18,700 --> 01:08:22,580
+And I will create this, it's an almost empty repository.
+
+978
+01:08:22,580 --> 01:08:26,020
+I said almost because it's a repository
+
+979
+01:08:26,020 --> 01:08:29,220
+where there is a README, there is a license.
+
+980
+01:08:31,300 --> 01:08:33,820
+And it's initially committed,
+
+981
+01:08:33,820 --> 01:08:36,420
+so you have your first commit in there.
+
+982
+01:08:36,420 --> 01:08:37,900
+And I have my first commit, exactly.
+
+983
+01:08:37,900 --> 01:08:41,140
+So there is a first commit with this identifier.
+
+984
+01:08:41,140 --> 01:08:44,420
+So if I look at this timeline, the little clock,
+
+985
+01:08:44,420 --> 01:08:45,460
+there is now one commit.
+
+986
+01:08:45,460 --> 01:08:48,460
+And this commit was created by GitHub for me.
+
+987
+01:08:51,220 --> 01:08:53,460
+But now I want to upload my project
+
+988
+01:08:53,460 --> 01:09:01,140
+And really, the simplest way to do that is the plus symbol
+
+989
+01:09:01,140 --> 01:09:05,160
+here, which is upload files.
+
+990
+01:09:05,160 --> 01:09:07,120
+And I have already two files on my hard drive.
+
+991
+01:09:12,020 --> 01:09:16,140
+I can now choose them from my hard drive here.
+
+992
+01:09:16,140 --> 01:09:17,980
+You get a interface.
+
+993
+01:09:17,980 --> 01:09:18,860
+I'll get a dialogue.
+
+994
+01:09:18,860 --> 01:09:22,180
+I'll just move it away to not show any secret things.
+
+995
+01:09:22,180 --> 01:09:25,700
+but I will now navigate to the place on my hard drive.
+
+996
+01:09:28,900 --> 01:09:29,900
+And here I am.
+
+997
+01:09:29,900 --> 01:09:32,340
+So this is somewhere on my hard drive.
+
+998
+01:09:32,340 --> 01:09:34,220
+There is, here's the my project.
+
+999
+01:09:34,220 --> 01:09:35,780
+It's not a git repository yet.
+
+1000
+01:09:37,660 --> 01:09:40,340
+And I have two Python files,
+
+1001
+01:09:40,340 --> 01:09:43,460
+my script and some module, they do something.
+
+1002
+01:09:43,460 --> 01:09:48,180
+And I, okay, this is maybe not so visible,
+
+1003
+01:09:48,180 --> 01:09:50,700
+but I select both and I set, say, yes,
+
+1004
+01:09:50,700 --> 01:09:51,820
+I want to upload both.
+
+1005
+01:09:52,180 --> 01:09:57,460
+Here they are.
+
+1006
+01:09:57,460 --> 01:10:06,260
+And now we need a commit message.
+
+1007
+01:10:06,260 --> 01:10:07,260
+I don't know.
+
+1008
+01:10:07,260 --> 01:10:08,260
+Yeah.
+
+1009
+01:10:08,260 --> 01:10:11,540
+Select the text that says there.
+
+1010
+01:10:11,540 --> 01:10:12,540
+Saving my...
+
+1011
+01:10:12,540 --> 01:10:13,940
+It's maybe not the greatest commit message.
+
+1012
+01:10:13,940 --> 01:10:21,460
+We will later discuss what makes a good commit message to scripts.
+
+1013
+01:10:21,460 --> 01:10:36,500
+And then here more from now on. Now on I really want to use git. This is the initial version.
+
+1014
+01:10:36,500 --> 01:10:40,500
+Should it go to main branch? Yes. So this will create a new commit and it will add these
+
+1015
+01:10:40,500 --> 01:10:41,500
+two files.
+
+1016
+01:10:41,500 --> 01:10:46,220
+Could you have created a branch there?
+
+1017
+01:10:46,220 --> 01:10:49,700
+Yes, I could have.
+
+1018
+01:10:49,700 --> 01:10:54,260
+Here they are on main and I will even, I will post, just for fun, I will post it in the
+
+1019
+01:10:54,260 --> 01:10:55,260
+collaborative notes.
+
+1020
+01:10:55,260 --> 01:10:59,380
+You can browse the thing that I just created.
+
+1021
+01:10:59,380 --> 01:11:01,660
+It's down here.
+
+1022
+01:11:01,660 --> 01:11:08,940
+So I mean, anybody can now browse it, critique it, improve it.
+
+1023
+01:11:08,940 --> 01:11:14,960
+And that was really my goal.
+
+1024
+01:11:14,960 --> 01:11:18,960
+one question about how would I go now from here on like if I want to now continue so I said that I
+
+1025
+01:11:18,960 --> 01:11:24,160
+really want to continue using it what will be the next step and this is not part of the exercise but
+
+1026
+01:11:24,160 --> 01:11:30,960
+what would be the next step from now on in this case the next step would be for me
+
+1027
+01:11:32,640 --> 01:11:40,240
+to clone the repository to my hard drive again because then it is already a git repository
+
+1028
+01:11:40,240 --> 01:11:47,480
+because this commit that I created, these two commits,
+
+1029
+01:11:47,480 --> 01:11:49,080
+they now only exist on GitHub.
+
+1030
+01:11:49,080 --> 01:11:52,160
+They are not on my hard drive.
+
+1031
+01:11:52,160 --> 01:11:54,120
+So the next step would be to clone it.
+
+1032
+01:11:54,120 --> 01:11:57,080
+Your hard drive is still just a bunch of files.
+
+1033
+01:11:57,080 --> 01:11:58,400
+Yeah.
+
+1034
+01:11:58,400 --> 01:12:01,040
+On my hard drive, it's still just two files.
+
+1035
+01:12:01,040 --> 01:12:02,240
+They are not connected yet.
+
+1036
+01:12:05,000 --> 01:12:09,920
+This is a little bit different if you choose different tracks.
+
+1037
+01:12:09,920 --> 01:12:16,240
+So I don't want to now discuss every track individually to not be too confusing, but if you then
+
+1038
+01:12:16,240 --> 01:12:24,800
+the path towards a Git repository out of a bunch of files is different depending on which track you use.
+
+1039
+01:12:24,800 --> 01:12:31,200
+But at the end, we have a Git repository that is publicly accessible.
+
+1040
+01:12:31,200 --> 01:12:38,800
+Later we will discuss whether having a Git repository here is enough for reproducibility,
+
+1041
+01:12:38,800 --> 01:12:43,840
+So that is something for later, but this is already not too bad.
+
+1042
+01:12:43,840 --> 01:12:48,240
+I also promised that I would show you how to delete it again if you want to get rid of it.
+
+1043
+01:12:48,240 --> 01:12:51,280
+For this I will zoom out.
+
+1044
+01:12:52,000 --> 01:12:55,920
+And I zoomed out so that I can see the settings on top right, this one,
+
+1045
+01:12:55,920 --> 01:13:01,280
+the settings button. And under settings...
+
+1046
+01:13:01,440 --> 01:13:05,520
+There's a dangerous zone. Yeah, so there are lots of objects, you can rename the
+
+1047
+01:13:05,520 --> 01:13:08,160
+project, you can change the default branch, lots
+
+1048
+01:13:08,160 --> 01:13:12,640
+of things you can you can do here but if i scroll down scroll down suddenly there are
+
+1049
+01:13:12,640 --> 01:13:22,280
+some red options and the red options are you can i can make it now i can change it to private
+
+1050
+01:13:22,280 --> 01:13:28,240
+or i can do some other things i can also delete it so this would be the way to get rid of
+
+1051
+01:13:28,240 --> 01:13:35,060
+it again and this also is a good reminder for me to mention that also the exercise repositories
+
+1052
+01:13:35,060 --> 01:13:44,180
+that we created yesterday, and repositories that we will collaborate on tomorrow.
+
+1053
+01:13:44,180 --> 01:13:47,060
+Eventually we will also remove them, so you don't have to be worried that this is held
+
+1054
+01:13:47,060 --> 01:13:48,060
+there forever.
+
+1055
+01:13:48,060 --> 01:13:52,060
+These things will be deleted.
+
+1056
+01:13:52,060 --> 01:13:57,420
+Yeah, good.
+
+1057
+01:13:57,420 --> 01:14:00,700
+So exercise will be steps one, two, three.
+
+1058
+01:14:00,700 --> 01:14:05,060
+And step one will be create an example project
+
+1059
+01:14:05,060 --> 01:14:10,940
+with one or two files, make it a Git repository,
+
+1060
+01:14:10,940 --> 01:14:15,740
+and make it available on GitHub or GitLab,
+
+1061
+01:14:15,740 --> 01:14:18,020
+because the principle is really the same.
+
+1062
+01:14:18,020 --> 01:14:21,700
+So if you rather work on your university GitLab,
+
+1063
+01:14:21,700 --> 01:14:23,940
+then you can try that instead.
+
+1064
+01:14:23,940 --> 01:14:34,940
+And we give 25 minutes, which is, for some it will be too long, but then ask us lots of questions.
+
+1065
+01:14:34,940 --> 01:14:38,940
+But we really want to give people the time.
+
+1066
+01:14:38,940 --> 01:14:44,940
+It would mean that we would be back at 40 minutes past the hour.
+
+1067
+01:14:44,940 --> 01:14:53,100
+And then we can have a discussion about these steps, how to go from here, what are all the
+
+1068
+01:14:53,100 --> 01:15:00,580
+other things that we missed.
+
+1069
+01:15:00,580 --> 01:15:09,740
+So let me copy the exercise to the notes.
+
+1070
+01:15:09,740 --> 01:15:25,420
+The exercise is this one, and it will be until 40 minutes past.
+
+1071
+01:15:30,820 --> 01:15:32,620
+And we will add here more details and also
+
+1072
+01:15:32,620 --> 01:15:35,300
+then, again, ask for feedback on how things are going.
+
+1073
+01:15:35,300 --> 01:15:45,100
+Thanks so much for the questions, good luck with the exercise, and really looking forward
+
+1074
+01:15:45,100 --> 01:15:50,260
+to discussing Git afterwards.
+
+1075
+01:15:50,260 --> 01:15:53,900
+See you in 24 minutes.
+
+1076
+01:15:53,900 --> 01:15:55,020
+Bye.
+
+1077
+01:15:59,000 --> 01:16:05,860
+Tee dee dee, back from exercise
+
+1078
+01:16:05,860 --> 01:16:10,140
+And thanks for letting us know how it went
+
+1079
+01:16:10,140 --> 01:16:12,340
+Lots of thumbs up here, hopefully this was representative
+
+1080
+01:16:12,340 --> 01:16:17,980
+For some of you this might have been too much time for this exercise
+
+1081
+01:16:17,980 --> 01:16:23,580
+because it really depends which track people choose.
+
+1082
+01:16:23,580 --> 01:16:27,780
+Some people got into trouble, but then asked about it, and we answered.
+
+1083
+01:16:27,780 --> 01:16:35,200
+And I really like that we are on the path to break the 100 questions barrier.
+
+1084
+01:16:35,200 --> 01:16:40,020
+And it's so cool that we make asking questions a good thing, it's not a problem, it's really
+
+1085
+01:16:40,020 --> 01:16:41,420
+a feature.
+
+1086
+01:16:41,420 --> 01:16:44,900
+So thanks a lot for that.
+
+1087
+01:16:44,900 --> 01:16:48,260
+want to know, I will scroll down and make sure that you find where we are right now.
+
+1088
+01:16:49,780 --> 01:16:55,060
+Let me paste in where I want to go. Sorry, before I go there, I want it.
+
+1089
+01:16:58,020 --> 01:17:04,740
+I wanted to. This is where we were. I wanted to comment on something before we
+
+1090
+01:17:06,180 --> 01:17:13,860
+move to more discussion format. And that is that yes, now we learned how to publish our work.
+
+1091
+01:17:14,900 --> 01:17:21,140
+and my work is now here and the question that I wanted to ask all of us is to reflect a bit
+
+1092
+01:17:21,140 --> 01:17:26,740
+whether this is really publishing and this is down here on
+
+1093
+01:17:29,220 --> 01:17:33,780
+so there is question for all of us to think about is now is putting software on
+
+1094
+01:17:34,340 --> 01:17:40,740
+github, gitlab, bitbucket does it is this equal to publishing software can I now
+
+1095
+01:17:40,740 --> 01:17:47,860
+Is it now findable and accessible?
+
+1096
+01:17:47,860 --> 01:17:50,460
+And the answer is that no.
+
+1097
+01:17:50,460 --> 01:17:55,620
+But it's already, I think this is much better than 80% of computation research, which never
+
+1098
+01:17:55,620 --> 01:17:56,620
+gets published anywhere.
+
+1099
+01:17:56,620 --> 01:18:02,020
+So at least it's here, you can find it.
+
+1100
+01:18:02,020 --> 01:18:03,020
+What is the problem?
+
+1101
+01:18:03,020 --> 01:18:06,380
+The problem is, well, exactly what I was showing before the exercise.
+
+1102
+01:18:06,380 --> 01:18:13,540
+I can now go on settings and delete it or I can remove my account and then it will not
+
+1103
+01:18:13,540 --> 01:18:16,540
+be findable.
+
+1104
+01:18:16,540 --> 01:18:18,980
+So this is a really good first step.
+
+1105
+01:18:18,980 --> 01:18:25,900
+When you publish your work, we recommend to go one step further and to make the work persistent.
+
+1106
+01:18:25,900 --> 01:18:28,420
+This here is not a persistent place.
+
+1107
+01:18:28,420 --> 01:18:35,660
+And it's persistent, it's related to your namespace or account?
+
+1108
+01:18:35,660 --> 01:18:40,320
+Yeah, so we will next week show you how you can make it persistent.
+
+1109
+01:18:40,320 --> 01:18:43,520
+You will also make it citable at the same time.
+
+1110
+01:18:43,520 --> 01:18:48,460
+You will get a digital object identifier and people can cite your code repository.
+
+1111
+01:18:48,460 --> 01:18:49,460
+And then it's persistent.
+
+1112
+01:18:49,460 --> 01:18:51,500
+I cannot delete it.
+
+1113
+01:18:51,500 --> 01:18:53,400
+And it's then independent of this repository.
+
+1114
+01:18:53,400 --> 01:18:56,860
+So I can delete the repository, I can delete my account.
+
+1115
+01:18:56,860 --> 01:19:05,160
+But the place where I basically archive the code and a popular service is Zenodo.
+
+1116
+01:19:05,160 --> 01:19:08,440
+It's only one of several services,
+
+1117
+01:19:08,440 --> 01:19:10,560
+and this is what we will show you next week,
+
+1118
+01:19:11,760 --> 01:19:13,000
+just as a little preview.
+
+1119
+01:19:15,500 --> 01:19:16,880
+And depending on which track you used,
+
+1120
+01:19:16,880 --> 01:19:21,880
+you have maybe now been exposed to terms like remote
+
+1121
+01:19:22,360 --> 01:19:23,560
+and pushing and pulling.
+
+1122
+01:19:24,660 --> 01:19:25,760
+So some people have seen it,
+
+1123
+01:19:25,760 --> 01:19:26,620
+some people haven't seen it,
+
+1124
+01:19:26,620 --> 01:19:29,980
+because it depends which interface you have used.
+
+1125
+01:19:30,920 --> 01:19:32,920
+And here, I wanted to say that tomorrow
+
+1126
+01:19:32,920 --> 01:19:34,760
+we will talk more about this.
+
+1127
+01:19:34,760 --> 01:19:38,640
+we will use them for collaboration.
+
+1128
+01:19:38,640 --> 01:19:40,840
+So push and pull is really a mechanism now
+
+1129
+01:19:40,840 --> 01:19:44,980
+to synchronize changes between repositories.
+
+1130
+01:19:46,120 --> 01:19:47,480
+And when we talk about remotes,
+
+1131
+01:19:47,480 --> 01:19:49,560
+it's often a repository like GitHub,
+
+1132
+01:19:49,560 --> 01:19:54,560
+but it could be, here we list some other popular services
+
+1133
+01:19:55,200 --> 01:19:59,960
+that where people share their repositories.
+
+1134
+01:19:59,960 --> 01:20:01,680
+But when you talk about push and pull,
+
+1135
+01:20:01,680 --> 01:20:04,120
+then you're talking about a remote and a local.
+
+1136
+01:20:04,120 --> 01:20:09,000
+So that's how you synchronize between your local copy
+
+1137
+01:20:09,000 --> 01:20:10,520
+and the remote copy.
+
+1138
+01:20:10,520 --> 01:20:11,360
+Yeah.
+
+1139
+01:20:13,280 --> 01:20:15,360
+And then somebody asked, well, how do I get my changes
+
+1140
+01:20:15,360 --> 01:20:17,520
+from this one computer that I have
+
+1141
+01:20:17,520 --> 01:20:20,320
+to the other computer at the department?
+
+1142
+01:20:20,320 --> 01:20:22,280
+And then you can do it also through the remote.
+
+1143
+01:20:22,280 --> 01:20:24,760
+I could push my changes here to GitHub.
+
+1144
+01:20:25,680 --> 01:20:27,200
+And then as soon as I'm in the other office,
+
+1145
+01:20:27,200 --> 01:20:29,560
+I could pull the changes to the other computer.
+
+1146
+01:20:32,520 --> 01:20:33,360
+Good.
+
+1147
+01:20:34,120 --> 01:20:38,720
+And now I want to navigate you to a discussion session.
+
+1148
+01:20:38,720 --> 01:20:39,680
+Let me find it.
+
+1149
+01:20:41,600 --> 01:20:44,960
+And the question that we want to discuss now in 15 minutes
+
+1150
+01:20:46,400 --> 01:20:48,280
+before taking a short break is,
+
+1151
+01:20:49,520 --> 01:20:51,320
+we want to make it really practical.
+
+1152
+01:20:54,440 --> 01:20:56,080
+So how much kit is really necessary?
+
+1153
+01:20:56,080 --> 01:20:57,640
+We have seen a few things.
+
+1154
+01:20:57,640 --> 01:20:58,760
+Where should we start?
+
+1155
+01:21:04,120 --> 01:21:11,200
+This place here.
+
+1156
+01:21:11,200 --> 01:21:15,400
+And as usual you can continue asking questions also about the previous section.
+
+1157
+01:21:15,400 --> 01:21:22,520
+I will now navigate to this page.
+
+1158
+01:21:22,520 --> 01:21:29,480
+And here we really want to give you some practical advice to start with.
+
+1159
+01:21:29,480 --> 01:21:33,920
+The first one is for people who are on a command line.
+
+1160
+01:21:33,920 --> 01:21:38,920
+So maybe I will not, you can, those of you who use the command line, you can read it.
+
+1161
+01:21:38,920 --> 01:21:44,720
+Their git status is one of the most useful commands to, this is something I do all the
+
+1162
+01:21:44,720 --> 01:21:48,000
+time to see what is happening.
+
+1163
+01:21:48,000 --> 01:21:53,800
+But I think I want to navigate to the second question, and that is, what are some good
+
+1164
+01:21:53,800 --> 01:21:56,760
+practices to write useful commit messages?
+
+1165
+01:21:56,760 --> 01:22:00,960
+Because we have been writing commit messages, and some of them that I created, they were
+
+1166
+01:22:00,960 --> 01:22:02,320
+less useful than others.
+
+1167
+01:22:04,120 --> 01:22:06,460
+And here we want to show you some good examples.
+
+1168
+01:22:07,960 --> 01:22:12,240
+So a useful commit message is one that summarizes the change
+
+1169
+01:22:13,600 --> 01:22:14,860
+and provides context.
+
+1170
+01:22:17,020 --> 01:22:20,000
+And sometimes the summary fits into one line.
+
+1171
+01:22:20,000 --> 01:22:22,040
+So we try to summarize it in one line,
+
+1172
+01:22:22,040 --> 01:22:23,520
+but if we need more context,
+
+1173
+01:22:26,340 --> 01:22:27,480
+so here's an example.
+
+1174
+01:22:27,480 --> 01:22:32,480
+If I create commit messages on the command line,
+
+1175
+01:22:33,560 --> 01:22:35,440
+the first line is the summary.
+
+1176
+01:22:37,880 --> 01:22:40,160
+And then if I need more context,
+
+1177
+01:22:40,160 --> 01:22:41,740
+the convention is an empty space
+
+1178
+01:22:41,740 --> 01:22:42,840
+and then more context here
+
+1179
+01:22:42,840 --> 01:22:44,920
+where I can relate to a discussion that we had
+
+1180
+01:22:44,920 --> 01:22:48,980
+and I can explain a little bit more why I did something.
+
+1181
+01:22:50,420 --> 01:22:52,280
+I emphasize that the first line is important
+
+1182
+01:22:52,280 --> 01:22:54,600
+because when I navigate,
+
+1183
+01:22:54,600 --> 01:22:57,380
+when I browse repositories on the web,
+
+1184
+01:22:59,080 --> 01:23:01,180
+then the first line is the one that I see.
+
+1185
+01:23:03,840 --> 01:23:04,720
+This is the first line.
+
+1186
+01:23:04,720 --> 01:23:07,500
+So it's good if that one gives a good summary.
+
+1187
+01:23:13,120 --> 01:23:13,960
+And-
+
+1188
+01:23:13,960 --> 01:23:16,160
+Reference to one, two, three there
+
+1189
+01:23:16,160 --> 01:23:18,760
+about the bottom of the commit message,
+
+1190
+01:23:18,760 --> 01:23:22,560
+that's an issue, I guess.
+
+1191
+01:23:22,560 --> 01:23:26,200
+So this could refer to an issue with the number 123
+
+1192
+01:23:27,960 --> 01:23:31,040
+where we could read more about this change.
+
+1193
+01:23:31,040 --> 01:23:32,960
+Maybe this was something that I suggested somewhere
+
+1194
+01:23:32,960 --> 01:23:35,200
+and then we had a discussion, is this a good idea?
+
+1195
+01:23:35,200 --> 01:23:37,560
+At some point we realized, yes, this is a good idea.
+
+1196
+01:23:37,560 --> 01:23:40,240
+And then half a year later, I come back with a commit
+
+1197
+01:23:41,160 --> 01:23:45,560
+that implements this and relates back to why I did this
+
+1198
+01:23:45,560 --> 01:23:46,920
+and why we did it this way.
+
+1199
+01:23:46,920 --> 01:23:55,080
+And the why is sometimes, why something changed is more important than what has changed.
+
+1200
+01:23:55,080 --> 01:24:03,120
+So it's good if, good if the commit message explains why, the motivation for this change.
+
+1201
+01:24:03,120 --> 01:24:04,120
+And this is because...
+
+1202
+01:24:04,120 --> 01:24:09,880
+The what you have changed is you can see from the log or from the page or...
+
+1203
+01:24:09,880 --> 01:24:14,640
+Because here if I can click on the commit that I created earlier, what did I change?
+
+1204
+01:24:14,640 --> 01:24:16,640
+Well, here it is.
+
+1205
+01:24:16,640 --> 01:24:17,560
+This is what I changed.
+
+1206
+01:24:17,560 --> 01:24:19,920
+So I can always find out what I did,
+
+1207
+01:24:19,920 --> 01:24:22,920
+but it might be more difficult to find out why did I do this?
+
+1208
+01:24:24,240 --> 01:24:25,180
+So that's why.
+
+1209
+01:24:25,180 --> 01:24:26,520
+Why?
+
+1210
+01:24:26,520 --> 01:24:28,820
+You can cross-reference issues, pull requests.
+
+1211
+01:24:30,300 --> 01:24:34,160
+There are some humorous bad examples.
+
+1212
+01:24:34,160 --> 01:24:37,080
+So somebody compiled just some funny bad examples
+
+1213
+01:24:37,080 --> 01:24:39,280
+from other repositories.
+
+1214
+01:24:40,600 --> 01:24:42,160
+Commit messages in English.
+
+1215
+01:24:42,160 --> 01:24:48,620
+That will be understood 15 years from now by somebody else, because many projects that
+
+1216
+01:24:48,620 --> 01:24:54,900
+really became big and popular started as a little project just for me.
+
+1217
+01:24:54,900 --> 01:25:01,580
+You can create commits with multiple authors, because then both or multiple authors get
+
+1218
+01:25:01,580 --> 01:25:05,140
+credited for this.
+
+1219
+01:25:05,140 --> 01:25:11,340
+And here we also link to some blog posts that discuss how do good commit stages look like.
+
+1220
+01:25:11,340 --> 01:25:21,580
+One thing that I like to do sometimes, and maybe that's interesting, is that you could
+
+1221
+01:25:21,580 --> 01:25:26,820
+browse your favorite project, and maybe your favorite project library that you use.
+
+1222
+01:25:26,820 --> 01:25:29,700
+Maybe it is listed here, maybe it is not.
+
+1223
+01:25:29,700 --> 01:25:39,580
+So these are some popular libraries that I used in the Python world or for R development.
+
+1224
+01:25:39,580 --> 01:25:43,060
+You could also browse how do they write commit messages.
+
+1225
+01:25:46,140 --> 01:25:49,060
+And you can even compare that with release notes.
+
+1226
+01:25:51,420 --> 01:25:53,120
+Of course, these are big projects,
+
+1227
+01:25:55,340 --> 01:25:57,100
+so this can be a good inspiration
+
+1228
+01:25:57,100 --> 01:25:59,560
+to see how do other projects do it,
+
+1229
+01:26:00,580 --> 01:26:04,520
+but also don't let the perfect be the enemy of good enough.
+
+1230
+01:26:06,700 --> 01:26:09,100
+Bad commit messages are better than no commit,
+
+1231
+01:26:09,100 --> 01:26:17,180
+commits at all so over time you can then try to improve things don't try to make it too perfect
+
+1232
+01:26:19,420 --> 01:26:26,300
+important is get started and try to commit frequently and then yeah develop from there
+
+1233
+01:26:29,980 --> 01:26:36,940
+good next question um we learned that we can have branches and often it starts with the main branch
+
+1234
+01:26:36,940 --> 01:26:42,940
+Or master branch, depends how you create a git repository.
+
+1235
+01:26:42,940 --> 01:26:44,380
+So should we have just this one branch?
+
+1236
+01:26:44,380 --> 01:26:47,940
+Should we create lots of branches?
+
+1237
+01:26:47,940 --> 01:26:51,940
+Do you have a branching philosophy?
+
+1238
+01:26:51,940 --> 01:26:55,100
+Yes.
+
+1239
+01:26:55,100 --> 01:27:01,500
+So for me, the philosophy is, if it's something small, simple, just for me, there is only
+
+1240
+01:27:01,500 --> 01:27:04,580
+one branch.
+
+1241
+01:27:04,580 --> 01:27:09,380
+If sometimes I need branches, if I want to experiment, but then I try to make them short
+
+1242
+01:27:09,380 --> 01:27:10,760
+lift.
+
+1243
+01:27:10,760 --> 01:27:13,780
+So for me, there is only one long live branch and that's good.
+
+1244
+01:27:13,780 --> 01:27:16,020
+That one is called main.
+
+1245
+01:27:16,020 --> 01:27:23,300
+Every other branch should be as short lived as possible.
+
+1246
+01:27:23,300 --> 01:27:31,220
+So when it's challenging to from time sometimes that you get out of sync, really, because
+
+1247
+01:27:31,220 --> 01:27:33,260
+because you keep a branch too long.
+
+1248
+01:27:36,380 --> 01:27:39,660
+Oh, how do you typically approach like a new project?
+
+1249
+01:27:39,660 --> 01:27:41,780
+Do you start with one branch, many branches?
+
+1250
+01:27:41,780 --> 01:27:45,620
+Yeah, I create a branch per idea almost.
+
+1251
+01:27:47,500 --> 01:27:50,580
+I've created typically very many branches.
+
+1252
+01:27:51,820 --> 01:27:54,740
+I don't always keep them shortly,
+
+1253
+01:27:54,740 --> 01:27:57,740
+which means they get kind of stalled after a while.
+
+1254
+01:28:01,220 --> 01:28:05,940
+Question 82, what is the difference between branch and tag?
+
+1255
+01:28:05,940 --> 01:28:12,580
+A branch can change, and a tag ideally never changes.
+
+1256
+01:28:12,580 --> 01:28:20,820
+So tag is there, it stays next to the commit, it will not move, it marks a milestone.
+
+1257
+01:28:20,820 --> 01:28:30,580
+I could mark a milestone also with a branch, but then I would have to be very disciplined to never change that.
+
+1258
+01:28:30,580 --> 01:28:42,180
+If we are few people, it's okay if things break sometimes, but it's good to implement code review, somebody else looking over my changes.
+
+1259
+01:28:42,180 --> 01:28:55,580
+So personally, if I'm like two people, three people, more people, we start using branches and we review them so that we know what's going on, and more about that tomorrow.
+
+1260
+01:28:55,580 --> 01:29:00,220
+I think the next one is, yeah, it's not only for the command line.
+
+1261
+01:29:00,220 --> 01:29:02,940
+So staging and committing can show up also in VS Code.
+
+1262
+01:29:04,300 --> 01:29:06,780
+So when you create a commit, you can create it in one step,
+
+1263
+01:29:07,420 --> 01:29:08,940
+or you can create it in two steps.
+
+1264
+01:29:10,220 --> 01:29:12,060
+And the two steps would be stage it first,
+
+1265
+01:29:13,020 --> 01:29:15,660
+look at what you have staged, and then commit it.
+
+1266
+01:29:15,660 --> 01:29:17,420
+It's a way to prepare a commit and
+
+1267
+01:29:20,220 --> 01:29:23,260
+kind of check it before you really make the commit.
+
+1268
+01:29:23,260 --> 01:29:32,140
+it. This helps me personally to prepare commits so that I don't commit unrelated changes.
+
+1269
+01:29:32,140 --> 01:29:35,640
+But also here my recommendation would be not to worry about it too much. At the beginning
+
+1270
+01:29:35,640 --> 01:29:44,180
+it's good to make a lot of possibly not ideal commits. It's not a problem. And later you
+
+1271
+01:29:44,180 --> 01:29:50,700
+You can then explore a bit the staging and it will help you creating more, well, self-contained
+
+1272
+01:29:50,700 --> 01:29:56,780
+commits.
+
+1273
+01:29:56,780 --> 01:29:57,780
+How large should I commit be?
+
+1274
+01:29:57,780 --> 01:30:03,740
+Should I commit at the end of the day, at the end of the week, or every five minutes?
+
+1275
+01:30:03,740 --> 01:30:06,980
+I often commit at the end of the day.
+
+1276
+01:30:06,980 --> 01:30:10,100
+Something that I would not like to lose.
+
+1277
+01:30:10,100 --> 01:30:12,580
+Better to many than to few.
+
+1278
+01:30:12,580 --> 01:30:17,580
+I think a good size of a commit would be something that,
+
+1279
+01:30:18,420 --> 01:30:19,740
+like, if you want to undo it,
+
+1280
+01:30:19,740 --> 01:30:21,980
+would be a good size of undoing.
+
+1281
+01:30:23,420 --> 01:30:26,540
+And this, again, not putting unrelated things
+
+1282
+01:30:26,540 --> 01:30:27,380
+into the same commit,
+
+1283
+01:30:27,380 --> 01:30:29,020
+because then if I want to undo the one thing
+
+1284
+01:30:29,020 --> 01:30:29,940
+without the other,
+
+1285
+01:30:31,920 --> 01:30:33,340
+it's possible to split commits,
+
+1286
+01:30:33,340 --> 01:30:36,620
+but it's really much easier to combine them.
+
+1287
+01:30:36,620 --> 01:30:38,160
+So make many commits.
+
+1288
+01:30:39,140 --> 01:30:39,980
+Start simple.
+
+1289
+01:30:40,940 --> 01:30:41,980
+Grow your project.
+
+1290
+01:30:42,580 --> 01:30:48,620
+I think the 83 question is very interesting.
+
+1291
+01:30:48,620 --> 01:30:52,380
+Is it a good practice to commit broken code just to save it?
+
+1292
+01:30:52,380 --> 01:30:53,900
+So what would I do at the end of the day?
+
+1293
+01:30:53,900 --> 01:30:54,900
+And it's not working yet.
+
+1294
+01:30:54,900 --> 01:30:57,900
+It's almost working, but I still want to save it.
+
+1295
+01:30:57,900 --> 01:31:04,300
+Well, I would maybe put it on a branch, create a branch, commit it there, then it cannot
+
+1296
+01:31:04,300 --> 01:31:05,300
+get lost.
+
+1297
+01:31:05,300 --> 01:31:08,420
+And then next day I can pick up from there.
+
+1298
+01:31:08,420 --> 01:31:15,980
+I would rather stash it. We don't go through stashing but stashing is a mechanism for saving
+
+1299
+01:31:15,980 --> 01:31:22,540
+work that you have done. I use stashing I want to but stashing would
+
+1300
+01:31:22,540 --> 01:31:28,220
+only then stay still on my like laptop or at least with committing putting it on a branch
+
+1301
+01:31:28,220 --> 01:31:35,980
+I can like back it up and sometimes I start you so you can stash away some work sometimes
+
+1302
+01:31:35,980 --> 01:31:42,380
+I forget that I stashed it and then I removed the repository, so I would maybe create a
+
+1303
+01:31:42,380 --> 01:31:43,380
+branch and commit it.
+
+1304
+01:31:43,380 --> 01:31:54,220
+But it's nice that there are so many different ways of doing it.
+
+1305
+01:31:54,220 --> 01:31:59,700
+How about we take a 10-minute break, because then we can think about more questions that
+
+1306
+01:31:59,700 --> 01:32:00,700
+come up.
+
+1307
+01:32:00,700 --> 01:32:08,460
+will, we also have more discussion for you on typical things to avoid. So some typical
+
+1308
+01:32:08,460 --> 01:32:14,660
+pitfalls when you start working with Git or GitHub. So we will discuss that after the
+
+1309
+01:32:14,660 --> 01:32:22,820
+break. And you can then think about more questions and add them. So the rest of the rest of today,
+
+1310
+01:32:22,820 --> 01:32:26,140
+the remaining half an hour will really be discussion. And maybe we'll show something
+
+1311
+01:32:26,140 --> 01:32:32,580
+if somebody asks to demonstrate a step or two.
+
+1312
+01:32:32,580 --> 01:32:39,100
+We also have a bonus demo that we will maybe show some feature that we didn't show yet.
+
+1313
+01:32:39,100 --> 01:32:40,100
+So stay tuned.
+
+1314
+01:32:40,100 --> 01:32:41,940
+See you in 10 minutes.
+
+1315
+01:32:41,940 --> 01:32:50,260
+And we return at 7 minutes past the hour.
+
+1316
+01:32:50,260 --> 01:32:51,260
+See you there.
+
+1317
+01:32:51,260 --> 01:32:54,540
+Keep the questions coming, but also take a break.
+
+1318
+01:32:54,540 --> 01:32:55,540
+Bye.
+
+1319
+01:32:55,540 --> 01:32:56,040
+Bye.
+
+1320
+01:32:57,000 --> 01:33:07,040
+And we are back, 20 minutes left in this session and we will use it for to really discuss and
+
+1321
+01:33:07,040 --> 01:33:12,760
+clarify some of the really good questions that we got.
+
+1322
+01:33:12,760 --> 01:33:14,240
+And we are trying something new.
+
+1323
+01:33:14,240 --> 01:33:20,120
+So my colleagues are helping me to mark some questions with this little microphone emoji,
+
+1324
+01:33:20,120 --> 01:33:24,440
+because that makes it easier for us to see here which questions we should really discuss
+
+1325
+01:33:24,440 --> 01:33:33,640
+here on stream, because they are of really general interest, general understanding.
+
+1326
+01:33:33,640 --> 01:33:34,640
+And we will then...
+
+1327
+01:33:34,640 --> 01:33:36,200
+So I want to answer a couple of those.
+
+1328
+01:33:36,200 --> 01:33:39,880
+We will then move on to also discussing
+
+1329
+01:33:39,880 --> 01:33:42,240
+some typical pitfalls to avoid.
+
+1330
+01:33:42,240 --> 01:33:43,960
+But maybe let's start with the question 84.
+
+1331
+01:33:43,960 --> 01:33:46,840
+And the question 84 is, can we explain again
+
+1332
+01:33:46,840 --> 01:33:51,040
+what is the difference between Git and GitHub or GitLab?
+
+1333
+01:33:53,920 --> 01:33:55,640
+And I will, to answer this question,
+
+1334
+01:33:55,640 --> 01:33:58,540
+I will open this example project
+
+1335
+01:33:58,540 --> 01:34:00,640
+that I published a little bit earlier.
+
+1336
+01:34:00,640 --> 01:34:04,380
+I will open it both on my computer,
+
+1337
+01:34:04,380 --> 01:34:07,860
+bottom half of the screen and on GitHub.
+
+1338
+01:34:09,620 --> 01:34:11,580
+And really the difference is that,
+
+1339
+01:34:11,580 --> 01:34:16,580
+so on my local Git repository, I will do git log,
+
+1340
+01:34:17,980 --> 01:34:21,420
+which shows me that there are two commits
+
+1341
+01:34:23,160 --> 01:34:25,040
+and I can browse them.
+
+1342
+01:34:25,040 --> 01:34:30,040
+And it's the same commits that I see here on GitHub.
+
+1343
+01:34:31,700 --> 01:34:32,540
+So what is Git?
+
+1344
+01:34:32,540 --> 01:34:33,820
+Git is a tool.
+
+1345
+01:34:33,820 --> 01:34:38,340
+It's a program which can do this,
+
+1346
+01:34:38,340 --> 01:34:39,180
+which can do this,
+
+1347
+01:34:39,180 --> 01:34:42,860
+which can create snapshots with metadata,
+
+1348
+01:34:42,860 --> 01:34:43,980
+which can create branches,
+
+1349
+01:34:43,980 --> 01:34:45,520
+which can merge branches,
+
+1350
+01:34:46,620 --> 01:34:49,760
+and where I can synchronize changes between repositories.
+
+1351
+01:34:51,200 --> 01:34:52,300
+There is no account,
+
+1352
+01:34:53,260 --> 01:34:54,320
+but there is a configuration.
+
+1353
+01:34:54,320 --> 01:34:57,340
+So somewhere I have configured my Git
+
+1354
+01:34:57,340 --> 01:35:01,140
+to use this as my email address,
+
+1355
+01:35:01,140 --> 01:35:02,220
+and this is my name.
+
+1356
+01:35:03,180 --> 01:35:06,620
+And this will end up in these commit messages.
+
+1357
+01:35:06,620 --> 01:35:08,140
+And in our material, we also show you
+
+1358
+01:35:08,140 --> 01:35:11,740
+how we can change this configuration.
+
+1359
+01:35:13,540 --> 01:35:14,380
+Now, what is GitHub?
+
+1360
+01:35:14,380 --> 01:35:19,180
+GitHub is, so the same thing is on GitHub.
+
+1361
+01:35:19,180 --> 01:35:23,000
+So GitHub is, there is also the same Git repositories there.
+
+1362
+01:35:24,820 --> 01:35:29,820
+If I do, so now I have my files,
+
+1363
+01:35:29,820 --> 01:35:34,320
+So now I have my files, readme, license, this is the Git repository.
+
+1364
+01:35:34,320 --> 01:35:37,120
+This is where the commits are stored.
+
+1365
+01:35:37,120 --> 01:35:41,640
+And the same .git is somewhere there also on GitHub.
+
+1366
+01:35:41,640 --> 01:35:42,960
+But GitHub has a little bit more.
+
+1367
+01:35:42,960 --> 01:35:52,720
+It has also, not only it allows me to browse the commits online, it also implements issues
+
+1368
+01:35:52,720 --> 01:35:57,240
+and discussions and pull requests and some extra automation.
+
+1369
+01:35:57,240 --> 01:35:59,840
+we will come back to it next week.
+
+1370
+01:35:59,840 --> 01:36:04,480
+So you can look at it as something around Git.
+
+1371
+01:36:06,360 --> 01:36:09,260
+Git and some extra features and web interface.
+
+1372
+01:36:10,560 --> 01:36:12,880
+And really the same thing I could say about GitLab.
+
+1373
+01:36:12,880 --> 01:36:15,520
+It's also a web interface to a Git repository
+
+1374
+01:36:15,520 --> 01:36:17,640
+with some extra features like discussions,
+
+1375
+01:36:17,640 --> 01:36:20,540
+issues, and some more metadata.
+
+1376
+01:36:21,720 --> 01:36:26,200
+So it's a kind of project support around a project.
+
+1377
+01:36:26,200 --> 01:36:30,240
+Yeah, and it's a really good question
+
+1378
+01:36:30,240 --> 01:36:35,260
+because we will also see that it's very, very easy
+
+1379
+01:36:35,260 --> 01:36:38,220
+to move Git repositories from one place to another.
+
+1380
+01:36:39,440 --> 01:36:41,400
+But one thing that is a little bit more difficult to move
+
+1381
+01:36:41,400 --> 01:36:43,240
+are then all these discussions,
+
+1382
+01:36:43,240 --> 01:36:46,460
+the project around it, the issues, the discussions.
+
+1383
+01:36:46,460 --> 01:36:48,360
+And that's why it's important within your project
+
+1384
+01:36:48,360 --> 01:36:51,000
+that you have a discussion and you decide,
+
+1385
+01:36:51,000 --> 01:36:52,340
+well, do we want to have our project
+
+1386
+01:36:52,340 --> 01:36:54,560
+on our university server
+
+1387
+01:36:54,560 --> 01:36:57,480
+or do we want to have it on the public GitHub
+
+1388
+01:36:57,480 --> 01:36:59,920
+or on my own computer?
+
+1389
+01:37:03,920 --> 01:37:06,440
+So hopefully this was an answer.
+
+1390
+01:37:06,440 --> 01:37:08,560
+Let's see if we have more microphones here.
+
+1391
+01:37:13,520 --> 01:37:15,800
+I think the same question was later.
+
+1392
+01:37:15,800 --> 01:37:17,080
+86.
+
+1393
+01:37:17,080 --> 01:37:17,920
+Yeah.
+
+1394
+01:37:17,920 --> 01:37:20,840
+Git versus GitHub, GitLab, we have clarified it.
+
+1395
+01:37:20,840 --> 01:37:22,400
+There was one at 78.
+
+1396
+01:37:25,120 --> 01:37:29,440
+78 here. What is the proper way to delete a git folder?
+
+1397
+01:37:38,640 --> 01:37:44,800
+The way I would do it is, I would be a little bit worried. If I delete this part here, then
+
+1398
+01:37:45,840 --> 01:37:52,000
+my local git repository is deleted, means the history is gone. The files are still there.
+
+1399
+01:37:52,000 --> 01:37:55,200
+The way I would do it, I would maybe not delete it, I would rename it.
+
+1400
+01:37:58,160 --> 01:38:04,240
+And I rename it to Git report to be deleted.
+
+1401
+01:38:07,760 --> 01:38:10,320
+Because then if I realize that this was a mistake, I can rename it back.
+
+1402
+01:38:11,120 --> 01:38:14,960
+And if I now try to do a Git log, Git doesn't see it now anymore.
+
+1403
+01:38:15,520 --> 01:38:17,920
+Git doesn't think that, well, this is not a Git repository.
+
+1404
+01:38:17,920 --> 01:38:22,160
+I don't, there are a couple of paths here but, and if I rename it back,
+
+1405
+01:38:24,240 --> 01:38:27,440
+so this is how I would do it, you know, like safely.
+
+1406
+01:38:29,280 --> 01:38:34,000
+And then as soon as I know that this is really what I wanted to delete, then you can delete it.
+
+1407
+01:38:43,680 --> 01:38:45,600
+I will come back to some of the microphone questions.
+
+1408
+01:38:45,600 --> 01:39:00,400
+I wanted to navigate us to the section what to avoid typical problems, what are they?
+
+1409
+01:39:00,400 --> 01:39:13,760
+And so that you can find the section, I will also paste it here, what to avoid.
+
+1410
+01:39:13,760 --> 01:39:18,800
+The first one we talked about, so it's better to, in the commit messages,
+
+1411
+01:39:18,800 --> 01:39:22,480
+it's better to explain why something has been done rather than what exactly has been done,
+
+1412
+01:39:22,480 --> 01:39:26,640
+because that is, you can always find out from the change.
+
+1413
+01:39:30,160 --> 01:39:33,840
+This one here we didn't talk about at all, committing generated files.
+
+1414
+01:39:35,920 --> 01:39:41,920
+This could be generated images, it could be if you run Python,
+
+1415
+01:39:43,760 --> 01:39:45,760
+Maybe you have seen a directory called underscore,
+
+1416
+01:39:45,760 --> 01:39:47,960
+underscore, pycache, underscore, underscore.
+
+1417
+01:39:50,320 --> 01:39:54,160
+Files that are easily and quickly generated by your scripts.
+
+1418
+01:39:54,160 --> 01:39:57,040
+PDFs, if you're right, not LaTeX.
+
+1419
+01:39:58,200 --> 01:40:00,000
+Yeah, so there are some files that maybe you don't want
+
+1420
+01:40:00,000 --> 01:40:01,460
+to add to a git repository.
+
+1421
+01:40:02,560 --> 01:40:04,960
+Or it could be something that contains passwords.
+
+1422
+01:40:04,960 --> 01:40:06,440
+Definitely, I don't want it.
+
+1423
+01:40:06,440 --> 01:40:10,380
+It should not go into a git repository, sensitive things.
+
+1424
+01:40:10,380 --> 01:40:25,220
+Then you can list the file names or the directories or the pattern in a file called .gitignore
+
+1425
+01:40:25,220 --> 01:40:29,200
+and here you can read more about them and you can even see some templates.
+
+1426
+01:40:29,200 --> 01:40:34,500
+So if you create such a file and you list whatever you want Git to ignore, it will ignore
+
+1427
+01:40:34,500 --> 01:40:40,300
+it, it will not see it, you cannot accidentally commit it.
+
+1428
+01:40:40,300 --> 01:40:42,660
+So anything that is sensitive or generated.
+
+1429
+01:40:42,660 --> 01:40:44,860
+The gitignore templates are very good.
+
+1430
+01:40:44,860 --> 01:40:49,260
+They are for different languages, C++ and Python.
+
+1431
+01:40:49,260 --> 01:40:50,100
+Yeah.
+
+1432
+01:40:51,580 --> 01:40:52,780
+So they are linked here.
+
+1433
+01:40:54,460 --> 01:40:55,980
+Huge files.
+
+1434
+01:40:55,980 --> 01:40:59,340
+Git is really good at tracking text files,
+
+1435
+01:40:59,340 --> 01:41:01,180
+code, scripts.
+
+1436
+01:41:03,060 --> 01:41:08,060
+If I wanted to commit big movies, gigantic images,
+
+1437
+01:41:08,060 --> 01:41:12,260
+big binary files, then Git is not the right place.
+
+1438
+01:41:15,100 --> 01:41:16,140
+And sometimes in your code,
+
+1439
+01:41:16,140 --> 01:41:18,260
+you need to use data that is gigantic,
+
+1440
+01:41:18,260 --> 01:41:21,140
+but then you can keep the data somewhere else,
+
+1441
+01:41:21,140 --> 01:41:22,740
+on a data repository place,
+
+1442
+01:41:22,740 --> 01:41:24,940
+and then refer to it from the Git repository.
+
+1443
+01:41:26,700 --> 01:41:29,540
+Also good to know that if I accidentally add something
+
+1444
+01:41:30,740 --> 01:41:34,180
+and commit it, and later I remove it,
+
+1445
+01:41:35,580 --> 01:41:37,140
+I don't remove it from the history.
+
+1446
+01:41:37,140 --> 01:41:39,540
+So if I accidentally added some passwords in the history
+
+1447
+01:41:39,540 --> 01:41:42,980
+and later I realized it was a mistake and I remove it,
+
+1448
+01:41:43,820 --> 01:41:45,580
+I can still find it in the history.
+
+1449
+01:41:47,180 --> 01:41:50,000
+It is possible to also remove commits from the history.
+
+1450
+01:41:51,100 --> 01:41:53,860
+Just that you know that this can be an issue,
+
+1451
+01:41:53,860 --> 01:41:54,840
+it can be fixed.
+
+1452
+01:41:57,340 --> 01:42:00,140
+But the idea of Git is that we don't edit,
+
+1453
+01:42:00,980 --> 01:42:02,900
+accidentally edit commits in the past.
+
+1454
+01:42:02,900 --> 01:42:14,140
+I think we talked about this before, yeah, it's good not to postpone commits until they
+
+1455
+01:42:14,140 --> 01:42:15,140
+will get beautiful.
+
+1456
+01:42:15,140 --> 01:42:19,500
+It's better to just commit them maybe on a side branch.
+
+1457
+01:42:19,500 --> 01:42:24,280
+Committing unrelated things together is at some point a problem.
+
+1458
+01:42:24,280 --> 01:42:30,500
+It's okay at the beginning.
+
+1459
+01:42:30,500 --> 01:42:31,740
+Back to questions.
+
+1460
+01:42:35,060 --> 01:42:35,900
+Oh, here we are.
+
+1461
+01:42:35,900 --> 01:42:36,820
+Sorry, I'm in the wrong place.
+
+1462
+01:42:36,820 --> 01:42:37,660
+What to avoid?
+
+1463
+01:42:45,540 --> 01:42:47,260
+Yeah, generated files, for instance,
+
+1464
+01:42:47,260 --> 01:42:48,180
+when you work with Conda,
+
+1465
+01:42:48,180 --> 01:42:50,460
+so then the thing that should be in the repository
+
+1466
+01:42:50,460 --> 01:42:53,120
+is the file that describes the environment.
+
+1467
+01:42:56,140 --> 01:42:58,940
+Files like environment.yaml, but the environment itself.
+
+1468
+01:42:58,940 --> 01:43:05,940
+So the installed packages, they would then not, I should ignore those.
+
+1469
+01:43:05,940 --> 01:43:15,860
+There was some other microphone thing that we should talk about in, on stream, which
+
+1470
+01:43:15,860 --> 01:43:20,660
+is discuss a little bit again, the difference between GitHub, VS Code, command line tracks,
+
+1471
+01:43:20,660 --> 01:43:27,540
+how they relate, where to start.
+
+1472
+01:43:27,540 --> 01:43:33,940
+So small, easy things you can do directly on GitHub.
+
+1473
+01:43:33,940 --> 01:43:40,340
+Anything like having discussions, reviewing code, can all be done on GitHub.
+
+1474
+01:43:40,340 --> 01:43:44,700
+As soon as I want to do something more than just a minimal change, I personally like to
+
+1475
+01:43:44,700 --> 01:43:50,040
+work locally first, reviewing the changes locally, then I publish them.
+
+1476
+01:43:50,040 --> 01:43:54,860
+And I think then people will have to make a choice between an editor, and there are
+
+1477
+01:43:54,860 --> 01:43:59,420
+many, or using the command line.
+
+1478
+01:43:59,420 --> 01:44:04,900
+And also command line, there are actually several to choose from, but there is then
+
+1479
+01:44:04,900 --> 01:44:08,820
+one command line git.
+
+1480
+01:44:08,820 --> 01:44:15,420
+It is also possible, it's possible to do, to create issues and pull requests and code
+
+1481
+01:44:15,420 --> 01:44:16,420
+review.
+
+1482
+01:44:16,420 --> 01:44:18,180
+It's possible to do also that from the command line.
+
+1483
+01:44:18,180 --> 01:44:24,820
+We didn't show that, but there are, you can do almost everything from the command line.
+
+1484
+01:44:24,820 --> 01:44:33,760
+For a beginner, I think VS Code is an easier starting point than the command line.
+
+1485
+01:44:33,760 --> 01:44:38,960
+But if you use a different editor, for instance, Spyder or RStudio, there is no reason to move
+
+1486
+01:44:38,960 --> 01:44:41,160
+out of it.
+
+1487
+01:44:41,160 --> 01:44:46,720
+We didn't show how to integrate RStudio with...
+
+1488
+01:44:46,720 --> 01:44:53,520
+We didn't emphasize how to integrate RStudio with GitHub, but it's possible, and you can
+
+1489
+01:44:53,520 --> 01:44:58,080
+and stay in the editor environment that you typically work in and chances are high that
+
+1490
+01:44:58,080 --> 01:45:01,880
+you can use Git from that environment.
+
+1491
+01:45:01,880 --> 01:45:11,520
+Yes, we chose to work mostly on GitHub because we wanted you to see the concepts and hopefully
+
+1492
+01:45:11,520 --> 01:45:23,000
+understand the concepts, but then you can choose your favorite interface to it.
+
+1493
+01:45:23,000 --> 01:45:29,640
+sure we will have time for this one. We have now 10 minutes left. What I also want to do to not forget
+
+1494
+01:45:31,560 --> 01:45:35,320
+is to use the remaining time to give us feedback,
+
+1495
+01:45:37,560 --> 01:45:45,560
+tell us what went well and what should be improved. Same as yesterday, this was really valuable to us.
+
+1496
+01:45:45,560 --> 01:45:50,520
+us.
+
+1497
+01:45:50,520 --> 01:45:55,520
+Maybe we can use the remaining time for that feedback and give an outlook on what to expect
+
+1498
+01:45:55,520 --> 01:45:56,520
+tomorrow.
+
+1499
+01:45:56,520 --> 01:46:02,520
+Or is there a microphone emoji that I missed that we should trace to the stream?
+
+1500
+01:46:16,520 --> 01:46:18,520
+Just browsing questions.
+
+1501
+01:46:26,520 --> 01:46:39,520
+So, while people fill out the feedback, maybe let's have a look on what to expect for tomorrow.
+
+1502
+01:46:39,520 --> 01:46:44,120
+I will try to find...
+
+1503
+01:46:44,120 --> 01:46:49,800
+Yeah, so what do people need to prepare for tomorrow?
+
+1504
+01:46:49,800 --> 01:47:01,880
+is so we are just concluding day two tomorrow we will do collaboration so we will take
+
+1505
+01:47:01,880 --> 01:47:09,160
+distributed version control yeah we will take this really to the next level
+
+1506
+01:47:09,160 --> 01:47:15,420
+work together again on cooking recipes we will call we will learn how to collaborate
+
+1507
+01:47:15,420 --> 01:47:17,860
+within the same repository, across repositories,
+
+1508
+01:47:19,300 --> 01:47:22,100
+some of the building blocks we already know from day one.
+
+1509
+01:47:24,540 --> 01:47:26,260
+Here, the focus will be more about
+
+1510
+01:47:27,460 --> 01:47:28,700
+how to do the code review
+
+1511
+01:47:30,340 --> 01:47:32,860
+and a closer look at some of the mechanics
+
+1512
+01:47:32,860 --> 01:47:34,260
+that we just brushed over.
+
+1513
+01:47:37,300 --> 01:47:38,800
+The thing to prepare is,
+
+1514
+01:47:39,940 --> 01:47:44,420
+so it's possible to do all of tomorrow purely on GitHub.
+
+1515
+01:47:45,420 --> 01:47:51,740
+So if you don't have an editor set up or command line set up is not a problem, you can do everything
+
+1516
+01:47:51,740 --> 01:47:57,460
+on GitHub tomorrow.
+
+1517
+01:47:57,460 --> 01:48:03,580
+But what is important to set up is that since we want to do collaboration, those of you
+
+1518
+01:48:03,580 --> 01:48:10,100
+who are participating as a team, as a classroom or a team, you can work together within the
+
+1519
+01:48:10,100 --> 01:48:20,300
+same exercise repository and you will have the chance to set it up tomorrow.
+
+1520
+01:48:20,300 --> 01:48:26,700
+But those of you who are participating on your own and would like to practice collaboration
+
+1521
+01:48:26,700 --> 01:48:32,940
+and collaborate with others and collaborate with us on stream, you can.
+
+1522
+01:48:32,940 --> 01:48:34,980
+And hopefully you got an email about it.
+
+1523
+01:48:34,980 --> 01:48:43,180
+So you got an email yesterday, there is, you will need to do one relatively simple thing
+
+1524
+01:48:43,180 --> 01:48:50,180
+and this is to tell us, I don't know what I can open the, yeah, actually I can open
+
+1525
+01:48:50,180 --> 01:48:56,380
+the email because I can show you, one thing I can show you is that on the workshop page
+
+1526
+01:48:56,380 --> 01:49:04,500
+on top right is the tab communication and there you can find emails that we have been
+
+1527
+01:49:04,500 --> 01:49:10,180
+sending out. And we do this because we know that there are participants who join later.
+
+1528
+01:49:10,180 --> 01:49:15,940
+And the one that we sent out yesterday is this one. Preparation for day three. I will
+
+1529
+01:49:15,940 --> 01:49:23,500
+navigate to it. Okay, there's something wrong with the navigation, but it's down here. So
+
+1530
+01:49:23,500 --> 01:49:27,700
+if you if you are on your own, but you would like to collaborate with others and with us
+
+1531
+01:49:27,700 --> 01:49:37,020
+on stream, you need to do this relatively simple step and then we can add you to our
+
+1532
+01:49:37,020 --> 01:49:43,140
+exercise repository that we will use tomorrow.
+
+1533
+01:49:43,140 --> 01:50:00,140
+So that's important to prepare.
+
+1534
+01:50:00,140 --> 01:50:10,140
+Okay so, yeah, I, is what I wrote under the news here accurate then?
+
+1535
+01:50:10,140 --> 01:50:12,140
+If you scroll up a bit.
+
+1536
+01:50:12,140 --> 01:50:30,140
+Oh, yeah, just looking at the question and feedback,
+
+1537
+01:50:30,140 --> 01:50:32,380
+something we can already comment on right now.
+
+1538
+01:50:37,020 --> 01:50:38,700
+Yeah, I'll get bisect, we didn't have time.
+
+1539
+01:50:42,140 --> 01:50:45,640
+But I think we have some past recordings on it, don't we?
+
+1540
+01:50:45,640 --> 01:50:46,640
+Yeah.
+
+1541
+01:50:46,640 --> 01:50:53,500
+The thing I remember in past years, we sort of did it at the end of a workshop, like maybe
+
+1542
+01:50:53,500 --> 01:51:04,140
+we did it after the official time ended, and then I inserted the video into the right place.
+
+1543
+01:51:04,140 --> 01:51:05,140
+Okay.
+
+1544
+01:51:05,140 --> 01:51:06,140
+Yeah.
+
+1545
+01:51:06,140 --> 01:51:21,860
+And also good to remark that for the people who used VS Code to study command line, there
+
+1546
+01:51:21,860 --> 01:51:27,780
+was a little bit of repetition and that's hard to avoid compromise that we chose to
+
+1547
+01:51:27,780 --> 01:51:28,780
+do.
+
+1548
+01:51:28,780 --> 01:51:33,260
+But maybe what we should then do is to offer some additional exercises for those who are
+
+1549
+01:51:33,260 --> 01:51:46,080
+already familiar to these tools. Otherwise, I'm happy if we can, of course, talk more.
+
+1550
+01:51:46,080 --> 01:51:49,740
+Maybe it's not a problem to end four minutes before the end.
+
+1551
+01:51:49,740 --> 01:51:58,900
+Yeah. I'd point out under feedback, there's a new part here. What part of the course format
+
+1552
+01:51:58,900 --> 01:52:04,500
+you value most. So we have lots of discussions going on here like how do we
+
+1553
+01:52:06,820 --> 01:52:14,180
+like where should we focus our time and effort so we well it's a lot of
+
+1554
+01:52:15,860 --> 01:52:22,740
+time to put on these courses would for example would videos be a okay replacement
+
+1555
+01:52:22,740 --> 01:52:35,060
+is us talking live the most important part, and so on. So please answer there
+
+1556
+01:52:35,060 --> 01:52:43,820
+some. That'll help us figure out how to adjust things. Maybe I should add
+
+1557
+01:52:43,820 --> 01:52:48,820
+exercises here as an option.
+
+1558
+01:52:48,820 --> 01:52:58,820
+But yeah, these surveys really do help us.
+
+1559
+01:52:58,820 --> 01:53:08,820
+Also, good feedback. We need more for RStudio.
+
+1560
+01:53:08,820 --> 01:53:13,140
+If you know anyone that knows RStudio, get in touch with us
+
+1561
+01:53:13,140 --> 01:53:16,140
+and they can help us.
+
+1562
+01:53:16,140 --> 01:53:20,940
+So we can do it ourselves, but if there's
+
+1563
+01:53:20,940 --> 01:53:22,060
+an expert, that helps.
+
+1564
+01:53:27,940 --> 01:53:30,300
+OK, well, I guess.
+
+1565
+01:53:30,300 --> 01:53:41,180
+yeah thanks everybody so i think this with this we can conclude today's session
+
+1566
+01:53:42,460 --> 01:53:47,100
+hopefully we learned something new thanks so much for all the questions thanks to all the helpers
+
+1567
+01:53:48,300 --> 01:53:54,060
+and people involved both here on video but also off video people answering questions and
+
+1568
+01:53:54,060 --> 01:54:03,260
+making the local classrooms possible and all of the other work yeah yeah thanks so much see you
+
+1569
+01:54:03,260 --> 01:54:13,340
+tomorrow okay see you tomorrow bye bye bye do you want to do the git bisect exercise now and record
+
+1570
+01:54:13,340 --> 01:54:21,180
+it or should we just post it i think the videos from last year's are fine so yeah i can find me
+
+1571
+01:54:21,180 --> 01:54:27,740
+I'm happy to, but I think we have it. Yeah. Okay, great. Bye.
+
