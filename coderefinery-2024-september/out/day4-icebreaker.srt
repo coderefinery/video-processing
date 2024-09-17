@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:06,220
+All right, so now it's 10 a.m. in Finland, let's start.
+
+2
+00:00:06,220 --> 00:00:14,580
+I will first introduce you and then I will let you do the show.
+
+3
+00:00:14,580 --> 00:00:19,140
+So let me switch to [name]' screen.
+
+4
+00:00:27,140 --> 00:00:28,100
+All right.
+
+5
+00:00:28,100 --> 00:00:31,580
+Welcome, everyone, to the fourth episode
+
+6
+00:00:31,580 --> 00:00:36,580
+of this Code Refinery workshop, September 2024.
+
+7
+00:00:36,580 --> 00:00:40,060
+I'm [name], and I will be the host for you,
+
+8
+00:00:40,060 --> 00:00:42,340
+with you today.
+
+9
+00:00:42,340 --> 00:00:45,860
+And today the topic is reproducibility,
+
+10
+00:00:45,860 --> 00:00:50,100
+specifically more kind of the computational reproducibility.
+
+11
+00:00:50,100 --> 00:00:54,340
+So trying to replicate the results of other people
+
+12
+00:00:54,340 --> 00:00:57,020
+or even try to replicate what you did
+
+13
+00:00:57,020 --> 00:00:59,460
+a few months or a few years ago.
+
+14
+00:00:59,460 --> 00:01:02,940
+The first part of today,
+
+15
+00:01:02,940 --> 00:01:05,180
+which will last for a couple of hours,
+
+16
+00:01:05,180 --> 00:01:07,860
+will be presented by [name].
+
+17
+00:01:07,860 --> 00:01:10,900
+[name], do you wanna say something about yourself?
+
+18
+00:01:10,900 --> 00:01:16,420
+a research software engineer at Aalto, which is the scientific computing group, same as [name]
+
+19
+00:01:16,420 --> 00:01:23,620
+essentially. And then [name] will be joined by [name]. [name], do you want to say something about
+
+20
+00:01:23,620 --> 00:01:31,220
+yourself? Hello, I'm [name]. I'm also a research software engineer at Aalto. So we are basically
+
+21
+00:01:31,220 --> 00:01:39,540
+all colleagues here now. Thanks. And then later after the lunch break, which will go from 12 to
+
+22
+00:01:39,540 --> 00:01:46,740
+one finish time. There will be [name] and I talking about social coding and licensing.
+
+23
+00:01:46,740 --> 00:01:48,900
+[name], do you want to introduce yourself?
+
+24
+00:01:50,180 --> 00:01:54,580
+Yeah, sure. I'm [name]. I'm also one of the RSEs at Alto. Happy to be here.
+
+25
+00:01:56,020 --> 00:02:03,140
+So it's a full Alto team this time, all based in Finland. So apologies if I will use the finish
+
+26
+00:02:03,140 --> 00:02:08,260
+time zone as a reference, but I guess you can convert it to your central European or wherever
+
+27
+00:02:08,260 --> 00:02:17,620
+you live. Just a reminder that the materials for today are linked in the main page of the workshop
+
+28
+00:02:18,340 --> 00:02:24,180
+and if you keep the notes document open we will also post the links to the materials that
+
+29
+00:02:25,460 --> 00:02:32,660
+the instructors are showing. This week compared to the first week is a week where we will not do
+
+30
+00:02:32,660 --> 00:02:39,060
+actual exercises. But of course there will be lots of questions for you and discussions. So in
+
+31
+00:02:39,060 --> 00:02:47,060
+practice the notes document is our main tool for interacting. We decided to do it like this for now
+
+32
+00:02:47,060 --> 00:02:53,540
+a couple of times. The reason being that sometimes all the material that are presented in the second
+
+33
+00:02:53,540 --> 00:02:59,540
+part of the week, in the second part of the workshop, it can be overwhelming to try to do
+
+34
+00:02:59,540 --> 00:03:05,620
+the exercises and also understand what's going on. So there are exercises written in the materials,
+
+35
+00:03:05,620 --> 00:03:12,980
+and of course you're welcome to try them later if you have time. But in general, try to follow
+
+36
+00:03:12,980 --> 00:03:17,700
+our demos and our discussion and try to contribute with lots of questions,
+
+37
+00:03:18,260 --> 00:03:21,380
+because that's the best that we can get out of this experience.
+
+38
+00:03:22,500 --> 00:03:28,260
+So I think, yeah. I'd like to add one thing here. One of the reasons that we don't do the exercises
+
+39
+00:03:28,260 --> 00:03:34,580
+also because some of the tools that we are showing this week are very specialized tools and not
+
+40
+00:03:34,580 --> 00:03:42,660
+actually useful for everything and going through the exercises if you think yeah think it's useful
+
+41
+00:03:42,660 --> 00:03:47,140
+for you yeah it's definitely a good idea but some of the tools can just be skipped
+
+42
+00:03:49,620 --> 00:03:56,820
+yes all right i think this is all for the introduction so i'm gonna leave the scene
+
+43
+00:03:56,820 --> 00:04:03,460
+and the screen to [name] and [name] and I'll be back later for the break.
+
+44
+00:04:06,020 --> 00:04:12,260
+Okay so yeah this week and particularly today is about reproducible research
+
+45
+00:04:14,260 --> 00:04:21,620
+and it essentially starts with getting files in order. You have already last week seen a lot about
+
+46
+00:04:21,620 --> 00:04:30,980
+version control. No, sorry. It's about how to code, what to use as names for your functions
+
+47
+00:04:30,980 --> 00:04:36,580
+and so on and this will be done. We'll mainly focus on tomorrow and on Thursday.
+
+48
+00:04:39,460 --> 00:04:48,260
+As mentioned earlier, documentation is a very important part of reproducible research because
+
+49
+00:04:48,260 --> 00:04:53,780
+without documentation it's very difficult to redo what others have done
+
+50
+00:04:53,780 --> 00:05:00,580
+and that will be covered extensively tomorrow. The last week you've already
+
+51
+00:05:00,580 --> 00:05:06,380
+had a version control of code of text and how to do that, how to do
+
+52
+00:05:06,380 --> 00:05:10,620
+collaborative and distributed version control and what are the challenges
+
+53
+00:05:10,620 --> 00:05:17,460
+there. You further have things like stabilizing your computing environment
+
+54
+00:05:17,460 --> 00:05:20,780
+so that others can more easily reproduce what you have done
+
+55
+00:05:20,780 --> 00:05:26,460
+because they know what your environment actually looked
+
+56
+00:05:26,460 --> 00:05:29,140
+like, and part of this is covered today.
+
+57
+00:05:29,140 --> 00:05:36,580
+And other ways to do this are shown in more detail
+
+58
+00:05:36,580 --> 00:05:39,260
+tomorrow and on Thursday.
+
+59
+00:05:39,260 --> 00:05:43,660
+And it's, of course, also about how you publish your research
+
+60
+00:05:43,660 --> 00:05:46,340
+outputs, how you publish your code, your data,
+
+61
+00:05:46,340 --> 00:05:47,580
+your documents that you need.
+
+62
+00:05:47,580 --> 00:05:50,460
+And social coding and open software
+
+63
+00:05:50,460 --> 00:05:52,460
+will also be discussed later today.
+

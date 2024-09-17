@@ -1,0 +1,4436 @@
+1
+00:00:00,000 --> 00:00:01,880
+coding and open software will also be discussed later today. So, but let's jump
+
+2
+00:00:01,880 --> 00:00:11,000
+into reproducible research and why we want to do that. And there's a nice PhD comic about this
+
+3
+00:00:11,000 --> 00:00:17,640
+where Professor Smith has his PhD student in front of him and asks, well that's it. Well don't
+
+4
+00:00:17,640 --> 00:00:22,680
+worry, you don't have to start your code from scratch. You can reuse the software that the
+
+5
+00:00:22,680 --> 00:00:29,480
+previous person on the project wrote several years ago. And are there instructions for how to use it?
+
+6
+00:00:29,480 --> 00:00:31,480
+I doubt it.
+
+7
+00:00:31,480 --> 00:00:33,480
+Is the code commented?
+
+8
+00:00:33,480 --> 00:00:35,480
+Not likely.
+
+9
+00:00:35,480 --> 00:00:37,480
+And where are the files?
+
+10
+00:00:37,480 --> 00:00:39,480
+Who knows?
+
+11
+00:00:39,480 --> 00:00:41,480
+This is going to be painful, isn't it?
+
+12
+00:00:41,480 --> 00:00:43,480
+Just a scratch.
+
+13
+00:00:43,480 --> 00:00:45,480
+And
+
+14
+00:00:45,480 --> 00:00:47,480
+I think this is
+
+15
+00:00:47,480 --> 00:00:49,480
+at least to some extent
+
+16
+00:00:49,480 --> 00:00:51,480
+very much what a lot of people
+
+17
+00:00:51,480 --> 00:00:53,480
+in academia
+
+18
+00:00:53,480 --> 00:00:55,480
+have experienced. I myself had
+
+19
+00:00:55,480 --> 00:00:57,480
+a similar thing where I was told
+
+20
+00:00:57,480 --> 00:01:03,880
+sold. Here is code that we want to have in our library. Please connect it to the library that
+
+21
+00:01:03,880 --> 00:01:08,920
+we have." And there wasn't a lot of documentation and that was essentially my bachelor thesis
+
+22
+00:01:08,920 --> 00:01:21,240
+in the end. So this happens all the time, unfortunately. And while that's bad, there's
+
+23
+00:01:21,240 --> 00:01:26,280
+also the problem that's here in this anecdote where a group of researchers have obtained great
+
+24
+00:01:26,280 --> 00:01:32,680
+results and submitted their work to a high-profile journal. The reviewers ask for a few more figures
+
+25
+00:01:32,680 --> 00:01:37,720
+and some additional analysis, which is actually quite common. The researchers start working on
+
+26
+00:01:37,720 --> 00:01:43,400
+those revisions, generate modified figures, but find inconsistencies with their old figures.
+
+27
+00:01:44,440 --> 00:01:49,160
+And then the problems start because the researchers can't find some of the data they
+
+28
+00:01:49,160 --> 00:01:53,320
+used to generate the original results and they can't figure out which parameters they used
+
+29
+00:01:53,320 --> 00:02:01,080
+when running their original analysis. And well, that manuscript is likely to just end up in a
+
+30
+00:02:01,080 --> 00:02:06,200
+drawer and never really be published because they don't know what they actually did.
+
+31
+00:02:08,280 --> 00:02:18,120
+Yeah, this is actually the anecdote highlights the most, to me, the most important aspect of the
+
+32
+00:02:18,120 --> 00:02:28,240
+the reproducibility and things we want to do for reproducibility, which is that you
+
+33
+00:02:28,240 --> 00:02:40,000
+should make your own life easier, that you can reproduce your own results. And this graph
+
+34
+00:02:40,000 --> 00:02:43,400
+also highlights that problem.
+
+35
+00:02:43,400 --> 00:02:52,040
+Yeah, it's, and at least to me, it's somewhat understandable if there are some issues with
+
+36
+00:02:52,040 --> 00:03:00,440
+reproducibility in experimental fields where there are so many confounding factors, where
+
+37
+00:03:00,440 --> 00:03:05,840
+there have been examples where a changed water pipe changed the results because there was
+
+38
+00:03:05,840 --> 00:03:11,880
+something coming from the water pipe that wasn't expected, that they didn't test for
+
+39
+00:03:11,880 --> 00:03:19,000
+and that changed the results. But in a computational setting, this should not happen. Because we
+
+40
+00:03:19,000 --> 00:03:26,440
+can a lot better control what we are doing. And this should be a lot more reproducible.
+
+41
+00:03:26,440 --> 00:03:31,920
+And anything in a computational field that's not reproducible comes essentially down to
+
+42
+00:03:31,920 --> 00:03:40,160
+badly documented steps for the experiment. And there are different levels of reproducibility.
+
+43
+00:03:40,160 --> 00:03:50,680
+By the way, can we highlight that in the graph, the question that I have failed to reproduce
+
+44
+00:03:50,680 --> 00:03:54,720
+an experiment and my own.
+
+45
+00:03:54,720 --> 00:03:55,720
+And it's like...
+
+46
+00:03:55,720 --> 00:04:00,880
+There isn't a big difference between your own and someone else's.
+
+47
+00:04:00,880 --> 00:04:03,080
+Yeah, there isn't a big difference.
+
+48
+00:04:03,080 --> 00:04:08,880
+And there is a huge amount of percentage, like in both cases.
+
+49
+00:04:08,880 --> 00:04:18,160
+So yeah, and this was 2016, but basically in eight years, I don't think anything has
+
+50
+00:04:18,160 --> 00:04:20,360
+fundamentally changed.
+
+51
+00:04:20,360 --> 00:04:26,220
+One would hope that this has gone down a little bit, but yeah, I would also expect that it
+
+52
+00:04:26,220 --> 00:04:29,500
+hasn't gone down substantially.
+
+53
+00:04:29,500 --> 00:04:35,660
+And essentially, as I mentioned earlier, so you have different levels of reproducibility
+
+54
+00:04:35,660 --> 00:04:45,340
+and you have a kind of pyramid on what can be reproduced and of course the environment in
+
+55
+00:04:45,340 --> 00:04:53,980
+especially experimental settings can be something that is potentially very difficult to control
+
+56
+00:04:55,020 --> 00:05:01,100
+but we can control it reasonably well in a computational setting and in a computational
+
+57
+00:05:01,100 --> 00:05:08,540
+setting it's also we have code and data and that should be controllable because the data has been
+
+58
+00:05:09,420 --> 00:05:15,740
+it's there it has been generated so and it shouldn't change and the code also has been there
+
+59
+00:05:15,740 --> 00:05:22,540
+and shouldn't change then it comes to how has the code been used that's documentation what
+
+60
+00:05:22,540 --> 00:05:28,300
+parameters have been used that's documentation and only in the end once we have all this we create
+
+61
+00:05:28,300 --> 00:05:36,220
+we build an article and if if something below here fails then this article fails because it
+
+62
+00:05:36,220 --> 00:05:42,700
+can't be reproduced because if we don't know what parameters we had well nice to have the code but
+
+63
+00:05:42,700 --> 00:05:48,940
+how did the results actually get obtained we don't know so the whole basis of this article
+
+64
+00:05:48,940 --> 00:05:57,420
+crumbles essentially and we have asked you uh in the collaborative document to post a few of your
+
+65
+00:05:57,420 --> 00:06:09,980
+experiences with reproducibility of the things. And I actually want to highlight this first one
+
+66
+00:06:09,980 --> 00:06:16,860
+that was in here, because this is something that happens both to the person writing it
+
+67
+00:06:18,460 --> 00:06:26,780
+and to others coming there. You have stuff and you try to read it and think, well, yeah, it has
+
+68
+00:06:26,780 --> 00:06:33,100
+been done but I don't get anything here because it's not well documented or it's not well written
+
+69
+00:06:33,100 --> 00:06:38,540
+and you essentially have to redo things and that's something that's very very common.
+
+70
+00:06:44,140 --> 00:06:49,660
+Here this is also the typical yeah a new version of the package has been
+
+71
+00:06:49,660 --> 00:06:57,820
+been published and the old version doesn't work on the current system anymore, or you
+
+72
+00:06:57,820 --> 00:07:07,260
+have to go to great length to go through this, which is a really huge issue.
+
+73
+00:07:07,260 --> 00:07:17,200
+I can relate to all of these answers, and one thing I actually want to point out is
+
+74
+00:07:17,200 --> 00:07:24,480
+that in the question it says that a script or a figure you created a few months ago.
+
+75
+00:07:24,480 --> 00:07:32,160
+For me, I don't have to wait a few months, because like a day or two is completely enough.
+
+76
+00:07:32,160 --> 00:07:45,360
+Because like I, if I don't document stuff for myself, in two days, it's basically, I
+
+77
+00:07:45,360 --> 00:07:46,840
+may have to start over.
+
+78
+00:07:46,840 --> 00:07:51,320
+So I completely know what people are
+
+79
+00:07:51,320 --> 00:07:55,040
+coming from with these comments.
+
+80
+00:07:55,040 --> 00:07:55,800
+Yeah.
+
+81
+00:07:55,800 --> 00:07:58,600
+So I think all of these are really
+
+82
+00:07:58,600 --> 00:08:01,840
+good examples of why we need reproducible research.
+
+83
+00:08:01,840 --> 00:08:05,480
+And I hope we can show you a couple of things
+
+84
+00:08:05,480 --> 00:08:09,920
+that help you in making your reproducibility
+
+85
+00:08:09,920 --> 00:08:13,240
+or making your work more reproducible,
+
+86
+00:08:13,240 --> 00:08:15,760
+either by others or yourself.
+
+87
+00:08:15,760 --> 00:08:16,760
+Okay.
+
+88
+00:08:16,760 --> 00:08:25,120
+And so just an overview of the next two hours.
+
+89
+00:08:25,120 --> 00:08:29,280
+So we have four subtopics here.
+
+90
+00:08:29,280 --> 00:08:32,480
+So first is organizing your projects.
+
+91
+00:08:32,480 --> 00:08:37,640
+So files and folders, structure, basically.
+
+92
+00:08:37,640 --> 00:08:44,480
+The next is recording computational steps.
+
+93
+00:08:44,480 --> 00:08:57,640
+So what was run and when and how, then recording dependencies, which is that what is the software
+
+94
+00:08:57,640 --> 00:09:05,080
+or what libraries and which versions of software and libraries your code is using to get the
+
+95
+00:09:05,080 --> 00:09:09,840
+the results, and then recording environments, which is.
+
+96
+00:09:13,000 --> 00:09:16,360
+What operating system, what system libraries?
+
+97
+00:09:16,360 --> 00:09:18,640
+So it's actually going one step further
+
+98
+00:09:18,640 --> 00:09:21,120
+down the environment chain.
+
+99
+00:09:21,120 --> 00:09:29,200
+Yeah, one step further down the rabbit hole of reproducibility.
+
+100
+00:09:29,200 --> 00:09:29,800
+Yeah.
+
+101
+00:09:29,800 --> 00:09:31,600
+OK, yeah, sorry, go ahead.
+
+102
+00:09:31,600 --> 00:09:35,920
+So let's get into organizing your projects.
+
+103
+00:09:35,920 --> 00:09:39,400
+So yeah, it's really one of the first steps
+
+104
+00:09:39,400 --> 00:09:42,920
+to make your work reputable is to organize your projects well,
+
+105
+00:09:42,920 --> 00:09:50,480
+so to have a structure that you understand where you can
+
+106
+00:09:50,480 --> 00:09:52,520
+actually find things again.
+
+107
+00:09:52,520 --> 00:09:54,560
+Because even the finding the right function,
+
+108
+00:09:54,560 --> 00:09:58,160
+finding the right piece of data can become difficult
+
+109
+00:09:58,160 --> 00:10:03,160
+if your data and your project is not properly organized.
+
+110
+00:10:04,720 --> 00:10:06,880
+So first of all, of course,
+
+111
+00:10:06,880 --> 00:10:09,520
+have everything that belongs to a project
+
+112
+00:10:09,520 --> 00:10:10,840
+in a single folder,
+
+113
+00:10:10,840 --> 00:10:15,840
+because then you have something where you can have it
+
+114
+00:10:16,000 --> 00:10:18,440
+or where you know, okay, this is what it is.
+
+115
+00:10:18,440 --> 00:10:20,360
+And if that's not possible,
+
+116
+00:10:20,360 --> 00:10:22,940
+because you have, for example,
+
+117
+00:10:22,940 --> 00:10:26,160
+some big data that needs to be stored elsewhere,
+
+118
+00:10:26,160 --> 00:10:30,480
+have links or indicators where that data can be found early on.
+
+119
+00:10:30,480 --> 00:10:34,960
+That can be in a README or in some other way,
+
+120
+00:10:34,960 --> 00:10:38,160
+how this can be stored.
+
+121
+00:10:38,160 --> 00:10:42,120
+Use different projects in different folders.
+
+122
+00:10:42,120 --> 00:10:45,200
+Don't mix.
+
+123
+00:10:45,200 --> 00:10:47,480
+It will only lead to a mess, and you can't get out
+
+124
+00:10:47,480 --> 00:10:48,560
+of that mess again.
+
+125
+00:10:48,560 --> 00:10:52,640
+Because untangling mixed up projects
+
+126
+00:10:52,640 --> 00:10:54,520
+will always be a problem.
+
+127
+00:10:54,520 --> 00:10:59,520
+If you have things like code that you use in both projects,
+
+128
+00:10:59,640 --> 00:11:01,560
+set up a Git repository for the code
+
+129
+00:11:02,440 --> 00:11:04,280
+and clone it into both projects.
+
+130
+00:11:07,280 --> 00:11:09,560
+And potentially have a branch for each project
+
+131
+00:11:09,560 --> 00:11:14,560
+if they really do have different code in the end,
+
+132
+00:11:14,680 --> 00:11:19,680
+but try to get the code in a way that both can use it.
+
+133
+00:11:19,680 --> 00:11:30,560
+can use it. Use a consistent and informative directory structure. This, for example,
+
+134
+00:11:30,560 --> 00:11:37,200
+this is an example of what you can do. Have data, process data. So data is the raw information. This
+
+135
+00:11:37,200 --> 00:11:44,080
+is what you got from your experiments or what you got from an external partner or a partner.
+
+136
+00:11:44,080 --> 00:11:50,520
+this is the raw data. Process data is anything that you have pre-processed or
+
+137
+00:11:50,520 --> 00:11:58,640
+modified. The manuscript is everything that's connected with the with writing
+
+138
+00:11:58,640 --> 00:12:03,720
+the article in the end or the articles if you have multiple for the same
+
+139
+00:12:03,720 --> 00:12:15,720
+project. Results is essentially finished data, some tables, figures, and everything that you
+
+140
+00:12:15,720 --> 00:12:23,160
+want to put into the manuscript potentially. Source is your code with a license, with requirements
+
+141
+00:12:23,160 --> 00:12:30,920
+and information about it. And doc is the additional documentation. Your readme can already
+
+142
+00:12:30,920 --> 00:12:38,760
+contain some of the docs or contain information on, okay, this is where you find the documentation
+
+143
+00:12:38,760 --> 00:12:48,840
+for this. Also, I'd like to point out that in many, many, many cases, readme is enough.
+
+144
+00:12:48,840 --> 00:12:53,400
+So you shouldn't be... A well-written readme is enough.
+
+145
+00:12:53,400 --> 00:12:59,800
+Yeah, well-written readme is... Extensive readme is enough. But the point is that we shouldn't be
+
+146
+00:12:59,800 --> 00:13:03,760
+be kind of intimidated by the thought
+
+147
+00:13:03,760 --> 00:13:13,680
+that the documentation needs to be a whole HTML documentation
+
+148
+00:13:13,680 --> 00:13:15,640
+web page.
+
+149
+00:13:15,640 --> 00:13:20,480
+I think the simplest check is, once you've done your stuff
+
+150
+00:13:20,480 --> 00:13:22,480
+and you're happy with me, ask a colleague that's
+
+151
+00:13:22,480 --> 00:13:25,200
+not in the project, could you take this
+
+152
+00:13:25,200 --> 00:13:27,760
+and reproduce the figures?
+
+153
+00:13:27,760 --> 00:13:29,520
+And not help them by doing it.
+
+154
+00:13:29,520 --> 00:13:30,020
+Yeah.
+
+155
+00:13:32,960 --> 00:13:37,200
+One small thing, try to avoid spaces in directories and filenames.
+
+156
+00:13:37,200 --> 00:13:45,280
+Yes, it's uglier to read, but a lot of times there are programs that don't handle spaces well.
+
+157
+00:13:46,480 --> 00:13:52,400
+So not having spaces in there can make things a lot easier computational-wise.
+
+158
+00:13:52,960 --> 00:13:56,880
+It's not absolutely necessary, but it's, I would say, good practice.
+
+159
+00:13:56,880 --> 00:14:06,400
+If you need separate public and private parts, you can create a public and private Git repository.
+
+160
+00:14:07,680 --> 00:14:15,680
+Make sure that they are not in the same Git network. I would really create separate
+
+161
+00:14:15,680 --> 00:14:21,120
+repositories for it and not fork from the one to the other and then make it private.
+
+162
+00:14:21,120 --> 00:14:29,800
+it. If you need to separate public and secret data, in the same repository, you can use
+
+163
+00:14:29,800 --> 00:14:36,600
+gitignore, as was, I think, discussed last week. And having and setting up a gitignore
+
+164
+00:14:36,600 --> 00:14:45,640
+early on always makes sense. And yes, and the rest, I think, we already mentioned.
+
+165
+00:14:45,640 --> 00:14:54,280
+So about the project structure, does your project
+
+166
+00:14:54,280 --> 00:14:58,080
+always look like this structure?
+
+167
+00:14:58,080 --> 00:15:01,040
+Does it often look like this?
+
+168
+00:15:01,040 --> 00:15:04,160
+Does it never look like this, this example?
+
+169
+00:15:06,760 --> 00:15:08,840
+It looks similar.
+
+170
+00:15:08,840 --> 00:15:14,440
+I don't really have these parts at the moment anymore,
+
+171
+00:15:14,440 --> 00:15:18,720
+But I do have their source code data potential documentation.
+
+172
+00:15:18,720 --> 00:15:21,960
+But as you mentioned, I'm actually mainly readmes
+
+173
+00:15:21,960 --> 00:15:27,840
+that sometimes point to another to a second MD markdown
+
+174
+00:15:27,840 --> 00:15:31,360
+file for a specific setup of development systems
+
+175
+00:15:31,360 --> 00:15:32,480
+or something like that.
+
+176
+00:15:32,480 --> 00:15:35,400
+But yeah, conceptually similar.
+
+177
+00:15:39,160 --> 00:15:40,640
+It looks very standard.
+
+178
+00:15:40,640 --> 00:15:44,000
+And it's always nice to use standard practices.
+
+179
+00:15:44,440 --> 00:15:56,480
+Yep, so, um, sorry, um, yeah, um, the tracking, tracking your data and your project is also
+
+180
+00:15:56,480 --> 00:15:57,480
+important.
+
+181
+00:15:57,480 --> 00:16:05,920
+Well, all code should be version controlled and should be in the source code folder, have
+
+182
+00:16:05,920 --> 00:16:09,920
+a license in there.
+
+183
+00:16:09,920 --> 00:16:15,240
+You can also version control data files if they are not too large.
+
+184
+00:16:15,240 --> 00:16:20,120
+If they are very large, you can still version control them with systems like Git Annex or
+
+185
+00:16:20,120 --> 00:16:23,120
+Git LFS.
+
+186
+00:16:23,120 --> 00:16:29,200
+Large file system.
+
+187
+00:16:29,200 --> 00:16:33,440
+Where you can essentially, where the file is essentially placed somewhere else and it's
+
+188
+00:16:33,440 --> 00:16:37,360
+just the version that's being tracked.
+
+189
+00:16:37,360 --> 00:16:42,640
+GitAnnex essentially builds an additional network of repositories where it knows where
+
+190
+00:16:42,640 --> 00:16:52,880
+the data is residing and you can get the data, but if you don't explicitly want it, you don't
+
+191
+00:16:52,880 --> 00:16:56,720
+have to download it.
+
+192
+00:16:56,720 --> 00:17:05,360
+You can also, if they are sensitive or too large for being tracked, put them into gitignore
+
+193
+00:17:05,360 --> 00:17:09,840
+and provide them on a different system,
+
+194
+00:17:09,840 --> 00:17:10,920
+which is perfectly fine,
+
+195
+00:17:10,920 --> 00:17:13,200
+especially if it's research data
+
+196
+00:17:13,200 --> 00:17:14,600
+that doesn't really change.
+
+197
+00:17:14,600 --> 00:17:18,480
+So if you have all your experimental data done
+
+198
+00:17:18,480 --> 00:17:21,400
+and you're not going to get more experimental data,
+
+199
+00:17:21,400 --> 00:17:24,400
+you can essentially put this into a folder,
+
+200
+00:17:29,760 --> 00:17:32,000
+put it onto some data server and yeah,
+
+201
+00:17:33,000 --> 00:17:35,120
+and then just point to it in the README
+
+202
+00:17:35,120 --> 00:17:36,380
+or somewhere else.
+
+203
+00:17:39,720 --> 00:17:44,600
+Intermediate files don't really need to be tracked.
+
+204
+00:17:44,600 --> 00:17:46,520
+Commonly, there might be situations
+
+205
+00:17:46,520 --> 00:17:48,680
+where the pre-processing takes a long time
+
+206
+00:17:48,680 --> 00:17:52,440
+and you actually want to keep that data stored
+
+207
+00:17:52,440 --> 00:17:54,520
+and potentially tracked as well.
+
+208
+00:17:54,520 --> 00:17:57,860
+But in general, I would say process data
+
+209
+00:17:57,860 --> 00:18:00,400
+can be reproduced from the original data
+
+210
+00:18:00,400 --> 00:18:02,480
+or should be reproducible from the original data
+
+211
+00:18:02,480 --> 00:18:04,520
+and therefore doesn't need to be tracked.
+
+212
+00:18:05,120 --> 00:18:18,760
+Well, using git tags to mark specific versions of results is always also a good idea, because
+
+213
+00:18:18,760 --> 00:18:26,200
+you then know, okay, this is the version that was submitted for the thesis or for the paper,
+
+214
+00:18:26,200 --> 00:18:31,920
+and people can, and you can essentially in the paper point to this version, because that's
+
+215
+00:18:31,920 --> 00:18:40,320
+the data that was being used for the paper while your code could have developed on.
+
+216
+00:18:43,120 --> 00:18:49,600
+Yeah, so we have two more questions here that we can also put into the
+
+217
+00:18:50,880 --> 00:18:56,480
+that are already in the... Yeah, they are in the notes and everybody is welcome to.
+
+218
+00:18:56,480 --> 00:19:08,560
+It's mainly questions about how, the first is mainly if you use version control for academic
+
+219
+00:19:08,560 --> 00:19:18,480
+papers and the second is how if you do, how you handle collaborative issues.
+
+220
+00:19:18,480 --> 00:19:28,920
+Unfortunately, I never used version control for manuscript writing, or rather, I never
+
+221
+00:19:28,920 --> 00:19:33,560
+used Git for manuscript writing.
+
+222
+00:19:33,560 --> 00:19:45,720
+The main reason for that is that writing collaboratively on Git is painful.
+
+223
+00:19:45,720 --> 00:19:53,240
+There are tools like Overleaf or Google Docs or HackMD,
+
+224
+00:19:53,240 --> 00:19:54,880
+what we are just using, where everyone can
+
+225
+00:19:54,880 --> 00:19:57,800
+write in the same document.
+
+226
+00:19:57,800 --> 00:20:01,400
+And these things can be used to easily create
+
+227
+00:20:01,400 --> 00:20:03,680
+an academic paper.
+
+228
+00:20:06,760 --> 00:20:09,680
+And I personally prefer those tools
+
+229
+00:20:09,680 --> 00:20:16,040
+because they are especially suited for concurrent editing.
+
+230
+00:20:16,040 --> 00:20:21,800
+While Git can solve concurrent editing issues,
+
+231
+00:20:21,800 --> 00:20:25,760
+but depending on how many changes there are
+
+232
+00:20:25,760 --> 00:20:31,600
+and how much stuff two people did on an article,
+
+233
+00:20:31,600 --> 00:20:33,840
+you can easily end up with merging conflicts
+
+234
+00:20:33,840 --> 00:20:36,760
+and it can become very painful.
+
+235
+00:20:36,760 --> 00:20:41,200
+So personally, I have used Overleaf.
+
+236
+00:20:41,200 --> 00:20:44,480
+I have used Google Docs.
+
+237
+00:20:44,480 --> 00:20:47,200
+And HackMD is also for first draft.
+
+238
+00:20:47,200 --> 00:20:51,040
+And then you need to put it into a form for the journal
+
+239
+00:20:51,040 --> 00:20:52,880
+in the end anyways.
+
+240
+00:20:52,880 --> 00:20:59,240
+So would you say that the Git is like a very powerful version
+
+241
+00:20:59,240 --> 00:21:01,680
+control tool?
+
+242
+00:21:01,680 --> 00:21:13,920
+But in this case, it's a bit maybe too generic because there are tools that are specifically
+
+243
+00:21:16,960 --> 00:21:22,560
+designed for co-authoring papers or texts.
+
+244
+00:21:22,560 --> 00:21:32,640
+Yes. What I would say is that Git is very good suited for code editing, where if you work on
+
+245
+00:21:32,640 --> 00:21:36,320
+two different things, but you have some modifications, you then need to merge and then need to
+
+246
+00:21:36,320 --> 00:21:44,320
+find out, okay, what happened and what changes can we let go in and how do we need to merge that,
+
+247
+00:21:44,320 --> 00:21:50,480
+where you anyways need to think about this. But if you, for example, have two people who edited
+
+248
+00:21:52,560 --> 00:21:56,880
+a relatively final version of an article
+
+249
+00:21:56,880 --> 00:22:02,560
+and made spelling or changed spelling mistakes and stuff.
+
+250
+00:22:02,560 --> 00:22:06,520
+You will get so many lines, because GitHub essentially
+
+251
+00:22:06,520 --> 00:22:14,440
+goes line by line, where you have changes on both sides
+
+252
+00:22:14,440 --> 00:22:17,600
+that it gets really messy.
+
+253
+00:22:17,600 --> 00:22:20,760
+And you need to manually then select the right.
+
+254
+00:22:20,760 --> 00:22:25,240
+And you essentially do double the work, if not more,
+
+255
+00:22:25,240 --> 00:22:31,760
+when editing a document.
+
+256
+00:22:31,760 --> 00:22:38,720
+And that's something that is unnecessary, in my opinion,
+
+257
+00:22:38,720 --> 00:22:46,000
+because there are tools like Overleaf or Google Docs, which
+
+258
+00:22:46,000 --> 00:22:50,000
+do exactly that and are exactly for this purpose, where
+
+259
+00:22:50,000 --> 00:22:59,680
+can work together on a document and don't get into these kind of issues. So I would use those instead.
+
+260
+00:23:01,280 --> 00:23:06,960
+From the notes, we have interesting distribution between are you using version control for
+
+261
+00:23:06,960 --> 00:23:12,720
+academic papers. It's about 50-50, like yes or no. It is interesting.
+
+262
+00:23:12,720 --> 00:23:20,200
+Yeah, I have used, well, I have used version control for academic papers, no question
+
+263
+00:23:20,200 --> 00:23:25,560
+whatsoever, but I haven't used it for writing the manuscript.
+
+264
+00:23:25,560 --> 00:23:27,880
+And I think that that's also, I think.
+
+265
+00:23:27,880 --> 00:23:28,880
+Oh, okay.
+
+266
+00:23:28,880 --> 00:23:31,320
+It's a distinction there, okay.
+
+267
+00:23:31,320 --> 00:23:32,320
+Yeah.
+
+268
+00:23:32,320 --> 00:23:48,960
+depends on how people see this. There is a comment on the how to handle collaborative issues,
+
+269
+00:23:49,840 --> 00:23:56,400
+one author being responsible for merging everything. If they are lucky,
+
+270
+00:23:56,400 --> 00:23:59,240
+If they are lucky, everything goes fine.
+
+271
+00:23:59,240 --> 00:24:03,320
+If they are unlucky and you have concurrent edits or a lot
+
+272
+00:24:03,320 --> 00:24:06,320
+of concurrent edits, they will spend a lot of time
+
+273
+00:24:06,320 --> 00:24:07,760
+in merging them.
+
+274
+00:24:07,760 --> 00:24:12,480
+And it's just, yeah, as I said, to me,
+
+275
+00:24:12,480 --> 00:24:16,360
+writing the manuscript there is a waste of time.
+
+276
+00:24:16,360 --> 00:24:18,240
+Having the code under version control
+
+277
+00:24:18,240 --> 00:24:23,600
+and merging there, yeah, absolutely makes sense.
+
+278
+00:24:23,600 --> 00:24:30,160
+Okay. Should we move on?
+
+279
+00:24:30,160 --> 00:24:38,960
+Yes. There are other tools that help in making academic or scholarly output more reproducible.
+
+280
+00:24:40,000 --> 00:24:50,240
+Jupyter Notebooks can be a good way to present the flow of your code more easily.
+
+281
+00:24:50,240 --> 00:24:58,000
+Binder gives Jupyter notebooks and makes them available in an executable environment so
+
+282
+00:24:58,000 --> 00:25:04,160
+that people don't even need to install the Jupyter stuff initially.
+
+283
+00:25:04,160 --> 00:25:15,520
+And for R, there's also R tools or Research Compendia, which are nice tools to use to
+
+284
+00:25:15,520 --> 00:25:20,400
+show your results and show how your code is being used.
+
+285
+00:25:21,200 --> 00:25:25,520
+Okay so a key point here an organized project directory structure
+
+286
+00:25:25,520 --> 00:25:32,480
+helps with reproducibility and makes it a lot more easy to later on
+
+287
+00:25:32,480 --> 00:25:35,440
+redo what you have done.
+
+288
+00:25:36,400 --> 00:25:40,800
+So the next is essentially then the question
+
+289
+00:25:40,800 --> 00:25:49,680
+Okay, so you have your folder organized. How do we actually go about running our scripts?
+
+290
+00:25:50,480 --> 00:25:55,520
+So you have some steps that need to be run to do your work and how do you actually run them?
+
+291
+00:25:56,480 --> 00:26:04,960
+Does that rely on you remembering how you run them or is it reproducible for anyone else?
+
+292
+00:26:04,960 --> 00:26:11,520
+How do you communicate these steps to others or in particular future you?
+
+293
+00:26:13,360 --> 00:26:17,680
+And here we will also go into how we can create a reproducible workflow and
+
+294
+00:26:19,600 --> 00:26:22,880
+what scientific workflow management systems are and when to use them.
+
+295
+00:26:24,400 --> 00:26:34,480
+So as an example here we have an example project from the HPC Carpentry lessons
+
+296
+00:26:34,960 --> 00:26:52,760
+which is essentially a small project that
+
+297
+00:26:52,760 --> 00:26:59,600
+counts the frequencies of words in some books
+
+298
+00:26:59,600 --> 00:27:00,920
+and then plots them.
+
+299
+00:27:04,960 --> 00:27:08,240
+So, the example use of this is,
+
+300
+00:27:10,160 --> 00:27:14,800
+let me just check something.
+
+301
+00:27:14,800 --> 00:27:18,200
+So the example use is where you simply have Python code,
+
+302
+00:27:18,200 --> 00:27:23,200
+code.py, and then plot the output file into an image.
+
+303
+00:27:30,880 --> 00:27:33,720
+And Timo, do you want to explain
+
+304
+00:27:33,720 --> 00:27:36,520
+what the problems with this kind of approach are?
+
+305
+00:27:38,520 --> 00:27:42,200
+It is, so it's a very manual approach.
+
+306
+00:27:43,360 --> 00:27:51,280
+And so if we want to, I would say that if we want to have multiple books,
+
+307
+00:27:52,040 --> 00:28:01,040
+so let's say we have 100 or 1000 books, then we would have to
+
+308
+00:28:03,720 --> 00:28:14,720
+We do all of those manually, and then there is no record of what books were processed.
+
+309
+00:28:14,720 --> 00:28:21,720
+I think that's at least the first thing that comes to mind.
+
+310
+00:28:21,720 --> 00:28:27,720
+Yeah, and we also, it's not really extendable.
+
+311
+00:28:27,720 --> 00:28:37,800
+tendable. So if we have this, what do we do if we want to run this for 500 books? We could
+
+312
+00:28:37,800 --> 00:28:44,520
+even have a small GUI or something, but then we would need to click like 500 times. And
+
+313
+00:28:44,520 --> 00:28:57,680
+of course, you can essentially write a script that does essentially run everything, which
+
+314
+00:28:57,680 --> 00:29:06,160
+would be something like this. This is now on Binder on JupyterHub. No, in a JupyterHub
+
+315
+00:29:06,160 --> 00:29:12,880
+on Binder. And you could essentially run all of these and then you have your results. But
+
+316
+00:29:12,880 --> 00:29:21,680
+that doesn't really help you when you have to extend that to 500 books. So this is more
+
+317
+00:29:21,680 --> 00:29:30,160
+an imperative style. We tell it to do every single step in order and we can potentially
+
+318
+00:29:30,160 --> 00:29:40,720
+also use something like a loop for this where we just indicate the name and then we can still
+
+319
+00:29:40,720 --> 00:29:44,880
+run it for all of them. This is a bit better because we only have to put in the name
+
+320
+00:29:44,880 --> 00:29:49,880
+but we are still explicitly telling it what to do.
+
+321
+00:29:49,880 --> 00:29:54,880
+Yeah, and also the loop looks much better,
+
+322
+00:29:54,880 --> 00:30:02,880
+but there is one problem is that if we want to rerun something,
+
+323
+00:30:02,880 --> 00:30:06,880
+or we want to add some books and rerun the experiment,
+
+324
+00:30:06,880 --> 00:30:12,880
+then all the books will be processed again.
+
+325
+00:30:12,880 --> 00:30:21,040
+Yeah, and that's really not what we want to do, especially if the stuff that we are running
+
+326
+00:30:21,040 --> 00:30:23,080
+takes a little bit longer.
+
+327
+00:30:23,080 --> 00:30:30,200
+So if we are running something that takes half an hour for everything and we suddenly
+
+328
+00:30:30,200 --> 00:30:39,720
+have to rerun 500 iterations of this, yeah, we really don't want to do that.
+
+329
+00:30:39,720 --> 00:30:46,120
+So this scripted solution is reproducible.
+
+330
+00:30:46,120 --> 00:30:48,280
+Yeah, definitely.
+
+331
+00:30:48,280 --> 00:30:52,040
+But if we start to add more things,
+
+332
+00:30:52,040 --> 00:30:57,060
+it starts to get problematic, as Timo mentioned.
+
+333
+00:30:57,060 --> 00:31:01,760
+And that's actually the point where workflow tools come in.
+
+334
+00:31:01,760 --> 00:31:06,200
+Workflow tools in more complex scenarios,
+
+335
+00:31:06,200 --> 00:31:08,600
+so where it goes away from the simple,
+
+336
+00:31:08,600 --> 00:31:10,600
+I have three things that I need to run,
+
+337
+00:31:10,600 --> 00:31:13,640
+and I don't have more than these three things.
+
+338
+00:31:13,640 --> 00:31:18,480
+But I always get additional things after some time,
+
+339
+00:31:18,480 --> 00:31:22,520
+and I'm still producing my data, for example.
+
+340
+00:31:22,520 --> 00:31:26,360
+And I need to do something for every data point.
+
+341
+00:31:26,360 --> 00:31:28,440
+That's where workflow tools come in very handy.
+
+342
+00:31:28,440 --> 00:31:31,360
+And we will give an example here with Snake Make,
+
+343
+00:31:31,360 --> 00:31:38,480
+which is inspired by GNU Make and is a very popular tool
+
+344
+00:31:38,480 --> 00:31:43,480
+in bioinformatics, but also in other computational fields.
+
+345
+00:31:47,100 --> 00:31:52,100
+We also chose SnakeMake because it's very close to Python.
+
+346
+00:31:52,260 --> 00:31:57,260
+So in the SnakeMake files or snake files,
+
+347
+00:31:57,580 --> 00:32:00,820
+you can write code in Python essentially.
+
+348
+00:32:02,540 --> 00:32:07,400
+And we have a demo here.
+
+349
+00:32:08,480 --> 00:32:14,480
+in Binder that I will show you in a moment.
+
+350
+00:32:14,480 --> 00:32:22,480
+But I would first like to go through the way that SnakeMake actually writes your
+
+351
+00:32:22,480 --> 00:32:30,480
+or that SnakeMake files are actually created and how SnakeMake works on a logical basis.
+
+352
+00:32:30,480 --> 00:32:40,040
+So, SnakeMake works with rules and rules have to be fulfilled for SnakeMake.
+
+353
+00:32:40,040 --> 00:32:48,120
+So for a rule to be fulfilled, it needs to have all its inputs and then generates all
+
+354
+00:32:48,120 --> 00:32:56,200
+its outputs by the command that's being called in Shell.
+
+355
+00:32:56,200 --> 00:33:07,660
+And that's a bit unintuitive, because commonly what happens is you define in your rule all
+
+356
+00:33:07,660 --> 00:33:15,680
+the inputs which are the endpoints of what you want to create.
+
+357
+00:33:15,680 --> 00:33:24,120
+And in here we have in our all rule, we have, we want to create all the files in statistics
+
+358
+00:33:24,120 --> 00:33:30,460
+book data, where the name of the book comes from the data field, which is essentially
+
+359
+00:33:30,460 --> 00:33:37,800
+all file names in the data folder.
+
+360
+00:33:37,800 --> 00:33:40,360
+And we also want to create all the plots.
+
+361
+00:33:40,360 --> 00:33:44,980
+And this defines our final results.
+
+362
+00:33:44,980 --> 00:33:48,680
+And then Snakemake starts to look, okay, how do I get these?
+
+363
+00:33:48,680 --> 00:33:52,320
+Is there any other rule that creates these?
+
+364
+00:33:52,320 --> 00:33:59,000
+And it looks on, so there is a rule countWords, which has as inputs a script code countedPy
+
+365
+00:33:59,000 --> 00:34:03,920
+and a book data file txt.
+
+366
+00:34:03,920 --> 00:34:17,640
+And these files come, and this file is just a placeholder again, which in the end comes
+
+367
+00:34:17,640 --> 00:34:26,840
+from data because it knows that okay this entry comes from here then. And then you have
+
+368
+00:34:26,840 --> 00:34:35,080
+a Python script that says okay well from the inputs I take the script and I take the book
+
+369
+00:34:35,080 --> 00:34:45,000
+and I create the output and if we look back up this is exactly what we had here. So this
+
+370
+00:34:45,000 --> 00:34:53,120
+is the first step. That's what the count rule essentially is doing, or the count words.
+
+371
+00:34:53,120 --> 00:35:05,500
+And in the make plot, this is essentially the same structure, and again, as above. And
+
+372
+00:35:05,500 --> 00:35:10,880
+I will show you this on Binder.
+
+373
+00:35:10,880 --> 00:35:21,440
+So how the SnakeMech works, the rule works, is that each rule will take an input file
+
+374
+00:35:21,440 --> 00:35:26,600
+and then it looks that if that input file doesn't exist on the disk, it will find a
+
+375
+00:35:26,600 --> 00:35:32,180
+rule that has that input file as the output file.
+
+376
+00:35:32,180 --> 00:35:36,400
+And then, and that's why we start from the end.
+
+377
+00:35:36,400 --> 00:35:38,920
+It's yeah.
+
+378
+00:35:38,920 --> 00:35:48,300
+And one thing I need to mention here, in this binder, the results are already there.
+
+379
+00:35:48,300 --> 00:35:55,920
+So we already have these final results, and we also already have the statistics being
+
+380
+00:35:55,920 --> 00:35:56,920
+processed.
+
+381
+00:35:56,920 --> 00:36:03,840
+So the first thing I actually need to do is remove them, because otherwise it doesn't
+
+382
+00:36:03,840 --> 00:36:06,640
+do anything, because it has everything already.
+
+383
+00:36:06,640 --> 00:36:09,120
+So I delete all these files.
+
+384
+00:36:09,120 --> 00:36:16,560
+And if I then start to, as you can see on the left, the statistics stuff is now gone.
+
+385
+00:36:16,560 --> 00:36:24,000
+And if I then run this, what SnakeMIC does is it essentially checks, okay, what do I
+
+386
+00:36:24,000 --> 00:36:25,080
+have to do?
+
+387
+00:36:25,080 --> 00:36:31,400
+I have to create or I have to fulfill the all once.
+
+388
+00:36:31,400 --> 00:36:35,120
+To do that, I have to count words four times and I have to make plots four times.
+
+389
+00:36:35,120 --> 00:36:39,920
+So in total, I have nine things that I have to do.
+
+390
+00:36:39,920 --> 00:36:42,000
+The all is once for each book.
+
+391
+00:36:42,000 --> 00:36:42,520
+Yeah.
+
+392
+00:36:42,520 --> 00:36:48,400
+The all is just a final check, so that's pretty simple.
+
+393
+00:36:48,400 --> 00:36:53,200
+But the other code is something that needs to be changed.
+
+394
+00:36:53,200 --> 00:36:55,880
+And there I have my data again.
+
+395
+00:36:55,880 --> 00:37:02,000
+Now, the beauty of this is if I, for example,
+
+396
+00:37:02,000 --> 00:37:07,840
+remove this last data and run it again
+
+397
+00:37:09,440 --> 00:37:15,120
+it will notice that okay um i'm missing one count words
+
+398
+00:37:15,120 --> 00:37:19,280
+um and since i'm missing that i also have to redo the plot because
+
+399
+00:37:19,280 --> 00:37:22,960
+um yeah i don't know if this is if the data that
+
+400
+00:37:22,960 --> 00:37:27,120
+uh is being created um will really lead to the same for
+
+401
+00:37:27,120 --> 00:37:31,680
+the same picture or the same output here so i'm re-running this and i have to
+
+402
+00:37:31,680 --> 00:37:38,560
+execute the all again, because yeah, I'm missing something from there. And one more thing that I
+
+403
+00:37:38,560 --> 00:37:50,000
+think is very important and why we have these code pieces in our rule as inputs. If I change
+
+404
+00:37:50,000 --> 00:38:01,520
+the count.py here and run this again, it doesn't know what was changed, but it knows, okay,
+
+405
+00:38:01,520 --> 00:38:07,760
+the count has changed. Oops, this was too far up. The count has changed, so I need to rerun
+
+406
+00:38:07,760 --> 00:38:17,360
+everything that depended on this input count.py. That creates me the statistics data information,
+
+407
+00:38:19,200 --> 00:38:24,800
+which my make plot depends on. So I have to rerun the make plot because I don't know if that has
+
+408
+00:38:24,800 --> 00:38:31,040
+changed. And it will essentially rerun everything that's necessary to keep in sync with all the
+
+409
+00:38:31,040 --> 00:38:40,240
+inputs. And that's the real beauty of these things. So you can go through it and you can
+
+410
+00:38:41,840 --> 00:38:47,360
+make sure that only the stuff is rerun that is necessary but everything that is necessary is
+
+411
+00:38:47,360 --> 00:38:54,480
+rerun. And that's really something that allows you to keep all your results in sync
+
+412
+00:38:54,480 --> 00:39:06,880
+and allows you to run additional code or additional inputs without rerunning everything.
+
+413
+00:39:10,560 --> 00:39:22,480
+It also has the possibility to use containers or environments
+
+414
+00:39:24,480 --> 00:39:34,880
+And you can visualize the graph that is being created here as well.
+
+415
+00:39:36,880 --> 00:39:40,880
+Okay. Or not. At least not in this environment.
+
+416
+00:39:44,480 --> 00:39:48,480
+It was a good example of unreproducible.
+
+417
+00:39:48,480 --> 00:39:52,880
+Yep. So we would need to install the graph.
+
+418
+00:39:52,880 --> 00:39:56,960
+Oh, well, we can probably just install it here as well.
+
+419
+00:39:56,960 --> 00:40:04,080
+But I'm, that could take a bit of time.
+
+420
+00:40:04,080 --> 00:40:06,120
+Yeah, that can take.
+
+421
+00:40:06,120 --> 00:40:10,000
+So essentially, what's happening is for all,
+
+422
+00:40:10,000 --> 00:40:13,360
+I need to create the count words with the input of the file
+
+423
+00:40:13,360 --> 00:40:13,860
+Sierra.
+
+424
+00:40:16,400 --> 00:40:19,320
+This is also the input for the make plot.
+
+425
+00:40:19,320 --> 00:40:22,840
+And all needs to have make plot.
+
+426
+00:40:22,840 --> 00:40:26,340
+and that's the same for all the other inputs.
+
+427
+00:40:26,340 --> 00:40:30,980
+So all depends on all of these individual things
+
+428
+00:40:30,980 --> 00:40:33,040
+and only then all is fulfilled.
+
+429
+00:40:36,100 --> 00:40:39,020
+The reason why using SnakeMake
+
+430
+00:40:39,020 --> 00:40:41,780
+or why we're representing SnakeMake and not other tools,
+
+431
+00:40:43,780 --> 00:40:45,000
+I would say some people claim
+
+432
+00:40:45,000 --> 00:40:47,900
+it has a relatively gentle learning curve.
+
+433
+00:40:47,900 --> 00:40:50,460
+I think it depends a lot on your example
+
+434
+00:40:50,460 --> 00:40:54,420
+or on your use case, whether it's gentle or not
+
+435
+00:40:54,420 --> 00:40:57,260
+and how many features you actually need.
+
+436
+00:40:57,260 --> 00:40:58,900
+If you don't need too many features from it,
+
+437
+00:40:58,900 --> 00:41:01,300
+then yeah, it has a relatively gentle learning curve.
+
+438
+00:41:01,300 --> 00:41:04,380
+If you need a lot of features, then well,
+
+439
+00:41:04,380 --> 00:41:06,860
+like with any system, if you want to use all the features
+
+440
+00:41:06,860 --> 00:41:10,060
+that it offers, it has quite a bit of stuff
+
+441
+00:41:10,060 --> 00:41:11,220
+that you need to learn.
+
+442
+00:41:12,680 --> 00:41:15,860
+I think for me mainly, it's free, it's open source
+
+443
+00:41:15,860 --> 00:41:19,820
+and it installs pretty easily via Conda or via PIP
+
+444
+00:41:19,820 --> 00:41:24,060
+and you can use it on both Windows or all Windows,
+
+445
+00:41:24,060 --> 00:41:26,040
+Mac OS or Linux.
+
+446
+00:41:26,040 --> 00:41:29,500
+And that's also a beauty,
+
+447
+00:41:29,500 --> 00:41:32,300
+it is highly compatible with high performance computing.
+
+448
+00:41:33,180 --> 00:41:35,820
+You can essentially tell SnakeMake
+
+449
+00:41:35,820 --> 00:41:40,020
+that run these things on a cluster,
+
+450
+00:41:40,020 --> 00:41:44,920
+run these things with the HPC scheduler.
+
+451
+00:41:44,920 --> 00:41:47,460
+So don't run them on the local machine,
+
+452
+00:41:47,460 --> 00:41:55,140
+run them elsewhere and run them as individual jobs, which lets you parallelize all of these
+
+453
+00:41:55,140 --> 00:41:57,220
+parallelizable steps very easily.
+
+454
+00:42:03,460 --> 00:42:11,540
+Yeah, it's, as I mentioned earlier, it's possible to define software, isolate software environments
+
+455
+00:42:11,540 --> 00:42:18,660
+in Perlul, so essentially defining that we will now use a certain conda environment or even to
+
+456
+00:42:18,660 --> 00:42:24,020
+use a certain container to run these things in. We'll come to containers later and what they are,
+
+457
+00:42:24,020 --> 00:42:32,420
+how they work, and as we mentioned it's heavily used in bioinformatics and it's a nice functionality
+
+458
+00:42:32,420 --> 00:42:44,180
+to archive your workflow and to properly archive it. You could, for example, put in the parameters
+
+459
+00:42:44,180 --> 00:42:51,940
+that you were using in a SnakeMag file and then have everything that you were using in that
+
+460
+00:42:51,940 --> 00:42:58,420
+SnakeMag file. And if you want to use a new parameter set, you could create a new SnakeMag
+
+461
+00:42:58,420 --> 00:43:03,540
+file and keep the old one or if the SnakeMIC file is under version control you can simply
+
+462
+00:43:03,540 --> 00:43:11,140
+go back to that version. So that helps a lot in also remembering what was being used in the past.
+
+463
+00:43:14,260 --> 00:43:20,740
+There are additional similar tools like Make which is very heavily used in C compiling.
+
+464
+00:43:20,740 --> 00:43:31,920
+There's Nextflow, Task, and other tools that help in doing this.
+
+465
+00:43:31,920 --> 00:43:32,920
+And about 200 others.
+
+466
+00:43:32,920 --> 00:43:33,920
+Yes.
+
+467
+00:43:33,920 --> 00:43:37,800
+There are a lot of workflow managers.
+
+468
+00:43:37,800 --> 00:43:39,480
+Yeah.
+
+469
+00:43:39,480 --> 00:43:43,840
+And of course, computational steps can be recorded in many ways.
+
+470
+00:43:43,840 --> 00:43:47,200
+A script can be perfectly sufficient.
+
+471
+00:43:47,200 --> 00:43:55,480
+But make sure that when recording your computational steps, you also record input parameters.
+
+472
+00:43:55,480 --> 00:44:05,140
+You also record what was, what input parameters, what stuff was used to run the analysis.
+
+473
+00:44:05,140 --> 00:44:13,760
+And in snake make, I would put it in the snake file, in a bash script or any other script,
+
+474
+00:44:13,760 --> 00:44:18,560
+I would try to put it into the pile there as well,
+
+475
+00:44:18,560 --> 00:44:21,440
+because otherwise, you will forget it.
+
+476
+00:44:21,440 --> 00:44:23,400
+I know that I would.
+
+477
+00:44:23,400 --> 00:44:25,080
+Yeah.
+
+478
+00:44:25,080 --> 00:44:28,920
+In the notes, there is a question about parallelization.
+
+479
+00:44:28,920 --> 00:44:33,560
+So how does Snake make the parallelization happen?
+
+480
+00:44:33,560 --> 00:44:36,920
+Does it require the user to set some parameters?
+
+481
+00:44:39,800 --> 00:44:43,080
+The minus J, I think, is the number of jobs
+
+482
+00:44:43,080 --> 00:44:45,000
+that you can run in parallel.
+
+483
+00:44:45,000 --> 00:44:46,000
+Yes.
+
+484
+00:44:46,000 --> 00:44:53,680
+So if you would run minus J20, it would try to run 20 things in parallel.
+
+485
+00:44:53,680 --> 00:45:05,640
+So what SnakeMech does, it detects from your rules that, okay, these rules can be run in
+
+486
+00:45:05,640 --> 00:45:06,640
+parallel.
+
+487
+00:45:06,640 --> 00:45:16,480
+don't depend on each other. And then it checks from the minus J parameter or the option,
+
+488
+00:45:16,480 --> 00:45:26,120
+the number of workers, that how many CPUs do you have available. And if you have more
+
+489
+00:45:26,120 --> 00:45:42,200
+than one CPU available, then it can start running the rules in parallel. I think that's
+
+490
+00:45:42,200 --> 00:45:43,800
+the short of it.
+
+491
+00:45:43,800 --> 00:45:50,840
+Yeah, and on clusters, there is integration with Snake, MIG, and SLURM, but we won't go
+
+492
+00:45:50,840 --> 00:45:54,600
+go into this in detail at the moment.
+
+493
+00:45:54,600 --> 00:46:00,400
+If you think that you would benefit from using SnakeMake,
+
+494
+00:46:00,400 --> 00:46:03,160
+I would highly recommend going through the documentation.
+
+495
+00:46:03,160 --> 00:46:06,520
+Because what we have given here is a very small example
+
+496
+00:46:06,520 --> 00:46:08,200
+and a very simple example.
+
+497
+00:46:08,200 --> 00:46:10,880
+And like always with simple examples,
+
+498
+00:46:10,880 --> 00:46:15,640
+they look easy to do on the surface.
+
+499
+00:46:15,640 --> 00:46:19,560
+And once you actually want to use them for you,
+
+500
+00:46:19,560 --> 00:46:22,040
+you have to go back to the documentation.
+
+501
+00:46:22,040 --> 00:46:25,920
+This is mainly to show you this is something that's possible
+
+502
+00:46:25,920 --> 00:46:29,640
+and that's available and how to find it.
+
+503
+00:46:34,600 --> 00:46:40,720
+We are at the stage when we could have the break.
+
+504
+00:46:40,720 --> 00:46:43,320
+Yep, and I would say we have a 10-minute break
+
+505
+00:46:43,320 --> 00:46:46,120
+till 2 past the hour.
+
+506
+00:46:46,120 --> 00:46:47,920
+Yes.
+
+507
+00:46:47,920 --> 00:46:52,400
+Okay, keep posting your questions on the
+
+508
+00:46:52,400 --> 00:46:58,320
+on the collaborative document. We can keep answering them or take your break
+
+509
+00:46:58,320 --> 00:47:01,840
+and have a have a small walk around so that you
+
+510
+00:47:01,840 --> 00:47:10,000
+can come back refreshed. Okay then, bye and see you in 10 minutes.
+
+511
+00:47:11,920 --> 00:47:19,360
+Okay and welcome back. So we've talked about organizing your folders, organizing your code
+
+512
+00:47:19,360 --> 00:47:24,880
+and recording the recording the steps and the next thing that we want to talk about
+
+513
+00:47:24,880 --> 00:47:31,440
+is recording dependencies and how to communicate different versions of software dependencies.
+
+514
+00:47:33,120 --> 00:47:41,200
+And well our code often depends on other codes or other libraries and that in turn depends on
+
+515
+00:47:41,200 --> 00:47:47,280
+other codes, and so on. So for reproducibility reasons, we can version control our code with Git,
+
+516
+00:47:47,280 --> 00:47:52,960
+but how can we version control dependencies? How can we capture and communicate them?
+
+517
+00:47:53,840 --> 00:48:01,760
+And connected to that is that we can easily end up in a somewhat of a dependency hell,
+
+518
+00:48:01,760 --> 00:48:09,600
+where different codes that need to be run for the same analysis actually have conflicting
+
+519
+00:48:09,600 --> 00:48:17,040
+dependencies. The one depends on a different version of a library than the other and that
+
+520
+00:48:17,040 --> 00:48:25,040
+starts to get really problematic. And there's this nice xkcd comic that shows very well how
+
+521
+00:48:25,600 --> 00:48:34,400
+our modern computational infrastructure works and that it's a very complex pattern of libraries and
+
+522
+00:48:34,400 --> 00:48:42,000
+libraries and libraries depending on other libraries and this on top here that might be
+
+523
+00:48:42,000 --> 00:48:49,680
+your code and it depends on a lot of different things down below down to operating systems
+
+524
+00:48:49,680 --> 00:48:55,440
+kernels and then it probably depends on some projects some random person Nebraska has been
+
+525
+00:48:55,440 --> 00:49:04,080
+thanklessly maintaining since 2003 and if that piece of code breaks the whole thing tumbles down
+
+526
+00:49:04,080 --> 00:49:10,320
+And there is actually a very recent example that came out, that happened way after this
+
+527
+00:49:12,160 --> 00:49:20,480
+comic was created, where there wasn't a breakdown as such, but there almost happened to be a very,
+
+528
+00:49:20,480 --> 00:49:27,840
+very, very severe security issue, because someone socially engineered themselves into a maintainer
+
+529
+00:49:27,840 --> 00:49:36,080
+position of one of these tiny bits of codes that everything relies on and had managed to get some
+
+530
+00:49:36,080 --> 00:49:47,200
+backdoors into the code and that was almost shipped to the stable versions of some operating systems.
+
+531
+00:49:47,200 --> 00:49:53,760
+That was the XZ library which is essentially a compression library that is used in a lot of
+
+532
+00:49:53,760 --> 00:50:04,240
+systems as an underlying library. So this picture is very accurate and yet unfortunately it's very
+
+533
+00:50:04,240 --> 00:50:15,680
+accurate. So to make this whole thing a bit more understandable, a bit more tangible, we can also
+
+534
+00:50:15,680 --> 00:50:23,680
+think of a kitchen analogy to your code and what you're doing. And essentially your software that
+
+535
+00:50:23,680 --> 00:50:32,320
+you have, that's the recipe. That's the recipe on how to process the data, which are the ingredients,
+
+536
+00:50:33,440 --> 00:50:42,880
+to get your results, so your dish. And to do that, you normally take some libraries, which are
+
+537
+00:50:42,880 --> 00:50:51,120
+pots or tools. And now it's very simple to imagine that, okay, you have a recipe for a huge amount
+
+538
+00:50:51,120 --> 00:50:59,200
+of pasta, because that recipe is supposed to feed 40 people. And your recipe says to
+
+539
+00:50:59,200 --> 00:51:10,800
+take a 10 or 15 litre pot of water. Well, that wouldn't work, that whole recipe wouldn't
+
+540
+00:51:10,800 --> 00:51:16,560
+work if the only pot that you have is a 1 litre pot. So if you only have the 1 litre
+
+541
+00:51:16,560 --> 00:51:23,360
+version of that library so only the one liter pot you can't your recipe just doesn't work
+
+542
+00:51:24,640 --> 00:51:30,400
+because you can't fill 10 kilos of spaghetti into a one liter pot
+
+543
+00:51:32,560 --> 00:51:40,960
+so that's how you can think about how software data and libraries work together
+
+544
+00:51:40,960 --> 00:51:52,560
+and there are plenty of tools that try to help you specify what tools you actually need
+
+545
+00:51:54,560 --> 00:52:04,080
+and try to help you in specifying the specific library versions that are needed and handle all
+
+546
+00:52:04,080 --> 00:52:10,240
+the dependencies that are underlying these libraries because you might be working with
+
+547
+00:52:10,240 --> 00:52:19,600
+for example pandas but pandas needs other libraries to work and this kind of dependency
+
+548
+00:52:19,600 --> 00:52:27,680
+tree is something that you don't want to care about yourself and so defining if having a tool
+
+549
+00:52:27,680 --> 00:52:35,840
+that helps you there is very beneficial and common tools that have there are conda pip virtual
+
+550
+00:52:35,840 --> 00:52:48,320
+environments, poetry for package building, the requirement.txt which lists the
+
+551
+00:52:48,320 --> 00:52:52,400
+individual requirements, the environment.yaml which is the equivalent to conda and so on.
+
+552
+00:52:53,840 --> 00:52:58,480
+And they try to help you in defining the specific set of dependencies,
+
+553
+00:52:58,480 --> 00:53:03,200
+possibly with well-defined versions. They help you in installing those dependencies
+
+554
+00:53:03,200 --> 00:53:11,200
+because they get the underlying dependencies, they help you with recording the versions for all these dependencies,
+
+555
+00:53:11,200 --> 00:53:18,200
+and Virtualenv and Anaconda, for example, also help you in isolating environments,
+
+556
+00:53:18,200 --> 00:53:23,200
+so that you can have multiple different sets of environments on one computer,
+
+557
+00:53:23,200 --> 00:53:28,200
+so that if you have two pieces of code that have conflicting dependencies,
+
+558
+00:53:28,200 --> 00:53:32,200
+you can still run both of them, you just need to change the environment for that.
+
+559
+00:53:32,200 --> 00:53:41,080
+that. They even help you with changing the versions of R or Python per project or even
+
+560
+00:53:41,080 --> 00:53:46,200
+within the same project if you have code that needs, if you have very old code that still needs
+
+561
+00:53:46,840 --> 00:53:55,960
+Python 2, you can do that. If you have code that needs an R version below 4, yeah, you can do that.
+
+562
+00:53:55,960 --> 00:54:13,440
+So, some of these tools or approaches are Python specific, and some are more general.
+
+563
+00:54:13,440 --> 00:54:21,120
+So Konda, Anaconda, they are quite general.
+
+564
+00:54:21,120 --> 00:54:33,760
+Yeah, while virtualenv is more a Python or pyenv, while renv is more R and so on.
+
+565
+00:54:33,760 --> 00:54:40,780
+And one really beautiful thing with, for example, conda, yeah, mainly conda, mainly with actual
+
+566
+00:54:40,780 --> 00:54:49,320
+or also pyenv, virtualenv, so with these whole things is that if something goes wrong or
+
+567
+00:54:49,320 --> 00:54:52,680
+Or you want to try something out and it didn't work.
+
+568
+00:54:52,680 --> 00:54:56,960
+You can delete the environment and recreate it from the environment file.
+
+569
+00:54:56,960 --> 00:55:03,960
+So you can test, okay, I have found a library that seems to be solving a problem that I have.
+
+570
+00:55:03,960 --> 00:55:09,520
+Let's add it to the environment, test it, didn't work, okay.
+
+571
+00:55:09,520 --> 00:55:14,520
+Before I try to remove that library again, because there might have been other things
+
+572
+00:55:14,520 --> 00:55:18,360
+that came along with it, that I didn't properly record yet,
+
+573
+00:55:18,360 --> 00:55:21,400
+I just throw away the environment, recreate it,
+
+574
+00:55:21,400 --> 00:55:24,200
+because it will be the same as I had before.
+
+575
+00:55:25,880 --> 00:55:30,840
+And we have here five examples
+
+576
+00:55:30,840 --> 00:55:33,720
+of students that wrote code,
+
+577
+00:55:34,760 --> 00:55:36,440
+which depends on a couple of libraries.
+
+578
+00:55:36,440 --> 00:55:39,240
+And the code was uploaded to GitHub.
+
+579
+00:55:39,240 --> 00:55:42,200
+And let's assume we travel three years into the future
+
+580
+00:55:42,200 --> 00:55:43,720
+and find the GitHub repositories
+
+581
+00:55:43,720 --> 00:55:53,320
+and try to rerun the code before adapting it. There are a couple of questions in the
+
+582
+00:55:55,000 --> 00:55:59,720
+in the collaborative document now which we would like to have your opinions and I would give that
+
+583
+00:55:59,720 --> 00:56:07,400
+like three minutes or so or five minutes to read through it and answer that and just say okay well
+
+584
+00:56:07,400 --> 00:56:11,240
+what do you think is this reproducible or isn't that reproducible?
+
+585
+00:56:13,720 --> 00:56:34,040
+Okay, so see you in five minutes.
+
+586
+00:56:34,040 --> 00:56:39,160
+You can also, if you have comments about it, write the comments there and what the issues
+
+587
+00:56:39,160 --> 00:57:00,240
+So I think we will start discussing
+
+588
+00:57:00,240 --> 00:57:05,640
+once we have a few comments for one of them.
+
+589
+00:57:05,640 --> 00:57:08,760
+And you can go through it and just listen
+
+590
+00:57:08,760 --> 00:57:11,800
+to what we say about it in general.
+
+591
+00:57:11,800 --> 00:57:14,520
+Looks like A is starting to get some.
+
+592
+00:57:22,400 --> 00:57:27,720
+Yeah, I think A, we already have a clear tendency.
+
+593
+00:57:27,720 --> 00:57:29,560
+Yeah, consensus.
+
+594
+00:57:29,560 --> 00:57:31,720
+That this is not reproducible.
+
+595
+00:57:31,720 --> 00:57:33,520
+And yeah, absolutely.
+
+596
+00:57:33,520 --> 00:57:39,120
+you just have imports you might not even know which libraries are actually being used because
+
+597
+00:57:39,120 --> 00:57:45,760
+sometimes there are two libraries that provide the same imports and that essentially means that you
+
+598
+00:57:45,760 --> 00:57:52,640
+can either load library A or library B and or you can have a dependency on library A or library B
+
+599
+00:57:52,640 --> 00:57:58,720
+but in the code they have the same import statement because you have conflicting import that's
+
+600
+00:57:58,720 --> 00:58:06,720
+absolutely possible. So, yeah, this is anything but reproducible. And also not very nice if you
+
+601
+00:58:06,720 --> 00:58:14,800
+think about the workload you are putting on the next person trying to figure out. Or on yourself
+
+602
+00:58:14,800 --> 00:58:23,040
+rerunning it. Yeah. B, we also already have a quite clear thing that, yeah, if you have a list
+
+603
+00:58:23,040 --> 00:58:29,200
+of libraries that are used, that's at least helping. But if you don't have any versions,
+
+604
+00:58:30,800 --> 00:58:38,320
+you sometimes have breaking changes in between versions and you don't necessarily know which
+
+605
+00:58:38,320 --> 00:58:42,960
+version was being used. You can try to guess what version was being used, but
+
+606
+00:58:42,960 --> 00:58:46,720
+if this was being created somewhere in the transition between, let's say,
+
+607
+00:58:46,720 --> 00:58:54,560
+major version 2 and major version 3 of the same library, it's a whole lot of guesswork which
+
+608
+00:58:54,560 --> 00:59:02,960
+version was actually used because very often published code is already older. So it was
+
+609
+00:59:02,960 --> 00:59:11,280
+essentially developed a year ago or so and the version that was used back then was being used
+
+610
+00:59:11,280 --> 00:59:14,840
+And, yeah, we just don't know.
+
+611
+00:59:14,840 --> 00:59:15,840
+Yeah.
+
+612
+00:59:15,840 --> 00:59:22,440
+For example, so this function uses, or this class uses a function that was introduced
+
+613
+00:59:22,440 --> 00:59:30,520
+in version two, but was deprecated in version four, or say, deprecated in version six.
+
+614
+00:59:30,520 --> 00:59:36,720
+So it must be somewhere between two, three, four, five, and then the subversions.
+
+615
+00:59:36,720 --> 00:59:43,200
+And it's, again, it's not very nice thing to do to yourself or to the next person trying
+
+616
+00:59:43,200 --> 00:59:45,000
+to figure out your code.
+
+617
+00:59:45,000 --> 00:59:51,880
+And C, again, yeah, as people mentioned here, it's nice that you have an environment file
+
+618
+00:59:51,880 --> 00:59:56,960
+that already helps quite a bit, but there is, of course, still missing version numbers.
+
+619
+00:59:56,960 --> 00:59:59,280
+So you don't know which versions were actually being used.
+
+620
+00:59:59,280 --> 01:00:05,560
+Is this now Python 3 or Python 2?
+
+621
+01:00:05,560 --> 01:00:07,840
+and what this file is supposed to tell you.
+
+622
+01:00:07,840 --> 01:00:10,480
+Okay, that's actually a good question here.
+
+623
+01:00:10,480 --> 01:00:15,480
+So the environment YAML file is a file for Conda.
+
+624
+01:00:15,680 --> 01:00:20,320
+Conda is a dependence management system
+
+625
+01:00:20,320 --> 01:00:23,200
+that reads through this and says,
+
+626
+01:00:23,200 --> 01:00:24,880
+okay, well, I'll create an environment
+
+627
+01:00:24,880 --> 01:00:27,400
+with the following name,
+
+628
+01:00:28,560 --> 01:00:33,560
+and then I'm using these channels,
+
+629
+01:00:33,560 --> 01:00:35,560
+these channels, I'm using these sources.
+
+630
+01:00:35,560 --> 01:00:37,000
+And in this case, it's conda-forge.
+
+631
+01:00:37,000 --> 01:00:42,000
+Conda-forge is a pretty popular repository for packages.
+
+632
+01:00:42,160 --> 01:00:45,560
+And the dependencies are then listed as scipy.
+
+633
+01:00:45,560 --> 01:00:50,560
+So the scipy package, numpy, sympy, click, python, pip.
+
+634
+01:00:52,680 --> 01:00:56,640
+And conda also allows you to do installs with pip
+
+635
+01:00:56,640 --> 01:00:59,320
+because not every package is actually in conda.
+
+636
+01:01:00,240 --> 01:01:02,080
+And it allows you to create an environment
+
+637
+01:01:02,080 --> 01:01:04,860
+that has pip installations.
+
+638
+01:01:04,860 --> 01:01:09,860
+And here, this indicates that, okay, this is git,
+
+639
+01:01:10,600 --> 01:01:14,480
+this is a pip installation from this git repository
+
+640
+01:01:14,480 --> 01:01:17,000
+at the master branch.
+
+641
+01:01:19,760 --> 01:01:22,120
+And actually that's a problem in itself
+
+642
+01:01:22,120 --> 01:01:23,720
+because master can have changed.
+
+643
+01:01:23,720 --> 01:01:25,920
+There is no idea, there is no information
+
+644
+01:01:25,920 --> 01:01:28,360
+on what master is nowadays.
+
+645
+01:01:28,360 --> 01:01:30,360
+This can be completely different.
+
+646
+01:01:30,360 --> 01:01:31,400
+So...
+
+647
+01:01:31,400 --> 01:01:36,400
+And very likely is because the latest master...
+
+648
+01:01:36,520 --> 01:01:41,160
+Well, yeah, most likely, assuming that this is
+
+649
+01:01:41,160 --> 01:01:44,320
+from other users that actually still develop their code.
+
+650
+01:01:45,840 --> 01:01:48,280
+4D, we...
+
+651
+01:01:48,280 --> 01:01:51,360
+And the versions are...
+
+652
+01:01:51,360 --> 01:01:56,120
+Okay, so how you fix that could be like in the nodes.
+
+653
+01:01:56,120 --> 01:01:56,960
+In version D.
+
+654
+01:01:56,960 --> 01:02:04,920
+where you essentially have a specific git commit or a specific tag that this project
+
+655
+01:02:04,920 --> 01:02:10,320
+is being used at.
+
+656
+01:02:10,320 --> 01:02:16,960
+There is the comment that there might be different builds.
+
+657
+01:02:16,960 --> 01:02:17,960
+That's true.
+
+658
+01:02:17,960 --> 01:02:20,880
+There is one problem with builds.
+
+659
+01:02:20,880 --> 01:02:25,680
+Builds can be operating system specific.
+
+660
+01:02:25,680 --> 01:02:30,000
+Oh, absolute reproducibility, yes, you need the build.
+
+661
+01:02:30,000 --> 01:02:33,480
+But commonly, the version is sufficient.
+
+662
+01:02:33,480 --> 01:02:40,160
+The version is sufficient to hopefully get the same results.
+
+663
+01:02:40,160 --> 01:02:42,720
+If you really need to go down to the build number,
+
+664
+01:02:42,720 --> 01:02:47,240
+it's very likely that something fishy is happening.
+
+665
+01:02:47,240 --> 01:02:52,880
+And I wouldn't rely on my results too much, actually.
+
+666
+01:02:55,680 --> 01:03:00,480
+But yes, for complete reproducibility, the build should be in there.
+
+667
+01:03:03,680 --> 01:03:07,760
+For usability, I wouldn't put it in a place like that.
+
+668
+01:03:09,040 --> 01:03:19,120
+And I'll come to that a bit later, actually, in the next demo, where we show the differences here.
+
+669
+01:03:19,120 --> 01:03:20,120
+here.
+
+670
+01:03:20,120 --> 01:03:21,120
+Yeah.
+
+671
+01:03:21,120 --> 01:03:22,120
+Anything else?
+
+672
+01:03:22,120 --> 01:03:23,120
+Yeah.
+
+673
+01:03:23,120 --> 01:03:41,000
+This has the advantage, the E has the advantage over D that these projects that were referenced
+
+674
+01:03:41,000 --> 01:03:51,960
+here have now been put onto conda but actually if that is you can be happy if that isn't well
+
+675
+01:03:51,960 --> 01:03:58,280
+that's also something that's very common that you need some pip packages or that you need something
+
+676
+01:03:58,280 --> 01:04:04,200
+from a different git repository and of course there is the problem that these git repositories
+
+677
+01:04:04,200 --> 01:04:12,680
+could have been deleted. But if you want to make sure that you keep those git repositories
+
+678
+01:04:12,680 --> 01:04:18,200
+and you need a specific version from a specific git repository, fork it and use your own fork.
+
+679
+01:04:18,200 --> 01:04:23,240
+Because you are in control of your own fork and as long as you don't delete that fork, that stays.
+
+680
+01:04:24,040 --> 01:04:31,400
+So this way is perfectly fine if you make sure that the repositories don't disappear.
+
+681
+01:04:34,200 --> 01:04:35,200
+Okay.
+
+682
+01:04:35,200 --> 01:04:38,320
+And that's essentially also what's listed in the solution.
+
+683
+01:04:38,320 --> 01:04:39,320
+Yes.
+
+684
+01:04:39,320 --> 01:04:40,320
+Are there...
+
+685
+01:04:40,320 --> 01:04:41,320
+Yeah.
+
+686
+01:04:41,320 --> 01:04:44,000
+So, what about pip packages and conda packages?
+
+687
+01:04:44,000 --> 01:04:48,040
+Do they not disappear ever?
+
+688
+01:04:48,040 --> 01:04:58,640
+They can, hopefully not, but even conda packages can disappear, especially in very fast moving
+
+689
+01:04:58,640 --> 01:05:11,520
+fields, or if you use, let's say, more unstable channels, more developmental channels. I've
+
+690
+01:05:11,520 --> 01:05:18,560
+seen some PyTorch versions no longer being supplied by some of the providers because they
+
+691
+01:05:18,560 --> 01:05:24,080
+are too old and considered as not useful anymore. But that's, of course, a real problem for reproducibility.
+
+692
+01:05:24,080 --> 01:05:32,560
+Yeah. So, in general, if you use well-known and widely used channels and packages from
+
+693
+01:05:32,560 --> 01:05:37,680
+Conda or BIP, it is very unlikely that they will disappear.
+
+694
+01:05:38,880 --> 01:05:50,400
+But yeah, they can. And how to solve that problem, we can come to, well, how to switch that problem
+
+695
+01:05:50,400 --> 01:05:55,760
+to a different level, we'll come to in a bit.
+
+696
+01:05:55,760 --> 01:05:56,320
+Yeah.
+
+697
+01:05:56,320 --> 01:06:02,880
+So now, I will demo creating our own small time capsule for a
+
+698
+01:06:04,080 --> 01:06:07,200
+environment and for the future world.
+
+699
+01:06:11,360 --> 01:06:15,440
+Yeah, this is essentially, I have created this
+
+700
+01:06:15,440 --> 01:06:19,520
+environment of YAML and as explained above, I can quickly
+
+701
+01:06:20,400 --> 01:06:25,400
+show that this is essentially what's written in here.
+
+702
+01:06:26,420 --> 01:06:31,020
+So conceptually, again, it wants to create an environment
+
+703
+01:06:31,020 --> 01:06:35,700
+called myenv with the channels on the forge
+
+704
+01:06:35,700 --> 01:06:37,660
+and in this case, defaults,
+
+705
+01:06:37,660 --> 01:06:40,140
+which is the Anaconda environment.
+
+706
+01:06:41,500 --> 01:06:45,380
+One mention here, this can become a bit problematic
+
+707
+01:06:45,380 --> 01:06:50,380
+because Anaconda recently changed their policies
+
+708
+01:06:52,380 --> 01:06:55,140
+that even academic institutions now have to pay
+
+709
+01:06:55,140 --> 01:06:58,740
+if they have over a certain amount of users.
+
+710
+01:06:58,740 --> 01:07:02,580
+And it might be good not to use defaults here.
+
+711
+01:07:06,180 --> 01:07:09,220
+CondaForge normally has all the packages that you need
+
+712
+01:07:09,220 --> 01:07:13,660
+and even has more packages than default
+
+713
+01:07:13,660 --> 01:07:15,100
+than the Anaconda environment,
+
+714
+01:07:15,100 --> 01:07:17,860
+but the under-conda moment is a bit better curated.
+
+715
+01:07:19,820 --> 01:07:22,800
+Okay, and then it is the dependency.
+
+716
+01:07:22,800 --> 01:07:25,800
+So this would be something that depends on Python 3.10,
+
+717
+01:07:27,420 --> 01:07:30,300
+also wants to have mountain NumPy, pandas, and seaborn.
+
+718
+01:07:30,300 --> 01:07:32,200
+And yes, it doesn't give any,
+
+719
+01:07:33,520 --> 01:07:38,520
+it doesn't give any version numbers here at the moment.
+
+720
+01:07:39,860 --> 01:07:44,220
+So I will be using mamba instead of conda.
+
+721
+01:07:44,220 --> 01:07:54,140
+the reason is that otherwise conda can take quite a bit of time to actually create environments and
+
+722
+01:07:54,140 --> 01:08:01,980
+I want to spare us all the time. Mamba is a drop-in replacement that's just faster because
+
+723
+01:08:01,980 --> 01:08:11,500
+it uses C while conda is programmed entirely in Python. Okay, so this will essentially
+
+724
+01:08:11,500 --> 01:08:21,420
+create this environment, check the sources that I indicated and start to then download the files.
+
+725
+01:08:33,180 --> 01:08:34,540
+So it checks for these
+
+726
+01:08:34,540 --> 01:08:45,260
+And I should have them already downloaded, so there's no, oh, it actually found something
+
+727
+01:08:45,260 --> 01:08:49,260
+that probably has a newer version and it wants to take the newer version.
+
+728
+01:08:49,260 --> 01:08:52,140
+So that's something which is actually quite nice to see.
+
+729
+01:08:52,140 --> 01:09:00,000
+So if I had created that a little bit earlier, it would be slightly different now because
+
+730
+01:09:00,000 --> 01:09:02,140
+this is a different version.
+
+731
+01:09:02,140 --> 01:09:14,060
+So and if I then say conda activate myenv, I have my environment where in Python I can
+
+732
+01:09:14,060 --> 01:09:20,180
+import Seaborn and have my Seaborn library and so on.
+
+733
+01:09:20,180 --> 01:09:26,420
+So I can now also export this environment.
+
+734
+01:09:31,380 --> 01:09:39,460
+And that's essentially what was mentioned earlier in the notes,
+
+735
+01:09:39,460 --> 01:09:43,820
+that this lists everything, including the build number,
+
+736
+01:09:43,820 --> 01:09:45,060
+the build ID.
+
+737
+01:09:45,060 --> 01:09:47,820
+And if you look into this a bit, you
+
+738
+01:09:47,820 --> 01:09:57,740
+notice things like this one where libplus is linux64 so yeah i'm on a linux system and this is
+
+739
+01:09:57,740 --> 01:10:06,380
+a build that's specific for linux so if i would provide this this dependency file anyone who is
+
+740
+01:10:06,380 --> 01:10:14,460
+on a windows system will have problems installing this environment because this is not available
+
+741
+01:10:14,460 --> 01:10:27,340
+for Windows. That's why this kind of system where you have all the individual build numbers
+
+742
+01:10:27,340 --> 01:10:35,100
+might not be the best thing. It's good to have and I would put it in as for reproducibility
+
+743
+01:10:35,100 --> 01:10:42,860
+so that people can actually see what exact builds were being used. But for usability of your code,
+
+744
+01:10:42,860 --> 01:10:49,660
+So if someone wants to use that library in a different project, this is questionable.
+
+745
+01:10:51,500 --> 01:10:59,420
+There's the other option which is very convenient. You can say from history and if I
+
+746
+01:11:04,300 --> 01:11:09,820
+check into that, this is exactly what I installed. This lists exactly, even if I
+
+747
+01:11:09,820 --> 01:11:15,820
+later on would install something with mamba install whatever it would list exactly the
+
+748
+01:11:15,820 --> 01:11:23,180
+right packages here there is a third option
+
+749
+01:11:33,180 --> 01:11:37,900
+which is called no builds and that
+
+750
+01:11:40,780 --> 01:11:44,220
+is the same as the environments file but without the builds.
+
+751
+01:11:45,580 --> 01:11:51,420
+That can also be useful if you want to make a clearer specifications which underlying packages
+
+752
+01:11:51,420 --> 01:11:57,900
+were being used without providing builds, but it still has the problem that there are things like
+
+753
+01:11:57,900 --> 01:12:03,420
+the LD implementation in Linux. So yeah, that might still not work on a Windows system.
+
+754
+01:12:03,420 --> 01:12:05,820
+system.
+
+755
+01:12:05,820 --> 01:12:10,940
+So what is the recommendation here?
+
+756
+01:12:10,940 --> 01:12:15,220
+What I personally would recommend for a project
+
+757
+01:12:15,220 --> 01:12:22,900
+to provide is the export from history, so this.
+
+758
+01:12:22,900 --> 01:12:26,740
+And for reproducibility reasons, I
+
+759
+01:12:26,740 --> 01:12:30,780
+would put in the complete export.
+
+760
+01:12:30,780 --> 01:12:35,300
+Because then if someone has the same operating system
+
+761
+01:12:35,300 --> 01:12:40,580
+and so on, this should be really exactly the same environment
+
+762
+01:12:40,580 --> 01:12:44,660
+that they get when creating that.
+
+763
+01:12:44,660 --> 01:12:47,540
+While the FromHistory will create an environment
+
+764
+01:12:47,540 --> 01:12:52,900
+that is as close to what I would recreate
+
+765
+01:12:52,900 --> 01:12:54,180
+if I would start this now.
+
+766
+01:12:54,180 --> 01:13:05,300
+And it's the one that solves on all operating systems, so it's more general.
+
+767
+01:13:05,300 --> 01:13:11,540
+But at the same time, we have to admit that this is not a good initial environment file.
+
+768
+01:13:11,540 --> 01:13:14,540
+Your initial environment file should have the NumPy version, should have the Pandas
+
+769
+01:13:14,540 --> 01:13:19,100
+version, should have the Seaborn version that you want to use.
+
+770
+01:13:19,100 --> 01:13:36,080
+So to summarize, in your initial environment file do have the version numbers, but then
+
+771
+01:13:36,080 --> 01:13:47,160
+For completeness, it is OK to also include in your repo
+
+772
+01:13:47,160 --> 01:13:56,200
+the complete export with the builds.
+
+773
+01:13:56,200 --> 01:14:01,120
+I would even recommend it as an additional piece
+
+774
+01:14:01,120 --> 01:14:01,840
+of information.
+
+775
+01:14:01,840 --> 01:14:03,160
+Yeah.
+
+776
+01:14:03,160 --> 01:14:05,280
+Because it doesn't hurt.
+
+777
+01:14:05,280 --> 01:14:06,360
+OK, good.
+
+778
+01:14:06,360 --> 01:14:06,860
+OK.
+
+779
+01:14:10,400 --> 01:14:12,320
+We unfortunately don't have really time
+
+780
+01:14:12,320 --> 01:14:16,680
+to go into details with R. But essentially, you
+
+781
+01:14:16,680 --> 01:14:20,360
+can use Conda with R as well.
+
+782
+01:14:20,360 --> 01:14:24,920
+Conda does have R, does support R.
+
+783
+01:14:24,920 --> 01:14:27,720
+And I have created several environments with Conda
+
+784
+01:14:27,720 --> 01:14:30,760
+OS for R with using Conda.
+
+785
+01:14:30,760 --> 01:14:43,080
+So, but since we saw that an underlying library, a system library can cause problems.
+
+786
+01:14:43,080 --> 01:14:49,060
+And up until now, we mainly considered non-system libraries, even though Conda already does
+
+787
+01:14:49,060 --> 01:14:53,280
+some system library stuff.
+
+788
+01:14:53,280 --> 01:14:56,180
+Let's go to recording the environments.
+
+789
+01:14:56,180 --> 01:15:03,740
+And I think everyone has heard the, well, it works on my machine, comment from someone
+
+790
+01:15:03,740 --> 01:15:05,940
+at some point.
+
+791
+01:15:05,940 --> 01:15:15,780
+And this meme sums up the idea behind Docker or other containerization systems quite well.
+
+792
+01:15:15,780 --> 01:15:21,740
+That it works on my machine, well, then we'll ship your machine.
+
+793
+01:15:21,740 --> 01:15:26,020
+And yeah, that is how Docker was born, essentially.
+
+794
+01:15:26,020 --> 01:15:35,340
+So we want to ship something or give something that provides as much as possible of the operating
+
+795
+01:15:35,340 --> 01:15:39,940
+system to the user in the end.
+
+796
+01:15:39,940 --> 01:15:44,740
+And to go back to our kitchen analogy, so as we said, our code scripts are the cooking
+
+797
+01:15:44,740 --> 01:15:51,240
+recipes and then with containers you have container definition files and they are like
+
+798
+01:15:51,240 --> 01:15:58,600
+blueprint to build a kitchen with all the utensils and stuff that the recipe needs to be prepared.
+
+799
+01:16:00,360 --> 01:16:05,880
+The next thing is we have the container images and those are kind of showroom kitchens based
+
+800
+01:16:05,880 --> 01:16:11,480
+on these container based on the blueprints that we have created before and a showroom
+
+801
+01:16:11,480 --> 01:16:16,120
+kitchen is not connected so there there are electricity is not plugged in water is not
+
+802
+01:16:16,120 --> 01:16:19,840
+not plugged in, you can't really use it.
+
+803
+01:16:19,840 --> 01:16:22,240
+And a container is then essentially
+
+804
+01:16:22,240 --> 01:16:26,240
+this showroom kitchen connected to everything.
+
+805
+01:16:26,240 --> 01:16:28,180
+And in addition, there's a protective layer
+
+806
+01:16:28,180 --> 01:16:32,200
+being put on everything so that you can work with it.
+
+807
+01:16:32,200 --> 01:16:37,600
+And in the end, you remove this protective layer
+
+808
+01:16:37,600 --> 01:16:45,680
+so that you still have the original container
+
+809
+01:16:45,680 --> 01:16:55,280
+kind of. As we said, containers can be built to bundle all the necessary ingredients, data,
+
+810
+01:16:55,280 --> 01:17:04,400
+code, environment, operating system, even though including data might be problematic,
+
+811
+01:17:04,400 --> 01:17:12,880
+depending on your system. A container image is somewhat like, yeah, also like a piece
+
+812
+01:17:12,880 --> 01:17:18,000
+of paper with all the operating system on it and when you run it, you put a transparent
+
+813
+01:17:18,000 --> 01:17:24,380
+sheet on it to form essentially the container.
+
+814
+01:17:24,380 --> 01:17:28,520
+Then that container runs and you write on that transparent sheet and do all the changes
+
+815
+01:17:28,520 --> 01:17:31,240
+on this transparent sheet.
+
+816
+01:17:31,240 --> 01:17:38,200
+And when you're done, you tear off that transparent sheet and you still have your original container
+
+817
+01:17:38,200 --> 01:17:42,520
+and everything that was done on this transparent sheet is gone.
+
+818
+01:17:45,160 --> 01:17:50,440
+And the definition files are essentially text files that contain a series of instructions
+
+819
+01:17:50,440 --> 01:17:52,320
+on how to build these container images.
+
+820
+01:17:52,640 --> 01:17:58,000
+So to recap here, we have three concepts.
+
+821
+01:17:58,840 --> 01:18:04,800
+And first, kind of like a starting point would be the definition file.
+
+822
+01:18:04,800 --> 01:18:13,720
+let's say a dockerfile or a similarity definition file and we use that definition file to create
+
+823
+01:18:13,720 --> 01:18:24,120
+an image, a container image, or image for short, and that image and that definition
+
+824
+01:18:24,120 --> 01:18:32,080
+file, of course, they are persistent, but then when we create a container out of that
+
+825
+01:18:32,080 --> 01:18:41,760
+image, then that container is not persistent. So the container is what is actually being run,
+
+826
+01:18:42,560 --> 01:18:50,160
+and when that container is stopped, it stops running, then it vanishes. But the image
+
+827
+01:18:50,800 --> 01:18:56,480
+is still there on the disk. Then everything that was changed in the container vanishes, yes.
+
+828
+01:18:56,480 --> 01:19:05,440
+Okay, yeah and why would you want to use these? There are two main reasons.
+
+829
+01:19:06,640 --> 01:19:12,960
+One is installing a certain software is tricky or not supported on the system that you're using.
+
+830
+01:19:15,840 --> 01:19:24,960
+That's very common on HPC systems. HPC systems in general have a very very
+
+831
+01:19:24,960 --> 01:19:36,480
+minimalistic operating system with as little software installed as possible as to leave
+
+832
+01:19:36,480 --> 01:19:45,760
+as much computational and memory available for a user to exploit and use. But that means that
+
+833
+01:19:45,760 --> 01:19:52,880
+a lot of small libraries that code depends on are not there. So what you can do with a container,
+
+834
+01:19:52,880 --> 01:20:02,040
+you can essentially put all the stuff in that container and run your code via that container.
+
+835
+01:20:02,040 --> 01:20:07,120
+The other option is that you want to make sure that whoever is using the code uses it
+
+836
+01:20:07,120 --> 01:20:11,100
+in the same kind of environment or same environment as you.
+
+837
+01:20:11,100 --> 01:20:16,720
+And then you can provide them an image of your container because then you essentially
+
+838
+01:20:16,720 --> 01:20:29,040
+have provided the whole environment. There might be a problem if people are using different
+
+839
+01:20:29,040 --> 01:20:36,440
+architectures than you and there might be a problem if people are using a different
+
+840
+01:20:36,440 --> 01:20:39,080
+operating system than use.
+
+841
+01:20:39,080 --> 01:20:47,960
+There are, for, you can run Linux containers on Windows.
+
+842
+01:20:47,960 --> 01:20:49,720
+That works reasonably well, because Windows
+
+843
+01:20:49,720 --> 01:20:51,760
+has a Windows subsystem for Linux.
+
+844
+01:20:51,760 --> 01:20:54,760
+But you can't really run Windows containers on Linux,
+
+845
+01:20:54,760 --> 01:20:56,360
+unfortunately.
+
+846
+01:20:56,360 --> 01:21:01,200
+So one way it works, the other, unfortunately, doesn't.
+
+847
+01:21:01,200 --> 01:21:09,360
+Yeah, so the shipping the machine is a bit of an exaggeration.
+
+848
+01:21:12,080 --> 01:21:18,000
+So let's have a look at one of these container recipes.
+
+849
+01:21:19,360 --> 01:21:24,640
+This is a Singularity definition file and there's a link to the reference if you want to look into
+
+850
+01:21:24,640 --> 01:21:31,760
+more detail. Singularity commonly starts with an information on where this is coming from.
+
+851
+01:21:34,320 --> 01:21:42,560
+Singularity can use docker images to base your new images on. If it says a bootstrap,
+
+852
+01:21:42,560 --> 01:21:47,520
+essentially indicates, okay, this is where it's coming from. This comes from the docker repository
+
+853
+01:21:47,520 --> 01:21:56,200
+And from is the statement on what is the original image that we are using as a base for what
+
+854
+01:21:56,200 --> 01:21:58,240
+we are doing here.
+
+855
+01:21:58,240 --> 01:22:03,440
+And that's commonly some operating system or some programming language that you are
+
+856
+01:22:03,440 --> 01:22:11,320
+using where essentially all the packages that you need for that base operating system or
+
+857
+01:22:11,320 --> 01:22:15,080
+base programming language are already installed.
+
+858
+01:22:15,080 --> 01:22:18,940
+And then you can start to do more things with it.
+
+859
+01:22:18,940 --> 01:22:27,340
+And post is then essentially what happens after that basic installation.
+
+860
+01:22:27,340 --> 01:22:33,500
+So what changes do we need to do to our system to make it do what we want the container to
+
+861
+01:22:33,500 --> 01:22:34,500
+do?
+
+862
+01:22:34,500 --> 01:22:41,260
+And, at least on any Linux or on any Ubuntu, this commonly starts with apt-get y-update,
+
+863
+01:22:41,260 --> 01:22:47,380
+So just get the latest updates, which can in itself be a bit of a problem if you want
+
+864
+01:22:47,380 --> 01:22:49,020
+to redo that.
+
+865
+01:22:49,020 --> 01:22:54,760
+And then install the packages that we need.
+
+866
+01:22:54,760 --> 01:22:56,920
+You can set some environment variables.
+
+867
+01:22:56,920 --> 01:23:00,160
+You can potentially also copy over files and so on.
+
+868
+01:23:00,160 --> 01:23:06,080
+And then you have a run script, which is the final command that is being run when this
+
+869
+01:23:06,080 --> 01:23:09,040
+container is being run.
+
+870
+01:23:09,040 --> 01:23:13,720
+So this container would run date, pipe to kawase, pipe to loghead.
+
+871
+01:23:13,720 --> 01:23:15,400
+That's what this container would be doing.
+
+872
+01:23:15,400 --> 01:23:20,640
+It's not very useful, but it's just an example.
+
+873
+01:23:20,640 --> 01:23:23,160
+Yes.
+
+874
+01:23:23,160 --> 01:23:24,160
+And yeah.
+
+875
+01:23:24,160 --> 01:23:34,480
+And so does every image that we build, do they all run a script or?
+
+876
+01:23:34,480 --> 01:23:35,480
+No.
+
+877
+01:23:35,480 --> 01:23:37,240
+You don't necessarily need to run a script.
+
+878
+01:23:37,240 --> 01:23:44,980
+You can also have a container that essentially doesn't do anything and just provides an environment.
+
+879
+01:23:44,980 --> 01:23:49,240
+Or the way you need to tell it, okay, what do you want to execute in the container?
+
+880
+01:23:49,240 --> 01:23:50,920
+Okay.
+
+881
+01:23:50,920 --> 01:23:57,960
+So then it's kind of like a generic platform to run whatever script you want in that specific
+
+882
+01:23:57,960 --> 01:23:58,960
+environment.
+
+883
+01:23:58,960 --> 01:23:59,960
+Yes.
+
+884
+01:23:59,960 --> 01:24:00,960
+Okay.
+
+885
+01:24:00,960 --> 01:24:09,920
+different container platforms. There's Docker and Podman, which is more of a, which I would
+
+886
+01:24:09,920 --> 01:24:16,680
+say more of a single user, particularly Docker is more of a single, or a container for a
+
+887
+01:24:16,680 --> 01:24:23,760
+single user system, because Docker has the disadvantage that it essentially needs to
+
+888
+01:24:23,760 --> 01:24:34,880
+to have administrative or pseudo rights and it will run essentially as a super user so
+
+889
+01:24:34,880 --> 01:24:42,920
+it can do everything on your system. Singularity and Obtainer are pretty popular on high-performance
+
+890
+01:24:42,920 --> 01:24:48,120
+computing systems because they essentially get rid of this requirement of running it
+
+891
+01:24:48,120 --> 01:24:58,740
+as a super user, and you can still run these containers.
+
+892
+01:24:58,740 --> 01:25:01,820
+Potman is very close to Docker.
+
+893
+01:25:01,820 --> 01:25:06,460
+And yes, what's the default container engine
+
+894
+01:25:06,460 --> 01:25:09,620
+on Red Hat systems, for example?
+
+895
+01:25:09,620 --> 01:25:16,420
+So if you have a single machine, or like a single user,
+
+896
+01:25:16,420 --> 01:25:18,340
+Or if you have a single machine, yeah.
+
+897
+01:25:18,340 --> 01:25:22,620
+If you have a single machine, you can know super user rights.
+
+898
+01:25:22,620 --> 01:25:24,900
+You can use singularity obtain apartment.
+
+899
+01:25:24,900 --> 01:25:27,420
+If you have super user rights, you can use Docker.
+
+900
+01:25:27,420 --> 01:25:30,500
+If you don't have super user rights, you can't use Docker.
+
+901
+01:25:30,500 --> 01:25:34,380
+It's pretty simple.
+
+902
+01:25:34,380 --> 01:25:39,700
+Someone can add you to the Docker users,
+
+903
+01:25:39,700 --> 01:25:42,900
+but that would essentially give you super user rights.
+
+904
+01:25:42,900 --> 01:25:48,940
+So they can as well just give you administrative rights then.
+
+905
+01:25:48,940 --> 01:25:51,340
+So pros and cons of containers.
+
+906
+01:25:51,340 --> 01:25:54,260
+Well, they allow you to move workflows
+
+907
+01:25:54,260 --> 01:25:59,260
+across different platforms with the constraints
+
+908
+01:25:59,260 --> 01:26:01,740
+that we mentioned earlier.
+
+909
+01:26:01,740 --> 01:26:04,740
+They can definitely solve the works on my machine situation
+
+910
+01:26:04,740 --> 01:26:09,460
+because you essentially ship the operating system
+
+911
+01:26:09,460 --> 01:26:11,300
+or the underlying libraries.
+
+912
+01:26:14,300 --> 01:26:17,100
+For software with many dependencies,
+
+913
+01:26:17,100 --> 01:26:19,020
+they can offer the only way to preserve
+
+914
+01:26:19,020 --> 01:26:21,580
+the computational environment future of usability.
+
+915
+01:26:23,220 --> 01:26:24,980
+What we had previously,
+
+916
+01:26:24,980 --> 01:26:27,900
+where this Konda environment had things,
+
+917
+01:26:27,900 --> 01:26:30,780
+now we can create this image
+
+918
+01:26:30,780 --> 01:26:32,100
+and we can actually ship this image
+
+919
+01:26:32,100 --> 01:26:34,620
+because that image, regardless on whether
+
+920
+01:26:34,620 --> 01:26:38,860
+the repositories are no longer in the,
+
+921
+01:26:38,860 --> 01:26:42,160
+or the repositories no longer have these versions,
+
+922
+01:26:42,160 --> 01:26:44,080
+they are in the image.
+
+923
+01:26:44,080 --> 01:26:46,760
+If the image is created, they are in the image.
+
+924
+01:26:46,760 --> 01:26:49,240
+So for reproducibility, you need the image.
+
+925
+01:26:49,240 --> 01:26:51,560
+You don't necessarily need the definition file,
+
+926
+01:26:51,560 --> 01:26:54,860
+but that is very, very useful to reproduce the image.
+
+927
+01:26:55,800 --> 01:27:00,120
+But if you want to have it reproducible,
+
+928
+01:27:00,120 --> 01:27:01,860
+you need to provide that image.
+
+929
+01:27:03,420 --> 01:27:06,440
+It's also a mechanism to send the computer to the data
+
+930
+01:27:06,440 --> 01:27:12,040
+your data set is either too large to transfer or if when your data set is in a secure environment
+
+931
+01:27:12,040 --> 01:27:19,160
+and you just can't, you don't have an internet access so you can't just install conda packages
+
+932
+01:27:19,160 --> 01:27:24,520
+or whatever but you can give the image file to the system administrator and they will put that
+
+933
+01:27:24,520 --> 01:27:30,040
+image file onto that computer and then you can run the tools that your image provides.
+
+934
+01:27:30,040 --> 01:27:40,720
+It's a further set of separation where you can install software into a file, so that
+
+935
+01:27:40,720 --> 01:27:46,920
+image file, instead of onto your computer, separating again or essentially meaning that
+
+936
+01:27:46,920 --> 01:27:52,400
+you don't have to change your computer setup to install something.
+
+937
+01:27:52,400 --> 01:27:58,720
+There are, of course, also some drawbacks because containers can be used to hide away
+
+938
+01:27:58,720 --> 01:28:04,720
+software installation problems and which should normally have been solved by better development
+
+939
+01:28:04,720 --> 01:28:11,440
+practices. So yeah, it's too difficult to install. Yeah, we don't make the installation easier,
+
+940
+01:28:11,440 --> 01:28:15,840
+which would be the right thing to do. We'll just provide a docker image so that people can use it.
+
+941
+01:28:16,640 --> 01:28:23,840
+Yeah. You can run into the instead of works on my machine works only in this container,
+
+942
+01:28:23,840 --> 01:28:29,160
+container, which again leads to the same question, why does it only work in this container?
+
+943
+01:28:29,160 --> 01:28:33,240
+What's in this container that makes it possible?
+
+944
+01:28:33,240 --> 01:28:40,520
+And if that is a specific version of a normally available software, then yeah, there might
+
+945
+01:28:40,520 --> 01:28:44,200
+be problems with what you have actually.
+
+946
+01:28:44,200 --> 01:28:50,200
+They can and are difficult and are somewhat difficult to modify.
+
+947
+01:28:50,200 --> 01:28:54,320
+depending on what you package in there, they can become very large.
+
+948
+01:28:54,760 --> 01:29:00,680
+So every bit of data that you would put into a container, that's why I said
+
+949
+01:29:01,480 --> 01:29:05,640
+shipping the data or putting data into a container is a questionable thing,
+
+950
+01:29:06,440 --> 01:29:10,360
+that will make that container larger.
+
+951
+01:29:10,360 --> 01:29:14,840
+For example, if you have large language models, you don't really want to put
+
+952
+01:29:14,840 --> 01:29:19,840
+those large language models into a container because you will just increase
+
+953
+01:29:19,840 --> 01:29:25,760
+container size a lot and if you use that model in multiple different containers, imagine a 40
+
+954
+01:29:25,760 --> 01:29:33,600
+40 gigabyte model and now all your containers are 40 gigabyte in size. Instead what you can do is
+
+955
+01:29:33,600 --> 01:29:42,560
+you can have that image elsewhere or have the model elsewhere and load it into the container
+
+956
+01:29:42,560 --> 01:29:47,920
+when it's run. That makes it a bit less reproducible because you're not chipping the
+
+957
+01:29:47,920 --> 01:29:51,840
+data, but overall it's, I would say, the better choice.
+
+958
+01:29:53,200 --> 01:30:01,920
+Yeah, so then we are assuming that hopefully the language model will be distributed
+
+959
+01:30:01,920 --> 01:30:05,760
+in some other centralized place, for example, Hackingface or something.
+
+960
+01:30:06,320 --> 01:30:13,600
+Yes, so there are different places where containers can be found.
+
+961
+01:30:13,600 --> 01:30:21,160
+Docker Hub is very popular, Kuai is also quite popular, GitHub and GitLab container registries
+
+962
+01:30:21,160 --> 01:30:24,760
+can also be used, or even Zenodo.
+
+963
+01:30:24,760 --> 01:30:31,940
+So there was this warning about only use official and trusted images.
+
+964
+01:30:31,940 --> 01:30:38,840
+So what is your definition for an official and trusted image?
+
+965
+01:30:38,840 --> 01:30:40,840
+For me, it's the same as any other software
+
+966
+01:30:40,840 --> 01:30:43,260
+that I use from the internet.
+
+967
+01:30:43,260 --> 01:30:46,020
+If I want to use a container,
+
+968
+01:30:46,020 --> 01:30:48,660
+it should be coming from the essentially creators
+
+969
+01:30:48,660 --> 01:30:50,700
+of the software that I want to use.
+
+970
+01:30:51,660 --> 01:30:53,940
+Not from some third party,
+
+971
+01:30:53,940 --> 01:30:58,180
+whatever that provides me WinZip or whatever.
+
+972
+01:31:01,020 --> 01:31:02,020
+Or if I want to have PuTTY,
+
+973
+01:31:02,020 --> 01:31:03,460
+I'm going to the PuTTY webpage
+
+974
+01:31:03,460 --> 01:31:05,380
+and download it from the PuTTY webpage
+
+975
+01:31:05,380 --> 01:31:07,480
+and not from some third party
+
+976
+01:31:07,480 --> 01:31:09,360
+where I don't know if this is actually put here
+
+977
+01:31:09,360 --> 01:31:12,040
+or just a Trojan that's trying to,
+
+978
+01:31:12,040 --> 01:31:14,320
+that I've been storing on my system.
+
+979
+01:31:14,320 --> 01:31:19,320
+Yeah, so if I want to use an image of Ubuntu,
+
+980
+01:31:20,760 --> 01:31:25,760
+then I will use an image provided by the,
+
+981
+01:31:26,000 --> 01:31:28,880
+what is it, the Linux Foundation
+
+982
+01:31:28,880 --> 01:31:33,380
+or whoever is responsible for Ubuntu development.
+
+983
+01:31:33,380 --> 01:31:36,040
+And similar to what we had earlier
+
+984
+01:31:36,040 --> 01:31:41,160
+the environments or the dependencies. We also here now have a
+
+985
+01:31:42,680 --> 01:31:48,680
+dockerfile and I want to quickly go through the dockerfile to see what is actually
+
+986
+01:31:49,800 --> 01:31:54,680
+how the dockerfile can be reproduced or if there are problems with this dockerfile
+
+987
+01:31:54,680 --> 01:32:01,240
+or reproducibility. One mention right at the beginning if you really want
+
+988
+01:32:01,240 --> 01:32:04,920
+to want it to be reproducible provide the image not just the dockerfile.
+
+989
+01:32:06,040 --> 01:32:12,760
+because only the image is what you actually used and the Dockerfile is only the way how this image
+
+990
+01:32:12,760 --> 01:32:19,880
+should be generated, but we'll mention why this is a bit problematic. So we have the
+
+991
+01:32:19,880 --> 01:32:26,280
+or the singularity file here. So again, we have a singularity that depends on Docker and it starts
+
+992
+01:32:26,280 --> 01:32:35,080
+from Ubuntu latest. Is that a good idea, Timo? Yeah, that's immediately a problem that the
+
+993
+01:32:35,080 --> 01:32:43,000
+Ubuntu latest is dependent on when you are building the image.
+
+994
+01:32:43,000 --> 01:32:47,400
+Yeah, three years ago, this was Ubuntu 21 or something.
+
+995
+01:32:47,400 --> 01:32:49,800
+Nowadays, it's 24 or something.
+
+996
+01:32:49,800 --> 01:32:53,400
+So yeah, it's building on a completely, not completely,
+
+997
+01:32:53,400 --> 01:32:55,160
+but a different operating system.
+
+998
+01:32:55,160 --> 01:32:57,160
+So this would definitely not be the same
+
+999
+01:32:57,160 --> 01:32:59,000
+if I run this now than three years ago.
+
+1000
+01:33:00,520 --> 01:33:03,400
+Then we start with our post, so with our installations.
+
+1001
+01:33:03,400 --> 01:33:12,280
+we export an environment for the, or an environment variable for the installation time,
+
+1002
+01:33:13,880 --> 01:33:22,840
+we upgrade update as we mentioned before, we upgrade install with a couple of libraries
+
+1003
+01:33:22,840 --> 01:33:29,960
+and this already, this is where this problem also comes back in. These libraries can have
+
+1004
+01:33:29,960 --> 01:33:35,240
+changed. Even if we have a fixed version, these can change depending on whether the default
+
+1005
+01:33:35,240 --> 01:33:45,320
+libraries have changed over time. Then this is some cleanup, which is fine. We create a virtual
+
+1006
+01:33:45,320 --> 01:33:55,320
+environment. We upgrade pip and, well, install some requirements.txt. That, of course, depends
+
+1007
+01:33:55,320 --> 01:34:00,680
+now a lot on the requirements.txt, how well defined the versions are in there,
+
+1008
+01:34:00,680 --> 01:34:04,600
+but if they are not well defined, we again can run into easy problems.
+
+1009
+01:34:07,480 --> 01:34:11,080
+This singularity file also has an additional section with files,
+
+1010
+01:34:11,080 --> 01:34:15,480
+which indicates what files are copied over into the image.
+
+1011
+01:34:17,240 --> 01:34:21,880
+So it copies over the requirements.txt and I would assume that this requirements.txt
+
+1012
+01:34:21,880 --> 01:34:26,440
+is in the same repository as this file,
+
+1013
+01:34:26,440 --> 01:34:27,960
+the same with the app.py.
+
+1014
+01:34:29,080 --> 01:34:30,860
+So those files we probably have.
+
+1015
+01:34:32,100 --> 01:34:34,680
+And then it copies something from home, myself data
+
+1016
+01:34:34,680 --> 01:34:35,680
+into app data.
+
+1017
+01:34:37,880 --> 01:34:42,600
+Yeah, home, myself is not something that we have.
+
+1018
+01:34:42,600 --> 01:34:47,600
+So this is stuff that is probably not even in the repository
+
+1019
+01:34:48,320 --> 01:34:50,560
+so we don't know what that is.
+
+1020
+01:34:50,560 --> 01:34:53,400
+In that case, it's probably the data
+
+1021
+01:34:53,400 --> 01:34:55,200
+that is to be used by the app.
+
+1022
+01:34:55,200 --> 01:34:58,760
+And we said that we want to reuse it with our data.
+
+1023
+01:34:58,760 --> 01:35:01,200
+So we can probably replace it with our data here.
+
+1024
+01:35:01,200 --> 01:35:06,320
+But yeah, that's not very helpful.
+
+1025
+01:35:06,320 --> 01:35:10,000
+And this is then a real problem, because this
+
+1026
+01:35:10,000 --> 01:35:13,880
+has some fancy lip where we have no idea what that is.
+
+1027
+01:35:13,880 --> 01:35:18,680
+And yeah, puts it into the libraries of this container.
+
+1028
+01:35:18,680 --> 01:35:27,680
+So this makes the whole image not reproducible or even
+
+1029
+01:35:27,680 --> 01:35:31,320
+not reusable, not reproducible.
+
+1030
+01:35:31,320 --> 01:35:36,360
+So to recap the file section here,
+
+1031
+01:35:36,360 --> 01:35:40,880
+so I think I read the instructions again.
+
+1032
+01:35:40,880 --> 01:35:48,240
+And yeah, it doesn't say that this singularity file
+
+1033
+01:35:48,240 --> 01:35:56,160
+is definition file is in a repo, but yeah, we are assuming that it's in a Git repo.
+
+1034
+01:35:56,800 --> 01:36:05,120
+And there is in the Git repo with this definition file, there is the application code,
+
+1035
+01:36:05,120 --> 01:36:16,960
+which is the app.py. And that we have a requirements text file there in that Git repo.
+
+1036
+01:36:16,960 --> 01:36:25,840
+But like we talked earlier, then data is not usually integrable, especially if it's big data.
+
+1037
+01:36:27,680 --> 01:36:36,800
+And so the first requirements line and the app line are fine.
+
+1038
+01:36:36,800 --> 01:36:50,880
+the copy data line is quite iffy, and the last line highlighted now with the fancy lip is like
+
+1039
+01:36:50,880 --> 01:37:01,200
+a definite no-no. These are the problems that you have with Docker definition files, which means
+
+1040
+01:37:01,200 --> 01:37:08,000
+that essentially if you want to have your Docker file reproduce or your code reproducible by
+
+1041
+01:37:08,000 --> 01:37:14,640
+providing in Docker, provide the image. Yes, it will be potentially big, but it's the only way
+
+1042
+01:37:14,640 --> 01:37:23,280
+how you can actually have the environment that you used saved. And not to confuse people
+
+1043
+01:37:23,280 --> 01:37:28,960
+any more than necessary, this is a singularity definition, right? Yes, sorry. Not Docker
+
+1044
+01:37:28,960 --> 01:37:34,400
+Definition point. So, key points here is containers can be helpful if complex setups are needed
+
+1045
+01:37:34,400 --> 01:37:41,520
+to running a specific software and they can also be helpful for prototyping without messing up
+
+1046
+01:37:41,520 --> 01:37:46,560
+your own computing environment or to run software that requires a different operating system than
+
+1047
+01:37:46,560 --> 01:37:55,120
+your own. Depends a bit. Okay, so we are coming towards the end and the question is where to
+
+1048
+01:37:55,120 --> 01:38:02,480
+go from here and what to take away from this. So I think for me we have shown you workflow tools
+
+1049
+01:38:02,480 --> 01:38:08,880
+and how and where to use it and we have hopefully given you an idea where they will make sense in
+
+1050
+01:38:08,880 --> 01:38:15,200
+the future. In many cases these workflow tools are probably not needed and a proper script with
+
+1051
+01:38:15,200 --> 01:38:22,160
+all the information is sufficient but you probably want to consider using them when you are processing
+
+1052
+01:38:22,160 --> 01:38:29,600
+many files with many steps, if your steps or files may change, if you're still collecting
+
+1053
+01:38:29,600 --> 01:38:38,320
+your input data, or if your main script connecting your steps starts to get very long, because then
+
+1054
+01:38:38,320 --> 01:38:44,320
+it starts to get unreadable essentially and you start to want to make different parts of it.
+
+1055
+01:38:44,320 --> 01:38:53,160
+it. Containers seem amazing, but do I have actual use for them? Well, maybe not, but
+
+1056
+01:38:53,160 --> 01:38:57,880
+knowing that you can use them is already pretty useful, that you can run Linux tools on your
+
+1057
+01:38:57,880 --> 01:39:03,560
+Windows computer, you can run different versions of the same software on your computer, that
+
+1058
+01:39:03,560 --> 01:39:09,000
+you can follow the easy installation instructions for an operating system that is not your own,
+
+1059
+01:39:09,000 --> 01:39:14,760
+you get a fully configured environment instead of installing just a tool and that you can share
+
+1060
+01:39:14,760 --> 01:39:19,480
+your setup and configurations with others. So yeah, they can be very beneficial, but
+
+1061
+01:39:20,600 --> 01:39:28,040
+as with workflow tools as well, you will need some additional read up on how to use them.
+
+1062
+01:39:29,000 --> 01:39:35,560
+This was mainly to present that they are an option. And what we think is important for every
+
+1063
+01:39:35,560 --> 01:39:40,840
+project that you create. Have a clear structure for your project. Have a clear file structure,
+
+1064
+01:39:40,840 --> 01:39:47,400
+clear directory so that you find things again. Record your workflow and write it down in a script
+
+1065
+01:39:47,400 --> 01:39:55,000
+file or if it's complex enough with a workflow manager. Create a dependency list and keep it
+
+1066
+01:39:55,000 --> 01:40:04,440
+updated. Optimally in an environment file because that makes reinstallations a lot easier and makes
+
+1067
+01:40:04,440 --> 01:40:11,720
+it a lot easier for others to follow what you have done. So software packages and their versions.
+
+1068
+01:40:11,720 --> 01:40:18,200
+Yes. And consider the possibility that someone, maybe you, may want to reproduce your work.
+
+1069
+01:40:20,600 --> 01:40:26,680
+Can you do something small to make it easier? Write down some more instructions or similar
+
+1070
+01:40:26,680 --> 01:40:33,320
+things. If you have ideas what you can do in the future but no time, you can add an issue to the
+
+1071
+01:40:33,320 --> 01:40:39,720
+repository that you're creating your code on and maybe someone else can help or you in a few years
+
+1072
+01:40:39,720 --> 01:40:45,000
+time notice oh well i had this idea back then maybe i maybe now i have a bit of time i can
+
+1073
+01:40:45,000 --> 01:40:53,640
+write i can actually implement that yeah so as i have mentioned a few times not everything in
+
+1074
+01:40:53,640 --> 01:40:59,240
+this lesson it might be useful right now but it's good to know that these things exist if you ever
+
+1075
+01:40:59,240 --> 01:41:03,480
+get into the situation where you would require such a solution and you can come either back to
+
+1076
+01:41:03,480 --> 01:41:10,840
+these documentation documents or you can go to the of course to the respective documentation of
+
+1077
+01:41:10,840 --> 01:41:18,200
+the individual software to see okay how do I actually use them. And caring about reproducibility
+
+1078
+01:41:19,000 --> 01:41:25,880
+makes work easier for the next person that's working on the project and as likely as not
+
+1079
+01:41:25,880 --> 01:41:29,040
+but that will be you.
+
+1080
+01:41:29,040 --> 01:41:31,360
+So that's, I think, it for us.
+
+1081
+01:41:31,360 --> 01:41:33,720
+[name], do you want to add anything?
+
+1082
+01:41:33,720 --> 01:41:37,600
+No, good recap there.
+
+1083
+01:41:37,600 --> 01:41:39,320
+OK, then.
+
+1084
+01:41:39,320 --> 01:41:41,560
+I would thank you, and.
+
+1085
+01:41:41,560 --> 01:41:42,600
+Excellent.
+
+1086
+01:41:42,600 --> 01:41:44,240
+So.
+
+1087
+01:41:44,240 --> 01:41:46,480
+I think we almost still have time.
+
+1088
+01:41:46,480 --> 01:41:47,280
+Exactly.
+
+1089
+01:41:47,280 --> 01:41:50,600
+Thank you, [name], and thank you, [name].
+
+1090
+01:41:50,600 --> 01:41:55,600
+And I don't think there's anything to lift.
+
+1091
+01:41:55,600 --> 01:42:06,000
+We still have four minutes. Should we consider some of the questions in the notes, but otherwise?
+
+1092
+01:42:06,000 --> 01:42:12,040
+I'm looking at the notes and there is a comment about the future viewpoint is really important.
+
+1093
+01:42:12,040 --> 01:42:23,880
+And I agree that I don't think it can be emphasized too much, that it is most probably the person
+
+1094
+01:42:23,880 --> 01:42:33,000
+looking at your code later is you, yourself or your experiment setup and all these things
+
+1095
+01:42:33,640 --> 01:42:41,000
+that we have discussed they may seem at first that okay this is again new learning curves
+
+1096
+01:42:42,520 --> 01:42:49,640
+they will take time to get into but they will save you time and energy in the end
+
+1097
+01:42:49,640 --> 01:42:54,640
+and also they help the scientific community at large
+
+1098
+01:42:56,080 --> 01:42:59,160
+because you are making things more reproducible.
+
+1099
+01:43:03,200 --> 01:43:06,720
+Yes, so we still have a couple of minutes,
+
+1100
+01:43:06,720 --> 01:43:08,560
+but of course we can also end it here
+
+1101
+01:43:08,560 --> 01:43:10,480
+if there's nothing to add.
+
+1102
+01:43:10,480 --> 01:43:14,120
+I just reminded that now we will have one hour lunch break.
+
+1103
+01:43:14,120 --> 01:43:17,360
+And after that, we will talk about social coding.
+
+1104
+01:43:17,360 --> 01:43:25,120
+will be me and [name] talking about basically the social aspects of coding with other people,
+
+1105
+01:43:25,120 --> 01:43:31,040
+sharing repositories, and that comes of course with some kind of legal requirements. And
+
+1106
+01:43:31,040 --> 01:43:40,040
+so we will talk about licenses for code and software. All this in about one hour. So I
+
+1107
+01:43:40,040 --> 01:43:45,880
+thank you, [name] and [name], for the great discussions. And I thank everyone for the
+
+1108
+01:43:45,880 --> 01:43:52,520
+comments on the notes. You can keep on writing comments and answers. And so we see each other
+
+1109
+01:43:52,520 --> 01:43:57,560
+in one hour. Thank you. Bye. Bye. Bye.
+
