@@ -13,7 +13,7 @@ videos_mp4=$(wildcard raw/day*.mp4)
 aac=$(patsubst %.mkv, %.mkv.aac, $(videos_mkv)) $(patsubst %.mp4, %.mp4.aac, $(videos_mp4))
 aac_wild=$(wildcard raw/*.mkv.aac out/*.mkv.aac raw/*.mp4.aac)
 #srt=$(patsubst %.mkv.aac, %.mkv.srt, $(filter %.mkv.aac, $(aac_wild))) $(patsubst %.mp4.aac, %.mp4.srt, $(filter %.mp4.aac, $(aac_wild)))
-srt=$(patsubst %.mkv, %.srt, $(videos_mkv)) $(patsubst %.mp4, %.mp4, $(videos_mp4))
+srt=$(patsubst %.mkv, %.srt, $(videos_mkv)) $(patsubst %.mp4, %.srt, $(videos_mp4))
 
 #WHISPER=whisper --model large
 SRUN=srun --pty --time=0-4 -c 4 --mem=20G --gpus=1
@@ -36,7 +36,7 @@ print:
 
 %.srt: %.mkv
 	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to CodeRefinery day four." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
-%..srt: %.mp4
+%.srt: %.mp4
 	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to CodeRefinery day four." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
 
 
