@@ -1,0 +1,3196 @@
+1
+00:00:00,000 --> 00:00:07,740
+Hello, we are back and hopefully you can hear us out there.
+
+2
+00:00:07,740 --> 00:00:12,700
+Should we do an audio test?
+
+3
+00:00:12,700 --> 00:00:13,700
+One.
+
+4
+00:00:13,700 --> 00:00:14,700
+Yes.
+
+5
+00:00:14,700 --> 00:00:15,700
+Two.
+
+6
+00:00:15,700 --> 00:00:16,700
+Three.
+
+7
+00:00:16,700 --> 00:00:17,700
+Four.
+
+8
+00:00:17,700 --> 00:00:18,700
+Five.
+
+9
+00:00:18,700 --> 00:00:19,700
+Six.
+
+10
+00:00:19,700 --> 00:00:24,060
+Okay, let us know if the audio sounds okay.
+
+11
+00:00:24,060 --> 00:00:33,300
+So we are resuming now for the last lesson of the day with what is called modular code
+
+12
+00:00:33,300 --> 00:00:35,040
+development.
+
+13
+00:00:35,040 --> 00:00:43,400
+So this is sort of an example that puts together a lot of the topics of the workshop.
+
+14
+00:00:43,400 --> 00:00:49,800
+We'll see us using GIT and who knows, maybe some testing, but in particular, how we evolve
+
+15
+00:00:49,800 --> 00:00:58,320
+some code from being this small, what do you say, how we would actually evolve some code
+
+16
+00:00:58,320 --> 00:01:03,200
+from being this small, how do I say this?
+
+17
+00:01:03,200 --> 00:01:11,920
+have prepared a small script doing some typical scientific data analysis for us.
+
+18
+00:01:12,800 --> 00:01:17,840
+Yeah, let's see. We'll start from there, and let's see how it will evolve.
+
+19
+00:01:18,480 --> 00:01:24,320
+Yeah, exactly. Okay, so it's like the real or a realistic example of it.
+
+20
+00:01:26,800 --> 00:01:32,240
+In the meantime, we have some links here in the notes or some questions here in the notes
+
+21
+00:01:32,240 --> 00:01:37,720
+that you can start filling out while we begin our discussion. So please think
+
+22
+00:01:37,720 --> 00:01:44,660
+about that. In the meantime, [name], do you have the lesson opened or should I
+
+23
+00:01:44,660 --> 00:01:49,960
+open it? I can share my screen. Okay.
+
+24
+00:01:49,960 --> 00:01:57,080
+Can you see it?
+
+25
+00:01:57,080 --> 00:01:59,800
+That's the questions we put in the notes.
+
+26
+00:01:59,800 --> 00:02:00,800
+Yeah.
+
+27
+00:02:00,800 --> 00:02:03,800
+There we go.
+
+28
+00:02:03,800 --> 00:02:04,800
+Yes.
+
+29
+00:02:04,800 --> 00:02:09,280
+So when we start off, I guess we can discuss these questions ourselves.
+
+30
+00:02:09,280 --> 00:02:14,600
+So [name], what does modular code development mean for you?
+
+31
+00:02:14,600 --> 00:02:19,600
+Well, as a person with some medical education background,
+
+32
+00:02:19,600 --> 00:02:24,920
+to me modular is something that actually exists in the nature.
+
+33
+00:02:24,920 --> 00:02:31,380
+We humans are modular ourselves, I would say.
+
+34
+00:02:31,380 --> 00:02:34,840
+Because if you look at our body,
+
+35
+00:02:34,840 --> 00:02:41,980
+there are multiple systems like circulatory system,
+
+36
+00:02:41,980 --> 00:02:46,380
+the nervous system, and the respiratory system.
+
+37
+00:02:46,380 --> 00:02:51,260
+Each system actually performs its unique function,
+
+38
+00:02:51,260 --> 00:02:54,660
+and together they form our body.
+
+39
+00:02:54,740 --> 00:03:00,860
+At the same time, if you look at the microscopic level,
+
+40
+00:03:00,860 --> 00:03:07,260
+one single cell is also composed of various tiny,
+
+41
+00:03:07,260 --> 00:03:11,380
+tiny components, and those components
+
+42
+00:03:11,380 --> 00:03:14,380
+are all performing their own functions,
+
+43
+00:03:14,380 --> 00:03:19,140
+and together they will form a functional cell.
+
+44
+00:03:19,140 --> 00:03:21,700
+So it's not just about code,
+
+45
+00:03:21,700 --> 00:03:23,620
+it's in the nature.
+
+46
+00:03:23,620 --> 00:03:25,380
+Yeah, I never thought of that.
+
+47
+00:03:25,380 --> 00:03:28,220
+So I guess there's two types.
+
+48
+00:03:28,220 --> 00:03:30,140
+One is there's, from what you said,
+
+49
+00:03:30,140 --> 00:03:33,300
+there's different systems doing
+
+50
+00:03:33,300 --> 00:03:35,100
+different things and they're separate,
+
+51
+00:03:35,100 --> 00:03:38,700
+so they can be understood and, well,
+
+52
+00:03:38,700 --> 00:03:48,060
+I won't say developed about humans, but can be understood and function separately.
+
+53
+00:03:48,060 --> 00:03:50,660
+And then there's the hierarchy.
+
+54
+00:03:50,660 --> 00:03:51,660
+Yes, exactly.
+
+55
+00:03:51,660 --> 00:04:01,100
+And, you know, that matches up with what I think about code also.
+
+56
+00:04:01,100 --> 00:04:08,680
+And whenever the systems start interfering with each other is that when stuff goes bad.
+
+57
+00:04:08,680 --> 00:04:13,920
+the really difficult diseases start happening.
+
+58
+00:04:13,920 --> 00:04:20,600
+Yes, I think that's true for both human and the code.
+
+59
+00:04:20,600 --> 00:04:27,080
+Yeah. Okay. What does
+
+60
+00:04:27,080 --> 00:04:30,440
+modular code development mean for you then?
+
+61
+00:04:30,440 --> 00:04:36,360
+Well, I would say that's also a hierarchical concept.
+
+62
+00:04:36,360 --> 00:04:48,360
+In the lower level, I would split a functional block of code into functions or I will create classes for them.
+
+63
+00:04:48,360 --> 00:05:02,360
+If you look at a little bit upper level, then I will organize functions or classes that are related with each other to a single module.
+
+64
+00:05:02,360 --> 00:05:13,760
+module. The module could be reused in different projects. That's how I understand. How about
+
+65
+00:05:13,760 --> 00:05:14,760
+you?
+
+66
+00:05:14,760 --> 00:05:21,080
+Yeah, I mean, I guess it depends on the kind of project. But basically, I start off with
+
+67
+00:05:21,080 --> 00:05:28,080
+something and then usually it starts off a bit chaotic. But once I get parts that I think
+
+68
+00:05:28,080 --> 00:05:30,360
+are self-contained, I'll start splitting them off,
+
+69
+00:05:30,360 --> 00:05:34,000
+whether it's functions or other files or classes
+
+70
+00:05:34,000 --> 00:05:35,160
+or something like that.
+
+71
+00:05:35,160 --> 00:05:38,760
+But yeah, basically, like picking off
+
+72
+00:05:38,760 --> 00:05:43,200
+little bits that are standalone and other things
+
+73
+00:05:43,200 --> 00:05:45,680
+can use as an interface.
+
+74
+00:05:45,680 --> 00:05:49,920
+Yeah, I guess that has partially answered
+
+75
+00:05:49,920 --> 00:05:52,800
+a very natural second question, which
+
+76
+00:05:52,800 --> 00:05:57,800
+is why do we want modular code instead of a block of code
+
+77
+00:06:00,440 --> 00:06:03,880
+line after line to do our tasks?
+
+78
+00:06:05,480 --> 00:06:08,280
+So is there any other reasons we want
+
+79
+00:06:08,280 --> 00:06:11,340
+to develop modular code?
+
+80
+00:06:15,520 --> 00:06:16,480
+So let's see.
+
+81
+00:06:17,920 --> 00:06:21,160
+Well, the first thing comes to my mind is
+
+82
+00:06:22,800 --> 00:06:31,800
+If I want to share my code with the other person or put it to my paper,
+
+83
+00:06:31,800 --> 00:06:35,800
+I would like it's well-organized.
+
+84
+00:06:35,800 --> 00:06:41,800
+Then the other people can use part of it or use the,
+
+85
+00:06:41,800 --> 00:06:45,800
+if I make a whole Python package,
+
+86
+00:06:45,800 --> 00:06:49,800
+then they can import it or they can install it.
+
+87
+00:06:49,800 --> 00:06:55,600
+I would like a code in the package module.
+
+88
+00:06:58,600 --> 00:07:04,400
+Okay. We have seen some answers,
+
+89
+00:07:04,400 --> 00:07:11,440
+so please fill out the questions with your comments.
+
+90
+00:07:12,120 --> 00:07:19,360
+Maybe we can come back to this later and have a look at the material first.
+
+91
+00:07:19,360 --> 00:07:27,920
+Good idea. So what's next? Let's check out this. Okay, the learning outcomes.
+
+92
+00:07:29,440 --> 00:07:39,440
+So should we discuss this now or come back? Maybe we do some hands-on stuff and then come back to
+
+93
+00:07:39,440 --> 00:07:47,840
+this when we have a deeper understanding. Yeah, sounds good. Yeah, I guess the main
+
+94
+00:07:47,840 --> 00:07:53,760
+thing we might bring up is this first point about pure functions. So basically
+
+95
+00:07:53,760 --> 00:08:01,280
+we'll see which of our functions have side effects and don't. So basically if a
+
+96
+00:08:01,280 --> 00:08:09,680
+function is only evaluated by its arguments then that makes it easy to
+
+97
+00:08:09,680 --> 00:08:17,360
+write, and test, and understand. And we'll maybe get there. But okay.
+
+98
+00:08:17,360 --> 00:08:26,000
+Let me go back to the notes. Yeah, another thing I would like to emphasize is that
+
+99
+00:08:26,000 --> 00:08:34,600
+in this session, the main idea will be we will do the typing together. It's kind
+
+100
+00:08:34,600 --> 00:08:39,240
+of like a live tapping demo.
+
+101
+00:08:39,240 --> 00:08:44,120
+I will be using the keyboard, and [name] will be helping me,
+
+102
+00:08:44,120 --> 00:08:45,120
+giving me guides.
+
+103
+00:08:45,120 --> 00:08:52,720
+And also, you will participate via the notes,
+
+104
+00:08:52,720 --> 00:08:59,840
+giving us comments, suggestions, or questions in the notes.
+
+105
+00:08:59,840 --> 00:09:02,800
+So we will do this coding together,
+
+106
+00:09:02,800 --> 00:09:06,160
+but I'm the one using the keyboard.
+
+107
+00:09:06,160 --> 00:09:06,660
+OK.
+
+108
+00:09:06,660 --> 00:09:07,160
+Yes.
+
+109
+00:09:07,160 --> 00:09:08,640
+Sounds good.
+
+110
+00:09:08,640 --> 00:09:11,560
+So what is our task?
+
+111
+00:09:11,560 --> 00:09:13,320
+Let's have a look.
+
+112
+00:09:18,520 --> 00:09:19,360
+OK.
+
+113
+00:09:19,360 --> 00:09:22,360
+So this is our task.
+
+114
+00:09:22,360 --> 00:09:29,160
+We will use some data downloaded from FMIs open database.
+
+115
+00:09:29,160 --> 00:09:35,600
+It's some records of temperatures in year 2022.
+
+116
+00:09:35,600 --> 00:09:37,840
+It's the temperature measurements
+
+117
+00:09:37,840 --> 00:09:44,120
+from the observation station in Wanda Airport.
+
+118
+00:09:44,120 --> 00:09:48,240
+Yeah, FMI has the observation station there.
+
+119
+00:09:48,240 --> 00:09:50,280
+That's the data we are going to use.
+
+120
+00:09:50,280 --> 00:09:56,640
+And as I mentioned before, we have prepared some scripts
+
+121
+00:09:56,640 --> 00:10:06,080
+for our task. So we will use this as a starting point and try to make it more modular.
+
+122
+00:10:08,080 --> 00:10:10,560
+Yeah. So what does it do?
+
+123
+00:10:13,440 --> 00:10:16,960
+Should we move to a Jupyter notebook first?
+
+124
+00:10:16,960 --> 00:10:20,880
+Yeah, sure. I guess we can look at it as we copy it there.
+
+125
+00:10:20,880 --> 00:10:30,400
+Yeah. Or maybe while you're getting it set up I can talk about it some. So it's
+
+126
+00:10:30,400 --> 00:10:38,920
+a simple analysis that reads in data from the CSV file. It computes the
+
+127
+00:10:38,920 --> 00:10:46,440
+average temperature over the specified range and then makes some plots. So it's
+
+128
+00:10:46,440 --> 00:10:56,920
+a fairly typical, well, little analysis. So it starts off like it has the read, analyze,
+
+129
+00:10:58,280 --> 00:11:05,720
+write out results sections. So even though it's simple, it provides some good stuff that we can
+
+130
+00:11:06,760 --> 00:11:10,600
+use as a good example of the whole analysis workflow.
+
+131
+00:11:10,600 --> 00:11:17,560
+So, while we're doing this, we'll basically be doing it live.
+
+132
+00:11:17,560 --> 00:11:24,240
+So you can, and please do, write in the notes and make suggestions on what we should be
+
+133
+00:11:24,240 --> 00:11:25,880
+doing next.
+
+134
+00:11:25,880 --> 00:11:32,760
+So we won't really do stuff until someone suggests it.
+
+135
+00:11:32,760 --> 00:11:35,440
+And we'll just see where it goes.
+
+136
+00:11:35,440 --> 00:11:36,960
+So do you want to see if it runs first?
+
+137
+00:11:36,960 --> 00:11:39,320
+I guess that's the first step, right?
+
+138
+00:11:39,320 --> 00:11:41,560
+Yes, let's try it out.
+
+139
+00:11:41,560 --> 00:11:46,360
+I have already imported this package,
+
+140
+00:11:47,700 --> 00:11:50,620
+so I can run directly this one.
+
+141
+00:11:50,620 --> 00:11:54,240
+Oh, we got some fail not found.
+
+142
+00:11:54,240 --> 00:11:56,740
+Oh, I haven't downloaded the data.
+
+143
+00:11:58,080 --> 00:12:01,600
+It should be in this repo.
+
+144
+00:12:01,600 --> 00:12:04,780
+Yeah, we can see, we can have a glance here.
+
+145
+00:12:04,780 --> 00:12:10,300
+We can see that the record is there's
+
+146
+00:12:10,300 --> 00:12:17,660
+one record for each hour from 0, 1, 2.
+
+147
+00:12:17,660 --> 00:12:19,660
+We will download from here.
+
+148
+00:12:23,380 --> 00:12:26,140
+So you copied the link.
+
+149
+00:12:26,140 --> 00:12:31,900
+Yeah, I will use a Jupyter magic command.
+
+150
+00:12:31,900 --> 00:12:34,740
+That's clever.
+
+151
+00:12:34,740 --> 00:12:40,900
+So basically from the terminal you're using the wget program which downloads the file and saves it,
+
+152
+00:12:40,900 --> 00:12:51,300
+I guess. Yes, I think yes. Okay. It's running. And the exclamation mark there is the shell magic,
+
+153
+00:12:51,300 --> 00:12:57,700
+so it runs something. And yeah, we see it saved temperatures.csv.
+
+154
+00:12:57,700 --> 00:13:06,260
+All right, let's run this again. Okay, it works, so I will delete this.
+
+155
+00:13:06,260 --> 00:13:12,260
+You know, this is a question that's come up some past days, like how do you include data
+
+156
+00:13:12,260 --> 00:13:17,860
+along with an analysis? So there could be something that says if the data doesn't exist,
+
+157
+00:13:17,860 --> 00:13:23,860
+it runs this command to download and saves it. So just an idea.
+
+158
+00:13:23,860 --> 00:13:30,500
+Yeah, especially when you're working with a Jupyter Notebook, it's very convenient.
+
+159
+00:13:30,500 --> 00:13:31,500
+Yeah, okay.
+
+160
+00:13:31,500 --> 00:13:32,500
+And it works.
+
+161
+00:13:32,500 --> 00:13:36,980
+Yeah, should we go through this line by line?
+
+162
+00:13:36,980 --> 00:13:38,260
+Yes, please.
+
+163
+00:13:38,260 --> 00:13:39,860
+What do the parts mean?
+
+164
+00:13:39,860 --> 00:13:47,100
+Okay, so the first line is kind of a hard code.
+
+165
+00:13:47,100 --> 00:13:52,300
+It's number of measurements we want to analyze and visualize.
+
+166
+00:13:52,300 --> 00:14:06,580
+And then by using appenders, we read some data from a CSV file and then extract the one column.
+
+167
+00:14:06,580 --> 00:14:15,800
+We have done some computation, which is the mean of these temperatures and then some plot.
+
+168
+00:14:15,800 --> 00:14:19,320
+So very simple, but typical process.
+
+169
+00:14:22,880 --> 00:14:26,400
+But also, sorry.
+
+170
+00:14:26,400 --> 00:14:28,920
+In the notes, I put a question to the audience,
+
+171
+00:14:28,920 --> 00:14:30,040
+how is this not modular?
+
+172
+00:14:32,760 --> 00:14:34,080
+But there's no answers yet.
+
+173
+00:14:34,080 --> 00:14:39,600
+So maybe I can ask you, how is this not modular?
+
+174
+00:14:39,600 --> 00:14:44,600
+Well, we can see there's a file reading, data extracting,
+
+175
+00:14:46,720 --> 00:14:49,440
+and the calculation and the visualization,
+
+176
+00:14:49,440 --> 00:14:51,680
+all stuff together.
+
+177
+00:14:51,680 --> 00:14:55,280
+If next time I want to use just the plot,
+
+178
+00:14:56,680 --> 00:14:57,760
+what should I do?
+
+179
+00:14:57,760 --> 00:14:59,960
+I copy and paste?
+
+180
+00:14:59,960 --> 00:15:03,380
+That doesn't sound like a good idea.
+
+181
+00:15:03,380 --> 00:15:08,380
+So I would like some single functional unit.
+
+182
+00:15:09,600 --> 00:15:16,920
+of code that I can reuse. I don't need to copy-paste, just call that function.
+
+183
+00:15:16,920 --> 00:15:24,440
+Yeah. Yeah. Yeah, I guess that's right. So one of the first tasks suggested in the
+
+184
+00:15:24,440 --> 00:15:35,080
+workshop is to create plots for 25, 50, and 500 measurements. So if you want it
+
+185
+00:15:35,080 --> 00:15:41,800
+be very unmodular, you'd copy and paste the code block three times and then rerun it,
+
+186
+00:15:42,440 --> 00:15:44,760
+and that makes a lot of code duplication.
+
+187
+00:15:47,480 --> 00:15:53,080
+So you can just copy the cells. Yeah. So if we want to be slightly better than that,
+
+188
+00:15:53,080 --> 00:16:01,400
+how would we make three different plots? I will use a for loop that I don't need to
+
+189
+00:16:01,400 --> 00:16:06,400
+to repeat all this stuff, so three times, should we try that?
+
+190
+00:16:10,920 --> 00:16:12,120
+Yes, let's do it.
+
+191
+00:16:13,440 --> 00:16:18,440
+Okay, I will say, well, number of measurements in the list.
+
+192
+00:16:18,440 --> 00:16:43,480
+in the list. So 25, 100, and 500. Okay, let me run it. Okay, it works. It's better than
+
+193
+00:16:43,480 --> 00:16:45,120
+than three cells.
+
+194
+00:16:45,120 --> 00:16:47,720
+Yeah, OK.
+
+195
+00:16:47,720 --> 00:16:51,920
+But since it's not modular, we forgot
+
+196
+00:16:51,920 --> 00:16:54,920
+to change the file name it was saving to.
+
+197
+00:16:54,920 --> 00:16:59,480
+So this is always a risk.
+
+198
+00:16:59,480 --> 00:17:06,200
+So should we fix that first?
+
+199
+00:17:06,200 --> 00:17:13,200
+Maybe we can either define unique names for them
+
+200
+00:17:13,200 --> 00:17:21,120
+or we can use some other variable to generate the file name automatically.
+
+201
+00:17:23,680 --> 00:17:30,480
+Maybe we can use the number of measurements. That's exactly what is being used here, 25.
+
+202
+00:17:30,480 --> 00:17:31,280
+Yeah, makes sense.
+
+203
+00:17:32,000 --> 00:17:33,600
+Yeah, okay. Let's do that.
+
+204
+00:17:43,200 --> 00:18:01,960
+Okay, yes. So, use string formatting in the variable, make defining out file. And this
+
+205
+00:18:01,960 --> 00:18:08,480
+is also good because in the future when we need to, if we make it more modular, we have
+
+206
+00:18:08,480 --> 00:18:15,840
+variable already defined, so it's good. Yes. Okay, so what should we do next?
+
+207
+00:18:15,840 --> 00:18:21,840
+I'm waiting for chat messages. Let's see. Let's see if anyone suggests something.
+
+208
+00:18:24,400 --> 00:18:30,000
+Is there anything we should extract out and pull from here?
+
+209
+00:18:31,760 --> 00:18:36,480
+Well, I don't like the visualization and the calculations together.
+
+210
+00:18:36,480 --> 00:18:43,860
+So would you like to pull one of them out? Yeah, at least I would like to pull
+
+211
+00:18:43,860 --> 00:18:50,140
+the plot part out. Yeah, makes sense. And it really makes sense that once we have
+
+212
+00:18:50,140 --> 00:18:55,920
+all the plots working well, so we define all the axis labels and format and stuff
+
+213
+00:18:55,920 --> 00:19:02,620
+like that, we'd want to be able to use the same plot format in multiple cases.
+
+214
+00:19:02,620 --> 00:19:09,260
+Someone says we need an underscore and out file.
+
+215
+00:19:09,260 --> 00:19:12,780
+Oh, yes. Thank you so much.
+
+216
+00:19:14,780 --> 00:19:18,940
+So I will move this out.
+
+217
+00:19:18,940 --> 00:19:20,460
+Yes. Okay.
+
+218
+00:19:20,460 --> 00:19:24,540
+See, I will define a function for this.
+
+219
+00:19:24,540 --> 00:19:33,420
+It will be plot and temperatures.
+
+220
+00:19:40,140 --> 00:19:49,900
+So do we need some input? Yeah, so what should the inputs be? Well, outfail should be here, I guess.
+
+221
+00:19:49,900 --> 00:19:50,400
+I guess.
+
+222
+00:19:56,580 --> 00:19:59,920
+Should the temperatures be an input?
+
+223
+00:19:59,920 --> 00:20:00,420
+Yes.
+
+224
+00:20:04,180 --> 00:20:07,420
+And the mean, I guess.
+
+225
+00:20:07,420 --> 00:20:08,420
+Oh, right.
+
+226
+00:20:08,420 --> 00:20:09,700
+Yeah.
+
+227
+00:20:09,700 --> 00:20:14,100
+Should we give alt file some default value?
+
+228
+00:20:14,100 --> 00:20:15,780
+Yeah, why not?
+
+229
+00:20:15,780 --> 00:20:18,340
+So default to none.
+
+230
+00:20:18,340 --> 00:20:22,300
+Then we can use the number of measurements
+
+231
+00:20:22,300 --> 00:20:33,380
+as the output file name, or a different idea.
+
+232
+00:20:36,740 --> 00:20:39,940
+Yeah, what should or could it just
+
+233
+00:20:39,940 --> 00:20:44,100
+be something like plot.png, so not take any stand
+
+234
+00:20:44,100 --> 00:20:49,520
+and it basically always, like, it minimally works,
+
+235
+00:20:49,520 --> 00:20:52,440
+but always needs to be something.
+
+236
+00:20:52,440 --> 00:20:54,280
+Or maybe we should just call it good enough
+
+237
+00:20:54,280 --> 00:20:57,020
+and accept you need an output.
+
+238
+00:20:57,020 --> 00:21:00,600
+Otherwise, it doesn't make sense.
+
+239
+00:21:00,600 --> 00:21:03,120
+So we will use the out file.
+
+240
+00:21:03,120 --> 00:21:07,620
+What if the default was none, and then the save fig only
+
+241
+00:21:07,620 --> 00:21:15,540
+ran if there's a given out file.
+
+242
+00:21:15,540 --> 00:21:16,660
+Yes, yes.
+
+243
+00:21:16,660 --> 00:21:23,500
+If out file, then we save.
+
+244
+00:21:23,500 --> 00:21:27,620
+So now the function is usable both for interactive kind
+
+245
+00:21:27,620 --> 00:21:32,620
+of work, and then if you want to save stuff later.
+
+246
+00:21:32,620 --> 00:21:35,260
+Although there are still some problems with that,
+
+247
+00:21:35,260 --> 00:21:37,700
+But we can get there later.
+
+248
+00:21:37,700 --> 00:21:38,740
+Yes.
+
+249
+00:21:38,740 --> 00:21:40,180
+OK.
+
+250
+00:21:40,180 --> 00:21:44,900
+And now we need to put this back into num measurements.
+
+251
+00:21:44,900 --> 00:21:47,100
+Yes, we will.
+
+252
+00:22:05,260 --> 00:22:12,260
+Or we just this.
+
+253
+00:22:12,260 --> 00:22:13,260
+Okay.
+
+254
+00:22:13,260 --> 00:22:14,260
+Yeah.
+
+255
+00:22:14,260 --> 00:22:15,260
+And mean.
+
+256
+00:22:15,260 --> 00:22:18,260
+Oh, but it should specify the outfile.
+
+257
+00:22:18,260 --> 00:22:19,260
+Yeah.
+
+258
+00:22:19,260 --> 00:22:21,260
+If we want, then.
+
+259
+00:22:21,260 --> 00:22:22,260
+Oh, yeah.
+
+260
+00:22:22,260 --> 00:22:25,260
+But we could also not give it right now.
+
+261
+00:22:25,260 --> 00:22:26,260
+Yeah.
+
+262
+00:22:26,260 --> 00:22:30,260
+Yeah, we could comment this out.
+
+263
+00:22:30,260 --> 00:22:31,260
+Yeah.
+
+264
+00:22:31,260 --> 00:22:32,260
+Yeah.
+
+265
+00:22:32,260 --> 00:22:33,260
+Okay.
+
+266
+00:22:33,260 --> 00:22:39,260
+Should we try without saving firstly?
+
+267
+00:22:39,260 --> 00:22:43,260
+Yeah, let's try.
+
+268
+00:22:43,260 --> 00:22:45,260
+Then we don't need to specify this.
+
+269
+00:22:45,260 --> 00:22:46,260
+Okay.
+
+270
+00:22:46,260 --> 00:22:50,260
+It won't be saved.
+
+271
+00:22:50,260 --> 00:22:52,260
+Should I run it again?
+
+272
+00:22:52,260 --> 00:22:53,260
+Yeah, let's go.
+
+273
+00:22:53,260 --> 00:22:54,260
+Okay.
+
+274
+00:22:54,260 --> 00:22:57,260
+It's still working.
+
+275
+00:22:57,260 --> 00:22:58,260
+Yeah.
+
+276
+00:22:58,260 --> 00:23:00,260
+Okay.
+
+277
+00:23:00,260 --> 00:23:18,100
+So, what's next? Should we extract more functions out? So, something, one of the
+
+278
+00:23:18,100 --> 00:23:31,540
+files says one of these suggestions is to remove the compute statistics and
+
+279
+00:23:31,540 --> 00:23:38,260
+reading data functions out to set yeah move these two separate functions yeah
+
+280
+00:23:38,260 --> 00:23:45,340
+that sounds quite reasonable to me yeah okay so this part will go to another
+
+281
+00:23:45,340 --> 00:24:01,120
+function which will be let me name it get get data maybe so should we make the
+
+282
+00:24:01,120 --> 00:24:13,740
+input file we can we can flexibly use different input file yeah so the
+
+283
+00:24:13,740 --> 00:24:21,340
+function shouldn't, should be able to work on different inputs. Yep, okay. Yeah, see, then this
+
+284
+00:24:21,340 --> 00:24:32,220
+will be an input fail. Yeah. Number of measurements, maybe a second argument. Okay, yeah, I guess
+
+285
+00:24:33,100 --> 00:24:40,460
+that has to be specified from outside. Yes. So what if we didn't have it as an argument?
+
+286
+00:24:40,460 --> 00:24:46,820
+So I think the code would still work because of how Python goes, but is that
+
+287
+00:24:46,820 --> 00:24:55,700
+good? You mean, well, if we don't specify this number of rows, I think
+
+288
+00:24:55,700 --> 00:25:02,220
+it will read all the rows. Yeah. But if we leave it like this, then
+
+289
+00:25:02,220 --> 00:25:05,260
+And we probably will get an error.
+
+290
+00:25:05,260 --> 00:25:07,380
+Yeah.
+
+291
+00:25:07,380 --> 00:25:10,020
+So yeah.
+
+292
+00:25:10,020 --> 00:25:11,380
+OK.
+
+293
+00:25:11,380 --> 00:25:11,980
+That's good.
+
+294
+00:25:11,980 --> 00:25:12,980
+So we've got that.
+
+295
+00:25:15,580 --> 00:25:17,700
+So I'll put it back.
+
+296
+00:25:17,700 --> 00:25:19,260
+It runs successfully.
+
+297
+00:25:29,980 --> 00:25:31,740
+Is that the file name?
+
+298
+00:25:31,740 --> 00:25:47,420
+I think so, yes. Okay, is it still working? Okay, yeah, okay, good. Now we have two functions.
+
+299
+00:25:48,140 --> 00:25:53,580
+Is there too much data being plotted? Did it read the whole thing if you scroll down?
+
+300
+00:25:53,580 --> 00:26:09,080
+Sounds weird. What I would do usually is to restart the kernel because there might be some
+
+301
+00:26:09,080 --> 00:26:14,520
+variable names polluted. Good point, yeah.
+
+302
+00:26:15,880 --> 00:26:20,520
+Okay, there are some typos, I think.
+
+303
+00:26:20,680 --> 00:26:24,280
+Okay. Oh, yeah.
+
+304
+00:26:24,440 --> 00:26:29,320
+Yeah, okay, so we need to store the output of the getData function.
+
+305
+00:26:29,320 --> 00:26:33,080
+Yeah, we need to return.
+
+306
+00:26:39,080 --> 00:26:55,000
+Nasty. Okay, now it looks okay. Yeah, okay, this looks like it looked okay.
+
+307
+00:26:55,000 --> 00:26:57,880
+And then should we extract out the statistics function?
+
+308
+00:26:59,640 --> 00:27:04,280
+Yeah, I would love to do that in case I want to do something different.
+
+309
+00:27:04,280 --> 00:27:22,280
+So that means we will have a third function. I'll call it getName.
+
+310
+00:27:22,280 --> 00:27:29,280
+Someone points out that infile isn't specified.
+
+311
+00:27:29,280 --> 00:27:34,280
+Why do you specify it?
+
+312
+00:27:34,280 --> 00:27:37,280
+Oh no, it is specified, yeah, in git data.
+
+313
+00:27:37,280 --> 00:27:39,280
+Yeah, yeah.
+
+314
+00:27:39,280 --> 00:27:40,280
+Yeah.
+
+315
+00:27:48,280 --> 00:27:50,280
+Yeah, I think it is specified here.
+
+316
+00:27:50,280 --> 00:27:52,120
+I mean, it worked, so it had to be there.
+
+317
+00:27:55,000 --> 00:27:59,000
+When the question came up, though, I got confused.
+
+318
+00:27:59,000 --> 00:28:01,560
+So I wondered, how is this working?
+
+319
+00:28:02,920 --> 00:28:09,240
+Yeah, so the input will be temperatures.
+
+320
+00:28:12,040 --> 00:28:16,280
+But do we want to use this number of measurements,
+
+321
+00:28:16,280 --> 00:28:22,120
+or we can get it from the input temperatures.
+
+322
+00:28:22,120 --> 00:28:25,280
+Yeah, it should probably come from the input temperatures.
+
+323
+00:28:25,280 --> 00:28:28,880
+So we could pass it as an argument,
+
+324
+00:28:28,880 --> 00:28:33,120
+but then we have to basically pass redundant information
+
+325
+00:28:33,120 --> 00:28:37,760
+because the column knows how many rows are there, right?
+
+326
+00:28:37,760 --> 00:28:39,880
+Yeah, and there might be some risk
+
+327
+00:28:39,880 --> 00:28:44,320
+that we input a wrong number.
+
+328
+00:28:44,320 --> 00:28:46,880
+So this might be better, I think.
+
+329
+00:28:46,880 --> 00:28:48,480
+Yeah.
+
+330
+00:28:48,480 --> 00:28:50,200
+OK.
+
+331
+00:28:50,200 --> 00:28:52,320
+Let me rerun this.
+
+332
+00:28:52,320 --> 00:28:54,560
+OK, still working.
+
+333
+00:28:54,560 --> 00:28:57,560
+Yeah, OK, good.
+
+334
+00:28:57,560 --> 00:29:01,200
+So let's talk about which of these are pure functions
+
+335
+00:29:01,200 --> 00:29:01,720
+or not.
+
+336
+00:29:01,720 --> 00:29:08,160
+So is there any parameters other than the arguments?
+
+337
+00:29:08,160 --> 00:29:12,000
+And does it have any side effects?
+
+338
+00:29:12,000 --> 00:29:20,080
+So plotTemperatures, it's based only on the input arguments,
+
+339
+00:29:20,080 --> 00:29:26,480
+but it does have side effects, but only saving files.
+
+340
+00:29:26,480 --> 00:29:30,600
+So is this function easy to test?
+
+341
+00:29:30,600 --> 00:29:33,960
+I think, yes, at least for getMean,
+
+342
+00:29:33,960 --> 00:29:39,240
+we can easily test it by using test.
+
+343
+00:29:39,240 --> 00:29:43,000
+Oh, git mean, oh, it's talking about plot temperatures.
+
+344
+00:29:43,000 --> 00:29:44,160
+So let's start with git mean.
+
+345
+00:29:44,160 --> 00:29:45,880
+That's the easier one.
+
+346
+00:29:45,880 --> 00:29:50,880
+So for git mean, this is the easiest thing
+
+347
+00:29:50,880 --> 00:29:53,880
+to test because there's no side effects.
+
+348
+00:29:53,880 --> 00:29:59,680
+The only input is the, the only thing that affects
+
+349
+00:29:59,680 --> 00:30:02,200
+the output is the input.
+
+350
+00:30:02,200 --> 00:30:05,520
+Should we make a test now for it or later?
+
+351
+00:30:05,520 --> 00:30:14,160
+would like to, well, I usually test, I usually do unit tests in the Python script other than
+
+352
+00:30:14,800 --> 00:30:19,600
+Jupyter Notebook. Yeah, you're right. Like, if we did the test, then how would we know if it even
+
+353
+00:30:20,320 --> 00:30:27,280
+worked? Yeah. Okay, so let's not test it yet. But git main is easy to test. Is the function
+
+354
+00:30:27,280 --> 00:30:30,600
+get data easy to test?
+
+355
+00:30:30,600 --> 00:30:37,560
+Get data, I think there are several things we can test.
+
+356
+00:30:37,560 --> 00:30:44,200
+For example, we can test the size of data.
+
+357
+00:30:44,200 --> 00:30:49,040
+Is it matching with the number of measurements?
+
+358
+00:30:49,040 --> 00:30:50,240
+Something like that.
+
+359
+00:30:55,280 --> 00:30:56,200
+Can you say that again?
+
+360
+00:30:56,200 --> 00:31:04,200
+was reading the stats. I mean because the input is number of measurements and we pass that to the
+
+361
+00:31:04,200 --> 00:31:16,280
+read CSV method, we want to verify that the extracted data has the exact the same number of
+
+362
+00:31:17,400 --> 00:31:25,240
+records we want. That could be something we can test. That's a good idea. So start with like
+
+363
+00:31:26,200 --> 00:31:37,000
+Yeah, so include some sample data, like this one, and then we can, well, there's not that
+
+364
+00:31:37,000 --> 00:31:41,720
+much that can go wrong, but test that, okay, yeah.
+
+365
+00:31:41,720 --> 00:31:50,520
+Yeah, usually for computation functions, I would do some tests, like getMin.
+
+366
+00:31:50,520 --> 00:31:55,480
+Yeah, okay.
+
+367
+00:31:55,480 --> 00:31:59,960
+a question. Maybe it's better to put the get mean function call inside the plot
+
+368
+00:31:59,960 --> 00:32:05,880
+temperatures function. So should we compute the mean outside or inside the
+
+369
+00:32:05,880 --> 00:32:21,040
+plotting function? Well, usually I would make them stand alone instead of...
+
+370
+00:32:21,040 --> 00:32:29,480
+yeah it depends yeah like like what do you want the plot temperatures to only
+
+371
+00:32:29,480 --> 00:32:34,960
+plot means or maybe it could plot other statistics too like it's yeah right now
+
+372
+00:32:34,960 --> 00:32:41,560
+basically a general function that plots the temperatures and a line and the line
+
+373
+00:32:41,560 --> 00:32:48,320
+can be different things yeah let's imagine that we define a force function
+
+374
+00:32:48,320 --> 00:32:58,640
+that we'll get not an arithmetic mean, but a geometric mean, then we can plot a different thing.
+
+375
+00:32:58,640 --> 00:33:05,280
+Yeah. There's also a good suggestion, why not use statistics.mean instead of creating a custom
+
+376
+00:33:05,280 --> 00:33:11,680
+function? And yeah, I guess that would make sense, but this is a demo and this is an example of
+
+377
+00:33:11,680 --> 00:33:16,960
+something that would be more complex. So yeah, yeah, we want to go to a very,
+
+378
+00:33:17,600 --> 00:33:25,200
+very complex Python stuff. We want to make it more general. Yeah, someone suggests testing
+
+379
+00:33:25,200 --> 00:33:31,760
+if the column for air temperatures is numeric, and that sometimes they've done things and it
+
+380
+00:33:31,760 --> 00:33:38,400
+writes it as a different type of data. Yeah, yeah, yeah, true, true. Let's get to that later.
+
+381
+00:33:38,400 --> 00:33:50,400
+Okay, so we have the loop, we have means. So how modular is it now? So what benefit have we achieved so far?
+
+382
+00:33:50,400 --> 00:34:03,400
+I think so far we have split the whole block of code into three single purpose functions. All of them could be reused.
+
+383
+00:34:03,400 --> 00:34:05,400
+Yeah, you can
+
+384
+00:34:07,240 --> 00:34:15,960
+Well, if it's a Python script then you can import them to a different Python script or a different notebook
+
+385
+00:34:17,480 --> 00:34:22,320
+Yeah, that's I would say we have improved the code
+
+386
+00:34:23,720 --> 00:34:25,720
+Yeah
+
+387
+00:34:26,240 --> 00:34:28,240
+Okay, what should we do now
+
+388
+00:34:31,280 --> 00:34:33,280
+Should we
+
+389
+00:34:33,400 --> 00:34:40,880
+make it a Python script or is there anything else?
+
+390
+00:34:42,680 --> 00:34:46,240
+Yeah, I would like to make a Python script.
+
+391
+00:34:46,240 --> 00:34:51,400
+When I come to this point of coding,
+
+392
+00:34:51,400 --> 00:34:54,720
+I have done some interactive work.
+
+393
+00:34:54,720 --> 00:34:58,640
+I have seen some visualization of data.
+
+394
+00:34:58,640 --> 00:35:02,360
+A Python script will make it more convenient to
+
+395
+00:35:02,360 --> 00:35:05,640
+to do more exploration.
+
+396
+00:35:05,640 --> 00:35:06,520
+Yeah.
+
+397
+00:35:06,520 --> 00:35:07,020
+OK.
+
+398
+00:35:09,720 --> 00:35:14,320
+How do you make a Jupyter Notebook to a Python script
+
+399
+00:35:14,320 --> 00:35:16,040
+usually?
+
+400
+00:35:16,040 --> 00:35:17,480
+Hmm.
+
+401
+00:35:17,480 --> 00:35:20,340
+I haven't done it that many times.
+
+402
+00:35:20,340 --> 00:35:23,840
+I think you can use nbconvert or export it.
+
+403
+00:35:23,840 --> 00:35:26,400
+Or maybe in the end, I would just
+
+404
+00:35:26,400 --> 00:35:32,160
+copy what I need over since usually whenever I do something,
+
+405
+00:35:32,160 --> 00:35:37,440
+There's like, it's too messy for me to want to do everything.
+
+406
+00:35:37,440 --> 00:35:38,840
+This seems a bit cleaner.
+
+407
+00:35:38,840 --> 00:35:40,240
+So what do you recommend?
+
+408
+00:35:40,240 --> 00:35:43,560
+Yeah, this one is not very long.
+
+409
+00:35:43,560 --> 00:35:47,520
+So maybe we can use the simple way,
+
+410
+00:35:47,520 --> 00:35:51,000
+because Jupyter Notebook has this save and export
+
+411
+00:35:51,000 --> 00:35:56,160
+Notebook as executable script function.
+
+412
+00:35:56,160 --> 00:35:59,880
+So yeah, we can do this, I think.
+
+413
+00:36:02,160 --> 00:36:09,160
+Okay, I will save it.
+
+414
+00:36:09,160 --> 00:36:18,160
+Okay, temp visual.py, yep, okay.
+
+415
+00:36:18,160 --> 00:36:24,160
+Okay, let's see. I think it's here. Yes.
+
+416
+00:36:24,160 --> 00:36:30,160
+Yeah, okay. So, it looks like Python code.
+
+417
+00:36:30,160 --> 00:36:35,160
+So, yeah, how do we start fixing it up?
+
+418
+00:36:35,160 --> 00:36:48,160
+Well, I will remove this redundant stuff from Jupyter Notebook.
+
+419
+00:36:48,160 --> 00:36:56,160
+Then maybe we can simply run it to see if things go wrong.
+
+420
+00:36:56,160 --> 00:37:09,680
+Good idea. Yeah, so yeah. Yeah, I suppose it could work. Yeah, I mean, probably. So maybe
+
+421
+00:37:09,680 --> 00:37:15,360
+this is the first time, well, we've seen examples of command-line usage before,
+
+422
+00:37:15,360 --> 00:37:24,520
+but can you explain what it means to be running it on the command line now? Well,
+
+423
+00:37:24,520 --> 00:37:35,240
+it means you will use Python. You will use Python and specify the name of the py file, which is a
+
+424
+00:37:35,240 --> 00:37:48,200
+script. Then the Python interpreter will run the program. Yeah, okay, so we give it the program
+
+425
+00:37:48,200 --> 00:37:54,440
+name. And right now there's no argument, so it just runs it from top to bottom.
+
+426
+00:37:54,440 --> 00:38:01,480
+Yeah, everything is entered in the script itself. Let's see.
+
+427
+00:38:05,320 --> 00:38:08,360
+Okay, the importing will take time. Okay.
+
+428
+00:38:09,160 --> 00:38:11,880
+Okay, we are supposed to have...
+
+429
+00:38:11,880 --> 00:38:20,920
+It's showing. Okay, so now here the command line program is opening a graphical window.
+
+430
+00:38:21,880 --> 00:38:29,320
+Is this what we want? It depends. If we are working on HPC,
+
+431
+00:38:30,680 --> 00:38:37,720
+we don't want it to show because there's no display. But if it's locally, I don't quite
+
+432
+00:38:37,720 --> 00:38:41,080
+demanded to see it show.
+
+433
+00:38:41,080 --> 00:38:45,640
+Should we make it where, this is what we said before, right?
+
+434
+00:38:45,640 --> 00:38:50,000
+So if it, maybe we could say if you give it a file name,
+
+435
+00:38:50,000 --> 00:38:51,680
+it saves the file name.
+
+436
+00:38:51,680 --> 00:38:53,320
+If you don't give it a file name,
+
+437
+00:38:53,320 --> 00:38:59,240
+then it shows it with plot.show.
+
+438
+00:38:59,240 --> 00:38:59,800
+Yes.
+
+439
+00:38:59,800 --> 00:39:01,760
+Does that make sense?
+
+440
+00:39:01,760 --> 00:39:02,880
+Yes.
+
+441
+00:39:02,880 --> 00:39:05,960
+Yeah, I think if we don't want it to be shown,
+
+442
+00:39:05,960 --> 00:39:08,520
+then we probably want to save it.
+
+443
+00:39:08,520 --> 00:39:10,720
+Yeah.
+
+444
+00:39:10,720 --> 00:39:14,360
+So that would be around line 10 we adjust.
+
+445
+00:39:14,360 --> 00:39:15,480
+Yes.
+
+446
+00:39:15,480 --> 00:39:19,120
+So we can comment out this line.
+
+447
+00:39:19,120 --> 00:39:21,240
+Then it won't be shown.
+
+448
+00:39:21,240 --> 00:39:26,320
+But instead, we would like to input output file name.
+
+449
+00:39:26,320 --> 00:39:29,120
+Then it will be saved.
+
+450
+00:39:29,120 --> 00:39:33,560
+Should we say under the if out file then else
+
+451
+00:39:33,560 --> 00:39:36,040
+And then do plot dot show if there's nothing.
+
+452
+00:39:36,040 --> 00:39:37,720
+Oh, yeah, that's a good idea.
+
+453
+00:39:46,560 --> 00:39:47,800
+Yeah, I see.
+
+454
+00:39:47,800 --> 00:39:48,300
+OK.
+
+455
+00:39:53,280 --> 00:39:55,640
+So is it good that it does two different things
+
+456
+00:39:55,640 --> 00:39:56,720
+depending on the argument?
+
+457
+00:39:59,840 --> 00:40:01,600
+I guess.
+
+458
+00:40:01,600 --> 00:40:03,520
+It's good, I think.
+
+459
+00:40:03,520 --> 00:40:06,800
+Yeah, it's a reasonable compromise for now.
+
+460
+00:40:06,800 --> 00:40:08,320
+It's a pattern people might want.
+
+461
+00:40:08,320 --> 00:40:11,920
+Like, if the plotting function was actually
+
+462
+00:40:11,920 --> 00:40:16,520
+relatively difficult, then maybe this
+
+463
+00:40:16,520 --> 00:40:21,760
+would be a good way to use it two different ways.
+
+464
+00:40:21,760 --> 00:40:22,400
+Yeah.
+
+465
+00:40:22,400 --> 00:40:28,720
+OK, so if you run it now, does it show anything graphically?
+
+466
+00:40:28,720 --> 00:40:32,760
+Yeah, because we didn't input any output first.
+
+467
+00:40:32,760 --> 00:40:37,120
+So it goes to the else.
+
+468
+00:40:37,120 --> 00:40:37,760
+Right.
+
+469
+00:40:37,760 --> 00:40:40,240
+OK, so we need to give it the output file again.
+
+470
+00:40:40,240 --> 00:40:41,360
+OK.
+
+471
+00:40:41,360 --> 00:40:44,040
+Then we need to modify the script.
+
+472
+00:40:44,040 --> 00:40:44,560
+Yeah.
+
+473
+00:40:44,560 --> 00:40:47,600
+Is that something you want to do?
+
+474
+00:40:47,600 --> 00:40:50,840
+Yeah, should we give it a way to specify,
+
+475
+00:40:50,840 --> 00:40:52,560
+should we hard code the output file,
+
+476
+00:40:52,560 --> 00:40:57,240
+or should we make it a full script with arguments now?
+
+477
+00:40:57,240 --> 00:40:59,840
+Well, I'd like the argument idea.
+
+478
+00:40:59,840 --> 00:41:00,360
+OK.
+
+479
+00:41:00,360 --> 00:41:06,520
+don't want to touch the script that much. Yeah, okay, good idea. And someone here
+
+480
+00:41:06,520 --> 00:41:13,480
+suggests disconnecting the loop, so maybe we can do this at the same time. So before
+
+481
+00:41:13,480 --> 00:41:17,760
+the script would run it for all these measurements, now the number of
+
+482
+00:41:17,760 --> 00:41:26,400
+measurements should be an argument. Yes. Okay, so do we make a main function here?
+
+483
+00:41:26,400 --> 00:41:32,960
+is it? Yes. Okay. Let's make a main function that can take a number of
+
+484
+00:41:32,960 --> 00:41:43,400
+measurements as an input. Okay, yeah. Okay. And what other inputs should we give it?
+
+485
+00:41:43,400 --> 00:41:53,740
+Info, I would say. Yeah. The output file? Output file. Are those the three main
+
+486
+00:41:53,740 --> 00:42:10,940
+things I guess yeah yeah okay so whenever you make a command line program
+
+487
+00:42:10,940 --> 00:42:16,820
+what do you use for parsing the arguments there are several different
+
+488
+00:42:16,820 --> 00:42:26,820
+And tools, they are pretty much similar, like arg parse or click.
+
+489
+00:42:26,820 --> 00:42:35,180
+Well, the example solution says using click, so maybe we should do that.
+
+490
+00:42:35,180 --> 00:42:36,180
+Okay.
+
+491
+00:42:36,180 --> 00:42:39,420
+I can't remember all the commands, but...
+
+492
+00:42:39,420 --> 00:42:42,260
+Well, I'm reading here, so I can tell you.
+
+493
+00:42:42,260 --> 00:42:49,260
+So, okay, above death equals main, then at sign click dot command with parentheses.
+
+494
+00:42:49,260 --> 00:43:01,460
+I remember it's a click option.
+
+495
+00:43:01,460 --> 00:43:05,180
+Dot option, yeah.
+
+496
+00:43:05,180 --> 00:43:12,220
+And then dash dash the measurements.
+
+497
+00:43:12,220 --> 00:43:17,420
+Does the order matter? Should we specify infile firstly?
+
+498
+00:43:17,420 --> 00:43:25,660
+Oh, maybe we do infile first. I often do that also, so sort of go the input arguments first,
+
+499
+00:43:25,660 --> 00:43:32,540
+then the analysis ones, then the output ones, but it parses it in any order.
+
+500
+00:43:34,380 --> 00:43:39,420
+Yes, so it's required, I guess.
+
+501
+00:43:42,220 --> 00:43:46,140
+Ah, there's a good point here.
+
+502
+00:43:46,140 --> 00:43:49,500
+Is an infile an argument and not an option?
+
+503
+00:43:49,500 --> 00:43:51,460
+So it should be an argument.
+
+504
+00:43:51,460 --> 00:43:53,540
+So maybe we can say what's the difference here.
+
+505
+00:43:53,540 --> 00:44:00,780
+So option is usually something with the two dashes on it, and is optional.
+
+506
+00:44:00,780 --> 00:44:07,260
+But positional arguments don't need the dashed things, and you are just taking the first
+
+507
+00:44:07,260 --> 00:44:11,500
+one on the command line as the first one, and second one as the second one.
+
+508
+00:44:11,500 --> 00:44:18,420
+But our example we're following has everything as options, so maybe we should follow the
+
+509
+00:44:18,420 --> 00:44:21,860
+example rather than make things ourselves.
+
+510
+00:44:21,860 --> 00:44:22,860
+Okay.
+
+511
+00:44:22,860 --> 00:44:28,500
+But we should specify it's required, right?
+
+512
+00:44:28,500 --> 00:44:29,500
+Yes.
+
+513
+00:44:29,500 --> 00:44:35,100
+There's no default, but definitely some help.
+
+514
+00:44:35,100 --> 00:44:37,660
+Yeah, okay.
+
+515
+00:44:37,660 --> 00:44:58,820
+it's the input file name. Yes. So a second one is number of measurements. I think the
+
+516
+00:44:58,820 --> 00:45:04,100
+convention is dash instead of underscore.
+
+517
+00:45:10,180 --> 00:45:17,220
+This is also required and it must be a int.
+
+518
+00:45:17,220 --> 00:45:19,940
+Yes, okay.
+
+519
+00:45:20,340 --> 00:45:23,300
+And also when you specify the type like this,
+
+520
+00:45:23,300 --> 00:45:27,300
+it will automatically convert it to that type.
+
+521
+00:45:27,300 --> 00:45:27,800
+Yes.
+
+522
+00:45:27,800 --> 00:45:29,300
+And give a warning if it's not.
+
+523
+00:45:32,140 --> 00:45:50,780
+So help, that would be the number of methods to use.
+
+524
+00:45:50,780 --> 00:46:12,620
+Then, another one will be the output.
+
+525
+00:46:12,620 --> 00:46:14,620
+This is not required.
+
+526
+00:46:14,620 --> 00:46:21,420
+Okay, yeah. In the example it says it's required, but I guess we can leave it as
+
+527
+00:46:21,420 --> 00:46:26,380
+not required and it will show it on the screen, which is possibly nice.
+
+528
+00:46:26,380 --> 00:46:33,340
+Yes. So not required, right? Yeah, not required.
+
+529
+00:46:33,340 --> 00:46:41,260
+Okay, output file name, okay.
+
+530
+00:46:51,900 --> 00:47:01,020
+Yeah, but in the main function, we didn't reflect anything about the output file.
+
+531
+00:47:01,020 --> 00:47:08,680
+Okay, yeah, so we should add that to plotTemperatures, I guess. Is it the last
+
+532
+00:47:08,680 --> 00:47:19,820
+argument? Yes, I think so. Yes, it's the last argument.
+
+533
+00:47:19,820 --> 00:47:30,140
+So, it should be like this, I guess.
+
+534
+00:47:30,140 --> 00:47:31,140
+Yes.
+
+535
+00:47:31,140 --> 00:47:32,140
+Okay.
+
+536
+00:47:32,140 --> 00:47:35,460
+Do you think it will work?
+
+537
+00:47:35,460 --> 00:47:38,780
+We need to specify the namespace.
+
+538
+00:47:38,780 --> 00:47:44,180
+Yeah, it has to actually run main.
+
+539
+00:47:44,180 --> 00:47:49,380
+So what you're about to see is the typical pattern you see at the bottom of Python files.
+
+540
+00:47:49,380 --> 00:47:57,060
+So this means if it's imported, then it just imports it, and all the functions can be used.
+
+541
+00:47:57,060 --> 00:48:03,180
+But if it's run as a script from a command line, then name is equal to this main value
+
+542
+00:48:03,180 --> 00:48:07,740
+here, and then it should run the function.
+
+543
+00:48:07,740 --> 00:48:12,060
+So this is just basically the pattern you use all the time.
+
+544
+00:48:12,060 --> 00:48:13,060
+So let's see.
+
+545
+00:48:13,060 --> 00:48:14,060
+Does it work?
+
+546
+00:48:14,060 --> 00:48:17,420
+I think I forgot to import.
+
+547
+00:48:17,420 --> 00:48:20,140
+Yes, we have to import click.
+
+548
+00:48:20,140 --> 00:48:21,580
+Yes.
+
+549
+00:48:21,580 --> 00:48:26,300
+I'll guess you have it installed from the Code Refinery.
+
+550
+00:48:26,300 --> 00:48:31,260
+Oh, yeah. I haven't activated the environment.
+
+551
+00:48:31,260 --> 00:48:40,140
+I guess everyone has created this content environment for the workshop.
+
+552
+00:48:40,140 --> 00:48:42,580
+I also created it myself.
+
+553
+00:48:42,580 --> 00:48:50,180
+Activate. Yeah, but it worked before.
+
+554
+00:48:50,180 --> 00:48:53,060
+Yeah. Let's see.
+
+555
+00:48:53,060 --> 00:48:53,700
+Okay.
+
+556
+00:48:53,700 --> 00:48:54,700
+Okay.
+
+557
+00:48:54,700 --> 00:48:56,800
+Yeah, it should be better now.
+
+558
+00:48:56,800 --> 00:49:03,100
+Yeah. What if we run without arguments?
+
+559
+00:49:03,100 --> 00:49:08,260
+Can we see help text or something?
+
+560
+00:49:08,260 --> 00:49:11,460
+Yeah. Missing option, yeah.
+
+561
+00:49:11,460 --> 00:49:14,980
+Okay, so it basically will guide us through everything that's needed.
+
+562
+00:49:16,420 --> 00:49:18,420
+Yeah, but let's check out this.
+
+563
+00:49:24,340 --> 00:49:24,840
+Yeah.
+
+564
+00:49:27,300 --> 00:49:30,100
+Oh, we need Python on it. Yes. Yeah. Okay.
+
+565
+00:49:32,260 --> 00:49:41,060
+Yeah, we can see this help message reflects what we specified by using click.
+
+566
+00:49:41,060 --> 00:49:48,020
+Yeah, okay. So let's see, can we then run it with all the options?
+
+567
+00:49:50,580 --> 00:49:57,860
+Let's see, we give it an input file which is
+
+568
+00:50:00,420 --> 00:50:07,380
+temperatures.csv, if I remember that correctly. Yeah, I think so.
+
+569
+00:50:07,380 --> 00:50:19,180
+So number of measurements, that will be, let's say, 25.
+
+570
+00:50:19,180 --> 00:50:23,340
+Let's try without output file.
+
+571
+00:50:23,340 --> 00:50:25,220
+It's supposed to show.
+
+572
+00:50:25,220 --> 00:50:27,220
+Yes.
+
+573
+00:50:27,220 --> 00:50:31,060
+And if we change the number of measurements, does it do more?
+
+574
+00:50:31,060 --> 00:50:31,580
+Let's see.
+
+575
+00:50:35,220 --> 00:50:36,220
+Great.
+
+576
+00:50:36,220 --> 00:50:38,220
+That looks correct.
+
+577
+00:50:38,220 --> 00:50:38,720
+Yes.
+
+578
+00:50:38,720 --> 00:50:39,940
+OK.
+
+579
+00:50:39,940 --> 00:50:42,220
+Good.
+
+580
+00:50:42,220 --> 00:50:43,820
+OK.
+
+581
+00:50:43,820 --> 00:50:47,940
+And if we give an out file, does it save it to somewhere?
+
+582
+00:50:47,940 --> 00:50:50,620
+Let's have a look.
+
+583
+00:50:50,620 --> 00:50:51,120
+Out.
+
+584
+00:50:55,780 --> 00:50:56,460
+Let me see.
+
+585
+00:50:56,460 --> 00:50:58,740
+Just an example.
+
+586
+00:50:58,740 --> 00:50:59,240
+.png.
+
+587
+00:51:02,420 --> 00:51:05,460
+It won't show, I think.
+
+588
+00:51:06,220 --> 00:51:16,340
+Yeah, okay. Let's see if it's saved. Okay, it's saved here. Maybe I can open it. Okay.
+
+589
+00:51:16,340 --> 00:51:25,420
+Yeah, and it's there. Okay. Yeah, that looks good. Should we summarize and then go to the
+
+590
+00:51:25,420 --> 00:51:33,300
+break and then we can do a little bit more when we come back? Yeah, I think it's a good
+
+591
+00:51:33,300 --> 00:51:41,220
+point to break. Okay so what did we just accomplish and what's the benefit of what we've done? Also
+
+592
+00:51:41,220 --> 00:51:49,540
+people can comment in the notes about what you think. So there's a lot more code but
+
+593
+00:51:50,420 --> 00:51:56,180
+also to do different analyses we don't have to edit the code at all. The code is basically
+
+594
+00:51:56,180 --> 00:51:59,260
+Basically just that.
+
+595
+00:51:59,260 --> 00:52:05,940
+And if we save these command line lines we run, then we can reproduce our analysis in
+
+596
+00:52:05,940 --> 00:52:12,360
+different ways.
+
+597
+00:52:12,360 --> 00:52:17,320
+If we want to run this automatically, for example with what we learned for SnakeMake
+
+598
+00:52:17,320 --> 00:52:24,760
+on Tuesday, we could easily plug this
+
+599
+00:52:24,760 --> 00:52:28,960
+into a SnakeMake workflow that does things.
+
+600
+00:52:28,960 --> 00:52:32,320
+We can script it to run many, many times on the cluster.
+
+601
+00:52:34,920 --> 00:52:38,080
+We can send it to someone else, and we can tell them,
+
+602
+00:52:38,080 --> 00:52:39,040
+use these options.
+
+603
+00:52:39,040 --> 00:52:40,840
+And they don't have to understand the code.
+
+604
+00:52:40,840 --> 00:52:43,920
+They only have to understand the help text here.
+
+605
+00:52:43,920 --> 00:52:51,480
+So by making this more modular, do we call this modular?
+
+606
+00:52:51,480 --> 00:52:54,160
+Yeah, I would definitely call this modular.
+
+607
+00:52:54,160 --> 00:52:55,920
+It could be reused.
+
+608
+00:52:55,920 --> 00:52:59,320
+It could be reproduced.
+
+609
+00:52:59,320 --> 00:53:02,400
+It can be easily scaled up.
+
+610
+00:53:02,400 --> 00:53:04,120
+So it's modular.
+
+611
+00:53:04,120 --> 00:53:04,840
+Yeah.
+
+612
+00:53:04,840 --> 00:53:09,240
+And the outsider using it has this clear defined interface
+
+613
+00:53:09,240 --> 00:53:11,640
+for it.
+
+614
+00:53:11,640 --> 00:53:14,080
+So I guess let's take a break.
+
+615
+00:53:14,080 --> 00:53:16,440
+Please keep suggesting what to do next.
+
+616
+00:53:16,440 --> 00:53:20,280
+I can think of a few things, like adding the test to it.
+
+617
+00:53:20,280 --> 00:53:26,520
+And we can see what we do then.
+
+618
+00:53:26,520 --> 00:53:31,680
+So there will be maybe 15 or 20 more minutes of working
+
+619
+00:53:31,680 --> 00:53:32,680
+on this.
+
+620
+00:53:32,680 --> 00:53:36,480
+And then we'll have a quick wrap-up of the whole workshop.
+
+621
+00:53:36,480 --> 00:53:44,480
+Okay. When should we come back?
+
+622
+00:53:44,480 --> 00:53:47,480
+I guess four past hour.
+
+623
+00:53:47,480 --> 00:53:48,480
+Okay.
+
+624
+00:53:48,480 --> 00:53:49,480
+Okay.
+
+625
+00:53:49,480 --> 00:53:51,480
+So 10 minutes break.
+
+626
+00:53:51,480 --> 00:53:52,480
+Okay. Thank you.
+
+627
+00:53:52,480 --> 00:53:53,480
+Okay.
+
+628
+00:53:53,480 --> 00:53:54,480
+See you soon.
+
+629
+00:53:54,480 --> 00:53:55,480
+Thank you. See you soon. Bye.
+
+630
+00:53:57,000 --> 00:54:09,640
+Hello. We're back. So, the last half an hour. In the notes, we had votes for, the most votes
+
+631
+00:54:09,640 --> 00:54:15,120
+were for adding tests. So, we're thinking of doing that next. And that really does seem
+
+632
+00:54:15,120 --> 00:54:23,360
+to be about the right time to do it. But before you do that, would you like to make it a
+
+633
+00:54:23,360 --> 00:54:31,040
+Git repository, so we have some record before we start changing a lot of stuff and risk breaking.
+
+634
+00:54:31,040 --> 00:54:37,200
+Yes, yes, when it comes to this point, when you have a script like this,
+
+635
+00:54:38,480 --> 00:54:49,440
+we would like to do some check. You have learned in last week, so I guess we all have Git installed,
+
+636
+00:54:49,440 --> 00:55:02,560
+so and yeah okay so it's not yet a git repo so I will initialize it
+
+637
+00:55:03,280 --> 00:55:12,960
+so git init I usually will specify the branch name so okay now it's initialized
+
+638
+00:55:12,960 --> 00:55:27,840
+and so we can check out with the most commonly used command git status so we
+
+639
+00:55:27,840 --> 00:55:33,740
+can see all the files are unchecked okay yeah but we don't want to check all of
+
+640
+00:55:33,740 --> 00:55:45,740
+them. I will check the code, of course. So, git add temp pool.
+
+641
+00:55:45,740 --> 00:56:13,380
+Yes, it's frozen. Okay, that one has been added. Do we want to add the notebook?
+
+642
+00:56:13,380 --> 00:56:14,380
+Maybe.
+
+643
+00:56:14,380 --> 00:56:15,380
+Yeah.
+
+644
+00:56:15,380 --> 00:56:16,380
+Well, yeah.
+
+645
+00:56:16,380 --> 00:56:17,380
+Why not?
+
+646
+00:56:17,380 --> 00:56:30,780
+I mean, I guess maybe it's being replaced now, but for a development project, we may
+
+647
+00:56:30,780 --> 00:56:38,540
+as well keep track of it and we can do something different with it later if it was ever needed.
+
+648
+00:56:38,540 --> 00:56:39,540
+Yes.
+
+649
+00:56:39,540 --> 00:56:40,540
+Okay.
+
+650
+00:56:40,540 --> 00:56:44,340
+So I won't track the plot.
+
+651
+00:56:47,500 --> 00:56:51,720
+Yeah, because you probably will have plenty of them.
+
+652
+00:56:52,940 --> 00:56:57,420
+Maybe at some point, I'll track the most important ones.
+
+653
+00:56:57,420 --> 00:56:58,380
+That depends.
+
+654
+00:56:59,820 --> 00:57:02,780
+But the idea is to show how we use Git
+
+655
+00:57:02,780 --> 00:57:04,380
+for the version control.
+
+656
+00:57:04,380 --> 00:57:07,820
+So I will commit to the...
+
+657
+00:57:07,820 --> 00:57:09,300
+Yeah.
+
+658
+00:57:09,300 --> 00:57:10,500
+Yeah.
+
+659
+00:57:10,500 --> 00:57:12,140
+OK.
+
+660
+00:57:12,140 --> 00:57:17,300
+So this is, well, usually I will,
+
+661
+00:57:17,300 --> 00:57:23,780
+it's the initial commit.
+
+662
+00:57:23,780 --> 00:57:29,620
+Or you can use some other meaningful commit message.
+
+663
+00:57:29,620 --> 00:57:34,620
+Okay, now we have checked the files we want to check.
+
+664
+00:57:38,860 --> 00:57:43,860
+So that's a version control you have learned in last week.
+
+665
+00:57:44,660 --> 00:57:45,500
+Yeah.
+
+666
+00:57:47,000 --> 00:57:47,840
+Okay.
+
+667
+00:57:51,180 --> 00:57:54,100
+So what else we can try?
+
+668
+00:57:56,340 --> 00:57:59,580
+Should we add a gitignore for the things we don't want?
+
+669
+00:57:59,580 --> 00:58:12,420
+yes yes that's a good idea yeah if you list if you list the hidden files you
+
+670
+00:58:12,420 --> 00:58:26,220
+will see there's a .git but typically we will add a gitignore file it's also a
+
+671
+00:58:26,220 --> 00:58:37,220
+hidden file, gitignore. And we add in all the stuff we don't want, like should we
+
+672
+00:58:37,220 --> 00:58:50,180
+add asterisk.png? Yes. And what else things like the pycache and the ipynbcache?
+
+673
+00:58:50,180 --> 00:59:12,020
+Yes, pycache, is that correct? And dot ipy. What's the ipynb cache? I forgot it, but let's
+
+674
+00:59:12,020 --> 00:59:29,060
+check it. It's the ipy and b checkpoints. Checkpoints, yes. Okay, yeah. So ipy, checkpoints.
+
+675
+00:59:32,020 --> 00:59:39,060
+Okay, with this git ignore, if we run git status again.
+
+676
+00:59:39,060 --> 00:59:51,300
+Yeah, gitignore itself. But I guess we'll add gitignore. Yes. Yes. Okay. How about the data?
+
+677
+00:59:52,100 --> 00:59:58,660
+Yeah, should this data be included? Since it's open data, not something sensitive,
+
+678
+00:59:58,660 --> 01:00:07,940
+and it's a small data we use as an example, so I would say it's fine to add it.
+
+679
+01:00:07,940 --> 01:00:11,140
+It would be good data for our tests, basically.
+
+680
+01:00:11,140 --> 01:00:11,940
+Yeah, yeah.
+
+681
+01:00:11,940 --> 01:00:13,100
+OK, sounds good.
+
+682
+01:00:13,100 --> 01:00:14,500
+So let's add it.
+
+683
+01:00:14,500 --> 01:00:15,740
+Yeah.
+
+684
+01:00:15,740 --> 01:00:17,420
+OK.
+
+685
+01:00:17,420 --> 01:00:21,220
+Now everything should be there.
+
+686
+01:00:21,220 --> 01:00:25,300
+Yes, but we needed to make another commit.
+
+687
+01:00:25,300 --> 01:00:25,800
+Yeah.
+
+688
+01:00:25,800 --> 01:00:44,640
+Let's see. Add the test data. Okay. Now it should be clean.
+
+689
+01:00:44,640 --> 01:00:57,320
+Yes. Yes. Okay, great. Okay, but now tests. So, which of these three functions would you
+
+690
+01:00:57,320 --> 01:01:04,000
+like to test, or which do we test things that aren't in a function?
+
+691
+01:01:04,000 --> 01:01:16,160
+I would test a function, like, well, if the first function I want to test is getMin.
+
+692
+01:01:16,160 --> 01:01:18,960
+I don't want the calculation wrong.
+
+693
+01:01:18,960 --> 01:01:20,900
+Yeah, yeah.
+
+694
+01:01:20,900 --> 01:01:27,280
+That seems like the most likely to go wrong without us noticing it, so.
+
+695
+01:01:27,280 --> 01:01:33,080
+Okay, should we add the test to this file or another file?
+
+696
+01:01:33,080 --> 01:01:38,480
+If there's only one test and the file is not very long,
+
+697
+01:01:38,480 --> 01:01:40,800
+I will add it here.
+
+698
+01:01:40,800 --> 01:01:45,280
+Otherwise, I will use a separate file for multiple tests.
+
+699
+01:01:45,280 --> 01:01:45,780
+Yeah.
+
+700
+01:01:48,680 --> 01:01:51,880
+So should we use a separate one?
+
+701
+01:01:51,880 --> 01:01:55,680
+Yeah, I mean, whenever I start with one really small thing
+
+702
+01:01:55,680 --> 01:01:58,160
+like this, I'll also often start just
+
+703
+01:01:58,160 --> 01:02:13,920
+inside of the like yeah just inside because yeah yeah it's small enough yeah yeah okay okay then i
+
+704
+01:02:13,920 --> 01:02:32,080
+will, uh, we need to import pytest. Yes, okay. Yes, so test min,
+
+705
+01:02:34,400 --> 01:02:42,880
+so min will be something calculated by using this function. Yeah, okay, so we basically run
+
+706
+01:02:42,880 --> 01:02:53,200
+the function. Yeah, maybe just a list of floats? Yeah, that's a good idea. So we basically give
+
+707
+01:02:53,200 --> 01:03:00,560
+it some of our very own data, and we know what the mean should be, so we can see what it is.
+
+708
+01:03:01,440 --> 01:03:08,800
+And this is sort of the best possible case, so we write in some values.
+
+709
+01:03:12,880 --> 01:03:22,360
+maybe another one yeah and then we could do yeah there and then for pi test we
+
+710
+01:03:22,360 --> 01:03:38,600
+would write assert mean equals 3 I guess 3.0 yes okay and then to run it how do
+
+711
+01:03:38,600 --> 01:03:49,520
+do we do this? We use pytest. So pytest. And since this file isn't named test, we
+
+712
+01:03:49,520 --> 01:03:59,280
+need to give it the file name. So temp visual. Yes. Yeah. Let's see. Importing syntax error.
+
+713
+01:03:59,280 --> 01:04:03,280
+Ah, yeah. Is it saved?
+
+714
+01:04:03,280 --> 01:04:07,280
+Dev, lantern, table.
+
+715
+01:04:07,280 --> 01:04:11,280
+What's wrong with this? Maybe it needs to be saved.
+
+716
+01:04:11,280 --> 01:04:15,280
+Okay. Oh, yeah.
+
+717
+01:04:15,280 --> 01:04:19,280
+That's something Jupyter Notebook doesn't do for you.
+
+718
+01:04:19,280 --> 01:04:23,280
+Okay. Sometimes. Yeah. So now it says
+
+719
+01:04:23,280 --> 01:04:27,280
+there was
+
+720
+01:04:27,280 --> 01:04:31,680
+one test collected, so we know it actually found it. If it said zero tests collected,
+
+721
+01:04:31,680 --> 01:04:39,600
+we'd be a bit worried. And it worked. And this time it happened to work, and there wasn't any
+
+722
+01:04:39,600 --> 01:04:47,760
+floating point error, which caused it to make problems. So that is good. If there was this
+
+723
+01:04:47,760 --> 01:04:55,120
+floating point error, it would say error 3.0 is not equal to 3.0000 something.
+
+724
+01:04:55,120 --> 01:05:12,320
+pytest has this proxy method to avoid this kind of accuracy problem. Maybe we can use that.
+
+725
+01:05:12,320 --> 01:05:14,320
+Ah, good idea.
+
+726
+01:05:14,320 --> 01:05:15,360
+Like this.
+
+727
+01:05:16,320 --> 01:05:17,920
+Yeah, good to demo anyway.
+
+728
+01:05:19,200 --> 01:05:24,320
+Let's see. I'm sure this will work.
+
+729
+01:05:25,120 --> 01:05:31,360
+because it's less strict than before. Okay, yes, okay.
+
+730
+01:05:34,160 --> 01:05:40,640
+Yeah, do we want to test some other things? Like should we test if it works with negative numbers?
+
+731
+01:05:41,680 --> 01:05:44,880
+Would we test if it worked with no inputs at all?
+
+732
+01:05:46,880 --> 01:05:53,360
+Would we test that it works with one input? Or maybe this is a good stopping point.
+
+733
+01:05:55,120 --> 01:05:58,120
+What do you think?
+
+734
+01:05:58,120 --> 01:06:05,120
+Yeah, there is something else we can test.
+
+735
+01:06:05,120 --> 01:06:07,120
+Oh.
+
+736
+01:06:07,120 --> 01:06:10,120
+But we're also almost out of time, so.
+
+737
+01:06:10,120 --> 01:06:11,120
+Oh, yes.
+
+738
+01:06:11,120 --> 01:06:14,120
+We can talk about how we would test other things.
+
+739
+01:06:14,120 --> 01:06:18,120
+So how would we test the getData function?
+
+740
+01:06:18,120 --> 01:06:21,680
+GetDataFunction, as I mentioned,
+
+741
+01:06:21,680 --> 01:06:25,040
+we can test if the size is correct.
+
+742
+01:06:25,040 --> 01:06:27,960
+As it's mentioned in the notes that we can
+
+743
+01:06:27,960 --> 01:06:31,720
+test the data type of temperatures.
+
+744
+01:06:31,720 --> 01:06:35,040
+We want it to be float.
+
+745
+01:06:35,040 --> 01:06:36,120
+Right. Yeah.
+
+746
+01:06:36,120 --> 01:06:39,240
+But sometimes from CSP file,
+
+747
+01:06:39,240 --> 01:06:43,200
+it might be stored as a string.
+
+748
+01:06:43,200 --> 01:06:44,600
+Yeah.
+
+749
+01:06:44,600 --> 01:06:46,960
+That's also something we can test.
+
+750
+01:06:46,960 --> 01:06:49,560
+And since we have some test data included,
+
+751
+01:06:49,560 --> 01:06:53,760
+it's easy to run or do test data or test test data
+
+752
+01:06:53,760 --> 01:06:56,880
+because we just give it this thing we have already.
+
+753
+01:06:56,880 --> 01:06:57,380
+Yes.
+
+754
+01:07:00,760 --> 01:07:02,240
+What about plot temperatures?
+
+755
+01:07:02,240 --> 01:07:05,600
+Is this easy to test?
+
+756
+01:07:05,600 --> 01:07:10,800
+I mean, I guess we can test if it runs and makes a file.
+
+757
+01:07:10,800 --> 01:07:14,920
+Yes, if the file exists.
+
+758
+01:07:14,920 --> 01:07:21,640
+Is it worth testing to see if the file is correct, or is that trying too hard?
+
+759
+01:07:22,920 --> 01:07:27,720
+That's not something I usually do, but it's definitely doable.
+
+760
+01:07:28,920 --> 01:07:33,000
+And yeah, it's valid, depends.
+
+761
+01:07:35,560 --> 01:07:41,000
+Like same for me, so I would usually not test the plot temperatures unless I know I really need it
+
+762
+01:07:41,000 --> 01:07:47,160
+to. I think there are things for testing matplotlib plotting, like you would define
+
+763
+01:07:47,160 --> 01:07:53,000
+what you expect it to have and can test it without saving the file. But I would usually
+
+764
+01:07:53,000 --> 01:07:57,800
+try to do all the stuff that needs testing outside of the plot function to make it easy
+
+765
+01:07:57,800 --> 01:08:00,120
+and plot just does the bare minimum.
+
+766
+01:08:00,120 --> 01:08:24,120
+Yes. Okay, should we move to the outro and wrap-up of the workshop, so people can keep asking questions here and we'll keep answering after the outro part?
+
+767
+01:08:24,120 --> 01:08:28,120
+Do you want to have a look at the learning outcomes?
+
+768
+01:08:28,120 --> 01:08:30,080
+Yes, yes, this one.
+
+769
+01:08:30,080 --> 01:08:30,960
+Let's go back there.
+
+770
+01:08:30,960 --> 01:08:35,240
+I think we have achieved most of them.
+
+771
+01:08:35,240 --> 01:08:39,200
+Yeah, so we talked some about pure functions,
+
+772
+01:08:39,200 --> 01:08:41,480
+not as much as some instances of the course.
+
+773
+01:08:41,480 --> 01:08:45,760
+But basically, when it doesn't have these side effects,
+
+774
+01:08:45,760 --> 01:08:47,040
+then it's easier to test.
+
+775
+01:08:50,360 --> 01:08:54,480
+The second one we didn't talk about too much.
+
+776
+01:08:54,480 --> 01:08:58,280
+A single-purpose function we talked about a bit.
+
+777
+01:09:04,560 --> 01:09:07,360
+So split apply combine is a different kind
+
+778
+01:09:07,360 --> 01:09:09,680
+of thing, which we haven't talked about.
+
+779
+01:09:09,680 --> 01:09:19,240
+It's another way of basically dividing and conquer.
+
+780
+01:09:19,240 --> 01:09:23,360
+The command line interface we did extensively talk about
+
+781
+01:09:23,360 --> 01:09:28,640
+And to me, that's when the code really starts getting reusable
+
+782
+01:09:28,640 --> 01:09:31,520
+and I start becoming proud of sharing it.
+
+783
+01:09:31,520 --> 01:09:35,240
+It becomes actually like a thing.
+
+784
+01:09:35,240 --> 01:09:36,560
+So, yeah.
+
+785
+01:09:41,960 --> 01:09:45,160
+And I think we saw how this connects to the other lessons.
+
+786
+01:09:45,160 --> 01:09:48,400
+So we did the tests, didn't really do documentation.
+
+787
+01:09:48,400 --> 01:09:49,960
+We talked about version control.
+
+788
+01:09:49,960 --> 01:09:53,040
+We talked about how the scripts, making the command line
+
+789
+01:09:53,040 --> 01:09:57,040
+interfaces lets us make it more reproducible later on.
+
+790
+01:09:57,040 --> 01:10:00,760
+So yeah.
+
+791
+01:10:00,760 --> 01:10:04,320
+Yeah, we have there's something we haven't covered,
+
+792
+01:10:04,320 --> 01:10:08,080
+but we can continue the discussion in the notes.
+
+793
+01:10:08,080 --> 01:10:11,320
+Yeah, and also I see some suggestions
+
+794
+01:10:11,320 --> 01:10:14,840
+regarding the code script.
+
+795
+01:10:14,840 --> 01:10:17,160
+Yeah, we use it as a demo.
+
+796
+01:10:17,160 --> 01:10:22,800
+It's not perfect, but the idea is the modular coding.
+
+797
+01:10:28,600 --> 01:10:30,600
+Yeah.
+
+798
+01:10:30,600 --> 01:10:31,960
+OK.
+
+799
+01:10:31,960 --> 01:10:36,720
+So I'm going to switch to my screen if I can.
+

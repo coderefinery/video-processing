@@ -1,0 +1,3992 @@
+1
+00:00:00,000 --> 00:00:05,960
+Good morning, everyone. I'm [name]. I'm sitting at the Norwegian University of Technology
+
+2
+00:00:05,960 --> 00:00:12,040
+and Science, where I work in the HPC group. And together with me today, I have [name].
+
+3
+00:00:13,080 --> 00:00:18,280
+A few words about you, [name]. Yes, good morning, everyone. I was here the other day as well,
+
+4
+00:00:18,280 --> 00:00:22,120
+and one of the RSEs research software engineers at Aalto University. Happy to be here.
+
+5
+00:00:23,720 --> 00:00:29,400
+So we'll discuss automated testing from now on in the next two hours.
+
+6
+00:00:30,520 --> 00:00:32,680
+So you find the lesson under day six.
+
+7
+00:00:35,400 --> 00:00:43,320
+So my experience, first experience with testing was when I worked in a software development
+
+8
+00:00:43,320 --> 00:00:51,960
+company in the mid 90s and the process were very fast like we would develop
+
+9
+00:00:51,960 --> 00:00:59,680
+code 8 to 12 weeks and then there was four weeks of intensive testing before
+
+10
+00:00:59,680 --> 00:01:08,560
+we shipped the application so we were not exposed to any agile methods at that
+
+11
+00:01:08,560 --> 00:01:18,240
+time. Those came much later after year 2000. So what's your experience with testing, [name]?
+
+12
+00:01:20,160 --> 00:01:26,880
+So when I was starting, it was part of the agile and like test-driven development thing.
+
+13
+00:01:27,520 --> 00:01:33,520
+And so I was familiar with the concept, but when I got hands experience, it was
+
+14
+00:01:33,520 --> 00:01:40,640
+mainly in the industry experience that I had because sometimes in academia people think that
+
+15
+00:01:40,640 --> 00:01:48,160
+okay my program is not that long or it's not very complicated so I can maybe get rid of the testing
+
+16
+00:01:48,160 --> 00:01:54,000
+and forget about that part but when you are doing some production thing it's one of the necessary
+
+17
+00:01:54,000 --> 00:01:59,920
+things that you had to do before you merge anything into the production. That's right,
+
+18
+00:01:59,920 --> 00:02:05,040
+So have you experienced any of these problems that you change B and C and
+
+19
+00:02:06,400 --> 00:02:10,800
+function A doesn't work anymore? I can say all the time.
+
+20
+00:02:12,000 --> 00:02:19,200
+All the time, yes. Yeah, if it works, I would be more suspicious that, okay,
+
+21
+00:02:19,200 --> 00:02:23,680
+like, is everything working correctly? Because it shouldn't, but yeah.
+
+22
+00:02:23,680 --> 00:02:28,680
+Yeah, and writing tests sometimes seems like a long way
+
+23
+00:02:29,000 --> 00:02:30,280
+to get a solution.
+
+24
+00:02:30,280 --> 00:02:35,280
+So it's something that we are not always prioritize,
+
+25
+00:02:37,160 --> 00:02:40,600
+but hopefully we'll see it with today's lesson
+
+26
+00:02:40,600 --> 00:02:45,600
+is that it can be really useful to have tests
+
+27
+00:02:46,280 --> 00:02:49,200
+and these can be automated.
+
+28
+00:02:49,200 --> 00:02:53,200
+Yes, exactly.
+
+29
+00:02:53,200 --> 00:02:57,200
+I would say that intensive test that you mentioned at the beginning
+
+30
+00:02:57,200 --> 00:03:01,200
+is still a thing and some
+
+31
+00:03:01,200 --> 00:03:05,200
+companies still do that, especially for security and to make
+
+32
+00:03:05,200 --> 00:03:09,200
+sure that their application, their product is robust enough. But adding
+
+33
+00:03:09,200 --> 00:03:13,200
+automated testing can do a lot in time of
+
+34
+00:03:13,200 --> 00:03:17,200
+production and in time of software developing for the team.
+
+35
+00:03:17,200 --> 00:03:26,800
+That's right. And the tests are very good when you get someone else's code. And especially
+
+36
+00:03:26,800 --> 00:03:33,240
+code that you have written long ago. So, when you change something, you can see if things
+
+37
+00:03:33,240 --> 00:03:35,440
+breaks or not.
+
+38
+00:03:35,440 --> 00:03:41,240
+Correct. And also, like, at least for me, sometimes it really helps that when you get
+
+39
+00:03:41,240 --> 00:03:46,600
+someone else's code, sometimes you don't understand what does a function do. And you look at a
+
+40
+00:03:46,600 --> 00:03:51,480
+test and you get an idea that okay this function is supposed to do this because you can see
+
+41
+00:03:51,480 --> 00:03:55,320
+what is the expected result of that specific function for example. Yes that's right.
+
+42
+00:03:57,800 --> 00:04:04,280
+So today these lessons will discuss a little bit about motivation for tests.
+
+43
+00:04:05,320 --> 00:04:12,440
+We are given some motivation now but we will go deeper into that. We will then show an example
+
+44
+00:04:12,440 --> 00:04:20,280
+of where we test locally, just to have a local repository with some code and run tests.
+
+45
+00:04:22,760 --> 00:04:28,920
+We will then move to GitHub and show how we can have automated testing as a part of
+
+46
+00:04:30,280 --> 00:04:39,400
+doing pull requests or merges. Then we have a bunch of code where
+
+47
+00:04:39,400 --> 00:04:47,040
+our tests that we will discuss under test designs before we conclude and come with some
+
+48
+00:04:47,040 --> 00:04:54,640
+recommendations. Great, let's get into it.
+
+49
+00:04:54,640 --> 00:05:04,600
+Yeah. We will focus on Python and use PyTest during the day. So there are examples with
+
+50
+00:05:04,600 --> 00:05:10,840
+other languages, but we will not go into these. We will not demonstrate those. So those who
+
+51
+00:05:10,840 --> 00:05:21,480
+are interested in R or C++ can take a look for themselves after the lesson.
+
+52
+00:05:21,480 --> 00:05:30,360
+Okay, so let's see here about the motivation. Untested software can be compared to uncalibrated
+
+53
+00:05:30,360 --> 00:05:39,720
+detectors yes that's something we know from the laboratory that if you have an instrument or a
+
+54
+00:05:39,720 --> 00:05:51,320
+detector it should be calibrated with some known sample before being used for experiments and here
+
+55
+00:05:51,320 --> 00:06:01,600
+Here we have the the statement that software should be treated equally that with tests
+
+56
+00:06:01,600 --> 00:06:13,280
+we can use software are calibrated and then it shows that it's ready for being used for
+
+57
+00:06:13,280 --> 00:06:18,740
+an experiment.
+
+58
+00:06:18,740 --> 00:06:27,060
+There are some horror stories. We have two links to research software stories about research
+
+59
+00:06:27,060 --> 00:06:39,600
+software where things have gone wrong. So we have this scientist's nightmare that a scientist
+
+60
+00:06:39,600 --> 00:06:44,600
+had to retract papers because there was some tables
+
+61
+00:06:44,760 --> 00:06:46,220
+that were mixed.
+
+62
+00:06:49,160 --> 00:06:53,960
+And there are also this Python bug
+
+63
+00:06:53,960 --> 00:06:58,680
+where results of an analysis
+
+64
+00:07:00,240 --> 00:07:03,080
+were different on different operating system
+
+65
+00:07:04,640 --> 00:07:09,360
+due to how the sorting mechanism of the file system
+
+66
+00:07:09,600 --> 00:07:17,360
+worked. So the correction of the error was to implement a sort
+
+67
+00:07:17,360 --> 00:07:20,880
+function that worked equally on across all platforms.
+
+68
+00:07:23,520 --> 00:07:27,040
+Have you experienced anything like that [name]?
+
+69
+00:07:31,040 --> 00:07:34,400
+Not on top of my mind but I was thinking maybe we can also
+
+70
+00:07:34,400 --> 00:07:38,480
+add the CrowdStrike one that someone mentioned in the icebreaker for the future
+
+71
+00:07:38,480 --> 00:07:46,160
+because it's something that affected a lot of people and everyone has heard of that so yeah.
+
+72
+00:07:46,720 --> 00:07:54,720
+That's right. So how does a test look? Here we have a Python test, we have a function
+
+73
+00:07:55,840 --> 00:08:05,440
+called Fahrenheit to Celsius and we have written a test of that function.
+
+74
+00:08:05,440 --> 00:08:17,000
+So we have a temperature in Fahrenheit and calculate the expected is to calculate the
+
+75
+00:08:17,000 --> 00:08:28,880
+temperature in Celsius and compare it to an expected result and here we see that we test
+
+76
+00:08:28,880 --> 00:08:33,880
+for user numerical tests so that we,
+
+77
+00:08:36,440 --> 00:08:40,700
+so that the results are within the expected tolerance.
+
+78
+00:08:45,800 --> 00:08:48,440
+We will see an example later where we test
+
+79
+00:08:48,440 --> 00:08:52,640
+with the user numerical test and use equal signs
+
+80
+00:08:52,640 --> 00:08:57,640
+and then the test fails though the error is small.
+
+81
+00:08:58,880 --> 00:09:06,820
+Of course, you can test the whole programs.
+
+82
+00:09:06,820 --> 00:09:16,980
+So here is an example that we just test an application and get the message that this
+
+83
+00:09:16,980 --> 00:09:22,520
+is correct.
+
+84
+00:09:22,520 --> 00:09:32,880
+So what can head tests help you to do? It can preserve expected functionality. You check
+
+85
+00:09:32,880 --> 00:09:41,520
+that all things don't break. As [name] talked about, it can help users of the code that
+
+86
+00:09:41,520 --> 00:09:51,340
+you see that you, yeah, verify that the software is installed correctly. But also you see,
+
+87
+00:09:51,340 --> 00:10:01,260
+the examples of what it should do. When we have installed software on high-performance
+
+88
+00:10:01,260 --> 00:10:09,960
+computing systems, there is often test suites together with the software, and then we run
+
+89
+00:10:09,960 --> 00:10:19,720
+this test suite to verify that the installation is correct.
+
+90
+00:10:19,720 --> 00:10:26,880
+It can help other developers to modify the code, so that you verify that the change that
+
+91
+00:10:26,880 --> 00:10:33,560
+you made to the code is not breaking anything.
+
+92
+00:10:33,560 --> 00:10:37,320
+It can manage complexity.
+
+93
+00:10:37,320 --> 00:10:41,160
+If code is easy to test, it's probably easier to maintain.
+
+94
+00:10:41,160 --> 00:10:43,860
+So this will also be shown
+
+95
+00:10:43,860 --> 00:10:47,300
+in a less modular code development.
+
+96
+00:10:48,740 --> 00:10:53,180
+Okay, so let's have a discussion.
+
+97
+00:10:56,380 --> 00:11:01,380
+We can have a discussion in the shared document.
+
+98
+00:11:01,380 --> 00:11:15,860
+Let me add it to them.
+
+99
+00:11:15,860 --> 00:11:23,460
+So we'll vote in the notes and we'll discuss the results.
+
+100
+00:11:23,460 --> 00:11:46,140
+So, I added questions and feel free to add some O's and choose as many as you want.
+
+101
+00:11:53,460 --> 00:12:14,200
+And we'll give you a few minutes to answer the questions.
+
+102
+00:12:14,200 --> 00:12:15,820
+So what is your personal experience?
+
+103
+00:12:15,820 --> 00:12:20,100
+Do you like add tests all the time or?
+
+104
+00:12:20,100 --> 00:12:24,940
+I try to use test-driven development when I write code.
+
+105
+00:12:27,020 --> 00:12:29,420
+I'm not always sticking to that principle,
+
+106
+00:12:29,420 --> 00:12:32,220
+but mostly I try to.
+
+107
+00:12:32,220 --> 00:12:36,260
+So we will give an example of that later, what that is.
+
+108
+00:12:36,260 --> 00:12:39,140
+But then I'll write the test
+
+109
+00:12:39,140 --> 00:12:43,020
+before I write the function or class.
+
+110
+00:12:47,540 --> 00:12:48,940
+Yeah.
+
+111
+00:12:48,940 --> 00:12:53,020
+So when I'm finished developing, then I have a set of,
+
+112
+00:12:54,000 --> 00:12:56,300
+ideally, I have a set of tests
+
+113
+00:12:56,300 --> 00:12:58,520
+and a set of soft functions.
+
+114
+00:13:02,340 --> 00:13:07,340
+But it's ideally, it's not like that every time.
+
+115
+00:13:08,780 --> 00:13:09,620
+What about you?
+
+116
+00:13:11,900 --> 00:13:16,500
+I would try to like add enough tests, I would say,
+
+117
+00:13:16,500 --> 00:13:19,580
+But by enough, I mean I would try
+
+118
+00:13:19,580 --> 00:13:23,700
+to go with more complex functions that could go break
+
+119
+00:13:23,700 --> 00:13:26,780
+and could go wrong in a way when the program gets
+
+120
+00:13:26,780 --> 00:13:28,460
+more complicated.
+
+121
+00:13:28,460 --> 00:13:32,220
+And if I'm just having one shorter script,
+
+122
+00:13:32,220 --> 00:13:34,140
+I would skip doing the testings.
+
+123
+00:13:37,180 --> 00:13:40,140
+But yeah, I was actually mentioning on the notes
+
+124
+00:13:40,140 --> 00:13:44,460
+as well that these days, I'm getting
+
+125
+00:13:44,460 --> 00:13:47,560
+more used to using this generative AI models
+
+126
+00:13:47,560 --> 00:13:49,900
+to help me to write the tests.
+
+127
+00:13:49,900 --> 00:13:53,140
+And yeah, the experience was good enough.
+
+128
+00:13:53,140 --> 00:13:53,640
+Yeah.
+
+129
+00:13:58,220 --> 00:14:01,700
+Because in the end, it's a program that has some tests.
+
+130
+00:14:01,700 --> 00:14:04,300
+It's better than a program that doesn't have any.
+
+131
+00:14:04,300 --> 00:14:07,260
+And the more you add, the more robust your program
+
+132
+00:14:07,260 --> 00:14:09,540
+would be for the future changes.
+
+133
+00:14:09,540 --> 00:14:12,620
+And yeah.
+
+134
+00:14:12,620 --> 00:14:21,260
+Yeah, so let's see, take a look at the responses.
+
+135
+00:14:32,140 --> 00:14:34,820
+So when is it okay not to add tests?
+
+136
+00:14:34,820 --> 00:14:47,080
+jupyter or markdown notebook which produces a plot that can be hard to test yeah i think
+
+137
+00:14:47,080 --> 00:15:00,180
+you will manually verify a plot by looking at it a short obvious correct python script
+
+138
+00:15:00,180 --> 00:15:03,100
+which you never intend to reuse.
+
+139
+00:15:03,100 --> 00:15:06,220
+Well, some things that is okay not to test.
+
+140
+00:15:07,300 --> 00:15:10,300
+If it's very obvious and it's very short,
+
+141
+00:15:10,300 --> 00:15:13,160
+I think it's very good to add a test really.
+
+142
+00:15:18,740 --> 00:15:20,940
+What's here, once I heard that someone said,
+
+143
+00:15:20,940 --> 00:15:24,860
+go to the library and find ungraded thesis.
+
+144
+00:15:24,860 --> 00:15:27,180
+Under grad thesis, find the word obviously
+
+145
+00:15:27,180 --> 00:15:29,580
+and you will always find an error.
+
+146
+00:15:29,580 --> 00:15:30,420
+Okay.
+
+147
+00:15:37,960 --> 00:15:42,040
+Let's see, is there any questions here
+
+148
+00:15:42,040 --> 00:15:44,580
+that we should discuss?
+
+149
+00:15:47,400 --> 00:15:49,480
+How do you recommend people test your code
+
+150
+00:15:49,480 --> 00:15:52,200
+before publications?
+
+151
+00:15:52,200 --> 00:15:54,080
+Like to make sure each line of code
+
+152
+00:15:54,080 --> 00:15:55,780
+is doing what it's supposed to do.
+
+153
+00:16:00,060 --> 00:16:02,060
+Yeah
+
+154
+00:16:03,820 --> 00:16:05,820
+Yeah
+
+155
+00:16:08,300 --> 00:16:11,820
+And we have some answers for this one, maybe we can address the second question
+
+156
+00:16:13,420 --> 00:16:16,140
+Which there is no answer yet for it
+
+157
+00:16:18,940 --> 00:16:25,040
+So the question is I mostly develop software to analyze my experiment or keep track of changes in variables in experiments
+
+158
+00:16:25,040 --> 00:16:30,480
+I'm not sure how I should incorporate tests when developing this software.
+
+159
+00:16:30,480 --> 00:16:35,240
+Would it be okay to just have a simpler check, for example, for reference samples and ensures
+
+160
+00:16:35,240 --> 00:16:38,360
+that it gives the proper results?
+
+161
+00:16:38,360 --> 00:16:45,160
+I think we will discuss it a bit in this session about a similar thing, like the factorial
+
+162
+00:16:45,160 --> 00:16:46,800
+functions that we have.
+
+163
+00:16:46,800 --> 00:17:01,680
+Yes, in the test design session, we will touch upon this. But the short answer is that you
+
+164
+00:17:01,680 --> 00:17:10,280
+could use mocking for handling external references.
+
+165
+00:17:10,280 --> 00:17:11,920
+Hm.
+
+166
+00:17:11,920 --> 00:17:14,000
+Correct.
+
+167
+00:17:14,000 --> 00:17:15,120
+Yeah.
+
+168
+00:17:15,120 --> 00:17:17,960
+So my experience was just to add some sample tests
+
+169
+00:17:17,960 --> 00:17:21,520
+that you want to make sure that the function works correctly.
+
+170
+00:17:21,520 --> 00:17:26,600
+And also, the rule of thumb is to take care of the,
+
+171
+00:17:26,600 --> 00:17:29,720
+how should I say, like the edges, like the barriers.
+
+172
+00:17:29,720 --> 00:17:30,640
+Yeah, right.
+
+173
+00:17:30,640 --> 00:17:31,160
+Yes.
+
+174
+00:17:31,160 --> 00:17:33,560
+So that is something to keep in mind.
+
+175
+00:17:33,560 --> 00:17:37,120
+And I guess if you add those ones, you are good to go.
+
+176
+00:17:40,280 --> 00:17:50,680
+So, there's some questions about general generative IE.
+
+177
+00:17:50,680 --> 00:17:56,720
+Are there any generative IE to integrate into your local computer?
+
+178
+00:17:56,720 --> 00:17:57,720
+Yes.
+
+179
+00:17:57,720 --> 00:18:09,600
+There, you often, you have to buy a license or a subscription, at least JetBrains editors
+
+180
+00:18:09,600 --> 00:18:14,600
+have an AI agent incorporated which you can subscribe to?
+
+181
+00:18:18,400 --> 00:18:21,720
+There are like some other models that you can use.
+
+182
+00:18:21,720 --> 00:18:26,280
+For example, like Olama supports many of the models
+
+183
+00:18:26,280 --> 00:18:28,320
+that you can run locally on your machine.
+
+184
+00:18:28,320 --> 00:18:32,360
+And there are like some IDEs like cursor or even VS code
+
+185
+00:18:32,360 --> 00:18:34,600
+that you can integrate these AI models
+
+186
+00:18:34,600 --> 00:18:39,360
+into your development environment.
+
+187
+00:18:39,360 --> 00:18:41,820
+So you don't have to necessarily buy a subscription,
+
+188
+00:18:41,820 --> 00:18:46,820
+but usually those ones are more easy and plug and play.
+
+189
+00:18:47,940 --> 00:18:50,380
+So if you don't afraid to get your hands a bit dirty,
+
+190
+00:18:50,380 --> 00:18:52,620
+you can try to the open source ones
+
+191
+00:18:52,620 --> 00:18:56,020
+and integrate it into your local machine, yeah.
+
+192
+00:18:56,020 --> 00:18:58,580
+Okay, but I guess you have to get your hands dirty.
+
+193
+00:18:58,580 --> 00:19:02,020
+A bit, nowadays it's more like developed,
+
+194
+00:19:02,020 --> 00:19:04,340
+I would say like Ollama, for example,
+
+195
+00:19:04,340 --> 00:19:07,620
+which I can add it here actually in the comments,
+
+196
+00:19:07,620 --> 00:19:09,140
+has a lot of supported models.
+
+197
+00:19:09,140 --> 00:19:14,820
+you can use it. Usually the problem is actually with the hardware because your personal laptop
+
+198
+00:19:14,820 --> 00:19:20,820
+probably doesn't have enough memory or graphical memory to run more fancy models.
+
+199
+00:19:22,820 --> 00:19:24,100
+But yeah, you can give it a try.
+
+200
+00:19:27,220 --> 00:19:32,260
+So question four here, how to test code with random inputs. We will
+
+201
+00:19:33,300 --> 00:19:36,900
+show an example with random numbers in the test design episode.
+
+202
+00:19:36,900 --> 00:19:46,660
+We will not test, how to test a GUI code, we will not touch upon that.
+
+203
+00:19:46,660 --> 00:19:54,340
+We are terminal based, we don't do much with the GUI.
+
+204
+00:19:54,340 --> 00:20:02,140
+Okay so let's go back to the lesson.
+
+205
+00:20:02,140 --> 00:20:09,140
+So there are a range of types of tests.
+
+206
+00:20:09,140 --> 00:20:16,660
+What we gave an example of early on was a unit test.
+
+207
+00:20:16,660 --> 00:20:22,900
+And that's typically what you develop together with your functions unit tests.
+
+208
+00:20:22,900 --> 00:20:31,740
+Then you have integration tests where you put the parts together and verify that it works.
+
+209
+00:20:31,740 --> 00:20:34,460
+end-to-end test where you see that the application
+
+210
+00:20:34,460 --> 00:20:37,900
+produce the expected result.
+
+211
+00:20:41,300 --> 00:20:46,300
+Regression tests, you collect a portfolio of old errors
+
+212
+00:20:47,980 --> 00:20:52,220
+and implement tests for these that they are kept out
+
+213
+00:20:52,220 --> 00:20:56,080
+of the, that they don't reappear in the code.
+
+214
+00:20:56,080 --> 00:21:05,840
+You have test-driven development, where you write a test first and then development code
+
+215
+00:21:05,840 --> 00:21:10,160
+to verify that the test works or breaks and then improve the code.
+
+216
+00:21:10,160 --> 00:21:18,880
+I'll try to give a sample of that under test design.
+
+217
+00:21:18,880 --> 00:21:19,880
+Continuous integration.
+
+218
+00:21:19,880 --> 00:21:24,880
+You have a portfolio of tests that you run on GitLab
+
+219
+00:21:26,100 --> 00:21:30,820
+or GitHub as a part of a merge or a pull request.
+
+220
+00:21:30,820 --> 00:21:33,540
+That we'll see an example of that.
+
+221
+00:21:36,420 --> 00:21:39,260
+You have code coverage, that's a report
+
+222
+00:21:39,260 --> 00:21:43,140
+that tells you which lines are run or tested
+
+223
+00:21:43,140 --> 00:21:44,220
+and which are not.
+
+224
+00:21:45,620 --> 00:21:49,520
+And there are different frameworks for running a test.
+
+225
+00:21:49,880 --> 00:22:04,200
+We use PyTest in these examples that we will show today.
+
+226
+00:22:04,200 --> 00:22:06,280
+So what should you do?
+
+227
+00:22:06,280 --> 00:22:09,960
+Well, not every code needs perfect test coverage.
+
+228
+00:22:09,960 --> 00:22:15,480
+You don't have to go for 100% coverage of the tests.
+
+229
+00:22:15,480 --> 00:22:24,240
+But a reasonably high coverage is good.
+
+230
+00:22:24,240 --> 00:22:35,360
+An interactive Jupyter notebook that we saw yesterday is hard to test.
+
+231
+00:22:35,360 --> 00:22:37,600
+End-to-end test is often easy.
+
+232
+00:22:37,600 --> 00:22:45,040
+I find it often easy to write tests for functions, to isolate functions and write unit tests.
+
+233
+00:22:50,080 --> 00:22:55,200
+Add tests of tricky functions, yes. And it's easy to have GitLab,
+
+234
+00:22:55,200 --> 00:22:58,480
+GitRub run tests. We will show this today.
+
+235
+00:22:58,480 --> 00:23:15,360
+Where do you start? Well start simple. Here the recommendation is start with an end-to-end
+
+236
+00:23:15,360 --> 00:23:25,000
+test. I would say that as you get acquainted with the code you should try to add tests
+
+237
+00:23:25,000 --> 00:23:29,320
+for functions that you after a while understands.
+
+238
+00:23:31,520 --> 00:23:32,360
+Describe in words,
+
+239
+00:23:32,360 --> 00:23:34,600
+how you check whether the code still works
+
+240
+00:23:36,000 --> 00:23:38,640
+and translate the words into scripts
+
+241
+00:23:39,640 --> 00:23:43,840
+and run these scripts automatically on every code change.
+
+242
+00:23:47,480 --> 00:23:48,880
+Anything more to add?
+
+243
+00:23:50,240 --> 00:23:53,560
+Or we go to local testing?
+
+244
+00:23:53,560 --> 00:23:54,400
+Yeah, sure.
+
+245
+00:23:55,360 --> 00:23:57,400
+Yeah, we can go to the next section, yeah.
+
+246
+00:23:58,720 --> 00:24:02,480
+Then we'll start a demonstration
+
+247
+00:24:02,480 --> 00:24:05,640
+of how we can have a local testing.
+
+248
+00:24:10,840 --> 00:24:15,360
+So I'll show my terminal here.
+
+249
+00:24:15,360 --> 00:24:34,480
+So, in this exercise we'll make a simple function and use pytest for testing that function.
+
+250
+00:24:34,480 --> 00:24:39,480
+I'll make the directory local testing example
+
+251
+00:24:42,720 --> 00:24:44,640
+and cd into that.
+
+252
+00:24:49,520 --> 00:24:53,560
+The Python code shows here that we have a function add
+
+253
+00:24:55,220 --> 00:24:58,680
+and in the same,
+
+254
+00:24:58,680 --> 00:25:11,680
+Together with the add function we have a test function, test add, which uses the add function.
+
+255
+00:25:11,680 --> 00:25:22,240
+So I'll copy this code.
+
+256
+00:25:22,240 --> 00:25:49,200
+a file example.py here we have pasted the code into the file
+
+257
+00:25:49,200 --> 00:25:59,240
+So I'll save it and I run this with PyTest, PyTest is if you install have installed the
+
+258
+00:25:59,240 --> 00:26:08,680
+code refinery conda environment, PyTest is a part of the environment and then you can
+
+259
+00:26:08,680 --> 00:26:13,680
+Just write PyTest example.py,
+
+260
+00:26:15,760 --> 00:26:19,200
+and we see that the test passed.
+
+261
+00:26:19,200 --> 00:26:23,520
+I'll have dash v there
+
+262
+00:26:23,520 --> 00:26:28,520
+for getting for more verbose feedback from PyTest.
+
+263
+00:26:31,880 --> 00:26:34,800
+Can you run it without the dash v and...
+
+264
+00:26:34,800 --> 00:26:37,080
+Yeah, I can do that.
+
+265
+00:26:38,680 --> 00:26:44,480
+Then there is less output it just.
+
+266
+00:26:44,480 --> 00:26:52,960
+But how does PyTest understand like what functions to test and how does it work?
+
+267
+00:26:52,960 --> 00:27:03,920
+PyTest looks for a functions that called does start with test underscore and so it understands
+
+268
+00:27:03,920 --> 00:27:08,920
+that test add is a function that it needs to execute.
+
+269
+00:27:15,200 --> 00:27:17,240
+Okay, great.
+
+270
+00:27:18,280 --> 00:27:23,280
+So let's add a bug to the code.
+
+271
+00:27:25,960 --> 00:27:30,960
+So if we modify add to do some shortcuts
+
+272
+00:27:33,920 --> 00:27:39,520
+subtraction instead then we have an error in our code
+
+273
+00:27:43,520 --> 00:27:48,480
+and PyTest will then give us a red warning
+
+274
+00:27:50,800 --> 00:27:52,640
+minus v example
+
+275
+00:27:55,040 --> 00:27:57,040
+so here we see that the test fails
+
+276
+00:27:57,040 --> 00:28:06,320
+And it shows where in the test function that the error pops up.
+
+277
+00:28:06,320 --> 00:28:15,360
+It runs assert add to command 3, supposed to be equal 5.
+
+278
+00:28:15,360 --> 00:28:20,480
+But the function returns minus 1. And that's not equal to 5.
+
+279
+00:28:20,480 --> 00:28:44,080
+the assert fails yes so so we have a question that i'm trying i'm answering on the note but
+
+280
+00:28:44,080 --> 00:28:46,900
+but I think it's good for everyone to hear.
+
+281
+00:28:47,840 --> 00:28:48,940
+Like someone asked,
+
+282
+00:28:50,200 --> 00:28:52,400
+when you have like several functions to test,
+
+283
+00:28:52,400 --> 00:28:55,340
+is it okay to put your test underscore functions
+
+284
+00:28:55,340 --> 00:28:57,880
+for testing the functions in a different script
+
+285
+00:28:57,880 --> 00:28:59,780
+so the original one is easier to read?
+
+286
+00:29:02,880 --> 00:29:07,880
+Yes, that is a very good thing to do.
+
+287
+00:29:08,200 --> 00:29:10,760
+Either have a subdirectory tests
+
+288
+00:29:10,760 --> 00:29:12,780
+where you have the test functions
+
+289
+00:29:12,780 --> 00:29:17,540
+and then import the functions from the source directory
+
+290
+00:29:17,540 --> 00:29:21,160
+or have a source directory with separate files
+
+291
+00:29:21,160 --> 00:29:24,320
+for the functions and the test of the functions.
+
+292
+00:29:27,300 --> 00:29:28,140
+Yes, thanks.
+
+293
+00:29:30,220 --> 00:29:35,220
+Okay, let's add a test which checks for being equal
+
+294
+00:29:35,220 --> 00:29:43,540
+a test which checks for being equal to 0.3
+
+295
+00:29:46,900 --> 00:29:57,060
+I'll and see how that goes
+
+296
+00:29:57,060 --> 00:30:19,340
+I'll correct the add function and then we assert for okay oh just add the assert here
+
+297
+00:30:19,340 --> 00:30:38,660
+So we have a third assert which checks for the addition of 0.1 and 0.2.
+
+298
+00:30:38,660 --> 00:30:56,900
+And then we see that we get a floating point error or the floating point arithmetic plays
+
+299
+00:30:56,900 --> 00:31:01,220
+as a puzzle.
+
+300
+00:31:01,220 --> 00:31:14,420
+we add 0.1 and 0.2 we get 0.3, 0.0, 0, a lot of 0.4 which and the assert is that is not
+
+301
+00:31:14,420 --> 00:31:20,700
+correct.
+
+302
+00:31:20,700 --> 00:31:26,580
+Can you can you explain a bit like why it doesn't raise an error like why that where did that
+
+303
+00:31:26,580 --> 00:31:28,580
+0004 api
+
+304
+00:31:29,780 --> 00:31:32,660
+Why it does as a given error
+
+305
+00:31:33,540 --> 00:31:37,880
+Uh, I mean like, uh in the function you're trying to add 0.1 and 0.2
+
+306
+00:31:38,900 --> 00:31:41,060
+And the results should be 0.2, right but
+
+307
+00:31:42,100 --> 00:31:44,100
+0.2 but 0.3
+
+308
+00:31:44,580 --> 00:31:46,980
+Yes, sorry, like like the assert says but
+
+309
+00:31:47,700 --> 00:31:48,740
+Yes
+
+310
+00:31:48,740 --> 00:31:50,760
+So where did the 00004
+
+311
+00:31:52,260 --> 00:31:54,260
+Appears out of nowhere
+
+312
+00:31:54,420 --> 00:31:56,260
+Where did it appear?
+
+313
+00:31:56,260 --> 00:32:04,020
+It comes from the presentation of the numbers. So this is how
+
+314
+00:32:07,700 --> 00:32:14,500
+floating point numbers are represented digitally in the computer.
+
+315
+00:32:16,580 --> 00:32:24,180
+We don't have a continuum of decimals or numbers. We just have
+
+316
+00:32:26,260 --> 00:32:42,220
+discrete numbers and adding 0.1, 0.2, then give us 0.3, 0.0, 0.4 which is not equal to
+
+317
+00:32:42,220 --> 00:32:54,740
+0.3. So we have to test for tolerance, numerical tolerance for this assert to go read through
+
+318
+00:32:54,740 --> 00:33:17,260
+them. So how do you do that? Let's see. We need to modify the test and run PyTest import
+
+319
+00:33:17,260 --> 00:33:43,740
+We assert that the add function approximates 0.3.
+
+320
+00:33:43,740 --> 00:33:58,340
+I think this will do the trick, type pytest-vexample.py, yes and now the test passes.
+
+321
+00:33:58,340 --> 00:34:06,420
+So there's a link there to what every programmer should know about floating point arithmetic.
+
+322
+00:34:06,420 --> 00:34:11,200
+so that it gives further details of why this fails happens.
+
+323
+00:34:19,860 --> 00:34:24,860
+Okay, so this is how we can test locally.
+
+324
+00:34:28,620 --> 00:34:31,100
+Each test framework has its way of collecting
+
+325
+00:34:31,100 --> 00:34:32,620
+and running all test functions.
+
+326
+00:34:32,620 --> 00:34:45,140
+like here it's PyTest selects tests starting with test underscore. Python, Julia, C++ has
+
+327
+00:34:45,140 --> 00:34:55,140
+better tools for automated tests than Fortran. So then you can use some of those tools for
+
+328
+00:34:55,140 --> 00:35:11,060
+Fortran as well if you use ISO C bonding. Okay. Any more questions or any more thing to add?
+
+329
+00:35:12,660 --> 00:35:17,860
+No everything is also answered in the notes. Okay. So we are good to go.
+
+330
+00:35:17,860 --> 00:35:28,340
+Then we'll start with today's main lesson.
+
+331
+00:35:28,340 --> 00:35:29,340
+Automatic testing.
+
+332
+00:35:29,340 --> 00:35:33,980
+How we can do use continuous integration.
+
+333
+00:35:33,980 --> 00:35:40,580
+So this will show how we can implement automatic testing and each time we push changes to our
+
+334
+00:35:40,580 --> 00:35:41,580
+repository.
+
+335
+00:35:41,580 --> 00:35:58,300
+And we will also use the auto-close mechanism when we commit messages.
+
+336
+00:35:58,300 --> 00:36:04,860
+So what does continuous integration mean in general, because we see like CICD, what does
+
+337
+00:36:04,860 --> 00:36:09,700
+it mean?
+
+338
+00:36:09,700 --> 00:36:23,300
+means that you have actions or processes that runs when you do check-in that for every change you do
+
+339
+00:36:23,300 --> 00:36:36,660
+to the code base that you verify that there is basic functionality or that the basic functionality
+
+340
+00:36:36,660 --> 00:36:51,460
+is not broken. That the code can be used for whatever purpose it has. And this is a way
+
+341
+00:36:51,460 --> 00:36:59,420
+to protect the main branch for instance. So that you always know that the main branch
+
+342
+00:36:59,420 --> 00:37:09,340
+it's a working version of your software. Yes. Okay, yeah. It's something that
+
+343
+00:37:09,900 --> 00:37:14,220
+in production they follow. So yeah, thanks for explaining.
+
+344
+00:37:16,780 --> 00:37:25,500
+Yes, so it's very important in agile development because then you can have
+
+345
+00:37:25,500 --> 00:37:38,940
+have continuous delivery or very short cycles for publishing or shipping your software.
+
+346
+00:37:38,940 --> 00:37:47,820
+So like Google for instance, they are more or less updating the software, Gmail software
+
+347
+00:37:47,820 --> 00:37:58,140
+continuously so you never know you don't you don't relate to any new versions of the software
+
+348
+00:37:58,140 --> 00:38:05,980
+really you just use the code and you use the application and and it changes us that's from
+
+349
+00:38:05,980 --> 00:38:12,620
+can change from time to time but you're not you're not involved in selecting the specific versions
+
+350
+00:38:12,620 --> 00:38:33,500
+Okay. So I'll create a code repository on GitHub. And then I'll add some code to that
+
+351
+00:38:33,500 --> 00:38:47,180
+repository. I will then set up a test with GitHub Actions and see how it plays out.
+
+352
+00:38:47,180 --> 00:38:57,380
+We'll introduce a bug in the repository and then create an issue and you will
+
+353
+00:38:57,380 --> 00:39:06,820
+helping me fixing the bug and we will see and how when you make all requests how the
+
+354
+00:39:06,820 --> 00:39:20,260
+test is then executed and to verify that your changes is correct yeah and yeah as a last
+
+355
+00:39:20,260 --> 00:39:30,580
+step will also introduce more tests to increase the coverage of the soft or of the function.
+
+356
+00:39:30,580 --> 00:39:38,820
+Yeah so I would say this is a very interesting section and this is the basics of what's happened
+
+357
+00:39:38,820 --> 00:39:45,180
+in collaboration when you are collaborating with others and you want to make sure that
+
+358
+00:39:45,180 --> 00:39:49,460
+the latest version of your code is working and still you are working on fixing a bug
+
+359
+00:39:49,460 --> 00:39:52,940
+or adding a new feature or adding some new experiments
+
+360
+00:39:52,940 --> 00:39:54,340
+to the code.
+
+361
+00:39:54,340 --> 00:39:57,820
+And yeah, this is the basics of what's happening
+
+362
+00:39:57,820 --> 00:39:59,580
+actually both in industry and academia
+
+363
+00:39:59,580 --> 00:40:01,620
+when you're collaborating with others.
+
+364
+00:40:01,620 --> 00:40:02,460
+Yes.
+
+365
+00:40:02,460 --> 00:40:05,020
+So yeah, let's go.
+
+366
+00:40:05,020 --> 00:40:09,580
+So here I'll, here's my repost, no, here's my namespace.
+
+367
+00:40:10,900 --> 00:40:15,140
+So I'll create a new repository
+
+368
+00:40:15,140 --> 00:40:35,980
+called example-ci. It's available. This is an example of continuous integration. It's
+
+369
+00:40:35,980 --> 00:40:58,060
+it's public. I read my file and add Python gitignore MIT license. Then I create my repository.
+
+370
+00:40:58,060 --> 00:41:19,020
+I'll clone the repository to my local computer, git clone and git string, so I'm cloning the
+
+371
+00:41:19,020 --> 00:41:32,460
+example CI. I step into the subdirectory example.CI. So what more should I do then? I'll add some
+
+372
+00:41:32,460 --> 00:41:48,740
+code. Let's see here. So I'll add a file functions.py which then contains four functions. Add, substring,
+
+373
+00:41:48,740 --> 00:41:57,900
+Subtract, multiply and convert Fahrenheit to Celsius.
+
+374
+00:41:57,900 --> 00:41:58,900
+Copy.
+
+375
+00:41:58,900 --> 00:41:59,900
+Vim-function.py.
+
+376
+00:41:59,900 --> 00:42:17,980
+There I added the base of the function and I save the file.
+
+377
+00:42:17,980 --> 00:42:22,780
+I'll do git status, so I'm on branch main,
+
+378
+00:42:22,780 --> 00:42:27,720
+I'll commit this to do the main branch and then push it.
+
+379
+00:42:30,220 --> 00:42:33,620
+Git add function.py.
+
+380
+00:42:36,060 --> 00:42:41,060
+Git commit message, add functions.
+
+381
+00:42:47,980 --> 00:43:14,860
+Git status, so I committed my changes and I have a commit add functions, git push origin
+
+382
+00:43:14,860 --> 00:43:34,860
+domain. So let's push the changes to my repository. So this should be now updated with function.
+
+383
+00:43:34,860 --> 00:43:39,780
+I added the function, but I haven't added the test function. So I need to go back and
+
+384
+00:43:39,780 --> 00:43:56,340
+and add that from that file as well vim test function.py
+
+385
+00:43:56,340 --> 00:44:00,740
+So here is the test function.
+
+386
+00:44:00,740 --> 00:44:01,740
+I'll copy it.
+
+387
+00:44:01,740 --> 00:44:31,180
+Right, right, quit, git status,
+
+388
+00:44:31,740 --> 00:44:38,220
+git add test function
+
+389
+00:44:39,260 --> 00:44:45,820
+it's staged git commit then
+
+390
+00:44:45,980 --> 00:44:48,940
+add test
+
+391
+00:44:49,020 --> 00:44:51,500
+oops
+
+392
+00:44:51,500 --> 00:45:19,620
+git graph, I add a test, git push origin, main, so now both test function and add function
+
+393
+00:45:19,620 --> 00:45:35,660
+is present yes so I'll test the that the test function works locally so I can just write
+
+394
+00:45:35,660 --> 00:45:48,700
+pytest and then pytest will look for the file called test underscore and then there is an
+
+395
+00:45:48,700 --> 00:46:08,700
+error because there's no module named functions I'll
+
+396
+00:46:08,700 --> 00:46:17,820
+give this function so it's called from functions import add subtract and multiply and I've
+
+397
+00:46:17,820 --> 00:46:37,580
+call it function so I need to rename the function. That means git move function to functions.py.
+
+398
+00:46:37,580 --> 00:46:52,540
+git status. If I now run PyTest. It works, it's green. So I need to commit this change.
+
+399
+00:46:52,540 --> 00:47:02,460
+let's commit rename function functions file
+
+400
+00:47:05,660 --> 00:47:06,780
+like it graph
+
+401
+00:47:09,500 --> 00:47:16,700
+so this become they can have more more commits than the original plan but we'll see
+
+402
+00:47:16,700 --> 00:47:31,540
+So git push origin main.
+
+403
+00:47:31,540 --> 00:47:42,280
+So now we should be set with the tests and the functions on GitHub.
+
+404
+00:47:42,280 --> 00:48:02,280
+next will enable automated testing. Yes. So here functions are no function are
+
+405
+00:48:02,280 --> 00:48:24,080
+We will now select the actions menu, it is on the upper line here.
+
+406
+00:48:24,080 --> 00:48:28,960
+here under github actions there is a
+
+407
+00:48:30,400 --> 00:48:38,240
+large set of actions but we will select the python application
+
+408
+00:48:38,240 --> 00:48:42,720
+where you create a test for python application
+
+409
+00:48:42,720 --> 00:48:45,280
+configure
+
+410
+00:48:45,280 --> 00:49:01,480
+And we see here now that in the example-ci repository there's created a subdirectory
+
+411
+00:49:01,480 --> 00:49:11,600
+called github with another subdirectory called workflows and here we have a yaml file that
+
+412
+00:49:11,600 --> 00:49:21,920
+we will edit so we can enable actions and this
+
+413
+00:49:22,640 --> 00:49:30,080
+dot github repository subdirectory was created when i pressed configure so if
+
+414
+00:49:30,080 --> 00:49:33,040
+you look at the repository as it was
+
+415
+00:49:33,040 --> 00:49:38,640
+called alone we see that there is no dot github there
+
+416
+00:49:38,640 --> 00:49:58,640
+Okay, so I'll copy the YAML file from the instructions, copy and I'll paste them at
+
+417
+00:49:58,640 --> 00:50:03,640
+the end here, then I'll remove the original code.
+
+418
+00:50:09,520 --> 00:50:12,980
+And so let's see here what it says.
+
+419
+00:50:14,100 --> 00:50:16,020
+It's given the name test.
+
+420
+00:50:18,720 --> 00:50:23,720
+It's runs on push and pull requests.
+
+421
+00:50:28,640 --> 00:50:41,960
+And here's the job description, it runs on the Ubuntu latest, the Linux Ubuntu version.
+
+422
+00:50:41,960 --> 00:50:57,480
+And the steps taken are checkout, it's a setup of a Python environment, it runs installation
+
+423
+00:50:57,480 --> 00:51:07,560
+of python packages. Then it does lint with flake 8.
+
+424
+00:51:07,560 --> 00:51:17,360
+Flake 8 is a python package or python application that checks for python software errors or
+
+425
+00:51:17,360 --> 00:51:24,760
+and python formatting. So it gives errors if there's syntax errors or deformatting of
+
+426
+00:51:24,760 --> 00:51:31,520
+And the Python code is not according to the standard.
+
+427
+00:51:31,520 --> 00:51:33,520
+This is called the linting.
+
+428
+00:51:33,520 --> 00:51:43,460
+After the tool lint, which was used, which was developed for C code.
+
+429
+00:51:43,460 --> 00:51:52,320
+After the linting, we'll run PyTest, and PyTest will also produce a coverage report, I guess.
+
+430
+00:51:52,320 --> 00:52:02,240
+Yes, so before you did the commit change, I just want to add something that this workflow
+
+431
+00:52:02,240 --> 00:52:11,440
+when we are using line 19 that you're using Ubuntu latest, it means we are creating some
+
+432
+00:52:11,440 --> 00:52:21,200
+hooks on every changes, as you can see on line 8 and line 10, on every changes for push
+
+433
+00:52:21,200 --> 00:52:26,720
+and pull request on main, there would something happening on GitHub side. And the things that
+
+434
+00:52:26,720 --> 00:52:31,280
+happening is it actually create a container with the latest Ubuntu so the OS is running
+
+435
+00:52:31,280 --> 00:52:37,520
+and it do the testing that we mentioned that. So all the things are happening on the GitHub side,
+
+436
+00:52:37,520 --> 00:52:43,760
+not on your computer. Yeah, please go ahead, sorry. Yeah, that's right. So
+
+437
+00:52:43,760 --> 00:52:48,760
+So commit the changes, create python-hub.yaml.
+
+438
+00:52:54,840 --> 00:52:55,960
+I'll keep that.
+
+439
+00:52:55,960 --> 00:52:58,480
+So I'll commit directly to the main branch.
+
+440
+00:53:03,680 --> 00:53:06,640
+And now let's see what's happened.
+
+441
+00:53:08,160 --> 00:53:12,080
+If we then go to actions,
+
+442
+00:53:12,080 --> 00:53:17,680
+we see there's a workflow running
+
+443
+00:53:20,240 --> 00:53:28,160
+and it's a kind of yellow or red there it turns to green
+
+444
+00:53:28,160 --> 00:53:34,160
+so if i if i go into this
+
+445
+00:53:34,720 --> 00:53:38,720
+uh yeah there i see that this is triggered while
+
+446
+00:53:38,720 --> 00:53:46,640
+it the push with the commit that i just wrote create the python app.yaml
+
+447
+00:53:48,080 --> 00:53:52,560
+and here we can go in and see the steps that are taken
+
+448
+00:53:54,880 --> 00:53:56,640
+there's the setup of the job
+
+449
+00:54:01,600 --> 00:54:05,280
+and there's the checkout of the source code
+
+450
+00:54:08,720 --> 00:54:13,720
+There's the setup of the Python environment,
+
+451
+00:54:16,200 --> 00:54:18,560
+installing dependencies.
+
+452
+00:54:18,560 --> 00:54:23,560
+That's pip and flake eight, among other things.
+
+453
+00:54:23,600 --> 00:54:27,020
+So there's a long list of dependencies that are installed.
+
+454
+00:54:29,120 --> 00:54:31,960
+In this case, I didn't have a requirements.txt file,
+
+455
+00:54:31,960 --> 00:54:33,440
+but if that was present,
+
+456
+00:54:33,440 --> 00:54:38,440
+it could then install the requirements.txt file.
+
+457
+00:54:38,720 --> 00:54:48,240
+So, it does the linting, check here, we see that my code is not up to the Python standard,
+
+458
+00:54:48,240 --> 00:54:56,160
+so I have too many blank lines, and there are functions that are imported, but unused, that's
+
+459
+00:54:56,160 --> 00:55:05,000
+part of the test function, so we get these error numbers from flake 8, so I have a job
+
+460
+00:55:05,000 --> 00:55:07,400
+to do to improve this code then.
+
+461
+00:55:14,080 --> 00:55:17,800
+Yes, and then we have the test itself.
+
+462
+00:55:17,800 --> 00:55:21,920
+It runs test function.py and there is no error message.
+
+463
+00:55:21,920 --> 00:55:25,280
+The test works fine.
+
+464
+00:55:27,680 --> 00:55:28,840
+And after the Py test,
+
+465
+00:55:28,840 --> 00:55:31,520
+then there is the tidying up of the job,
+
+466
+00:55:32,680 --> 00:55:34,040
+cleaning up Python.
+
+467
+00:55:35,000 --> 00:55:42,200
+post-run actions and the job is completed and the container goes out of scope or are
+
+468
+00:55:42,200 --> 00:55:59,280
+terminated. So this is executed on the check-in and then the results are present until there
+
+469
+00:55:59,280 --> 00:56:02,740
+there is a new pull request or check-in.
+
+470
+00:56:05,080 --> 00:56:06,960
+So it doesn't run continuously,
+
+471
+00:56:06,960 --> 00:56:09,320
+it just runs when there's an action
+
+472
+00:56:09,320 --> 00:56:10,920
+or those actions that,
+
+473
+00:56:10,920 --> 00:56:13,740
+under those actions that we have specified.
+
+474
+00:56:17,880 --> 00:56:22,400
+Okay, I think we'll take a break now.
+
+475
+00:56:22,400 --> 00:56:23,720
+Yes.
+
+476
+00:56:23,720 --> 00:56:26,400
+10 minutes break and then we'll continue
+
+477
+00:56:26,400 --> 00:56:31,400
+with the introducing errors and see how those are handled.
+
+478
+00:56:38,120 --> 00:56:43,120
+If we then comments at the 10, at 10 over.
+
+479
+00:56:48,040 --> 00:56:49,440
+0.8.
+
+480
+00:56:49,440 --> 00:56:52,560
+0.8, yeah, we'll be back at 0.8, yeah.
+
+481
+00:56:52,560 --> 00:56:54,720
+Yes.
+
+482
+00:56:54,720 --> 00:56:55,920
+Yeah, thanks.
+
+483
+00:56:55,920 --> 00:56:56,680
+See you.
+
+484
+00:56:56,680 --> 00:56:58,240
+See you.
+
+485
+00:57:00,000 --> 00:57:04,920
+Hi, and welcome back.
+
+486
+00:57:04,920 --> 00:57:06,640
+Welcome back.
+
+487
+00:57:06,640 --> 00:57:18,560
+Okay, so we have a running action on GitHub. And the tests are green.
+
+488
+00:57:18,560 --> 00:57:24,920
+So what happens when there is a bug or error in our code?
+
+489
+00:57:24,920 --> 00:57:28,720
+Yes. Let's see.
+
+490
+00:57:28,720 --> 00:57:39,080
+I'll update my local repository, since I have made a commit on GitHub, I committed the action
+
+491
+00:57:39,080 --> 00:57:53,720
+file. And this is not on my local repository. So I'll do git pull origin. I'll first do
+
+492
+00:57:53,720 --> 00:58:05,880
+the Git graph. So my last commit was rename functions file. And then I do git pull origin
+
+493
+00:58:05,880 --> 00:58:20,920
+file, my main. And I get the last commit from GitHub. And then Git graph shows that the
+
+494
+00:58:20,920 --> 00:58:30,520
+I've added the create Python app yaml file and if I inspect my subdirectory I'll see
+
+495
+00:58:30,520 --> 00:58:37,320
+that now I have the github.github subdirectory locally as well.
+
+496
+00:58:40,680 --> 00:58:42,520
+Okay so what's the next step?
+
+497
+00:58:42,520 --> 00:58:58,200
+Yep, so I'll uncomment the code in the test functions and push it to github.
+
+498
+00:58:58,200 --> 00:59:18,000
+test function.py. So we'll now add the test of the subtract function. And we'll see how
+
+499
+00:59:18,000 --> 00:59:23,000
+This goes, git status, we have the test function,
+
+500
+00:59:23,980 --> 00:59:28,980
+git add test function of i, git status,
+
+501
+00:59:30,880 --> 00:59:35,880
+git commits, commits message, add test of subtract.
+
+502
+00:59:48,000 --> 01:00:04,100
+And then I'll push, I'll search for the latest push command, git push origin main.
+
+503
+01:00:04,100 --> 01:00:05,660
+And there we go.
+
+504
+01:00:05,660 --> 01:00:14,900
+So I push directly to the main branch on GitHub.
+
+505
+01:00:14,900 --> 01:00:17,620
+And let's see what happens on actions now.
+
+506
+01:00:20,020 --> 01:00:25,020
+So, the GitHub has updated with the latest commit
+
+507
+01:00:28,780 --> 01:00:31,780
+and here's something pending.
+
+508
+01:00:33,220 --> 01:00:34,980
+What's happening here?
+
+509
+01:00:34,980 --> 01:00:37,140
+All checks have failed it tells.
+
+510
+01:00:39,040 --> 01:00:41,180
+Then we can go into details.
+
+511
+01:00:41,180 --> 01:00:43,780
+I could also log on into actions and see the same thing,
+
+512
+01:00:43,780 --> 01:00:48,780
+but the code view gives me the same information.
+
+513
+01:00:52,520 --> 01:00:53,360
+Details.
+
+514
+01:00:55,560 --> 01:01:00,560
+And we see that the test with, our test now fails.
+
+515
+01:01:06,200 --> 01:01:11,200
+This test, I also get an email to my mailbox
+
+516
+01:01:11,200 --> 01:01:18,420
+my mailbox that tells that the continuous integration job now fails.
+
+517
+01:01:18,420 --> 01:01:27,140
+So GitHub do take actively steps to inform me that there is errors.
+
+518
+01:01:27,140 --> 01:01:30,940
+Okay.
+
+519
+01:01:30,940 --> 01:01:32,940
+So I'll create a issue.
+
+520
+01:01:42,740 --> 01:01:44,980
+First issue, subtract test.
+
+521
+01:01:50,700 --> 01:01:52,620
+Test of subtract fails.
+
+522
+01:01:58,700 --> 01:02:00,200
+There is an error.
+
+523
+01:02:00,940 --> 01:02:02,940
+Error somewhere
+
+524
+01:02:05,420 --> 01:02:07,420
+Submit issue
+
+525
+01:02:08,460 --> 01:02:10,460
+So then
+
+526
+01:02:11,980 --> 01:02:13,980
+So now
+
+527
+01:02:14,700 --> 01:02:19,020
+We have a broken software what do we do next
+
+528
+01:02:21,260 --> 01:02:28,860
+Can you help me uh, yeah, so this is actually a very good demonstration of how collaboration works so when usually there's a
+
+529
+01:02:29,820 --> 01:02:30,860
+uh
+
+530
+01:02:30,860 --> 01:02:38,860
+There is a bug in open source software. Other people collaborating on that software can come and help and we want to demonstrate that.
+
+531
+01:02:38,860 --> 01:02:46,860
+So, uh, let me maybe I can share my screen and I'll stop the share. Yeah, sure.
+
+532
+01:02:47,860 --> 01:02:51,860
+And try to try to demonstrate that.
+
+533
+01:02:51,860 --> 01:03:12,060
+that. Yes, give me a second and sharing. Yes, let me just resize this one. I hope now you
+
+534
+01:03:12,060 --> 01:03:17,060
+I can see my Chrome browser without any issue.
+
+535
+01:03:20,020 --> 01:03:20,860
+Okay.
+
+536
+01:03:22,980 --> 01:03:23,820
+This is good.
+
+537
+01:03:24,820 --> 01:03:25,660
+Okay.
+
+538
+01:03:26,660 --> 01:03:31,660
+So let me first find the repository that you created.
+
+539
+01:03:33,400 --> 01:03:36,740
+So this is the repository and I go and see, okay,
+
+540
+01:03:36,740 --> 01:03:38,160
+there is an active issue.
+
+541
+01:03:38,160 --> 01:03:39,600
+I will go and check and see, yeah,
+
+542
+01:03:39,600 --> 01:03:44,600
+there's a problem with the subtraction test,
+
+543
+01:03:44,880 --> 01:03:48,840
+and probably the subtraction function that it fails the test.
+
+544
+01:03:49,960 --> 01:03:52,800
+So usually when I want to contribute this,
+
+545
+01:03:52,800 --> 01:03:57,160
+contribute to solve this issue or add a feature,
+
+546
+01:03:57,160 --> 01:04:00,800
+I would go and, because this repository is not mine,
+
+547
+01:04:00,800 --> 01:04:03,280
+so I would go and fork the repository,
+
+548
+01:04:03,280 --> 01:04:07,400
+which means some kind of cloning the repository online
+
+549
+01:04:07,400 --> 01:04:16,920
+getting a new branch of it and then try to work it on my own. So I would go and create a fork out of
+
+550
+01:04:16,920 --> 01:04:30,440
+it. Oh no, this is the branches. To get a fork I would go here with the forks or maybe here to get
+
+551
+01:04:30,440 --> 01:04:38,120
+a new fork and then I'm the owner I would let it let it the example ci the name and everything is
+
+552
+01:04:38,120 --> 01:04:48,120
+fine so I would create the fork so everything would be copied into my namespace and my github
+
+553
+01:04:48,120 --> 01:04:54,680
+account and you can see this is under my name now and it also mentions that it has been forked
+
+554
+01:04:54,680 --> 01:04:58,720
+from the original repository.
+
+555
+01:04:58,720 --> 01:05:00,200
+It also shows you some banners
+
+556
+01:05:00,200 --> 01:05:03,120
+that is it updated with the original repository or not.
+
+557
+01:05:03,120 --> 01:05:06,000
+So if I try to change it and add some commits,
+
+558
+01:05:06,000 --> 01:05:07,000
+this would be changed.
+
+559
+01:05:07,000 --> 01:05:10,040
+And also if the original repository changes,
+
+560
+01:05:10,040 --> 01:05:12,080
+this would be changes as well.
+
+561
+01:05:12,080 --> 01:05:15,040
+Sometimes I can sync it with the original fork
+
+562
+01:05:15,040 --> 01:05:15,960
+without any issues,
+
+563
+01:05:15,960 --> 01:05:18,840
+but it depends on what kind of files I have changed
+
+564
+01:05:18,840 --> 01:05:20,480
+and what kind of commits that I have.
+
+565
+01:05:20,480 --> 01:05:23,440
+Sometimes there are some conflicts that you have to solve.
+
+566
+01:05:24,680 --> 01:05:28,160
+But yeah, let's maybe continue from here.
+
+567
+01:05:28,160 --> 01:05:31,160
+So I would go ahead and fork this repository
+
+568
+01:05:31,160 --> 01:05:34,000
+on my local computer.
+
+569
+01:05:35,480 --> 01:05:40,240
+Let's go to my local computer and let me,
+
+570
+01:05:43,400 --> 01:05:45,280
+is the font okay?
+
+571
+01:05:45,280 --> 01:05:46,640
+Yeah, the font is okay.
+
+572
+01:05:46,640 --> 01:05:48,920
+Okay, so I would clone this repository
+
+573
+01:05:50,120 --> 01:05:53,320
+and I would go to the, this is my VS code
+
+574
+01:05:53,320 --> 01:05:57,160
+And you can see that the repository has been cloned here.
+
+575
+01:05:57,160 --> 01:06:02,200
+So I know there is a problem probably in the function.
+
+576
+01:06:02,200 --> 01:06:06,240
+So I would try to go and see either the problem is
+
+577
+01:06:06,240 --> 01:06:11,280
+with the function, with the test, which the test is OK.
+
+578
+01:06:11,280 --> 01:06:14,480
+So probably the problem is not coming from the test.
+
+579
+01:06:14,480 --> 01:06:17,680
+I would go to the functions file and try
+
+580
+01:06:17,680 --> 01:06:20,680
+to see if I can handle the bug or not.
+
+581
+01:06:20,680 --> 01:06:23,200
+And I see that this is the bug coming from.
+
+582
+01:06:23,200 --> 01:06:26,280
+So I would try to fix the bug, right?
+
+583
+01:06:26,280 --> 01:06:27,320
+I want to fix the bug.
+
+584
+01:06:27,320 --> 01:06:30,880
+But usually the best practice to do this
+
+585
+01:06:30,880 --> 01:06:32,360
+is to create a branch
+
+586
+01:06:32,360 --> 01:06:36,080
+and then try to do all the commits there.
+
+587
+01:06:36,080 --> 01:06:37,880
+So I would go back to my terminal
+
+588
+01:06:38,780 --> 01:06:43,720
+and I would do a branch, for example,
+
+589
+01:06:46,280 --> 01:06:50,120
+let's call, usually to start with a name
+
+590
+01:06:50,120 --> 01:06:51,640
+or username or something
+
+591
+01:06:51,640 --> 01:06:56,640
+and then fix subtraction bug.
+
+592
+01:07:01,800 --> 01:07:03,840
+You're not in the Git repository.
+
+593
+01:07:03,840 --> 01:07:04,680
+Oh, yes.
+
+594
+01:07:04,680 --> 01:07:08,560
+Sorry, I have to go to the Git repository first
+
+595
+01:07:08,560 --> 01:07:10,900
+and then try to do it again.
+
+596
+01:07:10,900 --> 01:07:14,840
+So I would create a new branch called my username
+
+597
+01:07:14,840 --> 01:07:17,640
+and then name of the branch.
+
+598
+01:07:17,640 --> 01:07:22,640
+So you can see that I'm currently in the new branch.
+
+599
+01:07:23,600 --> 01:07:24,840
+If you're using VS Code,
+
+600
+01:07:24,840 --> 01:07:27,900
+you can also see it here that I'm on the new branch.
+
+601
+01:07:28,760 --> 01:07:30,040
+So in the new branch,
+
+602
+01:07:30,040 --> 01:07:35,040
+I would go ahead and fix this issue and save the file.
+
+603
+01:07:36,200 --> 01:07:39,160
+So if I now get a get a status,
+
+604
+01:07:39,160 --> 01:07:41,520
+you can see in the new branch,
+
+605
+01:07:41,520 --> 01:07:44,040
+this function has been changed.
+
+606
+01:07:44,040 --> 01:07:51,400
+So I would go ahead and add this file, so the functions,
+
+607
+01:07:51,400 --> 01:07:53,240
+and then create a commit.
+
+608
+01:07:53,240 --> 01:07:55,120
+Usually, when you are fixing a bug,
+
+609
+01:07:55,120 --> 01:08:00,120
+it's a good practice to mention the issue number
+
+610
+01:08:00,120 --> 01:08:01,560
+that you fixed.
+
+611
+01:08:01,560 --> 01:08:03,340
+So when you are trying to merge it
+
+612
+01:08:03,340 --> 01:08:06,760
+and the owner wants to look at the pull request,
+
+613
+01:08:06,760 --> 01:08:08,760
+it has a better understanding of how it results.
+
+614
+01:08:08,760 --> 01:08:11,320
+But you can also mention it in the description.
+
+615
+01:08:11,320 --> 01:08:16,800
+But let me mention the issue number here as well.
+
+616
+01:08:16,800 --> 01:08:28,800
+So fix these subtraction bug on address on issue number one.
+
+617
+01:08:35,280 --> 01:08:40,560
+Oh, I forgot the message command, the message.
+
+618
+01:08:40,560 --> 01:08:46,720
+black okay so now everything is
+
+619
+01:08:46,880 --> 01:08:55,680
+good and I can go with uh push it from origin
+
+620
+01:08:56,240 --> 01:09:04,240
+to origin from the branch which was fix subtraction
+
+621
+01:09:04,240 --> 01:09:06,560
+back
+
+622
+01:09:07,440 --> 01:09:09,440
+OK, great.
+
+623
+01:09:09,440 --> 01:09:19,480
+So if I go to the GitHub, you can see, if I refresh the page,
+
+624
+01:09:19,480 --> 01:09:23,000
+you can see that there is a new branch has been created,
+
+625
+01:09:23,000 --> 01:09:26,320
+which I pushed from my local machine.
+
+626
+01:09:26,320 --> 01:09:29,140
+And if I go to that branch, you can
+
+627
+01:09:29,140 --> 01:09:32,200
+see that this branch is one commit ahead,
+
+628
+01:09:32,200 --> 01:09:35,540
+as I described before, from the original fork.
+
+629
+01:09:35,540 --> 01:09:39,020
+And here you can see that we can create a pull request.
+
+630
+01:09:39,020 --> 01:09:42,340
+And the pull request is to merge everything that we changed
+
+631
+01:09:42,340 --> 01:09:44,420
+back to the original fork that we got
+
+632
+01:09:44,420 --> 01:09:48,420
+from the original repository, which is a great thing.
+
+633
+01:09:48,420 --> 01:09:51,300
+So we would go with compare and pull request.
+
+634
+01:09:52,580 --> 01:09:55,220
+From GitHub site, there would be an automated,
+
+635
+01:09:56,740 --> 01:09:59,420
+not testing, but automatic checkup.
+
+636
+01:09:59,420 --> 01:10:04,420
+So if this commit and if this branch is easy to merge
+
+637
+01:10:04,420 --> 01:10:11,420
+and you can see that it's very easy to merge because I only replace a file, but sometimes it's very hard.
+
+638
+01:10:11,420 --> 01:10:17,420
+And you have to do a lot of different changes and solve the conflicts before the merge can happen.
+
+639
+01:10:17,420 --> 01:10:25,420
+But GitHub would also help you with that and raise an issue that it raised an error that if it is not easy to merge.
+
+640
+01:10:25,420 --> 01:10:36,420
+I think you need to have fixes in the in the description there, but I'm not sure it is enough to have it in the title.
+
+641
+01:10:36,420 --> 01:10:49,980
+Yeah, I would add a description as well, that in this pull request, I solve the subtraction
+
+642
+01:10:49,980 --> 01:10:56,460
+error address in issue number one.
+
+643
+01:10:56,460 --> 01:11:00,700
+I think you need to add your word fixes.
+
+644
+01:11:00,700 --> 01:11:05,580
+There are other words as well, but I don't think...
+
+645
+01:11:05,580 --> 01:11:07,580
+The fixes, what do you mean?
+
+646
+01:11:07,580 --> 01:11:12,580
+That it needs the word fixes, for instance.
+
+647
+01:11:19,140 --> 01:11:21,300
+There are other word fixes as well.
+
+648
+01:11:21,300 --> 01:11:22,660
+Okay, here you mean.
+
+649
+01:11:22,660 --> 01:11:25,580
+No, I mean in front of the pull request.
+
+650
+01:11:26,980 --> 01:11:30,980
+No, in front of the hash number one there,
+
+651
+01:11:30,980 --> 01:11:34,700
+addressed in the description,
+
+652
+01:11:34,700 --> 01:11:39,700
+In the body, not in the title, but in the body.
+
+653
+01:11:40,140 --> 01:11:41,260
+Okay.
+
+654
+01:11:41,260 --> 01:11:46,260
+Add fixes in front of the hash number one there.
+
+655
+01:11:46,500 --> 01:11:48,460
+Okay, so.
+
+656
+01:11:48,460 --> 01:11:49,500
+There, yes.
+
+657
+01:11:49,500 --> 01:11:50,500
+You mean here?
+
+658
+01:11:50,500 --> 01:11:51,340
+Yes.
+
+659
+01:11:53,060 --> 01:11:55,020
+So you mean fixes, right?
+
+660
+01:11:55,020 --> 01:11:56,100
+Like this, yes.
+
+661
+01:11:56,100 --> 01:11:56,940
+Okay.
+
+662
+01:11:58,620 --> 01:12:01,540
+So, okay.
+
+663
+01:12:01,540 --> 01:12:08,420
+So this pull request, I would say, this pull request fixes,
+
+664
+01:12:08,420 --> 01:12:16,300
+let me rephrase it, fixes number one on the subtraction error.
+
+665
+01:12:16,300 --> 01:12:17,740
+Yeah, something like it, yes.
+
+666
+01:12:17,740 --> 01:12:25,620
+And the error was caused from a bug in the function.
+
+667
+01:12:25,620 --> 01:12:32,700
+So actions.py file, let me also add it like this, so it will be, okay.
+
+668
+01:12:32,700 --> 01:12:36,980
+So I had it add a description, it's when you are usually contributing to an open source
+
+669
+01:12:36,980 --> 01:12:45,220
+repository, there are some guidelines on how to contribute, you have to go read that because
+
+670
+01:12:45,220 --> 01:12:50,340
+usually there are like some things that you have to check and you have to mention the
+
+671
+01:12:50,340 --> 01:12:54,700
+number of the issues or the files that you had changed and you have to follow the guidelines.
+
+672
+01:12:54,700 --> 01:12:57,860
+we don't have a guideline here and just want to demonstrate.
+
+673
+01:12:57,860 --> 01:13:02,300
+So I would create the pull request.
+
+674
+01:13:03,420 --> 01:13:07,420
+What it does, if we go back to
+
+675
+01:13:07,420 --> 01:13:13,460
+the original repository that has been created from V-Run,
+
+676
+01:13:13,460 --> 01:13:18,500
+you can see there is a tab on pull requests,
+
+677
+01:13:18,500 --> 01:13:22,460
+and my pull request has been created here with
+
+678
+01:13:22,460 --> 01:13:26,220
+the title and also with the description.
+
+679
+01:13:26,220 --> 01:13:28,500
+This has not been merged,
+
+680
+01:13:28,500 --> 01:13:31,580
+so the original repository has not changed yet.
+
+681
+01:13:31,580 --> 01:13:34,160
+You can see the pull request is still open.
+
+682
+01:13:34,160 --> 01:13:37,580
+You can create pull requests on a draft mode to
+
+683
+01:13:37,580 --> 01:13:40,500
+showcase that I'm working on an issue,
+
+684
+01:13:40,500 --> 01:13:42,980
+which is also a good practice.
+
+685
+01:13:43,060 --> 01:13:47,360
+I'm still waiting for the original repository owner or
+
+686
+01:13:47,360 --> 01:13:50,200
+for other editors that the original repository should
+
+687
+01:13:50,200 --> 01:13:54,480
+had to review the case, and if they got an approval,
+
+688
+01:13:54,480 --> 01:13:56,800
+they can manage it.
+
+689
+01:13:56,800 --> 01:13:59,600
+Also, they can add some comments and everything,
+
+690
+01:13:59,600 --> 01:14:01,640
+but I think [name] can showcase that.
+
+691
+01:14:01,640 --> 01:14:04,720
+So maybe it's good to give the screen back to you,
+
+692
+01:14:04,720 --> 01:14:06,440
+and you can continue from here.
+
+693
+01:14:09,800 --> 01:14:11,120
+Yes.
+
+694
+01:14:11,120 --> 01:14:14,080
+OK, so let me stop sharing, and we can continue.
+
+695
+01:14:20,200 --> 01:14:30,960
+So there, now, let's look at the state of the, my repository.
+
+696
+01:14:30,960 --> 01:14:46,440
+So now I have a pull request, listed on the pull request, picks this abstraction bug addressed
+
+697
+01:14:46,440 --> 01:14:47,440
+in the number one.
+
+698
+01:14:47,440 --> 01:14:49,760
+So let's have a look at what this is.
+
+699
+01:14:54,400 --> 01:14:56,040
+And here, now you see
+
+700
+01:14:58,360 --> 01:15:01,200
+[name] have written a pull request,
+
+701
+01:15:01,200 --> 01:15:04,520
+stating that it fixes the error.
+
+702
+01:15:06,000 --> 01:15:06,840
+And
+
+703
+01:15:09,320 --> 01:15:13,040
+GitHub have now queued up a workflow
+
+704
+01:15:14,000 --> 01:15:15,640
+waiting for,
+
+705
+01:15:15,640 --> 01:15:27,960
+waiting for being run and this is our test of the of the software so I'll approve this
+
+706
+01:15:31,480 --> 01:15:40,120
+and then the tests are running so it's yellow while it builds up the container and the environment
+
+707
+01:15:42,200 --> 01:15:43,960
+and we can go to details and see
+
+708
+01:15:45,640 --> 01:16:00,240
+So something, yes, so it doesn't, and there's a change here in GitHub as a part of the pull
+
+709
+01:16:00,240 --> 01:16:18,640
+requested the coverage report is not created so this gives an error.
+
+710
+01:16:18,640 --> 01:16:25,660
+So that was a little bit surprising but we'll go back.
+
+711
+01:16:25,660 --> 01:16:30,660
+So the check did fail due to creating of the coverage report.
+
+712
+01:16:35,300 --> 01:16:36,140
+Yeah.
+
+713
+01:16:38,060 --> 01:16:38,900
+What was that?
+
+714
+01:16:41,460 --> 01:16:46,460
+Yeah, I'm not sure whether there's permission we think
+
+715
+01:16:47,900 --> 01:16:52,900
+that or why it's fails as a part of the coverage report.
+
+716
+01:16:55,660 --> 01:17:00,660
+you know, part of the, what does it say here?
+
+717
+01:17:05,100 --> 01:17:05,940
+Okay.
+
+718
+01:17:05,940 --> 01:17:10,940
+For HTTP error, we search not accessible.
+
+719
+01:17:14,320 --> 01:17:16,020
+Okay.
+
+720
+01:17:16,020 --> 01:17:20,780
+Okay, then we'll learn something new today as well.
+
+721
+01:17:20,780 --> 01:17:40,500
+So, it was supposed to run and be green, but that will, it will turn green when I'll merge.
+
+722
+01:17:40,500 --> 01:17:44,500
+Confirm the merge.
+
+723
+01:17:44,500 --> 01:18:13,500
+Um, yeah, maybe something that it's also good to showcase is, like, if you go to the files changed and tab, you can see all of the changes that has been made and you can also make comments before approving and, like, add, uh, maybe some comments to change some of the functions or some of the changes that there has been made so you can comment that there isn't like a more like a collaborative way before making the approval.
+
+724
+01:18:13,500 --> 01:18:15,500
+making the approval.
+
+725
+01:18:15,500 --> 01:18:16,500
+That's right.
+
+726
+01:18:16,500 --> 01:18:22,620
+I'll I didn't do that now it's completely fine.
+
+727
+01:18:22,620 --> 01:18:24,960
+How's actions now?
+
+728
+01:18:24,960 --> 01:18:31,340
+So the merge goes green.
+
+729
+01:18:31,340 --> 01:18:40,220
+So the build now works.
+
+730
+01:18:40,220 --> 01:18:43,860
+I think the coverage error was coming from the fact that
+
+731
+01:18:43,860 --> 01:18:46,660
+it was trying to create it on my repo probably
+
+732
+01:18:46,660 --> 01:18:48,540
+or something like that.
+
+733
+01:18:48,540 --> 01:18:50,820
+And that was the, it was a person.
+
+734
+01:18:50,820 --> 01:18:53,220
+Which is strange, really.
+
+735
+01:18:53,220 --> 01:18:54,060
+Yeah.
+
+736
+01:18:56,900 --> 01:18:57,740
+Okay.
+
+737
+01:19:00,700 --> 01:19:03,300
+Any questions to what we have done so far?
+
+738
+01:19:07,540 --> 01:19:09,020
+No, the notes are good.
+
+739
+01:19:09,020 --> 01:19:12,940
+So yeah, I think everything is good to go.
+
+740
+01:19:15,780 --> 01:19:19,900
+So we accepted the pull requests.
+
+741
+01:19:19,900 --> 01:19:22,620
+So now we'll increase the coverage.
+
+742
+01:19:23,660 --> 01:19:28,660
+So I'll write a test for the multiply function
+
+743
+01:19:30,060 --> 01:19:32,440
+and create a pull request.
+
+744
+01:19:32,440 --> 01:19:41,720
+So we'll see how of this. Let's see if I can find a coverage report.
+
+745
+01:19:45,240 --> 01:19:45,800
+Action.
+
+746
+01:19:49,080 --> 01:19:50,440
+I'll pull requests.
+
+747
+01:19:56,360 --> 01:19:57,560
+So here.
+
+748
+01:19:59,000 --> 01:20:01,800
+No there's no coverage reporting either here.
+
+749
+01:20:02,440 --> 01:20:07,000
+No, but if you go to the workflow and see the actions here on the build, you can see
+
+750
+01:20:07,000 --> 01:20:08,000
+the coverage later.
+
+751
+01:20:08,000 --> 01:20:09,000
+Coverage.
+
+752
+01:20:09,000 --> 01:20:10,000
+Yes.
+
+753
+01:20:10,000 --> 01:20:20,240
+So if you open the result, yeah, and if you go to the details of the build, and it create
+
+754
+01:20:20,240 --> 01:20:22,120
+coverage if you open it.
+
+755
+01:20:22,120 --> 01:20:28,080
+But I don't get the coverage XML.
+
+756
+01:20:28,080 --> 01:20:29,640
+Okay.
+
+757
+01:20:29,640 --> 01:20:43,920
+Okay, let's see, you search, because I, okay, let me see for the failed build one. I can see the coverage, but it doesn't create the, the file.
+
+758
+01:20:45,920 --> 01:20:55,440
+Oh, okay. So, for example, if you open the failed one, we can see that it, it mentions the coverage of the, yeah.
+
+759
+01:20:59,640 --> 01:21:03,600
+Yeah, but it just gives the error message.
+
+760
+01:21:03,600 --> 01:21:06,640
+If on line 14, if you open the results.
+
+761
+01:21:06,640 --> 01:21:07,640
+Okay.
+
+762
+01:21:07,640 --> 01:21:08,640
+Yes.
+
+763
+01:21:08,640 --> 01:21:09,640
+Results.
+
+764
+01:21:09,640 --> 01:21:10,640
+Yeah.
+
+765
+01:21:10,640 --> 01:21:11,640
+So you can see.
+
+766
+01:21:11,640 --> 01:21:20,720
+Yeah, there it gives a report of coverage of 88%.
+
+767
+01:21:20,720 --> 01:21:27,680
+We will see with the next pull request that I get the coverage as a part of the pull request
+
+768
+01:21:27,680 --> 01:21:31,180
+when the test has been executed.
+
+769
+01:21:32,420 --> 01:21:33,260
+Okay.
+
+770
+01:21:34,300 --> 01:21:39,300
+So let's go back to the code.
+
+771
+01:21:40,860 --> 01:21:45,360
+I'll implement the,
+
+772
+01:21:48,240 --> 01:21:50,520
+I'll do git pull.
+
+773
+01:21:50,520 --> 01:22:01,920
+So we get the latest changes, git graph.
+
+774
+01:22:01,920 --> 01:22:11,840
+And then I'll add a test of the multiply function to the test function.
+
+775
+01:22:11,840 --> 01:22:17,840
+If testMultiply
+
+776
+01:22:19,840 --> 01:22:24,840
+assertMultiply
+
+777
+01:22:25,840 --> 01:22:30,840
+5 and 5 equal 25
+
+778
+01:22:35,840 --> 01:22:37,840
+Save
+
+779
+01:22:37,840 --> 01:23:06,040
+Git starters, git add test function, git commit minus m, add, multiply, git graph, oh, I should
+
+780
+01:23:06,040 --> 01:23:19,080
+have should have made this in a branch really. Oh it's fine. Yeah but now it will commit
+
+781
+01:23:19,080 --> 01:23:46,080
+directly to git push, see if we get the, can we get a new test, new.
+
+782
+01:23:46,080 --> 01:23:48,080
+Mm-hmm
+
+783
+01:23:49,840 --> 01:23:51,840
+So it failed
+
+784
+01:23:52,080 --> 01:23:54,320
+So I get a chance to correct this
+
+785
+01:23:55,840 --> 01:23:57,360
+Okay
+
+786
+01:23:57,360 --> 01:24:03,680
+We are also a bit behind the schedule. So we have to wrap this up, but maybe you can see uh, where it fell and
+
+787
+01:24:16,080 --> 01:24:18,080
+So why did it fail?
+
+788
+01:24:18,960 --> 01:24:21,780
+Uh, it was coming from the lint with flocate
+
+789
+01:24:27,100 --> 01:24:30,500
+Okay, yeah, there's an l missing
+
+790
+01:24:34,560 --> 01:24:36,560
+Did check out must be
+
+791
+01:24:43,600 --> 01:24:45,600
+Um
+
+792
+01:24:46,080 --> 01:25:08,080
+Then I created a branch, test function.py, multiply.
+
+793
+01:25:08,080 --> 01:25:09,080
+That's what's there.
+
+794
+01:25:09,080 --> 01:25:10,080
+Yeah.
+
+795
+01:25:10,080 --> 01:25:20,080
+git add text function, git status, git commit mysql,
+
+796
+01:25:20,080 --> 01:25:49,080
+It says git push setup stream origin [name]fix, so I'll copy that and paste it in here.
+
+797
+01:25:49,080 --> 01:26:03,880
+Like this, and now we'll have, now we can compare and write pull requests.
+
+798
+01:26:03,880 --> 01:26:11,000
+So that was my intention.
+
+799
+01:26:11,000 --> 01:26:17,240
+pull requests so we say
+
+800
+01:26:18,440 --> 01:26:23,640
+this branch has no conflicts but it's running
+
+801
+01:26:23,640 --> 01:26:30,120
+the action and we will see that we get a coverage report as a part of the pull
+
+802
+01:26:30,120 --> 01:26:35,000
+requests yeah here it is yes and if you remember
+
+803
+01:26:35,000 --> 01:26:40,600
+from the details that we looked at we had a coverage report of 88 percent
+
+804
+01:26:40,600 --> 01:26:46,920
+before and now we have a overall coverage of 94 percent
+
+805
+01:26:49,160 --> 01:26:54,520
+so we improved the coverage of the of the code
+
+806
+01:26:57,480 --> 01:27:01,080
+so i'll merge this confirm merge
+
+807
+01:27:01,080 --> 01:27:16,860
+Yes, so this was automated testing. It can really protect your code from being
+
+808
+01:27:16,860 --> 01:27:25,360
+broken. And as a code, but of course, as a code grows
+
+809
+01:27:25,360 --> 01:27:27,360
+and you add more and more tests,
+
+810
+01:27:28,800 --> 01:27:31,200
+these actions will take more and more time.
+
+811
+01:27:31,200 --> 01:27:33,840
+We said, here's a simple test
+
+812
+01:27:33,840 --> 01:27:36,760
+and it takes a while to complete.
+
+813
+01:27:36,760 --> 01:27:39,780
+So if you get a large portfolio of tests,
+
+814
+01:27:41,840 --> 01:27:45,120
+Apple request or check-in
+
+815
+01:27:45,120 --> 01:27:49,520
+will then take several minutes to complete.
+
+816
+01:27:49,520 --> 01:27:52,640
+Yeah, so you have to structure balance
+
+817
+01:27:52,640 --> 01:27:57,640
+between how many tests you add to these actions.
+
+818
+01:28:09,000 --> 01:28:11,480
+Yes, I hope you find it interesting
+
+819
+01:28:11,480 --> 01:28:14,720
+and you can then redo the example
+
+820
+01:28:16,360 --> 01:28:19,760
+from there as an exercise after the lesson.
+
+821
+01:28:19,760 --> 01:28:23,760
+Anything more to add?
+
+822
+01:28:23,760 --> 01:28:25,760
+No, everything was good.
+
+823
+01:28:25,760 --> 01:28:32,760
+Maybe we can start the next section to be a bit, because we're a bit on behind the schedule.
+
+824
+01:28:32,760 --> 01:28:33,760
+Yeah.
+
+825
+01:28:33,760 --> 01:28:40,760
+We showed Python, but this can be done for other languages as well.
+
+826
+01:28:40,760 --> 01:28:41,760
+Great.
+
+827
+01:28:41,760 --> 01:28:42,760
+Yeah.
+
+828
+01:28:42,760 --> 01:28:43,760
+Yeah.
+
+829
+01:28:43,760 --> 01:28:47,760
+Then we'll go to test design.
+
+830
+01:28:47,760 --> 01:28:50,480
+And there's a lot of examples here.
+
+831
+01:28:53,160 --> 01:28:58,160
+So we'll dive into different tests and see how these are.
+
+832
+01:29:05,120 --> 01:29:08,140
+So let's get started with the first one.
+
+833
+01:29:09,520 --> 01:29:13,260
+We have the function factorial.
+
+834
+01:29:13,260 --> 01:29:25,900
+How would you test this one, [name]?
+
+835
+01:29:25,900 --> 01:29:32,940
+So it was also a bit, I think that the question was also asked in the beginning of the session
+
+836
+01:29:32,940 --> 01:29:40,540
+that if we have a function that it depends on the input what you want to do and what
+
+837
+01:29:40,540 --> 01:29:49,180
+do usually is to create some test cases, and usually take care of the edges or the barriers.
+
+838
+01:29:49,180 --> 01:29:52,300
+For example, if the number is too large or something like that.
+
+839
+01:29:53,580 --> 01:29:57,740
+Yeah, but for this I would like add some small number, some medium number probably,
+
+840
+01:29:57,740 --> 01:30:00,460
+and a large number to see if the function is working.
+
+841
+01:30:01,980 --> 01:30:10,060
+Well, here the numbers grow rapidly with small input. So you can easily get an
+
+842
+01:30:10,060 --> 01:30:12,100
+an overflow or.
+
+843
+01:30:12,100 --> 01:30:12,940
+Yes.
+
+844
+01:30:16,460 --> 01:30:20,460
+So let's see, we'll take a look at the solution here.
+
+845
+01:30:20,460 --> 01:30:25,300
+So here it's tested for zero, one and two.
+
+846
+01:30:25,300 --> 01:30:30,300
+There are no large values, simple values really.
+
+847
+01:30:32,780 --> 01:30:36,140
+And as I said, this is a pure function.
+
+848
+01:30:36,140 --> 01:30:41,140
+So it has, it's quite easy to test it.
+
+849
+01:30:48,340 --> 01:30:52,660
+In Python, Python has the pipe long.
+
+850
+01:30:52,660 --> 01:30:57,660
+So if you get really, you can get really large,
+
+851
+01:30:58,740 --> 01:31:01,360
+test really large numbers with Python.
+
+852
+01:31:01,360 --> 01:31:12,520
+The challenge is really to calculate a large factorial and have it ready for inserting
+
+853
+01:31:12,520 --> 01:31:23,520
+into a test.
+
+854
+01:31:23,520 --> 01:31:30,960
+Design a test for a function that receives two strings and returns a number.
+
+855
+01:31:30,960 --> 01:31:33,280
+This seems simple as well.
+
+856
+01:31:36,880 --> 01:31:41,880
+You can really add the documentation here as a test.
+
+857
+01:31:51,200 --> 01:31:53,200
+So if you step out of,
+
+858
+01:31:53,200 --> 01:32:07,960
+Step into a new subdirectory.
+
+859
+01:32:07,960 --> 01:32:36,960
+So we could create a function log pi, in the insert code, and in test function log pi.
+
+860
+01:32:36,960 --> 01:32:58,640
+It doesn't be from function import and the name of the function was countered occurrence.
+
+861
+01:32:58,640 --> 01:32:59,640
+There is thing.
+
+862
+01:32:59,640 --> 01:33:05,120
+There are two double R's in the occurrence.
+
+863
+01:33:05,120 --> 01:33:29,240
+So define test count word. Assert. And if we then say count word of currents in string
+
+864
+01:33:29,240 --> 01:33:49,880
+1, 2, 1, 2, 3, 4 and the argument, second argument would be 1, then assert that this
+
+865
+01:33:49,880 --> 01:34:08,920
+This is equal number two, take a join there, write quit, our PyTests work now.
+
+866
+01:34:08,920 --> 01:34:09,920
+So yes.
+
+867
+01:34:09,920 --> 01:34:14,600
+Yes, then we'd have tested the docstring really.
+
+868
+01:34:21,000 --> 01:34:25,200
+Under solutions, there are other strings
+
+869
+01:34:27,020 --> 01:34:32,020
+which could add this test to see how it may phase
+
+870
+01:34:32,780 --> 01:34:37,780
+with several, this is like, I don't know, border case.
+
+871
+01:34:39,920 --> 01:35:00,240
+And here, we get an error. So, either we have to change the test, or we have to change the
+
+872
+01:35:00,240 --> 01:35:09,240
+function. So, we are not sure here what's wrong here, whether we our specification of
+
+873
+01:35:09,240 --> 01:35:14,160
+the function is wrong or whether the test is wrong.
+
+874
+01:35:14,160 --> 01:35:29,640
+But the function returns zero and we have expected it to return one.
+
+875
+01:35:29,640 --> 01:35:42,960
+Okay, here is a design, something similar, we count the words occurrences in a file.
+
+876
+01:35:42,960 --> 01:35:53,080
+But here we're getting a more complex function, which are doing several things.
+
+877
+01:35:53,080 --> 01:36:02,300
+So one approach here could be that we didn't implement the opening of the file as a part
+
+878
+01:36:02,300 --> 01:36:05,700
+of the counting function.
+
+879
+01:36:05,700 --> 01:36:17,040
+But we rather used, had the file opening in a function for itself.
+
+880
+01:36:17,040 --> 01:36:21,980
+Which then could return a data object, like a list for instance.
+
+881
+01:36:21,980 --> 01:36:34,980
+And then we use the count word occurrence in string from the previous example instead.
+
+882
+01:36:34,980 --> 01:36:43,300
+As it is very similar to the previous example that we did, maybe it's better to bypass it
+
+883
+01:36:43,300 --> 01:36:51,700
+and then talk about how do we want to check if there is a dependency for the next one.
+
+884
+01:36:51,700 --> 01:36:56,700
+And we also have the question about that earlier today.
+
+885
+01:36:58,560 --> 01:36:59,720
+Exactly.
+
+886
+01:36:59,720 --> 01:37:02,680
+So here we have an external dependency
+
+887
+01:37:05,240 --> 01:37:10,240
+from reactor input to import max underscore temperature.
+
+888
+01:37:14,500 --> 01:37:17,800
+And how would you approach this function?
+
+889
+01:37:17,800 --> 01:37:23,420
+So usually when it's dependent on an external factor,
+
+890
+01:37:23,420 --> 01:37:27,780
+it can come in from a physical board or another library.
+
+891
+01:37:27,780 --> 01:37:34,200
+If that specific number is not available or it changes,
+
+892
+01:37:34,200 --> 01:37:37,800
+it's usually good to mark it,
+
+893
+01:37:37,800 --> 01:37:40,580
+which means you give it an arbitrary number and
+
+894
+01:37:40,580 --> 01:37:43,100
+then try it with that arbitrary number
+
+895
+01:37:43,100 --> 01:37:46,780
+instead of getting the actual number from the external source.
+
+896
+01:37:47,800 --> 01:37:57,640
+Yes, so let's see what's written under the solution here.
+
+897
+01:37:57,640 --> 01:38:10,440
+Here it says describes monkey patching that you then set the temperature from the external
+
+898
+01:38:10,440 --> 01:38:12,520
+to some, to a specific value.
+
+899
+01:38:17,360 --> 01:38:20,720
+Mocking is also doing the same thing.
+
+900
+01:38:21,960 --> 01:38:22,800
+Yes.
+
+901
+01:38:26,280 --> 01:38:30,080
+I'll skip the next,
+
+902
+01:38:30,080 --> 01:38:31,520
+I'll skip the design five
+
+903
+01:38:31,520 --> 01:38:33,520
+and we'll go to test-driven development.
+
+904
+01:38:34,560 --> 01:38:37,520
+I'll think I'll spend five minutes on that
+
+905
+01:38:37,520 --> 01:38:42,520
+And then, and we'll also touch upon testing randomness.
+
+906
+01:38:43,320 --> 01:38:44,160
+Okay.
+
+907
+01:38:48,920 --> 01:38:53,320
+So, in test-driven development,
+
+908
+01:38:53,320 --> 01:38:57,380
+you develop the test first.
+
+909
+01:38:57,380 --> 01:39:02,380
+So here, we have a function that takes an integer
+
+910
+01:39:03,060 --> 01:39:07,500
+and it returns this on three and five on bus.
+
+911
+01:39:07,500 --> 01:39:10,580
+And multiples of five returns bus.
+
+912
+01:39:10,580 --> 01:39:13,780
+And for arguments that are multiples of both three
+
+913
+01:39:13,780 --> 01:39:18,020
+and five returns fizz and bus together.
+
+914
+01:39:20,880 --> 01:39:22,980
+Fails in case of non-integral arguments
+
+915
+01:39:22,980 --> 01:39:27,980
+or arguments are negative or arguments zero or negative
+
+916
+01:39:29,200 --> 01:39:32,260
+or otherwise it returns the integral itself.
+
+917
+01:39:32,260 --> 01:39:34,260
+So that's the specification of the
+
+918
+01:39:37,500 --> 01:40:05,580
+So, I would then go on and create the, create the test first, test function.py.
+
+919
+01:40:05,580 --> 01:40:13,580
+So I'll write from function import.
+
+920
+01:40:13,580 --> 01:40:20,060
+This doesn't exist yet, but I'll write my function files as functions, I'll write import
+
+921
+01:40:20,060 --> 01:40:31,660
+FizzBuzz and then the final test of FizzBuzz
+
+922
+01:40:31,660 --> 01:40:42,660
+assert FizzBuzz3 equals Fizz
+
+923
+01:40:42,660 --> 01:40:59,500
+assert this bus five equal bus. So then I've written a simple test. So if I run this of
+
+924
+01:40:59,500 --> 01:41:09,220
+course now I'll get an error. So import the import statement false. So this is getting
+
+925
+01:41:09,220 --> 01:41:16,220
+Getting red, getting the state red is called under test tree development.
+
+926
+01:41:16,220 --> 01:41:19,740
+But I want to get to the state of green.
+
+927
+01:41:19,740 --> 01:41:24,420
+And I'll do that as fast as possible.
+
+928
+01:41:24,420 --> 01:41:25,820
+So how do I do that?
+
+929
+01:41:25,820 --> 01:41:49,420
+So I'll implement FizzBuzz in the function.py, FizzBuzz, and as a simple step, I'll just say
+
+930
+01:41:49,420 --> 01:41:55,340
+if and there's a number here should be number
+
+931
+01:42:00,860 --> 01:42:01,360
+if
+
+932
+01:42:04,380 --> 01:42:11,420
+if number number equals three return
+
+933
+01:42:11,420 --> 01:42:41,380
+Return this, else if number equal five, oops, return bus.
+
+934
+01:42:41,380 --> 01:42:58,140
+else return number okay so if I run pytest now it was wrong in the function
+
+935
+01:42:58,140 --> 01:43:01,140
+Yeah, with the else, yeah.
+
+936
+01:43:01,140 --> 01:43:05,140
+There was a column missing.
+
+937
+01:43:05,140 --> 01:43:07,140
+I test.
+
+938
+01:43:07,140 --> 01:43:12,140
+So now, the time has gotten to the state green.
+
+939
+01:43:12,140 --> 01:43:20,140
+But we know that the function that I've written is too simple for the specification.
+
+940
+01:43:20,140 --> 01:43:24,140
+But it's a first iteration of the function relayed.
+
+941
+01:43:24,140 --> 01:43:33,420
+So, as soon as I add more tests to the test function now, this function I have written
+
+942
+01:43:33,420 --> 01:43:41,900
+will fail. That's okay. Then I'll go another iteration and implement a new, a more complex
+
+943
+01:43:41,900 --> 01:43:48,340
+for fizzbuzz function. But I have started and I have got my feel of how the function
+
+944
+01:43:48,340 --> 01:43:58,020
+is used, how it's called, what the arguments are, so it's the an easy first step really.
+
+945
+01:44:03,300 --> 01:44:13,540
+Yes, so the solution then points to a complex solution which raises exceptions and
+
+946
+01:44:13,540 --> 01:44:29,360
+can enhance all border cases. So then after several iterations, I will gradually reach
+
+947
+01:44:29,360 --> 01:44:37,740
+something similar. Okay. I think that's what we will have time
+
+948
+01:44:37,740 --> 01:44:43,820
+for during test design, that will touch upon randomness. How would you test randomness?
+
+949
+01:44:45,980 --> 01:44:52,780
+So with the randomness, because the random generators are working with a seed, it's usually
+
+950
+01:44:52,780 --> 01:44:58,700
+good to set the seed and based on that seed you would get, it's not random anymore your program
+
+951
+01:44:58,700 --> 01:45:05,980
+because the seed is fixed, so the randomness would be some statistic again, like static,
+
+952
+01:45:05,980 --> 01:45:08,220
+so you don't have any randomness anymore.
+
+953
+01:45:08,220 --> 01:45:10,940
+So for testing a function that has some randomness,
+
+954
+01:45:10,940 --> 01:45:14,140
+set the seed, and then you have a static number,
+
+955
+01:45:14,140 --> 01:45:16,940
+and it would be very similar to what we already covered.
+
+956
+01:45:18,060 --> 01:45:19,340
+Yes.
+
+957
+01:45:19,340 --> 01:45:22,700
+So here there's two functions, rollDice and Yatsy.
+
+958
+01:45:24,620 --> 01:45:29,620
+And we will see that when you test these functions,
+
+959
+01:45:31,860 --> 01:45:35,300
+you set the random seed.
+
+960
+01:45:35,980 --> 01:45:47,980
+One and then you get a series of numbers that are equal each time.
+
+961
+01:45:47,980 --> 01:46:04,980
+Okay, I think we'll go to the checkout and really over to some conclusions and recommendations.
+
+962
+01:46:04,980 --> 01:46:17,900
+Yes. Learn one test framework well enough for the basics. For Python it's PyTest is
+
+963
+01:46:17,900 --> 01:46:30,340
+really simple. You have unit tests as well, but it's more complex. And that's my experience.
+
+964
+01:46:30,340 --> 01:46:32,780
+and use the good tools that exists.
+
+965
+01:46:36,100 --> 01:46:40,980
+Start with some basics, some simple things to test.
+
+966
+01:46:42,220 --> 01:46:45,140
+I think it's a good thing to automate these tests.
+
+967
+01:46:45,140 --> 01:46:47,520
+So add them to your Git repository.
+
+968
+01:46:52,420 --> 01:46:54,700
+Strike a healthy balance between unit tests
+
+969
+01:46:54,700 --> 01:46:56,180
+and integration tests.
+
+970
+01:47:00,340 --> 01:47:10,100
+As you grow your code, then tests should also should increase.
+
+971
+01:47:10,100 --> 01:47:17,540
+And as the example with test development, the test development cycle shows that you
+
+972
+01:47:17,540 --> 01:47:27,700
+can you can add tests as you add new functionality.
+
+973
+01:47:27,700 --> 01:47:32,780
+So when you fix a bug, it's a good thing to add a test against the bug.
+
+974
+01:47:32,780 --> 01:47:42,540
+So you get a volume of regression tests that can be used to verify your code.
+
+975
+01:47:42,540 --> 01:47:50,220
+And use code coverage to analyze what part of the code that are not executed.
+
+976
+01:47:50,220 --> 01:47:52,100
+Yes.
+
+977
+01:47:52,100 --> 01:47:53,100
+Yes.
+
+978
+01:47:53,100 --> 01:47:54,100
+Yeah.
+
+979
+01:47:54,100 --> 01:47:58,100
+I mean, if you make your code easier to test, it becomes also more modular.
+
+980
+01:47:58,100 --> 01:48:11,700
+And we'll see in the next lesson how to create code more modular.
+
+981
+01:48:11,700 --> 01:48:15,500
+Ways to start.
+
+982
+01:48:15,500 --> 01:48:17,300
+Perfect is the enemy of good.
+
+983
+01:48:17,300 --> 01:48:24,260
+So just start for something that's good, good enough.
+
+984
+01:48:24,260 --> 01:48:33,060
+There's always probably something you can isolate a test as a part of a function or
+
+985
+01:48:33,060 --> 01:48:44,460
+split the function in more in two or if you have data analysis or simulation of some sort
+
+986
+01:48:44,460 --> 01:48:53,500
+end-to-end tests with sample data and use local and testing frameworks and GitHub actions?
+
+987
+01:48:57,740 --> 01:49:06,300
+Yeah, I think one of the takeaways here is, as you said, the perfect is
+
+988
+01:49:07,260 --> 01:49:12,700
+the enemy of good. So doing a test-driven development and adding like a
+
+989
+01:49:12,700 --> 01:49:19,660
+test for all of your functions and getting a 100% test coverage can be a bit overwhelming,
+
+990
+01:49:19,660 --> 01:49:25,820
+but a code that has some tests is better than a code that doesn't have any. So start adding
+
+991
+01:49:25,820 --> 01:49:31,900
+tests to your most important functions and the things that really could go wrong, and
+
+992
+01:49:31,900 --> 01:49:37,740
+then in the future maybe you would get the habits of adding more tests and more tests.
+
+993
+01:49:37,740 --> 01:49:47,740
+Yes, so that was automated testing. Now we'll go for lunch and we will resume in an hour.
+
+994
+01:49:47,740 --> 01:49:48,740
+Okay.
+
+995
+01:49:48,740 --> 01:49:49,740
+Yes.
+
+996
+01:49:49,740 --> 01:49:55,740
+Thanks everyone for joining and yeah, see you after lunch break.
+
+997
+01:49:55,740 --> 01:49:56,740
+Yeah, bye bye.
+
+998
+01:49:56,740 --> 01:49:57,740
+Bye bye.
+
