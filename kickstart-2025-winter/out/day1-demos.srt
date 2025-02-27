@@ -1,0 +1,3136 @@
+1
+00:00:03,640 --> 00:00:05,000
+Yeah, thanks for that intro.
+
+2
+00:00:05,000 --> 00:00:09,680
+That puts us on the right path now.
+
+3
+00:00:09,680 --> 00:00:17,560
+So yeah, as a reminder, keep asking questions.
+
+4
+00:00:17,560 --> 00:00:19,760
+We'll be talking now, but there's other people
+
+5
+00:00:19,760 --> 00:00:21,080
+who will be answering.
+
+6
+00:00:26,160 --> 00:00:26,760
+Let's see.
+
+7
+00:00:32,200 --> 00:00:34,800
+Yeah, so what do we do now?
+
+8
+00:00:34,800 --> 00:00:39,920
+Now we've got an example where we go through exercises.
+
+9
+00:00:41,840 --> 00:00:49,120
+Well, not really exercises. It's a demo. So we're going to go, we have this model problem
+
+10
+00:00:49,120 --> 00:00:54,960
+where we analyze a bunch of public domain books from Project Gutenberg. We'll go through all
+
+11
+00:00:54,960 --> 00:01:02,720
+the steps that someone might go through. So we will go through downloading data,
+
+12
+00:01:02,720 --> 00:01:07,280
+copying to the cluster, getting our project set up, running things in different ways.
+
+13
+00:01:14,560 --> 00:01:20,080
+And this example that we are going to be giving, it's not like, I wouldn't recommend trying to
+
+14
+00:01:20,080 --> 00:01:30,800
+follow it, like type along it. It's better to watch it and try to see what is the usual
+
+15
+00:01:30,800 --> 00:01:36,640
+like workflow that you might do when you're running stuff in the cluster. So what we're
+
+16
+00:01:36,640 --> 00:01:44,880
+trying to show is a simple example that this is how a typical workflow might go through.
+
+17
+00:01:44,880 --> 00:01:52,240
+Of course, the case here is very small, but we'll try to show a typical thing that people
+
+18
+00:01:52,240 --> 00:01:57,280
+do when they're doing the cluster. And in the afternoon, we have a lot more time to actually
+
+19
+00:01:57,280 --> 00:02:02,080
+replicate the same thing if you want to try it out yourself.
+
+20
+00:02:08,000 --> 00:02:15,680
+Yeah, so normally we'd have this course over several days, over three days, where the first day
+
+21
+00:02:15,680 --> 00:02:23,760
+is a broad intro and the second two days for four hours per day are doing exercises together.
+
+22
+00:02:23,760 --> 00:02:28,720
+And now we're trying to do a similar amount of stuff in an hour and a half.
+
+23
+00:02:28,720 --> 00:02:38,000
+So it really is an impossible situation we've got here that we're trying to do. But that's okay.
+
+24
+00:02:42,720 --> 00:02:50,560
+Yes. So what's our example? So if you look down here in the notes, I've added a link to
+
+25
+00:02:50,560 --> 00:03:00,120
+the series of things we'll be doing, but don't, this isn't something you can
+
+26
+00:03:00,120 --> 00:03:04,160
+really follow because we'll be saying a lot of things that aren't in here, but
+
+27
+00:03:04,160 --> 00:03:15,640
+this is sort of like the big picture thing. So our general plan is we do the
+
+28
+00:03:15,640 --> 00:03:21,400
+demos now and then in the afternoon there's time you can come and work on it
+
+29
+00:03:21,400 --> 00:03:25,320
+yourself by reading the material and trying to follow along in a more
+
+30
+00:03:25,320 --> 00:03:35,880
+structured manner. I'm trying to give a link to the tutorials here. Okay I'm
+
+31
+00:03:35,880 --> 00:03:42,000
+adding it to the notes. I think it's already used.
+
+32
+00:03:45,640 --> 00:03:56,080
+Okay, yeah, so what is the example we want to do then?
+
+33
+00:03:56,080 --> 00:04:06,360
+So our previous example was calculating pi, where basically we would, it's like a stochastic
+
+34
+00:04:06,360 --> 00:04:07,880
+method of calculating pi.
+
+35
+00:04:07,880 --> 00:04:12,880
+You pick a random point within a square and see does the point fall in a circle, and if
+
+36
+00:04:12,880 --> 00:04:20,480
+do this enough, you can rearrange the fraction to be pi. But this is a more data example.
+
+37
+00:04:21,920 --> 00:04:33,120
+So in this example, what we will do, we take Project Gutenberg is a project which takes
+
+38
+00:04:33,120 --> 00:04:40,480
+public domain books and makes them available. So we found a data set of several thousands
+
+39
+00:04:40,480 --> 00:04:46,800
+or tens of thousands of fiction books from Project Gutenberg. All of these books
+
+40
+00:04:48,400 --> 00:04:57,280
+are taken, and we compute engrams in them. An engram is basically a sequence of words
+
+41
+00:04:57,280 --> 00:05:04,560
+or characters that you see together. For example, th are often next to each other,
+
+42
+00:05:04,560 --> 00:05:13,840
+or the words the is right before some other word and so on. So we have some simple code which can
+
+43
+00:05:13,840 --> 00:05:19,840
+analyze all of these books and then compute the distribution of all n-grams within them.
+
+44
+00:05:22,960 --> 00:05:31,120
+And yeah so if you want to you can take this and use it to predict the next words that might come
+
+45
+00:05:31,120 --> 00:05:40,240
+up in a sequence. But we probably won't go that far. So is this an appropriate problem for a
+
+46
+00:05:40,240 --> 00:05:51,360
+cluster? What would you say, [name]? Yeah, so I think this would be like, of course, if the problem
+
+47
+00:05:51,360 --> 00:05:55,520
+becomes bigger, like if we are dealing with the whole Gutenberg dataset or something, like
+
+48
+00:05:55,520 --> 00:06:01,760
+suddenly we have a huge amount of books, it immediately can go from like something that
+
+49
+00:06:01,760 --> 00:06:07,920
+is feasible to do on your laptop to something that is only possible to do on a class.
+
+50
+00:06:08,640 --> 00:06:16,000
+So this case is a good example of a case where you might want to split up the job
+
+51
+00:06:16,800 --> 00:06:23,600
+among like books, like you maybe want to analyze some books with one computer and some other books
+
+52
+00:06:23,600 --> 00:06:28,720
+with another computer so that you can do it faster, like you can easily split it up among
+
+53
+00:06:28,720 --> 00:06:36,400
+the data. So it's very easy to get it rolling in the cluster. So it's very like a data-centric
+
+54
+00:06:36,400 --> 00:06:42,240
+situation. And this can happen quite a lot. Often we are doing the same thing over and over again.
+
+55
+00:06:42,240 --> 00:06:50,240
+And in this case, we are analyzing different books, but we could run different parameters
+
+56
+00:06:50,240 --> 00:06:55,120
+and stuff like that. These kinds of cases are very good for the cluster because your laptop
+
+57
+00:06:56,560 --> 00:07:00,080
+doesn't have to do all of those calculations itself.
+
+58
+00:07:01,600 --> 00:07:08,240
+Yeah. There was this question earlier on how do you know if a problem will be well-suited
+
+59
+00:07:08,240 --> 00:07:15,760
+for a cluster. In this case, like [name] said, since the data can be divided and each book can
+
+60
+00:07:15,760 --> 00:07:18,920
+can be analyzed separately, then yes, this
+
+61
+00:07:18,920 --> 00:07:23,280
+will probably be distributed pretty well among the cluster.
+
+62
+00:07:23,280 --> 00:07:26,160
+We don't have any communication we need here.
+
+63
+00:07:26,160 --> 00:07:28,280
+So we're already thinking that way.
+
+64
+00:07:28,280 --> 00:07:29,960
+So of course, the data is a little bit
+
+65
+00:07:29,960 --> 00:07:31,560
+too small to need the cluster.
+
+66
+00:07:31,560 --> 00:07:36,160
+But well, it's an example, so that's OK.
+
+67
+00:07:36,160 --> 00:07:38,400
+[name], should I switch to your screen?
+
+68
+00:07:38,400 --> 00:07:40,080
+Yeah, sure.
+
+69
+00:07:40,080 --> 00:07:41,120
+OK, let's see.
+
+70
+00:07:41,120 --> 00:07:53,680
+Yeah, so you see here the series of exercises we'll do. We'll roughly be typing the things
+
+71
+00:07:53,680 --> 00:07:58,520
+from here, although we won't be doing some of the earlier cluster from the command line
+
+72
+00:07:58,520 --> 00:08:04,240
+exercises.
+
+73
+00:08:04,240 --> 00:08:08,640
+Should we start with getting the data into Triton? The first thing usually what happens
+
+74
+00:08:08,640 --> 00:08:14,800
+is that you have something you want to do and you need to get it to the cluster. So, in this case,
+
+75
+00:08:16,800 --> 00:08:19,680
+what I would now do is download data to my own laptop.
+
+76
+00:08:20,720 --> 00:08:27,600
+Yeah. So, quite often what we would have people do is try to transfer the data directly to the
+
+77
+00:08:27,600 --> 00:08:38,000
+cluster and not downloading to your computer and then uploading to the cluster if the data is big.
+
+78
+00:08:38,000 --> 00:08:43,840
+But we want to demonstrate how you would transfer data to a cluster because that's something that's
+
+79
+00:08:43,840 --> 00:08:49,200
+really a common thing. It's something we haven't usually demonstrated.
+
+80
+00:08:50,000 --> 00:08:55,360
+So, [name], you've downloaded a zip file. Yes, I see the zip file here.
+
+81
+00:08:57,360 --> 00:09:02,960
+So, there's multiple ways you can do that transfer, but this time I will be using the
+
+82
+00:09:02,960 --> 00:09:09,840
+ondemand that [name] brought up previously. So yeah, [name], if you explain what I'm doing.
+
+83
+00:09:09,840 --> 00:09:17,120
+Okay, so ondemand is a web interface for the cluster. So you can go there with the web browser
+
+84
+00:09:17,680 --> 00:09:24,400
+and then you can, so [name]'s already logged in here, you can browse different storage locations,
+
+85
+00:09:25,200 --> 00:09:32,880
+you can get the shell access this way, you can run Jupyter or you can even get a graphical
+
+86
+00:09:32,880 --> 00:09:40,240
+desktop here. This is nice because it's easy to use and can be used from any web browser.
+
+87
+00:09:40,960 --> 00:09:45,760
+It's not the most powerful thing, but sometimes convenience is more important,
+
+88
+00:09:45,760 --> 00:09:48,240
+and for this transferring data, that's the case.
+
+89
+00:09:51,120 --> 00:09:54,880
+When we are talking about transferring data, where are we actually transferring the data?
+
+90
+00:09:55,920 --> 00:10:00,080
+Yeah, that's a good question. Before we transfer the data, we need to stop and think,
+
+91
+00:10:00,080 --> 00:10:05,760
+or do we want to put it? So, it often happens that people begin working, they throw data somewhere,
+
+92
+00:10:06,320 --> 00:10:09,520
+and then it becomes a giant mess, and that's not good.
+
+93
+00:10:10,320 --> 00:10:14,400
+So, this is a project. Will it be a personal project or a group project?
+
+94
+00:10:16,160 --> 00:10:18,320
+Well, in this case, I would say it's a personal project.
+
+95
+00:10:20,160 --> 00:10:20,480
+Let's say.
+
+96
+00:10:20,480 --> 00:10:25,600
+So, we can put it in your personal Scratch directory, your personal work directory.
+
+97
+00:10:25,600 --> 00:10:32,880
+So, even for personal projects, we would generally recommend that people create a shared directory
+
+98
+00:10:32,880 --> 00:10:39,120
+for their group so you can share later when it comes up. But for something small, we can
+
+99
+00:10:39,120 --> 00:10:46,960
+start here. So, I see [name] can browse to the work directory. It also shows the path of the cluster.
+
+100
+00:10:47,680 --> 00:10:51,840
+Yeah. And because I have, of course, a lot of projects, I have a lot of
+
+101
+00:10:51,840 --> 00:11:01,680
+directory is already here, so I'm going to jump into a subdirectory here so that we can keep it
+
+102
+00:11:01,680 --> 00:11:08,240
+a bit clearer. For your case, your work directory might be completely empty, so you don't have to
+
+103
+00:11:08,240 --> 00:11:15,680
+necessarily go into a subfolder. But it's usually a good idea to have some sort of mental separation
+
+104
+00:11:15,680 --> 00:11:20,960
+between the projects and folder structure to represent that separation in the work directory
+
+105
+00:11:20,960 --> 00:11:29,040
+so you can find whatever you have stored there. Yeah. Did you talk about the path here? So,
+
+106
+00:11:29,040 --> 00:11:35,360
+we see it's slash scratch /work/[name]'s-username/teaching/winter-kickstart-2025/.
+
+107
+00:11:37,360 --> 00:11:44,160
+Yeah. So, the main thing here is that the scratch directory, it doesn't mean that it's
+
+108
+00:11:44,160 --> 00:11:50,000
+going to be scratched, like thrown away immediately. It means that it comes from the fast
+
+109
+00:11:50,000 --> 00:11:55,280
+network file system, the Lustre file system that the cluster has. So Scratch is the place
+
+110
+00:11:55,280 --> 00:12:01,760
+where that file system resides in the cluster. So whenever you go to Triton, to the login node,
+
+111
+00:12:01,760 --> 00:12:07,760
+or to the on-demand, or to the compute nodes, the slash Scratch is the fast file system.
+
+112
+00:12:07,760 --> 00:12:12,560
+There is also a home file system, which is mainly for storing authentication secrets and
+
+113
+00:12:12,560 --> 00:12:19,600
+that sort of stuff. But it's not good for computing because it's small and it's not fast.
+
+114
+00:12:19,600 --> 00:12:22,320
+And this is large, and it is fast.
+
+115
+00:12:25,440 --> 00:12:29,280
+And underneath there, we have lots of project folders.
+
+116
+00:12:29,280 --> 00:12:33,360
+Like if you have a research group and you want to collaborate among the research group,
+
+117
+00:12:33,360 --> 00:12:35,840
+we can create you a project folder there.
+
+118
+00:12:36,480 --> 00:12:41,040
+It's easy to get one, and you should get one if you want to do a collaborative project.
+
+119
+00:12:41,040 --> 00:12:45,120
+Otherwise, you can put stuff into your own work directory,
+
+120
+00:12:45,120 --> 00:12:47,680
+which is under /scratch/work/ and your username.
+
+121
+00:12:47,680 --> 00:12:56,080
+Yeah. Yes. So, okay. Should we upload the data now? Yeah. I'll create a new directory called
+
+122
+00:12:56,080 --> 00:13:01,920
+data so we can keep it clear and let's upload it into the data folder.
+
+123
+00:13:03,360 --> 00:13:07,680
+Okay. And we can do it from the web here, which is nice.
+
+124
+00:13:09,360 --> 00:13:14,480
+Let's see. Is this how you would normally transfer? Oh, nice.
+
+125
+00:13:17,680 --> 00:13:23,520
+Yeah. Cool. So is this how you would normally transfer data to the cluster yourself?
+
+126
+00:13:25,200 --> 00:13:29,920
+Well, I would probably use command line tools like rsync and stuff like that because, well,
+
+127
+00:13:29,920 --> 00:13:35,520
+I'm familiar with those. But in the case of small files or individual files, it's very easy to
+
+128
+00:13:35,520 --> 00:13:40,000
+transfer. But if you're transferring lots of files and you want to verify that they are transferred
+
+129
+00:13:40,000 --> 00:13:45,920
+correctly, you might use other tools as well. Or you might mount the file system into your laptop
+
+130
+00:13:45,920 --> 00:13:52,280
+so that you can straight up copy files from your laptop there.
+
+131
+00:13:52,280 --> 00:13:53,960
+Yeah.
+
+132
+00:13:53,960 --> 00:13:55,360
+OK.
+
+133
+00:13:55,360 --> 00:14:00,440
+So now we've got our data on the cluster.
+
+134
+00:14:00,440 --> 00:14:02,960
+So we also need some code there.
+
+135
+00:14:02,960 --> 00:14:05,160
+And the code's all already made.
+
+136
+00:14:05,160 --> 00:14:08,960
+And it's in a Git repository called hpc-examples.
+
+137
+00:14:08,960 --> 00:14:13,160
+So this repository has a bunch of small sample programs
+
+138
+00:14:13,160 --> 00:14:14,520
+useful for stuff.
+
+139
+00:14:14,520 --> 00:14:19,320
+And so again, we're not going to talk about the way version control works in details.
+
+140
+00:14:19,880 --> 00:14:27,880
+But since we have it there, we can run a command git clone and then copy it all onto the cluster.
+
+141
+00:14:29,480 --> 00:14:36,680
+Yeah. So to get to the place where we previously were, in order to now run that command,
+
+142
+00:14:37,320 --> 00:14:44,200
+I need to first connect to Triton. So I will use an SSH client. You could use from the
+
+143
+00:14:44,200 --> 00:14:49,880
+on demand, you could open this in a terminal in the web browser as well, but because I'm more used
+
+144
+00:14:49,880 --> 00:14:57,400
+to running stuff through the SSH, so I'm taking a remote connection to the cluster and taking an
+
+145
+00:14:57,400 --> 00:15:03,720
+SSH, so now I'm, the name changes here, so now I'm in the login node of the cluster, and then I'm
+
+146
+00:15:03,720 --> 00:15:12,440
+going to go to the folder where I previously put the data. Yeah, and it's really important to be
+
+147
+00:15:12,440 --> 00:15:16,840
+able to match up the place you put data from the different interfaces.
+
+148
+00:15:19,640 --> 00:15:23,640
+If you upload data by on-demand but don't know where it is in the command line, then
+
+149
+00:15:24,440 --> 00:15:28,360
+you've got a bit of a problem. Okay, so here we can see that
+
+150
+00:15:30,040 --> 00:15:36,600
+I use the command called `cd` to go to the folder, like change directory, and then I'm using command
+
+151
+00:15:36,600 --> 00:15:43,080
+called `ls` to list the files. I can notice that the files are now there.
+
+152
+00:15:50,440 --> 00:15:54,520
+Yes, so we verified it there and git clone.
+
+153
+00:16:06,600 --> 00:16:12,040
+Okay, so now we got the code. [name], what should I do next?
+
+154
+00:16:12,040 --> 00:16:20,600
+So let's see. Let's look at our thing. We've cloned it and you've listed it. Yes. So I
+
+155
+00:16:20,600 --> 00:16:33,200
+guess first let's verify that the code works at all. So we are going to run Python on the
+
+156
+00:16:33,200 --> 00:16:41,880
+relevant code, which is n-grams, so ./ngrams/count.py.
+
+157
+00:16:41,880 --> 00:16:43,800
+And now we're at the point we have
+
+158
+00:16:43,800 --> 00:16:46,320
+to know how the code even works.
+
+159
+00:16:46,320 --> 00:16:49,040
+So this is the code that we wrote ourselves so you know.
+
+160
+00:16:49,040 --> 00:16:53,400
+If you wrote your own code, you would know how it works.
+
+161
+00:16:53,400 --> 00:17:00,520
+And for other code, well, you need to read about it and see.
+
+162
+00:17:00,520 --> 00:17:01,080
+OK, so yeah.
+
+163
+00:17:01,080 --> 00:17:06,240
+Usually codes like this have this kind of documentation inside of it.
+
+164
+00:17:06,240 --> 00:17:11,840
+So there's a few conventions, such as dash dash help will usually provide output.
+
+165
+00:17:11,840 --> 00:17:18,960
+So [name] has written a nice help output here that will describe how the code works.
+
+166
+00:17:18,960 --> 00:17:25,960
+This applies to other commands in the Linux system, like for example, `ls` or `cd` as well.
+
+167
+00:17:25,960 --> 00:17:30,680
+You can run the `--help` to view the manual for those ones as well.
+
+168
+00:17:30,680 --> 00:17:40,600
+Yeah. But okay, so the way this works is we give Python, so the program that's running the code,
+
+169
+00:17:41,560 --> 00:17:49,240
+the name of the Python file, and it should be `python3 ngrams/count.py`, and then we
+
+170
+00:17:49,240 --> 00:17:55,480
+give a path to the data we're analyzing, which would be `../`, which means go up to the parent
+
+171
+00:17:55,480 --> 00:18:03,720
+directory and then to the data directory and then to the zip file (`../data/Gutenberg-Fiction-first100.zip`). So this code will automatically
+
+172
+00:18:03,720 --> 00:18:09,960
+decompress the zip file and find the text files inside of it without us needing to decompress it
+
+173
+00:18:09,960 --> 00:18:16,360
+ourselves, which is a nice feature. And this what we're about to see is really significant here. So
+
+174
+00:18:16,360 --> 00:18:22,920
+notice that we can run the same code on different data files without modifying the code. This is a
+
+175
+00:18:22,920 --> 00:18:29,240
+command line interface that's been added to this code. So, when something's really small,
+
+176
+00:18:29,240 --> 00:18:34,120
+maybe it's not important, but it really is convenient if you start adding these to your own
+
+177
+00:18:34,120 --> 00:18:43,400
+code. It can let you be a lot more flexible. Yeah, often these are called arguments for the
+
+178
+00:18:43,400 --> 00:18:49,560
+script. So, this is called, for example, the `ngrams/count.py` is an argument to the Python command,
+
+179
+00:18:49,560 --> 00:19:01,080
+and then the `../data/Gutenberg-Fiction-first100.zip` thing is an argument for ngrams.py. So by giving these arguments,
+
+180
+00:19:01,800 --> 00:19:09,240
+we can change what data we want to analyze and we can also give other things as well.
+
+181
+00:19:09,240 --> 00:19:16,680
+So this is often called scripting and Code Refinery has a great course or Code Refinery
+
+182
+00:19:16,680 --> 00:19:25,800
+will have in its course very useful teaching on how do you start scripting your own code
+
+183
+00:19:25,800 --> 00:19:32,760
+into this sort of format. Because if everybody follows the format, everybody gets stuff done
+
+184
+00:19:33,800 --> 00:19:40,440
+faster. So, I highly recommend joining that course that's coming in the spring to learn
+
+185
+00:19:40,440 --> 00:19:46,040
+more about this. So, let's try it out, right? Yeah. Let's push enter.
+
+186
+00:19:47,560 --> 00:19:50,760
+So it's telling us a little bit about what it's doing.
+
+187
+00:19:54,600 --> 00:20:01,640
+So where this is running right now is on the login node. So yes, it's on the Triton cluster,
+
+188
+00:20:01,640 --> 00:20:07,480
+but it's not really using the Triton resources. It's using just one place that everyone has
+
+189
+00:20:07,480 --> 00:20:13,240
+access to. So this is okay because it only lasted 20 seconds and we're just verifying
+
+190
+00:20:13,240 --> 00:20:18,600
+things are working, but sometimes people log in and run all their code here, and then they're
+
+191
+00:20:18,600 --> 00:20:24,600
+not actually using the resources and are slowing things down for everyone. But yeah, let's see what
+
+192
+00:20:24,600 --> 00:20:31,160
+does the output say. What do we get from this? So it seems that we got the n-grams that are
+
+193
+00:20:31,160 --> 00:20:39,000
+size one, so basically like letter frequencies in this case. Yeah. So there's a lot of spaces
+
+194
+00:20:39,000 --> 00:20:47,480
+Space is the most common character, and then E and T and A. Yeah, I mean, that looks about
+
+195
+00:20:47,480 --> 00:20:54,680
+what I'd expect from English character frequencies. There's different Unicode characters in there,
+
+196
+00:20:54,680 --> 00:21:01,960
+so there's some other languages. But yeah, so it worked. So we've transferred our data.
+
+197
+00:21:01,960 --> 00:21:14,040
+gotten the code working, barely, and now we're ready for the next parts. Did we get all our
+
+198
+00:21:14,040 --> 00:21:24,200
+explanations? We explained help, the actions. So, should we now modify what we previously
+
+199
+00:21:24,200 --> 00:21:28,600
+run so that we can run it in the queue? So, what sort of modifications do we need to do
+
+200
+00:21:28,600 --> 00:21:36,920
+for the command line call in order to run it in a queue?
+
+201
+00:21:37,640 --> 00:21:43,480
+Yeah, so I guess whenever I run something in the queue, so in the queue basically means
+
+202
+00:21:43,480 --> 00:21:49,800
+we prepare our order, our request for computing. It gets added to a queue with all the other
+
+203
+00:21:49,800 --> 00:21:55,720
+requests on there and then gets run on some cluster node somewhere and then those results
+
+204
+00:21:55,720 --> 00:22:01,800
+will come back to us. So when we say running in the queue, that's what we mean. So in practice,
+
+205
+00:22:01,800 --> 00:22:07,640
+since we haven't been running much on the cluster lately, we will have first priority. So the queue
+
+206
+00:22:07,640 --> 00:22:13,720
+sort of looks at how much people have run and the people that have run less have higher priority,
+
+207
+00:22:13,720 --> 00:22:19,240
+and so on. So it won't look like a queue, but in reality, there is one under the hood here.
+
+208
+00:22:19,240 --> 00:22:28,920
+and to test things out I'll usually do things interactively first. So that means we run it
+
+209
+00:22:28,920 --> 00:22:36,200
+in the queue but we see the outputs right here. So for this we add the command `srun` to the start
+
+210
+00:22:36,200 --> 00:22:45,480
+of our command. So `srun` means like "slurm run". So slurm is requesting resources and then we'll run it
+
+211
+00:22:45,480 --> 00:22:51,880
+right away. We add this `--pty` option, which basically means make it interactive. So
+
+212
+00:22:51,880 --> 00:22:57,880
+it will show the output as soon as it's created and not buffer it up. Do we need to request some
+
+213
+00:22:57,880 --> 00:23:06,440
+resources here? Like how much resources? So I see there's... Yeah, so all of the jobs that we are
+
+214
+00:23:06,440 --> 00:23:16,600
+requesting from the queue, they need to have some resource specifications of like how much
+
+215
+00:23:16,600 --> 00:23:22,920
+does this job need so that the queue manager can fit them to a correct place in the, well,
+
+216
+00:23:22,920 --> 00:23:28,200
+among the resources and among the other jobs. So the first ones we usually want to do is `--time`
+
+217
+00:23:28,200 --> 00:23:32,600
+and we know that it doesn't take long time so I will just say 10 minutes over here (`--time 00:10:00`).
+
+218
+00:23:32,600 --> 00:23:36,440
+Yeah, seems reasonable.
+
+219
+00:23:36,440 --> 00:23:38,320
+And some memory amount.
+
+220
+00:23:38,320 --> 00:23:42,240
+So we know from R, actually, we can look from here.
+
+221
+00:23:42,240 --> 00:23:46,240
+So in the previous code, it says max RSS,
+
+222
+00:23:46,240 --> 00:23:50,840
+which means resident set size or state size.
+
+223
+00:23:50,840 --> 00:23:54,000
+Anyway, it basically is how much memory it's used.
+
+224
+00:23:54,000 --> 00:23:57,400
+So it says it's using 44 megabytes,
+
+225
+00:23:57,400 --> 00:24:00,600
+so we can give it 500 MD (`--mem=500M`).
+
+226
+00:24:00,600 --> 00:24:02,440
+Yeah, I mean, anything less than a gigabyte
+
+227
+00:24:02,440 --> 00:24:07,080
+is so small that it basically doesn't matter.
+
+228
+00:24:07,080 --> 00:24:09,600
+Yeah, usually when you are requesting these,
+
+229
+00:24:09,600 --> 00:24:12,200
+you want them to match what your code is running.
+
+230
+00:24:12,200 --> 00:24:16,000
+And in this case, it's close to the ballpark.
+
+231
+00:24:16,000 --> 00:24:17,600
+We just give it a bit of a leeway,
+
+232
+00:24:17,600 --> 00:24:22,280
+like it has a bit more time headroom and then
+
+233
+00:24:22,280 --> 00:24:27,200
+a bit more memory headroom for the code.
+
+234
+00:24:27,200 --> 00:24:30,560
+OK, should we try to run this, or do we need more options?
+
+235
+00:24:30,560 --> 00:24:39,760
+By default, the job gets one CPU, so I think this is good enough, so I don't think we need
+
+236
+00:24:39,760 --> 00:24:40,760
+anything else.
+
+237
+00:24:40,760 --> 00:24:43,400
+So what do we see now on the outputs here?
+
+238
+00:24:43,400 --> 00:24:49,320
+Yes, there's this new thing, slurm job ID, something queued and waiting for allocated
+
+239
+00:24:49,320 --> 00:24:50,320
+resources.
+
+240
+00:24:50,320 --> 00:24:56,000
+So we see some sign that it's got added to the queue and is waiting for resources and
+
+241
+00:24:56,000 --> 00:24:58,080
+it got those resources.
+
+242
+00:25:00,720 --> 00:25:04,560
+And I guess we're waiting the same 20 seconds for it to run.
+
+243
+00:25:04,560 --> 00:25:06,240
+And yeah, there we go.
+
+244
+00:25:09,280 --> 00:25:12,600
+It looks pretty similar, maybe a little bit slower.
+
+245
+00:25:12,600 --> 00:25:18,280
+But well, it had to start up and read the data and stuff
+
+246
+00:25:18,280 --> 00:25:18,800
+like that.
+
+247
+00:25:18,800 --> 00:25:22,800
+This is good enough.
+
+248
+00:25:22,800 --> 00:25:28,160
+Should we create a JavaScript out of this
+
+249
+00:25:28,160 --> 00:25:32,800
+and then have a small break after that?
+
+250
+00:25:32,800 --> 00:25:36,120
+Yeah, sure.
+
+251
+00:25:36,120 --> 00:25:42,200
+OK, so now we've run things the most basic way right now.
+
+252
+00:25:45,480 --> 00:25:46,440
+This is interactive.
+
+253
+00:25:46,440 --> 00:25:50,200
+But with this, we can only run a few things at a time
+
+254
+00:25:50,200 --> 00:25:53,080
+because our own brain has to be sitting here
+
+255
+00:25:53,080 --> 00:25:55,720
+and waiting for the output to come out.
+
+256
+00:25:55,720 --> 00:25:58,880
+But instead, what we can do is we can basically
+
+257
+00:25:58,880 --> 00:26:02,580
+write up our orders and then submit it to the queue,
+
+258
+00:26:02,580 --> 00:26:05,240
+let it go process overnight or however long
+
+259
+00:26:05,240 --> 00:26:06,480
+and come back later.
+
+260
+00:26:06,480 --> 00:26:08,560
+So it's like walking to a restaurant and saying,
+
+261
+00:26:08,560 --> 00:26:11,040
+I would like this takeaway order.
+
+262
+00:26:11,040 --> 00:26:13,880
+And instead of sitting there and watching them cook,
+
+263
+00:26:13,880 --> 00:26:16,040
+they prepare it while you go walk around
+
+264
+00:26:16,040 --> 00:26:19,080
+and do some other shopping or whatever.
+
+265
+00:26:19,080 --> 00:26:21,760
+And then you come back and your order is ready.
+
+266
+00:26:21,760 --> 00:26:26,320
+So for that, we go to the realm of editing files.
+
+267
+00:26:26,320 --> 00:26:31,760
+So `nano` is a simple command line based text editor.
+
+268
+00:26:31,760 --> 00:26:36,800
+And there's an [script] file here called `run-ngrams.sh`.
+
+269
+00:26:36,800 --> 00:26:40,480
+And this will be what we call our batch script that
+
+270
+00:26:40,480 --> 00:26:43,600
+has the order of stuff.
+
+271
+00:26:43,600 --> 00:26:49,000
+Yeah, the name `.sh` means that it's
+
+272
+00:26:49,000 --> 00:26:58,840
+it's a shell script, so usually the ending means whatever what the script type is. In this case,
+
+273
+00:26:58,840 --> 00:27:04,840
+it's shell script, so some instructions for the command, like basically terminal commands that
+
+274
+00:27:07,640 --> 00:27:13,400
+should be executed whenever the job is running on the actual machine.
+
+275
+00:27:13,400 --> 00:27:20,520
+Yeah. So the other things [name] are writing here are basically the magic words to make
+
+276
+00:27:20,520 --> 00:27:26,280
+the shell script work. So we know this by heart because we've been doing this so many years,
+
+277
+00:27:26,280 --> 00:27:33,720
+but in practice what you'll do is you'll find one of the examples and grab it and then copy and
+
+278
+00:27:33,720 --> 00:27:40,040
+paste it. So don't worry. The first line says this is a shell script that should be run by Bash.
+
+279
+00:27:40,040 --> 00:27:49,240
+the second and third lines, this `#SBATCH`. The hash is a comment character.
+
+280
+00:27:52,440 --> 00:27:59,640
+And then `--time`. These are like the same options we gave to Slurm. So Slurm automatically
+
+281
+00:27:59,640 --> 00:28:04,360
+finds them from these comments. Yeah, well, when we give this to the queue system,
+
+282
+00:28:04,360 --> 00:28:09,400
+the queue system will look through the script and it will search for these kinds of statements. And
+
+283
+00:28:09,400 --> 00:28:15,720
+then it will determine what are the resources needed for the job. And then when we submitted it,
+
+284
+00:28:16,360 --> 00:28:25,800
+it will go to the queue and then once the job is in the queue, once it gets a suitable compute
+
+285
+00:28:25,800 --> 00:28:32,120
+resource, it will use this executable, in this case the terminal itself, to run all of these
+
+286
+00:28:32,120 --> 00:28:38,920
+commands. So it will basically type for us in that computer once it gets the resources needed.
+
+287
+00:28:39,400 --> 00:28:47,320
+Over here, I've added a few extra options to the call that we previously had.
+
+288
+00:28:47,320 --> 00:28:50,880
+So maybe [name], you can explain what these options mean.
+
+289
+00:28:50,880 --> 00:28:51,880
+Yeah.
+
+290
+00:28:51,880 --> 00:28:58,760
+So in the code, if you looked at the help text, the `-n 2`, means now we're taking 2-grams.
+
+291
+00:28:58,760 --> 00:29:04,760
+So instead of simple character frequencies, we'll have all the frequencies of pairs of
+
+292
+00:29:04,760 --> 00:29:05,760
+characters.
+
+293
+00:29:05,760 --> 00:29:08,280
+`-o`, is output file.
+
+294
+00:29:08,280 --> 00:29:14,320
+So it will be saving the output to `ngrams-2.out` (`-o ngrams-2.out`).
+
+295
+00:29:14,320 --> 00:29:17,920
+And then we have the same data file as before.
+
+296
+00:29:17,920 --> 00:29:19,440
+So we can save and exit.
+
+297
+00:29:19,440 --> 00:29:25,560
+So in Nano, it's Control-X, and then Y and Enter or something
+
+298
+00:29:25,560 --> 00:29:28,800
+like that to save.
+
+299
+00:29:28,800 --> 00:29:30,520
+So can you run `ls`?
+
+300
+00:29:30,520 --> 00:29:32,200
+And let's see.
+
+301
+00:29:32,200 --> 00:29:33,120
+Yeah.
+
+302
+00:29:33,120 --> 00:29:37,000
+Now we have a new script here.
+
+303
+00:29:37,000 --> 00:29:38,960
+and new script run ngrams.
+
+304
+00:29:38,960 --> 00:29:41,360
+And to submit this to the queue, we
+
+305
+00:29:41,360 --> 00:29:49,800
+use the command `sbatch`, which means like "slurm batch" submission (`sbatch run-ngrams.sh`).
+
+306
+00:29:49,800 --> 00:29:53,840
+And once [name] pushes this, it will be added to a queue,
+
+307
+00:29:53,840 --> 00:29:55,800
+and it will probably run very fast.
+
+308
+00:29:55,800 --> 00:30:03,040
+So [name] will very quickly try to run the command `slurm queue` to see it's still running.
+
+309
+00:30:03,040 --> 00:30:04,160
+OK.
+
+310
+00:30:04,160 --> 00:30:06,160
+Yes, so there we see.
+
+311
+00:30:06,160 --> 00:30:14,080
+saw the submitted batch job stuff. So the command slurmq says there's job 5819061 running.
+
+312
+00:30:15,760 --> 00:30:27,440
+Yeah, it says state equals running on node pe71. Yeah, so when we submitted it with the sbatch,
+
+313
+00:30:27,440 --> 00:30:34,560
+we can see the queue status with the `slurm queue`. And because this is such a small job, it will basically
+
+314
+00:30:34,560 --> 00:30:40,880
+go immediately to the queue. But with the Slurm queue, we can check how long does it take for
+
+315
+00:30:40,880 --> 00:30:49,600
+our job to get running. And once it runs, what do we get? I'll type `ls` now in this folder here.
+
+316
+00:30:50,480 --> 00:31:00,000
+Yeah, so it's done and we see two new files. One is `slurm-(somenumber).out` and that's the output
+
+317
+00:31:00,000 --> 00:31:07,120
+from the script itself. The other one is `ngrams-2.out` and that's the output of the code.
+
+318
+00:31:07,120 --> 00:31:14,880
+And let's look at it. So we can use this program called list which is a pager to view the file.
+
+319
+00:31:14,880 --> 00:31:20,720
+So just to view the contents of the file. So I will first view the slurm output.
+
+320
+00:31:20,720 --> 00:31:31,280
+Yeah. So, this is just the management stuff. We see it took 25 seconds. About the same amount
+
+321
+00:31:31,280 --> 00:31:42,240
+of memory. Yeah. Okay. Looks good. Yeah. And I can quit. I'm still in the program,
+
+322
+00:31:43,360 --> 00:31:49,040
+because it's an interactive program. I can use letter q to quit here. So, now I'm back in the
+
+323
+00:31:49,040 --> 00:31:58,080
+command line. So, what Slurm did for us, even though we said to the program that,
+
+324
+00:31:58,080 --> 00:32:05,920
+hey, put the output into this file, and it wrote the output to that file, Slurm also will capture
+
+325
+00:32:05,920 --> 00:32:11,760
+whatever output the code would say to the terminal, basically. If we would run the code,
+
+326
+00:32:11,760 --> 00:32:16,960
+and we would see some output in the terminal, Slurm will always capture that, and it will
+
+327
+00:32:16,960 --> 00:32:22,320
+provide it into this output file. We can change the output file name by giving an sbatch command,
+
+328
+00:32:22,320 --> 00:32:27,360
+but that's a different thing. But it will always capture that. So, you can always, like,
+
+329
+00:32:27,360 --> 00:32:32,160
+see what is the output. So, it's, like, compared to the interactive running, it's not that
+
+330
+00:32:32,800 --> 00:32:38,400
+different. We just, like, we tell it what to run, and we can always see the output.
+
+331
+00:32:38,400 --> 00:32:41,600
+So, and let's look at the ngrams output now.
+
+332
+00:32:44,320 --> 00:32:53,120
+Okay, this looks more interesting. ["e", space], ["t", space] ["t", "h"], ["h", "e"]. So,
+
+333
+00:32:53,120 --> 00:32:57,440
+"the" is definitely the most common word there. Who would have thought?
+
+334
+00:32:58,480 --> 00:33:04,800
+And then empty space and an "a" article is quite or "n" article is quite common as well.
+
+335
+00:33:04,800 --> 00:33:14,800
+Yeah. Okay. So, yeah, there we ran our batch script. Anything else before we go to the
+
+336
+00:33:14,800 --> 00:33:17,520
+break? Should we look at the timings?
+
+337
+00:33:17,520 --> 00:33:18,520
+Yes.
+
+338
+00:33:18,520 --> 00:33:19,520
+And the history?
+
+339
+00:33:19,520 --> 00:33:26,800
+So, when we have run something in the queue, we can run slurm history. So, the slurm is
+
+340
+00:33:26,800 --> 00:33:34,680
+this command that has various features that you can use. It's like an easier way of accessing
+
+341
+00:33:34,680 --> 00:33:43,640
+the Slurm output and we can see like let's say Slurm history from one hour. I have run
+
+342
+00:33:43,640 --> 00:33:52,840
+some other jobs previously so they might be here as well. We can see actually we don't
+
+343
+00:33:52,840 --> 00:33:57,760
+see any other jobs. So we see here that's just the two. Yeah so here's the interactive
+
+344
+00:33:57,760 --> 00:34:04,240
+one, and here's the non-interactive one, the batch job run script.
+
+345
+00:34:06,240 --> 00:34:13,600
+Yeah, and we see the requested memory, the amount of memory it thinks it used, CPU time. Can we see
+
+346
+00:34:13,600 --> 00:34:20,480
+the efficiency of the job? So, how much processor and memory it actually used? So, if we copy this
+
+347
+00:34:20,480 --> 00:34:29,800
+Each job gets a job ID that specifies, well, it's a unique identifier that you can then
+
+348
+00:34:29,800 --> 00:34:32,120
+look stuff up with.
+
+349
+00:34:32,120 --> 00:34:37,680
+And we can use this command called `seff` to check the efficiency of a job.
+
+350
+00:34:37,680 --> 00:34:44,080
+So if we run `seff` and then the job ID, we will see what was the efficiency.
+
+351
+00:34:44,080 --> 00:34:49,920
+And we can notice here, for example, that the CPU efficiency was very good, 100%.
+
+352
+00:34:49,920 --> 00:34:55,920
+memory efficiency not so much. But this was such a small job that it probably didn't even capture
+
+353
+00:34:55,920 --> 00:35:03,520
+that because these are sampled values that are sampled every so often. And the job is so fast
+
+354
+00:35:03,520 --> 00:35:13,120
+that it probably didn't even capture them correctly. Okay, great. So should we quickly
+
+355
+00:35:13,120 --> 00:35:22,320
+look at the notes and then go to a break. I'm switching to the notes on my screen.
+
+356
+00:35:23,280 --> 00:35:30,320
+So there's some good questions here. Most of them have been answered or we can talk later.
+
+357
+00:35:33,280 --> 00:35:42,080
+Someone asked about the priority. So how is the priority calculated? Is this something we should
+
+358
+00:35:42,080 --> 00:35:49,360
+answer now? Because it's actually pretty complicated, but maybe [name] has a quick explanation.
+
+359
+00:35:50,320 --> 00:35:57,200
+So the priority is basically calculated based on your past history and the sizes of your jobs that
+
+360
+00:35:57,200 --> 00:36:04,160
+you previously submitted. And the size of the job is calculated based on the number of CPUs you have
+
+361
+00:36:04,160 --> 00:36:09,920
+requested or the number of memory you have requested or the GPU resources you have requested.
+
+362
+00:36:09,920 --> 00:36:18,880
+so everything has basically like a price. And the size of the job, so memory request,
+
+363
+00:36:18,880 --> 00:36:24,800
+CPU request, GPU request, times the time gives like, I'm going to say it's like a block,
+
+364
+00:36:26,080 --> 00:36:36,800
+volume of the job basically in the cluster. So that is used to calculate your usage.
+
+365
+00:36:36,800 --> 00:36:43,440
+and your priority is basically like it has a half-life of like for every job it just has a
+
+366
+00:36:43,440 --> 00:36:49,680
+half-life of two weeks where like the priority goes down so basically it means it's just like
+
+367
+00:36:49,680 --> 00:36:54,800
+tries to make it so that everybody has a fair share of the resources so if somebody runs
+
+368
+00:36:55,760 --> 00:37:00,960
+a lot of big jobs they get less of them in the future so that other people have the chance to
+
+369
+00:37:00,960 --> 00:37:07,120
+do it. So the best thing usually is to just run what you want to do and keep the resource
+
+370
+00:37:07,120 --> 00:37:16,080
+requests close to what your jobs need. And there was a question of how do you choose these ones.
+
+371
+00:37:16,080 --> 00:37:24,160
+So usually the good answer is to measure what your job needs and check with, for example, `seff`
+
+372
+00:37:24,160 --> 00:37:31,040
+what the job needs. There's a full documentation in the SciComp documentation on how do you measure
+
+373
+00:37:31,040 --> 00:37:42,080
+these. But usually you want to measure what your job actually uses so that you can choose the
+
+374
+00:37:42,080 --> 00:37:48,800
+appropriate resources. So you run an example job and then you check how much it used and then you
+
+375
+00:37:48,800 --> 00:37:56,560
+lower the resources closer to the actual resource needs, giving it some leeway so that if there's a
+
+376
+00:37:56,560 --> 00:38:05,840
+memory spike or something like that, it doesn't go over the memory limit or if you give it a
+
+377
+00:38:05,840 --> 00:38:09,440
+bit more leeway in the time department so that you know that it finishes in time.
+
+378
+00:38:09,440 --> 00:38:20,720
+Yeah. The other question that I might answer now, how do you estimate the memory and time
+
+379
+00:38:20,720 --> 00:38:27,280
+needed for a task? And this is a really good one. And basically, I guess I'd say experience
+
+380
+00:38:28,000 --> 00:38:36,160
+and knowing the problem. I mean, there's no one magic answer here other than just run it and see
+
+381
+00:38:36,160 --> 00:38:42,000
+what it actually uses. So for example, if it runs on my own computer, I know it won't need more
+
+382
+00:38:42,000 --> 00:38:52,240
+memory than exists on my computer. And start with a few CPUs. So usually I'll start and I'll request
+
+383
+00:38:52,240 --> 00:38:57,520
+more memory than it needs and see how much it uses and then decrease to the amount that's used.
+
+384
+00:38:58,080 --> 00:39:03,120
+If you don't request enough, you'll get an out of memory error and then you know you need more.
+
+385
+00:39:03,120 --> 00:39:13,120
+And for CPUs, we'll talk about how to scale up the number of CPUs you use to see what the proper amount there.
+
+386
+00:39:13,120 --> 00:39:22,120
+I highly recommend looking at the guide posted also to the notes on what sort of measuring sticks you can use to measure the program size.
+
+387
+00:39:22,120 --> 00:39:30,080
+Also, there was a question of is time requested or time used, the one that is calculated using
+
+388
+00:39:30,080 --> 00:39:31,080
+the priority.
+
+389
+00:39:31,080 --> 00:39:38,720
+And it's kind of both, because when the job is in the queue, your estimate of how much
+
+390
+00:39:38,720 --> 00:39:46,120
+time it will use is used to calculate how big the job is.
+
+391
+00:39:46,120 --> 00:39:51,480
+If you say that I want the whole cluster for one month, the job is huge and you won't
+
+392
+00:39:51,480 --> 00:39:56,360
+get it ever, because it's such a big job, like it's impossible to get that much resources
+
+393
+00:39:56,360 --> 00:39:57,560
+at one time.
+
+394
+00:39:57,560 --> 00:40:06,160
+And if you like, so then the like the perceived time usage is like, or the requested time
+
+395
+00:40:06,160 --> 00:40:08,880
+usage is used to calculate the priority.
+
+396
+00:40:08,880 --> 00:40:17,780
+But once the job has finished, the time usage that it actually took is the one that is used
+
+397
+00:40:17,780 --> 00:40:20,520
+to calculate your like past priority.
+
+398
+00:40:20,520 --> 00:40:29,180
+But in any case, it's best to just try to match the request as close to the actual early
+
+399
+00:40:29,180 --> 00:40:35,280
+users as possible and to do some simple measurements to get to the right ballpark.
+
+400
+00:40:35,280 --> 00:40:41,840
+So if you know that the job finishes on your laptop in 15 minutes or maybe an hour, you
+
+401
+00:40:41,840 --> 00:40:46,440
+don't need to request a full day's time in the cluster,
+
+402
+00:40:46,440 --> 00:40:51,480
+because it's way overboard, because it
+
+403
+00:40:51,480 --> 00:40:52,760
+takes an hour on your laptop.
+
+404
+00:40:52,760 --> 00:40:57,600
+So might as well put an hour in the cluster as well.
+
+405
+00:40:57,600 --> 00:40:59,240
+But maybe we should go to a break.
+
+406
+00:40:59,240 --> 00:41:00,080
+Yeah.
+
+407
+00:41:00,080 --> 00:41:03,840
+So I guess we come back at 16 minutes past the hour
+
+408
+00:41:03,840 --> 00:41:06,920
+in whatever time zone you're in, unless you're
+
+409
+00:41:06,920 --> 00:41:11,320
+in a weird country, which is fine.
+
+410
+00:41:13,480 --> 00:41:16,160
+Yeah, you can keep answering or asking questions.
+
+411
+00:41:16,160 --> 00:41:18,320
+We'll keep answering and when we come back,
+
+412
+00:41:18,320 --> 00:41:19,380
+it's parallel stuff.
+
+413
+00:41:19,380 --> 00:41:21,600
+So see you later.
+
+414
+00:41:22,960 --> 00:41:23,800
+Bye.
+
+415
+00:41:24,000 --> 00:41:30,920
+Hello.
+
+416
+00:41:30,920 --> 00:41:42,280
+So looking through the notes, I don't see any new questions
+
+417
+00:41:42,280 --> 00:41:43,120
+we haven't answered.
+
+418
+00:41:43,120 --> 00:41:48,080
+So I guess let's continue with our task.
+
+419
+00:41:48,080 --> 00:41:54,240
+But maybe first, we're going to do parallel now.
+
+420
+00:41:54,240 --> 00:41:59,520
+So what does that mean, parallel?
+
+421
+00:41:59,520 --> 00:42:03,040
+and how are we approaching this?
+
+422
+00:42:03,040 --> 00:42:07,920
+Yeah, so this is, I would say, it's way too complex
+
+423
+00:42:07,920 --> 00:42:14,080
+a thing to have everything said in this small session,
+
+424
+00:42:14,080 --> 00:42:18,560
+but it basically means using more than one processor.
+
+425
+00:42:18,560 --> 00:42:21,920
+And there are multiple ways we can do this and
+
+426
+00:42:21,920 --> 00:42:25,520
+the most important one, I would say, that we are going to be focusing on this
+
+427
+00:42:25,520 --> 00:42:28,000
+session is this kind of embarrassingly parallel
+
+428
+00:42:28,000 --> 00:42:35,760
+where we just run the same thing with different inputs multiple times. Basically, we would
+
+429
+00:42:35,760 --> 00:42:42,320
+start the same program multiple times, and that is the easiest way. But there's other
+
+430
+00:42:42,320 --> 00:42:47,200
+paradigms as well. There's multiprocessing, there's a message-passing interface parallelism,
+
+431
+00:42:47,840 --> 00:42:53,120
+MPI parallelism. But it basically means that we use more than one processor. So you know that
+
+432
+00:42:53,120 --> 00:42:58,400
+Your laptop probably has eight to maybe four to eight CPUs already.
+
+433
+00:42:59,440 --> 00:43:05,200
+Yeah. You know, while I was making the kitchen videos, I had to very carefully research what
+
+434
+00:43:05,200 --> 00:43:12,320
+is parallelism. And I think the answer I got is that there's more than one point of execution at
+
+435
+00:43:12,320 --> 00:43:18,720
+the same time. So we have multiple processors. One processor is executing our analysis on
+
+436
+00:43:18,720 --> 00:43:24,800
+one book and another processor is on a different book. And this is what I guess we'd call data
+
+437
+00:43:24,800 --> 00:43:33,920
+parallelism. And in particular, we will use first array jobs, which is embarrassingly parallel.
+
+438
+00:43:33,920 --> 00:43:37,680
+So basically, instead of running one program that does multiple things,
+
+439
+00:43:38,320 --> 00:43:46,480
+we run 10 copies of the same program. And then these 10 different copies will all process 10
+
+440
+00:43:46,480 --> 00:43:52,160
+different books within the 100 books we have. And they'll all write out separate files,
+
+441
+00:43:52,160 --> 00:43:57,280
+which we can then combine later and hopefully see the same output.
+
+442
+00:43:59,600 --> 00:44:05,760
+Yes. So these kind of problems arise all the time. So if you have different data sets you
+
+443
+00:44:05,760 --> 00:44:10,800
+want to process, if you have different parameters you want to process, you want to do different
+
+444
+00:44:10,800 --> 00:44:16,860
+different options, different random number seeds or whatever, there's multiple different
+
+445
+00:44:16,860 --> 00:44:22,260
+ways that you encounter the situation where you do the same thing, but with a small difference.
+
+446
+00:44:22,260 --> 00:44:29,580
+And in these cases, the embarrassingly parallelization is your friend. And even though it's called
+
+447
+00:44:29,580 --> 00:44:35,800
+embarrassingly parallel, it just means that it's easy to parallelize. And in this case,
+
+448
+00:44:35,800 --> 00:44:42,360
+[name] said, the book analysis is very easy to parallelize. So, maybe we should look into it.
+
+449
+00:44:43,480 --> 00:44:50,200
+Yeah. So, I'm switching to your screen. There we are. So, we're back where we were.
+
+450
+00:44:50,920 --> 00:44:57,960
+So, we already have a working batch script, the run ngrams. So, I guess we can make a copy of
+
+451
+00:44:57,960 --> 00:45:07,640
+this with the `cp` command and call it `run-ngrams-array.sh`. Oops first argument first so first
+
+452
+00:45:07,640 --> 00:45:15,240
+what are we copying and then the other one yeah my mistake yeah no okay and now we can open the
+
+453
+00:45:15,240 --> 00:45:27,400
+new file the array running file so we need to tell this program that it should run as an array so we
+
+454
+00:45:27,400 --> 00:45:35,240
+add a new slurm option here. So the sbatch comment, and now we give `--array=0-9`.
+
+455
+00:45:36,440 --> 00:45:44,520
+And that means the same file will run 10 times, and each time there'll be one different variable
+
+456
+00:45:44,520 --> 00:45:50,440
+inside. And that variable would be set to 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. And how do we use that
+
+457
+00:45:50,440 --> 00:45:59,720
+variable. So, the program `count.py` has built in support for this. So, there's this extra argument
+
+458
+00:45:59,720 --> 00:46:07,880
+we can add in `--step=10`. So, step means it will run every 10th book. And `--start` will
+
+459
+00:46:07,880 --> 00:46:15,960
+be tell it what book to start on. And here we use the magic word $SLURM_ARRAY_TASK_ID [so `--start=$SLURM_ARRAY_TASK_ID`]. And this is
+
+460
+00:46:15,960 --> 00:46:20,760
+something you would just look up from the array examples. There's no way you would know this
+
+461
+00:46:23,080 --> 00:46:29,080
+by yourself automatically. So yeah, so now 10 times,
+
+462
+00:46:31,560 --> 00:46:41,400
+they run on 10 different books. So the first one runs book 0, 10, 20. The next one, book 1, 11,
+
+463
+00:46:41,400 --> 00:46:47,480
+21 and so on. Do we need to have them save the output to different file names?
+
+464
+00:46:48,520 --> 00:46:53,480
+Yes, so I added here to the output also the task ID because otherwise they would
+
+465
+00:46:53,480 --> 00:46:59,400
+like they would all try to write it. Can you make it newer? Yeah, yeah, let's scroll.
+
+466
+00:47:00,760 --> 00:47:09,080
+Yes, okay, so unfortunately this wraps this code [lines are scrolling off the screen] but yeah on the output (`-o`) one I added
+
+467
+00:47:09,080 --> 00:47:16,680
+this $SLURM_ARRAY_TASK_ID there as well. Because otherwise all of them would write to
+
+468
+00:47:16,680 --> 00:47:22,760
+the same file. So when we are submitting this job with the array structure, we are telling the queue
+
+469
+00:47:23,320 --> 00:47:28,920
+that, hey, I want actually 10 of these. I want 10 of these and just give me a different number
+
+470
+00:47:28,920 --> 00:47:34,760
+for each one of them. And based on what number we're getting, we do something. And there's
+
+471
+00:47:34,760 --> 00:47:39,720
+various things you can do to map this number to parameters or whatever. There's multiple examples
+
+472
+00:47:40,440 --> 00:47:47,160
+in the documentation, but this is like a simple example where we can straight up use the number
+
+473
+00:47:47,960 --> 00:47:56,920
+over here. So, should we try that? Yeah, okay. So, now we submit it with sbatch again.
+
+474
+00:47:56,920 --> 00:48:06,680
+And I'll try to be, again, fast to get the queue status.
+
+475
+00:48:06,680 --> 00:48:08,720
+Yeah, so queue.
+
+476
+00:48:08,720 --> 00:48:12,240
+OK, so we see here now there's 10 different things running.
+
+477
+00:48:12,240 --> 00:48:14,200
+0, 1, 2, 3, 9.
+
+478
+00:48:14,200 --> 00:48:18,400
+We see there's the underscore ("_") and number,
+
+479
+00:48:18,400 --> 00:48:20,960
+which is the different array tasks.
+
+480
+00:48:20,960 --> 00:48:22,920
+They're all running.
+
+481
+00:48:22,920 --> 00:48:26,560
+On the last column, we see under node list,
+
+482
+00:48:26,560 --> 00:48:30,320
+many of them are running on a node named pe32,
+
+483
+00:48:30,320 --> 00:48:33,880
+but there's a few that are running on other ones.
+
+484
+00:48:33,880 --> 00:48:41,360
+Basically, we've managed to run on different nodes here.
+
+485
+00:48:41,360 --> 00:48:43,640
+It's important to note here that all of
+
+486
+00:48:43,640 --> 00:48:46,040
+these jobs are completely independent of each other,
+
+487
+00:48:46,040 --> 00:48:47,280
+so they don't understand.
+
+488
+00:48:47,280 --> 00:48:49,480
+If you have a program that needs to
+
+489
+00:48:49,480 --> 00:48:52,600
+somehow communicate among the different things,
+
+490
+00:48:52,600 --> 00:48:55,640
+this is not an average job.
+
+491
+00:48:55,640 --> 00:49:01,640
+you need other algorithms to run that sort of program.
+
+492
+00:49:01,640 --> 00:49:07,240
+Of course, you can then run that with an ArrayJob if you want to run multiple of those kinds of
+
+493
+00:49:07,240 --> 00:49:12,440
+programs. But here, all of the programs that are running, all of the scripts that are running,
+
+494
+00:49:12,440 --> 00:49:17,960
+are completely independent of each other. So they do independent stuff independently and then they
+
+495
+00:49:20,120 --> 00:49:24,760
+give the output at the end. Should we look at the outputs?
+
+496
+00:49:25,640 --> 00:49:26,140
+Yeah.
+
+497
+00:49:33,760 --> 00:49:39,520
+So now we see there's output ngrams to array 0, 1, 2.
+
+498
+00:49:39,520 --> 00:49:41,760
+Do you want to look at one of these and see?
+
+499
+00:49:41,760 --> 00:49:42,360
+Yes.
+
+500
+00:49:42,360 --> 00:49:44,160
+Let's take, for example, these.
+
+501
+00:49:48,200 --> 00:49:50,640
+Yeah, I mean, it looks like the normal thing,
+
+502
+00:49:50,640 --> 00:49:55,040
+but about 1/10th as much data there.
+
+503
+00:49:55,040 --> 00:49:58,080
+And if we look at any of the outputs here,
+
+504
+00:49:58,080 --> 00:50:01,040
+we can notice that, well, it looks similar as well.
+
+505
+00:50:01,040 --> 00:50:03,160
+But again, the number of n-grams
+
+506
+00:50:03,160 --> 00:50:09,360
+is 1/10th of the overall amount.
+
+507
+00:50:17,520 --> 00:50:18,880
+Yeah.
+
+508
+00:50:18,880 --> 00:50:20,240
+OK.
+
+509
+00:50:20,240 --> 00:50:24,320
+So there's also a script included in the HPC examples
+
+510
+00:50:24,320 --> 00:50:30,640
+will combine all the output, because presumably we don't want 10 separate output files, but we want
+
+511
+00:50:30,640 --> 00:50:40,240
+one. So it's, I think, called `combine-counts.py`? Yeah. So it takes a series of input arguments,
+
+512
+00:50:40,240 --> 00:50:51,680
+which is the inputs. So we can use this glob syntax. So the asterisk ("*") means fill anything that
+
+513
+00:50:54,320 --> 00:51:02,160
+matches this pattern. And we can use the `-o`-argument to write it out to another place.
+
+514
+00:51:11,760 --> 00:51:19,520
+So this is often called like a map-reduce kind of a thing, where you do something over multiple
+
+515
+00:51:19,520 --> 00:51:24,160
+things. You do this mapping and then you reduce the information together. So this is quite common
+
+516
+00:51:24,160 --> 00:51:29,760
+in like data heavy stuff. You want to do stuff independently and then combine the outputs
+
+517
+00:51:29,760 --> 00:51:36,480
+together. Yeah, so now we see the new output file. Do you think it's the same as the original one?
+
+518
+00:51:37,600 --> 00:51:44,960
+So it should be sorted by amount. Should we look at the first 10 lines and see if they're the same?
+
+519
+00:51:45,600 --> 00:51:50,800
+Yeah, let's do that. So let's look at the original one first.
+
+520
+00:51:50,800 --> 00:51:55,960
+Yeah, what does the program `head` do?
+
+521
+00:51:55,960 --> 00:52:02,560
+So it prints out the first lines of a file.
+
+522
+00:52:02,560 --> 00:52:04,680
+By default, it prints 10 lines.
+
+523
+00:52:04,680 --> 00:52:08,440
+I don't remember, but we can give it a number, what we want.
+
+524
+00:52:08,440 --> 00:52:12,160
+But you can look at the start of the file, like if you want to check what the data looks
+
+525
+00:52:12,160 --> 00:52:15,120
+like or something.
+
+526
+00:52:15,120 --> 00:52:26,120
+Yeah, so if you look at the first 10 lines there, and combined.
+
+527
+00:52:26,120 --> 00:52:29,420
+So the moment of truth, is it exactly the same?
+
+528
+00:52:29,420 --> 00:52:34,120
+And those counts look pretty much the same to me.
+
+529
+00:52:34,120 --> 00:52:38,880
+Yeah, so it worked.
+
+530
+00:52:38,880 --> 00:52:44,720
+Yeah, so we didn't have to do any modifications to the code itself, like it was the same exact
+
+531
+00:52:44,720 --> 00:52:50,720
+code that we run. Of course, the combination, there had to be some sort of way of combining
+
+532
+00:52:50,720 --> 00:52:56,960
+the results after the fact. But there wasn't any major modifications to the code itself.
+
+533
+00:52:56,960 --> 00:53:03,040
+We could run it separately. Of course, you need to have some way of mapping the
+
+534
+00:53:04,400 --> 00:53:11,040
+$SLURM_ARRAY_TASK_ID to the task what you want the code to do. But once you have figured that out,
+
+535
+00:53:11,040 --> 00:53:19,120
+it's usually plain smooth sailing to get an easy way of getting lots of parallelism in the cluster.
+
+536
+00:53:19,120 --> 00:53:26,080
+And this is very good for jobs that you need to do something a lot of times.
+
+537
+00:53:28,320 --> 00:53:33,520
+Yeah. And this is your own brain power that you'll need to spend to figure out how to
+
+538
+00:53:33,520 --> 00:53:39,520
+distribute things and split it up like this. And this is what it means to be a scientific
+
+539
+00:53:39,520 --> 00:53:48,480
+computing person. But okay, there's other options. So there's also a mode of this which tries to use
+
+540
+00:53:48,480 --> 00:53:55,440
+multiple processors within the same program, something called multiprocessing, which is a
+
+541
+00:53:55,440 --> 00:54:03,280
+Python module. And would you like to give that a quick try? Yeah, let's try it out. So if we
+
+542
+00:54:03,280 --> 00:54:14,840
+So, if we first try running the previous single core version, let's try out that and let's
+
+543
+00:54:14,840 --> 00:54:16,240
+just verify what we have.
+
+544
+00:54:16,240 --> 00:54:24,760
+So, I copied from the history, so here I'm running the code.
+
+545
+00:54:24,760 --> 00:54:34,040
+only change here is that this time we are checking for words, like instead of letters,
+
+546
+00:54:34,040 --> 00:54:42,360
+we're checking for words for the n-grams. So it takes a bit more for the job to run.
+
+547
+00:54:45,800 --> 00:54:52,760
+And we see it used more memory, 500 megabytes now, about the same amount of time.
+
+548
+00:54:52,760 --> 00:55:04,760
+Okay, so we've done it with one processor with a code that isn't written to use multiprocessing.
+
+549
+00:55:04,760 --> 00:55:11,760
+But if we are starting to use multiprocessing, the first thing you must check is that does your code support it?
+
+550
+00:55:11,760 --> 00:55:15,760
+Is your code written so that it understands multiprocessing?
+
+551
+00:55:15,760 --> 00:55:22,760
+In this case, this program isn't, but [name] has written a version that does support multiprocessing,
+
+552
+00:55:22,760 --> 00:55:23,760
+right?
+
+553
+00:55:23,760 --> 00:55:26,760
+And this is called `count-multi.py`.
+
+554
+00:55:26,760 --> 00:55:29,240
+Yeah.
+
+555
+00:55:29,240 --> 00:55:40,040
+So now it basically works the same, except we will tell it it should use more processors.
+
+556
+00:55:40,040 --> 00:55:43,320
+So first we have to request the extra processor from Slurm.
+
+557
+00:55:43,320 --> 00:55:44,320
+Yeah.
+
+558
+00:55:44,320 --> 00:55:54,720
+So within the srun areas of the arguments, will request CPUs per task equals how many?
+
+559
+00:55:54,720 --> 00:56:00,560
+Four. Let's put a bit more memory because there's going to be overhead because all of
+
+560
+00:56:00,560 --> 00:56:11,440
+the processors are going to be needing memory. But we have now a requested. So in the slurm,
+
+561
+00:56:11,440 --> 00:56:17,200
+So if you look at this block of text before the Python command, so where we have the S run and
+
+562
+00:56:17,200 --> 00:56:24,640
+we tell the Slurm requests, we have now used CPUs per task equals four to request more CPUs.
+
+563
+00:56:24,640 --> 00:56:30,400
+You don't have to worry about the task. It's a different thing for MPI stuff. But CPUs per task
+
+564
+00:56:30,400 --> 00:56:39,600
+basically asks for four CPUs. But the code yet doesn't... Software updates. Nice. The code yet
+
+565
+00:56:39,600 --> 00:56:45,760
+doesn't know how to use those processes unless we tell it that, okay, you should use four
+
+566
+00:56:45,760 --> 00:56:51,680
+processors. So different programs have different ways, and it depends on the program. But usually,
+
+567
+00:56:51,680 --> 00:56:57,920
+if you have multi-process, like code that can utilize multiple processors, there's a way of
+
+568
+00:56:57,920 --> 00:57:03,280
+telling it how many processors it should use. And in this case, I think it's threads.
+
+569
+00:57:03,280 --> 00:57:09,160
+It's not right, [name].
+
+570
+00:57:09,160 --> 00:57:10,400
+Yeah, OK.
+
+571
+00:57:10,400 --> 00:57:13,240
+So I think now this has everything it needs.
+
+572
+00:57:13,240 --> 00:57:16,640
+So we're saving to the same output file.
+
+573
+00:57:16,640 --> 00:57:17,320
+That's fine.
+
+574
+00:57:17,320 --> 00:57:20,320
+Should we try running it and see what happens?
+
+575
+00:57:20,320 --> 00:57:26,640
+Yeah, let's put threads or let's put to a different file.
+
+576
+00:57:26,640 --> 00:57:29,120
+Let's see if the head is like the output.
+
+577
+00:57:29,120 --> 00:57:30,440
+OK.
+
+578
+00:57:30,440 --> 00:57:31,760
+So it's running.
+
+579
+00:57:31,760 --> 00:57:35,560
+It says it's using four processes.
+
+580
+00:57:35,560 --> 00:57:40,440
+And so while we're waiting here, do you
+
+581
+00:57:40,440 --> 00:57:43,600
+think this will be faster or slower?
+
+582
+00:57:43,600 --> 00:57:46,280
+Well, it's probably going to be a bit faster,
+
+583
+00:57:46,280 --> 00:57:55,680
+but not that much because the program probably cannot.
+
+584
+00:57:55,680 --> 00:57:57,880
+Yeah, there's multiple things that can happen there.
+
+585
+00:57:57,880 --> 00:58:02,760
+But this kind of example test case
+
+586
+00:58:02,760 --> 00:58:05,960
+probably won't parallelize that well
+
+587
+00:58:05,960 --> 00:58:09,560
+because there's lots of overhead and that sort of stuff.
+
+588
+00:58:09,560 --> 00:58:11,960
+So this is really interesting.
+
+589
+00:58:11,960 --> 00:58:13,760
+So it ran.
+
+590
+00:58:13,760 --> 00:58:16,360
+So let's look at these numbers carefully.
+
+591
+00:58:16,360 --> 00:58:18,040
+So first, there's the wall time.
+
+592
+00:58:18,040 --> 00:58:21,480
+So wall time means the clock on the wall, so the real time
+
+593
+00:58:21,480 --> 00:58:22,520
+that's passed.
+
+594
+00:58:22,520 --> 00:58:26,200
+So we've requested four times as many resources.
+
+595
+00:58:26,200 --> 00:58:32,020
+And it's run, what, 20%, 25% faster, something like that.
+
+596
+00:58:32,020 --> 00:58:37,300
+So basically, most of our extra resources
+
+597
+00:58:37,300 --> 00:58:38,900
+appear to have been wasted.
+
+598
+00:58:38,900 --> 00:58:43,020
+Ideally, it would run in 1/4th of the time.
+
+599
+00:58:43,020 --> 00:58:46,900
+But really, it ran in 3/4ths of the time,
+
+600
+00:58:46,900 --> 00:58:50,420
+or 4/5th of the time, something like that.
+
+601
+00:58:50,420 --> 00:58:54,500
+So this code really didn't work well with multiprocessing.
+
+602
+00:58:54,500 --> 00:58:56,500
+Let's look at user time.
+
+603
+00:58:56,500 --> 00:58:59,380
+So user time, and this is the amount of time
+
+604
+00:58:59,380 --> 00:59:03,260
+that the processors actually spent doing work.
+
+605
+00:59:03,260 --> 00:59:07,260
+It went up from 21 seconds to 29 seconds.
+
+606
+00:59:07,260 --> 00:59:08,460
+So this is OK.
+
+607
+00:59:08,460 --> 00:59:11,140
+You'd expect it to run a little bit slower.
+
+608
+00:59:11,140 --> 00:59:13,220
+It has to spend more time communicating
+
+609
+00:59:13,220 --> 00:59:16,100
+between the different parts.
+
+610
+00:59:16,100 --> 00:59:20,940
+But yeah, combining this with the wall time
+
+611
+00:59:20,940 --> 00:59:22,260
+not really going down.
+
+612
+00:59:22,260 --> 00:59:30,420
+it shows that our parallelization really hasn't worked. And that goes to a question which is in
+
+613
+00:59:30,420 --> 00:59:35,540
+the notes. Should we do the changes? Should someone do the changes to make their code
+
+614
+00:59:35,540 --> 00:59:43,220
+support multiprocessing? So it really depends what the code is. Is it going to be efficient?
+
+615
+00:59:44,580 --> 00:59:52,020
+[name]'s running `seff` here. Yeah, let's run quickly like `seff` and the job IDs of the jobs. So it'd be
+
+616
+00:59:52,020 --> 00:59:57,700
+take the job ideas from the output over here and look at them, you can see that the first one had
+
+617
+00:59:57,700 --> 01:00:05,220
+a CPU efficiency of 90% and the second one had a CPU efficiency of 40%. And like [name] said,
+
+618
+01:00:09,860 --> 01:00:14,660
+it depends on the case that you're running. If you're running a physics code or something,
+
+619
+01:00:14,660 --> 01:00:21,220
+the parallelism might be needed. Otherwise, you might not get the results in a reasonable time.
+
+620
+01:00:21,220 --> 01:00:28,020
+if you're running a data-hungry process that tries to run, for example, in here we are trying to go
+
+621
+01:00:28,020 --> 01:00:33,860
+through multiple files, there might be a lot of overhead with the file reading and writing
+
+622
+01:00:33,860 --> 01:00:40,340
+and that sort of stuff that doesn't really help. And in actuality, running the array job would be
+
+623
+01:00:40,340 --> 01:00:48,260
+faster. So sometimes running serial but more of them is faster than running something parallel
+
+624
+01:00:48,260 --> 01:00:54,860
+because there's these overheads that are needed to make certain that the communications work and that sort of stuff.
+
+625
+01:00:54,860 --> 01:01:02,260
+So, multiprocessing really depends on the case, and if it's low-level codes, it's usually better.
+
+626
+01:01:02,260 --> 01:01:10,260
+If it's this kind of run through something like data, it doesn't necessarily help.
+
+627
+01:01:10,260 --> 01:01:19,460
+but it's usually best to test. It's usually best to test and see how it works. But usually,
+
+628
+01:01:20,580 --> 01:01:27,620
+if you have an existing code trying to get the results done, there's a question of,
+
+629
+01:01:27,620 --> 01:01:34,580
+do you want the results done or do you want them to be done faster? If you want them to be done
+
+630
+01:01:34,580 --> 01:01:41,460
+faster, you might benefit from multi-processing because the wall time goes down, the time it
+
+631
+01:01:41,460 --> 01:01:46,340
+takes to run them. But if you want the results done, let's say you need to run a thousand
+
+632
+01:01:46,340 --> 01:01:52,900
+simulations or something, it doesn't necessarily make sense to parallelize them because there's
+
+633
+01:01:52,900 --> 01:01:58,900
+thousands of them and the overhead starts to accumulate. Instead, it might be just better to
+
+634
+01:01:58,900 --> 01:02:05,860
+run a thousand individual simulations and not parallelize them at all. Because that way,
+
+635
+01:02:06,660 --> 01:02:14,020
+you reduce the overhead time and you just get them done. So, aggregate jobs are quite often
+
+636
+01:02:14,020 --> 01:02:22,340
+the fastest way of getting bulk stuff done. But if you want something like you are waiting there
+
+637
+01:02:22,340 --> 01:02:27,060
+in the queue, waiting for it, waiting for the results to come by, then the multiprocessing
+
+638
+01:02:27,060 --> 01:02:33,540
+might make it faster to do that specific simulation. But it's like a question of
+
+639
+01:02:33,540 --> 01:02:39,060
+do you really want to go through the hassle. If your code already supports it, it might be good
+
+640
+01:02:39,060 --> 01:02:44,100
+to check if the code has support for multiprocessing and then test it out whether the
+
+641
+01:02:44,100 --> 01:02:53,620
+multiprocessing version is faster. As an example, when I was making these codes, I maybe spent
+
+642
+01:02:53,620 --> 01:03:00,980
+15 or 30 minutes getting a first version of the single core code working. It was pretty fast.
+
+643
+01:03:00,980 --> 01:03:06,420
+And then I spent many hours working on the multiprocessing version. I could make something
+
+644
+01:03:06,420 --> 01:03:11,220
+that initially worked quickly, but then understanding why it was slow and trying to
+
+645
+01:03:11,220 --> 01:03:19,780
+make it slightly better took a long time. So this might also be what you'll experience for
+
+646
+01:03:19,780 --> 01:03:25,060
+your own stuff. But should we talk about some of the speed considerations and why it's so slow?
+
+647
+01:03:25,060 --> 01:03:31,300
+There's a good question about why is the multi-processing slower? Or is there something
+
+648
+01:03:31,300 --> 01:03:39,220
+else to talk about first? Yeah, I would say that in this case there's a few considerations.
+
+649
+01:03:39,220 --> 01:03:44,580
+First off, it needs to load the data for all of those different multiple processes. So it needs
+
+650
+01:03:44,580 --> 01:03:51,380
+to open the file four times. Each one of them needs to load the file in order to get the data
+
+651
+01:03:51,380 --> 01:04:01,060
+in. So there's data slowing down. And I can say from my experience in making this,
+
+652
+01:04:01,940 --> 01:04:07,620
+the program is a little bit faster when it reads the data directly from the zip file
+
+653
+01:04:07,620 --> 01:04:13,540
+compared to uncompressing the zip file and running it on all the files separately,
+
+654
+01:04:13,540 --> 01:04:19,940
+open them independently. It really depends on the format the data is stored in and all that.
+
+655
+01:04:19,940 --> 01:04:25,300
+I could have repackaged it into a format that optimized for reading, and it would be even faster.
+
+656
+01:04:25,940 --> 01:04:31,700
+But this is a real thing that you can experience with this example if you want to give it a try.
+
+657
+01:04:33,860 --> 01:04:38,500
+And also, if you think about the word counts, it's calculating the word counts. It has to,
+
+658
+01:04:38,500 --> 01:04:46,980
+like each process that is analyzing a different file, it needs to store those words into memory,
+
+659
+01:04:46,980 --> 01:04:52,180
+into the counts, like how many counts has this word appeared or this ngram has appeared.
+
+660
+01:04:53,140 --> 01:05:02,500
+So each one of them has to house its own copy of this kind of word dictionary. And that, of course,
+
+661
+01:05:02,500 --> 01:05:10,820
+means that there's four times the memory usage. We see also the memory usage grow because of the
+
+662
+01:05:12,180 --> 01:05:17,860
+extra CPUs. So there's these overheads that happen when the individual processes have to
+
+663
+01:05:18,420 --> 01:05:25,140
+do the same stuff that the one process would do as well. And then that makes it slower.
+
+664
+01:05:26,580 --> 01:05:31,700
+And these kinds of considerations happen. In some problems, there might be a situation where
+
+665
+01:05:31,700 --> 01:05:37,140
+like you get benefit, but you only get benefit once you get over the overhead, like basically
+
+666
+01:05:37,140 --> 01:05:43,100
+like let's say we would have a thousand books or 10,000 books, then like the overhead is
+
+667
+01:05:43,100 --> 01:05:49,840
+smaller because now we can reuse the same processes most likely and do the calculation
+
+668
+01:05:49,840 --> 01:05:59,040
+like the word counts. But it depends on many factors. And yeah, like there's no one simple
+
+669
+01:05:59,040 --> 01:06:09,040
+reason why it might be faster or slower. There is the point, this moving data between processes
+
+670
+01:06:09,040 --> 01:06:16,400
+in multi-processing, that's a big thing here. So Python multi-processing isn't actually shared
+
+671
+01:06:16,400 --> 01:06:21,280
+memory. There's actual different processes. So it has to use inter-process communication to
+
+672
+01:06:21,280 --> 01:06:30,160
+share the data. And in practice, the way the program stores the data is relatively inefficient,
+
+673
+01:06:30,160 --> 01:06:38,000
+so it apparently takes a long time to do this sharing of the computed enneagrams between things.
+
+674
+01:06:40,240 --> 01:06:44,880
+But again, the question, when you're encountering these sort of
+
+675
+01:06:44,880 --> 01:06:50,800
+situations, it's usually a good idea to measure your program, profile your program,
+
+676
+01:06:50,800 --> 01:06:58,080
+and ask us, maybe, is it worth the effort of trying to parallelize something before you start
+
+677
+01:06:58,080 --> 01:07:04,080
+just putting more hardware to the problem? Because sometimes the correct solution might
+
+678
+01:07:04,080 --> 01:07:09,680
+be to look at the problem from a different point of view, instead of looking at it from the point
+
+679
+01:07:09,680 --> 01:07:14,240
+of view of, okay, what do I actually want to accomplish, instead of, okay, I just want to use
+
+680
+01:07:14,240 --> 01:07:22,720
+a fancy word for doing that. Yeah. So there's one final thing I'd like to say, and that is the input
+
+681
+01:07:22,720 --> 01:07:31,120
+and output, like someone mentioned there. So I noticed when saving this, you notice it's a plain
+
+682
+01:07:31,120 --> 01:07:39,120
+text output format, which is good for most purposes, but it has to create every line individually.
+
+683
+01:07:39,120 --> 01:07:47,760
+And every line has a JSON serialization, where it puts the words and letters into the
+
+684
+01:07:48,400 --> 01:07:54,160
+brackets and stuff like that. And I found that in practice, that's slow. It can spend a lot of the
+
+685
+01:07:54,160 --> 01:07:59,760
+time just writing this output. And when you're trying to use the data, spend a lot of time
+
+686
+01:07:59,760 --> 01:08:05,600
+reading the data in, especially when the number of books starts getting larger. So basically,
+
+687
+01:08:05,600 --> 01:08:12,880
+the processor itself for doing this kind of analysis is so fast that the format the data
+
+688
+01:08:12,880 --> 01:08:19,040
+is stored in becomes the bottleneck here. And since it has to write it all once and it writes it,
+
+689
+01:08:19,040 --> 01:08:26,800
+it's not writing it in parallel, it's writing it in serial. So that becomes a bottleneck
+
+690
+01:08:26,800 --> 01:08:29,720
+and slows things down.
+
+691
+01:08:29,720 --> 01:08:35,600
+So all of these considerations, so the data thing especially,
+
+692
+01:08:35,600 --> 01:08:38,200
+when you're doing things like machine learning training,
+
+693
+01:08:38,200 --> 01:08:43,080
+GPUs and so on are so fast that oftentimes the speed
+
+694
+01:08:43,080 --> 01:08:47,520
+of getting data to the GPU is the bottleneck here.
+
+695
+01:08:47,520 --> 01:08:50,720
+If you don't use the good data loaders that
+
+696
+01:08:50,720 --> 01:08:53,120
+operate in other threads, if your data is not
+
+697
+01:08:53,120 --> 01:08:56,120
+stored in a preprocessed format, you
+
+698
+01:08:56,120 --> 01:08:59,520
+end up taking more time with that.
+
+699
+01:08:59,520 --> 01:09:02,000
+And that's a really nice thing about this example,
+
+700
+01:09:02,000 --> 01:09:04,600
+because we can actually see the slowdowns because
+
+701
+01:09:04,600 --> 01:09:10,800
+of the data, IO, and so on.
+
+702
+01:09:10,800 --> 01:09:13,960
+Yeah, it's usually a good idea to remember
+
+703
+01:09:13,960 --> 01:09:16,720
+that when it comes to computers, let's
+
+704
+01:09:16,720 --> 01:09:21,920
+say accessing memory register is a few seconds.
+
+705
+01:09:21,920 --> 01:09:25,040
+Let's say the scale is something like it's actually
+
+706
+01:09:25,040 --> 01:09:33,200
+like nanoseconds, but let's say it would be a few seconds, then accessing the RAM memory
+
+707
+01:09:33,200 --> 01:09:35,760
+would be a few hours or something.
+
+708
+01:09:35,760 --> 01:09:41,400
+And then accessing a hard drive or a network drive or whatever, that would be years.
+
+709
+01:09:41,400 --> 01:09:45,800
+So it's like the scales are, because we're talking about milliseconds at that point,
+
+710
+01:09:45,800 --> 01:09:54,800
+so the scales are wacky when it comes to computing, so it's usually a good idea to measure stuff
+
+711
+01:09:54,800 --> 01:10:04,720
+when you're doing stuff, and think about, okay, is it worth to create more complex code
+
+712
+01:10:04,720 --> 01:10:09,120
+just to get basically nothing out of the exercise?
+
+713
+01:10:09,120 --> 01:10:10,620
+But of course, sometimes you have to do it.
+
+714
+01:10:10,620 --> 01:10:12,920
+You have to test it out to see if it happens.
+
+715
+01:10:12,920 --> 01:10:21,080
+But it's good to remember that normal, everyday life experiences don't necessarily translate
+
+716
+01:10:21,080 --> 01:10:23,120
+one-to-one to computing environments.
+
+717
+01:10:23,120 --> 01:10:32,160
+might encounter that like it's suddenly, yeah, suddenly something behaves differently.
+
+718
+01:10:32,160 --> 01:10:37,280
+But also I would say that existing codes, like nowadays, most of, a lot of existing
+
+719
+01:10:37,280 --> 01:10:43,480
+codes, scientific codes especially, are written to support multiprocessing straight out of
+
+720
+01:10:43,480 --> 01:10:44,480
+the box.
+
+721
+01:10:44,480 --> 01:10:47,720
+So multiprocessing is not bad if it's written correctly.
+
+722
+01:10:47,720 --> 01:10:55,320
+In many cases, like if you're using R or NumPy or any machine learning framework or whatever,
+
+723
+01:10:55,320 --> 01:11:00,600
+they support multiprocessing by default. So it's a good idea to check the documentation
+
+724
+01:11:00,600 --> 01:11:05,880
+of your specific case. Does it support multiple processors? And if it does,
+
+725
+01:11:05,880 --> 01:11:09,720
+then utilize them if they make your problem go faster.
+
+726
+01:11:09,720 --> 01:11:19,960
+Yeah. Do you want to show how we can use OnDemand to look at the outputs of the things to wrap up?
+
+727
+01:11:19,960 --> 01:11:30,040
+Yes. So I have here the folder so I can see it over here. But if I want to look at it in a more
+
+728
+01:11:30,040 --> 01:11:39,160
+graphical way, I could also go to the start place on the on-demand and start,
+
+729
+01:11:39,160 --> 01:11:45,720
+let's say, Triton Desktop. So, let's start one. So, this is basically like a virtual desktop that
+
+730
+01:11:45,720 --> 01:11:52,520
+is running on one of the compute nodes in the cluster. So, it's a pretty bare-bones experience,
+
+731
+01:11:52,520 --> 01:11:57,080
+but it's very good if you want to, let's say, view a plot or something and you don't want to
+
+732
+01:11:57,080 --> 01:12:01,240
+to transfer stuff to and fro from Triton.
+
+733
+01:12:01,240 --> 01:12:03,320
+So it's now running.
+
+734
+01:12:03,320 --> 01:12:05,240
+And I can launch this over here.
+
+735
+01:12:10,000 --> 01:12:14,160
+So you notice that I now have a place here.
+
+736
+01:12:14,160 --> 01:12:17,760
+And this is running on the Triton file system on Triton.
+
+737
+01:12:17,760 --> 01:12:23,720
+So can we go and access Scratch, for example?
+
+738
+01:12:23,720 --> 01:12:25,120
+Yeah.
+
+739
+01:12:25,120 --> 01:12:27,520
+However, we navigate to it with the browser.
+
+740
+01:12:27,520 --> 01:12:30,960
+Yeah, I'm typing Control-L to get this.
+
+741
+01:12:30,960 --> 01:12:39,760
+/scratch/work/[my username]/teaching/ ... to kickstart.
+
+742
+01:12:39,760 --> 01:12:41,240
+Let's go here.
+
+743
+01:12:41,240 --> 01:12:43,960
+Yeah, OK.
+
+744
+01:12:43,960 --> 01:12:47,160
+And I could even use the editor here to edit it.
+
+745
+01:12:47,160 --> 01:12:50,160
+But there's alternative editors that you can use as well.
+
+746
+01:12:50,160 --> 01:12:52,320
+But let's say you want to view one of these outputs.
+
+747
+01:12:52,320 --> 01:12:58,480
+So I can just open it up with an editor and see it up there.
+
+748
+01:12:58,480 --> 01:13:04,000
+So if you want to view a plot or something you can,
+
+749
+01:13:04,000 --> 01:13:05,920
+or you want to do some simple edits,
+
+750
+01:13:05,920 --> 01:13:10,440
+this is also a nice way of doing some interactive uses.
+
+751
+01:13:10,440 --> 01:13:12,040
+Yeah.
+
+752
+01:13:12,040 --> 01:13:13,360
+OK.
+
+753
+01:13:13,360 --> 01:13:16,680
+Maybe I'll switch back to the notes here.
+
+754
+01:13:16,680 --> 01:13:23,840
+And we can see what unanswered questions there are.
+
+755
+01:13:23,840 --> 01:13:27,240
+The other instructors can join us for the outro.
+
+756
+01:13:30,240 --> 01:13:41,840
+But yeah, this was a general, yes, OK.
+
+757
+01:13:41,840 --> 01:13:44,920
+So in the notes, now there's a feedback for the morning part.
+
+758
+01:13:44,920 --> 01:13:48,280
+So you can answer the poll here, tell us what you think.
+
+759
+01:13:48,280 --> 01:13:51,880
+So too fast, too slow, whatever, a good thing about today,
+
+760
+01:13:51,880 --> 01:13:55,260
+something to improve, any other feedback and so on.
+
+761
+01:13:56,460 --> 01:13:58,440
+In the meantime, what's our plan?
+
+762
+01:13:58,440 --> 01:14:01,560
+So we have a lunch break coming up
+
+763
+01:14:01,560 --> 01:14:03,760
+and then we'll go to Zoom.
+
+764
+01:14:03,760 --> 01:14:08,200
+And in Zoom, we will be able to answer more questions
+
+765
+01:14:08,200 --> 01:14:12,140
+and basically do all of these different examples
+
+766
+01:14:12,140 --> 01:14:14,280
+and exercises together.
+
+767
+01:14:14,920 --> 01:14:19,920
+So you have the time that you can work on it yourself.
+
+768
+01:14:19,920 --> 01:14:21,000
+Ask more questions.
+
+769
+01:14:21,000 --> 01:14:24,800
+We can look at your individual problems, and so on.
+
+770
+01:14:24,800 --> 01:14:26,600
+There'll be different breakout rooms there
+
+771
+01:14:26,600 --> 01:14:28,000
+focused on different topics.
+
+772
+01:14:32,640 --> 01:14:34,280
+Yeah.
+
+773
+01:14:34,280 --> 01:14:37,160
+Do you want to give the outro, and then we
+
+774
+01:14:37,160 --> 01:14:41,240
+can look at the notes questions and keep answering questions
+
+775
+01:14:41,240 --> 01:14:42,720
+until it's the end?
+
+776
+01:14:42,720 --> 01:14:45,120
+OK.
+
+777
+01:14:45,120 --> 01:14:47,720
+Are you placed to switch to my screen?
+
+778
+01:14:47,720 --> 01:14:48,320
+Yeah, exactly.
+
+779
+01:14:53,120 --> 01:14:57,200
+So can you stop sharing?
+
+780
+01:14:57,200 --> 01:15:02,240
+Because yes, I'm still sharing.
+
+781
+01:15:02,240 --> 01:15:02,740
+Yeah.
+
+782
+01:15:06,480 --> 01:15:06,980
+No.
+
+783
+01:15:06,980 --> 01:15:13,980
+Should I restart my sharing?
+
+784
+01:15:13,980 --> 01:15:14,000
+There.
+
