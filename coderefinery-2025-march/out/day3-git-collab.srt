@@ -1,0 +1,6116 @@
+1
+00:00:01,900 --> 00:00:03,160
+Let us maybe start
+
+2
+00:00:03,160 --> 00:00:13,220
+with concepts and here i will connect a bit to previous days and try to just do a little recap
+
+3
+00:00:13,220 --> 00:00:18,660
+clarification of some of the terms that came up in day one and day two which we will use now in
+
+4
+00:00:18,660 --> 00:00:26,100
+for collaboration and in the notes which i have open here on top you can still it's still
+
+5
+00:00:26,100 --> 00:00:30,080
+completely okay and really welcome if you ask also questions from previous days
+
+6
+00:00:30,080 --> 00:00:39,520
+So if you need a clarification about anything that came up in the previous two workshop days.
+
+7
+00:00:42,580 --> 00:00:51,360
+Here we try to distill, we have maybe six concepts that I wanted to recap.
+
+8
+00:00:52,740 --> 00:00:54,560
+So we will talk about the repository.
+
+9
+00:00:54,780 --> 00:00:55,580
+What is a repository?
+
+10
+00:00:55,580 --> 00:01:03,180
+repository is is the project that contains all the commits all the data all the history of the
+
+11
+00:01:03,180 --> 00:01:10,800
+project all commits all branches and all tags and i will clarify these now in the next second
+
+12
+00:01:10,800 --> 00:01:17,400
+so what what was a commit again commit was this snapshot of a project so as we code along
+
+13
+00:01:17,400 --> 00:01:24,580
+we create these snapshots and we give them unique identifiers so each of them can be uniquely
+
+14
+00:01:24,580 --> 00:01:34,420
+identified and compared and referred to and then we have also seen branches branches are
+
+15
+00:01:36,500 --> 00:01:41,620
+independent development lines and often the in projects you often have a main branch or
+
+16
+00:01:41,620 --> 00:01:47,460
+a master branch which is the like the default branch but then you can have many more branches
+
+17
+00:01:47,460 --> 00:01:55,000
+if you prefer so and technically in git technically a branch is implemented we can
+
+18
+00:01:55,000 --> 00:02:01,000
+think of it as like a sticky note a sticky note with a name on it and that's the branch name
+
+19
+00:02:01,000 --> 00:02:05,260
+and the sticky note then refers to a specific commit
+
+20
+00:02:05,260 --> 00:02:11,560
+and as we create new commits on the branch the sticky note moves with these with with these new
+
+21
+00:02:11,560 --> 00:02:21,140
+commits and maybe we have seen tags and tags are also sticky notes but they don't move
+
+22
+00:02:21,140 --> 00:02:27,620
+and they can mark a particular commit that i want to then be able to find easily
+
+23
+00:02:27,620 --> 00:02:35,960
+so here a typical tag could be called this is the phd that went to the printer or this was
+
+24
+00:02:35,960 --> 00:02:40,560
+the submitted paper so that later if i want to go back to how did the code look back then
+
+25
+00:02:40,560 --> 00:02:42,620
+I can find that particular tag
+
+26
+00:02:42,620 --> 00:02:47,540
+cloning and forking
+
+27
+00:02:47,540 --> 00:02:50,680
+these concepts we may have seen before
+
+28
+00:02:50,680 --> 00:02:52,920
+depending on whether you worked on
+
+29
+00:02:52,920 --> 00:02:55,780
+I think cloning
+
+30
+00:02:55,780 --> 00:02:57,600
+we have tried it yesterday
+
+31
+00:02:57,600 --> 00:02:59,880
+but depending on whether you worked on VS Code
+
+32
+00:02:59,880 --> 00:03:01,400
+or command line or browser
+
+33
+00:03:01,400 --> 00:03:04,860
+so cloning is
+
+34
+00:03:04,860 --> 00:03:08,620
+well maybe the last two terms
+
+35
+00:03:08,620 --> 00:03:11,180
+The easiest thing will be if I show them with a picture.
+
+36
+00:03:12,840 --> 00:03:16,040
+So cloning and forking are two concepts that we will need today.
+
+37
+00:03:17,340 --> 00:03:22,940
+And both cloning and forking create a copy of the entire repository.
+
+38
+00:03:25,740 --> 00:03:28,380
+So here is a repository with commits inside.
+
+39
+00:03:29,660 --> 00:03:32,960
+The commits are these little rectangles and branches.
+
+40
+00:03:33,660 --> 00:03:34,940
+These are the sticky nodes.
+
+41
+00:03:36,000 --> 00:03:37,800
+One is called main, one is called idea.
+
+42
+00:03:37,800 --> 00:03:41,560
+here is probably a tag version 1.0 here is another branch
+
+43
+00:03:41,560 --> 00:03:49,860
+so this whole repository i can copy if i clone the repository i copy it typically to my computer
+
+44
+00:03:49,860 --> 00:03:59,340
+this could be my laptop if i fork the repository i also create a full copy with all the all the
+
+45
+00:03:59,340 --> 00:04:06,320
+commits all the branches but the copy stays on in the cloud service so if we are here on github
+
+46
+00:04:06,320 --> 00:04:07,680
+the copy stays in GitHub.
+
+47
+00:04:10,120 --> 00:04:13,680
+And if I create a fork from a Code Refinery repository,
+
+48
+00:04:14,340 --> 00:04:17,040
+now suddenly it's a repository under my username,
+
+49
+00:04:17,300 --> 00:04:18,620
+under my user space.
+
+50
+00:04:20,380 --> 00:04:23,260
+So important to see the difference between forking and cloning.
+
+51
+00:04:26,460 --> 00:04:28,140
+Yeah, just one thing.
+
+52
+00:04:28,220 --> 00:04:32,260
+Forking is always on GitHub or GitLab, not on your local.
+
+53
+00:04:32,800 --> 00:04:35,420
+Yeah, it stays on the same service,
+
+54
+00:04:35,420 --> 00:04:40,940
+but you make the copy into your user name user space but on github
+
+55
+00:04:45,340 --> 00:04:49,100
+and we will practice both and we will collaborate using both mechanisms
+
+56
+00:04:50,220 --> 00:04:52,860
+and maybe the next question can be um
+
+57
+00:04:57,100 --> 00:05:02,940
+well okay i have a question in mind but it i will i will ask it in a moment but before that
+
+58
+00:05:02,940 --> 00:05:12,120
+But one important thing is that when we create these copies, so when we clone or fork, these repositories are related.
+
+59
+00:05:12,120 --> 00:05:18,900
+There is a relation between them, but they don't automatically synchronize themselves.
+
+60
+00:05:19,840 --> 00:05:29,720
+So if I clone and have the repository on my laptop, and in the meantime, somebody else is doing changes here, the changes don't automatically come to my computer.
+
+61
+00:05:29,720 --> 00:05:34,640
+we will have to actively synchronize and we will learn how to do that
+
+62
+00:05:34,640 --> 00:05:44,040
+and the synchronization steps are pulling and pushing so i can pull changes i can pull commits
+
+63
+00:05:44,040 --> 00:05:51,900
+from a remote repository or i can continue working working working but my changes they
+
+64
+00:05:51,900 --> 00:05:57,300
+don't automatically go back to github i will have to actively push these changes so pulling
+
+65
+00:05:57,300 --> 00:06:01,360
+and pushing is something we will practice
+
+66
+00:06:01,360 --> 00:06:04,560
+for those of you who work in VS Code or command line.
+
+67
+00:06:05,040 --> 00:06:07,420
+So we need a mechanism to synchronize changes.
+
+68
+00:06:09,680 --> 00:06:14,340
+And the next question that often comes up is,
+
+69
+00:06:15,040 --> 00:06:17,180
+okay, I understand now that there are two different mechanisms.
+
+70
+00:06:17,340 --> 00:06:18,120
+We can clone or fork.
+
+71
+00:06:18,740 --> 00:06:19,720
+So what should we do?
+
+72
+00:06:19,900 --> 00:06:21,080
+Should we clone or should we fork?
+
+73
+00:06:24,360 --> 00:06:25,680
+And it depends a bit.
+
+74
+00:06:25,680 --> 00:06:29,240
+so the first thing we will practice is
+
+75
+00:06:29,240 --> 00:06:32,680
+we will practice working within the same repository
+
+76
+00:06:32,680 --> 00:06:35,840
+so if all of you, if your research group
+
+77
+00:06:35,840 --> 00:06:38,640
+if all of you can have write permissions
+
+78
+00:06:38,640 --> 00:06:42,720
+if all of you are collaborators in the same repositories
+
+79
+00:06:42,720 --> 00:06:45,920
+you can all work in the same repository
+
+80
+00:06:45,920 --> 00:06:47,200
+there is no need to
+
+81
+00:06:47,200 --> 00:06:49,980
+to create a fork
+
+82
+00:06:49,980 --> 00:06:53,740
+so for small groups
+
+83
+00:06:53,740 --> 00:06:55,740
+no need to fork
+
+84
+00:06:55,740 --> 00:06:58,520
+we will all work within the same repository
+
+85
+00:06:58,520 --> 00:06:59,580
+this is the first thing
+
+86
+00:06:59,580 --> 00:07:01,700
+that we will practice today
+
+87
+00:07:01,700 --> 00:07:04,240
+but there can also be situations
+
+88
+00:07:04,240 --> 00:07:06,480
+where you want to make changes
+
+89
+00:07:06,480 --> 00:07:07,040
+to a code
+
+90
+00:07:07,040 --> 00:07:09,580
+or suggest changes to a code
+
+91
+00:07:09,580 --> 00:07:11,340
+where you
+
+92
+00:07:11,340 --> 00:07:14,040
+which is somebody else's project
+
+93
+00:07:14,040 --> 00:07:14,960
+some other university
+
+94
+00:07:14,960 --> 00:07:17,720
+maybe you are not part of that research group
+
+95
+00:07:17,720 --> 00:07:18,960
+you don't have right permissions
+
+96
+00:07:18,960 --> 00:07:20,780
+and then
+
+97
+00:07:20,780 --> 00:07:23,580
+forking can be a really nice mechanism
+
+98
+00:07:23,580 --> 00:07:31,260
+as we will see i'm just looking here at the questions it would be nice to explain origin
+
+99
+00:07:31,260 --> 00:07:39,020
+and dev streams again probably rather oh yeah and i think i just mentioned here in flying somewhere
+
+100
+00:07:39,020 --> 00:07:46,400
+where do we talk about origin because it will come again origin i will just search the page
+
+101
+00:07:46,400 --> 00:07:58,020
+we don't um oh here's origin yes on in this image so after if i see a repository on on github and i
+
+102
+00:07:58,020 --> 00:08:03,660
+want to have that on my computer i can clone and then you will see a term appearing which is called
+
+103
+00:08:03,660 --> 00:08:12,880
+origin and origin is so git will remember where it was cloned from there is a relation between the
+
+104
+00:08:12,880 --> 00:08:19,100
+to and origin then refers to it refers to the place where i have cloned from
+
+105
+00:08:19,100 --> 00:08:25,800
+so then we will if i want to publish my changes if i want to push my changes
+
+106
+00:08:25,800 --> 00:08:32,180
+i will push them to origin and if i want to if there have been new changes on github that i want
+
+107
+00:08:32,180 --> 00:08:38,900
+to have on my laptop i can then pull new commits from origin so origin will refer to where did i
+
+108
+00:08:38,900 --> 00:08:47,200
+cloned from and a little bit later in the exercise you can then find out like how do you if you clone
+
+109
+00:08:47,200 --> 00:08:50,760
+a repository and you forgot where you cloned from how can you find out where you cloned from
+
+110
+00:08:50,760 --> 00:08:56,700
+what is origin and you can even change it and you can even give it a different name
+
+111
+00:08:56,700 --> 00:09:04,380
+because origin is again it's just a placeholder it's just a shortcut it makes it easier for
+
+112
+00:09:04,380 --> 00:09:08,460
+humans to refer to a web address instead of using the full web
+
+113
+00:09:08,460 --> 00:09:14,940
+address. Just looking here at questions, and I really
+
+114
+00:09:14,940 --> 00:09:16,080
+appreciate that they're coming in.
+
+115
+00:09:21,180 --> 00:09:26,260
+Yeah, also good to mention that you mentioned Git pull and after
+
+116
+00:09:26,260 --> 00:09:30,140
+cloning if there is some changes on the origin repository. So
+
+117
+00:09:30,140 --> 00:09:37,480
+So that's commits that we pull towards our local commits, local repository on the laptop using pull.
+
+118
+00:09:40,180 --> 00:09:40,940
+Yes.
+
+119
+00:09:42,080 --> 00:09:50,180
+So again, as I said, they are related, but in principle, independent repositories, they can evolve independently.
+
+120
+00:09:50,180 --> 00:10:00,160
+And then to synchronize changes, we need pull.
+
+121
+00:10:01,720 --> 00:10:07,180
+Basically, imagine downloading changes and merging into local branches.
+
+122
+00:10:08,560 --> 00:10:11,400
+And then to do the opposite, that would be push.
+
+123
+00:10:11,400 --> 00:10:15,420
+if I have a local branch
+
+124
+00:10:15,420 --> 00:10:19,320
+that I want to make visible on GitHub
+
+125
+00:10:19,320 --> 00:10:20,340
+I will push it
+
+126
+00:10:20,340 --> 00:10:23,940
+and all of this will be even more clear
+
+127
+00:10:23,940 --> 00:10:25,100
+when we then practice this
+
+128
+00:10:25,100 --> 00:10:30,320
+we will go into an exercise very very soon
+
+129
+00:10:30,320 --> 00:10:32,920
+we will explain how to set up that exercise
+
+130
+00:10:32,920 --> 00:10:35,840
+the exercise will be collaborative
+
+131
+00:10:35,840 --> 00:10:40,320
+which is a really exciting and interesting challenge for us
+
+132
+00:10:40,320 --> 00:10:43,280
+because we will try to collaborate with you here via stream.
+
+133
+00:10:44,020 --> 00:10:48,660
+We will try to collaborate on a project together.
+
+134
+00:10:50,520 --> 00:10:52,200
+And this will be really exciting
+
+135
+00:10:52,200 --> 00:10:54,120
+because we are not really exactly sure what will happen.
+
+136
+00:10:56,080 --> 00:10:56,220
+Yeah.
+
+137
+00:10:56,600 --> 00:10:59,180
+And we say that we collaborate
+
+138
+00:10:59,180 --> 00:11:02,640
+where you also have direct access to the repository.
+
+139
+00:11:03,360 --> 00:11:03,540
+Yep.
+
+140
+00:11:04,600 --> 00:11:06,820
+But we will go through that step by step.
+
+141
+00:11:06,820 --> 00:11:19,580
+And just a quick mention, during the exercises, you will hear those of you who work in teams or in classrooms, you will see the term template, generating from template.
+
+142
+00:11:19,740 --> 00:11:25,040
+And generating from template, it's here in the picture, I just want to show what that is.
+
+143
+00:11:26,100 --> 00:11:30,280
+So that's another mechanism to create new repositories from another repository.
+
+144
+00:11:30,280 --> 00:11:33,520
+but generating from a template
+
+145
+00:11:33,520 --> 00:11:35,660
+flattens
+
+146
+00:11:35,660 --> 00:11:37,020
+the history into one commit
+
+147
+00:11:37,020 --> 00:11:39,740
+imagine a cookie cutter
+
+148
+00:11:39,740 --> 00:11:41,580
+so you have a cookie cutter and you
+
+149
+00:11:41,580 --> 00:11:43,640
+create identically
+
+150
+00:11:43,640 --> 00:11:44,420
+looking cookies
+
+151
+00:11:44,420 --> 00:11:47,600
+for baking and it's a bit the same
+
+152
+00:11:47,600 --> 00:11:48,540
+idea so this can be
+
+153
+00:11:48,540 --> 00:11:51,280
+interesting in your research group if you want
+
+154
+00:11:51,280 --> 00:11:52,920
+all your projects to have a certain
+
+155
+00:11:52,920 --> 00:11:54,680
+structure to start with
+
+156
+00:11:54,680 --> 00:11:56,680
+then look at templates
+
+157
+00:11:56,680 --> 00:12:00,420
+this is just for the
+
+158
+00:12:00,420 --> 00:12:02,480
+when we create the
+
+159
+00:12:02,480 --> 00:12:04,460
+exercise repositories you might
+
+160
+00:12:04,460 --> 00:12:05,300
+see this term appearing
+
+161
+00:12:05,300 --> 00:12:08,700
+I would like to now go to the next episode
+
+162
+00:12:08,700 --> 00:12:10,420
+and
+
+163
+00:12:10,420 --> 00:12:12,340
+prepare the exercise but we will
+
+164
+00:12:12,340 --> 00:12:13,020
+prepare it together
+
+165
+00:12:13,020 --> 00:12:16,220
+and it will be
+
+166
+00:12:16,220 --> 00:12:17,820
+here we will collaborate
+
+167
+00:12:17,820 --> 00:12:20,480
+we will all try to collaborate within the same
+
+168
+00:12:20,480 --> 00:12:20,940
+repository
+
+169
+00:12:20,940 --> 00:12:32,400
+so what is uh um what is the prerequisite for the uh the learners to collaborate
+
+170
+00:12:32,400 --> 00:12:39,780
+we already you might have a give uh get an email from us regarding this did
+
+171
+00:12:39,780 --> 00:12:45,200
+rather than you want to say again what they should do to collaborate to the to us on stream
+
+172
+00:12:45,200 --> 00:12:53,600
+so this is for so one prerequisite is github account
+
+173
+00:12:53,600 --> 00:12:59,700
+then if you are part of our exercise team or the classroom
+
+174
+00:12:59,700 --> 00:13:06,220
+you you will do something different and i will explain what that is
+
+175
+00:13:06,220 --> 00:13:11,320
+but for those of you who don't who are not part of a team we have many learners who
+
+176
+00:13:11,320 --> 00:13:13,920
+participate on their own but they still want to collaborate
+
+177
+00:13:13,920 --> 00:13:16,240
+so on top of the
+
+178
+00:13:16,240 --> 00:13:18,960
+I mean you got the info via email
+
+179
+00:13:18,960 --> 00:13:20,660
+but also on top of this document
+
+180
+00:13:20,660 --> 00:13:24,280
+this is what you need to do
+
+181
+00:13:24,280 --> 00:13:25,380
+so if you haven't done that yet
+
+182
+00:13:25,380 --> 00:13:27,600
+because this is a way to tell us
+
+183
+00:13:27,600 --> 00:13:30,640
+what is your GitHub account
+
+184
+00:13:30,640 --> 00:13:31,660
+so that we can add you
+
+185
+00:13:31,660 --> 00:13:33,100
+we will add you to a team
+
+186
+00:13:33,100 --> 00:13:36,240
+and in a moment we will also give
+
+187
+00:13:36,240 --> 00:13:38,840
+write permissions for the team
+
+188
+00:13:38,840 --> 00:13:40,320
+to our exercise repository
+
+189
+00:13:40,320 --> 00:13:43,080
+and then we will collaborate
+
+190
+00:13:43,080 --> 00:13:49,560
+and don't worry after the workshop we will then delete everything but we will today collaborate
+
+191
+00:13:49,560 --> 00:13:55,400
+on a public repository so the prerequisite for those of you who participate on their own is to
+
+192
+00:13:55,400 --> 00:14:01,000
+do this or have done this and then i have colleagues who then help me adding you to this team
+
+193
+00:14:07,560 --> 00:14:10,520
+oh just a sec getting a coffee here thank you
+
+194
+00:14:13,080 --> 00:14:16,340
+and did I even
+
+195
+00:14:16,340 --> 00:14:18,360
+mention that I'm here I have a
+
+196
+00:14:18,360 --> 00:14:19,440
+T-shirt and I'm
+
+197
+00:14:19,440 --> 00:14:22,460
+I will teach using a git mark just for
+
+198
+00:14:22,460 --> 00:14:24,440
+just for the
+
+199
+00:14:24,440 --> 00:14:26,300
+branding yeah that's good
+
+200
+00:14:26,300 --> 00:14:27,800
+but I couldn't see your
+
+201
+00:14:27,800 --> 00:14:28,940
+T-shirt run
+
+202
+00:14:28,940 --> 00:14:32,320
+oh good
+
+203
+00:14:32,320 --> 00:14:34,520
+exercise setup so we need to
+
+204
+00:14:34,520 --> 00:14:36,200
+we need to do that carefully we will do that
+
+205
+00:14:36,200 --> 00:14:36,720
+yeah
+
+206
+00:14:36,720 --> 00:14:40,260
+we will hear whole request
+
+207
+00:14:40,260 --> 00:14:41,080
+quite a lot today
+
+208
+00:14:41,080 --> 00:14:44,560
+and what is that
+
+209
+00:14:44,560 --> 00:14:46,400
+we'll clarify
+
+210
+00:14:46,400 --> 00:14:48,680
+but I think we want
+
+211
+00:14:48,680 --> 00:14:50,120
+you will hear pull request
+
+212
+00:14:50,120 --> 00:14:52,500
+25 times today at least
+
+213
+00:14:52,500 --> 00:14:54,640
+when you hear pull request
+
+214
+00:14:54,640 --> 00:14:56,660
+please think of
+
+215
+00:14:56,660 --> 00:14:57,740
+change proposal
+
+216
+00:14:57,740 --> 00:15:02,920
+if you use services like Google Doc
+
+217
+00:15:02,920 --> 00:15:05,160
+it's really similar to like suggesting changes
+
+218
+00:15:05,160 --> 00:15:06,900
+it's a really similar idea
+
+219
+00:15:06,900 --> 00:15:08,460
+so we'll do that a lot today
+
+220
+00:15:08,460 --> 00:15:14,380
+without without suggesting and without suggesting what will happen and what do you think
+
+221
+00:15:14,380 --> 00:15:21,200
+will happen i would like to know if someone is doing without suggesting changes updating on the
+
+222
+00:15:21,200 --> 00:15:29,580
+main or master brand branch and i think maybe most people do that this way um if you are so if you
+
+223
+00:15:29,580 --> 00:15:36,140
+are alone in a repository um you probably don't use any of this you just make changes and that's
+
+224
+00:15:36,140 --> 00:15:41,740
+good so you make commits commit commit commit commit and maybe you create branches but once we
+
+225
+00:15:41,740 --> 00:15:50,460
+are more people and or maybe even when if we are more than one person maybe we want to review each
+
+226
+00:15:50,460 --> 00:15:56,980
+other's changes before they go to main before they go to master and later we will talk about
+
+227
+00:15:56,980 --> 00:16:02,020
+like what is the motivation for this but we will have a mechanism to review changes because the
+
+228
+00:16:02,020 --> 00:16:05,640
+alternative would be we just make changes. But then we don't
+
+229
+00:16:05,680 --> 00:16:12,680
+necessarily know, we might. One person might not exactly know
+
+230
+00:16:12,680 --> 00:16:17,460
+what the other person has been doing. We might introduce
+
+231
+00:16:17,560 --> 00:16:20,920
+mistakes, because I might change something, but I might not have
+
+232
+00:16:20,980 --> 00:16:25,840
+thought about some side effects that [name] knows about. So
+
+233
+00:16:25,860 --> 00:16:28,260
+better, I asked [name] for to review my changes.
+
+234
+00:16:32,020 --> 00:16:41,420
+should we explain the exercise and should we try to set things up here yes um so if you
+
+235
+00:16:41,420 --> 00:16:51,520
+if you are part of a team or an exercise room or a classroom we have instructions for you
+
+236
+00:16:51,520 --> 00:17:02,160
+so one of you uh the maintainer the the team lead if you don't have one maybe
+
+237
+00:17:02,160 --> 00:17:08,820
+don't worry this will not be difficult then assign some of your team to be the maintainer
+
+238
+00:17:08,820 --> 00:17:14,400
+and this is the person who will create your exercise from this template so this template
+
+239
+00:17:14,400 --> 00:17:20,760
+is not our exercise this is this is the template where we create it from so this is for the teams
+
+240
+00:17:20,760 --> 00:17:22,880
+and the teams
+
+241
+00:17:22,880 --> 00:17:23,560
+and the classrooms
+
+242
+00:17:23,560 --> 00:17:24,060
+they can already
+
+243
+00:17:24,060 --> 00:17:24,840
+start doing this
+
+244
+00:17:24,840 --> 00:17:25,900
+preparing it
+
+245
+00:17:25,900 --> 00:17:28,940
+so and
+
+246
+00:17:28,940 --> 00:17:30,240
+the other
+
+247
+00:17:30,240 --> 00:17:30,960
+people who
+
+248
+00:17:30,960 --> 00:17:31,440
+will be
+
+249
+00:17:31,440 --> 00:17:33,480
+contributing
+
+250
+00:17:33,480 --> 00:17:34,120
+to this
+
+251
+00:17:34,120 --> 00:17:34,760
+team project
+
+252
+00:17:34,760 --> 00:17:35,640
+they have to
+
+253
+00:17:35,640 --> 00:17:36,100
+send their
+
+254
+00:17:36,100 --> 00:17:37,280
+username to
+
+255
+00:17:37,280 --> 00:17:38,200
+us to this
+
+256
+00:17:38,200 --> 00:17:38,460
+main
+
+257
+00:17:38,460 --> 00:17:38,960
+dainer who
+
+258
+00:17:38,960 --> 00:17:40,280
+will approve
+
+259
+00:17:40,280 --> 00:17:42,580
+you as a
+
+260
+00:17:42,580 --> 00:17:43,300
+collaborator in
+
+261
+00:17:43,300 --> 00:17:43,800
+the project
+
+262
+00:17:43,800 --> 00:17:45,360
+repository
+
+263
+00:17:45,360 --> 00:17:48,380
+yeah so
+
+264
+00:17:48,380 --> 00:17:49,040
+if you if
+
+265
+00:17:49,040 --> 00:17:49,320
+you are in a
+
+266
+00:17:49,320 --> 00:17:50,160
+group a good
+
+267
+00:17:50,160 --> 00:17:50,700
+group size is
+
+268
+00:17:50,700 --> 00:17:59,780
+four or five people, one of you will do this and you exchange usernames and add them as
+
+269
+00:17:59,780 --> 00:18:01,780
+a collaborator.
+
+270
+00:18:01,780 --> 00:18:07,220
+We have here good descriptions on how to do that.
+
+271
+00:18:07,220 --> 00:18:11,720
+You can also watch what we now do for everybody else because it's very similar steps.
+
+272
+00:18:11,720 --> 00:18:15,180
+So you can also watch what we do here.
+
+273
+00:18:15,180 --> 00:18:18,940
+And later you will have enough time in the exercise to do these steps.
+
+274
+00:18:18,940 --> 00:18:23,100
+So now let's get things set up now for everybody else,
+
+275
+00:18:23,180 --> 00:18:24,980
+for the stream participants who are not part of a team.
+
+276
+00:18:25,520 --> 00:18:27,860
+Yeah, but before that, I would like to remind that
+
+277
+00:18:27,860 --> 00:18:36,180
+when the maintainer of your team gives you access,
+
+278
+00:18:36,180 --> 00:18:38,360
+you need to accept the invitation.
+
+279
+00:18:39,420 --> 00:18:42,380
+So you will get an email and you need to accept it.
+
+280
+00:18:43,040 --> 00:18:44,700
+And also watching and unwatching,
+
+281
+00:18:44,820 --> 00:18:48,400
+do you want to show that on the screen share as well?
+
+282
+00:18:48,400 --> 00:18:57,920
+yeah i wanted to show it yeah so that so if you get if you get invited to our
+
+283
+00:18:57,920 --> 00:19:05,040
+exercise repository either by us or by your team maintainer there are two things you need to do
+
+284
+00:19:05,040 --> 00:19:10,040
+one is that you will get an email from github saying that you have been invited to this exercise
+
+285
+00:19:10,040 --> 00:19:16,900
+do you accept the invitation so then you need to click and say yes and then the second thing
+
+286
+00:19:16,900 --> 00:19:24,680
+and here i will go to our exercise so this is the one that we will use for the all the stream
+
+287
+00:19:24,680 --> 00:19:32,620
+participants and we have actually different versions we have one that's called recorded
+
+288
+00:19:32,620 --> 00:19:37,780
+and i will only screen share and only show the one recorded so
+
+289
+00:19:37,780 --> 00:19:43,800
+this is to give everybody the choice that they don't appear anywhere where they don't want to
+
+290
+00:19:43,800 --> 00:19:54,340
+appear but what [name] mentioned about unwatching is so once you accept and this is our exercise
+
+291
+00:19:54,340 --> 00:20:03,960
+repository there is this unwatch button and what this means by default it might be set to all
+
+292
+00:20:03,960 --> 00:20:12,720
+activity and then you get emails about when people send pull requests what was it again pull request
+
+293
+00:20:12,720 --> 00:20:20,480
+was a change proposal if they open issues you will explain what that means you will get emails
+
+294
+00:20:20,480 --> 00:20:26,120
+and we don't want you to get too many emails so you can switch to participating and mentions
+
+295
+00:20:26,120 --> 00:20:35,220
+and then you only get notified so up here i only get notified if if it's something i started
+
+296
+00:20:35,220 --> 00:20:42,420
+an issue i have opened or a pull request that i have opened or if somebody mentions me
+
+297
+00:20:42,720 --> 00:20:44,700
+if somebody writes
+
+298
+00:20:44,700 --> 00:20:47,820
+at past my username,
+
+299
+00:20:48,020 --> 00:20:49,880
+can you please look at this pull request?
+
+300
+00:20:49,980 --> 00:20:50,840
+Then I will also get an email.
+
+301
+00:20:53,740 --> 00:20:55,340
+Or you can just ignore everything.
+
+302
+00:20:56,140 --> 00:20:57,520
+So this is something that is good too,
+
+303
+00:20:57,660 --> 00:20:59,260
+especially for the stream participants
+
+304
+00:20:59,260 --> 00:21:01,720
+because I think we have 40 people
+
+305
+00:21:01,720 --> 00:21:02,560
+who want to collaborate.
+
+306
+00:21:04,000 --> 00:21:05,300
+So we don't want you to get
+
+307
+00:21:05,300 --> 00:21:06,660
+120 emails now this morning.
+
+308
+00:21:07,780 --> 00:21:08,620
+So I'm watching.
+
+309
+00:21:08,620 --> 00:21:16,840
+and one one thing i'm getting from the notes that if you don't know you are a part of team that
+
+310
+00:21:16,840 --> 00:21:25,880
+means you are an individual learner on stream so you can call you can select this part where
+
+311
+00:21:25,880 --> 00:21:33,560
+following on your own and select which recorder or non not recorded a version yeah
+
+312
+00:21:33,560 --> 00:21:40,680
+and then i wanted to screenshot one more thing that you can then try in the teams is that
+
+313
+00:21:40,680 --> 00:21:50,140
+i will we have a couple of branches but i will make the main branch i will write protected
+
+314
+00:21:50,140 --> 00:21:57,140
+and this will make sure that all the changes will come through pull requests through change
+
+315
+00:21:57,140 --> 00:22:06,220
+proposals i will make it hard to make changes directly on main and we will explain what is
+
+316
+00:22:06,220 --> 00:22:12,320
+what can be the motivation for this but i want to show you how you can do that so on settings
+
+317
+00:22:12,320 --> 00:22:21,300
+branches i will i want to set up branch protection rules but i was because i also
+
+318
+00:22:21,300 --> 00:22:24,480
+want everybody to know that this is something that exists this is something you can use for
+
+319
+00:22:24,480 --> 00:22:29,360
+project. This is not to make things more bureaucratic, but to prevent yourself from
+
+320
+00:22:29,360 --> 00:22:35,600
+making accidental mistakes. I will go to the classic ones because I know them a little bit
+
+321
+00:22:35,600 --> 00:22:41,520
+better. Classic branch protection rule. And then I can protect branches like the main branch here,
+
+322
+00:22:41,520 --> 00:22:48,800
+main. And what I will do is I will require a pull request before merging.
+
+323
+00:22:48,800 --> 00:22:58,280
+but i will not require approvals or then in in a real life you can for instance require that
+
+324
+00:22:58,280 --> 00:23:04,040
+two people should approve before something is merged here we don't want to be too
+
+325
+00:23:04,040 --> 00:23:08,220
+we don't want it to make it too difficult i will just go for this one setting
+
+326
+00:23:08,220 --> 00:23:12,880
+this setting make sure that i cannot make changes to main directly it
+
+327
+00:23:12,880 --> 00:23:16,840
+i will have to do it through pull requests and of course we need to first see what it is
+
+328
+00:23:16,840 --> 00:23:20,860
+save, create
+
+329
+00:23:20,860 --> 00:23:23,760
+so now my main branch is
+
+330
+00:23:23,760 --> 00:23:26,500
+protected
+
+331
+00:23:26,500 --> 00:23:29,900
+I will in a moment do the same thing
+
+332
+00:23:29,900 --> 00:23:31,920
+maybe I will do it on a different screen
+
+333
+00:23:31,920 --> 00:23:35,040
+I will do the same thing for the unrecorded one
+
+334
+00:23:43,740 --> 00:23:45,280
+the same branch protection
+
+335
+00:23:45,280 --> 00:23:48,740
+I do that now on a different screen, just to not screen share it.
+
+336
+00:23:49,780 --> 00:23:55,940
+Again, branches, bad protection rules, I protect main, and I require pull requests.
+
+337
+00:23:58,360 --> 00:24:00,920
+And then for our exercise, I need to do one more step.
+
+338
+00:24:01,100 --> 00:24:04,940
+And that is, we edit you all to a team.
+
+339
+00:24:06,440 --> 00:24:10,560
+And I will now give all the team right permissions.
+
+340
+00:24:10,560 --> 00:24:20,460
+I wanted to show you how you can add collaborators to a project, to a repository.
+
+341
+00:24:20,460 --> 00:24:25,600
+Collaborators and teams.
+
+342
+00:24:25,600 --> 00:24:28,380
+And here I can either add people.
+
+343
+00:24:28,380 --> 00:24:32,080
+This is relevant for those of you who exercise within a small team.
+
+344
+00:24:32,080 --> 00:24:36,200
+So then you add five different people by their username.
+
+345
+00:24:36,200 --> 00:24:40,300
+Here I will not use this because I don't want to add 40 people by their username.
+
+346
+00:24:40,300 --> 00:24:41,580
+I will add an entire team.
+
+347
+00:24:43,560 --> 00:24:44,560
+And it's this one.
+
+348
+00:24:46,960 --> 00:24:50,700
+And I can select what kind of permissions would I like you to have.
+
+349
+00:24:53,280 --> 00:24:58,340
+I want you all, because now we know each other, we trust each other,
+
+350
+00:24:58,480 --> 00:24:59,840
+I will all give you right permissions.
+
+351
+00:25:02,740 --> 00:25:05,460
+There are more permissions like maintain or admin.
+
+352
+00:25:05,700 --> 00:25:06,960
+These can be possibly destructive.
+
+353
+00:25:07,220 --> 00:25:10,000
+These can be permissions to be able to add people to teams
+
+354
+00:25:10,000 --> 00:25:16,080
+and manage teams but write permissions is what we will need for collaborating so now
+
+355
+00:25:18,560 --> 00:25:23,120
+now we can all arrive to the to the repository and this will be part of the exercise
+
+356
+00:25:27,680 --> 00:25:30,320
+uh i do the same thing on the unrecorded one
+
+357
+00:25:32,880 --> 00:25:39,760
+and maybe we should explain what will be the what will be the point of the exercise what what do we
+
+358
+00:25:39,760 --> 00:25:49,040
+expect from from people yes and again repeating that this is an exercise we we all have right
+
+359
+00:25:49,040 --> 00:25:56,000
+access as i mentioned and give right access to all the members of the project so we are
+
+360
+00:25:56,000 --> 00:26:04,080
+collaborating we all have right access the same repository and the ones who are working with
+
+361
+00:26:04,080 --> 00:26:09,900
+teams you will have a repository created from the template mentioned there that so you are
+
+362
+00:26:09,900 --> 00:26:15,640
+working on this repository you created from the template but in the individual learner
+
+363
+00:26:15,640 --> 00:26:22,780
+on stream that we you collaborated with us as instructors and those who are helping us
+
+364
+00:26:22,780 --> 00:26:29,580
+behind the scenes are part of this repository and you are collaborating with us that's the
+
+365
+00:26:29,580 --> 00:26:40,320
+the main important thing and you're going to do this and we would we will go for a exercise soon
+
+366
+00:26:40,320 --> 00:26:50,880
+but what we want to do from this uh there are some exercise tasks you want to talk a little
+
+367
+00:26:50,880 --> 00:26:57,740
+bit about issue or rather one or you want to take it as later maybe i can show it so there will be
+
+368
+00:26:57,740 --> 00:27:02,980
+so we will not go through all the steps but the first step will be opening an issue
+
+369
+00:27:02,980 --> 00:27:08,900
+and what what we mean by that is that in your exercise repository which is now
+
+370
+00:27:08,900 --> 00:27:16,040
+on my upper half of my screen there is this thing called issue and somebody already opened one great
+
+371
+00:27:16,040 --> 00:27:24,040
+so here are the issues you will open a new issue somebody here already working on a
+
+372
+00:27:24,040 --> 00:27:27,700
+loose recipe. Fantastic. And you will open a new issue and you
+
+373
+00:27:27,700 --> 00:27:34,000
+will describe here what you plan to do. Oh, what do I plan to do?
+
+374
+00:27:34,120 --> 00:27:44,880
+I will work on Oh, I will work on making the guacamole more
+
+375
+00:27:44,880 --> 00:27:50,860
+spicy. I really like spicy food. So here I have a mechanism so I
+
+376
+00:27:50,860 --> 00:27:59,620
+So I will create it and I will assign the issue to myself.
+
+377
+00:27:59,620 --> 00:28:03,040
+So I have a mechanism here to inform other people, not only about problems.
+
+378
+00:28:03,040 --> 00:28:07,080
+So I can inform them about there is an issue in the code, but here I can also inform everybody
+
+379
+00:28:07,080 --> 00:28:10,920
+on what I plan to do.
+
+380
+00:28:10,920 --> 00:28:12,560
+And then each issue gets a number.
+
+381
+00:28:12,560 --> 00:28:19,800
+So you take a note of this number two, because later in the exercise, you will refer to that
+
+382
+00:28:19,800 --> 00:28:23,360
+number. So when we when we talk about open an issue, that's what
+
+383
+00:28:23,360 --> 00:28:32,460
+we meant. And there are a couple of more steps. Should I talk
+
+384
+00:28:32,460 --> 00:28:37,680
+people through it? Or let people explore junior exercise? Do you
+
+385
+00:28:37,680 --> 00:28:38,180
+think?
+
+386
+00:28:39,900 --> 00:28:43,500
+Yeah, I think we may be people can explore on these
+
+387
+00:28:43,500 --> 00:28:47,940
+things. And then we can show after the exercise and merge the
+
+388
+00:28:47,940 --> 00:28:55,960
+request what do you think yeah but just a thing about uh issue and this is also not only reporting
+
+389
+00:28:55,960 --> 00:29:04,100
+problems or uh letting others know about uh what you are working on but also having a good
+
+390
+00:29:04,100 --> 00:29:09,180
+discussion issue is a good place to have this good discussion and develop further work together
+
+391
+00:29:09,180 --> 00:29:14,600
+with others if you go to your issue created rather when i have uh commented something on
+
+392
+00:29:14,600 --> 00:29:20,640
+issue that issue that you created so this is a place to you to discuss about these things
+
+393
+00:29:20,640 --> 00:29:28,380
+i can also collect feedback yeah so we can share an idea collect feedback figure out whether it's
+
+394
+00:29:28,380 --> 00:29:36,460
+a good idea but it's a good approach and uh before writing 5000 lines of code and here it's it's a
+
+395
+00:29:36,460 --> 00:29:42,320
+simple recipe it's a recipe book we already recognize it from the previous days the nice
+
+396
+00:29:42,320 --> 00:29:47,640
+thing is that now we will create this recipe book together so at the end of today we will have a
+
+397
+00:29:47,640 --> 00:29:51,180
+book of recipes cooking recipes that we created collaboratively here
+
+398
+00:29:51,180 --> 00:29:56,020
+but we have this mechanism to also collect feedback before doing all that work
+
+399
+00:29:56,020 --> 00:30:05,480
+all the steps will be written here so we try to summarize like what is familiar from previous
+
+400
+00:30:05,480 --> 00:30:11,440
+days but no problem if you don't remember or you went out there we link to where to find this
+
+401
+00:30:11,440 --> 00:30:20,580
+we also try to summarize what are the new things and if below we have solutions and hints
+
+402
+00:30:20,580 --> 00:30:25,040
+and it can be good to go through those so this is not cheating this is
+
+403
+00:30:25,040 --> 00:30:29,260
+this is the goal so go through solution and hints and go through it step by step
+
+404
+00:30:29,260 --> 00:30:37,580
+maybe one more big picture thing is that we're talking about cloning so you can do all of this
+
+405
+00:30:37,580 --> 00:30:44,940
+the browser and then you don't need to clone so this exercise can be done purely in the browser
+
+406
+00:30:44,940 --> 00:30:51,980
+but those of you who then prefer to use command line or vs code there will be there will be a
+
+407
+00:30:51,980 --> 00:30:56,460
+step where you clone and then if you don't remember how was that again you can then link back and
+
+408
+00:30:57,420 --> 00:31:06,540
+have a look shall we go for a exercise break then and people can do it and go for a break
+
+409
+00:31:07,580 --> 00:31:14,400
+so first thing is exercise right and then i'll break after and here we we thought about 25 minutes
+
+410
+00:31:14,400 --> 00:31:21,700
+which would which would mean that we will the exercise would go until
+
+411
+00:31:21,700 --> 00:31:29,900
+almost five minutes uh after the hour we will then we will then all return here
+
+412
+00:31:29,900 --> 00:31:34,580
+to the stream and on the stream we will just remind everybody to please take break so after
+
+413
+00:31:34,580 --> 00:31:41,000
+the exercise we will then go into a break yeah correct and then yes but don't worry if you if
+
+414
+00:31:41,000 --> 00:31:47,580
+people get lost we will then here also demonstrate some of the like highlights um so also [name] and
+
+415
+00:31:47,580 --> 00:31:54,740
+me will be busy collaborating here yeah and also uh please feel free to ask questions uh on the
+
+416
+00:31:54,740 --> 00:32:03,660
+notes super let's start collaborating let's create some fun recipes but let's be kind to each other
+
+417
+00:32:03,660 --> 00:32:10,060
+nice this is a public repository so remember the code of conduct looking forward see you in
+
+418
+00:32:10,940 --> 00:32:16,060
+let's go to exercises and then we will be back here on stream five minutes after the hour yes
+
+419
+00:32:18,300 --> 00:32:22,220
+let the exercise begin i will try to switch here
+
+420
+00:32:26,780 --> 00:32:31,580
+in the panel to the right thing hopefully now
+
+421
+00:32:33,660 --> 00:32:35,000
+Thank you.
+
+422
+00:32:35,000 --> 00:32:36,640
+Thank you.
+
+423
+00:32:37,300 --> 00:32:39,360
+And we are back from the exercise.
+
+424
+00:32:40,260 --> 00:32:42,880
+This is just to remind everybody to also take a break.
+
+425
+00:32:43,320 --> 00:32:46,040
+So we will now go into a 10-minute break.
+
+426
+00:32:47,260 --> 00:32:49,520
+I recommend really break away from the screen.
+
+427
+00:32:50,320 --> 00:32:54,180
+And in 10 minutes, we will then restart the other stream.
+
+428
+00:32:54,860 --> 00:32:57,960
+And [name] and me will then go through this exercise.
+
+429
+00:32:57,960 --> 00:33:00,380
+We will highlight some interesting parts of it.
+
+430
+00:33:00,980 --> 00:33:02,600
+We will highlight some of your questions.
+
+431
+00:33:04,060 --> 00:33:06,180
+And then there will be another exercise soon.
+
+432
+00:33:06,180 --> 00:33:08,020
+But first, 10 minutes break.
+
+433
+00:33:08,120 --> 00:33:11,560
+See you then in 10 minutes for more collaboration on Git.
+
+434
+00:33:13,620 --> 00:33:14,240
+See you.
+
+435
+00:33:17,000 --> 00:33:18,160
+Thank you.
+
+436
+00:33:18,180 --> 00:33:20,580
+We are back from the break, back on stream.
+
+437
+00:33:22,780 --> 00:33:23,340
+Welcome.
+
+438
+00:33:24,560 --> 00:33:25,800
+Yeah, welcome back.
+
+439
+00:33:26,100 --> 00:33:27,760
+I hope everyone had a good break.
+
+440
+00:33:29,380 --> 00:33:29,780
+Yeah.
+
+441
+00:33:30,560 --> 00:33:36,340
+Let us continue and go through the task, exercise task.
+
+442
+00:33:37,120 --> 00:33:39,220
+So, [name], you're sharing the screen.
+
+443
+00:33:39,740 --> 00:33:43,420
+We had some tasks, and thank you for the questions,
+
+444
+00:33:43,420 --> 00:33:49,340
+and we would like we will answer most of them on the live while we demonstrate all the steps here
+
+445
+00:33:53,020 --> 00:33:59,820
+so what question was i think somebody also asked that once they
+
+446
+00:34:02,140 --> 00:34:08,940
+push a branch or have a branch with new commits if they reload the repository some some people
+
+447
+00:34:08,940 --> 00:34:14,860
+saw something like this. And these are three of my branches that I created. I created one,
+
+448
+00:34:14,860 --> 00:34:19,820
+which is called Guacamole Improvement. Another one is Vegan Pumpkin Pie, and there is an unfinished
+
+449
+00:34:19,820 --> 00:34:27,420
+one. Okay. Yeah. On your repository, on your screen, you will see what you pushed, not what
+
+450
+00:34:27,420 --> 00:34:34,380
+your other one sees. So the changes you push towards the main repository, that way you will
+
+451
+00:34:34,380 --> 00:34:41,400
+see and you will be able to compare and make a pull request from the github web service yeah
+
+452
+00:34:41,400 --> 00:34:47,200
+because i'm logged in and here github knows that it's me and sees that i made three branches
+
+453
+00:34:47,200 --> 00:34:50,840
+recently so it suggests that well maybe i want to do a pull request and that's exactly what i want
+
+454
+00:34:50,840 --> 00:34:59,040
+to do um should we look at this one first or which one should we yeah let's just uh look at it but
+
+455
+00:34:59,040 --> 00:35:05,380
+just want to comment when when you create changes and push it that doesn't create a pull request
+
+456
+00:35:05,380 --> 00:35:12,340
+pull request is only on the github or gitlab whatever the service is so you create a branch
+
+457
+00:35:12,340 --> 00:35:20,040
+and you push change to the github repository then from here you start the pull request correct
+
+458
+00:35:20,040 --> 00:35:25,840
+so so far i only have three branches actually didn't i didn't open up the pull request yet
+
+459
+00:35:25,840 --> 00:35:31,620
+i can do it this way there are other ways in the material but i can click on here
+
+460
+00:35:31,620 --> 00:35:41,820
+and i created one commit i can maybe show you now what what i what are the things that i look
+
+461
+00:35:41,820 --> 00:35:48,860
+at before i create it before i click on the green button i normally verify from which branch to
+
+462
+00:35:48,860 --> 00:35:56,780
+branch is going so that that looks good from i want it to go towards main i normally verify that
+
+463
+00:35:56,780 --> 00:36:05,580
+i have a somehow descriptive title maybe more context here if needed i also normally scroll
+
+464
+00:36:05,580 --> 00:36:14,060
+down and see what are the commits here is my commit and what are the changes in my case i
+
+465
+00:36:14,060 --> 00:36:16,900
+I replaced Chile by a habanero, but without seeds.
+
+466
+00:36:20,120 --> 00:36:24,500
+And there was also this magic keyword here.
+
+467
+00:36:24,580 --> 00:36:26,580
+If I use close, closes, fix, fixes,
+
+468
+00:36:27,020 --> 00:36:30,740
+and if I refer to my issue, the issue number two,
+
+469
+00:36:33,340 --> 00:36:39,800
+then later, once it's merged, it will automatically close the issue.
+
+470
+00:36:39,800 --> 00:36:44,440
+We can later discuss what is the advantage of it.
+
+471
+00:36:45,220 --> 00:36:49,380
+Yeah, just a comment about referring issues on the commits
+
+472
+00:36:49,380 --> 00:36:51,860
+that you already done.
+
+473
+00:36:52,280 --> 00:36:55,460
+But the issue will close only when your changes are merged
+
+474
+00:36:55,460 --> 00:36:58,100
+to the main branch.
+
+475
+00:36:58,740 --> 00:37:00,300
+Even you mentioned it in the commits,
+
+476
+00:37:00,580 --> 00:37:04,380
+that issue on the GitHub repository will be staying
+
+477
+00:37:04,380 --> 00:37:10,000
+until it is merged via pull request.
+
+478
+00:37:10,440 --> 00:37:14,500
+So if you forget to refer the issue on commit message,
+
+479
+00:37:14,640 --> 00:37:16,040
+you can do it on the pull request.
+
+480
+00:37:16,300 --> 00:37:19,320
+So it's the same effect.
+
+481
+00:37:19,700 --> 00:37:21,120
+Yeah, because sometimes I forget
+
+482
+00:37:21,120 --> 00:37:22,880
+or I could have lots of commits
+
+483
+00:37:22,880 --> 00:37:26,020
+and none of them solves it individually,
+
+484
+00:37:26,020 --> 00:37:28,320
+but all of them solve it as a combined sum.
+
+485
+00:37:29,140 --> 00:37:30,580
+So if I forget, I can do it here.
+
+486
+00:37:32,120 --> 00:37:33,260
+If I forget it here,
+
+487
+00:37:33,260 --> 00:37:41,340
+can there is another way to do this uh under development i think i can i can do that once
+
+488
+00:37:41,340 --> 00:37:47,900
+it's open should i create the pull request like open it up yeah could you uh could you show that
+
+489
+00:37:47,900 --> 00:37:55,260
+this that um drop down and just before you create there is a drop down tab yes
+
+490
+00:37:57,900 --> 00:38:02,300
+there's the draft i think we have an example for a draft one i can show another one where it's
+
+491
+00:38:02,300 --> 00:38:04,400
+but here I can choose
+
+492
+00:38:04,400 --> 00:38:05,620
+so I will create
+
+493
+00:38:05,620 --> 00:38:08,480
+the pull request but in a second one
+
+494
+00:38:08,480 --> 00:38:09,680
+I will create the draft
+
+495
+00:38:09,680 --> 00:38:14,480
+and once you
+
+496
+00:38:14,480 --> 00:38:15,080
+open it up
+
+497
+00:38:15,080 --> 00:38:18,380
+you can also link it here
+
+498
+00:38:18,380 --> 00:38:20,380
+on development, you can link the pull request to
+
+499
+00:38:20,380 --> 00:38:20,720
+an issue
+
+500
+00:38:20,720 --> 00:38:24,520
+and even if you completely forget
+
+501
+00:38:24,520 --> 00:38:26,420
+it, it's not a big deal, we can also show
+
+502
+00:38:26,420 --> 00:38:28,280
+later what I do if I forgot
+
+503
+00:38:28,280 --> 00:38:29,700
+to do any of these
+
+504
+00:38:29,700 --> 00:38:33,320
+now
+
+505
+00:38:33,320 --> 00:38:35,940
+this is still not merged
+
+506
+00:38:35,940 --> 00:38:36,980
+it's still not on main
+
+507
+00:38:36,980 --> 00:38:38,900
+it's just an open pull request
+
+508
+00:38:38,900 --> 00:38:41,880
+and here
+
+509
+00:38:41,880 --> 00:38:43,940
+normally I shouldn't review my own one
+
+510
+00:38:43,940 --> 00:38:45,040
+so here normally
+
+511
+00:38:45,040 --> 00:38:47,620
+normally this would be
+
+512
+00:38:47,620 --> 00:38:49,940
+somebody else and in our
+
+513
+00:38:49,940 --> 00:38:51,860
+exercise repository feel
+
+514
+00:38:51,860 --> 00:38:53,900
+free to review somebody else's
+
+515
+00:38:53,900 --> 00:38:55,000
+pull request
+
+516
+00:38:55,000 --> 00:39:04,540
+and so i will now not not click merge but maybe somebody else can because i really like that
+
+517
+00:39:04,540 --> 00:39:11,780
+if somebody else reviews if use my changes not me myself and also if someone was discussing
+
+518
+00:39:11,780 --> 00:39:20,420
+these issues uh the issue uh on this um issue or the issue that refer you can suggest a reviewer
+
+519
+00:39:20,420 --> 00:39:24,660
+there that if you know that you were discussing with your colleague and you would like your
+
+520
+00:39:24,660 --> 00:39:31,200
+colleague to look into this yeah so if i know somebody who would be really good to review this
+
+521
+00:39:31,200 --> 00:39:39,040
+i can ask here and here somebody merged thanks a lot um you can also ask for somebody to review
+
+522
+00:39:39,040 --> 00:39:46,820
+here on the comment and mention with an at mention and is it safe now to delete the branch yes
+
+523
+00:39:46,820 --> 00:39:52,960
+because it has been merged if i delete the branch i don't delete commits i only delete the sticky
+
+524
+00:39:52,960 --> 00:40:01,460
+out, this is totally safe to do. We promised that we would look at this other one as a draft.
+
+525
+00:40:01,460 --> 00:40:12,840
+So I had some vegan pumpkin pie, but it's not complete. The first step is to remove the eggs,
+
+526
+00:40:12,940 --> 00:40:19,100
+but I need to replace it probably by something. So what you want to sometimes do is open as a
+
+527
+00:40:19,100 --> 00:40:27,960
+draft pull request and a draft pull request cannot be merged so nobody can click here
+
+528
+00:40:27,960 --> 00:40:33,980
+this is not an active button you cannot merge it it's not meant to be merged it's a draft
+
+529
+00:40:33,980 --> 00:40:41,260
+but it's a nice way for me to inform all of you that um this is something i'm working on could be
+
+530
+00:40:41,260 --> 00:40:46,860
+just for your information it could also be a way to collect feedback maybe i don't know how to
+
+531
+00:40:46,860 --> 00:40:53,480
+complete it or maybe somebody has experience with vegan recipes and i can ask for feedback and then
+
+532
+00:40:53,480 --> 00:40:59,880
+continue on the pull request in the next exercise we will show you how you can make changes to a
+
+533
+00:40:59,880 --> 00:41:04,120
+pull request that is open so if i want to make changes i don't have to close it and open a new
+
+534
+00:41:04,120 --> 00:41:10,460
+one we will practice that in the next step so that's a draft pull request and only once we
+
+535
+00:41:10,460 --> 00:41:19,060
+are ready then i can make it ready for review but we are not ready yet and we wanted to show one
+
+536
+00:41:19,060 --> 00:41:26,440
+more thing and that because somebody asked about tests because some we have sneakily put in a
+
+537
+00:41:26,440 --> 00:41:33,480
+script that runs automated tests and this was only to to show you that this is possible
+
+538
+00:41:33,480 --> 00:41:40,060
+we will go in depth next week where we discuss automated testing at this point we only wanted
+
+539
+00:41:40,060 --> 00:41:45,900
+to know that it is possible to do to couple testing with pull requests so that you can have
+
+540
+00:41:45,900 --> 00:41:51,580
+some checks automatically running and the person reviewing can be then confident that the code is
+
+541
+00:41:51,580 --> 00:41:56,860
+still continue to work continuing to work and i wanted to show this is some unfinished work and
+
+542
+00:41:56,860 --> 00:42:02,220
+this will probably break the test i wanted just to show you how that looks and what how you can
+
+543
+00:42:02,220 --> 00:42:11,420
+then look about what happened so i will open this not draft but and if i open it
+
+544
+00:42:14,140 --> 00:42:23,260
+it's unfinished uh now some checks are running so how this really works next week
+
+545
+00:42:23,260 --> 00:42:34,760
+Indeed, they are failing. So let's not merge this. Let's not merge this yet. And how can
+
+546
+00:42:34,760 --> 00:42:39,680
+I even make sure that this doesn't get merged? Well, I can turn it into a draft. How do I
+
+547
+00:42:39,680 --> 00:43:01,000
+I do that. Edit. Somewhere there was a way to make it a draft pull request. Convert to
+
+548
+00:43:01,000 --> 00:43:08,980
+draft. Here we go. I can convert it to draft. If I realize there is a mistake, it's unfinished,
+
+549
+00:43:08,980 --> 00:43:15,180
+this way i can i can be sure that this will not be merged accidentally but what i wanted
+
+550
+00:43:15,180 --> 00:43:21,580
+to show you is that okay something failed what failed and why you can inspect this i can click
+
+551
+00:43:21,580 --> 00:43:30,500
+on that and this is a silly test that we set up which will in in this case it looks it checks
+
+552
+00:43:30,500 --> 00:43:34,200
+whether the recipe contains
+
+553
+00:43:34,200 --> 00:43:36,640
+dash dash ingredients
+
+554
+00:43:36,640 --> 00:43:37,900
+and dash dash instructions.
+
+555
+00:43:38,860 --> 00:43:40,280
+So if your recipe fails,
+
+556
+00:43:40,380 --> 00:43:41,060
+it's not your fault.
+
+557
+00:43:41,200 --> 00:43:42,380
+We didn't explain this.
+
+558
+00:43:44,200 --> 00:43:44,780
+And next week,
+
+559
+00:43:44,800 --> 00:43:45,740
+we will learn more about
+
+560
+00:43:45,740 --> 00:43:46,860
+how does this work?
+
+561
+00:43:46,940 --> 00:43:47,780
+How does this part work?
+
+562
+00:43:47,840 --> 00:43:50,780
+How can you run tests
+
+563
+00:43:50,780 --> 00:43:51,680
+and build documentation
+
+564
+00:43:51,680 --> 00:43:55,780
+automatically on any commit?
+
+565
+00:44:00,500 --> 00:44:07,900
+So why, or maybe just a question before we go into the next thing, why do we put so much
+
+566
+00:44:07,900 --> 00:44:11,480
+value on pull requests and code review?
+
+567
+00:44:11,480 --> 00:44:14,440
+Is this, is this for gatekeeping?
+
+568
+00:44:14,440 --> 00:44:16,440
+No.
+
+569
+00:44:16,440 --> 00:44:18,880
+So what's the, what's the value of it?
+
+570
+00:44:18,880 --> 00:44:25,100
+It's a couple of more steps, but so what, what's the value of doing this instead of
+
+571
+00:44:25,100 --> 00:44:27,240
+Just everybody pushing directly to main.
+
+572
+00:44:31,340 --> 00:44:36,080
+To me, one of the main things is we have a good discussion
+
+573
+00:44:36,080 --> 00:44:39,560
+and then together there will be always something to add on it
+
+574
+00:44:39,560 --> 00:44:42,520
+when someone else is also going to review things and all.
+
+575
+00:44:43,120 --> 00:44:45,400
+And I don't break things.
+
+576
+00:44:46,820 --> 00:44:47,000
+Yeah.
+
+577
+00:44:47,300 --> 00:44:50,140
+So it's really about learning, mostly.
+
+578
+00:44:50,140 --> 00:44:51,360
+It's not about gatekeeping.
+
+579
+00:44:51,360 --> 00:44:59,480
+the person reviewing doesn't have to be the senior professor it's about learning from each other i
+
+580
+00:44:59,480 --> 00:45:03,960
+i haven't i learn about what's going on in the project what do other people work on
+
+581
+00:45:03,960 --> 00:45:09,800
+and i can also learn if i look at these pull requests i can often learn about oh that's an
+
+582
+00:45:09,800 --> 00:45:13,540
+interesting coding trick i didn't know that this was possible so you can you can improve your
+
+583
+00:45:13,540 --> 00:45:19,000
+programming by seeing either from the person sending the pull request or from the person
+
+584
+00:45:19,000 --> 00:45:26,560
+reviewing it also there is if if you know something else uh more uh to this pull request you can also
+
+585
+00:45:26,560 --> 00:45:31,740
+add it when you review these things yeah and that's what we that's exactly what we want to do
+
+586
+00:45:31,740 --> 00:45:36,420
+now in the next step so the plan we have now a little bit over half an hour left we will introduce
+
+587
+00:45:36,420 --> 00:45:43,780
+an exercise and we will then send you again into an exercise session and this is here we will make
+
+588
+00:45:43,780 --> 00:45:45,800
+it we will stay in the same
+
+589
+00:45:45,800 --> 00:45:46,200
+repository
+
+590
+00:45:46,200 --> 00:45:48,820
+still in the recipe book
+
+591
+00:45:48,820 --> 00:45:51,780
+but here we want to practice
+
+592
+00:45:51,780 --> 00:45:53,760
+something really really useful in real life
+
+593
+00:45:53,760 --> 00:45:54,500
+and that is
+
+594
+00:45:54,500 --> 00:45:58,860
+as a
+
+595
+00:45:58,860 --> 00:46:00,140
+reviewer
+
+596
+00:46:00,140 --> 00:46:03,600
+we want you to know how to
+
+597
+00:46:03,600 --> 00:46:04,380
+ask for changes
+
+598
+00:46:04,380 --> 00:46:07,280
+in a pull request
+
+599
+00:46:07,280 --> 00:46:09,720
+also
+
+600
+00:46:09,720 --> 00:46:11,820
+sometimes you see a small mistake
+
+601
+00:46:11,820 --> 00:46:13,640
+a tiny little typo
+
+602
+00:46:13,640 --> 00:46:18,880
+and then you can even as a reviewer you can suggest a change to a pull request
+
+603
+00:46:18,880 --> 00:46:27,860
+and we will practice this and below on the page you see screenshots and examples and some ideas
+
+604
+00:46:27,860 --> 00:46:36,740
+of what you can what you can try it on another really important one is that if i open a pull
+
+605
+00:46:36,740 --> 00:46:43,940
+request and i should make some changes to it i don't need to close it and create a new one
+
+606
+00:46:43,940 --> 00:46:49,960
+it's not necessary you can you can modify an open pull request
+
+607
+00:46:49,960 --> 00:46:57,000
+and how do we how do we do that and i'm not sure we have really
+
+608
+00:46:57,000 --> 00:47:05,580
+uh explained it yet so if i look at the pull request and here i will just open up mine
+
+609
+00:47:05,580 --> 00:47:11,540
+this one maybe
+
+610
+00:47:11,540 --> 00:47:14,260
+a pull request
+
+611
+00:47:14,260 --> 00:47:17,800
+is always from a branch
+
+612
+00:47:17,800 --> 00:47:19,100
+to a branch
+
+613
+00:47:19,100 --> 00:47:22,320
+it's not from a commit to a branch
+
+614
+00:47:22,320 --> 00:47:25,840
+which means that if I add new commits
+
+615
+00:47:25,840 --> 00:47:27,560
+to the source branch
+
+616
+00:47:27,560 --> 00:47:29,660
+they will get added to the pull request
+
+617
+00:47:29,660 --> 00:47:32,240
+so now we have a mechanism to suggest changes
+
+618
+00:47:32,240 --> 00:47:33,500
+or to implement changes
+
+619
+00:47:33,500 --> 00:47:40,660
+so to continue on this vegan recipe i don't have to close it and create a new one i will i will
+
+620
+00:47:40,660 --> 00:47:46,540
+add new commits to my rather one slash vegan pumpkin pie branch and they will get added to
+
+621
+00:47:46,540 --> 00:47:54,580
+the pull request yeah could you show that uh maybe before we go for a exercise uh how do you do that
+
+622
+00:47:54,580 --> 00:47:59,580
+you go to the branch yeah let's maybe i can do it directly here on the on the web
+
+623
+00:47:59,580 --> 00:48:09,560
+so i go i go to the branch and i make sure that i'm on i'm on the branch and here i can make
+
+624
+00:48:09,560 --> 00:48:18,620
+changes where was that this was a dessert pumpkin pie and let's make changes here i will create a
+
+625
+00:48:18,620 --> 00:48:24,140
+commit. I really don't know what is a good replacement for x for the vegan.
+
+626
+00:48:28,620 --> 00:48:30,060
+Good replacement here needed.
+
+627
+00:48:35,340 --> 00:48:37,500
+So still not finished but I will commit it.
+
+628
+00:48:40,700 --> 00:48:47,740
+Let's choose a better commit message. Add it a placeholder for x.
+
+629
+00:48:48,620 --> 00:48:52,020
+I want to commit it to my
+
+630
+00:48:52,020 --> 00:48:54,220
+Sadovan Vegan Pumpkin Pie branch.
+
+631
+00:48:54,420 --> 00:48:54,860
+Yes.
+
+632
+00:48:55,900 --> 00:48:57,760
+I have a new commit now on that branch.
+
+633
+00:48:58,900 --> 00:49:00,640
+And if I now look back at my pull request,
+
+634
+00:49:03,020 --> 00:49:04,340
+here it is.
+
+635
+00:49:05,120 --> 00:49:05,500
+Aha!
+
+636
+00:49:06,460 --> 00:49:08,220
+The change got added to the pull request.
+
+637
+00:49:08,820 --> 00:49:10,920
+No need to close it and open a new one.
+
+638
+00:49:12,300 --> 00:49:14,120
+If I now look at files changed,
+
+639
+00:49:16,300 --> 00:49:17,600
+both are there.
+
+640
+00:49:18,620 --> 00:49:21,780
+and I'm not sure we showed
+
+641
+00:49:21,780 --> 00:49:24,500
+because I think it's also fun to see
+
+642
+00:49:24,500 --> 00:49:26,040
+just to see this collaborativeness
+
+643
+00:49:26,040 --> 00:49:28,080
+on insights
+
+644
+00:49:28,080 --> 00:49:30,820
+and network
+
+645
+00:49:30,820 --> 00:49:33,340
+I think it's really fun to see
+
+646
+00:49:33,340 --> 00:49:35,340
+all the changes that we made
+
+647
+00:49:35,340 --> 00:49:38,120
+this needs now a few seconds to load
+
+648
+00:49:38,120 --> 00:49:41,320
+but we will see all the comments that we did
+
+649
+00:49:41,320 --> 00:49:42,000
+and all the branches
+
+650
+00:49:42,000 --> 00:49:44,820
+and we will see how they nicely merge towards the
+
+651
+00:49:44,820 --> 00:49:51,700
+so here are all the changes made in this exercise some of the changes are merged some of them are
+
+652
+00:49:51,700 --> 00:49:57,320
+not merged yet the the little black sticky notes are the branch names
+
+653
+00:49:57,320 --> 00:50:04,520
+and many of these changes got already merged here into the main branch and here they are
+
+654
+00:50:04,520 --> 00:50:11,760
+so this is beautiful and now exercise so here
+
+655
+00:50:11,760 --> 00:50:20,960
+here are the exercise tasks again below you will find help and discussion and
+
+656
+00:50:20,960 --> 00:50:26,660
+screenshots use them this is not cheating it's the it's the part of the exercise so go through them
+
+657
+00:50:26,660 --> 00:50:33,540
+you will a lot of this will feel familiar again we create a new branch
+
+658
+00:50:33,540 --> 00:50:38,400
+for anything new i want to do a new branch it's really a good
+
+659
+00:50:38,400 --> 00:50:41,520
+it's a good reflex
+
+660
+00:50:41,520 --> 00:50:44,840
+but
+
+661
+00:50:44,840 --> 00:50:47,600
+in there
+
+662
+00:50:47,600 --> 00:50:48,400
+try to introduce
+
+663
+00:50:48,400 --> 00:50:51,480
+a small mistake, maybe a little typo
+
+664
+00:50:51,480 --> 00:50:53,580
+you can also try to introduce
+
+665
+00:50:53,580 --> 00:50:54,320
+a larger mistake
+
+666
+00:50:54,320 --> 00:50:57,340
+open a pull request and then
+
+667
+00:50:57,340 --> 00:50:59,640
+then
+
+668
+00:50:59,640 --> 00:51:01,120
+switch your head, switch your role
+
+669
+00:51:01,120 --> 00:51:03,140
+as a reviewer
+
+670
+00:51:03,140 --> 00:51:05,300
+try to practice
+
+671
+00:51:05,300 --> 00:51:07,440
+suggesting changes
+
+672
+00:51:07,440 --> 00:51:12,780
+to somebody else's pull request there is a there is a hint on how to do that
+
+673
+00:51:12,780 --> 00:51:20,700
+and as a submitter practice how do i implement changes to um to open pull requests without
+
+674
+00:51:20,700 --> 00:51:26,260
+closing and opening a new one that's the goal
+
+675
+00:51:26,260 --> 00:51:31,800
+and uh how much time do we give
+
+676
+00:51:31,800 --> 00:51:41,460
+25 minutes which will then bring us back briefly before the hour we will do a super quick
+
+677
+00:51:41,460 --> 00:51:48,420
+just summary send you into a longer break and then after the longer break we will have another
+
+678
+00:51:48,420 --> 00:51:53,760
+one and a half hours where we can then rediscuss this revisit this and then we will take it to yet
+
+679
+00:51:53,760 --> 00:52:01,300
+another level after the longer break but the next 25 minutes they are for this exercise you will
+
+680
+00:52:01,300 --> 00:52:10,460
+find if you are unsure where this exercise is on the bottom of the of the notes we will post
+
+681
+00:52:10,460 --> 00:52:19,500
+a link to this exercise and what is also nice for us if you can let us know how this is going
+
+682
+00:52:19,500 --> 00:52:27,520
+we don't really see you on stream um let us know is this going well is this too much time
+
+683
+00:52:27,520 --> 00:52:35,340
+too little time too unclear so a little feedback of how this is going for you keep the questions
+
+684
+00:52:35,340 --> 00:52:45,160
+coming anything else i forgot to say no not really but we please ask questions if you have
+
+685
+00:52:45,160 --> 00:52:54,780
+stuck somewhere yes and we'll be back in 25 minutes yeah see you in 25 minutes good luck
+
+686
+00:52:54,780 --> 00:52:58,200
+with the exercise see you then see you
+
+687
+00:53:01,000 --> 00:53:04,240
+and we are back from the exercise
+
+688
+00:53:04,240 --> 00:53:07,660
+and this will be just a one minute summary
+
+689
+00:53:07,660 --> 00:53:10,000
+so first of all I wanted to say
+
+690
+00:53:10,000 --> 00:53:11,700
+thanks so much for all the
+
+691
+00:53:11,700 --> 00:53:18,900
+all requests and reviews this works amazingly well yeah also on the non-recorder repository
+
+692
+00:53:18,900 --> 00:53:25,120
+as well we are seeing that we will do merge later today but i'm really happy that you are
+
+693
+00:53:25,120 --> 00:53:31,600
+collaborating quite well and interacting with each other it's really cool i got 170 emails
+
+694
+00:53:31,600 --> 00:53:35,860
+because guess who forgot to unwatch your repository but that's nice i mean oh really
+
+695
+00:53:35,860 --> 00:53:37,800
+seeing this interaction live.
+
+696
+00:53:38,800 --> 00:53:39,840
+Many good questions.
+
+697
+00:53:40,940 --> 00:53:41,940
+What we will do
+
+698
+00:53:41,940 --> 00:53:44,120
+after the break, we will now take a one-hour
+
+699
+00:53:44,120 --> 00:53:46,060
+break. After the break, we will summarize the
+
+700
+00:53:46,060 --> 00:53:48,040
+session, so don't worry, we will summarize, we will highlight
+
+701
+00:53:48,040 --> 00:53:48,680
+some questions.
+
+702
+00:53:50,460 --> 00:53:52,080
+The one thing that
+
+703
+00:53:52,080 --> 00:53:53,640
+we will do after the break is
+
+704
+00:53:53,640 --> 00:53:55,480
+take this to even the next level
+
+705
+00:53:55,480 --> 00:53:57,660
+and practice on
+
+706
+00:53:57,660 --> 00:53:59,140
+how to
+
+707
+00:53:59,140 --> 00:54:02,120
+suggest changes, how to make
+
+708
+00:54:02,120 --> 00:54:03,460
+a change proposal per request
+
+709
+00:54:03,460 --> 00:54:10,940
+to a repository that is maybe not yours and it doesn't have to be a big open source project but
+
+710
+00:54:10,940 --> 00:54:17,180
+it could be just somebody else's project that maybe does almost what you have in mind but
+
+711
+00:54:17,180 --> 00:54:21,540
+and you have some improvements or some changes that you want to do and you want to
+
+712
+00:54:21,540 --> 00:54:27,200
+have a mechanism to to suggest these changes so collaborating
+
+713
+00:54:27,200 --> 00:54:34,900
+across repositories and we have now all the tools for this and so that will be then after the break
+
+714
+00:54:34,900 --> 00:54:40,580
+and then we will have a discussion session where we just want to discuss about many of the concepts
+
+715
+00:54:40,580 --> 00:54:45,620
+that came up and discuss like why do we do this and what is the what is the point of
+
+716
+00:54:45,620 --> 00:54:50,160
+all the things that we showed and what is a good balance for real life work
+
+717
+00:54:50,160 --> 00:54:57,060
+yes and in other words that we we were collaborating together where you have the
+
+718
+00:54:57,060 --> 00:55:03,760
+right access the next level is after the break would be that you collaborate you
+
+719
+00:55:03,760 --> 00:55:08,440
+contribute to a public repository where you are not having right access
+
+720
+00:55:08,440 --> 00:55:13,420
+super looking forward see you in one hour we will
+
+721
+00:55:13,420 --> 00:55:16,860
+also look at questions and answer those that are not answered yet
+
+722
+00:55:16,860 --> 00:55:23,100
+looking forward to more see you in one hour back here on stream and thank you bye
+
+723
+00:55:26,000 --> 00:55:36,180
+my side. Why is that? Oh, now it's Yeah, okay, good. Now it looks good. Yeah, welcome back from
+
+724
+00:55:36,180 --> 00:55:42,560
+the break. We have one and a half hours left. And let's get started. Let's settle back in into
+
+725
+00:55:42,560 --> 00:55:50,160
+GitHub. So we'll come back and we will give a short summary about what we did before the lunch
+
+726
+00:55:50,160 --> 00:55:56,400
+break yes so first we will summarize before we do something else i will just remove the
+
+727
+00:55:56,400 --> 00:55:58,700
+the break information here
+
+728
+00:55:58,700 --> 00:56:05,640
+so let's settle in with a little summary of the previous exercise
+
+729
+00:56:05,640 --> 00:56:12,460
+we really appreciate all the questions that came in and some of the things we will show here on
+
+730
+00:56:12,460 --> 00:56:19,660
+stream where should i start should i look at there was a question about what is this test
+
+731
+00:56:19,660 --> 00:56:25,500
+checks what is that should we look at that or should we look at should i try to suggest some
+
+732
+00:56:25,500 --> 00:56:33,040
+changes to your pull request [name] let us look at the test and briefly and people can learn a lot
+
+733
+00:56:33,040 --> 00:56:38,760
+about it next week but it would be nice why we are having these checks you know yeah
+
+734
+00:56:38,760 --> 00:56:49,260
+so up here under my mouse there is a green check mark and you have maybe also seen that on so if i
+
+735
+00:56:49,260 --> 00:56:54,620
+on the pull requests a couple of them have green check marks couple of them have a red cross
+
+736
+00:56:57,580 --> 00:57:03,180
+so what's going on there uh we we added the script here which
+
+737
+00:57:05,580 --> 00:57:11,980
+we imagine that we already run a test in our case it's it's a little bit of a silly thing because we
+
+738
+00:57:11,980 --> 00:57:17,420
+we verify whether the recipe has an instructions section and an ingredient section
+
+739
+00:57:19,260 --> 00:57:21,440
+So if you want, you can have a look at this.
+
+740
+00:57:21,520 --> 00:57:22,280
+This is written in Python.
+
+741
+00:57:23,060 --> 00:57:25,320
+It doesn't matter now what is really happening inside.
+
+742
+00:57:25,420 --> 00:57:27,980
+We wanted you to just know that this is a possibility.
+
+743
+00:57:29,520 --> 00:57:33,840
+Then some people asked, so how does GitHub run it?
+
+744
+00:57:34,000 --> 00:57:35,460
+How does GitHub know that it should run?
+
+745
+00:57:36,260 --> 00:57:40,300
+This is happening here in this GitHub workflows.
+
+746
+00:57:42,360 --> 00:57:44,120
+And we will not go through it in detail.
+
+747
+00:57:44,120 --> 00:57:48,100
+but we have here some instructions
+
+748
+00:57:48,100 --> 00:57:50,160
+where we tell GitHub that
+
+749
+00:57:50,160 --> 00:57:53,060
+on every pull request that is merged
+
+750
+00:57:53,060 --> 00:57:56,840
+to the main branch it should do certain things
+
+751
+00:57:56,840 --> 00:58:00,240
+and next week we will go in depth
+
+752
+00:58:00,240 --> 00:58:02,500
+next week when we talk about automated testing
+
+753
+00:58:02,500 --> 00:58:03,880
+and documentation we will use this
+
+754
+00:58:03,880 --> 00:58:06,520
+so this can be used to automatically build documentation
+
+755
+00:58:06,520 --> 00:58:08,420
+or automatically run a set of tests
+
+756
+00:58:08,420 --> 00:58:11,960
+and we wanted you to know that this is possible
+
+757
+00:58:11,960 --> 00:58:14,000
+so here it's not a catastrophe
+
+758
+00:58:14,000 --> 00:58:16,220
+if some of them fail
+
+759
+00:58:16,220 --> 00:58:18,380
+it's not your fault and it's also not a problem
+
+760
+00:58:18,380 --> 00:58:20,340
+if you merged some pull request
+
+761
+00:58:20,340 --> 00:58:22,140
+that made everything fail for everybody
+
+762
+00:58:22,140 --> 00:58:22,840
+not a problem
+
+763
+00:58:22,840 --> 00:58:26,200
+that's the nice thing here about this exercise
+
+764
+00:58:26,200 --> 00:58:28,220
+repository that it's good to make
+
+765
+00:58:28,220 --> 00:58:30,160
+these to just
+
+766
+00:58:30,160 --> 00:58:30,560
+experiment
+
+767
+00:58:30,560 --> 00:58:33,400
+so more about that next week
+
+768
+00:58:33,400 --> 00:58:36,380
+this is just a little like teaser preview
+
+769
+00:58:36,380 --> 00:58:39,320
+oh [name]
+
+770
+00:58:39,320 --> 00:58:42,300
+let's go and try to
+
+771
+00:58:42,300 --> 00:58:47,740
+suggest some changes on one of the pull requests to also edit something on someone else branch
+
+772
+00:58:48,460 --> 00:58:54,540
+maybe this is still like previous exercise um so we i will go
+
+773
+00:58:57,420 --> 00:59:04,780
+the pull request number 34 this is the one that [name] opened this is a recipe for mango lassi
+
+774
+00:59:04,780 --> 00:59:13,180
+it's work in progress it's a draft pull request i cannot merge it yet
+
+775
+00:59:13,180 --> 00:59:21,560
+but i can give feedback i can help out so there were two things that we we wanted you to know
+
+776
+00:59:21,560 --> 00:59:30,840
+that exist one is for me the ability to comment on the code and also suggest small changes directly
+
+777
+00:59:30,840 --> 00:59:37,000
+here so i could so instead of asking you to implement a small change i can suggest it to
+
+778
+00:59:37,000 --> 00:59:41,400
+you so i will i want to show you how that works if i click here on files changed
+
+779
+00:59:41,400 --> 00:59:45,180
+then i see the code
+
+780
+00:59:45,180 --> 00:59:50,520
+and here i can comment on the code
+
+781
+00:59:50,520 --> 00:59:58,820
+if i click on the plus you can even comment on a whole range but now just to keep it simple
+
+782
+01:00:00,840 --> 01:00:06,000
+Now, just to keep it simple, I will add a comment.
+
+783
+01:00:07,000 --> 01:00:09,520
+So here on this code line, I could add some comments.
+
+784
+01:00:11,060 --> 01:00:15,840
+But there is this plus minus here where I can add a suggestion.
+
+785
+01:00:19,960 --> 01:00:23,080
+Instruction, mix well.
+
+786
+01:00:30,840 --> 01:00:40,060
+So this plus minus symbol, I can, and if I now click on add single comment, it's interesting
+
+787
+01:00:40,060 --> 01:00:52,020
+because now in our pull request conversation, it will create a suggestion which we can commit.
+
+788
+01:00:52,720 --> 01:00:58,340
+So as soon as I click here, typically it would be [name] clicking here or somebody else.
+
+789
+01:00:58,340 --> 01:01:00,060
+if they like my suggestion
+
+790
+01:01:00,060 --> 01:01:02,960
+so as soon as one of you
+
+791
+01:01:02,960 --> 01:01:04,660
+who has right access clicks on this thing
+
+792
+01:01:04,660 --> 01:01:05,840
+which I will now
+
+793
+01:01:05,840 --> 01:01:11,000
+it will create a new
+
+794
+01:01:11,000 --> 01:01:13,060
+commit and I can even change
+
+795
+01:01:13,060 --> 01:01:13,800
+the commit message
+
+796
+01:01:13,800 --> 01:01:23,000
+so this is a nice way for me to suggest
+
+797
+01:01:23,000 --> 01:01:24,700
+make a suggestion
+
+798
+01:01:24,700 --> 01:01:27,060
+and I make it so much easier
+
+799
+01:01:27,060 --> 01:01:33,960
+and for [name] to accept this rather than asking [name] to
+
+800
+01:01:33,960 --> 01:01:34,560
+implement it.
+
+801
+01:01:35,040 --> 01:01:41,040
+Yeah. So it is [name] who is changing on my branch. So this
+
+802
+01:01:41,040 --> 01:01:43,680
+is this is possible when you have this pull request.
+
+803
+01:01:44,100 --> 01:01:48,540
+Yeah. So this was the tiny suggestion, I want to make it
+
+804
+01:01:48,540 --> 01:01:50,760
+maybe a little bit more explicit. What if I want to make
+
+805
+01:01:50,760 --> 01:01:58,040
+bigger change here if i want to we imagine that we are in the same research group
+
+806
+01:02:00,040 --> 01:02:07,800
+um if i want to help you out with this pull request i can also go directly on your branch
+
+807
+01:02:09,720 --> 01:02:13,720
+what i will i just want to remember is which file is it that is changed so i can find it
+
+808
+01:02:13,720 --> 01:02:21,540
+And the file is called Desserts Mangolassi.
+
+809
+01:02:21,540 --> 01:02:22,540
+You could see that down.
+
+810
+01:02:22,540 --> 01:02:24,540
+Where do I see it?
+
+811
+01:02:24,540 --> 01:02:25,540
+Oh, here.
+
+812
+01:02:25,540 --> 01:02:26,540
+Yes.
+
+813
+01:02:26,540 --> 01:02:27,540
+Here I see it.
+
+814
+01:02:27,540 --> 01:02:28,540
+So good.
+
+815
+01:02:28,540 --> 01:02:30,480
+So I just want to make a note of this.
+
+816
+01:02:30,480 --> 01:02:37,080
+Now I'm on your branch, Desserts Mangolassi.
+
+817
+01:02:37,080 --> 01:02:39,260
+And I can also make bigger.
+
+818
+01:02:39,260 --> 01:02:45,700
+So the thing that we want to show is that anybody with right permissions to the repository
+
+819
+01:02:45,700 --> 01:02:49,140
+can also commit changes to other people's branches.
+
+820
+01:02:49,140 --> 01:02:51,140
+It's not a problem.
+
+821
+01:02:51,140 --> 01:02:57,660
+As long as you have pushed the branch to the GitHub repository.
+
+822
+01:02:57,660 --> 01:02:59,760
+So what are good ingredients for mango lassi?
+
+823
+01:02:59,760 --> 01:03:01,600
+Mango for sure.
+
+824
+01:03:01,600 --> 01:03:06,380
+And then yogurt, milk.
+
+825
+01:03:06,380 --> 01:03:07,380
+Maybe that's it.
+
+826
+01:03:07,380 --> 01:03:08,380
+Yeah.
+
+827
+01:03:08,380 --> 01:03:24,520
+tubes. So that's pretty good. I will give it a better commit message. This is the right
+
+828
+01:03:24,520 --> 01:03:35,980
+branch. Commit. And if I go back to your pull request, we will see it there. This is the
+
+829
+01:03:35,980 --> 01:03:42,660
+commit that i just did and we have a way to make improvements until we are happy with it and once
+
+830
+01:03:42,660 --> 01:03:51,800
+we are happy with it then we mark it somewhere as ready for review i guess maybe we are ready
+
+831
+01:03:51,800 --> 01:03:57,820
+for review and as soon as i click ready for review then then it becomes mergeable
+
+832
+01:03:57,820 --> 01:04:02,860
+and both in this
+
+833
+01:04:02,860 --> 01:04:04,720
+in this
+
+834
+01:04:04,720 --> 01:04:06,740
+exercise repository but also in the other one
+
+835
+01:04:06,740 --> 01:04:07,920
+really
+
+836
+01:04:07,920 --> 01:04:10,640
+also practice
+
+837
+01:04:10,640 --> 01:04:12,940
+merging somebody else's pull requests
+
+838
+01:04:12,940 --> 01:04:14,640
+so you can really go in and merge them
+
+839
+01:04:14,640 --> 01:04:17,820
+don't be afraid of
+
+840
+01:04:17,820 --> 01:04:20,260
+nothing bad can happen
+
+841
+01:04:20,260 --> 01:04:22,560
+so go and practice also merging
+
+842
+01:04:22,560 --> 01:04:24,080
+yeah also those
+
+843
+01:04:24,080 --> 01:04:26,620
+working with the teams you can merge
+
+844
+01:04:26,620 --> 01:04:34,840
+each other's merge pull requests so you might hear merge requests in between because github
+
+845
+01:04:34,840 --> 01:04:42,140
+it is pull request and gitlab it is merge request so yeah it's the same yes exactly the same thing
+
+846
+01:04:42,140 --> 01:04:47,560
+two different names i think maybe the merge request is the better name it's more we are
+
+847
+01:04:47,560 --> 01:04:53,760
+really requesting to merge pull request is more the historical because this is how it's implemented
+
+848
+01:04:53,760 --> 01:04:54,300
+technically
+
+849
+01:04:54,300 --> 01:04:56,100
+yeah
+
+850
+01:04:56,100 --> 01:04:57,340
+I've been
+
+851
+01:04:57,340 --> 01:04:58,260
+there was
+
+852
+01:04:58,260 --> 01:04:58,900
+some discussion
+
+853
+01:04:58,900 --> 01:04:59,440
+long back
+
+854
+01:04:59,440 --> 01:05:00,260
+but what
+
+855
+01:05:00,260 --> 01:05:00,800
+is difference
+
+856
+01:05:00,800 --> 01:05:01,460
+between pull
+
+857
+01:05:01,460 --> 01:05:02,080
+and pull
+
+858
+01:05:02,080 --> 01:05:02,580
+request
+
+859
+01:05:02,580 --> 01:05:03,420
+pull is
+
+860
+01:05:03,420 --> 01:05:04,040
+you are
+
+861
+01:05:04,040 --> 01:05:04,920
+taking the
+
+862
+01:05:04,920 --> 01:05:05,300
+changes
+
+863
+01:05:05,300 --> 01:05:05,760
+locally
+
+864
+01:05:05,760 --> 01:05:07,060
+and then
+
+865
+01:05:07,060 --> 01:05:07,980
+pull request
+
+866
+01:05:07,980 --> 01:05:08,500
+is you
+
+867
+01:05:08,500 --> 01:05:09,020
+are asking
+
+868
+01:05:09,020 --> 01:05:09,820
+the owners
+
+869
+01:05:09,820 --> 01:05:10,480
+to
+
+870
+01:05:10,480 --> 01:05:13,320
+pull your
+
+871
+01:05:13,320 --> 01:05:13,780
+changes
+
+872
+01:05:13,780 --> 01:05:14,380
+to the
+
+873
+01:05:14,380 --> 01:05:14,860
+repository
+
+874
+01:05:14,860 --> 01:05:15,180
+that's
+
+875
+01:05:15,180 --> 01:05:15,500
+something
+
+876
+01:05:15,500 --> 01:05:16,460
+interesting
+
+877
+01:05:16,460 --> 01:05:17,980
+to know
+
+878
+01:05:17,980 --> 01:05:18,360
+if you
+
+879
+01:05:18,360 --> 01:05:18,900
+have pull
+
+880
+01:05:18,900 --> 01:05:19,320
+and pull
+
+881
+01:05:19,320 --> 01:05:19,620
+request
+
+882
+01:05:19,620 --> 01:05:20,160
+differences
+
+883
+01:05:20,160 --> 01:05:22,800
+we have
+
+884
+01:05:22,800 --> 01:05:23,200
+cat
+
+885
+01:05:23,200 --> 01:05:29,420
+yeah we were hoping for this so cat appearance and hopefully more
+
+886
+01:05:29,420 --> 01:05:35,160
+this is fun should we uh should we go to the next episode
+
+887
+01:05:35,160 --> 01:05:42,200
+yes i don't see many questions now but please feel free to ask more questions
+
+888
+01:05:42,200 --> 01:05:48,640
+so the next episode is here in the notes and i will navigate to it also
+
+889
+01:05:53,200 --> 01:06:04,100
+Before we go further with this exercise, [name], may I ask what is the importance of this exercise?
+
+890
+01:06:04,100 --> 01:06:08,940
+Why are we doing it?
+
+891
+01:06:08,940 --> 01:06:16,380
+Because we want to be able to not only collaborate within our repository, but also being able
+
+892
+01:06:16,380 --> 01:06:25,120
+to use these tools to contribute changes to and accept contributions from other people
+
+893
+01:06:25,120 --> 01:06:28,000
+when it's somebody else's repository.
+
+894
+01:06:29,320 --> 01:06:34,140
+So in other words, being able to contribute changes to maybe a tool that you use in your
+
+895
+01:06:34,140 --> 01:06:41,200
+work, it could be an open source project, you have an improvement, or you have an improvement
+
+896
+01:06:41,200 --> 01:06:45,000
+for the documentation, or you have a clarification, or you have a tutorial you want to contribute
+
+897
+01:06:45,000 --> 01:06:53,480
+to them. And we will see that how nicely this is implemented. And we will be able to do it
+
+898
+01:06:54,280 --> 01:07:02,280
+without even having to ask for right permissions. So many things will be similar, some things will
+
+899
+01:07:02,280 --> 01:07:07,320
+be new. But this is how we like to build things up step by step. So there will be few new elements,
+
+900
+01:07:07,320 --> 01:07:12,760
+but a lot of the mechanisms will be similar to the previous two exercises.
+
+901
+01:07:12,760 --> 01:07:17,540
+in this method you can contribute to any public repository
+
+902
+01:07:17,540 --> 01:07:22,220
+as long as you have a github account
+
+903
+01:07:22,220 --> 01:07:29,240
+so and it's really a lot of fun i think it feels really empowering like a really nice moment when
+
+904
+01:07:29,240 --> 01:07:32,780
+and it can be a small thing like a little typo in our documentation but
+
+905
+01:07:32,780 --> 01:07:39,040
+once if you contribute to somebody else's project and then it gets merged and then you are part of
+
+906
+01:07:39,040 --> 01:07:46,560
+it i think it's now like a nice empowering moment and also a good networking and you get to know
+
+907
+01:07:46,560 --> 01:07:55,260
+these people who works in this project and easy to communicate once you are in there yeah it can
+
+908
+01:07:55,260 --> 01:07:59,820
+be a way to start new collaborations like scientific collaborations that later lead to
+
+909
+01:07:59,820 --> 01:08:03,480
+to projects and papers
+
+910
+01:08:03,480 --> 01:08:16,040
+yes so let's see we will need we will now be in a different exercise repository which
+
+911
+01:08:16,040 --> 01:08:21,640
+will look very familiar it's still the recipe book but the address will be different
+
+912
+01:08:21,640 --> 01:08:29,180
+and again people have a choice maybe you are part of a team but then you need to create a
+
+913
+01:08:29,180 --> 01:08:34,800
+a different project different repository and we will explain why this is different
+
+914
+01:08:34,800 --> 01:08:42,620
+why why it is a different address and um if you follow on your own you can again collaborate with
+
+915
+01:08:42,620 --> 01:08:52,320
+us but now the address has changed it's working workflow exercise yeah so just since [name]
+
+916
+01:08:52,320 --> 01:08:58,120
+mentioned about changing the address so this is the same kind of repository but the changes you
+
+917
+01:08:58,120 --> 01:09:03,200
+have done earlier in the exercise that is in a different repository that will not be here when
+
+918
+01:09:03,200 --> 01:09:12,740
+you fork it it's precisely same template to make it maybe explicit so here i'm in this centralized
+
+919
+01:09:12,740 --> 01:09:19,640
+repository and i know that many of your nice pull requests didn't get merged yet but we
+
+920
+01:09:19,640 --> 01:09:23,300
+i will come back to it in the afternoon so later when i have some time we will go and
+
+921
+01:09:23,300 --> 01:09:30,080
+comment and follow up but now what i will do is i will navigate away from this
+
+922
+01:09:30,080 --> 01:09:36,800
+so in your exercise later which we will start around in 10 minutes you will navigate away from
+
+923
+01:09:36,800 --> 01:09:45,580
+this and you will be in a different place for the stream participants it's it will be forking
+
+924
+01:09:45,580 --> 01:09:53,400
+either this one if you don't mind that maybe your pull request shows up on stream and if you want
+
+925
+01:09:53,400 --> 01:09:59,020
+to make sure that it doesn't show up on stream you use this one so i will go in here it's a
+
+926
+01:09:59,020 --> 01:10:06,220
+now suddenly it's kind of a fresh recipe book it's still the same recipe book but now
+
+927
+01:10:06,220 --> 01:10:12,040
+we don't have any pull requests yet that's the goal of the exercise we don't have any issues yet
+
+928
+01:10:12,040 --> 01:10:19,840
+different address so that's important what is also different now is that
+
+929
+01:10:19,840 --> 01:10:25,680
+we are not adding you as a collaborator because that's the point of the exercise
+
+930
+01:10:25,680 --> 01:10:28,420
+to show that you don't have to be you don't have to have right permissions
+
+931
+01:10:28,420 --> 01:10:33,600
+so nobody needs to be added you don't need to exchange any only any usernames
+
+932
+01:10:33,600 --> 01:10:43,080
+but now this also means that you cannot merge so now there is somebody who is the maintainer
+
+933
+01:10:43,080 --> 01:10:49,860
+in for the stream that's [name] and me for your team that's one person from your team who is
+
+934
+01:10:49,860 --> 01:10:57,820
+the maintainer and everybody else can only read but not merge and that's fine
+
+935
+01:10:57,820 --> 01:11:07,120
+let us show how it will look like when you fork it maybe before we go for the break
+
+936
+01:11:07,120 --> 01:11:16,380
+exercise break yes so here what exactly so what everybody will do in the exercise will you will
+
+937
+01:11:16,380 --> 01:11:22,520
+make a fork and remind to remind what was the fork again it was it was a full copy
+
+938
+01:11:22,520 --> 01:11:30,800
+but it will stay on github so how do i create under your namespace under your username space
+
+939
+01:11:30,800 --> 01:11:35,360
+namespace may mean that your username but earlier it was under code refinery
+
+940
+01:11:35,360 --> 01:11:41,500
+when we did the collaborative where you have right access now it is under your namespace
+
+941
+01:11:41,500 --> 01:11:49,380
+so i will demonstrate how how to create a fork you can then practice that
+
+942
+01:11:49,380 --> 01:12:02,620
+first i make sure that i'm in the right place to fork from looks good and to create a new fork i
+
+943
+01:12:02,620 --> 01:12:07,040
+click on this button i can already see actually that one fork already exists so i will now create
+
+944
+01:12:07,040 --> 01:12:19,800
+second one so i click on the button here fork and then it asks me you want to create a copy
+
+945
+01:12:19,800 --> 01:12:25,980
+under this name i keep the name and then where should it be copied to so who is the owner of
+
+946
+01:12:25,980 --> 01:12:34,620
+the fork this is me now i keep it this doesn't matter much but you can just keep keep everything
+
+947
+01:12:34,620 --> 01:12:39,480
+and once I push on the green button here, create work.
+
+948
+01:12:40,860 --> 01:12:42,420
+Now it's copying the repository.
+
+949
+01:12:47,720 --> 01:12:49,200
+And now it created a copy.
+
+950
+01:12:50,880 --> 01:12:54,660
+And now I verify that I'm under my namespace.
+
+951
+01:12:54,760 --> 01:12:55,840
+So this is my namespace here.
+
+952
+01:12:57,200 --> 01:12:58,020
+This is me.
+
+953
+01:12:58,020 --> 01:13:01,900
+And everybody will see a different username here.
+
+954
+01:13:01,900 --> 01:13:12,220
+Notice also that the fork remembers where it was forked from.
+
+955
+01:13:12,220 --> 01:13:18,200
+There is a reference to the original repository.
+
+956
+01:13:18,200 --> 01:13:23,220
+And also there is a message that this branch is up to date with the original repository
+
+957
+01:13:24,220 --> 01:13:28,120
+Oh, that's interesting.
+
+958
+01:13:28,120 --> 01:13:32,720
+So my main branch is now up to date with this repository here.
+
+959
+01:13:33,940 --> 01:13:40,940
+If it is not, you will get a message here instead of, when you try working on it, you
+
+960
+01:13:40,940 --> 01:13:41,820
+will see that anyway.
+
+961
+01:13:42,360 --> 01:13:43,580
+Because we will see exactly that.
+
+962
+01:13:43,720 --> 01:13:49,800
+So the other interesting thing about the exercise will be that we will send pull requests and
+
+963
+01:13:49,800 --> 01:13:54,020
+then the maintainer, [name] and me, will merge them.
+
+964
+01:13:54,020 --> 01:13:57,740
+and as soon as we merge them
+
+965
+01:13:57,740 --> 01:14:02,000
+the original repository will evolve
+
+966
+01:14:02,000 --> 01:14:04,980
+so the main branch will change
+
+967
+01:14:04,980 --> 01:14:06,000
+there will be new commits
+
+968
+01:14:06,000 --> 01:14:09,520
+but all the forks
+
+969
+01:14:09,520 --> 01:14:11,000
+and now there are eight of those
+
+970
+01:14:11,000 --> 01:14:13,940
+and I can even have a look
+
+971
+01:14:13,940 --> 01:14:15,540
+which ones, where they are
+
+972
+01:14:15,540 --> 01:14:19,460
+here, eight forks
+
+973
+01:14:19,460 --> 01:14:25,460
+hmm here active
+
+974
+01:14:25,460 --> 01:14:33,940
+no they are not marked effective because they didn't make any changes yet but i will now
+
+975
+01:14:33,940 --> 01:14:34,980
+show me all of them
+
+976
+01:14:34,980 --> 01:14:45,340
+so there are already eight forks this can be also interesting for a project when if you want to know
+
+977
+01:14:45,340 --> 01:14:49,780
+who has forked my project this could be also future collaborations these are people who are
+
+978
+01:14:49,780 --> 01:14:58,320
+interested in my in my code project and so the central the original repository will evolve
+
+979
+01:14:58,320 --> 01:15:05,100
+but all the forks will stay behind because remember what what i said two hours ago three
+
+980
+01:15:05,100 --> 01:15:09,960
+hours ago was that they don't automatically synchronize we have to do it actively
+
+981
+01:15:09,960 --> 01:15:12,480
+and what you will notice is that
+
+982
+01:15:12,480 --> 01:15:13,180
+after a while
+
+983
+01:15:13,180 --> 01:15:16,540
+your main branch will not be up to date
+
+984
+01:15:16,540 --> 01:15:18,600
+it will be
+
+985
+01:15:18,600 --> 01:15:20,160
+behind and
+
+986
+01:15:20,160 --> 01:15:22,500
+this is what this button
+
+987
+01:15:22,500 --> 01:15:24,540
+is for and that will be part of
+
+988
+01:15:24,540 --> 01:15:26,600
+the exercise so part of the exercise will be
+
+989
+01:15:26,600 --> 01:15:28,460
+also to later
+
+990
+01:15:28,460 --> 01:15:29,300
+update your fork
+
+991
+01:15:29,300 --> 01:15:32,360
+and also
+
+992
+01:15:32,360 --> 01:15:34,420
+could you just also tell about
+
+993
+01:15:34,420 --> 01:15:36,000
+this main
+
+994
+01:15:36,000 --> 01:15:38,560
+tabs because you don't
+
+995
+01:15:38,560 --> 01:15:44,880
+see any issues there on the forked repository under your namespace, [name].
+
+996
+01:15:45,440 --> 01:15:45,740
+Yeah.
+
+997
+01:15:46,320 --> 01:15:47,520
+So where did the issues go?
+
+998
+01:15:48,860 --> 01:15:50,320
+No issues, no problems.
+
+999
+01:15:52,200 --> 01:15:54,620
+The issue tab here is gone.
+
+1000
+01:15:54,760 --> 01:15:55,940
+We remember that there was something here.
+
+1001
+01:15:56,400 --> 01:15:59,520
+And this is because I'm on a forked repository.
+
+1002
+01:16:00,300 --> 01:16:06,680
+And the default is to track issues only in the original one, which makes sense for most
+
+1003
+01:16:06,680 --> 01:16:07,120
+projects.
+
+1004
+01:16:07,120 --> 01:16:12,060
+most projects want to have one place where they keep track of all the issues and their ideas and
+
+1005
+01:16:12,060 --> 01:16:18,400
+their suggestions you can change it so i if i want if i would go to settings i could modify that
+
+1006
+01:16:18,400 --> 01:16:25,420
+but if if i go back to the original one this is where the issues are so if if in the exercise you
+
+1007
+01:16:25,420 --> 01:16:30,700
+see that you should maybe create an issue or not this is where you need to create it so we have one
+
+1008
+01:16:30,700 --> 01:16:35,840
+central place where we track all the issues otherwise there will be confusion of like where
+
+1009
+01:16:35,840 --> 01:16:41,500
+the issue tracking happening and i want to show just one more thing before we talk more about the
+
+1010
+01:16:41,500 --> 01:16:48,840
+exercise one more thing that i like to look at before creating a fork of a repository is
+
+1011
+01:16:48,840 --> 01:16:52,620
+and this is a little preview until next week is a license
+
+1012
+01:16:52,620 --> 01:16:58,860
+and we have a session next week on where we talk about social coding software licensing and why
+
+1013
+01:16:58,860 --> 01:17:06,140
+really matters for everybody. And I normally look at this. So if there is a project and it doesn't
+
+1014
+01:17:06,140 --> 01:17:11,340
+have a license file, I normally first contact the authors and ask them to, can you please add
+
+1015
+01:17:11,340 --> 01:17:18,540
+a license file? Can you add a standard license so that we know what I can do with this code,
+
+1016
+01:17:18,540 --> 01:17:23,660
+so that I know that I can make changes to the code and publish my changes so that I can later publish
+
+1017
+01:17:23,660 --> 01:17:28,880
+them in a paper. More about that next week. Here we are pretty good because the license
+
+1018
+01:17:28,880 --> 01:17:36,200
+is very, very permissive. What is recipe book, it's, it's basically public domain, Creative
+
+1019
+01:17:36,200 --> 01:17:45,560
+Commons, zero. Just looking at my checklist and also looking at
+
+1020
+01:17:45,560 --> 01:17:53,780
+yeah one thing about this exercise you might see that open an issue in the upstream
+
+1021
+01:17:53,780 --> 01:17:59,820
+exercise repository in this case upstream exercise repository is the repository where you clone
+
+1022
+01:17:59,820 --> 01:18:07,460
+where you forked from that's under the code refinery yeah that's namespace yeah so there
+
+1023
+01:18:07,460 --> 01:18:12,980
+is a little bit of jargon and sometimes we sorry i just wanted to go back to the back to my fork
+
+1024
+01:18:12,980 --> 01:18:19,560
+so sometimes we we talk about upstream and then we talk when we say upstream we mean
+
+1025
+01:18:19,560 --> 01:18:26,900
+the original repository and the idea is that changes flow like a river and there are some
+
+1026
+01:18:26,900 --> 01:18:30,380
+changes that happen to you know upstream the river and then flow down to my fork
+
+1027
+01:18:30,380 --> 01:18:39,140
+excellent one more thing if you are working on the command line
+
+1028
+01:18:39,140 --> 01:18:41,940
+then you clone from your fork
+
+1029
+01:18:41,940 --> 01:18:45,000
+your laptop
+
+1030
+01:18:45,000 --> 01:18:47,860
+and work on it, push the changes to fork
+
+1031
+01:18:47,860 --> 01:18:50,240
+that is explained here
+
+1032
+01:18:50,240 --> 01:18:55,120
+yeah, that is an important point
+
+1033
+01:18:55,120 --> 01:18:58,040
+so again, you can do everything in the browser
+
+1034
+01:18:58,040 --> 01:19:00,820
+if you want to, but those of you who work locally
+
+1035
+01:19:00,820 --> 01:19:02,060
+on your laptops
+
+1036
+01:19:02,060 --> 01:19:07,180
+you will need to clone the code
+
+1037
+01:19:07,180 --> 01:19:11,740
+onto your laptop and now you need to be careful where do you clone from you want to clone from
+
+1038
+01:19:11,740 --> 01:19:19,380
+the place from your fork because this is where you can write to if you clone oh why is this
+
+1039
+01:19:19,380 --> 01:19:28,880
+showing this what do i get out of the way from this if you clone accidentally from this place
+
+1040
+01:19:28,880 --> 01:19:34,320
+you can still make local changes but then suddenly you cannot push anymore because you
+
+1041
+01:19:34,320 --> 01:19:40,880
+have right permissions. If that happens, you don't have to delete everything and start again.
+
+1042
+01:19:40,880 --> 01:19:47,120
+We have in the exercise walkthrough, we have a recovery step because at every workshop it
+
+1043
+01:19:47,120 --> 01:19:53,360
+happens to a few people. And it's a good exercise that you can recover from this without deleting
+
+1044
+01:19:53,360 --> 01:20:04,480
+everything. So a couple of things will be familiar. Fork, we've seen it actually on day one,
+
+1045
+01:20:04,540 --> 01:20:10,360
+but also now I showed it how that works. And again, we will create a branch, we will make
+
+1046
+01:20:10,360 --> 01:20:16,680
+new commits, we will create pull requests, but now we are getting this into our muscle memory,
+
+1047
+01:20:16,680 --> 01:20:24,160
+it feels easier yeah so why do you need fork maybe this is because you don't have right
+
+1048
+01:20:24,160 --> 01:20:30,480
+permission to this repository you want to contribute yeah so you cannot do what you
+
+1049
+01:20:30,480 --> 01:20:37,620
+did earlier in the exercise in this without forking yeah and imagine here instead of the
+
+1050
+01:20:37,620 --> 01:20:41,740
+recipe book imagine that this is a project that you want to contribute to this could be
+
+1051
+01:20:41,740 --> 01:20:46,380
+this could be the library that you are using this could be somebody else's project that you
+
+1052
+01:20:46,380 --> 01:20:53,580
+want to contribute to it could be it could be the open source code that that you depend on
+
+1053
+01:20:53,580 --> 01:20:56,460
+and want to you know give back
+
+1054
+01:20:56,460 --> 01:21:05,080
+so what will be new uh pull request this time the pull request goes from
+
+1055
+01:21:05,080 --> 01:21:09,660
+across repositories so not within the same it will go from a repository to a different repository
+
+1056
+01:21:09,660 --> 01:21:15,560
+oh this is actually not completely new because we now know that this is coupled to automated testing
+
+1057
+01:21:16,380 --> 01:21:27,200
+Then the maintainer, [name] and me, will review merge and your forks will get out of date.
+
+1058
+01:21:27,200 --> 01:21:29,380
+They will not have these changes.
+
+1059
+01:21:29,380 --> 01:21:36,020
+So then your goal will be to update your fork with these changes.
+
+1060
+01:21:36,020 --> 01:21:43,660
+And also this part here, which also will be really part of the discussion session, the
+
+1061
+01:21:43,660 --> 01:21:44,800
+last half an hour of this
+
+1062
+01:21:44,800 --> 01:21:46,440
+workshop day.
+
+1063
+01:21:48,520 --> 01:21:49,780
+For those of you who
+
+1064
+01:21:49,780 --> 01:21:51,780
+manage all of this and if you get a little
+
+1065
+01:21:51,780 --> 01:21:53,340
+bit bored and if it feels easy,
+
+1066
+01:21:53,840 --> 01:21:55,800
+one thing you can also try, just for
+
+1067
+01:21:55,800 --> 01:21:57,120
+fun, is
+
+1068
+01:21:57,120 --> 01:21:59,260
+create two separate
+
+1069
+01:21:59,260 --> 01:22:00,620
+requests
+
+1070
+01:22:00,620 --> 01:22:03,840
+which change the same part of the
+
+1071
+01:22:03,840 --> 01:22:05,560
+code, the same part of our recipe,
+
+1072
+01:22:06,180 --> 01:22:07,140
+but in two different ways.
+
+1073
+01:22:07,720 --> 01:22:09,700
+So what you can try to do, try to create a conflict.
+
+1074
+01:22:10,680 --> 01:22:11,660
+And then we can
+
+1075
+01:22:11,660 --> 01:22:13,500
+look at
+
+1076
+01:22:13,500 --> 01:22:22,700
+a conflicting pull request and discuss what we do about it and you have you have seen
+
+1077
+01:22:23,660 --> 01:22:29,180
+what conflicts are yesterday but so we can we can also see a conflict in real life and see that this
+
+1078
+01:22:29,180 --> 01:22:36,700
+is not a problem that's a good thing and also in this case you cannot merge this pull request
+
+1079
+01:22:36,700 --> 01:22:38,920
+that the maintainer
+
+1080
+01:22:38,920 --> 01:22:40,300
+has to
+
+1081
+01:22:40,300 --> 01:22:43,420
+merge it or
+
+1082
+01:22:43,420 --> 01:22:44,940
+accept this pull request.
+
+1083
+01:22:45,480 --> 01:22:45,620
+Yeah.
+
+1084
+01:22:48,800 --> 01:22:51,240
+So you'll be able to open up issues
+
+1085
+01:22:51,240 --> 01:22:53,400
+and send pull requests
+
+1086
+01:22:53,400 --> 01:22:55,360
+but now it's up to us to merge
+
+1087
+01:22:55,360 --> 01:22:55,580
+them.
+
+1088
+01:22:57,020 --> 01:22:59,420
+But the nice thing is that you don't have to ask for permission
+
+1089
+01:22:59,420 --> 01:23:01,420
+and also the nice
+
+1090
+01:23:01,420 --> 01:23:03,060
+thing for us as maintainer is that
+
+1091
+01:23:03,060 --> 01:23:05,240
+we don't have to be afraid like nobody
+
+1092
+01:23:05,240 --> 01:23:07,780
+just because this is an open source project
+
+1093
+01:23:07,780 --> 01:23:09,640
+with an open source license
+
+1094
+01:23:09,640 --> 01:23:11,760
+I don't have to be afraid
+
+1095
+01:23:11,760 --> 01:23:13,780
+that somebody changes this
+
+1096
+01:23:13,780 --> 01:23:15,880
+in a way that I don't want
+
+1097
+01:23:15,880 --> 01:23:18,020
+we still have control here
+
+1098
+01:23:18,020 --> 01:23:19,800
+and we decide what is merged
+
+1099
+01:23:19,800 --> 01:23:20,660
+and what is not merged
+
+1100
+01:23:20,660 --> 01:23:23,860
+but we will do it in a very nice way
+
+1101
+01:23:23,860 --> 01:23:24,860
+so we
+
+1102
+01:23:24,860 --> 01:23:29,520
+we will remember that on the other side
+
+1103
+01:23:29,520 --> 01:23:30,320
+there is a human being
+
+1104
+01:23:30,320 --> 01:23:34,020
+later in the discussion
+
+1105
+01:23:34,020 --> 01:23:36,300
+we can maybe talk about
+
+1106
+01:23:36,300 --> 01:23:37,680
+what to do about
+
+1107
+01:23:37,680 --> 01:23:38,860
+controversial changes
+
+1108
+01:23:38,860 --> 01:23:40,480
+without
+
+1109
+01:23:40,480 --> 01:23:43,760
+so what to do about the change that you
+
+1110
+01:23:43,760 --> 01:23:46,240
+you don't want to merge
+
+1111
+01:23:46,240 --> 01:23:48,180
+but you also don't want to hurt the other person
+
+1112
+01:23:48,180 --> 01:23:50,200
+let's discuss
+
+1113
+01:23:50,200 --> 01:23:50,920
+that later
+
+1114
+01:23:50,920 --> 01:23:54,400
+here are the
+
+1115
+01:23:54,400 --> 01:23:55,160
+exercise tasks
+
+1116
+01:23:55,160 --> 01:23:58,240
+again there is the help and discussion
+
+1117
+01:23:58,240 --> 01:23:58,820
+use it
+
+1118
+01:23:58,820 --> 01:24:01,900
+I will also let's paste
+
+1119
+01:24:01,900 --> 01:24:02,540
+into
+
+1120
+01:24:02,540 --> 01:24:05,960
+here we have this exercise block
+
+1121
+01:24:05,960 --> 01:24:07,740
+25 minutes so
+
+1122
+01:24:07,740 --> 01:24:08,260
+until
+
+1123
+01:24:08,260 --> 01:24:11,220
+55 past
+
+1124
+01:24:11,220 --> 01:24:15,020
+where we come back to the stream
+
+1125
+01:24:15,020 --> 01:24:17,880
+yeah and please let us know how it's going
+
+1126
+01:24:17,880 --> 01:24:19,460
+in the exercise part
+
+1127
+01:24:19,460 --> 01:24:23,740
+also any kind of
+
+1128
+01:24:23,740 --> 01:24:25,620
+questions welcome
+
+1129
+01:24:25,620 --> 01:24:26,680
+to ask
+
+1130
+01:24:26,680 --> 01:24:29,740
+in the
+
+1131
+01:24:29,740 --> 01:24:31,780
+meantime we will be busy here
+
+1132
+01:24:31,780 --> 01:24:37,840
+reviewing and merging. But see you all in 25 minutes back here
+
+1133
+01:24:37,840 --> 01:24:43,600
+on the stream. I will just find the right button. See you then.
+
+1134
+01:24:43,620 --> 01:24:45,040
+Bye. Bye.
+
+1135
+01:24:51,000 --> 01:24:59,620
+hi everybody welcome back hi welcome back we were really busy here merging and commenting
+
+1136
+01:24:59,620 --> 01:25:05,540
+We didn't manage all of them, but I think we managed enough pull requests so that the
+
+1137
+01:25:06,500 --> 01:25:13,460
+original repository is then enough different from your forked repository. That was one goal.
+
+1138
+01:25:14,020 --> 01:25:20,580
+Also for the non-recorded version. There are more pull requests, but you can see the changes.
+
+1139
+01:25:22,420 --> 01:25:24,740
+And everything that we didn't manage, we will catch up later.
+
+1140
+01:25:24,740 --> 01:25:31,560
+um we will now just spend like five minutes discussing some something that came up
+
+1141
+01:25:31,560 --> 01:25:36,940
+and after that we will take another break and after that we will have a 20 minute discussion
+
+1142
+01:25:36,940 --> 01:25:40,220
+session so what are the things that we should comment on
+
+1143
+01:25:40,220 --> 01:25:54,260
+how to synchronize from your local fork on your fork yes that's very important because
+
+1144
+01:25:54,260 --> 01:25:57,800
+and now in my example here
+
+1145
+01:25:57,800 --> 01:25:59,980
+there is the original repository
+
+1146
+01:25:59,980 --> 01:26:02,160
+which has lots of nice recipes, lots of changes
+
+1147
+01:26:02,160 --> 01:26:05,020
+but if I go into
+
+1148
+01:26:05,020 --> 01:26:07,480
+if I go into my fork
+
+1149
+01:26:07,480 --> 01:26:11,460
+and how did I find again my fork
+
+1150
+01:26:11,460 --> 01:26:15,560
+this is me
+
+1151
+01:26:15,560 --> 01:26:18,720
+if I look at my fork
+
+1152
+01:26:18,720 --> 01:26:21,960
+well my fork is 30 commits behind
+
+1153
+01:26:21,960 --> 01:26:30,580
+And so 30, this is probably 15 recipes that I don't have on my fork here.
+
+1154
+01:26:32,680 --> 01:26:34,540
+And that was also part of the exercise.
+
+1155
+01:26:34,920 --> 01:26:40,280
+This used to be, in the past, this used to be more difficult because in the past, you
+
+1156
+01:26:40,280 --> 01:26:46,980
+had to pull changes from the original repository to your computer and then push them to your
+
+1157
+01:26:46,980 --> 01:26:47,260
+fork.
+
+1158
+01:26:47,940 --> 01:26:49,060
+These days, it's much easier.
+
+1159
+01:26:49,060 --> 01:26:58,020
+these days there is a button for it and it's this sync fork and the sync fork will work really well
+
+1160
+01:26:58,020 --> 01:27:03,880
+and this is because i didn't touch my main branch and that's a good it's a good thing to do
+
+1161
+01:27:03,880 --> 01:27:10,300
+so i will i will never make any modifications on the main branch anything i want to do for
+
+1162
+01:27:10,300 --> 01:27:15,720
+anything new i create a new branch and then this will always work here so sync fork
+
+1163
+01:27:15,720 --> 01:27:20,140
+this branch is out of date
+
+1164
+01:27:20,140 --> 01:27:22,460
+and they mean the main branch
+
+1165
+01:27:22,460 --> 01:27:24,440
+and if I now click on update
+
+1166
+01:27:24,440 --> 01:27:26,440
+it will update
+
+1167
+01:27:26,440 --> 01:27:28,780
+the main branch on my fork
+
+1168
+01:27:28,780 --> 01:27:30,420
+so on the repository
+
+1169
+01:27:30,420 --> 01:27:32,860
+that I own
+
+1170
+01:27:32,860 --> 01:27:35,320
+update branch
+
+1171
+01:27:35,320 --> 01:27:38,640
+and now I have
+
+1172
+01:27:38,640 --> 01:27:39,420
+all these nice recipes
+
+1173
+01:27:39,420 --> 01:27:40,980
+I'm up to date
+
+1174
+01:27:40,980 --> 01:27:44,460
+for the moment I'm up to date
+
+1175
+01:27:44,460 --> 01:27:50,360
+with the original repository until some new pull requests get merged.
+
+1176
+01:27:56,480 --> 01:28:04,540
+There was, I think, a question about deleting branches.
+
+1177
+01:28:04,540 --> 01:28:05,780
+Maybe we can show that.
+
+1178
+01:28:07,520 --> 01:28:09,220
+We can also show a conflict.
+
+1179
+01:28:09,500 --> 01:28:11,820
+Somebody created a conflict and managed to fix it also.
+
+1180
+01:28:11,820 --> 01:28:14,960
+there was also a question about
+
+1181
+01:28:14,960 --> 01:28:16,440
+what is this thing about
+
+1182
+01:28:16,440 --> 01:28:17,900
+what is the difference between fetch and pull
+
+1183
+01:28:17,900 --> 01:28:20,500
+we maybe
+
+1184
+01:28:20,500 --> 01:28:20,900
+noted
+
+1185
+01:28:20,900 --> 01:28:24,180
+we mentioned fetch only in passing
+
+1186
+01:28:24,180 --> 01:28:26,660
+there is a difference between the two
+
+1187
+01:28:26,660 --> 01:28:28,980
+what should I pick up next here
+
+1188
+01:28:28,980 --> 01:28:30,020
+should we talk about this
+
+1189
+01:28:30,020 --> 01:28:30,940
+should we show a conflict
+
+1190
+01:28:30,940 --> 01:28:31,560
+what do you think
+
+1191
+01:28:31,560 --> 01:28:39,100
+I think I'm muted
+
+1192
+01:28:39,100 --> 01:28:49,880
+sorry yes i was sneezing so i mean oh yeah but uh maybe we'll start with fetch and pull first
+
+1193
+01:28:49,880 --> 01:28:58,140
+and go off the conflict yeah so at the beginning of today
+
+1194
+01:28:58,140 --> 01:29:07,160
+on the beginning uh in the concepts and i think it's only mentioned somewhere so there is
+
+1195
+01:29:07,160 --> 01:29:10,440
+one way to get changes from
+
+1196
+01:29:10,440 --> 01:29:13,560
+let's say from GitHub to your laptop
+
+1197
+01:29:13,560 --> 01:29:17,020
+is you can do it by Git pull
+
+1198
+01:29:17,020 --> 01:29:19,780
+but you can also use fetch
+
+1199
+01:29:19,780 --> 01:29:22,500
+and they are different because
+
+1200
+01:29:22,500 --> 01:29:26,540
+pull will download all the changes that you don't have
+
+1201
+01:29:26,540 --> 01:29:28,420
+and it will
+
+1202
+01:29:28,420 --> 01:29:31,980
+modify your local branch
+
+1203
+01:29:31,980 --> 01:29:34,280
+so in a pull
+
+1204
+01:29:34,280 --> 01:29:37,000
+there is fetch and merge
+
+1205
+01:29:37,000 --> 01:29:40,820
+but sometimes you don't want to modify your local branch
+
+1206
+01:29:40,820 --> 01:29:42,400
+you only want to download the commits
+
+1207
+01:29:42,400 --> 01:29:43,620
+and then you can use fetch
+
+1208
+01:29:43,620 --> 01:29:47,120
+so fetch will download all commits that you don't have
+
+1209
+01:29:47,120 --> 01:29:49,200
+but it will not modify your local branch
+
+1210
+01:29:49,200 --> 01:29:51,180
+and then you can look at the commits
+
+1211
+01:29:51,180 --> 01:29:52,480
+and if you like them
+
+1212
+01:29:52,480 --> 01:29:55,220
+then you can do the merge part as a second step
+
+1213
+01:29:55,220 --> 01:30:02,320
+so usually I usually use pull to my main branch
+
+1214
+01:30:02,320 --> 01:30:06,300
+that's a very frequent operation I do than fetch
+
+1215
+01:30:06,300 --> 01:30:08,840
+I very rarely use fetch
+
+1216
+01:30:08,840 --> 01:30:10,060
+same here
+
+1217
+01:30:10,060 --> 01:30:12,420
+so 99.9% of cases pull
+
+1218
+01:30:12,420 --> 01:30:14,560
+it's only if
+
+1219
+01:30:14,560 --> 01:30:17,160
+I'm really unsure about
+
+1220
+01:30:17,160 --> 01:30:18,700
+I don't want to modify my branch
+
+1221
+01:30:18,700 --> 01:30:19,960
+I want to first look at them
+
+1222
+01:30:19,960 --> 01:30:21,780
+with the git diff
+
+1223
+01:30:21,780 --> 01:30:22,660
+compare them
+
+1224
+01:30:22,660 --> 01:30:25,000
+if I'm extremely careful
+
+1225
+01:30:25,000 --> 01:30:26,840
+then I will go for fetch
+
+1226
+01:30:26,840 --> 01:30:32,960
+maybe we should take a break
+
+1227
+01:30:32,960 --> 01:30:34,660
+and after the break
+
+1228
+01:30:34,660 --> 01:30:39,220
+pick up some of the more things that we wanted to show and hopefully we get lots of more questions
+
+1229
+01:30:39,220 --> 01:30:44,660
+so after the break it will be just us demonstrating uh and we have a discussion
+
+1230
+01:30:44,660 --> 01:30:51,940
+session here and you can ask us anything about git and github or git lab yes um so then we would
+
+1231
+01:30:51,940 --> 01:31:01,780
+be back 10 past the hour we'll just post it here 10 past the hour we'll be back for more demo more
+
+1232
+01:31:01,780 --> 01:31:07,240
+discussion no more exercises but we will still continue reviewing your contributions and we
+
+1233
+01:31:07,240 --> 01:31:13,940
+really appreciate them a lot see you in send you see you 10 past the hour just send us into a break
+
+1234
+01:31:19,780 --> 01:31:31,040
+Hello, back from break. Welcome back. We have now 20 minutes left, which we want to use
+
+1235
+01:31:31,040 --> 01:31:44,420
+to answer questions summarize. There are a couple of things I wrote down that I want
+
+1236
+01:31:44,420 --> 01:31:59,120
+to discuss we also want to then invite questions so we will summarize a few things but what you
+
+1237
+01:31:59,120 --> 01:32:06,640
+can do is please ask more questions please really try to overwhelm us because in a moment i will
+
+1238
+01:32:06,640 --> 01:32:12,940
+then also invite other instructors to join for really a discussion here about code review
+
+1239
+01:32:12,940 --> 01:32:19,100
+collaboration oh one topic i wanted to come back to because i think we we used it but we
+
+1240
+01:32:19,100 --> 01:32:25,980
+we didn't really discuss why we do that was this the auto closing issues
+
+1241
+01:32:27,740 --> 01:32:32,140
+why do why it's good to use these magic words like close closes fix fixes
+
+1242
+01:32:33,340 --> 01:32:35,660
+what is the what is the advantage of
+
+1243
+01:32:35,660 --> 01:32:40,660
+of relating changes and issues.
+
+1244
+01:32:43,740 --> 01:32:47,440
+So do you see that there are one number highlighted
+
+1245
+01:32:47,440 --> 01:32:50,960
+and one number is slash hash seven,
+
+1246
+01:32:50,960 --> 01:32:55,000
+which is what are the numbers?
+
+1247
+01:32:55,000 --> 01:32:57,400
+Yeah, so the first thing, this thing comes from,
+
+1248
+01:32:57,400 --> 01:33:00,160
+this is the title of your pull request,
+
+1249
+01:33:00,160 --> 01:33:02,960
+which actually comes from your commit.
+
+1250
+01:33:02,960 --> 01:33:09,420
+no your commit this was your commit yeah but then this was the title of your pull request
+
+1251
+01:33:09,420 --> 01:33:13,200
+and then what is this this thing which is a little bit different color
+
+1252
+01:33:13,200 --> 01:33:17,160
+this is the number of the pull request so this pull request has the number seven
+
+1253
+01:33:17,160 --> 01:33:22,520
+which means that we can refer to it somewhere else we could be talking about
+
+1254
+01:33:22,520 --> 01:33:28,100
+oh yeah we did that already in pull request seven have a look hash seven it will cross link
+
+1255
+01:33:28,100 --> 01:33:29,820
+and link to this pull request
+
+1256
+01:33:29,820 --> 01:33:31,860
+so each pull request has a number
+
+1257
+01:33:31,860 --> 01:33:34,420
+but also each issue has a number
+
+1258
+01:33:34,420 --> 01:33:35,520
+here you refer to an issue
+
+1259
+01:33:35,520 --> 01:33:37,880
+and this magic word
+
+1260
+01:33:37,880 --> 01:33:39,720
+as soon as I
+
+1261
+01:33:39,720 --> 01:33:42,320
+merge it
+
+1262
+01:33:42,320 --> 01:33:44,320
+and now this was
+
+1263
+01:33:44,320 --> 01:33:48,140
+so how do I review it
+
+1264
+01:33:48,140 --> 01:33:49,620
+I normally look at this
+
+1265
+01:33:49,620 --> 01:33:51,080
+I look at the files changed
+
+1266
+01:33:51,080 --> 01:33:54,500
+looks great to me
+
+1267
+01:33:54,500 --> 01:33:59,320
+and
+
+1268
+01:33:59,320 --> 01:34:02,240
+I will merge it
+
+1269
+01:34:02,240 --> 01:34:03,580
+and as soon as I merge it
+
+1270
+01:34:03,580 --> 01:34:08,580
+maybe I can do that here
+
+1271
+01:34:08,580 --> 01:34:11,820
+really clearly
+
+1272
+01:34:11,820 --> 01:34:14,280
+I will open on the bottom side
+
+1273
+01:34:14,280 --> 01:34:15,780
+I will open the corresponding issue
+
+1274
+01:34:15,780 --> 01:34:17,380
+which was the issue number 2
+
+1275
+01:34:17,380 --> 01:34:20,880
+and it's open
+
+1276
+01:34:20,880 --> 01:34:23,540
+and then on the top side I will merge the poor
+
+1277
+01:34:23,540 --> 01:34:26,100
+changes reviewed happy happy happy
+
+1278
+01:34:26,100 --> 01:34:28,360
+and yeah okay before you
+
+1279
+01:34:28,360 --> 01:34:30,320
+merge I just want to mention there was
+
+1280
+01:34:30,320 --> 01:34:32,280
+a conversation someone would like to
+
+1281
+01:34:32,280 --> 01:34:33,360
+whoops yeah
+
+1282
+01:34:33,360 --> 01:34:36,540
+okay let's not so that's
+
+1283
+01:34:36,540 --> 01:34:37,960
+maybe change
+
+1284
+01:34:37,960 --> 01:34:40,360
+eight cubes ah let's do it
+
+1285
+01:34:40,360 --> 01:34:40,840
+yeah
+
+1286
+01:34:40,840 --> 01:34:43,520
+so
+
+1287
+01:34:43,520 --> 01:34:47,820
+two let's do eight
+
+1288
+01:34:47,820 --> 01:34:52,940
+and
+
+1289
+01:34:52,940 --> 01:34:56,100
+then
+
+1290
+01:34:56,100 --> 01:34:59,720
+me or somebody else can actually apply this
+
+1291
+01:34:59,720 --> 01:35:02,900
+I will now do that
+
+1292
+01:35:02,900 --> 01:35:07,280
+and then you can also do this
+
+1293
+01:35:07,280 --> 01:35:10,980
+resolve, well now it automatically resolved the conversation
+
+1294
+01:35:10,980 --> 01:35:14,300
+so that has been now applied
+
+1295
+01:35:14,300 --> 01:35:18,080
+checks are running
+
+1296
+01:35:18,080 --> 01:35:22,360
+I will now merge it
+
+1297
+01:35:22,360 --> 01:35:24,600
+and as soon as I click merge
+
+1298
+01:35:24,600 --> 01:35:27,160
+we focus on the bottom part of my screen
+
+1299
+01:35:27,160 --> 01:35:32,160
+3, 2, 1, closed
+
+1300
+01:35:32,160 --> 01:35:35,160
+so once it got integrated
+
+1301
+01:35:35,160 --> 01:35:35,660
+into main
+
+1302
+01:35:35,660 --> 01:35:39,340
+it read this magic word
+
+1303
+01:35:39,340 --> 01:35:40,500
+and closed the issue
+
+1304
+01:35:40,500 --> 01:35:42,600
+and why did we demonstrate this
+
+1305
+01:35:42,600 --> 01:35:47,480
+This was not because I'm lazy and I would be too lazy to click on the close button here,
+
+1306
+01:35:48,840 --> 01:35:59,240
+but the advantage was that it cross-references the idea or the problem with the commit that
+
+1307
+01:36:00,520 --> 01:36:05,960
+fixed it. And that's really good for reproducibility, because then if later maybe
+
+1308
+01:36:05,960 --> 01:36:11,400
+this was a problem in the code and I want to know from when was this in the code and until
+
+1309
+01:36:11,400 --> 01:36:18,520
+went precisely, it was in the code until this commit precisely. Really, really important for
+
+1310
+01:36:18,520 --> 01:36:31,480
+reproducibility. And I will now rearrange here so that I can see your questions, but also I see my
+
+1311
+01:36:32,360 --> 01:36:43,400
+my plan so we can discuss now that now that we have the tools
+
+1312
+01:36:45,080 --> 01:36:53,080
+how should we approach other people's repositories with ideas and changes and pull requests
+
+1313
+01:36:53,080 --> 01:37:04,680
+And for very minor changes, so if this is a typo or it's a small change and there is
+
+1314
+01:37:04,680 --> 01:37:10,180
+not much to discuss, what I sometimes do is then, well, we create a fork.
+
+1315
+01:37:10,180 --> 01:37:11,180
+We know how.
+
+1316
+01:37:11,180 --> 01:37:13,540
+We create a new branch.
+
+1317
+01:37:13,540 --> 01:37:22,840
+On the new branch, I make a new commit and I open up a request and that's it.
+
+1318
+01:37:23,080 --> 01:37:31,960
+I always create a new branch. So I never sent the pull request from main. Because that can create troubles later down the road.
+
+1319
+01:37:32,780 --> 01:37:47,620
+That's one of the best practices. And you haven't mentioned about issues in this minor changes. So what is the suggestion? No issues for minor changes or what would be the best practices?
+
+1320
+01:37:47,620 --> 01:37:52,060
+Here it's a minor thing. I don't need to really open an issue. Maybe there is an issue
+
+1321
+01:37:52,060 --> 01:38:02,600
+open and I'm actually fixing it. It's more, what if you... So here I have about more like
+
+1322
+01:38:02,600 --> 01:38:13,280
+large changes. So what if you see an issue and have an idea how to fix it? So what if
+
+1323
+01:38:13,280 --> 01:38:19,360
+you observe a problem and then it can be it can actually be good to open the issue even if you
+
+1324
+01:38:19,360 --> 01:38:24,520
+already have a solution in mind because you at least inform everybody else that i know about
+
+1325
+01:38:24,520 --> 01:38:29,140
+this problem maybe somebody else will hit the same problem it's really good for them to see
+
+1326
+01:38:29,140 --> 01:38:36,880
+that this is unknown so i don't keep it to myself we open the issue and uh if you don't know how to
+
+1327
+01:38:36,880 --> 01:38:43,080
+fix it or maybe you can ask for maybe somebody else can or you can collect feedback and then
+
+1328
+01:38:43,080 --> 01:38:50,080
+refer to it in a pull request and this can also be good so for informing everybody else about a
+
+1329
+01:38:50,080 --> 01:38:58,380
+problem and for anything bigger so if i have an idea for a new feature it can be good to first
+
+1330
+01:38:58,380 --> 01:39:06,540
+open the issue and collect feedback so that i'm sure that the solution that i have in mind
+
+1331
+01:39:06,540 --> 01:39:09,480
+fits into the repository.
+
+1332
+01:39:09,980 --> 01:39:12,740
+It is what the authors want
+
+1333
+01:39:12,740 --> 01:39:16,240
+before I do all the work
+
+1334
+01:39:16,240 --> 01:39:17,700
+and write 50,000 lines of code.
+
+1335
+01:39:20,460 --> 01:39:22,420
+So talk about it in an issue
+
+1336
+01:39:22,420 --> 01:39:23,640
+and then do the coding
+
+1337
+01:39:23,640 --> 01:39:26,140
+because it avoids surprises later.
+
+1338
+01:39:32,320 --> 01:39:33,800
+Yeah, discuss and get feedback
+
+1339
+01:39:33,800 --> 01:39:34,500
+before you code.
+
+1340
+01:39:36,540 --> 01:39:45,640
+When suggesting to an open project or collaborative project, some ideas and all, there will be
+
+1341
+01:39:45,640 --> 01:39:52,260
+any code of conduct or something that what you suggest, [name]?
+
+1342
+01:39:52,260 --> 01:39:56,360
+I think any project that is bigger will sooner or later maybe need code of conduct, also
+
+1343
+01:39:56,360 --> 01:40:02,520
+contribution guide, or just a document where you can describe how would you like contributions
+
+1344
+01:40:02,520 --> 01:40:08,240
+to be? How would you like them to be submitted? And also certain standards that you expect in
+
+1345
+01:40:08,240 --> 01:40:20,460
+your project to be followed. Some suggestion about how to proceed from here, what we learned
+
+1346
+01:40:20,460 --> 01:40:34,660
+this two three days yeah um i mean one way to that you can practice this and be also incredibly
+
+1347
+01:40:34,660 --> 01:40:43,060
+useful for our project is that if i scroll up here in the lesson so i'll scroll all the way up
+
+1348
+01:40:43,060 --> 01:40:51,700
+our lessons are on GitHub. All of them are open source. If you see things that we could have done
+
+1349
+01:40:51,700 --> 01:40:55,860
+better here and explained better, maybe there is a better wording or maybe some exercise step
+
+1350
+01:40:55,860 --> 01:41:05,540
+wasn't clear enough. If I right click edit on GitHub, this is the repository with the lesson.
+
+1351
+01:41:06,000 --> 01:41:10,840
+Also here, you can open issues and you can see that there are a couple of issues that
+
+1352
+01:41:10,840 --> 01:41:13,340
+we know about, two of them are from today
+
+1353
+01:41:13,340 --> 01:41:15,600
+you can send us
+
+1354
+01:41:15,600 --> 01:41:16,920
+pull requests with improvements
+
+1355
+01:41:16,920 --> 01:41:17,860
+this
+
+1356
+01:41:17,860 --> 01:41:19,640
+will
+
+1357
+01:41:19,640 --> 01:41:23,020
+really help the project a lot
+
+1358
+01:41:23,020 --> 01:41:25,640
+but then
+
+1359
+01:41:25,640 --> 01:41:26,500
+for your own work
+
+1360
+01:41:26,500 --> 01:41:28,280
+really trying to
+
+1361
+01:41:28,280 --> 01:41:30,720
+team up with somebody
+
+1362
+01:41:30,720 --> 01:41:32,900
+try to find somebody who
+
+1363
+01:41:32,900 --> 01:41:33,780
+for code review
+
+1364
+01:41:33,780 --> 01:41:37,220
+I would try to implement this
+
+1365
+01:41:37,220 --> 01:41:39,140
+not with a lot of bureaucracy, not with a lot of
+
+1366
+01:41:39,140 --> 01:41:40,120
+checks and
+
+1367
+01:41:40,120 --> 01:41:48,480
+but implementing code review for repositories with two people or more so create a common
+
+1368
+01:41:48,480 --> 01:41:54,040
+repository invite your friend as a collaborator and collaborate together try this out the like
+
+1369
+01:41:54,040 --> 01:42:00,940
+the code review set the main branch as read-only review these are the changes it will it will delay
+
+1370
+01:42:00,940 --> 01:42:06,280
+it will delay the changes a little bit until they are in main but with the benefit that we learn
+
+1371
+01:42:06,280 --> 01:42:16,520
+about it, we improve our coding, maybe we catch a possible mistake. But now, up to you.
+
+1372
+01:42:16,520 --> 01:42:28,980
+What are the things that you would like to know about GitHub collaboration? Which question
+
+1373
+01:42:28,980 --> 01:42:48,160
+should we highlight there was Oh, there is this question around line 416. I'm just looking
+
+1374
+01:42:48,160 --> 01:43:06,000
+you did. So it is this one? Yeah. That is answered.
+
+1375
+01:43:06,000 --> 01:43:20,040
+yeah so the so the question is why should we create a new branch for every new change
+
+1376
+01:43:20,040 --> 01:43:25,940
+and not just continue on main even if it's i'm the only person on my fork
+
+1377
+01:43:25,940 --> 01:43:32,600
+and the reason is that and it might be already answered is that
+
+1378
+01:43:32,600 --> 01:43:38,860
+pull requests are from branch to branch they are not from commit to branch
+
+1379
+01:43:38,860 --> 01:43:44,860
+so if i now send a pull request on main and maybe the pull request takes two weeks to review
+
+1380
+01:43:45,860 --> 01:43:52,380
+now i need to wait because if i now continue on my main branch all the new commits will also get
+
+1381
+01:43:52,380 --> 01:43:56,000
+added to the pull request which might surprise me it might surprise the person reviewing
+
+1382
+01:43:56,000 --> 01:44:02,920
+so now i need to wait if i created a side branch i don't need to wait i just send a
+
+1383
+01:44:02,920 --> 01:44:08,360
+pull request and continue my work and wait until that thing is merged but there is another reason
+
+1384
+01:44:08,360 --> 01:44:15,080
+and that is once it's once your pull request is merged it will typically create a merge commit
+
+1385
+01:44:15,080 --> 01:44:22,460
+and that is a commit that you don't have on your main so now your it will the history will start
+
+1386
+01:44:22,460 --> 01:44:29,980
+be weird on your main branch on your forked main branch so to avoid these trouble good to create a
+
+1387
+01:44:29,980 --> 01:44:37,500
+extra branch i i personally like to have a branch for everything even the minor changes as well
+
+1388
+01:44:37,500 --> 01:44:46,220
+because it avoids many my conflicts may come after i change something yeah
+
+1389
+01:44:46,220 --> 01:44:46,340
+Yeah.
+
+1390
+01:44:48,740 --> 01:44:50,280
+And somewhere there was also a question,
+
+1391
+01:44:50,420 --> 01:44:51,500
+well, should we then delete?
+
+1392
+01:44:51,760 --> 01:44:53,280
+So branches that have been merged,
+
+1393
+01:44:53,320 --> 01:44:54,760
+should we delete them, keep them?
+
+1394
+01:44:56,640 --> 01:44:57,760
+You can keep them.
+
+1395
+01:44:57,860 --> 01:44:58,840
+There is no really harm.
+
+1396
+01:45:00,340 --> 01:45:04,060
+At some point, maybe it becomes a little bit chaotic
+
+1397
+01:45:04,060 --> 01:45:08,180
+because you see 40 branches there that have been merged
+
+1398
+01:45:08,180 --> 01:45:10,800
+and then you can clean up and delete them.
+
+1399
+01:45:11,540 --> 01:45:13,820
+And deleting branches in this case
+
+1400
+01:45:13,820 --> 01:45:17,800
+means only removing the sticky notes so you will not delete the commits
+
+1401
+01:45:17,800 --> 01:45:31,600
+so we have five more minutes but it would be nice to remind them about the feedback
+
+1402
+01:45:31,600 --> 01:45:38,940
+yeah that's at the end of the end of the notes please let us know how how was the speed and
+
+1403
+01:45:38,940 --> 01:45:41,060
+and please be honest we are not offended
+
+1404
+01:45:41,060 --> 01:45:42,840
+this is
+
+1405
+01:45:42,840 --> 01:45:44,960
+this thing is what we look at when we
+
+1406
+01:45:44,960 --> 01:45:47,000
+prepare the next workshop in half a year
+
+1407
+01:45:47,000 --> 01:45:49,260
+so we really want to know
+
+1408
+01:45:49,260 --> 01:45:50,340
+how was the speed
+
+1409
+01:45:50,340 --> 01:45:52,380
+how was the level
+
+1410
+01:45:52,380 --> 01:45:54,460
+was it
+
+1411
+01:45:54,460 --> 01:45:56,560
+useful what was missing
+
+1412
+01:45:56,560 --> 01:45:58,980
+what was the part that you liked the most
+
+1413
+01:45:58,980 --> 01:46:00,580
+what was the part that you liked the least
+
+1414
+01:46:00,580 --> 01:46:03,660
+and then
+
+1415
+01:46:03,660 --> 01:46:07,160
+we use this when we create the next
+
+1416
+01:46:07,160 --> 01:46:07,460
+edition
+
+1417
+01:46:07,460 --> 01:46:09,320
+so these
+
+1418
+01:46:09,320 --> 01:46:09,760
+lessons are
+
+1419
+01:46:09,760 --> 01:46:09,940
+really
+
+1420
+01:46:09,940 --> 01:46:10,420
+continuously
+
+1421
+01:46:10,420 --> 01:46:10,960
+improved
+
+1422
+01:46:10,960 --> 01:46:13,400
+and we
+
+1423
+01:46:13,400 --> 01:46:13,720
+really
+
+1424
+01:46:13,720 --> 01:46:13,960
+really
+
+1425
+01:46:13,960 --> 01:46:14,220
+really
+
+1426
+01:46:14,220 --> 01:46:14,640
+appreciate
+
+1427
+01:46:14,640 --> 01:46:14,780
+your
+
+1428
+01:46:14,780 --> 01:46:15,020
+feedback
+
+1429
+01:46:15,020 --> 01:46:15,320
+here
+
+1430
+01:46:15,320 --> 01:46:17,480
+yeah
+
+1431
+01:46:17,480 --> 01:46:18,160
+and also
+
+1432
+01:46:18,160 --> 01:46:18,560
+this
+
+1433
+01:46:18,560 --> 01:46:19,180
+notes
+
+1434
+01:46:19,180 --> 01:46:19,600
+will be
+
+1435
+01:46:19,600 --> 01:46:20,160
+archived
+
+1436
+01:46:20,160 --> 01:46:20,560
+and you
+
+1437
+01:46:20,560 --> 01:46:20,980
+will get
+
+1438
+01:46:20,980 --> 01:46:21,460
+an email
+
+1439
+01:46:21,460 --> 01:46:23,780
+it will
+
+1440
+01:46:23,780 --> 01:46:24,420
+be open
+
+1441
+01:46:24,420 --> 01:46:25,960
+after the
+
+1442
+01:46:25,960 --> 01:46:26,300
+workshop
+
+1443
+01:46:26,300 --> 01:46:27,280
+as well
+
+1444
+01:46:27,280 --> 01:46:28,160
+yeah
+
+1445
+01:46:28,160 --> 01:46:28,580
+so I
+
+1446
+01:46:28,580 --> 01:46:28,720
+will
+
+1447
+01:46:28,720 --> 01:46:29,300
+archive
+
+1448
+01:46:29,300 --> 01:46:29,700
+these
+
+1449
+01:46:29,700 --> 01:46:31,420
+later
+
+1450
+01:46:31,420 --> 01:46:31,780
+today
+
+1451
+01:46:31,780 --> 01:46:32,120
+they will
+
+1452
+01:46:32,120 --> 01:46:32,420
+be part
+
+1453
+01:46:32,420 --> 01:46:32,660
+of the
+
+1454
+01:46:32,660 --> 01:46:32,900
+workshop
+
+1455
+01:46:32,900 --> 01:46:33,400
+site
+
+1456
+01:46:33,400 --> 01:46:35,220
+we will
+
+1457
+01:46:35,220 --> 01:46:35,700
+also go
+
+1458
+01:46:35,700 --> 01:46:35,980
+through
+
+1459
+01:46:35,980 --> 01:46:36,520
+all the
+
+1460
+01:46:36,520 --> 01:46:36,940
+open
+
+1461
+01:46:36,940 --> 01:46:41,660
+request that got we didn't forget them we just were really busy here jumping between windows
+
+1462
+01:46:42,860 --> 01:46:48,700
+so we will review and merge everything sometime after the event we will also delete the exercise
+
+1463
+01:46:48,700 --> 01:46:54,140
+repository so you don't have to be worried that something will be left behind hopefully you know
+
+1464
+01:46:55,340 --> 01:47:03,660
+are a bit more comfortable with these tools and are more comfortable in using github and gitlab
+
+1465
+01:47:03,660 --> 01:47:05,320
+app for collaboration.
+
+1466
+01:47:07,580 --> 01:47:09,200
+Also continue this
+
+1467
+01:47:09,200 --> 01:47:11,040
+using this after
+
+1468
+01:47:11,040 --> 01:47:12,020
+this.
+
+1469
+01:47:13,640 --> 01:47:15,060
+That's the best practice.
+
+1470
+01:47:15,280 --> 01:47:17,080
+You can inspire your
+
+1471
+01:47:17,080 --> 01:47:19,580
+team, your colleagues
+
+1472
+01:47:19,580 --> 01:47:20,620
+who works together
+
+1473
+01:47:20,620 --> 01:47:23,080
+if they are not yet on GitHub
+
+1474
+01:47:23,080 --> 01:47:24,960
+using version control.
+
+1475
+01:47:25,460 --> 01:47:27,200
+This is the best way to learn together
+
+1476
+01:47:27,200 --> 01:47:28,860
+and contribute together.
+
+1477
+01:47:31,360 --> 01:47:33,400
+If you don't have
+
+1478
+01:47:33,400 --> 01:47:38,000
+somebody to collaborate with you don't hesitate to i don't know ask me in a pull request my
+
+1479
+01:47:38,000 --> 01:47:45,160
+username is [name] and i can give some comments and also don't hesitate to go to your favorite
+
+1480
+01:47:45,160 --> 01:47:50,160
+project look at the documentation let's see if you find an improvement improvement to their
+
+1481
+01:47:50,160 --> 01:47:54,600
+documentation and try to send the pull requests improving their documentation they will be really
+
+1482
+01:47:54,600 --> 01:48:02,960
+happy about it maybe we should spend two minutes just to give a little teaser about next week what
+
+1483
+01:48:02,960 --> 01:48:04,460
+what will come up
+
+1484
+01:48:04,460 --> 01:48:06,980
+so next week
+
+1485
+01:48:06,980 --> 01:48:07,460
+we will
+
+1486
+01:48:07,460 --> 01:48:10,120
+we will still use
+
+1487
+01:48:10,120 --> 01:48:12,500
+git and github quite a lot
+
+1488
+01:48:12,500 --> 01:48:15,040
+but we will really
+
+1489
+01:48:15,040 --> 01:48:16,300
+apply them to
+
+1490
+01:48:16,300 --> 01:48:19,080
+yeah to
+
+1491
+01:48:19,080 --> 01:48:20,120
+reproducible
+
+1492
+01:48:20,120 --> 01:48:22,380
+research software development
+
+1493
+01:48:22,380 --> 01:48:25,160
+so on tuesday we will
+
+1494
+01:48:25,160 --> 01:48:26,400
+look at
+
+1495
+01:48:26,400 --> 01:48:28,900
+social coding
+
+1496
+01:48:28,900 --> 01:48:31,100
+software licensing and reproducibility
+
+1497
+01:48:31,100 --> 01:48:34,080
+and I hope I don't mix up the days
+
+1498
+01:48:34,080 --> 01:48:38,280
+we will then also discuss documentation
+
+1499
+01:48:38,280 --> 01:48:42,400
+how to document code
+
+1500
+01:48:42,400 --> 01:48:45,960
+how does useful documentation look like
+
+1501
+01:48:45,960 --> 01:48:48,180
+but also how to set up technically
+
+1502
+01:48:48,180 --> 01:48:51,320
+so that you have a really useful documentation
+
+1503
+01:48:51,320 --> 01:48:52,240
+for people to read
+
+1504
+01:48:52,240 --> 01:48:54,920
+automated testing
+
+1505
+01:48:54,920 --> 01:48:57,420
+Jupyter notebooks
+
+1506
+01:48:57,420 --> 01:48:59,960
+modular code development
+
+1507
+01:48:59,960 --> 01:49:03,200
+and probably I forgot something
+
+1508
+01:49:03,200 --> 01:49:04,260
+so these are
+
+1509
+01:49:04,260 --> 01:49:06,660
+topics of next week
+
+1510
+01:49:06,660 --> 01:49:12,860
+so I would like to thank you
+
+1511
+01:49:12,860 --> 01:49:14,800
+for leading this session and [name]
+
+1512
+01:49:14,800 --> 01:49:15,340
+for
+
+1513
+01:49:15,340 --> 01:49:18,780
+doing this live stream
+
+1514
+01:49:18,780 --> 01:49:20,940
+and there were people behind
+
+1515
+01:49:20,940 --> 01:49:22,800
+the scene you might not have seen today
+
+1516
+01:49:22,800 --> 01:49:24,840
+they all worked together
+
+1517
+01:49:24,840 --> 01:49:26,900
+to successfully run
+
+1518
+01:49:26,900 --> 01:49:27,620
+this workshop
+
+1519
+01:49:27,620 --> 01:49:33,360
+yes many thanks to everybody so there is a lot of
+
+1520
+01:49:33,360 --> 01:49:37,180
+work before and during the workshop happening that is maybe not immediately visible
+
+1521
+01:49:37,180 --> 01:49:48,140
+yeah thanks to all who contributed today via pull request or issues and all
+
+1522
+01:49:48,140 --> 01:49:53,000
+and we had a good time reviewing your pull request and suggestions that was very fun
+
+1523
+01:49:53,000 --> 01:49:59,120
+so thanks so much so maybe we can stop the
+
+1524
+01:49:59,120 --> 01:50:05,160
+yeah streaming recording and hopefully we see all of you next week
+
+1525
+01:50:05,160 --> 01:50:09,420
+it's not too late for people to still join so tell your friends
+
+1526
+01:50:09,420 --> 01:50:14,900
+next week it will be more applied more demonstrations
+
+1527
+01:50:14,900 --> 01:50:19,680
+but still it's possible to then also go through these exercises on your own
+
+1528
+01:50:19,680 --> 01:50:28,760
+yeah thank you thanks so much i will oh maybe [name] can help me now to tell me which button
+
+1529
+01:50:28,760 --> 01:50:37,600
+i need to push here is it the break one okay thanks everybody okay okay bye
+
