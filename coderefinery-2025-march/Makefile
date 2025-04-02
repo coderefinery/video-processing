@@ -39,9 +39,9 @@ print:
 
 
 %.srt: %.mkv
-	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to CodeRefinery day four." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
+	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
 %.srt: %.mp4
-	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to CodeRefinery day four." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
+	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
 
 
 #aac: $(aac)
