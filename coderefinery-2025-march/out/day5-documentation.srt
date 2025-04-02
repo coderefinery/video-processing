@@ -1,0 +1,4340 @@
+1
+00:00:00,000 --> 00:00:02,820
+So yeah, thank you, [name]. And thank you, [name]. So,
+
+2
+00:00:03,840 --> 00:00:07,600
+[name], we're going to talk about how to document your
+
+3
+00:00:07,620 --> 00:00:09,000
+research software.
+
+4
+00:00:10,020 --> 00:00:13,380
+Yeah, very interesting, very important thing, I would say.
+
+5
+00:00:13,380 --> 00:00:16,140
+Yeah, very important topic.
+
+6
+00:00:16,340 --> 00:00:23,820
+Yeah, so this will be a two hour lesson that runs up until depending on the time
+
+7
+00:00:24,020 --> 00:00:31,340
+zone here for us, it's up until 11 o'clock and in the first hour it will be mainly
+
+8
+00:00:31,540 --> 00:00:37,780
+that we'll go through things here based on our lesson material on the web page.
+
+9
+00:00:37,980 --> 00:00:43,340
+And then it will be a little bit more hands on in the second hour.
+
+10
+00:00:43,380 --> 00:00:49,880
+But there will be a lot of discussions also over the shared document now during the first hour.
+
+11
+00:00:51,740 --> 00:00:56,140
+So we could just give a little bit of an overview.
+
+12
+00:00:56,560 --> 00:01:09,540
+So we'll talk about documentation in general for a project, for a code, and also then touch upon some specifics, as for instance, how to write a good reading file.
+
+13
+00:01:09,540 --> 00:01:15,660
+What we'll be talking about will be independent of programming languages.
+
+14
+00:01:15,660 --> 00:01:21,440
+Some of the examples will be in Python, but it's essentially transferable to other programming
+
+15
+00:01:21,440 --> 00:01:23,680
+languages.
+
+16
+00:01:23,680 --> 00:01:29,000
+We will learn about a documentation generator, Sphinx.
+
+17
+00:01:29,000 --> 00:01:35,180
+It is often combined with an online service, Read the Docs.
+
+18
+00:01:35,180 --> 00:01:44,440
+And we will also then, towards the end, talk about how to get documentation up online on
+
+19
+00:01:44,440 --> 00:01:48,540
+a service like, for instance, GitHub pages.
+
+20
+00:01:48,540 --> 00:01:57,140
+It's quite a lot of things to go through.
+
+21
+00:01:57,140 --> 00:01:58,140
+Yeah.
+
+22
+00:01:58,140 --> 00:02:04,420
+There are a few things, but I think we have time to cover things here.
+
+23
+00:02:04,420 --> 00:02:10,660
+um so yeah perhaps we could first just start a little bit on see what people have written
+
+24
+00:02:10,660 --> 00:02:13,780
+in the icebreaker question in the shared document
+
+25
+00:02:16,340 --> 00:02:22,740
+like good yeah it's it's always funny to yeah these are typically very funny questions and
+
+26
+00:02:22,740 --> 00:02:29,140
+people come without come up with very funny answers i think yeah sorry so i'll
+
+27
+00:02:29,140 --> 00:02:34,660
+brought this over here to the screen share and okay what do you want to be when you grow up
+
+28
+00:02:39,940 --> 00:02:48,260
+yeah i like become a scientist i like that this is that it also applies to me this is being
+
+29
+00:02:48,260 --> 00:02:55,380
+a software engineer means that i'm always between you know doing software and doing science and
+
+30
+00:02:55,380 --> 00:03:00,380
+And yeah, I want to do both of both, both things,
+
+31
+00:03:00,620 --> 00:03:03,180
+let's say, more of both things.
+
+32
+00:03:03,180 --> 00:03:04,800
+And so become a scientist
+
+33
+00:03:04,800 --> 00:03:06,920
+and I would say also a software engineer,
+
+34
+00:03:06,920 --> 00:03:08,140
+but I like that.
+
+35
+00:03:08,140 --> 00:03:09,780
+Yeah, I can relate.
+
+36
+00:03:12,880 --> 00:03:15,760
+Oh, here's one, a funny one, streamer.
+
+37
+00:03:15,760 --> 00:03:18,460
+The stream is teaching and mentoring kind of stuff.
+
+38
+00:03:21,600 --> 00:03:23,800
+Well, join Code Refinery, I guess.
+
+39
+00:03:23,800 --> 00:03:29,200
+So, for reference, I'm the one that wrote that one.
+
+40
+00:03:29,200 --> 00:03:32,200
+I see, I see.
+
+41
+00:03:32,200 --> 00:03:35,200
+Ah, okay.
+
+42
+00:03:35,200 --> 00:03:51,360
+How to explain your account job from someone from the year 1700.
+
+43
+00:03:51,360 --> 00:03:59,040
+across the future yeah i can always try um okay so moving down here a bit becomes a little bit closer
+
+44
+00:03:59,040 --> 00:04:05,200
+to to the to the to the topic here of the lesson so what's the best documented project you have seen
+
+45
+00:04:06,400 --> 00:04:12,960
+and the highlight lighted here are for instance numpy and scipy which are
+
+46
+00:04:13,520 --> 00:04:18,880
+automatic libraries implemented with api for the python programming languages
+
+47
+00:04:18,880 --> 00:04:24,640
+I think we will see how to write documentation that looks a bit like that.
+
+48
+00:04:25,920 --> 00:04:33,200
+So at least we cannot teach you today all the good practices, but at least we can teach you the tools
+
+49
+00:04:34,000 --> 00:04:38,480
+or show you the tools at least to do something that looks like it at least.
+
+50
+00:04:40,240 --> 00:04:48,160
+Yes, so okay there are the placeholders. So let's move now to the lesson material here.
+
+51
+00:04:48,880 --> 00:04:59,880
+so the idea is here that yeah we will start to be interactive here right away
+
+52
+00:04:59,880 --> 00:05:09,420
+so we would like to bring up this I mean why would you like to document a code
+
+53
+00:05:09,420 --> 00:05:17,760
+and why it is important so you can see here these questions and we would now
+
+54
+00:05:17,760 --> 00:05:25,380
+ask you to please contribute with your input in the shared document and here
+
+55
+00:05:25,380 --> 00:05:30,780
+have here some starting questions for discussion so questions are is product
+
+56
+00:05:30,780 --> 00:05:38,560
+documentation important and why is that so how would you describe a useful
+
+57
+00:05:38,560 --> 00:05:44,780
+documentation and the third thing how can you motivate your colleagues to
+
+58
+00:05:44,780 --> 00:05:46,340
+contribute to the documentation.
+
+59
+00:05:57,740 --> 00:06:04,140
+So I can start saying a bit of my opinions here, perhaps, I
+
+60
+00:06:04,140 --> 00:06:09,500
+don't want to stimulate the discussion. Well, of course, I'm
+
+61
+00:06:09,500 --> 00:06:13,440
+seeing already some interesting answers there. So I will try to
+
+62
+00:06:13,440 --> 00:06:17,580
+say something else is not there. So I actually, for myself, I
+
+63
+00:06:17,580 --> 00:06:22,120
+want to document the code also, because I do, I typically do
+
+64
+00:06:22,120 --> 00:06:25,680
+many things at once. And maybe there are some projects that I
+
+65
+00:06:25,700 --> 00:06:30,420
+need to stop for a moment and then pick pick them up later.
+
+66
+00:06:31,260 --> 00:06:37,660
+And if I have good documentation written, at least I can, I can
+
+67
+00:06:37,740 --> 00:06:40,320
+get back to it. But of course, if I want someone else to use
+
+68
+00:06:40,320 --> 00:06:46,480
+code then yeah but then it becomes more complicated i would say but still uh yeah that's a very
+
+69
+00:06:46,480 --> 00:06:58,720
+important uh aspect of it so yeah uh yeah and actually there's a comment which is interesting
+
+70
+00:06:58,720 --> 00:07:04,960
+for no one is going to use it not even yourself perhaps not but yeah so it's true a throwaway
+
+71
+00:07:04,960 --> 00:07:11,360
+code exists uh but yeah we throw away code is throw away code is awesome because you can do
+
+72
+00:07:11,360 --> 00:07:18,080
+whatever you want with it and you don't pay for your sins uh but uh but yeah we are talking about
+
+73
+00:07:18,080 --> 00:07:25,200
+here i think we are talking about code that that where you don't have this luxury let's say yeah
+
+74
+00:07:25,200 --> 00:07:32,160
+throwing everything away and um it could also be that even if it's a code you write it and perhaps
+
+75
+00:07:32,160 --> 00:07:38,320
+just for use over a shorter time or so then I mean to document it can also guide you in
+
+76
+00:07:39,200 --> 00:07:44,480
+the development of the code itself and perhaps you come to think about some constructions which are
+
+77
+00:07:45,440 --> 00:07:52,560
+not so good and you then while describing them in text in documentation you
+
+78
+00:07:52,560 --> 00:07:56,720
+then come to think about these shortcomings and you then improve in the code itself
+
+79
+00:07:56,720 --> 00:08:07,920
+So, yeah, we could highlight here what you have contributed with here in the document.
+
+80
+00:08:07,920 --> 00:08:23,840
+Yeah, here, important here, we need at least a bare minimal documentation, like a README.
+
+81
+00:08:23,840 --> 00:08:27,840
+I think that that's a very important point.
+
+82
+00:08:34,600 --> 00:08:37,080
+And there are so many steps in the project
+
+83
+00:08:37,120 --> 00:08:41,720
+that are stored only in your head initially,
+
+84
+00:08:42,280 --> 00:08:48,160
+and you need to get them down on paper before you step out away from a project.
+
+85
+00:08:48,200 --> 00:08:49,600
+Yeah.
+
+86
+00:08:49,960 --> 00:08:53,600
+I think we should try to comment a bit on the third question.
+
+87
+00:08:53,600 --> 00:08:56,120
+how can you motivate your colleagues
+
+88
+00:08:56,120 --> 00:08:57,440
+to contribute to the documentation?
+
+89
+00:08:57,440 --> 00:09:00,220
+But I think even before asking this too
+
+90
+00:09:00,220 --> 00:09:01,740
+about your colleagues,
+
+91
+00:09:01,740 --> 00:09:05,260
+but how can I myself,
+
+92
+00:09:05,260 --> 00:09:08,400
+how can I motivate myself to write documentation?
+
+93
+00:09:08,400 --> 00:09:11,740
+And I think that, yeah,
+
+94
+00:09:11,740 --> 00:09:16,740
+so getting familiar with the habit, it's important,
+
+95
+00:09:17,400 --> 00:09:20,280
+and also with the tools that are available for that.
+
+96
+00:09:20,280 --> 00:09:22,200
+So I think, yeah,
+
+97
+00:09:22,200 --> 00:09:27,640
+habit is more important than the than the tools but uh but yeah we'll i think that that's the way
+
+98
+00:09:27,640 --> 00:09:33,320
+you structure our lesson basically talking about simple tools first and describing the
+
+99
+00:09:34,520 --> 00:09:40,920
+yeah or the the things you need to think about when you write documentation and then talk a
+
+100
+00:09:40,920 --> 00:09:49,080
+bit more about the tools later right um yeah but yeah i think that uh someone's writing an
+
+101
+00:09:49,080 --> 00:09:53,940
+interesting comment here like learn to do a little bit at the right stages it doesn't seem
+
+102
+00:09:53,940 --> 00:10:00,080
+like an artificial yes so the point is that you you can always learn a bit improve your practices
+
+103
+00:10:00,080 --> 00:10:07,600
+while you also do some some some like important work at the same like like the the fundamental
+
+104
+00:10:07,600 --> 00:10:12,740
+work of writing the code and right doing your research at the same time you you know then you
+
+105
+00:10:12,740 --> 00:10:18,540
+stop for a moment you learn a bit more about how to do things better and go on so in this iterative
+
+106
+00:10:18,540 --> 00:10:25,180
+cycle and i think that this is a key to the practice it applies here but to the documentation
+
+107
+00:10:25,180 --> 00:10:31,100
+but also to other to best practices in general how do you learn how to apply best practices in general
+
+108
+00:10:36,860 --> 00:10:43,900
+yeah yeah um i think yeah we can perhaps see here there are some things which we had here
+
+109
+00:10:43,900 --> 00:10:49,820
+uh in the lesson material let's see that we had thought of up beforehand so to say
+
+110
+00:10:51,020 --> 00:10:54,860
+um and this perhaps complement here and
+
+111
+00:10:57,260 --> 00:11:02,220
+yeah there are some some points here that that complement actually what we have on the
+
+112
+00:11:02,220 --> 00:11:07,820
+on the shared document so you may want others to contribute to the code
+
+113
+00:11:07,820 --> 00:11:17,980
+and yeah to that and having a documentation can be helpful because that can get persons to
+
+114
+00:11:18,620 --> 00:11:28,220
+have a more smooth entry to the code and to the product and the fourth point here is yeah that's
+
+115
+00:11:28,220 --> 00:11:34,060
+actually a very important point because feel your limited time and let the documentation answer
+
+116
+00:11:34,060 --> 00:11:42,140
+are frequently asked questions and i mean the scale of things here matters a lot so if you are
+
+117
+00:11:42,140 --> 00:11:48,620
+working let's say three four persons perhaps you even sit in the same corridor and you have lunch
+
+118
+00:11:48,620 --> 00:11:55,260
+every day that then clearly a lot of let's say keeping track of things can be very informal
+
+119
+00:11:55,260 --> 00:12:03,100
+perhaps only in voice and you don't need to write it on in paper if you start to share a scientific
+
+120
+00:12:03,100 --> 00:12:11,900
+code with people who are not at the same physical location as you and also the numbers go up to
+
+121
+00:12:11,900 --> 00:12:20,060
+let's say hundreds of users can be tens of developers then clearly you need to do it in
+
+122
+00:12:20,060 --> 00:12:31,260
+writing and also this with let's say the efficiency of things namely this that things would be
+
+123
+00:12:31,260 --> 00:12:40,380
+possible to grasp for newcomers to the code and then be the users or be the developers
+
+124
+00:12:41,420 --> 00:12:49,180
+that is helpful for them and also quite helpful for people who are already on board
+
+125
+00:12:50,620 --> 00:12:53,980
+because then you don't need to answer the same question over and over again
+
+126
+00:12:53,980 --> 00:13:06,740
+But then the question, I guess, is, what would you like to have in a documentation, right?
+
+127
+00:13:06,740 --> 00:13:13,320
+So what are the things you would put in your documentation?
+
+128
+00:13:13,320 --> 00:13:17,140
+So that's why we have this question about the wish list, right?
+
+129
+00:13:17,140 --> 00:13:22,080
+So what is your wish list regarding what you have there?
+
+130
+00:13:22,080 --> 00:13:33,080
+Yeah, so one important thing here is that documentation can come in many different forms.
+
+131
+00:13:33,080 --> 00:13:48,080
+One way of categorizing them, which has gained a lot of traction, is to distinguish in the four categories of tutorials,
+
+132
+00:13:48,960 --> 00:13:53,520
+how-to guides, explanation and reference.
+
+133
+00:13:56,160 --> 00:14:07,040
+So we have here also a few reference material for this and we could perhaps
+
+134
+00:14:08,400 --> 00:14:10,720
+just move quickly to this page here.
+
+135
+00:14:18,080 --> 00:14:29,120
+Yeah, so here you have like a nice box here with these four different kinds of documentation.
+
+136
+00:14:29,120 --> 00:14:35,640
+So a tutorial, that would be something which is learning oriented.
+
+137
+00:14:35,640 --> 00:14:41,800
+So that could be like an entry point to get started with the code.
+
+138
+00:14:41,800 --> 00:14:46,980
+How to guides, more like you have something very specific.
+
+139
+00:14:46,980 --> 00:14:53,780
+have a specific thing you would like to do with the program and you would like to go in and then get
+
+140
+00:14:55,460 --> 00:15:02,180
+a suggestion on how to do a certain task for a specific purpose
+
+141
+00:15:06,340 --> 00:15:11,140
+that relates also then i mean tutorials and how to guides i would say both of them will interrelate
+
+142
+00:15:11,140 --> 00:15:17,700
+quite a lot to more like explanation material which could be material which are
+
+143
+00:15:19,300 --> 00:15:27,380
+a i mean explaining the program and the code itself it could also go let's say beyond
+
+144
+00:15:28,820 --> 00:15:34,340
+to the code itself in a sense that could give let's say an overview of i mean the scientific
+
+145
+00:15:34,340 --> 00:15:48,660
+field and put it into context when you're using the code. And fourthly here you have the category
+
+146
+00:15:48,660 --> 00:15:58,020
+reference information and that is yet another category which is that can be then very let's say
+
+147
+00:15:58,020 --> 00:16:05,060
+technical instance could be like an application programming interface and complete description
+
+148
+00:16:05,060 --> 00:16:12,260
+of the api which then is important for you as a developer of a code to have available
+
+149
+00:16:13,700 --> 00:16:18,980
+but it can also be done for users that you sometimes need to be able to just find sort
+
+150
+00:16:18,980 --> 00:16:26,020
+of like in a dictionary style complete listing of all of the let's say keywords if it is a keyword
+
+151
+00:16:26,020 --> 00:16:32,820
+based program or if it's a graphical user interface program that that you have let's say
+
+152
+00:16:32,820 --> 00:16:39,300
+um a little bit of an overview of here are all all the entry points and work modalities in the
+
+153
+00:16:39,300 --> 00:16:50,580
+program
+
+154
+00:16:54,580 --> 00:17:02,260
+and we will come in in a little bit later into the lesson we'll talk about
+
+155
+00:17:02,980 --> 00:17:08,580
+readme files which i think is probably something that you all are familiar with
+
+156
+00:17:09,300 --> 00:17:20,360
+But before we do so, we have here a little bit of a task here to come up with ideas for
+
+157
+00:17:20,360 --> 00:17:31,400
+what would be points, I mean suggestions on points to have on a wish list for good documentation.
+
+158
+00:17:31,400 --> 00:17:38,440
+So we have these three questions here to start the discussion.
+
+159
+00:17:38,440 --> 00:17:41,840
+And please then work in the collaborative document.
+
+160
+00:17:41,840 --> 00:17:50,400
+The three questions are, let us create a wishlist for how we would like the competition to be.
+
+161
+00:17:50,400 --> 00:17:59,680
+We do have some of our ideas, but please don't look on them yet, but come up with your own.
+
+162
+00:17:59,680 --> 00:18:06,600
+And also, you'll probably come to think about some things that we did not think about earlier.
+
+163
+00:18:06,600 --> 00:18:18,940
+Yeah, how does documentation need to be in order to be useful, in order to be, like, yeah, useful to different people?
+
+164
+00:18:18,940 --> 00:18:24,640
+And also, well, I don't want to give away too much.
+
+165
+00:18:24,920 --> 00:18:31,580
+I don't want to stimulate the discussion by creating some kind of bias.
+
+166
+00:18:31,580 --> 00:18:42,620
+but yeah okay but I see that comments are coming in yeah yeah so yeah working
+
+167
+00:18:42,620 --> 00:18:49,280
+examples like examples on how to use the code great I think this I think we she's
+
+168
+00:18:49,280 --> 00:18:55,280
+really reasonable a table of content yes we'll discuss how to get a table of
+
+169
+00:18:55,280 --> 00:19:01,880
+content. This can be typically automated, actually. So, we see
+
+170
+00:19:01,880 --> 00:19:14,420
+that. Yeah. Yeah, I think that template input idea is similar
+
+171
+00:19:14,420 --> 00:19:19,840
+to like an example of usage, right? So, it falls in the same
+
+172
+00:19:19,840 --> 00:19:27,720
+category, I would say, possibly in the category of, of how to
+
+173
+00:19:27,720 --> 00:19:32,840
+guides, perhaps or tutorials. I mean, that is there. I mean, a
+
+174
+00:19:32,840 --> 00:19:37,780
+template input would be possibly part of a and how to or a
+
+175
+00:19:37,780 --> 00:19:46,880
+tutorial, right? Think there's a comment coming through about
+
+176
+00:19:46,880 --> 00:19:53,680
+language i guess one should try to be as possible as unambiguous as possible i guess
+
+177
+00:19:55,120 --> 00:19:57,760
+if i understand correctly the intention of the writer
+
+178
+00:20:01,760 --> 00:20:11,440
+yeah that's obviously very important to avoid any let's say confusion
+
+179
+00:20:11,440 --> 00:20:19,360
+to the extent possible because I think it's inherently so that for larger programs
+
+180
+00:20:20,480 --> 00:20:24,960
+or could be like program packages where you have let's say one main program and you have
+
+181
+00:20:24,960 --> 00:20:29,040
+a number of libraries that you're also using then there is a lot of complexity
+
+182
+00:20:30,000 --> 00:20:37,920
+which you can try to shield the user from it up a point but
+
+183
+00:20:37,920 --> 00:20:45,480
+But I mean, there are often situations where you need to get under the hood and really
+
+184
+00:20:45,480 --> 00:20:50,700
+know what is going on in the code.
+
+185
+00:20:50,700 --> 00:20:56,640
+And then there will be details for sure.
+
+186
+00:20:56,640 --> 00:21:09,260
+I see very interesting comments here, but I'm also curious to see what's the reaction
+
+187
+00:21:09,260 --> 00:21:11,140
+to our suggestions.
+
+188
+00:21:11,140 --> 00:21:21,880
+So, would you go to our – should we start discussing our suggestions?
+
+189
+00:21:21,880 --> 00:21:22,920
+Yeah, let's do so.
+
+190
+00:21:29,480 --> 00:21:35,180
+Yeah, so I think the reason why this documentation,
+
+191
+00:21:35,500 --> 00:21:40,080
+this is part of this workshop and we spend so much time on virtual control
+
+192
+00:21:40,080 --> 00:21:44,220
+is because I think that documentation should be virtual controlled.
+
+193
+00:21:44,460 --> 00:21:50,300
+It's easy for your code to change in a way that it's not synchronized
+
+194
+00:21:50,300 --> 00:21:51,180
+with your documentation.
+
+195
+00:21:51,180 --> 00:22:10,980
+So if you put the documentation and the source code in the same repository, then it's more likely, it's still possible to have some kind of, you know, issues with synchronization that, you know, your documentation describes an old version of the code and the code has progressed.
+
+196
+00:22:11,240 --> 00:22:18,200
+But it's harder for this to happen, or at least it's easier to see that in a sense, right?
+
+197
+00:22:18,200 --> 00:22:31,340
+Yeah, so I think, well, so yeah, so the idea is version, so your documentation should be version control because it will change over time because the software will change over time.
+
+198
+00:22:31,340 --> 00:22:48,000
+I think also it will change because, so documentation can change because you may find ways to rephrase some sentences or to, you will find more fitting examples and you would, so there are different ways, different reasons why documentation may change.
+
+199
+00:22:48,000 --> 00:22:54,640
+so you want to keep that under virtual control i would think hey and so it should be close to
+
+200
+00:22:54,640 --> 00:23:03,680
+the code i think then yeah what about a standard macro language what the what what is what is this
+
+201
+00:23:03,680 --> 00:23:19,880
+about yes these are something we just a lot for rendering of contents of texts
+
+202
+00:23:19,880 --> 00:23:25,860
+and documents often in the context of web publishing but also for documents
+
+203
+00:23:25,860 --> 00:23:37,460
+you have offline um and these are the market language is something which can be when you read
+
+204
+00:23:37,460 --> 00:23:45,460
+it in source in in its raw form it is pure text which means it suits itself to version control
+
+205
+00:23:47,300 --> 00:23:53,380
+at the same time you can then on the fly in your in your in an editor for instance
+
+206
+00:23:53,380 --> 00:24:01,140
+visual studio code or or other programs on your local machine you can also render it very swiftly
+
+207
+00:24:01,860 --> 00:24:09,300
+often on the fly and we will hear in this lesson we will see two examples
+
+208
+00:24:09,300 --> 00:24:19,140
+namely restructured text rst and also the so-called markdown mark up and and
+
+209
+00:24:19,140 --> 00:24:24,140
+and it is sort of a play with the markup as in HTML.
+
+210
+00:24:28,700 --> 00:24:31,000
+Yeah, so it's a kind of, it's very simple.
+
+211
+00:24:31,000 --> 00:24:33,620
+The thing is, who doesn't love markdown?
+
+212
+00:24:33,620 --> 00:24:36,040
+It's very simple to use and yeah.
+
+213
+00:24:37,140 --> 00:24:39,780
+And it was created with that intent.
+
+214
+00:24:39,780 --> 00:24:41,680
+Restructure text instead is a bit more complex,
+
+215
+00:24:41,680 --> 00:24:42,820
+but it's more powerful.
+
+216
+00:24:44,040 --> 00:24:44,880
+Yes, yes.
+
+217
+00:24:44,880 --> 00:24:54,020
+Okay, what more do we have here? We have copy-pasteable. That's very practical, I would say. You have
+
+218
+00:24:54,020 --> 00:25:02,640
+let's say some suggested sequence of commands and you can take them directly from the documentation
+
+219
+00:25:02,640 --> 00:25:11,060
+and then you just paste it in let's say your terminal window or other application interface
+
+220
+00:25:11,060 --> 00:25:13,360
+and things get running.
+
+221
+00:25:14,500 --> 00:25:16,380
+Yeah, and the problem is that if you use PDF
+
+222
+00:25:16,380 --> 00:25:19,240
+or even some slides, when you have some,
+
+223
+00:25:19,240 --> 00:25:20,580
+some codes written slides,
+
+224
+00:25:20,580 --> 00:25:23,420
+if you copy that and paste it, it doesn't work.
+
+225
+00:25:23,420 --> 00:25:25,060
+Even if it, you know,
+
+226
+00:25:25,060 --> 00:25:27,520
+even if it looks good when you pasted it.
+
+227
+00:25:27,520 --> 00:25:30,660
+So it's the weird things happening sometimes.
+
+228
+00:25:30,660 --> 00:25:31,800
+So, yeah.
+
+229
+00:25:36,820 --> 00:25:39,240
+Okay, I think we should go over these things here
+
+230
+00:25:39,240 --> 00:25:40,400
+a little bit swiftly
+
+231
+00:25:40,400 --> 00:25:42,800
+so that we can come to read new files.
+
+232
+00:25:42,800 --> 00:25:44,840
+So installation instructions,
+
+233
+00:25:44,840 --> 00:25:49,460
+that's very relevant.
+
+234
+00:25:49,460 --> 00:25:54,460
+Code licensing, that's...
+
+235
+00:25:54,480 --> 00:25:55,500
+That's a big thing.
+
+236
+00:25:55,500 --> 00:25:57,180
+Yeah, that's a big thing.
+
+237
+00:25:58,240 --> 00:26:01,460
+The last point here, information for contributors.
+
+238
+00:26:01,460 --> 00:26:03,320
+That's also something that lowers the hurdle
+
+239
+00:26:03,320 --> 00:26:08,320
+for newcomers and also a means to where you can,
+
+240
+00:26:08,320 --> 00:26:14,800
+means to where you can, let's say, make clear that you welcome
+
+241
+00:26:14,800 --> 00:26:19,080
+contributions. And I mean, that also depends where you stand in
+
+242
+00:26:19,080 --> 00:26:21,840
+a project, perhaps in the beginning, it is, let's say,
+
+243
+00:26:21,840 --> 00:26:25,520
+essentially closed shop, you work with your team of close
+
+244
+00:26:25,520 --> 00:26:28,840
+collaborators, and you're not really ready to let in other
+
+245
+00:26:28,840 --> 00:26:32,580
+people, and that's perfectly fine. But then you could also
+
+246
+00:26:32,580 --> 00:26:36,160
+perhaps be transparent about this, so that there are no
+
+247
+00:26:36,160 --> 00:26:43,960
+misunderstandings. And what I do myself sometimes is that I simply reach out over
+
+248
+00:26:43,960 --> 00:26:51,880
+email to people to check first, like, okay, is here something you would like people to
+
+249
+00:26:51,880 --> 00:26:59,700
+contribute? It might be better to have that kind of conversation offline rather than to
+
+250
+00:26:59,700 --> 00:27:04,700
+to have that in, let's say, discussion on issues in GitHub.
+
+251
+00:27:09,460 --> 00:27:12,580
+I actually have something to add to the wishlist,
+
+252
+00:27:12,580 --> 00:27:13,920
+which is not on this list
+
+253
+00:27:13,920 --> 00:27:15,620
+because it's a bit hard to achieve,
+
+254
+00:27:15,620 --> 00:27:17,680
+but I think it can be nice.
+
+255
+00:27:17,680 --> 00:27:22,200
+So I think that there's some kind of documentation,
+
+256
+00:27:22,200 --> 00:27:25,020
+there are some formats that allow you to check
+
+257
+00:27:25,020 --> 00:27:29,200
+at least part of it automatically.
+
+258
+00:27:29,200 --> 00:27:34,480
+And so if you write documentations using a notebook approach, like a literal programming approach,
+
+259
+00:27:34,480 --> 00:27:43,000
+there are some tools that actually can verify that your tutorial that you write in, like, a Jupyter notebook in this way,
+
+260
+00:27:44,160 --> 00:27:49,160
+when you mix text and code.
+
+261
+00:27:50,180 --> 00:27:57,120
+So if you use that format, there are tools that can validate your documentation, in a sense,
+
+262
+00:27:57,120 --> 00:27:59,880
+so that you can actually run them automatically
+
+263
+00:27:59,880 --> 00:28:03,620
+and see if something has changed.
+
+264
+00:28:04,120 --> 00:28:07,200
+And I think it's nice to have something like this
+
+265
+00:28:07,200 --> 00:28:11,380
+because it allows you to basically maintain your documentation
+
+266
+00:28:11,380 --> 00:28:15,580
+with less effort or to at least detect problems,
+
+267
+00:28:16,660 --> 00:28:19,580
+incompatibilities between documentation and your code quicker.
+
+268
+00:28:20,560 --> 00:28:25,660
+And so we are going to talk about Jupyter Notebooks this afternoon,
+
+269
+00:28:25,660 --> 00:28:28,960
+and we're going to talk about automated testing tomorrow.
+
+270
+00:28:29,480 --> 00:28:34,660
+So I think this is a good way to connect the dots of all this.
+
+271
+00:28:35,140 --> 00:28:39,140
+I have a narrative, overarching narrative in this huge workshop.
+
+272
+00:28:40,460 --> 00:28:41,400
+Yes, indeed.
+
+273
+00:28:42,060 --> 00:28:45,280
+And you mentioned, [name], that there are different tools and frameworks.
+
+274
+00:28:45,280 --> 00:28:52,160
+So that brings us naturally over to a little bit
+
+275
+00:28:52,160 --> 00:29:02,080
+um that particular topic namely so what what popular i mean what tools and solutions are out
+
+276
+00:29:02,080 --> 00:29:12,960
+there so um when you do commenting in in documentation in code there are um
+
+277
+00:29:15,120 --> 00:29:21,440
+things that you can do um which could be like pure comments you can use function doc strings
+
+278
+00:29:22,160 --> 00:29:33,160
+And I mean, actually, the in-code documentation is a primary concern for the developers of a code.
+
+279
+00:29:33,160 --> 00:29:42,160
+It can also be of high importance for users of the code, if it's so that you have something which is,
+
+280
+00:29:43,120 --> 00:29:49,360
+let's say it's something um yeah a big simulation software with a lot of
+
+281
+00:29:50,880 --> 00:29:56,960
+let's say detail details in implementation and where you as an end user need to know precisely
+
+282
+00:29:56,960 --> 00:30:04,080
+what is happening sometimes looking directly into the source code is the adequate thing to do
+
+283
+00:30:04,080 --> 00:30:13,400
+And then having the in-code documentation is important because then you can, as a guide
+
+284
+00:30:13,400 --> 00:30:15,680
+for the eye, so that you find...
+
+285
+00:30:15,680 --> 00:30:23,240
+Yeah, especially if you're talking about the kind of functions that stay a bit on top of
+
+286
+00:30:23,240 --> 00:30:24,240
+everything.
+
+287
+00:30:24,240 --> 00:30:32,200
+So the more, the general, the functions that the user may call, then I think these are
+
+288
+00:30:32,200 --> 00:30:38,520
+comments there uh and are going to be pretty useful because that's i think these are the
+
+289
+00:30:38,520 --> 00:30:45,080
+most likely to be looked at by by uh by a user right yeah yeah
+
+290
+00:30:49,720 --> 00:30:55,880
+i want to say one thing about commenting your code uh there's uh there's a a number of people
+
+291
+00:30:55,880 --> 00:31:02,520
+like a discipline called the clean code where they say oh cold comments are not great because
+
+292
+00:31:02,520 --> 00:31:10,040
+they are hard to fight to to um to verify you should actually name your functions and your
+
+293
+00:31:10,040 --> 00:31:15,240
+your variables in a way so that it's obvious what they do and they think that it's good advice but
+
+294
+00:31:15,240 --> 00:31:23,080
+it's quite hard to get to get right so yeah um yes we need we need also comments in the code i think
+
+295
+00:31:23,080 --> 00:31:27,880
+yeah but i think there's also people that say no you shouldn't comment your code you should make
+
+296
+00:31:27,880 --> 00:31:34,200
+your functions and your your variable uh named in a way that you don't need comments maybe it's
+
+297
+00:31:34,200 --> 00:31:39,560
+possible i don't think it's always possible but yeah yeah it depends a little bit also on which
+
+298
+00:31:39,560 --> 00:31:45,480
+language you you're using because i mean some languages are more verbose and and let's say
+
+299
+00:31:45,480 --> 00:31:53,320
+human language like it and whereas others a bit more a bit more compact and keyword like it so
+
+300
+00:31:53,320 --> 00:32:00,440
+that you need to decorate it or you could naturally decorate it with normal text okay
+
+301
+00:32:02,120 --> 00:32:08,200
+so we had mentioned here earlier um already this with restructured text and markdown so
+
+302
+00:32:08,200 --> 00:32:12,740
+So, [name], what are these formats?
+
+303
+00:32:12,740 --> 00:32:15,300
+So yeah, here in the notes you see,
+
+304
+00:32:15,300 --> 00:32:18,900
+so basically there are two formats
+
+305
+00:32:18,900 --> 00:32:22,260
+that allow you to write.
+
+306
+00:32:23,140 --> 00:32:26,460
+They are really already readable as they are,
+
+307
+00:32:26,460 --> 00:32:27,800
+especially Markdown, I think.
+
+308
+00:32:27,800 --> 00:32:31,980
+That was the design goal of Markdown,
+
+309
+00:32:31,980 --> 00:32:35,040
+was you don't have to render this to HTML.
+
+310
+00:32:35,040 --> 00:32:37,260
+You don't have to render this to a webpage.
+
+311
+00:32:37,260 --> 00:32:38,800
+You cannot re-read as it is.
+
+312
+00:32:41,060 --> 00:32:46,560
+And yeah, so you see that you have different features here.
+
+313
+00:32:46,660 --> 00:32:48,380
+You can make some parts bold.
+
+314
+00:32:48,420 --> 00:32:49,740
+You can emphasize some parts.
+
+315
+00:32:49,840 --> 00:32:51,220
+You can have lists.
+
+316
+00:32:51,220 --> 00:32:54,540
+You can have images, tables, links.
+
+317
+00:32:55,920 --> 00:32:59,940
+Yeah, and they are equivalent in the basic functionality, at least.
+
+318
+00:32:59,940 --> 00:33:08,500
+right uh yeah so restructured text is a bit more feature featureful uh the markdown markdown has
+
+319
+00:33:08,500 --> 00:33:16,340
+actually different flavors so github for example can render markdown files it will do that in a
+
+320
+00:33:16,340 --> 00:33:22,280
+different way than the github for example um at least on the more like niche features um
+
+321
+00:33:22,280 --> 00:33:28,860
+well instead restructured text is more standardized and it can also be uh expanded if you want you
+
+322
+00:33:28,860 --> 00:33:34,220
+add if you want to do something fancy you can create new directives and new roles and there's
+
+323
+00:33:34,220 --> 00:33:39,740
+a mechanism to do that with markdown alone it's a bit more complicated but markdown is simple
+
+324
+00:33:39,740 --> 00:33:45,260
+and people don't need to be taught how to use markdown while people may need to be taught how
+
+325
+00:33:45,260 --> 00:33:52,140
+to use uh restructuring text yeah yeah that's a good point um i know indeed markdown is very
+
+326
+00:33:52,140 --> 00:34:00,700
+lightweight essentially you can um i mean copy paste some paragraphs and then a starting point
+
+327
+00:34:00,700 --> 00:34:05,660
+and then you already have the syntax there for everything and and just write your content yeah
+
+328
+00:34:06,220 --> 00:34:10,540
+and actually in what follows later when we are going to talk about sphinx we are going to use
+
+329
+00:34:10,540 --> 00:34:17,100
+like um something which is the best of both worlds which is my st which is like a markedly structured
+
+330
+00:34:17,100 --> 00:34:23,900
+text which is a flavor like a markdown flavor which is a expanded in a way that you can also
+
+331
+00:34:23,900 --> 00:34:32,060
+you have also the restructured text features so you see here in in the middle here of this panel
+
+332
+00:34:32,060 --> 00:34:39,580
+that have some references here where you can find them more details on on markdown and on
+
+333
+00:34:39,580 --> 00:34:53,420
+restructured text um html static site generators that is something that we will try out in the
+
+334
+00:34:53,420 --> 00:35:03,180
+second hour and as you can see here there are many options available here um so
+
+335
+00:35:03,180 --> 00:35:06,580
+So, yeah, we have Sphinx here, [name].
+
+336
+00:35:07,020 --> 00:35:11,660
+Yeah, so Sphinx is like the main tool
+
+337
+00:35:11,660 --> 00:35:15,440
+that is used to document the official Python projects.
+
+338
+00:35:16,000 --> 00:35:18,540
+And that's what we're going to use here.
+
+339
+00:35:18,540 --> 00:35:20,520
+So we said that at the beginning
+
+340
+00:35:20,520 --> 00:35:23,440
+that this part is like language agnostic.
+
+341
+00:35:24,120 --> 00:35:26,720
+And it is because you can write any documentation
+
+342
+00:35:26,720 --> 00:35:30,900
+for any project of any language.
+
+343
+00:35:30,900 --> 00:35:33,660
+But yeah, I mean, this is actually Python.
+
+344
+00:35:34,240 --> 00:35:35,980
+This is a Python tool, okay?
+
+345
+00:35:37,460 --> 00:35:40,740
+But this is only for the Sphinx part.
+
+346
+00:35:41,020 --> 00:35:43,500
+What we're going to talk about in the first hour
+
+347
+00:35:43,500 --> 00:35:48,000
+applies to basically every software project in any language.
+
+348
+00:35:48,940 --> 00:35:53,340
+And yeah, so there's really many of them.
+
+349
+00:35:53,720 --> 00:35:57,900
+I think the MKDocs is becoming more and more popular.
+
+350
+00:35:57,900 --> 00:36:07,920
+and uh yeah the cool thing about um sphinx and mkdocs and also others is that they can do
+
+351
+00:36:07,920 --> 00:36:16,000
+things which are really interesting not just generate html uh so web pages but they can also
+
+352
+00:36:16,000 --> 00:36:24,220
+they have plugins where for example they can produce pdf or latex or they can um parse your
+
+353
+00:36:24,220 --> 00:36:31,900
+code and extract the doc strings from it, okay, so that they can generate an API documentation,
+
+354
+00:36:32,620 --> 00:36:41,460
+reference API documentation. And so this is about Sphinx and MKDocs and many others which
+
+355
+00:36:41,460 --> 00:36:46,340
+are a bit more language specific because they need to read things from your code. So they need
+
+356
+00:36:46,340 --> 00:36:55,380
+understand your code um yeah and the thing is that after you have used this tool to create a web page
+
+357
+00:36:55,940 --> 00:37:03,380
+you can host it you can put it on the internet so it can be seen uh from from from everywhere
+
+358
+00:37:03,380 --> 00:37:11,620
+in the world um and we'll discuss about how to do this on github pages later and i think that uh
+
+359
+00:37:11,620 --> 00:37:14,020
+Do you want to add anything here?
+
+360
+00:37:14,020 --> 00:37:15,860
+Is it anything I'm missing?
+
+361
+00:37:15,860 --> 00:37:22,000
+No, I think that was a good overview.
+
+362
+00:37:22,000 --> 00:37:27,200
+You could briefly highlight some other frameworks here.
+
+363
+00:37:27,200 --> 00:37:35,140
+So the wikis, as pioneered by the wikipedia.org website.
+
+364
+00:37:35,140 --> 00:37:46,720
+Those are solutions where you have, I mean, then you can produce contents a bit dynamically
+
+365
+00:37:46,720 --> 00:37:52,420
+with having people to jump in and contribute.
+
+366
+00:37:52,420 --> 00:37:59,880
+And essentially the editing of wikis is done on a web browser, so you don't really need
+
+367
+00:37:59,880 --> 00:38:06,120
+to just need to go to from view mode to edit mode and then you can contribute um
+
+368
+00:38:07,960 --> 00:38:14,680
+so that's not advantage um but i would say my personal reference from wikipedia
+
+369
+00:38:14,680 --> 00:38:21,960
+from wiki is sort of that they i mean in order for them to to become good you also need to have
+
+370
+00:38:21,960 --> 00:38:28,200
+a lot of let's say you need to have some editors and some moderators of content because otherwise
+
+371
+00:38:28,200 --> 00:38:32,280
+it's a little bit uncontrolled how they develop over time
+
+372
+00:38:35,080 --> 00:38:39,800
+yeah but the problem with wikis i think uh that it doesn't fit with the first one of the first
+
+373
+00:38:39,800 --> 00:38:44,920
+i the first item in our wish list that they are not version controlled yeah so they are to an
+
+374
+00:38:44,920 --> 00:38:48,520
+extent version control but they're not version control with the code because it's a typically
+
+375
+00:38:48,520 --> 00:38:54,600
+a different repository um actually it's like a yeah it's like a different repository so that's
+
+376
+00:38:54,600 --> 00:39:00,020
+That's why I think they are easy to use, typically,
+
+377
+00:39:00,480 --> 00:39:05,320
+but it's not what a research software engineer
+
+378
+00:39:05,320 --> 00:39:09,220
+or a software engineer would use to document their code, I think.
+
+379
+00:39:10,360 --> 00:39:11,620
+Yeah, I agree with that.
+
+380
+00:39:12,620 --> 00:39:15,320
+Yeah, it's not like that was for me,
+
+381
+00:39:15,320 --> 00:39:20,020
+that would not be, let's say, a primary choice.
+
+382
+00:39:20,960 --> 00:39:22,840
+But certainly, wikis can be a very good complement.
+
+383
+00:39:24,600 --> 00:39:36,600
+Latesh and PDF, those I would say are a little bit old school, which can be perfectly relevant.
+
+384
+00:39:36,600 --> 00:39:46,600
+In particular, if you are working with a lot of equations, LaTeX is the best tool.
+
+385
+00:39:46,600 --> 00:40:01,040
+But, yeah, the rendering, the contents can be a little bit, it's not always so smooth
+
+386
+00:40:01,040 --> 00:40:05,360
+to work with for, let's say, live documents on the web.
+
+387
+00:40:05,360 --> 00:40:12,120
+Yeah, and write your papers in LaTeX, but please give us something else to understand your
+
+388
+00:40:12,120 --> 00:40:13,120
+code.
+
+389
+00:40:13,120 --> 00:40:14,120
+Yeah, yeah.
+
+390
+00:40:14,120 --> 00:40:15,120
+That's my opinion.
+
+391
+00:40:15,120 --> 00:40:25,120
+in yeah yes i agree okay doc cdn and we will not look further into it here but this is a
+
+392
+00:40:26,480 --> 00:40:32,160
+tool which is very popular in the c++ community where you can decorate your code with
+
+393
+00:40:34,160 --> 00:40:42,080
+some some keywords and you can then from from that source like in the source code
+
+394
+00:40:42,080 --> 00:40:48,960
+decorated with this document keywords you can then generate documentation for
+
+395
+00:40:51,840 --> 00:40:57,760
+the classes and and objects for your code and like the programming interface
+
+396
+00:40:59,040 --> 00:41:06,240
+yeah it's i think it's uh one of the oldest tools that does api document api reference generation
+
+397
+00:41:06,240 --> 00:41:13,700
+like as i mentioned sphinx can do it for python code for example doxygen can do this for c++
+
+398
+00:41:13,700 --> 00:41:22,280
+for c++ and c and other languages yeah yeah i want to say that if you're using c++ or the
+
+399
+00:41:22,280 --> 00:41:26,600
+thing that you you possibly need to use doxygen to generate this but you can still use sphinx as
+
+400
+00:41:26,600 --> 00:41:32,700
+well because doxygen can actually talk to sphinx with a plugin a sphinx plugin called breathe
+
+401
+00:41:32,700 --> 00:41:42,700
+So, yeah, if you are a C++ developer and you want to, you like Sphinx, but you need to use Doxygen, then you can also put these things together if you like.
+
+402
+00:41:43,980 --> 00:41:49,120
+Yeah, that's a very nice opportunity that one can do this.
+
+403
+00:41:53,880 --> 00:41:59,660
+So, there are, yeah, Doxygen is popular for C++, but also for some other languages.
+
+404
+00:41:59,660 --> 00:42:10,380
+is you can find here some specific frameworks which are of relevance for Fortran and for Julia.
+
+405
+00:42:12,780 --> 00:42:20,620
+There's also an interesting tool Quarto to convert Markdown to various document types.
+
+406
+00:42:20,620 --> 00:42:34,640
+so let's move over here to the topic of encode documentation and here so now I mean we are
+
+407
+00:42:34,640 --> 00:42:42,720
+doing this this lesson here in streaming but we will not have any separate exercise sessions
+
+408
+00:42:42,720 --> 00:42:49,600
+in between but yeah so we will highlight a few things here and then we very much
+
+409
+00:42:49,600 --> 00:42:56,640
+encourage you to to sit down at another time so to say and and then work through these
+
+410
+00:42:56,640 --> 00:43:00,880
+exercises and you will then find also some template solutions
+
+411
+00:43:06,240 --> 00:43:13,040
+so in particular in this particular uh episode we are i think it's more discussions right
+
+412
+00:43:13,040 --> 00:43:21,840
+so but yeah yes that that's uh yeah you're right um but but nevertheless if you have time
+
+413
+00:43:21,840 --> 00:43:29,760
+uh i mean later today or so then then please go ahead also to do the exercises um
+
+414
+00:43:32,240 --> 00:43:39,200
+so here we have some examples here um this is about an if statement
+
+415
+00:43:39,200 --> 00:43:42,720
+has something to do with temperature and uh yeah [name] so so
+
+416
+00:43:45,360 --> 00:43:50,800
+so yeah basically if you see so there's a check uh so if the temperature is less than minus 50
+
+417
+00:43:51,600 --> 00:43:56,960
+um then we do something and now if you look at comment a i think okay now we check if temperature
+
+418
+00:43:56,960 --> 00:44:04,320
+is below minus 50. okay if i didn't know python then i would i would really okay this comment
+
+419
+00:44:04,320 --> 00:44:08,960
+would be would be have really helpful but if i could read python already i thought okay so that's
+
+420
+00:44:08,960 --> 00:44:15,040
+exactly what that if statement says right so it's not it doesn't give me more information if i know
+
+421
+00:44:15,040 --> 00:44:21,920
+what python syntax is okay actually it's it's also good that we use the temperature so that the
+
+422
+00:44:21,920 --> 00:44:26,480
+variable temperature is called temperature because then we know what it is and there are some codes
+
+423
+00:44:26,480 --> 00:44:32,160
+where things all variables are called a and b and then in that case yeah that comment would have
+
+424
+00:44:32,160 --> 00:44:38,000
+been helpful but yeah in in general i would say that comment b like we regard temperatures below
+
+425
+00:44:38,000 --> 00:44:45,280
+minus 50 degrees as measurement errors um yeah i think it's uh it's uh it's a more i like more
+
+426
+00:44:45,280 --> 00:44:52,240
+that comment uh although i would really love to be honest to have an error like in the print
+
+427
+00:44:52,240 --> 00:45:00,160
+statement error is temper temperature too low i would possibly put that so i would write in
+
+428
+00:45:00,160 --> 00:45:06,400
+that printf in this print uh string i would say it's a measurement error something like this
+
+429
+00:45:06,400 --> 00:45:08,200
+but yeah
+
+430
+00:45:08,200 --> 00:45:11,040
+that's at least
+
+431
+00:45:11,040 --> 00:45:13,020
+my opinion here
+
+432
+00:45:13,020 --> 00:45:20,140
+yes
+
+433
+00:45:20,140 --> 00:45:21,980
+very good points
+
+434
+00:45:21,980 --> 00:45:25,020
+I think that writing
+
+435
+00:45:25,020 --> 00:45:27,020
+comments and making readable code is
+
+436
+00:45:27,020 --> 00:45:28,860
+a bit of an art and
+
+437
+00:45:28,860 --> 00:45:31,120
+I'm not I don't think I'm good
+
+438
+00:45:31,120 --> 00:45:32,760
+at it so
+
+439
+00:45:32,760 --> 00:45:35,040
+my suggestion is always
+
+440
+00:45:35,040 --> 00:45:37,520
+iterate, right?
+
+441
+00:45:37,660 --> 00:45:39,760
+Try it, write something, and then go back
+
+442
+00:45:39,760 --> 00:45:41,520
+to your code after a while when you have time
+
+443
+00:45:41,520 --> 00:45:43,780
+and see, ah, maybe, you know, you first
+
+444
+00:45:43,780 --> 00:45:45,780
+start with version
+
+445
+00:45:45,780 --> 00:45:47,760
+A, and then you realize, oh,
+
+446
+00:45:47,800 --> 00:45:49,700
+but, I mean, this comment says something which is
+
+447
+00:45:49,700 --> 00:45:51,580
+obvious. Maybe I can change that to
+
+448
+00:45:51,580 --> 00:45:53,760
+version B to C. But, yeah, so
+
+449
+00:45:53,760 --> 00:45:55,740
+you can do it, like, incrementally.
+
+450
+00:45:55,940 --> 00:45:57,640
+You don't have to start and do things
+
+451
+00:45:57,640 --> 00:45:59,780
+perfect on the first time. But I think that, yeah.
+
+452
+00:46:00,620 --> 00:46:01,620
+To me, it's a reason,
+
+453
+00:46:01,760 --> 00:46:03,920
+so this example, comment A and comment B, are
+
+454
+00:46:03,920 --> 00:46:13,520
+like a realistic progression of like how to how you can improve code if and in
+
+455
+00:46:13,520 --> 00:46:21,680
+comments if you if you iterate on that if you go back to your code and I could
+
+456
+00:46:21,680 --> 00:46:29,660
+also think that perhaps this the comment or the type a is like now we check if
+
+457
+00:46:29,660 --> 00:46:38,220
+temperatures is below 50 let's say you have a year from now that you revise this if statement and
+
+458
+00:46:38,220 --> 00:46:43,180
+let's say you check also is it below a temperature or is it also above a temperature something like
+
+459
+00:46:43,180 --> 00:46:51,260
+that then i would say it could easily happen that you do that the code and the comment becomes
+
+460
+00:46:51,260 --> 00:47:01,820
+out of sync a comment or the type of b is more like um okay so here's like minus 50
+
+461
+00:47:01,820 --> 00:47:06,140
+degree check but you could also then let's say this is about defining
+
+462
+00:47:07,980 --> 00:47:15,020
+what intervals are could come and could be considered to be reasonable in the first place
+
+463
+00:47:21,260 --> 00:47:33,460
+So here is an interesting comment here in the lesson about the so-called zombie code
+
+464
+00:47:33,460 --> 00:47:41,680
+that you have some old implementation or some functionality and you comment it out and then
+
+465
+00:47:41,680 --> 00:47:48,060
+you replace it with some new code and the advice is here that you should strive then
+
+466
+00:47:48,060 --> 00:47:57,100
+to remove the out commented code and then I mean you retain it by means of the version control
+
+467
+00:47:59,260 --> 00:48:02,380
+but it's good to hide it away to avoid clutter.
+
+468
+00:48:04,940 --> 00:48:08,460
+I must say that I find this a little bit difficult in practice
+
+469
+00:48:10,060 --> 00:48:16,540
+because I somehow feel more confident if I have the zombie stuff in the code.
+
+470
+00:48:16,540 --> 00:48:23,820
+I mean within reason I think it depends so if I'm doing some quick changes yes
+
+471
+00:48:23,820 --> 00:48:29,620
+then I will keep the zombie codes just to but if not I would I mean if it's
+
+472
+00:48:29,620 --> 00:48:33,620
+something more long-term yeah then I would use version control maybe maybe
+
+473
+00:48:33,620 --> 00:48:39,160
+you can even say I will you know I can do like patch staging so get add minus
+
+474
+00:48:39,160 --> 00:48:47,720
+p and choose only you know the not basically i can say i want to add only the the parts which
+
+475
+00:48:47,720 --> 00:48:52,200
+don't contain this zombie code so there are there are options there so version control
+
+476
+00:48:52,200 --> 00:49:01,480
+gives you a lot of options there if you want to be like clean let's say um yeah yeah
+
+477
+00:49:09,160 --> 00:49:18,980
+So, here is something which is called Doxygen that we could say a few words about and that's
+
+478
+00:49:18,980 --> 00:49:33,800
+it's that, I mean, various languages support, I mean, having good constructions for self-documentation
+
+479
+00:49:33,800 --> 00:49:41,240
+or features so if you look here on this python snippet here we have it here described first as
+
+480
+00:49:41,960 --> 00:49:45,960
+like a pure comment in the code but
+
+481
+00:49:49,000 --> 00:49:55,560
+you could also put like description on what this function is doing
+
+482
+00:49:55,560 --> 00:50:09,240
+in this more like API documenting style and this connects a little bit to the kind of output that
+
+483
+00:50:09,240 --> 00:50:15,060
+you can get if you have a like a program that you are you're executing it by long by typing
+
+484
+00:50:15,060 --> 00:50:25,540
+the name in in a terminal window you then offer they have some flags to steer the execution of
+
+485
+00:50:25,540 --> 00:50:32,820
+command and one of the standard flags is dash dash help and if you don't have the command name
+
+486
+00:50:32,820 --> 00:50:38,500
+that's just help then the contents which you have like in docstrings is what then will be shown
+
+487
+00:50:45,060 --> 00:50:52,340
+yeah and also sphinx and doxygen can actually you know take this extract this docstrings and create
+
+488
+00:50:52,340 --> 00:51:01,380
+the api so yeah yeah api documentation so i'm looking here on the clock here uh [name] and
+
+489
+00:51:01,380 --> 00:51:06,260
+i think perhaps we could do like this that that we we spend some three four minutes here on
+
+490
+00:51:07,060 --> 00:51:11,700
+reading files yep and and then we will be at another point where we go for a break
+
+491
+00:51:11,700 --> 00:51:17,220
+and then after break we can then start with the sphinx yep okay
+
+492
+00:51:22,340 --> 00:51:36,360
+So writing good README files.
+
+493
+00:51:36,360 --> 00:51:37,660
+So what can we say about this?
+
+494
+00:51:37,660 --> 00:51:44,440
+So what's your experience, [name], what would you like to see from a good README file?
+
+495
+00:51:44,440 --> 00:51:54,520
+um so as people have mentioned uh so well i think a good readme file uh well it's a part of the
+
+496
+00:51:54,520 --> 00:51:59,480
+documentation right so but i think it shouldn't contain the whole documentation sometimes it's
+
+497
+00:51:59,480 --> 00:52:07,080
+like um it's nice to split it into different files if possible there is there is a catch there
+
+498
+00:52:07,080 --> 00:52:14,840
+but yeah so uh for example having links in a in a i think you know as a feature of markdown or
+
+499
+00:52:14,840 --> 00:52:22,840
+you know of general uh technology that you can use when you use when you write uh ring me files um
+
+500
+00:52:22,840 --> 00:52:29,560
+so and it's also nice to have some kind of um markup that says for example this important part
+
+501
+00:52:29,560 --> 00:52:35,960
+um so it's nice to have like uh so it's mentioned here in the in the first exercise which is walk
+
+502
+00:52:35,960 --> 00:52:44,040
+through like you can actually specify some uh like some you know that some parts are more important
+
+503
+00:52:44,040 --> 00:52:53,400
+than others uh yeah and uh yeah you can have images and you can also have like badges uh like
+
+504
+00:52:53,400 --> 00:53:00,680
+like the one that is shown if you scroll a little down in the in the notes yeah um yeah it can be
+
+505
+00:53:00,680 --> 00:53:08,840
+useful to have some badges to to signal like uh okay my code has passed the the the all the tests
+
+506
+00:53:08,840 --> 00:53:16,280
+and you can have a badge there let's say that is red if not if the test failed or you know uh can
+
+507
+00:53:16,280 --> 00:53:21,320
+show also the license right away what kind of license is there so there's many different badges
+
+508
+00:53:21,320 --> 00:53:27,800
+you can put there um it's a bit eye candy and i think people some people find it a bit of a gimmick
+
+509
+00:53:27,800 --> 00:53:33,880
+to have these kind of things but it's nice i think it's a it's a way to signal things and actually
+
+510
+00:53:33,880 --> 00:53:38,840
+the readme the readme file you have in your repository on your github repository github
+
+511
+00:53:38,840 --> 00:53:46,120
+whatever it's like the the entrance of like like your the front your front door right so that's how
+
+512
+00:53:46,120 --> 00:53:52,600
+what the first thing that people have as the people see when when they look at your repository
+
+513
+00:53:52,600 --> 00:54:02,520
+so yeah i was from my experience uh i prefer a lot where the readme files stand on their own
+
+514
+00:54:03,080 --> 00:54:09,720
+so certainly i mean you can have links you can have badges but it's also good if i mean
+
+515
+00:54:10,520 --> 00:54:14,600
+you have to really file in itself without following the links or without clicking the
+
+516
+00:54:14,600 --> 00:54:20,840
+badges if that can tell you upfront and that will also be sometimes let's say you work on on a
+
+517
+00:54:22,600 --> 00:54:30,220
+on the login node of a supercomputer then could even be that you cannot really click the link
+
+518
+00:54:30,220 --> 00:54:37,300
+because you don't have a web browser on that login node yeah true true true yeah but it can
+
+519
+00:54:37,300 --> 00:54:41,940
+tell you for example a link to to other files in the repository for example the contributing guide
+
+520
+00:54:41,940 --> 00:54:49,320
+can be actually linked in the the readme although maybe it doesn't need to be linked because
+
+521
+00:54:49,320 --> 00:54:56,120
+typically it's written in a in a file which has a like it's called contributing.md or the installation
+
+522
+00:54:56,120 --> 00:55:02,280
+guide yeah you can link it from the readme if you wish but it's usually called install so you
+
+523
+00:55:02,280 --> 00:55:08,520
+can actually yeah so that is this kind of um standard file names for different kind of
+
+524
+00:55:08,520 --> 00:55:13,400
+documentation the readme is one of them of course and it's the most important in this case and you
+
+525
+00:55:13,400 --> 00:55:20,680
+you could you could put links to those if you if you wish if it's relevant yeah and certainly this
+
+526
+00:55:20,680 --> 00:55:29,000
+with having different file names like you can read me you can have install you can have contributing
+
+527
+00:55:30,840 --> 00:55:37,880
+that's i mean these standards are quite useful because that makes the reader find
+
+528
+00:55:38,680 --> 00:55:45,240
+the specific content very quickly and that's something i appreciate from a readme or from
+
+529
+00:55:45,240 --> 00:55:51,400
+an install file is this if if it can get a grip on it within i mean really like 30 seconds or one
+
+530
+00:55:51,400 --> 00:55:59,640
+minute because could be on some days that you have you're looking into five readmes for five
+
+531
+00:55:59,640 --> 00:56:07,800
+different programs. And the more clarity you can have upfront, the better.
+
+532
+00:56:08,600 --> 00:56:15,160
+Yeah. And it's actually interesting here, if you have detailed descriptions, you can actually
+
+533
+00:56:16,680 --> 00:56:27,800
+use these details tags, where you can actually hide some long things, some long descriptions,
+
+534
+00:56:27,800 --> 00:56:32,520
+and just show a short summary in this case and it's actually interesting because this is an
+
+535
+00:56:32,520 --> 00:56:39,160
+example of a feature of markdown which is that you can actually put in line in in the code in
+
+536
+00:56:39,160 --> 00:56:46,040
+your markdown code let's say but it's document you can put html code this is actually html if
+
+537
+00:56:46,040 --> 00:56:55,080
+you look at this uh so there are html tags and yeah you can use that in a markdown file as well
+
+538
+00:56:55,080 --> 00:57:00,920
+and it should be rendered as as expected as if we have it as if it was html
+
+539
+00:57:04,280 --> 00:57:05,480
+so um
+
+540
+00:57:08,280 --> 00:57:17,320
+if you are on on this page of the lesson um you can just so this first block here was actually um
+
+541
+00:57:17,320 --> 00:57:26,440
+we had it labeled as an exercise and you can also find two other exercises here
+
+542
+00:57:26,440 --> 00:57:36,460
+in the section of the lesson. I think that we will now shortly go for a
+
+543
+00:57:36,460 --> 00:57:45,040
+break and I'd say that this exercise number two and exercise three
+
+544
+00:57:45,040 --> 00:57:53,420
+that you could come back to this on your own later and there are good template solutions
+
+545
+00:57:53,420 --> 00:58:04,700
+here and now after break we will start the topic of documentation with swings and markdown.
+
+546
+00:58:04,700 --> 00:58:09,600
+Just one thing about this readme exercises well there's going to be a bring your code
+
+547
+00:58:09,600 --> 00:58:13,400
+session they are going to be bring your code sessions in the next weeks so maybe that's
+
+548
+00:58:13,400 --> 00:58:23,720
+thing that one could discuss in those sessions. That's a very good suggestion.
+
+549
+00:58:24,920 --> 00:58:32,600
+So let's just very quickly move over to the shared document to see what we have here.
+
+550
+00:58:43,400 --> 00:58:51,560
+Let's have 10 minutes of a break.
+
+551
+00:58:51,560 --> 00:58:55,400
+So shall we go in at 12 past the hour?
+
+552
+00:58:55,400 --> 00:58:59,900
+Yes, that sounds good.
+
+553
+00:58:59,900 --> 00:59:04,520
+So yeah, see you all at 12 past the full hour.
+
+554
+00:59:04,520 --> 00:59:05,200
+Bye.
+
+555
+00:59:07,000 --> 00:59:12,900
+Hello, we are back.
+
+556
+00:59:13,400 --> 00:59:24,560
+okay so did you have a refreshing break [name] yes yes I was filling up with
+
+557
+00:59:24,560 --> 00:59:32,120
+coffee coffee like yeah yeah a lot of jokes about coffee I don't remember any
+
+558
+00:59:32,120 --> 00:59:41,740
+at the moment but yeah we need coffee coffee so so we do more hands-on ish
+
+559
+00:59:41,740 --> 00:59:47,300
+part of the lesson at the moment right so now we are switching to how to use
+
+560
+00:59:47,300 --> 00:59:53,820
+Sphinx and Markdown so I'm showing the notes now there's a link in the note we
+
+561
+00:59:53,820 --> 01:00:00,960
+should show we should point to the parts we're going to talk about now and so I
+
+562
+01:00:00,960 --> 01:00:06,620
+will since this is a hands-on part I will show a lot my shell my terminal
+
+563
+01:00:06,620 --> 01:00:13,320
+Okay. I'm going to switch to my terminal now. Okay. Okay. So you can see the terminal in
+
+564
+01:00:13,320 --> 01:00:24,100
+his all, it's all glory. So for this part, for this hands-on, we are going to use a conda
+
+565
+01:00:24,100 --> 01:00:29,880
+environment. I think, I don't know if anybody has used it before during the workshop, but
+
+566
+01:00:29,880 --> 01:00:34,360
+yeah, so in the installation instructions for the workshop,
+
+567
+01:00:34,360 --> 01:00:38,640
+it was written how it was discussed how to set up a conda
+
+568
+01:00:38,640 --> 01:00:41,620
+environment. It's, it's a couple of commands, but you need to
+
+569
+01:00:41,620 --> 01:00:46,280
+have conda or like the conda package manager installed on
+
+570
+01:00:46,280 --> 01:00:53,860
+your system, at least. Okay. So the cool thing is actually that
+
+571
+01:00:54,420 --> 01:00:59,340
+with this setup, if you if you're not ready, now we can
+
+572
+01:00:59,340 --> 01:01:05,340
+still watch the stream later after you have set up
+
+573
+01:01:05,340 --> 01:01:08,040
+conda if you haven't done that. But let's assume you have done
+
+574
+01:01:08,040 --> 01:01:12,120
+that. Then you can follow what we are doing now. So what I'm
+
+575
+01:01:12,120 --> 01:01:17,760
+going to do now is to show you how to use Sphinx. Sphinx is one
+
+576
+01:01:17,760 --> 01:01:20,580
+of the documentation generators that we have discussed before.
+
+577
+01:01:20,580 --> 01:01:31,380
+okay it takes markdown files structure text files and then generates
+
+578
+01:01:32,980 --> 01:01:37,860
+different kinds of documentation out of it we are going to focus today on the html
+
+579
+01:01:37,860 --> 01:01:43,940
+kind of generation of the web pages kind of output because it's the thing that we can publish on the
+
+580
+01:01:43,940 --> 01:01:53,860
+web you see that most easily um yeah so um sphinx is a python package which is actually present in
+
+581
+01:01:53,860 --> 01:02:02,740
+the conda environment for code refinery so i'm going to activate the the environment of code
+
+582
+01:02:07,860 --> 01:02:11,540
+yep now it's up it's active you can see that my
+
+583
+01:02:13,940 --> 01:02:16,960
+I didn't want to do this.
+
+584
+01:02:16,960 --> 01:02:20,120
+You can see that my prompt has changed and now
+
+585
+01:02:20,120 --> 01:02:23,520
+the environment which was previously the base one,
+
+586
+01:02:23,520 --> 01:02:27,260
+it's now switched to code refinery.
+
+587
+01:02:27,260 --> 01:02:33,120
+Just to check, what kind of version do I have here of Python?
+
+588
+01:02:33,120 --> 01:02:37,140
+Now I have 3.12.9, it's correct.
+
+589
+01:02:37,140 --> 01:02:38,820
+For you, it could be slightly different,
+
+590
+01:02:38,820 --> 01:02:43,620
+but it's still fine as long as it's like 3.11, 3.9.
+
+591
+01:02:43,620 --> 01:02:45,540
+I think up to 3.9 should be okay.
+
+592
+01:02:46,140 --> 01:02:46,280
+Okay.
+
+593
+01:02:46,980 --> 01:02:49,760
+One thing we need is Sphinx build.
+
+594
+01:02:51,660 --> 01:02:52,140
+Build.
+
+595
+01:02:52,720 --> 01:02:52,940
+Okay.
+
+596
+01:02:53,460 --> 01:02:54,900
+And let's check the version.
+
+597
+01:02:54,900 --> 01:02:57,640
+The version I have is 7.2.6.
+
+598
+01:02:57,780 --> 01:02:58,160
+It's okay.
+
+599
+01:02:58,840 --> 01:03:01,620
+At least this command has run without errors.
+
+600
+01:03:02,460 --> 01:03:06,620
+And the other thing we want to use is the quick start tool.
+
+601
+01:03:08,440 --> 01:03:09,640
+Sphinx quick.
+
+602
+01:03:11,220 --> 01:03:11,460
+Okay.
+
+603
+01:03:12,100 --> 01:03:21,380
+and let's check the version yeah so similar to the previous one and we also want to check um
+
+604
+01:03:21,380 --> 01:03:29,860
+if the parser we're going to use uh so it's it's if we can use the so-called um my sd so the
+
+605
+01:03:29,860 --> 01:03:34,980
+markedly structured text parser so because that's the this format we want to use to write our
+
+606
+01:03:34,980 --> 01:03:41,940
+documentation okay and in order to check that you can use python minus c so if you use python minus
+
+607
+01:03:41,940 --> 01:03:49,140
+c it's um it's it's going to execute the problem that follows in in the double quotes in this case
+
+608
+01:03:49,140 --> 01:03:59,220
+import import uh mysd rsr okay it's a the shortest python program ever just one line which imports
+
+609
+01:03:59,220 --> 01:04:07,620
+this and if there's no errors it's fine so and i have no errors okay so like yeah yes 15 years so
+
+610
+01:04:08,580 --> 01:04:18,260
+um if you want it um you're very much encouraged to type along with [name] but if you for some
+
+611
+01:04:18,260 --> 01:04:22,100
+reason do not have the content environment available then you could also just i mean
+
+612
+01:04:22,100 --> 01:04:29,940
+relax and listen in yeah i will try to be entertaining and funny um so that at least
+
+613
+01:04:29,940 --> 01:04:37,640
+you won't follow you won't fall asleep um yeah at least try to keep up the discussion is last
+
+614
+01:04:37,640 --> 01:04:45,820
+um as we did in the last uh in the previous part in the first part so now we have verified the
+
+615
+01:04:45,820 --> 01:04:54,780
+it up okay and we can start hacking at our documentation so i will create a directory
+
+616
+01:04:57,740 --> 01:05:07,180
+and seed into it doc example okay and now i can do sphinx quick start so
+
+617
+01:05:07,180 --> 01:05:16,420
+So quick start, and this command now will ask me a couple of questions.
+
+618
+01:05:16,420 --> 01:05:25,420
+So here it will ask me if I want to separate source and build directory, I will go for
+
+619
+01:05:25,420 --> 01:05:27,100
+the default answers.
+
+620
+01:05:27,100 --> 01:05:36,120
+So yes, project name, I will say test documentation.
+
+621
+01:05:36,120 --> 01:05:44,120
+Okay, so you choose no, so you will have them in the same directories?
+
+622
+01:05:44,120 --> 01:05:50,120
+Yeah, at the moment should be okay, which was the recommended thing.
+
+623
+01:05:50,120 --> 01:05:53,120
+Yeah, yeah, no, no, it's perfectly fine.
+
+624
+01:05:53,120 --> 01:05:57,120
+And yeah, so actually I don't have a lot of experience with Sphinx.
+
+625
+01:05:57,120 --> 01:05:59,120
+I have some, but I know that [name] has more.
+
+626
+01:05:59,120 --> 01:06:05,120
+So I think that [name] may correct me if I'm doing something wrong, please do.
+
+627
+01:06:05,120 --> 01:06:12,320
+approach release 0.1 it's a okay and then the project language is english let's try that even
+
+628
+01:06:12,320 --> 01:06:21,520
+if it's not my uh my native language so now you can look at um yeah at the content of the
+
+629
+01:06:22,640 --> 01:06:29,520
+let's clear here shall i clear should i clear maybe i don't have to uh you can see what how
+
+630
+01:06:29,520 --> 01:06:33,840
+what has been created you you remember that this was actually an empty directory
+
+631
+01:06:35,120 --> 01:06:40,940
+And now Sphinx Quickstart has created all this stuff for me, okay?
+
+632
+01:06:41,440 --> 01:06:45,640
+And there's some things we could talk about,
+
+633
+01:06:45,700 --> 01:06:53,480
+but the most important are actually this, like, I think this is this index.rst, okay?
+
+634
+01:06:53,780 --> 01:06:57,560
+Rst is the extension that stands for restructured text.
+
+635
+01:06:57,900 --> 01:06:59,660
+So let's have a look at it.
+
+636
+01:07:00,600 --> 01:07:04,540
+In order to look at it, I will use Vim, okay?
+
+637
+01:07:04,540 --> 01:07:11,620
+So, if you don't know how to exit Vim, ask in the notes and if you get dropped.
+
+638
+01:07:11,980 --> 01:07:13,740
+But maybe you can use anything else.
+
+639
+01:07:14,500 --> 01:07:17,080
+I use Vim because I'm comfortable with it.
+
+640
+01:07:17,460 --> 01:07:20,040
+But you can use Nano, for example, or Cat.
+
+641
+01:07:21,300 --> 01:07:23,580
+Cat is not an editor, but you can still see.
+
+642
+01:07:24,020 --> 01:07:26,380
+So, what does it say here?
+
+643
+01:07:27,760 --> 01:07:34,520
+Well, it says, yeah, it gives us like a comment at the beginning.
+
+644
+01:07:34,540 --> 01:07:36,240
+This is not going to be printed out.
+
+645
+01:07:37,340 --> 01:07:39,260
+Then there's a heading.
+
+646
+01:07:39,720 --> 01:07:50,800
+Then actually this is a directive in restarted text that tells the Sphinx
+
+647
+01:07:50,800 --> 01:07:56,200
+to create a table of content there, TOC, table of content.
+
+648
+01:07:57,000 --> 01:08:05,560
+and uh yeah so what we actually want to do now okay is to remove for the moment this indices
+
+649
+01:08:05,560 --> 01:08:11,080
+and table section because we don't care about that okay um thank you very much swings quick
+
+650
+01:08:11,080 --> 01:08:23,320
+start but we don't need that um so how do we add content to our um to our documentation well
+
+651
+01:08:23,320 --> 01:08:27,160
+we need to here add file names
+
+652
+01:08:30,120 --> 01:08:37,240
+in this case so i'm going to to create a file uh so here i mentioned a file name i need to create
+
+653
+01:08:37,240 --> 01:08:43,000
+a file with the that name in my home directory to make sure that you know in my home there in
+
+654
+01:08:43,000 --> 01:08:52,840
+the directory of the the project uh and as things will look at it and will render it okay so uh yeah
+
+655
+01:08:53,320 --> 01:08:58,200
+So we will go to this.
+
+656
+01:08:58,400 --> 01:09:00,240
+There's one comment I want to do.
+
+657
+01:09:00,720 --> 01:09:04,380
+As you may be familiar with, if you're using Python,
+
+658
+01:09:06,280 --> 01:09:10,920
+you know that in Python, white space is important,
+
+659
+01:09:11,020 --> 01:09:12,900
+so that the indentation level is important.
+
+660
+01:09:13,080 --> 01:09:15,280
+Here, the indentation level is important as well.
+
+661
+01:09:16,980 --> 01:09:20,760
+So in this case, I need to make sure that some feature.md
+
+662
+01:09:20,760 --> 01:09:26,060
+is at the same indentation level as this other block.
+
+663
+01:09:26,740 --> 01:09:31,920
+So now I can save it, but I need to still do one thing.
+
+664
+01:09:31,920 --> 01:09:37,260
+So in order for Sphinx to be able to parse this kind of markdown files,
+
+665
+01:09:37,700 --> 01:09:41,480
+I need to edit the configuration of it.
+
+666
+01:09:42,000 --> 01:09:47,080
+So I open conf.py.
+
+667
+01:09:47,480 --> 01:09:49,380
+Conf.py is Python.
+
+668
+01:09:49,380 --> 01:09:58,460
+It's a Python code that tells, it's a file made up of Python code that tells Sphinx how to configure itself.
+
+669
+01:09:58,900 --> 01:10:00,600
+So the syntax here is Python.
+
+670
+01:10:01,060 --> 01:10:12,400
+And here, what I'm going to do is to add my st, my st underscore parser to the list of extensions.
+
+671
+01:10:12,880 --> 01:10:14,760
+And then I can save and exit.
+
+672
+01:10:15,640 --> 01:10:24,040
+okay and now i need to uh add uh some this some feature dot md file
+
+673
+01:10:28,440 --> 01:10:36,600
+and um for the in the interest of time i will uh copy uh and paste it here
+
+674
+01:10:37,480 --> 01:10:43,560
+the con the content which we should have you can see there are some some markdown features we are
+
+675
+01:10:43,560 --> 01:10:49,720
+using so we are um have it we have a level one heading then we have a subsection which is level
+
+676
+01:10:49,720 --> 01:10:58,920
+two heading then we have some items in lists and we have nested items and that's nested lists right
+
+677
+01:10:59,800 --> 01:11:04,120
+and you see that actually we have these empty surrounding lines which are required i don't
+
+678
+01:11:04,120 --> 01:11:10,840
+know if it is a thing which is needed also for markdown i think it's also not just the this
+
+679
+01:11:10,840 --> 01:11:17,880
+this particular flavor of Markdown, but also generally Markdown, you may need
+
+680
+01:11:19,880 --> 01:11:25,560
+these empty sounding lines around. I'm not sure, do you know?
+
+681
+01:11:26,360 --> 01:11:32,600
+I don't know all of this by heart, but it's very important to be aware of this, that both, I mean,
+
+682
+01:11:32,600 --> 01:11:40,680
+like as in general in Python, that I mean spacing as tabulated spacing are important, and then also
+
+683
+01:11:40,680 --> 01:11:51,560
+here for the generation of the html contents that spacing matters sometimes yeah so horizontal
+
+684
+01:11:51,560 --> 01:11:58,040
+spacing here that this you can see the yeah the indentation but also vertical spacing let's say
+
+685
+01:11:58,600 --> 01:12:04,760
+yeah so that that's very common error if the rendered contents do not display properly
+
+686
+01:12:04,760 --> 01:12:11,400
+spacing is one of the first things to check yeah so i'll save that and then let's have a look
+
+687
+01:12:12,600 --> 01:12:18,920
+at what we have in the repository you should see let's say ls minus one so that we see everything
+
+688
+01:12:18,920 --> 01:12:26,040
+in a in a in a column and yeah okay so if it looks like this in your directory then it should be fine
+
+689
+01:12:26,040 --> 01:12:37,400
+okay and uh yeah so now how do we build uh the documentation um let's do this uh sphinx
+
+690
+01:12:38,840 --> 01:12:44,440
+build dot meaning the current directory so we want to build the commutation which is in the
+
+691
+01:12:44,440 --> 01:12:50,920
+current directory and um we wanted the the the produced documentation the the render
+
+692
+01:12:50,920 --> 01:12:58,280
+documentation to be in the underscore build directory common uh common choice so if i now
+
+693
+01:12:58,280 --> 01:13:05,080
+run this command with enter uh you see that it uh tells me okay so the html pages are in build
+
+694
+01:13:05,080 --> 01:13:17,160
+everything looks green uh no errors okay good so now if we look at um um build uh we see that
+
+695
+01:13:17,160 --> 01:13:22,920
+there's some stuff there the most important thing in the generated documentation is this index.html
+
+696
+01:13:22,920 --> 01:13:30,280
+okay this index.html is the like the rendered version of index.rst
+
+697
+01:13:31,880 --> 01:13:37,880
+yeah so we have we can have a look at how it looks like right so let's do now open
+
+698
+01:13:38,760 --> 01:13:50,680
+i mean in i'm on a linux machine on ubuntu so i can use open build index index index.html
+
+699
+01:13:50,680 --> 01:13:57,960
+now we have many windows open many browser windows open so where will this go
+
+700
+01:13:57,960 --> 01:14:08,040
+So these HTML files that you render now, these are a set of static HTML files. That means
+
+701
+01:14:08,040 --> 01:14:15,560
+for previewing locally on your machine, you can simply just open them in a web browser.
+
+702
+01:14:15,560 --> 01:14:23,080
+It didn't work for me. Let's try again. Okay. It doesn't like it. Wait, it's interesting.
+
+703
+01:14:23,080 --> 01:14:27,180
+so I'll go to a browser and show you
+
+704
+01:14:27,180 --> 01:14:29,620
+so this is notes but if I do in file
+
+705
+01:14:29,620 --> 01:14:34,460
+I don't understand why it can't work
+
+706
+01:14:34,460 --> 01:14:38,720
+let me see
+
+707
+01:14:38,720 --> 01:14:41,260
+I
+
+708
+01:14:53,080 --> 01:15:01,520
+so wait a moment so i mean having the static html files is
+
+709
+01:15:01,520 --> 01:15:07,500
+they are rather smooth to work with because you do not need a web
+
+710
+01:15:07,500 --> 01:15:14,120
+server to to host them so i need to do some magic sorry
+
+711
+01:15:14,120 --> 01:15:26,900
+I need to do because now the problem is that I'm using a training so that there's some things
+
+712
+01:15:26,900 --> 01:15:32,480
+possibly I shouldn't tell you I shouldn't have I don't have to tell you so if [name] can host
+
+713
+01:15:32,480 --> 01:15:38,140
+the show for the next 30 seconds I may actually fix this and show you finally how our Sphinx
+
+714
+01:15:38,140 --> 01:15:47,700
+documentation looks like. Yes, so I'm looking now here on the shared document
+
+715
+01:15:47,700 --> 01:15:55,640
+and there's a question here. So why do you name the directory with a leading
+
+716
+01:15:55,640 --> 01:16:04,180
+underscore build with a dash? Someone has answered here. So it's a convention.
+
+717
+01:16:04,180 --> 01:16:12,260
+and so it's not something that is required for any syntaxic reason or so but it is a convention
+
+718
+01:16:16,100 --> 01:16:26,580
+so when [name] used this swings start command to initiate this swings document
+
+719
+01:16:29,380 --> 01:16:31,780
+there was this question here about
+
+720
+01:16:34,180 --> 01:16:38,180
+Let me just go to it myself.
+
+721
+01:16:53,180 --> 01:16:59,180
+Yeah, the question about separating source and build directories where
+
+722
+01:16:59,180 --> 01:17:10,780
+and is the default and so one thing within general is good if you are working with
+
+723
+01:17:10,780 --> 01:17:16,300
+rendered content from some set of source files indeed right now we're talking about
+
+724
+01:17:16,300 --> 01:17:23,480
+strings document but it could also be let's say doc cdn rendered contents is this that typically
+
+725
+01:17:23,480 --> 01:17:27,740
+what you do want is to have
+
+726
+01:17:27,740 --> 01:17:31,100
+the source contents in the git repository
+
+727
+01:17:31,100 --> 01:17:35,540
+but you typically would like to avoid
+
+728
+01:17:35,540 --> 01:17:39,700
+to add and commit the rendered
+
+729
+01:17:39,700 --> 01:17:43,680
+contents to the git repository and that
+
+730
+01:17:43,680 --> 01:17:47,640
+that's rather natural in a way because otherwise you have a bit of redundancy of
+
+731
+01:17:47,640 --> 01:17:51,460
+having both source and rendered contents
+
+732
+01:17:51,460 --> 01:18:00,340
+which after all contain the same contents just it's in raw form or in so to say readable form
+
+733
+01:18:04,180 --> 01:18:09,220
+and this in particular is important in case you are including
+
+734
+01:18:11,460 --> 01:18:19,620
+figures in your document and if you have let's say in figures that you pull in from outside of your
+
+735
+01:18:19,620 --> 01:18:26,900
+core repository i mean you do not want to do that in the repository i can show you now i think
+
+736
+01:18:28,340 --> 01:18:36,420
+wait a moment i have managed to find a workaround yeah so that's how our first
+
+737
+01:18:36,420 --> 01:18:41,300
+um our first documentation project looks like um yeah so
+
+738
+01:18:41,300 --> 01:18:46,660
+So you can see that this is the index, yeah?
+
+739
+01:18:46,860 --> 01:18:48,080
+So we have some feature.
+
+740
+01:18:48,900 --> 01:18:56,260
+This some feature is actually the, let's look at index.rsc.
+
+741
+01:18:56,260 --> 01:19:01,620
+So this is what comes out of this file, somefeatures.md.
+
+742
+01:19:01,820 --> 01:19:08,900
+Then if I open somefeature.md, you see that I have this heading and subsection.
+
+743
+01:19:08,900 --> 01:19:16,400
+and these two things these two headings match what I have here and if I click on some feature then I
+
+744
+01:19:17,660 --> 01:19:23,960
+I show here I I see here something familiar that looks a bit like a rendering of what I
+
+745
+01:19:23,960 --> 01:19:31,640
+have here okay this is plain text and this instead HTML right yeah if you go over with the mouse here
+
+746
+01:19:31,640 --> 01:19:41,420
+in the document what happens then do you see some links yeah so yeah here yeah you have some feature
+
+747
+01:19:41,420 --> 01:19:47,780
+and then you have subsection right yeah so you have you know when you're at subsection if you
+
+748
+01:19:47,780 --> 01:19:57,980
+right click here yeah yeah link to this heading uh you can you can copy the link yeah so that's
+
+749
+01:19:57,980 --> 01:20:05,420
+extremely useful feature that you get for free with uh swing stocks so you get like the the
+
+750
+01:20:05,420 --> 01:20:11,340
+direct the direct links to individual sections and paragraphs are available
+
+751
+01:20:12,940 --> 01:20:19,820
+which are typically the page the web page itself plus this hash and then a little something which
+
+752
+01:20:19,820 --> 01:20:25,900
+follows the hash which is uh typically the subheading the the like the the link in the
+
+753
+01:20:25,900 --> 01:20:35,500
+page so to say yeah yeah the section yeah yeah okay so uh shall we continue with the
+
+754
+01:20:36,380 --> 01:20:46,860
+yeah so um now there's uh actually an interesting uh list of things you can add to the uh to your
+
+755
+01:20:46,860 --> 01:20:55,660
+um uh i'll actually show the because there's a lot of things you can do right so uh for example
+
+756
+01:20:55,660 --> 01:21:04,260
+we can have additional kind of levels of heading.
+
+757
+01:21:04,860 --> 01:21:09,600
+You can go up to level four, I think, which is a lot.
+
+758
+01:21:09,720 --> 01:21:15,000
+I think you should just try to stay as like level one, level two, or level three.
+
+759
+01:21:15,360 --> 01:21:18,120
+If you want, you can get to level four of nested headings.
+
+760
+01:21:18,120 --> 01:21:22,760
+You can also have links, as we mentioned before.
+
+761
+01:21:22,760 --> 01:21:32,260
+like and the the links are written like this so if you need to type here like
+
+762
+01:21:32,260 --> 01:21:39,560
+the text that you want to be shown and then and then in instead in the round
+
+763
+01:21:39,560 --> 01:21:47,800
+brackets you type the the proper link the proper address yeah URL you want to
+
+764
+01:21:47,800 --> 01:21:56,680
+connect uh so for example in this case you will see um a link where the text is a link and then
+
+765
+01:21:56,680 --> 01:22:05,160
+it will link to this to this website okay um you can also have images um i don't have an image to
+
+766
+01:22:05,160 --> 01:22:13,320
+show you at the moment but um so here for example i can show you how to do this so it works in a
+
+767
+01:22:13,320 --> 01:22:21,320
+similar way you have um square brackets there you need to type an alt text and which is like
+
+768
+01:22:21,320 --> 01:22:28,040
+the text which will be shown if the image is not available so um and then you have like the
+
+769
+01:22:28,040 --> 01:22:34,520
+the link to where to to the image file yeah you can also have things like numbered lists
+
+770
+01:22:34,520 --> 01:22:39,540
+and numbered lists are
+
+771
+01:22:39,540 --> 01:22:44,600
+they start with a number, so the items on the list
+
+772
+01:22:44,600 --> 01:22:48,360
+start with a number, item 1 is item 1
+
+773
+01:22:48,360 --> 01:22:52,580
+item 2 is item 2, but actually
+
+774
+01:22:52,580 --> 01:22:56,500
+this is a funny feature of Markdown, that actually
+
+775
+01:22:56,500 --> 01:22:59,260
+if you start going on with one dot
+
+776
+01:22:59,260 --> 01:23:03,740
+these items will be actually
+
+777
+01:23:03,740 --> 01:23:06,840
+renumbered for you. Item 3
+
+778
+01:23:06,840 --> 01:23:11,320
+and item 4. And so I think you understood
+
+779
+01:23:11,320 --> 01:23:15,340
+what I mean here. And you can have simple tables
+
+780
+01:23:15,340 --> 01:23:18,820
+and so you can
+
+781
+01:23:18,820 --> 01:23:23,720
+have
+
+782
+01:23:23,720 --> 01:23:27,340
+simple tables written like this. Let's
+
+783
+01:23:27,340 --> 01:23:29,460
+make a bit of
+
+784
+01:23:29,460 --> 01:23:31,840
+like that.
+
+785
+01:23:33,420 --> 01:23:35,500
+It's important to get this heading
+
+786
+01:23:35,500 --> 01:23:37,740
+right, I think, and then
+
+787
+01:23:37,740 --> 01:23:39,180
+you can say,
+
+788
+01:23:39,480 --> 01:23:41,040
+let's have a little thing here.
+
+789
+01:23:41,500 --> 01:23:43,580
+So, have a
+
+790
+01:23:43,580 --> 01:23:45,620
+little table that tells if a number is
+
+791
+01:23:45,620 --> 01:23:46,360
+prime or not.
+
+792
+01:23:47,040 --> 01:23:48,300
+One is not prime,
+
+793
+01:23:49,480 --> 01:23:51,600
+and then, I mean, I think
+
+794
+01:23:51,600 --> 01:23:53,580
+it's debatable, right? But then
+
+795
+01:23:53,580 --> 01:23:54,420
+you can have
+
+796
+01:23:54,420 --> 01:23:56,960
+two is actually prime,
+
+797
+01:23:57,340 --> 01:24:05,180
+So let's, yes, and then also three is prime, and so on.
+
+798
+01:24:05,560 --> 01:24:08,800
+And most importantly, now come to code blocks.
+
+799
+01:24:09,740 --> 01:24:18,320
+So the following is a Python code block.
+
+800
+01:24:18,580 --> 01:24:20,200
+And then how do you do that?
+
+801
+01:24:20,460 --> 01:24:25,580
+So you start with three backticks, then you type the programming language you want to use,
+
+802
+01:24:25,580 --> 01:24:31,340
+in this case python and then you can say dev hello and then
+
+803
+01:24:31,340 --> 01:24:41,400
+and then you can go like that and then when you are done with writing your
+
+804
+01:24:41,400 --> 01:24:46,940
+code block you can add another three ticks and yeah you can do the same with c
+
+805
+01:24:46,940 --> 01:24:53,400
+you can also include files i mean in the in the in the notes it's written the notes in the
+
+806
+01:24:54,280 --> 01:25:00,440
+in the material and uh yeah it's written how to add actually literally file from somewhere else
+
+807
+01:25:01,160 --> 01:25:06,680
+and you can also use jupiter notebooks actually so um you can have a file of the jupiter notebook
+
+808
+01:25:06,680 --> 01:25:15,800
+and you can include it in in your documentation if you need um so uh yeah so um so what happens
+
+809
+01:25:15,800 --> 01:25:20,920
+here i mean when you label it here with python or you label it with c is that i mean you would
+
+810
+01:25:20,920 --> 01:25:29,720
+then have this nice i mean syntax highlighting in the rendered html yeah and one thing it's
+
+811
+01:25:29,720 --> 01:25:37,080
+quite important for audio audience i think is that you can have equations yeah yeah so for example
+
+812
+01:25:37,080 --> 01:25:44,680
+you can have an um math so here it's a bit different you have this uh uh these braces
+
+813
+01:25:44,680 --> 01:25:53,480
+here but you can have something like a squared plus b squared equal c squared okay you can have
+
+814
+01:25:53,480 --> 01:25:59,280
+much more complicated things like that you can also have uh wait a moment um yeah you can also
+
+815
+01:25:59,280 --> 01:26:04,800
+have that in line uh yeah so there's a lot of things you can do with it and i think everything
+
+816
+01:26:04,800 --> 01:26:12,420
+which is reasonable uh reasonable i think um is quite it's covered by sphinx so let's see how it
+
+817
+01:26:12,420 --> 01:26:20,880
+looks like. So if I do things, build, I will build again. So
+
+818
+01:26:20,880 --> 01:26:23,660
+yeah, it tells me, for example, that this image file that I have
+
+819
+01:26:23,660 --> 01:26:27,240
+added didn't, it was not found. But let's see how it looks like.
+
+820
+01:26:27,360 --> 01:26:29,160
+I need to do a little trick again.
+
+821
+01:26:33,000 --> 01:26:37,920
+Yeah. So in the meanwhile, I commented about equations. So
+
+822
+01:26:37,920 --> 01:26:46,320
+this can be written in LaTeX format and that's quite useful because if you for instance have
+
+823
+01:26:46,320 --> 01:26:54,900
+some old documents which are written in as LaTeX documents then you can migrate over directly the
+
+824
+01:26:54,900 --> 01:27:00,540
+equations and then you put it put them here into to the Sphinx document and then they will be
+
+825
+01:27:00,540 --> 01:27:05,540
+I mean, not the postscript file, but it will be rendered to HTML.
+
+826
+01:27:05,540 --> 01:27:09,540
+This is LaTeX.
+
+827
+01:27:09,540 --> 01:27:11,540
+Yeah. And yeah.
+
+828
+01:27:11,540 --> 01:27:16,540
+So I build it, then go back to my browser.
+
+829
+01:27:16,540 --> 01:27:18,540
+I think, oh, but this doesn't show. Why?
+
+830
+01:27:18,540 --> 01:27:22,540
+Because I need to press F5.
+
+831
+01:27:22,540 --> 01:27:24,540
+It didn't show it.
+
+832
+01:27:24,540 --> 01:27:27,540
+Ah, yeah, because I need to do another little step before,
+
+833
+01:27:27,540 --> 01:27:28,880
+which you don't have to do.
+
+834
+01:27:29,060 --> 01:27:32,520
+But if I do F5 now, this latex will appear.
+
+835
+01:27:34,800 --> 01:27:39,040
+Okay, so I think...
+
+836
+01:27:39,040 --> 01:27:45,660
+So I'm curious, so what happens if you have some syntactic error in the file?
+
+837
+01:27:46,300 --> 01:27:51,980
+I mean, if you, by mistake, if you change from no to yes in the table,
+
+838
+01:27:51,980 --> 01:27:54,140
+but you then get it, let's say,
+
+839
+01:27:56,080 --> 01:27:59,520
+so that the alignment of the vertical bars is incorrect.
+
+840
+01:27:59,520 --> 01:28:00,220
+What happens then?
+
+841
+01:28:00,520 --> 01:28:02,980
+So if I do something like this, let's break this down.
+
+842
+01:28:02,980 --> 01:28:04,540
+Yeah, you break it and then you're sure.
+
+843
+01:28:05,800 --> 01:28:07,200
+Let's see what happens.
+
+844
+01:28:07,380 --> 01:28:08,360
+Will it work anyway?
+
+845
+01:28:09,460 --> 01:28:14,620
+So I got no additional wordings, so maybe it worked.
+
+846
+01:28:15,140 --> 01:28:19,000
+Let's look now at the rendered version here.
+
+847
+01:28:19,000 --> 01:28:23,740
+So, yeah, it worked.
+
+848
+01:28:23,880 --> 01:28:24,880
+Okay, interesting.
+
+849
+01:28:26,120 --> 01:28:27,860
+Then it was tolerated here.
+
+850
+01:28:28,160 --> 01:28:31,720
+This was in Markdown, okay.
+
+851
+01:28:32,380 --> 01:28:32,620
+Yeah, yeah.
+
+852
+01:28:33,100 --> 01:28:33,600
+Yeah, okay.
+
+853
+01:28:33,980 --> 01:28:37,940
+Then, well, with RST, I think it would not have worked.
+
+854
+01:28:38,620 --> 01:28:41,360
+I don't...
+
+855
+01:28:41,360 --> 01:28:42,380
+But you would then...
+
+856
+01:28:42,380 --> 01:28:43,800
+The point I wanted to make is this,
+
+857
+01:28:43,920 --> 01:28:48,060
+that this swing stocks is rather user-friendly,
+
+858
+01:28:48,060 --> 01:28:54,860
+So if you break things, you sort of get like a warning message or you get like an error message.
+
+859
+01:28:56,400 --> 01:29:03,160
+And one thing I wanted to show you to attract your attention to is I said that the number list will be numbered automatically.
+
+860
+01:29:03,360 --> 01:29:11,960
+Even if I wrote 1.2.2 dot, 1 dot, et cetera, it will show as 1, 2, 3, 4 instead.
+
+861
+01:29:12,700 --> 01:29:16,740
+OK, so, yeah, it does. Yeah, there are some convenience features.
+
+862
+01:29:16,740 --> 01:29:21,860
+also this you don't have to align your tables perfectly because they will be rendered instead
+
+863
+01:29:21,860 --> 01:29:31,220
+by your browser in in a correct way uh yes there are some um some yeah it it's it's it's nice you
+
+864
+01:29:31,220 --> 01:29:36,580
+don't have to be really so a lot a lot of so as things understand what you want to do in some
+
+865
+01:29:36,580 --> 01:29:44,100
+cases and will will do it for you right so another thing i want to possibly just show because i'm not
+
+866
+01:29:44,100 --> 01:29:51,380
+sure if we have time is that um but i think it would be nice to show this right uh auto generating
+
+867
+01:29:51,380 --> 01:29:57,060
+documentation from python dot strings right i think maybe i can i can show you briefly how to
+
+868
+01:29:57,060 --> 01:30:07,700
+do this so let's say we have a multiply dot pi uh file which is which contains some some python code
+
+869
+01:30:07,700 --> 01:30:18,740
+which i will now paste here okay and save okay so if i now uh want um to add
+
+870
+01:30:20,580 --> 01:30:27,380
+the this uh this function to my documentation uh how can we do that um well
+
+871
+01:30:28,500 --> 01:30:34,900
+i need to do some steps first so i need to change my configuration uh and i need to make it so that
+
+872
+01:30:34,900 --> 01:30:43,780
+the among the extensions i also mentioned a thing called auto doc auto doc two okay so this is uh
+
+873
+01:30:43,780 --> 01:30:47,940
+it was essential to auto generate documentation and in addition to that i also need to say
+
+874
+01:30:50,420 --> 01:30:53,060
+doc two packages wait a moment
+
+875
+01:30:55,540 --> 01:31:03,060
+and then i can say um yeah the file that i want to to process with autodoc
+
+876
+01:31:04,900 --> 01:31:08,220
+multiply.py, okay?
+
+877
+01:31:08,780 --> 01:31:11,020
+Yeah, because I want to tell Autodoc,
+
+878
+01:31:11,140 --> 01:31:12,440
+hey, please, Autodoc,
+
+879
+01:31:12,800 --> 01:31:16,080
+parse this multiply.py file, okay?
+
+880
+01:31:16,480 --> 01:31:18,980
+And then this is the first thing I need to change.
+
+881
+01:31:19,060 --> 01:31:21,640
+Then I need to change index.rst
+
+882
+01:31:21,640 --> 01:31:23,480
+because I want to,
+
+883
+01:31:24,100 --> 01:31:24,900
+things to say, okay,
+
+884
+01:31:24,980 --> 01:31:26,360
+so now after some features,
+
+885
+01:31:26,740 --> 01:31:27,680
+some feature.md,
+
+886
+01:31:28,480 --> 01:31:30,740
+I would like you to add
+
+887
+01:31:30,740 --> 01:31:34,800
+call, like the API documentation.
+
+888
+01:31:34,900 --> 01:31:38,940
+So apdoc index.
+
+889
+01:31:38,940 --> 01:31:43,940
+So basically, this autodoc will create a file directory
+
+890
+01:31:44,420 --> 01:31:47,480
+called apidox and there's going to be an index in it
+
+891
+01:31:47,480 --> 01:31:50,680
+and I want Sphinx to include it.
+
+892
+01:31:50,680 --> 01:31:55,680
+So now, if I do Sphinx build,
+
+893
+01:31:58,760 --> 01:32:03,760
+Sphinx build, yeah, wait, it doesn't like that.
+
+894
+01:32:04,900 --> 01:32:14,820
+sphinx build dot build okay do that okay so with this command sphinx build dot i rebuild
+
+895
+01:32:14,820 --> 01:32:20,420
+the documentation i need to do my little trick here and then i should be able to show you
+
+896
+01:32:20,980 --> 01:32:28,500
+again this so let's go to the to the main page yeah i click here and then you can see that
+
+897
+01:32:28,500 --> 01:32:35,220
+there's a new thing that's popped up which is the api reference okay and the api reference of
+
+898
+01:32:35,220 --> 01:32:44,900
+multiply and if i look into this multiply so then you see that i get something which looks
+
+899
+01:32:44,900 --> 01:32:54,180
+very similar to the doc string that i had here so which i will open now and yeah wait a moment so
+
+900
+01:32:54,180 --> 01:33:02,560
+yeah yeah multiply two numbers parameters a parameter b and return and that's what i see
+
+901
+01:33:02,560 --> 01:33:09,000
+here right so we have the parameters and returns and this is uh similar i mean yeah it's similar
+
+902
+01:33:09,000 --> 01:33:15,080
+to what you have in the numpy documentation for example okay which may be the fastest thing say
+
+903
+01:33:15,080 --> 01:33:23,380
+uses that is used to to uh to document a lot of python projects you were saying yeah so so it's
+
+904
+01:33:23,380 --> 01:33:31,140
+clear here that if you would like to render in the way that [name] did here, contents of this type,
+
+905
+01:33:32,020 --> 01:33:38,580
+I mean doing it, auto-generating it from the source code itself from a doc screen, I mean
+
+906
+01:33:38,580 --> 01:33:45,860
+that's really the way to do it because if you run, I mean if you edit this material a little bit
+
+907
+01:33:45,860 --> 01:33:50,060
+it out of sync with the source code.
+
+908
+01:33:50,060 --> 01:33:53,640
+Yeah, well, it typically would get out of sync.
+
+909
+01:33:53,640 --> 01:33:58,640
+So the take home message is to strive to have it
+
+910
+01:34:00,300 --> 01:34:03,180
+like integrated here with the source code itself.
+
+911
+01:34:04,100 --> 01:34:07,460
+Yeah, so that it would be easier for you to write it
+
+912
+01:34:07,460 --> 01:34:09,620
+and easier for your colleagues to write.
+
+913
+01:34:09,620 --> 01:34:11,520
+So yeah, write doc strings
+
+914
+01:34:11,520 --> 01:34:15,860
+and then there will be other documentation automatically
+
+915
+01:34:15,860 --> 01:34:21,460
+is something the docs can do for you for other languages and julia i mean a lot of languages
+
+916
+01:34:21,460 --> 01:34:26,660
+they have similar things so if you're not using python use another language i'm sure that there
+
+917
+01:34:26,660 --> 01:34:34,180
+is a packet that gives you this if this this um this uh capabilities feature so yeah indeed yeah
+
+918
+01:34:34,180 --> 01:34:40,340
+i think that maybe yeah maybe we also mentioned here in the in the in our uh notes in there in
+
+919
+01:34:40,340 --> 01:34:51,220
+the less lecture notes it is anyway um i think i would like to move now quickly to um to the next
+
+920
+01:34:51,220 --> 01:34:55,780
+bit unless we have some questions if there are questions we should always
+
+921
+01:34:55,780 --> 01:35:02,980
+uh spend a bit of time talking about those if there's anything specific
+
+922
+01:35:02,980 --> 01:35:22,600
+Okay. So one thing I want to talk about is this. I will open the material, the teaching
+
+923
+01:35:22,600 --> 01:35:29,740
+material here. So it goes with the Deploying Sphinx Documentation to GitHub Pages. So here
+
+924
+01:35:29,740 --> 01:35:40,060
+It's a quick exercise which I can show you directly on GitHub.
+
+925
+01:35:40,060 --> 01:35:46,420
+So you don't need to have followed what we've done before.
+
+926
+01:35:46,420 --> 01:35:48,780
+I can just go from here.
+
+927
+01:35:48,780 --> 01:35:51,820
+So we have a documentation example,
+
+928
+01:35:51,820 --> 01:35:53,780
+which is a project template on GitHub.
+
+929
+01:35:53,780 --> 01:36:01,100
+And we can use that to show how to publish things on using GitHub Pages.
+
+930
+01:36:01,460 --> 01:36:10,920
+GitHub Pages is a feature of GitHub that allows you to show the kind of websites that are composed, that Sphinx creates.
+
+931
+01:36:10,920 --> 01:36:12,820
+So static web pages.
+
+932
+01:36:13,040 --> 01:36:20,180
+Static web pages are pages which do not require the web server to actually do anything fancy.
+
+933
+01:36:20,320 --> 01:36:23,180
+They just require the web server to give them.
+
+934
+01:36:23,180 --> 01:36:31,740
+okay so to give it to the browser that that wants to to see them okay uh so how to do that there's
+
+935
+01:36:31,740 --> 01:36:44,300
+a documentation example uh repository i will uh click on the link uh so and uh i can do i like test
+
+936
+01:36:45,100 --> 01:36:54,780
+gh pages okay um create the repository and then what do i have here
+
+937
+01:36:56,380 --> 01:37:08,380
+the the yeah everything is being generated for me and uh yeah so i have some some content already so
+
+938
+01:37:08,380 --> 01:37:15,860
+So the thing I need to do, actually, here, is to add an action.
+
+939
+01:37:16,860 --> 01:37:22,740
+So GitHub has not just the pages feature, but there's a thing which is called actions,
+
+940
+01:37:22,740 --> 01:37:29,020
+which is a way to do a lot of things, actually, but in an automatic way.
+
+941
+01:37:29,100 --> 01:37:36,000
+So we can tell now GitHub to perform some operations on this repository.
+
+942
+01:37:36,000 --> 01:37:39,620
+so what we can do now is actually we don't have to
+
+943
+01:37:39,620 --> 01:37:44,040
+start to click here you can go to the code and then
+
+944
+01:37:44,040 --> 01:37:47,660
+I can create a file that is
+
+945
+01:37:47,660 --> 01:37:52,040
+that will contain the workflow
+
+946
+01:37:52,040 --> 01:37:56,360
+the actions that GitHub needs to perform in this repository
+
+947
+01:37:56,360 --> 01:37:59,920
+so these GitHub actions files are
+
+948
+01:37:59,920 --> 01:38:01,660
+contained in GitHub
+
+949
+01:38:01,660 --> 01:38:04,060
+then
+
+950
+01:38:04,060 --> 01:38:06,360
+workflows
+
+951
+01:38:06,360 --> 01:38:10,020
+this is the standard
+
+952
+01:38:10,020 --> 01:38:12,840
+path where GitHub is going to look for
+
+953
+01:38:12,840 --> 01:38:14,680
+when he
+
+954
+01:38:14,680 --> 01:38:16,620
+looks for actions and then the
+
+955
+01:38:16,620 --> 01:38:18,780
+name of the file would be
+
+956
+01:38:18,780 --> 01:38:20,620
+documentation.yaml
+
+957
+01:38:21,460 --> 01:38:24,780
+so this is
+
+958
+01:38:24,780 --> 01:38:25,900
+the file I want to create
+
+959
+01:38:25,900 --> 01:38:28,680
+and the content of the file will
+
+960
+01:38:28,680 --> 01:38:30,200
+be copied from
+
+961
+01:38:30,200 --> 01:38:34,320
+the material, oh wait, I need to copy
+
+962
+01:38:34,320 --> 01:38:38,520
+and paste, yeah, and
+
+963
+01:38:38,520 --> 01:38:42,500
+so, we are saying
+
+964
+01:38:42,500 --> 01:38:46,560
+I will just quickly comment on what are these things, so we are saying, okay, so
+
+965
+01:38:46,560 --> 01:38:50,560
+there's a workflow called documentation, which will be run when there's
+
+966
+01:38:50,560 --> 01:38:54,460
+when someone pushes to the repository, when there's a pull request, and
+
+967
+01:38:54,460 --> 01:38:58,700
+when someone wants to run this workflow manually
+
+968
+01:38:58,700 --> 01:39:03,420
+and this job, this
+
+969
+01:39:03,420 --> 01:39:07,500
+workflow is made out of jobs, a list of jobs, in this case there's only one
+
+970
+01:39:07,500 --> 01:39:11,080
+job called docs, which runs on a container
+
+971
+01:39:11,080 --> 01:39:14,560
+it needs a container to start, and the containers were mentioned yesterday
+
+972
+01:39:14,560 --> 01:39:18,800
+it's a container that is based on Ubuntu
+
+973
+01:39:18,800 --> 01:39:23,180
+and then there are some steps here, first
+
+974
+01:39:23,180 --> 01:39:27,520
+we are going to check out the repository, and to do so we are going to
+
+975
+01:39:27,520 --> 01:39:31,200
+use an action that has been written by someone else.
+
+976
+01:39:31,200 --> 01:39:37,520
+Then there's another action that is made to set up Python,
+
+977
+01:39:37,520 --> 01:39:43,700
+and this action has been written by someone else as well.
+
+978
+01:39:43,700 --> 01:39:44,960
+Then we had another step,
+
+979
+01:39:44,960 --> 01:39:47,420
+which is the installation of our dependencies.
+
+980
+01:39:47,420 --> 01:39:51,480
+We have our pip command here to store everything we need.
+
+981
+01:39:51,480 --> 01:39:55,340
+Then we have the build command to build everything,
+
+982
+01:39:55,340 --> 01:40:02,800
+the sphinx build command okay and then we have eventually our last action last our last step
+
+983
+01:40:02,800 --> 01:40:11,360
+which does some magic here which means um some trying to simplify uh take whatever we have
+
+984
+01:40:11,360 --> 01:40:19,800
+created in the underscore build directory and uh put it on a new branch called gh pages okay
+
+985
+01:40:19,800 --> 01:40:22,280
+and this gith pages is also an orphan branch
+
+986
+01:40:22,280 --> 01:40:24,400
+which means that it has no parent
+
+987
+01:40:24,400 --> 01:40:25,640
+and so on.
+
+988
+01:40:26,040 --> 01:40:28,340
+So I can commit the changes now
+
+989
+01:40:28,340 --> 01:40:29,040
+and say
+
+990
+01:40:29,040 --> 01:40:31,380
+create the commutation.yaml
+
+991
+01:40:31,380 --> 01:40:34,000
+I would never do this, I would never leave
+
+992
+01:40:34,000 --> 01:40:36,540
+the default commit message
+
+993
+01:40:36,540 --> 01:40:38,320
+but that's what we need to do here.
+
+994
+01:40:40,320 --> 01:40:41,920
+And now I have this
+
+995
+01:40:41,920 --> 01:40:44,280
+actions, this action defined
+
+996
+01:40:44,280 --> 01:40:46,260
+the next thing I need to do is
+
+997
+01:40:46,260 --> 01:40:48,200
+to enable
+
+998
+01:40:48,200 --> 01:40:52,340
+GitHub pages for this repository. So, how do I do that? I go
+
+999
+01:40:52,340 --> 01:40:55,300
+to the settings of the repository, go to pages,
+
+1000
+01:40:56,240 --> 01:41:00,080
+and then I say, okay, deploy from a branch. That's okay.
+
+1001
+01:41:00,880 --> 01:41:04,500
+Then I need to choose the branch. But first, I need to actually
+
+1002
+01:41:04,500 --> 01:41:08,240
+I need the branch to be created. So, let's go to actions
+
+1003
+01:41:08,240 --> 01:41:12,040
+first. Okay. I need to, okay, so create documentation on YML.
+
+1004
+01:41:12,220 --> 01:41:15,960
+This has actually run. So, I should see
+
+1005
+01:41:15,960 --> 01:41:25,780
+here and if i go to code i should see a gh page gh pages branch appearing okay then i can go back
+
+1006
+01:41:25,780 --> 01:41:33,340
+to the settings and pages and then i should be able to select here gh pages which was not available
+
+1007
+01:41:33,340 --> 01:41:43,400
+before so if i do that and save then if i go back to actions then a new workflow will restart which
+
+1008
+01:41:43,400 --> 01:41:47,500
+will take what I have on the branch.ghpages, which is my
+
+1009
+01:41:47,500 --> 01:41:51,560
+render documentation, and actually publish that on GitHub pages. And you see
+
+1010
+01:41:51,560 --> 01:41:52,680
+that there's a new
+
+1011
+01:41:52,680 --> 01:41:59,320
+workflow here that is happening. See, the build took five seconds,
+
+1012
+01:42:00,260 --> 01:42:02,780
+build status took three seconds, and now it's deploying.
+
+1013
+01:42:05,060 --> 01:42:07,720
+So, it doesn't take very long
+
+1014
+01:42:07,720 --> 01:42:10,560
+technically. And we are almost out of time.
+
+1015
+01:42:10,560 --> 01:42:19,040
+so but let me show you this okay so now i have some documentation which is an empty project
+
+1016
+01:42:19,040 --> 01:42:24,960
+here and it's shown on our github pages so it's visible to everybody so if you go to this
+
+1017
+01:42:28,640 --> 01:42:34,400
+if you go to this to this address on your on your browser you will see what i have just created yeah
+
+1018
+01:42:34,400 --> 01:42:42,080
+Yeah, so this is really neat. And so, I mean, all of these steps that you showed here with this
+
+1019
+01:42:42,720 --> 01:42:48,880
+YAML file and the actions, I mean, the things that you're activating on GitHub here,
+
+1020
+01:42:50,720 --> 01:42:54,240
+these are things which are, so to say, living on GitHub.
+
+1021
+01:42:54,240 --> 01:42:58,800
+They are corresponding things on GitLab and on Bitbucket and so forth.
+
+1022
+01:42:58,800 --> 01:43:05,720
+uh and unfortunately the syntax is different actually on gitlab is much simpler uh and
+
+1023
+01:43:05,720 --> 01:43:12,520
+there's also a uh guided procedure if you have a repository on gitlab but anyway uh yeah you get
+
+1024
+01:43:12,520 --> 01:43:18,040
+the idea i guess i hope that the idea that the whole the hope here is that you get the idea that
+
+1025
+01:43:18,040 --> 01:43:23,840
+you know you can yeah this platforms github and gitlab give you this opportunity to host static
+
+1026
+01:43:23,840 --> 01:43:27,500
+websites, which you can generate with things or other projects
+
+1027
+01:43:27,540 --> 01:43:36,680
+or other other or other tools. So shall we go to the notes and
+
+1028
+01:43:36,680 --> 01:43:39,740
+see if there's anything we need to discuss or anything that we
+
+1029
+01:43:39,740 --> 01:43:46,440
+can? Yeah, we have like three minutes for conversation.
+
+1030
+01:43:46,440 --> 01:43:55,680
+there is okay starting with the last question here so are the limitations to being able to
+
+1031
+01:43:55,680 --> 01:44:03,160
+use this with private repositories and i think you can't i think you cannot on github
+
+1032
+01:44:03,160 --> 01:44:10,500
+uh not not for free not for free yeah but if you pay for it enterprise and so on then yes
+
+1033
+01:44:10,500 --> 01:44:12,880
+if you are an academic user
+
+1034
+01:44:12,880 --> 01:44:14,760
+do you qualify for
+
+1035
+01:44:14,760 --> 01:44:16,860
+pro anyway so I guess it depends
+
+1036
+01:44:16,860 --> 01:44:18,240
+if you register with an academic
+
+1037
+01:44:18,240 --> 01:44:20,860
+it used to be that if you registered with an academic
+
+1038
+01:44:20,860 --> 01:44:22,900
+email address then you would
+
+1039
+01:44:22,900 --> 01:44:24,340
+be automatically
+
+1040
+01:44:24,340 --> 01:44:26,960
+considering the pro
+
+1041
+01:44:26,960 --> 01:44:29,180
+tier so you would be able to have that
+
+1042
+01:44:29,180 --> 01:44:32,960
+yeah I'm not really up to
+
+1043
+01:44:32,960 --> 01:44:33,980
+speed what was currently
+
+1044
+01:44:33,980 --> 01:44:36,700
+the offering from github
+
+1045
+01:44:36,700 --> 01:44:38,840
+but in general I mean you get
+
+1046
+01:44:38,840 --> 01:44:40,220
+some of it a little bit
+
+1047
+01:44:40,220 --> 01:44:48,280
+for free and and if you want more capacity you need to pay for it which is rather reasonable
+
+1048
+01:44:48,280 --> 01:44:54,240
+and and that's something actually that we will come to tomorrow in the testing lesson because
+
+1049
+01:44:54,240 --> 01:44:59,500
+the the rendering of this fengs document that [name]l has set up here to run on github
+
+1050
+01:44:59,500 --> 01:45:05,960
+that that's rather lightweight this is sort of you only need a little bit of hardware on the
+
+1051
+01:45:05,960 --> 01:45:11,640
+the server side here on GitHub to render the HTML and then also toast it.
+
+1052
+01:45:11,840 --> 01:45:18,160
+When you come to things like testing and the so-called continuous development
+
+1053
+01:45:18,360 --> 01:45:24,480
+workflows, where you might then run big tests,
+
+1054
+01:45:24,680 --> 01:45:29,280
+then more hardware is booked for longer time.
+
+1055
+01:45:29,480 --> 01:45:31,880
+And there you will also have this
+
+1056
+01:45:32,040 --> 01:45:34,920
+situation where you get a little bit of capacity for free
+
+1057
+01:45:36,200 --> 01:45:41,080
+but if you do want to do more heavy stuff you need to start pay for it monthly
+
+1058
+01:45:46,680 --> 01:45:52,360
+there are ways out of this but uh yeah they can be a bit harder to to set up
+
+1059
+01:45:55,000 --> 01:45:58,360
+but yeah it will be discussed tomorrow yeah yeah so
+
+1060
+01:46:01,880 --> 01:46:12,860
+So now we showed it here on how to get it up on GitHub pages and you find in the lesson
+
+1061
+01:46:12,860 --> 01:46:19,480
+material that you can do similar things then on GitLab and also on Bitbucket.
+
+1062
+01:46:19,480 --> 01:46:23,560
+Yeah, I never used Bitbucket.
+
+1063
+01:46:23,560 --> 01:46:27,160
+I have quite some experience with GitLab.
+
+1064
+01:46:27,160 --> 01:46:35,020
+The only thing is that GitLab allows you to have private, let's say, pages,
+
+1065
+01:46:35,460 --> 01:46:39,820
+but they need to be activated centrally.
+
+1066
+01:46:39,820 --> 01:46:45,980
+So your GitLab instance may or may not have the pages feature activated.
+
+1067
+01:46:47,700 --> 01:46:49,980
+So, yeah, some of the servers they have.
+
+1068
+01:46:50,220 --> 01:46:55,020
+So GitLab.com for sure, but if your institution has their own GitLab server,
+
+1069
+01:46:55,020 --> 01:47:06,700
+well you need to check if the page is available there. Yes indeed so many institutions do have
+
+1070
+01:47:06,700 --> 01:47:16,060
+their own instances of GitHub or GitHub servers and then you can work with them within let's say
+
+1071
+01:47:16,940 --> 01:47:22,220
+I mean within all of your organization and perhaps also with some partner organizations.
+
+1072
+01:47:25,020 --> 01:47:35,680
+good good good um so now we are going to have a lunch break um and we'll be back
+
+1073
+01:47:35,680 --> 01:47:43,240
+uh with uh with the i will be back with [name] talking about jupiter notebooks if you have
+
+1074
+01:47:43,240 --> 01:47:48,400
+questions you can still ask uh in the in the notes in the collaborative document
+
+1075
+01:47:48,400 --> 01:47:51,380
+but we'll try to answer them anyway.
+
+1076
+01:47:52,880 --> 01:47:56,020
+And well, I mean, if you want to join
+
+1077
+01:47:56,020 --> 01:47:59,600
+the bring your own code sessions in the future,
+
+1078
+01:48:00,080 --> 01:48:02,840
+well, I think documentation is also something
+
+1079
+01:48:02,840 --> 01:48:03,940
+that can be discussed there.
+
+1080
+01:48:05,020 --> 01:48:07,680
+So with you personally, I'd say.
+
+1081
+01:48:08,900 --> 01:48:09,420
+Yeah.
+
+1082
+01:48:10,340 --> 01:48:12,320
+So what can I say?
+
+1083
+01:48:13,420 --> 01:48:15,080
+Yeah, yeah, good.
+
+1084
+01:48:15,080 --> 01:48:17,520
+So thank you, [name], and bye, everyone.
+
+1085
+01:48:18,400 --> 01:48:20,540
+Thank you.
+
