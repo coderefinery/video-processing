@@ -1,0 +1,4608 @@
+1
+00:00:00,000 --> 00:00:02,400
+and welcome back
+
+2
+00:00:02,820 --> 00:00:12,300
+Hello. So, yeah, we have some questions in the notes to get started.
+
+3
+00:00:13,860 --> 00:00:25,300
+So essentially this, the modular coding session is a demonstration and essentially a pair coding demonstration.
+
+4
+00:00:26,120 --> 00:00:32,400
+And it's also a way of wrapping up and tying everything together.
+
+5
+00:00:32,400 --> 00:00:40,520
+So it should touch on most things that we have talked about during this entire workshop.
+
+6
+00:00:42,560 --> 00:00:46,100
+So we have a few different questions in the notes.
+
+7
+00:00:46,840 --> 00:00:50,540
+It would be great if you could answer at least the first three.
+
+8
+00:00:51,460 --> 00:00:57,780
+And then we'll get going once we have a few answers to talk through.
+
+9
+00:00:57,780 --> 00:01:02,780
+Well, we can already start with essentially our answers to the questions.
+
+10
+00:01:03,020 --> 00:01:04,540
+Yeah, why not?
+
+11
+00:01:05,620 --> 00:01:09,320
+So I'll start with what does modular code development mean for you?
+
+12
+00:01:09,320 --> 00:01:27,160
+So for me, it's if you try to structure your code such that you actually have different parts that are responsible for different things
+
+13
+00:01:27,160 --> 00:01:34,760
+and make clear distinctions as to okay this is something this is a logical logical pack that
+
+14
+00:01:34,760 --> 00:01:40,840
+belongs together and therefore it's executed in one function um this is a logical group of things
+
+15
+00:01:40,840 --> 00:01:50,120
+so this is one package and so on that's what module development is about for me yeah so we um
+
+16
+00:01:50,120 --> 00:01:57,960
+started with version control and we went essentially like we went all the way to
+
+17
+00:01:57,960 --> 00:02:04,140
+sharing it and putting things online collaborating with sharing code changing someone else's code and
+
+18
+00:02:04,140 --> 00:02:14,800
+so on um and to me the best although the most um clear definition is when you can actually
+
+19
+00:02:14,800 --> 00:02:21,340
+take a piece of code maybe maybe an a feature you have create a function you have written
+
+20
+00:02:21,340 --> 00:02:31,440
+and actually contribute it back to the original software so the original code or even even better
+
+21
+00:02:31,440 --> 00:02:39,240
+take it and contribute it to some other code base in a way that makes sense so then that
+
+22
+00:02:39,240 --> 00:02:44,140
+if you can do that then the original that the code base you're contributing to is modular
+
+23
+00:02:44,140 --> 00:02:47,220
+in the sense that you can put a module in and it works.
+
+24
+00:02:48,000 --> 00:02:50,700
+And also your starting point is modular
+
+25
+00:02:50,700 --> 00:02:53,460
+because there is some module that you can pick up
+
+26
+00:02:53,460 --> 00:02:55,360
+and put somewhere else.
+
+27
+00:02:55,360 --> 00:02:58,460
+It becomes usable in many different situations.
+
+28
+00:03:03,180 --> 00:03:05,340
+And this, of course, it happens on different levels.
+
+29
+00:03:05,440 --> 00:03:08,620
+It could be a function, but it could also be an entire,
+
+30
+00:03:08,860 --> 00:03:12,040
+well, a Python module, which means a file
+
+31
+00:03:12,040 --> 00:03:13,760
+or a library in
+
+32
+00:03:13,760 --> 00:03:15,760
+C
+
+33
+00:03:15,760 --> 00:03:18,100
+or C++ and so on.
+
+34
+00:03:20,080 --> 00:03:22,160
+This is also what you
+
+35
+00:03:22,160 --> 00:03:24,120
+have started writing there
+
+36
+00:03:24,120 --> 00:03:24,580
+essentially.
+
+37
+00:03:25,880 --> 00:03:27,720
+The general idea seems to be
+
+38
+00:03:27,720 --> 00:03:28,560
+pretty similar.
+
+39
+00:03:31,400 --> 00:03:32,220
+This also
+
+40
+00:03:32,220 --> 00:03:34,080
+has something to do with unit testing in that
+
+41
+00:03:34,080 --> 00:03:35,940
+a unit that you can test is
+
+42
+00:03:35,940 --> 00:03:37,200
+a module
+
+43
+00:03:37,200 --> 00:03:39,980
+if it doesn't have too many side effects.
+
+44
+00:03:40,920 --> 00:03:42,000
+A function you can test
+
+45
+00:03:42,000 --> 00:03:44,060
+is a module that you can
+
+46
+00:03:44,060 --> 00:03:45,260
+also then plug out
+
+47
+00:03:45,260 --> 00:03:47,460
+in some way.
+
+48
+00:03:48,920 --> 00:03:50,020
+Okay, best practices
+
+49
+00:03:50,020 --> 00:03:52,080
+to arrive at
+
+50
+00:03:52,080 --> 00:03:54,080
+a well-structured modular code
+
+51
+00:03:54,080 --> 00:03:56,100
+in your favorite programming
+
+52
+00:03:56,100 --> 00:03:58,080
+language. I don't actually know what my favorite language
+
+53
+00:03:58,080 --> 00:03:58,400
+is.
+
+54
+00:04:02,460 --> 00:04:04,080
+To me, it's
+
+55
+00:04:04,080 --> 00:04:06,220
+designing well
+
+56
+00:04:06,220 --> 00:04:07,940
+as in
+
+57
+00:04:07,940 --> 00:04:10,180
+if I want to have a certain
+
+58
+00:04:10,180 --> 00:04:17,540
+functionality uh what parts of this functionality are actually reusable what parts of these
+
+59
+00:04:17,540 --> 00:04:25,240
+functionality are specific to exactly what this is going to do and then separate things that are
+
+60
+00:04:25,240 --> 00:04:36,780
+more that i think are more generally usable and things that are well more more more specific to
+
+61
+00:04:36,780 --> 00:04:46,020
+this one task also potentially depending again on the project if it's large enough
+
+62
+00:04:46,020 --> 00:04:55,260
+thinking about how could someone else provide an alternative approach to some parts of my code
+
+63
+00:04:55,260 --> 00:05:00,660
+and at which point i automatically have to think okay i might need to have an interface or
+
+64
+00:05:00,660 --> 00:05:08,280
+something and this inter implementation of this interface that's one piece so i can define the
+
+65
+00:05:08,280 --> 00:05:13,740
+interface and then put in an implementation someone else could define a different implementation for
+
+66
+00:05:13,740 --> 00:05:22,160
+the same thing that automatically creates modular code because things can be replaced easily
+
+67
+00:05:22,160 --> 00:05:27,740
+essentially you surround the module with an interface so yeah if you have a defined interface
+
+68
+00:05:27,740 --> 00:05:37,340
+what is inside can change and so it is plug and play so one very practical thing um that i at
+
+69
+00:05:37,340 --> 00:05:48,900
+least when i was like writing mostly c code um in research i saw people use global values global
+
+70
+00:05:48,900 --> 00:05:56,360
+references so you define some something you define a thing that needs to be accessible essentially
+
+71
+00:05:56,360 --> 00:06:04,520
+everywhere in the code and you make it globally accessible which means it's not explicitly there
+
+72
+00:06:04,520 --> 00:06:11,000
+in the arguments of a function for example so like in simulation programs you often do this for
+
+73
+00:06:11,000 --> 00:06:22,080
+like the world the the 3d world that you are simulating so that kind of thing make means
+
+74
+00:06:22,080 --> 00:06:25,420
+you cannot take the function
+
+75
+00:06:25,420 --> 00:06:28,440
+and put it in a different code, right?
+
+76
+00:06:30,120 --> 00:06:32,000
+Whereas if it's explicit,
+
+77
+00:06:32,360 --> 00:06:34,360
+if you put the parameter directly
+
+78
+00:06:34,360 --> 00:06:35,560
+into the function definition,
+
+79
+00:06:36,180 --> 00:06:39,920
+then you can put it in anywhere
+
+80
+00:06:39,920 --> 00:06:42,560
+as long as they know to provide that parameter correctly.
+
+81
+00:06:43,520 --> 00:06:47,180
+So explicit is better than implicit in that sense.
+
+82
+00:06:49,720 --> 00:06:51,680
+That's, and yeah,
+
+83
+00:06:51,680 --> 00:06:56,520
+So basically, yeah, writing small functions with a specific task
+
+84
+00:06:56,520 --> 00:06:59,540
+and then making their interactions explicit.
+
+85
+00:07:00,020 --> 00:07:04,560
+Have everything that goes into the function be visible in the function definition
+
+86
+00:07:04,560 --> 00:07:07,860
+and everything that it does should also be visible
+
+87
+00:07:07,860 --> 00:07:13,980
+either by looking at the return value or looking at the comments.
+
+88
+00:07:15,560 --> 00:07:20,820
+What I also, that's partly in the answers here as well.
+
+89
+00:07:21,680 --> 00:07:29,020
+So try not to create a large script that you're running.
+
+90
+00:07:29,620 --> 00:07:35,980
+Because as soon as there is really computational functionality
+
+91
+00:07:35,980 --> 00:07:39,880
+in the run script that you have
+
+92
+00:07:39,880 --> 00:07:42,380
+that could be handled in a function,
+
+93
+00:07:42,900 --> 00:07:45,940
+it becomes potentially, as it's mentioned here,
+
+94
+00:07:46,040 --> 00:07:48,540
+difficult later on to refactor this into a function
+
+95
+00:07:48,540 --> 00:07:50,680
+or to refactor your code such that
+
+96
+00:07:50,680 --> 00:07:52,120
+this calls a function
+
+97
+00:07:52,120 --> 00:07:53,320
+and
+
+98
+00:07:53,320 --> 00:07:56,280
+the sooner you say
+
+99
+00:07:56,280 --> 00:07:58,340
+this is not about
+
+100
+00:07:58,340 --> 00:08:00,700
+the individual actions
+
+101
+00:08:00,700 --> 00:08:02,180
+of my script anymore
+
+102
+00:08:02,180 --> 00:08:03,040
+this is about
+
+103
+00:08:03,040 --> 00:08:06,760
+handling what I'm doing
+
+104
+00:08:06,760 --> 00:08:08,660
+this can normally go into
+
+105
+00:08:08,660 --> 00:08:09,160
+a function
+
+106
+00:08:09,160 --> 00:08:12,580
+so if I have something like
+
+107
+00:08:12,580 --> 00:08:14,800
+a script that I'm
+
+108
+00:08:14,800 --> 00:08:15,980
+running, this is commonly
+
+109
+00:08:15,980 --> 00:08:18,780
+create my target
+
+110
+00:08:18,780 --> 00:08:19,960
+object or whatever
+
+111
+00:08:19,960 --> 00:08:24,360
+and then run individual functions on that thing.
+
+112
+00:08:24,760 --> 00:08:27,640
+But I'm not having any,
+
+113
+00:08:27,900 --> 00:08:30,420
+I would say functional code in there,
+
+114
+00:08:31,240 --> 00:08:32,880
+in the main script.
+
+115
+00:08:33,160 --> 00:08:34,600
+All this is just,
+
+116
+00:08:35,180 --> 00:08:37,280
+essentially I can read through my main script
+
+117
+00:08:37,280 --> 00:08:40,580
+and know that first it's reading the data.
+
+118
+00:08:40,760 --> 00:08:43,220
+Second, it's pre-processing.
+
+119
+00:08:43,360 --> 00:08:45,020
+Third is this, fourth is this.
+
+120
+00:08:45,020 --> 00:08:46,880
+And just by reading through,
+
+121
+00:08:46,880 --> 00:08:50,420
+I essentially have one line
+
+122
+00:08:50,420 --> 00:08:51,920
+for all of these tasks
+
+123
+00:08:51,920 --> 00:08:54,420
+because it's the function call that does it
+
+124
+00:08:54,420 --> 00:08:57,080
+that helps me
+
+125
+00:08:57,080 --> 00:09:00,780
+essentially the same is also true for functions
+
+126
+00:09:00,780 --> 00:09:03,020
+if the function starts to be longer than
+
+127
+00:09:03,020 --> 00:09:06,120
+you can actually read and understand
+
+128
+00:09:06,120 --> 00:09:08,260
+then it's probably too long
+
+129
+00:09:08,260 --> 00:09:13,240
+it can be split into smaller pieces
+
+130
+00:09:13,240 --> 00:09:16,380
+that do simpler individual things
+
+131
+00:09:16,380 --> 00:09:18,520
+and then can be reused
+
+132
+00:09:18,520 --> 00:09:19,320
+at different places
+
+133
+00:09:19,320 --> 00:09:21,640
+it's kind of optimally
+
+134
+00:09:21,640 --> 00:09:23,420
+your code
+
+135
+00:09:23,420 --> 00:09:25,580
+by just reading through it
+
+136
+00:09:25,580 --> 00:09:27,120
+explains what it's doing
+
+137
+00:09:27,120 --> 00:09:30,500
+until you come to so small pieces
+
+138
+00:09:30,500 --> 00:09:32,600
+that they are relatively obvious
+
+139
+00:09:32,600 --> 00:09:33,880
+what they are doing
+
+140
+00:09:33,880 --> 00:09:35,660
+since I said
+
+141
+00:09:35,660 --> 00:09:37,860
+something about
+
+142
+00:09:37,860 --> 00:09:39,580
+what the code should be like
+
+143
+00:09:39,580 --> 00:09:41,220
+so
+
+144
+00:09:41,220 --> 00:09:43,700
+the reason is to
+
+145
+00:09:43,700 --> 00:09:45,480
+make it understandable
+
+146
+00:09:45,480 --> 00:09:47,540
+to make it easier so
+
+147
+00:09:47,540 --> 00:09:49,740
+it's not just about
+
+148
+00:09:49,740 --> 00:09:51,380
+style and
+
+149
+00:09:51,380 --> 00:09:52,440
+like
+
+150
+00:09:52,440 --> 00:09:55,300
+well it's not just about
+
+151
+00:09:55,300 --> 00:09:58,160
+telling people
+
+152
+00:09:58,160 --> 00:10:00,180
+what good code is in some way
+
+153
+00:10:00,180 --> 00:10:01,940
+this is all
+
+154
+00:10:01,940 --> 00:10:03,300
+practical advice right
+
+155
+00:10:03,300 --> 00:10:06,060
+so it makes it easier
+
+156
+00:10:06,060 --> 00:10:07,600
+to understand and change
+
+157
+00:10:07,600 --> 00:10:09,320
+and reuse
+
+158
+00:10:09,320 --> 00:10:11,420
+which is the point
+
+159
+00:10:11,420 --> 00:10:13,300
+yeah
+
+160
+00:10:13,300 --> 00:10:23,300
+So what do we have in C? We have, or did we actually go through the answers in B?
+
+161
+00:10:23,300 --> 00:10:31,300
+Mostly. This is, yeah, minimum things.
+
+162
+00:10:31,300 --> 00:10:34,300
+Put them in functions.
+
+163
+00:10:34,300 --> 00:10:38,300
+Smallest task that could be reused.
+
+164
+00:10:38,300 --> 00:10:51,980
+This is not directly modular code, but in general, having simple and useful comments is very, very useful in general development, regardless of modular or not.
+
+165
+00:10:51,980 --> 00:11:17,480
+Yeah. So I guess, yeah, maybe I already said this, essentially, the one big thing that kind of defines what modular means here is, or in general, what modular action means is, the code or each part of the code should avoid interacting with other parts of the code as much as possible.
+
+166
+00:11:17,480 --> 00:11:27,060
+so essentially i would say as much as sensible yeah as much as possible yeah i mean you can
+
+167
+00:11:27,060 --> 00:11:33,880
+always reduce interactions to zero if you just um uh if you don't care about whether it works
+
+168
+00:11:33,880 --> 00:11:40,580
+um yeah as much as makes sense of us yeah what you what you very often uh see in things like
+
+169
+00:11:40,580 --> 00:11:43,700
+style suggestions and so on
+
+170
+00:11:43,700 --> 00:11:46,780
+is also having not too many input arguments
+
+171
+00:11:46,780 --> 00:11:48,880
+for functions, which means that
+
+172
+00:11:48,880 --> 00:11:53,000
+there needs to be a certain balance between
+
+173
+00:11:53,000 --> 00:11:56,780
+what responsibilities certain functions have
+
+174
+00:11:56,780 --> 00:11:59,660
+and where they get their data from.
+
+175
+00:12:00,100 --> 00:12:02,860
+So if your function, because you want to output
+
+176
+00:12:02,860 --> 00:12:05,940
+it into a function, starts to have 20 input arguments,
+
+177
+00:12:07,100 --> 00:12:08,980
+it's likely that it's doing
+
+178
+00:12:08,980 --> 00:12:11,420
+either it's doing more than it should
+
+179
+00:12:11,420 --> 00:12:13,400
+be doing or it
+
+180
+00:12:13,400 --> 00:12:15,300
+might be better to have a different
+
+181
+00:12:15,300 --> 00:12:17,140
+logical unit than a function for this
+
+182
+00:12:17,140 --> 00:12:19,260
+this might be something that a class should
+
+183
+00:12:19,260 --> 00:12:21,340
+be doing that you initialize with
+
+184
+00:12:21,340 --> 00:12:23,600
+a couple of values and then provide
+
+185
+00:12:23,600 --> 00:12:25,420
+additional data into individual
+
+186
+00:12:25,420 --> 00:12:26,040
+functions
+
+187
+00:12:26,040 --> 00:12:29,160
+I've been talking a lot about functions
+
+188
+00:12:29,160 --> 00:12:30,460
+and
+
+189
+00:12:30,460 --> 00:12:32,140
+you can also
+
+190
+00:12:32,140 --> 00:12:35,280
+the data types
+
+191
+00:12:35,280 --> 00:12:37,240
+and data can also be
+
+192
+00:12:37,240 --> 00:12:38,580
+modular so you can
+
+193
+00:12:38,580 --> 00:12:43,700
+combine different values
+
+194
+00:12:43,700 --> 00:12:46,920
+that are in some way related.
+
+195
+00:12:48,620 --> 00:12:54,960
+So if you have data about a mesh
+
+196
+00:12:54,960 --> 00:12:56,580
+that you're running a simulation on,
+
+197
+00:12:56,980 --> 00:12:59,300
+that mesh can contain multiple different things.
+
+198
+00:12:59,400 --> 00:13:02,420
+It can contain objects, density, color,
+
+199
+00:13:02,940 --> 00:13:04,040
+all sorts of things.
+
+200
+00:13:05,820 --> 00:13:08,480
+And in many cases,
+
+201
+00:13:08,580 --> 00:13:13,400
+you would want all of those things to be stored under the same name.
+
+202
+00:13:14,540 --> 00:13:21,820
+So then you could create a data structure or a class or something like that
+
+203
+00:13:21,820 --> 00:13:23,760
+to put multiple different things in.
+
+204
+00:13:24,240 --> 00:13:26,060
+And then you can pass that as a single argument.
+
+205
+00:13:26,980 --> 00:13:28,740
+It also makes it easier to read.
+
+206
+00:13:29,160 --> 00:13:33,500
+So this is now a single unit of some kind of custom data.
+
+207
+00:13:33,500 --> 00:13:36,500
+this is the mesh that contains
+
+208
+00:13:36,500 --> 00:13:38,480
+all the information about
+
+209
+00:13:38,480 --> 00:13:40,000
+the mesh about all
+
+210
+00:13:40,000 --> 00:13:41,540
+points in the mesh
+
+211
+00:13:41,540 --> 00:13:42,980
+something like the world
+
+212
+00:13:42,980 --> 00:13:45,320
+let's call this a world
+
+213
+00:13:45,320 --> 00:13:47,400
+or an environment
+
+214
+00:13:47,400 --> 00:13:50,040
+it has cities, forests
+
+215
+00:13:50,040 --> 00:13:52,460
+and whatever and you can get those
+
+216
+00:13:52,460 --> 00:13:54,340
+by either functions or
+
+217
+00:13:54,340 --> 00:13:56,500
+other properties
+
+218
+00:13:56,500 --> 00:13:56,940
+yeah
+
+219
+00:13:56,940 --> 00:13:59,260
+okay
+
+220
+00:13:59,260 --> 00:14:02,180
+what do you know about programming
+
+221
+00:14:02,180 --> 00:14:04,740
+that you wish somebody told you earlier, Jaano?
+
+222
+00:14:09,140 --> 00:14:11,780
+I mean, I should have started using version control from the beginning.
+
+223
+00:14:13,380 --> 00:14:16,900
+It would have saved a lot of time when I broke something and
+
+224
+00:14:19,620 --> 00:14:24,660
+essentially had to slowly step by step undo the work until it works again.
+
+225
+00:14:28,340 --> 00:14:30,500
+So yeah, that's also one of the answers, essentially.
+
+226
+00:14:30,500 --> 00:14:33,780
+creating a copy before you start
+
+227
+00:14:33,780 --> 00:14:35,840
+making changes. Version control
+
+228
+00:14:35,840 --> 00:14:37,920
+does that for you. It's a very good
+
+229
+00:14:37,920 --> 00:14:39,140
+idea to do.
+
+230
+00:14:44,140 --> 00:14:47,580
+I would agree with the
+
+231
+00:14:47,580 --> 00:14:50,000
+use an IDE editor with color coding.
+
+232
+00:14:51,600 --> 00:14:53,720
+It depends a lot
+
+233
+00:14:53,720 --> 00:14:55,420
+on the languages that you're using,
+
+234
+00:14:55,860 --> 00:14:57,520
+but in general,
+
+235
+00:14:58,040 --> 00:15:00,100
+at least to me,
+
+236
+00:15:00,500 --> 00:15:07,580
+things like going to definitions of certain imports or something or going to definitions
+
+237
+00:15:07,580 --> 00:15:18,000
+of functions via an IDE is extremely helpful because this is originally more from typed
+
+238
+00:15:18,000 --> 00:15:23,980
+languages and pre-compiled languages but nowadays it essentially also works with Python and for
+
+239
+00:15:23,980 --> 00:15:32,280
+example vs code that you can just right click on a function call go to definition and you get the
+
+240
+00:15:32,280 --> 00:15:36,720
+function that is being called at this point and you can look into the function what does it actually
+
+241
+00:15:36,720 --> 00:15:49,340
+do and it helps in understanding what is happening here and um yeah it it just makes it so much more
+
+242
+00:15:49,340 --> 00:15:51,920
+graspable
+
+243
+00:15:51,920 --> 00:15:53,540
+what your code is doing
+
+244
+00:15:53,540 --> 00:15:55,200
+even if it's not that well
+
+245
+00:15:55,200 --> 00:15:56,980
+or what someone else's code might be doing
+
+246
+00:15:56,980 --> 00:15:58,380
+if it's not that well documented
+
+247
+00:15:58,380 --> 00:16:01,800
+yeah
+
+248
+00:16:01,800 --> 00:16:04,260
+I think actually
+
+249
+00:16:04,260 --> 00:16:07,240
+modularity
+
+250
+00:16:07,240 --> 00:16:09,360
+and unit testing
+
+251
+00:16:09,360 --> 00:16:11,440
+are things that would have been
+
+252
+00:16:11,440 --> 00:16:12,760
+very useful
+
+253
+00:16:12,760 --> 00:16:15,660
+to know something about earlier
+
+254
+00:16:15,660 --> 00:16:17,460
+I remember
+
+255
+00:16:17,460 --> 00:16:19,040
+at some point I hit upon the
+
+256
+00:16:19,040 --> 00:16:20,100
+practice of
+
+257
+00:16:20,100 --> 00:16:23,060
+write a test that
+
+258
+00:16:23,060 --> 00:16:23,600
+checks
+
+259
+00:16:23,600 --> 00:16:27,340
+as much of the functionality as possible.
+
+260
+00:16:28,200 --> 00:16:29,080
+It was essentially
+
+261
+00:16:29,080 --> 00:16:30,960
+running the code, running
+
+262
+00:16:30,960 --> 00:16:33,100
+an entire instance of the
+
+263
+00:16:33,100 --> 00:16:35,020
+code and checking that the values
+
+264
+00:16:35,020 --> 00:16:37,300
+match some expectations.
+
+265
+00:16:37,520 --> 00:16:39,260
+But these were all end-to-end tests.
+
+266
+00:16:39,620 --> 00:16:41,040
+I didn't have any unit tests.
+
+267
+00:16:41,840 --> 00:16:43,220
+So it would basically
+
+268
+00:16:43,220 --> 00:16:44,980
+only tell me that something's broken now.
+
+269
+00:16:44,980 --> 00:17:07,220
+Yeah. So, I think it's time to go to the demonstration. What do you think?
+
+270
+00:17:07,220 --> 00:17:11,220
+Yep. Let's go to our task.
+
+271
+00:17:11,220 --> 00:17:12,220
+Yeah.
+
+272
+00:17:21,020 --> 00:17:23,820
+Okay, so we have some weather data.
+
+273
+00:17:25,620 --> 00:17:29,020
+And what are we going to do with this data?
+
+274
+00:17:30,620 --> 00:17:35,220
+What we want to do is essentially, we want to plot the data over time
+
+275
+00:17:36,420 --> 00:17:39,420
+and make this a bit more modular.
+
+276
+00:17:39,420 --> 00:17:45,020
+because at the moment we have this kind of script that just plots something
+
+277
+00:17:47,580 --> 00:17:48,780
+yeah so i guess um
+
+278
+00:17:51,660 --> 00:17:57,900
+the starting point for me with this would be um i would have this piece of code in a jupiter
+
+279
+00:17:57,900 --> 00:18:05,740
+notebook that i wrote to do a specific task to um yeah to plot the stuff so here we are
+
+280
+00:18:05,740 --> 00:18:10,460
+which we essentially have here. We can define the number of measurements here,
+
+281
+00:18:11,820 --> 00:18:16,780
+but anytime we want to change the number of measurements, we have to modify this and then
+
+282
+00:18:16,780 --> 00:18:24,060
+hope that we are not forgetting to run something. At the moment, this is what we get.
+
+283
+00:18:25,420 --> 00:18:31,420
+We can update that, but once we do that, we essentially need to run all the
+
+284
+00:18:31,420 --> 00:18:40,100
+individual pieces again and we hope to not forget for example to reread the temperatures because
+
+285
+00:18:40,100 --> 00:18:52,180
+otherwise we get a complete mess in later stages okay so um let me add the bottom of the nodes
+
+286
+00:18:52,180 --> 00:18:57,180
+I will call it the modular code task,
+
+287
+00:19:00,080 --> 00:19:04,340
+and I'll also copy in the correct section of the materials.
+
+288
+00:19:04,340 --> 00:19:05,240
+Okay.
+
+289
+00:19:05,240 --> 00:19:10,240
+Now, the task is then to make this code better in some way.
+
+290
+00:19:12,620 --> 00:19:14,320
+What can we do to make it better?
+
+291
+00:19:15,700 --> 00:19:19,200
+So yeah, please go, if you have ideas,
+
+292
+00:19:19,200 --> 00:19:31,780
+write into the notes. What do you think we could do here? So one thing, I think, just
+
+293
+00:19:31,780 --> 00:19:39,860
+looking at the plot, I'm not really sure what is happening there. I mean, you clearly have
+
+294
+00:19:39,860 --> 00:19:46,140
+a plot of temperatures, but maybe it would be useful, especially if you want to take
+
+295
+00:19:46,140 --> 00:19:48,140
+the plot and put it in the paper to have
+
+296
+00:19:48,140 --> 00:19:49,040
+some axis labels.
+
+297
+00:19:51,180 --> 00:19:51,740
+Yep.
+
+298
+00:19:52,380 --> 00:19:54,120
+So how would we do that?
+
+299
+00:19:55,320 --> 00:19:55,780
+So
+
+300
+00:19:55,780 --> 00:19:58,460
+the
+
+301
+00:19:58,460 --> 00:20:00,340
+labels, do they
+
+302
+00:20:00,340 --> 00:20:02,400
+need to be defined before you start
+
+303
+00:20:02,400 --> 00:20:03,580
+grading the plot?
+
+304
+00:20:04,120 --> 00:20:05,220
+I think so.
+
+305
+00:20:06,400 --> 00:20:07,400
+So that's
+
+306
+00:20:07,400 --> 00:20:10,260
+plt.x
+
+307
+00:20:10,260 --> 00:20:10,700
+label
+
+308
+00:20:10,700 --> 00:20:14,360
+and plt.y
+
+309
+00:20:14,360 --> 00:20:16,080
+label. It makes sense
+
+310
+00:20:16,080 --> 00:20:18,060
+to put it where you define the number of measurements
+
+311
+00:20:18,060 --> 00:20:21,340
+this is
+
+312
+00:20:21,340 --> 00:20:23,320
+x label is a function
+
+313
+00:20:23,320 --> 00:20:26,000
+it's x label
+
+314
+00:20:26,000 --> 00:20:27,260
+and then it takes us
+
+315
+00:20:27,260 --> 00:20:29,880
+yeah yeah okay
+
+316
+00:20:29,880 --> 00:20:31,960
+so x is days
+
+317
+00:20:31,960 --> 00:20:33,740
+okay I think so
+
+318
+00:20:33,740 --> 00:20:35,640
+that
+
+319
+00:20:35,640 --> 00:20:37,800
+makes sense yeah why not
+
+320
+00:20:37,800 --> 00:20:40,240
+uh
+
+321
+00:20:40,240 --> 00:20:41,860
+the temperature
+
+322
+00:20:41,860 --> 00:20:43,720
+in celsius yeah
+
+323
+00:20:43,720 --> 00:20:48,160
+I don't find the degree sign
+
+324
+00:20:48,160 --> 00:20:49,160
+here on that keyboard at the moment
+
+325
+00:20:49,160 --> 00:20:51,400
+that's not a problem
+
+326
+00:20:51,400 --> 00:20:53,560
+okay
+
+327
+00:20:53,560 --> 00:20:56,040
+okay
+
+328
+00:20:56,040 --> 00:20:58,020
+so now I guess you do need
+
+329
+00:20:58,020 --> 00:20:59,900
+to rerun the whole thing
+
+330
+00:20:59,900 --> 00:21:02,040
+okay that just running that
+
+331
+00:21:02,040 --> 00:21:03,240
+cell did weird things
+
+332
+00:21:03,240 --> 00:21:05,900
+I guess it has the plot
+
+333
+00:21:05,900 --> 00:21:07,800
+in memory already and it's outputting
+
+334
+00:21:07,800 --> 00:21:09,640
+the plot why is that happening
+
+335
+00:21:09,640 --> 00:21:11,020
+hmm
+
+336
+00:21:11,020 --> 00:21:22,520
+um because probably this the y label function i guess returns the bot
+
+337
+00:21:22,520 --> 00:21:33,760
+so it gets displayed yeah okay that works let's do some nope that actually didn't change anything
+
+338
+00:21:33,760 --> 00:21:40,060
+uh did you try rerunning from the beginning just uh um the restart and run everything
+
+339
+00:21:40,060 --> 00:21:45,300
+so it's the
+
+340
+00:21:45,300 --> 00:21:47,700
+two triangles
+
+341
+00:21:47,700 --> 00:21:49,240
+double run button
+
+342
+00:21:49,240 --> 00:21:51,380
+looks like a fast forward button
+
+343
+00:21:51,380 --> 00:21:51,940
+yeah
+
+344
+00:21:51,940 --> 00:21:57,740
+I've actually never seen
+
+345
+00:21:57,740 --> 00:21:58,840
+that that's weird
+
+346
+00:21:58,840 --> 00:22:01,080
+okay well
+
+347
+00:22:01,080 --> 00:22:03,360
+so this obviously
+
+348
+00:22:03,360 --> 00:22:04,240
+doesn't work
+
+349
+00:22:04,240 --> 00:22:07,460
+no I guess we can put
+
+350
+00:22:07,460 --> 00:22:08,640
+it where
+
+351
+00:22:08,640 --> 00:22:11,300
+we define the same cell as the plot
+
+352
+00:22:11,300 --> 00:22:15,120
+might be that this is because
+
+353
+00:22:15,120 --> 00:22:16,040
+it's in cells
+
+354
+00:22:16,040 --> 00:22:17,680
+like the original
+
+355
+00:22:17,680 --> 00:22:20,100
+well okay that works better
+
+356
+00:22:20,100 --> 00:22:23,340
+that was weird I've never seen that before
+
+357
+00:22:23,340 --> 00:22:27,260
+that might have been because it's in
+
+358
+00:22:27,260 --> 00:22:28,660
+well cells now
+
+359
+00:22:28,660 --> 00:22:31,380
+yeah but I think
+
+360
+00:22:31,380 --> 00:22:32,600
+well anyway I guess
+
+361
+00:22:32,600 --> 00:22:33,720
+let's not
+
+362
+00:22:33,720 --> 00:22:35,320
+but
+
+363
+00:22:35,320 --> 00:22:39,640
+But it might anyways be an idea to get this
+
+364
+00:22:39,640 --> 00:22:43,440
+and move it to an actual function
+
+365
+00:22:43,440 --> 00:22:48,440
+and then reduce what we have here in the plotting
+
+366
+00:22:49,080 --> 00:22:54,080
+to something that only calls those functions.
+
+367
+00:22:57,760 --> 00:23:02,580
+Yeah, let me first suggest a complication.
+
+368
+00:23:02,580 --> 00:23:05,320
+And I guess this is a step towards making it a function.
+
+369
+00:23:06,040 --> 00:23:11,160
+But the complication is to, instead of just making one plot,
+
+370
+00:23:11,260 --> 00:23:13,440
+make three different plots with different values
+
+371
+00:23:13,440 --> 00:23:17,180
+of the number of measurements.
+
+372
+00:23:19,480 --> 00:23:24,500
+So that means actually now you need to combine
+
+373
+00:23:24,500 --> 00:23:29,380
+basically all of these cells into a single cell.
+
+374
+00:23:29,380 --> 00:23:34,860
+because the follow inside the follow up if you change the number of measurements what does that
+
+375
+00:23:34,860 --> 00:23:43,060
+affect it affects the the part where you read the data because that already sits sets the number of
+
+376
+00:23:43,060 --> 00:23:52,780
+rows read and then well i guess it doesn't well maybe then you are using that the red data to set
+
+377
+00:23:52,780 --> 00:24:00,300
+the, yeah, the, the temperature values, okay, temperature values,
+
+378
+00:24:00,300 --> 00:24:05,800
+so that changes. And then the mean of course changes. And
+
+379
+00:24:07,340 --> 00:24:20,100
+yeah, everything changes. Okay. And then everything. Yeah. Okay,
+
+380
+00:24:20,100 --> 00:24:23,560
+So now we have a few different plots being created.
+
+381
+00:24:31,560 --> 00:24:32,380
+Start this.
+
+382
+00:24:37,240 --> 00:24:40,000
+So one issue that we had in the original
+
+383
+00:24:40,000 --> 00:24:42,800
+is not there because we have the days everywhere
+
+384
+00:24:42,800 --> 00:24:45,760
+because we have them not.
+
+385
+00:24:45,760 --> 00:24:48,080
+Oh, yeah, we are setting it inside the form.
+
+386
+00:24:48,080 --> 00:24:50,860
+So if we would redo it like this...
+
+387
+00:24:50,860 --> 00:24:52,240
+No, you're going to get an extra plot,
+
+388
+00:24:52,420 --> 00:24:53,860
+and none of the other plots are going to happen.
+
+389
+00:24:53,860 --> 00:24:54,420
+That's true.
+
+390
+00:24:55,120 --> 00:24:56,080
+Well, we can.
+
+391
+00:24:58,160 --> 00:25:02,920
+Yeah, but I mean, it looks like the plot function
+
+392
+00:25:02,920 --> 00:25:08,400
+is independent of the label setting functions,
+
+393
+00:25:08,620 --> 00:25:09,780
+but it's actually not.
+
+394
+00:25:10,140 --> 00:25:15,240
+The plot function, when you say plot.show...
+
+395
+00:25:15,240 --> 00:25:17,380
+No, actually, no, that's not what's happening here.
+
+396
+00:25:18,080 --> 00:25:27,380
+what is happening here is that we call plot dot clear um clf yep clear what is the f figure
+
+397
+00:25:27,380 --> 00:25:36,820
+clear figure okay thanks uh so so we are actually removing the labels oh and we
+
+398
+00:25:36,820 --> 00:25:44,900
+was forgot something uh well yes going to count that yeah so um you probably want to make it an
+
+399
+00:25:44,900 --> 00:25:50,740
+string yeah okay yeah so now we are uh changing the file name based on the number of measurements
+
+400
+00:25:52,580 --> 00:25:56,580
+okay that didn't actually work uh we
+
+401
+00:26:02,660 --> 00:26:09,540
+it did oh okay it just took a bit to upload update the okay fine so yeah now we actually
+
+402
+00:26:09,540 --> 00:26:15,940
+have the images that we can include in our um paper about the temperatures in the helsinki
+
+403
+00:26:15,940 --> 00:26:23,380
+airport um if it loads well well i'm hoping that the png file is actually correct can you
+
+404
+00:26:24,020 --> 00:26:32,100
+check the one with 25 well png should be it shouldn't depend on the number of i mean it's a
+
+405
+00:26:32,100 --> 00:26:43,540
+it's a pixel map okay well how seriously do we want to take the um plots being incorrect
+
+406
+00:26:45,460 --> 00:26:49,300
+rather though the files i don't think it's an issue at the moment
+
+407
+00:26:49,940 --> 00:26:56,340
+yeah let's go on and we are going to move this into the terminal at some point anyway
+
+408
+00:26:56,340 --> 00:27:17,260
+Okay. Well, I mean, now we do have this for loop, and we could, this also kind of nicely defines one possible way of splitting it into functions.
+
+409
+00:27:17,260 --> 00:27:25,600
+I guess that's not really splitting if you take the whole thing and make it a single
+
+410
+00:27:25,600 --> 00:27:26,600
+function.
+
+411
+00:27:26,600 --> 00:27:41,640
+Okay, let's, it's going to be a Python file, okay, you're moving into, moving the
+
+412
+00:27:41,640 --> 00:27:47,180
+whole thing into a script, that makes sense.
+
+413
+00:27:47,260 --> 00:27:58,380
+Okay, this is not really modular yet, but yeah, before people listening, please do make
+
+414
+00:27:58,380 --> 00:28:02,540
+suggestions like we are going to actually follow the suggestions that people make in
+
+415
+00:28:02,540 --> 00:28:07,380
+the notes.
+
+416
+00:28:07,380 --> 00:28:17,980
+Okay, so now we have, I guess you have to activate the environment.
+
+417
+00:28:18,980 --> 00:28:19,800
+So now we have a Python function.
+
+418
+00:28:19,800 --> 00:28:20,220
+Actually check.
+
+419
+00:28:22,740 --> 00:28:23,840
+Okay, let's check.
+
+420
+00:28:24,660 --> 00:28:25,660
+What happens?
+
+421
+00:28:26,760 --> 00:28:28,120
+Yeah, that works.
+
+422
+00:28:29,060 --> 00:28:31,840
+Okay, and it's creating the file.
+
+423
+00:28:31,840 --> 00:28:33,500
+It's creating the images.
+
+424
+00:28:34,060 --> 00:28:35,020
+Oh, it's displaying the images.
+
+425
+00:28:35,280 --> 00:28:35,980
+Okay, that's fine.
+
+426
+00:28:35,980 --> 00:28:38,320
+and I need to close them
+
+427
+00:28:38,320 --> 00:28:40,640
+sometimes that's what you want
+
+428
+00:28:40,640 --> 00:28:41,440
+sometimes not
+
+429
+00:28:41,440 --> 00:28:45,860
+but yeah
+
+430
+00:28:45,860 --> 00:28:48,180
+somehow the files are broken
+
+431
+00:28:48,180 --> 00:28:49,240
+actually
+
+432
+00:28:49,240 --> 00:28:51,320
+they are white
+
+433
+00:28:51,320 --> 00:28:54,180
+okay well let's
+
+434
+00:28:54,180 --> 00:28:55,640
+take a look at the code then
+
+435
+00:28:55,640 --> 00:28:57,980
+so it did display them correctly
+
+436
+00:28:57,980 --> 00:29:00,260
+but the figures being saved
+
+437
+00:29:00,260 --> 00:29:00,700
+are not
+
+438
+00:29:00,700 --> 00:29:03,740
+which is a bit strange
+
+439
+00:29:03,740 --> 00:29:05,360
+that's interesting
+
+440
+00:29:05,360 --> 00:29:17,140
+well what should we do um well there's definitely one thing that's sort of
+
+441
+00:29:17,140 --> 00:29:26,240
+functionally separate from everything else which is the plot results part right yeah um so that is
+
+442
+00:29:26,240 --> 00:29:31,820
+it's doing two things actually it's showing the plot well okay three things it's constructing
+
+443
+00:29:31,820 --> 00:29:33,600
+the plot, showing the plot,
+
+444
+00:29:33,900 --> 00:29:35,840
+and saving
+
+445
+00:29:35,840 --> 00:29:37,800
+it into an image, which for some
+
+446
+00:29:37,800 --> 00:29:38,620
+reason is not working.
+
+447
+00:29:42,120 --> 00:29:43,800
+Let's make a function out of this.
+
+448
+00:29:44,080 --> 00:29:44,200
+Yeah.
+
+449
+00:29:45,420 --> 00:29:47,880
+So do we want to continue showing the plot
+
+450
+00:29:47,880 --> 00:29:49,440
+since we are running from the terminal?
+
+451
+00:29:51,020 --> 00:29:52,000
+I don't
+
+452
+00:29:52,000 --> 00:29:53,960
+think so, but what we could do
+
+453
+00:29:53,960 --> 00:29:56,180
+is
+
+454
+00:29:56,180 --> 00:29:57,460
+we could return the plot.
+
+455
+00:29:59,600 --> 00:29:59,800
+Yeah.
+
+456
+00:29:59,800 --> 00:30:07,920
+Yeah, well, I mean, I was going to say, why not, but we are clearing it between each iteration.
+
+457
+00:30:09,260 --> 00:30:09,760
+Do we?
+
+458
+00:30:10,440 --> 00:30:14,080
+Because, do we actually need to do that?
+
+459
+00:30:16,140 --> 00:30:17,500
+I guess we do.
+
+460
+00:30:17,500 --> 00:30:35,160
+I think we do need to clear it, but what might work is to essentially indicate during the plot data that we want to get a plot, that we want to get some Xs or something.
+
+461
+00:30:39,680 --> 00:30:41,380
+Maybe that's too much.
+
+462
+00:30:41,380 --> 00:30:49,740
+okay well uh let's just go on and uh take the whole plotting section move it into a function
+
+463
+00:30:49,740 --> 00:30:56,220
+function for now yeah and uh that can be fine-tuned later but it's the straightforward
+
+464
+00:30:56,220 --> 00:31:04,260
+thing to do is to make a new function so now it's taking temperature number of measurements
+
+465
+00:31:04,260 --> 00:31:07,840
+So the number of measurements affects the file name.
+
+466
+00:31:08,540 --> 00:31:10,420
+So it is actually...
+
+467
+00:31:10,420 --> 00:31:11,360
+Does it only affect...
+
+468
+00:31:11,360 --> 00:31:12,660
+Yeah, it only affects the file name.
+
+469
+00:31:12,760 --> 00:31:18,800
+Then we might rename that because...
+
+470
+00:31:18,800 --> 00:31:19,920
+It could be file name.
+
+471
+00:31:19,980 --> 00:31:20,740
+Yeah, that makes sense.
+
+472
+00:31:34,260 --> 00:31:44,020
+Okay, and then we construct the file in there.
+
+473
+00:31:44,020 --> 00:31:50,380
+Okay, so this seems to make sense, although, well, I guess the fact that the function is
+
+474
+00:31:50,380 --> 00:31:53,320
+defined below, does it matter?
+
+475
+00:31:53,320 --> 00:31:54,820
+I think it does.
+
+476
+00:31:54,820 --> 00:32:02,740
+Yeah, there's a difference in how it works in inside classes and in the normal script.
+
+477
+00:32:02,740 --> 00:32:07,540
+classes you can reorder about the about a script test to have everything defined before it's being
+
+478
+00:32:07,540 --> 00:32:23,060
+called yeah okay so huh here's a question there we are why do we calculate oh did it actually
+
+479
+00:32:23,060 --> 00:32:29,860
+create the oh right okay so um one question why do we calculate the mean
+
+480
+00:32:31,300 --> 00:32:41,140
+oh because it is actually used in the plot right yes in fact somebody said that in the oh yeah
+
+481
+00:32:41,140 --> 00:32:48,980
+notes and i uh i just didn't understand um okay so um yes you should also include mean as a parameter
+
+482
+00:32:53,060 --> 00:32:57,700
+Yeah, if you want to have it in the box.
+
+483
+00:32:57,700 --> 00:32:58,700
+Okay.
+
+484
+00:32:58,700 --> 00:33:04,040
+And the reason I'm ordering it temperatures mean, because personally to me, temperatures
+
+485
+00:33:04,040 --> 00:33:07,560
+and mean are what this function actually needs.
+
+486
+00:33:07,560 --> 00:33:13,500
+And for file name, if I just want to use this once, I could actually give a default value.
+
+487
+00:33:13,500 --> 00:33:15,960
+Yeah, it could be an option.
+
+488
+00:33:15,960 --> 00:33:16,960
+That's why I...
+
+489
+00:33:16,960 --> 00:33:24,560
+kind of ordered in a way um by um by similar things okay
+
+490
+00:33:28,400 --> 00:33:30,800
+so this is what we now get
+
+491
+00:33:33,600 --> 00:33:40,080
+which looks yeah okay okay so now it just shows them again and again
+
+492
+00:33:40,080 --> 00:33:44,480
+it looks like the files are not working correctly they are not um
+
+493
+00:33:46,960 --> 00:33:57,440
+Okay. Well, we can come back to that at some point. It's a bit weird that we're starting
+
+494
+00:33:57,440 --> 00:34:08,440
+from a code that doesn't work and trying to make it better by fixing it. Yeah, I just
+
+495
+00:34:08,440 --> 00:34:09,840
+I don't really know what it could be.
+
+496
+00:34:10,000 --> 00:34:11,620
+What if we remove the show?
+
+497
+00:34:13,660 --> 00:34:14,660
+Does that help?
+
+498
+00:34:17,760 --> 00:34:18,480
+Let's see.
+
+499
+00:34:22,080 --> 00:34:23,280
+Yes, that helps.
+
+500
+00:34:23,440 --> 00:34:23,860
+Okay.
+
+501
+00:34:24,720 --> 00:34:25,500
+What is that?
+
+502
+00:34:26,540 --> 00:34:27,680
+That's a very good question.
+
+503
+00:34:28,000 --> 00:34:28,760
+Well, fine.
+
+504
+00:34:29,500 --> 00:34:30,800
+Now we have some plots.
+
+505
+00:34:30,900 --> 00:34:31,280
+That's good.
+
+506
+00:34:32,080 --> 00:34:36,540
+Might it be that show actually clears the plot?
+
+507
+00:34:37,120 --> 00:34:38,320
+Yeah, could be.
+
+508
+00:34:38,440 --> 00:34:41,520
+let's test something
+
+509
+00:34:41,520 --> 00:34:44,580
+okay
+
+510
+00:34:44,580 --> 00:34:46,520
+what happens if we do this
+
+511
+00:34:46,520 --> 00:34:50,320
+need to save it
+
+512
+00:34:50,320 --> 00:34:54,540
+so I'm getting the plots
+
+513
+00:34:54,540 --> 00:34:57,560
+and
+
+514
+00:34:57,560 --> 00:35:00,080
+I'm getting the images
+
+515
+00:35:00,080 --> 00:35:02,320
+so seemingly show cleans
+
+516
+00:35:02,320 --> 00:35:04,820
+yeah okay but well I mean
+
+517
+00:35:04,820 --> 00:35:06,840
+that's on one hand interesting
+
+518
+00:35:06,840 --> 00:35:07,940
+that's good to know
+
+519
+00:35:07,940 --> 00:35:14,820
+So very much like a Matplotlib-specific thing, a Python-specific thing. So yeah.
+
+520
+00:35:20,260 --> 00:35:25,220
+Okay, so there are for loops, functions, and so on. You can get this far,
+
+521
+00:35:26,020 --> 00:35:28,660
+or you can do exactly the same things in any language.
+
+522
+00:35:31,940 --> 00:35:37,300
+Setting the labels will, of course, be a different function depending on the library.
+
+523
+00:35:37,940 --> 00:35:45,220
+all of that i think what we can also um move into a function is reading the data
+
+524
+00:35:47,940 --> 00:35:52,500
+yes so reading the data and this is a suggestion directly from the notes so
+
+525
+00:35:53,220 --> 00:36:01,460
+another function for reading the data and it could be so read data is very general
+
+526
+00:36:01,460 --> 00:36:06,820
+and it makes sense it could also be read temperatures or something like that
+
+527
+00:36:07,940 --> 00:36:13,780
+Well, let's call it readData, if I know.
+
+528
+00:36:13,780 --> 00:36:23,720
+So the readData reads the temperatures from the CSV file, and it then also picks the column.
+
+529
+00:36:23,720 --> 00:36:28,120
+So it specifically is the data that we want in this case.
+
+530
+00:36:28,120 --> 00:36:31,320
+Okay, should we also have a...
+
+531
+00:36:31,320 --> 00:36:32,320
+I could...
+
+532
+00:36:32,320 --> 00:36:35,620
+Well, we could make this a bit more general.
+
+533
+00:36:35,620 --> 00:36:43,620
+well yeah yeah let's uh let's do that since i um since i already mentioned it at this point
+
+534
+00:36:43,620 --> 00:36:54,060
+might as well do it so you can give it a um file name argument i i would leave it at file name and
+
+535
+00:36:54,060 --> 00:36:59,480
+um so we are assuming that we have a certain format of the of the data and that this format
+
+536
+00:36:59,480 --> 00:37:01,520
+it has a column air temperature
+
+537
+00:37:01,520 --> 00:37:03,100
+degree Celsius.
+
+538
+00:37:03,380 --> 00:37:05,320
+That's the assumption
+
+539
+00:37:05,320 --> 00:37:07,420
+that we are putting in. We don't
+
+540
+00:37:07,420 --> 00:37:09,420
+necessarily know what file name
+
+541
+00:37:09,420 --> 00:37:10,780
+this is being saved in.
+
+542
+00:37:12,960 --> 00:37:13,520
+No.
+
+543
+00:37:13,720 --> 00:37:15,500
+We don't know the output file name.
+
+544
+00:37:16,140 --> 00:37:17,540
+The read data
+
+545
+00:37:17,540 --> 00:37:18,840
+needs the input file.
+
+546
+00:37:19,840 --> 00:37:21,660
+There is one good point
+
+547
+00:37:21,660 --> 00:37:23,180
+in the notes. There's many
+
+548
+00:37:23,180 --> 00:37:24,680
+good points in the notes.
+
+549
+00:37:26,040 --> 00:37:27,740
+One new good point
+
+550
+00:37:27,740 --> 00:37:29,340
+in the notes, which is that
+
+551
+00:37:29,340 --> 00:37:31,540
+we could read the data just once
+
+552
+00:37:31,540 --> 00:37:33,680
+instead of reading it many times
+
+553
+00:37:33,680 --> 00:37:35,600
+and then taking
+
+554
+00:37:35,600 --> 00:37:36,320
+the
+
+555
+00:37:36,320 --> 00:37:39,640
+first n rows.
+
+556
+00:37:41,480 --> 00:37:42,200
+That's
+
+557
+00:37:42,200 --> 00:37:43,980
+also an option. Then we remove
+
+558
+00:37:43,980 --> 00:37:44,440
+this
+
+559
+00:37:44,440 --> 00:37:47,980
+completely.
+
+560
+00:37:50,240 --> 00:37:52,440
+We'd need to then put
+
+561
+00:37:52,440 --> 00:37:54,680
+this
+
+562
+00:37:54,680 --> 00:37:57,360
+temperature
+
+563
+00:37:57,360 --> 00:38:13,900
+data is read data this and then we have temperatures blah there's an arrow missing
+
+564
+00:38:13,900 --> 00:38:26,000
+okay is um actually that is temperature data frame yeah and i'm never sure about
+
+565
+00:38:26,000 --> 00:38:32,640
+the the exact syntax it's a column so i think you can do a direct number indices
+
+566
+00:38:34,400 --> 00:38:39,680
+and then it starts with zero yeah i mean you don't have to explicitly write zero but then again why
+
+567
+00:38:39,680 --> 00:38:49,600
+not let's see if that works um the notes are also suggesting a command line interface is that should
+
+568
+00:38:49,600 --> 00:38:52,660
+Should we first think about functions a bit more?
+
+569
+00:38:52,660 --> 00:38:55,780
+Looks correct.
+
+570
+00:38:55,780 --> 00:38:58,420
+Look at side effects.
+
+571
+00:38:58,420 --> 00:39:02,860
+So OK, let's have a look.
+
+572
+00:39:02,860 --> 00:39:06,880
+Personally, I said I would wonder whether we
+
+573
+00:39:06,880 --> 00:39:10,940
+can return the plot data.
+
+574
+00:39:10,940 --> 00:39:14,900
+So something like instead of.
+
+575
+00:39:14,900 --> 00:39:19,300
+and have a
+
+576
+00:39:19,300 --> 00:39:22,660
+um
+
+577
+00:39:22,660 --> 00:39:25,300
+so if you are constructing
+
+578
+00:39:25,300 --> 00:39:27,700
+a new plot you might as well clear it
+
+579
+00:39:27,700 --> 00:39:29,460
+when you start
+
+580
+00:39:29,460 --> 00:39:34,260
+right
+
+581
+00:39:34,260 --> 00:39:44,180
+yeah and then leave it open that's true
+
+582
+00:39:44,900 --> 00:40:04,040
+Yeah, at which point we could also, in theory, do a this is PLT and then PLT.show to get our visuals back in, for example, a Jupyter Notebook.
+
+583
+00:40:06,740 --> 00:40:07,380
+Yep.
+
+584
+00:40:07,680 --> 00:40:09,720
+If you want to put this back into a Jupyter Notebook.
+
+585
+00:40:09,720 --> 00:40:18,920
+So this function is then usable both as a function in a program
+
+586
+00:40:18,920 --> 00:40:21,940
+and in a Jupyter Notebook where we want to, in the end, present this.
+
+587
+00:40:22,460 --> 00:40:24,120
+Yeah, that makes sense.
+
+588
+00:40:25,760 --> 00:40:27,700
+Okay, did you try running it, though?
+
+589
+00:40:29,040 --> 00:40:30,000
+Not yet.
+
+590
+00:40:33,660 --> 00:40:36,220
+But this seems to be correct.
+
+591
+00:40:36,400 --> 00:40:37,420
+Yeah, it works. Good.
+
+592
+00:40:37,420 --> 00:40:40,840
+I didn't test it with the PLT.show yet.
+
+593
+00:40:42,700 --> 00:40:43,400
+Let's see.
+
+594
+00:40:47,200 --> 00:40:48,700
+Yeah, I'm getting the plots.
+
+595
+00:40:49,760 --> 00:40:52,440
+I need to now close them again so that it finishes,
+
+596
+00:40:52,600 --> 00:40:53,960
+but I'm getting the plots.
+
+597
+00:40:54,820 --> 00:40:54,940
+Yeah.
+
+598
+00:40:57,000 --> 00:40:57,540
+Okay.
+
+599
+00:40:58,360 --> 00:41:02,200
+Well, yeah, we don't need the plot.show now.
+
+600
+00:41:03,960 --> 00:41:06,560
+If you prefer to keep it, then why not?
+
+601
+00:41:07,420 --> 00:41:15,640
+so in the in this script no we don't need them yeah if we want to put this
+
+602
+00:41:15,640 --> 00:41:21,220
+way we could we could actually notebook yeah go back to our notebook so what is
+
+603
+00:41:21,220 --> 00:41:28,060
+it that we currently need to do we essentially have this is what we are
+
+604
+00:41:28,060 --> 00:41:39,500
+currently doing yeah this is nice to show i mean basically so what we're showing here is um how
+
+605
+00:41:39,500 --> 00:41:46,700
+you import your own code into the notebook and then when it imports some functions from
+
+606
+00:41:46,700 --> 00:41:50,540
+no there wasn't weather prediction it was whether what was the name
+
+607
+00:41:50,540 --> 00:41:55,320
+it was better predictions okay
+
+608
+00:41:55,320 --> 00:41:57,100
+okay
+
+609
+00:41:57,100 --> 00:41:59,660
+so yeah importing from the
+
+610
+00:41:59,660 --> 00:42:00,660
+back from the file
+
+611
+00:42:00,660 --> 00:42:04,380
+there's an extra
+
+612
+00:42:04,380 --> 00:42:05,040
+ict
+
+613
+00:42:05,040 --> 00:42:06,940
+of predictions
+
+614
+00:42:06,940 --> 00:42:08,520
+predictions
+
+615
+00:42:08,520 --> 00:42:10,080
+predictions
+
+616
+00:42:10,080 --> 00:42:11,100
+yeah
+
+617
+00:42:11,100 --> 00:42:14,220
+okay so now we have
+
+618
+00:42:14,220 --> 00:42:14,760
+data
+
+619
+00:42:14,760 --> 00:42:17,900
+okay
+
+620
+00:42:17,900 --> 00:42:19,700
+so that makes sense
+
+621
+00:42:19,700 --> 00:42:34,880
+and there we are and now our our our script our jupiter script essentially says okay we are
+
+622
+00:42:34,880 --> 00:42:41,080
+reading data and then we are going over different measurements there is barely any functional code
+
+623
+00:42:41,080 --> 00:42:49,660
+here anymore so so what do you think about the mean calculation um it is like if you if
+
+624
+00:42:49,660 --> 00:42:56,300
+we're calculating more complicated statistics, it should become its own function. But it is not a
+
+625
+00:42:56,300 --> 00:43:06,300
+super complicated thing here, is it? To me, here's a bit of a point. For this mean, I probably
+
+626
+00:43:06,300 --> 00:43:15,260
+wouldn't create a function. But for the purpose of this, I would probably create something that does
+
+627
+00:43:15,260 --> 00:43:17,720
+build some statistics
+
+628
+00:43:17,720 --> 00:43:18,940
+and I would probably
+
+629
+00:43:18,940 --> 00:43:21,560
+because it's
+
+630
+00:43:21,560 --> 00:43:24,160
+not that likely that it's just the mean
+
+631
+00:43:24,160 --> 00:43:25,840
+that you normally need
+
+632
+00:43:25,840 --> 00:43:27,000
+for statistics.
+
+633
+00:43:29,240 --> 00:43:30,040
+If you just want
+
+634
+00:43:30,040 --> 00:43:31,820
+to mean, so there's a very good point
+
+635
+00:43:31,820 --> 00:43:34,200
+in the notes again.
+
+636
+00:43:35,260 --> 00:43:36,120
+Writing your own
+
+637
+00:43:36,120 --> 00:43:37,380
+mean function is also a bit
+
+638
+00:43:37,380 --> 00:43:38,700
+stupid.
+
+639
+00:43:40,720 --> 00:43:41,800
+It's like if you want
+
+640
+00:43:41,800 --> 00:43:42,720
+the standard mean
+
+641
+00:43:42,720 --> 00:43:48,240
+well I mean yeah the mean the average
+
+642
+00:43:48,240 --> 00:43:53,160
+there's multiple different averages that we could use so in that sense having a function where you can go
+
+643
+00:43:53,160 --> 00:43:56,800
+and change which average you want might make sense
+
+644
+00:43:56,800 --> 00:44:00,900
+but we could also use numpy.mean
+
+645
+00:44:00,900 --> 00:44:05,060
+or actually it is a pandas column so you can
+
+646
+00:44:05,060 --> 00:44:07,260
+call just temperatures.mean
+
+647
+00:44:07,260 --> 00:44:14,700
+would i think it would work i think there's a mean function just directly embedded in the
+
+648
+00:44:14,700 --> 00:44:20,880
+pandas column class so in in any case i mean whatever language you're using almost certainly
+
+649
+00:44:20,880 --> 00:44:27,700
+it already has a mean uh function in it or some pretty much like it yes yeah
+
+650
+00:44:27,700 --> 00:44:33,360
+so so yeah we don't actually have to write our own mean function for this one although
+
+651
+00:44:33,360 --> 00:44:36,640
+So, again, it would also be a good example.
+
+652
+00:44:37,260 --> 00:44:39,220
+It's one of the things that you might want to do,
+
+653
+00:44:39,420 --> 00:44:41,960
+but, well, you already wrote two functions.
+
+654
+00:44:41,960 --> 00:44:45,940
+So, there's actually a different question
+
+655
+00:44:45,940 --> 00:44:48,340
+that I would be kind of asking here.
+
+656
+00:44:48,960 --> 00:44:53,900
+Is the mean actually an input to the plot function or not?
+
+657
+00:44:54,420 --> 00:44:57,080
+Because the mean here is just used
+
+658
+00:44:57,080 --> 00:44:59,920
+to create a plot line at the mean level.
+
+659
+00:44:59,920 --> 00:45:09,400
+so and is something that is a derivative from temperatures so we don't need this as an input
+
+660
+00:45:09,400 --> 00:45:17,020
+yeah you could move that calculation into yeah and i think this is i don't know what do people
+
+661
+00:45:17,020 --> 00:45:24,220
+think is this better i think it makes sense this way it also makes sense depending on what you're
+
+662
+00:45:24,220 --> 00:45:32,180
+doing it might make sense to have um a line argument or x line or is it a y line whichever
+
+663
+00:45:32,180 --> 00:45:40,080
+it is um in the plot data that allows you to just define where the line goes and it then it doesn't
+
+664
+00:45:40,080 --> 00:45:48,180
+have to be a mean necessarily it could be whatever line you want um but going a bit into going a bit
+
+665
+00:45:48,180 --> 00:45:54,900
+um over the top of how this could be designed conceptually temperatures could be a class or
+
+666
+00:45:54,900 --> 00:46:01,300
+something we could have a temperature object class where you can set what kind of things you want to
+
+667
+00:46:01,300 --> 00:46:08,100
+have like what kind of average value you want to use and then you would essentially
+
+668
+00:46:10,660 --> 00:46:14,660
+say temperatures.average and temperatures.values instead of
+
+669
+00:46:14,660 --> 00:46:16,520
+these two
+
+670
+00:46:16,520 --> 00:46:19,100
+and then have it dependent on the temperature.
+
+671
+00:46:19,500 --> 00:46:21,380
+So people want to get to the command line.
+
+672
+00:46:23,940 --> 00:46:25,240
+One more thing before
+
+673
+00:46:25,240 --> 00:46:26,640
+we go there.
+
+674
+00:46:27,200 --> 00:46:29,300
+What do you think of the comments? Oh, actually
+
+675
+00:46:29,300 --> 00:46:30,240
+two more things. One,
+
+676
+00:46:31,680 --> 00:46:33,280
+what's the error message
+
+677
+00:46:33,280 --> 00:46:34,480
+that you get when you run this?
+
+678
+00:46:36,460 --> 00:46:36,900
+And
+
+679
+00:46:36,900 --> 00:46:38,900
+how do you figure out where the error is?
+
+680
+00:46:40,660 --> 00:46:41,560
+Can you run it?
+
+681
+00:46:44,660 --> 00:46:49,400
+Okay. So how do we figure out what the error message is? This is not the error I was expecting.
+
+682
+00:46:49,640 --> 00:46:51,500
+I was expecting a different one.
+
+683
+00:46:52,560 --> 00:47:00,440
+Maybe there is a different one. So I removed the means here. So I need to do that here.
+
+684
+00:47:00,740 --> 00:47:07,040
+Yeah. So I guess my main point is there's no reason to be scared of errors. They just tell
+
+685
+00:47:07,040 --> 00:47:11,660
+you the line that you need to change, usually, in almost any language. In some languages,
+
+686
+00:47:11,660 --> 00:47:16,940
+though you need to fiddle around like compile it differently to get the line numbers but still
+
+687
+00:47:17,500 --> 00:47:20,780
+um it's always did you mean that error to get errors yes i meant this one
+
+688
+00:47:23,980 --> 00:47:34,140
+so that's on line uh 11. okay yeah and this is something that a good ide would actually flag
+
+689
+00:47:34,140 --> 00:47:42,900
+like during the development, that this is not existent, so this can't work.
+
+690
+00:47:43,420 --> 00:47:43,500
+Yeah.
+
+691
+00:47:44,500 --> 00:47:51,240
+So two things we want to do, or at least two things, command line interface and tests.
+
+692
+00:47:51,480 --> 00:47:52,460
+Which do we do first?
+
+693
+00:47:53,860 --> 00:47:58,080
+So we have command line interface twice in the nodes.
+
+694
+00:47:58,500 --> 00:48:00,680
+Yeah, then let's go for command line interface.
+
+695
+00:48:01,180 --> 00:48:02,680
+So let's go with that.
+
+696
+00:48:03,320 --> 00:48:10,920
+and uh what's your favorite i think um i have started using click more and more because
+
+697
+00:48:10,920 --> 00:48:18,360
+i've learned it from code refinery and it's um it's convenient i'm generally fine with whatever
+
+698
+00:48:18,360 --> 00:48:25,240
+um i haven't personally used click that much but um you can in the worst case uh go uh
+
+699
+00:48:26,520 --> 00:48:29,560
+send me yeah i mean this is again something that i'm like
+
+700
+00:48:29,560 --> 00:48:34,980
+different languages have their different implementations of how to do command line
+
+701
+00:48:34,980 --> 00:48:45,140
+arguments so we'll do it again in python the example is in python but yeah you can search
+
+702
+00:48:45,140 --> 00:48:50,620
+the web for command line interface and the language that you're using and there will
+
+703
+00:48:50,620 --> 00:48:59,060
+almost certainly be a very good library for doing them in a simple way okay so
+
+704
+00:48:59,060 --> 00:49:02,500
+So to do this, we want to foreclick.
+
+705
+00:49:02,880 --> 00:49:04,400
+Yeah, you need a main function.
+
+706
+00:49:12,300 --> 00:49:20,780
+And then you need to define how you give those arguments in the command line.
+
+707
+00:49:21,700 --> 00:49:24,420
+Actually, we don't have an out file at the moment.
+
+708
+00:49:24,420 --> 00:49:32,100
+So our old file is currently fixed. We can change that later, maybe.
+
+709
+00:49:34,420 --> 00:49:39,620
+So if I see that right, then we have a definition that this is...
+
+710
+00:49:40,900 --> 00:49:44,100
+So this is kind of an annotation to the main function.
+
+711
+00:49:47,220 --> 00:49:48,820
+But yeah, this is a command.
+
+712
+00:49:48,820 --> 00:49:53,300
+Yeah. So now this main function is something you can run from the command line,
+
+713
+00:49:53,300 --> 00:50:00,660
+and then you add options so options are the command line arguments and they also
+
+714
+00:50:00,660 --> 00:50:04,900
+must have the same name as oh well i mean the easiest thing to do
+
+715
+00:50:04,900 --> 00:50:08,260
+is to give them the same name as the parameters of the main function
+
+716
+00:50:13,220 --> 00:50:15,780
+actually looking at this this is not the same name
+
+717
+00:50:15,780 --> 00:50:22,200
+this has a minus in fact yes this is well that's a peculiarity of python
+
+718
+00:50:22,200 --> 00:50:29,280
+yeah maybe a good number of other languages have the same issue so you cannot have a minus sign
+
+719
+00:50:29,280 --> 00:50:35,560
+inside the name right it would be num minus measurements it would be a math calculation
+
+720
+00:50:35,560 --> 00:50:43,640
+not a name so uh it has to be an underscore but click will automatically convert the
+
+721
+00:50:43,640 --> 00:50:46,000
+minus sign into an underscore
+
+722
+00:50:46,000 --> 00:50:46,440
+here.
+
+723
+00:50:47,760 --> 00:50:49,120
+Is the
+
+724
+00:50:49,120 --> 00:50:51,700
+order relevant, or is it really
+
+725
+00:50:51,700 --> 00:50:54,360
+name matching? The order should be the same
+
+726
+00:50:54,360 --> 00:50:55,680
+as in the options.
+
+727
+00:50:55,680 --> 00:50:57,600
+Then it's just the order that it's
+
+728
+00:50:57,600 --> 00:50:59,480
+using. I think I've tried.
+
+729
+00:50:59,740 --> 00:51:01,880
+We can try. If you change
+
+730
+00:51:01,880 --> 00:51:04,380
+the name, I think it will work.
+
+731
+00:51:05,900 --> 00:51:07,260
+We can also try changing the order.
+
+732
+00:51:07,260 --> 00:51:09,320
+Well, if we have time.
+
+733
+00:51:13,640 --> 00:51:32,600
+so these are the two values that we have and then we essentially have our functionality here
+
+734
+00:51:34,600 --> 00:51:36,200
+and we need to
+
+735
+00:51:36,200 --> 00:51:41,540
+Oh, no, we have the outfile.
+
+736
+00:51:41,600 --> 00:51:42,600
+Ah, we have an outfile.
+
+737
+00:51:42,920 --> 00:51:44,360
+Yeah, of course we have an outfile.
+
+738
+00:51:45,740 --> 00:51:48,420
+Well, yeah, if we are
+
+739
+00:51:48,420 --> 00:51:50,780
+plotting one particular number of...
+
+740
+00:51:50,780 --> 00:51:52,660
+No, we have an outfile.
+
+741
+00:51:52,840 --> 00:51:55,020
+Yeah, but we can simply replace this
+
+742
+00:51:55,020 --> 00:51:55,800
+by the outfile.
+
+743
+00:51:56,660 --> 00:51:57,260
+Yeah, yeah.
+
+744
+00:51:58,380 --> 00:51:59,620
+So we have an outfile.
+
+745
+00:52:02,060 --> 00:52:02,540
+Modular.
+
+746
+00:52:02,540 --> 00:52:07,580
+the modularity helps here already
+
+747
+00:52:07,580 --> 00:52:10,000
+we have one specific number of measurements
+
+748
+00:52:10,000 --> 00:52:14,060
+and then a specific name for the output file
+
+749
+00:52:14,060 --> 00:52:16,540
+that means we don't have the follow-up anymore
+
+750
+00:52:16,540 --> 00:52:19,040
+yeah, that's true
+
+751
+00:52:19,040 --> 00:52:22,980
+that's something I just wanted to ask
+
+752
+00:52:22,980 --> 00:52:25,600
+how do you set defaults in Qlik?
+
+753
+00:52:27,800 --> 00:52:28,740
+a good question
+
+754
+00:52:28,740 --> 00:52:30,760
+we don't have it in the example
+
+755
+00:52:30,760 --> 00:52:39,240
+But probably since this default depends on a different import, let's just have it required.
+
+756
+00:52:39,240 --> 00:52:45,800
+So, yeah, in this case, it would be nice to show how you add a default value.
+
+757
+00:52:47,240 --> 00:52:50,440
+It's just default equals something. But for the outfile,
+
+758
+00:52:52,600 --> 00:52:55,480
+yeah, you should not, you can say default equals none.
+
+759
+00:52:55,480 --> 00:52:59,960
+Yeah, but then you don't have an outfile number.
+
+760
+00:52:59,960 --> 00:53:04,840
+but that you mean if it's none then you use the number of measurements
+
+761
+00:53:04,840 --> 00:53:09,460
+but you also have to remove the required equals true
+
+762
+00:53:09,460 --> 00:53:16,080
+if you have default equals none i i think at least it makes sense this way
+
+763
+00:53:16,080 --> 00:53:25,300
+so now we check if a the alt file is not given so the default value is none that's usually easy
+
+764
+00:53:25,300 --> 00:53:31,220
+to check and usually not what you want so then we can use this default value
+
+765
+00:53:33,540 --> 00:53:42,020
+okay and otherwise we just use whatever value is in out file so um yeah that should be in file
+
+766
+00:53:43,140 --> 00:53:49,060
+you could also set this to false and um just have to have another default value for temperatures
+
+767
+00:53:49,060 --> 00:53:55,620
+of csv or something okay it depends on like how you want to use the interface
+
+768
+00:53:56,580 --> 00:53:59,380
+a default value for an input file can be surprising
+
+769
+00:54:02,020 --> 00:54:04,500
+and you generally want to avoid surprises
+
+770
+00:54:07,060 --> 00:54:12,820
+so now we have the out file now we don't have the for loop anymore right yes we don't have that
+
+771
+00:54:12,820 --> 00:54:19,620
+anymore yeah oh and yeah now we need the standard python thing if name equals underscore underscore
+
+772
+00:54:19,620 --> 00:54:27,380
+name if if the name equals main with lots of underscores um then we call the main function
+
+773
+00:54:28,580 --> 00:54:32,660
+and if you don't know python this doesn't mean anything to you and if you know python
+
+774
+00:54:32,660 --> 00:54:39,300
+it still doesn't mean anything to you it's just python okay um if i'm calling that correctly it's
+
+775
+00:54:39,300 --> 00:54:46,900
+due to forks and things, so if you have multiprocessing, only one of the things
+
+776
+00:54:46,900 --> 00:54:51,940
+will be called main, and therefore execute the main, and everything else will not do that.
+
+777
+00:54:51,940 --> 00:54:57,780
+Yeah, so essentially if you import it as a module, then main will not execute, and we can still
+
+778
+00:54:57,780 --> 00:55:05,460
+import it in the Jupyter code, and it will work the same way as before. But if you run it as a script,
+
+779
+00:55:05,460 --> 00:55:07,380
+then this main section will execute.
+
+780
+00:55:12,340 --> 00:55:14,180
+So it's something you see often.
+
+781
+00:55:14,180 --> 00:55:43,340
+If you write something incorrectly or just don't remember what the parameters are
+
+782
+00:55:43,340 --> 00:55:51,580
+will produce a message that tells you how to run. Okay, it didn't create a 26. Yes,
+
+783
+00:55:51,580 --> 00:55:52,580
+it did. Okay.
+
+784
+00:55:52,580 --> 00:55:55,720
+It did. It just takes time to show up.
+
+785
+00:55:55,720 --> 00:56:02,600
+Okay. So it works. Great. One thing I was thinking a while ago, what do you think
+
+786
+00:56:02,600 --> 00:56:06,380
+about the comments in this main function?
+
+787
+00:56:06,380 --> 00:56:12,020
+read the data from a file
+
+788
+00:56:12,020 --> 00:56:15,040
+this is definitely the wrong place
+
+789
+00:56:15,040 --> 00:56:16,660
+but readData
+
+790
+00:56:16,660 --> 00:56:18,820
+the function name readData is
+
+791
+00:56:18,820 --> 00:56:22,520
+it tells you
+
+792
+00:56:22,520 --> 00:56:24,240
+exactly the same thing
+
+793
+00:56:24,240 --> 00:56:26,200
+you don't need the comment
+
+794
+00:56:26,200 --> 00:56:28,840
+this comment is
+
+795
+00:56:28,840 --> 00:56:30,460
+more self-explanatory
+
+796
+00:56:30,460 --> 00:56:33,240
+this could be a
+
+797
+00:56:33,240 --> 00:56:34,320
+select the
+
+798
+00:56:34,320 --> 00:56:37,600
+requested
+
+799
+00:56:37,600 --> 00:56:39,280
+measurements
+
+800
+00:56:39,280 --> 00:56:40,920
+could
+
+801
+00:56:40,920 --> 00:56:42,040
+well
+
+802
+00:56:42,040 --> 00:56:45,760
+I would say for anyone who has
+
+803
+00:56:45,760 --> 00:56:47,820
+worked with Pandas a bit it's clear what this
+
+804
+00:56:47,820 --> 00:56:49,680
+does but might still be
+
+805
+00:56:49,680 --> 00:56:50,400
+useful to have
+
+806
+00:56:50,400 --> 00:56:53,760
+and then
+
+807
+00:56:53,760 --> 00:56:54,500
+plot results
+
+808
+00:56:54,500 --> 00:56:57,660
+so the point is the function
+
+809
+00:56:57,660 --> 00:56:59,780
+names explain what is happening
+
+810
+00:56:59,780 --> 00:57:01,760
+if someone is just looking through the
+
+811
+00:57:01,760 --> 00:57:02,380
+main function
+
+812
+00:57:02,380 --> 00:57:05,600
+we don't need to actually explain in comments
+
+813
+00:57:05,600 --> 00:57:08,560
+because now since we made the code modular
+
+814
+00:57:08,560 --> 00:57:10,800
+and we used helpful function names,
+
+815
+00:57:11,400 --> 00:57:16,420
+the comments are suddenly a lot less necessary.
+
+816
+00:57:16,420 --> 00:57:20,320
+The code explains itself, right?
+
+817
+00:57:23,480 --> 00:57:24,280
+Okay.
+
+818
+00:57:25,020 --> 00:57:30,260
+Can you also try running this from the Jupyter Notebook?
+
+819
+00:57:30,260 --> 00:57:34,280
+so we should see that it still works
+
+820
+00:57:34,280 --> 00:57:36,360
+you mean
+
+821
+00:57:36,360 --> 00:57:38,440
+you mean
+
+822
+00:57:38,440 --> 00:57:39,580
+where is my
+
+823
+00:57:39,580 --> 00:57:42,360
+you mean rerunning what we had here
+
+824
+00:57:42,360 --> 00:57:42,940
+yeah
+
+825
+00:57:42,940 --> 00:57:46,840
+so this is importing the two functions
+
+826
+00:57:46,840 --> 00:57:47,840
+and yeah
+
+827
+00:57:47,840 --> 00:57:50,820
+so the fact that we made this
+
+828
+00:57:50,820 --> 00:57:52,440
+added this command line interface
+
+829
+00:57:52,440 --> 00:57:54,240
+doesn't actually change anything
+
+830
+00:57:54,240 --> 00:57:56,480
+let's restart this
+
+831
+00:57:56,480 --> 00:57:58,400
+because we have an import here
+
+832
+00:57:58,400 --> 00:57:58,940
+and
+
+833
+00:57:58,940 --> 00:58:03,760
+yeah well actually yes
+
+834
+00:58:03,760 --> 00:58:04,840
+something can change
+
+835
+00:58:04,840 --> 00:58:08,600
+we no longer give the mean as a parameter
+
+836
+00:58:08,600 --> 00:58:09,320
+true
+
+837
+00:58:09,320 --> 00:58:12,380
+you see that's why restarting
+
+838
+00:58:12,380 --> 00:58:13,040
+was important
+
+839
+00:58:13,040 --> 00:58:13,900
+true
+
+840
+00:58:13,900 --> 00:58:25,560
+but yes
+
+841
+00:58:25,560 --> 00:58:27,160
+general it works
+
+842
+00:58:27,160 --> 00:58:28,680
+we just had a
+
+843
+00:58:28,680 --> 00:58:31,040
+small bug
+
+844
+00:58:31,040 --> 00:58:34,980
+because we changed
+
+845
+00:58:34,980 --> 00:58:35,360
+our
+
+846
+00:58:35,360 --> 00:58:39,860
+yeah
+
+847
+00:58:39,860 --> 00:58:43,180
+so the next thing was to
+
+848
+00:58:43,180 --> 00:58:44,320
+add tests
+
+849
+00:58:44,320 --> 00:58:46,580
+no the next thing I think would be to
+
+850
+00:58:46,580 --> 00:58:49,120
+to have this input
+
+851
+00:58:49,120 --> 00:58:50,820
+I hope that click
+
+852
+00:58:50,820 --> 00:58:53,100
+does something with this
+
+853
+00:58:53,100 --> 00:58:54,880
+yeah it works
+
+854
+00:58:54,880 --> 00:59:02,940
+So, yeah, this is what Qlik provides you, essentially, all this additional information,
+
+855
+00:59:02,940 --> 00:59:07,740
+and that you essentially have a command line interface where you can get the standard parameters
+
+856
+00:59:07,740 --> 00:59:18,440
+like help, some information about, okay, how does this work, and so on.
+
+857
+00:59:18,440 --> 00:59:38,040
+Okay, yeah, that makes sense.
+
+858
+00:59:40,160 --> 00:59:43,540
+So yeah, we're just telling what the default value actually is.
+
+859
+00:59:43,540 --> 00:59:49,980
+If you don't provide a default, I think it's a good idea to help or to give this kind of information.
+
+860
+00:59:51,740 --> 00:59:56,460
+Oh, and yes, it is in fact time for a break.
+
+861
+00:59:56,620 --> 00:59:58,040
+We have been going on for an hour.
+
+862
+00:59:59,560 --> 01:00:06,160
+And yes, since we are not following a schedule, I'm not keeping an eye on it.
+
+863
+01:00:06,340 --> 01:00:10,960
+It is definitely already, like I should have started the break a while ago, I guess.
+
+864
+01:00:10,960 --> 01:00:13,580
+but we can take the break now
+
+865
+01:00:13,580 --> 01:00:15,520
+for 10 minutes and be back
+
+866
+01:00:15,520 --> 01:00:16,500
+at 14.10
+
+867
+01:00:16,500 --> 01:00:18,960
+and then do the tests after that
+
+868
+01:00:18,960 --> 01:00:19,580
+yeah
+
+869
+01:00:19,580 --> 01:00:22,780
+okay so
+
+870
+01:00:22,780 --> 01:00:25,040
+yeah let's take a break
+
+871
+01:00:25,040 --> 01:00:27,600
+walk around a little bit and see you then
+
+872
+01:00:27,600 --> 01:00:28,340
+bye
+
+873
+01:00:28,340 --> 01:00:29,520
+see you later
+
+874
+01:00:32,000 --> 01:00:36,480
+and hi again
+
+875
+01:00:36,480 --> 01:00:38,720
+so we wanted to
+
+876
+01:00:38,720 --> 01:00:40,120
+get into testing
+
+877
+01:00:40,120 --> 01:00:42,700
+yeah so
+
+878
+01:00:43,260 --> 01:00:49,260
+um where would you put the tests i personally would create a tests folder
+
+879
+01:00:50,860 --> 01:00:55,900
+so it's not a huge project we only have one python file but let's assume it might get become
+
+880
+01:00:55,900 --> 01:01:00,860
+bigger at some point and even then even if you have just a single python file i would at least
+
+881
+01:01:00,860 --> 01:01:07,340
+create a separate file for the tests but that's just like i guess we are dealing with relatively
+
+882
+01:01:07,340 --> 01:01:14,460
+big projects every single time. Well, in any case, it does not hurt. So we can create a test folder,
+
+883
+01:01:15,100 --> 01:01:25,980
+and then there is a test weather predictions file there. And it's empty.
+
+884
+01:01:25,980 --> 01:01:28,380
+Yeah, there's nothing there at the moment.
+
+885
+01:01:28,380 --> 01:01:36,700
+do we test um we have two functions um in our package
+
+886
+01:01:41,260 --> 01:01:45,100
+was it retail data okay so um
+
+887
+01:01:48,140 --> 01:01:55,660
+these are both a little bit more complicated than it they're not just returning they're not taking
+
+888
+01:01:55,660 --> 01:02:00,480
+input values and returning values. Well, read data is, but it is doing something else. It's
+
+889
+01:02:00,480 --> 01:02:09,020
+reading from disk. And the other one is creating a file to disk. So we can still test this. And
+
+890
+01:02:09,020 --> 01:02:17,340
+it might actually be quite useful to show that it's not that complicated. So why don't we do
+
+891
+01:02:17,340 --> 01:02:25,000
+that? Okay, now there's a data folder. Because we want to essentially have our test data as
+
+892
+01:02:25,000 --> 01:02:36,000
+data for the tests so we create and this could be essentially anything formatted like uh the data we
+
+893
+01:02:36,000 --> 01:02:42,940
+are reading but in this case we have an example file already so why not use that um so yeah we've
+
+894
+01:02:42,940 --> 01:02:50,020
+copied the file that contains the temperatures temperatures of csv into this uh data folder
+
+895
+01:02:50,020 --> 01:02:53,440
+and now we can make a test read data function.
+
+896
+01:02:54,300 --> 01:02:57,860
+So for PyTest specifically,
+
+897
+01:02:58,320 --> 01:03:00,200
+the folder name should be tests.
+
+898
+01:03:00,880 --> 01:03:04,420
+The module that contains the tests
+
+899
+01:03:04,420 --> 01:03:05,960
+should be test underscore something.
+
+900
+01:03:06,200 --> 01:03:08,080
+And then the function also needs to be
+
+901
+01:03:08,080 --> 01:03:09,140
+test underscore something.
+
+902
+01:03:09,780 --> 01:03:11,640
+But this depends on the framework.
+
+903
+01:03:12,780 --> 01:03:14,520
+But yeah, so that is why the structure
+
+904
+01:03:14,520 --> 01:03:16,340
+that we have here exists.
+
+905
+01:03:17,140 --> 01:03:19,340
+Okay, so test read data.
+
+906
+01:03:19,340 --> 01:03:26,540
+So what do we do? We call the readData function. I don't think we need really any preample. We can
+
+907
+01:03:26,540 --> 01:03:34,700
+just call it, give it the file name. And I guess it's in... Is the path relative? It's always
+
+908
+01:03:34,700 --> 01:03:39,500
+relative to what it's called from. Yeah. And we will call it from the main, so...
+
+909
+01:03:39,500 --> 01:03:47,260
+Yeah. So it's test slash data slash temperatures dot csv. Okay. And now we can check some values.
+
+910
+01:03:47,260 --> 01:03:50,540
+Yeah. Where was it?
+
+911
+01:03:50,540 --> 01:03:52,700
+So it's the green. Yeah.
+
+912
+01:03:52,700 --> 01:03:56,140
+The values that we had. So let's-
+
+913
+01:03:56,140 --> 01:04:01,100
+We only take the air temperature column. That's the only column we have. So we can take
+
+914
+01:04:01,100 --> 01:04:05,020
+number eight. Number eight will actually be-
+
+915
+01:04:05,020 --> 01:04:06,220
+Number seven.
+
+916
+01:04:06,220 --> 01:04:16,140
+Python starts indexing from zero. So it's the index seven. Yeah. We do an asset. So one thing
+
+917
+01:04:16,140 --> 01:04:27,020
+is you can write a test function that doesn't have any asserts, and then the test will fail
+
+918
+01:04:27,020 --> 01:04:37,180
+only if there's an error. But that can happen. But yeah, so we are checking that the data is
+
+919
+01:04:37,180 --> 01:04:48,460
+also read correctly 16. so in a lot of cases you won't be able to have exactly the same data in
+
+920
+01:04:48,460 --> 01:04:55,900
+the in your tests because you don't want to push them to a public repository if you're publishing
+
+921
+01:04:55,900 --> 01:05:03,820
+your code um but then you can you can create just like randomly type numbers by hand into the file
+
+922
+01:05:03,820 --> 01:05:12,540
+and that's fine. You can probably use a different text editor than Jupyter labs
+
+923
+01:05:13,420 --> 01:05:20,060
+to open the CSV file and type some numbers in. And I'm putting the Aprox here also for the minus four
+
+924
+01:05:21,260 --> 01:05:27,820
+because the problem might be that this line is read as a floating number and we might get
+
+925
+01:05:28,780 --> 01:05:34,780
+something that is yeah not exactly four most like most likely it is exactly four or minus four but
+
+926
+01:05:35,420 --> 01:05:40,780
+yeah yeah i mean i guess one of these things where you it might be useful to show that there's an
+
+927
+01:05:40,780 --> 01:05:46,220
+error but then again it's also that it's specifically pandas that's reading it as
+
+928
+01:05:46,220 --> 01:05:50,140
+folding point it might happen it might not happen with a different library or different
+
+929
+01:05:50,140 --> 01:05:55,980
+language and so on so yeah let's just do it like this that this looks good looks correct
+
+930
+01:05:55,980 --> 01:06:02,140
+Does the read data take any other parameters?
+
+931
+01:06:02,140 --> 01:06:06,460
+Yes. It takes a column. So we could just...
+
+932
+01:06:06,460 --> 01:06:09,500
+Oh, you can try a different column name, like time. No, well...
+
+933
+01:06:09,500 --> 01:06:16,540
+Time might be difficult. The problem is everything else is exactly the same all the
+
+934
+01:06:16,540 --> 01:06:20,620
+time. So no, wait, the D is not the same. Okay. It's day.
+
+935
+01:06:20,620 --> 01:06:21,660
+Yeah.
+
+936
+01:06:21,660 --> 01:06:23,580
+Yeah.
+
+937
+01:06:25,980 --> 01:06:43,480
+temperatures. Let's see. Yeah, scroll down a good bit to say zero is one and temperatures
+
+938
+01:06:43,480 --> 01:06:49,760
+62 is three.
+
+939
+01:06:49,760 --> 01:06:55,740
+These will probably be in the church spot. Oh, you can Yeah, proxy doesn't hurt doesn't
+
+940
+01:06:55,740 --> 01:07:04,460
+really hurt here okay um so let's try running the test so now we run pi test
+
+941
+01:07:06,780 --> 01:07:15,020
+it found the test which is nice it also yeah and notice that we do not actually have this module
+
+942
+01:07:15,020 --> 01:07:22,940
+in the um so yeah i guess this is a bit too python specific
+
+943
+01:07:22,940 --> 01:07:25,500
+Yeah, this is very specific.
+
+944
+01:07:25,500 --> 01:07:33,260
+We just have to add a dot in front, right? Or is that relative to the tests?
+
+945
+01:07:33,260 --> 01:07:44,700
+Let's see. I'm never entirely sure. No, this is... I hate it.
+
+946
+01:07:44,700 --> 01:07:48,380
+What's the right way around this? This is the annoying thing with it. I mean, the right
+
+947
+01:07:48,380 --> 01:07:50,820
+way around this would be to turn the whole thing into a package.
+
+948
+01:07:50,820 --> 01:08:04,820
+Yep, which I'm just doing. This is a bit hacky now, but it's not really. It goes like this.
+
+949
+01:08:04,820 --> 01:08:09,820
+Yeah, I mean, the thing that makes it a package is that there is an init file.
+
+950
+01:08:09,820 --> 01:08:12,820
+Do I need an init?
+
+951
+01:08:12,820 --> 01:08:16,820
+I think you do, in the app folder.
+
+952
+01:08:16,820 --> 01:08:32,840
+bit set of txt. So there is an extra Yeah, yeah. Okay.
+
+953
+01:08:32,840 --> 01:08:47,140
+No, no, it didn't know module named app or
+
+954
+01:08:47,140 --> 01:08:51,100
+Okay.
+
+955
+01:08:51,100 --> 01:08:59,540
+I think so if you don't get all the package, then you have to either have it in the same
+
+956
+01:08:59,540 --> 01:09:05,460
+folder as the test or it needs to be a this works on different things
+
+957
+01:09:12,500 --> 01:09:15,460
+i know that i'm doing exactly this on other projects
+
+958
+01:09:16,900 --> 01:09:23,540
+anybody is no no comments in the notes so yeah i mean this is one of these things where i'm
+
+959
+01:09:23,540 --> 01:09:26,360
+I often get confused about what's happening.
+
+960
+01:09:27,580 --> 01:09:31,360
+Okay, then in this case...
+
+961
+01:09:31,360 --> 01:09:34,480
+But if we move the test file into the main folder,
+
+962
+01:09:34,480 --> 01:09:39,920
+and we also move the main file back into the main folder.
+
+963
+01:09:41,360 --> 01:09:45,720
+No, let's do something that I personally don't really like too much.
+
+964
+01:09:46,020 --> 01:09:49,180
+But in this case, I think we'll just do this.
+
+965
+01:09:49,180 --> 01:09:51,820
+well I mean you don't have to do
+
+966
+01:09:51,820 --> 01:09:53,840
+you don't have to put it in the same file
+
+967
+01:09:53,840 --> 01:09:56,080
+as long as
+
+968
+01:09:56,080 --> 01:09:57,760
+they're in the same folder it should work
+
+969
+01:09:57,760 --> 01:10:00,200
+okay
+
+970
+01:10:00,200 --> 01:10:01,080
+let's see
+
+971
+01:10:01,080 --> 01:10:09,500
+actually cut
+
+972
+01:10:09,500 --> 01:10:11,940
+because we don't want to have this twice
+
+973
+01:10:11,940 --> 01:10:13,540
+so
+
+974
+01:10:13,540 --> 01:10:16,340
+one common solution
+
+975
+01:10:16,340 --> 01:10:18,260
+also is to add
+
+976
+01:10:18,260 --> 01:10:18,880
+the
+
+977
+01:10:18,880 --> 01:10:30,780
+path where your
+
+978
+01:10:30,780 --> 01:10:32,060
+main code is
+
+979
+01:10:32,060 --> 01:10:34,780
+to add it to the
+
+980
+01:10:34,780 --> 01:10:36,680
+Python path
+
+981
+01:10:36,680 --> 01:10:38,380
+where it looks for packages.
+
+982
+01:10:40,800 --> 01:10:42,280
+Okay, now it actually ran.
+
+983
+01:10:43,400 --> 01:10:44,620
+PyTest is not defined.
+
+984
+01:10:44,620 --> 01:10:45,500
+Oh, yes, of course.
+
+985
+01:10:46,240 --> 01:10:47,940
+No, it's not fun because
+
+986
+01:10:47,940 --> 01:10:49,380
+We didn't import it here.
+
+987
+01:10:50,060 --> 01:10:52,400
+Oh, right. It's this PyTest.lab.rocks.
+
+988
+01:10:52,500 --> 01:10:53,080
+Okay, nice.
+
+989
+01:10:55,820 --> 01:10:57,380
+Okay, now it passed.
+
+990
+01:10:57,380 --> 01:10:57,700
+Right.
+
+991
+01:11:03,660 --> 01:11:04,260
+Good.
+
+992
+01:11:04,860 --> 01:11:07,360
+This is the test for
+
+993
+01:11:07,360 --> 01:11:08,140
+our read data.
+
+994
+01:11:10,100 --> 01:11:11,340
+I guess we still
+
+995
+01:11:11,340 --> 01:11:13,160
+have our test data
+
+996
+01:11:13,160 --> 01:11:14,800
+in the tests folder.
+
+997
+01:11:15,600 --> 01:11:16,800
+We can do read.
+
+998
+01:11:18,740 --> 01:11:22,180
+Let's assume that the 25 here is correct.
+
+999
+01:11:25,460 --> 01:11:28,500
+So let's have plot data.
+
+1000
+01:11:32,740 --> 01:11:37,780
+So this shouldn't take too long, but we also don't have too long, so
+
+1001
+01:11:37,780 --> 01:11:42,020
+we can take a couple of minutes to do this and then wrap up.
+
+1002
+01:11:42,020 --> 01:12:11,180
+So this now gets a little bit more complicated because we have the problem that
+
+1003
+01:12:11,180 --> 01:12:16,620
+need a temporary folder here because we need to write to a file for a test that should be a
+
+1004
+01:12:16,620 --> 01:12:26,140
+temporary file but python has a package called temp file which i will use for this purpose
+
+1005
+01:12:26,940 --> 01:12:34,060
+and this is again something that almost any language will have yeah so this gives you
+
+1006
+01:12:34,060 --> 01:12:39,500
+a temporary file name that you can but you can create the file safely and you will not be
+
+1007
+01:12:39,500 --> 01:12:45,260
+overwriting anything. Where that file exactly is will depend on the operating system.
+
+1008
+01:12:53,260 --> 01:13:03,100
+I don't need anything here. And now I need, actually, is it file.name?
+
+1009
+01:13:09,500 --> 01:13:26,500
+So let's look quickly. So you create a temporary file with tempfile.temporaryfile.
+
+1010
+01:13:26,500 --> 01:13:32,960
+Yeah, it's .name. Okay.
+
+1011
+01:13:32,960 --> 01:13:38,620
+And yeah, okay. You found it first. Good.
+
+1012
+01:13:38,620 --> 01:13:51,760
+should work and then file.name and now we need to compare this with the file
+
+1013
+01:13:51,760 --> 01:14:04,600
+that we have so do you have a standard solution there is not really a file
+
+1014
+01:14:04,600 --> 01:14:12,100
+fileCmp. Yeah, fileCmp might make...
+
+1015
+01:14:12,100 --> 01:14:16,400
+I assume that almost any language has a file comparison.
+
+1016
+01:14:16,400 --> 01:14:22,960
+One way or another, worst case, you need to compare these with...
+
+1017
+01:14:22,960 --> 01:14:32,200
+Yeah, so it's fileCmp.CMP, fileName1, fileName2. And I think we can do shallow equals true
+
+1018
+01:14:32,200 --> 01:14:37,200
+Well, it's not going to take that long anyway.
+
+1019
+01:14:37,200 --> 01:14:38,200
+Yes.
+
+1020
+01:14:38,200 --> 01:14:39,200
+Slash 25.png.
+
+1021
+01:14:39,200 --> 01:14:40,200
+Okay.
+
+1022
+01:14:40,200 --> 01:14:47,200
+And then just an assert here.
+
+1023
+01:14:47,200 --> 01:14:48,200
+Yeah.
+
+1024
+01:14:48,200 --> 01:14:49,200
+Oops.
+
+1025
+01:14:49,200 --> 01:14:56,140
+That's one too many.
+
+1026
+01:14:56,140 --> 01:14:58,880
+Let's see if this works.
+
+1027
+01:14:58,880 --> 01:15:06,200
+It will not work because they have a different modified time.
+
+1028
+01:15:06,200 --> 01:15:07,200
+Can I ignore that?
+
+1029
+01:15:07,200 --> 01:15:13,120
+So this is not the contents of the file that is comparing.
+
+1030
+01:15:13,120 --> 01:15:36,480
+Sorry, this is, should we read in the data and read in some bytes from the data and compare
+
+1031
+01:15:36,480 --> 01:15:42,080
+that or just i don't want to feel uh to leave it at this point but um
+
+1032
+01:15:46,800 --> 01:15:56,000
+well but we have very limited time okay then maybe we can do file one
+
+1033
+01:15:56,000 --> 01:16:02,080
+so open both with open file name one as file one
+
+1034
+01:16:02,080 --> 01:16:07,820
+or this is the
+
+1035
+01:16:07,820 --> 01:16:09,180
+as
+
+1036
+01:16:09,180 --> 01:16:11,360
+test
+
+1037
+01:16:11,360 --> 01:16:13,040
+is the file we wrote
+
+1038
+01:16:13,040 --> 01:16:14,620
+not in parentheses
+
+1039
+01:16:14,620 --> 01:16:18,080
+this is a variable name
+
+1040
+01:16:18,080 --> 01:16:19,460
+or test output
+
+1041
+01:16:19,460 --> 01:16:20,960
+and then with
+
+1042
+01:16:20,960 --> 01:16:22,880
+test output okay
+
+1043
+01:16:22,880 --> 01:16:23,980
+with
+
+1044
+01:16:23,980 --> 01:16:29,420
+yeah this file name
+
+1045
+01:16:29,420 --> 01:16:32,340
+as
+
+1046
+01:16:32,340 --> 01:16:34,020
+correct output
+
+1047
+01:16:34,020 --> 01:16:37,720
+test correct
+
+1048
+01:16:37,720 --> 01:16:38,140
+okay
+
+1049
+01:16:38,140 --> 01:16:42,040
+so now it's opened both files
+
+1050
+01:16:42,040 --> 01:16:43,400
+and then you go if
+
+1051
+01:16:43,400 --> 01:16:45,960
+test output dot read
+
+1052
+01:16:45,960 --> 01:16:48,280
+and that's a function
+
+1053
+01:16:48,280 --> 01:16:48,740
+parentheses
+
+1054
+01:16:48,740 --> 01:16:51,420
+no
+
+1055
+01:16:51,420 --> 01:16:53,180
+test underscore output
+
+1056
+01:16:53,180 --> 01:16:55,000
+sorry
+
+1057
+01:16:55,000 --> 01:16:57,960
+and also if doesn't have parentheses
+
+1058
+01:16:57,960 --> 01:17:04,000
+is it has yes i'm working in typescript and javascript too much yeah no well not i mean
+
+1059
+01:17:04,000 --> 01:17:10,600
+it's this is a peculiarity of python again so if it's equal to um isn't it correct output
+
+1060
+01:17:10,600 --> 01:17:12,620
+you can do assert yeah
+
+1061
+01:17:12,620 --> 01:17:24,440
+okay that should work it's actually comparing the entire contents of the files which are
+
+1062
+01:17:25,400 --> 01:17:31,240
+it's a bit over the top but okay yes in object doesn't have an attribute right so
+
+1063
+01:17:32,680 --> 01:17:38,520
+what are we doing so this is in line 18 let's look at line 18 we can figure it out
+
+1064
+01:17:42,200 --> 01:17:51,480
+okay yeah plot data file name oh what is our plot data plot data takes temperatures and
+
+1065
+01:17:51,480 --> 01:18:01,000
+text file name and attribute does what oh it's it's line 12 in plot data
+
+1066
+01:18:06,440 --> 01:18:16,360
+maybe we um oh oh oh no no okay okay okay now um this is no this is incorrect um
+
+1067
+01:18:16,360 --> 01:18:41,960
+I think what we need here is this okay I think this test is always the fun part it happens
+
+1068
+01:18:41,960 --> 01:18:49,880
+very often. Okay.
+
+1069
+01:18:53,660 --> 01:18:58,700
+Because the thing is, um, the file name just gave gave the the
+
+1070
+01:18:58,700 --> 01:19:03,920
+integer the location of the file. Okay, this is a bit
+
+1071
+01:19:06,220 --> 01:19:08,900
+Yeah, I remember seeing stuff like that with a file.
+
+1072
+01:19:08,900 --> 01:19:16,660
+I'm not sure if there is... no. Okay, no.
+
+1073
+01:19:16,660 --> 01:19:27,080
+So it's with tempfile.name temporary file as something, and then it has a something.name.
+
+1074
+01:19:27,080 --> 01:19:35,660
+It's actually a file handler already. You can do temp. Well, I mean, this should work,
+
+1075
+01:19:35,660 --> 01:19:36,660
+I think.
+
+1076
+01:19:36,660 --> 01:19:42,660
+Yeah, I just need to say that. Because I'm not sure.
+
+1077
+01:19:46,180 --> 01:19:50,180
+They need to be, so this line needs to be indented to the same level as the previous one.
+
+1078
+01:19:50,180 --> 01:19:52,500
+Are you sure? Because I'm opening the same file again.
+
+1079
+01:19:52,500 --> 01:19:53,860
+No, otherwise temp file is not...
+
+1080
+01:19:53,860 --> 01:19:56,660
+Yes, that's why I just created an additional variable.
+
+1081
+01:19:56,660 --> 01:20:03,700
+Okay, you don't have to open it. We are running out of time. But you don't have to open it. You
+
+1082
+01:20:03,700 --> 01:20:11,380
+you can use the so this named temporary file gives you a file
+
+1083
+01:20:11,380 --> 01:20:18,380
+handle. So it is already open in the URL. Okay, but then we have
+
+1084
+01:20:18,380 --> 01:20:25,420
+to open it again, you can, if you go to the so you can instead
+
+1085
+01:20:25,420 --> 01:20:33,040
+of using the test output, you can use temp file directly. So
+
+1086
+01:20:33,040 --> 01:20:43,280
+if you remove line 10 to 21 right sorry got a slightly different idea okay um the thing is i
+
+1087
+01:20:43,280 --> 01:20:47,600
+want this to be closed again because i have the impression we are getting a problem that um
+
+1088
+01:20:49,200 --> 01:20:56,080
+we have an open file and we are not closing it properly afterwards uh yeah that was my idea
+
+1089
+01:20:56,080 --> 01:21:02,480
+have to take the name into a different variable yes that's what i just did oh okay
+
+1090
+01:21:03,920 --> 01:21:05,760
+but we do get an issue okay
+
+1091
+01:21:09,040 --> 01:21:23,120
+so this is on line 23 um that's an assert issue uh yeah so uh i wanted to show that this is not
+
+1092
+01:21:23,120 --> 01:21:29,280
+as complicated as it seems. But comparing the files directly seems to be more complicated than...
+
+1093
+01:21:29,840 --> 01:21:30,560
+Might even be.
+
+1094
+01:21:34,240 --> 01:21:37,280
+And I think we need to move on to this.
+
+1095
+01:21:37,280 --> 01:21:44,960
+Yeah. But conceptually, you would take the files and compare them in some way
+
+1096
+01:21:45,680 --> 01:21:47,520
+to see that they are the same.
+
+1097
+01:21:47,520 --> 01:21:52,640
+And look at the contents. We can also just check that the file is there.
+
+1098
+01:21:53,120 --> 01:21:56,000
+I assume it would take us another 10 to 15 minutes
+
+1099
+01:21:56,000 --> 01:21:59,720
+to get this right now.
+
+1100
+01:22:00,900 --> 01:22:04,520
+And I don't think it's actually worth it at the moment.
+
+1101
+01:22:05,260 --> 01:22:06,320
+And it's an image file,
+
+1102
+01:22:06,520 --> 01:22:08,940
+which is generally one of the easier things to check
+
+1103
+01:22:08,940 --> 01:22:10,740
+by looking at it.
+
+1104
+01:22:11,200 --> 01:22:13,680
+So if it was any different kind of a file,
+
+1105
+01:22:14,280 --> 01:22:16,260
+what you would do is open the file,
+
+1106
+01:22:16,560 --> 01:22:17,460
+read the contents,
+
+1107
+01:22:17,460 --> 01:22:20,180
+and then compare to a known example,
+
+1108
+01:22:21,100 --> 01:22:22,740
+which is what we're trying to do here.
+
+1109
+01:22:23,120 --> 01:22:29,300
+So hopefully we didn't get too bogged down and lose the general context.
+
+1110
+01:22:31,500 --> 01:22:37,360
+So the overall idea is to test what the function does.
+
+1111
+01:22:37,460 --> 01:22:39,200
+And in this case, it's writing to the file system.
+
+1112
+01:22:39,440 --> 01:22:45,500
+So to test that, you read the file and you compare it to what you already know it should be.
+
+1113
+01:22:45,960 --> 01:22:50,060
+And the main thing is here, we use known test data.
+
+1114
+01:22:50,060 --> 01:22:52,120
+so we already know what should happen
+
+1115
+01:22:52,120 --> 01:22:55,980
+because we know what this temperatures.csv contains
+
+1116
+01:22:55,980 --> 01:22:59,380
+and then if you were to put this online
+
+1117
+01:22:59,380 --> 01:23:01,480
+this code, publish it
+
+1118
+01:23:01,480 --> 01:23:04,200
+you would publish the known test data as well
+
+1119
+01:23:04,200 --> 01:23:06,440
+and then everybody can run the tests
+
+1120
+01:23:06,440 --> 01:23:07,560
+so
+
+1121
+01:23:07,560 --> 01:23:11,240
+now
+
+1122
+01:23:11,240 --> 01:23:15,520
+we could probably find a clever way
+
+1123
+01:23:15,520 --> 01:23:17,980
+of looking at the contents of the image a little bit
+
+1124
+01:23:17,980 --> 01:23:27,100
+and uh compare the files directly um but it's probably not worth doing today so oh well not
+
+1125
+01:23:27,100 --> 01:23:36,460
+i think the concept hopefully got clear um and this is mainly about the concept here yeah so
+
+1126
+01:23:36,460 --> 01:23:41,820
+one other thing to mention is that we still have everything although both the functions define the
+
+1127
+01:23:41,820 --> 01:23:47,260
+script and everything it works well enough one thing we could have done um especially if it was a
+
+1128
+01:23:47,260 --> 01:23:50,060
+bigger package is to
+
+1129
+01:23:50,060 --> 01:23:51,880
+take the script and put it in a
+
+1130
+01:23:51,880 --> 01:23:53,860
+separate file and then have things
+
+1131
+01:23:53,860 --> 01:23:55,540
+that are imported in a different file
+
+1132
+01:23:55,540 --> 01:23:57,840
+that would also be nice
+
+1133
+01:23:57,840 --> 01:23:59,760
+and it would be a module you can very easily
+
+1134
+01:23:59,760 --> 01:24:01,320
+move around but okay
+
+1135
+01:24:01,320 --> 01:24:03,100
+let's leave it at that
+
+1136
+01:24:03,100 --> 01:24:05,340
+there is the
+
+1137
+01:24:05,340 --> 01:24:07,900
+feedback for day
+
+1138
+01:24:07,900 --> 01:24:09,760
+six available and we still
+
+1139
+01:24:09,760 --> 01:24:11,840
+have a workshop outro
+
+1140
+01:24:11,840 --> 01:24:13,140
+in the schedule so
+
+1141
+01:24:13,140 --> 01:24:15,400
+[name] and [name]
+
+1142
+01:24:15,400 --> 01:24:24,120
+welcome sorry for taking your time um with the debugging the test no worries this is good to show
+
+1143
+01:24:24,120 --> 01:24:29,880
+like this is also showing like this is sometimes what you have to do this is sometimes what you
+
+1144
+01:24:29,880 --> 01:24:35,860
+have to think about and i think it's nice to like watch you to figure it out because that may also
+
+1145
+01:24:35,860 --> 01:24:42,640
+like stick better like next time maybe some of the participants are in the same situation and
+
+1146
+01:24:42,640 --> 01:24:46,340
+then maybe they remember oh yeah there was this one thing that [name] did or this one thing that
+
+1147
+01:24:46,340 --> 01:24:54,320
+[name] suggested maybe so oh CATS is also with us great stuff not working is the most useful part
+
+1148
+01:24:54,320 --> 01:25:02,040
+of the lesson no but it's a good a good thing I think to have it also part of the lesson if
+
+1149
+01:25:02,040 --> 01:25:07,980
+everything would work that's not really that's not real no I mean by most useful I mean actually
+
+1150
+01:25:07,980 --> 01:25:17,340
+most useful to see how stuff goes wrong now that was feedback from other stuff before
+
+1151
+01:25:17,340 --> 01:25:22,160
+oh it's part of the process so don't worry
+
+1152
+01:25:22,160 --> 01:25:24,000
+okay so the feedback is here you can give feedback not just for today but down below on
+

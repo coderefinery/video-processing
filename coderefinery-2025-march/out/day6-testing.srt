@@ -1,0 +1,4408 @@
+1
+00:00:00,000 --> 00:00:04,560
+so we are here essentially for automated testing
+
+2
+00:00:04,560 --> 00:00:13,600
+yes so good morning everyone so today in the first lesson we're going to talk about automated
+
+3
+00:00:13,600 --> 00:00:24,160
+testing and this will will will be taught by by [name] fow from uh from from finland and uh from
+
+4
+00:00:24,160 --> 00:00:29,120
+me you want to take who yeah yesterday i was sitting in stockholm and today i'm sitting in
+
+5
+00:00:29,120 --> 00:00:38,000
+upsala so automated testing what what this is about so we can start by illustrating with some
+
+6
+00:00:38,000 --> 00:00:45,520
+examples here typical situations so you have a code you're working with it and
+
+7
+00:00:48,800 --> 00:00:54,080
+for over a few months it's stable and to implement from the new feature b
+
+8
+00:00:55,200 --> 00:01:02,080
+or you change the feature c and then all of a sudden the feature a which was there in your code
+
+9
+00:01:02,880 --> 00:01:11,040
+for a few years it's not working anymore and i mean that can cause a lot of disruption
+
+10
+00:01:11,040 --> 00:01:16,400
+and you need them to figure out why this happens and and how it could be prevented
+
+11
+00:01:18,800 --> 00:01:27,040
+so i presume that many of you have experienced this at some point and and if this happens
+
+12
+00:01:27,040 --> 00:01:34,800
+you you need to know some some good tricks and techniques and and and it's can be worth to get
+
+13
+00:01:34,800 --> 00:01:41,040
+some good habits with testing because you can save a lot of time with it and i can quickly i
+
+14
+00:01:41,040 --> 00:01:49,600
+can quickly mention here um the bnc can be something that is your code um or actually
+
+15
+00:01:49,600 --> 00:01:56,000
+code from a library like in matlab the different matlab version so suddenly your matlab version
+
+16
+00:01:56,000 --> 00:02:02,480
+changes and something in your code doesn't work anymore as it did in the past that's i think one
+
+17
+00:02:02,480 --> 00:02:07,920
+of the most common situations at least that i have encountered that you rely on some library
+
+18
+00:02:07,920 --> 00:02:13,280
+and some library changes um suddenly make things not work or work differently
+
+19
+00:02:15,040 --> 00:02:24,400
+yes indeed that that's a very common situation actually so it's very much so that the errors
+
+20
+00:02:24,400 --> 00:02:32,000
+or the source of errors can be in a code itself or it could be in the environment
+
+21
+00:02:33,680 --> 00:02:36,800
+or simply in the matching between the code and the environment
+
+22
+00:02:36,800 --> 00:02:40,400
+because out of the box they might not click together
+
+23
+00:02:42,880 --> 00:02:51,200
+okay so like the other lessons given on tuesday and on yesterday on wednesday we will do the
+
+24
+00:02:51,200 --> 00:02:59,600
+the examples we will do them all like in demo mode and also highlight some of the material
+
+25
+00:02:59,600 --> 00:03:04,320
+which is in the lesson presenters exercises we will do them then live on the screen
+
+26
+00:03:06,400 --> 00:03:12,000
+we very much encourage you to then at later point get back to do some of these exercises yourself
+
+27
+00:03:14,000 --> 00:03:20,560
+prerequisites are what you probably are up and running with already so you need pi test
+
+28
+00:03:20,560 --> 00:03:27,200
+with this port of python and you need to have your git i mean
+
+29
+00:03:28,160 --> 00:03:32,160
+have git and also your account with github or git lab
+
+30
+00:03:36,240 --> 00:03:38,880
+so coming here to the first
+
+31
+00:03:40,880 --> 00:03:44,880
+second giving giving here some some motivations so
+
+32
+00:03:44,880 --> 00:03:55,140
+So I mean the consequences from software malfunctioning or functioning in a way which is not intended
+
+33
+00:03:55,140 --> 00:04:00,180
+can be of different severity.
+
+34
+00:04:00,180 --> 00:04:04,340
+So the common thing is that something breaks and you need to fix it, perhaps you need to
+
+35
+00:04:04,340 --> 00:04:10,960
+spend a few hours or half day, that's not the end of the word obviously.
+
+36
+00:04:10,960 --> 00:04:17,860
+But in the context of scientific research, one of the more severe scenarios would be
+
+37
+00:04:17,860 --> 00:04:27,140
+if you pursue some work on your own or with colleagues, and even if you complete it, you
+
+38
+00:04:27,140 --> 00:04:33,640
+communicate it in scientific journals, and perhaps two years later, you figure out or
+
+39
+00:04:33,640 --> 00:04:38,700
+someone else figure out that, oh, something here in the code that you used for simulations
+
+40
+00:04:38,700 --> 00:04:46,700
+calculations within this project some features were not functioning as intended and therefore
+
+41
+00:04:46,700 --> 00:04:56,700
+the raw data perhaps the post-processal data simply is not correct and you can find here some
+
+42
+00:05:00,140 --> 00:05:05,660
+some articles here about this so here is some cases where people even have to retract
+
+43
+00:05:05,660 --> 00:05:16,820
+published work semester is so too much did you did something like that happen
+
+44
+00:05:16,820 --> 00:05:21,840
+to you or have you been spared from luckily not but I would also want to
+
+45
+00:05:21,840 --> 00:05:27,680
+mention that depending on the type of testing you're using you might not
+
+46
+00:05:27,680 --> 00:05:32,540
+protect yourself against mistake miss mistakes in your code that you didn't
+
+47
+00:05:32,540 --> 00:05:39,680
+in anticipate you um because of depending on the complexity of what you're what you have there
+
+48
+00:05:39,680 --> 00:05:47,900
+there might be issues in the code that you just don't realize um even with testing so um it's more
+
+49
+00:05:47,900 --> 00:05:56,760
+at least to me the the major thing is that uh you have something you code on and a bit back
+
+50
+00:05:56,760 --> 00:06:09,000
+a bit later someone asks for well someone asks for changes and stuff doesn't work as it used to be
+
+51
+00:06:10,120 --> 00:06:16,920
+that's more that's more what i was what i'm commonly concerned with that you
+
+52
+00:06:16,920 --> 00:06:22,520
+essentially get suddenly different results from the from the same functionality
+
+53
+00:06:22,520 --> 00:06:25,060
+or that
+
+54
+00:06:25,060 --> 00:06:27,120
+some functions just
+
+55
+00:06:27,120 --> 00:06:27,900
+don't
+
+56
+00:06:27,900 --> 00:06:30,340
+do anything anymore
+
+57
+00:06:30,340 --> 00:06:32,940
+that's more where
+
+58
+00:06:32,940 --> 00:06:35,160
+testing can help you with
+
+59
+00:06:35,160 --> 00:06:36,500
+or that
+
+60
+00:06:36,500 --> 00:06:38,900
+testing kind of
+
+61
+00:06:38,900 --> 00:06:39,560
+prevents
+
+62
+00:06:39,560 --> 00:06:44,720
+yes
+
+63
+00:06:44,720 --> 00:06:49,040
+I could, I will not do it now
+
+64
+00:06:49,040 --> 00:06:50,980
+but I've actually myself had
+
+65
+00:06:50,980 --> 00:07:01,460
+some rather, yeah, I would say, most of the fun experiences were programs that broke.
+
+66
+00:07:01,460 --> 00:07:07,360
+And fortunately, this was discovered in, let's say, manuscript review phase.
+
+67
+00:07:07,360 --> 00:07:12,180
+So of course, it was a referee who requested some additional simulations.
+
+68
+00:07:12,180 --> 00:07:17,020
+And while we were getting on the board to do these simulations to complement the original
+
+69
+00:07:17,020 --> 00:07:24,380
+results then we found out oh we had done something wrong and we then had to redo it and then had to
+
+70
+00:07:24,380 --> 00:07:29,020
+also be transparent in in the community getting back to the journal that okay we had made the
+
+71
+00:07:29,020 --> 00:07:34,300
+mistake as of a half year ago we spotted it we corrected it and to the best of our knowledge
+
+72
+00:07:34,300 --> 00:07:41,420
+this is now to say the sound results and i would very much encourage uh transparency in this so
+
+73
+00:07:41,420 --> 00:07:47,500
+mistakes can happen and and um one should not wipe this under the carpet
+
+74
+00:07:48,220 --> 00:07:52,860
+also let's say in in communication with the journals also
+
+75
+00:07:56,540 --> 00:08:01,660
+okay so how can testing look um in in practice so um
+
+76
+00:08:04,300 --> 00:08:11,020
+here we have an example this is in python code and and uh we will shortly we'll get to some
+
+77
+00:08:11,020 --> 00:08:19,660
+hands-on exercises on this. So what do we have here? This is about
+
+78
+00:08:21,420 --> 00:08:29,580
+a temperature conversion from Fahrenheit to Celsius temperature scale. So this here
+
+79
+00:08:29,580 --> 00:08:35,420
+is the function in Python. And [name], what do we have here?
+
+80
+00:08:35,420 --> 00:08:43,400
+so um we essentially try to see if the if um what we put into this function gives us the
+
+81
+00:08:43,400 --> 00:08:49,640
+result that we expect uh the function to give so we give it one example um
+
+82
+00:08:49,640 --> 00:08:57,180
+um often uh for basic for relative basic ones you might even get a couple of different
+
+83
+00:08:57,180 --> 00:09:02,360
+values that you want to pass in and out so that you make sure that this is not a hard-coded
+
+84
+00:09:02,360 --> 00:09:04,720
+337.7777
+
+85
+00:09:04,720 --> 00:09:05,540
+returning
+
+86
+00:09:05,540 --> 00:09:08,880
+which would also pass
+
+87
+00:09:08,880 --> 00:09:09,600
+this test
+
+88
+00:09:09,600 --> 00:09:11,160
+but
+
+89
+00:09:11,160 --> 00:09:14,300
+more of a general
+
+90
+00:09:14,300 --> 00:09:16,800
+does this function
+
+91
+00:09:16,800 --> 00:09:18,800
+behave as we expect it to behave
+
+92
+00:09:18,800 --> 00:09:19,960
+so does it
+
+93
+00:09:19,960 --> 00:09:21,820
+return the right values
+
+94
+00:09:21,820 --> 00:09:24,000
+and we already see in here
+
+95
+00:09:24,000 --> 00:09:25,760
+we have this
+
+96
+00:09:25,760 --> 00:09:27,440
+absolute
+
+97
+00:09:27,440 --> 00:09:30,140
+smaller than a certain
+
+98
+00:09:30,140 --> 00:09:33,260
+so it's an
+
+99
+00:09:33,260 --> 00:09:35,180
+epsilon kind of assertion
+
+100
+00:09:35,180 --> 00:09:37,420
+and that's
+
+101
+00:09:37,420 --> 00:09:39,300
+something especially with floating
+
+102
+00:09:39,300 --> 00:09:41,360
+point numbers that in tests
+
+103
+00:09:41,360 --> 00:09:43,120
+you will see relatively often
+
+104
+00:09:43,120 --> 00:09:43,620
+where
+
+105
+00:09:43,620 --> 00:09:45,660
+well
+
+106
+00:09:45,660 --> 00:09:49,200
+floating point numbers are not exact
+
+107
+00:09:49,200 --> 00:09:51,180
+in computers so
+
+108
+00:09:51,180 --> 00:09:53,220
+you always try
+
+109
+00:09:53,220 --> 00:09:53,700
+to say
+
+110
+00:09:53,700 --> 00:09:57,380
+it has to be almost
+
+111
+00:09:57,380 --> 00:09:59,180
+correct because correct
+
+112
+00:09:59,180 --> 00:10:10,380
+doesn't work yes yes certainly and one aspect here is when it comes to numerical computation
+
+113
+00:10:10,380 --> 00:10:16,540
+so nowadays i mean even if you on your your local laptop or desktop computer
+
+114
+00:10:16,540 --> 00:10:23,380
+you often go beyond serial execution of the code but you have perhaps some some kind of threading
+
+115
+00:10:23,940 --> 00:10:33,060
+or some multiple rank computation and yeah particularly threading over cpu cores then
+
+116
+00:10:35,220 --> 00:10:40,580
+that can very well be so to say non-deterministic execution because you then if you have let's say
+
+117
+00:10:41,540 --> 00:10:48,020
+eight real numbers and you sum them using eight fiscal cores depending on in which order the
+
+118
+00:10:48,020 --> 00:10:52,900
+estimation is made the rounding errors might come about it's slightly different
+
+119
+00:10:55,540 --> 00:11:02,660
+and what we what we see here is essentially a so-called unit test this is testing one atomic
+
+120
+00:11:02,660 --> 00:11:08,500
+unit of the of the code so this fahrenheit celsius function does not have any side effects there is
+
+121
+00:11:08,500 --> 00:11:16,100
+nothing this depends on besides the basic language functions and that means that we are just testing
+
+122
+00:11:16,100 --> 00:11:26,740
+our code and as soon as you have function calls from within the function you start it's
+
+123
+00:11:29,060 --> 00:11:31,380
+if it's your own functions that are being called then
+
+124
+00:11:32,660 --> 00:11:35,620
+this goes into a bit of a different type of testing
+
+125
+00:11:38,420 --> 00:11:44,500
+sometimes it's still unit tests but yeah it depends a lot on the side effects of your function
+
+126
+00:11:46,100 --> 00:11:51,100
+I think that's also what we are going to see next.
+
+127
+00:11:51,100 --> 00:12:08,400
+So here, yeah, you can find, so in this lesson is rather long, so we will not have the chance
+
+128
+00:12:08,400 --> 00:12:11,360
+to cover all of it.
+
+129
+00:12:11,360 --> 00:12:23,440
+I think we can here and now actually we can go come here to a little bit of definitions
+
+130
+00:12:23,440 --> 00:12:29,920
+of what are different kind of tests that we can deal with so [name] you mentioned this
+
+131
+00:12:29,920 --> 00:12:37,520
+that there is something which is called unit tests yeah unit tests essentially are testing
+
+132
+00:12:37,520 --> 00:12:44,720
+that the individual small unit so an individual function does what you expect it to do that under
+
+133
+00:12:44,720 --> 00:12:50,640
+that different kind of inputs that you get always produce what you expect it to produce
+
+134
+00:12:52,000 --> 00:13:01,440
+that's what a unit test is doing then you have integration tests that's where yeah if you have
+
+135
+00:13:01,440 --> 00:13:12,000
+larger parts if you have um one element depending on another element and how how they work together
+
+136
+00:13:12,000 --> 00:13:18,640
+um that's and you test that you would still write one function that does this test but
+
+137
+00:13:19,280 --> 00:13:22,480
+you would have an essentially an integration test between the two
+
+138
+00:13:23,120 --> 00:13:26,800
+components if they work together as you expect them to work together
+
+139
+00:13:26,800 --> 00:13:38,320
+Yeah. There are two types here. End-to-end tests, which sort of relates quite a bit to integration
+
+140
+00:13:38,320 --> 00:13:49,040
+tests. But here it's really like the complete program. And if it is, let's say, for a file-based
+
+141
+00:13:49,040 --> 00:13:54,400
+user interface program, you work with input files and the program produces output files.
+
+142
+00:13:56,800 --> 00:14:03,520
+then that lends itself rather naturally for testing because you then have as
+
+143
+00:14:03,520 --> 00:14:14,040
+your test for end-to-end testing or essentially a set of input files and then you have stored
+
+144
+00:14:14,040 --> 00:14:21,180
+then the selected output complete also with some specification about what would be let's say
+
+145
+00:14:21,180 --> 00:14:30,220
+the tolerance for the output if there is any if yeah exactly so so real numbers are sort of
+
+146
+00:14:30,220 --> 00:14:33,980
+one case but but they can of course be other categories also
+
+147
+00:14:40,700 --> 00:14:47,660
+and then you have uh what's called regression tests which especially for um i think academic
+
+148
+00:14:47,660 --> 00:14:54,220
+work is quite important because it's essentially that if you do changes the results don't change
+
+149
+00:14:54,220 --> 00:15:02,240
+um so that would be uh yeah i'm using uh i'm using different versions of matlab
+
+150
+00:15:02,240 --> 00:15:10,200
+to test that under all the versions of matlab i still get the same results i'm using different
+
+151
+00:15:10,200 --> 00:15:19,860
+versions of a solver for whatever problems i have and i'm getting the same at least conceptual the
+
+152
+00:15:19,860 --> 00:15:28,300
+same the same results um i can change it essentially helps you to be able to change and
+
+153
+00:15:28,300 --> 00:15:33,620
+update code and make code faster and make sure that even if even if something changed inside
+
+154
+00:15:33,620 --> 00:15:39,420
+the results that i'm getting out of it are still the same and if they are not there should be a
+
+155
+00:15:39,420 --> 00:15:45,500
+good reason why they are not and maybe you then well
+
+156
+00:15:49,100 --> 00:15:55,180
+need to see if the original was correct or if something has something substantial has changed
+
+157
+00:15:58,300 --> 00:16:06,060
+yes um one thing which is important to keep in mind here with interest and 10 tests and
+
+158
+00:16:06,060 --> 00:16:12,780
+regression test is that let's say you have you've engineered your regression tests
+
+159
+00:16:13,820 --> 00:16:18,060
+and you start to deploy them let's say you run your program
+
+160
+00:16:18,060 --> 00:16:22,620
+first on a local computer then you run it on three for other servers
+
+161
+00:16:25,660 --> 00:16:29,100
+and then it's all good for extended time over many months
+
+162
+00:16:29,100 --> 00:16:36,900
+that is tells you then okay things are now stable over time but it's very important to
+
+163
+00:16:36,900 --> 00:16:43,520
+to remember also that at some point there's a base case that needs to be sound
+
+164
+00:16:43,520 --> 00:16:49,460
+that means at some point early on in the program development you need them
+
+165
+00:16:49,460 --> 00:16:54,260
+to think like okay is the program now doing what it is supposed to do
+
+166
+00:16:54,260 --> 00:17:01,960
+so yeah in example from my field of science computational material science then it's
+
+167
+00:17:01,960 --> 00:17:05,940
+yeah i mean it's essentially about doing simulations for differential equations you
+
+168
+00:17:05,940 --> 00:17:14,160
+get a lot of numbers and often let's say the models that are implemented they are sort of old
+
+169
+00:17:14,160 --> 00:17:21,440
+can be 100 years old 200 years old and you do have let's say for the small problem size you
+
+170
+00:17:21,440 --> 00:17:26,840
+have the analytical solution or you can work it out yourself and and that's something which is
+
+171
+00:17:26,840 --> 00:17:34,040
+very useful because if you can establish let's say the analytical solution for some let's say
+
+172
+00:17:34,040 --> 00:17:41,040
+a differential equation um and or you have it in a textbook or whatever then you have a base case
+
+173
+00:17:41,040 --> 00:17:47,220
+and if you then do for that small computation you do it then with your program and you get
+
+174
+00:17:47,220 --> 00:17:54,820
+right results then you have sort of like a base case then probably the typical thing is obviously
+
+175
+00:17:54,820 --> 00:18:02,420
+that in on the computer your program will run something which is bigger and you want to be
+
+176
+00:18:02,420 --> 00:18:08,100
+done faster and so forth uh if you can do it a little bit inductively so that you work from the
+
+177
+00:18:08,100 --> 00:18:16,900
+base case to say like okay the machinery in the code is is is correct here with regard to a and b
+
+178
+00:18:16,900 --> 00:18:23,540
+and then like okay then we can sort of presume that results are coming out here
+
+179
+00:18:23,540 --> 00:18:29,380
+for c and d have a good let's say probability for being correct
+
+180
+00:18:30,740 --> 00:18:35,700
+so if you can build such things into to the what it then becomes regression sets
+
+181
+00:18:36,660 --> 00:18:40,340
+that can can be a value but those those can also be unit tests
+
+182
+00:18:40,340 --> 00:18:48,760
+if you if you have if you have clear solutions for uh for something this is exactly what a unit
+
+183
+00:18:48,760 --> 00:18:56,340
+test could also be working or before a regression test would be most likely more the and now i have
+
+184
+00:18:56,340 --> 00:19:00,560
+a more complex example that i don't have an analytical solution for and i want to i want
+
+185
+00:19:00,560 --> 00:19:07,480
+that to be stable even if my code if my code is changing yeah very good point
+
+186
+00:19:07,480 --> 00:19:15,320
+you're completely right there so often when you look at the components the units
+
+187
+00:19:16,200 --> 00:19:25,960
+for them it can often be more tractable to come up with like the base case result
+
+188
+00:19:25,960 --> 00:19:29,800
+so you can establish them that you have a good reference data for your unit tests
+
+189
+00:19:32,120 --> 00:19:35,880
+so i think we can do a little bit of an interlude here with
+
+190
+00:19:37,480 --> 00:19:43,800
+the discussion on what's easy and hard to test so i put that question up in in the notes
+
+191
+00:19:47,720 --> 00:19:52,680
+so here towards the end of the collaborative document so if you could perhaps
+
+192
+00:19:55,000 --> 00:19:59,720
+tell us a little bit about your experience is on what's easy and what is hard to test
+
+193
+00:19:59,720 --> 00:20:10,420
+i would quickly go to the what you should do and what you or what's kind of good practice i think
+
+194
+00:20:10,420 --> 00:20:18,620
+not every bit of code yeah needs to be tested um there are some basic things that
+
+195
+00:20:18,620 --> 00:20:29,140
+yeah okay we trust that they work as they should um there's the thing with uh code that's really
+
+196
+00:20:29,140 --> 00:20:30,060
+difficult to test
+
+197
+00:20:30,060 --> 00:20:33,360
+like what's mentioned
+
+198
+00:20:33,360 --> 00:20:35,280
+in the motivation
+
+199
+00:20:35,280 --> 00:20:36,840
+with Jupyter Notebooks
+
+200
+00:20:36,840 --> 00:20:39,420
+and I would argue that
+
+201
+00:20:39,420 --> 00:20:41,600
+if you can move
+
+202
+00:20:41,600 --> 00:20:43,560
+functional code
+
+203
+00:20:43,560 --> 00:20:45,360
+out of the Jupyter Notebook into its
+
+204
+00:20:45,360 --> 00:20:47,140
+own functions then it's a lot easier
+
+205
+00:20:47,140 --> 00:20:48,500
+to test these
+
+206
+00:20:48,500 --> 00:20:51,520
+bits to have actual functions
+
+207
+00:20:51,520 --> 00:20:53,460
+that you can then import back into the
+
+208
+00:20:53,460 --> 00:20:55,360
+Jupyter Notebook. Then you can test
+
+209
+00:20:55,360 --> 00:20:55,760
+the code.
+
+210
+00:20:59,140 --> 00:21:05,640
+Yes. Yeah, that's good to be aware of.
+
+211
+00:21:05,640 --> 00:21:11,140
+In the Jupyter Notebook, which are, depending on how you interact with them,
+
+212
+00:21:11,140 --> 00:21:23,140
+they are having the whole execution flow is depending on your interactive input.
+
+213
+00:21:23,140 --> 00:21:31,260
+But that's a little bit more, a bit like a moving target for testing.
+
+214
+00:21:32,060 --> 00:21:41,440
+I think here now in this lesson, I mean, we will keep it to like this execution program from the beginning to the end.
+
+215
+00:21:42,360 --> 00:21:43,880
+So we will avoid this.
+
+216
+00:21:46,160 --> 00:21:51,160
+There's one more thing that to me is a good motivation in writing tests.
+
+217
+00:21:51,160 --> 00:21:59,400
+if you write tests for the functions that you expect users to use they already have an example
+
+218
+00:21:59,400 --> 00:22:05,480
+of how to run your function so your tests can to some extent also just work for us documentation
+
+219
+00:22:05,480 --> 00:22:12,840
+essentially how is this supposed to be used what kind of things can you do with it so
+
+220
+00:22:12,840 --> 00:22:18,540
+testing can be integrated in yeah writing documentation to some extent
+
+221
+00:22:18,540 --> 00:22:31,800
+and you can reuse things that you use there yeah indeed so this is actually a way to to be
+
+222
+00:22:31,800 --> 00:22:40,560
+efficient with working on this process as you said [name] your examples and your input files
+
+223
+00:22:40,560 --> 00:22:49,600
+if it's a text-based program and and also like documentation and test cases all of that sort of
+
+224
+00:22:49,600 --> 00:22:54,000
+naturally can be combined and reused as appropriate
+
+225
+00:22:56,880 --> 00:23:04,000
+so let's just we can briefly highlight here some points before we move over to the
+
+226
+00:23:04,000 --> 00:23:06,680
+to the next hands-on, so to say.
+
+227
+00:23:10,200 --> 00:23:11,240
+So what are you writing?
+
+228
+00:23:11,240 --> 00:23:14,880
+Yeah, so getting an up to high code coverage
+
+229
+00:23:16,020 --> 00:23:19,500
+can be difficult on a complex and legacy code,
+
+230
+00:23:20,360 --> 00:23:22,400
+like 95% code coverage.
+
+231
+00:23:22,400 --> 00:23:25,900
+Yeah, that's very ambitious, probably.
+
+232
+00:23:27,460 --> 00:23:29,920
+Yeah, the problem with that is especially
+
+233
+00:23:29,920 --> 00:23:31,660
+if you handle some kind of exception,
+
+234
+00:23:31,660 --> 00:23:33,520
+if you do some exception handling and things,
+
+235
+00:23:33,520 --> 00:23:40,000
+then it becomes really difficult because you essentially need to write tests for every
+
+236
+00:23:40,000 --> 00:23:46,160
+possibility that where things can go wrong and where and how that is then handled so
+
+237
+00:23:46,160 --> 00:23:50,060
+yeah i completely agree on that
+
+238
+00:23:50,060 --> 00:23:59,920
+yeah last point here generally hard if you do not have modular code yeah certainly it's
+
+239
+00:23:59,920 --> 00:24:08,960
+very much so which to me is a reason why try to have modular code and don't try to have one huge
+
+240
+00:24:08,960 --> 00:24:17,040
+script that does everything try to put it into sub routines that you can test
+
+241
+00:24:17,040 --> 00:24:25,440
+yeah so to some extent essentially testing also helps you improving your code quality
+
+242
+00:24:26,080 --> 00:24:35,360
+in my opinion. Yeah, yes, so when you design functions or subroutines
+
+243
+00:24:38,000 --> 00:24:43,760
+that's, and we'll talk more about that in the second hour, so the design of a function can
+
+244
+00:24:43,760 --> 00:24:51,600
+be guided by its tentative testability. So if you know upfront that, oh what I'm writing now,
+
+245
+00:24:52,480 --> 00:24:58,720
+it will not be possible to make a unit test for it in in any kind of let's say straightforward manner
+
+246
+00:24:58,720 --> 00:25:04,960
+then yeah okay perhaps you you can then have a good reason to reconsider how you are designing
+
+247
+00:25:04,960 --> 00:25:13,120
+that function and perhaps like it is not a function that might very well be let's say
+
+248
+00:25:14,240 --> 00:25:18,160
+what makes it difficult okay so
+
+249
+00:25:18,160 --> 00:25:29,100
+So let's here move over to the next episode here, which is testing locally.
+
+250
+00:25:29,100 --> 00:25:33,660
+And then I think perhaps, [name], you would like to take over the screen share?
+
+251
+00:25:33,660 --> 00:25:34,660
+Yes.
+
+252
+00:25:34,660 --> 00:25:35,660
+Yeah.
+
+253
+00:25:35,660 --> 00:25:36,660
+Okay.
+
+254
+00:25:36,660 --> 00:25:45,780
+So essentially in this exercise, we will quickly
+
+255
+00:25:45,780 --> 00:25:55,300
+show how to set up a test and how tests work in Python. There are examples in other languages as
+
+256
+00:25:55,300 --> 00:26:00,260
+well so if your preferred language is one of the others you can go through those exercises
+
+257
+00:26:00,260 --> 00:26:11,220
+afterwards but here we'll just show the Python example. So the minimal example that we can create
+
+258
+00:26:11,220 --> 00:26:30,100
+is we can essentially create a folder for our test things. Go in there and then take your favorite
+
+259
+00:26:31,060 --> 00:26:40,020
+editor and take this code. So this code conceptually consists of a function
+
+260
+00:26:40,020 --> 00:26:46,820
+which is a simple add and a test function for this which is
+
+261
+00:26:49,220 --> 00:26:57,380
+very Pythonian because of the untyped language and you can use integers or floating numbers
+
+262
+00:26:57,380 --> 00:27:01,780
+or whatever and add them and the plus operator is defined for multiple things.
+
+263
+00:27:02,420 --> 00:27:06,900
+So we actually want this add function to also be able to add strings
+
+264
+00:27:06,900 --> 00:27:09,660
+and therefore we want to
+
+265
+00:27:09,660 --> 00:27:11,680
+test this for strings
+
+266
+00:27:11,680 --> 00:27:13,740
+and then
+
+267
+00:27:13,740 --> 00:27:14,920
+in Python
+
+268
+00:27:14,920 --> 00:27:17,780
+always pytest which is part of
+
+269
+00:27:17,780 --> 00:27:19,660
+the code refinery environment that
+
+270
+00:27:19,660 --> 00:27:20,880
+you hopefully have installed
+
+271
+00:27:20,880 --> 00:27:23,580
+it's relatively simple
+
+272
+00:27:23,580 --> 00:27:25,700
+to run these
+
+273
+00:27:25,700 --> 00:27:27,780
+tests by
+
+274
+00:27:27,780 --> 00:27:29,340
+simply calling
+
+275
+00:27:29,340 --> 00:27:31,860
+pytest with the
+
+276
+00:27:31,860 --> 00:27:34,700
+file name
+
+277
+00:27:34,700 --> 00:27:35,460
+that you want
+
+278
+00:27:35,460 --> 00:27:42,260
+want to run the tests in or from and PyTest will automatically find everything that
+
+279
+00:27:43,140 --> 00:27:49,620
+every function name that starts with a test underscore. I want to quickly mention that
+
+280
+00:27:50,260 --> 00:27:55,860
+sorry I want to quickly mention that this is if you use four folders
+
+281
+00:27:57,700 --> 00:28:05,220
+PyTest actually looks for all for all files with test underscore starting so you could also
+
+282
+00:28:05,220 --> 00:28:12,660
+create two files one with test underscore example and the test in it and the other with
+
+283
+00:28:13,300 --> 00:28:18,980
+example which is called example and then import the function that you want to test from example
+
+284
+00:28:18,980 --> 00:28:27,300
+into your test but now let's see what happens if we actually break the test so if the test doesn't
+
+285
+00:28:27,300 --> 00:28:35,540
+work and well one simple option is to just remove the or just change the plus into a minus
+
+286
+00:28:39,140 --> 00:28:45,460
+and if we run the test again we get a failure here and this failure essentially tells us that
+
+287
+00:28:45,460 --> 00:28:53,540
+um it tried to assert so um i try to assert that minus one is five because the result of this
+
+288
+00:28:53,540 --> 00:29:01,220
+at two three now is minus one well two minus three is minus one and this is not five
+
+289
+00:29:03,140 --> 00:29:12,820
+so yeah it tells us what went wrong and where the so what kind of assertion was um wrong and
+
+290
+00:29:12,820 --> 00:29:18,340
+it even tells us where this minus one came from that it came from this at two plus uh two comma
+
+291
+00:29:18,340 --> 00:29:25,460
+three because this could be a bit could be more complex and then it really helps to see okay which
+
+292
+00:29:25,460 --> 00:29:38,980
+which side or which part um led to a wrong result um now we have uh we have already mentioned that
+
+293
+00:29:38,980 --> 00:29:44,580
+in the introduction um there is a problem that if you have for example floating numbers
+
+294
+00:29:48,340 --> 00:29:56,340
+and try to do
+
+295
+00:29:56,340 --> 00:29:58,060
+no wait
+
+296
+00:29:58,060 --> 00:30:05,160
+sorry and try to add those
+
+297
+00:30:05,160 --> 00:30:08,840
+you might end up with something that's not correct
+
+298
+00:30:08,840 --> 00:30:12,660
+or you might end up with some problems
+
+299
+00:30:12,660 --> 00:30:15,720
+because if you run this
+
+300
+00:30:15,720 --> 00:30:17,400
+well
+
+301
+00:30:17,400 --> 00:30:19,780
+now we see that our addition
+
+302
+00:30:19,780 --> 00:30:21,980
+of 0.1 and 0.2
+
+303
+00:30:21,980 --> 00:30:24,140
+is not exactly 0.3
+
+304
+00:30:24,140 --> 00:30:26,040
+and that's what we were
+
+305
+00:30:26,040 --> 00:30:27,860
+talking about with these tolerances earlier
+
+306
+00:30:27,860 --> 00:30:29,340
+and
+
+307
+00:30:29,340 --> 00:30:31,620
+the problem here is that
+
+308
+00:30:31,620 --> 00:30:32,680
+due to numerics
+
+309
+00:30:32,680 --> 00:30:35,400
+these are not presented as
+
+310
+00:30:35,400 --> 00:30:37,660
+0.1 and 0.2
+
+311
+00:30:37,660 --> 00:30:39,480
+but they have additional
+
+312
+00:30:39,480 --> 00:30:41,340
+additional
+
+313
+00:30:41,340 --> 00:30:43,000
+information way way
+
+314
+00:30:43,000 --> 00:30:45,200
+I don't know how
+
+315
+00:30:45,760 --> 00:30:51,600
+which digit um and you often for floating numbers have to do this
+
+316
+00:30:53,360 --> 00:31:02,160
+uh kind of correction where you take an absolute of oops not of this
+
+317
+00:31:05,840 --> 00:31:06,960
+an absolute of this
+
+318
+00:31:09,360 --> 00:31:13,120
+minus 0.3 uh no
+
+319
+00:31:15,760 --> 00:31:19,440
+wait uh yeah
+
+320
+00:31:21,280 --> 00:31:26,160
+yes and define that this is smaller than one
+
+321
+00:31:29,200 --> 00:31:33,040
+smaller than whatever epsilon you want to choose um
+
+322
+00:31:33,040 --> 00:31:36,960
+don't choose something too large and don't choose something too small
+
+323
+00:31:36,960 --> 00:31:40,760
+yeah this
+
+324
+00:31:40,760 --> 00:31:43,240
+1 and then
+
+325
+00:31:43,240 --> 00:31:45,540
+10 raised to minus 6 is
+
+326
+00:31:45,540 --> 00:31:46,440
+yeah I mean
+
+327
+00:31:46,440 --> 00:31:49,980
+take something that's
+
+328
+00:31:49,980 --> 00:31:50,480
+appropriate
+
+329
+00:31:50,480 --> 00:31:53,800
+it's rather commonly used tolerance I would say
+
+330
+00:31:53,800 --> 00:31:55,620
+like if you have no specific reason
+
+331
+00:31:55,620 --> 00:31:57,160
+for choosing a
+
+332
+00:31:57,160 --> 00:31:59,220
+given tolerance then this
+
+333
+00:31:59,220 --> 00:32:01,620
+1 minus 6 or 1 minus 9
+
+334
+00:32:01,620 --> 00:32:03,940
+you might
+
+335
+00:32:03,940 --> 00:32:05,800
+even have if you have more
+
+336
+00:32:05,800 --> 00:32:12,520
+complex programs some some programs especially some optimizers allow you to set tolerances
+
+337
+00:32:12,520 --> 00:32:17,940
+for optimal solutions and things and if you if you are setting a tolerance
+
+338
+00:32:17,940 --> 00:32:25,280
+you should make sure that your assertion for something is also within that tolerance even
+
+339
+00:32:25,280 --> 00:32:31,640
+if you know the correct result because you just allowed the the the program to be not exact
+
+340
+00:32:31,640 --> 00:32:37,160
+and that might lead to essentially going into the documentation
+
+341
+00:32:37,160 --> 00:32:39,360
+and see what is the default tolerance for this.
+
+342
+00:32:40,500 --> 00:32:43,100
+So if you have an optimization problem
+
+343
+00:32:43,100 --> 00:32:47,920
+and the optimization says, yeah, up to 1 to the minus 9,
+
+344
+00:32:48,820 --> 00:32:53,820
+you shouldn't assume that your optimal solution,
+
+345
+00:32:53,980 --> 00:32:57,980
+even if you know what it is, is exactly that
+
+346
+00:32:57,980 --> 00:33:04,380
+but could be up to minus nine worse than what you expect.
+
+347
+00:33:08,500 --> 00:33:13,680
+So yeah, each test framework has its own way
+
+348
+00:33:13,680 --> 00:33:14,620
+of collecting the tests.
+
+349
+00:33:14,880 --> 00:33:17,340
+For PyTest, it's relatively simple.
+
+350
+00:33:17,840 --> 00:33:21,340
+If you have a function, I can actually quickly show that.
+
+351
+00:33:27,980 --> 00:33:37,820
+oh this would be done
+
+352
+00:33:43,020 --> 00:33:48,620
+so and if i now
+
+353
+00:33:49,260 --> 00:33:53,500
+just say please run this on this folder it will collect
+
+354
+00:33:53,500 --> 00:34:01,980
+the from the test example pi will collect test add which we had defined that okay we import
+
+355
+00:34:01,980 --> 00:34:08,860
+the add function from example and then have the test function here so it will look into all files
+
+356
+00:34:08,860 --> 00:34:15,580
+that have test underscore select collect all functions that start with test underscore and
+
+357
+00:34:15,580 --> 00:34:22,140
+run those and it does not run the test underscore from example.py because example.py doesn't start
+
+358
+00:34:22,140 --> 00:34:37,420
+with a test underscore yeah okay this much for the local testing were there any questions [name]
+
+359
+00:34:38,540 --> 00:34:39,660
+yes let me check
+
+360
+00:34:39,660 --> 00:34:46,860
+No, not at this point.
+
+361
+00:34:46,860 --> 00:34:56,060
+Okay, then let's go on to automated testing, which is actually really a convenient feature
+
+362
+00:34:56,060 --> 00:34:59,480
+of GitHub, but also GitLab.
+
+363
+00:34:59,480 --> 00:35:08,220
+So to make sure that your code stays correct or that your tests are still running, you
+
+364
+00:35:08,220 --> 00:35:14,320
+You could, of course, always, before pushing something, run PyTest or whatever testing framework you have.
+
+365
+00:35:15,140 --> 00:35:19,540
+But on tendency, at least I tend to forget these kind of things.
+
+366
+00:35:20,460 --> 00:35:26,360
+So having someone else automatically do it for you is really, really convenient.
+
+367
+00:35:26,360 --> 00:35:34,820
+And that's where something called continuous integration or continuous development comes in.
+
+368
+00:35:34,820 --> 00:35:43,440
+so continuous integration essentially makes sure that even if you change something the tests are
+
+369
+00:35:43,440 --> 00:35:47,660
+still working this is of course under the assumption that the tests haven't changed
+
+370
+00:35:47,660 --> 00:35:54,240
+haven't changed um so if you change your tests um things can fail and sometimes you unfortunately
+
+371
+00:35:54,240 --> 00:36:01,480
+have to have to change tests if uh the preconditions for the test change but
+
+372
+00:36:01,480 --> 00:36:03,540
+on a normal assumption
+
+373
+00:36:03,540 --> 00:36:05,860
+tests should be
+
+374
+00:36:05,860 --> 00:36:08,160
+as static as possible and not
+
+375
+00:36:08,160 --> 00:36:08,860
+change
+
+376
+00:36:08,860 --> 00:36:10,480
+so
+
+377
+00:36:10,480 --> 00:36:14,000
+in this example we will essentially
+
+378
+00:36:14,000 --> 00:36:15,480
+run
+
+379
+00:36:15,480 --> 00:36:18,380
+a small
+
+380
+00:36:18,380 --> 00:36:20,160
+example for a continuous integration
+
+381
+00:36:20,160 --> 00:36:24,060
+test with GitHub
+
+382
+00:36:24,060 --> 00:36:26,180
+and
+
+383
+00:36:26,180 --> 00:36:28,200
+the assumption is
+
+384
+00:36:28,200 --> 00:36:28,740
+you have
+
+385
+00:36:29,700 --> 00:36:36,020
+you have your git login and everything and we'll begin with just creating a new repository
+
+386
+00:36:37,220 --> 00:36:43,540
+so this is from your uh from yeah from github if you
+
+387
+00:36:45,780 --> 00:36:47,940
+click on new repository you end up in here
+
+388
+00:36:49,460 --> 00:36:54,020
+we don't want to have a template name but we want to call it example ci
+
+389
+00:36:58,740 --> 00:37:19,660
+and want to add a read me so that we can make this relatively easily so let's
+
+390
+00:37:19,660 --> 00:37:33,180
+clone this and have it in here so we have a example ci with a readme okay
+
+391
+00:37:36,380 --> 00:37:42,780
+now we want to have we want to do exactly this split into functions and test functions here
+
+392
+00:37:42,780 --> 00:37:44,800
+so we have
+
+393
+00:37:44,800 --> 00:37:48,620
+a file called
+
+394
+00:37:48,620 --> 00:37:49,640
+functions.py
+
+395
+00:37:49,640 --> 00:37:52,120
+and we want
+
+396
+00:37:52,120 --> 00:37:54,980
+to add this code
+
+397
+00:37:54,980 --> 00:37:59,700
+and
+
+398
+00:37:59,700 --> 00:38:02,580
+there are some
+
+399
+00:38:02,580 --> 00:38:03,900
+mistakes in here
+
+400
+00:38:03,900 --> 00:38:06,540
+this is also something that you could call
+
+401
+00:38:06,540 --> 00:38:08,240
+test-driven development
+
+402
+00:38:08,240 --> 00:38:11,380
+because we are
+
+403
+00:38:11,380 --> 00:38:27,300
+To some extent, we have tests before we actually do the final coding here.
+
+404
+00:38:30,820 --> 00:38:34,020
+Even though our tests are currently not yet active.
+
+405
+00:38:35,940 --> 00:38:40,260
+But these are the two tests, the two files that we have.
+
+406
+00:38:41,380 --> 00:39:09,380
+And we need to add them with a small comment and push it to our
+
+407
+00:39:09,380 --> 00:39:23,220
+push it to our remote so if we run our tests locally they seem to work
+
+408
+00:39:23,220 --> 00:39:32,140
+because we haven't activated the subject tests and the car the Fahrenheit tests yet
+
+409
+00:39:32,140 --> 00:39:39,020
+because if we would activate them they wouldn't work so to add automated testing it's actually
+
+410
+00:39:39,020 --> 00:39:51,780
+relatively easy if we are in our repository and click on actions we have
+
+411
+00:39:51,780 --> 00:39:58,040
+this get started with github actions and we want to use this Python application
+
+412
+00:39:58,040 --> 00:40:07,520
+and configure this Python application so I'm you and did we talk about github
+
+413
+00:40:07,520 --> 00:40:16,560
+actions in uh last week i think so um yeah but you you i think it's good if you walk it through
+
+414
+00:40:19,760 --> 00:40:20,480
+in general
+
+415
+00:40:22,720 --> 00:40:29,440
+how can i we spoke about it yesterday when it comes to deploying uh documentation with uh
+
+416
+00:40:29,440 --> 00:40:39,600
+in general um github action is something that is run every time um something happens on your
+
+417
+00:40:39,600 --> 00:40:45,480
+branch so in this case we tell it that it should do something on push
+
+418
+00:40:45,480 --> 00:40:53,140
+and it should do something on pull requests and we also um one
+
+419
+00:40:53,140 --> 00:41:04,260
+yeah i'll just copy that um and we give it certain permissions uh as to the contents of the of uh the
+
+420
+00:41:04,980 --> 00:41:11,540
+of the repository and the main permission here is sorry is read permission so that it can see what's
+
+421
+00:41:11,540 --> 00:41:18,660
+happening in there and um for our for our action we also want to give it a write access to pull
+
+422
+00:41:18,660 --> 00:41:24,980
+requests because what we want to do is we want to write something in the end into the
+
+423
+00:41:26,260 --> 00:41:32,900
+pull request that's concerning coverage because we want to see what our tests actually cover
+
+424
+00:41:34,500 --> 00:41:39,060
+and to be able to do that we need to allow it to write into pull requests
+
+425
+00:41:39,060 --> 00:41:44,680
+then I go over in here
+
+426
+00:41:44,680 --> 00:41:47,800
+then it essentially is telling it what
+
+427
+00:41:47,800 --> 00:41:52,260
+sorry
+
+428
+00:41:52,260 --> 00:41:56,820
+then it's telling it what kind of basic image to use
+
+429
+00:41:56,820 --> 00:42:01,620
+and then there are the steps into what it should do
+
+430
+00:42:01,620 --> 00:42:05,680
+so it uses a checkout action, that's a different action that
+
+431
+00:42:05,680 --> 00:42:08,200
+checks out the repository
+
+432
+00:42:08,200 --> 00:42:10,260
+action that
+
+433
+00:42:10,260 --> 00:42:14,180
+sets up Python and this
+
+434
+00:42:14,180 --> 00:42:15,520
+is where we
+
+435
+00:42:15,520 --> 00:42:18,140
+want to add
+
+436
+00:42:18,140 --> 00:42:20,980
+our
+
+437
+00:42:20,980 --> 00:42:23,900
+instead of just
+
+438
+00:42:23,900 --> 00:42:26,080
+pytest we also want to add
+
+439
+00:42:26,080 --> 00:42:28,260
+the pytest cuff package
+
+440
+00:42:28,260 --> 00:42:30,500
+which essentially allows us to
+
+441
+00:42:30,500 --> 00:42:32,060
+add this coverage
+
+442
+00:42:32,060 --> 00:42:33,000
+report in the end
+
+443
+00:42:33,000 --> 00:42:38,040
+then it does
+
+444
+00:42:38,040 --> 00:42:41,880
+some linting with Flake so that
+
+445
+00:42:41,880 --> 00:42:45,260
+our code style is
+
+446
+00:42:45,260 --> 00:42:50,300
+better or that it at least complains if the code style is not good
+
+447
+00:42:50,300 --> 00:42:52,960
+and then
+
+448
+00:42:52,960 --> 00:42:58,220
+we want to
+
+449
+00:42:58,220 --> 00:43:02,320
+run pytest and in pytest we want to create
+
+450
+00:43:02,320 --> 00:43:04,720
+a coverage report
+
+451
+00:43:04,720 --> 00:43:06,620
+and the coverage report can come
+
+452
+00:43:06,620 --> 00:43:07,620
+in different formats
+
+453
+00:43:07,620 --> 00:43:10,580
+and we want to have it in an XML
+
+454
+00:43:10,580 --> 00:43:12,660
+format because the XML format is what
+
+455
+00:43:12,660 --> 00:43:14,860
+is going to be used
+
+456
+00:43:14,860 --> 00:43:16,900
+in the
+
+457
+00:43:16,900 --> 00:43:17,700
+next stage
+
+458
+00:43:17,700 --> 00:43:20,000
+or in the next step
+
+459
+00:43:20,000 --> 00:43:22,460
+and we want to create the coverage report
+
+460
+00:43:22,460 --> 00:43:24,160
+for the whole folder
+
+461
+00:43:24,160 --> 00:43:28,620
+and this create coverage
+
+462
+00:43:28,620 --> 00:43:29,580
+is another action
+
+463
+00:43:29,580 --> 00:43:34,800
+that was it was implemented and that is a very simplistic coverage report that's
+
+464
+00:43:34,800 --> 00:43:45,420
+being put into pull requests okay and now how do I get rid of this sidebar
+
+465
+00:43:45,420 --> 00:43:51,680
+here seemingly can't which is really annoying because it covers half of my
+
+466
+00:43:51,680 --> 00:44:00,160
+okay then we want to commit these changes and they will be in the dot
+
+467
+00:44:00,160 --> 00:44:11,640
+github workflows folder and let's call this at CI CD and commit directly to the
+
+468
+00:44:11,640 --> 00:44:18,720
+main branch yes so now this has been added and now we have an action that
+
+469
+00:44:18,720 --> 00:44:31,440
+says CI CD and builds this Python app. This will take a little bit of time and at some point
+
+470
+00:44:34,560 --> 00:44:35,200
+this is done.
+
+471
+00:44:39,680 --> 00:44:46,560
+So let's see what this has actually done. Okay, so this has run a setup the job,
+
+472
+00:44:46,560 --> 00:44:53,600
+done the different steps, but it didn't create coverage. The reason why it didn't create coverage
+
+473
+00:44:54,640 --> 00:45:02,480
+is that we restricted this to only create coverages on pull requests, because
+
+474
+00:45:05,120 --> 00:45:11,920
+it doesn't, for this specific action, make sense to create these coverage reports during a push or
+
+475
+00:45:11,920 --> 00:45:15,200
+or in this case, a direct commit,
+
+476
+00:45:15,200 --> 00:45:17,420
+which is essentially a push,
+
+477
+00:45:17,420 --> 00:45:18,900
+because it doesn't have anything
+
+478
+00:45:18,900 --> 00:45:22,080
+to put the coverage report into.
+
+479
+00:45:23,660 --> 00:45:28,660
+So let's see, they have been run,
+
+480
+00:45:31,920 --> 00:45:36,920
+and we can go back here and let's pull what we have.
+
+481
+00:45:41,920 --> 00:45:53,360
+Yeah, Git pull origin main is essentially the same as just Git pull in this instance, because I'm on the main branch, which is tracking the remote or the origins main.
+
+482
+00:45:56,060 --> 00:46:07,360
+Now, we want to update our test functions to actually.
+
+483
+00:46:11,920 --> 00:46:26,680
+run the test subtraction check and yeah because we've noticed that there is an
+
+484
+00:46:26,680 --> 00:46:32,440
+issue with the CI CD there was the subtraction we create a new issue
+
+485
+00:46:41,920 --> 00:47:00,080
+This is not something that you need to do, but this is the assumption that someone else
+
+486
+00:47:00,080 --> 00:47:06,520
+has created this issue, because they noticed that something is wrong.
+
+487
+00:47:06,520 --> 00:47:34,860
+Actually, I forgot to actually add this and push it.
+
+488
+00:47:34,860 --> 00:47:40,140
+So and if you now look into the actions, there's the test for subtract that has been added
+
+489
+00:47:40,140 --> 00:47:45,060
+and the action is being run again.
+
+490
+00:47:45,060 --> 00:47:54,500
+So [name], as mentioned, so it was the question here on the document, whether this is type
+
+491
+00:47:54,500 --> 00:48:00,660
+along or pure demo and what we're doing now is pure demonstrations.
+
+492
+00:48:00,660 --> 00:48:07,140
+please follow along and and then you you can do the exercise on your own later
+
+493
+00:48:10,100 --> 00:48:11,380
+yeah um
+
+494
+00:48:16,260 --> 00:48:17,380
+okay uh so
+
+495
+00:48:19,540 --> 00:48:29,540
+let's see and we actually far have a this build failed because in the tests the tests indicated
+
+496
+00:48:29,540 --> 00:48:42,660
+that 5 is not minus 1, and 5 is what comes out of subtract 2 and 3.
+
+497
+00:48:43,460 --> 00:48:50,740
+So seemingly our function is wrong. Well, you might have seen that right in the beginning.
+
+498
+00:48:50,740 --> 00:49:05,140
+So, we need to fix this.
+
+499
+00:49:05,140 --> 00:49:09,780
+And add the functions.
+
+500
+00:49:09,780 --> 00:49:28,340
+Yeah, this is now a bit the wrong way around, but I forgot to create the branch.
+
+501
+00:49:28,340 --> 00:49:54,780
+So now I've fixed this issue.
+
+502
+00:49:54,780 --> 00:50:24,100
+And we'll create a pull request to change this.
+
+503
+00:50:24,100 --> 00:50:34,700
+And there are no conflicts, but there is an action that's being run.
+
+504
+00:50:34,700 --> 00:50:41,460
+And let's see if this fixed our problem.
+
+505
+00:50:41,460 --> 00:50:48,180
+So actually, and now we see what this coverage bot does, or this coverage report does.
+
+506
+00:50:48,180 --> 00:50:53,200
+So there is a current status, there were no new files added, functions.py has a coverage
+
+507
+00:50:53,200 --> 00:50:54,160
+of 75%
+
+508
+00:50:54,160 --> 00:50:57,220
+and it essentially tells us
+
+509
+00:50:57,220 --> 00:50:59,380
+okay, this is the coverage of the code
+
+510
+00:50:59,380 --> 00:51:01,480
+that we have at the moment, 75%
+
+511
+00:51:01,480 --> 00:51:03,260
+and all the tests
+
+512
+00:51:03,260 --> 00:51:03,940
+worked. So
+
+513
+00:51:03,940 --> 00:51:06,140
+that's
+
+514
+00:51:06,140 --> 00:51:09,280
+quite
+
+515
+00:51:09,280 --> 00:51:11,380
+okay. So let's
+
+516
+00:51:11,380 --> 00:51:11,980
+merge this.
+
+517
+00:51:17,180 --> 00:51:19,180
+Let's see if I completely screw up.
+
+518
+00:51:23,200 --> 00:51:29,920
+No. Okay. So, I could pull this back to my main branch here.
+
+519
+00:51:32,960 --> 00:51:42,080
+Okay. So, what's the next? Next, we do have more tests
+
+520
+00:51:42,080 --> 00:51:49,080
+that we already had
+
+521
+00:51:49,080 --> 00:51:51,000
+well
+
+522
+00:51:51,000 --> 00:51:53,700
+the optimal that we could have
+
+523
+00:51:53,700 --> 00:51:55,580
+is that we get 100% coverage
+
+524
+00:51:55,580 --> 00:51:57,320
+but this is
+
+525
+00:51:57,320 --> 00:51:58,760
+not something that you
+
+526
+00:51:58,760 --> 00:52:01,220
+commonly manage to get
+
+527
+00:52:01,220 --> 00:52:02,540
+but
+
+528
+00:52:02,540 --> 00:52:05,240
+for this simple thing we can
+
+529
+00:52:05,240 --> 00:52:06,880
+probably try to do this
+
+530
+00:52:06,880 --> 00:52:09,860
+so we also
+
+531
+00:52:09,860 --> 00:52:11,500
+uncomment this test
+
+532
+00:52:11,500 --> 00:52:19,340
+for the for the fahrenheit check and and here it's a bit more it's a bit more
+
+533
+00:52:22,380 --> 00:52:27,580
+complicated um and i'll quickly go over what this is doing so
+
+534
+00:52:29,580 --> 00:52:39,660
+this is actually the pi test version of um of having this absolute and this is probably what
+
+535
+00:52:39,660 --> 00:52:43,420
+you should be doing under normal circumstances so this is approximating
+
+536
+00:52:44,620 --> 00:52:49,420
+um that this number that the reset from here should be approximately 50
+
+537
+00:52:50,300 --> 00:52:59,020
+given some tolerance and in this case the pi test default tolerance and there's also um a function a
+
+538
+00:52:59,020 --> 00:53:09,260
+uh an additional yeah there's an additional um statement here which is sometimes functions do uh
+
+539
+00:53:09,260 --> 00:53:18,940
+are expected to raise errors if they get inputs that are wrong or that are unexpected.
+
+540
+00:53:19,500 --> 00:53:26,060
+And we can test this by having this with PyTest.Raises assertion error.
+
+541
+00:53:30,780 --> 00:53:36,620
+If this does not raise the assertion error, then it will fail.
+
+542
+00:53:37,580 --> 00:53:40,460
+So let's see.
+
+543
+00:53:43,980 --> 00:53:46,140
+Let's see what happens if we run the pytest here.
+
+544
+00:53:47,820 --> 00:53:53,020
+Okay, so there is definitely an issue with what we have here.
+
+545
+00:53:55,580 --> 00:54:01,420
+And we need to fix our Fahrenheit code.
+
+546
+00:54:01,420 --> 00:54:24,220
+and I let's do this now and and now I admit let's see we had a working
+
+547
+00:54:24,220 --> 00:54:33,340
+fahrenheit functions um fahrenheit function in the start and the motivation because my stuff is ah
+
+548
+00:54:34,060 --> 00:54:36,300
+it's just the nine of the five divided by nine
+
+549
+00:54:40,860 --> 00:54:51,100
+and this is working so okay and if you run the part it's still um we have still an issue because
+
+550
+00:54:51,100 --> 00:54:58,700
+it doesn't raise an error and that's uh well actually correct because uh or
+
+551
+00:54:59,820 --> 00:55:01,900
+it's actually good that air that we have this because
+
+552
+00:55:02,700 --> 00:55:07,820
+um we would expect that we can't convert something that's below zero kelvin
+
+553
+00:55:09,340 --> 00:55:14,940
+so a value of minus 600 celsius of minus 600 front right just doesn't make any sense
+
+554
+00:55:14,940 --> 00:55:18,700
+so what's the
+
+555
+00:55:18,700 --> 00:55:24,300
+what's the
+
+556
+00:55:24,300 --> 00:55:25,440
+actual
+
+557
+00:55:25,440 --> 00:55:30,180
+let's see
+
+558
+00:55:30,180 --> 00:55:43,980
+what's the minimum Fahrenheit
+
+559
+00:55:43,980 --> 00:56:05,100
+Minimum well-defined number of Fahrenheit.
+
+560
+00:56:05,100 --> 00:56:06,100
+Something like this.
+
+561
+00:56:06,100 --> 00:56:07,100
+Yeah.
+
+562
+00:56:07,100 --> 00:56:08,100
+Could be.
+
+563
+00:56:08,100 --> 00:56:09,100
+Yes.
+
+564
+00:56:09,100 --> 00:56:10,600
+I never thought about it.
+
+565
+00:56:10,600 --> 00:56:11,600
+That's zero Kelvin.
+
+566
+00:56:11,600 --> 00:56:12,600
+Yes.
+
+567
+00:56:12,600 --> 00:56:13,840
+At least according to Google.
+
+568
+00:56:14,840 --> 00:56:17,340
+And if it has this, that works.
+
+569
+00:56:18,160 --> 00:56:28,740
+And we can, of course, also just, I won't, let's.
+
+570
+00:56:42,600 --> 00:57:09,500
+So, edit, put it on, put it to the repository, and then
+
+571
+00:57:09,500 --> 00:57:14,780
+we also see that the issue has been closed
+
+572
+00:57:14,780 --> 00:57:16,920
+because we had a fix in this
+
+573
+00:57:16,920 --> 00:57:17,820
+one per request
+
+574
+00:57:17,820 --> 00:57:20,840
+don't really need further descriptions
+
+575
+00:57:20,840 --> 00:57:25,020
+but let's see what
+
+576
+00:57:25,020 --> 00:57:26,880
+the coverage report
+
+577
+00:57:26,880 --> 00:57:28,480
+will tell us in a second
+
+578
+00:57:28,480 --> 00:57:30,580
+I think this is a good
+
+579
+00:57:30,580 --> 00:57:33,080
+finish of the first of this
+
+580
+00:57:33,080 --> 00:57:35,080
+lecture here or of the first
+
+581
+00:57:35,080 --> 00:57:35,620
+part here
+
+582
+00:57:35,620 --> 00:57:37,980
+and then
+
+583
+00:57:37,980 --> 00:57:41,780
+so we have 100% coverage
+
+584
+00:57:41,780 --> 00:57:43,980
+reached even with a test
+
+585
+00:57:43,980 --> 00:57:45,980
+that even having a test
+
+586
+00:57:45,980 --> 00:57:46,300
+that
+
+587
+00:57:46,300 --> 00:57:49,840
+uses or that checks for
+
+588
+00:57:49,840 --> 00:57:51,440
+errors being thrown from the function
+
+589
+00:57:51,440 --> 00:57:55,380
+and I think that's a good
+
+590
+00:57:55,380 --> 00:57:57,940
+time to go for a short
+
+591
+00:57:57,940 --> 00:57:59,500
+break or
+
+592
+00:57:59,500 --> 00:58:03,600
+yes yeah thank you [name]
+
+593
+00:58:03,600 --> 00:58:06,060
+that sounds good
+
+594
+00:58:06,060 --> 00:58:07,340
+so
+
+595
+00:58:07,340 --> 00:58:16,800
+So we will then have a 10 minute break and reconvene at 10 past the full hour.
+
+596
+00:58:18,800 --> 00:58:19,760
+Bye.
+
+597
+00:58:22,000 --> 00:58:31,140
+hi so we are back and we are back with test design and I'll hand over to [name]
+
+598
+00:58:31,140 --> 00:58:42,060
+for that thank you [name] so what we will do now will be also be a bit
+
+599
+00:58:42,060 --> 00:58:48,780
+hands-on we will now be back to we we we saw here before the break uh automated
+
+600
+00:58:50,140 --> 00:58:55,580
+testing and and too much was showing how this can be done with github actions
+
+601
+00:58:56,940 --> 00:59:01,900
+um we could perhaps there was one a few good questions here that we could
+
+602
+00:59:04,780 --> 00:59:05,980
+highlight here so
+
+603
+00:59:05,980 --> 00:59:16,060
+So first of all, you're very welcome to work through these automated testing exercises
+
+604
+00:59:16,060 --> 00:59:18,380
+on your own.
+
+605
+00:59:18,380 --> 00:59:22,240
+And if you have any questions, you can then certainly, as usual, put them here in the
+
+606
+00:59:22,240 --> 00:59:27,380
+collaborative document.
+
+607
+00:59:27,380 --> 00:59:30,600
+How often do you use automated testing?
+
+608
+00:59:30,600 --> 00:59:36,360
+It depends a lot on the code that I'm working on.
+
+609
+00:59:36,360 --> 00:59:42,780
+The more likely it is to go into some kind of production, the more likely it is to have
+
+610
+00:59:42,780 --> 00:59:44,180
+tests.
+
+611
+00:59:44,180 --> 00:59:51,720
+So one thing which has become very popular and is very useful is this that you set up
+
+612
+00:59:51,720 --> 01:00:01,800
+up when you host a git repository on github or be it on github then you can then if you are
+
+613
+01:00:02,520 --> 01:00:09,960
+the maintainer of that repo you can enforce so that i mean first and foremost you cannot just
+
+614
+01:00:09,960 --> 01:00:19,320
+commit stuff directly to me to the main bronze then secondly when you contribute stuff to fit
+
+615
+01:00:19,320 --> 01:00:28,760
+your brand then that's a very good location a natural location to to say require that to do
+
+616
+01:00:28,760 --> 01:00:35,960
+testing so probably if you're developing code and you do it locally on your local computer then you
+
+617
+01:00:35,960 --> 01:00:41,880
+can run the tests with pipe test or another framework and you do it locally and then when
+
+618
+01:00:41,880 --> 01:00:53,000
+you commit this new code to your feature branch and you make a merge request back to GitHub, then
+
+619
+01:00:55,800 --> 01:00:58,040
+that's a good occasion then to request that, okay,
+
+620
+01:00:59,880 --> 01:01:06,120
+before being able to merge the code, we would like to see all of these tests being passed.
+
+621
+01:01:06,120 --> 01:01:13,260
+that's definitely something that i've seen being done for larger projects um
+
+622
+01:01:13,260 --> 01:01:19,800
+where you have multiple different contributors and you just want to make sure that you have a
+
+623
+01:01:19,800 --> 01:01:28,220
+high quality code base and yeah testing helps in maintaining that high quality code base
+
+624
+01:01:28,220 --> 01:01:30,680
+especially
+
+625
+01:01:30,680 --> 01:01:33,960
+and I think this is
+
+626
+01:01:33,960 --> 01:01:36,100
+very important
+
+627
+01:01:36,100 --> 01:01:37,960
+indeed it's very important
+
+628
+01:01:37,960 --> 01:01:38,600
+for larger
+
+629
+01:01:38,600 --> 01:01:41,180
+projects where you
+
+630
+01:01:41,180 --> 01:01:43,680
+simply need to have this a little bit
+
+631
+01:01:43,680 --> 01:01:45,860
+you need to have a bit of bookkeeping
+
+632
+01:01:45,860 --> 01:01:48,260
+of some kind
+
+633
+01:01:48,260 --> 01:01:50,060
+because
+
+634
+01:01:50,060 --> 01:01:52,120
+it's not so that you might
+
+635
+01:01:52,120 --> 01:01:53,900
+have like in smaller settings
+
+636
+01:01:53,900 --> 01:01:56,160
+perhaps you have the colleague in the same room
+
+637
+01:01:56,160 --> 01:01:58,160
+or in the same corridor
+
+638
+01:01:58,160 --> 01:02:03,760
+you can just go and ask them and so forth but if you're 20 person you sit at five different
+
+639
+01:02:03,760 --> 01:02:13,760
+locations then you need to have some procedures for this and and what is then provided by these
+
+640
+01:02:14,960 --> 01:02:21,840
+services companies github gitlab bitbucket and so forth that that's it's a good platform
+
+641
+01:02:21,840 --> 01:02:36,660
+so what we are going to talk now about is test design so this will be a little bit also provide
+
+642
+01:02:36,660 --> 01:02:46,140
+examples of how you can for a few different types of functions or different or different code how
+
+643
+01:02:46,140 --> 01:02:54,940
+you can write tests and you can see here in in the lesson material and perhaps [name]
+
+644
+01:02:56,140 --> 01:03:03,340
+can you check if we have the direct link to this episode in the notes yes it is okay great
+
+645
+01:03:04,620 --> 01:03:15,020
+so we will take it here from the top um and uh work few some other examples and yeah this will
+
+646
+01:03:15,020 --> 01:03:24,220
+be a demo but i will do it rather slow so yeah certainly if you want you can do it a little bit
+
+647
+01:03:24,220 --> 01:03:32,460
+type along like it but also perfectly fine to get back to it later so
+
+648
+01:03:37,180 --> 01:03:42,860
+as you can see here we have language specific instructions and that means that
+
+649
+01:03:45,020 --> 01:03:55,740
+the template codes are available in one-on-one language and also here we have some instructions
+
+650
+01:03:55,740 --> 01:04:02,580
+on various frameworks for other codes so we'll get back to that a little bit later but for
+
+651
+01:04:02,580 --> 01:04:11,880
+the beginning here we will work a bit continue to work with Python.
+
+652
+01:04:11,880 --> 01:04:23,560
+So we have here a function it's called well simply factorial and what it's done what it's
+
+653
+01:04:23,560 --> 01:04:32,600
+doing is is rather clear it takes one input argument and that is an integer number and
+
+654
+01:04:32,600 --> 01:04:38,660
+for this input argument it calculates the factorial.
+
+655
+01:04:38,660 --> 01:04:51,220
+So [name], is this code that can be tested or is there some, let's say, pitfall that
+
+656
+01:04:51,220 --> 01:04:53,120
+makes it difficult to test?
+
+657
+01:04:53,120 --> 01:04:58,760
+This is relatively straightforward because you have a clear function that gets inputs
+
+658
+01:04:58,760 --> 01:04:59,760
+and outputs.
+
+659
+01:04:59,760 --> 01:05:05,640
+You can test for the value error with PyTester erasers.
+
+660
+01:05:05,640 --> 01:05:07,560
+can test multiple different values
+
+661
+01:05:07,560 --> 01:05:09,600
+for it. There is
+
+662
+01:05:09,600 --> 01:05:10,460
+nothing that
+
+663
+01:05:10,460 --> 01:05:13,400
+kind of happens on the side
+
+664
+01:05:13,400 --> 01:05:15,460
+that you have to take care of because
+
+665
+01:05:15,460 --> 01:05:16,580
+it's all
+
+666
+01:05:16,580 --> 01:05:19,460
+internal. There's not
+
+667
+01:05:19,460 --> 01:05:21,560
+even any... There's one
+
+668
+01:05:21,560 --> 01:05:23,600
+somewhat function called
+
+669
+01:05:23,600 --> 01:05:25,580
+the range, but
+
+670
+01:05:25,580 --> 01:05:27,420
+let's assume that
+
+671
+01:05:27,420 --> 01:05:29,160
+what...
+
+672
+01:05:29,160 --> 01:05:31,480
+that the Python basic language is
+
+673
+01:05:31,480 --> 01:05:31,900
+correct.
+
+674
+01:05:34,520 --> 01:05:35,240
+Yes.
+
+675
+01:05:35,640 --> 01:05:48,640
+So I will now shift over to the terminal and then we'll have a look on how this code can be tested.
+
+676
+01:05:48,640 --> 01:05:52,640
+So first I copy the code.
+
+677
+01:05:52,640 --> 01:05:57,640
+So it's like a definition and.
+
+678
+01:05:57,640 --> 01:06:03,640
+Yeah, OK, I already had it here.
+
+679
+01:06:03,640 --> 01:06:17,760
+And also, yeah, actually, I also already had here what is then, let's say, the way how to get started to set up the tests.
+
+680
+01:06:17,760 --> 01:06:20,380
+So we will here use PyTest.
+
+681
+01:06:22,360 --> 01:06:26,780
+So, yeah, first is the function.
+
+682
+01:06:26,780 --> 01:06:42,340
+and adding to this we have the import statement import pytest and we'll then add some assertions
+
+683
+01:06:42,340 --> 01:06:54,100
+and this case here it is it's rather clear upfront what this could be so yeah the
+
+684
+01:06:54,100 --> 01:07:04,180
+factorial of zero by definition is one then factorial of one is also one
+
+685
+01:07:04,180 --> 01:07:12,780
+and factorial of two is two and so we have now here in this case here three
+
+686
+01:07:12,780 --> 01:07:21,640
+assertions in the code and in the test factorial function so let's see if we
+
+687
+01:07:21,640 --> 01:07:31,640
+to the terminal what happens if you execute it and as usual we then invoke it with the
+
+688
+01:07:31,640 --> 01:07:34,920
+pi test so pi test factorial dot pi
+
+689
+01:07:39,560 --> 01:07:46,920
+and yeah it collected this test item and it came out correctly and it was very fast
+
+690
+01:07:46,920 --> 01:07:53,660
+i would i would want to add one thing i dislike one thing about this test
+
+691
+01:07:53,660 --> 01:08:01,480
+and that is that it doesn't test for the um for the value arrow that is raised for n and smaller
+
+692
+01:08:01,480 --> 01:08:11,120
+than zero yes very good point very good point um because that is an essential part of this
+
+693
+01:08:11,120 --> 01:08:17,520
+function and it should not return something when a value of smaller than zero gets put in.
+
+694
+01:08:20,320 --> 01:08:27,280
+There's even things where are factorials of non-integer numbers even defined? I don't
+
+695
+01:08:27,280 --> 01:08:34,000
+think so. So this function should make a couple more tests actually. Yes.
+
+696
+01:08:36,800 --> 01:08:38,560
+That could be called in a test.
+
+697
+01:08:41,120 --> 01:08:43,740
+Just having a couple more assertions, and yeah.
+
+698
+01:08:48,140 --> 01:08:52,160
+Yes, so that's a good suggestion.
+
+699
+01:09:00,540 --> 01:09:03,540
+So here, so the assertion statements as we have them here
+
+700
+01:09:03,540 --> 01:09:09,740
+are for the output, I mean, this is...
+
+701
+01:09:09,740 --> 01:09:10,560
+For the outputs, yes.
+
+702
+01:09:10,560 --> 01:09:14,960
+Yeah, I mean, this forces a valid input and you have the valid outputs.
+
+703
+01:09:16,520 --> 01:09:20,460
+So how could we then do that?
+
+704
+01:09:20,880 --> 01:09:27,340
+So actually, like here, as you can see up here, already in the definition of this code,
+
+705
+01:09:29,520 --> 01:09:37,520
+we do have, I mean, we have this check for the argument built into the method,
+
+706
+01:09:37,520 --> 01:09:39,260
+to the function itself.
+
+707
+01:09:40,560 --> 01:10:03,560
+So in this case here, we already have a bit of functionality to test for it.
+
+708
+01:10:03,560 --> 01:10:12,800
+So I would say that this is, I mean, what we have here, raise value error, that is something
+
+709
+01:10:12,800 --> 01:10:24,560
+with this, there's a specific, that's error handling, namely is that a program, I mean,
+
+710
+01:10:24,560 --> 01:10:32,440
+we didn't talk about that earlier, but that is something which is rather important for
+
+711
+01:10:32,440 --> 01:10:41,920
+usability for a program because when you have an intended use case and and if you
+
+712
+01:10:41,920 --> 01:10:48,400
+are making the code I mean if you're working the code with the inputs which
+
+713
+01:10:48,400 --> 01:10:58,600
+are nonsensical then it's always good to guide the use of the program to in
+
+714
+01:10:58,600 --> 01:11:06,280
+right direction so in this case here it will point out that it's not a meaningful thing to
+
+715
+01:11:06,280 --> 01:11:14,040
+try to calculate factorial for a negative number to me it's uh it's something that i think is
+
+716
+01:11:14,040 --> 01:11:19,560
+relatively important if you have these kind of functions because it's um very very often uh if
+
+717
+01:11:19,560 --> 01:11:25,880
+you have a function that can just accept any anything and gives you something you end up with
+
+718
+01:11:25,880 --> 01:11:30,080
+well, you end up with wrong results
+
+719
+01:11:30,080 --> 01:11:33,400
+instead of having an error thrown at you.
+
+720
+01:11:34,240 --> 01:11:37,440
+And wrong results is something that
+
+721
+01:11:37,440 --> 01:11:39,480
+if you notice that they are wrong,
+
+722
+01:11:40,280 --> 01:11:42,120
+then, okay, you can start debugging,
+
+723
+01:11:42,840 --> 01:11:45,780
+but you might even miss that they are wrong.
+
+724
+01:11:47,160 --> 01:11:52,140
+So if a function is by definition
+
+725
+01:11:52,140 --> 01:11:54,440
+only allowed to do certain things,
+
+726
+01:11:54,440 --> 01:11:59,660
+and you expect this function to be used in larger code,
+
+727
+01:11:59,660 --> 01:12:03,500
+it might make sense to make sure
+
+728
+01:12:03,500 --> 01:12:06,640
+that it doesn't get wrong inputs
+
+729
+01:12:06,640 --> 01:12:11,760
+and assert that certain things are not happening
+
+730
+01:12:11,760 --> 01:12:15,580
+because otherwise you essentially make yourself open to,
+
+731
+01:12:16,220 --> 01:12:19,620
+well, someone has put a wrong number in there
+
+732
+01:12:19,620 --> 01:12:22,900
+and you now get complete bollocks
+
+733
+01:12:22,900 --> 01:12:25,640
+and your results suddenly are
+
+734
+01:12:25,640 --> 01:12:27,480
+looking nonsensical.
+
+735
+01:12:27,820 --> 01:12:29,200
+I have had that
+
+736
+01:12:29,200 --> 01:12:31,620
+in the past that I had a function that
+
+737
+01:12:31,620 --> 01:12:33,340
+I
+
+738
+01:12:33,340 --> 01:12:35,740
+expected something to happen
+
+739
+01:12:35,740 --> 01:12:37,680
+and it didn't because
+
+740
+01:12:37,680 --> 01:12:37,960
+it
+
+741
+01:12:37,960 --> 01:12:41,400
+had the wrong input
+
+742
+01:12:41,400 --> 01:12:42,920
+parameters.
+
+743
+01:12:44,140 --> 01:12:45,100
+And then it was
+
+744
+01:12:45,100 --> 01:12:47,440
+a lot of work or a lot of
+
+745
+01:12:47,440 --> 01:12:49,540
+time spent finding what exactly
+
+746
+01:12:49,540 --> 01:12:51,780
+went wrong because I got results
+
+747
+01:12:52,660 --> 01:12:58,660
+but they were just complete bullocks they were complete nonsense and that's something that's
+
+748
+01:12:58,660 --> 01:13:07,620
+really difficult to debug sometimes yeah yeah you're right about that um i'll say that
+
+749
+01:13:11,540 --> 01:13:16,660
+i think it goes i mean in in many different fields of science
+
+750
+01:13:16,660 --> 01:13:25,980
+it is so that i mean the complexity is there which means that if you would like to cover
+
+751
+01:13:25,980 --> 01:13:34,480
+for all of these scenarios to i mean to provide let's say input which is nonsensical i mean
+
+752
+01:13:34,480 --> 01:13:42,700
+that the more you can try to catch the better i mean the example i've had here for the factorial
+
+753
+01:13:42,700 --> 01:13:53,100
+is i mean as simple as as it can be um i mean i know some programs where you have let's say
+
+754
+01:13:53,100 --> 01:14:00,140
+in the input file you can have two or even 300 different keywords and perhaps the range
+
+755
+01:14:00,140 --> 01:14:07,260
+with keyword if it is about let's say numerical values or sometimes it can be about switches so
+
+756
+01:14:07,260 --> 01:14:14,860
+that you have let's say the program will work in three four or five different modes using different
+
+757
+01:14:14,860 --> 01:14:23,900
+algorithms under hood sometimes i mean the i mean the common the the total number of combinations
+
+758
+01:14:23,900 --> 01:14:29,980
+it is i mean it's a very very large number so this is nothing that you can exhaust
+
+759
+01:14:29,980 --> 01:14:40,120
+which brings us to this that for that kind of advanced programs I mean the user has to
+
+760
+01:14:40,120 --> 01:14:53,920
+be critical to how they are using the program and well often is a little bit forgiving here
+
+761
+01:14:53,920 --> 01:14:59,600
+if you're doing modeling as part of research projects because after all it's not something
+
+762
+01:14:59,600 --> 01:15:06,000
+which is let's say it's not air traffic control or something which is let's say mission critical
+
+763
+01:15:07,600 --> 01:15:15,280
+that's entirely true i would i would just argue it also um helps it also helps you
+
+764
+01:15:15,280 --> 01:15:23,200
+uh finding bucks easier like like this uh like this factorial if you if you put uh if you have
+
+765
+01:15:23,200 --> 01:15:30,320
+this in a larger code and the input value for the factorial is something that's being calculated
+
+766
+01:15:32,640 --> 01:15:38,960
+you could well if you if you end up with a non-integer number
+
+767
+01:15:41,440 --> 01:15:49,120
+this probably will throw an error because range doesn't allow non-integer values but if you
+
+768
+01:15:49,120 --> 01:15:54,880
+if you get something that's smaller than zero in your computation that you didn't expect but
+
+769
+01:15:54,880 --> 01:16:02,000
+um your values given then what you will get as a result from the factorial is zero i think
+
+770
+01:16:05,760 --> 01:16:08,880
+or something that is definitely not what you expected it to be
+
+771
+01:16:08,880 --> 01:16:10,880
+mm-hmm
+
+772
+01:16:15,120 --> 01:16:19,200
+yeah yeah oh you get one actually if you get something negative
+
+773
+01:16:28,080 --> 01:16:33,200
+so so far in in the examples that we touch upon here we were working with
+
+774
+01:16:33,200 --> 01:16:42,960
+with numbers be they integer or be they real so i think it would be nice to have a look on
+
+775
+01:16:42,960 --> 01:16:52,820
+something which is working with other types of variables namely with strings so we have here
+
+776
+01:16:52,820 --> 01:17:01,640
+an example design a test for a function that receives two strings and returns a number
+
+777
+01:17:03,200 --> 01:17:19,300
+so this is here in Python we already have functionality for this implemented
+
+778
+01:17:19,300 --> 01:17:27,200
+so the memory function is count word occurrence in string and we have here
+
+779
+01:17:27,200 --> 01:17:37,520
+two input arguments the first is a string which contains a text and the second argument is the
+
+780
+01:17:37,520 --> 01:17:42,960
+word and this is the word for which you would like to count the currents within the text
+
+781
+01:17:45,600 --> 01:17:48,800
+and you can see here in the comment of the code that there's an example of
+
+782
+01:17:49,520 --> 01:17:56,480
+let's say example input and then this string here one two one two three four
+
+783
+01:17:57,200 --> 01:18:04,000
+if you query for the count of one then i mean the expected output is two
+
+784
+01:18:07,440 --> 01:18:08,800
+so here in python
+
+785
+01:18:12,720 --> 01:18:19,280
+this this function is i mean this functionality is available up front so we have here the
+
+786
+01:18:19,920 --> 01:18:28,320
+text.split function which will split the text into the individual words.
+
+787
+01:18:30,080 --> 01:18:41,760
+And we have then a count function so we can count the occurrence of
+
+788
+01:18:41,760 --> 01:18:51,300
+the word I mean word here in singular in the words with the object which
+
+789
+01:18:51,300 --> 01:19:04,140
+contains all of them all of the items in the string so we could type this through
+
+790
+01:19:04,140 --> 01:19:25,020
+so I start a new source code file here word currents I call it and I paste in
+
+791
+01:19:25,020 --> 01:19:35,340
+here the definition of this function so as we did earlier I mean we have this
+
+792
+01:19:35,340 --> 01:19:40,680
+function defined here in the Python code and we can I mean this being a smallish
+
+793
+01:19:40,680 --> 01:19:54,120
+thing we could add the test code within the same text source code file so what
+
+794
+01:19:54,120 --> 01:20:07,940
+What we'll then do is we start defining a test and use the keyword test underscore and
+
+795
+01:20:07,940 --> 01:20:18,760
+we then have the same name for the function as defined, it's only that we have the prefix
+
+796
+01:20:18,760 --> 01:20:21,360
+of test underscore.
+
+797
+01:20:21,360 --> 01:20:29,360
+Yeah, so [name], please correct me here if I do some typo.
+
+798
+01:20:29,360 --> 01:20:33,360
+That looks fine.
+
+799
+01:20:33,360 --> 01:20:42,360
+Okay, that's just the header of the test function and now the keyword is assert.
+
+800
+01:20:42,360 --> 01:21:04,560
+and we then call the function count word occurrence in string so we then we need
+
+801
+01:21:04,560 --> 01:21:21,320
+two arguments here so first you have a mini text AAA we can take BBB and we
+
+802
+01:21:21,320 --> 01:21:36,600
+query for one of them okay um this example input of the very simplest form
+
+803
+01:21:38,760 --> 01:21:46,120
+and this is an assert we need them to provide the expected answer and here yeah clearly
+
+804
+01:21:46,120 --> 01:22:01,060
+for this text aaa bbb we clear for aaa the expected count is one okay that
+
+805
+01:22:01,060 --> 01:22:11,120
+that's one variant we could then I copy this line and you can make some
+
+806
+01:22:11,120 --> 01:22:19,400
+variations on width so we could then have we could add here more occurrences
+
+807
+01:22:19,400 --> 01:22:30,920
+of AAA could have a CCC then I'm clear once again for for AAA yeah expected
+
+808
+01:22:30,920 --> 01:22:34,680
+count here should be two
+
+809
+01:22:41,120 --> 01:22:51,280
+Okay, I would say that so far it just looks a little bit, well, this is nothing difficult
+
+810
+01:22:51,280 --> 01:23:03,800
+in these assert statements so far, but in texts you can have, if it's like normal language,
+
+811
+01:23:03,800 --> 01:23:09,280
+You could have that your words, which are just a standalone word.
+
+812
+01:23:09,280 --> 01:23:10,120
+Sorry?
+
+813
+01:23:10,120 --> 01:23:11,240
+Prefixes.
+
+814
+01:23:11,240 --> 01:23:11,820
+Yeah, exactly.
+
+815
+01:23:11,820 --> 01:23:12,320
+Yeah.
+
+816
+01:23:12,320 --> 01:23:15,500
+You can have prefixes, or you can have composed words.
+
+817
+01:23:15,500 --> 01:23:16,620
+Composite words, yeah.
+
+818
+01:23:16,620 --> 01:23:17,660
+Yeah.
+
+819
+01:23:17,660 --> 01:23:20,600
+So that can make the thing a little bit more complicated.
+
+820
+01:23:20,600 --> 01:23:30,080
+So let's here have another variant, namely
+
+821
+01:23:30,080 --> 01:23:40,080
+query for just the five a's the text is five a's and here um this is a bit interesting because
+
+822
+01:23:41,120 --> 01:23:50,720
+here i'm not taking this from from the lesson material and you know here the suggestion is here
+
+823
+01:23:50,720 --> 01:23:58,240
+okay the sort meant is that the count should be one and i would actually say no it should be zero
+
+824
+01:24:00,080 --> 01:24:05,520
+yeah or it should perhaps be three i i think it's not at all clear up front
+
+825
+01:24:06,480 --> 01:24:12,320
+yeah one well to me zero or three would be acceptable one is actually
+
+826
+01:24:12,320 --> 01:24:22,480
+the completely unacceptable here um three i i personally if i want to i want to have a word
+
+827
+01:24:22,480 --> 01:24:29,760
+count um i would assume this is zero because there is no match i'm not looking for prefixes
+
+828
+01:24:29,760 --> 01:24:30,760
+I'm looking for words
+
+829
+01:24:30,760 --> 01:24:33,600
+but
+
+830
+01:24:33,600 --> 01:24:35,800
+one is definitely not what I
+
+831
+01:24:35,800 --> 01:24:37,280
+would the function
+
+832
+01:24:37,280 --> 01:24:40,120
+what I would want the function to do
+
+833
+01:24:40,120 --> 01:24:41,580
+but
+
+834
+01:24:41,580 --> 01:24:43,660
+let's see what it does
+
+835
+01:24:43,660 --> 01:24:45,580
+yeah exactly
+
+836
+01:24:45,580 --> 01:24:46,560
+let's see what it does
+
+837
+01:24:46,560 --> 01:24:48,660
+so
+
+838
+01:24:48,660 --> 01:24:55,620
+keep that one
+
+839
+01:24:55,620 --> 01:24:56,860
+open and
+
+840
+01:24:56,860 --> 01:25:21,860
+So, PyTest, world occurrence, let's see.
+
+841
+01:25:21,860 --> 01:25:30,880
+Okay, okay, that was then another type of error, that was just a coding error.
+
+842
+01:25:30,880 --> 01:25:36,100
+So we need to fix that first.
+
+843
+01:25:36,100 --> 01:25:51,100
+I must have typed wrong here.
+
+844
+01:25:51,100 --> 01:26:06,660
+no, I don't. No, I don't see it.
+
+845
+01:26:06,660 --> 01:26:16,540
+What was the error? Just count word occurrence in string is not
+
+846
+01:26:16,540 --> 01:26:23,940
+find what
+
+847
+01:26:32,660 --> 01:26:41,200
+okay could you go to the terminal again yeah so it does count word occurrence in
+
+848
+01:26:41,200 --> 01:26:49,520
+string i don't see it
+
+849
+01:26:58,480 --> 01:27:06,720
+okay but but i think they should not get stuck here um and so yeah could um
+
+850
+01:27:06,720 --> 01:27:11,920
+I think we could.
+
+851
+01:27:12,240 --> 01:27:19,080
+So this was still, I mean, the interesting thing that we identified here is this,
+
+852
+01:27:19,080 --> 01:27:30,800
+that in this case here, the function functionality here was already available.
+
+853
+01:27:31,500 --> 01:27:36,460
+I mean, within the Python language, we have this split and we have this count.
+
+854
+01:27:36,720 --> 01:28:00,660
+So we're making use of that. And then, as we already had identified here, it's not canonical what would be, let's say, the expected or desired output for having this string five A's and then querying for A, A, A.
+
+855
+01:28:00,660 --> 01:28:07,960
+And as [name] said, I mean, having it designed so that it should be zero.
+
+856
+01:28:07,960 --> 01:28:14,420
+That's yeah, I mean, that's one choice you can have for it.
+
+857
+01:28:14,420 --> 01:28:21,160
+Then, I mean, the one that I mentioned where you could possibly count the currents of this
+
+858
+01:28:21,160 --> 01:28:29,120
+string of three A's, I mean, counting it to three, depending if you're using the first
+
+859
+01:28:29,120 --> 01:28:35,920
+three letters, or letter two up until four, or letter three up until five.
+
+860
+01:28:35,920 --> 01:28:44,640
+So yet again, having the base case for what is the actual, let's say,
+
+861
+01:28:44,640 --> 01:28:53,120
+by construction, the intended output or function is obviously important.
+
+862
+01:28:53,120 --> 01:29:10,640
+So we will come to an example here which is a bit more delicate situation.
+
+863
+01:29:10,640 --> 01:29:18,240
+So we have here something which is a function to calculate
+
+864
+01:29:18,240 --> 01:29:30,480
+it's about calculating the temperature of a reactor and the input argument for this function
+
+865
+01:29:30,480 --> 01:29:39,060
+is a temperature in celsius and you can see the comment here this function check tractor
+
+866
+01:29:39,060 --> 01:29:47,640
+temperature is about checking whether the temperature is about a number,
+
+867
+01:29:47,640 --> 01:29:56,280
+max temperature and then returns the status. And we have here import
+
+868
+01:29:56,280 --> 01:30:05,640
+statements from reactor, import max temperature and what the function does
+
+869
+01:30:05,640 --> 01:30:10,600
+it takes the input argument temperature in celsius and it compares it with this max temperatures
+
+870
+01:30:12,200 --> 01:30:18,280
+so if the temperature is above yeah then the status is one
+
+871
+01:30:20,120 --> 01:30:28,120
+and else if it's not about the max temperature it's zero so uh okay the functionality here is
+
+872
+01:30:28,120 --> 01:30:34,280
+perhaps as a such reasonable but but there is a there is a problem here so so how could we test
+
+873
+01:30:34,280 --> 01:30:41,780
+this so the problem is essentially that we are getting a value from another
+
+874
+01:30:41,780 --> 01:30:47,300
+class that we don't really have control over and that could change depending on
+
+875
+01:30:47,300 --> 01:30:54,860
+the depending on whatever other factors there are so we don't know what this max
+
+876
+01:30:54,860 --> 01:31:00,440
+temperature actually is and we just want to test our functionality and we don't
+
+877
+01:31:00,440 --> 01:31:06,120
+want to test what the reactor package is doing, we just want to test this check
+
+878
+01:31:06,120 --> 01:31:14,020
+reactor temperature function. Yes, exactly. So this is a simple
+
+879
+01:31:14,020 --> 01:31:23,560
+illustration of a code function here which is, I mean you can test it only up
+
+880
+01:31:23,560 --> 01:31:31,240
+to a point because you have this external dependency and could very well be that external
+
+881
+01:31:31,240 --> 01:31:37,000
+dependency is something that might be let's say a moving target or something that you do
+
+882
+01:31:37,000 --> 01:31:48,920
+not have control over i'd say that um sometimes you have let's say some constants like parameters
+
+883
+01:31:48,920 --> 01:31:57,460
+in a in a program that could be for instance you have some conversion factors for
+
+884
+01:31:57,460 --> 01:32:09,560
+let's say converting time from hours and minutes to seconds it's clear that the factor of 60 here
+
+885
+01:32:09,560 --> 01:32:15,560
+is canonical it's not something that will change and depending on what program languages you have
+
+886
+01:32:15,560 --> 01:32:20,600
+you might have like simply this factor of 60, you might have it stored away in a variable
+
+887
+01:32:20,600 --> 01:32:25,400
+which is in scope so you can use that value when you are in this function.
+
+888
+01:32:27,800 --> 01:32:32,680
+Another option that I think might be quite common actually in academia,
+
+889
+01:32:33,240 --> 01:32:42,200
+you have a sensor that gives you values that has a function that picks a value and your code needs to
+
+890
+01:32:43,080 --> 01:32:50,360
+pick something from that sensor and use it but for your test you don't want to run this on the
+
+891
+01:32:50,360 --> 01:32:56,520
+actual sensor you don't want to run this on the actual hardware you want to run this independently
+
+892
+01:32:57,960 --> 01:33:04,360
+so you have a function that does something and you want to yeah just
+
+893
+01:33:07,480 --> 01:33:10,360
+fake that this is actually returning a value from something
+
+894
+01:33:12,200 --> 01:33:16,200
+That's a very similar situation as well.
+
+895
+01:33:16,200 --> 01:33:20,200
+Mm-hmm, mm-hmm.
+
+896
+01:33:20,200 --> 01:33:24,200
+Yeah.
+
+897
+01:33:24,200 --> 01:33:28,200
+Yeah, so I mean, this is all,
+
+898
+01:33:28,200 --> 01:33:32,200
+I mean, you can have situations where this is
+
+899
+01:33:32,200 --> 01:33:36,200
+simply what it is. Nevertheless,
+
+900
+01:33:36,200 --> 01:33:40,200
+if you have, when you, let's say, design a new code or
+
+901
+01:33:40,200 --> 01:33:43,640
+or augment code, we do building blocks.
+
+902
+01:33:47,160 --> 01:33:51,540
+With regard to testing, things become more straightforward
+
+903
+01:33:51,540 --> 01:33:55,640
+if you can use as much as possible pure functions.
+
+904
+01:33:57,720 --> 01:33:59,600
+Because then in particular unit tests
+
+905
+01:33:59,600 --> 01:34:02,320
+become much more trackable
+
+906
+01:34:02,320 --> 01:34:04,800
+because then you can do use assert statements
+
+907
+01:34:04,800 --> 01:34:07,200
+of the kind that we have been working with here.
+
+908
+01:34:10,200 --> 01:34:20,620
+but maybe have a quick look at the solution as to how you can try to get these things in
+
+909
+01:34:20,620 --> 01:34:28,920
+um and one option here is uh to use something that's called monkey patching
+
+910
+01:34:28,920 --> 01:34:35,520
+uh monkey patch is another library which essentially allows you to set values or
+
+911
+01:34:35,520 --> 01:34:37,660
+even functions attributes
+
+912
+01:34:37,660 --> 01:34:39,740
+in Python everything essentially is an
+
+913
+01:34:39,740 --> 01:34:41,580
+attribute so you can
+
+914
+01:34:41,580 --> 01:34:43,100
+replace something by
+
+915
+01:34:43,100 --> 01:34:45,620
+something that is well defined in your
+
+916
+01:34:45,620 --> 01:34:47,760
+environment so in this
+
+917
+01:34:47,760 --> 01:34:49,200
+case we are setting the value
+
+918
+01:34:49,200 --> 01:34:51,540
+the attribute of max temperature to 100
+
+919
+01:34:51,540 --> 01:34:53,140
+but we could also
+
+920
+01:34:53,140 --> 01:34:54,460
+if this is
+
+921
+01:34:54,460 --> 01:34:57,520
+if this is a function that
+
+922
+01:34:57,520 --> 01:34:59,500
+gets the value from the
+
+923
+01:34:59,500 --> 01:35:00,200
+from a sensor
+
+924
+01:35:00,200 --> 01:35:03,260
+we could replace the
+
+925
+01:35:03,260 --> 01:35:08,940
+i ended it's a function call or originally in your in your check uh reactor reactor or
+
+926
+01:35:08,940 --> 01:35:16,860
+reactor temperature uh code you we could set an attribute in the reactor that get temperature is
+
+927
+01:35:18,460 --> 01:35:20,540
+lambda that just returns 10.
+
+928
+01:35:23,580 --> 01:35:29,900
+or something like this yeah that that's really neat functionality you you
+
+929
+01:35:33,260 --> 01:35:40,000
+you mentioned it here that this is available as for for for python uh that that's very neat
+
+930
+01:35:40,000 --> 01:35:48,020
+i'm thinking here about there are similar things in other languages as well but uh yeah in python
+
+931
+01:35:48,020 --> 01:35:54,920
+it's um with pytest it's very convenient because um what pytest is doing here under the hood is a
+
+932
+01:35:54,920 --> 01:36:03,500
+so-called fixture monkey patch is a um yeah a fixed fixture that is added to pytest and available
+
+933
+01:36:03,500 --> 01:36:09,860
+in any test and if you and it's essentially by name so by having this argument monkey patch in
+
+934
+01:36:09,860 --> 01:36:18,900
+the test function pytest automatically fills in the monkey patch um fixture and then you can use
+
+935
+01:36:18,900 --> 01:36:25,420
+that and you can you if you have a complex system you can also define your own fixtures
+
+936
+01:36:25,420 --> 01:36:31,920
+which can help you in replicating things for multiple different tests so you only have to
+
+937
+01:36:31,920 --> 01:36:38,300
+write the setup once because otherwise you would need to write this yeah this whole
+
+938
+01:36:38,300 --> 01:36:44,620
+attribution setting and whatnot every time but you could also create your own fixture here
+
+939
+01:36:44,620 --> 01:36:53,980
+um that just says that's a temperature fixture or a a reactor fixture that essentially replaces
+
+940
+01:36:53,980 --> 01:36:59,420
+all the relevant values in this reactor package by what you want to have for your tests
+
+941
+01:37:01,260 --> 01:37:07,500
+that's something that you can do it's not shown here in the example how exactly but if you search
+
+942
+01:37:07,500 --> 01:37:13,900
+for PyTest and fixtures. That's essentially what this is also doing for monkey patch.
+
+943
+01:37:14,860 --> 01:37:20,860
+But I think we should also go on a bit because we are starting to get towards the end of the time.
+
+944
+01:37:21,580 --> 01:37:34,300
+Yes. And then I see in this document here that someone has caught the spelling error that I had
+
+945
+01:37:34,300 --> 01:37:45,900
+here in the in the code and um yeah the typo here was that there's one r missing in occurrence here
+
+946
+01:37:46,780 --> 01:37:48,620
+no not here in the asserts
+
+947
+01:37:51,420 --> 01:37:52,700
+the three lines below that
+
+948
+01:37:56,540 --> 01:38:02,780
+in the assert statements okay the name of the of the test function doesn't matter but um in here
+
+949
+01:38:02,780 --> 01:38:09,980
+there is the r's missing yeah i am yeah yeah right you're right yeah yeah certainly yeah this
+
+950
+01:38:11,020 --> 01:38:16,300
+yes exactly i mean did the the name here of the test function here that doesn't matter
+
+951
+01:38:16,300 --> 01:38:21,500
+it doesn't matter but here uh this would be here like the canonical name for it because
+
+952
+01:38:21,500 --> 01:38:31,740
+we just had the prefix test underscore and then the same name okay let's see now if it works
+
+953
+01:38:31,740 --> 01:38:32,140
+better
+
+954
+01:38:38,940 --> 01:38:39,420
+oh yeah
+
+955
+01:38:41,900 --> 01:38:43,340
+now i also save the file
+
+956
+01:38:46,460 --> 01:38:53,580
+yep we actually see that uh that's also in the comments um we actually see that uh what python
+
+957
+01:38:53,580 --> 01:39:06,220
+returns here is zero and not one for the aaa in aaa because it's not yes the function splits
+
+958
+01:39:06,220 --> 01:39:22,060
+it and then it's not present anymore yeah yeah yeah right uh good um so so [name] which which
+
+959
+01:39:22,060 --> 01:39:30,400
+um example do you think we could highlight now do you have some i i would i would go for the
+
+960
+01:39:30,400 --> 01:39:35,600
+end-to-end test um i wouldn't go into the randomness test for now i would go to the
+
+961
+01:39:35,600 --> 01:39:41,120
+end-to-end test uh because it's essentially something that you can also use for um regression
+
+962
+01:39:41,120 --> 01:39:50,660
+regression testing so um this is conceptually so i think it's design eight
+
+963
+01:39:50,660 --> 01:39:53,640
+yes so let's
+
+964
+01:39:53,640 --> 01:39:54,260
+move there
+
+965
+01:39:54,260 --> 01:40:03,540
+oh yeah it's about the unique
+
+966
+01:40:03,540 --> 01:40:05,560
+yeah this is also
+
+967
+01:40:05,560 --> 01:40:06,440
+about word counting
+
+968
+01:40:06,440 --> 01:40:09,280
+yes but it's for
+
+969
+01:40:09,280 --> 01:40:11,540
+the concept to have an end-to-end test here
+
+970
+01:40:11,540 --> 01:40:13,420
+I think makes a
+
+971
+01:40:13,420 --> 01:40:15,480
+makes a lot of sense in a lot of
+
+972
+01:40:15,480 --> 01:40:18,700
+yeah scientific
+
+973
+01:40:18,700 --> 01:40:21,460
+situations where you have
+
+974
+01:40:21,460 --> 01:40:23,260
+an input, you have an output
+
+975
+01:40:23,260 --> 01:40:25,600
+to whatever code you have
+
+976
+01:40:25,600 --> 01:40:27,360
+and you want to keep that
+
+977
+01:40:27,360 --> 01:40:29,420
+and the concept
+
+978
+01:40:29,420 --> 01:40:31,240
+is very similar to regression testing
+
+979
+01:40:31,240 --> 01:40:33,500
+which you very often want
+
+980
+01:40:33,500 --> 01:40:35,040
+to have for scientific
+
+981
+01:40:35,040 --> 01:40:37,120
+code
+
+982
+01:40:37,120 --> 01:40:43,160
+Yes
+
+983
+01:40:43,160 --> 01:40:45,660
+so this is an example
+
+984
+01:40:45,660 --> 01:41:06,280
+how our end-to-end test can be made for, and this is here for the unique command, so this
+
+985
+01:41:06,280 --> 01:41:16,520
+This is another variant of word count that you will see if a word or a string, if it
+
+986
+01:41:16,520 --> 01:41:31,020
+occurs in the first place, but you would like to filter out the unique occurrences of it.
+
+987
+01:41:31,020 --> 01:41:39,140
+And if I'm not mistaken here from what the output at least claims, it's reducing repetitions.
+
+988
+01:41:39,140 --> 01:41:50,020
+It's not actually looking for unique occurrences, which to me is kind of odd, but okay.
+
+989
+01:41:50,020 --> 01:42:09,780
+Yes, we can see here like a sample input here, which is text which clearly here is with various
+
+990
+01:42:09,780 --> 01:42:15,300
+lines here because we have the line breaks here and obviously it's here repeated.
+
+991
+01:42:15,300 --> 01:42:19,860
+we have the first line here occurring five times and then this four times
+
+992
+01:42:22,020 --> 01:42:26,100
+this intermission only once and so forth
+
+993
+01:42:30,980 --> 01:42:39,220
+yeah um so since the aim for this tool is to remove repeat remove repetitions what i would
+
+994
+01:42:39,220 --> 01:42:46,980
+start to write my test in is essentially have a couple of um files being either either files
+
+995
+01:42:46,980 --> 01:42:55,780
+being present that i can use and then compare the inputs versus outputs so what do i expect
+
+996
+01:42:55,780 --> 01:43:03,300
+what do i put in and what i would do is create a couple of files that are similar to the example
+
+997
+01:43:03,300 --> 01:43:11,620
+input here actually um somewhere there's um somewhere there's just one line being rapid
+
+998
+01:43:11,620 --> 01:43:21,300
+repeated and fair and check that yes this line is actually being generated again um so reading
+
+999
+01:43:21,300 --> 01:43:27,140
+the output of unique again into a file and then comparing it with something that i had that i have
+
+1000
+01:43:27,140 --> 01:43:37,860
+pre-compiled um since i yeah i i'm still i find it odd that it's not that it's not
+
+1001
+01:43:37,860 --> 01:43:42,900
+really just giving unique lines but just removes repetitions
+
+1002
+01:43:44,260 --> 01:43:55,060
+um and it also it uh i think is supposed to keep the order so um i would also kind of make sure
+
+1003
+01:43:55,060 --> 01:44:01,940
+that yes it will keep the order and and it will not reorder things these are the things that i
+
+1004
+01:44:01,940 --> 01:44:17,140
+would be trying to check here in a test yeah and uh yeah and as i mentioned so so this line here
+
+1005
+01:44:17,140 --> 01:44:25,220
+all together now, occurring there and also occurring there. That's somewhat unexpected
+
+1006
+01:44:25,220 --> 01:44:34,260
+because I mean, I agree. I would have preferred to see it only written up here and not here.
+
+1007
+01:44:35,700 --> 01:44:44,420
+But yet, but again, yeah, from the name, unique, exactly. But like in general, this
+
+1008
+01:44:44,420 --> 01:44:54,640
+This can often be the case that, well it can be the case that when some function is written
+
+1009
+01:44:54,640 --> 01:45:00,760
+then there's some freedom in designing what it should do and how it should do it.
+
+1010
+01:45:00,760 --> 01:45:09,600
+So I mean this is like, this was unexpected and, but it was intentional and then your
+
+1011
+01:45:09,600 --> 01:45:21,040
+text test need to adopt to that um i see here that we have only a few minutes left
+
+1012
+01:45:21,040 --> 01:45:28,160
+and i think here so we did here intentionally hold on to python during this lesson
+
+1013
+01:45:29,200 --> 01:45:36,720
+and as you if i scroll back up here to the well all the way up to the factorial sorry
+
+1014
+01:45:39,600 --> 01:45:51,480
+Factorial example, you probably have seen it already, but if not, we have these different
+
+1015
+01:45:51,480 --> 01:45:52,480
+tabs here.
+
+1016
+01:45:52,480 --> 01:45:58,320
+So Python to the left, but then you can, let's say here you have the function definition
+
+1017
+01:45:58,320 --> 01:46:10,640
+here in in c plus plus and there is a template solution for how to test this in with frameworks
+
+1018
+01:46:10,640 --> 01:46:17,200
+in in in the respective language so for c plus plus you could then for instance use
+
+1019
+01:46:18,480 --> 01:46:23,120
+the catch 2 framework which is available here
+
+1020
+01:46:23,120 --> 01:46:29,680
+well I mean you need to have it on your computer and then you can have them use the include
+
+1021
+01:46:29,680 --> 01:46:41,360
+statement here and then you can get going and you also have correspondingly you have for instance
+
+1022
+01:46:41,360 --> 01:46:52,440
+for Julia R and also for Fortran so here you have some some template Fortran code and here in the
+
+1023
+01:46:52,440 --> 01:47:00,680
+template solution here we are oh sorry for this one the template solution was
+
+1024
+01:47:00,680 --> 01:47:06,200
+actually not there but let's say here for Julia
+
+1025
+01:47:08,160 --> 01:47:15,240
+yeah Julia without touching upon Julia itself it is a rather modern language
+
+1026
+01:47:15,240 --> 01:47:25,240
+where we do have a framework for testing is already there and from the beginning
+
+1027
+01:47:25,240 --> 01:47:35,820
+a little bit in analog with that pytest is sort of available for Python and we
+
+1028
+01:47:35,820 --> 01:47:49,980
+could also highlight here that so if we go here to I mean the very start of the
+
+1029
+01:47:49,980 --> 01:47:59,220
+lesson and now if I open the menu here so you have here under the reference
+
+1030
+01:47:59,220 --> 01:48:09,600
+setting here you have quick reference and here you have a rather extensive
+
+1031
+01:48:09,600 --> 01:48:14,520
+listing of the unit test frameworks and regression test frameworks and so forth
+
+1032
+01:48:14,520 --> 01:48:21,720
+and they have it then broken down to various languages so yeah this is a
+
+1033
+01:48:21,720 --> 01:48:27,420
+place that that you probably would like to have a look at and then if you're
+
+1034
+01:48:27,420 --> 01:48:45,420
+If you're looking for something for C++ or for Julia, you can then find some suggestions on tools that you could make use of.
+
+1035
+01:48:45,420 --> 01:48:54,420
+I want to mention one general thing, which is mainly for non-compiled code or non-compiled languages.
+
+1036
+01:48:54,420 --> 01:49:03,040
+um where what you should well keep in mind when doing testing um if you have anything that
+
+1037
+01:49:03,040 --> 01:49:09,740
+touches global variables or class variables or similar things so um variables that
+
+1038
+01:49:09,740 --> 01:49:18,840
+stay after something is executed make sure that you reset them after the test
+
+1039
+01:49:18,840 --> 01:49:25,320
+because otherwise they might otherwise you might end up depending a bit depending on the
+
+1040
+01:49:25,320 --> 01:49:32,200
+framework you're using you might end up with something that was modified in a previous test
+
+1041
+01:49:32,200 --> 01:49:40,760
+yeah you or yeah just a general comment here
+
+1042
+01:49:40,760 --> 01:50:10,580
+Indeed. And I think it goes also for compiled languages that could be that, I mean, they're executed within a runtime environment that, let's say you have it with some default setting and if you, let's say, work in a terminal on, could be like a, well, in a way it doesn't matter if it's in your local computer or if it is on a shared computer.
+
+1043
+01:50:10,580 --> 01:50:14,740
+because typically also on the shared computer you would like that to have a grip on
+
+1044
+01:50:16,260 --> 01:50:23,060
+your runtime environment so it's like for your session it's your runtime environment
+
+1045
+01:50:24,580 --> 01:50:28,260
+but if you poke around with it set some environment variables and so forth
+
+1046
+01:50:28,260 --> 01:50:36,260
+then if you have first been worked with a and then you go on to work with b then yeah you might
+
+1047
+01:50:36,260 --> 01:50:40,900
+want to have like a reset after working with a before you get going with b
+
+1048
+01:50:43,540 --> 01:50:48,260
+so we can bring up here the notes to see if
+
+1049
+01:50:50,500 --> 01:50:54,820
+yeah there's been some some interaction here um
+
+1050
+01:50:57,380 --> 01:50:59,060
+some questions and some
+
+1051
+01:51:01,460 --> 01:51:02,580
+some answers
+
+1052
+01:51:06,260 --> 01:51:10,420
+say yeah how often do you make end-to-end tests in scientific code um
+
+1053
+01:51:14,580 --> 01:51:19,060
+but not as often as i should is probably for me uh it's
+
+1054
+01:51:24,740 --> 01:51:30,900
+in in the end if you have if if you have an example of your code that is an end-to-end
+
+1055
+01:51:30,900 --> 01:51:37,460
+test or you can easily make it into an end-to-end test you can simply run your example and write a
+
+1056
+01:51:37,460 --> 01:51:44,820
+test that when running my when running the in the code with the input from that example
+
+1057
+01:51:44,820 --> 01:51:47,940
+i would expect the outputs that i just got from this example
+
+1058
+01:51:51,460 --> 01:51:52,500
+yes um
+
+1059
+01:51:52,500 --> 01:51:56,740
+You're right.
+
+1060
+01:51:56,740 --> 01:52:07,120
+So my experience is from courses that I'm working with, either as a user or as a developer,
+
+1061
+01:52:07,120 --> 01:52:16,800
+then end-to-end tests or, yeah, I'm more acquainted with them or have, let's say, direct contact
+
+1062
+01:52:16,800 --> 01:52:20,200
+with them more commonly.
+
+1063
+01:52:20,200 --> 01:52:27,700
+One elegant thing, and there's no time now for us to show like that example, but some
+
+1064
+01:52:27,700 --> 01:52:33,760
+elegant solutions in some codes, we have, let's say, the capacity to do all of this
+
+1065
+01:52:33,760 --> 01:52:35,960
+is that, I mean, you have it all.
+
+1066
+01:52:35,960 --> 01:52:43,300
+You have like the unit tests, you have the integration tests, and you have also the regression
+
+1067
+01:52:43,300 --> 01:52:46,620
+tests.
+
+1068
+01:52:46,620 --> 01:52:55,340
+have it also part of sort of like the build procedure like you configure you make if it's
+
+1069
+01:52:55,340 --> 01:53:00,140
+a compiled language and then after the make or make install you make then also like make check
+
+1070
+01:53:00,860 --> 01:53:06,300
+and it runs then through that could be tens of tests or can even be into the thousands of tests
+
+1071
+01:53:06,300 --> 01:53:09,180
+so now it's
+
+1072
+01:53:09,180 --> 01:53:11,200
+5 past 11 so
+
+1073
+01:53:11,200 --> 01:53:13,620
+it's about time to wrap up
+
+1074
+01:53:13,620 --> 01:53:14,120
+and
+
+1075
+01:53:14,120 --> 01:53:17,420
+it will then be the lunch break and
+
+1076
+01:53:17,420 --> 01:53:19,500
+so what do we have after lunch
+
+1077
+01:53:19,500 --> 01:53:20,100
+[name]
+
+1078
+01:53:20,100 --> 01:53:23,380
+after lunch we are going into
+
+1079
+01:53:23,380 --> 01:53:23,880
+modular
+
+1080
+01:53:23,880 --> 01:53:26,700
+code development so
+
+1081
+01:53:26,700 --> 01:53:28,260
+how do you
+
+1082
+01:53:28,260 --> 01:53:31,600
+get your code into a shape
+
+1083
+01:53:31,600 --> 01:53:33,680
+that it's more easily reusable
+
+1084
+01:53:33,680 --> 01:53:35,420
+how
+
+1085
+01:53:35,420 --> 01:53:37,360
+do you get code
+
+1086
+01:53:37,360 --> 01:53:39,840
+out of this is one large
+
+1087
+01:53:39,840 --> 01:53:41,580
+script that does everything into
+
+1088
+01:53:41,580 --> 01:53:43,180
+pieces that are
+
+1089
+01:53:43,180 --> 01:53:44,520
+testable
+
+1090
+01:53:44,520 --> 01:53:49,700
+that are reusable
+
+1091
+01:53:49,700 --> 01:53:51,920
+by you or by others
+
+1092
+01:53:51,920 --> 01:53:55,840
+and yeah similar
+
+1093
+01:53:55,840 --> 01:53:56,320
+things
+
+1094
+01:53:56,320 --> 01:54:00,120
+yes
+
+1095
+01:54:00,120 --> 01:54:03,820
+that sounds interesting
+
+1096
+01:54:03,820 --> 01:54:12,520
+So we look forward to that lesson and yeah, let's then conclude this part on, on testing
+
+1097
+01:54:12,520 --> 01:54:15,000
+and have a nice lunch break.
+
+1098
+01:54:15,000 --> 01:54:16,000
+All of you.
+
+1099
+01:54:16,000 --> 01:54:19,580
+Let's see you back in roughly an hour.
+
+1100
+01:54:19,580 --> 01:54:20,580
+Bye.
+
+1101
+01:54:20,580 --> 01:54:21,580
+Bye.
+
+1102
+01:54:21,580 --> 01:54:23,820
+Bye.
+
