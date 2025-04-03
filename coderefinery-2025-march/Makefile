@@ -17,9 +17,10 @@ srt=$(patsubst %.mkv, %.srt, $(videos_mkv)) $(patsubst %.mp4, %.srt, $(videos_mp
 
 #WHISPER=whisper --model large
 SRUN=srun --pty --time=0-4 -c 4 --mem=20G --gpus=1 -x dgx18
-#WHISPER=apptainer run -B /m:/m -B /l:/l -B /scratch:/scratch --nv /scratch/work/darstr1/whisper_cuda_23_07_07.sif --model_directory /scratch/shareddata/faster-whisper/models--guillaumekln--faster-whisper-large-v2/snapshots/f541c54c566e32dc1fbce16f98df699208837e8b --device cuda
+#WHISPER=apptainer run -B /m:/m -B /l:/l -B /scratch:/scratch --nv /scratch/work/darstr1/whisper_cuda_23_07_07.sif --model_directory /scratch/shareddata/faster-whisper/models--guillaumekln--faster-whisper-large-v2/snapshots/f541c54c566e32dc1fbce16f98df699208837e8b --device cuda --condition_on_previous_text False
 # The below is actually whisper, not faster-whisper
-WHISPER=/scratch/work/darstr1/venvs/faster-whisper/bin/whisper --model large-v3
+#WHISPER=/scratch/work/darstr1/venvs/faster-whisper/bin/whisper --model large-v3 --condition_on_previous_text False
+WHISPER=/scratch/work/darstr1/venvs/faster-whisper/bin/whisper-ctranslate2 --model large-v3 --condition_on_previous_text False
 
 
 
@@ -39,9 +40,9 @@ print:
 
 
 %.srt: %.mkv
-	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
+	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en $< --output_dir $(dir $<)
 %.srt: %.mp4
-	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en --condition_on_previous_text False $< --output_dir $(dir $<)
+	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en $< --output_dir $(dir $<)
 
 
 #aac: $(aac)
