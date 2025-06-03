@@ -1,0 +1,448 @@
+1
+00:00:00,000 --> 00:00:08,780
+the intro. So, welcome to Introduction to Scientific Computing and HPC. Very briefly,
+
+2
+00:00:08,780 --> 00:00:14,460
+what is this course about? Well, it's structured over three days and we kind of gradually build
+
+3
+00:00:14,460 --> 00:00:22,780
+on the skills, on the basic skills that are needed for basically scaling up your computations. So,
+
+4
+00:00:22,780 --> 00:00:26,620
+in Finland, and also for those of you who are not in Finland, most likely you
+
+5
+00:00:26,620 --> 00:00:31,580
+have access to an high-performance computing cluster, which basically means lots and lots
+
+6
+00:00:31,580 --> 00:00:41,580
+of servers connected by a very fast network so that they can run lots of computations.
+
+7
+00:00:41,580 --> 00:00:47,020
+And it might well be that you don't need thousands of servers connected in parallel,
+
+8
+00:00:47,020 --> 00:00:52,620
+but what is useful is that you can just request one for yourself, do your work in a secure way,
+
+9
+00:00:52,620 --> 00:00:57,500
+and then happily, you know, continue with publishing paper and things like that.
+
+10
+00:00:57,500 --> 00:01:03,860
+So who is attending this workshop, this course? Well, there's multiple people
+
+11
+00:01:03,860 --> 00:01:09,020
+from multiple universities. We are very happy that today with us, beyond Aalto
+
+12
+00:01:09,020 --> 00:01:14,020
+University, there's also Helsinki University and Oulu University, but in general we
+
+13
+00:01:14,020 --> 00:01:19,700
+span across borders. We have people from all over the Nordics, Europe and even
+
+14
+00:01:19,700 --> 00:01:27,020
+beyond so the practicalities this is not your typical kind of zoom workshop or
+
+15
+00:01:27,020 --> 00:01:32,140
+zoom course where we are all in the in the same zoom here we use this type of
+
+16
+00:01:32,140 --> 00:01:36,580
+live stream strategy which you can understand that it's very useful because
+
+17
+00:01:36,580 --> 00:01:43,300
+this is like a TV studio and we're like all watching the TV together and by
+
+18
+00:01:43,300 --> 00:01:48,500
+doing this we can make sure that we can provide immediately high quality
+
+19
+00:01:48,500 --> 00:01:54,920
+recordings of all the training that we have today and more broadly you will later see
+
+20
+00:01:54,920 --> 00:02:01,500
+that everything is to be stored in our YouTube channel so that you can re-watch something
+
+21
+00:02:01,500 --> 00:02:06,100
+that we're going to mention in these days but also sometimes we don't cover things that
+
+22
+00:02:06,100 --> 00:02:11,540
+we have already covered well in the past and so there's more videos that we will refer
+
+23
+00:02:11,540 --> 00:02:12,820
+to.
+
+24
+00:02:12,820 --> 00:02:20,500
+The communication with the instructors happens through this type of asynchronous chat and
+
+25
+00:02:20,500 --> 00:02:25,400
+you can understand already that this is much better than something like the Zoom chat which
+
+26
+00:02:25,400 --> 00:02:30,960
+makes it impossible to communicate with this type of shared document that we are all editing.
+
+27
+00:02:30,960 --> 00:02:34,900
+Right now there's 105 people editing it in parallel.
+
+28
+00:02:34,900 --> 00:02:40,960
+You can basically ask questions and then maybe some of you could answer or one of the helpers
+
+29
+00:02:40,960 --> 00:02:46,980
+can answer and so on. At the end this document basically forms a nice diary of the whole
+
+30
+00:02:46,980 --> 00:02:55,200
+day which will then archive and you can later go back to it and check it. As you might have
+
+31
+00:02:55,200 --> 00:03:01,960
+already tested this once you open the link that you have received in your registration
+
+32
+00:03:01,960 --> 00:03:09,800
+email there's a pencil at the top, the screenshot there is showing that. By clicking on the
+
+33
+00:03:09,800 --> 00:03:14,160
+pencil basically you enter the edit mode and then you're able to add the text
+
+34
+00:03:14,160 --> 00:03:20,120
+where you need to add it. The share document is powerful but of course if
+
+35
+00:03:20,120 --> 00:03:24,200
+there's hundreds of people editing in parallel it can be you know challenging
+
+36
+00:03:24,200 --> 00:03:28,440
+even to just type so if you're if you know that you don't need to write
+
+37
+00:03:28,440 --> 00:03:34,520
+anything you can switch back to the view mode by clicking that eye icon so that
+
+38
+00:03:34,520 --> 00:03:40,600
+you know the load of the service is is smaller and other people can write freely
+
+39
+00:03:41,600 --> 00:03:48,600
+Right. So where do we focus or where to focus because you can understand that there's different windows and
+
+40
+00:03:49,960 --> 00:03:55,660
+In general focus on the on the streaming on the twitch TV window
+
+41
+00:03:56,720 --> 00:03:59,220
+We provide this type of vertical
+
+42
+00:03:59,220 --> 00:04:03,700
+layout so that, as you can see in the picture there,
+
+43
+00:04:03,700 --> 00:04:06,620
+you can kind of keep the Twitch window
+
+44
+00:04:06,620 --> 00:04:10,540
+on one side of your laptop screen, for example,
+
+45
+00:04:10,540 --> 00:04:12,940
+and then you can keep, let's say,
+
+46
+00:04:12,940 --> 00:04:16,540
+this notes document in another browser window
+
+47
+00:04:16,540 --> 00:04:17,820
+or your terminal.
+
+48
+00:04:17,820 --> 00:04:19,140
+We would use a lot the terminal
+
+49
+00:04:19,140 --> 00:04:21,700
+to connect to the remote cluster.
+
+50
+00:04:21,700 --> 00:04:23,460
+Of course, if you have multiple screens,
+
+51
+00:04:23,460 --> 00:04:25,060
+then you don't have these issues,
+
+52
+00:04:25,060 --> 00:04:26,940
+but we are thinking for those of you
+
+53
+00:04:26,940 --> 00:04:28,140
+who are working with a laptop
+
+54
+00:04:28,140 --> 00:04:34,420
+so that they have enough desktop space to arrange all the windows together.
+
+55
+00:04:34,420 --> 00:04:38,500
+Maybe one thing that I did not mention when it comes to Twitch.tv streaming,
+
+56
+00:04:38,500 --> 00:04:43,700
+it is important that you set the bandwidth to basically source,
+
+57
+00:04:43,700 --> 00:04:48,580
+which means the same bandwidth of the original broadcasting stream.
+
+58
+00:04:48,580 --> 00:04:52,900
+Otherwise, Twitch will do some sort of compression,
+
+59
+00:04:52,900 --> 00:04:55,460
+and so things will start to get blurry.
+
+60
+00:04:55,460 --> 00:04:57,980
+but if you make it so that the bandwidth
+
+61
+00:04:57,980 --> 00:04:59,700
+is basically the maximum available,
+
+62
+00:04:59,700 --> 00:05:01,700
+you will see the stream.
+
+63
+00:05:02,860 --> 00:05:06,940
+All right, anything else that we are missing?
+
+64
+00:05:08,220 --> 00:05:10,980
+Yeah, maybe on the learning styles
+
+65
+00:05:10,980 --> 00:05:12,900
+that there's many learning styles.
+
+66
+00:05:12,900 --> 00:05:15,940
+I think in general, we've been running this
+
+67
+00:05:15,940 --> 00:05:19,300
+kind of new way of online teaching for a few years.
+
+68
+00:05:19,300 --> 00:05:22,140
+We really like the fact that it can happen
+
+69
+00:05:22,140 --> 00:05:24,140
+at everybody's, at anyone's pace.
+
+70
+00:05:24,140 --> 00:05:26,700
+Those who want to learn live with us,
+
+71
+00:05:26,700 --> 00:05:28,300
+they can watch right now.
+
+72
+00:05:28,300 --> 00:05:30,420
+Some others might learn later.
+
+73
+00:05:30,420 --> 00:05:34,020
+And when we chat with our previous course participants,
+
+74
+00:05:34,020 --> 00:05:37,440
+some people find this also useful months after,
+
+75
+00:05:37,440 --> 00:05:39,640
+so they can go back to the stream,
+
+76
+00:05:39,640 --> 00:05:44,100
+watching the videos, checking the notes document.
+
+77
+00:05:44,100 --> 00:05:45,760
+In general, to conclude,
+
+78
+00:05:45,760 --> 00:05:48,500
+when it comes to the community and to good rules,
+
+79
+00:05:48,500 --> 00:05:51,340
+let's just try to be respectful.
+
+80
+00:05:51,340 --> 00:05:53,260
+At Aalto, we have our code of conduct
+
+81
+00:05:53,260 --> 00:05:59,260
+any universities we have a good code of conduct. If you see some inappropriate
+
+82
+00:05:59,260 --> 00:06:05,820
+behavior just let us know and we can do the best to kind of you know compensate
+
+83
+00:06:05,820 --> 00:06:13,660
+for that or make sure that it doesn't happen. There's few things that could go
+
+84
+00:06:13,660 --> 00:06:19,300
+wrong but usually they don't get wrong. In general if you feel that there's too
+
+85
+00:06:19,300 --> 00:06:23,700
+much information coming in too short time it's totally normal especially if
+
+86
+00:06:23,700 --> 00:06:28,020
+it's the first time that you work with this type of HPC systems but this is why
+
+87
+00:06:28,020 --> 00:06:32,040
+it's it's it's great to have everything recorded and you can later you know
+
+88
+00:06:32,040 --> 00:06:38,280
+rewatch at your own pace if the notes are too fast to follow don't worry you
+
+89
+00:06:38,280 --> 00:06:42,300
+don't need to follow the notes you don't need to you know we basically will
+
+90
+00:06:42,300 --> 00:06:48,300
+highlight some important notes on the on the stream and then again later you can
+
+91
+00:06:48,300 --> 00:06:52,180
+always go back to the notes and have a look.
+
+92
+00:06:52,180 --> 00:06:57,220
+I already mentioned this that sometimes if there's too many people editing at the same
+
+93
+00:06:57,220 --> 00:07:04,820
+time the notes document might feel slow so please switch to the view mode and we won't
+
+94
+00:07:04,820 --> 00:07:10,900
+have time to cover everything so some of the materials that are linked in our main page
+
+95
+00:07:10,900 --> 00:07:17,380
+course page are actually videos from previous rounds of this course or there's other videos
+
+96
+00:07:17,380 --> 00:07:24,260
+for example this kitchen metaphor to HPC, in general we encourage you to, you know,
+
+97
+00:07:24,260 --> 00:07:30,340
+explore all the materials we have and what we will show here in these 10 hours together is kind of,
+
+98
+00:07:30,340 --> 00:07:40,660
+you know, a small or a large subset of all the materials. What else? Well, we try not to deviate
+
+99
+00:07:40,660 --> 00:07:48,020
+from the schedule but you know things happen and when it comes to possible technical issues
+
+100
+00:07:48,020 --> 00:07:53,140
+it has happened only once that the whole internet collapsed during the streaming hopefully
+
+101
+00:07:53,860 --> 00:08:00,660
+the internet will be up again but eventually if something goes wrong just wait a little bit and
+
+102
+00:08:00,660 --> 00:08:05,140
+the stream might come back or then you will receive another email from me saying that
+
+103
+00:08:05,140 --> 00:08:11,620
+I don't know, we could have a plan B. All right, well I guess maybe the most
+
+104
+00:08:11,620 --> 00:08:15,860
+important thing is to mention that the cat, [name]'s cat, will visit the stream.
+
+105
+00:08:16,420 --> 00:08:19,780
+I think it's too early now. Is the cat still sleeping, [name]?
+
+106
+00:08:20,980 --> 00:08:24,820
+Yeah, it's in the room but sleeping. It's usually later in the afternoon,
+
+107
+00:08:24,820 --> 00:08:26,980
+so motivation to stay to the end.
+
+108
+00:08:27,860 --> 00:08:34,580
+Exactly. All right, well, final notes. Everything is recorded. Credits I think
+
+109
+00:08:34,580 --> 00:08:38,340
+already wrote in the notes that for this course specifically we don't give credits
+
+110
+00:08:39,300 --> 00:08:46,020
+and at the very bottom there's a link to our mailing list and for those of you who have ticked
+
+111
+00:08:46,020 --> 00:08:50,420
+in the registration that you would like to hear about future courses you will be added to this
+
+112
+00:08:50,420 --> 00:08:57,000
+mailing list and now it's exactly 10 past 10 so I'm happy to pass the ball back to [name]
+

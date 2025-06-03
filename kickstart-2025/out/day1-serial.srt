@@ -1,0 +1,1468 @@
+1
+00:00:00,000 --> 00:00:00,360
+Yeah, first focus on this one.
+
+2
+00:00:00,360 --> 00:00:01,360
+Yeah.
+
+3
+00:00:01,360 --> 00:00:04,800
+So should we advance and do the batch job now?
+
+4
+00:00:08,040 --> 00:00:10,160
+I think that's what was next in the notes.
+
+5
+00:00:10,160 --> 00:00:11,720
+Yes, if you didn't.
+
+6
+00:00:11,720 --> 00:00:13,120
+Yeah.
+
+7
+00:00:13,120 --> 00:00:18,040
+So let's do a batch job for this one.
+
+8
+00:00:20,880 --> 00:00:21,480
+Yes.
+
+9
+00:00:21,480 --> 00:00:24,560
+So now in the batch job, we introduce you
+
+10
+00:00:24,560 --> 00:00:28,560
+to what's called a slurm script or shell script.
+
+11
+00:00:28,560 --> 00:00:30,200
+So this is the first time we're going
+
+12
+00:00:30,200 --> 00:00:36,600
+make a new file on the cluster and in this file we will put the instructions to slurm to say what
+
+13
+00:00:36,600 --> 00:00:45,480
+resources are needed and the instructions to our code to tell it what to run and it will all look
+
+14
+00:00:45,480 --> 00:00:52,680
+quite familiar with what we've done so far. So to edit a file on the cluster we'll use the
+
+15
+00:00:52,680 --> 00:00:59,400
+editor named nano so it's a really basic editor it's not fancy at all but it's simple to use it
+
+16
+00:00:59,400 --> 00:01:02,760
+It tells you how to quit it from within the editor.
+
+17
+00:01:02,760 --> 00:01:05,640
+And from what we can tell, it's on every cluster.
+
+18
+00:01:05,640 --> 00:01:08,240
+So it's a good starting point.
+
+19
+00:01:08,240 --> 00:01:17,280
+So we're calling the new shell scripts count1grams.sh,
+
+20
+00:01:17,280 --> 00:01:20,800
+where the .sh means it's a shell script.
+
+21
+00:01:20,800 --> 00:01:24,560
+So [name] pushes Enter, and Nano opens.
+
+22
+00:01:24,560 --> 00:01:26,640
+So the shell scripts always start
+
+23
+00:01:26,640 --> 00:01:29,780
+with what we call a shabanglang for like hash bang
+
+24
+00:01:29,780 --> 00:01:31,260
+with bang being exclamation mark.
+
+25
+00:01:31,260 --> 00:01:33,820
+And it tells it this will be a bash script.
+
+26
+00:01:33,820 --> 00:01:38,820
+So bin bash, bash is the shell that we're using.
+
+27
+00:01:39,180 --> 00:01:40,220
+So it's the-
+
+28
+00:01:40,220 --> 00:01:42,340
+And this is basically like the kind of magic
+
+29
+00:01:42,340 --> 00:01:45,860
+that is like, like you will always just write this.
+
+30
+00:01:45,860 --> 00:01:49,540
+Like how often, like when you start writing these scripts
+
+31
+00:01:49,540 --> 00:01:51,100
+you often get into the automation
+
+32
+00:01:51,100 --> 00:01:55,180
+that you will always write the shabang this.
+
+33
+00:01:55,180 --> 00:01:56,380
+You can use different ones
+
+34
+00:01:56,380 --> 00:01:59,060
+But usually, it's easier to just.
+
+35
+00:01:59,060 --> 00:02:01,380
+It's like some magic words.
+
+36
+00:02:01,380 --> 00:02:05,500
+You open the, you're making a magic spell.
+
+37
+00:02:05,500 --> 00:02:08,180
+You give the standard magic words at the beginning.
+
+38
+00:02:08,180 --> 00:02:12,820
+And it's something that you copy from the cheat sheet
+
+39
+00:02:12,820 --> 00:02:14,820
+every time you do it.
+
+40
+00:02:14,820 --> 00:02:19,500
+So now we see the comment symbol and sbatch here.
+
+41
+00:02:19,500 --> 00:02:23,460
+So this sbatch is an instruction for Slurm
+
+42
+00:02:23,460 --> 00:02:26,060
+to read and do something here.
+
+43
+00:02:26,060 --> 00:02:29,300
+And now we add the same options we did from the command line.
+
+44
+00:02:29,300 --> 00:02:32,180
+So for example, we'll tell it that it needs memory one
+
+45
+00:02:32,180 --> 00:02:37,540
+gigabyte and sbatch time equals 10 minutes.
+
+46
+00:02:37,540 --> 00:02:39,740
+And we could add whatever else here.
+
+47
+00:02:42,700 --> 00:02:44,860
+OK.
+
+48
+00:02:44,860 --> 00:02:48,860
+And should we add then the thing that we want to run?
+
+49
+00:02:48,860 --> 00:02:51,820
+Yeah, so now we get to the actual shell.
+
+50
+00:02:51,820 --> 00:02:57,420
+And we'll enter basically the same thing
+
+51
+00:02:57,420 --> 00:03:00,540
+we typed ourselves there.
+
+52
+00:03:00,540 --> 00:03:10,220
+So ngrams count.py, words, and then Gutenberg fiction.
+
+53
+00:03:10,220 --> 00:03:13,140
+Actually, do you know the file name of the thing?
+
+54
+00:03:13,140 --> 00:03:17,180
+Yeah, it's below there, down there.
+
+55
+00:03:17,180 --> 00:03:19,860
+Yeah, you can copy from the note down below.
+
+56
+00:03:21,820 --> 00:03:29,820
+Should we try to do two grams, actually, like now that I think of it, should we do two grams?
+
+57
+00:03:29,820 --> 00:03:30,820
+Yeah.
+
+58
+00:03:30,820 --> 00:03:31,820
+Yeah.
+
+59
+00:03:31,820 --> 00:03:39,820
+So, if we add here, what's it does in, we can get two grams, I think.
+
+60
+00:03:39,820 --> 00:03:41,820
+Yes, dash lowercase n.
+
+61
+00:03:41,820 --> 00:03:45,820
+So, now we count word pairs, right?
+
+62
+00:03:45,820 --> 00:03:49,820
+Like how many word pairs we can get.
+
+63
+00:03:49,820 --> 00:03:52,340
+So let's save this file.
+
+64
+00:03:52,340 --> 00:03:53,100
+And actually.
+
+65
+00:03:53,100 --> 00:03:58,380
+And saving with Control-X and then pushing Y.
+
+66
+00:03:58,380 --> 00:03:58,900
+Yeah.
+
+67
+00:03:58,900 --> 00:04:03,660
+And actually, I'll rename it to 2grams.sh.
+
+68
+00:04:03,660 --> 00:04:07,740
+That's so now it's save under a different name.
+
+69
+00:04:07,740 --> 00:04:08,540
+Yes.
+
+70
+00:04:08,540 --> 00:04:10,980
+Yes.
+
+71
+00:04:10,980 --> 00:04:13,060
+It's a better name for the file.
+
+72
+00:04:13,060 --> 00:04:15,700
+So.
+
+73
+00:04:15,700 --> 00:04:16,980
+So.
+
+74
+00:04:16,980 --> 00:04:18,260
+OK.
+
+75
+00:04:18,260 --> 00:04:22,100
+And now we actually do the running.
+
+76
+00:04:22,100 --> 00:04:23,540
+So this is it.
+
+77
+00:04:23,540 --> 00:04:28,940
+We run the command sbatch, and we give it the script file.
+
+78
+00:04:28,940 --> 00:04:31,380
+And with luck, there won't be any errors,
+
+79
+00:04:31,380 --> 00:04:33,820
+and it will start running.
+
+80
+00:04:33,820 --> 00:04:34,380
+Yeah.
+
+81
+00:04:34,380 --> 00:04:36,460
+I'll try to be fast here.
+
+82
+00:04:36,460 --> 00:04:37,420
+Yeah.
+
+83
+00:04:37,420 --> 00:04:43,220
+So [name] will push, enter, and immediately run slurm history.
+
+84
+00:04:43,220 --> 00:04:44,420
+No, it already finished.
+
+85
+00:04:44,420 --> 00:04:45,940
+Actually, maybe slurm queue.
+
+86
+00:04:48,260 --> 00:04:48,760
+Yeah.
+
+87
+00:04:48,760 --> 00:04:49,260
+Yeah.
+
+88
+00:04:49,260 --> 00:04:52,760
+So now this is sort of a wide thing here.
+
+89
+00:04:52,760 --> 00:04:54,600
+And maybe I'll push it.
+
+90
+00:04:54,600 --> 00:04:55,560
+Yeah.
+
+91
+00:04:55,560 --> 00:04:57,520
+So there's several key Slurm commands
+
+92
+00:04:57,520 --> 00:04:59,120
+that you will need to know.
+
+93
+00:04:59,120 --> 00:05:02,520
+One, well, actually, so this Slurm
+
+94
+00:05:02,520 --> 00:05:06,160
+is only available on our cluster.
+
+95
+00:05:06,160 --> 00:05:07,040
+So on other clusters.
+
+96
+00:05:07,040 --> 00:05:10,480
+I think it's also on some other clusters.
+
+97
+00:05:10,480 --> 00:05:14,060
+But it's not part of the Slurm installation,
+
+98
+00:05:14,060 --> 00:05:16,080
+but it's present in many clusters.
+
+99
+00:05:18,260 --> 00:05:19,140
+Yeah.
+
+100
+00:05:19,140 --> 00:05:20,380
+Yeah.
+
+101
+00:05:20,380 --> 00:05:22,540
+I'm writing some stuff in the notes here.
+
+102
+00:05:22,540 --> 00:05:24,140
+So sbatch.
+
+103
+00:05:24,140 --> 00:05:29,700
+But you can, there's other commands like squeue.
+
+104
+00:05:33,620 --> 00:05:34,460
+Yeah.
+
+105
+00:05:34,460 --> 00:05:36,540
+You can use as well.
+
+106
+00:05:36,540 --> 00:05:38,580
+But OK, so what's the general thing?
+
+107
+00:05:38,580 --> 00:05:42,020
+We basically, we made our food order
+
+108
+00:05:42,020 --> 00:05:45,860
+and we handed it off to the manager, so the Slurm.
+
+109
+00:05:45,860 --> 00:05:49,020
+And now Slurm has a queue of everything there.
+
+110
+00:05:49,020 --> 00:05:54,820
+And when you type Slurm queue, that tells you what's queued.
+
+111
+00:05:54,820 --> 00:05:57,500
+And we see the second command.
+
+112
+00:05:57,500 --> 00:05:59,120
+Now it's done running.
+
+113
+00:05:59,120 --> 00:06:01,500
+So we can type the command Slurm history
+
+114
+00:06:01,500 --> 00:06:06,500
+and see the status of how it ran.
+
+115
+00:06:06,500 --> 00:06:12,980
+So Slurm history needs to be 8 by 12.
+
+116
+00:06:12,980 --> 00:06:15,140
+It's OK if it scrolls off the screen some.
+
+117
+00:06:15,140 --> 00:06:17,220
+Yeah, that's good.
+
+118
+00:06:17,220 --> 00:06:20,700
+So we see here in the history, there's
+
+119
+00:06:20,700 --> 00:06:26,420
+three jobs with IDs that end in 10, 43, and 30.
+
+120
+00:06:26,420 --> 00:06:29,380
+So it tells us the job name.
+
+121
+00:06:29,380 --> 00:06:32,740
+And we see for the last one, it's count2grams.sh.
+
+122
+00:06:32,740 --> 00:06:35,260
+So that's the file name we submitted.
+
+123
+00:06:35,260 --> 00:06:37,740
+When it started running, it said it
+
+124
+00:06:37,740 --> 00:06:40,260
+requested one gigabyte of memory.
+
+125
+00:06:40,260 --> 00:06:47,500
+And it used 602 megabytes of memory.
+
+126
+00:06:47,500 --> 00:06:49,620
+So 2 grams took a lot more memory
+
+127
+00:06:49,620 --> 00:06:51,620
+to compute than 1 grams.
+
+128
+00:06:51,620 --> 00:06:53,540
+That's good to know.
+
+129
+00:06:53,540 --> 00:07:00,700
+It says it took 22 seconds of CPU time.
+
+130
+00:07:00,700 --> 00:07:03,060
+And towards the end, we see the state
+
+131
+00:07:03,060 --> 00:07:07,260
+is COMP, which means completed.
+
+132
+00:07:07,260 --> 00:07:08,100
+Yeah.
+
+133
+00:07:08,100 --> 00:07:14,820
+And at the end we can also see what was the name of the computer, like the nodes where it ran.
+
+134
+00:07:14,820 --> 00:07:22,740
+So you can see that some of these other programs run on this pe78 and this run on pe8. This is not
+
+135
+00:07:22,740 --> 00:07:30,820
+usually important unless you run into problems or something and then if the computer breaks or
+
+136
+00:07:30,820 --> 00:07:36,900
+something and you need to contact us that hey my code didn't work but usually like
+
+137
+00:07:38,260 --> 00:07:45,700
+the queue manager can decide which computer can fill your things fill your requests and it will
+
+138
+00:07:45,700 --> 00:07:56,260
+decide the best computer to run it on yeah um yeah and that's basically it so with this
+
+139
+00:07:56,260 --> 00:08:03,140
+as you learn more and more shell scripting, or not, if you don't need much more, you can start
+
+140
+00:08:03,140 --> 00:08:13,300
+making these programs that will do more and more for what you do. Yes, and also an important thing
+
+141
+00:08:13,300 --> 00:08:23,060
+with the script, when we now run the stuff, we run it non-interactively. So when we submitted
+
+142
+00:08:23,060 --> 00:08:30,500
+the job, but we immediately didn't see any output or anything. What good is that if I don't see
+
+143
+00:08:30,500 --> 00:08:40,900
+anything? The reason is that Slurm will divert the output to files. If we look at the count
+
+144
+00:08:40,900 --> 00:08:51,380
+n-grams again, over here we have the output of the Python code itself, or the count.py.
+
+145
+00:08:51,380 --> 00:09:00,360
+We use this to divert the output of the counting program to this file, but Slurm will also
+
+146
+00:09:00,360 --> 00:09:07,200
+record everything that the program prints out, and that will be saved into an output
+
+147
+00:09:07,200 --> 00:09:08,320
+file.
+
+148
+00:09:08,320 --> 00:09:13,040
+You can change the name of this output file as well, but the default is that its name
+
+149
+00:09:13,040 --> 00:09:17,000
+is slurm, then dash, and then the job ID.
+
+150
+00:09:17,000 --> 00:09:24,000
+So the job that we run, the job ID discount n-grams, we get an output file out of here.
+
+151
+00:09:24,000 --> 00:09:31,560
+So we can later use pager less to view what was the output over here.
+
+152
+00:09:31,560 --> 00:09:35,180
+So we can see that this is what the code program printed.
+
+153
+00:09:35,180 --> 00:09:38,520
+So it's the same as we would have run it interactively.
+
+154
+00:09:38,520 --> 00:09:41,080
+We get the output over there.
+
+155
+00:09:41,080 --> 00:09:47,520
+So often in your program, you might have program write some output into the disk, but you also
+
+156
+00:09:47,520 --> 00:09:52,320
+want to print out, okay, what it is doing and if it's encountering problems and whatever.
+
+157
+00:09:52,320 --> 00:09:55,840
+And you can later see them in these output files.
+
+158
+00:09:55,840 --> 00:09:57,200
+Yeah.
+
+159
+00:09:57,200 --> 00:09:58,800
+Okay.
+
+160
+00:09:58,800 --> 00:10:02,280
+Should we give people time to work themselves now?
+
+161
+00:10:02,280 --> 00:10:03,280
+Yes.
+
+162
+00:10:03,280 --> 00:10:04,280
+Let's see.
+
+163
+00:10:04,280 --> 00:10:08,680
+I will info add.
+
+164
+00:10:08,680 --> 00:10:10,000
+When should we come back?
+
+165
+00:10:10,000 --> 00:10:13,000
+we come back five minutes before the end time,
+
+166
+00:10:13,000 --> 00:10:15,560
+and we can briefly wrap up.
+
+167
+00:10:16,080 --> 00:10:21,920
+Yes. I will add, yeah.
+
+168
+00:10:21,920 --> 00:10:26,120
+It may be a little bit short on time to do this,
+
+169
+00:10:26,120 --> 00:10:28,000
+but if so, it's okay.
+
+170
+00:10:28,000 --> 00:10:30,600
+The course will be over and then you'll have
+
+171
+00:10:30,600 --> 00:10:34,520
+time to work on it yourself before tomorrow.
+
+172
+00:10:34,520 --> 00:10:38,520
+We'll keep answering questions afterwards.
+
+173
+00:10:38,520 --> 00:10:44,320
+And did we mention how in the Slurm history command,
+
+174
+00:10:44,320 --> 00:10:50,800
+it showed what Slurm tracked as the resource usage, which is?
+
+175
+00:10:50,800 --> 00:10:54,600
+We can talk about it tomorrow in the monitoring.
+
+176
+00:10:54,600 --> 00:10:55,840
+Right, yeah.
+
+177
+00:10:55,840 --> 00:10:58,840
+While we're talking about the other monitoring as well.
+
+178
+00:10:58,840 --> 00:11:00,320
+Yeah.
+
+179
+00:11:00,320 --> 00:11:07,160
+And I guess we will, in the notes,
+
+180
+00:11:07,160 --> 00:11:09,440
+will add the commands that we ran,
+
+181
+00:11:09,440 --> 00:11:11,600
+so that way you can copy from there.
+
+182
+00:11:16,160 --> 00:11:18,520
+Yeah.
+
+183
+00:11:18,520 --> 00:11:19,020
+Yeah.
+
+184
+00:11:19,020 --> 00:11:19,640
+OK.
+
+185
+00:11:19,640 --> 00:11:20,800
+Well, good luck.
+
+186
+00:11:20,800 --> 00:11:24,200
+See you in about 20 minutes.
+
+187
+00:11:24,200 --> 00:11:30,120
+And yeah, have fun, and be happy with your first Slurm jobs.
+
+188
+00:11:30,120 --> 00:11:36,520
+This is an important day for you.
+
+189
+00:11:36,520 --> 00:11:38,360
+Maybe I shouldn't be so philosophical.
+
+190
+00:11:38,360 --> 00:11:39,680
+Okay, see you later then.
+
+191
+00:11:40,600 --> 00:11:41,440
+Okay, bye.
+
+192
+00:11:44,000 --> 00:11:47,600
+Hello and welcome back.
+
+193
+00:11:47,600 --> 00:11:52,600
+So sure, a lot has happened here in these notes.
+
+194
+00:11:52,600 --> 00:12:00,520
+In the bottom, there's a place you can respond if you finished the things. That would be good
+
+195
+00:12:00,520 --> 00:12:06,280
+to figure out. Also, we've started adding some feedback at the bottom. So, just like before,
+
+196
+00:12:06,280 --> 00:12:14,520
+this is a poll. You can add the O's in order to say if it's too fast, slow, basic, advanced,
+
+197
+00:12:14,520 --> 00:12:26,840
+whatever, and any other feedback for us. So I had several things from the questions I'd like to
+
+198
+00:12:26,840 --> 00:12:35,240
+bring up, but it might take a bit too long to go and actually find them through the material,
+
+199
+00:12:35,240 --> 00:12:41,240
+so I'll just say it. First, one important thing to note, once you have the batch script file to
+
+200
+00:12:41,240 --> 00:12:47,160
+run things, now your work is reproducible. So if you save the batch scripts that you run
+
+201
+00:12:47,160 --> 00:12:51,960
+and you come back in a month or six months or a year and need to run the same things again,
+
+202
+00:12:52,520 --> 00:12:58,360
+you can basically figure out what arguments you gave and how things should work. And that's really
+
+203
+00:12:58,360 --> 00:13:02,520
+important and shouldn't be underestimated. When you're doing this scientific work,
+
+204
+00:13:02,520 --> 00:13:09,400
+you have to remember things for a long period of time. And if, for example, a year from now,
+
+205
+00:13:09,400 --> 00:13:14,760
+you have to try to do something again for paper revisions or to verify the work,
+
+206
+00:13:14,760 --> 00:13:17,240
+having these batch grips will help you quite a lot.
+
+207
+00:13:18,840 --> 00:13:26,040
+Next up, many of the clusters are different. So we saw something down here, for example,
+
+208
+00:13:26,040 --> 00:13:32,920
+on the CSC computers, you need to specify the account and partition for every job you run.
+
+209
+00:13:33,640 --> 00:13:39,000
+So on some clusters, it sort of automatically does it because the time isn't tracked by project.
+
+210
+00:13:39,400 --> 00:13:45,240
+So this is another case where you need to find the reference for the cluster you're using and then
+
+211
+00:13:47,080 --> 00:13:52,200
+well, you know, copy that and translate it to what your work is doing now.
+
+212
+00:13:53,320 --> 00:13:58,360
+Next up, there was some point a question about the output files.
+
+213
+00:13:58,360 --> 00:14:10,280
+else. Where does it save the output? Okay. Maybe like this here. So there's different
+
+214
+00:14:10,280 --> 00:14:19,000
+types of output that a script can have. One is the output files that the code itself makes.
+
+215
+00:14:19,000 --> 00:14:24,800
+And the second is what the code is printing to the screen, which is what in the Unix world
+
+216
+00:14:24,800 --> 00:14:27,800
+is called standard output or standard error.
+
+217
+00:14:27,800 --> 00:14:30,360
+And this standard output and standard error
+
+218
+00:14:30,360 --> 00:14:32,760
+gets captured by Slurm and then saved
+
+219
+00:14:32,760 --> 00:14:34,920
+to a file for your reference.
+
+220
+00:14:34,920 --> 00:14:37,120
+So basically, there's two kinds of things that happen.
+
+221
+00:14:37,120 --> 00:14:40,220
+So your program runs, it saves the main results,
+
+222
+00:14:40,220 --> 00:14:43,600
+and then the information about how the program itself ran.
+
+223
+00:14:43,600 --> 00:14:45,560
+And usually, it's the second one that you
+
+224
+00:14:45,560 --> 00:14:47,400
+would look at to figure out what happened
+
+225
+00:14:47,400 --> 00:14:49,440
+if it didn't work correctly.
+
+226
+00:14:49,440 --> 00:14:54,200
+So, yeah, these dot out files like this are very,
+
+227
+00:14:55,600 --> 00:14:56,960
+okay, I can't select,
+
+228
+00:14:56,960 --> 00:15:00,800
+very important to look at when things go wrong.
+
+229
+00:15:00,800 --> 00:15:02,200
+And even when things go right,
+
+230
+00:15:02,200 --> 00:15:05,760
+just to make sure that it's going right the way you expect.
+
+231
+00:15:05,760 --> 00:15:08,440
+Yeah, and maybe we didn't emphasize enough
+
+232
+00:15:08,440 --> 00:15:12,120
+in the, when we wanted to get to the exercise
+
+233
+00:15:12,120 --> 00:15:13,160
+as quickly as possible,
+
+234
+00:15:13,160 --> 00:15:16,000
+why are we even doing this script?
+
+235
+00:15:16,000 --> 00:15:22,400
+So the important part is that you want to program to the computer what you want it to do.
+
+236
+00:15:23,360 --> 00:15:30,400
+You want to tell it what to do. And in the case of Slurm, you want to tell the Slurm that, hey,
+
+237
+00:15:30,400 --> 00:15:36,320
+I want you to do this thing for me, and I want you to give me the resources and do it somewhere
+
+238
+00:15:37,680 --> 00:15:44,720
+when I'm not watching. Basically, in the kitchen metaphor, you're just asking
+
+239
+00:15:46,000 --> 00:15:52,560
+basically you're ordering food from a restaurant, like you want somebody else to prepare it
+
+240
+00:15:52,560 --> 00:16:01,280
+to you at a later date and you will get it done later. So you want to be able to tell
+
+241
+00:16:01,280 --> 00:16:06,880
+the instructions to the computer in a way that it understands what commands it should run
+
+242
+00:16:06,880 --> 00:16:13,840
+when it goes to the compute node. And the output is basically the way that you can then monitor
+
+243
+00:16:13,840 --> 00:16:18,880
+what it actually did. So in your code, you can have print statements and stuff like that,
+
+244
+00:16:19,600 --> 00:16:25,840
+that will tell, okay, I am now doing this, I'm doing that. And especially if you're running a
+
+245
+00:16:25,840 --> 00:16:36,480
+job in the queue, you might want to monitor what it is doing. But if you submit it to the queue,
+
+246
+00:16:37,600 --> 00:16:41,760
+you don't have an interactive session there, which is a benefit because you can then close
+
+247
+00:16:41,760 --> 00:16:48,000
+a laptop and closer connection, nothing will break. It will run remotely there, but you want
+
+248
+00:16:48,000 --> 00:16:57,120
+to monitor the output and that's why you have the output files. Yeah, okay. And the last one I wanted
+
+249
+00:16:57,120 --> 00:17:06,720
+to note, which can I find it from here, is the difference between sbatch and srun and bash directly.
+
+250
+00:17:06,720 --> 00:17:16,720
+So sbatch will take a script file and hand it off to slurm to run it sometime later non-interactively.
+
+251
+00:17:17,600 --> 00:17:24,080
+srun when used directly from the command line will try to run something through slurm but right now
+
+252
+00:17:24,640 --> 00:17:31,440
+attached to your terminal and it doesn't read the different sbatch comments that are inside of a
+
+253
+00:17:31,440 --> 00:17:38,720
+shell script. And finally if you run something with bash only it doesn't know anything about
+
+254
+00:17:38,720 --> 00:17:49,520
+slurm and will just run it where you are directly. So this is something that
+
+255
+00:17:51,600 --> 00:17:55,600
+well you don't have time to go much more into depth than this now but if you read a little
+
+256
+00:17:55,600 --> 00:18:02,800
+bit more, you'll see us discuss this a bit more in the notes. Also, I mean, we're out of time now,
+
+257
+00:18:03,360 --> 00:18:13,920
+and there is, like, this was very fast. Like we said at the beginning, it's impossible to give
+
+258
+00:18:13,920 --> 00:18:19,600
+a course that will teach you everything about the cluster, about Linux, about the shell,
+
+259
+00:18:19,600 --> 00:18:24,240
+about version control, about the data storage within 10 hours.
+
+260
+00:18:24,240 --> 00:18:26,240
+So we aren't even trying to do that.
+
+261
+00:18:26,240 --> 00:18:28,560
+Instead, we're trying to give the broad overview
+
+262
+00:18:28,560 --> 00:18:31,120
+and show some demos and have good materials for you
+
+263
+00:18:31,120 --> 00:18:33,680
+to follow up on just the parts you need later.
+
+264
+00:18:33,680 --> 00:18:36,480
+Because also, everyone needs different parts
+
+265
+00:18:36,480 --> 00:18:39,600
+for their own work in the future.
+
+266
+00:18:39,600 --> 00:18:43,200
+So not everyone can sit through weeks of courses
+
+267
+00:18:43,200 --> 00:18:47,600
+to learn all the details.
+
+268
+00:18:47,600 --> 00:18:54,880
+So don't feel overwhelmed if it's overwhelming. I mean, yes, it is overwhelming. We know that,
+
+269
+00:18:54,880 --> 00:19:00,000
+but that doesn't mean that you personally need to feel overwhelmed. It just means that you are
+
+270
+00:19:03,280 --> 00:19:09,040
+learning things. With that being said, is there anything else we should talk about,
+
+271
+00:19:09,040 --> 00:19:11,440
+[name], before I go to the final notes of the day?
+
+272
+00:19:11,440 --> 00:19:18,600
+Yeah, I'll add that there was a good question of, like, is it not possible to write the
+
+273
+00:19:18,600 --> 00:19:22,200
+commands directly on the command line instead of writing them as scripts?
+
+274
+00:19:22,200 --> 00:19:27,240
+And yeah, like that's of course an option, but that requires then you to have the terminal
+
+275
+00:19:27,240 --> 00:19:31,600
+open and writing them and remembering to write them in the correct order.
+
+276
+00:19:31,600 --> 00:19:37,400
+And that's like extra effort that I don't personally want to do.
+
+277
+00:19:37,400 --> 00:19:43,560
+So that's why usually you write the scripts because they tell exactly what to do.
+
+278
+00:19:43,560 --> 00:19:48,800
+They tell the computer exactly what you want the computer to do.
+
+279
+00:19:48,800 --> 00:19:53,440
+And then you can tell the computer that, hey, do this for me.
+
+280
+00:19:53,440 --> 00:19:57,720
+And it will run those for you, run the commands that you specify for you.
+
+281
+00:19:57,720 --> 00:20:03,200
+And you can later see that, okay, these were the commands I used to run my code.
+
+282
+00:20:03,200 --> 00:20:09,360
+was the actual, like, what was needed to run my code. And you don't have to be there typing
+
+283
+00:20:09,360 --> 00:20:14,240
+the commands, because the computer basically, the queue basically types those commands for you.
+
+284
+00:20:14,240 --> 00:20:20,720
+Like, when it gets the job reservation, it will type those commands in the Slurm script into
+
+285
+00:20:20,720 --> 00:20:26,240
+the terminal, and it will run those. Yeah, like, for example, there have been
+
+286
+00:20:26,240 --> 00:20:32,240
+times I needed to use the cluster. I had one thing I needed to run that uses 200 megabyte,
+
+287
+00:20:32,240 --> 00:20:34,280
+or 200 gigabytes of memory.
+
+288
+00:20:34,280 --> 00:20:37,200
+So there, I'll go and I'll run it direct from the terminal.
+
+289
+00:20:37,200 --> 00:20:39,360
+I'll load the data, do a quick calculation,
+
+290
+00:20:39,360 --> 00:20:42,560
+and be done with it, because it's only a single thing.
+
+291
+00:20:42,560 --> 00:20:46,080
+But when I need to do something 100 times,
+
+292
+00:20:46,080 --> 00:20:48,440
+because I have 100 different data files,
+
+293
+00:20:48,440 --> 00:20:50,680
+then I want to make scripts for it.
+
+294
+00:20:50,680 --> 00:20:56,600
+So yeah, it's what's it called?
+
+295
+00:20:56,600 --> 00:20:59,080
+Spectrum of ways you use things.
+
+296
+00:21:02,240 --> 00:21:13,640
+Yeah, so for tomorrow we covered what was on the schedule and if you look on the schedule
+
+297
+00:21:13,640 --> 00:21:21,320
+there's the same stuff, links to it, in tutorial format that has more information.
+
+298
+00:21:21,320 --> 00:21:31,380
+Yeah, so you can read that and catch up, learn more, whatever.
+
+299
+00:21:31,380 --> 00:21:33,420
+we know you might need more time for the exercises,
+
+300
+00:21:33,420 --> 00:21:36,180
+so keep working on it later
+
+301
+00:21:36,180 --> 00:21:40,180
+or for the rest of the day today, tomorrow, whatever.
+
+302
+00:21:40,180 --> 00:21:43,200
+Maybe we can even make a Zoom session in the morning
+
+303
+00:21:43,200 --> 00:21:47,960
+to review things for those in Finland.
+
+304
+00:21:48,920 --> 00:21:53,140
+Or ask your colleagues, your friends, whoever for help.
+
+305
+00:21:53,140 --> 00:21:55,020
+I mean, a lot of the things here,
+
+306
+00:21:55,020 --> 00:21:56,640
+it's hard to do by yourself,
+
+307
+00:21:56,640 --> 00:21:58,180
+but if you have another pair of eyes
+
+308
+00:21:58,180 --> 00:22:00,300
+who knows things looking at it with you,
+
+309
+00:22:00,300 --> 00:22:01,380
+they can help you quite a bit.
+
+310
+00:22:01,380 --> 00:22:04,100
+So find that person who will help you.
+
+311
+00:22:04,100 --> 00:22:05,940
+And what we did today is needed
+
+312
+00:22:05,940 --> 00:22:07,660
+in order to continue tomorrow.
+
+313
+00:22:07,660 --> 00:22:09,900
+But also that means what we do tomorrow
+
+314
+00:22:09,900 --> 00:22:11,940
+will help to review what we did today.
+
+315
+00:22:11,940 --> 00:22:14,900
+So if it doesn't completely make sense now, it's okay.
+
+316
+00:22:14,900 --> 00:22:17,820
+Take it for the day, digest it a bit, think about it.
+
+317
+00:22:17,820 --> 00:22:19,420
+When you come back tomorrow,
+
+318
+00:22:19,420 --> 00:22:22,180
+we'll start again from the beginning.
+
+319
+00:22:22,180 --> 00:22:26,700
+Well, beginning like, you know, what's it called?
+
+320
+00:22:26,700 --> 00:22:29,980
+You'll see new examples starting from the beginning.
+
+321
+00:22:29,980 --> 00:22:32,300
+and that may help to put things into perspective
+
+322
+00:22:32,300 --> 00:22:35,340
+and understand the power of what we do here.
+
+323
+00:22:35,340 --> 00:22:37,660
+For example, we'll take the Gutenberg books
+
+324
+00:22:37,660 --> 00:22:40,580
+and run it for every book in parallel,
+
+325
+00:22:40,580 --> 00:22:43,300
+and it will be really easy and very fast.
+
+326
+00:22:44,900 --> 00:22:49,660
+And please do fill out the feedback poll here.
+
+327
+00:22:51,660 --> 00:22:55,620
+There is, if you don't tell us what went wrong,
+
+328
+00:22:55,620 --> 00:22:59,920
+it's hard to improve it for later.
+
+329
+00:22:59,920 --> 00:23:04,920
+I'm glad that things are mostly looking okay here.
+
+330
+00:23:05,840 --> 00:23:08,640
+And yeah, we realized that we need better instructions
+
+331
+00:23:08,640 --> 00:23:10,080
+for what we do before the lecture.
+
+332
+00:23:10,080 --> 00:23:12,900
+So we've recently created a new example.
+
+333
+00:23:12,900 --> 00:23:16,640
+Before our example was calculating pi, now it's Gutenberg,
+
+334
+00:23:16,640 --> 00:23:19,480
+and all the written material isn't updated for it.
+
+335
+00:23:19,480 --> 00:23:23,040
+So that makes it just a little bit, well.
+
+336
+00:23:24,320 --> 00:23:28,000
+Yeah, we didn't have a good thing to point you to.
+
+337
+00:23:28,000 --> 00:23:35,120
+conundrum with this course is that if the example is way too of a toy example, it doesn't reflect
+
+338
+00:23:35,120 --> 00:23:41,680
+the real situation. And if it's closer to the real situation, it can become more complicated.
+
+339
+00:23:41,680 --> 00:23:49,520
+And we try to adapt everything all the time. But yeah, sometimes, especially when we are doing
+
+340
+00:23:49,520 --> 00:23:55,080
+doing a switch from one example to another,
+
+341
+00:23:55,080 --> 00:23:58,640
+the material doesn't necessarily follow immediately.
+
+342
+00:23:58,640 --> 00:24:02,000
+So yeah, that's unfortunate.
+
+343
+00:24:02,000 --> 00:24:05,760
+We'll definitely improve that in the next iteration.
+
+344
+00:24:08,920 --> 00:24:10,520
+Yeah.
+
+345
+00:24:10,520 --> 00:24:12,440
+Should we just end now?
+
+346
+00:24:12,440 --> 00:24:16,200
+We will keep, there's a question somewhere up above.
+
+347
+00:24:16,200 --> 00:24:18,320
+Do we have homework for tomorrow?
+
+348
+00:24:18,320 --> 00:24:24,320
+the homework is just to try what we did, read stuff. I mean, basically the homework is to
+
+349
+00:24:24,320 --> 00:24:30,800
+keep reading and trying stuff until you feel comfortable with it. There's no strict homework
+
+350
+00:24:30,800 --> 00:24:37,280
+like, you know, you're not going to be graded or whatever. You're only here for your own benefit.
+
+351
+00:24:40,560 --> 00:24:43,200
+And don't forget, if you're not coming back a future day,
+
+352
+00:24:43,200 --> 00:24:49,200
+Once you're done with this course, come to our garage if you're at Alto and ask for help.
+
+353
+00:24:49,200 --> 00:24:52,200
+We're here to help you to see you through all of these steps.
+
+354
+00:24:52,200 --> 00:24:53,200
+You're not alone.
+
+355
+00:24:57,200 --> 00:24:58,200
+Yeah, okay.
+
+356
+00:24:58,200 --> 00:25:00,200
+Should we go then?
+
+357
+00:25:00,200 --> 00:25:01,200
+Yeah.
+
+358
+00:25:01,200 --> 00:25:02,200
+Okay.
+
+359
+00:25:02,200 --> 00:25:05,200
+See you tomorrow.
+
+360
+00:25:05,200 --> 00:25:07,200
+Same time.
+
+361
+00:25:07,200 --> 00:25:14,720
+I just saw in chat that yes, we can have a Zoom session before the day starts
+
+362
+00:25:14,720 --> 00:25:15,720
+tomorrow.
+
+363
+00:25:15,720 --> 00:25:19,600
+So if you're one of the Finland people that has access to the Zoom, stay tuned for an
+
+364
+00:25:19,600 --> 00:25:22,040
+email to come and get help then.
+
+365
+00:25:22,040 --> 00:25:23,680
+Okay, now let's go for real.
+
+366
+00:25:23,680 --> 00:25:24,680
+Okay, bye.
+
+367
+00:25:24,680 --> 00:25:25,180
+Bye.
+

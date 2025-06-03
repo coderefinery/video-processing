@@ -1,0 +1,684 @@
+1
+00:00:00,000 --> 00:00:17,620
+Hello. Hello. Hello. We're back. Yeah. So yeah. Yeah, that's like the recovered. Yeah,
+
+2
+00:00:17,620 --> 00:00:23,820
+that's the like the like the shortest Linux terminal crash course ever. So it's like,
+
+3
+00:00:23,820 --> 00:00:30,620
+Yeah, it can be a bit like, okay, what is happening here, like kind of a situation.
+
+4
+00:00:30,620 --> 00:00:35,780
+But it gets better once you get accustomed to it.
+
+5
+00:00:35,780 --> 00:00:42,500
+But if you still have problems with it, don't hesitate to put the stuff into the notes,
+
+6
+00:00:42,500 --> 00:00:48,380
+because we'll be using that example as a stepping stone for the next things.
+
+7
+00:00:48,380 --> 00:00:55,140
+So do check that if you can run the code that we put there.
+
+8
+00:00:55,140 --> 00:00:57,380
+There's an example solution now.
+
+9
+00:00:57,380 --> 00:00:59,980
+Sorry about not having an example solution ready.
+
+10
+00:00:59,980 --> 00:01:03,620
+We are moving some of the materials around.
+
+11
+00:01:03,620 --> 00:01:09,060
+But now there's an example solution there in the notes.
+
+12
+00:01:09,060 --> 00:01:11,100
+So you can try it out if you had problems.
+
+13
+00:01:13,820 --> 00:01:15,580
+Yeah, over here.
+
+14
+00:01:15,580 --> 00:01:19,180
+Okay. Here, I guess.
+
+15
+00:01:19,180 --> 00:01:24,860
+Yes, you can try that one out if you still haven't managed to.
+
+16
+00:01:25,580 --> 00:01:26,080
+Yeah.
+
+17
+00:01:29,340 --> 00:01:36,140
+But don't worry about this too much. Don't worry about if this seems quite complicated.
+
+18
+00:01:36,780 --> 00:01:44,700
+The idea is that you will get more accustomed to the terminal once we start writing the
+
+19
+00:01:44,700 --> 00:01:49,260
+scripts and everything like that and we start using the terminal more and more. But now,
+
+20
+00:01:49,260 --> 00:01:55,980
+should we move towards like, we've been talking about the terminal, how to use the terminal
+
+21
+00:01:55,980 --> 00:02:04,940
+and where's the HPC, where is the computing stuff? But this is needed for us to be able to
+
+22
+00:02:05,660 --> 00:02:12,860
+actually do the HPC stuff. So, [name], maybe we should talk about the next step,
+
+23
+00:02:12,860 --> 00:02:22,540
+which is the queuing system. So, let's view again our cluster here. So, what is the queue?
+
+24
+00:02:23,980 --> 00:02:29,900
+Yeah. Actually, you know, I could grab my demo materials from one of the HPC kitchen
+
+25
+00:02:30,700 --> 00:02:34,540
+videos and go and give a live demo here, but I'm not prepared for that.
+
+26
+00:02:34,540 --> 00:02:44,580
+that. So let's see. In short, when you have hundreds of computers and thousands or hundreds
+
+27
+00:02:44,580 --> 00:02:51,500
+of thousands or millions of processors available, how do you know what each person can use and
+
+28
+00:02:51,500 --> 00:02:56,820
+for how long? So Slurm is the thing that takes all the requests. So you might say, I have
+
+29
+00:02:56,820 --> 00:03:02,340
+this job where I want 10 processors and 200 gigabytes
+
+30
+00:03:02,340 --> 00:03:05,020
+of memory, and it will find the resources
+
+31
+00:03:05,020 --> 00:03:07,140
+and tell you where you can run it.
+
+32
+00:03:07,140 --> 00:03:11,620
+Or someone might come and say, I need between 1,000
+
+33
+00:03:11,620 --> 00:03:14,420
+and 1 million processors with 4 gigabytes of memory
+
+34
+00:03:14,420 --> 00:03:17,700
+per processor, and it will find what's available,
+
+35
+00:03:17,700 --> 00:03:20,900
+wait for them to be there, and then give them to you
+
+36
+00:03:20,900 --> 00:03:22,260
+and let your thing run.
+
+37
+00:03:22,260 --> 00:03:25,940
+All in the background without you having to be there
+
+38
+00:03:25,940 --> 00:03:27,300
+and wait for it to happen.
+
+39
+00:03:28,700 --> 00:03:32,300
+Yeah, and the queue manager is called Slurm.
+
+40
+00:03:32,300 --> 00:03:34,580
+So whenever we are talking about Slurm,
+
+41
+00:03:35,460 --> 00:03:39,300
+the name sounds strange and it is, but that's what it is.
+
+42
+00:03:39,300 --> 00:03:41,560
+But whenever we're talking about Slurm,
+
+43
+00:03:41,560 --> 00:03:42,940
+we mean the queue manager.
+
+44
+00:03:42,940 --> 00:03:45,420
+And many clusters or some clusters
+
+45
+00:03:45,420 --> 00:03:47,100
+use different queue managers,
+
+46
+00:03:47,100 --> 00:03:48,980
+but at least here in Finland,
+
+47
+00:03:48,980 --> 00:03:50,620
+I think everybody's using Slurm.
+
+48
+00:03:50,620 --> 00:03:53,620
+CSC is using Slurm, we're using Slurm.
+
+49
+00:03:53,620 --> 00:04:01,600
+It just rolls out of your tongue once you get used to the word, but once you know how
+
+50
+00:04:01,600 --> 00:04:08,200
+to reserve resources with Slurm, you can use it in various other clusters as well.
+
+51
+00:04:08,200 --> 00:04:16,660
+So once you know the parameters that the Slurm takes, you can get resources.
+
+52
+00:04:16,660 --> 00:04:21,860
+So if we look at the picture, we can see that most of the time we are spending our time
+
+53
+00:04:21,860 --> 00:04:29,380
+in the login node, or maybe you have reserved like an interactive session with the on-demand,
+
+54
+00:04:29,380 --> 00:04:36,340
+but anyways, you're in some interactive session and you want to run the stuff in the actual
+
+55
+00:04:36,340 --> 00:04:39,340
+like CPU nodes in the other computers.
+
+56
+00:04:39,340 --> 00:04:44,820
+So should we now check how can you reserve those resources?
+
+57
+00:04:44,820 --> 00:04:45,820
+Yeah.
+
+58
+00:04:45,820 --> 00:04:47,900
+Oh, actually, can you scroll down?
+
+59
+00:04:47,900 --> 00:04:50,120
+I think there's a nice picture here that shows
+
+60
+00:04:50,120 --> 00:04:53,860
+the box that's scheduled.
+
+61
+00:04:53,860 --> 00:04:55,540
+There, yeah.
+
+62
+00:04:55,540 --> 00:04:58,940
+So whenever you are scheduling a job,
+
+63
+00:04:58,940 --> 00:05:03,940
+it's basically a rectangle that the number of CPUs,
+
+64
+00:05:03,940 --> 00:05:06,260
+the amount of memory, and the time.
+
+65
+00:05:06,260 --> 00:05:07,900
+And then optionally, you can throw
+
+66
+00:05:07,900 --> 00:05:11,180
+in some number of GPUs there.
+
+67
+00:05:11,180 --> 00:05:14,460
+So that's the kind of thing.
+
+68
+00:05:14,460 --> 00:05:18,780
+So we need to define what these boxes are.
+
+69
+00:05:18,780 --> 00:05:28,500
+And usually, the good way of starting to approximate the boxes is compare them to your own computer.
+
+70
+00:05:28,500 --> 00:05:35,220
+So if your computer has four CPUs, you might want to request four CPUs.
+
+71
+00:05:35,220 --> 00:05:40,740
+If your computer has 16 gigabytes of memory or 8 gigabytes of memory, you might take the
+
+72
+00:05:40,740 --> 00:05:42,180
+same one.
+
+73
+00:05:42,180 --> 00:05:48,640
+And if you have, if you put outcome rounds on your laptop for an hour, you might want
+
+74
+00:05:48,640 --> 00:05:53,340
+to request something like two hours.
+
+75
+00:05:53,340 --> 00:05:59,020
+So you have this kind of like size of what is your job?
+
+76
+00:05:59,020 --> 00:06:01,220
+What does it need for it to run?
+
+77
+00:06:01,220 --> 00:06:08,540
+And then you can estimate the first guess, what is the size of the job?
+
+78
+00:06:08,540 --> 00:06:10,780
+then you can refine the guess later on.
+
+79
+00:06:13,260 --> 00:06:13,760
+Yeah.
+
+80
+00:06:15,020 --> 00:06:21,020
+So, [name], what happens when you tell Slurm these requests?
+
+81
+00:06:21,020 --> 00:06:21,820
+What does it do?
+
+82
+00:06:24,260 --> 00:06:29,740
+So you tell it a request and it first, you tell it what the
+
+83
+00:06:29,740 --> 00:06:31,740
+requests are and then the batch scripts.
+
+84
+00:06:31,740 --> 00:06:36,420
+So basically what will be run and then it adds it to a database
+
+85
+00:06:36,420 --> 00:06:38,260
+of everything that's requested.
+
+86
+00:06:38,540 --> 00:06:41,660
+and then it stores it,
+
+87
+00:06:41,660 --> 00:06:44,100
+it sorts it by priority.
+
+88
+00:06:44,100 --> 00:06:46,340
+Most clusters, actually,
+
+89
+00:06:46,340 --> 00:06:49,060
+isn't most clusters in Finland and the world now,
+
+90
+00:06:49,060 --> 00:06:50,860
+use something called fairshare.
+
+91
+00:06:50,860 --> 00:06:55,060
+So basically, it's not
+
+92
+00:06:55,060 --> 00:06:58,780
+a strict queue where the first person to submit something goes first.
+
+93
+00:06:58,780 --> 00:07:04,820
+Instead, it takes all the requests,
+
+94
+00:07:04,820 --> 00:07:06,220
+and the more you run,
+
+95
+00:07:06,220 --> 00:07:08,020
+the lower your priority goes.
+
+96
+00:07:08,020 --> 00:07:13,020
+so that it sort of tries to balance it out
+
+97
+00:07:13,020 --> 00:07:15,940
+so everyone gets about the same amount of stuff.
+
+98
+00:07:15,940 --> 00:07:17,660
+So it's something like CSC, where
+
+99
+00:07:17,660 --> 00:07:20,220
+there's a limited number of billing units
+
+100
+00:07:20,220 --> 00:07:22,540
+that might take that into account.
+
+101
+00:07:22,540 --> 00:07:24,300
+But at least in our university, it's
+
+102
+00:07:24,300 --> 00:07:28,140
+designed to be relatively equal.
+
+103
+00:07:28,140 --> 00:07:33,620
+And if we check the resources, so we already
+
+104
+00:07:33,620 --> 00:07:38,460
+mentioned that there's the time memory, CPUs and GPUs.
+
+105
+00:07:38,460 --> 00:07:40,220
+And for each of these, there's usually
+
+106
+00:07:40,220 --> 00:07:45,580
+some arguments or parameters that are listed over here.
+
+107
+00:07:45,580 --> 00:07:48,060
+We'll go through them when we are actually
+
+108
+00:07:48,060 --> 00:07:50,460
+going to be submitting the jobs.
+
+109
+00:07:50,460 --> 00:07:53,580
+But you can always come back and reference, let's say,
+
+110
+00:07:53,580 --> 00:07:55,780
+this page or the relevant tutorial pages
+
+111
+00:07:55,780 --> 00:08:00,540
+to figure out what were the magic flags that Slurm needed
+
+112
+00:08:00,540 --> 00:08:02,740
+to know about these resources.
+
+113
+00:08:02,740 --> 00:08:10,340
+Yeah, there's also on some other clusters, there's other parameters you might need to tell,
+
+114
+00:08:10,900 --> 00:08:15,540
+like for example in CSC you need to tell which account you're using, like which is the
+
+115
+00:08:16,180 --> 00:08:22,740
+one who will be built, and in some cases you need to also give partitions. So often
+
+116
+00:08:23,860 --> 00:08:32,100
+the cluster, if you look at the cluster here, the cluster is split into different partitions based
+
+117
+00:08:32,100 --> 00:08:36,980
+on what sort of job they need to be running or what sort of architecture they have.
+
+118
+00:08:36,980 --> 00:08:42,660
+For example, the GPU nodes are often separated into their own partitions.
+
+119
+00:08:42,660 --> 00:08:47,780
+So sometimes you need to give this information as well when you're submitting a job.
+
+120
+00:08:47,780 --> 00:08:54,180
+So in these cases, please refer to your own clusters, documentation, what magic flags you
+
+121
+00:08:54,180 --> 00:09:01,420
+you need to add in order to get the job running on the compute
+
+122
+00:09:01,420 --> 00:09:02,340
+nodes.
+
+123
+00:09:02,340 --> 00:09:08,020
+Usually it's like partition and then the name of a partition.
+
+124
+00:09:08,020 --> 00:09:10,100
+Yeah.
+
+125
+00:09:10,100 --> 00:09:11,820
+Is there anything else here, or should we
+
+126
+00:09:11,820 --> 00:09:12,940
+go on to the examples?
+
+127
+00:09:15,900 --> 00:09:19,940
+I think probably, yeah, I would say,
+
+128
+00:09:19,940 --> 00:09:21,340
+do we have anything in the chat?
+
+129
+00:09:21,340 --> 00:09:22,660
+Any good questions?
+
+130
+00:09:22,660 --> 00:09:26,880
+No, nothing we need to.
+
+131
+00:09:26,880 --> 00:09:30,280
+There is one question, how to decide how many resources
+
+132
+00:09:30,280 --> 00:09:31,780
+to allocate for the job.
+
+133
+00:09:31,780 --> 00:09:36,400
+And actually, yeah, maybe we can briefly mention that.
+
+134
+00:09:36,400 --> 00:09:36,900
+Yeah.
+
+135
+00:09:36,900 --> 00:09:39,660
+So you made a page on this once.
+
+136
+00:09:39,660 --> 00:09:40,660
+Yes, yes.
+
+137
+00:09:40,660 --> 00:09:45,100
+There's like a, you can check, there's
+
+138
+00:09:45,100 --> 00:09:55,380
+this quick guide on the job size, like what is the program size.
+
+139
+00:09:55,380 --> 00:10:02,820
+Yeah, and you can check that and basically, it's like I said, you can often compare it
+
+140
+00:10:02,820 --> 00:10:08,940
+to your own computer, like what are the resources over there.
+
+141
+00:10:08,940 --> 00:10:15,060
+And often you can use the, let's say, if you don't know if your program uses multiple processors,
+
+142
+00:10:15,060 --> 00:10:20,260
+you can run it on your own computer and check the process manager in your machine.
+
+143
+00:10:20,260 --> 00:10:28,460
+There's hints in the guide, like you can check how many processes are being used by the program
+
+144
+00:10:28,460 --> 00:10:32,660
+and then determine from that how big is the program.
+
+145
+00:10:32,660 --> 00:10:41,160
+But what you usually give these resources, you don't want to give exactly the limit what the program uses.
+
+146
+00:10:41,160 --> 00:10:50,920
+want to give it a bit leeway so that it doesn't get throttled or anything like that. So basically,
+
+147
+00:10:52,760 --> 00:10:58,280
+if your program uses one CPU, then you usually want to have it one CPU. If it uses like eight
+
+148
+00:10:58,280 --> 00:11:03,880
+gigabytes of memory, you might want to give it like 10, just to have a bit of option of going
+
+149
+00:11:03,880 --> 00:11:10,040
+a bit over. And if it takes like an hour, you usually give it like hour and a half. So you
+
+150
+00:11:10,040 --> 00:11:14,160
+you give it a bit leeway that if it runs slower this day,
+
+151
+00:11:14,160 --> 00:11:16,360
+then it will still finish.
+
+152
+00:11:16,360 --> 00:11:20,240
+And usually it goes like you first guess some number,
+
+153
+00:11:20,240 --> 00:11:23,920
+if it crashes, like if it is too small,
+
+154
+00:11:23,920 --> 00:11:25,440
+then you just increase the number.
+
+155
+00:11:25,440 --> 00:11:26,600
+If it's too big,
+
+156
+00:11:26,600 --> 00:11:29,760
+we will talk about job monitoring tomorrow.
+
+157
+00:11:29,760 --> 00:11:33,680
+So we will talk about how you can get the numbers out
+
+158
+00:11:33,680 --> 00:11:35,600
+after the job has run,
+
+159
+00:11:35,600 --> 00:11:37,160
+like how much it actually used,
+
+160
+00:11:37,160 --> 00:11:38,760
+and then you can like limit it.
+
+161
+00:11:38,760 --> 00:11:43,400
+And you usually want the submission
+
+162
+00:11:43,400 --> 00:11:47,240
+to be quite close to the size of the box
+
+163
+00:11:47,240 --> 00:11:51,000
+because then the queue knows that, OK, this
+
+164
+00:11:51,000 --> 00:11:53,720
+is the amount of things needed by the job.
+
+165
+00:11:53,720 --> 00:12:00,840
+So you can fit it best into the queue.
+
+166
+00:12:00,840 --> 00:12:04,240
+So then you won't get a bad priority
+
+167
+00:12:04,240 --> 00:12:05,840
+because the job you're requesting
+
+168
+00:12:05,840 --> 00:12:07,360
+more than you actually use.
+
+169
+00:12:08,760 --> 00:12:10,840
+But should we start running?
+
+170
+00:12:10,840 --> 00:12:11,760
+Let's go on.
+
+171
+00:12:11,760 --> 00:12:12,000
+OK.
+

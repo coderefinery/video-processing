@@ -1,0 +1,692 @@
+1
+00:00:00,000 --> 00:00:01,660
+Bye.
+
+2
+00:00:01,660 --> 00:00:05,780
+OK, so now about connecting to a cluster.
+
+3
+00:00:05,780 --> 00:00:08,820
+Essentially, there are many, many different ways
+
+4
+00:00:08,820 --> 00:00:12,260
+how you connect, how you can connect.
+
+5
+00:00:12,260 --> 00:00:18,580
+and it also depends a bit on what cluster you're trying to connect to, what things are being
+
+6
+00:00:18,580 --> 00:00:26,420
+offered. We are mainly focusing here on the options that we give at Aalto, so with Triton,
+
+7
+00:00:26,420 --> 00:00:35,780
+but most of them are also applicable for other HPC systems. The traditional way to connect
+
+8
+00:00:35,780 --> 00:00:44,660
+to a cluster is essentially SSH. You have a command line tool, be that Windows command
+
+9
+00:00:44,660 --> 00:00:53,340
+line, Windows PowerShell, the WSL, Windows Subsystem for Linux on a Windows machine or
+
+10
+00:00:53,340 --> 00:01:03,540
+on any terminal on a Linux or Mac machine, and using the SSH command, which is just secure
+
+11
+00:01:03,540 --> 00:01:07,540
+a shell which lets you connect to a cluster.
+
+12
+00:01:08,220 --> 00:01:10,980
+Maybe we can just show that quickly.
+
+13
+00:01:10,980 --> 00:01:12,420
+Yep.
+
+14
+00:01:15,780 --> 00:01:20,540
+I've opened a Windows command prompt.
+
+15
+00:01:20,540 --> 00:01:22,780
+Let me see, you should be able to see it.
+
+16
+00:01:22,780 --> 00:01:27,580
+So it's SSH and there will be.
+
+17
+00:01:27,580 --> 00:01:34,580
+Your username?
+
+18
+00:01:34,580 --> 00:01:40,260
+triton.aalto.fi, in the case of Triton.
+
+19
+00:01:40,260 --> 00:01:46,220
+In the case of Triton or in the case of Aalto, you need to be connected to the virtual private
+
+20
+00:01:46,220 --> 00:01:55,060
+network or have SSH keys set up, but for this demo, [name], it's connected to the VPN?
+
+21
+00:01:55,060 --> 00:01:56,540
+Yep.
+
+22
+00:01:56,540 --> 00:01:59,160
+And then, where am I here now?
+
+23
+00:01:59,160 --> 00:02:00,160
+It says Login4.
+
+24
+00:02:00,160 --> 00:02:03,720
+Where is this on the cluster?
+
+25
+00:02:03,720 --> 00:02:11,040
+So essentially, what you get to when you connect to a cluster is not one of the compute machines.
+
+26
+00:02:11,040 --> 00:02:16,920
+It's normally a login node, which is kind of a control node where you submit jobs, where
+
+27
+00:02:16,920 --> 00:02:22,580
+you send jobs to the cluster, which will be discussed about later.
+
+28
+00:02:22,580 --> 00:02:28,580
+important thing to know about this is that this logger node is not a place
+
+29
+00:02:28,580 --> 00:02:35,500
+where you should actually run computations because on most systems
+
+30
+00:02:35,500 --> 00:02:42,180
+your resources that you can use on the logger node are restricted and if they
+
+31
+00:02:42,180 --> 00:02:47,100
+are in use you might really get problems actually connecting again to the cluster
+
+32
+00:02:47,100 --> 00:02:55,180
+because if the let's say 10 gigabytes of memory or so that you are allocated and
+
+33
+00:02:55,180 --> 00:03:02,340
+the two CPUs are in full use by some Python computation process even your
+
+34
+00:03:02,340 --> 00:03:07,500
+terminals might start to become really sluggish or not react at all
+
+35
+00:03:07,500 --> 00:03:12,180
+because you don't have more resources on this machine because it's a shared
+
+36
+00:03:12,180 --> 00:03:19,540
+resource and everyone should be should be able to work on there without the risk of someone saying
+
+37
+00:03:19,540 --> 00:03:26,500
+okay I'm just running a computation here and slowing it down for everyone. So this is just
+
+38
+00:03:26,500 --> 00:03:35,700
+the place where you connect to and where you start then distributing the work and we can also
+
+39
+00:03:35,700 --> 00:03:46,980
+maybe quickly show this via OnDemand. OnDemand is a service that also
+
+40
+00:03:48,100 --> 00:03:55,220
+many HPC systems nowadays provide and it's essentially a web interface to the cluster.
+
+41
+00:03:57,460 --> 00:04:00,020
+On Triton, it's ondemand.triton.aalto.fi.
+
+42
+00:04:00,020 --> 00:04:07,260
+So then, when I open this.
+
+43
+00:04:07,260 --> 00:04:15,300
+And commonly, you can get a shell access there, you can get a desktop access.
+
+44
+00:04:15,300 --> 00:04:17,580
+And there's one big difference here.
+
+45
+00:04:17,580 --> 00:04:26,100
+If you want the shell, if you get shell access on Triton, this is, again, just a shell, so
+
+46
+00:04:26,100 --> 00:04:33,280
+a command line for the login node.
+
+47
+00:04:33,280 --> 00:04:37,560
+Essentially, exactly the same as what we
+
+48
+00:04:37,560 --> 00:04:40,900
+had with the terminal connection earlier.
+
+49
+00:04:40,900 --> 00:04:46,440
+But if you would request a desktop session,
+
+50
+00:04:46,440 --> 00:04:48,780
+that's commonly a job that is actually
+
+51
+00:04:48,780 --> 00:04:54,980
+running on one of the compute nodes.
+
+52
+00:04:54,980 --> 00:05:02,580
+So that's, if you request a desktop or interactive graphical session, that is normally
+
+53
+00:05:03,780 --> 00:05:11,540
+some type of job on the node where you can also then run computations and similar things in a
+
+54
+00:05:12,260 --> 00:05:17,540
+user interface way. Which is why you need to define the resources that you want there.
+
+55
+00:05:18,500 --> 00:05:24,100
+And then you maybe need to wait a little while. Yeah. Another important note here is that
+
+56
+00:05:24,980 --> 00:05:30,980
+very often these interactive resources are rather limited.
+
+57
+00:05:30,980 --> 00:05:32,980
+And the reason for that is that
+
+58
+00:05:32,980 --> 00:05:38,980
+interactive resources on tendency are kind of inefficient
+
+59
+00:05:38,980 --> 00:05:40,980
+in the sense that
+
+60
+00:05:40,980 --> 00:05:45,980
+you are very often sitting in front of this and thinking.
+
+61
+00:05:45,980 --> 00:05:49,980
+And that means the whole time you're thinking about something,
+
+62
+00:05:49,980 --> 00:05:53,980
+the computational power of whatever you requested
+
+63
+00:05:53,980 --> 00:05:57,980
+is idling on tendency.
+
+64
+00:05:57,980 --> 00:06:01,980
+If it's currently running something, then that's fine, but very often
+
+65
+00:06:01,980 --> 00:06:05,980
+it's just idling. For heavy
+
+66
+00:06:05,980 --> 00:06:09,980
+computation jobs, you normally need to go through
+
+67
+00:06:09,980 --> 00:06:13,980
+the queue system and submit jobs that are explicitly
+
+68
+00:06:13,980 --> 00:06:17,980
+just running one thing. It's also this UI and the
+
+69
+00:06:17,980 --> 00:06:21,740
+whole user interface thing, of course, takes resources.
+
+70
+00:06:21,740 --> 00:06:26,580
+So you are essentially spending some resources
+
+71
+00:06:26,580 --> 00:06:28,220
+just to have this UI.
+
+72
+00:06:28,220 --> 00:06:31,380
+And if you want to have an as efficient job as possible,
+
+73
+00:06:31,380 --> 00:06:35,540
+getting rid of that overhead is definitely beneficial.
+
+74
+00:06:35,540 --> 00:06:40,100
+So it's actually not good for what the cluster's made for,
+
+75
+00:06:40,100 --> 00:06:42,260
+namely running big computations.
+
+76
+00:06:42,260 --> 00:06:44,260
+But if you have results on the cluster
+
+77
+00:06:44,260 --> 00:06:46,380
+that you want to just quickly check,
+
+78
+00:06:46,380 --> 00:06:51,020
+you use it as one way to have a graphical user interface
+
+79
+00:06:51,020 --> 00:06:55,020
+to look at the figures or something that would be produced.
+
+80
+00:06:56,140 --> 00:06:58,180
+And that's well connected to the cluster
+
+81
+00:06:58,180 --> 00:07:01,300
+in contrast to trying to mount this remotely
+
+82
+00:07:01,300 --> 00:07:04,100
+where network connections might be slower and so on.
+
+83
+00:07:04,100 --> 00:07:07,860
+Yes, and it's available also from outside.
+
+84
+00:07:07,860 --> 00:07:11,540
+So you don't have to be on the VPN or close by.
+
+85
+00:07:11,540 --> 00:07:15,260
+Yeah, there's one last way
+
+86
+00:07:15,260 --> 00:07:17,620
+that we want to quickly show
+
+87
+00:07:17,620 --> 00:07:20,020
+because it has become quite popular recently
+
+88
+00:07:20,020 --> 00:07:22,260
+and that's VSCode.
+
+89
+00:07:23,380 --> 00:07:28,380
+VSCode has a couple of features,
+
+90
+00:07:30,260 --> 00:07:35,260
+mainly one extension that's called the Remote SSH plugin.
+
+91
+00:07:36,380 --> 00:07:39,380
+So I look for remote SSH like this.
+
+92
+00:07:39,380 --> 00:07:51,380
+SSH like this, there it is, and I can install it.
+
+93
+00:07:51,380 --> 00:07:58,860
+With that plugin, you can essentially do an SSH connection almost the same way as you
+
+94
+00:07:58,860 --> 00:08:04,300
+would do it with the shell.
+
+95
+00:08:04,300 --> 00:08:09,020
+When you have installed this, you will see this remote explorer icon.
+
+96
+00:08:09,020 --> 00:08:14,960
+You can then either add or [name] already has it added.
+
+97
+00:08:14,960 --> 00:08:20,540
+So you can add it by clicking the plus on this H to tell new remote or if you already
+
+98
+00:08:20,540 --> 00:08:27,560
+have one, you can go on that and essentially indicate location.
+
+99
+00:08:27,560 --> 00:08:38,300
+If you wanted to add, you would add this, like the same command at Triton.
+
+100
+00:08:38,300 --> 00:08:51,460
+And why we want to show the VS Code in particular is there are a few issues with VS Code.
+
+101
+00:08:51,460 --> 00:09:01,260
+It can be a great tool, but if you connect to a cluster with VS Code, on general principle,
+
+102
+00:09:01,260 --> 00:09:08,980
+never open a folder or never connect opening a folder that has lots and lots of files in
+
+103
+00:09:08,980 --> 00:09:10,500
+there.
+
+104
+00:09:10,500 --> 00:09:17,500
+Open things that actually have code and not data.
+
+105
+00:09:17,500 --> 00:09:21,820
+And also don't open, for example, your home folder.
+
+106
+00:09:21,820 --> 00:09:30,760
+And the reason for this is that if you would do that, VS Code tries to index files that
+
+107
+00:09:30,760 --> 00:09:38,100
+are in the folder, and it does this for all files in the folder, which means that it will
+
+108
+00:09:38,100 --> 00:09:43,000
+constantly ask, has this file changed, has this file changed?
+
+109
+00:09:43,000 --> 00:09:49,820
+And if you do this for a folder that has a lot of files in there, you are essentially
+
+110
+00:09:49,820 --> 00:09:55,420
+starting to run a small denial-of-service attack on the file system servers that are
+
+111
+00:09:55,420 --> 00:09:57,260
+around on the cluster.
+
+112
+00:09:57,260 --> 00:09:59,620
+Please don't do that.
+
+113
+00:09:59,620 --> 00:10:09,340
+So that's why we want to mention here that, yeah, use the subfolder that actually has your
+
+114
+00:10:09,340 --> 00:10:12,820
+code to connect to it and use it like that.
+
+115
+00:10:12,820 --> 00:10:16,100
+One more thing with VS Code,
+
+116
+00:10:16,100 --> 00:10:22,900
+in general, try not to run VS Code Jupyter Notebooks.
+
+117
+00:10:22,900 --> 00:10:26,540
+Because VS Code, essentially,
+
+118
+00:10:26,540 --> 00:10:28,920
+when you use this remote SSH plugin,
+
+119
+00:10:28,920 --> 00:10:32,260
+it starts a VS Code server on the other side.
+
+120
+00:10:32,260 --> 00:10:37,900
+If you have Jupyter Notebooks open on the other side,
+
+121
+00:10:37,900 --> 00:10:42,900
+that is not being closed, that is not being shut down when you disconnect.
+
+122
+00:10:42,900 --> 00:10:45,400
+The server will keep running.
+
+123
+00:10:45,400 --> 00:10:51,900
+And that means if you have computations done in that Jupyter Notebook,
+
+124
+00:10:51,900 --> 00:10:56,900
+you still have this running and you're running this on the logger node.
+
+125
+00:10:56,900 --> 00:11:05,900
+So, when you use VS Code, try not to use Jupyter Notebooks interactively.
+
+126
+00:11:05,900 --> 00:11:14,460
+So, is it that I shouldn't even open this ipynb file?
+
+127
+00:11:14,460 --> 00:11:20,740
+That I think depends a little bit on the plugins that you actually have installed.
+
+128
+00:11:20,740 --> 00:11:31,220
+But I personally wouldn't edit Jupyter Notebooks on VS Code with the remote SSH plugin.
+
+129
+00:11:31,220 --> 00:11:39,260
+You can potentially run VS Code on a cluster node and do things like that, but I wouldn't
+
+130
+00:11:39,260 --> 00:11:45,100
+do it on the remote SSH.
+
+131
+00:11:45,100 --> 00:11:50,340
+But with that, I think we will stop here to leave enough time for questions, for individual
+
+132
+00:11:50,340 --> 00:11:58,020
+questions if things don't work during connection, so that we can get as many of you as possible
+
+133
+00:11:58,020 --> 00:12:11,060
+it on the cluster and connect it to the cluster. People from Aalto or Helsinki should all have
+
+134
+00:12:11,060 --> 00:12:20,500
+a link to Zoom where we can help with connecting to their respective clusters. I think we will
+
+135
+00:12:20,500 --> 00:12:26,460
+to pause the stream here now till 11 finish time.
+
+136
+00:12:26,460 --> 00:12:28,780
+Or is it no?
+
+137
+00:12:28,780 --> 00:12:30,220
+Wait.
+
+138
+00:12:30,220 --> 00:12:32,460
+Yeah, essentially till 11 Finnish time
+
+139
+00:12:32,460 --> 00:12:36,860
+and allow people to try to get connected to the cluster.
+
+140
+00:12:44,300 --> 00:12:50,340
+OK, so yeah, we're going to the break time.
+
+141
+00:12:50,500 --> 00:12:56,620
+So yeah, so this is the first exercise time.
+
+142
+00:12:56,620 --> 00:12:58,940
+So we will mute the stream.
+
+143
+00:12:58,940 --> 00:13:05,700
+We will go to the notes here.
+
+144
+00:13:05,700 --> 00:13:08,420
+You see there's lots of questions
+
+145
+00:13:08,420 --> 00:13:11,980
+that have been asked about this.
+
+146
+00:13:11,980 --> 00:13:16,100
+We'll put in the bottom a little thing that says what
+
+147
+00:13:16,100 --> 00:13:19,020
+you should be doing right now.
+
+148
+00:13:19,020 --> 00:13:24,780
+So yes, there are lots of things that can go wrong here. Don't worry. Don't be afraid.
+
+149
+00:13:26,540 --> 00:13:32,780
+You can keep asking questions here. If you're in Finland, we have a Zoom that you can join,
+
+150
+00:13:32,780 --> 00:13:39,260
+and we have breakout rooms for some universities there, and you can ask for live help. And
+
+151
+00:13:39,260 --> 00:13:45,660
+remember, if you don't have time before the next presentation starts, there's still two hours until
+
+152
+00:13:45,660 --> 00:13:52,220
+we actually start doing stuff on the cluster. So you can keep asking questions in the notes
+
+153
+00:13:52,220 --> 00:13:57,180
+during the time. We'll try to figure out what can happen. If you're at Aalto you can send us
+
+154
+00:13:57,180 --> 00:14:04,140
+emails to the addresses and we can look because you shouldn't be adding your usernames to this
+
+155
+00:14:04,140 --> 00:14:18,220
+document. Yeah, and good luck! Now you have time to read stuff. Okay, talk to you later then. Bye!
+
+156
+00:14:20,000 --> 00:14:25,740
+Let's see, hello, hopefully you can hear me out there.
+
+157
+00:14:25,740 --> 00:14:29,340
+So now we're going to a break pretty quickly.
+
+158
+00:14:29,340 --> 00:14:32,140
+So if you look at the notes here,
+
+159
+00:14:32,140 --> 00:14:35,740
+you see there's many questions happening.
+
+160
+00:14:35,740 --> 00:14:38,460
+So that just goes to show how hard it
+
+161
+00:14:38,460 --> 00:14:41,260
+can be to even get connected to the cluster.
+
+162
+00:14:41,260 --> 00:14:43,940
+So I wouldn't say it's necessarily hard,
+
+163
+00:14:43,940 --> 00:14:48,420
+just there's so many different things for everyone. Where you are, what university you are,
+
+164
+00:14:48,420 --> 00:14:53,460
+how you're trying to connect, how your computer is set up, is your account new or old, and so on.
+
+165
+00:14:54,100 --> 00:15:02,180
+So, like we said before, if you can't do it now, it's okay. You're welcome to keep watching the
+
+166
+00:15:02,180 --> 00:15:09,620
+course. Next, we have a demo of the cluster after a short break. A demo of a cluster from CSC,
+
+167
+00:15:09,620 --> 00:15:23,820
+see. So you still have more time to work on this. What else? Yeah. And you notice here
+
+168
+00:15:23,820 --> 00:15:33,520
+in the notes, there's this little poll here. So you can add an O to done if you finished.
+
+169
+00:15:33,520 --> 00:15:38,540
+If you couldn't get connected, then you could put an O under trying connected and an O under
+
+170
+00:15:38,540 --> 00:15:44,700
+not trying if you weren't even trying, and that way we can sort of see what the status is.
+
+171
+00:15:47,980 --> 00:15:53,820
+Yeah, overall, basically, don't worry. If this seems hard, it's one of the hardest parts,
+
+172
+00:15:54,620 --> 00:16:02,460
+unfortunately, and just keep coming back. Don't worry. And with that, see you in 10 minutes
+
+173
+00:16:02,460 --> 00:16:05,580
+for the next session, bye.
+

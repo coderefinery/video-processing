@@ -1,0 +1,2504 @@
+1
+00:00:00,000 --> 00:00:03,060
+Hello, and we are back.
+
+2
+00:00:03,060 --> 00:00:09,540
+So now that hopefully most of you have managed to connect to the cluster of your choice or
+
+3
+00:00:09,540 --> 00:00:12,860
+like some of our connected to Triton,
+
+4
+00:00:12,860 --> 00:00:17,860
+some of our friends outside of our university
+
+5
+00:00:18,340 --> 00:00:20,300
+have connected to their own clusters.
+
+6
+00:00:20,300 --> 00:00:25,300
+So now we are going to have a bit of a different tangent.
+
+7
+00:00:25,480 --> 00:00:29,740
+So we are going to be now having a guest lecture,
+
+8
+00:00:29,740 --> 00:00:32,880
+our guest talk from our friends at CSC.
+
+9
+00:00:32,880 --> 00:00:35,480
+So in this talk, we'll be like,
+
+10
+00:00:37,620 --> 00:00:39,140
+I won't say what's in it
+
+11
+00:00:39,140 --> 00:00:41,460
+because I haven't yet seen it,
+
+12
+00:00:41,460 --> 00:00:44,420
+but we will be talking about various things
+
+13
+00:00:44,420 --> 00:00:47,140
+about what it comes to scale,
+
+14
+00:00:47,140 --> 00:00:50,140
+because CSC is the biggest player here in Finland,
+
+15
+00:00:50,140 --> 00:00:52,020
+and what will be happening.
+
+16
+00:00:52,020 --> 00:00:55,780
+So there will be probably a lot of new things for you
+
+17
+00:00:55,780 --> 00:00:57,780
+over here, and it's a bit different
+
+18
+00:00:57,780 --> 00:00:58,940
+than the rest of the course.
+
+19
+00:00:58,940 --> 00:00:59,780
+For the rest of the course,
+
+20
+00:00:59,780 --> 00:01:02,220
+we'll be working more on the local scale.
+
+21
+00:01:02,220 --> 00:01:05,140
+So don't worry about catching everything,
+
+22
+00:01:05,140 --> 00:01:16,340
+And don't worry about trying to remember everything, every small detail, just focus on the main topics.
+
+23
+00:01:16,340 --> 00:01:24,340
+And with these sending words, let me introduce our friend from CSC, [name].
+
+24
+00:01:24,340 --> 00:01:26,340
+Do you want to introduce yourself?
+
+25
+00:01:26,340 --> 00:01:33,620
+Yeah, yeah. So, yeah, I'm an application specialist at CSC, so that means I've been doing customer
+
+26
+00:01:33,620 --> 00:01:42,340
+support for a long time. Yeah, and the idea of this talk is about to a little bit introduce how
+
+27
+00:01:42,340 --> 00:01:50,420
+to use CSC's resources, and kind of the main message, if I can, if the main message of the
+
+28
+00:01:50,420 --> 00:01:55,500
+kitchen talk was that you need to parallelize your computation to get
+
+29
+00:01:55,500 --> 00:01:59,620
+anything out of the cluster other than the same same stuff that you get from
+
+30
+00:01:59,620 --> 00:02:08,500
+your laptop. The main kind of point from this talk is that you can use CSC's
+
+31
+00:02:08,500 --> 00:02:17,220
+resources if you are a student or researcher at Finnish University or
+
+32
+00:02:17,220 --> 00:02:22,220
+or polytechnic or research institute like FMI or VTT.
+
+33
+00:02:22,700 --> 00:02:27,660
+And you can use CSC resources for free in a way,
+
+34
+00:02:27,660 --> 00:02:29,120
+because it's already been paid
+
+35
+00:02:29,120 --> 00:02:31,960
+for academic research in Finland.
+
+36
+00:02:33,780 --> 00:02:37,180
+In addition, you can also invite your colleagues
+
+37
+00:02:37,180 --> 00:02:42,180
+even from abroad or elsewhere into your projects.
+
+38
+00:02:42,660 --> 00:02:47,180
+When you have a project, then you can invite people there.
+
+39
+00:02:47,180 --> 00:02:51,860
+But anyways, the main message is that you are allowed to use
+
+40
+00:02:51,860 --> 00:02:55,540
+and even encouraged to use CSC's resources.
+
+41
+00:02:55,540 --> 00:02:57,380
+And in some universities,
+
+42
+00:02:57,380 --> 00:02:59,440
+this might even be the only option.
+
+43
+00:02:59,440 --> 00:03:02,100
+Like in Aalto, you have Triton
+
+44
+00:03:02,100 --> 00:03:04,820
+and you have really good support in Aalto
+
+45
+00:03:04,820 --> 00:03:06,860
+for doing computational science.
+
+46
+00:03:06,860 --> 00:03:09,860
+But if you don't get that local support,
+
+47
+00:03:09,860 --> 00:03:12,280
+then you can always ask us.
+
+48
+00:03:12,280 --> 00:03:16,660
+So we are there for you if you can't find support locally.
+
+49
+00:03:16,660 --> 00:03:22,580
+course, doing everything locally is always a little bit more flexible and quicker, so you need to be
+
+50
+00:03:22,580 --> 00:03:29,060
+a little bit patient with CSC services always, but they are there and definitely we should come back
+
+51
+00:03:29,060 --> 00:03:36,340
+to you. And I would also add that it's not like an either-or situation. We do a lot of
+
+52
+00:03:36,340 --> 00:03:41,540
+collaboration with CSC. We use CSC resources as well throughout our work and when helping our
+
+53
+00:03:41,540 --> 00:03:49,300
+researchers and we use CSC trainings all the time. CSC trainings come to Aalto as well and
+
+54
+00:03:49,300 --> 00:03:58,420
+we try to collaborate as much as possible because it's not like a zero-sum game of
+
+55
+00:03:59,380 --> 00:04:06,500
+using resources. Everybody benefits when people get stuff done and CSC is a big player for getting
+
+56
+00:04:06,500 --> 00:04:13,700
+stuff done here in Finland. Yeah, okay, thanks. So, let's go then to the slides. So, I was asked to
+
+57
+00:04:14,500 --> 00:04:23,140
+keep the slides set thin, so I wrote them myself. So, this is not that official maybe, but anyways.
+
+58
+00:04:23,140 --> 00:04:29,780
+So, CSC's HPC resources, and this was the main point that I already told you, you are allowed
+
+59
+00:04:29,780 --> 00:04:38,340
+to use it and it's free of charge. What we have is HPC clusters, sometimes you call these
+
+60
+00:04:38,340 --> 00:04:49,140
+supercomputers. Currently we have Puhti, Mahti and Lumi and Puhti and Mahti will be replaced by Roihu
+
+61
+00:04:49,140 --> 00:05:00,260
+next year, maybe let's say springtime, early summer, but the machine will be basically the
+
+62
+00:05:00,260 --> 00:05:07,060
+same. All these clusters are about the same when you get familiar with them, so it's a cluster
+
+63
+00:05:07,060 --> 00:05:18,340
+computer. Then we have object storage services, so for data storage which is like project lifetime
+
+64
+00:05:18,340 --> 00:05:22,660
+data storage, and I will talk a little bit, and also for sharing data.
+
+65
+00:05:24,420 --> 00:05:33,860
+And then we have cloud platform Pouta, which I also include in our kind of HPC resources that
+
+66
+00:05:33,860 --> 00:05:41,700
+you can use. And cloud stuff is for services that you want to be running all the time,
+
+67
+00:05:41,700 --> 00:05:48,260
+like web service. So, if you host a web page or this kind of service that you can connect
+
+68
+00:05:48,260 --> 00:05:57,220
+from internet, then cloud stuff is for that. HPC clusters are more like one-shot
+
+69
+00:05:57,780 --> 00:06:08,100
+computations or a bunch of them or during the, let's say, course of your PhD or something like
+
+70
+00:06:08,100 --> 00:06:14,740
+that. You run the computations there, but it's not a service. But if you want to set up a service,
+
+71
+00:06:14,740 --> 00:06:23,780
+then it would be cloud. Yeah, Mahti is on service break today, so that's planned service,
+
+72
+00:06:24,340 --> 00:06:32,180
+which is kind of good. Sometimes the machines are on not planned service breaks, and those are
+
+73
+00:06:32,180 --> 00:06:41,620
+usually not the good ones. Yeah. So, these are like huge computers with lots of moving parts,
+
+74
+00:06:41,620 --> 00:06:46,580
+and I think it's a miracle that they are up at any point of the time.
+
+75
+00:06:47,940 --> 00:06:53,780
+So, on the three computers, how would you describe them shortly, if people are not
+
+76
+00:06:53,780 --> 00:06:58,660
+familiar with them, like the differentiations between Puhti, Mahti and Lumia?
+
+77
+00:06:58,660 --> 00:07:04,740
+Puhti and Mahti are our national resources so it's kind of easy and quick to get access to those
+
+78
+00:07:05,780 --> 00:07:14,180
+and Puhti is for like all kinds of things and Mahti was originally targeted for large parallel
+
+79
+00:07:14,180 --> 00:07:24,260
+jobs so lots of stoves in one calculation type of things but you can do all kinds of calculations
+
+80
+00:07:24,260 --> 00:07:32,900
+in both machines, Puhti and Mahti. And Lumi is then, that's the EU machine, and Finland has a
+
+81
+00:07:32,900 --> 00:07:40,660
+huge part of that, so maybe a third or something like that, I don't remember. But also the scale
+
+82
+00:07:40,660 --> 00:07:49,620
+of the machines is interesting, like Puhti is already usually enough, Mahti is more, and Lumi
+
+83
+00:07:49,620 --> 00:07:58,180
+is like crazy big. And usually also the complexity goes about the same way a little bit. It's not as
+
+84
+00:07:58,180 --> 00:08:03,300
+steep as the size of the resources, but always when you get the bigger machine, you expect a
+
+85
+00:08:03,300 --> 00:08:09,620
+little bit more, you know, complexity. And usually like the, I would say that
+
+86
+00:08:09,620 --> 00:08:15,780
+like previously this talk was often highlighted as this laptop sloomy kind of a situation where
+
+87
+00:08:15,780 --> 00:08:19,860
+Like, what are the stepping stones that people need to take in order to be able to use the
+
+88
+00:08:19,860 --> 00:08:26,900
+biggest computers? And usually it's like, it's not that complicated. Like the complexity increases,
+
+89
+00:08:26,900 --> 00:08:32,820
+but it doesn't increase. Like if you go to next stepping stone, you can usually get to the next
+
+90
+00:08:32,820 --> 00:08:37,780
+one. So because like, let's say our local clusters, they're pretty similar to Puhti.
+
+91
+00:08:37,780 --> 00:08:44,180
+And if you jump from a local cluster to Puhti, you can get more resources. And if you go from
+
+92
+00:08:44,180 --> 00:08:51,380
+Puhti to Mahti, you can give even more. And if you go to Puhti to Lumi, you can get even more
+
+93
+00:08:51,380 --> 00:08:55,620
+and different kinds of resources. So it's usually this kind of like, you don't necessarily have to
+
+94
+00:08:55,620 --> 00:09:00,980
+jump straight to the most complex machine. You can take these intermediate steps throughout the
+
+95
+00:09:00,980 --> 00:09:08,180
+whole ecosystem and use them to your benefit. That said, it's just the kind of small details
+
+96
+00:09:08,180 --> 00:09:15,940
+that differ in these clusters. They are all clusters and in this course you go very thoroughly
+
+97
+00:09:15,940 --> 00:09:23,780
+through what is a cluster and how to use it. Maybe I do a quick overview on that stuff and
+
+98
+00:09:23,780 --> 00:09:31,460
+when you go during these two and a half days you go into more detail. So how the access
+
+99
+00:09:31,460 --> 00:09:39,380
+to the resources is organized and this this is particular to CSC now so so how
+
+100
+00:09:39,380 --> 00:09:45,340
+do you get access to resources? First you need a user account which is kind of
+
+101
+00:09:45,340 --> 00:09:52,340
+you put your contact information to CSC and you get the username but this
+
+102
+00:09:52,340 --> 00:09:56,620
+doesn't grant you any resources so you can't even log in to Puhti or Mahti I
+
+103
+00:09:56,620 --> 00:10:05,820
+think with just an account because you need to have also a computing project which then you well
+
+104
+00:10:06,620 --> 00:10:15,020
+it's organized so that the computing projects can have services attached to them so a service could
+
+105
+00:10:15,020 --> 00:10:22,540
+be Mahti or Puhti or Allas or Lumi and and that belongs to kind of the computing project and if
+
+106
+00:10:22,540 --> 00:10:27,740
+you are a member of the project, then you can use all the resources that the project has.
+
+107
+00:10:28,860 --> 00:10:36,700
+So this is the kind of organization of how we share resources between all the users.
+
+108
+00:10:41,100 --> 00:10:48,620
+Often it might be a situation like if you are a summer student or if you are a
+
+109
+00:10:48,620 --> 00:10:57,820
+starting PhD student or something, you might not have the privileges or you're not yet that high
+
+110
+00:10:57,820 --> 00:11:03,260
+up in the ladder that you can request a new project, but your professor or maybe a postdoc
+
+111
+00:11:03,260 --> 00:11:08,780
+can do. I don't know what are the breaking points there, but usually it's like if you talk to your
+
+112
+00:11:08,780 --> 00:11:16,220
+professor and ask them, hey, can you do this few clicks on the CSC side to ask for a new project
+
+113
+00:11:16,220 --> 00:11:20,460
+and then add me to that project, then you usually get the resources quite quickly.
+
+114
+00:11:21,340 --> 00:11:28,220
+But usually it needs to be someone in a more senior position who requests these projects,
+
+115
+00:11:28,220 --> 00:11:36,540
+am I right? Yeah, that's exactly how it works. And these projects are like small projects where
+
+116
+00:11:36,540 --> 00:11:43,100
+you can start. These are granted automatically if you are like a staff member or researcher or
+
+117
+00:11:43,100 --> 00:11:48,140
+professor or something like that and then the professor can invite all the students from his
+
+118
+00:11:48,140 --> 00:11:54,700
+group to the project or have multiple projects for different parts of the research group.
+
+119
+00:11:56,140 --> 00:12:02,780
+So this is how it's organized and it becomes a little bit more clear when I show you
+
+120
+00:12:03,420 --> 00:12:11,260
+my.csc.fi portal which is our portal for managing accounts, your own account information
+
+121
+00:12:11,260 --> 00:12:20,380
+and also your projects. So all this I hope will become more clear when you see how it is done.
+
+122
+00:12:21,900 --> 00:12:29,900
+Okay, then another thing that was already discussed is cluster architecture. So this is
+
+123
+00:12:29,900 --> 00:12:37,340
+kind of important, always kind of understanding why do you have batch queue system, what is wrong
+
+124
+00:12:37,340 --> 00:12:43,820
+with parallel file system? Why is it worse than my laptop's NVMe disk and stuff like that?
+
+125
+00:12:44,780 --> 00:12:52,860
+So, if you look hard at this picture, and like instead of I have what 16 compute nodes here,
+
+126
+00:12:53,420 --> 00:13:00,940
+imagine way more compute nodes. Yeah, way, way, way more. Yeah, and also parallel file system,
+
+127
+00:13:00,940 --> 00:13:09,020
+that's actually like a storage cluster so there's multiple servers and then when you understand that
+
+128
+00:13:09,820 --> 00:13:15,820
+when one of the compute nodes wants to get data from one of the storage servers it needs to ask
+
+129
+00:13:15,820 --> 00:13:23,020
+from metadata server where is my data and then you see that there's only one metadata server
+
+130
+00:13:23,020 --> 00:13:30,140
+active at one time because you need to kind of coordinate so that no two guys write to the
+
+131
+00:13:30,140 --> 00:13:33,820
+same place at the same time or stuff like that.
+
+132
+00:13:33,820 --> 00:13:37,180
+Then you understand that this might be a bottleneck.
+
+133
+00:13:37,180 --> 00:13:40,700
+So if every one of these compute nodes goes
+
+134
+00:13:40,700 --> 00:13:44,700
+to the metadata server at once and wants to find
+
+135
+00:13:44,700 --> 00:13:50,060
+20 000 files at once, which is like the smallest Python environment you
+
+136
+00:13:50,060 --> 00:13:54,220
+can make, usually it's like 60 000 files, then
+
+137
+00:13:54,220 --> 00:13:58,140
+you understand why stuff like why we put our Python
+
+138
+00:13:58,140 --> 00:14:06,940
+environments in containers. Yeah. There's many technical things that will come throughout this
+
+139
+00:14:06,940 --> 00:14:12,060
+course, and they might be like, okay, why are these technical things like they are?
+
+140
+00:14:12,060 --> 00:14:19,820
+And the reason is that there's usually at some point a system has crashed because there's a...
+
+141
+00:14:22,140 --> 00:14:27,980
+Something is not performant enough, and now it's just done this way. And most of the clusters
+
+142
+00:14:27,980 --> 00:14:33,180
+are organized in this sort of a way where you have like the login node where you go in and you
+
+143
+00:14:33,980 --> 00:14:41,900
+deal with the queue system that we'll be using later to ask stuff to run on the computing
+
+144
+00:14:41,900 --> 00:14:48,380
+cluster and then it will use data stored on the shared file system. This is basically what all of
+
+145
+00:14:48,380 --> 00:14:53,820
+the computing clusters use, the format, of course, the amount of computing nodes, what are the
+
+146
+00:14:53,820 --> 00:14:58,860
+computing nodes and everything differs, but this sort of structure applies.
+
+147
+00:14:58,860 --> 00:15:04,460
+Yeah, basic principle is the same. And this also, when you log into supercomputer, you actually log
+
+148
+00:15:04,460 --> 00:15:09,740
+into one of the login nodes. So it's a separate small computer there. Well, it's not separate,
+
+149
+00:15:09,740 --> 00:15:16,940
+but it's part of the cluster. But when you want to compute something, then you want the actual
+
+150
+00:15:16,940 --> 00:15:22,780
+computation to go to the compute node. And the way to get there is through batch queue system.
+
+151
+00:15:22,780 --> 00:15:29,500
+And this is another story. And I think this is one of the things that we might go into more detail
+
+152
+00:15:29,500 --> 00:15:42,220
+in this presentation, if you like. So kind of stuff that differs from your laptop in cluster
+
+153
+00:15:42,220 --> 00:15:52,380
+is batch queue system. Software tree is also way more complex. So we usually use module system.
+
+154
+00:15:52,380 --> 00:15:58,060
+So the thing is that in your laptop you have operating system and then the maintainers of the
+
+155
+00:15:58,060 --> 00:16:05,580
+operating system basically put all the libraries. So when you have a program it will depend on
+
+156
+00:16:05,580 --> 00:16:10,780
+library which will depend on other library and that will depend on other library etc.
+
+157
+00:16:11,900 --> 00:16:18,380
+No piece of software lives in isolation basically so you always need lots of other pieces of
+
+158
+00:16:18,380 --> 00:16:24,700
+software, and these pieces are usually put into software libraries, and then
+
+159
+00:16:25,740 --> 00:16:31,820
+the thing is that in a regular Linux distribution or operating system,
+
+160
+00:16:34,060 --> 00:16:43,020
+the list of libraries is flat, so that's the distribution basically. So the developers and
+
+161
+00:16:43,020 --> 00:16:48,460
+maintainers of the distribution take versions of the libraries so that they work together.
+
+162
+00:16:50,220 --> 00:16:56,620
+But then in supercomputers this usually we use this for something like six years and then we
+
+163
+00:16:56,620 --> 00:17:04,780
+get a new one, five or six years, and during that time lots of software evolves because we want
+
+164
+00:17:04,780 --> 00:17:12,700
+always to have the kind of the newest and best of the programs. So we need to kind of update the
+
+165
+00:17:12,700 --> 00:17:19,420
+software stack also, because they will depend on different versions of the libraries. And this is
+
+166
+00:17:19,420 --> 00:17:27,420
+why we have modules in supercomputers, which kind of select what part of the software tree
+
+167
+00:17:27,420 --> 00:17:29,420
+you want to use.
+
+168
+00:17:29,420 --> 00:17:31,420
+Yeah, so if you've ever
+
+169
+00:17:31,420 --> 00:17:33,420
+shared a computer
+
+170
+00:17:33,420 --> 00:17:35,420
+with your sibling or something like that
+
+171
+00:17:35,420 --> 00:17:37,420
+and then you
+
+172
+00:17:37,420 --> 00:17:39,420
+install something
+
+173
+00:17:39,420 --> 00:17:41,420
+in your computer and then next time
+
+174
+00:17:41,420 --> 00:17:43,420
+you come back, your sibling
+
+175
+00:17:43,420 --> 00:17:45,420
+has installed, I don't know,
+
+176
+00:17:45,420 --> 00:17:47,420
+a really annoying
+
+177
+00:17:47,420 --> 00:17:49,420
+mobile game there
+
+178
+00:17:49,420 --> 00:17:51,420
+or something like that that suddenly
+
+179
+00:17:51,420 --> 00:17:53,420
+breaks everything you are doing and makes
+
+180
+00:17:53,420 --> 00:17:55,420
+stuff annoying,
+
+181
+00:17:55,420 --> 00:17:57,580
+These module systems are designed to avoid that.
+
+182
+00:17:57,660 --> 00:18:02,060
+So they're designed in a way that like everybody can run their, their own
+
+183
+00:18:02,060 --> 00:18:05,820
+software without like the hassle of breaking everybody else's stuff.
+
+184
+00:18:06,060 --> 00:18:09,640
+Like it would be really annoying if somebody is doing their PhD studies,
+
+185
+00:18:10,060 --> 00:18:13,900
+uh, using certain version or let's say console or something like some, some
+
+186
+00:18:13,900 --> 00:18:19,860
+program and now like somebody else asked it to be updated and now like you don't
+
+187
+00:18:19,860 --> 00:18:21,820
+have the version that you were using before.
+
+188
+00:18:21,820 --> 00:18:26,420
+So, in order to make it possible for hundreds of people to have their own software in the
+
+189
+00:18:26,420 --> 00:18:33,220
+same environment or in the same cluster, there's usually this kind of like different way of
+
+190
+00:18:33,220 --> 00:18:40,900
+distributing software, because you need to be able to support what you said, like six
+
+191
+00:18:40,900 --> 00:18:48,140
+years of maybe software throughout the lifetime, so that some people can run the old version,
+
+192
+00:18:48,140 --> 00:18:53,900
+people can run a new version and they still work, and people don't get angry about losing
+
+193
+00:18:53,900 --> 00:18:57,780
+a version of software that they wanted to use.
+
+194
+00:18:57,780 --> 00:19:05,340
+If you are familiar how libraries and Linux and linkers and loaders work, then this is
+
+195
+00:19:05,340 --> 00:19:09,540
+like, of course, it works like that.
+
+196
+00:19:09,540 --> 00:19:15,980
+But usually people tend to have problems with this a little bit, but for us it's kind of
+
+197
+00:19:15,980 --> 00:19:24,620
+easy to figure out what's wrong. So, this is kind of my ending topic. Don't be afraid to ask for help
+
+198
+00:19:24,620 --> 00:19:32,860
+and I've been saying a long time now that I especially like the easy questions. So,
+
+199
+00:19:32,860 --> 00:19:39,020
+the questions that are easy for me but hard for you. That's the best bang for the buck.
+
+200
+00:19:39,020 --> 00:19:46,020
+It takes very little time from me to answer, but it saves a lot of your time.
+
+201
+00:19:46,020 --> 00:19:53,020
+So that's why you should always ask help immediately if you get stuck.
+
+202
+00:19:53,020 --> 00:19:57,020
+That could be even the main point of this talk.
+
+203
+00:19:57,020 --> 00:19:59,020
+Yeah, that's a good point.
+
+204
+00:19:59,020 --> 00:20:07,020
+Don't waste your time too much when there's a person that you can ask immediately how to do it.
+
+205
+00:20:07,020 --> 00:20:11,020
+And especially, like, I would say that in this cluster environments,
+
+206
+00:20:11,020 --> 00:20:16,020
+because there's hundreds of users, like, if you have a problem,
+
+207
+00:20:16,020 --> 00:20:19,020
+there's a chance that somebody else has encountered the same problem.
+
+208
+00:20:19,020 --> 00:20:23,020
+So it's also like collects the best practices and collects the information
+
+209
+00:20:23,020 --> 00:20:28,020
+and who disseminates that information is usually the people who maintain the cluster,
+
+210
+00:20:28,020 --> 00:20:31,020
+who hear the problems from the users.
+
+211
+00:20:31,020 --> 00:20:35,020
+So if you have a problem and you ask the maintainers of the system,
+
+212
+00:20:35,020 --> 00:20:40,900
+them why I encountered that problem, they might have figured that out for some other
+
+213
+00:20:40,900 --> 00:20:47,060
+user already and now they have an existing solution or they might not be aware of it
+
+214
+00:20:47,060 --> 00:20:51,080
+and then they can help everybody else who might encounter the problem in the future.
+
+215
+00:20:51,080 --> 00:20:58,740
+So it's a really good practice to, if you have problems, ask for help.
+
+216
+00:20:58,740 --> 00:21:04,400
+We already discussed a little bit about parallel file system, so it's a little bit different.
+
+217
+00:21:04,400 --> 00:21:08,120
+So it's good in some things and bad in some things.
+
+218
+00:21:08,120 --> 00:21:14,800
+Then data management is something that has come up in the last, let's say, 10 or 20 years
+
+219
+00:21:14,800 --> 00:21:17,040
+to the HPC stuff.
+
+220
+00:21:17,040 --> 00:21:21,840
+So you have lots of data nowadays.
+
+221
+00:21:21,840 --> 00:21:30,760
+And as already, I think, discussed, you can, at the same time, have easily accessible storage,
+
+222
+00:21:30,760 --> 00:21:36,120
+huge storage, cheap storage, and fast storage in same package.
+
+223
+00:21:36,120 --> 00:21:38,280
+Usually you need to do something.
+
+224
+00:21:38,280 --> 00:21:40,280
+And this is data management.
+
+225
+00:21:40,280 --> 00:21:46,000
+And please consider this if your project needs lots of data.
+
+226
+00:21:46,000 --> 00:21:48,960
+And if you think you need lots of data,
+
+227
+00:21:48,960 --> 00:21:52,360
+reconsider, because sometimes you can actually
+
+228
+00:21:52,360 --> 00:21:56,600
+manage with less data than you think.
+
+229
+00:21:56,600 --> 00:22:00,320
+My kind of saying is that big data, big problems, small data,
+
+230
+00:22:00,320 --> 00:22:09,520
+small problems. Yeah. And we always want to aim for small problems.
+
+231
+00:22:09,520 --> 00:22:14,040
+And like I would add, there was a question in the notes about the Packetify system, like
+
+232
+00:22:14,040 --> 00:22:22,280
+what is needed. And basically, it is to serve this kind of big data problems. It's there
+
+233
+00:22:22,280 --> 00:22:30,140
+because no single disk would be big enough alone. So you need to have multiple disks
+
+234
+00:22:30,140 --> 00:22:39,020
+to support the needs of the people. And with this system, it's a different kind of hard drive
+
+235
+00:22:39,020 --> 00:22:47,820
+to what you normally use. So the laws are a bit different. So it's a bit like if you go to,
+
+236
+00:22:48,940 --> 00:22:56,460
+let's say, you go to a kitchen or a place in a foreign country and then you notice that, hey,
+
+237
+00:22:56,460 --> 00:23:07,100
+why is there one knob for hot water and one knob for cold water? It's this kind of situation where
+
+238
+00:23:07,100 --> 00:23:12,300
+you need to adapt to a different kind of a system, a different kind of a file system.
+
+239
+00:23:12,300 --> 00:23:18,620
+And there might be some things are bad in the big file system, like in the parallel file system,
+
+240
+00:23:18,620 --> 00:23:24,140
+and some things that would be normal in your situation. So it's a good idea to read the
+
+241
+00:23:24,140 --> 00:23:33,100
+documentation and ask the admins, like, is my data correctly set up? Do I need all of these
+
+242
+00:23:34,140 --> 00:23:38,860
+kind of questions and have a rapport with the support people so that you can figure out what
+
+243
+00:23:38,860 --> 00:23:45,260
+is the best solution for that specific file system? Basically, the issue with
+
+244
+00:23:46,860 --> 00:23:52,140
+parallel file systems is that they are not very good with lots of small files. So, if you have
+
+245
+00:23:52,140 --> 00:24:03,420
+100,000 20 kilobyte files, the performance is bad compared to your local NVMe on your laptop.
+
+246
+00:24:03,420 --> 00:24:09,820
+This is like the basic thing. Yes. And then on the other end, if you think about big files,
+
+247
+00:24:11,420 --> 00:24:19,660
+transferring terabyte size files is horrible. So you usually also want to limit the
+
+248
+00:24:19,660 --> 00:24:25,080
+largest files to, let's say, if you can limit them to five gigabytes everything
+
+249
+00:24:25,080 --> 00:24:32,860
+is easy. If you go above five gigabyte files then you may start to get some
+
+250
+00:24:32,860 --> 00:24:39,140
+issues in some places. Okay, but data management is something that you need to
+
+251
+00:24:39,140 --> 00:24:46,900
+consider for bigger projects a little bit and always ask first before
+
+252
+00:24:46,900 --> 00:24:52,260
+pushing all the stuff to the disk. And then the practical thing that you
+
+253
+00:24:53,540 --> 00:24:58,500
+kind of benefit is if you already know how to use Linux command line
+
+254
+00:24:59,620 --> 00:25:08,980
+and some text editor like Vi or Emacs, or there are others, Pico and whatnot.
+
+255
+00:25:10,020 --> 00:25:11,700
+So those benefit you in practice.
+
+256
+00:25:11,700 --> 00:25:23,220
+Okay, so as a senior I have to give some advice. So always keep it simple because these things tend to
+
+257
+00:25:25,140 --> 00:25:31,140
+be complex anyway, but try to keep it as simple as possible and ask for help. This is my kind of
+
+258
+00:25:32,260 --> 00:25:38,260
+advice. And then where to find information. So CSC has three websites,
+
+259
+00:25:38,260 --> 00:25:46,740
+basically well for HPC. Okay this I forgot to tell like HPC stuff is about
+
+260
+00:25:46,740 --> 00:25:54,460
+third of what CSC does maybe so two-thirds of CSC stuff have never even
+
+261
+00:25:54,460 --> 00:26:00,460
+logged into a supercomputer most likely so this is kind of the scale. CSC is
+
+262
+00:26:00,460 --> 00:26:07,380
+doing lots of other things but let's concentrate on HPC here. Yeah so what
+
+263
+00:26:07,380 --> 00:26:14,980
+csc. So this is kind of the company site. Let's see. It looks like this. So this is
+
+264
+00:26:14,980 --> 00:26:19,300
+like your typical company site. What csc is basically.
+
+265
+00:26:22,500 --> 00:26:28,900
+Then what services are available. So there's research.csc.fi
+
+266
+00:26:28,900 --> 00:26:41,300
+And this is a little bit more detailed, so this goes into what kind of, well, services
+
+267
+00:26:41,300 --> 00:26:50,060
+we have, like HPC services, Archive services, services for education and culture and whatnot.
+
+268
+00:26:50,060 --> 00:26:56,740
+But the site that probably is most useful for you is docs.csc.fi
+
+269
+00:26:56,740 --> 00:26:58,740
+Yes, that's a great place.
+
+270
+00:26:58,740 --> 00:27:03,740
+Yeah, so this has all the tutorials that we have for anything.
+
+271
+00:27:03,740 --> 00:27:11,740
+So, like, accounts has a lot of stuff on how you create an account,
+
+272
+00:27:11,740 --> 00:27:16,740
+CSC account, and how you manage your project and stuff like that.
+
+273
+00:27:16,740 --> 00:27:19,740
+So this is kind of the page that I would link.
+
+274
+00:27:19,740 --> 00:27:22,740
+So docs.csc.fi.
+
+275
+00:27:22,740 --> 00:27:33,060
+this has all the all the info and even this search is kind of okay for one word I think
+
+276
+00:27:34,580 --> 00:27:40,980
+so if you already know the keyword you can find it otherwise there's lots of material because
+
+277
+00:27:40,980 --> 00:27:48,420
+yeah and and but don't be afraid you only need to kind of read part of that so maybe just read the
+
+278
+00:27:48,420 --> 00:27:56,260
+kind of what's in it, but you don't need to go into details at once, because this is a lot.
+
+279
+00:27:57,540 --> 00:28:08,260
+But to start, it's accounts, and then computing, and data, and maybe applications. Those are the
+
+280
+00:28:08,260 --> 00:28:15,140
+kind of... Yeah, and during the course when we're also going to be talking about queue -systems and stuff
+
+281
+00:28:15,140 --> 00:28:20,900
+like that, most of the stuff is going to be similar. We'll be using our documentation
+
+282
+00:28:21,540 --> 00:28:25,380
+as the material, but most of the stuff will be similar to what's in the CSC.
+
+283
+00:28:26,260 --> 00:28:33,140
+Of course, there's small differences in the clusters, and there's stuff changes based on
+
+284
+00:28:33,140 --> 00:28:39,940
+that. But if you're using a different cluster, just look at the documentation for that specific
+
+285
+00:28:39,940 --> 00:28:46,420
+page and you will see that most of it reminds you of the same things. It's not the exact same,
+
+286
+00:28:46,420 --> 00:28:54,580
+but it looks similar. So it's like you can then fill out the gaps of what things are specific
+
+287
+00:28:54,580 --> 00:29:01,140
+for this cluster and try to figure out, okay, what are the differences? And then just look at
+
+288
+00:29:01,140 --> 00:29:06,740
+those ones. And like [name] said, look at the ones that are relevant for your use case.
+
+289
+00:29:06,740 --> 00:29:15,740
+Yeah. And, of course, the best way to know what is relevant is to ask from your senior colleagues.
+
+290
+00:29:15,740 --> 00:29:16,740
+Yes.
+
+291
+00:29:16,740 --> 00:29:20,740
+That's the quickest way to get to the right page.
+
+292
+00:29:20,740 --> 00:29:28,740
+And you can also ask us, the local people in the universities, because we often use the CSC system.
+
+293
+00:29:28,740 --> 00:29:41,740
+Even though we are not like CSC helpers or whatever, we often use the CSC system so we can either help you or direct you towards the right place to ask you in CSC.
+
+294
+00:29:41,740 --> 00:29:55,740
+Yeah, so yeah, so this is kind of like your local support is of course the, whoops, this is getting jumpy.
+
+295
+00:29:55,740 --> 00:30:06,740
+Your local support is always the best, your colleagues, that's the quickest and they are probably doing the same thing in your group that you are supposed to do.
+
+296
+00:30:06,740 --> 00:30:11,540
+Somebody has done it before, most of the time, or a very similar thing.
+
+297
+00:30:13,460 --> 00:30:20,740
+And this is true for all computing stuff and almost all research also.
+
+298
+00:30:22,420 --> 00:30:31,540
+And then you have servicedesk@csc.fi and there's no barrier asking questions from there either.
+
+299
+00:30:31,540 --> 00:30:39,540
+We are happy to pick up also easy questions, like I'm preferring easy questions.
+
+300
+00:30:39,540 --> 00:30:44,540
+And maybe other stuff at CSC can get the hard ones.
+
+301
+00:30:49,540 --> 00:30:54,540
+I would add one more site to the list, which was the CSC trainings.
+
+302
+00:30:54,540 --> 00:31:01,540
+So CSC has a lot of great courses throughout their calendar, like training calendar.
+
+303
+00:31:01,540 --> 00:31:06,540
+There's also the summer school retreats and all of these kind of like things.
+
+304
+00:31:06,540 --> 00:31:17,540
+So if you go to the online training site, there's also some MOOC courses and stuff like that,
+
+305
+00:31:17,540 --> 00:31:20,540
+like these online MOOC courses that you can do.
+
+306
+00:31:20,540 --> 00:31:26,540
+And there's lots of other courses and we often, like, we go to these courses as well.
+
+307
+00:31:26,540 --> 00:31:33,540
+Like sometimes when we think that, okay, we want to see how CSE does stuff, we join the courses and we do them as well.
+
+308
+00:31:33,540 --> 00:31:36,540
+Just to disseminate the information.
+
+309
+00:31:36,540 --> 00:31:42,540
+And I can highly recommend going to these courses for learning.
+
+310
+00:31:42,540 --> 00:31:49,540
+Of course, many of these can be specific to, let's say, one system or some field or something.
+
+311
+00:31:49,540 --> 00:31:59,540
+But there's a whole smorgasbord of courses, so you can choose whatever you want, so I can highly recommend those.
+
+312
+00:31:59,540 --> 00:32:04,540
+Yeah, especially this CSC Computing Environment Self-Learning course.
+
+313
+00:32:04,540 --> 00:32:10,540
+I think it was called at some point, Using CSC Resources Efficiently or something like that.
+
+314
+00:32:10,540 --> 00:32:15,540
+I highly recommend that if you start using CSC services.
+
+315
+00:32:15,540 --> 00:32:28,540
+So that's a kind of first course that you should take if you use CSC's resources and you can basically read it yourself.
+
+316
+00:32:28,540 --> 00:32:32,540
+Good. Yeah, so this is the base that you...
+
+317
+00:32:32,540 --> 00:32:36,540
+Yeah, this is the one I told about.
+
+318
+00:32:36,540 --> 00:32:41,540
+Yeah, very good. Yeah, I forgot that one. I haven't given trainings for a long time.
+
+319
+00:32:41,540 --> 00:32:44,540
+Like I do them, let's say, once or twice a year.
+
+320
+00:32:44,540 --> 00:32:46,540
+Yeah.
+
+321
+00:32:46,540 --> 00:32:48,540
+Yeah. All right.
+
+322
+00:32:48,540 --> 00:32:50,540
+Then to demos.
+
+323
+00:32:50,540 --> 00:32:56,540
+So, maybe we go to docs first.
+
+324
+00:32:56,540 --> 00:33:02,540
+So, let's say that you want to get an account and you want to get a computing project.
+
+325
+00:33:02,540 --> 00:33:08,540
+And the information creating a new user account, that's where you get it.
+
+326
+00:33:08,540 --> 00:33:17,020
+So basically what you do with everything here is that you log into my.csc.fi service.
+
+327
+00:33:19,100 --> 00:33:27,020
+So it's based like this and then you click there and then if you are
+
+328
+00:33:31,500 --> 00:33:37,740
+at Finnish universities you have HAKA identification. So that's really kind of the
+
+329
+00:33:37,740 --> 00:33:46,220
+simplest way and if you don't have Haka then you either need to ask someone some project let's say
+
+330
+00:33:46,220 --> 00:33:53,340
+some somebody who is already who already has a CSC project they can invite you to like a CSC
+
+331
+00:33:54,860 --> 00:33:59,980
+but as a student or researcher in Finnish universities you can log in with Haka.
+
+332
+00:33:59,980 --> 00:34:11,980
+I have now a kind of demo account here, so I use this password log in, so you use [a seprate] csc password for this [but not for your normal accounts].
+
+333
+00:34:15,980 --> 00:34:17,980
+And that was really like...
+
+334
+00:34:21,980 --> 00:34:22,980
+How do I get this?
+
+335
+00:34:22,980 --> 00:34:32,980
+Sorry, I need to look up the password for this one. This is not my own account.
+
+336
+00:34:37,980 --> 00:34:51,980
+Yeah, but if you're a Finnish university affiliate, if you use the Haka login, you usually log in with your university's own account and you can use the same.
+
+337
+00:34:51,980 --> 00:34:59,740
+same. That's much more convenient. Yeah. But if you are not a Finnish university member then you
+
+338
+00:34:59,740 --> 00:35:15,100
+have to use the CSC password. Yes. And usually it asks for a multi-factor or second factor
+
+339
+00:35:15,100 --> 00:35:21,020
+for authentication. So you should have some authentication app in your phone for example
+
+340
+00:35:21,020 --> 00:35:26,220
+like Google Authenticator or Microsoft Authenticator.
+
+341
+00:35:26,220 --> 00:35:30,460
+And I think when you first time log in, then you don't need it,
+
+342
+00:35:30,460 --> 00:35:35,100
+but then you need to set it up for the subsequent logins.
+
+343
+00:35:35,100 --> 00:35:39,180
+So, okay, this is a little bit too much detail maybe, and it's all documented in
+
+344
+00:35:39,180 --> 00:35:45,180
+the docs. But what you do is you go to profile
+
+345
+00:35:45,180 --> 00:35:51,980
+and then you enable this multi-factor authentication. So for web services,
+
+346
+00:35:53,580 --> 00:36:00,380
+most of CSC's web services already require you to have like some kind of password or
+
+347
+00:36:01,260 --> 00:36:06,780
+if you come in with HAKA and you have already done this two-factor authentication,
+
+348
+00:36:06,780 --> 00:36:13,260
+then you get immediately in and you don't even notice this stuff. But if you don't, you need to
+
+349
+00:36:13,260 --> 00:36:17,820
+kind of enable that and here and the next time you log in it will
+
+350
+00:36:17,820 --> 00:36:23,500
+ask for the authentication thingy. But I think most of the
+
+351
+00:36:23,500 --> 00:36:27,020
+people are kind of familiar with this already when
+
+352
+00:36:27,020 --> 00:36:30,060
+you use something like Mobiliavain and stuff like that.
+
+353
+00:36:30,060 --> 00:36:36,700
+This is basically the same thing. Well, maybe not but pretty close.
+
+354
+00:36:37,580 --> 00:36:41,420
+So that's one way to access CSC's resources is to use
+
+355
+00:36:41,420 --> 00:36:48,700
+your web browser. So, you can use web interfaces also to supercomputers and to object storage
+
+356
+00:36:51,900 --> 00:36:59,100
+but the kind of the more traditional way is to use SSH logins and for those you need to set up
+
+357
+00:36:59,100 --> 00:37:07,820
+SSH keys. So, you generate on your local machine, you generate SSH key pair and then you upload
+
+358
+00:37:07,820 --> 00:37:17,820
+the public part of the key to this service, and then this is the one that I have uploaded already.
+
+359
+00:37:19,100 --> 00:37:25,180
+And then you wait for one hour for the information to go from MyCSC to the computing servers,
+
+360
+00:37:25,180 --> 00:37:30,700
+and then you can log in with SSH to CSC's machines. This is how it works, and there's
+
+361
+00:37:30,700 --> 00:37:39,260
+lots of details, how you do the details in Windows machines. Macs and Linux are the same.
+
+362
+00:37:39,980 --> 00:37:51,260
+Those are really simple. I highly recommend having one good look through the SSH documentation and
+
+363
+00:37:51,260 --> 00:37:56,540
+getting one good setup where you have, let's say, an SSH key with a passphrase.
+
+364
+00:37:56,540 --> 00:38:03,700
+So it's like other people cannot use it if you lose access to it or if you by mistake
+
+365
+00:38:03,700 --> 00:38:06,340
+upload it to the internet or whatever.
+
+366
+00:38:06,340 --> 00:38:10,420
+You have a passphrase in it and then you have this so-called agent that remembers the keys
+
+367
+00:38:10,420 --> 00:38:13,100
+so you don't have to type the passphrase all the time.
+
+368
+00:38:13,100 --> 00:38:20,460
+And it's usually like, this all sounds like a mumbo-jumbo currently for many of you,
+
+369
+00:38:20,460 --> 00:38:30,420
+But if you read the documentations and go through the process once and read it, hopefully
+
+370
+00:38:30,420 --> 00:38:38,780
+you will get a system where it's very easy to log into all of these systems afterwards.
+
+371
+00:38:38,780 --> 00:38:44,300
+For many of us, people who have been using these sorts of systems all the time, we don't
+
+372
+00:38:44,300 --> 00:38:45,300
+even think about it.
+
+373
+00:38:45,300 --> 00:38:51,220
+like we just go to different systems without thinking about it even.
+
+374
+00:38:51,220 --> 00:38:57,340
+So, of course, the first time you do these authentication kinds of things,
+
+375
+00:38:57,340 --> 00:39:01,340
+it sounds like a lot of cryptography and whatever, like,
+
+376
+00:39:01,340 --> 00:39:03,260
+why do I need to know all of this?
+
+377
+00:39:03,260 --> 00:39:08,060
+But it's because the logins need to be secure.
+
+378
+00:39:08,060 --> 00:39:10,980
+Yeah. And once you have kind of figured it out,
+
+379
+00:39:10,980 --> 00:39:15,100
+it's almost automatic and you don't need to do much.
+
+380
+00:39:15,100 --> 00:39:22,780
+Okay, but the kind of point here is that you have this multi-factor authentication MFA for the web
+
+381
+00:39:22,780 --> 00:39:30,140
+services and then for the terminal logins you have this SSH key pair business. So, two ways to
+
+382
+00:39:31,340 --> 00:39:36,460
+log in or access the machines and they use a little bit different authentication systems.
+
+383
+00:39:36,460 --> 00:39:45,180
+But before you can go into CSC machines, you need a project, so this
+
+384
+00:39:46,780 --> 00:39:52,780
+dummy account probably has a project. Yeah, demo and testing.
+
+385
+00:39:55,740 --> 00:40:02,060
+And then you can have a look at details of your project and you can see that this project has
+
+386
+00:40:02,060 --> 00:40:05,260
+as Allas and Mahti Supercomputer Services.
+
+387
+00:40:05,260 --> 00:40:09,660
+So when I kind of belong to this project,
+
+388
+00:40:09,660 --> 00:40:11,620
+I can access these resources.
+
+389
+00:40:14,860 --> 00:40:17,580
+And then we are using billing units.
+
+390
+00:40:17,580 --> 00:40:22,540
+So all our resources, we try to share it fairly
+
+391
+00:40:22,540 --> 00:40:25,360
+among all the researchers and students.
+
+392
+00:40:25,360 --> 00:40:28,100
+So we are using this kind of monopoly money
+
+393
+00:40:28,100 --> 00:40:29,620
+called billing units.
+
+394
+00:40:29,620 --> 00:40:36,620
+And you can kind of, well, there's a procedure how to get more billing units.
+
+395
+00:40:36,620 --> 00:40:41,620
+But the thing is that 100,000 is given automatically.
+
+396
+00:40:41,620 --> 00:40:42,620
+Yeah.
+
+397
+00:40:42,620 --> 00:40:55,620
+And then you need to maybe later have some, so that I will use this to make my PhD or I have, I'm preparing this and this article and this is why I need it.
+
+398
+00:40:55,620 --> 00:40:59,620
+But it's always like academic stuff that you show.
+
+399
+00:40:59,620 --> 00:41:08,620
+And like [name] mentioned previously, all of this is paid for by mainly, I think, the Ministry of Education in Finland.
+
+400
+00:41:08,620 --> 00:41:09,620
+Yeah.
+
+401
+00:41:09,620 --> 00:41:13,620
+So it's monopoly money, so it's not...
+
+402
+00:41:13,620 --> 00:41:17,620
+Yeah, you don't have to put your credit card anywhere.
+
+403
+00:41:17,620 --> 00:41:21,620
+And usually your supervisor or professor takes care of this.
+
+404
+00:41:21,620 --> 00:41:22,620
+Yes, yes.
+
+405
+00:41:22,620 --> 00:41:31,620
+Yeah, you just belong to some project and then you like to use the resources efficiently and then everybody's pretty much happy.
+
+406
+00:41:32,620 --> 00:41:33,620
+Yeah.
+
+407
+00:41:34,620 --> 00:41:40,620
+So maybe I show next how to go to Mahti through web interface.
+
+408
+00:41:41,620 --> 00:41:42,620
+Yeah, sounds good.
+
+409
+00:41:42,620 --> 00:41:54,620
+So if I just go mahti.csc.fi, I land into this kind of page, which shows what's going on in the machine currently.
+
+410
+00:41:54,620 --> 00:42:00,620
+So the machine seems to be pretty full. That's why we have batch systems.
+
+411
+00:42:00,620 --> 00:42:08,620
+Yeah, so batch system, we didn't talk too much about those yet, but the idea is that
+
+412
+00:42:08,620 --> 00:42:14,420
+there's lots of people who want to run their calculations in the machine, and then we want
+
+413
+00:42:14,420 --> 00:42:20,820
+to fill the machine so that it's running at full steam all the time, and this is why we
+
+414
+00:42:20,820 --> 00:42:24,980
+are arranging the jobs or calculations.
+
+415
+00:42:24,980 --> 00:42:30,060
+You can think of it as a packing problem, so like lots of different sizes of boxes and
+
+416
+00:42:30,060 --> 00:42:34,380
+you try to fit as many of them into the machine at once.
+
+417
+00:42:34,380 --> 00:42:38,940
+And also the system takes into account
+
+418
+00:42:38,940 --> 00:42:42,380
+who has run lots of stuff recently and this
+
+419
+00:42:42,380 --> 00:42:47,740
+tries to share the resources fairly so that no one user will use the
+
+420
+00:42:47,740 --> 00:42:51,900
+system all the time.
+
+421
+00:42:51,900 --> 00:42:55,980
+We'll talk about the priorities and
+
+422
+00:42:55,980 --> 00:43:03,420
+everything later on. Those are details, yeah. But anyways, and this shows some stuff. Let's say
+
+423
+00:43:03,420 --> 00:43:07,740
+if we log in, what do we get? Okay, again, you would probably use this
+
+424
+00:43:07,740 --> 00:43:11,020
+haka and then it's probably just one click and I need to go here.
+
+425
+00:43:17,340 --> 00:43:20,980
+And then I need the password again, but you probably use the other one.
+
+426
+00:43:25,980 --> 00:43:43,980
+Yeah, okay. That's bound to happen.
+
+427
+00:43:43,980 --> 00:43:49,220
+That was a good question in the chat. Will the commands we learn on Triton work the same
+
+428
+00:43:49,220 --> 00:43:58,340
+on the CSC cluster for like 90% yes, there's the 10% of the extra spice that you need to put
+
+429
+00:43:58,340 --> 00:44:04,180
+for different cluster, like maybe you need to, when you're reserving jobs, you need to
+
+430
+00:44:04,740 --> 00:44:11,940
+set which project you want it to be built and that sort of stuff like in CSC clusters.
+
+431
+00:44:11,940 --> 00:44:22,940
+And there's small differences in different clusters, but the vast majority of the commands are the same.
+
+432
+00:44:22,940 --> 00:44:24,940
+We use the same kind of batch systems.
+
+433
+00:44:24,940 --> 00:44:31,940
+Puhti and Mahti use a similar kind of file system that we have, and there's small differences.
+
+434
+00:44:31,940 --> 00:44:35,940
+Yeah, the partitions may be different.
+
+435
+00:44:35,940 --> 00:44:44,420
+Yeah, but this is how the web interface looks, and this is, I think, easier for the new users,
+
+436
+00:44:44,420 --> 00:44:50,420
+so you can immediately see lots of stuff, and if you are, let's say, if you want to run
+
+437
+00:44:50,420 --> 00:44:55,940
+Jupyter notebooks, this is an easy way to get something started quickly.
+
+438
+00:44:55,940 --> 00:45:09,460
+Yeah, so you can browse your files, you can check your quotas, so these machines have
+
+439
+00:45:09,460 --> 00:45:13,660
+something like maybe six petabytes of disk.
+
+440
+00:45:13,660 --> 00:45:20,340
+You notice that my numbers are all off, completely off, because I've lost interest in technical
+
+441
+00:45:20,340 --> 00:45:25,540
+details many years ago, that's why I'm doing a little bit different things.
+
+442
+00:45:25,540 --> 00:45:31,380
+people who like technical details are in the hardware side of CSC. But anyways, you have
+
+443
+00:45:31,380 --> 00:45:38,580
+disk quotas, so your project will have a certain amount of disk space available. And then
+
+444
+00:45:41,380 --> 00:45:42,180
+just a moment.
+
+445
+00:45:45,220 --> 00:45:54,340
+Yeah. And then you have cloud storage configuration. This is quite a nice tool
+
+446
+00:45:54,340 --> 00:46:04,340
+Because, yeah, using this object storage, that's another thing, that's a longer talk.
+
+447
+00:46:04,340 --> 00:46:09,340
+Maybe we skip it now because we have so little time left.
+
+448
+00:46:09,340 --> 00:46:14,340
+So, we should probably also leave some time for discussion.
+
+449
+00:46:14,340 --> 00:46:21,340
+Yes, and there's many questions. There's a very enthusiastic crowd in the chat which is great.
+
+450
+00:46:21,340 --> 00:46:26,940
+Okay, so, but there's lots of stuff here that you can do almost with clicking.
+
+451
+00:46:26,940 --> 00:46:32,940
+So, for example, generating a batch job is basically quite easy here.
+
+452
+00:46:32,940 --> 00:46:41,940
+So, you get the compute nodes there, and then you say what project will be charged,
+
+453
+00:46:41,940 --> 00:46:47,140
+what billing units will be eaten from there, what partition you will use,
+
+454
+00:46:47,140 --> 00:46:52,500
+how many CPUs you want, do you want local disk, for how long you want it to run,
+
+455
+00:46:53,700 --> 00:47:00,500
+and stuff like that. And then you launch, and what it does now, now it created a batch job,
+
+456
+00:47:00,500 --> 00:47:05,300
+and it gave it to the batch queue system, and now batch queue system is trying to find
+
+457
+00:47:06,340 --> 00:47:11,380
+some compute node which can run, which has these resources available that you requested,
+
+458
+00:47:11,380 --> 00:47:17,380
+And when it's done, it says that you can connect to that thingy.
+
+459
+00:47:21,380 --> 00:47:27,380
+You might need to answer yes, because you haven't yet ever connected to that machine before.
+
+460
+00:47:27,380 --> 00:47:29,380
+Yeah, this is the first time I ever logged in.
+
+461
+00:47:29,380 --> 00:47:34,380
+So now I'm already in the compute node. You can see the name of the compute node here.
+
+462
+00:47:34,380 --> 00:47:38,380
+So this is c3101.
+
+463
+00:47:38,380 --> 00:47:40,380
+Can you zoom in some?
+
+464
+00:47:40,380 --> 00:47:42,380
+Now you can see.
+
+465
+00:47:42,380 --> 00:47:44,380
+Okay, that's good.
+
+466
+00:47:44,380 --> 00:47:48,380
+So this is the easiest way to get to compute node.
+
+467
+00:47:48,380 --> 00:47:50,380
+And now you are in the compute node.
+
+468
+00:47:50,380 --> 00:47:53,380
+So now you can do compute-intensive stuff.
+
+469
+00:47:53,380 --> 00:47:57,380
+Yes. Yeah, if you want to do this interactive session,
+
+470
+00:47:57,380 --> 00:48:00,380
+you can get it quite quickly and quite easily.
+
+471
+00:48:00,380 --> 00:48:06,060
+Yeah, so this is the quickest way to get to computing, I would say.
+
+472
+00:48:07,900 --> 00:48:10,700
+You can also, the nice thing is that you can close this one
+
+473
+00:48:13,260 --> 00:48:14,620
+and then you can come back to it.
+
+474
+00:48:17,820 --> 00:48:24,540
+Yeah, the font is not remembered, but anyways. Yeah, yeah, okay. And when you are done,
+
+475
+00:48:24,540 --> 00:48:33,380
+One, you want to stop the batch queue system, so the resources will be available for others
+
+476
+00:48:33,380 --> 00:48:42,860
+and also your billing will end when you stop the batch job.
+
+477
+00:48:42,860 --> 00:48:50,100
+And this is just some log, so you can even remove the log thing now.
+
+478
+00:48:50,100 --> 00:48:55,940
+And this is the way you can see what you have running in the machine currently.
+
+479
+00:48:55,940 --> 00:48:58,860
+So this is kind of the easiest way to get into the machine.
+
+480
+00:48:58,860 --> 00:49:08,140
+The more traditional way is to use the command line and then just like ssh your username
+
+481
+00:49:08,140 --> 00:49:11,780
+mahti.csc.fi then you log in like this.
+
+482
+00:49:11,780 --> 00:49:15,220
+Yeah, with your SSH key.
+
+483
+00:49:15,220 --> 00:49:23,700
+need to have set up the SSH in the my.csc.fi service. So where
+
+484
+00:49:23,700 --> 00:49:33,500
+was it? You need to have the public key here. Otherwise, it
+
+485
+00:49:33,500 --> 00:49:38,620
+doesn't work that nice, or at all. And here you can do
+
+486
+00:49:38,660 --> 00:49:43,900
+basically the same thing that you can do on the on the web
+
+487
+00:49:43,900 --> 00:49:53,260
+interface and plus some more okay so i really i'm running out of actual doing any demo
+
+488
+00:49:55,020 --> 00:49:57,580
+but we can have a look a little bit what
+
+489
+00:49:59,980 --> 00:50:07,260
+computing project might look like so you might have something you want to run let's say you
+
+490
+00:50:07,260 --> 00:50:12,460
+have some Python program, some task, what was there.
+
+491
+00:50:17,340 --> 00:50:19,260
+So this is some Python program.
+
+492
+00:50:21,740 --> 00:50:27,340
+This basically, what this does is it just prints its arguments to the file.
+
+493
+00:50:27,900 --> 00:50:34,700
+So this is an example program. Then I had a wrapper. What was that one?
+
+494
+00:50:34,700 --> 00:50:46,700
+Okay, so I want to run that Python program five times in parallel, so here there are different
+
+495
+00:50:46,700 --> 00:50:53,180
+ways to do parallelism and I think the first one you should do is within the application. So this
+
+496
+00:50:53,180 --> 00:51:02,300
+is like within the Python and Python parallelization that works within one node pretty well. If you want
+
+497
+00:51:02,300 --> 00:51:09,260
+to go beyond one node or you want to use multiple nodes, then you need to use something like MPI for
+
+498
+00:51:09,260 --> 00:51:17,180
+Python, some library like that, or Python package. But anyways, what this does is if you run this
+
+499
+00:51:17,180 --> 00:51:25,420
+thing on your local machine, it will run the same thing like in your local machine normally, but
+
+500
+00:51:25,420 --> 00:51:33,580
+five times in parallel. But if you want to submit that thing to a compute node,
+
+501
+00:51:33,580 --> 00:51:39,420
+then you need the batch job script, and that's the last one that I'll show.
+
+502
+00:51:44,140 --> 00:51:49,100
+So this is how batch jobs basically look like, without all the comments.
+
+503
+00:51:49,100 --> 00:51:59,820
+So first you tell that this is a bash script, so you could in principle execute this and all the
+
+504
+00:51:59,820 --> 00:52:07,580
+comments would be ignored, but you usually specify here with these special comments,
+
+505
+00:52:07,580 --> 00:52:13,820
+you specify what kind of resources you want. So the first one is what kind of nodes, so p for
+
+506
+00:52:13,820 --> 00:52:21,980
+partition. A is account, what account will be charged. How many tasks you want to start at once.
+
+507
+00:52:21,980 --> 00:52:28,540
+So I want to start one Python program. Then how many CPU cores do I want to give to this one
+
+508
+00:52:28,540 --> 00:52:37,900
+Python program. That would be number of cores. And Mahti has 128 cores in a node. And you also
+
+509
+00:52:37,900 --> 00:52:44,300
+reserve whole nodes, so it doesn't make any sense to reserve less because you are already taking
+
+510
+00:52:44,300 --> 00:52:51,500
+them. But if you put a smaller number here, then you can't just use them. And then the last one is
+
+511
+00:52:51,500 --> 00:52:58,460
+for how long time, so for 10 years. We'll talk about how do you write these scripts and what
+
+512
+00:52:58,460 --> 00:53:03,900
+is the syntax here. We'll talk about in the afternoon, like after the lunch, we'll start
+
+513
+00:53:03,900 --> 00:53:11,820
+actually writing these sorts of instructions. The kind of basic structure of a batch job script is
+
+514
+00:53:11,820 --> 00:53:19,980
+you have to describe what kind of resources you want, then you set up your software environment.
+
+515
+00:53:19,980 --> 00:53:26,540
+So here's the module load command that I said this picks up Python, particular Python from the
+
+516
+00:53:26,540 --> 00:53:34,380
+machine. Then you kind of do the calculation, change to the directory where your data is,
+
+517
+00:53:34,380 --> 00:53:40,780
+for example, and then you launch the application. So, I'm running Python
+
+518
+00:53:44,140 --> 00:53:50,860
+and then there are some arguments and stuff, but usually you have some kind of
+
+519
+00:53:50,860 --> 00:54:01,580
+special program that knows what resources you have reserved. So if this were, instead of Python, if
+
+520
+00:54:01,580 --> 00:54:11,020
+this were, let's say, MPI parallel program, that's a program that can use multiple nodes,
+
+521
+00:54:12,220 --> 00:54:20,380
+then you would need this srun command to launch it. Yes, it will do some magic behind the scenes
+
+522
+00:54:20,380 --> 00:54:25,740
+to make certain that all of the different processes know about each other. But yeah,
+
+523
+00:54:25,740 --> 00:54:29,660
+for this one, it's not necessary, but it's nice to have.
+
+524
+00:54:30,300 --> 00:54:35,020
+Basically, what this command does, this is not absolutely necessary here.
+
+525
+00:54:35,820 --> 00:54:42,540
+But basically, that command, what it does, it launches this many copies of the thing.
+
+526
+00:54:42,540 --> 00:54:51,540
+So I have one copy, launch one copy of Python, but if n would be 10, then it would launch 10 copies of Python.
+
+527
+00:54:51,540 --> 00:55:06,540
+And yeah, that's how it works. And then as a last step, you probably want to kind of copy the important data that you want to save from the calculation to some storage space.
+
+528
+00:55:06,540 --> 00:55:13,700
+So you may use temporary disk for doing the calculation and then you want to probably
+
+529
+00:55:13,700 --> 00:55:19,220
+clean it up and save only what you actually really need from the whole thing.
+
+530
+00:55:19,220 --> 00:55:23,540
+Usually programs run lots of garbage to the directory system.
+
+531
+00:55:23,540 --> 00:55:26,660
+Okay, but yeah.
+
+532
+00:55:26,660 --> 00:55:36,380
+And how you run it is batch.
+
+533
+00:55:36,380 --> 00:55:42,800
+Of course, in this quick demo, there's no time to go through all of the intricacies
+
+534
+00:55:42,800 --> 00:55:43,800
+of writing this.
+
+535
+00:55:43,800 --> 00:55:48,760
+That's why we have the three-day course, where we'll be using three days to go through basically
+
+536
+00:55:48,760 --> 00:55:53,800
+what [name] is showing here, and we'll start in the afternoon.
+
+537
+00:55:53,800 --> 00:55:59,360
+But basically, everything [name] has shown here, after the course, you should basically be
+
+538
+00:55:59,360 --> 00:56:01,240
+able to do.
+
+539
+00:56:01,240 --> 00:56:07,840
+So this is kind of like a teaser of what you will be able to do after the course.
+
+540
+00:56:07,840 --> 00:56:11,120
+And then you can choose, okay, do I want to use CSC machines?
+
+541
+00:56:11,120 --> 00:56:12,360
+Do I want to use Triton?
+
+542
+00:56:12,360 --> 00:56:15,800
+Do I want to use my local university machines?
+
+543
+00:56:15,800 --> 00:56:21,960
+All of this is at your fingertips, basically, after you have done this course, hopefully.
+
+544
+00:56:21,960 --> 00:56:31,240
+So even though the supercomputer is in the name, there's nothing super complicated in
+
+545
+00:56:31,240 --> 00:56:32,240
+there.
+
+546
+00:56:32,240 --> 00:56:39,160
+It's still a similar kind of a system as the other universities and other places.
+
+547
+00:56:39,160 --> 00:56:46,640
+So basically, if you learn it once, you can scale your program bigger.
+
+548
+00:56:46,640 --> 00:56:58,080
+was a good question in the HackMD of how do you know what my jobs need in terms of computing?
+
+549
+00:56:58,080 --> 00:57:03,120
+And how would you say that? How people should scale towards the CSC systems? How should they
+
+550
+00:57:05,680 --> 00:57:10,960
+move towards CSC systems? How do they know what their jobs need and how will they figure it out?
+
+551
+00:57:10,960 --> 00:57:20,960
+Scaling is a good question. Even when you have written your program so that it can run in parallel,
+
+552
+00:57:20,960 --> 00:57:30,960
+so it can use multiple CPU cores, at some point the overhead of the parallelization will actually
+
+553
+00:57:30,960 --> 00:57:38,960
+stop it from being faster and it will actually start running slower if you use more and more and more CPU cores.
+
+554
+00:57:38,960 --> 00:57:45,960
+And this depends on the particular program and also the size of the data.
+
+555
+00:57:45,960 --> 00:57:50,960
+So you can easily think this as, for example, data.
+
+556
+00:57:50,960 --> 00:58:00,960
+If you have a grid of data and you split it to small pieces and give different pieces to different CPUs and they can compute it,
+
+557
+00:58:00,960 --> 00:58:11,960
+Usually they need to kind of communicate the border pieces to the next kind of datapiece or CPU.
+
+558
+00:58:11,960 --> 00:58:15,960
+And this communication is an overhead.
+
+559
+00:58:15,960 --> 00:58:25,960
+And you can think that at some point, if you split it to two small pieces, there's very little computing and a lot of communication.
+
+560
+00:58:25,960 --> 00:58:33,320
+and then it actually happens that it's not faster even though you have split it into small pieces
+
+561
+00:58:33,320 --> 00:58:39,480
+because well the overhead eats it so and then there are other bottlenecks than communication
+
+562
+00:58:41,080 --> 00:58:47,880
+let's say of bottleneck like like disk io might become a bottleneck because there's only one file
+
+563
+00:58:47,880 --> 00:58:55,560
+system it doesn't get multiplied the same same way you you can get more and more compute
+
+564
+00:58:55,560 --> 00:59:01,960
+So do you think that the roadmap for users would be like first run their programs as
+
+565
+00:59:01,960 --> 00:59:07,080
+they currently do in the cluster, like try to get them running in the cluster and then
+
+566
+00:59:07,080 --> 00:59:13,880
+try to parallelize them within one computer and then maybe start experiencing the choice
+
+567
+00:59:13,880 --> 00:59:21,560
+of trying to do this parallelization across multiple computers and experience the scaling
+
+568
+00:59:22,280 --> 00:59:24,600
+bottlenecks that you just described?
+
+569
+00:59:24,600 --> 00:59:28,360
+You can test parallelization in local machine, in laptop also.
+
+570
+00:59:28,360 --> 00:59:33,360
+Like a single CPU can actually run multiple processes at the same time.
+
+571
+00:59:33,360 --> 00:59:40,280
+So I always encourage to try to develop on laptop,
+
+572
+00:59:40,280 --> 00:59:42,280
+because that's most agile.
+
+573
+00:59:42,280 --> 00:59:46,880
+And the supercomputers, they tend to be a little bit slower to use,
+
+574
+00:59:46,880 --> 00:59:51,120
+and you are dependent of the network connection and stuff like that.
+
+575
+00:59:51,120 --> 00:59:54,240
+So always develop locally as far as you can.
+
+576
+00:59:54,240 --> 00:59:59,360
+then at some point you can't anymore develop locally. You need to try the scaling.
+
+577
+00:59:59,920 --> 01:00:06,720
+Because the scaling you basically only know by trying. So you try out and you let's say plot
+
+578
+01:00:06,720 --> 01:00:16,000
+data points. I'm using 100 cores, 200, 400, 800, 1600 and then you plot how fast it runs and you
+
+579
+01:00:16,000 --> 01:00:24,480
+see that every time you double, it's taking half the time. Then everything is good or perfect.
+
+580
+01:00:26,080 --> 01:00:33,200
+Life is never perfect, so usually you don't get that good scaling. But you want to see scaling.
+
+581
+01:00:33,200 --> 01:00:41,200
+So if you use 800 cores and 1600 cores and it runs the same time, you are not getting any
+
+582
+01:00:41,200 --> 01:00:48,240
+benefit from it. And basically, you just need to test. There's no way you can say it beforehand.
+
+583
+01:00:49,120 --> 01:00:56,720
+But I think we are running to the end of the session, so do you have any closing thoughts
+
+584
+01:00:56,720 --> 01:01:05,040
+that you would want to leave for the learners about CSC systems or SBC computing in general?
+
+585
+01:01:05,040 --> 01:01:15,040
+I think that CSC services are available to you and please ask for help before you're not getting stuck for too long time.
+
+586
+01:01:15,040 --> 01:01:17,040
+These are the two main points.
+
+587
+01:01:17,040 --> 01:01:21,040
+Yeah, I think those are like good words of wisdom to live by.
+
+588
+01:01:21,040 --> 01:01:32,040
+So, I think, like, lots of thanks from our side, [name], great talk, nice, very nice introduction to the CSC services.
+
+589
+01:01:32,040 --> 01:01:35,600
+And I think we have lunch next in the schedule.
+
+590
+01:01:35,600 --> 01:01:36,920
+Yes.
+
+591
+01:01:36,920 --> 01:01:38,920
+So there's lunch.
+
+592
+01:01:38,920 --> 01:01:47,000
+And when we get back, let's see, do we go straight to our hands-on stuff?
+
+593
+01:01:47,000 --> 01:01:51,000
+Yes.
+
+594
+01:01:51,000 --> 01:01:53,480
+So once we come back from lunch, we start getting hands-on.
+
+595
+01:01:53,480 --> 01:02:00,200
+So we will start using the cluster access we got in the last hour to
+
+596
+01:02:00,200 --> 01:02:05,200
+actually, you know, copy data and run stuff on the cluster.
+
+597
+01:02:05,200 --> 01:02:09,200
+So if you haven't got to set up yet, work on it during lunch.
+
+598
+01:02:09,200 --> 01:02:12,200
+And, well, let's hope it goes well after that.
+
+599
+01:02:12,200 --> 01:02:18,200
+It will be interesting to see how all the ways things might go wrong then.
+
+600
+01:02:18,200 --> 01:02:21,200
+But yes, thanks for coming.
+
+601
+01:02:21,200 --> 01:02:27,200
+Between the sessions, I would just note that between sessions, we will archive some of the
+
+602
+01:02:27,200 --> 01:02:33,360
+notes or the notes answers, because it's getting long, which is great.
+
+603
+01:02:33,360 --> 01:02:34,360
+We have a lot of questions.
+
+604
+01:02:34,360 --> 01:02:35,360
+That's amazing.
+
+605
+01:02:35,360 --> 01:02:38,800
+But the editing becomes slower.
+
+606
+01:02:38,800 --> 01:02:45,520
+So if you have some questions that you want to look backwards, check the archive.
+
+607
+01:02:45,520 --> 01:02:46,520
+And yeah.
+
+608
+01:02:46,520 --> 01:02:47,520
+Thanks a lot, [name].
+
+609
+01:02:47,520 --> 01:02:48,520
+Okay.
+
+610
+01:02:48,520 --> 01:02:49,520
+Thanks.
+
+611
+01:02:49,520 --> 01:02:50,520
+Yeah.
+
+612
+01:02:50,520 --> 01:02:51,520
+Thank you.
+
+613
+01:02:51,520 --> 01:02:52,520
+I will also go and check the questions and answer them now.
+
+614
+01:02:52,520 --> 01:02:53,520
+Okay.
+
+615
+01:02:53,520 --> 01:02:54,520
+Great.
+
+616
+01:02:54,520 --> 01:02:55,520
+Within the next half an hour.
+
+617
+01:02:55,520 --> 01:02:56,520
+Yeah.
+
+618
+01:02:56,520 --> 01:02:58,520
+Have a nice rest of the course.
+
+619
+01:02:58,520 --> 01:03:00,520
+Bye.
+
+620
+01:03:00,520 --> 01:03:02,520
+And you can keep asking us questions
+
+621
+01:03:02,520 --> 01:03:04,520
+during lunch, so we'll
+
+622
+01:03:04,520 --> 01:03:06,520
+see eventually.
+
+623
+01:03:06,520 --> 01:03:08,520
+So, with that said, see you
+
+624
+01:03:08,520 --> 01:03:10,520
+in an hour. Bye.
+
+625
+01:03:10,520 --> 01:03:12,520
+Bye.
+
+626
+01:03:12,520 --> 01:03:14,520
+Bye.
+

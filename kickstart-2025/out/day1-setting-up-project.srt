@@ -1,0 +1,2188 @@
+1
+00:00:00,000 --> 00:00:06,840
+Hello, we're back.
+
+2
+00:00:06,840 --> 00:00:08,840
+I hope you had a good lunch.
+
+3
+00:00:10,480 --> 00:00:12,480
+So, [name], what's coming up now?
+
+4
+00:00:13,240 --> 00:00:22,200
+Yeah, so, now we already got from the great CSC talk that we had before the launch,
+
+5
+00:00:22,200 --> 00:00:28,400
+we had a quick glimpse of what it actually looks like to run stuff on the HPC clusters.
+
+6
+00:00:28,400 --> 00:00:33,800
+We saw some magical terminal stuff happening there and that sort of stuff.
+
+7
+00:00:33,800 --> 00:00:39,880
+And here now we are going to be actually like, now hopefully you had a good lunch and you're
+
+8
+00:00:39,880 --> 00:00:46,680
+full of energy to type a lot of commands. So now we're actually going to go through various things
+
+9
+00:00:48,040 --> 00:00:56,520
+on how to run stuff in the cluster. And we will start working on the clusters itself.
+
+10
+00:00:57,960 --> 00:01:03,160
+So we had a glimpse of what it is to work in a cluster. Now we're going to be working
+
+11
+00:01:03,160 --> 00:01:11,640
+on a cluster and these are easily transferable, this information to the other sites. So there
+
+12
+00:01:11,640 --> 00:01:16,600
+might be some differences between sites, but in the notes, if you ask questions, if you
+
+13
+00:01:16,600 --> 00:01:23,320
+encounter any problems, just ask there. And all of these lessons that we are coming up to,
+
+14
+00:01:23,320 --> 00:01:31,000
+we will talk a bit about what's what, like theory, but we'll mainly focus on demos
+
+15
+00:01:31,000 --> 00:01:36,120
+demos that we have prepared. And then we'll have plenty of time for exercises where you
+
+16
+00:01:36,120 --> 00:01:43,560
+can do the same demos as well and do the same things that we do, plus some extra exercises
+
+17
+00:01:43,560 --> 00:01:54,360
+if you feel like it. And yeah, first, we'll look at the clusters. What are they? So was
+
+18
+00:01:54,360 --> 00:01:56,600
+that a good intro, [name]?
+
+19
+00:01:56,600 --> 00:01:57,600
+That's good.
+
+20
+00:01:57,600 --> 00:01:58,600
+Yeah.
+
+21
+00:01:58,600 --> 00:02:04,520
+So, we've already gone over clusters a bit, but remind us, so what's the important part
+
+22
+00:02:04,520 --> 00:02:07,720
+and what's going to make these exercises difficult?
+
+23
+00:02:07,720 --> 00:02:14,680
+Well, hopefully not difficult, but it might be a bit different than what you have been
+
+24
+00:02:14,680 --> 00:02:15,880
+used to.
+
+25
+00:02:15,880 --> 00:02:25,320
+So in the previous talk, we already had a bit of a mention regarding what is a cluster
+
+26
+00:02:25,320 --> 00:02:30,680
+And what is a cluster? Well, it's a collection of computers, basically,
+
+27
+00:02:31,560 --> 00:02:39,560
+like computers that have special jobs, and you can use them through this queue system.
+
+28
+00:02:40,680 --> 00:02:48,280
+And how it's organized, typically, a cluster is that it has some login node, a place where you
+
+29
+00:02:48,280 --> 00:02:56,440
+can log into the computer and then it has some data storage in case of Triton we have two file
+
+30
+00:02:56,440 --> 00:03:03,400
+systems we have this home for like small scripts and maybe your logging information and then we
+
+31
+00:03:03,400 --> 00:03:11,160
+have this scratch storage which is the main work storage and here is where you usually spend most
+
+32
+00:03:11,160 --> 00:03:17,240
+of your like you put all of your code here you put your data here and here's what stores your
+
+33
+00:03:17,240 --> 00:03:23,880
+results and stores your code. But when you want to run stuff, you actually run the code through
+
+34
+00:03:23,880 --> 00:03:31,560
+the queue system in these computers called nodes often. A node just means a computer.
+
+35
+00:03:32,120 --> 00:03:39,800
+So we have CPU nodes that have only CPUs and memory, of course. And then we have GPU nodes
+
+36
+00:03:39,800 --> 00:03:47,160
+that have CPUs and memory, but they also have GPU cards that you can reserve to run your code if it
+
+37
+00:03:47,160 --> 00:03:49,160
+can run on GPUs.
+
+38
+00:03:49,160 --> 00:03:51,160
+Yes.
+
+39
+00:03:51,160 --> 00:03:53,160
+Okay.
+
+40
+00:03:53,160 --> 00:03:55,160
+That's a good introduction.
+
+41
+00:03:55,160 --> 00:03:57,160
+So, once we're
+
+42
+00:03:57,160 --> 00:03:59,160
+actually, or was there something else?
+
+43
+00:03:59,160 --> 00:04:01,160
+Once we're actually using it,
+
+44
+00:04:01,160 --> 00:04:03,160
+what do we do?
+
+45
+00:04:03,160 --> 00:04:05,160
+I mean, I start with my own computer
+
+46
+00:04:05,160 --> 00:04:07,160
+and I guess I've developed
+
+47
+00:04:07,160 --> 00:04:09,160
+something there.
+
+48
+00:04:09,160 --> 00:04:11,160
+Yeah, how it usually
+
+49
+00:04:11,160 --> 00:04:13,160
+goes, like when you start working
+
+50
+00:04:13,160 --> 00:04:15,160
+in a cluster, it has a
+
+51
+00:04:15,160 --> 00:04:25,400
+workflow something akin to this setup here. So often you just like when you start a new project
+
+52
+00:04:25,400 --> 00:04:30,040
+you have this initial setup phase where you usually like have to set up everything to work
+
+53
+00:04:30,040 --> 00:04:36,920
+and then you run stuff in the cluster. So the initial setup is basically you go to the cluster
+
+54
+00:04:36,920 --> 00:04:41,400
+usually you immediately go to your work directory because that's the main place where you want to
+
+55
+00:04:41,400 --> 00:04:48,760
+store your stuff and when I say you go to the like we are going to be using terminals to to like
+
+56
+00:04:48,760 --> 00:04:57,000
+change directories you change the directory to your work directory and then usually you get your
+
+57
+00:04:57,000 --> 00:05:03,240
+code into the cluster you get the data that your code uses into the cluster somewhere in the work
+
+58
+00:05:03,240 --> 00:05:10,440
+directory and then you install the software needed by your code and this is like the initial setup
+
+59
+00:05:10,440 --> 00:05:17,080
+that you usually do. How long does this initial setup usually take?
+
+60
+00:05:18,600 --> 00:05:24,440
+Well, it depends on a project. If it's a code that you have already created and you have,
+
+61
+00:05:24,440 --> 00:05:29,800
+let's say, a version control, your code in version control, you can easily transfer the code over
+
+62
+00:05:29,800 --> 00:05:37,400
+there. And if you have your data already in order, you can usually quite easily transfer it there.
+
+63
+00:05:37,400 --> 00:05:41,560
+So that shouldn't take long. Sometimes the software installation, if the cluster has
+
+64
+00:05:41,560 --> 00:05:48,280
+all the software you need, no problem, then you just use that. Otherwise, you might need to do
+
+65
+00:05:48,280 --> 00:05:53,080
+some installations or ask help doing the installations for the code. And that might take
+
+66
+00:05:53,880 --> 00:06:00,040
+some time. But usually this is like, when we talk about a project, it's like a few days,
+
+67
+00:06:00,040 --> 00:06:06,160
+is maybe like a week if it doesn't go smoothly
+
+68
+00:06:06,160 --> 00:06:07,120
+kind of a thing.
+
+69
+00:06:07,120 --> 00:06:14,120
+But usually, you start it up from minutes to a few days,
+
+70
+00:06:14,120 --> 00:06:14,720
+maybe.
+
+71
+00:06:14,720 --> 00:06:18,000
+But the actual meet, yeah.
+
+72
+00:06:18,000 --> 00:06:19,440
+So basically, be prepared.
+
+73
+00:06:19,440 --> 00:06:23,240
+It's not instant to just get running, but reserve some time
+
+74
+00:06:23,240 --> 00:06:31,960
+and yeah like yeah it's like like if you if if you think about your computer is your home your
+
+75
+00:06:31,960 --> 00:06:38,520
+laptop is your home and you go abroad on a hotel you stay in a hotel you want to like first put
+
+76
+00:06:38,520 --> 00:06:42,920
+your stuff into the right place so maybe you go to like a cottage you have rented a cottage you
+
+77
+00:06:42,920 --> 00:06:47,640
+want to put your stuff in the right places and then you can start actually like seeing what are
+
+78
+00:06:47,640 --> 00:06:52,920
+the sites in your city or start hiking now that you have your base set up.
+
+79
+00:06:54,040 --> 00:06:58,920
+Yeah, okay. So in this little loop where you run something, you see if it works,
+
+80
+00:06:58,920 --> 00:07:04,120
+you edit code and you run again, how does that work? What are these options for?
+
+81
+00:07:04,120 --> 00:07:11,240
+So most of the time, usually when you do stuff in the cluster, you are in this sort of a loop where
+
+82
+00:07:11,240 --> 00:07:17,080
+you run something in the queue system, you usually submit it through the queue system,
+
+83
+00:07:17,080 --> 00:07:22,200
+and then you check the results, okay, whether good, and then you just keep going until you
+
+84
+00:07:23,240 --> 00:07:29,560
+reach, get the results that you want. And here, the edit your code basically carries a lot of
+
+85
+00:07:29,560 --> 00:07:37,000
+weight. So, because this is, and checking the results, it's like very, like self-evident,
+
+86
+00:07:37,000 --> 00:07:43,960
+but how do you actually do it? There's multiple ways you can do it. It involves what editor,
+
+87
+00:07:43,960 --> 00:07:50,200
+what way do you want to use the cluster? Here's some examples. I hope the text is not too small,
+
+88
+00:07:50,200 --> 00:07:59,080
+but examples that you could use. In this course, we will be mainly editing the code in a terminal
+
+89
+00:07:59,720 --> 00:08:05,960
+because that's available for everybody. What you can do is in a command line terminal,
+
+90
+00:08:05,960 --> 00:08:13,640
+you can open the files and you can edit the code directly. And then you can do modifications to the
+
+91
+00:08:13,640 --> 00:08:21,960
+files and then you can submit them to the queue. Some people want to edit the codes in their own
+
+92
+00:08:21,960 --> 00:08:30,440
+computers and then use something like Git to, like a version control system to push the stuff
+
+93
+00:08:30,440 --> 00:08:35,960
+into like let's say github or version alter file is kind of version control systems and then get it
+
+94
+00:08:35,960 --> 00:08:44,120
+into the cluster and use that to transfer like changes to your code some people like easier
+
+95
+00:08:44,120 --> 00:08:50,120
+option is usually to to get the file system available in your laptop so you can you can
+
+96
+00:08:50,120 --> 00:08:55,960
+basically mount so mounting means that you you basically make it available in your computer
+
+97
+00:08:55,960 --> 00:09:00,220
+the Triton file system or the cluster file system.
+
+98
+00:09:00,220 --> 00:09:02,480
+So you can do the edits with the editor,
+
+99
+00:09:02,480 --> 00:09:04,480
+whatever edit you want in your laptop,
+
+100
+00:09:04,480 --> 00:09:09,480
+and it will transfer all of the changes into the cluster.
+
+101
+00:09:10,080 --> 00:09:12,440
+Or you can use an editor
+
+102
+00:09:12,440 --> 00:09:15,000
+that remotely connects to the cluster.
+
+103
+00:09:15,000 --> 00:09:18,760
+So this might be like VS Code remote shell,
+
+104
+00:09:18,760 --> 00:09:21,240
+or it might be like you use the Jupyter
+
+105
+00:09:21,240 --> 00:09:24,520
+in the on-demand or something like that.
+
+106
+00:09:24,520 --> 00:09:28,040
+or you might use the virtual desktop through the on-demand.
+
+107
+00:09:28,040 --> 00:09:31,720
+But there's multiple ways you can do it.
+
+108
+00:09:31,720 --> 00:09:36,280
+And it's really important to pick one that suits your work style
+
+109
+00:09:36,280 --> 00:09:41,080
+because in the grand scheme of things of the workflow,
+
+110
+00:09:42,280 --> 00:09:45,720
+you are going to be spending most of your time over here in the loop.
+
+111
+00:09:45,720 --> 00:09:53,560
+So try to pick a style that makes it easiest to do the edits in the cluster itself
+
+112
+00:09:53,560 --> 00:10:00,600
+so that you don't have to constantly transfer stuff back and forth. It's easier to do the
+
+113
+00:10:00,600 --> 00:10:07,640
+things in the cluster itself. But okay, enough about the workflows. We should move forward
+
+114
+00:10:07,640 --> 00:10:13,960
+and look at an actual example. Yeah, so what's our example? What are we going to demonstrate?
+
+115
+00:10:13,960 --> 00:10:21,960
+Yeah. Go a bit back. So, let's, we need to get our code to the cluster.
+
+116
+00:10:21,960 --> 00:10:29,960
+Well, first, can you talk a little bit about what the example will be and what our overall plan for the day?
+
+117
+00:10:29,960 --> 00:10:40,960
+Yeah. So, the, yeah, I think the example is an example about the calculating these n-grams.
+
+118
+00:10:40,960 --> 00:10:45,520
+And it's stored in this examples repository that we have.
+
+119
+00:10:45,520 --> 00:10:51,440
+And maybe, [name], you can explain what are ngrams and what does the code do?
+
+120
+00:10:52,800 --> 00:11:00,560
+Yeah. So, what this example is... Okay, there's a cat that's trying to sit on keyboards and
+
+121
+00:11:00,560 --> 00:11:09,520
+stuff like that, so I can't type that well. Okay. So, in this example, we have books from
+
+122
+00:11:09,520 --> 00:11:16,800
+Project Gutenberg, which are open source book or no, it's public. It's digital copies of public
+
+123
+00:11:16,800 --> 00:11:26,720
+domain books from long ago. And with the books, we'll do some text analysis. So, the sample code
+
+124
+00:11:26,720 --> 00:11:34,400
+we have divides the books into words and then computes all the sequences of words. So, for
+
+125
+00:11:34,400 --> 00:11:40,000
+For example, there might be the house.
+
+126
+00:11:40,000 --> 00:11:43,080
+So how many occurrences do you have of the house,
+
+127
+00:11:43,080 --> 00:11:47,080
+or every pair of two words, or three words, or one words,
+
+128
+00:11:47,080 --> 00:11:49,520
+or whatever?
+
+129
+00:11:49,520 --> 00:11:53,040
+And this gives us sort of an interesting insight
+
+130
+00:11:53,040 --> 00:11:54,760
+to what the books are.
+
+131
+00:11:54,760 --> 00:11:58,400
+And well, people like doing text processing these days
+
+132
+00:11:58,400 --> 00:12:03,280
+because it's close to what language models are doing.
+
+133
+00:12:03,280 --> 00:12:05,040
+We're not anywhere near close to that,
+
+134
+00:12:05,040 --> 00:12:08,320
+but you can see the starting point there.
+
+135
+00:12:08,320 --> 00:12:11,380
+We have this code, it's called the n-grams example,
+
+136
+00:12:11,380 --> 00:12:16,840
+and we'll keep doing it through the whole rest of the day,
+
+137
+00:12:16,840 --> 00:12:20,080
+and keep developing it slowly over time.
+
+138
+00:12:22,760 --> 00:12:27,120
+Maybe we should start demoing,
+
+139
+00:12:27,120 --> 00:12:30,560
+how can you get the code in the cluster?
+
+140
+00:12:30,560 --> 00:12:32,640
+First things first, I have
+
+141
+00:12:32,640 --> 00:12:34,760
+Logged into the cluster over here.
+
+142
+00:12:34,760 --> 00:12:38,000
+Oh, and I guess we should say first,
+
+143
+00:12:38,000 --> 00:12:40,440
+are we going to do some demos and then we'll give
+
+144
+00:12:40,440 --> 00:12:45,120
+time for people to do the exercises? Is that?
+
+145
+00:12:45,120 --> 00:12:51,960
+Yeah. So you can focus on what we'll be typing here,
+
+146
+00:12:51,960 --> 00:12:57,720
+and then you can do it in peace afterwards.
+
+147
+00:12:57,720 --> 00:13:01,900
+Yeah. So I'd recommend focus on watching what we're doing,
+
+148
+00:13:01,900 --> 00:13:06,340
+And then later, focus on typing and doing it yourself.
+
+149
+00:13:06,340 --> 00:13:09,380
+Because trying to follow and type along at the same time
+
+150
+00:13:09,380 --> 00:13:10,700
+will be hard.
+
+151
+00:13:10,700 --> 00:13:12,260
+Also, for what we're doing, we'll
+
+152
+00:13:12,260 --> 00:13:17,140
+demonstrate something that works on the Triton cluster.
+
+153
+00:13:17,140 --> 00:13:21,140
+But you'll have to adapt it for other clusters.
+
+154
+00:13:21,140 --> 00:13:26,620
+Because every cluster is different.
+
+155
+00:13:26,620 --> 00:13:28,500
+It may have different storage locations,
+
+156
+00:13:28,500 --> 00:13:29,980
+different options you need.
+
+157
+00:13:29,980 --> 00:13:31,980
+So ask in the notes in whatever.
+
+158
+00:13:31,980 --> 00:13:34,980
+And if you can't do it on whatever cluster you're on,
+
+159
+00:13:34,980 --> 00:13:35,580
+that's OK.
+
+160
+00:13:35,580 --> 00:13:38,420
+Just if it goes completely off the rails,
+
+161
+00:13:38,420 --> 00:13:43,060
+then just stop, switch to watching mode, and just watch.
+
+162
+00:13:43,060 --> 00:13:46,740
+And then take the time later to figure out what went wrong.
+
+163
+00:13:46,740 --> 00:13:48,980
+Remember, all the materials in the videos
+
+164
+00:13:48,980 --> 00:13:51,980
+will be available for later.
+
+165
+00:13:51,980 --> 00:13:53,420
+OK, so copying the code.
+
+166
+00:13:53,420 --> 00:14:04,420
+Yeah, so the code is currently in a version control repository in, I guess it's in GitHub.
+
+167
+00:14:04,420 --> 00:14:08,380
+So that, which means anyone can clone it with the git command.
+
+168
+00:14:08,380 --> 00:14:15,140
+And hopefully every cluster has git installed by default without any extra stuff.
+
+169
+00:14:15,140 --> 00:14:16,140
+Yeah.
+
+170
+00:14:16,140 --> 00:14:19,340
+And now we are, I have a terminal open here.
+
+171
+00:14:19,340 --> 00:14:24,340
+I have taken an SSH connection to Triton beforehand,
+
+172
+00:14:24,500 --> 00:14:26,620
+so I won't be showing that.
+
+173
+00:14:28,140 --> 00:14:30,300
+All of the commands I'm going to be typing
+
+174
+00:14:30,300 --> 00:14:32,620
+are going to be shown here at the bottom,
+
+175
+00:14:32,620 --> 00:14:34,860
+so you can see the history of the commands.
+
+176
+00:14:34,860 --> 00:14:36,860
+And that's, I've set it up,
+
+177
+00:14:36,860 --> 00:14:38,580
+so I don't want to break it
+
+178
+00:14:38,580 --> 00:14:41,060
+by doing another connection to Triton.
+
+179
+00:14:41,060 --> 00:14:42,660
+But first things first,
+
+180
+00:14:42,660 --> 00:14:44,540
+what we usually want to do in a cluster
+
+181
+00:14:44,540 --> 00:14:47,100
+is go to the working directory.
+
+182
+00:14:47,100 --> 00:14:51,420
+So and this is the first place that clusters may be different.
+
+183
+00:14:51,420 --> 00:14:53,580
+So on Triton, we have this variable
+
+184
+00:14:53,580 --> 00:14:56,020
+called work directory, which will
+
+185
+00:14:56,020 --> 00:14:59,100
+lead to our Scratch directory, which we'll actually
+
+186
+00:14:59,100 --> 00:15:00,140
+talk about shortly.
+
+187
+00:15:03,220 --> 00:15:05,700
+And other clusters, every cluster probably
+
+188
+00:15:05,700 --> 00:15:09,660
+has a variable called home, which is a home directory, which
+
+189
+00:15:09,660 --> 00:15:11,380
+works there.
+
+190
+00:15:11,380 --> 00:15:13,020
+Actually, should we just use home
+
+191
+00:15:13,020 --> 00:15:16,580
+because that works for everyone?
+
+192
+00:15:16,580 --> 00:15:21,460
+like if you don't have a working directory or if you don't know what the cluster working directory
+
+193
+00:15:21,460 --> 00:15:26,260
+is you can use the home directory but I would recommend using the work directory because it's
+
+194
+00:15:26,260 --> 00:15:32,980
+like it's good to get the muscle memory in there to go to your cluster's work directory always
+
+195
+00:15:32,980 --> 00:15:39,700
+because usually you want to do everything there anyway so it's good to do that but if you don't
+
+196
+00:15:39,700 --> 00:15:44,420
+know what the work directory is, you can use the home directory, of course.
+
+197
+00:15:46,020 --> 00:15:52,580
+And you can use the command pwd to print working directory. So, which directory you are currently
+
+198
+00:15:52,580 --> 00:15:58,260
+in or which directory the terminal is in. So, in the terminal, you are basically always in some
+
+199
+00:15:58,260 --> 00:16:05,460
+directory and all the commands that you're going to be running are running relative to that
+
+200
+00:16:05,460 --> 00:16:13,940
+directory so if like when i did the pwd it shows now that i'm here and the cd is changed directory
+
+201
+00:16:13,940 --> 00:16:25,620
+so you can change directory to a new directory yes okay so we've changed there and next up is a
+
+202
+00:16:25,620 --> 00:16:35,460
+command a git clone command which should work for everyone.
+
+203
+00:16:36,980 --> 00:16:45,780
+` git clone https://github.com/AaltoSciComp/hpc-examples.git` yes and if we do this now if [name] runs the `ls` command
+
+204
+00:16:46,900 --> 00:16:54,180
+um we see there's a bunch of directories here which are from previous work but now we see
+
+205
+00:16:54,180 --> 00:17:01,620
+hpc-examples. And we can change to that directory with the command `cd`. So right now we're not
+
+206
+00:17:01,620 --> 00:17:07,140
+going through the details of what all these shell commands means. The first time we use it we'll try
+
+207
+00:17:07,140 --> 00:17:14,100
+to say what it is but this is not a shell course. We've listed some shell courses and materials
+
+208
+00:17:14,100 --> 00:17:21,540
+as part of the preparation for the course and you can go read there or later. Yeah ls is a list
+
+209
+00:17:21,540 --> 00:17:25,700
+So list files in the directory.
+
+210
+00:17:25,700 --> 00:17:28,180
+So you can use that to check what files are available.
+
+211
+00:17:30,020 --> 00:17:30,740
+Okay.
+
+212
+00:17:30,740 --> 00:17:32,100
+And now we've got the code here.
+
+213
+00:17:32,100 --> 00:17:33,540
+So now we need to get the data.
+
+214
+00:17:34,900 --> 00:17:35,300
+Yeah.
+
+215
+00:17:35,300 --> 00:17:36,820
+So how do we do that?
+
+216
+00:17:38,500 --> 00:17:42,260
+So for that, let's try for this case,
+
+217
+00:17:43,380 --> 00:17:47,940
+we'll try using on demand to do that.
+
+218
+00:17:47,940 --> 00:17:48,440
+Okay.
+
+219
+00:17:49,220 --> 00:17:51,380
+So we're going to, yeah.
+
+220
+00:17:51,540 --> 00:17:56,420
+we're going to demonstrate a somewhat realistic way of doing things so that we're pretending the
+
+221
+00:17:56,420 --> 00:18:02,100
+data is not available online. So first you download the data to your computer and then
+
+222
+00:18:02,100 --> 00:18:09,540
+we'll upload it via the on-demand service to the cluster. So basically using a web interface.
+
+223
+00:18:16,740 --> 00:18:21,380
+There's many different ways to copy data. We're trying to give a couple options that will work
+
+224
+00:18:21,380 --> 00:18:24,820
+for most people without problems.
+
+225
+00:18:24,820 --> 00:18:34,460
+So I will copy it by, I'll first download it into my own computer by going to the link.
+
+226
+00:18:34,460 --> 00:18:41,100
+We'll post a link to the notes for the data and I'll store it into my computer's temp
+
+227
+00:18:41,100 --> 00:18:44,300
+folder for now.
+
+228
+00:18:44,300 --> 00:18:46,880
+And now it has been downloaded there.
+
+229
+00:18:46,880 --> 00:18:51,920
+It's quite a small file, so it's already downloaded.
+
+230
+00:18:51,920 --> 00:19:05,840
+So next step is to log into the on-demand server that we are using.
+
+231
+00:19:05,840 --> 00:19:11,760
+You can also use these to get the terminal if you don't, like with the Triton shell access,
+
+232
+00:19:11,760 --> 00:19:15,120
+if you don't want to take an SSH connection
+
+233
+00:19:15,120 --> 00:19:19,080
+or if you have problems with the SSH connection.
+
+234
+00:19:19,080 --> 00:19:23,520
+But let me make this a bit.
+
+235
+00:19:23,520 --> 00:19:30,040
+So yeah, so on the top bar, there's files over here.
+
+236
+00:19:30,040 --> 00:19:33,760
+And over here, I can go to work directory.
+
+237
+00:19:33,760 --> 00:19:36,000
+OK, got it, yeah.
+
+238
+00:19:36,000 --> 00:19:39,080
+And now what we see here corresponds
+
+239
+00:19:39,080 --> 00:19:45,000
+to what we saw in the terminal.
+
+240
+00:19:45,000 --> 00:19:45,640
+Yes.
+
+241
+00:19:45,640 --> 00:19:47,600
+So two views of the same thing.
+
+242
+00:19:47,600 --> 00:19:50,280
+Let's create a new directory for that so that we don't
+
+243
+00:19:50,280 --> 00:19:54,360
+immediately lose track of where the files will be stored.
+
+244
+00:19:54,360 --> 00:19:56,720
+So let's create a new directory.
+
+245
+00:19:56,720 --> 00:20:02,160
+So `gutenberg-fiction` is what the examples say.
+
+246
+00:20:02,160 --> 00:20:02,680
+Okay.
+
+247
+00:20:02,680 --> 00:20:06,600
+Yeah. So now I get a new folder over here,
+
+248
+00:20:06,600 --> 00:20:11,200
+And if I go over here, I can now see
+
+249
+00:20:11,200 --> 00:20:13,840
+that there's nothing over here in the file system.
+
+250
+00:20:13,840 --> 00:20:16,920
+I can upload a file.
+
+251
+00:20:16,920 --> 00:20:18,760
+Yes.
+
+252
+00:20:18,760 --> 00:20:21,280
+Browse files.
+
+253
+00:20:21,280 --> 00:20:22,520
+Here's the Gutenberg.
+
+254
+00:20:22,520 --> 00:20:25,440
+Gutenberg Fiction.
+
+255
+00:20:25,440 --> 00:20:28,080
+And let's upload it.
+
+256
+00:20:28,080 --> 00:20:31,120
+Upload, OK.
+
+257
+00:20:31,120 --> 00:20:34,240
+Takes a little bit longer.
+
+258
+00:20:34,240 --> 00:20:36,200
+And now should we go back to the terminal
+
+259
+00:20:36,200 --> 00:20:40,200
+and see if we can see the new data visible there.
+
+260
+00:20:40,200 --> 00:20:47,280
+So I'm currently in the SBC examples folder.
+
+261
+00:20:47,280 --> 00:20:49,540
+So if I want to go one folder back,
+
+262
+00:20:49,540 --> 00:20:51,560
+I can type `cd ..`
+
+263
+00:20:51,560 --> 00:20:55,880
+So I will be then in the work directory,
+
+264
+00:20:55,880 --> 00:20:59,220
+and if we go to the gutenberg-fiction folder,
+
+265
+00:20:59,220 --> 00:21:02,360
+I can see that now the file is there.
+
+266
+00:21:02,360 --> 00:21:09,720
+I'll navigate back into the HPC examples, because that's where we want to be.
+
+267
+00:21:09,720 --> 00:21:14,720
+You can usually use a tab to autocomplete, like the tab character, you can use that to
+
+268
+00:21:14,720 --> 00:21:19,280
+autocomplete, like if you have started writing something, if you see that I'm typing something
+
+269
+00:21:19,280 --> 00:21:24,400
+and something appears, it's just that I'm so used to pressing the autocomplete, I forget
+
+270
+00:21:24,400 --> 00:21:25,960
+that I use it.
+
+271
+00:21:25,960 --> 00:21:28,960
+So don't worry about it.
+
+272
+00:21:28,960 --> 00:21:33,600
+So there, we've transferred the data.
+
+273
+00:21:33,600 --> 00:21:36,760
+Should we do an initial test to see if the code runs?
+
+274
+00:21:36,760 --> 00:21:38,120
+Yes.
+
+275
+00:21:38,120 --> 00:21:38,400
+Yeah.
+
+276
+00:21:38,400 --> 00:21:39,440
+OK.
+
+277
+00:21:39,440 --> 00:21:41,720
+So which folder is it?
+
+278
+00:21:41,720 --> 00:21:43,720
+We can stay in this folder.
+
+279
+00:21:43,720 --> 00:21:52,680
+So if you do Python, and then space, then ngrams.
+
+280
+00:21:52,680 --> 00:21:55,040
+Yes, Python 3 ngrams.
+
+281
+00:21:55,040 --> 00:21:58,720
+It is count.py.
+
+282
+00:21:58,720 --> 00:22:02,160
+Actually, you can first run it with the dash dash help option.
+
+283
+00:22:02,160 --> 00:22:05,940
+This is something that each program has to do itself.
+
+284
+00:22:05,940 --> 00:22:09,440
+But when a program has a dash dash help option,
+
+285
+00:22:09,440 --> 00:22:16,720
+it usually tells you a bit about how you use the program.
+
+286
+00:22:16,720 --> 00:22:18,720
+It can really be helpful when
+
+287
+00:22:18,720 --> 00:22:21,760
+figuring out some new command line stuff.
+
+288
+00:22:21,760 --> 00:22:23,840
+Most commands like if you run,
+
+289
+00:22:23,840 --> 00:22:25,460
+let's say `cd --help`,
+
+290
+00:22:25,460 --> 00:22:33,140
+it has a help manual that shows what it does. Most of the commands in Linux,
+
+291
+00:22:34,260 --> 00:22:42,500
+at least system commands, they have this `--help` included. So let's check the ngrams.
+
+292
+00:22:43,460 --> 00:22:50,660
+So I happen to know that we need the one input argument, which is the input text file,
+
+293
+00:22:50,660 --> 00:22:54,140
+But it can also be an input zip file.
+
+294
+00:22:54,140 --> 00:23:00,420
+So we will do Python 3 and grams count.py.
+
+295
+00:23:00,420 --> 00:23:02,420
+And now we're going to refer to the data that's
+
+296
+00:23:02,420 --> 00:23:03,580
+in a different directory.
+
+297
+00:23:03,580 --> 00:23:06,740
+So we start with that dot dot, which means
+
+298
+00:23:06,740 --> 00:23:09,220
+go up to the parent directory.
+
+299
+00:23:09,220 --> 00:23:13,120
+And then gutenberg-fiction as the directory.
+
+300
+00:23:16,260 --> 00:23:20,300
+And then the zip file name.
+
+301
+00:23:20,300 --> 00:23:27,340
+Yeah. Yes. So now should I run it? Yeah, let's push enter and see what happens.
+
+302
+00:23:28,780 --> 00:23:35,980
+So this should analyze 100 books in there and print out all the word frequencies.
+
+303
+00:23:38,700 --> 00:23:43,020
+Sorry, cats is getting hungry and starting to look for cables to eat.
+
+304
+00:23:44,940 --> 00:23:49,100
+It's a good time to have the exercise in a second so that you can feed the cat.
+
+305
+00:23:50,300 --> 00:23:50,800
+Yeah.
+
+306
+00:23:50,800 --> 00:23:52,040
+OK, well, it finished.
+
+307
+00:23:52,040 --> 00:23:55,520
+So what do we see?
+
+308
+00:23:55,520 --> 00:23:58,920
+So by default, it prints out just word frequencies,
+
+309
+00:23:58,920 --> 00:24:01,920
+so word one grams.
+
+310
+00:24:01,920 --> 00:24:08,840
+And then it also prints out just letters.
+
+311
+00:24:08,840 --> 00:24:11,080
+So let's modify how it runs.
+
+312
+00:24:11,080 --> 00:24:14,520
+Can we run it again, but with a dash dash words option?
+
+313
+00:24:14,520 --> 00:24:15,080
+Yeah.
+
+314
+00:24:15,080 --> 00:24:18,600
+I press the up arrow on my keyboard
+
+315
+00:24:18,600 --> 00:24:20,000
+to get the previous command.
+
+316
+00:24:20,000 --> 00:24:24,640
+is very useful for if you want to do modifications or something.
+
+317
+00:24:24,640 --> 00:24:28,720
+You can press up arrow to get the previous command.
+
+318
+00:24:28,720 --> 00:24:30,640
+And you're going to use the left and right arrows
+
+319
+00:24:30,640 --> 00:24:35,280
+to go scroll in the command itself.
+
+320
+00:24:35,280 --> 00:24:43,120
+So we can write something in the middle of the place.
+
+321
+00:24:43,120 --> 00:24:43,920
+In the middle.
+
+322
+00:24:43,920 --> 00:24:44,400
+Yeah.
+
+323
+00:24:44,400 --> 00:24:44,720
+Yeah.
+
+324
+00:24:44,720 --> 00:24:45,680
+We're modifying.
+
+325
+00:24:45,680 --> 00:24:46,000
+Yes.
+
+326
+00:24:46,000 --> 00:24:46,480
+OK.
+
+327
+00:24:46,480 --> 00:24:50,840
+Yeah, so I hope it's `--words`.
+
+328
+00:24:50,840 --> 00:24:53,000
+That doesn't, well.
+
+329
+00:24:54,840 --> 00:24:55,680
+Yeah, okay.
+
+330
+00:24:55,680 --> 00:24:57,360
+At least seemed to work.
+
+331
+00:24:57,360 --> 00:25:02,360
+Yeah, and I guess while we're waiting now,
+
+332
+00:25:02,680 --> 00:25:03,980
+so what will come next?
+
+333
+00:25:03,980 --> 00:25:08,260
+This will be an example for you.
+
+334
+00:25:11,400 --> 00:25:13,680
+So it looked pretty simple when we did it,
+
+335
+00:25:13,680 --> 00:25:23,120
+of course, lots of things can go wrong for you. For example, how you copy data to your cluster.
+
+336
+00:25:23,120 --> 00:25:30,480
+If you don't have on-demand, you need to copy it either by the command line or you can use this
+
+337
+00:25:30,480 --> 00:25:39,200
+wget command in order to download file from the internet by the command line.
+
+338
+00:25:39,200 --> 00:25:46,640
+So it's like web get, get something from the internet, download some file.
+
+339
+00:25:46,640 --> 00:25:51,240
+You need to figure out where to store the data, whether it's in your home directory
+
+340
+00:25:51,240 --> 00:25:56,480
+or some other scratch or work directory that's available on your cluster.
+
+341
+00:25:56,480 --> 00:25:59,180
+You need to be connected.
+
+342
+00:25:59,180 --> 00:26:03,500
+So different things can go wrong here.
+
+343
+00:26:03,500 --> 00:26:05,960
+But let's not focus on what can go wrong.
+
+344
+00:26:05,960 --> 00:26:08,700
+Let's focus on what you're able to do.
+
+345
+00:26:08,700 --> 00:26:13,500
+So what if you, like throughout this exercise, we have basically completed the initial setup
+
+346
+00:26:13,500 --> 00:26:17,340
+because this code doesn't require any installation or specific installation.
+
+347
+00:26:17,340 --> 00:26:21,920
+We have basically completed the initial setup of our program and now we can start working
+
+348
+00:26:21,920 --> 00:26:23,220
+in the cluster.
+
+349
+00:26:23,220 --> 00:26:27,900
+So in the exercise, like basically we now, this is the thing you usually need to do when
+
+350
+00:26:27,900 --> 00:26:30,260
+you do any initial setup.
+
+351
+00:26:30,260 --> 00:26:37,580
+You get usually a code repository into the cluster and then you move your data into the
+
+352
+00:26:37,580 --> 00:26:38,580
+cluster.
+
+353
+00:26:38,580 --> 00:26:44,580
+you get that done, the vast majority of stuff ends there,
+
+354
+00:26:44,580 --> 00:26:47,020
+and then you can start running.
+
+355
+00:26:47,020 --> 00:26:48,220
+Yeah.
+
+356
+00:26:48,220 --> 00:26:50,580
+And this is definitely an artificial example
+
+357
+00:26:50,580 --> 00:26:52,660
+compared to usual work, because it's
+
+358
+00:26:52,660 --> 00:26:57,140
+designed to have no dependencies and work only by Python.
+
+359
+00:26:57,140 --> 00:27:01,420
+And the data file is nice and small.
+
+360
+00:27:01,420 --> 00:27:04,260
+But anyway, we're about to go now.
+
+361
+00:27:04,260 --> 00:27:12,340
+I've put the exercise here in the notes so you can see try to repeat what we just did
+
+362
+00:27:13,220 --> 00:27:22,820
+that kind of stuff. If you have problems, ask questions down here and don't worry,
+
+363
+00:27:22,820 --> 00:27:29,620
+we expect there to be plenty of problems. We will give some time. You can also report
+
+364
+00:27:35,220 --> 00:27:36,980
+Oh, why is this not updating?
+
+365
+00:27:39,540 --> 00:27:43,860
+Oh, I'm writing in the wrong place. Many windows open.
+
+366
+00:27:47,140 --> 00:27:47,640
+Done.
+
+367
+00:27:51,540 --> 00:27:55,780
+And then comment on the problems you have down below, and we'll try to help you.
+
+368
+00:27:56,340 --> 00:28:01,380
+If you're in Finland, you can join the Zoom we have and get interactive help.
+
+369
+00:28:04,260 --> 00:28:06,020
+Is now when we wish people good luck?
+
+370
+00:28:08,020 --> 00:28:08,260
+Yeah.
+
+371
+00:28:08,260 --> 00:28:11,780
+Is now when we apologize for needing luck to get it to work?
+
+372
+00:28:14,580 --> 00:28:23,460
+I think this is the kind of problem that it's annoying first, and it's annoying because of
+
+373
+00:28:23,460 --> 00:28:32,580
+historical reasons and lots of stuff. But once you get it sorted, then it quickly becomes a
+
+374
+00:28:32,580 --> 00:28:40,100
+row thing that you do often. Yeah. Yeah. And there's already one person saying it's too easy.
+
+375
+00:28:40,820 --> 00:28:48,100
+In that case, if you look at the different links from the schedule, there's a lot of more advanced
+
+376
+00:28:48,100 --> 00:28:54,740
+stuff to try that lets you really see a little bit deeper into things here. So I'd say do that,
+
+377
+00:28:54,740 --> 00:29:00,660
+scroll down to the exercises and try that.
+
+378
+00:29:00,660 --> 00:29:06,100
+And in the boat, just add an O character there,
+
+379
+00:29:06,100 --> 00:29:09,420
+because then there's less risk of people
+
+380
+00:29:09,420 --> 00:29:13,940
+adding counting at the same time and doing this kind of like,
+
+381
+00:29:13,940 --> 00:29:15,420
+if you ever played the game where
+
+382
+00:29:15,420 --> 00:29:17,420
+you need to count up to a certain number,
+
+383
+00:29:17,420 --> 00:29:18,540
+you know how hard it is.
+
+384
+00:29:18,540 --> 00:29:21,220
+So it's easier to just add an O there.
+
+385
+00:29:21,220 --> 00:29:23,700
+So yes.
+
+386
+00:29:23,700 --> 00:29:26,540
+So let's set up the projects.
+
+387
+00:29:26,540 --> 00:29:31,820
+And are there any problems that you have into the chat?
+
+388
+00:29:31,820 --> 00:29:33,180
+We'll try to answer them.
+
+389
+00:29:33,180 --> 00:29:33,980
+So yeah.
+
+390
+00:29:33,980 --> 00:29:37,700
+How long should we give?
+
+391
+00:29:37,700 --> 00:29:41,300
+I'd say 15 minutes.
+
+392
+00:29:41,300 --> 00:29:42,100
+Let's say 15.
+
+393
+00:29:42,100 --> 00:29:43,020
+OK.
+
+394
+00:29:43,020 --> 00:29:44,140
+Yeah.
+
+395
+00:29:44,140 --> 00:29:45,140
+OK.
+
+396
+00:29:45,140 --> 00:29:47,540
+Great.
+
+397
+00:29:47,540 --> 00:29:48,300
+Good luck.
+
+398
+00:29:48,300 --> 00:29:49,940
+And see you soon.
+
+399
+00:29:49,940 --> 00:29:50,940
+Bye.
+
+400
+00:29:50,940 --> 00:29:51,440
+Bye.
+
+401
+00:29:52,000 --> 00:29:57,540
+Okay, hello, welcome back.
+
+402
+00:29:57,540 --> 00:30:03,540
+And from looking at the notes here,
+
+403
+00:30:03,540 --> 00:30:07,100
+it seems things went pretty well.
+
+404
+00:30:07,100 --> 00:30:11,140
+Y'all actually did really well.
+
+405
+00:30:11,140 --> 00:30:12,820
+You make me proud.
+
+406
+00:30:12,820 --> 00:30:20,620
+So yeah, really what we do now is probably
+
+407
+00:30:20,620 --> 00:30:22,660
+one of the hardest things we've done,
+
+408
+00:30:22,660 --> 00:30:25,140
+or we'll do the whole course.
+
+409
+00:30:25,140 --> 00:30:28,400
+This idea of having all these abstract folders
+
+410
+00:30:28,400 --> 00:30:30,400
+on some other remote system,
+
+411
+00:30:30,400 --> 00:30:32,760
+needing to keep track of what is where
+
+412
+00:30:32,760 --> 00:30:35,440
+and where all the data goes,
+
+413
+00:30:35,440 --> 00:30:40,440
+is quite a hard thing.
+
+414
+00:30:41,640 --> 00:30:45,520
+Yeah, usually like if it's like the cluster is beat up,
+
+415
+00:30:45,520 --> 00:30:47,720
+like it's like your computer,
+
+416
+00:30:47,720 --> 00:30:51,320
+but it's like, again, it's like different.
+
+417
+00:30:51,320 --> 00:30:53,360
+And so stuff is in different places
+
+418
+00:30:53,360 --> 00:30:59,920
+especially if you're used to using graphical interfaces and stuff, the terminal can become
+
+419
+00:31:00,560 --> 00:31:06,400
+a seem daunting to do. But basically, it's the same kind of thing that you would do in your
+
+420
+00:31:06,400 --> 00:31:11,680
+normal operating system, like opening a file browser or something and going to a folder and
+
+421
+00:31:11,680 --> 00:31:18,240
+opening a file. But all of that is done via the command line, because then you can program
+
+422
+00:31:18,240 --> 00:31:24,000
+basically, and you can tell the computer exactly what you want to do. And that's why the command
+
+423
+00:31:24,000 --> 00:31:29,520
+line is so popular in the HPC clusters, because you need to be able to tell the computer what sort
+
+424
+00:31:29,520 --> 00:31:35,680
+of operations, like file system operations, you need to do, like go to this folder, move this file
+
+425
+00:31:35,680 --> 00:31:43,920
+around, and that sort of stuff. And this is often the most annoying part when it comes to using the
+
+426
+00:31:43,920 --> 00:31:48,320
+the clusters, like the transferring files and managing this kind of like, especially if you have
+
+427
+00:31:48,320 --> 00:31:54,880
+like copy of your code in your computer and then you want it to be in sync with the code in the
+
+428
+00:31:54,880 --> 00:32:02,480
+cluster. So yeah, like the getting accustomed to the like, okay, there's another place that has
+
+429
+00:32:02,480 --> 00:32:10,400
+this only, I cannot see, but I can only ask it like it's like, you can only use the terminal
+
+430
+00:32:10,400 --> 00:32:17,520
+interface. Often you only use the terminal interface to interact with it. It can be a
+
+431
+00:32:17,520 --> 00:32:25,600
+bit abstract, but once you get a hold of it, it becomes easier. [name], if you want to share
+
+432
+00:32:25,600 --> 00:32:33,760
+my screen for a second, I might show a refresher of a few of the commands that we did.
+
+433
+00:32:33,760 --> 00:32:43,320
+So, when it comes to these kind of terminal files, it looks like we just have a blank
+
+434
+00:32:43,320 --> 00:32:48,960
+screen over here, but it's always in a folder.
+
+435
+00:32:48,960 --> 00:32:56,200
+We are always in some folder, and the folders are organized in Linux.
+
+436
+00:32:56,200 --> 00:33:00,640
+They are organized with these slashes, and everything starts at a root.
+
+437
+00:33:00,640 --> 00:33:07,560
+And then usually you have, let's say, in our case, we have the work directory is like slash
+
+438
+00:33:07,560 --> 00:33:10,600
+scratch work and whatever.
+
+439
+00:33:10,600 --> 00:33:16,600
+And this is the so-called absolute path to the folder.
+
+440
+00:33:16,600 --> 00:33:23,820
+So if we have the HPC examples over here, we can see here's the folder.
+
+441
+00:33:23,820 --> 00:33:32,140
+And if I run pwd, I can see that this is my current directory, and I'm currently here.
+
+442
+00:33:32,140 --> 00:33:35,260
+And of course, you can also have relative parts.
+
+443
+00:33:35,260 --> 00:33:38,020
+So you can have parts relative to this folder.
+
+444
+00:33:38,020 --> 00:33:46,900
+So you can, let's say, have the dash dot dot meaning folder above me, one folder above,
+
+445
+00:33:46,900 --> 00:33:48,740
+and then gutenberg-fiction.
+
+446
+00:33:48,740 --> 00:33:55,500
+So it's basically like you have this, like every folder is separated by these forward
+
+447
+00:33:55,500 --> 00:34:00,940
+slashes and then like you have this hierarchy of folders inside of it.
+
+448
+00:34:00,940 --> 00:34:07,100
+So getting accustomed to navigating this kind of like maze of folders can be a bit haunting
+
+449
+00:34:07,100 --> 00:34:13,140
+at first, but it's always good to remember that PWD shows what folder you are in.
+
+450
+00:34:13,140 --> 00:34:18,480
+You can use ls to list whatever files you have in that current directory.
+
+451
+00:34:18,480 --> 00:34:26,720
+if you want, you can always use CD to go back into your home directory. So you know where you
+
+452
+00:34:26,720 --> 00:34:32,880
+start. If you run just CD without any commands, and you can give it the whole path if you want
+
+453
+00:34:32,880 --> 00:34:42,400
+to go back into some directory, you can get CD apart and then you can go back into directory.
+
+454
+00:34:42,400 --> 00:34:48,160
+And this is what it's first daunting, but once you get accustomed and you know that now your
+
+455
+00:34:48,160 --> 00:34:53,680
+files are in this kind of folder structure,
+
+456
+00:34:53,680 --> 00:34:55,280
+it becomes easier all the time.
+
+457
+00:35:00,360 --> 00:35:02,080
+Yeah.
+
+458
+00:35:02,080 --> 00:35:07,160
+Did you talk about what the `..` means, to go up one directory?
+
+459
+00:35:07,160 --> 00:35:10,640
+Yes, and you can chain it as well [../../.. etc].
+
+460
+00:35:10,640 --> 00:35:13,280
+You can have dot dot go one level up,
+
+461
+00:35:13,280 --> 00:35:16,160
+and then you have go two levels up, and so forth.
+
+462
+00:35:16,160 --> 00:35:23,000
+And you're going to go up and up and up until you reach the end.
+
+463
+00:35:23,000 --> 00:35:25,600
+But yeah.
+
+464
+00:35:25,600 --> 00:35:30,240
+So one other thing I saw in the notes several times
+
+465
+00:35:30,240 --> 00:35:32,280
+was about the zip files.
+
+466
+00:35:32,280 --> 00:35:33,800
+So this is sort of interesting.
+
+467
+00:35:33,800 --> 00:35:36,280
+So we've written the program where
+
+468
+00:35:36,280 --> 00:35:39,320
+it can analyze books directly from the zip file
+
+469
+00:35:39,320 --> 00:35:42,800
+without you needing to uncompress it yourself.
+
+470
+00:35:42,800 --> 00:35:45,760
+So this was an interesting choice of ours.
+
+471
+00:35:45,760 --> 00:35:54,160
+it meant that it didn't take up as many files, like it's more efficient in some ways.
+
+472
+00:35:57,360 --> 00:36:03,600
+Yeah, but it's just an interesting design choice. Also, there was a good question about where the
+
+473
+00:36:03,600 --> 00:36:12,240
+data was saved. And for that, well, I don't know, I can't find it in here.
+
+474
+00:36:12,240 --> 00:36:15,080
+Yeah, here it is. Where is it saved?
+
+475
+00:36:15,080 --> 00:36:16,920
+In this case, right now,
+
+476
+00:36:16,920 --> 00:36:19,720
+the program is just printing it out
+
+477
+00:36:19,720 --> 00:36:24,540
+from the terminal and not saving it anywhere.
+
+478
+00:36:24,540 --> 00:36:26,900
+There's an option to save the output somewhere,
+
+479
+00:36:26,900 --> 00:36:30,460
+which actually we will start using later on.
+
+480
+00:36:30,460 --> 00:36:35,480
+Were there any other very important things we should talk about?
+
+481
+00:36:35,480 --> 00:36:45,760
+I will quickly mention that all of the commands in Linux, they have this syntax, this form
+
+482
+00:36:45,760 --> 00:36:47,660
+that you can follow.
+
+483
+00:36:47,660 --> 00:36:51,560
+That first command is the actual name of the command that will be executed.
+
+484
+00:36:51,560 --> 00:36:56,940
+So let's say the Python 3 will be the command that we executed.
+
+485
+00:36:56,940 --> 00:37:01,380
+And whatever you give after that are so-called arguments.
+
+486
+00:37:01,380 --> 00:37:03,140
+You can give arguments to the command.
+
+487
+00:37:03,140 --> 00:37:06,980
+Let's say if I have the count at pi, I can give it as an argument.
+
+488
+00:37:08,340 --> 00:37:12,180
+I will run the command Python 3, and this is called an argument.
+
+489
+00:37:12,980 --> 00:37:18,260
+It's usually called a positional argument if it doesn't have anything to highlight it.
+
+490
+00:37:20,020 --> 00:37:22,180
+It's the next one in the line.
+
+491
+00:37:22,180 --> 00:37:23,700
+And then you can give more arguments.
+
+492
+00:37:25,860 --> 00:37:30,900
+For example, we gave the name of the input file, the zip file, that we want to process.
+
+493
+00:37:30,900 --> 00:37:32,180
+That's another argument.
+
+494
+00:37:32,180 --> 00:37:48,180
+And you can also have these dash-dash arguments or sometimes with single-dash arguments that are like special toggles or options that toggle different features of the program.
+
+495
+00:37:48,180 --> 00:37:50,180
+So, for example, the words was this kind of thing.
+
+496
+00:37:50,180 --> 00:37:55,180
+And all of the commands usually are written in such syntax.
+
+497
+00:37:55,180 --> 00:38:02,620
+Of course, there's always exceptions to the rule, but all of the operating system commands,
+
+498
+00:38:02,620 --> 00:38:04,140
+they follow this syntax.
+
+499
+00:38:04,140 --> 00:38:06,980
+It's like back from the Unix days.
+
+500
+00:38:06,980 --> 00:38:10,340
+It's very old syntax.
+
+501
+00:38:10,340 --> 00:38:15,660
+Once you figure this out, you know that and use the `--help`, for example, it will
+
+502
+00:38:15,660 --> 00:38:18,980
+make everything easier in the terminal.
+
+503
+00:38:25,180 --> 00:38:32,340
+There's several questions of similar things up above.
+
+504
+00:38:32,340 --> 00:38:36,060
+So when you're running it from the command line,
+
+505
+00:38:36,060 --> 00:38:37,700
+or really anytime you run things,
+
+506
+00:38:37,700 --> 00:38:40,860
+but things are really
+
+507
+00:38:40,860 --> 00:38:44,620
+picky about how you give the paths and what you use.
+
+508
+00:38:44,620 --> 00:38:49,360
+So for example, if someone gives the path to a directory,
+
+509
+00:38:49,360 --> 00:38:53,400
+then it expects a file that doesn't work.
+
+510
+00:38:53,400 --> 00:39:03,720
+In this case, I think the problem is this person.
+
+511
+00:39:03,720 --> 00:39:08,640
+You need to give a .zip as part of the filename on here.
+
+512
+00:39:08,640 --> 00:39:14,240
+So in Unix, well, yeah, really anywhere.
+
+513
+00:39:14,240 --> 00:39:18,200
+But Unix, what you give is what it uses.
+
+514
+00:39:18,200 --> 00:39:20,400
+So it doesn't automatically add or remove
+
+515
+00:39:20,400 --> 00:39:21,800
+filenames from anywhere.
+
+516
+00:39:23,400 --> 00:39:27,480
+I propose we go to a break now.
+
+517
+00:39:27,480 --> 00:39:29,280
+We can keep answering some questions
+
+518
+00:39:29,280 --> 00:39:31,600
+and we'll come back and move on.
+
+519
+00:39:31,600 --> 00:39:35,720
+And if things are still not working quite right,
+
+520
+00:39:35,720 --> 00:39:39,840
+please let us know you had problems down here
+
+521
+00:39:39,840 --> 00:39:43,560
+and we will be aware of that for next time.
+
+522
+00:39:44,560 --> 00:39:48,400
+But during the break, even if this hasn't worked yet,
+
+523
+00:39:48,400 --> 00:39:51,360
+consider how cool it is what we just did.
+
+524
+00:39:51,360 --> 00:39:55,020
+So since we're typing things on a terminal,
+
+525
+00:39:55,020 --> 00:39:56,380
+it has several effects.
+
+526
+00:39:56,380 --> 00:39:58,580
+One, you can copy what you typed
+
+527
+00:39:58,580 --> 00:40:02,300
+and put it in another notepad and remember what you did.
+
+528
+00:40:02,300 --> 00:40:04,140
+And that's much easier than remembering
+
+529
+00:40:04,140 --> 00:40:06,220
+where you did a bunch of clicking.
+
+530
+00:40:06,220 --> 00:40:08,820
+Second, since we're typing it here,
+
+531
+00:40:08,820 --> 00:40:11,820
+we can make another program called the shell script
+
+532
+00:40:11,820 --> 00:40:16,820
+that will run these programs automatically for us.
+
+533
+00:40:17,940 --> 00:40:19,580
+So instead of having to sit there
+
+534
+00:40:19,580 --> 00:40:23,060
+and click buttons to run something 100 times or 1,000
+
+535
+00:40:23,060 --> 00:40:26,220
+times, we can run 100 things at once
+
+536
+00:40:26,220 --> 00:40:27,900
+with just a little bit of work.
+
+537
+00:40:27,900 --> 00:40:31,100
+And this is our first step in that direction.
+
+538
+00:40:31,100 --> 00:40:33,660
+And that is, without a doubt, cool
+
+539
+00:40:33,660 --> 00:40:37,380
+and what makes clusters useful.
+
+540
+00:40:37,380 --> 00:40:40,740
+So with that said, I guess we have a 10-minute break.
+
+541
+00:40:40,740 --> 00:40:46,620
+And we'll come back at 8 minutes past the hour.
+
+542
+00:40:46,620 --> 00:40:48,140
+Sounds good.
+
+543
+00:40:48,140 --> 00:40:48,640
+OK.
+
+544
+00:40:48,640 --> 00:40:49,340
+Sounds good.
+
+545
+00:40:52,020 --> 00:40:55,780
+See you then.
+
+546
+00:40:55,780 --> 00:40:56,860
+Bye.
+
+547
+00:40:56,860 --> 00:40:58,000
+Bye.
+

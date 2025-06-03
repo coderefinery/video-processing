@@ -1,0 +1,316 @@
+1
+00:00:00,000 --> 00:00:00,600
+OK.
+
+2
+00:00:00,600 --> 00:00:03,880
+So the way we usually present this
+
+3
+00:00:03,880 --> 00:00:06,880
+is first we run things interactively.
+
+4
+00:00:06,880 --> 00:00:09,120
+So that means, unlike what we've been saying,
+
+5
+00:00:09,120 --> 00:00:13,760
+we don't make a batch script and set it to run in the background.
+
+6
+00:00:13,760 --> 00:00:16,240
+But we're going to see the results right here
+
+7
+00:00:16,240 --> 00:00:18,840
+in front of us.
+
+8
+00:00:18,840 --> 00:00:22,120
+So we do that by running the same command as before.
+
+9
+00:00:22,120 --> 00:00:26,240
+So [name] can push the up arrow key.
+
+10
+00:00:26,240 --> 00:00:32,360
+And then if we go to the beginning of the line,
+
+11
+00:00:32,360 --> 00:00:35,560
+now we add a wrapper here that tells it to run through Slurm,
+
+12
+00:00:35,560 --> 00:00:37,240
+and that is srun.
+
+13
+00:00:37,240 --> 00:00:40,480
+So srun means like Slurm run, whatever.
+
+14
+00:00:40,480 --> 00:00:43,000
+Different clusters may have different practices
+
+15
+00:00:43,000 --> 00:00:46,160
+you should use, but this is the generic Slurm one.
+
+16
+00:00:46,160 --> 00:00:50,040
+And you can give, first we tell it what resources it needs,
+
+17
+00:00:50,040 --> 00:00:52,120
+how much memory is needed.
+
+18
+00:00:52,120 --> 00:00:55,160
+How much should we get?
+
+19
+00:00:55,160 --> 00:00:59,560
+The input data file is 18 megabytes, at least
+
+20
+00:00:59,560 --> 00:01:00,560
+the 100-book one.
+
+21
+00:01:00,560 --> 00:01:01,440
+Yeah.
+
+22
+00:01:01,440 --> 00:01:06,760
+And it has to make a copy of most of the books, so I mean.
+
+23
+00:01:06,760 --> 00:01:09,040
+Be safe and put 1 gigabyte.
+
+24
+00:01:09,040 --> 00:01:11,800
+Yeah, that's not enough, probably.
+
+25
+00:01:11,800 --> 00:01:15,120
+And for reference, on the cluster, 1 gigabyte is tiny.
+
+26
+00:01:15,120 --> 00:01:18,000
+So there's no need to even think about going
+
+27
+00:01:18,000 --> 00:01:19,960
+less than a gigabyte.
+
+28
+00:01:19,960 --> 00:01:25,040
+So it's not even worth trying to see how small it should be.
+
+29
+00:01:25,040 --> 00:01:27,960
+And then we should give it, what, the time.
+
+30
+00:01:27,960 --> 00:01:31,120
+So how long did it take to run?
+
+31
+00:01:31,120 --> 00:01:33,920
+Like 10 seconds, something?
+
+32
+00:01:33,920 --> 00:01:35,200
+10 seconds, yeah.
+
+33
+00:01:35,200 --> 00:01:37,680
+So we can put like 10 minutes, maybe.
+
+34
+00:01:37,680 --> 00:01:39,880
+10 minutes, yeah.
+
+35
+00:01:39,880 --> 00:01:42,920
+Usually, you don't want to have very small jobs.
+
+36
+00:01:42,920 --> 00:01:45,040
+But in this case, because we're just testing out,
+
+37
+00:01:45,040 --> 00:01:47,880
+it doesn't matter.
+
+38
+00:01:47,880 --> 00:01:52,960
+And the time syntax is like hours, minutes, seconds.
+
+39
+00:01:52,960 --> 00:01:54,160
+There's also days.
+
+40
+00:01:54,160 --> 00:02:02,320
+if you run really long jobs but that's not necessary for here yeah and we didn't tell
+
+41
+00:02:02,320 --> 00:02:08,320
+the number of processors to use so it probably defaulted to one and here immediately we see
+
+42
+00:02:08,320 --> 00:02:14,480
+something interesting so we see it says s run job some job id has been submitted in waiting
+
+43
+00:02:14,480 --> 00:02:21,920
+allocation then it said job has run yeah it's so maybe we should uh add the output there so that
+
+44
+00:02:21,920 --> 00:02:26,320
+so that we can see the output.
+
+45
+00:02:26,320 --> 00:02:30,120
+So we can push the up arrow key.
+
+46
+00:02:30,120 --> 00:02:35,920
+And then at the end, do dash o or double dash output,
+
+47
+00:02:35,920 --> 00:02:37,360
+whichever one.
+
+48
+00:02:37,360 --> 00:02:39,000
+And then give it some file name.
+
+49
+00:02:39,000 --> 00:02:47,720
+And it will now save the output to that file, which is words 1.
+
+50
+00:02:47,720 --> 00:02:50,520
+Yeah, let's say like that.
+
+51
+00:02:50,520 --> 00:02:54,000
+Oh, OK, now we can see a bit more clearly.
+
+52
+00:02:54,000 --> 00:02:57,040
+So job srun queued, waiting for resources.
+
+53
+00:02:57,040 --> 00:03:00,000
+srun job has been allocated resources.
+
+54
+00:03:00,000 --> 00:03:01,560
+It found the files.
+
+55
+00:03:01,560 --> 00:03:03,520
+It's waiting.
+
+56
+00:03:03,520 --> 00:03:13,400
+And it says it found about 111,000 unique words in there
+
+57
+00:03:13,400 --> 00:03:15,800
+for however it defines words.
+
+58
+00:03:15,800 --> 00:03:18,720
+Do you want to look at the output of the file?
+
+59
+00:03:18,720 --> 00:03:26,880
+Yes. We can use a pager. Maybe you can explain what is a pager, like a list to view it.
+
+60
+00:03:28,000 --> 00:03:35,360
+So by paging, it means pagination. So since the file's too long to just print to the screen,
+
+61
+00:03:35,360 --> 00:03:41,360
+it will show us one screen at a time. And less is the most common pager these days.
+
+62
+00:03:42,400 --> 00:03:48,560
+So once it opens, now [name] can push page up and page down to scroll through. So if we
+
+63
+00:03:48,560 --> 00:03:54,720
+go to the top, what are the most common words in the books? Yeah, not surprisingly in the English
+
+64
+00:03:54,720 --> 00:04:06,800
+language book, like many of the pronouns. Yeah, so that looks about like what we'd expect.
+
+65
+00:04:08,560 --> 00:04:18,080
+Yeah, and to quit the pager, you can press the Q button. Yeah, so there's a good
+
+66
+00:04:18,080 --> 00:04:26,240
+question in the notes. The SRUN outputs wall time, user time, system time. So actually,
+
+67
+00:04:26,240 --> 00:04:32,080
+that wall time, user time, system time is coming from the program itself. So we programmed it to
+
+68
+00:04:32,080 --> 00:04:38,560
+say what the output is. But Slurm also tracks these. So wall time is like the physical time
+
+69
+00:04:38,560 --> 00:04:46,960
+that passed. So like the real time. User time is how many core seconds was used. So if it ran for
+
+70
+00:04:46,960 --> 00:04:55,600
+10 seconds, but use two processors, user time would be 20 seconds. System time is the amount
+
+71
+00:04:55,600 --> 00:05:00,640
+of time spent with the operating system doing stuff, which would usually be things like reading
+
+72
+00:05:00,640 --> 00:05:07,520
+data or managing memory, something like that. Usually you want it to be low in your programs,
+
+73
+00:05:07,520 --> 00:05:11,480
+And Max RSS tells it how much memory was used.
+
+74
+00:05:11,480 --> 00:05:17,840
+So now in order to, well, let's check
+
+75
+00:05:17,840 --> 00:05:22,000
+Slurm to see how much resources it used.
+
+76
+00:05:22,000 --> 00:05:23,880
+Or should we do that later?
+
+77
+00:05:23,880 --> 00:05:27,320
+We can do that, I think, later in the monitoring.
+
+78
+00:05:27,320 --> 00:05:32,240
+Like maybe we should first check.
+
+79
+00:05:32,240 --> 00:05:35,000
+Yeah, first focus on this one.
+
