@@ -1,0 +1,1080 @@
+1
+00:00:00,000 --> 00:00:02,320
+So yes.
+
+2
+00:00:02,320 --> 00:00:06,920
+Well, I guess the purpose here isn't
+
+3
+00:00:06,920 --> 00:00:08,920
+to talk about specific applications.
+
+4
+00:00:08,920 --> 00:00:12,440
+But if you're using a cluster, you want to run something.
+
+5
+00:00:12,440 --> 00:00:17,080
+And it's either an application someone else has installed,
+
+6
+00:00:17,080 --> 00:00:21,160
+or it's something that you need to install yourself.
+
+7
+00:00:21,160 --> 00:00:24,400
+Or for example, you need to install Python or something
+
+8
+00:00:24,400 --> 00:00:26,080
+and then run your own code.
+
+9
+00:00:26,080 --> 00:00:29,640
+And this is just a very broad overview of what's available.
+
+10
+00:00:29,640 --> 00:00:34,360
+Since everyone needs different stuff, we're not going to take the time to go into any detail
+
+11
+00:00:34,360 --> 00:00:40,600
+here because most people would be bored and you will need to find it again when you need it anyway.
+
+12
+00:00:41,240 --> 00:00:48,040
+But this is the general idea. So some people come to the cluster and say, why can't I do
+
+13
+00:00:49,240 --> 00:00:54,280
+sudo apt-get install something, which is the command you would use on a Linux computer to
+
+14
+00:00:54,280 --> 00:01:00,520
+install something. And there's several reasons, but the most important of the reasons is that
+
+15
+00:01:01,480 --> 00:01:07,640
+this is a shared cluster. And if you can install something or change the version of something,
+
+16
+00:01:08,200 --> 00:01:12,440
+then it will break it for everyone else. And even if us as admins do stuff,
+
+17
+00:01:12,440 --> 00:01:17,800
+any little change we do has the possibility of breaking someone else's code.
+
+18
+00:01:19,240 --> 00:01:23,080
+So it's very conservative what's installed as part of the operating system.
+
+19
+00:01:23,080 --> 00:01:27,720
+So if we go down, that's us.
+
+20
+00:01:27,720 --> 00:01:32,680
+So yeah, there's a few things we install that way.
+
+21
+00:01:32,680 --> 00:01:35,200
+But for the most part,
+
+22
+00:01:35,200 --> 00:01:39,760
+anything you need is not just available by default.
+
+23
+00:01:39,760 --> 00:01:45,320
+Yeah. Maybe demo in the terminal a few of these applications.
+
+24
+00:01:45,320 --> 00:01:49,560
+So many, at least here in Aalto,
+
+25
+00:01:49,560 --> 00:01:55,920
+The computing cluster, all of the computers are very minimal installations, so they don't
+
+26
+00:01:55,920 --> 00:02:02,640
+have a lot of software installed, because they're not installed into any disk or anything
+
+27
+00:02:02,640 --> 00:02:04,960
+when the computer is booted up.
+
+28
+00:02:04,960 --> 00:02:11,080
+Everything is in memory, and this is quite common in many clusters, so the whole operating
+
+29
+00:02:11,080 --> 00:02:16,960
+system is in memory, and the more you have in the memory, the less.
+
+30
+00:02:16,960 --> 00:02:21,920
+The more stuff you have in the operating system, the less you have memory available for the
+
+31
+00:02:21,920 --> 00:02:22,920
+users.
+
+32
+00:02:22,920 --> 00:02:27,560
+So that's why usually the image is very small.
+
+33
+00:02:27,560 --> 00:02:28,880
+But there's some programs there.
+
+34
+00:02:28,880 --> 00:02:38,360
+So if we, for example, look which Python 3, so which is this tool that checks, like if
+
+35
+00:02:38,360 --> 00:02:44,120
+I would run Python 3, what is the actual application that will run?
+
+36
+00:02:44,120 --> 00:02:48,040
+So we noticed that this is, it comes from user bin.
+
+37
+00:02:48,040 --> 00:02:52,640
+So this is like, Linux has this file systems through the operating system.
+
+38
+00:02:52,640 --> 00:02:53,640
+Yeah.
+
+39
+00:02:53,640 --> 00:02:58,840
+Linux has this file system hierarchy where like user is the applications, the operating
+
+40
+00:02:58,840 --> 00:03:02,960
+system applications there and bin is usually like the executable binaries.
+
+41
+00:03:02,960 --> 00:03:11,280
+So it's part of the operating system, but we want to still run multiple things in the cluster.
+
+42
+00:03:11,280 --> 00:03:15,920
+So often, we admins install stuff into the cluster
+
+43
+00:03:15,920 --> 00:03:19,200
+and make it available for many of the users.
+
+44
+00:03:19,200 --> 00:03:20,560
+Yes.
+
+45
+00:03:20,560 --> 00:03:26,320
+And we do that with, well, the most common one
+
+46
+00:03:26,320 --> 00:03:29,080
+is called the module system.
+
+47
+00:03:29,080 --> 00:03:31,560
+And this is a way you can run a command,
+
+48
+00:03:31,560 --> 00:03:34,680
+and it makes other software available by manipulating
+
+49
+00:03:34,680 --> 00:03:38,000
+the paths it looks at for software.
+
+50
+00:03:38,000 --> 00:03:43,400
+And we don't need to go into depth about exactly where this
+
+51
+00:03:43,400 --> 00:03:45,640
+comes from and how it works.
+
+52
+00:03:45,640 --> 00:03:47,680
+But can you give one example, then?
+
+53
+00:03:47,680 --> 00:03:51,440
+Yeah, let's check if we have MATLAB available.
+
+54
+00:03:51,440 --> 00:04:01,160
+So if we run this module spider MATLAB,
+
+55
+00:04:01,160 --> 00:04:03,520
+yeah, we can first check if we have it.
+
+56
+00:04:03,520 --> 00:04:06,200
+And it says there's no MATLAB anywhere.
+
+57
+00:04:06,200 --> 00:04:07,200
+OK, yeah.
+
+58
+00:04:07,200 --> 00:04:09,760
+So if we now run module spider matlab,
+
+59
+00:04:09,760 --> 00:04:14,360
+so this module spider is a tool that it checks like,
+
+60
+00:04:14,360 --> 00:04:18,760
+is there, like, can you find matlab in the modules?
+
+61
+00:04:18,760 --> 00:04:21,200
+You can just run module spider to run you
+
+62
+00:04:21,200 --> 00:04:23,680
+all of the available modules.
+
+63
+00:04:23,680 --> 00:04:26,440
+But you notice that now we see that there's multiple
+
+64
+00:04:26,440 --> 00:04:29,040
+versions of matlab available over here.
+
+65
+00:04:30,000 --> 00:04:30,840
+Yes.
+
+66
+00:04:30,840 --> 00:04:32,520
+You see that there's matlab
+
+67
+00:04:32,520 --> 00:04:34,120
+and then there's like multiple versions.
+
+68
+00:04:34,120 --> 00:04:35,800
+So let's pick one of those versions.
+
+69
+00:04:35,800 --> 00:04:38,920
+So let's pick the latest one.
+
+70
+00:04:38,920 --> 00:04:39,600
+Maybe that one.
+
+71
+00:04:39,600 --> 00:04:41,280
+Maybe the latest one.
+
+72
+00:04:41,280 --> 00:04:44,640
+And we can press Q to quit, and then module load,
+
+73
+00:04:44,640 --> 00:04:47,240
+and then give that name.
+
+74
+00:04:47,240 --> 00:04:51,340
+So I paste it once.
+
+75
+00:04:51,340 --> 00:04:53,160
+And what happens?
+
+76
+00:04:53,160 --> 00:04:54,000
+Looks like nothing.
+
+77
+00:04:54,000 --> 00:04:55,640
+Well, yeah.
+
+78
+00:04:55,640 --> 00:05:01,600
+But we still, if you are on module list,
+
+79
+00:05:01,600 --> 00:05:05,560
+yeah, module list shows what modules are loaded.
+
+80
+00:05:05,560 --> 00:05:09,960
+So we can see that there's now the MATLAB module is loaded.
+
+81
+00:05:09,960 --> 00:05:13,160
+There's also this kind of like environment module.
+
+82
+00:05:13,160 --> 00:05:16,120
+So many of, many clusters have this kind of like
+
+83
+00:05:16,120 --> 00:05:19,560
+overall yearly installations or something
+
+84
+00:05:19,560 --> 00:05:21,320
+and we have them now too.
+
+85
+00:05:21,320 --> 00:05:26,220
+So it makes a lot of software available for you.
+
+86
+00:05:27,240 --> 00:05:31,600
+And it makes it possible to install a lot of other software.
+
+87
+00:05:31,600 --> 00:05:40,000
+But let's now check which MATLAB, did we actually get MATLAB, so okay, now we see.
+
+88
+00:05:40,000 --> 00:05:43,400
+Manual installation software MATLAB, yeah, okay.
+
+89
+00:05:43,400 --> 00:05:48,400
+So there's now like a system installed MATLAB.
+
+90
+00:05:48,400 --> 00:05:56,640
+So this is the most common way that we provide software or the system providers provide software
+
+91
+00:05:56,640 --> 00:05:57,640
+for you.
+
+92
+00:05:57,640 --> 00:06:01,400
+Maybe we can start the MATLAB and test it.
+
+93
+00:06:01,400 --> 00:06:06,840
+let's try that. Let's see, I hope it doesn't do something weird.
+
+94
+00:06:10,040 --> 00:06:15,240
+Yeah, we started with the no JDM so that we don't want the graphical interface. But yeah,
+
+95
+00:06:15,240 --> 00:06:22,920
+you can see that this is the muscle. It returns. Yeah, okay, so that worked.
+
+96
+00:06:24,040 --> 00:06:28,600
+Okay, and what's available in the module system? What kind of stuff do we have there?
+
+97
+00:06:28,600 --> 00:06:41,860
+Well, a huge bunch of software. There's many libraries, many finished software installations
+
+98
+00:06:41,860 --> 00:06:47,620
+and all sorts of stuff. So you can find it in the applications page and running module
+
+99
+00:06:47,620 --> 00:06:55,160
+spider will give you more information on that. But we also have some very specific software.
+
+100
+00:06:55,160 --> 00:06:57,360
+So this might be, again, like some of this
+
+101
+00:06:57,360 --> 00:06:59,000
+is also only auto-specific.
+
+102
+00:06:59,000 --> 00:07:03,920
+You want to check your cluster's stuff, how they are doing.
+
+103
+00:07:03,920 --> 00:07:07,240
+But one for whatever, is it safe to say
+
+104
+00:07:07,240 --> 00:07:09,960
+what every cluster you have, the first thing to do
+
+105
+00:07:09,960 --> 00:07:12,560
+is read the documentation for what you need
+
+106
+00:07:12,560 --> 00:07:14,120
+and see if it's already installed
+
+107
+00:07:14,120 --> 00:07:16,680
+or there's special instructions, because it
+
+108
+00:07:16,680 --> 00:07:19,640
+will be different for everyone.
+
+109
+00:07:19,640 --> 00:07:21,900
+Yeah, especially for the very complex programs,
+
+110
+00:07:21,900 --> 00:07:23,640
+there might be a specific reason why
+
+111
+00:07:23,640 --> 00:07:30,280
+installed the way they are. And the admins have used a lot of effort trying to get the most
+
+112
+00:07:30,280 --> 00:07:36,040
+like performant version and most stable version installed to the system. And doing it manually
+
+113
+00:07:36,040 --> 00:07:42,440
+by yourself can be quite tricky sometimes. Yeah. Okay.
+
+114
+00:07:42,440 --> 00:07:50,920
+Should we demo? We could demo a few more software. So we have in our
+
+115
+00:07:50,920 --> 00:07:55,920
+So in our cluster, we also have these containers available.
+
+116
+00:08:00,580 --> 00:08:02,340
+So there was, yesterday at least,
+
+117
+00:08:02,340 --> 00:08:04,740
+there was a question about like what,
+
+118
+00:08:04,740 --> 00:08:08,660
+can you run Docker containers in the cluster?
+
+119
+00:08:08,660 --> 00:08:10,500
+So containers, for those who don't know,
+
+120
+00:08:10,500 --> 00:08:12,540
+is this basically like an operating system
+
+121
+00:08:12,540 --> 00:08:15,540
+paired with the software, like everything is there.
+
+122
+00:08:15,540 --> 00:08:18,900
+Like everything is contained in the same package.
+
+123
+00:08:18,900 --> 00:08:21,540
+And we use these apptainer containers,
+
+124
+00:08:21,540 --> 00:08:24,500
+or they used to be called singularity containers.
+
+125
+00:08:24,500 --> 00:08:27,660
+They are called, in some sites, singularity containers
+
+126
+00:08:27,660 --> 00:08:31,260
+to have these kind of very complex software
+
+127
+00:08:31,260 --> 00:08:35,460
+that wouldn't install into the operating system
+
+128
+00:08:35,460 --> 00:08:36,900
+that we're using.
+
+129
+00:08:36,900 --> 00:08:40,200
+So, but these can be run in the cluster,
+
+130
+00:08:40,200 --> 00:08:43,140
+and we have a few of these available.
+
+131
+00:08:43,140 --> 00:08:48,140
+They need usually a bit more manual work to get working,
+
+132
+00:08:48,140 --> 00:08:56,220
+But in the notes, we'll link a course page with Code Refinery that we did on creating
+
+133
+00:08:56,220 --> 00:09:02,620
+these containers. So if you are interested in this, please check that material.
+
+134
+00:09:05,340 --> 00:09:11,580
+And on Triton, at least we do have some software already installed in containers.
+
+135
+00:09:11,580 --> 00:09:16,700
+So it's not just, despite what it says here, it's not just under install it yourself.
+
+136
+00:09:16,700 --> 00:09:19,820
+So yeah.
+
+137
+00:09:19,820 --> 00:09:24,780
+But should we give a demo of running stuff,
+
+138
+00:09:24,780 --> 00:09:26,300
+something with a container?
+
+139
+00:09:26,300 --> 00:09:26,940
+Yeah.
+
+140
+00:09:26,940 --> 00:09:27,860
+Yeah, let's look at it.
+
+141
+00:09:27,860 --> 00:09:30,180
+So one example is this FreeSurfer,
+
+142
+00:09:30,180 --> 00:09:35,140
+which is this Neo4j imaging suite, which
+
+143
+00:09:35,140 --> 00:09:37,740
+is they provide existing containers.
+
+144
+00:09:37,740 --> 00:09:41,060
+So it's easiest to install using that.
+
+145
+00:09:41,060 --> 00:09:44,180
+So for that, we have this module,
+
+146
+00:09:44,180 --> 00:09:45,540
+apptainer-freesurfer.
+
+147
+00:09:45,540 --> 00:09:50,460
+So if you load that, it will tell you
+
+148
+00:09:50,460 --> 00:09:52,460
+how to get more information on how to run it.
+
+149
+00:09:52,460 --> 00:09:59,500
+But we have read it, so [name] can maybe execute the command.
+
+150
+00:09:59,500 --> 00:10:01,460
+And is this a typo here?
+
+151
+00:10:01,460 --> 00:10:03,300
+Should that be a curly bracket?
+
+152
+00:10:03,300 --> 00:10:04,220
+Oh, that's true.
+
+153
+00:10:04,220 --> 00:10:05,940
+Yes, good point.
+
+154
+00:10:05,940 --> 00:10:06,780
+We need to fix that.
+
+155
+00:10:06,780 --> 00:10:09,540
+So now we run it with aptainer execute,
+
+156
+00:10:09,540 --> 00:10:12,420
+and I guess the path to it?
+
+157
+00:10:12,420 --> 00:10:14,140
+Yeah, the mesh path.
+
+158
+00:10:14,140 --> 00:10:17,620
+And then we execute some program inside of it.
+
+159
+00:10:17,620 --> 00:10:19,340
+So this is running.
+
+160
+00:10:19,340 --> 00:10:22,820
+So if I can unpack this command, apptainer's the container
+
+161
+00:10:22,820 --> 00:10:23,580
+program.
+
+162
+00:10:23,580 --> 00:10:27,300
+Exec means we want to run some command in a container.
+
+163
+00:10:27,300 --> 00:10:31,020
+Image path has been defined by the module that tells me
+
+164
+00:10:31,020 --> 00:10:32,660
+this is where the container is.
+
+165
+00:10:32,660 --> 00:10:34,300
+And if you make a container yourself,
+
+166
+00:10:34,300 --> 00:10:36,980
+you would just give it the path there directly.
+
+167
+00:10:36,980 --> 00:10:37,700
+Yeah.
+
+168
+00:10:37,700 --> 00:10:41,380
+And FreeSurfer is now a thing that will run inside of there.
+
+169
+00:10:41,380 --> 00:10:44,260
+So it's like it's starting up this other, almost
+
+170
+00:10:44,260 --> 00:10:46,780
+like an operating system that's self-contained with all
+
+171
+00:10:46,780 --> 00:10:50,860
+the stuff, and then says, hey, you, this box I just made,
+
+172
+00:10:50,860 --> 00:10:52,140
+run FreeSurfer.
+
+173
+00:10:52,140 --> 00:10:56,660
+And it connects it to what's outside.
+
+174
+00:10:56,660 --> 00:10:57,420
+Yes.
+
+175
+00:10:57,420 --> 00:11:00,340
+Yes, very well.
+
+176
+00:11:00,340 --> 00:11:02,700
+And I guess we can run it with the Help option
+
+177
+00:11:02,700 --> 00:11:07,700
+to verify that it does something in there.
+
+178
+00:11:07,700 --> 00:11:15,340
+And it sure looked like it gives us help from it.
+
+179
+00:11:15,340 --> 00:11:21,620
+And I guess if we do FreeSurfer outside the container,
+
+180
+00:11:21,620 --> 00:11:22,420
+there's nothing.
+
+181
+00:11:22,420 --> 00:11:24,020
+So yeah, OK.
+
+182
+00:11:27,460 --> 00:11:34,100
+Are there any other big, major ways of software?
+
+183
+00:11:34,100 --> 00:11:35,940
+I guess there's Conda that we already
+
+184
+00:11:35,940 --> 00:11:37,780
+went over in the morning.
+
+185
+00:11:37,780 --> 00:11:43,820
+So actually, what is the most common way of doing things?
+
+186
+00:11:43,820 --> 00:11:47,740
+Yeah, well, that's, at least in the Python world,
+
+187
+00:11:47,740 --> 00:11:48,900
+it's quite common.
+
+188
+00:11:48,900 --> 00:11:52,260
+But for many people who don't necessarily
+
+189
+00:11:52,260 --> 00:11:55,780
+like who want to use Python, but they don't necessarily
+
+190
+00:11:55,780 --> 00:12:00,380
+want to do stuff themselves or install their own environment,
+
+191
+00:12:00,380 --> 00:12:03,020
+we provide existing environments that
+
+192
+00:12:03,020 --> 00:12:06,200
+are like handcrafted to have a huge bunch of packages
+
+193
+00:12:06,200 --> 00:12:09,560
+available, at least here in Alta.
+
+194
+00:12:09,560 --> 00:12:12,480
+So we have this SciComp Python environment
+
+195
+00:12:12,480 --> 00:12:15,240
+that has a lot of packages already installed.
+
+196
+00:12:15,240 --> 00:12:18,080
+But of course, you can create your own environments.
+
+197
+00:12:18,080 --> 00:12:26,120
+So maybe we should demo that quickly, loading that.
+
+198
+00:12:26,120 --> 00:12:29,640
+Demo, ah, so the pre-made content things, yes, OK.
+
+199
+00:12:29,640 --> 00:12:31,480
+Yes.
+
+200
+00:12:31,480 --> 00:12:33,080
+And I have a visitor here.
+
+201
+00:12:33,080 --> 00:12:38,000
+So let's see how much I could type.
+
+202
+00:12:38,000 --> 00:12:40,360
+So module load.
+
+203
+00:12:40,360 --> 00:12:45,200
+And I know from my experience that it is called `scicomp-python-env`.
+
+204
+00:12:50,280 --> 00:12:53,520
+And what's in this environment?
+
+205
+00:12:53,520 --> 00:12:59,320
+A huge bunch of Python packages he installed already.
+
+206
+00:12:59,320 --> 00:13:02,120
+So now we can see that the Python has changed.
+
+207
+00:13:02,120 --> 00:13:05,680
+Like, what is the Python version that we're using?
+
+208
+00:13:05,680 --> 00:13:07,880
+It comes from our installation.
+
+209
+00:13:09,040 --> 00:13:12,880
+But like, yeah, these are something that we provide,
+
+210
+00:13:12,880 --> 00:13:15,880
+but there's a lot of stuff you can, of course, install yourself.
+
+211
+00:13:15,880 --> 00:13:19,520
+And if you encounter any problems, it's always a good idea to ask help
+
+212
+00:13:20,040 --> 00:13:23,160
+from the admins, or if you know a software
+
+213
+00:13:23,160 --> 00:13:25,240
+that other people might be interested in using,
+
+214
+00:13:25,240 --> 00:13:29,000
+it might be good to let us know, then we can install it for everybody.
+
+215
+00:13:29,000 --> 00:13:32,600
+in the cluster because that's that makes it life easier for everybody.
+
+216
+00:13:33,320 --> 00:13:40,360
+Yeah, and even if you aren't sure about it, you can ask. So there'll be sometimes we'll say,
+
+217
+00:13:40,360 --> 00:13:46,040
+okay, yeah, I mean, we haven't had many requests from this. It seems easier to install yourself
+
+218
+00:13:46,040 --> 00:13:51,560
+and we'll help you install it yourself. But as we see the patterns, we might add it to one of the
+
+219
+00:13:51,560 --> 00:13:57,640
+existing environments, especially if it's a Python or R thing, install it within one of these. If it's
+
+220
+00:13:57,640 --> 00:14:02,640
+it's LLM-related, install it to our standard LLM environment.
+
+221
+00:14:06,040 --> 00:14:06,880
+Yeah.
+
+222
+00:14:06,880 --> 00:14:07,720
+Yeah.
+
+223
+00:14:07,720 --> 00:14:10,880
+So, and depending on your, yeah,
+
+224
+00:14:10,880 --> 00:14:14,640
+but usually like as a good rule of thumb,
+
+225
+00:14:14,640 --> 00:14:17,720
+go check out module spider in the cluster
+
+226
+00:14:17,720 --> 00:14:20,760
+that you're running in and check what's there
+
+227
+00:14:20,760 --> 00:14:24,560
+and it's your program that you're planning on running there.
+
+228
+00:14:24,560 --> 00:14:27,360
+That's a good starting point usually.
+
+229
+00:14:27,360 --> 00:14:33,680
+and check the application page for the program.
+
+230
+00:14:33,680 --> 00:14:39,240
+But I think now is a good time to switch gears,
+
+231
+00:14:39,240 --> 00:14:45,480
+to talk about, like we have a talk by [name and [name].
+
+232
+00:14:45,480 --> 00:14:48,240
+And I think the cat is getting pretty hungry,
+
+233
+00:14:48,240 --> 00:14:52,240
+so it's a great time to switch.
+
+234
+00:14:52,240 --> 00:14:52,740
+Yeah.
+
+235
+00:14:52,740 --> 00:15:04,740
+There is this interesting question about using Python 2 on Triton.
+
+236
+00:15:04,740 --> 00:15:10,100
+So that's one of the cases where we'd say it's not installed in any default environment,
+
+237
+00:15:10,100 --> 00:15:13,060
+but you can install it yourself with Conda.
+
+238
+00:15:13,060 --> 00:15:16,140
+And then we point you that way and give you any help you might need.
+
+239
+00:15:16,140 --> 00:15:18,420
+And that's that basically.
+
+240
+00:15:18,420 --> 00:15:25,700
+Yeah. But also, I would say that if you have to run some Python 2 code, that's the least
+
+241
+00:15:25,700 --> 00:15:33,180
+of your worries. It's been deprecated for so long that transitioning to Python 3 in
+
+242
+00:15:33,180 --> 00:15:41,780
+that code might be... Asking people supporting you, can they help with the transition process
+
+243
+00:15:41,780 --> 00:15:47,060
+from Python 2 to Python 3 might be a good worthwhile investment.
+
+244
+00:15:47,060 --> 00:15:50,940
+Yeah, but I mean, if it's some code that they haven't made
+
+245
+00:15:50,940 --> 00:15:55,780
+and someone else is like, yeah, you just
+
+246
+00:15:55,780 --> 00:15:59,020
+aren't going to update that.
+
+247
+00:15:59,020 --> 00:16:05,580
+But yeah, OK, so with that said, let's close this out.
+
+248
+00:16:05,580 --> 00:16:07,740
+There's a lot more to read about applications.
+
+249
+00:16:07,740 --> 00:16:10,300
+We've just prepared you to do your own reading.
+
+250
+00:16:10,300 --> 00:16:15,100
+So by all means, go do that.
+
+251
+00:16:15,100 --> 00:16:18,260
+And if you have questions about the application of your choice,
+
+252
+00:16:18,260 --> 00:16:21,580
+put them into the notes, and we can try to answer, like,
+
+253
+00:16:21,580 --> 00:16:24,060
+well, how it should go about installing.
+
+254
+00:16:24,060 --> 00:16:26,100
+Keep writing there.
+
+255
+00:16:26,100 --> 00:16:29,620
+And now we're switching gears for the second to last session
+
+256
+00:16:29,620 --> 00:16:34,620
+of the day, which is a more philosophical discussion,
+
+257
+00:16:34,620 --> 00:16:35,140
+I guess.
+
+258
+00:16:35,140 --> 00:16:40,220
+So it's more about how you use stuff.
+
+259
+00:16:40,220 --> 00:16:42,660
+Or no, not how you use stuff, about how
+
+260
+00:16:42,660 --> 00:16:44,540
+you do the science itself.
+
+261
+00:16:44,540 --> 00:16:49,580
+And this is with [name], who's one of our, well,
+
+262
+00:16:49,580 --> 00:16:51,620
+I want to say one of the reproducibility people.
+
+263
+00:16:51,620 --> 00:16:54,580
+But really, we all care about reproducibility in science.
+
+264
+00:16:54,580 --> 00:16:56,220
+So anyway.
+
+265
+00:16:56,220 --> 00:16:57,740
+Yes.
+
+266
+00:16:57,740 --> 00:16:59,300
+Yeah, have a good one.
+
+267
+00:16:59,300 --> 00:17:00,580
+Thanks.
+
+268
+00:17:00,580 --> 00:17:04,380
+Can you switch to my share?
+
+269
+00:17:04,380 --> 00:17:05,340
+Screen share, please.
+
+270
+00:17:05,340 --> 00:17:06,000
+There you go.
+

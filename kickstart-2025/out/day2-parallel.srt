@@ -1,0 +1,2024 @@
+1
+00:00:00,000 --> 00:00:06,180
+Oh, hello.
+
+2
+00:00:06,180 --> 00:00:07,860
+We are back.
+
+3
+00:00:07,860 --> 00:00:10,140
+Hello, hello.
+
+4
+00:00:10,140 --> 00:00:12,780
+So I see a shadow moving under the table.
+
+5
+00:00:12,780 --> 00:00:16,740
+I wonder if my feet are about to be attacked.
+
+6
+00:00:16,740 --> 00:00:18,940
+OK.
+
+7
+00:00:18,940 --> 00:00:22,740
+Yes, so we're back for the last session of the day.
+
+8
+00:00:22,740 --> 00:00:24,260
+Go ahead, [name].
+
+9
+00:00:24,260 --> 00:00:26,420
+Yeah, I was going to say the exact same thing.
+
+10
+00:00:26,420 --> 00:00:28,140
+Yeah, you go right ahead.
+
+11
+00:00:28,140 --> 00:00:30,940
+OK, last session of the day.
+
+12
+00:00:30,940 --> 00:00:33,580
+And this is something which you need a little bit
+
+13
+00:00:33,580 --> 00:00:34,620
+of an introduction to.
+
+14
+00:00:34,620 --> 00:00:36,880
+But like many things, you'll probably
+
+15
+00:00:36,880 --> 00:00:42,780
+come back to it in more depth whenever you actually need it.
+
+16
+00:00:42,780 --> 00:00:45,780
+We're not telling you how to write code in parallel,
+
+17
+00:00:45,780 --> 00:00:48,900
+but how if you have a code which should run in parallel,
+
+18
+00:00:48,900 --> 00:00:54,300
+how you can actually use it and run it on the cluster.
+
+19
+00:00:54,300 --> 00:00:54,860
+Yeah.
+
+20
+00:00:54,860 --> 00:00:56,340
+Maybe.
+
+21
+00:00:56,340 --> 00:00:58,020
+So let's look at, maybe we should
+
+22
+00:00:58,020 --> 00:01:04,340
+start with the picture of the Shared Memory Parallelism.
+
+23
+00:01:04,340 --> 00:01:05,100
+OK.
+
+24
+00:01:05,100 --> 00:01:08,900
+So I'm opening this page.
+
+25
+00:01:08,900 --> 00:01:09,400
+Yes.
+
+26
+00:01:12,300 --> 00:01:14,420
+I need to go to the right screen.
+
+27
+00:01:14,420 --> 00:01:14,980
+There we go.
+
+28
+00:01:14,980 --> 00:01:15,980
+Yes.
+
+29
+00:01:15,980 --> 00:01:20,780
+So yeah, we talked previously about the Embarrassingly Parallel and the
+
+30
+00:01:22,700 --> 00:01:29,340
+like array jobs and how to run it. Lots of individual jobs basically in the cluster and
+
+31
+00:01:29,340 --> 00:01:34,140
+that's already like very good, like you can get a lot of stuff. But there's of course a lot more
+
+32
+00:01:35,340 --> 00:01:39,740
+available left on the table when it comes to the parallelism in the cluster because the
+
+33
+00:01:39,740 --> 00:01:43,580
+the computing nodes, like these computers,
+
+34
+00:01:43,580 --> 00:01:48,420
+they are basically, the CPUs are pretty similar
+
+35
+00:01:48,420 --> 00:01:51,680
+to what you would have in your laptop or in your computer,
+
+36
+00:01:51,680 --> 00:01:54,100
+but there's just usually more of them.
+
+37
+00:01:54,100 --> 00:01:55,420
+They're like server CPUs,
+
+38
+00:01:55,420 --> 00:01:58,740
+and they usually have much more resources.
+
+39
+00:01:58,740 --> 00:02:01,020
+They have more memory, more CPUs.
+
+40
+00:02:01,020 --> 00:02:04,580
+So if it's possible for your code
+
+41
+00:02:04,580 --> 00:02:07,460
+to utilize all of those resources,
+
+42
+00:02:07,460 --> 00:02:11,620
+you can, in theory, get a lot of speed up to your code.
+
+43
+00:02:13,140 --> 00:02:17,220
+And you can get your code done faster.
+
+44
+00:02:17,220 --> 00:02:19,980
+And that's basically this part of the parallel.
+
+45
+00:02:19,980 --> 00:02:24,500
+So the array jobs are more like maximum throughput
+
+46
+00:02:24,500 --> 00:02:25,340
+kind of parallel.
+
+47
+00:02:25,340 --> 00:02:27,780
+You get maximum amount of jobs through the system
+
+48
+00:02:27,780 --> 00:02:30,260
+and maximum amount of stuff done.
+
+49
+00:02:30,260 --> 00:02:32,620
+And they're very good if you have this kind of problem
+
+50
+00:02:32,620 --> 00:02:34,380
+that you can split into chunks.
+
+51
+00:02:34,380 --> 00:02:36,620
+But if you have like, let's say a big simulation
+
+52
+00:02:36,620 --> 00:02:42,620
+something and it just takes a long time. It takes a long time and it would benefit from
+
+53
+00:02:42,620 --> 00:02:49,900
+having multiple CPUs to run on. Then, yeah, let's look how you can do that in the cluster.
+
+54
+00:02:51,020 --> 00:03:01,740
+Okay. Should I go to the terminal for a demo? Yeah. So, there's two things you need to
+
+55
+00:03:01,740 --> 00:03:05,900
+think about. So, the first thing, of course, is that does your program work in parallel? Can it
+
+56
+00:03:05,900 --> 00:03:14,460
+do stuff in Parallel? That's a big question. Many programs can nowadays because many normal
+
+57
+00:03:14,460 --> 00:03:21,500
+computers have multiple CPUs. They are nowadays written to be able to utilize those CPUs. For
+
+58
+00:03:21,500 --> 00:03:29,180
+example, if you use Python, libraries like NumPy, Scikit-learn or whatever, they allow you to use
+
+59
+00:03:29,180 --> 00:03:38,060
+parallel CPUs natively, or MATLAB does. Or if you use R, you can use parallel in R to do it.
+
+60
+00:03:38,060 --> 00:03:44,940
+And there's various ways you can run without many code changes utilized. But of course,
+
+61
+00:03:44,940 --> 00:03:51,340
+like the efficiency, whether you get best efficiency, that is up to the air. But at
+
+62
+00:03:51,340 --> 00:03:55,500
+at least in principle, they could utilize multiple CPUs.
+
+63
+00:03:57,180 --> 00:04:01,020
+And to test it out in the cluster right now,
+
+64
+00:04:01,020 --> 00:04:03,540
+maybe [name], if you were on module purge
+
+65
+00:04:03,540 --> 00:04:08,540
+to verify that there's no like previous modules loaded.
+
+66
+00:04:09,060 --> 00:04:09,940
+Yes.
+
+67
+00:04:09,940 --> 00:04:14,940
+So we can start by testing out an example code that we have,
+
+68
+00:04:14,940 --> 00:04:17,820
+by testing out an example code that we have,
+
+69
+00:04:17,820 --> 00:04:21,420
+which is the Pi code that we mentioned previously
+
+70
+00:04:21,420 --> 00:04:22,780
+in the example.
+
+71
+00:04:22,780 --> 00:04:27,700
+So we have this in the Slurm folder,
+
+72
+00:04:27,700 --> 00:04:28,540
+that is Pi code.
+
+73
+00:04:28,540 --> 00:04:30,900
+And if you give it like a thousand or whatever,
+
+74
+00:04:30,900 --> 00:04:32,820
+like a number of thousands,
+
+75
+00:04:32,820 --> 00:04:35,780
+and if you run it like here in the login node,
+
+76
+00:04:37,060 --> 00:04:38,820
+okay, you see that.
+
+77
+00:04:38,820 --> 00:04:39,660
+That's very fast.
+
+78
+00:04:40,940 --> 00:04:42,140
+Yes, it's very fast,
+
+79
+00:04:42,140 --> 00:04:44,540
+but of course it's only like a thousand tries.
+
+80
+00:04:44,540 --> 00:04:47,180
+And this is like a very simple code,
+
+81
+00:04:47,180 --> 00:04:49,700
+but because it only does calculations,
+
+82
+00:04:49,700 --> 00:04:51,460
+it's quite easy to parallelize.
+
+83
+00:04:51,460 --> 00:04:54,380
+And that's why we can use it as an example
+
+84
+00:04:54,380 --> 00:04:59,060
+of how do you reserve resources with multiple CPUs.
+
+85
+00:04:59,060 --> 00:05:02,260
+So let's try running this in the queue
+
+86
+00:05:02,260 --> 00:05:04,940
+with a bit more requirements.
+
+87
+00:05:04,940 --> 00:05:07,660
+So if you add the normal stuff at the front there,
+
+88
+00:05:07,660 --> 00:05:09,780
+like srun meme.
+
+89
+00:05:09,780 --> 00:05:20,740
+what does this `--pty` mean yes so we didn't think i'm copying yeah yeah we didn't
+
+90
+00:05:20,740 --> 00:05:26,820
+mention it before but you can add this that's a pty and it means like zelda terminal so
+
+91
+00:05:26,820 --> 00:05:34,500
+uh what it means that it will uh without spaces origin yeah i'm just verifying i'm doing it right
+
+92
+00:05:34,500 --> 00:05:45,700
+Yeah, like the PTY, it will allocate like the input and output for the terminal. So, basically,
+
+93
+00:05:45,700 --> 00:05:50,660
+if your code would have like interactive stuff and that sort of things, like it would ask for
+
+94
+00:05:50,660 --> 00:05:54,820
+input or something, it will work. It prints, yeah, okay.
+
+95
+00:05:55,540 --> 00:06:00,340
+Yeah, it will print everything automatically. It looks just like the normal shell. Okay, yeah.
+
+96
+00:06:00,340 --> 00:06:05,700
+Yeah, if you're running with this interactive SRUN, you might sometimes want to add the PTY there.
+
+97
+00:06:06,820 --> 00:06:13,140
+Yeah. But yeah, so let's add a bit more numbers here. So we have now, what's, is it 50 million?
+
+98
+00:06:13,140 --> 00:06:19,060
+It's 50 million. Yeah. Yes. So let's run it. It takes a bit longer. So this is about,
+
+99
+00:06:19,940 --> 00:06:23,940
+I think, maybe 40 seconds or something, if I remember correctly.
+
+100
+00:06:23,940 --> 00:06:31,620
+vc srun says it's queued. And now this is doing what we learned in the interactive job part
+
+101
+00:06:32,820 --> 00:06:39,460
+yesterday. And this is the kind of a program that, okay, like this could use multiple CPUs and it
+
+102
+00:06:39,460 --> 00:06:46,260
+could run faster with multiple CPUs. So let's get first a benchmark. What often you want to do is
+
+103
+00:06:46,260 --> 00:06:52,740
+that you want to, if you have this sort of like a program, you first want to try running it out
+
+104
+00:06:52,740 --> 00:07:00,500
+without any bells and whistles like with single CPU and then see how long does it take. If you're
+
+105
+00:07:00,500 --> 00:07:05,860
+running it already on your own computer you can look at the process manager usually and see how
+
+106
+00:07:05,860 --> 00:07:12,500
+many processors it's using and then try using the same sort of requirements in Triton for that.
+
+107
+00:07:14,740 --> 00:07:17,460
+So it shouldn't take that much more longer.
+
+108
+00:07:17,460 --> 00:07:25,780
+Yeah, let's see.
+
+109
+00:07:25,780 --> 00:07:29,980
+But we can see that, like, yeah, it takes, okay, now we can, yeah.
+
+110
+00:07:29,980 --> 00:07:31,020
+So it took some time.
+
+111
+00:07:31,020 --> 00:07:35,260
+Maybe if you run quickly the seff to check what is the, how long did it take?
+
+112
+00:07:35,260 --> 00:07:46,620
+On the job ID, and it says 95% efficiency for 40 seconds
+
+113
+00:07:46,620 --> 00:07:50,220
+and 42 real-time seconds.
+
+114
+00:07:50,220 --> 00:07:58,860
+So if we now want to allocate more CPUs for this job,
+
+115
+00:07:58,860 --> 00:08:04,780
+what we need to do is tell Slurm that we want more CPUs.
+
+116
+00:08:04,780 --> 00:08:13,980
+That's done with this CPUs per task flag. We just say CPUs per task, and let's put four
+
+117
+00:08:14,860 --> 00:08:21,820
+equals four. This would allocate four CPUs for that. We'll talk about tasks later. You don't have
+
+118
+00:08:21,820 --> 00:08:35,780
+I can't worry about that too much right now, but that is just a Slurm internal thing.
+
+119
+00:08:35,780 --> 00:08:39,660
+But basically, you just specify how many CPUs you want to get.
+
+120
+00:08:39,660 --> 00:08:42,980
+And we need, of course, the code to understand this as well.
+
+121
+00:08:42,980 --> 00:08:48,420
+The code needs to be able to utilize those, because otherwise, it might run with a single
+
+122
+00:08:48,420 --> 00:08:49,500
+CPU.
+
+123
+00:08:49,500 --> 00:08:57,660
+So in this case, we use this nprocs, `--nprocs`, and we give the same number.
+
+124
+00:08:57,660 --> 00:09:01,980
+And it's important that the numbers match, because otherwise you might run into a situation
+
+125
+00:09:01,980 --> 00:09:09,140
+where you reserve more CPUs than you use, or you use more CPUs than you reserve.
+
+126
+00:09:09,140 --> 00:09:15,420
+And in both cases, like in the case where you reserve too many, you underutilize the
+
+127
+00:09:15,420 --> 00:09:16,420
+CPUs.
+
+128
+00:09:16,420 --> 00:09:18,540
+So you basically underutilize the resources.
+
+129
+00:09:18,540 --> 00:09:24,540
+And if you use too many CPUs, they can get crowded.
+
+130
+00:09:24,540 --> 00:09:31,900
+So they compete on who gets to use the CPUs, and then the code runs slower.
+
+131
+00:09:31,900 --> 00:09:37,100
+So sometimes if you run some code in the cluster, you might encounter a situation where it runs
+
+132
+00:09:37,100 --> 00:09:38,100
+slower.
+
+133
+00:09:38,100 --> 00:09:41,340
+And the reason might be that it tries to use, let's say, all of the CPUs, but it's only
+
+134
+00:09:41,340 --> 00:09:44,340
+getting one, and suddenly it's slow.
+
+135
+00:09:44,340 --> 00:09:51,060
+you need to tell the code to actually use the CPUs you want it to use. So let's try this out.
+
+136
+00:09:53,700 --> 00:10:01,940
+And I guess this is a hard problem. I've often seen codes that say it can use multiple
+
+137
+00:10:01,940 --> 00:10:06,580
+processors, but it doesn't tell you how it actually works. So you don't know if it's doing
+
+138
+00:10:06,580 --> 00:10:12,900
+the right thing. The most annoying one is when you run something and it says,
+
+139
+00:10:12,900 --> 00:10:16,420
+Oh, I'm running on a computer node that has 40 processors.
+
+140
+00:10:16,420 --> 00:10:17,740
+So I'll try to use 40.
+
+141
+00:10:17,740 --> 00:10:19,940
+But it's actually only been allocated four.
+
+142
+00:10:19,940 --> 00:10:26,380
+And it's just a huge slow down then.
+
+143
+00:10:26,380 --> 00:10:27,260
+OK, it's done.
+
+144
+00:10:27,260 --> 00:10:28,060
+Should be seff.
+
+145
+00:10:28,060 --> 00:10:28,860
+Yeah.
+
+146
+00:10:28,860 --> 00:10:31,300
+Yes, if we check the efficiency of that.
+
+147
+00:10:34,420 --> 00:10:37,220
+So compared to my other nodes, this
+
+148
+00:10:37,220 --> 00:10:43,220
+says 83% efficiency, compared to 95.
+
+149
+00:10:43,220 --> 00:10:47,820
+And we ran the same 40 seconds of CPU utilization,
+
+150
+00:10:47,820 --> 00:10:50,380
+because that's how long it takes to run.
+
+151
+00:10:50,380 --> 00:10:54,660
+But now it took a shorter amount of time in real time.
+
+152
+00:10:54,660 --> 00:10:57,780
+Only 12 real time.
+
+153
+00:10:57,780 --> 00:10:58,260
+OK.
+
+154
+00:10:58,260 --> 00:11:00,980
+And so basically, it's nothing magical
+
+155
+00:11:00,980 --> 00:11:05,420
+about the reserving of CPUs in the submission scripts
+
+156
+00:11:05,420 --> 00:11:09,860
+Or in the command line, you can just
+
+157
+00:11:09,860 --> 00:11:12,140
+specify the CPUs per task to SLURM,
+
+158
+00:11:12,140 --> 00:11:18,380
+and that will give you more resources.
+
+159
+00:11:18,380 --> 00:11:21,780
+And there's a nice question in the notes.
+
+160
+00:11:21,780 --> 00:11:24,260
+Are you going to answer the same thing?
+
+161
+00:11:24,260 --> 00:11:24,980
+Yeah, go ahead.
+
+162
+00:11:24,980 --> 00:11:27,380
+I guess we're thinking the same thing.
+
+163
+00:11:27,380 --> 00:11:28,180
+You can say it.
+
+164
+00:11:28,180 --> 00:11:28,940
+You can say it.
+
+165
+00:11:28,940 --> 00:11:29,780
+Yeah.
+
+166
+00:11:29,780 --> 00:11:32,540
+So what I've just highlighted here,
+
+167
+00:11:32,540 --> 00:11:39,820
+This is the argument to srun and to slurm. So, the CPUs per task equals 4 is a slurm option
+
+168
+00:11:39,820 --> 00:11:46,940
+that says please give whatever I'm running for CPUs. And then that wraps this other command.
+
+169
+00:11:47,820 --> 00:11:57,980
+And the --nprocs=4 is a command that was programmed into the pi.py file, which tells it I have four
+
+170
+00:11:57,980 --> 00:12:02,620
+processors available, I can try to use them. And you can tell if these don't match up,
+
+171
+00:12:02,620 --> 00:12:08,460
+then stuff can go wrong. Should we demonstrate what happens if you don't get it right?
+
+172
+00:12:09,980 --> 00:12:15,580
+Or is that just maybe people can do that themselves? Yeah, I would say probably.
+
+173
+00:12:17,580 --> 00:12:27,820
+But yeah, so maybe we should just jump into exercises. If the exercise is basically
+
+174
+00:12:27,820 --> 00:12:36,460
+do the same thing. Okay. Yeah, I see it's already appearing in the notes there.
+
+175
+00:12:37,340 --> 00:12:43,740
+Oops, I copied the wrong one. Sorry. Check the right one.
+
+176
+00:12:48,540 --> 00:12:56,380
+But yeah, the question is, how do you tell the program what you want it to get?
+
+177
+00:12:57,820 --> 00:13:06,380
+Yeah. How do you tell the program what resources it should use? In many cases, this is something
+
+178
+00:13:06,380 --> 00:13:16,300
+like nprocs. Many programs use this OMP_NUM_THREADS environment variable, and they use that. For
+
+179
+00:13:16,300 --> 00:13:23,060
+example, NumPy uses that to determine how many processes it should use. They are all
+
+180
+00:13:23,060 --> 00:13:30,980
+listed in the documentation. So, there's many environment variables that sometimes set these
+
+181
+00:13:31,940 --> 00:13:37,380
+numbers. And if you look at the documentation of a library that you're using, it might say
+
+182
+00:13:38,100 --> 00:13:47,060
+that, hey, give it the number of processes with n processes or nprocs or nthreads or whatever.
+
+183
+00:13:47,060 --> 00:13:53,220
+like there might be various flags for there's no like consistent language across the board
+
+184
+00:13:53,780 --> 00:14:00,420
+so you need to look at your your application and if it provides a possibility of using
+
+185
+00:14:00,420 --> 00:14:06,100
+multiple processors and if it does you need to give the information to it
+
+186
+00:14:08,260 --> 00:14:14,020
+yeah and there's a good question what's the limit of the number of CPUs a program can use
+
+187
+00:14:14,020 --> 00:14:23,620
+Yes, that's an excellent question. And the answer is that it depends on the hardware.
+
+188
+00:14:23,620 --> 00:14:30,900
+Like in many clusters, you have compute nodes that might have a number of CPUs that might
+
+189
+00:14:30,900 --> 00:14:38,060
+run from, let's say, 28 to 256 or something like that. It might be small or it might be
+
+190
+00:14:38,060 --> 00:14:43,940
+very large. But because you're all limited into this one computer, so it depends on the
+
+191
+00:14:43,940 --> 00:14:47,060
+hardware available in your cluster.
+
+192
+00:14:47,060 --> 00:14:52,220
+And of course, you might reach the parallelism maximum.
+
+193
+00:14:52,220 --> 00:14:54,900
+At some point, it doesn't run any faster
+
+194
+00:14:54,900 --> 00:14:58,940
+after you reach a certain number of processors.
+
+195
+00:14:58,940 --> 00:15:02,100
+Usually, quite often, magical numbers
+
+196
+00:15:02,100 --> 00:15:05,180
+might be something like 8 or 16 or something.
+
+197
+00:15:05,180 --> 00:15:07,140
+But there might be something that
+
+198
+00:15:07,140 --> 00:15:10,860
+works with 64 or 128 as well.
+
+199
+00:15:10,860 --> 00:15:15,100
+Yeah. I guess it really depends on what it is you're doing.
+
+200
+00:15:16,220 --> 00:15:20,140
+Yeah. But usually it's on that ballpark. So we're talking about tens to hundred
+
+201
+00:15:21,260 --> 00:15:28,860
+processors usually. Yeah. So how long should people have to try this themselves? And is there
+
+202
+00:15:28,860 --> 00:15:35,180
+anything else to try other than what we just did? Let's just do this. I think that's enough.
+
+203
+00:15:35,180 --> 00:15:48,060
+and you can run stuff in the examples and run more exercises as a bonus exercise after the courses.
+
+204
+00:15:50,220 --> 00:15:55,420
+I will also note that in the exercise, there's a submission script that you can test out,
+
+205
+00:15:55,420 --> 00:15:59,980
+and in that we're using an environment variable called slurm CPUs per task,
+
+206
+00:15:59,980 --> 00:16:04,780
+which is very useful if you want the job to find out the number of CPUs
+
+207
+00:16:05,180 --> 00:16:13,820
+automatically. So Slurm will set this number if you ask for more than one CPU. So you can
+
+208
+00:16:13,820 --> 00:16:19,700
+use that in your code to determine numbers. But try it out.
+
+209
+00:16:19,700 --> 00:16:23,300
+Okay. How much time do you have, people?
+
+210
+00:16:23,300 --> 00:16:26,300
+Like 35, maybe?
+
+211
+00:16:26,300 --> 00:16:35,100
+Still 35. So that's seven minutes or six. Well, seven minutes. Okay. Yeah. Okay.
+
+212
+00:16:37,100 --> 00:16:42,940
+Then see you in a little bit. Yeah. Bye. Bye.
+
+213
+00:16:44,000 --> 00:16:49,620
+We're back.
+
+214
+00:16:49,620 --> 00:16:50,620
+Hello.
+
+215
+00:16:50,620 --> 00:16:51,220
+Hello.
+
+216
+00:16:51,220 --> 00:16:56,700
+So what now?
+
+217
+00:16:56,700 --> 00:17:01,940
+I think we'll go straight to the next parallel part
+
+218
+00:17:01,940 --> 00:17:05,740
+and take all the questions later.
+
+219
+00:17:05,740 --> 00:17:07,620
+Yeah, if you want to fill out, I'm
+
+220
+00:17:07,620 --> 00:17:10,900
+adding the poll to the exercise block.
+
+221
+00:17:10,900 --> 00:17:12,500
+Forgot to add it previously.
+
+222
+00:17:12,500 --> 00:17:18,460
+So if you want to feel there, if you
+
+223
+00:17:18,460 --> 00:17:20,900
+managed to do the exercises, sorry about there
+
+224
+00:17:20,900 --> 00:17:26,500
+being quite not that much time for these.
+
+225
+00:17:26,500 --> 00:17:29,380
+But hopefully, you got it done.
+
+226
+00:17:29,380 --> 00:17:33,220
+But yeah, asking to see this, it's basically one flag.
+
+227
+00:17:33,220 --> 00:17:40,580
+So hopefully, you got it done.
+
+228
+00:17:40,580 --> 00:17:43,260
+But yeah, now we are switching gears to,
+
+229
+00:17:43,260 --> 00:17:47,540
+so this is quite a quick explanation
+
+230
+00:17:47,540 --> 00:17:53,060
+of the overview of the MPI, like parallelism, what it is.
+
+231
+00:17:53,060 --> 00:17:57,380
+So there was already a question in the notes about,
+
+232
+00:17:57,380 --> 00:18:01,500
+OK, how can I parallelize across multiple CPUs?
+
+233
+00:18:01,500 --> 00:18:05,020
+So how can I analyze across multiple computers, basically?
+
+234
+00:18:05,020 --> 00:18:10,380
+And this is why MPI originally was created, like the MPI thing.
+
+235
+00:18:10,380 --> 00:18:14,140
+So MPI stands for Message Passing Interface.
+
+236
+00:18:14,700 --> 00:18:18,220
+And it's basically like this kind of library that allows you to do
+
+237
+00:18:19,580 --> 00:18:24,940
+message passing between computers and different processes running on different CPUs
+
+238
+00:18:25,580 --> 00:18:28,140
+through various network messes.
+
+239
+00:18:28,140 --> 00:18:36,540
+When writing for these supercomputers, there's a high-speed interconnect usually connecting
+
+240
+00:18:36,540 --> 00:18:39,620
+these CPU nodes.
+
+241
+00:18:39,620 --> 00:18:45,620
+If you want to have a really large program, so if you think about a weather model, if
+
+242
+00:18:45,620 --> 00:18:51,300
+you want to predict the weather, you need to have a very big simulation of the weather
+
+243
+00:18:51,300 --> 00:18:59,620
+happening at different places, at different times, and you integrate the physics equations
+
+244
+00:18:59,620 --> 00:19:04,820
+to get the next time step of, okay, what is the weather going to be tomorrow?
+
+245
+00:19:04,820 --> 00:19:09,620
+And for that, you need a big computer to calculate together.
+
+246
+00:19:09,620 --> 00:19:14,020
+You need the whole simulation to be able to be calculated together.
+
+247
+00:19:14,020 --> 00:19:17,340
+And for that, MPI has been constructed, basically.
+
+248
+00:19:17,340 --> 00:19:26,620
+it's still a standard in many of the supercomputers when it comes to this kind of big-scale programs.
+
+249
+00:19:31,740 --> 00:19:39,980
+It's important to remember about MPI is that either your code uses MPI or it doesn't.
+
+250
+00:19:41,980 --> 00:19:47,020
+If your code hasn't been constructed around MPI, if it hasn't been constructed in a way
+
+251
+00:19:47,020 --> 00:19:55,980
+that it will use message-passing interface, it won't use it. So it's very important to remember
+
+252
+00:19:55,980 --> 00:20:01,740
+that if it uses MPI, if you see in the documentation that there's an MPI build of this,
+
+253
+00:20:01,740 --> 00:20:08,460
+or you can add MPI support or whatever, then it uses MPI. Or if you build a program from the
+
+254
+00:20:08,460 --> 00:20:13,100
+ground up to use MPI, then it uses MPI. But if it doesn't, then it doesn't.
+
+255
+00:20:13,100 --> 00:20:19,340
+Making a new MPI program is a very big process.
+
+256
+00:20:19,340 --> 00:20:30,340
+Yeah, depending on the program, but yes, usually you need to figure out whether your program can use MPI.
+
+257
+00:20:30,340 --> 00:20:38,340
+But there's already lots of programs, especially physics programs and that sort of stuff, that use MPI on the background.
+
+258
+00:20:38,340 --> 00:20:40,780
+And for those users of those programs,
+
+259
+00:20:40,780 --> 00:20:43,780
+this is a very good way.
+
+260
+00:20:43,780 --> 00:20:45,900
+Like, you just install your program
+
+261
+00:20:45,900 --> 00:20:49,260
+with the MPI capabilities available,
+
+262
+00:20:49,260 --> 00:20:51,740
+and then you can utilize multiple computers
+
+263
+00:20:51,740 --> 00:20:53,020
+at the same time.
+
+264
+00:20:53,020 --> 00:20:53,980
+Yeah.
+
+265
+00:20:53,980 --> 00:20:56,540
+So should we do the example?
+
+266
+00:20:56,540 --> 00:20:57,780
+Yes.
+
+267
+00:20:57,780 --> 00:20:59,660
+Let's look at the example.
+
+268
+00:20:59,660 --> 00:21:06,340
+So we have the Pi version written with MPI support.
+
+269
+00:21:06,340 --> 00:21:10,420
+And because you need to bake it into the program,
+
+270
+00:21:10,420 --> 00:21:13,580
+so the Python version doesn't cut it.
+
+271
+00:21:13,580 --> 00:21:16,860
+There is this MPI for Python that you can use
+
+272
+00:21:16,860 --> 00:21:21,060
+to use Python and MPI together,
+
+273
+00:21:21,060 --> 00:21:23,180
+which is a nice library if you want to start,
+
+274
+00:21:23,180 --> 00:21:24,740
+if you just want to use Python,
+
+275
+00:21:24,740 --> 00:21:27,460
+but that requires additional libraries.
+
+276
+00:21:27,460 --> 00:21:31,020
+So for this example, we are going to use C,
+
+277
+00:21:32,020 --> 00:21:36,220
+like C compiled, like C version of a program
+
+278
+00:21:36,220 --> 00:21:41,820
+does the exact same calculation that the Python one did, but it does it in C and it uses MPI.
+
+279
+00:21:42,700 --> 00:21:49,100
+Okay, and so how do I start? So in order to, usually when you have an MPI program,
+
+280
+00:21:49,100 --> 00:21:54,220
+the first thing you need to do is you need to load up the MPI installed by the cluster
+
+281
+00:21:54,220 --> 00:22:03,740
+administrators, because the MPI is tied directly to the queue system and it's tied to the network
+
+282
+00:22:03,740 --> 00:22:11,660
+infrastructure. So it's very laborious usually to install the MPI. So that's why the system
+
+283
+00:22:11,660 --> 00:22:17,180
+administrators usually provide it and you install your code using that MPI.
+
+284
+00:22:17,980 --> 00:22:20,060
+This will be different for every cluster.
+
+285
+00:22:20,780 --> 00:22:30,140
+Yes, yes. So if you run module spider MPI, open MPI is one flavor of MPI. That might be
+
+286
+00:22:30,140 --> 00:22:32,980
+be something you want to use.
+
+287
+00:22:32,980 --> 00:22:37,500
+So then we can compile our program using MPI CC.
+
+288
+00:22:37,500 --> 00:22:51,540
+So if you type `mpicc -o pi-mpi slurm/pi-mpi.c`.
+
+289
+00:22:51,540 --> 00:22:52,980
+Yeah.
+
+290
+00:22:52,980 --> 00:22:57,540
+So what this does is, yeah.
+
+291
+00:22:57,540 --> 00:23:07,380
+What it does is it compiles this `pi.mpi` executable that is now MPI-capable.
+
+292
+00:23:07,380 --> 00:23:11,820
+You can check what the source code is if you want to.
+
+293
+00:23:11,820 --> 00:23:14,840
+But now, okay, we have this.
+
+294
+00:23:14,840 --> 00:23:20,780
+Maybe you should try running it with srun, with the normal stuff, and see how it goes.
+
+295
+00:23:20,780 --> 00:23:32,640
+Like, if we just put like 10 minutes and 500 megabytes of memory and just run it.
+
+296
+00:23:32,640 --> 00:23:38,840
+So without anything, it should run similarly.
+
+297
+00:23:38,840 --> 00:23:42,080
+How many steps should I do?
+
+298
+00:23:42,080 --> 00:23:46,000
+Let's put the same 50 million.
+
+299
+00:23:46,000 --> 00:23:48,240
+It shouldn't take that long because it's C code,
+
+300
+00:23:48,240 --> 00:23:51,040
+so it's faster than the Python code.
+
+301
+00:23:51,040 --> 00:23:51,800
+Let's see.
+
+302
+00:23:51,800 --> 00:23:54,000
+I bet it will be very fast.
+
+303
+00:23:57,800 --> 00:23:58,440
+Yeah.
+
+304
+00:23:58,440 --> 00:24:02,000
+So it's quite a bit faster.
+
+305
+00:24:02,000 --> 00:24:04,280
+Should we SF it?
+
+306
+00:24:04,280 --> 00:24:06,440
+Yeah, sure.
+
+307
+00:24:06,440 --> 00:24:07,080
+Yeah.
+
+308
+00:24:07,080 --> 00:24:12,760
+So it said it used one second of CPU and took one second.
+
+309
+00:24:12,760 --> 00:24:15,080
+So it's quite a bit faster than the Python version.
+
+310
+00:24:15,080 --> 00:24:23,640
+So that's how it usually goes if you use the lower level stuff instead of like higher level
+
+311
+00:24:23,640 --> 00:24:24,880
+languages.
+
+312
+00:24:24,880 --> 00:24:28,720
+Of course, Python can be fast if you use the correct libraries, but in this case.
+
+313
+00:24:28,720 --> 00:24:29,720
+Yeah.
+
+314
+00:24:29,720 --> 00:24:33,960
+I mean, that's why you write a C library and run it from Python.
+
+315
+00:24:33,960 --> 00:24:38,160
+Or you use NumPy and that's fast itself.
+
+316
+00:24:38,160 --> 00:24:42,440
+But in this case, let's try now adding some more MPI tasks.
+
+317
+00:24:42,440 --> 00:24:44,320
+You notice that in the output,
+
+318
+00:24:44,320 --> 00:24:48,580
+it said that what was the computer's name,
+
+319
+00:24:48,580 --> 00:24:49,940
+where it was running,
+
+320
+00:24:49,940 --> 00:24:52,420
+and then it says something about rank.
+
+321
+00:24:52,420 --> 00:24:54,980
+MPI has these MPI ranks,
+
+322
+00:24:54,980 --> 00:25:03,360
+so basically, every CPU in the MPI tasks,
+
+323
+00:25:03,360 --> 00:25:05,080
+it's this rank number.
+
+324
+00:25:05,080 --> 00:25:06,860
+It's similar to the array ID,
+
+325
+00:25:06,860 --> 00:25:08,060
+but in this case,
+
+326
+00:25:08,060 --> 00:25:10,160
+they are like a collective.
+
+327
+00:25:10,160 --> 00:25:13,560
+So in the MPI, everybody works as a collective,
+
+328
+00:25:13,560 --> 00:25:15,840
+and they get this number.
+
+329
+00:25:15,840 --> 00:25:18,720
+So we can ask for more of these tasks.
+
+330
+00:25:18,720 --> 00:25:22,080
+So previously, when we saw the CPUs per task kind
+
+331
+00:25:22,080 --> 00:25:24,120
+of a situation, so these are now the tasks
+
+332
+00:25:24,120 --> 00:25:26,640
+that we are requesting.
+
+333
+00:25:26,640 --> 00:25:37,120
+So if you give the SRUN n tasks, yeah, nodes 1 and n tasks.
+
+334
+00:25:37,120 --> 00:25:39,440
+Let's go with 4, yeah.
+
+335
+00:25:39,440 --> 00:25:40,440
+Yeah, okay.
+
+336
+00:25:40,440 --> 00:25:48,200
+And let's add at least one zero at the end, so we get some like reasonable, like 10 times,
+
+337
+00:25:48,200 --> 00:25:49,200
+make it 10 times harder.
+
+338
+00:25:49,200 --> 00:25:53,240
+So maybe it runs for a few seconds.
+
+339
+00:25:53,240 --> 00:25:54,240
+Okay.
+
+340
+00:25:54,240 --> 00:26:02,500
+So, in this case, what we are asking the queue system, we are asking, okay, give me one computer
+
+341
+00:26:02,500 --> 00:26:09,060
+and give me four, on one computer, give me four of these MPI tasks.
+
+342
+00:26:09,060 --> 00:26:11,700
+So we didn't mention the CPUs per task here.
+
+343
+00:26:11,700 --> 00:26:14,620
+We are asking these MPI tasks.
+
+344
+00:26:14,620 --> 00:26:20,980
+And what it does basically is that when the program starts, it starts the individual programs
+
+345
+00:26:20,980 --> 00:26:27,900
+and then each of these connects into a collective that then solves the problem together.
+
+346
+00:26:27,900 --> 00:26:33,180
+But if you use the end tasks without an MPI program, you run into all sorts of problems
+
+347
+00:26:33,180 --> 00:26:38,640
+and the same program might run multiple times and overlap.
+
+348
+00:26:38,640 --> 00:26:47,120
+don't use the end tasks if you don't have an MPI program. Okay. Yeah. And I guess the pi-mpi,
+
+349
+00:26:47,120 --> 00:26:52,960
+we didn't tell it how many tasks there were, so it sort of automatically knows what's available.
+
+350
+00:26:52,960 --> 00:26:59,520
+Yes. It creates this communication world where everybody knows about each other and then they
+
+351
+00:26:59,520 --> 00:27:05,360
+can do the work together. And you might see here that the output is a bit scrambled because
+
+352
+00:27:05,360 --> 00:27:12,080
+everybody works independently and they might print out stuff in different orders. Some might
+
+353
+00:27:12,880 --> 00:27:19,920
+print out stuff before the other tasks. It's like one starting zero, it's done,
+
+354
+00:27:19,920 --> 00:27:26,080
+and then two and three report they're starting. But that's pretty typical when
+
+355
+00:27:26,080 --> 00:27:32,560
+you're trying to do this stuff. Anyway, should we SF it? Yes, let's do that.
+
+356
+00:27:35,360 --> 00:27:42,360
+It used nine seconds of CPU and the efficiency wasn't three seconds.
+
+357
+00:27:42,360 --> 00:27:47,360
+Yeah, because the efficiency wasn't that good because it's still so short.
+
+358
+00:27:47,360 --> 00:27:51,360
+So if we would have increased the.
+
+359
+00:27:51,360 --> 00:27:55,360
+Yeah, like these numbers are so short, it's not good statistics.
+
+360
+00:27:55,360 --> 00:27:57,360
+So, yeah.
+
+361
+00:27:57,360 --> 00:28:03,360
+It's clearly taking those times four and dividing nine by that.
+
+362
+00:28:03,360 --> 00:28:04,360
+Yeah.
+
+363
+00:28:04,360 --> 00:28:05,360
+Okay.
+
+364
+00:28:05,360 --> 00:28:11,400
+And in the notes, we have a good question of like, does it mean that the end tasks for
+
+365
+00:28:11,400 --> 00:28:16,400
+that we run for independent tasks and they are not independent.
+
+366
+00:28:16,400 --> 00:28:20,040
+They are a collective, like in MPI, everything is a collective.
+
+367
+00:28:20,040 --> 00:28:28,000
+So there's like four tasks running in the same collective, which is the whole program.
+
+368
+00:28:28,000 --> 00:28:37,000
+So let's say you would run with 30 computers, if you run in Mahti or if you run in Lumi
+
+369
+00:28:37,000 --> 00:28:42,480
+or somewhere like a really big machine, you might run with, let's say, a thousand processors.
+
+370
+00:28:42,480 --> 00:28:47,280
+And in those cases, you need to run with, let's say, 20 computers.
+
+371
+00:28:47,280 --> 00:28:56,800
+So you might ask for a thousand tasks and then get that from the queue system.
+
+372
+00:28:56,800 --> 00:29:03,040
+technically, it's not threads here, but it's independent processes that communicate between
+
+373
+00:29:03,040 --> 00:29:08,640
+each other. But if that doesn't make any sense to you, it really doesn't matter.
+
+374
+00:29:09,680 --> 00:29:22,000
+Yeah. But yes, so this MPI is still, for many bigger things, it's still very
+
+375
+00:29:22,000 --> 00:29:25,200
+like very heavily utilized.
+
+376
+00:29:25,200 --> 00:29:28,440
+But it's like many of the smaller programs,
+
+377
+00:29:28,440 --> 00:29:33,720
+it's usually better to use the array structure in addition
+
+378
+00:29:33,720 --> 00:29:39,680
+with the shared memory parallelism to run your stuff.
+
+379
+00:29:39,680 --> 00:29:42,400
+Because this requires your program
+
+380
+00:29:42,400 --> 00:29:46,400
+to support this from the ground up, basically.
+
+381
+00:29:46,400 --> 00:29:48,520
+OK, so what now?
+
+382
+00:29:48,520 --> 00:29:51,040
+We've got 12 minutes left.
+
+383
+00:29:51,040 --> 00:29:55,360
+Should we give people time to try it themselves and then come for a wrap-up?
+
+384
+00:29:55,360 --> 00:29:56,360
+Yes.
+
+385
+00:29:56,360 --> 00:29:57,360
+Okay.
+
+386
+00:29:57,360 --> 00:30:00,840
+Yeah, I will copy the commands we run.
+
+387
+00:30:00,840 --> 00:30:14,480
+In here also there's the SBatch script that you can use to run this in the queue.
+
+388
+00:30:14,480 --> 00:30:22,480
+And do note that if you're running this in the queue with the script, you will want to
+
+389
+00:30:22,480 --> 00:30:30,400
+add the srun before you run the program.
+
+390
+00:30:30,400 --> 00:30:34,760
+And the reason, well, it depends on the cluster, but in most clusters, you want to do this.
+
+391
+00:30:34,760 --> 00:30:42,560
+And the reason for that is that the srun basically ties the program to the queue system that
+
+392
+00:30:42,560 --> 00:30:46,640
+then tells each program that they're part of the collective.
+
+393
+00:30:46,640 --> 00:30:48,560
+If you don't run it with the `srun`,
+
+394
+00:30:48,560 --> 00:30:50,160
+they don't necessarily understand
+
+395
+00:30:50,160 --> 00:30:53,040
+that they're supposed to know about the other ones.
+
+396
+00:30:53,040 --> 00:30:57,840
+Because basically, Slurm starts multiple processes
+
+397
+00:30:57,840 --> 00:30:58,600
+at the same time.
+
+398
+00:30:58,600 --> 00:31:01,720
+And all of those call home and ask, who am I?
+
+399
+00:31:01,720 --> 00:31:05,040
+And then they start working as a collective.
+
+400
+00:31:05,040 --> 00:31:09,200
+So if you don't add the `srun`, then the program
+
+401
+00:31:09,200 --> 00:31:14,000
+doesn't necessarily work as intended.
+
+402
+00:31:14,000 --> 00:31:14,500
+Yeah.
+
+403
+00:31:20,720 --> 00:31:22,160
+OK, there's the exercise stuff.
+
+404
+00:31:22,160 --> 00:31:24,640
+So should we return at what time?
+
+405
+00:31:29,320 --> 00:31:32,760
+Maybe, again, five minutes and then have a wrap up.
+
+406
+00:31:32,760 --> 00:31:34,360
+Yeah, OK.
+
+407
+00:31:34,360 --> 00:31:37,280
+We'll take a short bit of time, see what you can do.
+
+408
+00:31:37,280 --> 00:31:38,640
+See you in five minutes.
+
+409
+00:31:38,640 --> 00:31:40,480
+and bye for now.
+
+410
+00:31:42,000 --> 00:31:53,560
+Hello, we're back, all four of us.
+
+411
+00:31:53,560 --> 00:32:00,560
+So yeah, what's the wrap up here?
+
+412
+00:32:00,560 --> 00:32:06,720
+From the notes, there's some good questions.
+
+413
+00:32:09,640 --> 00:32:13,600
+a question like, what does nodes and what does tasks mean?
+
+414
+00:32:13,600 --> 00:32:17,800
+The different MPI implementations.
+
+415
+00:32:17,800 --> 00:32:20,280
+This can get really deep really fast.
+
+416
+00:32:20,280 --> 00:32:25,880
+And I guess we're not even trying to go into it that deep.
+
+417
+00:32:25,880 --> 00:32:26,720
+Yeah.
+
+418
+00:32:26,720 --> 00:32:30,320
+So I highly suggest looking at our documentation
+
+419
+00:32:30,320 --> 00:32:32,320
+and other sites documentation if you plan
+
+420
+00:32:32,320 --> 00:32:33,640
+on using any of these frameworks.
+
+421
+00:32:33,640 --> 00:32:36,360
+Like the problem with, I would say,
+
+422
+00:32:36,360 --> 00:32:39,400
+like there was a great feedback that there
+
+423
+00:32:39,400 --> 00:32:43,960
+be more exercises, and I completely agree. But especially for these topics, it's very hard to
+
+424
+00:32:43,960 --> 00:32:49,880
+have exercises because they depend so heavily on the application. But the main thing to remember,
+
+425
+00:32:49,880 --> 00:32:57,080
+I would say, is to remember that these are the paradigms that are usable in the systems.
+
+426
+00:32:57,080 --> 00:33:06,040
+If you have a program that mentions something about threads or workers or whatever,
+
+427
+00:33:06,040 --> 00:33:09,160
+it usually means that you can use multiple CPUs.
+
+428
+00:33:09,160 --> 00:33:11,560
+And if you have something that mentions MPI,
+
+429
+00:33:11,560 --> 00:33:13,480
+then it usually can use MPI.
+
+430
+00:33:13,480 --> 00:33:17,080
+And remembering these words and these connections
+
+431
+00:33:17,080 --> 00:33:19,200
+allows you to then ask the queue
+
+432
+00:33:19,200 --> 00:33:20,760
+to provide you those resources.
+
+433
+00:33:20,760 --> 00:33:23,240
+But those exact flags you want to use
+
+434
+00:33:23,240 --> 00:33:25,360
+and exact implementations you want to use
+
+435
+00:33:25,360 --> 00:33:27,760
+differ based on the cluster.
+
+436
+00:33:27,760 --> 00:33:30,160
+And then it's good to look at the documentation.
+
+437
+00:33:30,160 --> 00:33:32,960
+But basically, in order to make the connection
+
+438
+00:33:32,960 --> 00:33:38,880
+okay, now we are talking about this sort of approach is very good, because then you can
+
+439
+00:33:40,240 --> 00:33:44,000
+make certain that your code uses all the resources it can use.
+
+440
+00:33:45,440 --> 00:33:52,320
+Yeah. And I see in the notes here, there's two questions about weird internal MPI errors,
+
+441
+00:33:52,960 --> 00:34:00,560
+which are caused by who knows what. And yeah, this is what I think of when I think of MPI. So,
+
+442
+00:34:00,560 --> 00:34:04,140
+So having to figure out the cluster thing,
+
+443
+00:34:04,140 --> 00:34:07,260
+get your code working, get all the problems solved,
+
+444
+00:34:07,260 --> 00:34:10,140
+it can make stuff run faster, but it takes some time
+
+445
+00:34:10,140 --> 00:34:12,140
+to figure it out.
+
+446
+00:34:12,140 --> 00:34:15,460
+And at least if you're at Aalto, come ask us
+
+447
+00:34:15,460 --> 00:34:18,680
+rather than digging into it, unless you just
+
+448
+00:34:18,680 --> 00:34:21,940
+want to dig into it, in which case, by all means, go ahead.
+
+449
+00:34:21,940 --> 00:34:25,460
+And I don't think we can really answer these here.
+
+450
+00:34:25,460 --> 00:34:28,460
+Who knows what it is?
+
+451
+00:34:30,560 --> 00:34:35,920
+I guess you've probably seen there's feedback of the day here.
+
+452
+00:34:35,920 --> 00:34:37,840
+You can start filling that in.
+
+453
+00:34:37,840 --> 00:34:43,720
+Is there anything about parallel or any other general questions we should answer before
+
+454
+00:34:43,720 --> 00:34:46,440
+we leave for the day?
+
+455
+00:34:46,440 --> 00:34:50,360
+I guess if so, write them down.
+
+456
+00:34:50,360 --> 00:34:56,220
+Any other general questions we may have missed from before or you'd like us to talk more.
+
+457
+00:34:56,220 --> 00:35:00,780
+So what's the expectations for day three now?
+
+458
+00:35:04,140 --> 00:35:05,620
+We covered what was in the schedule.
+
+459
+00:35:08,220 --> 00:35:13,060
+Are there many exercises and hands-on things tomorrow?
+
+460
+00:35:13,060 --> 00:35:16,740
+Does anyone know?
+
+461
+00:35:16,740 --> 00:35:20,140
+Well, at least in the GPU part, we
+
+462
+00:35:20,140 --> 00:35:23,700
+will be doing some small examples.
+
+463
+00:35:23,700 --> 00:35:31,300
+But again, it depends on the application you're using.
+
+464
+00:35:31,300 --> 00:35:34,660
+So it's quite a hard thing to say.
+
+465
+00:35:34,660 --> 00:35:39,460
+And in the LLM session, in the example,
+
+466
+00:35:39,460 --> 00:35:43,340
+we will definitely show you how you can do stuff, at least
+
+467
+00:35:43,340 --> 00:35:44,060
+here in Aalto.
+
+468
+00:35:44,060 --> 00:35:48,740
+And we show code that you can use to run local LLMs.
+
+469
+00:35:48,740 --> 00:35:56,340
+But yeah, we will have hands-on exercises, but of course, yeah.
+
+470
+00:35:58,580 --> 00:36:02,060
+Depends on how involved you want to be.
+
+471
+00:36:05,220 --> 00:36:12,700
+And we also have two philosophical sessions, one about how to ask for help with supercomputers,
+
+472
+00:36:12,700 --> 00:36:18,060
+which is a talk written by one of our collaborators in Norway, but I'll be
+
+473
+00:36:18,060 --> 00:36:25,420
+presenting. It sort of gives you some insight for, you know, when and how and what it's like
+
+474
+00:36:26,140 --> 00:36:33,260
+to ask for support. And then there's a wrap-up session at the end of the day which has 20
+
+475
+00:36:33,260 --> 00:36:37,900
+minutes budgeted. And what's usually happened other years, sort of all the instructors come
+
+476
+00:36:37,900 --> 00:36:44,220
+here and you can ask us all the questions about anything at all. So all the big broad things,
+
+477
+00:36:44,220 --> 00:36:51,260
+putting stuff together and we can see what happens there. So, yeah.
+
+478
+00:36:58,380 --> 00:37:04,700
+Yeah, so do stay for that. And I guess there's nothing special to prepare. If you have access
+
+479
+00:37:04,700 --> 00:37:11,260
+to the cluster, you can probably run the stuff we do tomorrow. The GPU stuff may be different
+
+480
+00:37:11,260 --> 00:37:17,980
+on different clusters. So it would be good to review the GPU info for whatever cluster you have
+
+481
+00:37:18,620 --> 00:37:22,620
+and then come prepared with that tomorrow to see if you can get it working.
+
+482
+00:37:25,100 --> 00:37:32,540
+Or even see if you can get it working over the night. If you are hungry for more exercises,
+
+483
+00:37:32,540 --> 00:37:39,100
+like all of the tutorial pages linked in the material, they have at the end multiple exercises.
+
+484
+00:37:39,100 --> 00:37:44,900
+Because if you want to do them, and even better, if you want to give feedback on if you had
+
+485
+00:37:44,900 --> 00:37:50,460
+done them, like how could they be improved, or which one would you want to see in the
+
+486
+00:37:50,460 --> 00:37:53,660
+course, let us know, that would be great.
+
+487
+00:37:53,660 --> 00:38:00,300
+But no worries, there's no homework, we don't force you to do something if you don't want
+
+488
+00:38:00,300 --> 00:38:01,300
+to do it.
+
+489
+00:38:01,300 --> 00:38:08,980
+But if you feel like you still have the hunger to write some Slurm scripts, do go and check
+
+490
+00:38:08,980 --> 00:38:10,260
+the tutorial, basically.
+
+491
+00:38:13,700 --> 00:38:16,700
+Yeah, OK.
+
+492
+00:38:16,700 --> 00:38:17,540
+Great.
+
+493
+00:38:17,540 --> 00:38:22,940
+Should we wrap up for now?
+
+494
+00:38:26,380 --> 00:38:31,580
+And I guess see you tomorrow at the same time.
+
+495
+00:38:31,580 --> 00:38:32,080
+Yeah.
+
+496
+00:38:32,080 --> 00:38:34,380
+Come prepared for all your stuff.
+
+497
+00:38:34,380 --> 00:38:40,740
+Yeah, OK, great.
+
+498
+00:38:40,740 --> 00:38:45,220
+Have a good, or wait, was there any other feedback questions?
+
+499
+00:38:45,220 --> 00:38:47,380
+No, no questions.
+
+500
+00:38:47,380 --> 00:38:49,580
+Lots of love for the cat.
+
+501
+00:38:49,580 --> 00:38:52,660
+Yeah, thanks for all the stuff.
+
+502
+00:38:52,660 --> 00:38:54,420
+Hopefully cats will come back tomorrow.
+
+503
+00:38:54,420 --> 00:38:59,580
+It's only morning, so it might be sleeping.
+
+504
+00:38:59,580 --> 00:39:02,340
+OK, great, see you later.
+
+505
+00:39:02,340 --> 00:39:03,620
+See you.
+
+506
+00:39:03,620 --> 00:39:04,120
+Bye.
+

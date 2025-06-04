@@ -1,0 +1,868 @@
+1
+00:00:00,000 --> 00:00:01,640
+which is about monitoring.
+
+2
+00:00:01,640 --> 00:00:02,920
+Yeah.
+
+3
+00:00:02,920 --> 00:00:05,480
+So should I come back here?
+
+4
+00:00:08,600 --> 00:00:09,160
+Where is it?
+
+5
+00:00:09,160 --> 00:00:10,600
+Monitoring.
+
+6
+00:00:10,600 --> 00:00:11,400
+Yeah.
+
+7
+00:00:11,400 --> 00:00:14,040
+So throughout this, we have already
+
+8
+00:00:14,040 --> 00:00:22,120
+started to use some of the tools for monitoring and, of course, one big monitoring thing is
+
+9
+00:00:22,120 --> 00:00:29,920
+the output itself. The code produces output. You can check the output and see if it's correct.
+
+10
+00:00:29,920 --> 00:00:34,040
+That's one way of monitoring it. But when we talk about monitoring, we often think about
+
+11
+00:00:34,040 --> 00:00:40,480
+how does the queue perceive things and what happened when the job run, like what happened
+
+12
+00:00:40,480 --> 00:00:48,800
+in the queue. And for that, we have used the Slurm queue to check when we have submitted
+
+13
+00:00:48,800 --> 00:00:54,720
+a job, what happens there. That's the first thing. When you submit a job, you usually
+
+14
+00:00:54,720 --> 00:00:59,760
+want to check, is it running? Is it queuing? When does it start?
+
+15
+00:00:59,760 --> 00:01:05,640
+Will it finish today of the 2,000 things I submitted yesterday? When is it done? And
+
+16
+00:01:05,640 --> 00:01:08,200
+so on.
+
+17
+00:01:08,200 --> 00:01:16,440
+clusters that don't have the Slurm script that we are using, which is this kind of helper script,
+
+18
+00:01:16,440 --> 00:01:22,200
+you can use the sq-user mentioned in the documentation, but we'll also put it into the
+
+19
+00:01:22,200 --> 00:01:30,760
+notes to check the... I guess that's here. Yeah. Yeah. Okay. What other kinds of monitoring are
+
+20
+00:01:30,760 --> 00:01:58,760
+So the other one and the major one is the history like we want to see what is the like what happened like if the job has finished what has happened did it finish correctly and so forth and for that we use the slam history so when we use the slam history we can we can check okay what was the did it complete correctly did it
+
+21
+00:01:58,760 --> 00:02:07,920
+like, what resources actually used, how long did it take, that sort of stuff, like, basic
+
+22
+00:02:07,920 --> 00:02:08,920
+stuff.
+
+23
+00:02:08,920 --> 00:02:14,880
+There's also, like, if you don't have the Slurm command, you can use this s-act-u user.
+
+24
+00:02:14,880 --> 00:02:22,120
+We'll put it into the notes as well, or we'll, yeah, there's many of these Slurm commands
+
+25
+00:02:22,120 --> 00:02:24,040
+that you can use to monitor.
+
+26
+00:02:24,040 --> 00:02:28,120
+But usually it's a good idea to, yeah, something like that.
+
+27
+00:02:28,120 --> 00:02:36,040
+Yeah, you can figure out what information you want from the job and you can get a lot
+
+28
+00:02:36,040 --> 00:02:39,800
+of information from the Slurm itself.
+
+29
+00:02:39,800 --> 00:02:45,800
+So basically, yeah, Slurm keeps a huge database of all the parameters of everything that's
+
+30
+00:02:45,800 --> 00:02:46,800
+run.
+
+31
+00:02:46,800 --> 00:02:52,080
+What the commands are, who ran it, where it was run, but then also things like all the
+
+32
+00:02:52,080 --> 00:02:55,960
+resources that were requested and the resources that were actually used.
+
+33
+00:02:55,960 --> 00:02:59,400
+So you can go and submit all your stuff,
+
+34
+00:02:59,400 --> 00:03:03,200
+and then you can return later and then
+
+35
+00:03:03,200 --> 00:03:06,600
+see what finished, what didn't finish, what had errors,
+
+36
+00:03:06,600 --> 00:03:08,240
+how much resources did it use,
+
+37
+00:03:08,240 --> 00:03:11,760
+do I need to adjust any of these things?
+
+38
+00:03:11,760 --> 00:03:17,040
+Stuff like that. That's this.
+
+39
+00:03:17,040 --> 00:03:18,040
+Okay.
+
+40
+00:03:18,040 --> 00:03:28,320
+Maybe we could jump into the terminal now and view a few of the monitoring outputs.
+
+41
+00:03:28,320 --> 00:03:35,280
+So there's another like this kind of wrapper script that is usually like added with Slurm
+
+42
+00:03:35,280 --> 00:03:37,720
+called `seff`.
+
+43
+00:03:37,720 --> 00:03:46,860
+And we have a few example job IDs that we can show in the notes, in our own notes.
+
+44
+00:03:46,860 --> 00:03:51,220
+we could try out that you put there.
+
+45
+00:03:51,220 --> 00:03:52,220
+Yes.
+
+46
+00:03:52,220 --> 00:03:53,220
+I see.
+
+47
+00:03:53,220 --> 00:03:54,220
+Okay.
+
+48
+00:03:54,220 --> 00:03:55,220
+Yes.
+
+49
+00:03:55,220 --> 00:03:56,220
+So let's look at-
+
+50
+00:03:56,220 --> 00:03:58,140
+These commands will work on Triton, but not other places.
+
+51
+00:03:58,140 --> 00:04:03,220
+Yeah, these are jobs I have run in the past, and let's look at something like that.
+
+52
+00:04:03,220 --> 00:04:07,620
+So once you have a job that has run, you get the job ID.
+
+53
+00:04:07,620 --> 00:04:14,540
+And if you give that job ID to this command sf, it will print out various efficiency information
+
+54
+00:04:14,540 --> 00:04:15,940
+about that.
+
+55
+00:04:15,940 --> 00:04:24,480
+So you will see, for example, here, like, okay, did it complete, what was the status?
+
+56
+00:04:24,480 --> 00:04:29,160
+Then you see that, okay, how many CPUs did it use?
+
+57
+00:04:29,160 --> 00:04:34,860
+And then it tells how much time it used with those CPUs, like the CPU time.
+
+58
+00:04:34,860 --> 00:04:39,640
+And then it will tell what is the CPU efficiency.
+
+59
+00:04:39,640 --> 00:04:47,160
+So that just means that how much of those reserved CPUs were utilized.
+
+60
+00:04:47,160 --> 00:04:48,940
+So what is the time?
+
+61
+00:04:48,940 --> 00:04:51,240
+Is 97% considered good?
+
+62
+00:04:51,240 --> 00:04:52,240
+Yes.
+
+63
+00:04:52,240 --> 00:04:53,240
+Yes.
+
+64
+00:04:53,240 --> 00:04:56,340
+Like 100% would be that it's using all of the time.
+
+65
+00:04:56,340 --> 00:04:58,800
+So 97% is great.
+
+66
+00:04:58,800 --> 00:05:03,040
+And the wall clock time is again like the time that you would see on the wall.
+
+67
+00:05:03,040 --> 00:05:06,340
+So it's like the time in real time.
+
+68
+00:05:06,340 --> 00:05:12,780
+So if you use multiple CPUs, the CPU time can be bigger than the wall time because you
+
+69
+00:05:12,780 --> 00:05:16,180
+have multiple CPUs running the stuff.
+
+70
+00:05:16,180 --> 00:05:24,260
+And then, yes, next, but let's look at first the memory utilization.
+
+71
+00:05:24,260 --> 00:05:28,400
+So you can see what was the memory consumption and what was the memory efficiency.
+
+72
+00:05:28,400 --> 00:05:30,060
+So not very good.
+
+73
+00:05:30,060 --> 00:05:37,820
+I do note that many of these numbers are not necessarily the true numbers, they're sampled
+
+74
+00:05:37,820 --> 00:05:38,820
+numbers.
+
+75
+00:05:38,820 --> 00:05:44,300
+So what Slurm does is that it samples what the process is doing every now and then.
+
+76
+00:05:44,300 --> 00:05:51,020
+I think it's 30 seconds by default that it samples what the program is doing.
+
+77
+00:05:51,020 --> 00:05:55,860
+So if your program has a huge spike of memory consumption or something, it might not be shown
+
+78
+00:05:55,860 --> 00:06:02,820
+in this data, or if the job crashes immediately or something, it might not show correct numbers.
+
+79
+00:06:02,820 --> 00:06:07,420
+So these are sampled numbers over the whole runtime.
+
+80
+00:06:07,420 --> 00:06:13,540
+So if there's something weird happening that happens quickly, it might not be reflected
+
+81
+00:06:13,540 --> 00:06:14,540
+here.
+
+82
+00:06:14,540 --> 00:06:16,860
+But you can get the overall big picture.
+
+83
+00:06:16,860 --> 00:06:25,380
+So let's look at one of the jobs that uses multiple CPUs.
+
+84
+00:06:25,380 --> 00:06:29,580
+So the output here is pretty similar.
+
+85
+00:06:29,580 --> 00:06:33,720
+The only difference is that now we see that there's cores per node is four.
+
+86
+00:06:33,720 --> 00:06:39,740
+So we're using four cores per node.
+
+87
+00:06:39,740 --> 00:06:43,380
+And we noticed that the CPU utilized is actually the same, basically.
+
+88
+00:06:43,380 --> 00:06:47,620
+We are doing the same calculation.
+
+89
+00:06:47,620 --> 00:06:53,780
+We're doing the same exact amount of CPU time utilizing, but now it's divided for four CPUs,
+
+90
+00:06:53,780 --> 00:06:54,780
+basically.
+
+91
+00:06:54,780 --> 00:07:01,260
+And the CPU efficiency is still very good, but the wall clock has dropped, like, dramatically.
+
+92
+00:07:02,380 --> 00:07:12,220
+Yeah, so instead of taking 41 seconds with one CPU, it's 11 seconds for four CPUs.
+
+93
+00:07:13,660 --> 00:07:19,820
+But this also came with a bit more of an increased memory utilization, but at the same time,
+
+94
+00:07:19,820 --> 00:07:28,020
+We can't really say if that's correct, because the sample time is so small, like it's 11
+
+95
+00:07:28,020 --> 00:07:29,020
+seconds.
+
+96
+00:07:29,020 --> 00:07:32,060
+So it's not that big.
+
+97
+00:07:32,060 --> 00:07:37,240
+And quite recently in Triton, we've added also GPU stats here.
+
+98
+00:07:37,240 --> 00:07:48,020
+So if we take one GPU job, so this was a very simple test PyTorch model, it ran for three
+
+99
+00:07:48,020 --> 00:07:58,740
+minutes so it's not very big. So you can see here at the bottom there's now like GPU stats also.
+
+100
+00:08:00,180 --> 00:08:08,580
+So these are again sampled on the compute nodes so you can see what GPU was utilized,
+
+101
+00:08:09,140 --> 00:08:14,900
+what was the GPU utilization and what was the memory utilization. So the GPU utilization
+
+102
+00:08:14,900 --> 00:08:20,100
+basically here means that how much of the time the GPU was doing calculations.
+
+103
+00:08:20,100 --> 00:08:25,700
+It doesn't say that whether calculations are efficient or whatever. It just means that how
+
+104
+00:08:25,700 --> 00:08:31,300
+much the GPU was just doing calculations. And in this case, the model is so small that
+
+105
+00:08:32,260 --> 00:08:35,300
+basically the GPU finishes it immediately when it gets it. So
+
+106
+00:08:35,940 --> 00:08:44,420
+it doesn't utilize the GPU very efficiently. But in other clusters, there might be other
+
+107
+00:08:44,420 --> 00:08:51,060
+ways of monitoring the GPUs. A common way is that once you get a job running, you can usually
+
+108
+00:08:52,100 --> 00:08:59,140
+take an SSH connection to the node where the job is running and use this tool called NVIDIA SMI
+
+109
+00:08:59,780 --> 00:09:05,060
+to print out information. There's more information in the documentation about that.
+
+110
+00:09:05,060 --> 00:09:10,900
+So you can go to the GPU node and monitor the GPU utilization.
+
+111
+00:09:14,420 --> 00:09:17,540
+So while it's running, this is what you can do.
+
+112
+00:09:17,540 --> 00:09:19,860
+OK, yeah.
+
+113
+00:09:19,860 --> 00:09:21,660
+There is a good question in the notes.
+
+114
+00:09:21,660 --> 00:09:23,340
+Considering that we have profilers
+
+115
+00:09:23,340 --> 00:09:25,700
+as part of our code, which may be very detailed,
+
+116
+00:09:25,700 --> 00:09:28,820
+how can we benefit from the short summary?
+
+117
+00:09:28,820 --> 00:09:30,780
+So how would you balance the profilers
+
+118
+00:09:30,780 --> 00:09:35,180
+with this kind of reporting?
+
+119
+00:09:35,180 --> 00:09:37,940
+And that's a good question.
+
+120
+00:09:37,940 --> 00:09:42,180
+I think if you know how to use a profiler
+
+121
+00:09:42,180 --> 00:09:45,860
+or if you know how to profile or get the information from your code itself,
+
+122
+00:09:45,860 --> 00:09:51,620
+it's of course great, because then you get much more detailed information.
+
+123
+00:09:51,620 --> 00:10:00,020
+But in a lot of cases, you might be using a program that you don't control what it's doing.
+
+124
+00:10:00,020 --> 00:10:05,780
+And if you want to add profiling to it, it might be an extra effort.
+
+125
+00:10:05,780 --> 00:10:09,140
+So with these, you get numbers from the source.
+
+126
+00:10:09,140 --> 00:10:13,140
+You get the numbers based from the queue system
+
+127
+00:10:13,140 --> 00:10:15,220
+and the hardware itself.
+
+128
+00:10:15,220 --> 00:10:17,940
+So it's like these numbers are free and automatic.
+
+129
+00:10:17,940 --> 00:10:19,340
+So it's like the big picture.
+
+130
+00:10:19,340 --> 00:10:21,700
+And if you see these numbers are low,
+
+131
+00:10:21,700 --> 00:10:25,140
+then you go to your profilers, and you can understand why
+
+132
+00:10:25,140 --> 00:10:30,700
+and make it better or understand that it's as good as it can be.
+
+133
+00:10:30,700 --> 00:10:31,980
+Something like that.
+
+134
+00:10:31,980 --> 00:10:36,980
+So is it kind of like, you know, like the, like, have you tried turning it on and off
+
+135
+00:10:36,980 --> 00:10:41,980
+again, kind of a situation where like, like you first do the simple things and then you
+
+136
+00:10:41,980 --> 00:10:47,460
+like, if it's still like you first do the, you try out the simple things and then you
+
+137
+00:10:47,460 --> 00:10:49,860
+try the more, more complicated things usually.
+
+138
+00:10:49,860 --> 00:10:54,620
+So if you want to profile your code, the easiest way is usually just look at these numbers
+
+139
+00:10:54,620 --> 00:10:58,620
+and see like, okay, what are these numbers saying?
+
+140
+00:10:58,620 --> 00:11:01,300
+And then if you want more fine-grained information,
+
+141
+00:11:01,300 --> 00:11:03,260
+you use a profile or something.
+
+142
+00:11:03,260 --> 00:11:09,700
+We can post some good profiling tools into the notes soonish
+
+143
+00:11:09,700 --> 00:11:11,980
+that can do it for you with minimal hassle.
+
+144
+00:11:11,980 --> 00:11:17,220
+But yeah, they are not one or the other.
+
+145
+00:11:17,220 --> 00:11:20,900
+But this is something you get for free, like [name] said.
+
+146
+00:11:20,900 --> 00:11:23,460
+Yeah.
+
+147
+00:11:23,460 --> 00:11:25,420
+OK, what else?
+
+148
+00:11:25,420 --> 00:11:27,620
+There is an interesting question.
+
+149
+00:11:27,620 --> 00:11:32,740
+Is there a way to have it write this efficiency information
+
+150
+00:11:32,740 --> 00:11:37,460
+to the job output files automatically instead
+
+151
+00:11:37,460 --> 00:11:40,460
+of only being in the database?
+
+152
+00:11:40,460 --> 00:11:44,420
+And that's a good question, I guess.
+
+153
+00:11:44,420 --> 00:11:46,860
+So when it appeared there automatically
+
+154
+00:11:46,860 --> 00:11:49,420
+in the Gutenberg stuff, that's because the code
+
+155
+00:11:49,420 --> 00:11:52,420
+itself was written to do that.
+
+156
+00:11:57,620 --> 00:12:06,140
+Yeah, I'm not certain. In principle, yes, probably. But I think, because it's hard to
+
+157
+00:12:06,140 --> 00:12:14,740
+put it into the job script itself, because the stats are not recorded until the job finishes,
+
+158
+00:12:14,740 --> 00:12:20,120
+or if they're not finalized. So it's like you're bootstrapping yourself, basically pulling
+
+159
+00:12:20,120 --> 00:12:24,980
+yourself out with your own bootstraps. And it becomes quite complicated. But I can imagine
+
+160
+00:12:24,980 --> 00:12:28,380
+that you could do some sort of like a script you can do
+
+161
+00:12:28,380 --> 00:12:30,260
+after the job has run?
+
+162
+00:12:30,260 --> 00:12:32,820
+Or you can wrap it in a profiler or something
+
+163
+00:12:32,820 --> 00:12:34,100
+that will track this.
+
+164
+00:12:34,100 --> 00:12:37,060
+Like, for example, one trick that I sometimes
+
+165
+00:12:37,060 --> 00:12:43,220
+do, user bin time `-v`.
+
+166
+00:12:43,220 --> 00:12:45,500
+And it has to be the full path, because otherwise it's
+
+167
+00:12:45,500 --> 00:12:46,700
+a bash built in.
+
+168
+00:12:46,700 --> 00:12:55,180
+And then if you run something like y.py,
+
+169
+00:12:55,180 --> 00:12:58,460
+that's 2 and 1 1,000,000.
+
+170
+00:12:58,460 --> 00:13:00,620
+So this will run.
+
+171
+00:13:00,620 --> 00:13:05,700
+And it automatically, so this is from time.
+
+172
+00:13:05,700 --> 00:13:09,900
+So time prints out all of this other stuff, which will
+
+173
+00:13:09,900 --> 00:13:11,300
+tell you some basic summary.
+
+174
+00:13:11,300 --> 00:13:16,420
+So the user time in seconds, what percentage
+
+175
+00:13:16,420 --> 00:13:20,900
+of a CPU was used during this time period
+
+176
+00:13:20,900 --> 00:13:25,540
+and some other interesting technical stats there.
+
+177
+00:13:25,540 --> 00:13:31,940
+So this doesn't tell you the overall efficiency of memory
+
+178
+00:13:31,940 --> 00:13:33,500
+efficiency and so on, because time
+
+179
+00:13:33,500 --> 00:13:40,140
+doesn't know how much memory was allocated to the job and so on.
+
+180
+00:13:40,140 --> 00:13:42,220
+But it has stuff.
+
+181
+00:13:42,220 --> 00:13:45,620
+But yeah, like you can do various.
+
+182
+00:13:49,180 --> 00:13:49,740
+I think it's.
+
+183
+00:13:49,740 --> 00:13:51,980
+I do it with two threads.
+
+184
+00:13:51,980 --> 00:13:53,620
+It's coarse.
+
+185
+00:13:53,620 --> 00:13:55,260
+It's coarse.
+
+186
+00:13:55,260 --> 00:13:56,100
+Yeah.
+
+187
+00:13:56,100 --> 00:13:57,500
+Let's run it with help.
+
+188
+00:13:57,500 --> 00:13:58,820
+Yeah.
+
+189
+00:13:58,820 --> 00:14:00,700
+But maybe we should move forward.
+
+190
+00:14:00,700 --> 00:14:02,700
+Yeah, I guess we should go on.
+
+191
+00:14:02,700 --> 00:14:04,700
+It's nprox.
+
+192
+00:14:04,700 --> 00:14:05,200
+Yeah.
+
+193
+00:14:05,200 --> 00:14:15,200
+And here we see it says 190% of a CPU, which means it's using almost two CPUs.
+
+194
+00:14:15,200 --> 00:14:23,200
+But there's plenty of these kind of programs that you can use to do the monitoring.
+
+195
+00:14:23,200 --> 00:14:25,200
+Yeah.
+
+196
+00:14:25,200 --> 00:14:31,040
+Yeah, so we'll note, put into the notes, our favorite profilers.
+
+197
+00:14:31,040 --> 00:14:37,640
+And if you have your favorite tools that you can use to profile, do add them there as well
+
+198
+00:14:37,640 --> 00:14:41,760
+so that other people can benefit from knowing about them.
+
+199
+00:14:41,760 --> 00:14:46,720
+But basically this is like usually when you run something in the queue and if you think
+
+200
+00:14:46,720 --> 00:14:51,760
+that the job is using like four CPUs, you think you reserve four CPUs and you think
+
+201
+00:14:51,760 --> 00:14:54,080
+that the job is using four CPUs.
+
+202
+00:14:54,080 --> 00:14:57,160
+And then you usually want to look at the SF or whatever
+
+203
+00:14:57,160 --> 00:14:59,640
+to verify that it actually used the four CPUs
+
+204
+00:14:59,640 --> 00:15:02,480
+because otherwise it's wasted resources, right?
+
+205
+00:15:02,480 --> 00:15:06,920
+So usually you want to use quickly SF or something
+
+206
+00:15:06,920 --> 00:15:08,880
+to verify that what is the memory usage,
+
+207
+00:15:08,880 --> 00:15:13,320
+what is the time usage, what is the processor usage
+
+208
+00:15:13,320 --> 00:15:17,600
+in order to set the requirements of your job
+
+209
+00:15:17,600 --> 00:15:20,520
+match more closely to what it actually needs.
+
+210
+00:15:20,520 --> 00:15:29,240
+Yeah. And if you tried this and you can't figure out what it is, I'd say always, if you're using
+
+211
+00:15:29,240 --> 00:15:34,360
+resources, always check, see the efficiency. If it doesn't look like what you expect,
+
+212
+00:15:35,320 --> 00:15:41,960
+spend a little time, see if you can understand why. But if not, come talk to us and we can help
+
+213
+00:15:41,960 --> 00:15:47,240
+do that. If everyone would do this, it would make the cluster go much faster because there's
+
+214
+00:15:47,240 --> 00:15:55,640
+a lot less wasted stuff there. Anyway, yeah. Should we go on then?
+
+215
+00:15:58,280 --> 00:16:04,920
+Yeah, let's go. And next we have a talk. Yeah, next we are going to go through some applications.
+
+216
+00:16:08,200 --> 00:16:08,680
+Yeah, so.
+
+217
+00:16:08,680 --> 00:16:09,000
+So yes.
+

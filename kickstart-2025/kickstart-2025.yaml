@@ -80,17 +80,6 @@
 #  - end: 01:06:59
 #
 #
-#- output: out/day1-the-humans-of-scientific-computing.mkv
-#  title: "1.5 The humans of scientific computing"
-#  description: >-
-#    Who are we that provide these services? What makes it such a
-#    fascinating career?  How did we learn what we know?  Learn about
-#    what goes on behind the scenes and how you could join us.  Our
-#    guest works at CSC - The IT Center for Science (https://csc.fi)
-#
-#  editlist:
-#    - start: 01:16:27
-#    - stop: 01:41:36
 #
 #
 #- output: out/day1-what-can-do-with-cluster.mkv
@@ -337,12 +326,180 @@
 #  editlist:
 #    - start: 00:23:30
 #    - stop: 00:30:44
-#
-#
-#
-#
-#- input: raw/day2-obs.mkv
-#
+
+
+
+
+- input: raw/day2-obs.mkv
+- schedulesync: 00:45:58=10:31:44
+
+- output: out/day2-the-humans-of-scientific-computing.mkv
+  title: "2.1 The humans of scientific computing"
+  description: >-
+    Who are we that provide these services? What makes it such a
+    fascinating career?  How did we learn what we know?  Learn about
+    what goes on behind the scenes and how you could join us.  Our
+    guest works at CSC - The IT Center for Science (https://csc.fi)
+
+  editlist:
+    - start: 00:15:48
+    - stop: 00:36:59
+
+- output: out/day2-conda.mkv
+  title: "2.2 Conda"
+  description: >-
+    Conda is a package manager, not just for Python packages, but many
+    types of scientific software: Python, R, compiled libraries, and
+    so on.  It's become the easiest way to install a wide variety of
+    software, whether on your own computer on or the cluster.  Here, we
+    demo the basics, but you'll need to study the details for
+    recommended practices of whatever cluster you work on: there may be
+    different recommendations to preserve disk performance and so on.
+
+    Mamba is an interchangeable replacement that is much faster at
+    resolving the dependencies.  We mainly use Mamba.
+
+    https://scicomp.aalto.fi/triton/apps/python-conda/
+
+  editlist:
+  - start: 00:36:59
+  - -: About installing software; why is it hard?
+  - 00:39:44: What is Conda?
+  - 00:42:53: Usage of Mamba
+  - 00:44:22: conda channels
+  - 00:48:02: Environments via environment.yml files
+  - 00:50:02: Building the environment from the yml file
+  - 00:52:09: Using the built environment
+  - 00:55:47: How to exit an environment
+  - 00:58:15: Tykky container wrapper on CSC systems
+  - 00:59:36: How this makes research reproducible
+  - 01:02:38: Listing what is in an environment
+  - 01:03:31: Removing an environment
+  - 01:05:37: Conda environments with CUDA (for GPUs)
+  - stop: 01:16:00
+
+
+- output: out/day2-array.mkv
+  title: 2.3 Array jobs
+  description: >-
+    When there is no dependency or communication among the individual
+    program runs, these individual runs can be run in parallel on
+    separate Slurm jobs called array jobs.  These are very useful and
+    used often, including with other types of parallelism.
+
+    https://scicomp.aalto.fi/triton/tut/array/
+
+  editlist:
+  - start: 01:27:14
+  - -: Overview of array jobs
+  - 01:29:37: Types of parallelism
+  - 01:35:47: Start of array job demos
+  - 01:37:41: Re-make the serial job from yesterday
+  - 01:41:52: Transform the serial job to an array job
+  - 01:49:36: Running the job
+  - 01:53:23: Combine all the outputs to one
+  - 01:55:55: Exercise intro
+  - stop: 01:58:05
+  - start: 02:10:28
+  - -: After the exercise Q&A
+  - stop: 02:16:57
+  - start: 03:14:26
+  - -: After break, example of hard-coding array parameters
+  - stop: 03:21:18
+
+- output: out/day2-monitoring.mkv
+  title: 2.4 Monitoring jobs (summary)
+  description: >-
+    In order to use large amounts of resources, you need to be able to
+    monitor how many resources you used, so that you can properly adjust
+    the resources you request later.  We go over the main parts: output
+    during the job, time, memory efficiency, CPU efficiency, GPU
+    efficiency, and so on.
+
+    We have already seen most of the content there, but we summarize
+    everything now in one place.
+
+    https://scicomp.aalto.fi/triton/tut/monitoring/
+  editlist:
+  - start: 03:21:18
+  - 03:21:47: Checking while it is queuing
+  - 03:22:47: Checking the history
+  - 03:24:36: Example of checking efficiency
+  - 03:30:30: 'Question: monitoring vs profilers'
+  - 03:32:39: Efficiency info directly in the outputs
+  - stop: 03:37:27
+
+
+- output: out/day2-applications.mkv
+  title: '2.5 Applications and Modules: software on the cluster'
+  description: >-
+    Software installation is one of our most time-consuming tasks in
+    supporting cluster usage.  In "Applications", we'll talk about the
+    general principles of managing software on the cluster: can you
+    install things?  Do you need to ask us?  Do both happen at the
+    same time?  Then we look at the `module` command that lets you
+    make other pre-installed software available.
+
+    https://scicomp.aalto.fi/triton/tut/applications/
+
+    https://scicomp.aalto.fi/triton/tut/modules/
+  editlist:
+    - start: 03:37:27
+    - 03:39:14: Demo, modules
+    - 03:45:13: Demo, containers (apptainer/singularity)
+    - 03:48:53: Conda
+    - 03:49:53: Our pre-made conda environments
+    - stop: 03:54:33
+
+
+- output: out/day2-rcr.mkv
+  title: 2.6 Responsible computational research
+  description: >-
+    Doing research comes with responsibilities, how to make sure the
+    principles of research integrity are translated into scientific
+    computing practices? We present a short structured view of ethical
+    and legal considerations in computational research in Europe, with
+    an extra overview of responsible use of generative AI for writing
+    code.
+  editlist:
+  - start: 03:55:19
+  - 03:57:29: The normative cascade
+  - 03:58:58: 'Level 1: foundational ethical principles in research'
+  - 04:00:42: EU legislation and regulations that can affect research
+  - 04:02:19: National and university-level guidelines
+  - 04:02:53: Researchers
+  - 04:03:47: Responsible research in practice
+  - 04:11:35: Generative AI considerations
+  - stop: 04:16:27
+
+- output: out/day2-parallel.mkv
+  title: 2.7 Different methods of parallel computing
+  description: >-
+    Before we get to how to run parallel jobs, let's talk about the
+    different forms, since a person must keep these straight in order
+    to run them the right way on the cluster.  The forms are listed
+    below.
+
+    https://scicomp.aalto.fi/triton/tut/parallel/
+
+  editlist:
+  - start: 04:26:48
+  - 04:27:44: Shared memory parallelism
+  - 04:30:45: Demo of shared memory parallelism
+  - 04:39:25: Q&A
+  - 04:43:06: Exercise (shared memory)
+  - stop: 04:43:32
+  - start: 04:49:50
+  - -: Message passing (MPI)
+  - 04:53:59: Demo of MPI
+  - 05:04:24: Exercise (MPI)
+  - stop: 05:04:48
+  - start: 05:09:47
+  - -: Back from exercise
+  - 05:12:56: Daily wrap-up / preparation for the next day
+  - stop: 05:17:10
+
+
 #- output: out/day2_01-icebreaker.mkv
 #  title: 2.1 Icebreakers and introduction
 #  description: >-
@@ -435,30 +592,6 @@
 #  - stop: 02:46:21
 #
 #
-#- output: out/day2_07-monitoring.mkv
-#  title: 2.7 Monitoring jobs (summary)
-#  description: >-
-#    In order to use large amounts of resources, you need to be able to
-#    monitor how many resources you used, so that you can properly adjust
-#    the resources you request later.  We go over the main parts: output
-#    during the job, time, memory efficiency, CPU efficiency, GPU
-#    efficiency, and so on.
-#
-#    We have already seen most of the content there, but we summarize
-#    everything now in one place.
-#
-#    https://scicomp.aalto.fi/triton/tut/monitoring/
-#  editlist:
-#  - start: 02:46:21
-#  - 02:49:19: Slurm history
-#  - 02:51:35: seff to look at job efficiency
-#  - 02:54:57: Exercise introduction
-#  - stop: 02:56:02
-#  - start: 03:11:20
-#  - -: Post-exercise Q&A
-#  - 03:12:30: Monitoring examples as an exercise
-#  - stop: 03:22:54
-#
 #- output: out/day2_08-applications.mkv
 #  title: '2.8 Applications, Modules, Data, Remote data'
 #  description: >-
@@ -485,50 +618,7 @@
 #    - 03:50:47: Short overview of using modules
 #    - end: 03:54:42
 #
-##- output: out/day2-applications.mkv
-##  title: '2.7 Applications and Modules: software on the cluster'
-##  description: >-
-##    Software installation is one of our most time-consuming tasks in
-##    supporting cluster usage.  In "Applications", we'll talk about the
-##    general principles of managing software on the cluster: can you
-##    install things?  Do you need to ask us?  Do both happen at the
-##    same time?  Then we look at the `module` command that lets you
-##    make other pre-installed software available.
-##
-##    https://scicomp.aalto.fi/triton/tut/applications/
-##
-##    https://scicomp.aalto.fi/triton/tut/modules/
-##  editlist:
-##    - start: 03:39:52
-##    - 03:40:48: Different ways of installing software on the cluster
-##    - 03:42:17: Software installed by admin (modules)
-##    - 03:45:45: Quick overview how software on cluster works
-##    - 03:47:43: Short overview of using modules
-##    - 03:48:24: 'Example: loading the anaconda module'
-##    - end: 03:53:15
-##
-##    There are several things we don't go into detail about: the
-##    "module" command, data storage, and remote access to data.  This
-##    is the intro to these sections, and the actual videos come next.
-##
-##    1) "module" is the command you use to make more software available.
-##    Here, we go over the idea behind it, but mainly we leave it to
-##    you to read the tutorial page.
-##
-##    https://scicomp.aalto.fi/triton/tut/modules/
-##
-##    2) We go over data storage on the cluster: why it is important, main
-##    considerations, where to store it, and so on.  We only give a bit of
-##    discussion, and leave you to read for the details.
-##
-##    https://scicomp.aalto.fi/triton/tut/storage/
-##
-##    3) You have data on the cluster, but you need to be able to access it
-##    from outside, or copy new data to the cluster.  This can be
-##    surprisingly frustrating, so we discuss transferring data vs
-##    mounting a remote filesystem for transparent access.
-##
-##    https://scicomp.aalto.fi/triton/tut/remotedata/
+#
 ##
 ##- output: out/day2-data-storage.mkv
 ##  title: 2.8 Data storage and accessing it remotely
@@ -617,48 +707,8 @@
 #  - end: 00:22:29
 #
 #
-#- output: out/day3_02-parallel.mkv
-#  title: 3.2 Different methods of parallel computing
-#  description: >-
-#    Before we get to how to run parallel jobs, let's talk about the
-#    different forms, since a person must keep these straight in order
-#    to run them the right way on the cluster.  The forms are listed
-#    below.
-#
-#    https://scicomp.aalto.fi/triton/tut/parallel/
-#
-#  editlist:
-#  - start: 00:22:29
-#  - 00:27:35: Embarassingly parallel / perfectly parallel
-#  - 00:31:03: Shared memory parallelism
-#  - 00:34:23: MPI parallelism
-#  - 00:38:04: GPU parallelization
-#  - 00:43:29: How well does your code parallelize
-#  - 00:48:22: Wrap-up
-#  - end: 00:50:18
 #
 #
-#- output: out/day3_03-array.mkv
-#  title: 3.3 Array jobs
-#  description: >-
-#    When there is no dependency or communication among the individual
-#    program runs, these individual runs can be run in parallel on
-#    separate Slurm jobs called array jobs.  These are very useful and
-#    used often, including with other types of parallelism.
-#
-#    https://scicomp.aalto.fi/triton/tut/array/
-#
-#  editlist:
-#  - start: 00:50:18
-#  - -: Overview of array jobs
-#  - 00:56:06: Your first array job
-#  - 01:04:42: Ways to use array jobs
-#
-#  - 01:07:16: Exercises introduction
-#  - stop: 01:10:18
-#  - start: 01:40:21
-#  - -: Q&A after exercise
-#  - stop: 01:44:19
 #
 #
 #- output: out/day3_04-shared-memory.mkv

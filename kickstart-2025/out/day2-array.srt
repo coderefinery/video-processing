@@ -1,0 +1,2388 @@
+1
+00:00:00,000 --> 00:00:01,300
+Hello.
+
+2
+00:00:01,300 --> 00:00:02,300
+Welcome back.
+
+3
+00:00:02,300 --> 00:00:05,300
+I hope you can hear us out there.
+
+4
+00:00:05,300 --> 00:00:07,300
+Hello, hello.
+
+5
+00:00:07,300 --> 00:00:09,300
+So, where are we now?
+
+6
+00:00:09,300 --> 00:00:10,300
+What's going on?
+
+7
+00:00:10,300 --> 00:00:16,300
+So, [name], can you let us know what's upcoming?
+
+8
+00:00:16,300 --> 00:00:26,580
+Yeah, so we had great talks in the morning with [name] and [name] and [name], and now we
+
+9
+00:00:26,580 --> 00:00:30,700
+are jumping back to where we left off yesterday.
+
+10
+00:00:30,700 --> 00:00:38,620
+So yesterday we were writing stuff, we were running stuff in the queue, like we were testing
+
+11
+00:00:38,620 --> 00:00:52,540
+stuff in the queue and we were testing out the submission scripts. So, we were trying out
+
+12
+00:00:52,540 --> 00:01:01,340
+how we can write scripts that can be run in the queue. So, they can be run like we can submit
+
+13
+00:01:01,340 --> 00:01:06,140
+them to the queue and the queue will run them later on. So, that was the thing that we were
+
+14
+00:01:06,140 --> 00:01:14,780
+doing yesterday. And now we are going to get further in our users of the cluster because
+
+15
+00:01:14,780 --> 00:01:20,460
+we don't only want to do one thing usually, we want to do a lot of things. So that's why we want
+
+16
+00:01:22,940 --> 00:01:29,180
+to make it so that we can run a lot of stuff. So that involves parallelism. And the parallel
+
+17
+00:01:29,180 --> 00:01:33,100
+is like the whole thing about this day.
+
+18
+00:01:33,100 --> 00:01:35,740
+So we'll first talk a bit about different ways
+
+19
+00:01:35,740 --> 00:01:37,940
+of doing stuff in parallel in cluster,
+
+20
+00:01:37,940 --> 00:01:40,300
+because we have a lot of computers in the cluster
+
+21
+00:01:40,300 --> 00:01:44,180
+and we want to use as much as we can
+
+22
+00:01:44,180 --> 00:01:46,420
+to get all of our stuff done.
+
+23
+00:01:46,420 --> 00:01:49,300
+And we'll talk about the different ways you can do it.
+
+24
+00:01:49,300 --> 00:01:54,300
+And then we'll tackle three of those four ways today.
+
+25
+00:01:56,140 --> 00:01:58,100
+So we'll talk about array jobs,
+
+26
+00:01:58,100 --> 00:02:01,980
+then we'll talk about a shared memory parallelism and then
+
+27
+00:02:01,980 --> 00:02:03,900
+MPI jobs.
+
+28
+00:02:03,900 --> 00:02:04,940
+And that's about it.
+
+29
+00:02:04,940 --> 00:02:08,780
+And we'll do some exercises on those.
+
+30
+00:02:08,780 --> 00:02:10,860
+OK, great.
+
+31
+00:02:10,860 --> 00:02:14,500
+So I guess I'll switch to my screen.
+
+32
+00:02:14,500 --> 00:02:22,660
+And so what now?
+
+33
+00:02:22,660 --> 00:02:24,220
+Where do we start?
+
+34
+00:02:24,220 --> 00:02:26,820
+So let's first look at, if you want
+
+35
+00:02:26,820 --> 00:02:29,860
+Let's just show the serial jobs, what we were doing previously.
+
+36
+00:02:29,860 --> 00:02:34,940
+Let's look at a diagram that might refresh us.
+
+37
+00:02:34,940 --> 00:02:42,500
+So previously, we were writing these scripts, and we were doing also interactive runs, where
+
+38
+00:02:42,500 --> 00:02:46,020
+we were running something in the compute nodes.
+
+39
+00:02:46,020 --> 00:02:52,260
+And we were currently using only one computer, only one processor.
+
+40
+00:02:52,260 --> 00:02:56,260
+And these are called serial jobs, because they do the commands in order.
+
+41
+00:02:56,260 --> 00:03:02,100
+They run like a series of commands.
+
+42
+00:03:02,100 --> 00:03:07,820
+Like we write one script and then we execute that in the cluster and it executes everything
+
+43
+00:03:07,820 --> 00:03:10,060
+in order, like it does everything.
+
+44
+00:03:10,060 --> 00:03:11,940
+And it uses one CPU currently.
+
+45
+00:03:11,940 --> 00:03:14,900
+So we're taking only a small slice of the whole cluster.
+
+46
+00:03:14,900 --> 00:03:19,980
+Like we are taking one CPU in one node and the whole cluster is a big thing.
+
+47
+00:03:19,980 --> 00:03:22,420
+So we want to use more.
+
+48
+00:03:22,420 --> 00:03:29,100
+And the first and the easiest way of doing this is usually to split up your job, what
+
+49
+00:03:29,100 --> 00:03:32,820
+you're basically doing, split up what you're doing and do an array job.
+
+50
+00:03:32,820 --> 00:03:40,340
+So maybe we could talk about the different parallelism modes and let's, we could maybe
+
+51
+00:03:40,340 --> 00:03:42,940
+show a picture of an array job.
+
+52
+00:03:42,940 --> 00:03:43,940
+Yeah.
+
+53
+00:03:43,940 --> 00:03:49,420
+So I'm opening this, the parallel one from the schedule.
+
+54
+00:03:49,420 --> 00:03:51,480
+I guess we're looking at these things.
+
+55
+00:03:51,480 --> 00:03:53,140
+So let's go down.
+
+56
+00:03:53,140 --> 00:03:54,900
+This is an Array Job.
+
+57
+00:03:54,900 --> 00:03:57,740
+So what's the characteristic here?
+
+58
+00:03:57,740 --> 00:04:03,100
+So the idea behind Array Job is basically like, let's say you have a script that describes
+
+59
+00:04:03,100 --> 00:04:08,380
+what you want to do, but you want to do it with multiple data sets, or you want to do
+
+60
+00:04:08,380 --> 00:04:16,200
+it with multiple different random numbers, or you want to do it with different options,
+
+61
+00:04:16,200 --> 00:04:17,380
+different startup options.
+
+62
+00:04:17,380 --> 00:04:21,140
+You want to have different parameters for your model or something.
+
+63
+00:04:21,140 --> 00:04:26,300
+But they're basically the same thing, but there's something that changes.
+
+64
+00:04:26,300 --> 00:04:29,340
+And you want to do the same thing.
+
+65
+00:04:29,340 --> 00:04:33,620
+So we take the big problem, you make it a bunch of small problems, and each small problem
+
+66
+00:04:33,620 --> 00:04:35,660
+is only slightly different.
+
+67
+00:04:35,660 --> 00:04:43,260
+And you can basically load up every small available place on the cluster.
+
+68
+00:04:43,260 --> 00:04:48,660
+You get independent jobs, and it's often called embarrassingly parallel, not because it's
+
+69
+00:04:48,660 --> 00:04:52,260
+not embarrassing to use it, but it's because it's so easy to parallelize.
+
+70
+00:04:54,660 --> 00:05:01,540
+Previously, we had the HPC kitchen metaphor, and we talked about CPUs being like stove top
+
+71
+00:05:01,540 --> 00:05:06,260
+burners. So if you put two kettles in two different burners, they're independent of each
+
+72
+00:05:06,260 --> 00:05:14,580
+other. They're not interacting, but you can cook two pasta varieties in different pots,
+
+73
+00:05:14,580 --> 00:05:20,820
+And they work independently of each other in independent learners. So this is basically
+
+74
+00:05:20,820 --> 00:05:27,380
+the idea. So the array jobs are spread out throughout the cluster. And there's this nice
+
+75
+00:05:27,380 --> 00:05:35,620
+syntax that you can use to easily create even a large array job of, let's say, 100 jobs running
+
+76
+00:05:35,620 --> 00:05:43,380
+at the same time. And each of them works independently. Okay. So we're not doing it now,
+
+77
+00:05:43,380 --> 00:05:47,060
+but should we preview the things we'll do? Is it the end of the day?
+
+78
+00:05:47,940 --> 00:05:54,900
+Yes. So the other methods that we're going to be talking about are a bit more involved. And the
+
+79
+00:05:54,900 --> 00:05:59,780
+first one of these is shared memory parallelism. And this is basically what your laptop is doing
+
+80
+00:05:59,780 --> 00:06:08,580
+right now, or your computer. You have multiple processors in your computer, but it's all inside
+
+81
+00:06:08,580 --> 00:06:15,380
+this one computer, right? Like you don't have other computer there like connected to that.
+
+82
+00:06:15,380 --> 00:06:21,620
+You only have one computer, but it has multiple processors. So you can, if you have a problem
+
+83
+00:06:21,620 --> 00:06:29,140
+that way, it suits the problem. You can use multiple processors in the same machine
+
+84
+00:06:29,140 --> 00:06:35,540
+to calculate something faster. So this is like, this just usually makes calculations faster if
+
+85
+00:06:35,540 --> 00:06:37,380
+if your program supports it.
+
+86
+00:06:37,380 --> 00:06:42,380
+Yeah, and I guess this is relatively easy to do.
+
+87
+00:06:42,820 --> 00:06:46,840
+Yeah, so your job ends up in one of the computers
+
+88
+00:06:46,840 --> 00:06:50,940
+and then you can have multiple processors
+
+89
+00:06:50,940 --> 00:06:54,100
+working together to solve a bigger problem.
+
+90
+00:06:54,100 --> 00:06:57,340
+And this is like, it's of course limited
+
+91
+00:06:57,340 --> 00:06:59,060
+by the size of the computer
+
+92
+00:06:59,060 --> 00:07:01,340
+that you're going to be using or getting,
+
+93
+00:07:01,340 --> 00:07:03,980
+but this is something that we'll be talking
+
+94
+00:07:03,980 --> 00:07:05,740
+in more detail later on.
+
+95
+00:07:05,740 --> 00:07:06,580
+Yeah.
+
+96
+00:07:06,580 --> 00:07:07,540
+Okay.
+
+97
+00:07:07,540 --> 00:07:12,540
+And finally we have the shared or
+
+98
+00:07:13,740 --> 00:07:15,140
+We have MPI jobs.
+
+99
+00:07:15,140 --> 00:07:16,540
+Message passing.
+
+100
+00:07:16,540 --> 00:07:18,100
+Yeah. So message passing jobs.
+
+101
+00:07:18,100 --> 00:07:21,140
+So, so this is like the traditional
+
+102
+00:07:21,140 --> 00:07:23,540
+high performance computing, like supercomputing.
+
+103
+00:07:23,540 --> 00:07:26,360
+If you think about like big weather models or whatever
+
+104
+00:07:26,360 --> 00:07:28,940
+they often use, or most often use
+
+105
+00:07:28,940 --> 00:07:30,860
+this message passing interface,
+
+106
+00:07:30,860 --> 00:07:34,900
+which is like this standard that has been created
+
+107
+00:07:34,900 --> 00:07:37,300
+since the 90s or something like that,
+
+108
+00:07:37,300 --> 00:07:41,780
+that makes it possible for a lot of different processors
+
+109
+00:07:41,780 --> 00:07:45,140
+in different computers to know about each other
+
+110
+00:07:45,140 --> 00:07:47,980
+and talk with each other to solve a really big problem.
+
+111
+00:07:47,980 --> 00:07:51,020
+So it can, you can utilize multiple computers
+
+112
+00:07:51,020 --> 00:07:55,300
+at the same time, and you need to, you can, you can,
+
+113
+00:07:55,300 --> 00:07:57,820
+like each of these can communicate with each other,
+
+114
+00:07:57,820 --> 00:08:00,100
+but this is a bit more involved
+
+115
+00:08:00,100 --> 00:08:03,200
+and it's specific for programs that use this.
+
+116
+00:08:03,200 --> 00:08:05,100
+So we'll talk about this later,
+
+117
+00:08:05,100 --> 00:08:08,380
+but nowadays I think vast majority of problems
+
+118
+00:08:08,380 --> 00:08:13,380
+are Array Jobs or like vast majority of parallelism
+
+119
+00:08:14,500 --> 00:08:17,140
+is nowadays Array Jobs or shared memory,
+
+120
+00:08:17,140 --> 00:08:21,680
+but in the big clusters, the MPI is still a very big thing.
+
+121
+00:08:21,680 --> 00:08:22,820
+Right, yeah.
+
+122
+00:08:22,820 --> 00:08:26,240
+Okay, so should we get started with Array Jobs then?
+
+123
+00:08:26,240 --> 00:08:27,080
+Yeah.
+
+124
+00:08:27,080 --> 00:08:32,800
+I'll close this window and let's go pin array jobs.
+
+125
+00:08:32,800 --> 00:08:40,900
+Yes. We're going to be demoing few of the array jobs,
+
+126
+00:08:40,900 --> 00:08:43,080
+and we're going to contrast them
+
+127
+00:08:43,080 --> 00:08:47,420
+with the serial job that we did yesterday.
+
+128
+00:08:47,420 --> 00:08:53,540
+If you didn't manage to do it yesterday or if you weren't here,
+
+129
+00:08:53,540 --> 00:08:58,820
+There's instructions in the notes on how you can bring yourself up to speed.
+
+130
+00:08:58,820 --> 00:09:04,420
+So basically how you can download the example data set and the examples repository.
+
+131
+00:09:04,420 --> 00:09:11,260
+And there's an example like solution script for the CDL job script, so that we can like
+
+132
+00:09:11,260 --> 00:09:13,620
+then compare the results.
+
+133
+00:09:13,620 --> 00:09:14,620
+Yeah.
+
+134
+00:09:14,620 --> 00:09:15,620
+Okay.
+
+135
+00:09:15,620 --> 00:09:21,780
+So, since I didn't do the typing yesterday, I've set up where I've walked into the cluster
+
+136
+00:09:21,780 --> 00:09:26,240
+and I've copied the data to my personal work directory
+
+137
+00:09:26,240 --> 00:09:29,560
+in a Gutenberg Fiction folder, just like before.
+
+138
+00:09:29,560 --> 00:09:33,120
+So hopefully, it will be pretty similar to what
+
+139
+00:09:33,120 --> 00:09:36,520
+we did yesterday.
+
+140
+00:09:36,520 --> 00:09:38,840
+We're in a fairly similar place.
+
+141
+00:09:41,840 --> 00:09:44,960
+Yeah, so I guess the first thing I'll do when I've logged in,
+
+142
+00:09:44,960 --> 00:09:46,440
+I want to see where we are.
+
+143
+00:09:46,440 --> 00:09:50,600
+So I type `pwd`, and I'm in my home directory.
+
+144
+00:09:50,600 --> 00:09:54,040
+And I know I need to go to the same place I was yesterday,
+
+145
+00:09:54,040 --> 00:09:57,160
+which is the HPC examples directory. So I'll change there.
+
+146
+00:09:59,160 --> 00:10:04,200
+Yeah. It's always a good idea to go to the work directory whenever you go to the cluster.
+
+147
+00:10:04,200 --> 00:10:09,320
+Yeah. And verify where you are before you start running commands.
+
+148
+00:10:09,320 --> 00:10:12,280
+Yeah. It's a small but important thing.
+
+149
+00:10:12,280 --> 00:10:14,520
+OK, so here we are.
+
+150
+00:10:14,520 --> 00:10:21,080
+So do we have the do you have the previous script there?
+
+151
+00:10:21,080 --> 00:10:22,080
+The previous?
+
+152
+00:10:22,080 --> 00:10:23,080
+No.
+
+153
+00:10:23,080 --> 00:10:24,080
+Maybe let's go over.
+
+154
+00:10:24,080 --> 00:10:25,080
+Well, let's.
+
+155
+00:10:25,080 --> 00:10:26,080
+Well, then.
+
+156
+00:10:26,080 --> 00:10:27,080
+Yeah, let's.
+
+157
+00:10:27,080 --> 00:10:28,080
+We can.
+
+158
+00:10:28,080 --> 00:10:29,840
+I can copy it from the notes here.
+
+159
+00:10:29,840 --> 00:10:30,840
+If you'd like.
+
+160
+00:10:30,840 --> 00:10:31,840
+Yeah, let's.
+
+161
+00:10:31,840 --> 00:10:33,320
+Yeah, let's do that.
+
+162
+00:10:33,320 --> 00:10:35,640
+So nano.
+
+163
+00:10:35,640 --> 00:10:36,640
+What was it called?
+
+164
+00:10:36,640 --> 00:10:39,640
+count-ngrams-2.sh
+
+165
+00:10:39,640 --> 00:10:40,640
+Yes.
+
+166
+00:10:40,640 --> 00:10:43,840
+Yes. And I'll just put it in this directory, I guess.
+
+167
+00:10:44,720 --> 00:10:49,120
+So, do you want to remind us what these things are as I type them?
+
+168
+00:10:49,120 --> 00:10:58,640
+Yes. So, there's the first line is the is the shebang or that tells which like it's the magic
+
+169
+00:10:58,640 --> 00:11:07,280
+that runs everything with the terminal. I think our pictures are a bit cutting off the terminals.
+
+170
+00:11:07,280 --> 00:11:18,400
+Yes, and then we need to tell the queue system what were the requirements that we want, what
+
+171
+00:11:18,400 --> 00:11:25,960
+memory we want, what time we want, and then we need to tell what we want to actually run.
+
+172
+00:11:25,960 --> 00:11:28,000
+In this case, it was the n-grams.
+
+173
+00:11:28,000 --> 00:11:39,780
+We took the two grams, so every two-word pair, and we wanted to get those calculated.
+
+174
+00:11:39,780 --> 00:11:53,600
+And we gave it the folder of where we had the dataset downloaded and part of the dataset
+
+175
+00:11:53,600 --> 00:11:57,000
+that we wanted to analyze.
+
+176
+00:11:57,000 --> 00:12:03,520
+And you can use, [name] is using this backslash syntax.
+
+177
+00:12:03,520 --> 00:12:09,120
+So if you put, as the last character, you put this backslash, you can continue from
+
+178
+00:12:09,120 --> 00:12:10,120
+the next line.
+
+179
+00:12:10,120 --> 00:12:17,000
+So basically, it means that just continue, combine these together so that you can fit
+
+180
+00:12:17,000 --> 00:12:20,480
+more stuff into the, without wrapping.
+
+181
+00:12:20,480 --> 00:12:23,840
+And make sure it's the very last line.
+
+182
+00:12:23,840 --> 00:12:26,840
+Should I run this just to make sure that it actually works?
+
+183
+00:12:26,840 --> 00:12:27,840
+Yeah, let's do that.
+
+184
+00:12:27,840 --> 00:12:30,840
+So I do Control-X to exit.
+
+185
+00:12:30,840 --> 00:12:33,840
+Y, yes.
+
+186
+00:12:33,840 --> 00:12:35,840
+Yeah.
+
+187
+00:12:35,840 --> 00:12:40,840
+So now [name] is checking that it's in the queue.
+
+188
+00:12:40,840 --> 00:12:42,840
+So it is running.
+
+189
+00:12:42,840 --> 00:12:44,840
+It's the last one over there.
+
+190
+00:12:44,840 --> 00:12:45,840
+Yeah.
+
+191
+00:12:45,840 --> 00:12:50,840
+So it is running, and then it probably finishes quite quickly.
+
+192
+00:12:50,840 --> 00:12:52,840
+Yeah, it takes a minute to run.
+
+193
+00:12:52,840 --> 00:12:59,960
+But now the question is that, okay, like this is quite a simple program, but let's imagine
+
+194
+00:12:59,960 --> 00:13:02,720
+that our data would be a lot bigger.
+
+195
+00:13:02,720 --> 00:13:08,500
+So let's imagine that we would have a lot bigger of a data set.
+
+196
+00:13:08,500 --> 00:13:16,980
+So in that case, we might want to do these calculations of these n-grams in, or like
+
+197
+00:13:16,980 --> 00:13:20,200
+we would want to do it in pieces, right?
+
+198
+00:13:20,200 --> 00:13:25,000
+Like, we don't necessarily want to have one job that does everything.
+
+199
+00:13:25,000 --> 00:13:32,760
+We could do it so that, like, every job, like, we could split it up, the program, so that
+
+200
+00:13:32,760 --> 00:13:41,720
+every, we could split it up to, let's say, ten programs, that each program would do
+
+201
+00:13:41,720 --> 00:13:45,040
+one-tenth of the analysis.
+
+202
+00:13:45,040 --> 00:13:49,560
+So are you roughly saying we have 100 books in this sample data?
+
+203
+00:13:49,560 --> 00:13:56,080
+So we'll have one program do 10 books, the next do 10 more books, and so on.
+
+204
+00:13:56,080 --> 00:14:01,780
+We can run 10 things at the same time, and then I guess that means we get 10 different
+
+205
+00:14:01,780 --> 00:14:02,780
+output files?
+
+206
+00:14:02,780 --> 00:14:03,780
+Yes.
+
+207
+00:14:03,780 --> 00:14:04,780
+That have to be combined?
+
+208
+00:14:04,780 --> 00:14:09,240
+But it can in theory run 10 times as fast.
+
+209
+00:14:09,240 --> 00:14:10,240
+Yes.
+
+210
+00:14:10,240 --> 00:14:13,820
+And that's very, very well put.
+
+211
+00:14:13,820 --> 00:14:21,900
+And for this, we can use like the program, the ngrams program, it supports these start
+
+212
+00:14:21,900 --> 00:14:24,260
+and step functions.
+
+213
+00:14:24,260 --> 00:14:30,320
+So you can decide, you can tell it that, hey, I want you to take every 10th book.
+
+214
+00:14:30,320 --> 00:14:34,100
+I want you to start from a certain number.
+
+215
+00:14:34,100 --> 00:14:37,180
+So we can modify the count ngrams to code.
+
+216
+00:14:37,180 --> 00:14:45,780
+So if we make a copy of it into, let's call it an array, count n-grams, and not the output,
+
+217
+00:14:45,780 --> 00:14:46,780
+but the count n-grams.
+
+218
+00:14:46,780 --> 00:14:47,780
+Oh, yeah, not the output.
+
+219
+00:14:47,780 --> 00:14:48,780
+SH.
+
+220
+00:14:48,780 --> 00:14:49,780
+So this is not good.
+
+221
+00:14:49,780 --> 00:14:50,780
+Oh, yeah.
+
+222
+00:14:50,780 --> 00:14:51,780
+Wait.
+
+223
+00:14:51,780 --> 00:14:52,780
+Yeah, yeah.
+
+224
+00:14:52,780 --> 00:14:53,780
+Yes.
+
+225
+00:14:53,780 --> 00:15:05,340
+So let's modify the code a bit, and let's try to like split it up, split it up the work
+
+226
+00:15:05,340 --> 00:15:09,740
+to multiple workers.
+
+227
+00:15:09,740 --> 00:15:13,420
+So if you look at now the array script.
+
+228
+00:15:13,420 --> 00:15:15,140
+Yeah, OK.
+
+229
+00:15:15,140 --> 00:15:18,260
+So we can do small additions here.
+
+230
+00:15:18,260 --> 00:15:20,540
+Yeah, so we can do small additions here
+
+231
+00:15:20,540 --> 00:15:27,740
+that make it so that we can split it up.
+
+232
+00:15:27,740 --> 00:15:31,780
+So the first important thing about the array thing
+
+233
+00:15:31,780 --> 00:15:34,900
+is that when you want to submit an array job,
+
+234
+00:15:34,900 --> 00:15:46,740
+you add this `sbatch` and then `--array`, and then let's say it's from zero to nine [`--array=0-9`].
+
+235
+00:15:48,260 --> 00:15:53,540
+And what this syntax, this looks a bit interesting, but what this syntax tells
+
+236
+00:15:53,540 --> 00:15:58,260
+the queue system, like the queue system will read this comment and it will recognize that,
+
+237
+00:15:58,260 --> 00:16:03,420
+Hey, the user wants me to create 10 copies basically from zero to nine.
+
+238
+00:16:03,420 --> 00:16:03,700
+Right.
+
+239
+00:16:04,180 --> 00:16:08,340
+And it wants me to create 10 copies of the same job.
+
+240
+00:16:08,980 --> 00:16:12,940
+All of those jobs are independent and all of those get the same requirements.
+
+241
+00:16:12,980 --> 00:16:16,660
+So it's not like additive, you don't get like 10 gigabytes, so you don't need
+
+242
+00:16:16,660 --> 00:16:19,660
+to modify the requirements in a way.
+
+243
+00:16:19,660 --> 00:16:24,380
+Of course, like in this case, like, like some of, like if we split up a big
+
+244
+00:16:24,380 --> 00:16:31,980
+program. Each of those might have less requirements to do, but that's not necessarily
+
+245
+00:16:31,980 --> 00:16:34,700
+something we need to think about. We're not thinking about that now.
+
+246
+00:16:36,220 --> 00:16:41,580
+Basically, we're running 10 identical copies here, but if we don't do any modifications to the
+
+247
+00:16:41,580 --> 00:16:47,980
+running part of the code, like the Python call, we are going to be running the same thing 10 times,
+
+248
+00:16:47,980 --> 00:16:54,860
+and that's no fun. That's a waste of resources. Hopefully it's exactly the same ten times. Yes.
+
+249
+00:16:56,460 --> 00:17:03,580
+But instead what we can do is we can like this program supports a different starting point.
+
+250
+00:17:03,580 --> 00:17:10,780
+So we can use a different starting point for like which book we want to analyze.
+
+251
+00:17:10,780 --> 00:17:22,500
+So, if we add here, that's the start, and then we put there a magical environment variable.
+
+252
+00:17:22,500 --> 00:17:27,980
+So, in Terminal, you can have these environment variables that are like something that will
+
+253
+00:17:27,980 --> 00:17:28,980
+be filled later.
+
+254
+00:17:28,980 --> 00:17:31,860
+It's just a variable that will be filled later.
+
+255
+00:17:31,860 --> 00:17:39,140
+And for the array, it's called `$SLURM_ARRAY_TASK_ID` with underscores and all capital letters.
+
+256
+00:17:39,140 --> 00:17:41,940
+So it's very important that it's written correctly.
+
+257
+00:17:41,940 --> 00:17:43,540
+Exactly like this, I guess.
+
+258
+00:17:43,540 --> 00:17:44,660
+Yeah, exactly like that.
+
+259
+00:17:44,660 --> 00:17:48,820
+But once you have written it out loud a few times,
+
+260
+00:17:48,820 --> 00:17:55,940
+you will remember it and it will become more natural.
+
+261
+00:17:55,940 --> 00:17:56,740
+And what this...
+
+262
+00:17:56,740 --> 00:17:59,140
+Like for me, even every time I do that,
+
+263
+00:17:59,140 --> 00:18:01,380
+I almost always look at a reference
+
+264
+00:18:01,380 --> 00:18:03,140
+just to make sure I'm spelling it right.
+
+265
+00:18:03,140 --> 00:18:05,940
+So don't be afraid there.
+
+266
+00:18:05,940 --> 00:18:15,060
+Okay, so this means it starts and `$SLURM_ARRAY_TASK_ID` becomes the numbers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+
+267
+00:18:15,060 --> 00:18:28,820
+I guess. Yes. So, when we submit the array job, we will get a number for each of these
+
+268
+00:18:28,820 --> 00:18:37,540
+these array tasks. So, we get a number. So, the number, well, that's a task ID running
+
+269
+00:18:37,540 --> 00:18:44,700
+based on what are the numbers we are giving in the array, like lying over there, the Sbatch
+
+270
+00:18:44,700 --> 00:18:51,420
+array. And each of them gets a different one. So, what we do with those numbers is
+
+271
+00:18:51,420 --> 00:18:58,060
+up to us. And that's the beauty and the complexity of the array jobs, that we can map this number
+
+272
+00:18:58,060 --> 00:19:04,860
+to any sort of like parameter values, we can map it into datasets. You can do whatever you want
+
+273
+00:19:04,860 --> 00:19:10,140
+with this number, as long as you map it to something different for each job. There's many
+
+274
+00:19:10,140 --> 00:19:17,660
+examples in the ArrayJobs tutorial page of different kinds of structures you can use
+
+275
+00:19:17,660 --> 00:19:24,540
+to map this into different things. Yeah, and I guess if the program didn't support the start
+
+276
+00:19:24,540 --> 00:19:29,660
+option, it wouldn't be easy to do this with arrays. You'd have to somehow add it yourself.
+
+277
+00:19:30,780 --> 00:19:36,380
+Yes, quite often you want to implement this sort of functionality in your code. Like,
+
+278
+00:19:36,380 --> 00:19:41,900
+if you know that you are planning on using the code for, let's say, running a hundred different
+
+279
+00:19:41,900 --> 00:19:49,420
+things, you might want to implement in your code functionality where it can take a number and,
+
+280
+00:19:49,420 --> 00:19:55,340
+based on that number do something different. Yeah, but so is there anything else we need to do
+
+281
+00:19:55,340 --> 00:20:01,740
+for this then? So we need to like currently we are setting up a starting point but we are not
+
+282
+00:20:01,740 --> 00:20:09,500
+setting up a stepping like stride. So if we would only have the starting point we would
+
+283
+00:20:09,500 --> 00:20:13,900
+like everyone would start at a different number that but then they would analyze all of the rest
+
+284
+00:20:13,900 --> 00:20:22,940
+as normal. So, we need to set this step over here to be 10. So, everyone takes, or in every 10th
+
+285
+00:20:22,940 --> 00:20:31,020
+book. So, zero, yeah, like Riks is writing, we get numbers like that. And then 1, 11.
+
+286
+00:20:31,020 --> 00:20:41,980
+1, 11, 21, and so forth, 91, I guess.
+
+287
+00:20:41,980 --> 00:20:42,500
+Yes.
+
+288
+00:20:42,500 --> 00:20:45,460
+And this, so when we made this program,
+
+289
+00:20:45,460 --> 00:20:48,780
+this is basically like the Python array slicing.
+
+290
+00:20:48,780 --> 00:20:50,700
+So you give a start and a step.
+
+291
+00:20:50,700 --> 00:20:53,620
+And I think you could also give a stop there.
+
+292
+00:20:53,620 --> 00:20:58,660
+So it's, well, if you know the Python syntax,
+
+293
+00:20:58,660 --> 00:20:59,900
+it looks familiar.
+
+294
+00:20:59,900 --> 00:21:05,120
+If not, well, that doesn't really matter.
+
+295
+00:21:05,120 --> 00:21:12,360
+And yeah, but we could try out submitting this
+
+296
+00:21:12,360 --> 00:21:14,680
+and see what happens.
+
+297
+00:21:14,680 --> 00:21:16,760
+Should we adjust the output?
+
+298
+00:21:16,760 --> 00:21:19,720
+Because it looks like it will be writing.
+
+299
+00:21:19,720 --> 00:21:21,360
+Yes, great point.
+
+300
+00:21:21,360 --> 00:21:22,400
+I almost forgot.
+
+301
+00:21:22,400 --> 00:21:27,440
+So if we wouldn't change the output,
+
+302
+00:21:27,440 --> 00:21:37,440
+everyone would be writing into the same file. So, instead, let's call it `ngrams2` and then
+
+303
+00:21:37,440 --> 00:21:50,440
+then `-array` and then `_$SLURM_ARRAY_TASK_ID` [so `ngrams2-array_$SLURM_ARRAY_TASK_ID`].
+
+304
+00:21:50,440 --> 00:21:59,160
+So now, because all of these programs will run independently, all of them need to have
+
+305
+00:21:59,160 --> 00:22:01,840
+an independent output as well.
+
+306
+00:22:01,840 --> 00:22:05,360
+So yes, we want them to write to different files.
+
+307
+00:22:05,360 --> 00:22:10,840
+And again, the SlurmArrayTaskID will be filled when the code is actually running.
+
+308
+00:22:10,840 --> 00:22:16,400
+So it's based on the array number that it gets.
+
+309
+00:22:16,400 --> 00:22:18,680
+Now I think we are ready.
+
+310
+00:22:18,680 --> 00:22:19,680
+Okay.
+
+311
+00:22:19,680 --> 00:22:20,680
+Yeah.
+
+312
+00:22:20,680 --> 00:22:22,720
+So I exit and save.
+
+313
+00:22:22,720 --> 00:22:24,600
+Do we trust it works?
+
+314
+00:22:24,600 --> 00:22:28,600
+I think it's going to be fine.
+
+315
+00:22:28,600 --> 00:22:29,600
+It looks good to me.
+
+316
+00:22:29,600 --> 00:22:30,600
+So let's hope.
+
+317
+00:22:30,600 --> 00:22:38,920
+Yeah, `sbatch count-ngams-2-array.sh. And if you now look at the queue, what does this queue say?
+
+318
+00:22:40,600 --> 00:22:50,200
+So, we see, yeah, we see that we have now this weird job ID for the job. So, what that means
+
+319
+00:22:52,040 --> 00:23:00,200
+is that, maybe you can try running it again and trying it again with the scheme.
+
+320
+00:23:00,600 --> 00:23:11,600
+But this structure means that we get the same job, but with basically 10 copies of it.
+
+321
+00:23:11,600 --> 00:23:20,920
+And we have only one ID for the whole average.
+
+322
+00:23:20,920 --> 00:23:26,000
+And this makes it easier for the queue system to also understand, okay, now we have the
+
+323
+00:23:26,000 --> 00:23:28,120
+same thing, but 10 times.
+
+324
+00:23:28,120 --> 00:23:31,960
+And now we see like how it looks actually in the queue.
+
+325
+00:23:31,960 --> 00:23:40,640
+So once the resources are, yeah, once the resources are reserved, we get these array
+
+326
+00:23:40,640 --> 00:23:45,400
+jobs running and each one gets a different ID.
+
+327
+00:23:45,400 --> 00:23:50,340
+And you notice that some of them are running in completely different machines, or most
+
+328
+00:23:50,340 --> 00:23:55,560
+of them are running in completely different machines because they are independent, right?
+
+329
+00:23:55,560 --> 00:24:00,840
+all of these are independent and they would be running independently of each other. So let's
+
+330
+00:24:00,840 --> 00:24:08,200
+look at the output. Did it crash or did we get anything in the output files? Oh, there's a lot
+
+331
+00:24:08,200 --> 00:24:17,480
+of output. I see this output is doubled here. Should we look at what should we look at? Let's
+
+332
+00:24:17,480 --> 00:24:23,560
+look at the ngrams output first. Let's verify that it worked correctly. So we get a lot of
+
+333
+00:24:23,560 --> 00:24:35,240
+output over here. Yeah, and it looks 7000. So, that's about one tenth of what was there before,
+
+334
+00:24:35,240 --> 00:24:46,120
+I think. If we look at number one. Sure. Yeah, okay. Yeah. So, what we get is we get independent
+
+335
+00:24:46,120 --> 00:24:52,600
+outputs from all of these, but we also get this slurm outputs as well. And by default, when you have
+
+336
+00:24:52,600 --> 00:25:01,880
+this array structure, you have the slurm, it's called slurm, and then you have the job ID and
+
+337
+00:25:01,880 --> 00:25:08,520
+the array task ID after that. And again, it captures all of the output from each array job.
+
+338
+00:25:08,520 --> 00:25:13,720
+So let's say you need to do some analysis a hundred times, and each one takes an hour or
+
+339
+00:25:13,720 --> 00:25:20,040
+something, and one of them crashes. You can look at the outputs and see that, okay, that one crashed,
+
+340
+00:25:20,040 --> 00:25:24,120
+what was the problem with that one, and then you can figure out that, okay, maybe there's
+
+341
+00:25:24,120 --> 00:25:30,280
+like a corrupted data or something. But each one is independent, and each one gets an independent
+
+342
+00:25:30,280 --> 00:25:40,360
+output. Yeah. Maybe we should almost go to an exercise. Yes. Let's look at one of the outputs,
+
+343
+00:25:40,360 --> 00:25:45,960
+and let's then check the combined data, like what did we actually get what we wanted. So,
+
+344
+00:25:45,960 --> 00:25:49,040
+So if we look at one of the SLAM outputs.
+
+345
+00:25:49,040 --> 00:25:52,240
+The output of 0.
+
+346
+00:25:52,240 --> 00:25:53,960
+It says it found 100 files.
+
+347
+00:25:53,960 --> 00:25:55,960
+It didn't say which files it's processing.
+
+348
+00:25:55,960 --> 00:25:56,560
+Yeah.
+
+349
+00:25:56,560 --> 00:25:59,160
+Yes.
+
+350
+00:25:59,160 --> 00:26:03,360
+But it looks like it ran in about three seconds.
+
+351
+00:26:03,360 --> 00:26:06,800
+So each of these was very fast because now we're
+
+352
+00:26:06,800 --> 00:26:09,320
+splitting it into 10 parts.
+
+353
+00:26:09,320 --> 00:26:14,880
+But let's try combining the data together.
+
+354
+00:26:14,880 --> 00:26:16,920
+How do we do that?
+
+355
+00:26:16,920 --> 00:26:22,760
+So we do it by running combine counts.
+
+356
+00:26:22,760 --> 00:26:23,840
+Yes.
+
+357
+00:26:23,840 --> 00:26:26,200
+I'll run help first, and let's see what it says.
+
+358
+00:26:26,200 --> 00:26:28,320
+Yes.
+
+359
+00:26:28,320 --> 00:26:31,560
+So it needs the output count files,
+
+360
+00:26:31,560 --> 00:26:33,560
+and then it has an output file.
+
+361
+00:26:33,560 --> 00:26:34,060
+Yeah.
+
+362
+00:26:37,160 --> 00:26:38,440
+So we combine counts.
+
+363
+00:26:38,440 --> 00:26:48,440
+And don't worry, we'll post all of the commands that we're going to be running into the notes
+
+364
+00:26:48,440 --> 00:26:53,880
+in a second, so that you can try them out in the exercise.
+
+365
+00:26:53,880 --> 00:26:58,800
+So I guess this is how I'll run it, Python 3, the program name, and I can use an asterisk
+
+366
+00:26:58,800 --> 00:27:06,120
+to glob and capture everything that starts with this, which I know will be the 10 files
+
+367
+00:27:06,120 --> 00:27:07,120
+that are needed.
+
+368
+00:27:07,120 --> 00:27:08,120
+Yes.
+
+369
+00:27:08,120 --> 00:27:09,520
+And then you specify the output.
+
+370
+00:27:09,520 --> 00:27:11,400
+I saved it somewhere.
+
+371
+00:27:11,400 --> 00:27:14,440
+Yeah, you have the out and the ngrams.
+
+372
+00:27:14,440 --> 00:27:16,280
+Yeah, to array out.
+
+373
+00:27:16,280 --> 00:27:19,600
+That looks good.
+
+374
+00:27:19,600 --> 00:27:20,280
+Dot out.
+
+375
+00:27:20,280 --> 00:27:21,480
+Yeah, OK.
+
+376
+00:27:21,480 --> 00:27:22,200
+Dot out.
+
+377
+00:27:28,440 --> 00:27:31,040
+Takes a while to combine them.
+
+378
+00:27:31,040 --> 00:27:31,540
+Yeah.
+
+379
+00:27:31,540 --> 00:27:38,380
+So this is kind of like, yeah, this
+
+380
+00:27:38,380 --> 00:27:41,260
+is the kind of map-reduce kind of situation
+
+381
+00:27:41,260 --> 00:27:45,900
+where we map a lot of map the same functionality
+
+382
+00:27:45,900 --> 00:27:49,340
+onto different data, and then we reduce the results
+
+383
+00:27:49,340 --> 00:27:51,580
+into together.
+
+384
+00:27:51,580 --> 00:27:54,340
+So if you look at the output.
+
+385
+00:27:54,340 --> 00:27:56,580
+I can look.
+
+386
+00:27:56,580 --> 00:28:00,340
+Should we see if it looks the same as the non-array one?
+
+387
+00:28:00,340 --> 00:28:02,140
+So like 62,000.
+
+388
+00:28:02,140 --> 00:28:05,820
+Top number is 62,3.
+
+389
+00:28:05,820 --> 00:28:11,180
+And if we do array ngrams2.out, exactly the same,
+
+390
+00:28:11,180 --> 00:28:13,940
+at least the first number.
+
+391
+00:28:13,940 --> 00:28:17,580
+So this is a bit of, again, like a toy example.
+
+392
+00:28:17,580 --> 00:28:20,980
+But if we would have, let's say, the data would be a lot bigger,
+
+393
+00:28:20,980 --> 00:28:26,180
+then this would really speed up the execution.
+
+394
+00:28:26,180 --> 00:28:28,940
+And to use an imaging example, if we
+
+395
+00:28:28,940 --> 00:28:37,020
+have 100 brain images to process and they each take a few hours to do, we can do them in
+
+396
+00:28:37,660 --> 00:28:46,780
+parallel, even 100 times in parallel. Okay. And now let's go to exercises. So the exercises,
+
+397
+00:28:47,340 --> 00:28:54,780
+we'll post the commands that we just ran into the notes and you can create your own
+
+398
+00:28:54,780 --> 00:29:03,260
+ArrayScript, or you can already start writing it if you feel like doing that. And after that,
+
+399
+00:29:03,820 --> 00:29:13,740
+in the array examples, there are many examples. They use this py example, but there's many
+
+400
+00:29:13,740 --> 00:29:22,940
+examples of different ways you can choose the different array IDs in different ways.
+
+401
+00:29:22,940 --> 00:29:26,420
+And if you have more time, check out a few of those
+
+402
+00:29:26,420 --> 00:29:31,100
+and run a few of those examples and see what they do.
+
+403
+00:29:31,100 --> 00:29:34,020
+But yeah, let's go to the exercises.
+
+404
+00:29:34,020 --> 00:29:38,180
+And should we have about 20 minutes?
+
+405
+00:29:38,180 --> 00:29:41,380
+I guess that will start getting into the lunchtime a little
+
+406
+00:29:41,380 --> 00:29:43,020
+bit.
+
+407
+00:29:43,020 --> 00:29:43,540
+OK.
+
+408
+00:29:43,540 --> 00:29:47,700
+I guess we can go some people.
+
+409
+00:29:47,700 --> 00:29:52,060
+Or should we just combine the exercises with lunchtime
+
+410
+00:29:52,060 --> 00:29:58,300
+And then people can beat the cues of the places or whatever.
+
+411
+00:29:58,300 --> 00:30:02,140
+Maybe we'll have 50 minutes of exercise,
+
+412
+00:30:02,140 --> 00:30:04,900
+and then we'll talk about a few of the questions,
+
+413
+00:30:04,900 --> 00:30:07,260
+and then we'll return to it after lunch.
+
+414
+00:30:07,260 --> 00:30:08,140
+OK.
+
+415
+00:30:08,140 --> 00:30:12,100
+So 40, no, 50.
+
+416
+00:30:12,100 --> 00:30:14,100
+Well, yeah.
+
+417
+00:30:14,100 --> 00:30:16,020
+Let's go 55.
+
+418
+00:30:16,020 --> 00:30:17,420
+55, yeah.
+
+419
+00:30:17,420 --> 00:30:20,060
+And you can try some Ask Questions,
+
+420
+00:30:20,060 --> 00:30:22,140
+And there's more time during the lunch break.
+
+421
+00:30:22,140 --> 00:30:23,820
+So yeah.
+
+422
+00:30:23,820 --> 00:30:24,580
+OK.
+
+423
+00:30:24,580 --> 00:30:27,900
+And the task of people will be to do basically
+
+424
+00:30:27,900 --> 00:30:30,820
+what we've done here.
+
+425
+00:30:30,820 --> 00:30:31,340
+Yeah.
+
+426
+00:30:31,340 --> 00:30:32,420
+Is that the case?
+
+427
+00:30:32,420 --> 00:30:32,940
+OK.
+
+428
+00:30:32,940 --> 00:30:36,500
+And I think [name] will be pasting in commands and more detailed
+
+429
+00:30:36,500 --> 00:30:39,180
+instructions to the notes.
+
+430
+00:30:39,180 --> 00:30:40,660
+OK, great.
+
+431
+00:30:40,660 --> 00:30:47,660
+So see you in about 11 or 12 minutes.
+
+432
+00:30:47,660 --> 00:30:48,740
+OK, bye.
+
+433
+00:30:48,740 --> 00:30:50,100
+Yep. Bye.
+
+434
+00:30:51,000 --> 00:30:54,740
+Hello, we are back.
+
+435
+00:30:54,740 --> 00:31:04,140
+So, our plan now, I believe, is to go over some of the questions and stuff and then we
+
+436
+00:31:04,140 --> 00:31:08,780
+go to the lunch break and we can do one more array example after lunch.
+
+437
+00:31:08,780 --> 00:31:20,780
+So, which questions were most relevant here? There's some on best practices, like, oh,
+
+438
+00:31:20,780 --> 00:31:24,940
+Oh, yes, please, even for a reference or a future,
+
+439
+00:31:24,940 --> 00:31:27,980
+please let us know if you did the exercise,
+
+440
+00:31:27,980 --> 00:31:32,300
+weren't trying, or had some problems,
+
+441
+00:31:32,300 --> 00:31:35,900
+because this will help us plan for future years.
+
+442
+00:31:35,900 --> 00:31:39,900
+So yeah, so this is a good question here.
+
+443
+00:31:39,900 --> 00:31:46,060
+So if someone goes and makes an array job,
+
+444
+00:31:46,060 --> 00:31:50,760
+Like you run 1 million array jobs that each take 10 seconds.
+
+445
+00:31:50,760 --> 00:31:53,520
+That's not a very good thing, because it's
+
+446
+00:31:53,520 --> 00:31:56,080
+a lot of scheduling overhead to constantly be
+
+447
+00:31:56,080 --> 00:31:59,560
+finding these spaces, planning it, running it, stopping it,
+
+448
+00:31:59,560 --> 00:32:01,040
+and restarting it.
+
+449
+00:32:01,040 --> 00:32:03,400
+So that's sort of an extreme example.
+
+450
+00:32:03,400 --> 00:32:06,080
+But what's our rule of thumb?
+
+451
+00:32:06,080 --> 00:32:09,840
+Try to make the jobs at least 15 minutes, but if it can be longer.
+
+452
+00:32:09,840 --> 00:32:13,320
+Yeah, like usually we talk about half an hour or an hour
+
+453
+00:32:13,320 --> 00:32:14,240
+is better.
+
+454
+00:32:14,240 --> 00:32:18,560
+But yeah, it depends how in a hurry are you.
+
+455
+00:32:18,560 --> 00:32:22,560
+If you want to get most done, you usually want it to be, let's say, an hour.
+
+456
+00:32:22,560 --> 00:32:26,240
+If you want the results now, less than 15 minutes is fine.
+
+457
+00:32:26,240 --> 00:32:31,840
+But if you do, let's say, 100 jobs in less than 15 minutes, that's going to...
+
+458
+00:32:32,560 --> 00:32:36,720
+At some point, somebody will send you a mail of like, why like this?
+
+459
+00:32:37,280 --> 00:32:40,240
+Because it's not good for the queue.
+
+460
+00:32:40,240 --> 00:32:48,920
+The queue system doesn't like if there's a huge number of jobs happening that are very
+
+461
+00:32:48,920 --> 00:32:49,920
+small.
+
+462
+00:32:49,920 --> 00:32:52,840
+It doesn't usually like that.
+
+463
+00:32:52,840 --> 00:32:58,880
+And there was also a question in the chat, why not just use a bash script that submits
+
+464
+00:32:58,880 --> 00:33:01,680
+jobs or something like that.
+
+465
+00:33:01,680 --> 00:33:08,560
+And the reason behind that is the array structure is much better handled by the queue.
+
+466
+00:33:08,560 --> 00:33:15,440
+been designed for this sort of workflow. If you have a bash script that just submits stuff,
+
+467
+00:33:15,440 --> 00:33:22,320
+then each of these are independent and the queue cannot reuse the same information it gets from
+
+468
+00:33:22,320 --> 00:33:29,200
+all of the array types. So, it's not as good. So, please use the array structure instead.
+
+469
+00:33:29,200 --> 00:33:36,480
+And a good benefit with the array structure is that it's reproducible because you then know what
+
+470
+00:33:36,480 --> 00:33:41,040
+is the mapping between the array indices and the different things. And it's very easy to then look
+
+471
+00:33:41,040 --> 00:33:47,920
+at it later on and see that, okay, I run it with these array indices, so I get these results.
+
+472
+00:33:49,280 --> 00:33:50,480
+And there was also a question...
+
+473
+00:33:50,480 --> 00:33:53,520
+One of them fails, they don't all fail or something.
+
+474
+00:33:53,520 --> 00:33:59,760
+Yeah, yeah. There's also questions of more complex parameters. So after the lunch,
+
+475
+00:33:59,760 --> 00:34:06,000
+we'll talk about an example of how you can map out different combinations of
+
+476
+00:34:06,000 --> 00:34:14,000
+parameters. If you have multiple parameters you want to do, you can use array to map to those.
+
+477
+00:34:15,200 --> 00:34:21,200
+You can map one number to multiple things. That's possible. And if you have a situation
+
+478
+00:34:21,200 --> 00:34:27,680
+where you have very small things that you need to do a lot, what you can do is you can have an
+
+479
+00:34:27,680 --> 00:34:35,840
+array job where inside each job you have a for loop that does 10 things or 20 things. If you
+
+480
+00:34:35,840 --> 00:34:41,400
+If you have something that only takes 10 seconds, but you need to do it like 100,000 times,
+
+481
+00:34:41,400 --> 00:34:48,520
+you can split it up so that you have, let's say, 10,000 or 1,000 10-second things running
+
+482
+00:34:48,520 --> 00:34:51,040
+in each average job.
+
+483
+00:34:51,040 --> 00:34:57,920
+And then you can set up what is the run time, basically how many iterations you want inside
+
+484
+00:34:57,920 --> 00:34:59,640
+one job.
+
+485
+00:34:59,640 --> 00:35:04,640
+But usually it's this kind of like, okay, you can think of it a bit like you can have
+
+486
+00:35:04,640 --> 00:35:12,480
+either like a really thin rectangle with the same surface area as like a very wide one.
+
+487
+00:35:12,480 --> 00:35:18,880
+And as long as you keep the number of things that aren't needed to be done the same, you
+
+488
+00:35:18,880 --> 00:35:25,880
+can rearrange it in a way that you can do it in like, you can do a small number of jobs
+
+489
+00:35:25,880 --> 00:35:30,680
+that do a lot of things, or you can have a large number of jobs that do a few things.
+
+490
+00:35:31,720 --> 00:35:37,000
+Yeah. So I guess most of the people asking these questions, like, can I do x with array jobs,
+
+491
+00:35:37,000 --> 00:35:45,240
+the answer is always yes, if you write the code, whether it's in Python or Shell or whatever else,
+
+492
+00:35:45,240 --> 00:35:52,600
+to do the splitting up, and if it doesn't make it too short. And this is why we have other courses
+
+493
+00:35:52,600 --> 00:35:57,560
+on shell scripting and stuff like that. Knowing a little bit of bash can save you a lot of time
+
+494
+00:35:58,200 --> 00:36:05,400
+doing other stuff. Yeah, and if you have problems figuring out, okay, that's my program. Can I
+
+495
+00:36:05,400 --> 00:36:11,320
+split it up? How do I split it up? What would be the best way? Again, asking for help is a
+
+496
+00:36:11,320 --> 00:36:17,880
+good thing because for different projects, you might have a different thing you want to split
+
+497
+00:36:17,880 --> 00:36:30,760
+it up by, and all tasks are individual. So it depends on the task at hand. How do you want to
+
+498
+00:36:30,760 --> 00:36:36,760
+split it up? But yeah, maybe we should go. Anyway, I guess it's lunchtime. So should we
+
+499
+00:36:39,160 --> 00:36:45,480
+head there? See you in an hour.
+
+500
+00:36:47,880 --> 00:36:49,380
+Yeah, and when we come back, we'll
+
+501
+00:36:49,380 --> 00:36:52,740
+talk a bit more about arrays, about more complex array
+
+502
+00:36:52,740 --> 00:36:57,460
+things, and then we'll jump into applications and other things
+
+503
+00:36:57,460 --> 00:37:02,100
+in the cluster, monitoring jobs and that sort of stuff.
+
+504
+00:37:02,100 --> 00:37:06,740
+So a little example and some more philosophical stuff
+
+505
+00:37:06,740 --> 00:37:08,500
+before parallel.
+
+506
+00:37:08,500 --> 00:37:09,060
+OK.
+
+507
+00:37:09,060 --> 00:37:10,420
+Yeah.
+
+508
+00:37:10,420 --> 00:37:11,780
+Great.
+
+509
+00:37:11,780 --> 00:37:14,060
+As always, you can keep asking questions.
+
+510
+00:37:14,060 --> 00:37:17,740
+So talk to you later then.
+
+511
+00:37:17,880 --> 00:37:19,880
+Bye
+
+512
+00:37:20,000 --> 00:37:27,000
+Hello, are we back?
+
+513
+00:37:27,000 --> 00:37:30,240
+I think so.
+
+514
+00:37:30,240 --> 00:37:32,680
+I hope you had a good lunch break.
+
+515
+00:37:32,680 --> 00:37:36,080
+I think we did here.
+
+516
+00:37:36,080 --> 00:37:37,440
+So what comes next?
+
+517
+00:37:37,440 --> 00:37:42,880
+So my understanding, we have another quick demo
+
+518
+00:37:42,880 --> 00:37:47,800
+of Array Jobs, and we talk about monitoring and applications.
+
+519
+00:37:47,800 --> 00:37:54,120
+Any other notes and stuff to review from, or questions from the notes to review?
+
+520
+00:37:56,040 --> 00:38:03,320
+I think, yeah, there's plenty of good discussion there. And I recommend reading up on it later on
+
+521
+00:38:03,320 --> 00:38:10,040
+if you feel like it. But I think we can move forward. And let's do, like, many of the topics
+
+522
+00:38:10,040 --> 00:38:15,960
+in there touched the subject of, okay, what is, like, what can you do with the array jobs? And
+
+523
+00:38:15,960 --> 00:38:21,720
+Let's look at one of the more complex examples. Let's run one of these from the
+
+524
+00:38:22,760 --> 00:38:32,520
+examples in the course material. [name], if you want to run the case example.
+
+525
+00:38:32,520 --> 00:38:47,320
+Yes. So, what do I type? So, this is a new thing. This is with calculating pi.
+
+526
+00:38:48,680 --> 00:38:54,600
+So, in the parallel part, when we are going to switch into another example, which is much more
+
+527
+00:38:54,600 --> 00:39:00,760
+like computational example, and it was already mentioned in the beginning of the day, and it's
+
+528
+00:39:00,760 --> 00:39:07,480
+a bit of a toy example, where it calculates or estimates the number of Pi using a stochastic
+
+529
+00:39:08,120 --> 00:39:14,760
+test. Basically, it's like throwing a dart at a dartboard and whether it hits the dartboard,
+
+530
+00:39:14,760 --> 00:39:25,160
+it will calculate how many hits do you get and estimate Pi by that. It's very like a toy model,
+
+531
+00:39:25,160 --> 00:39:33,160
+but it's very easy to pack analyze for multiple CPUs and stuff like that, or relatively easy to
+
+532
+00:39:34,200 --> 00:39:43,480
+optimize for that. And here I see we have five array tasks, 0, 1, 2, 3, 4, 5.
+
+533
+00:39:44,840 --> 00:39:53,960
+Yes. And for that, we want to test out a different kind of way of
+
+534
+00:39:55,160 --> 00:39:58,280
+of choosing the parameters.
+
+535
+00:39:58,280 --> 00:40:02,680
+In this case, we might want to choose a seed number
+
+536
+00:40:02,680 --> 00:40:06,760
+for the random process that we're going to be doing,
+
+537
+00:40:06,760 --> 00:40:11,000
+so we can decide which number we want to use.
+
+538
+00:40:11,000 --> 00:40:16,200
+And in Bash, it's a whole programming language,
+
+539
+00:40:16,200 --> 00:40:18,840
+the terminal, so you can do, for example,
+
+540
+00:40:18,840 --> 00:40:23,080
+this case statement that [name] has written.
+
+541
+00:40:23,080 --> 00:40:29,160
+So, basically, based on the number of the Slurm array – it's mistyped, actually.
+
+542
+00:40:31,480 --> 00:40:36,280
+So, based on the number in the Slurm array task ID,
+
+543
+00:40:38,600 --> 00:40:45,960
+a different value will be set to this variable seed. So, let's say you want to test different
+
+544
+00:40:45,960 --> 00:40:51,920
+If a parameter is out, it's very easy to test it with this kind of like a syntax.
+
+545
+00:40:51,920 --> 00:40:55,660
+Then there's more complex syntax that you can use in the other examples.
+
+546
+00:40:55,660 --> 00:40:59,940
+You can take the parameters from a file or you can do all sorts of things.
+
+547
+00:40:59,940 --> 00:41:04,580
+But this is like very easy way of testing out.
+
+548
+00:41:04,580 --> 00:41:06,300
+So over here, we try...
+
+549
+00:41:06,300 --> 00:41:10,500
+So I guess, yeah, there's the seed.
+
+550
+00:41:10,500 --> 00:41:11,500
+Yes.
+
+551
+00:41:11,500 --> 00:41:16,500
+we try out what we get from the slurm/pi.py.
+
+552
+00:41:17,360 --> 00:41:21,440
+And you notice also in the #SBATCH statement,
+
+553
+00:41:21,440 --> 00:41:24,240
+we have changed the output file name
+
+554
+00:41:24,240 --> 00:41:27,500
+of where the output of the,
+
+555
+00:41:30,840 --> 00:41:33,800
+up in the top, like in the #SBATCH statements,
+
+556
+00:41:33,800 --> 00:41:35,920
+we have changed the output file name.
+
+557
+00:41:35,920 --> 00:41:38,040
+And you can use these test wildcards.
+
+558
+00:41:38,040 --> 00:41:48,440
+are documented in the documentation sections. You can use this %a to denote the Slurm Array Task ID.
+
+559
+00:41:48,440 --> 00:41:54,760
+So, if you want to create your own output file for the Slurm output, then you can use this
+
+560
+00:41:54,760 --> 00:41:58,600
+sort of a syntax for that. But let's... I guess everything's configurable.
+
+561
+00:41:59,320 --> 00:42:06,040
+Yeah. Okay. So, what this will do is that it will do two and a half million iterations
+
+562
+00:42:06,040 --> 00:42:13,880
+slurms with different seed values, and it will print out the outputs into pi underscore
+
+563
+00:42:13,880 --> 00:42:21,040
+and the seed number, and then it will print out the slurm outputs into the pi array hardcoded
+
+564
+00:42:21,040 --> 00:42:24,400
+with the array index. So, let's try it out.
+
+565
+00:42:24,400 --> 00:42:27,920
+Exit, save, yes.
+
+566
+00:42:27,920 --> 00:42:35,200
+And there's, like I said, there's multiple of these different things that, different
+
+567
+00:42:35,200 --> 00:42:39,880
+ways that you can do this array kind of like expansion.
+
+568
+00:42:39,880 --> 00:42:45,360
+So first, I make sure I'm where I expect to be after the break.
+
+569
+00:42:49,360 --> 00:42:52,400
+pi-array.sh.
+
+570
+00:42:52,400 --> 00:42:55,920
+If we do `slurm queue`, it's already running.
+
+571
+00:42:55,920 --> 00:42:58,800
+So four things.
+
+572
+00:42:58,800 --> 00:42:59,600
+And it's done.
+
+573
+00:42:59,600 --> 00:43:01,840
+If you want to look at one of the outputs and.
+
+574
+00:43:01,840 --> 00:43:07,520
+Okay, now this is a lot of files here.
+
+575
+00:43:07,520 --> 00:43:08,520
+Yeah.
+
+576
+00:43:08,520 --> 00:43:09,520
+So, what are the new ones?
+
+577
+00:43:09,520 --> 00:43:10,520
+The pyarray hardcode.
+
+578
+00:43:10,520 --> 00:43:11,520
+These are the output files.
+
+579
+00:43:11,520 --> 00:43:12,520
+Yeah.
+
+580
+00:43:12,520 --> 00:43:16,120
+Should we look at the first one?
+
+581
+00:43:16,120 --> 00:43:17,120
+Yeah.
+
+582
+00:43:17,120 --> 00:43:24,360
+So, this is the output that the code, yeah, what the code runs.
+
+583
+00:43:24,360 --> 00:43:31,440
+But the actual output of the code is going into the py underscore and then.
+
+584
+00:43:31,440 --> 00:43:32,640
+1, 2, 3.
+
+585
+00:43:32,640 --> 00:43:39,120
+OK, yeah, and it's a JSON structure that says stuff.
+
+586
+00:43:39,120 --> 00:43:40,760
+So I guess this is a way where if you
+
+587
+00:43:40,760 --> 00:43:43,840
+have different file names that aren't predictably named,
+
+588
+00:43:43,840 --> 00:43:48,080
+you can sort of hard code what the inputs are
+
+589
+00:43:48,080 --> 00:43:52,280
+or what the hyperparameters are or whatever like that.
+
+590
+00:43:52,280 --> 00:43:54,040
+Yeah, and there's a lot of flexibility
+
+591
+00:43:54,040 --> 00:43:56,720
+in the array chops for this.
+
+592
+00:43:56,720 --> 00:44:00,640
+But OK, I think you probably get the idea that you can
+
+593
+00:44:00,640 --> 00:44:01,800
+Yeah.
+
+594
+00:44:01,800 --> 00:44:06,280
+You can check this out later.
+
+595
+00:44:06,280 --> 00:44:08,040
+We'll check out the different examples.
+
+596
+00:44:08,040 --> 00:44:10,640
+So maybe we should jump into the next section,
+
+597
+00:44:10,640 --> 00:44:12,000
+which is about monitoring.
+
