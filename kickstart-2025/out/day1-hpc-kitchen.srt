@@ -1,0 +1,672 @@
+1
+00:00:00,000 --> 00:00:01,660
+All making tons of heat.
+
+2
+00:00:01,660 --> 00:00:05,340
+OK, here we are.
+
+3
+00:00:05,340 --> 00:00:11,020
+So we're talking about parallel computing in the kitchen.
+
+4
+00:00:11,020 --> 00:00:13,140
+So this is sort of a metaphor we've
+
+5
+00:00:13,140 --> 00:00:18,580
+been developing to make, oh, you need to see me.
+
+6
+00:00:18,580 --> 00:00:29,840
+Yeah, this is a metaphor we've been developing, because oftentimes people will come to our
+
+7
+00:00:29,840 --> 00:00:35,660
+courses and expect to start using the cluster and think, ah, well, this is a supercomputer,
+
+8
+00:00:35,660 --> 00:00:44,280
+so everything must be super fast. Well, actually, it doesn't quite work that way. It's a bit
+
+9
+00:00:44,280 --> 00:00:53,000
+more subtle than that. So after many years of working here, we've sort of found a way to explain
+
+10
+00:00:53,000 --> 00:01:00,840
+it using a kitchen. And if you look at the video playlist that's here, you see one of us basically
+
+11
+00:01:00,840 --> 00:01:07,080
+going to the kitchen and pointing to different things and explaining how this is a computer.
+
+12
+00:01:07,880 --> 00:01:11,400
+But we don't have time to watch all that. Hopefully you could watch before or will
+
+13
+00:01:11,400 --> 00:01:16,160
+a watch later, but let's just summarize it a little bit.
+
+14
+00:01:16,160 --> 00:01:19,320
+So first off, what is a computer?
+
+15
+00:01:19,320 --> 00:01:21,160
+What do all the parts do?
+
+16
+00:01:21,160 --> 00:01:22,800
+This is why we're here right now,
+
+17
+00:01:22,800 --> 00:01:24,960
+to explain what these are.
+
+18
+00:01:24,960 --> 00:01:35,200
+So on the left side is a blade server from a server computer.
+
+19
+00:01:35,200 --> 00:01:38,000
+This is probably part of the old Triton.
+
+20
+00:01:38,000 --> 00:01:42,720
+And on the left side is a desktop computer
+
+21
+00:01:42,720 --> 00:01:45,440
+that has what looks like four GPUs in there.
+
+22
+00:01:45,440 --> 00:01:48,080
+So how do these compare?
+
+23
+00:01:48,080 --> 00:01:52,280
+They're actually more similar than you think.
+
+24
+00:01:52,280 --> 00:01:55,240
+So in this metaphor, what are the different parts
+
+25
+00:01:55,240 --> 00:01:57,800
+of a computer?
+
+26
+00:01:57,800 --> 00:02:04,000
+So first off, there's the, well, in the metaphor,
+
+27
+00:02:04,000 --> 00:02:07,960
+I take the stoves to be the different computer cores.
+
+28
+00:02:07,960 --> 00:02:10,960
+So the stove is where you actually do the computing
+
+29
+00:02:10,960 --> 00:02:12,520
+and you cook stuff.
+
+30
+00:02:12,520 --> 00:02:15,720
+The processor has multiple cores inside of it.
+
+31
+00:02:15,720 --> 00:02:19,600
+So these days, four is a pretty typical number
+
+32
+00:02:19,600 --> 00:02:23,040
+for processors for cores in a processor
+
+33
+00:02:23,040 --> 00:02:26,640
+of a general purpose computer.
+
+34
+00:02:26,640 --> 00:02:29,920
+The people doing the cooking are the processes.
+
+35
+00:02:29,920 --> 00:02:31,960
+So basically, you need some code that's
+
+36
+00:02:31,960 --> 00:02:36,920
+running to actually use the processors and do things.
+
+37
+00:02:36,920 --> 00:02:40,920
+The memory is the counter space, so basically where
+
+38
+00:02:40,920 --> 00:02:45,200
+you can leave all the stuff lying around
+
+39
+00:02:45,200 --> 00:02:47,840
+and things that happen.
+
+40
+00:02:47,840 --> 00:02:50,960
+The food you're cooking is the data.
+
+41
+00:02:50,960 --> 00:02:53,200
+And you have to do things like move the data
+
+42
+00:02:53,200 --> 00:02:55,400
+from the refrigerator first to the counter,
+
+43
+00:02:55,400 --> 00:03:00,440
+and then prepare it, and then copy it into the pot
+
+44
+00:03:00,440 --> 00:03:04,520
+on the stove to do the actual cooking.
+
+45
+00:03:04,520 --> 00:03:08,360
+recipes, or programs, and so on.
+
+46
+00:03:08,360 --> 00:03:10,240
+So this is the main point here.
+
+47
+00:03:10,240 --> 00:03:15,120
+So is a cluster faster than your own computer?
+
+48
+00:03:15,120 --> 00:03:17,840
+So here I have, on the left side,
+
+49
+00:03:17,840 --> 00:03:23,320
+a about 1.8 kilowatt induction countertop cooker.
+
+50
+00:03:23,320 --> 00:03:27,040
+And on the right side, my stove.
+
+51
+00:03:27,040 --> 00:03:32,200
+So does the stove let you cook something like pasta
+
+52
+00:03:32,200 --> 00:03:37,320
+faster than this induction cooker?
+
+53
+00:03:37,320 --> 00:03:39,840
+And the answer is probably not.
+
+54
+00:03:39,840 --> 00:03:44,880
+Their power output is really quite comparable.
+
+55
+00:03:44,880 --> 00:03:50,460
+So it might be a little bit faster, but really not much.
+
+56
+00:03:50,460 --> 00:03:51,800
+So why do people use the stove?
+
+57
+00:03:51,800 --> 00:03:53,160
+Can even be slower, I would say.
+
+58
+00:03:53,160 --> 00:03:54,200
+Yeah.
+
+59
+00:03:54,200 --> 00:03:55,200
+Yeah.
+
+60
+00:03:55,200 --> 00:03:56,680
+So why do people use the stove?
+
+61
+00:03:56,680 --> 00:04:00,820
+So actually, recently, a few months ago,
+
+62
+00:04:00,820 --> 00:04:04,180
+I had a friend that their stove broke.
+
+63
+00:04:04,180 --> 00:04:08,340
+So they borrowed this induction cooker and were they happy?
+
+64
+00:04:08,340 --> 00:04:09,460
+So they were not happy
+
+65
+00:04:09,460 --> 00:04:12,180
+because they could only cook one thing at once.
+
+66
+00:04:12,180 --> 00:04:15,080
+And that's the main thing here.
+
+67
+00:04:15,080 --> 00:04:18,940
+The supercomputer lets you do a relatively normal thing
+
+68
+00:04:18,940 --> 00:04:21,640
+but many things at the same time.
+
+69
+00:04:23,300 --> 00:04:28,300
+So imagine a factory kitchen that has
+
+70
+00:04:30,820 --> 00:04:34,300
+you know, hundreds or like 10,000 different stove
+
+71
+00:04:34,300 --> 00:04:35,760
+or burners in it,
+
+72
+00:04:36,900 --> 00:04:39,060
+then you can start cooking a lot of stuff.
+
+73
+00:04:40,380 --> 00:04:43,340
+So what else?
+
+74
+00:04:44,380 --> 00:04:46,760
+So it's really important when you're doing your cooking
+
+75
+00:04:46,760 --> 00:04:49,120
+to understand the memory hierarchy.
+
+76
+00:04:50,540 --> 00:04:52,900
+So if the data are ingredients,
+
+77
+00:04:52,900 --> 00:04:56,140
+there's different tiers of storage places you can put that.
+
+78
+00:04:56,140 --> 00:04:59,340
+For example, stuff can start in the fridge.
+
+79
+00:04:59,340 --> 00:05:00,620
+And if when you're cooking,
+
+80
+00:05:00,620 --> 00:05:06,940
+have to go to the fridge to take every single thing you work on, that's pretty slow. But if
+
+81
+00:05:06,940 --> 00:05:12,300
+you take it out of the fridge and put it on your counter close to the stove, then you can do your
+
+82
+00:05:12,300 --> 00:05:24,060
+preparations and stuff a lot faster. And managing this sort of data flow is one of the big things
+
+83
+00:05:24,060 --> 00:05:28,620
+on the cluster. Also on your own computer, but it's sort of too small to really notice.
+
+84
+00:05:30,620 --> 00:05:41,620
+It's also very often that on your own computer you do have a comparatively fast hard disk which a lot of the compute nodes in a cluster just don't have.
+
+85
+00:05:41,620 --> 00:05:54,620
+So there is no local disk that it can quickly access and that essentially means that you need to go to something slower on Tendency or keep it in memory.
+
+86
+00:05:54,620 --> 00:06:00,220
+there are some machines that have local disks but even there you if you want to use it you need to
+
+87
+00:06:00,220 --> 00:06:10,060
+first move this move your data over from the fridge to the local disk kind of yeah
+
+88
+00:06:12,220 --> 00:06:18,220
+let's see is there anything else to talk about maybe i won't go over this um you can read it
+
+89
+00:06:18,220 --> 00:06:26,860
+yourself. But the main point is that it's not that much slower to take something from your fridge
+
+90
+00:06:26,860 --> 00:06:33,980
+as it is from the countertop. But on a computer, the processor cache and main memory is many orders
+
+91
+00:06:33,980 --> 00:06:41,900
+of magnitude slower. The difference there is orders of magnitude. So you really have to start
+
+92
+00:06:41,900 --> 00:06:47,580
+worrying about this. Imagine if every time you needed to get something out of the fridge, it took
+
+93
+00:06:47,580 --> 00:06:51,860
+took you several hours to go grab it.
+
+94
+00:06:51,860 --> 00:06:54,540
+That would really change the way you do the cooking,
+
+95
+00:06:54,540 --> 00:06:58,260
+and you need to do much more planning there.
+
+96
+00:06:58,260 --> 00:07:01,060
+This is one of my favorite pictures.
+
+97
+00:07:01,060 --> 00:07:05,660
+So what happens when you don't have enough CPU or memory?
+
+98
+00:07:05,660 --> 00:07:07,980
+If you don't have enough processor,
+
+99
+00:07:07,980 --> 00:07:10,100
+then stuff is just slower.
+
+100
+00:07:10,100 --> 00:07:11,660
+You cook it a little bit slower.
+
+101
+00:07:11,660 --> 00:07:15,380
+But once you don't have enough memory, you can't do anything,
+
+102
+00:07:15,380 --> 00:07:17,180
+and stuff becomes really slow.
+
+103
+00:07:17,180 --> 00:07:19,820
+And that's why when you get a better kitchen,
+
+104
+00:07:19,820 --> 00:07:22,380
+it's not really more burners you get.
+
+105
+00:07:22,380 --> 00:07:24,220
+It's more counter space.
+
+106
+00:07:24,220 --> 00:07:27,900
+And this is something I wish more people would realize,
+
+107
+00:07:27,900 --> 00:07:30,020
+not mentioning anyone or anything.
+
+108
+00:07:30,020 --> 00:07:34,820
+But yes, so I think let's stop here.
+
+109
+00:07:34,820 --> 00:07:40,820
+Maybe we discuss a little bit before we go to the next part.
+
+110
+00:07:47,180 --> 00:07:53,180
+There. So any questions or comments?
+
+111
+00:07:53,180 --> 00:07:59,180
+Nothing in the slides yet.
+
+112
+00:07:59,180 --> 00:08:03,180
+Or yeah, in the documents yet.
+
+113
+00:08:03,180 --> 00:08:07,180
+One comment that I give is that
+
+114
+00:08:07,180 --> 00:08:11,180
+you might really experience
+
+115
+00:08:11,180 --> 00:08:15,180
+the situation that something runs in a certain time on your local
+
+116
+00:08:15,180 --> 00:08:25,740
+local machine, and it's actually running slower on the cluster, on a single CPU, if it's single
+
+117
+00:08:25,740 --> 00:08:36,140
+CPU. So, most desktop machines are actually pretty fast nowadays, if they are not purely
+
+118
+00:08:36,140 --> 00:08:48,220
+office machines. That's a good point, yes. It's just something I want to mention, to lower
+
+119
+00:08:48,220 --> 00:08:58,860
+expectations as to what the cluster can do again. You can do more things at the same time,
+
+120
+00:08:58,860 --> 00:09:07,580
+you can run the same computation a lot of times at the same time compared to your own desktop.
+
+121
+00:09:08,300 --> 00:09:16,300
+But the computation itself will not be faster. Yeah and that's something I think if you go
+
+122
+00:09:16,300 --> 00:09:20,940
+deeper into the slides you eventually get this and at least I cover it in the videos.
+
+123
+00:09:21,820 --> 00:09:27,660
+So when you start to use a cluster you're not a cook anymore. You're not someone that's making
+
+124
+00:09:27,660 --> 00:09:34,540
+one dish in one kitchen. Instead, you're becoming the manager of all the chefs.
+
+125
+00:09:34,540 --> 00:09:41,100
+You have to take your problem, divide it into something that 10 or 100 or 1,000 people can do
+
+126
+00:09:41,100 --> 00:09:46,620
+at the same time. You make the script to divide up all the data or all the problems so that all
+
+127
+00:09:46,620 --> 00:09:52,140
+these different cooks are working separately and then recombine things together. And that's why
+
+128
+00:09:52,140 --> 00:09:56,220
+why the cluster seems so difficult and interesting.
+
+129
+00:09:56,220 --> 00:09:58,420
+And if you don't need to divide stuff up
+
+130
+00:09:58,420 --> 00:10:01,540
+among lots of people to do it more quickly,
+
+131
+00:10:01,540 --> 00:10:03,660
+then a lot of what we're talking about
+
+132
+00:10:03,660 --> 00:10:06,540
+isn't that important overall.
+
+133
+00:10:06,540 --> 00:10:10,900
+It just sort of, you know, it's OK.
+
+134
+00:10:10,900 --> 00:10:15,860
+But when you do, the cluster saves a lot of time.
+
+135
+00:10:15,860 --> 00:10:17,700
+And one more comment I want to give,
+
+136
+00:10:17,700 --> 00:10:20,580
+because that's also mentioned now in the notes here.
+
+137
+00:10:20,580 --> 00:10:29,100
+But it commonly takes quite a bit of effort to go or to make
+
+138
+00:10:29,100 --> 00:10:34,620
+your code actually use multiple CPUs if the libraries you're
+
+139
+00:10:34,620 --> 00:10:39,100
+using do not, under the hood, already do that.
+
+140
+00:10:39,100 --> 00:10:42,620
+So it's also often a question of,
+
+141
+00:10:42,620 --> 00:10:47,060
+is it really worth it spending the time to make something
+
+142
+00:10:47,060 --> 00:10:54,580
+work in parallel when you could potentially just run it
+
+143
+00:10:54,580 --> 00:10:58,100
+multiple times for smaller problems.
+
+144
+00:10:58,100 --> 00:11:04,580
+So how you divide things can be important as
+
+145
+00:11:04,580 --> 00:11:07,980
+to getting quick and useful results
+
+146
+00:11:07,980 --> 00:11:12,980
+and how much time to invest into certain parts of the code.
+
+147
+00:11:12,980 --> 00:11:15,540
+And on a general principle, if you
+
+148
+00:11:15,540 --> 00:11:23,460
+can divide your problem into smaller parts it's way preferable to trying to actually parallelize
+
+149
+00:11:23,460 --> 00:11:30,900
+in code. So rather run the same thing or the almost same thing 50 times than try to implement
+
+150
+00:11:30,900 --> 00:11:44,820
+that this is now using 50 CPUs. Yeah there's a question about what's a GPU and I just really
+
+151
+00:11:44,820 --> 00:11:50,020
+like this picture I got, not because I eat chickens.
+
+152
+00:11:50,020 --> 00:11:57,060
+But so the CPU, the processor, can do basically,
+
+153
+00:11:57,060 --> 00:11:59,380
+and you can cook anything on the stove.
+
+154
+00:11:59,380 --> 00:12:03,260
+But a GPU is a very specialized cooking appliance.
+
+155
+00:12:03,260 --> 00:12:07,820
+So with this appliance, you can cook one thing.
+
+156
+00:12:07,820 --> 00:12:12,100
+You can do some things in parallel, in high parallel.
+
+157
+00:12:12,100 --> 00:12:13,540
+And very fast.
+
+158
+00:12:13,540 --> 00:12:18,340
+So this, I think, you could cook maybe 20 chickens at the same time on here.
+
+159
+00:12:18,340 --> 00:12:24,180
+But how much pasta can you make with this chicken cooking device?
+
+160
+00:12:24,180 --> 00:12:27,780
+And the answer is basically nothing. It's not designed for it.
+
+161
+00:12:27,780 --> 00:12:34,900
+So if your problem, like the GPU lets you do something in parallel a lot and very fast,
+
+162
+00:12:35,620 --> 00:12:41,700
+but only certain types of problems can be adapted to the thing that the GPU is made for.
+
+163
+00:12:41,700 --> 00:12:43,740
+And if you haven't adapted the code
+
+164
+00:12:43,740 --> 00:12:46,380
+and put it in the right modes and all that kind of stuff,
+
+165
+00:12:46,380 --> 00:12:52,340
+the GPU will just be wasted.
+
+166
+00:12:52,340 --> 00:12:55,580
+OK, well, I think we should go on.
+
+167
+00:12:55,580 --> 00:12:56,540
+Yeah, it's time to go.
+
+168
+00:13:00,780 --> 00:13:05,000
+And go towards connecting to a cluster.
+
