@@ -279,27 +279,6 @@
 
 ##- input: raw/day1b-obs.mkv
 #
-#- output: out/day1-ask-for-help.mkv
-#  title: "1.8 How to ask for help with (super)computers"
-#  description: >-
-#      It’s dangerous to go alone, take us! Don’t waste time
-#      struggling, there are plenty of people here for you.  This talk
-#      gives you an insight into how to ask good questions, when to ask,
-#      and who would be answering and trying to help you.
-#
-#      Right before this lesson, we had a technical problem (internet
-#      outage) and thus had to switch broadcast computers.  Thus, we
-#      had to change broadcaster on short notice, but it worked.  We
-#      are sorry for the inconvenience.
-#
-#      https://zenodo.org/records/8392763
-#
-#  editlist:
-#    - start: 00:02:03
-#    - -: Intro
-#    - 00:04:43: Begin presentation
-#    - 00:27:09: Summary
-#    - stop: 00:29:23
 #
 #- input: raw/day1c-obs.mkv
 #
@@ -687,13 +666,15 @@
 ##  editlist:
 ##  - start: 4:07:28
 ##  - end: 4:17:03
-#
-#
-#
-#
-#
-#- input: raw/day3-obs.mkv
-#
+
+
+
+
+
+
+- input: raw/day3-obs.mkv
+- schedulesync: 00:47:28=10:32:31
+
 #- output: out/day3_01-icebreaker.mkv
 #  title: 3.1 Icebreaker and intro
 #  description: >-
@@ -705,12 +686,85 @@
 #  editlist:
 #  - start: 00:10:57
 #  - end: 00:22:29
-#
-#
-#
-#
-#
-#
+
+- output: out/day3-ask-for-help.mkv
+  title: "3.1 How to ask for help with (super)computers"
+  description: >-
+      It’s dangerous to go alone, take us! Don’t waste time
+      struggling, there are plenty of people here for you.  This talk
+      gives you an insight into how to ask good questions, when to ask,
+      and who would be answering and trying to help you.
+
+      Right before this lesson, we had a technical problem (internet
+      outage) and thus had to switch broadcast computers.  Thus, we
+      had to change broadcaster on short notice, but it worked.  We
+      are sorry for the inconvenience.
+
+      https://zenodo.org/records/8392763
+
+  editlist:
+    - start: 00:18:02
+    - stop: 00:37:44
+
+- output: out/day3-gpus.mkv
+  title: 3.2 GPU computing
+  description: >-
+    GPUs, short for graphical processing unit, are massively-parallel
+    processors that are optimized to perform parallel
+    operations. Computations that might take days to run on CPUs, take
+    substantially less time on GPUs.  We discuss how to use them with
+    Slurm and what are some common pitfalls when running these
+    programs, but we don't go into detail about just how they are
+    programmed or anything like that.
+
+    https://scicomp.aalto.fi/triton/tut/gpu/
+  editlist:
+  - start: 00:38:03
+  - 00:38:28: What's a GPU and why?
+  - 00:49:10: Ways you can use GPUs
+  - 00:56:10: Example GPU code(pi calculation)
+  - 01:00:33: When to use GPUs
+  - 01:01:08: Exercise (gpu pi code)
+  - stop: 01:01:48
+  - start: 01:13:05
+  - -: Q&A after exercise
+  - stop: 01:17:20
+
+
+- output: out/day3-llms.mkv
+  title: 3.3 LLMs
+  description: >-
+    We go over the use of large language models on a computer
+    cluster. First, we talk about the general types of AI tools we have
+    at Aalto University, and then the pre-installed code and models we
+    have.  While this is Aalto-specific, the general principles will
+    apply other places as well.
+
+  editlist:
+  - start: 01:26:53
+  - -: Overview of various AI tools available at Aalto
+  - 01:30:27: LLMs on the cluster
+  - 01:42:24: Demos (LLMs on the cluster)
+  - stop: 01:55:49
+
+- output: out/day3-outro.mkv
+  title: 3.4 General Q&A and day 3 and workshop wrap-up
+  description: >-
+    Wrap up of the workshop, including some hints about what to do
+    next, our future plans, etc.  First, there is a long panel
+    discussion about any questions people ask, and then the course
+    wrap-up, including recommendations for follow-up.
+  editlist:
+  - start: 01:55:49
+  - -: General Q&A
+  - 02:12:34: Recommendations on what to do next
+  - 02:14:27: Recommended follow-up courses
+  - end: 02:17:19
+
+
+
+
+
 #- output: out/day3_04-shared-memory.mkv
 #  title: 3.4 Shared memory parallelism (part 1)
 #  description: >-
@@ -769,35 +823,4 @@
 #  - -: What is MPI?
 #  - end: 03:07:54
 #
-#- output: out/day3_07-gpus.mkv
-#  title: 3.7 GPU computing
-#  description: >-
-#    GPUs, short for graphical processing unit, are massively-parallel
-#    processors that are optimized to perform parallel
-#    operations. Computations that might take days to run on CPUs, take
-#    substantially less time on GPUs.  We discuss how to use them with
-#    Slurm and what are some common pitfalls when running these
-#    programs, but we don't go into detail about just how they are
-#    programmed or anything like that.
 #
-#    https://scicomp.aalto.fi/triton/tut/gpu/
-#  editlist:
-#  - start: 03:18:19
-#  - -: What's a GPU and why?
-#  - 03:22:31: What to think about using a GPU
-#  - 03:26:21: 'Example: pi with CUDA on a GPU'
-#  - 03:29:19: Monitoring performance and more
-#
-#  - end: 03:46:34
-#
-#- output: out/day3_08-outro.mkv
-#  title: 3.8 General Q&A and day 3 and workshop wrap-up
-#  description: >-
-#    Wrap up of the workshop, including some hints about what to do
-#    next, our future plans, etc.
-#  editlist:
-#  - start: 03:46:34
-#  - -: General Q&A
-#  - 04:12:58: Final wrap up and recommendations on where to go next.
-#  - 04:17:50: Recommended follow-up courses
-#  - end: 04:21:15
