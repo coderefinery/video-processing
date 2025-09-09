@@ -31,12 +31,12 @@ print:
 	@echo aac_wild: ${aac_wild}
 	@echo srt: ${srt}
 
-#ifneq ($(MAKECMDGOALS),srt)
-#%.mkv.aac: %.mkv
-#	ffmpeg -i $< -vn -acodec copy $@
-#%.mp4.aac: %.mp4
-#	ffmpeg -i $< -vn -acodec copy $@
-#endif
+ifneq ($(MAKECMDGOALS),srt)
+%.mkv.aac: %.mkv
+	ffmpeg -i $< -vn -acodec copy $@
+%.mp4.aac: %.mp4
+	ffmpeg -i $< -vn -acodec copy $@
+endif
 
 
 %.srt: %.mkv
@@ -45,7 +45,7 @@ print:
 	$(SRUN) $(WHISPER) --output_format srt --initial_prompt="Welcome to our lecture.  The topics include various things about scientific computing and data analysis. Please listen carefully." --lang en $< --output_dir $(dir $<)
 
 
-#aac: $(aac)
+aac: $(aac)
 srt: $(srt)
 
 setup:
