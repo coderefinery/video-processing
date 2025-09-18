@@ -16,8 +16,11 @@ to know what's going on behind the scenes.
 
 ## What is available here?
 
-Browse the repo - course links are below.  More can be added later
-depending on demand.
+Since 2025, .mkv files include subtitles, chapters, and descriptions
+embedded: a full package in one file.
+
+Browse the repo - this readme isn't kept up to date.  Some course
+links:
 
 * [Python for SciComp
   2022](https://scicomp.aalto.fi/training/scip/python-for-scicomp-2022/)
@@ -76,6 +79,8 @@ works in general:
   sub-part.  This allows us to parellelize the subtitle fixing and the
   video slicing.
 - ffmpeg-editlist also generates the descriptions for YouTube.
+- ffmpeg-editlists also adds the descriptions, chapters, and subtitles
+  into a final .mkv file.
 - A Makefile automates subtitle generation
 - `git annex sync --content` moves all content around as desired,
   making sure that the cluster has a full copy and other remotes have
