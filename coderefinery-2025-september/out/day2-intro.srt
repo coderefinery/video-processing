@@ -1,0 +1,448 @@
+1
+00:00:00,752 --> 00:00:02,834
+Hello everyone and welcome to
+
+2
+00:00:02,834 --> 00:00:04,235
+day two of the Code
+
+3
+00:00:04,235 --> 00:00:07,018
+Refinery workshop, September-October 2025.
+
+4
+00:00:07,018 --> 00:00:09,260
+I'm [name] here, your
+
+5
+00:00:09,260 --> 00:00:11,622
+workshop organizer for this time
+
+6
+00:00:11,622 --> 00:00:12,483
+along with [name].
+
+7
+00:00:13,904 --> 00:00:16,246
+And with me today we
+
+8
+00:00:16,246 --> 00:00:18,968
+have [name] from CSC
+
+9
+00:00:18,968 --> 00:00:21,491
+Finland and [name] also
+
+10
+00:00:21,491 --> 00:00:22,612
+from Aalto University Finland.
+
+11
+00:00:23,512 --> 00:00:26,155
+And [name] also from
+
+12
+00:00:26,155 --> 00:00:30,739
+our team is the broadcaster for today.
+
+13
+00:00:30,739 --> 00:00:34,565
+so a bit of reminder if
+
+14
+00:00:34,565 --> 00:00:36,287
+you were not with us yesterday
+
+15
+00:00:36,287 --> 00:00:39,091
+it's totally fine you can
+
+16
+00:00:39,091 --> 00:00:41,275
+still understand everything and
+
+17
+00:00:41,275 --> 00:00:42,657
+do everything that will be done today
+
+18
+00:00:42,657 --> 00:00:46,783
+and if you want to re-watch
+
+19
+00:00:46,783 --> 00:00:49,767
+what was done yesterday on twitch
+
+20
+00:00:49,767 --> 00:00:51,570
+tv on the same link that
+
+21
+00:00:51,570 --> 00:00:53,172
+you watch in this stream you
+
+22
+00:00:53,172 --> 00:00:56,497
+can also watch yesterday's videos
+
+23
+00:00:56,497 --> 00:00:58,600
+later for example if you want to catch up
+
+24
+00:00:58,600 --> 00:01:01,063
+but in general today you
+
+25
+00:01:01,063 --> 00:01:04,088
+are good to understand what's been doing
+
+26
+00:01:04,088 --> 00:01:05,530
+and also be able to do
+
+27
+00:01:05,530 --> 00:01:07,372
+the exercises along with the
+
+28
+00:01:07,372 --> 00:01:10,677
+instructors in the workshop web page
+
+29
+00:01:10,677 --> 00:01:11,758
+that I'm showing right now
+
+30
+00:01:11,758 --> 00:01:14,262
+you find the materials for today and
+
+31
+00:01:14,262 --> 00:01:16,264
+so now I'm scrolling down to
+
+32
+00:01:16,264 --> 00:01:20,210
+day two and today we will
+
+33
+00:01:20,210 --> 00:01:22,012
+continue with this git version
+
+34
+00:01:22,012 --> 00:01:24,736
+control and I'm gonna briefly give
+
+35
+00:01:24,736 --> 00:01:26,278
+you a mini intro
+
+36
+00:01:27,658 --> 00:01:30,522
+so yesterday we learned about
+
+37
+00:01:30,522 --> 00:01:32,604
+all this terminology around
+
+38
+00:01:32,604 --> 00:01:35,408
+git version control so you
+
+39
+00:01:35,408 --> 00:01:38,051
+heard all these terms like forking
+
+40
+00:01:38,051 --> 00:01:40,915
+and pull requests and commits
+
+41
+00:01:40,915 --> 00:01:43,579
+and it's okay if not
+
+42
+00:01:43,579 --> 00:01:45,141
+everything is fully clear because
+
+43
+00:01:45,141 --> 00:01:46,422
+these terms will be repeated
+
+44
+00:01:46,422 --> 00:01:48,465
+today and also tomorrow
+
+45
+00:01:48,465 --> 00:01:50,808
+But the goal, what was important is
+
+46
+00:01:50,808 --> 00:01:52,631
+that you understood the motivation,
+
+47
+00:01:52,631 --> 00:01:53,933
+why it is so important to
+
+48
+00:01:53,933 --> 00:01:55,495
+work with virtual control as a
+
+49
+00:01:55,495 --> 00:01:57,418
+time machine to go back in
+
+50
+00:01:57,418 --> 00:02:00,402
+time in a previous version of
+
+51
+00:02:00,402 --> 00:02:04,988
+your code or whatever project
+
+52
+00:02:04,988 --> 00:02:07,011
+that you are version controlling.
+
+53
+00:02:07,011 --> 00:02:10,118
+today for day two we'll move
+
+54
+00:02:10,118 --> 00:02:12,324
+to local work so if yesterday
+
+55
+00:02:12,324 --> 00:02:15,712
+we were using this github.com
+
+56
+00:02:15,712 --> 00:02:17,837
+web browser web server meaning
+
+57
+00:02:17,837 --> 00:02:19,601
+that the files were stored
+
+58
+00:02:19,601 --> 00:02:22,127
+somewhere in the cloud in
+
+59
+00:02:22,127 --> 00:02:23,490
+actually microsoft cloud because
+
+60
+00:02:23,490 --> 00:02:25,455
+github is microsoft today
+
+61
+00:02:25,455 --> 00:02:28,299
+now it's good that we have github.com
+
+62
+00:02:28,299 --> 00:02:30,202
+as a remote repository but
+
+63
+00:02:30,202 --> 00:02:33,147
+it's also good to work locally so
+
+64
+00:02:33,147 --> 00:02:34,709
+and this is what will happen today
+
+65
+00:02:34,709 --> 00:02:36,752
+so the files instead of
+
+66
+00:02:36,752 --> 00:02:38,235
+being just in github.com will
+
+67
+00:02:38,235 --> 00:02:40,218
+come to your computer you will
+
+68
+00:02:40,218 --> 00:02:42,421
+be able to edit them do changes and
+
+69
+00:02:42,421 --> 00:02:43,583
+when you're happy you can push
+
+70
+00:02:43,583 --> 00:02:46,127
+them back to the cloud
+
+71
+00:02:46,127 --> 00:02:50,233
+github.com servers or you know i
+
+72
+00:02:50,233 --> 00:02:51,194
+don't want to spoil the fun
+
+73
+00:02:51,194 --> 00:02:53,518
+you will see today what we will do
+
+74
+00:02:53,518 --> 00:02:54,840
+In the links that you have
+
+75
+00:02:54,840 --> 00:02:56,162
+received in your email there is
+
+76
+00:02:56,162 --> 00:02:59,446
+also this notes document and
+
+77
+00:02:59,446 --> 00:03:01,429
+just a reminder although I
+
+78
+00:03:01,429 --> 00:03:03,933
+was just chatting about it when
+
+79
+00:03:03,933 --> 00:03:06,056
+you visit this notes document
+
+80
+00:03:06,056 --> 00:03:08,700
+it looks like this and you
+
+81
+00:03:08,700 --> 00:03:09,801
+can use this to basically
+
+82
+00:03:09,801 --> 00:03:11,644
+interactively ask questions to
+
+83
+00:03:11,644 --> 00:03:14,087
+our instructors and our helpers
+
+84
+00:03:14,087 --> 00:03:15,629
+by clicking in the very top
+
+85
+00:03:15,629 --> 00:03:17,352
+there is a pencil which will
+
+86
+00:03:17,352 --> 00:03:19,395
+switch the notes from this view
+
+87
+00:03:19,395 --> 00:03:23,100
+mode to this editor mode
+
+88
+00:03:23,100 --> 00:03:25,743
+and it's basically a simple text editor
+
+89
+00:03:25,743 --> 00:03:27,946
+so that many hundreds of people
+
+90
+00:03:27,946 --> 00:03:29,268
+can edit at the same time.
+
+91
+00:03:29,268 --> 00:03:31,030
+I think it's like a Google Doc
+
+92
+00:03:31,030 --> 00:03:32,112
+but a bit more reliable
+
+93
+00:03:32,112 --> 00:03:33,133
+because Google Doc has
+
+94
+00:03:33,133 --> 00:03:35,696
+limitations of simultaneous editing
+
+95
+00:03:35,696 --> 00:03:36,637
+and also simplified.
+
+96
+00:03:37,619 --> 00:03:40,042
+I can already see some questions there
+
+97
+00:03:40,042 --> 00:03:43,566
+and our helpers are already answering
+
+98
+00:03:43,566 --> 00:03:44,908
+so keep the questions coming
+
+99
+00:03:46,190 --> 00:03:47,471
+and I don't want to steal
+
+100
+00:03:47,471 --> 00:03:50,455
+any other precious time to our
+
+101
+00:03:50,455 --> 00:03:54,202
+I believe now it's a good
+
+102
+00:03:54,202 --> 00:03:56,747
+moment to switch to [name]'s screen.
+
+103
+00:03:56,747 --> 00:03:57,469
+I guess you're going to be
+
+104
+00:03:57,469 --> 00:03:59,012
+the first one, right, [name]?
+
+105
+00:03:59,012 --> 00:04:00,534
+Yes, I'm going to share.
+
+106
+00:04:00,534 --> 00:04:02,017
+Excellent.
+
+107
+00:04:02,017 --> 00:04:03,019
+I'm sharing [name]'s screen.
+
+108
+00:04:04,262 --> 00:04:05,344
+All right.
+
+109
+00:04:05,344 --> 00:04:05,805
+Right.
+
+110
+00:04:05,805 --> 00:04:08,129
+So the floor is yours.
+
+111
+00:04:08,129 --> 00:04:10,854
+I will move out from the
+
+112
+00:04:10,854 --> 00:04:13,239
+scene and have a great workshop, everyone.
+
