@@ -146,9 +146,16 @@ If you are volunteering to help generate the edit list:
 
 
 
-## git-annex setup for private video files
+## Internal: git-annex setup for private video files
 
-Raw videos files are private and only synced via our cluster.
+(This is only for people who have access to the private video files
+via git-annex.  Most people don't, including CodeRefinery people.  If
+you are a video editor, the videos are provided to you by some
+parallel path to download and place at the right place in this
+repository.)
+
+Raw videos files are private and only synced via the Aalto University
+cluster.  This may be improved someday later.
 
 Only do this if you are pulling the *private* (raw) big video files to
 your own computer to view them: otherwise, you can use git normally
