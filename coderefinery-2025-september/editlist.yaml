@@ -244,57 +244,67 @@
     - stop: 04:35:06
 
 
-#### Day 4
-#- input: raw/day4-obs.mkv
-#- schedule-sync: 18:29=9:00:00
-#
-##- output: out/day4-icebreaker.mkv
-##  title: 4.1 Second week intro
-###  description: >
-###    The introduction to the second week, where we go into slightly
-###    more detail bout what we will cover this week and how it fits
-###    together.  There is also a guest to give us an introduction of
-###    reproducible research and social coding, which are the topics of
-###    today.
-###
-###    In short, if last week was about tracking code, this week is about
-###    managing software.
-##  description: >-
-##    The random icebreaking discussion for day 4.
-##  time:
-##    - input: raw/day4-twitch.mp4
-##    - start: 00:15:20
-##    - 00:19:28: How the weeks fit together
-##    - stop: 00:21:13
+### Day 4
+- input: raw/day4-obs.mkv
+- schedule-sync: 09:45=12:50:00
+
+#- output: out/day4-icebreaker.mkv
+#  title: 4.1 Second week intro
+##  description: >
+##    The introduction to the second week, where we go into slightly
+##    more detail bout what we will cover this week and how it fits
+##    together.  There is also a guest to give us an introduction of
+##    reproducible research and social coding, which are the topics of
+##    today.
 ##
-##
-#- output: out/day4-reproducible-research.mkv
-#  title: 4.1 Reproducible Research
-#  description: >
-#    If you can't get your code to do the same thing again, is it
-#    really science?  Or more practically, are you able to do your
-#    work?  Reproducibilty is a big deal, but we don't always learn how
-#    to do it.  In this lesson, we cover the basics, how to organize
-#    projects, record computational steps with Snakemake or other
-#    workflow managers, how to record environments with conda (and
-#    containers a bit), and sharing code and data (FAIR).
-#
-#    https://coderefinery.github.io/reproducible-research/
-#
+##    In short, if last week was about tracking code, this week is about
+##    managing software.
+#  description: >-
+#    The random icebreaking discussion for day 4.
 #  time:
-#    - start: 00:18:57
-#    - 00:22:46: '§ Introduction: how the workshop all connects'
-#    - 00:29:13: § Motivation
-#    - 00:41:14: § Organizing your projects
-#    - 00:52:25: § Recording computational steps
-#    - stop: 01:15:18
-#    - start: 01:24:56
-#    - -: § Recording dependencies
-#    - 01:49:40: § Recording environments
-#    - 02:11:25: § Where to go from here?
-#    - stop: 02:18:32
+#    - input: raw/day4-twitch.mp4
+#    - start: 00:15:20
+#    - 00:19:28: How the weeks fit together
+#    - stop: 00:21:13
 #
 #
+- output: out/day4-reproducible-research.mkv
+  title: 4.1 Reproducible Research
+  description: >
+    If you can't get your code to do the same thing again, is it
+    really science?  Or more practically, are you able to do your
+    work?  Reproducibilty is a big deal, but we don't always learn how
+    to do it.  In this lesson, we cover the basics, how to organize
+    projects, record computational steps with Snakemake or other
+    workflow managers, how to record environments with conda (and
+    containers a bit), and sharing code and data (FAIR).
+
+    https://coderefinery.github.io/reproducible-research/
+
+  time:
+    - start: 00:09:45
+    - -: '§Introduction: icebreakers and organi'
+    - 00:24:08: '§ Introduction: how the workshop all connects'
+    - 00:28:12: § Motivation
+    - 00:44:00: § Organizing your projects
+    - stop: 01:05:07
+    - start: 01:14:38
+    - -: § Recording computational steps
+    - stop: 01:27:45
+    - start: 01:42:36
+    - -: Q&A
+    - 01:45:18: § Recording dependencies
+    - stop: 02:04:47
+    - start: 02:14:35
+    - -: Demo
+    - 02:22:06: § Recording environments
+    - stop: 02:36:55
+    - start: 02:41:35
+    - -: § Where to go from here?
+    - 02:48:52: Outro
+    - stop: 02:50:34
+
+
 #- output: out/day4-social-coding.mkv
 #  title: 4.2 Social coding
 #  description: >
