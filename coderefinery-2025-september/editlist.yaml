@@ -541,13 +541,13 @@
 - schedule-sync: 00:04:13=11:00:00
 
 - output: out/day7-intro.mkv
-  title: 7.1 Day 7 intro
+  title: 7.1 day 7 intro
   description: >
-    The introduction to day 7, where we present the event page on the CodeRefinery website
+    the introduction to day 7, where we present the event page on the coderefinery website
     and the collaborative notes.
   time:
     - start: 00:14:01
-    - -: Introduction and walkthrough
+    - -: introduction and walkthrough
     - end: 00:17:09
 
 - output: out/day7-jupyter.mkv
@@ -586,3 +586,53 @@
     - 02:27:09: Summary and answer to use of rich-diff on GitHub
     - 02:33:41: Feedback of the day and preparation for day 8
     - stop: 02:38:54
+
+# Day 8
+- input: raw/day8-obs.mkv
+- schedule-sync: 00:03:35=11:00:00
+
+- output: out/day8-intro.mkv
+  title: 8.1 day 8 intro
+  description: >
+    the introduction to day 8, where we present the event page on the coderefinery website
+    and the collaborative notes.
+  time:
+    - start: 00:03:35
+    - -: introduction and walkthrough
+    - end: 00:14:27
+
+- output: out/day8-testing.mkv
+  title: 8.2 Automated Testing
+  description: >
+    Software testing is a fundamental part of modern software
+    development, and especially important for science since results
+    should be correct.  Luckily, it's not so hard to get started, and
+    anyone can do it. This is a crash course for scientists to get
+    started testing their software.
+
+    Tools covered include concepts of testing for science, unit
+    testing, pytest, continuous integration, and GitHub actions.  We
+    make demos in Python, but have examples in other languages and
+    this will apply to every language in some form.
+
+    https://coderefinery.github.io/testing/
+
+  time:
+    - start: 00:14:52
+    - -: Introduction
+    - 00:18:58: § Motivation
+    - 00:40:24: § Testing localy (Pytest)
+    - exercise: 00:43:33
+    - start: 01:03:44
+    - -: Exercise discussion (testing locally)
+    - 01:08:12: §Continuous integration demo using Github actions
+    - break: 01:36:59
+    - start: 01:47:19
+    - -: § Test design
+    - exercise: 01:51:03
+    - start: 02:11:35
+    - -: Exercise discussion
+    - 02:12:07: §Testing locally - Other frameworks (C++/Catch2)
+    - 02:21:24: § Conclusions
+    - 02:32:58: Feedback and outlook for next lesson
+    - stop: 02:37:21
