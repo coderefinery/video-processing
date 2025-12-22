@@ -244,57 +244,67 @@
     - stop: 04:35:06
 
 
-#### Day 4
-#- input: raw/day4-obs.mkv
-#- schedule-sync: 18:29=9:00:00
-#
-##- output: out/day4-icebreaker.mkv
-##  title: 4.1 Second week intro
-###  description: >
-###    The introduction to the second week, where we go into slightly
-###    more detail bout what we will cover this week and how it fits
-###    together.  There is also a guest to give us an introduction of
-###    reproducible research and social coding, which are the topics of
-###    today.
-###
-###    In short, if last week was about tracking code, this week is about
-###    managing software.
-##  description: >-
-##    The random icebreaking discussion for day 4.
-##  time:
-##    - input: raw/day4-twitch.mp4
-##    - start: 00:15:20
-##    - 00:19:28: How the weeks fit together
-##    - stop: 00:21:13
+### Day 4
+- input: raw/day4-obs.mkv
+- schedule-sync: 09:45=12:50:00
+
+#- output: out/day4-icebreaker.mkv
+#  title: 4.1 Second week intro
+##  description: >
+##    The introduction to the second week, where we go into slightly
+##    more detail bout what we will cover this week and how it fits
+##    together.  There is also a guest to give us an introduction of
+##    reproducible research and social coding, which are the topics of
+##    today.
 ##
-##
-#- output: out/day4-reproducible-research.mkv
-#  title: 4.1 Reproducible Research
-#  description: >
-#    If you can't get your code to do the same thing again, is it
-#    really science?  Or more practically, are you able to do your
-#    work?  Reproducibilty is a big deal, but we don't always learn how
-#    to do it.  In this lesson, we cover the basics, how to organize
-#    projects, record computational steps with Snakemake or other
-#    workflow managers, how to record environments with conda (and
-#    containers a bit), and sharing code and data (FAIR).
-#
-#    https://coderefinery.github.io/reproducible-research/
-#
+##    In short, if last week was about tracking code, this week is about
+##    managing software.
+#  description: >-
+#    The random icebreaking discussion for day 4.
 #  time:
-#    - start: 00:18:57
-#    - 00:22:46: '§ Introduction: how the workshop all connects'
-#    - 00:29:13: § Motivation
-#    - 00:41:14: § Organizing your projects
-#    - 00:52:25: § Recording computational steps
-#    - stop: 01:15:18
-#    - start: 01:24:56
-#    - -: § Recording dependencies
-#    - 01:49:40: § Recording environments
-#    - 02:11:25: § Where to go from here?
-#    - stop: 02:18:32
+#    - input: raw/day4-twitch.mp4
+#    - start: 00:15:20
+#    - 00:19:28: How the weeks fit together
+#    - stop: 00:21:13
 #
 #
+- output: out/day4-reproducible-research.mkv
+  title: 4.1 Reproducible Research
+  description: >
+    If you can't get your code to do the same thing again, is it
+    really science?  Or more practically, are you able to do your
+    work?  Reproducibilty is a big deal, but we don't always learn how
+    to do it.  In this lesson, we cover the basics, how to organize
+    projects, record computational steps with Snakemake or other
+    workflow managers, how to record environments with conda (and
+    containers a bit), and sharing code and data (FAIR).
+
+    https://coderefinery.github.io/reproducible-research/
+
+  time:
+    - start: 00:09:45
+    - -: '§Introduction: icebreakers and organi'
+    - 00:24:08: '§ Introduction: how the workshop all connects'
+    - 00:28:12: § Motivation
+    - 00:44:00: § Organizing your projects
+    - stop: 01:05:07
+    - start: 01:14:38
+    - -: § Recording computational steps
+    - stop: 01:27:45
+    - start: 01:42:36
+    - -: Q&A
+    - 01:45:18: § Recording dependencies
+    - stop: 02:04:47
+    - start: 02:14:35
+    - -: Demo
+    - 02:22:06: § Recording environments
+    - stop: 02:36:55
+    - start: 02:41:35
+    - -: § Where to go from here?
+    - 02:48:52: Outro
+    - stop: 02:50:34
+
+
 #- output: out/day4-social-coding.mkv
 #  title: 4.2 Social coding
 #  description: >
@@ -330,6 +340,58 @@
 ########    - 3:38:30, 3:39:42
 #
 #
+### Day 5
+
+- input: raw/day5-obs.mkv
+
+
+- output: out/day5-intro.mkv
+  title: 5.1 Day 5 icebreakers and intro
+  description: >
+    The icebreaker and introduction session for day 5 - social coding
+  time:
+    - start: 00:09:32
+    - 00:15:03: Introduction of topic
+    - stop: 00:18:00
+
+- output: out/day5-socialcoding.mkv
+  title: 5.2 Day5 Social Coding Lesson
+  description: >
+    The focus of this lesson is on working together and sharing code.
+  time:
+    - start: 00:18:00
+    - -: Introduction
+    - 00:26:45: Social Coding
+    - exercise: 00:28:02
+    - start: 00:37:27
+    - -: Discussion of exercise answers
+    - 00:47:29: Comparison to sharing papers
+    - 00:50:25: Recap of topics covered in exercise discussion
+    - 00:54:53: Software licencing
+    - 00:57:55: Derivative works
+    - 01:02:26: On-stream exercise (Question 5 in lesson document)
+    - 01:09:00: Types of licence
+    - break: 01:19:17
+    - start: 01:28:36
+    - -: summary of licencing types
+    - 01:29:46: When to add a licence
+    - 01:30:22: How to choose a licence
+    - 01:45:52: Software citations introduction
+    - 01:49:00: Discussion exercise
+    - 01:50:39: How to make software citeable
+    - 01:54:05: Where to publish papers about software
+    - 01:56:03: FAIR for Research Software
+    - break: 01:58:50
+    - start: 02:08:27
+    - -: Sharing data
+    - 02:12:46: Licencing AI models
+    - 02:22:00: Closing remarks and outlook for next day
+    - stop: 02:26:15
+
+
+
+
+
 ### Day 6
 
 - input: raw/day6-obs.mkv
@@ -337,7 +399,7 @@
 
 
 - output: out/day6-intro.mkv
-  title: 5.1 Day 5 icebreakers and intro
+  title: 6.1 Day 6 icebreakers and intro
   description: >
     The random icebreaking discussion for day 6.
   time:
@@ -347,7 +409,7 @@
 
 
 - output: out/day6-documentation.mkv
-  title: 5.1 Documentation
+  title: 6.1 Documentation
   description: >
     In this lesson we discuss different solutions for implementing and
     deploying code documentation. We start by creating a wishlist for
@@ -384,49 +446,59 @@
     - 02:41:20: § Summary and Q&A
     - stop: 02:58:53
 
-# - output: out/day5-jupyter.mkv
-#   title: 5.2 Jupyter
-#   description: >
-#     This lesson teachs learners the user interface of JupyterLab, how
-#     Jupyter notebooks work, and what some common and powerful usecases
-#     are. Our focus is to demonstrate and discuss and guide towards
-#     good practices for reproducibility, collaboration, and
-#     reusability. The emphasis of this lesson is to demonstrate how to
-#     use notebooks in combination with version control and how to share
-#     reproducible notebooks via Binder.
-# 
-#     This lesson demonstrates the use of JupyterLab, nbdime,
-#     jupyterlab-git, and Binder.
-# 
-#     https://coderefinery.github.io/jupyter/
-#   time:
-#     - start: 03:16:49
-#     - 03:19:03: § Jupyter notebooks (Motivation)
-#     - 03:27:59: § JupyterLab and Notebook interface
-#     - 03:35:44: § First Computational Notebook
-#     - stop: 03:58:05
-#     - start: 04:08:01
-#     - -: § Notebooks and version control
-#     - 04:20:25: § Sharing notebooks (Binder)
-#     #-  : Q&A
-#     #- : Binder has started, take a look and discuss
-#     #- : § Shell commands, magics, and widgets
-#     #- : § Summary and more Q&A
-#     - 04:37:29: Q&A and day 5 outro
-#     - 04:47:42: Prep for day 6
-#     - stop: 04:49:58
-# 
-# 
-#######- output: out/day5-outro.mkv
-#######  title: 5.3 Day 5 outro
-#######  description: >-
-#######    Conclusion of day 5 and expectations for day 6.
-#######  time:
-#######    - start: 03:45:28
-#######    - stop: 03:46:23
-#
-#
-#
+# Day 7
+- input: raw/day7-obs.mkv
+- schedule-sync: 00:04:13=11:00:00
+
+- output: out/day7-intro.mkv
+  title: 7.1 Day 7 intro
+  description: >
+    The introduction to day 7, where we present the event page on the CodeRefinery website
+    and the collaborative notes.
+  time:
+    - start: 00:14:01
+    - -: Introduction and walkthrough
+    - end: 00:17:09
+
+- output: out/day7-jupyter.mkv
+  title: 7.2 Jupyter
+  description: >
+    This lesson teachs learners the user interface of JupyterLab, how
+    Jupyter notebooks work, and what some common and powerful usecases
+    are. Our focus is to demonstrate and discuss and guide towards
+    good practices for reproducibility, collaboration, and
+    reusability. The emphasis of this lesson is to demonstrate how to
+    use notebooks in combination with version control and how to share
+    reproducible notebooks via Binder.
+
+    This lesson demonstrates the use of JupyterLab, nbdime,
+    jupyterlab-git, and Binder.
+
+    https://coderefinery.github.io/jupyter/
+  time:
+    - start: 00:17:25
+    - -: Introduction
+    - 00:17:59: § Motivation for Jupyter Notebooks
+    - 00:34:52: § JupyterLab and notebook interface
+    - 00:51:57: § A first computational notebook
+    - exercise: 00:55:48
+    - start: 01:14:11
+    - -: Exercise on "Calculating pi using Monte Carlo methods" as a demo
+    - break: 01:21:38
+    - start: 01:31:39
+    - -: Short note on other alternatives to Jupyter Notebooks and keypoints
+    - 01:33:35: § Notebooks and version control
+    - 01:44:02: § Sharing Notebooks
+    - exercise: 01:52:17
+    - start: 02:08:34
+    - 02:09:04: Exercise on Binder as a demo
+    - 02:16:46: "§ Examples of Jupyter features: Widgets"
+    - 02:27:09: Summary and answer to use of rich-diff on GitHub
+    - 02:33:41: Feedback of the day and preparation for day 8
+    - stop: 02:38:54
+
+
+
 #- input: raw/day6-obs.mkv
 #- schedule-sync: 00:44=8:43:00
 #
@@ -541,13 +613,13 @@
 - schedule-sync: 00:04:13=11:00:00
 
 - output: out/day7-intro.mkv
-  title: 7.1 day 7 intro
+  title: 7.1 Day 7 intro
   description: >
-    the introduction to day 7, where we present the event page on the coderefinery website
+    The introduction to day 7, where we present the event page on the CodeRefinery website
     and the collaborative notes.
   time:
     - start: 00:14:01
-    - -: introduction and walkthrough
+    - -: Introduction and walkthrough
     - end: 00:17:09
 
 - output: out/day7-jupyter.mkv
@@ -592,13 +664,13 @@
 - schedule-sync: 00:03:35=11:00:00
 
 - output: out/day8-intro.mkv
-  title: 8.1 day 8 intro
+  title: 8.1 Day 8 intro
   description: >
-    the introduction to day 8, where we present the event page on the coderefinery website
+    The introduction to day 8, where we present the event page on the coderefinery website
     and the collaborative notes.
   time:
     - start: 00:03:35
-    - -: introduction and walkthrough
+    - -: Introduction and walkthrough
     - end: 00:14:27
 
 - output: out/day8-testing.mkv

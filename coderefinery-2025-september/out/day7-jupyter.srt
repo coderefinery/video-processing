@@ -1,0 +1,9784 @@
+1
+00:00:00,673 --> 00:00:02,816
+so ... when I think
+
+2
+00:00:02,816 --> 00:00:04,278
+about Jupyter notebooks actually I
+
+3
+00:00:04,278 --> 00:00:06,902
+have a double like a dual feeling
+
+4
+00:00:06,902 --> 00:00:08,504
+so sometimes I really like it
+
+5
+00:00:08,504 --> 00:00:09,946
+to you to use Jupyter notebooks
+
+6
+00:00:09,946 --> 00:00:12,029
+and sometimes I don't and I
+
+7
+00:00:12,029 --> 00:00:12,950
+don't think it's like the best
+
+8
+00:00:12,950 --> 00:00:14,632
+practice to use that and I
+
+9
+00:00:14,632 --> 00:00:15,974
+guess the whole point of this
+
+10
+00:00:15,974 --> 00:00:18,037
+session is to learn about Jupyter notebooks
+
+11
+00:00:18,037 --> 00:00:19,559
+and see what are the main
+
+12
+00:00:19,559 --> 00:00:21,261
+strengths of it and what are
+
+13
+00:00:21,261 --> 00:00:23,084
+the pitfalls of it so Jupyter
+
+14
+00:00:23,084 --> 00:00:25,547
+notebooks are not the answer to do everything
+
+15
+00:00:25,547 --> 00:00:28,178
+but it can be a very powerful use
+
+16
+00:00:28,178 --> 00:00:29,122
+for sharing the code, for
+
+17
+00:00:29,122 --> 00:00:30,809
+doing some experiments, and you're
+
+18
+00:00:30,809 --> 00:00:32,857
+going to learn that hopefully in this session.
+
+19
+00:00:34,322 --> 00:00:36,605
+So what are the Jupyter
+
+20
+00:00:36,605 --> 00:00:37,786
+Notebooks and what is the
+
+21
+00:00:37,786 --> 00:00:39,288
+main motivation behind it?
+
+22
+00:00:39,288 --> 00:00:42,411
+So when you think about like a pure file,
+
+23
+00:00:42,411 --> 00:00:44,133
+like a coding file, like a Python file
+
+24
+00:00:44,133 --> 00:00:47,117
+or like a C++ file that you have the code,
+
+25
+00:00:47,117 --> 00:00:48,298
+the only way that you can
+
+26
+00:00:48,298 --> 00:00:50,621
+annotate the code is to add
+
+27
+00:00:50,621 --> 00:00:52,343
+some comments into it, right?
+
+28
+00:00:52,343 --> 00:00:55,547
+But Jupyter Notebooks bring another way.
+
+29
+00:00:55,547 --> 00:00:57,950
+And in addition to your code,
+
+30
+00:00:57,950 --> 00:01:00,753
+you can have text marked down
+
+31
+00:01:00,753 --> 00:01:03,516
+on HTML code or like a
+
+32
+00:01:03,516 --> 00:01:06,584
+equation figures and everything
+
+33
+00:01:06,584 --> 00:01:09,972
+all integrated into a same document
+
+34
+00:01:09,972 --> 00:01:12,278
+so you have more ways to
+
+35
+00:01:12,278 --> 00:01:13,742
+annotate your code and explain
+
+36
+00:01:13,742 --> 00:01:15,587
+the workflow and explain the data
+
+37
+00:01:15,587 --> 00:01:16,850
+and also play with data
+
+38
+00:01:17,877 --> 00:01:19,760
+So this is a screenshot
+
+39
+00:01:19,760 --> 00:01:22,844
+of two different Jupyter notebooks.
+
+40
+00:01:22,844 --> 00:01:24,487
+And on the left, you can see
+
+41
+00:01:24,487 --> 00:01:27,191
+that we have a block of code.
+
+42
+00:01:27,191 --> 00:01:29,094
+And in Jupyter notebooks, these
+
+43
+00:01:29,094 --> 00:01:30,736
+blocks are called the cell.
+
+44
+00:01:30,736 --> 00:01:32,719
+So we have a cell of code.
+
+45
+00:01:32,719 --> 00:01:34,141
+And the output of the code,
+
+46
+00:01:34,141 --> 00:01:36,505
+which is a table essentially,
+
+47
+00:01:36,505 --> 00:01:38,548
+is also shown there as well.
+
+48
+00:01:38,548 --> 00:01:40,010
+but on the right you can
+
+49
+00:01:40,010 --> 00:01:41,792
+see that there are like some headings
+
+50
+00:01:41,792 --> 00:01:43,174
+and with the text it can
+
+51
+00:01:43,174 --> 00:01:45,016
+be like some equations or as
+
+52
+00:01:45,016 --> 00:01:46,739
+you can see there are like some tables here
+
+53
+00:01:46,739 --> 00:01:48,902
+as well so the code is running
+
+54
+00:01:48,902 --> 00:01:50,504
+and also you can see the result
+
+55
+00:01:50,504 --> 00:01:52,326
+and when you're saving it you
+
+56
+00:01:52,326 --> 00:01:53,728
+can see all of the material
+
+57
+00:01:53,728 --> 00:01:56,472
+at the same place not just your code
+
+58
+00:01:58,254 --> 00:02:00,297
+so it's ... really nice for
+
+59
+00:02:00,297 --> 00:02:03,080
+telling a story ... and
+
+60
+00:02:03,881 --> 00:02:05,143
+yeah one additional reason so you
+
+61
+00:02:05,143 --> 00:02:06,845
+can do nice formatting and so
+
+62
+00:02:06,845 --> 00:02:08,097
+on to make it like
+
+63
+00:02:08,097 --> 00:02:09,620
+easily readable and the tables
+
+64
+00:02:09,620 --> 00:02:10,741
+look better and so on.
+
+65
+00:02:10,741 --> 00:02:12,845
+But one big thing that to
+
+66
+00:02:12,845 --> 00:02:14,648
+me is especially important is
+
+67
+00:02:14,648 --> 00:02:18,354
+that the output is immediately after the input.
+
+68
+00:02:18,354 --> 00:02:20,558
+So you can actually tell it in order
+
+69
+00:02:20,558 --> 00:02:24,063
+and the comments are usually
+
+70
+00:02:24,063 --> 00:02:25,846
+pretty far from wherever the
+
+71
+00:02:25,846 --> 00:02:27,469
+output appears in the terminal or
+
+72
+00:02:27,469 --> 00:02:28,651
+Yeah, exactly.
+
+73
+00:02:28,651 --> 00:02:31,397
+So when you're coming back
+
+74
+00:02:31,397 --> 00:02:34,282
+to your experiment after a couple of months
+
+75
+00:02:34,282 --> 00:02:35,585
+or when you're sharing your
+
+76
+00:02:35,585 --> 00:02:36,827
+code with someone else, it's
+
+77
+00:02:36,827 --> 00:02:39,012
+very, very easy to follow because
+
+78
+00:02:39,012 --> 00:02:40,795
+you can see the code, you can see the output,
+
+79
+00:02:40,795 --> 00:02:42,058
+and you can also add
+
+80
+00:02:42,058 --> 00:02:44,482
+some explanation like equations or
+
+81
+00:02:44,482 --> 00:02:47,368
+text or plots to support that.
+
+82
+00:02:48,681 --> 00:02:51,346
+... so as I mentioned ...
+
+83
+00:02:52,247 --> 00:02:53,790
+a Jupyter notebook can be thought
+
+84
+00:02:53,790 --> 00:02:55,192
+as like a notebook like
+
+85
+00:02:55,192 --> 00:02:57,056
+your paper notebook that you have
+
+86
+00:02:57,056 --> 00:02:58,017
+but it also has your
+
+87
+00:02:58,017 --> 00:02:59,841
+code your equation your text
+
+88
+00:02:59,841 --> 00:03:01,003
+everything inside and it's like
+
+89
+00:03:01,003 --> 00:03:02,485
+very easy to share and like
+
+90
+00:03:02,485 --> 00:03:04,629
+to like read and follow ...
+
+91
+00:03:04,629 --> 00:03:06,352
+block by block or cell by cell
+
+92
+00:03:07,176 --> 00:03:08,440
+A fun fact is that the
+
+93
+00:03:08,440 --> 00:03:10,025
+Jupyter name is coming from
+
+94
+00:03:10,025 --> 00:03:12,132
+the combination of Julia and Python
+
+95
+00:03:12,132 --> 00:03:14,760
+and R, but today you can
+
+96
+00:03:14,760 --> 00:03:16,446
+also use it with other languages
+
+97
+00:03:16,446 --> 00:03:17,509
+and there are like some kernels
+
+98
+00:03:17,509 --> 00:03:18,933
+that you can use for other
+
+99
+00:03:18,933 --> 00:03:21,000
+languages to apply to Jupyter Notebook.
+
+100
+00:03:22,971 --> 00:03:28,939
+So Jupyter Notebook format, as we see here,
+
+101
+00:03:28,939 --> 00:03:31,121
+is commonly used, and I
+
+102
+00:03:31,121 --> 00:03:33,865
+guess it's more popular nowadays.
+
+103
+00:03:33,865 --> 00:03:35,747
+I have seen some entire
+
+104
+00:03:35,747 --> 00:03:38,251
+books written in Jupyter Notebook formats,
+
+105
+00:03:38,251 --> 00:03:40,493
+and I guess you have been also seeing
+
+106
+00:03:40,493 --> 00:03:42,636
+that here and there, especially
+
+107
+00:03:42,636 --> 00:03:45,600
+if you have worked with Google Colab.
+
+108
+00:03:45,600 --> 00:03:47,664
+Like the interface is essentially
+
+109
+00:03:47,664 --> 00:03:48,666
+a Jupyter Notebook that you
+
+110
+00:03:48,666 --> 00:03:49,929
+have different blocks that you can
+
+111
+00:03:49,929 --> 00:03:52,234
+add text or code in it.
+
+112
+00:03:52,234 --> 00:03:54,097
+But the Jupyter Notebook formats
+
+113
+00:03:54,097 --> 00:03:55,901
+can be also run, for example,
+
+114
+00:03:55,901 --> 00:03:57,384
+in VS Code, which we hopefully
+
+115
+00:03:57,384 --> 00:04:00,250
+show in a short demonstration.
+
+116
+00:04:00,250 --> 00:04:01,934
+And also GitHub Codespaces also
+
+117
+00:04:01,934 --> 00:04:05,401
+support the similar interface that
+
+118
+00:04:05,401 --> 00:04:06,022
+we can take a look.
+
+119
+00:04:07,875 --> 00:04:09,837
+There's also Pluto, which is
+
+120
+00:04:09,837 --> 00:04:11,779
+more directly like a Jupyter
+
+121
+00:04:11,779 --> 00:04:12,720
+notebook these days.
+
+122
+00:04:13,541 --> 00:04:17,985
+So it's a Julia thing and
+
+123
+00:04:17,985 --> 00:04:19,827
+has a somewhat different philosophy,
+
+124
+00:04:19,827 --> 00:04:21,409
+but I've seen it a lot lately.
+
+125
+00:04:22,990 --> 00:04:24,792
+I never worked with Pluto, but
+
+126
+00:04:24,792 --> 00:04:25,913
+when I was doing Julia, it
+
+127
+00:04:25,913 --> 00:04:28,616
+was mainly the JupyterLab thing
+
+128
+00:04:28,616 --> 00:04:29,877
+to work with Julia.
+
+129
+00:04:31,058 --> 00:04:31,539
+It's interesting.
+
+130
+00:04:31,539 --> 00:04:32,820
+I will check it out.
+
+131
+00:04:34,977 --> 00:04:37,160
+So actually, maybe we can take
+
+132
+00:04:37,160 --> 00:04:39,503
+a look at an example.
+
+133
+00:04:39,503 --> 00:04:40,664
+So here we have two
+
+134
+00:04:40,664 --> 00:04:42,246
+different examples that we can
+
+135
+00:04:42,246 --> 00:04:45,290
+go ahead and browse.
+
+136
+00:04:45,290 --> 00:04:46,171
+I guess in the past
+
+137
+00:04:46,171 --> 00:04:49,075
+CodeRefinery lessons previous years,
+
+138
+00:04:49,075 --> 00:04:50,877
+we always look at the wave discovery thing.
+
+139
+00:04:50,877 --> 00:04:52,379
+So maybe this year we can
+
+140
+00:04:52,379 --> 00:04:55,283
+look at the activity inequality study, I guess.
+
+141
+00:04:55,283 --> 00:04:57,325
+But maybe I can also briefly
+
+142
+00:04:57,325 --> 00:04:58,787
+show the first one as well.
+
+143
+00:04:58,787 --> 00:05:00,109
+So the activity in quality
+
+144
+00:05:00,109 --> 00:05:01,752
+study was a study, I guess,
+
+145
+00:05:01,752 --> 00:05:03,896
+in 2017 from Stanford University.
+
+146
+00:05:03,896 --> 00:05:07,162
+And it demonstrates inequality
+
+147
+00:05:07,162 --> 00:05:08,926
+of activity in different countries
+
+148
+00:05:08,926 --> 00:05:09,787
+and inside the country
+
+149
+00:05:09,787 --> 00:05:11,871
+between different genders, different
+
+150
+00:05:11,871 --> 00:05:14,616
+race, and different age groups.
+
+151
+00:05:14,616 --> 00:05:17,241
+So just to see what
+
+152
+00:05:17,241 --> 00:05:18,683
+the Jupyter Notebook looks like,
+
+153
+00:05:18,683 --> 00:05:20,206
+you can go ahead and look at the paper,
+
+154
+00:05:20,206 --> 00:05:21,408
+but just to see how are
+
+155
+00:05:21,408 --> 00:05:23,532
+the plots created in Jupyter
+
+156
+00:05:23,532 --> 00:05:24,694
+Notebook, maybe I can go ahead
+
+157
+00:05:24,694 --> 00:05:30,043
+and open the GitHub repository very briefly.
+
+158
+00:05:31,373 --> 00:05:33,978
+And for example, maybe I can
+
+159
+00:05:33,978 --> 00:05:35,983
+take a look at the figure number three.
+
+160
+00:05:37,165 --> 00:05:38,728
+And you can see that
+
+161
+00:05:38,728 --> 00:05:40,612
+IPython notebooks, these are
+
+162
+00:05:40,612 --> 00:05:42,676
+the Python notebooks, like Jupyter
+
+163
+00:05:42,676 --> 00:05:45,242
+notebooks that you can open and see.
+
+164
+00:05:45,242 --> 00:05:46,705
+Let's, for example, open the
+
+165
+00:05:48,068 --> 00:05:50,192
+figure three section B and C.
+
+166
+00:05:52,129 --> 00:05:55,234
+So yeah, these are essentially
+
+167
+00:05:55,234 --> 00:05:57,858
+the sections or the cells
+
+168
+00:05:57,858 --> 00:05:59,460
+in a Jupyter Notebook.
+
+169
+00:05:59,460 --> 00:06:00,922
+So you can see there is
+
+170
+00:06:00,922 --> 00:06:04,748
+a cell with code inside.
+
+171
+00:06:04,748 --> 00:06:06,070
+There is a cell, for example,
+
+172
+00:06:06,070 --> 00:06:09,595
+with a text or a heading for the weekday here.
+
+173
+00:06:09,595 --> 00:06:12,420
+And there are some reading of the data.
+
+174
+00:06:12,420 --> 00:06:13,701
+And when the code is run
+
+175
+00:06:13,701 --> 00:06:15,023
+and the plot is shown, as
+
+176
+00:06:15,023 --> 00:06:16,245
+[name] mentioned, it's very nice
+
+177
+00:06:16,245 --> 00:06:18,028
+that you can see actually.
+
+178
+00:06:18,028 --> 00:06:21,762
+Although in this world, yeah, I guess.
+
+179
+00:06:21,762 --> 00:06:23,945
+The gravitational wave notebook
+
+180
+00:06:23,945 --> 00:06:26,369
+is more like an actual story.
+
+181
+00:06:26,369 --> 00:06:28,673
+This is more like it's
+
+182
+00:06:28,673 --> 00:06:32,439
+code with very little even comments about it.
+
+183
+00:06:33,781 --> 00:06:35,263
+So this is essentially just
+
+184
+00:06:35,263 --> 00:06:36,825
+the code that produces the plot.
+
+185
+00:06:37,667 --> 00:06:39,630
+And it is in a Jupyter
+
+186
+00:06:39,630 --> 00:06:42,053
+notebook where you can see the plot.
+
+187
+00:06:42,053 --> 00:06:44,475
+So that's nice.
+
+188
+00:06:44,475 --> 00:06:46,078
+Yeah, but I guess it shows
+
+189
+00:06:46,078 --> 00:06:49,666
+how the Jupyter Notebook cells are created.
+
+190
+00:06:49,666 --> 00:06:50,969
+But maybe, yeah, that's true.
+
+191
+00:06:50,969 --> 00:06:54,597
+Maybe we can go back to the code.
+
+192
+00:06:54,597 --> 00:06:57,022
+So this is not necessarily a bad example,
+
+193
+00:06:57,022 --> 00:06:59,507
+but I think the gravitational
+
+194
+00:06:59,507 --> 00:07:01,211
+wave thing is a better example
+
+195
+00:07:01,211 --> 00:07:03,556
+in that it actually tells a story.
+
+196
+00:07:03,556 --> 00:07:03,716
+Yeah.
+
+197
+00:07:05,063 --> 00:07:06,406
+So maybe I can actually go
+
+198
+00:07:06,406 --> 00:07:10,334
+ahead and open the tutorial here.
+
+199
+00:07:10,334 --> 00:07:12,759
+So for example, the QuickView Notebook.
+
+200
+00:07:12,759 --> 00:07:13,962
+So you can either write in
+
+201
+00:07:13,962 --> 00:07:16,768
+Google Colab or you can open it in MyBinder.
+
+202
+00:07:16,768 --> 00:07:18,371
+And MyBinder is, I guess
+
+203
+00:07:18,371 --> 00:07:19,674
+we're going to talk about it
+
+204
+00:07:19,674 --> 00:07:21,718
+in the sharing section of this course.
+
+205
+00:07:21,718 --> 00:07:23,721
+But yeah, my MyBinder essentially
+
+206
+00:07:23,721 --> 00:07:26,145
+is a tool that you can share your notebooks,
+
+207
+00:07:26,145 --> 00:07:27,367
+and it would take care of
+
+208
+00:07:27,367 --> 00:07:30,191
+all of the dependencies that you have.
+
+209
+00:07:30,191 --> 00:07:31,734
+For example, your Python code,
+
+210
+00:07:31,734 --> 00:07:33,236
+all of the libraries, or if
+
+211
+00:07:33,236 --> 00:07:34,478
+your code isn't run with all
+
+212
+00:07:34,478 --> 00:07:36,541
+of the packages, it would be installed.
+
+213
+00:07:36,541 --> 00:07:37,803
+So when you're sharing the
+
+214
+00:07:37,803 --> 00:07:39,726
+code, everyone can access it,
+
+215
+00:07:39,726 --> 00:07:40,948
+and they can also run the
+
+216
+00:07:40,948 --> 00:07:43,071
+code and see the ports and everything.
+
+217
+00:07:43,071 --> 00:07:44,974
+So if I click on my binder
+
+218
+00:07:44,974 --> 00:07:49,481
+here, I guess it would take a couple of minutes.
+
+219
+00:07:50,457 --> 00:07:52,120
+I guess like 10 seconds or so,
+
+220
+00:07:52,120 --> 00:07:54,485
+but behind the scene probably
+
+221
+00:07:54,485 --> 00:07:56,129
+is like opening the environment
+
+222
+00:07:56,129 --> 00:07:57,912
+and activating the environment.
+
+223
+00:07:57,912 --> 00:07:59,957
+Oh, it had it pre-created.
+
+224
+00:07:59,957 --> 00:08:04,947
+So it is possible that it will just create,
+
+225
+00:08:04,947 --> 00:08:06,189
+it will build and create
+
+226
+00:08:06,189 --> 00:08:08,193
+the entire environment where the
+
+227
+00:08:08,193 --> 00:08:09,424
+code can be run.
+
+228
+00:08:09,424 --> 00:08:11,828
+Because the main thing about Binder is
+
+229
+00:08:11,828 --> 00:08:13,231
+that it doesn't just display
+
+230
+00:08:13,231 --> 00:08:14,934
+the notebook, you can actually run
+
+231
+00:08:14,934 --> 00:08:16,316
+the code in the notebook.
+
+232
+00:08:16,316 --> 00:08:17,458
+Exactly.
+
+233
+00:08:17,458 --> 00:08:18,740
+So you can see that again
+
+234
+00:08:18,740 --> 00:08:20,604
+that I have different blocks
+
+235
+00:08:20,604 --> 00:08:23,228
+or different cells and this cell
+
+236
+00:08:23,228 --> 00:08:25,312
+has like the markdown and
+
+237
+00:08:25,312 --> 00:08:27,175
+headings and everything and these
+
+238
+00:08:27,175 --> 00:08:28,898
+are like Python codes.
+
+239
+00:08:28,898 --> 00:08:29,880
+So I can go ahead and
+
+240
+00:08:29,880 --> 00:08:33,927
+select the cell and for example run the code.
+
+241
+00:08:33,927 --> 00:08:36,490
+And I can change the code as well.
+
+242
+00:08:36,490 --> 00:08:37,552
+For example, I can do
+
+243
+00:08:37,552 --> 00:08:39,695
+the experiment with changing this one
+
+244
+00:08:39,695 --> 00:08:41,057
+to L1, as it's mentioned here,
+
+245
+00:08:41,057 --> 00:08:43,099
+and run the code.
+
+246
+00:08:43,099 --> 00:08:45,302
+And this is a raw text, so
+
+247
+00:08:45,302 --> 00:08:46,724
+if I run it, it doesn't
+
+248
+00:08:46,724 --> 00:08:48,727
+change the headings or anything.
+
+249
+00:08:48,727 --> 00:08:49,929
+I can go ahead and run,
+
+250
+00:08:51,090 --> 00:08:53,253
+for example, the next block of
+
+251
+00:08:53,253 --> 00:08:57,359
+the code as well, and also
+
+252
+00:08:57,359 --> 00:09:00,783
+possibly running the time series.
+
+253
+00:09:00,783 --> 00:09:02,385
+This would possibly take a
+
+254
+00:09:02,385 --> 00:09:03,647
+couple of seconds as well.
+
+255
+00:09:05,128 --> 00:09:06,470
+And then after the time series is done,
+
+256
+00:09:06,470 --> 00:09:07,691
+maybe we can plot it again
+
+257
+00:09:07,691 --> 00:09:10,154
+so we can see the difference in plot.
+
+258
+00:09:10,154 --> 00:09:11,335
+But I guess because we only
+
+259
+00:09:11,335 --> 00:09:14,299
+changed it from H1 to L1,
+
+260
+00:09:14,299 --> 00:09:18,744
+the plot would just slightly change.
+
+261
+00:09:18,744 --> 00:09:20,045
+Oh, let's see.
+
+262
+00:09:21,647 --> 00:09:24,430
+Let's see.
+
+263
+00:09:24,430 --> 00:09:25,411
+OK, I don't actually know
+
+264
+00:09:25,411 --> 00:09:27,167
+if there's a difference.
+
+265
+00:09:27,167 --> 00:09:29,410
+Yeah, it has slightly changed
+
+266
+00:09:29,410 --> 00:09:30,993
+because I ran it before, but
+
+267
+00:09:30,993 --> 00:09:31,654
+it's a slight change.
+
+268
+00:09:31,654 --> 00:09:33,056
+But still, you can see that.
+
+269
+00:09:34,097 --> 00:09:35,620
+But you can do the beta plus.
+
+270
+00:09:35,620 --> 00:09:36,180
+I think I changed the
+
+271
+00:09:36,180 --> 00:09:37,162
+colors and everything.
+
+272
+00:09:37,162 --> 00:09:38,484
+But the idea is that I'm
+
+273
+00:09:38,484 --> 00:09:41,208
+going to talk about in more
+
+274
+00:09:41,208 --> 00:09:43,511
+details what you can do with the cells.
+
+275
+00:09:43,511 --> 00:09:44,713
+But just to give you an
+
+276
+00:09:44,713 --> 00:09:46,796
+idea, I think this is enough.
+
+277
+00:09:48,649 --> 00:09:49,812
+So yeah, maybe I can go
+
+278
+00:09:49,812 --> 00:09:51,919
+back to the course material.
+
+279
+00:09:51,919 --> 00:09:52,882
+I don't save it.
+
+280
+00:09:52,882 --> 00:09:54,326
+I would go back.
+
+281
+00:09:54,326 --> 00:09:55,630
+But you can feel free to
+
+282
+00:09:55,630 --> 00:09:57,435
+go and browse more figures and
+
+283
+00:09:57,435 --> 00:09:58,659
+see what is happening.
+
+284
+00:10:00,158 --> 00:10:01,680
+So as I mentioned at the beginning,
+
+285
+00:10:01,680 --> 00:10:03,002
+when it comes to the
+
+286
+00:10:03,002 --> 00:10:04,423
+Jupyter Notebooks, I have a
+
+287
+00:10:04,423 --> 00:10:05,505
+dual feeling about it.
+
+288
+00:10:06,466 --> 00:10:08,909
+And because Jupyter Notebooks are
+
+289
+00:10:08,909 --> 00:10:10,331
+very good in some of the
+
+290
+00:10:10,331 --> 00:10:13,374
+use cases, especially when you
+
+291
+00:10:13,374 --> 00:10:16,478
+have a workflow that is linear,
+
+292
+00:10:16,478 --> 00:10:18,761
+which means you have some data
+
+293
+00:10:18,761 --> 00:10:22,125
+and you want to do some experiments on it.
+
+294
+00:10:22,125 --> 00:10:25,249
+And it's like an iterative
+
+295
+00:10:25,249 --> 00:10:26,871
+approach that you want to apply.
+
+296
+00:10:26,871 --> 00:10:29,253
+So these are very, very good
+
+297
+00:10:29,253 --> 00:10:31,576
+use cases for Jupyter Notebooks.
+
+298
+00:10:31,576 --> 00:10:33,658
+Experimenting with new ideas or
+
+299
+00:10:33,658 --> 00:10:34,859
+with new libraries, or when you
+
+300
+00:10:34,859 --> 00:10:36,021
+have a new data set that
+
+301
+00:10:36,021 --> 00:10:37,582
+you haven't worked with it,
+
+302
+00:10:38,543 --> 00:10:40,265
+again, it's very good because you
+
+303
+00:10:40,265 --> 00:10:42,007
+can play with the data.
+
+304
+00:10:42,007 --> 00:10:43,048
+And as you already mentioned,
+
+305
+00:10:43,048 --> 00:10:45,831
+you can see the results immediately afterwards.
+
+306
+00:10:45,831 --> 00:10:47,152
+So you get a better sense
+
+307
+00:10:47,152 --> 00:10:48,874
+than writing a code that reads
+
+308
+00:10:48,874 --> 00:10:49,995
+the data, and then you have
+
+309
+00:10:49,995 --> 00:10:51,697
+to recompile the code every time.
+
+310
+00:10:52,892 --> 00:10:54,514
+I see Jupyter Notebooks as
+
+311
+00:10:54,514 --> 00:10:57,919
+like an interactive way to work
+
+312
+00:10:57,919 --> 00:10:59,861
+with your code and data specifically
+
+313
+00:10:59,861 --> 00:11:01,664
+because you're changing something
+
+314
+00:11:01,664 --> 00:11:02,345
+and you're seeing the
+
+315
+00:11:02,345 --> 00:11:03,226
+results, you're changing the
+
+316
+00:11:03,226 --> 00:11:04,988
+something and you're changing the results.
+
+317
+00:11:04,988 --> 00:11:07,051
+And with the more powerful
+
+318
+00:11:07,051 --> 00:11:08,193
+things like widgets that we
+
+319
+00:11:08,193 --> 00:11:09,535
+are going to discuss, you
+
+320
+00:11:09,535 --> 00:11:11,237
+can actually make your Jupyter
+
+321
+00:11:11,237 --> 00:11:13,700
+Notebook more interactive, which is
+
+322
+00:11:13,700 --> 00:11:17,125
+like a very fun way to play with your data.
+
+323
+00:11:17,125 --> 00:11:19,368
+These days, a lot of
+
+324
+00:11:19,368 --> 00:11:21,230
+HPC clusters also provide
+
+325
+00:11:21,230 --> 00:11:24,515
+a Jupyter-ready environment.
+
+326
+00:11:24,515 --> 00:11:26,878
+So for example, here at Aalto on Triton,
+
+327
+00:11:26,878 --> 00:11:29,982
+we have Jupyter available on
+
+328
+00:11:29,982 --> 00:11:31,324
+the web browser.
+
+329
+00:11:31,324 --> 00:11:33,186
+Also, Lumi supports that.
+
+330
+00:11:33,186 --> 00:11:35,209
+So in addition to playing with your data,
+
+331
+00:11:35,209 --> 00:11:37,151
+you can actually run it on
+
+332
+00:11:37,151 --> 00:11:38,533
+one of the compute nodes with
+
+333
+00:11:38,533 --> 00:11:40,676
+all of the fancy resources of
+
+334
+00:11:40,676 --> 00:11:44,361
+many CPUs to a huge memory or even
+
+335
+00:11:44,361 --> 00:11:46,573
+a GPU course in some of the clusters,
+
+336
+00:11:46,573 --> 00:11:48,583
+which makes playing with the
+
+337
+00:11:48,583 --> 00:11:52,464
+data even more fun, I guess.
+
+338
+00:11:54,199 --> 00:11:56,282
+sharing and explaining the code
+
+339
+00:11:56,282 --> 00:11:57,885
+to others or like to just
+
+340
+00:11:57,885 --> 00:11:59,287
+remember it in the future
+
+341
+00:11:59,287 --> 00:12:00,869
+it's actually very good ...
+
+342
+00:12:00,869 --> 00:12:01,931
+as you already mentioned like
+
+343
+00:12:01,931 --> 00:12:03,453
+telling their story behind like
+
+344
+00:12:03,453 --> 00:12:05,196
+why I'm doing this experiment
+
+345
+00:12:05,196 --> 00:12:07,660
+why these hyper parameters are set
+
+346
+00:12:07,660 --> 00:12:09,282
+or like just writing the story
+
+347
+00:12:09,282 --> 00:12:11,846
+of ... what you are doing in
+
+348
+00:12:11,846 --> 00:12:14,290
+the code is like a very powerful
+
+349
+00:12:14,290 --> 00:12:16,173
+use case of the Jupyter notebooks
+
+350
+00:12:17,149 --> 00:12:18,250
+If you're a teacher and
+
+351
+00:12:18,250 --> 00:12:19,672
+you're teaching something, it's also
+
+352
+00:12:19,672 --> 00:12:21,193
+a very good use case.
+
+353
+00:12:21,193 --> 00:12:22,575
+As I mentioned, I've seen
+
+354
+00:12:22,575 --> 00:12:27,480
+entire books written in Jupyter Notebook.
+
+355
+00:12:27,480 --> 00:12:28,581
+And I remember when I was
+
+356
+00:12:28,581 --> 00:12:30,363
+a student in many of
+
+357
+00:12:30,363 --> 00:12:32,966
+the computer science courses, we had
+
+358
+00:12:32,966 --> 00:12:35,128
+a lot of the assignments were in Jupyter
+
+359
+00:12:35,128 --> 00:12:38,452
+that the idea of the assignment were there,
+
+360
+00:12:38,452 --> 00:12:39,673
+the story were there as well,
+
+361
+00:12:39,673 --> 00:12:40,574
+and some of the blocks of
+
+362
+00:12:40,574 --> 00:12:41,535
+the code were empty that
+
+363
+00:12:41,535 --> 00:12:43,657
+the assignment was meant for
+
+364
+00:12:43,657 --> 00:12:45,600
+the students to fill it out.
+
+365
+00:12:45,600 --> 00:12:47,423
+And I guess it's also very easy
+
+366
+00:12:47,423 --> 00:12:49,847
+for the teacher to create
+
+367
+00:12:49,847 --> 00:12:51,791
+these kind of assignments as
+
+368
+00:12:51,791 --> 00:12:53,314
+well, because you just run all
+
+369
+00:12:53,314 --> 00:12:54,696
+of the code and see.
+
+370
+00:12:54,696 --> 00:12:56,159
+And even if you don't run
+
+371
+00:12:56,159 --> 00:12:58,563
+it, you would see the plots and the output.
+
+372
+00:12:58,563 --> 00:13:00,326
+So you get that.
+
+373
+00:13:00,326 --> 00:13:02,530
+There is an automated grading system
+
+374
+00:13:02,530 --> 00:13:04,774
+for Jupyter Notebooks, but then
+
+375
+00:13:04,774 --> 00:13:07,859
+you have to essentially have a correct answer.
+
+376
+00:13:07,859 --> 00:13:08,685
+Yeah.
+
+377
+00:13:08,685 --> 00:13:11,108
+a correct format also for the answer.
+
+378
+00:13:11,108 --> 00:13:12,871
+But when all of the cells are run,
+
+379
+00:13:12,871 --> 00:13:15,475
+and then you save it, all
+
+380
+00:13:15,475 --> 00:13:16,737
+of the plots and the outputs
+
+381
+00:13:16,737 --> 00:13:18,399
+are also saved along it.
+
+382
+00:13:18,399 --> 00:13:20,342
+So even without running all of the code,
+
+383
+00:13:21,624 --> 00:13:22,705
+you can get a sense that
+
+384
+00:13:22,705 --> 00:13:23,847
+if the student actually did it.
+
+385
+00:13:23,847 --> 00:13:25,930
+But I think it's not a
+
+386
+00:13:25,930 --> 00:13:27,572
+topic for this section, but yeah.
+
+387
+00:13:28,699 --> 00:13:31,203
+You can also replace your
+
+388
+00:13:31,203 --> 00:13:35,128
+paper notebook if you want to, I guess.
+
+389
+00:13:36,050 --> 00:13:37,932
+And at the moment, there
+
+390
+00:13:37,932 --> 00:13:40,937
+is a whole community around Jupyter Notebooks.
+
+391
+00:13:40,937 --> 00:13:42,579
+So there are a lot of plugins
+
+392
+00:13:42,579 --> 00:13:45,083
+or other side tools that, for example,
+
+393
+00:13:45,083 --> 00:13:46,505
+you can create slide
+
+394
+00:13:46,505 --> 00:13:48,808
+presentations with Jupyter Notebooks.
+
+395
+00:13:48,808 --> 00:13:50,130
+So it's like a powerful...
+
+396
+00:13:50,130 --> 00:13:52,534
+Probably the most common use
+
+397
+00:13:52,534 --> 00:13:54,678
+case is kind of a scratch pad.
+
+398
+00:13:54,678 --> 00:13:56,161
+So you're not exactly telling a story,
+
+399
+00:13:56,161 --> 00:13:57,383
+you're just seeing what happens
+
+400
+00:13:57,383 --> 00:13:58,725
+if you write this code.
+
+401
+00:13:58,725 --> 00:14:02,131
+And then probably discard it or
+
+402
+00:14:02,131 --> 00:14:04,375
+move it to the correct
+
+403
+00:14:04,375 --> 00:14:05,678
+function or something like that.
+
+404
+00:14:07,241 --> 00:14:08,743
+Which kind of does actually
+
+405
+00:14:08,743 --> 00:14:09,925
+bleed into the pitfalls.
+
+406
+00:14:09,925 --> 00:14:12,290
+Yeah, that's true.
+
+407
+00:14:12,290 --> 00:14:13,705
+But yeah.
+
+408
+00:14:13,705 --> 00:14:16,468
+But speaking of pitfalls,
+
+409
+00:14:16,468 --> 00:14:17,889
+Jupyter notebooks are not the answer
+
+410
+00:14:17,889 --> 00:14:19,991
+for everything, especially the
+
+411
+00:14:19,991 --> 00:14:21,612
+Jupyter notebooks are not good if
+
+412
+00:14:21,612 --> 00:14:24,115
+you have a very complex code flow
+
+413
+00:14:24,115 --> 00:14:25,816
+and it's more suitable for
+
+414
+00:14:25,816 --> 00:14:28,179
+a linear one that you run
+
+415
+00:14:28,179 --> 00:14:29,440
+the code block by block.
+
+416
+00:14:29,440 --> 00:14:31,582
+But if you have a more complex one,
+
+417
+00:14:31,582 --> 00:14:32,963
+Jupyter notebooks are not the
+
+418
+00:14:32,963 --> 00:14:34,044
+answer and it would just
+
+419
+00:14:34,044 --> 00:14:35,325
+make it very complicated.
+
+420
+00:14:35,325 --> 00:14:37,507
+If you have a large code base,
+
+421
+00:14:37,507 --> 00:14:38,828
+although there are some
+
+422
+00:14:38,828 --> 00:14:40,770
+approaches to create a module
+
+423
+00:14:40,770 --> 00:14:42,612
+and call the module and everything,
+
+424
+00:14:42,612 --> 00:14:44,982
+Personally, I don't recommend it.
+
+425
+00:14:44,982 --> 00:14:47,171
+I don't think it's a best practice.
+
+426
+00:14:47,171 --> 00:14:48,557
+It's just for showcasing and
+
+427
+00:14:48,557 --> 00:14:52,132
+telling the story, I would say.
+
+428
+00:14:53,918 --> 00:14:57,703
+It is not very easy to write a notebook,
+
+429
+00:14:57,703 --> 00:14:59,105
+like Jupyter notebook, without a
+
+430
+00:14:59,105 --> 00:15:01,388
+plugin or without an extra application.
+
+431
+00:15:01,388 --> 00:15:02,730
+Also, it's possible to do it
+
+432
+00:15:02,730 --> 00:15:05,013
+in any text editor
+
+433
+00:15:05,013 --> 00:15:06,995
+because underneath, essentially, it's
+
+434
+00:15:06,995 --> 00:15:08,477
+like a JSON file.
+
+435
+00:15:08,477 --> 00:15:11,942
+But with a plugin, it's a lot easier.
+
+436
+00:15:11,942 --> 00:15:14,505
+So maybe that's also a pitfall.
+
+437
+00:15:14,505 --> 00:15:16,728
+... notebooks can be version controlled
+
+438
+00:15:16,728 --> 00:15:19,332
+but again without any plugin
+
+439
+00:15:19,332 --> 00:15:20,533
+with an additional plugin or
+
+440
+00:15:20,533 --> 00:15:22,656
+like a platform it can
+
+441
+00:15:22,656 --> 00:15:24,939
+cause some issues specifically if
+
+442
+00:15:24,939 --> 00:15:27,703
+you have plots or tables embedded
+
+443
+00:15:27,703 --> 00:15:29,045
+which are the whole point
+
+444
+00:15:29,045 --> 00:15:30,947
+of the having Jupyter notebooks
+
+445
+00:15:30,947 --> 00:15:34,452
+I guess so that's also a limitation there
+
+446
+00:15:34,452 --> 00:15:36,539
+And I don't know still why, but
+
+447
+00:15:36,539 --> 00:15:38,847
+when you are creating the Jupyter Notebook,
+
+448
+00:15:38,847 --> 00:15:40,914
+it's not named by default and
+
+449
+00:15:40,914 --> 00:15:43,663
+it can be actually a very huge problem.
+
+450
+00:15:43,663 --> 00:15:45,028
+And this is specifically
+
+451
+00:15:45,028 --> 00:15:47,985
+about JupyterLab, actually.
+
+452
+00:15:47,985 --> 00:15:50,569
+... but but ... it's actually
+
+453
+00:15:50,569 --> 00:15:52,472
+like it doesn't look like a
+
+454
+00:15:52,472 --> 00:15:55,096
+very huge downside but when you are working
+
+455
+00:15:55,096 --> 00:15:58,141
+and ... it everyone has this experience
+
+456
+00:15:58,141 --> 00:16:00,444
+that ... they forgot to to
+
+457
+00:16:00,444 --> 00:16:02,327
+rename the file and then after
+
+458
+00:16:02,327 --> 00:16:03,649
+a couple of weeks they came
+
+459
+00:16:03,649 --> 00:16:05,812
+back and like just looking on
+
+460
+00:16:05,812 --> 00:16:08,296
+the untitled files so when
+
+461
+00:16:08,296 --> 00:16:09,999
+you're creating a one just
+
+462
+00:16:09,999 --> 00:16:12,623
+don't forget to rename it at the beginning
+
+463
+00:16:12,623 --> 00:16:14,406
+But yeah, you can look at
+
+464
+00:16:14,406 --> 00:16:18,311
+our internal page for more pitfalls.
+
+465
+00:16:19,773 --> 00:16:21,155
+And some of the good practices to follow,
+
+466
+00:16:21,155 --> 00:16:22,417
+as I mentioned, always,
+
+467
+00:16:22,417 --> 00:16:25,421
+always, always remember to rename
+
+468
+00:16:25,421 --> 00:16:27,043
+the file when you are working with JupyterLab.
+
+469
+00:16:27,844 --> 00:16:30,128
+And before sharing and also
+
+470
+00:16:30,128 --> 00:16:32,170
+saving the code, it's always good
+
+471
+00:16:32,170 --> 00:16:33,392
+to run all of the cells, all
+
+472
+00:16:33,392 --> 00:16:34,654
+of the blocks of the code.
+
+473
+00:16:34,654 --> 00:16:35,896
+So you are making sure
+
+474
+00:16:35,896 --> 00:16:39,401
+that everything is supposed as it
+
+475
+00:16:39,401 --> 00:16:40,863
+should be, as you expected it.
+
+476
+00:16:42,345 --> 00:16:42,545
+Yeah.
+
+477
+00:16:43,875 --> 00:16:46,157
+Essentially, I have over a
+
+478
+00:16:46,157 --> 00:16:48,259
+long period of time developed
+
+479
+00:16:48,259 --> 00:16:50,341
+the habit of always restarting
+
+480
+00:16:50,341 --> 00:16:52,042
+the kernel and always running
+
+481
+00:16:52,042 --> 00:16:54,024
+all the cells from top to bottom.
+
+482
+00:16:55,265 --> 00:16:56,466
+Even if it's a scratch pad, like
+
+483
+00:16:56,466 --> 00:16:57,747
+even if I'm just trying things out,
+
+484
+00:16:57,747 --> 00:16:59,068
+I will never go and run
+
+485
+00:16:59,068 --> 00:17:00,309
+the cells out of order because
+
+486
+00:17:01,290 --> 00:17:02,431
+that just leads to problems.
+
+487
+00:17:03,572 --> 00:17:04,293
+I wish there was a
+
+488
+00:17:04,293 --> 00:17:06,234
+way of completely disabling that feature.
+
+489
+00:17:07,936 --> 00:17:09,577
+Yeah, but it's very good
+
+490
+00:17:09,577 --> 00:17:11,159
+for the linear workflow as I mentioned.
+
+491
+00:17:11,159 --> 00:17:12,880
+So like going block by block, I guess.
+
+492
+00:17:12,880 --> 00:17:13,781
+Yeah.
+
+493
+00:17:15,516 --> 00:17:20,631
+Maybe we can go to the
+
+494
+00:17:22,637 --> 00:17:24,523
+interface and take a look at
+
+495
+00:17:24,523 --> 00:17:30,099
+the interface very briefly.
+
+496
+00:17:31,345 --> 00:17:35,852
+If you created the conda environment,
+
+497
+00:17:35,852 --> 00:17:37,394
+which I guess you did
+
+498
+00:17:37,394 --> 00:17:39,557
+already, you should be able to
+
+499
+00:17:39,557 --> 00:17:41,120
+run the JupyterLab.
+
+500
+00:17:41,120 --> 00:17:42,382
+But just to demonstrate, I
+
+501
+00:17:42,382 --> 00:17:45,627
+will bring my terminal over here.
+
+502
+00:17:45,627 --> 00:17:50,374
+And I already have the environment.
+
+503
+00:17:50,374 --> 00:17:51,616
+So I would just go ahead
+
+504
+00:17:51,616 --> 00:17:55,682
+and make a directory like JupyterLab demo.
+
+505
+00:17:56,539 --> 00:17:59,589
+I would go inside that library
+
+506
+00:17:59,589 --> 00:18:02,740
+and by calling the, actually
+
+507
+00:18:02,740 --> 00:18:06,131
+my environment is not activated.
+
+508
+00:18:06,131 --> 00:18:07,676
+Yes, I would activate my
+
+509
+00:18:07,676 --> 00:18:09,502
+CodeRefinery September 2025.
+
+510
+00:18:10,444 --> 00:18:12,647
+often this would be conda activate
+
+511
+00:18:12,647 --> 00:18:14,389
+or do we recommend using
+
+512
+00:18:14,389 --> 00:18:15,350
+mamba these days in
+
+513
+00:18:15,350 --> 00:18:16,992
+the installation instructions then it
+
+514
+00:18:16,992 --> 00:18:19,495
+would be mamba activate yes I don't know
+
+515
+00:18:19,495 --> 00:18:20,797
+if source activate will work
+
+516
+00:18:20,797 --> 00:18:24,181
+for everyone but in some cases yeah
+
+517
+00:18:24,181 --> 00:18:25,142
+because of the structure I'm
+
+518
+00:18:25,142 --> 00:18:27,785
+always like yeah exactly but yeah
+
+519
+00:18:27,785 --> 00:18:28,947
+but mamba activate or
+
+520
+00:18:28,947 --> 00:18:31,129
+either source activate then name
+
+521
+00:18:31,129 --> 00:18:31,830
+of the environment so it
+
+522
+00:18:31,830 --> 00:18:33,192
+would activate the environment and
+
+523
+00:18:33,192 --> 00:18:35,094
+then I can run the command
+
+524
+00:18:36,456 --> 00:18:39,860
+JupyterLab to to run the JupyterLab
+
+525
+00:18:41,747 --> 00:18:44,476
+So what happens is that
+
+526
+00:18:44,476 --> 00:18:47,586
+JupyterLab would be starting and
+
+527
+00:18:48,950 --> 00:18:50,595
+in your recent browser, it would
+
+528
+00:18:50,595 --> 00:18:52,120
+open a new tab or new window
+
+529
+00:18:52,120 --> 00:18:54,187
+and it would show the interface.
+
+530
+00:18:55,720 --> 00:18:57,223
+so let's wait for it so
+
+531
+00:18:57,223 --> 00:18:58,806
+it would be done yes and
+
+532
+00:18:58,806 --> 00:19:00,970
+it switched to my browser so you can see
+
+533
+00:19:00,970 --> 00:19:02,713
+that the interface of the
+
+534
+00:19:02,713 --> 00:19:05,859
+computer lab is starting which is very good
+
+535
+00:19:05,859 --> 00:19:07,883
+but ... for a second if I
+
+536
+00:19:07,883 --> 00:19:10,408
+go back to the previous ...
+
+537
+00:19:11,269 --> 00:19:13,033
+terminal if you look at the
+
+538
+00:19:13,033 --> 00:19:15,818
+logs here you can see that
+
+539
+00:19:15,818 --> 00:19:17,501
+The JupyterLab is starting
+
+540
+00:19:17,501 --> 00:19:19,564
+at my localhost with this specific port.
+
+541
+00:19:19,564 --> 00:19:21,086
+The port and the address
+
+542
+00:19:21,086 --> 00:19:22,769
+can be also changed.
+
+543
+00:19:22,769 --> 00:19:25,413
+And there is also this token thing.
+
+544
+00:19:25,413 --> 00:19:26,716
+So if you want to open it
+
+545
+00:19:26,716 --> 00:19:28,078
+in a new browser or like
+
+546
+00:19:28,078 --> 00:19:29,500
+when sometimes you're working on
+
+547
+00:19:29,500 --> 00:19:30,742
+a remote server and you're
+
+548
+00:19:30,742 --> 00:19:32,024
+doing like port forwarding to
+
+549
+00:19:32,024 --> 00:19:34,268
+run a Jupyter notebook, it's
+
+550
+00:19:34,268 --> 00:19:35,890
+always good to have this token.
+
+551
+00:19:35,890 --> 00:19:37,593
+Otherwise, Jupyter doesn't allow you
+
+552
+00:19:37,593 --> 00:19:38,835
+to log in.
+
+553
+00:19:38,835 --> 00:19:41,179
+So just to, I don't think
+
+554
+00:19:41,179 --> 00:19:44,725
+I can, it's just to demonstrate.
+
+555
+00:19:44,725 --> 00:19:46,508
+At least copying and pasting
+
+556
+00:19:46,508 --> 00:19:48,671
+that full URL should work.
+
+557
+00:19:48,671 --> 00:19:49,733
+I don't know if you can.
+
+558
+00:19:49,733 --> 00:19:51,095
+Exactly, yes.
+
+559
+00:19:51,095 --> 00:19:51,736
+From the terminal.
+
+560
+00:19:51,736 --> 00:19:53,018
+But on some terminals, just
+
+561
+00:19:53,018 --> 00:19:54,647
+clicking on it is enough.
+
+562
+00:19:54,647 --> 00:19:55,688
+Yeah.
+
+563
+00:19:55,688 --> 00:19:55,868
+OK.
+
+564
+00:19:56,809 --> 00:19:58,431
+So maybe we can talk about
+
+565
+00:19:58,431 --> 00:20:00,373
+the interface a bit.
+
+566
+00:20:00,373 --> 00:20:06,038
+So this is one of the, actually,
+
+567
+00:20:06,038 --> 00:20:07,280
+before that, maybe I can go
+
+568
+00:20:07,280 --> 00:20:09,162
+back to the course and
+
+569
+00:20:09,162 --> 00:20:10,783
+talk about the components and
+
+570
+00:20:10,783 --> 00:20:11,884
+the big picture behind it.
+
+571
+00:20:12,845 --> 00:20:14,407
+So what's happening behind the
+
+572
+00:20:14,407 --> 00:20:16,068
+scene is that we have
+
+573
+00:20:16,068 --> 00:20:20,133
+the Jupyter Notebook server running,
+
+574
+00:20:20,133 --> 00:20:22,575
+which in this case is the JupyterLab.
+
+575
+00:20:22,575 --> 00:20:24,718
+And inside the JupyterLab, we
+
+576
+00:20:24,718 --> 00:20:26,740
+are creating notebook files just
+
+577
+00:20:26,740 --> 00:20:29,404
+to see the interface and see
+
+578
+00:20:29,404 --> 00:20:31,126
+all of the cells and the segments of the code.
+
+579
+00:20:32,428 --> 00:20:33,209
+At the moment, we are
+
+580
+00:20:33,209 --> 00:20:36,333
+using my Chrome browser to
+
+581
+00:20:36,333 --> 00:20:39,938
+see the Jupyter, interact with the JupyterLab.
+
+582
+00:20:39,938 --> 00:20:41,540
+But it can be also VS
+
+583
+00:20:41,540 --> 00:20:44,884
+Code or any other tools, I guess.
+
+584
+00:20:44,884 --> 00:20:47,989
+And behind the scenes, there
+
+585
+00:20:47,989 --> 00:20:50,633
+is a kernel running, which can be thought
+
+586
+00:20:50,633 --> 00:20:52,115
+as like a virtual environment,
+
+587
+00:20:52,115 --> 00:20:53,838
+which has all of your dependencies
+
+588
+00:20:53,838 --> 00:20:57,403
+and also the dependencies for Jupyter,
+
+589
+00:20:57,403 --> 00:20:58,385
+which is like the
+
+590
+00:20:58,385 --> 00:21:00,568
+IPython kernel, essentially, to run
+
+591
+00:21:00,568 --> 00:21:01,629
+the code and show you the
+
+592
+00:21:01,629 --> 00:21:03,332
+output and also render the markdown.
+
+593
+00:21:04,189 --> 00:21:06,271
+So the kernel runs the code.
+
+594
+00:21:06,271 --> 00:21:07,592
+The notebook file is where
+
+595
+00:21:07,592 --> 00:21:09,474
+you essentially save everything
+
+596
+00:21:09,474 --> 00:21:11,596
+and the browser just shows things.
+
+597
+00:21:11,596 --> 00:21:12,017
+Exactly.
+
+598
+00:21:13,198 --> 00:21:15,200
+So now we have an understanding
+
+599
+00:21:15,200 --> 00:21:16,441
+of the big picture.
+
+600
+00:21:16,441 --> 00:21:19,104
+Maybe I can go back to the, oh, no.
+
+601
+00:21:19,104 --> 00:21:23,268
+Maybe I can go back to the, oh, sorry.
+
+602
+00:21:23,268 --> 00:21:26,431
+Maybe I can go back to the interface.
+
+603
+00:21:26,431 --> 00:21:28,253
+And the reason is I don't
+
+604
+00:21:28,253 --> 00:21:30,095
+see the tab names, but yeah.
+
+605
+00:21:31,307 --> 00:21:34,131
+So this is the JupyterLab interface,
+
+606
+00:21:34,131 --> 00:21:37,135
+and here you can create
+
+607
+00:21:37,135 --> 00:21:40,520
+a new notebook, which would take a look in.
+
+608
+00:21:40,520 --> 00:21:42,002
+You can also create a
+
+609
+00:21:42,002 --> 00:21:43,263
+console with IPython that you
+
+610
+00:21:43,263 --> 00:21:45,526
+can test some small commands.
+
+611
+00:21:45,526 --> 00:21:46,748
+You can open a terminal here,
+
+612
+00:21:47,669 --> 00:21:49,632
+create a file with markdown text.
+
+613
+00:21:50,894 --> 00:21:52,937
+And before creating a notebook,
+
+614
+00:21:52,937 --> 00:21:55,760
+maybe we can look at what
+
+615
+00:21:55,760 --> 00:21:57,683
+is the interface here.
+
+616
+00:21:57,683 --> 00:21:59,405
+... so here in the tree
+
+617
+00:21:59,405 --> 00:22:00,946
+explorer you would see all of
+
+618
+00:22:00,946 --> 00:22:01,847
+the name of the file that
+
+619
+00:22:01,847 --> 00:22:03,168
+has been created the folder is
+
+620
+00:22:03,168 --> 00:22:04,589
+empty I just created that so
+
+621
+00:22:04,589 --> 00:22:06,211
+there is nothing here inside
+
+622
+00:22:06,211 --> 00:22:09,674
+yet this blue button would open
+
+623
+00:22:09,674 --> 00:22:11,295
+a new launcher launcher is
+
+624
+00:22:11,295 --> 00:22:13,097
+this specific page so if I
+
+625
+00:22:13,097 --> 00:22:15,339
+create this another tab would
+
+626
+00:22:15,339 --> 00:22:16,981
+be created here that is
+
+627
+00:22:16,981 --> 00:22:19,403
+essentially the same one ... so
+
+628
+00:22:19,403 --> 00:22:20,564
+for now it's not useful but
+
+629
+00:22:20,564 --> 00:22:22,485
+when you're editing a notebook
+
+630
+00:22:22,485 --> 00:22:23,566
+and you're on the launcher again
+
+631
+00:22:23,566 --> 00:22:25,248
+that would be a useful button so
+
+632
+00:22:25,248 --> 00:22:27,450
+for now I will close this tab
+
+633
+00:22:27,450 --> 00:22:29,873
+I can create a new folder here.
+
+634
+00:22:29,873 --> 00:22:31,896
+I can upload a new file.
+
+635
+00:22:31,896 --> 00:22:34,740
+Or if I change the folder
+
+636
+00:22:35,721 --> 00:22:36,762
+in like my terminal or
+
+637
+00:22:36,762 --> 00:22:38,905
+something and this hasn't been
+
+638
+00:22:38,905 --> 00:22:41,609
+updated, I can refresh this file explorer.
+
+639
+00:22:42,931 --> 00:22:44,953
+I can, of course, clone
+
+640
+00:22:44,953 --> 00:22:46,475
+a Git repository and I can
+
+641
+00:22:46,475 --> 00:22:48,498
+like filter some of the files
+
+642
+00:22:48,498 --> 00:22:50,240
+with like some names or like
+
+643
+00:22:50,240 --> 00:22:53,625
+essentially like a search button.
+
+644
+00:22:53,625 --> 00:22:55,247
+I guess we'll take a look at the
+
+645
+00:22:56,374 --> 00:22:59,799
+Well, okay, the side panels are useful.
+
+646
+00:22:59,799 --> 00:23:00,560
+Like, we'll take a look at
+
+647
+00:23:00,560 --> 00:23:02,843
+the Git part at some point later.
+
+648
+00:23:03,684 --> 00:23:05,787
+Yeah.
+
+649
+00:23:05,787 --> 00:23:07,630
+There is maybe, like, this
+
+650
+00:23:07,630 --> 00:23:09,973
+circle with the square inside.
+
+651
+00:23:09,973 --> 00:23:10,734
+Yes.
+
+652
+00:23:10,734 --> 00:23:13,739
+So this is for the kernels.
+
+653
+00:23:13,739 --> 00:23:14,280
+Yes.
+
+654
+00:23:14,280 --> 00:23:16,002
+At the moment, there is no kernel running,
+
+655
+00:23:16,002 --> 00:23:18,385
+so I haven't, like, started
+
+656
+00:23:18,385 --> 00:23:20,569
+any kernel, which, again, you can
+
+657
+00:23:20,569 --> 00:23:22,331
+think of it as, like, a...
+
+658
+00:23:23,155 --> 00:23:24,377
+Yeah, but this is kind of
+
+659
+00:23:24,377 --> 00:23:25,478
+just good to know, and you
+
+660
+00:23:25,478 --> 00:23:27,601
+probably will not need it today
+
+661
+00:23:27,601 --> 00:23:29,384
+or any time very soon.
+
+662
+00:23:30,405 --> 00:23:31,366
+Exactly.
+
+663
+00:23:31,366 --> 00:23:32,388
+But when you have
+
+664
+00:23:32,388 --> 00:23:35,132
+multiple notebooks running, you can, like,
+
+665
+00:23:35,132 --> 00:23:36,834
+restart the kernel, which is, like,
+
+666
+00:23:36,834 --> 00:23:38,677
+reinstall the memory of
+
+667
+00:23:38,677 --> 00:23:40,940
+the Python interpreter or the
+
+668
+00:23:40,940 --> 00:23:43,183
+R interpreter, in a sense.
+
+669
+00:23:45,246 --> 00:23:46,968
+But then I think... Mm-hmm.
+
+670
+00:23:48,147 --> 00:23:50,230
+Yeah, so I'm just thinking through
+
+671
+00:23:50,230 --> 00:23:52,593
+what we'll actually need for the exercise,
+
+672
+00:23:52,593 --> 00:23:53,955
+and I think that is creating
+
+673
+00:23:53,955 --> 00:23:58,261
+a file and adding cells.
+
+674
+00:23:58,261 --> 00:24:01,406
+Okay, so just the last one is
+
+675
+00:24:01,406 --> 00:24:05,131
+that with the Git, one,
+
+676
+00:24:05,131 --> 00:24:07,154
+you can actually clone a Git
+
+677
+00:24:07,154 --> 00:24:08,396
+repository, or you can actually
+
+678
+00:24:08,396 --> 00:24:10,279
+initialize a Git repository here.
+
+679
+00:24:10,279 --> 00:24:12,262
+As we mentioned, notebooks can
+
+680
+00:24:12,262 --> 00:24:15,366
+be version controlled, but
+
+681
+00:24:15,366 --> 00:24:17,008
+there are like some tricks
+
+682
+00:24:17,008 --> 00:24:18,469
+that [name] would show.
+
+683
+00:24:18,469 --> 00:24:19,911
+So let me just initialize,
+
+684
+00:24:19,911 --> 00:24:21,733
+I'll just get repository here so
+
+685
+00:24:21,733 --> 00:24:25,156
+you can like, yes, so that's good.
+
+686
+00:24:25,156 --> 00:24:26,518
+So maybe I can go back
+
+687
+00:24:26,518 --> 00:24:29,080
+to the main folder here and then
+
+688
+00:24:29,080 --> 00:24:30,642
+I can create a new notebook.
+
+689
+00:24:31,743 --> 00:24:32,744
+So as you can see, a
+
+690
+00:24:32,744 --> 00:24:34,866
+new notebook has been created and
+
+691
+00:24:34,866 --> 00:24:36,929
+this is my file and always
+
+692
+00:24:36,929 --> 00:24:38,771
+remember to rename the file first.
+
+693
+00:24:38,771 --> 00:24:40,693
+So I would right click on
+
+694
+00:24:40,693 --> 00:24:44,998
+this and rename it to intro.
+
+695
+00:24:44,998 --> 00:24:47,086
+Also, you can use the shortcuts
+
+696
+00:24:47,086 --> 00:24:48,672
+as well, but don't push
+
+697
+00:24:48,672 --> 00:24:51,141
+yourself to learn all of the shortcuts.
+
+698
+00:24:51,141 --> 00:24:53,490
+Using Vitek GUI is also fine.
+
+699
+00:24:54,837 --> 00:24:58,842
+So, sorry, I created a mistake.
+
+700
+00:24:58,842 --> 00:25:00,905
+So in the Jupyter Notebook, as
+
+701
+00:25:00,905 --> 00:25:03,909
+you can see, we have these
+
+702
+00:25:03,909 --> 00:25:05,070
+sections called a cell.
+
+703
+00:25:06,112 --> 00:25:08,575
+And in this cell, you
+
+704
+00:25:08,575 --> 00:25:10,818
+can, for example, write any code.
+
+705
+00:25:10,818 --> 00:25:12,240
+For example, I would go ahead
+
+706
+00:25:12,240 --> 00:25:16,726
+and from date and time, I
+
+707
+00:25:16,726 --> 00:25:20,611
+would import date and time,
+
+708
+00:25:20,611 --> 00:25:24,638
+and for example, print date and time.
+
+709
+00:25:24,638 --> 00:25:28,183
+you now see what is the time and ...
+
+710
+00:25:28,183 --> 00:25:29,245
+when I'm selecting a file
+
+711
+00:25:29,245 --> 00:25:31,188
+this blue indicator shows that
+
+712
+00:25:31,188 --> 00:25:35,054
+this specific cell is selected so
+
+713
+00:25:35,054 --> 00:25:36,997
+I can go ahead and with this
+
+714
+00:25:36,997 --> 00:25:38,860
+play button I can go ahead and run it
+
+715
+00:25:38,860 --> 00:25:41,825
+so you can see that the code
+
+716
+00:25:41,825 --> 00:25:44,709
+is run at the moment ... by
+
+717
+00:25:44,709 --> 00:25:47,273
+the way can people see well
+
+718
+00:25:47,273 --> 00:25:48,855
+is the text large enough ... you
+
+719
+00:25:48,855 --> 00:25:49,937
+can write in the notes if it's not
+
+720
+00:25:51,216 --> 00:25:52,880
+Yes, but I can also increase
+
+721
+00:25:52,880 --> 00:25:54,283
+the font a bit.
+
+722
+00:25:54,283 --> 00:25:55,305
+Is it better?
+
+723
+00:25:55,305 --> 00:25:55,887
+A bit, yeah.
+
+724
+00:25:55,887 --> 00:25:57,591
+But I can also.
+
+725
+00:25:57,591 --> 00:26:00,417
+I mean, also, if it's fine, then it's fine.
+
+726
+00:26:00,417 --> 00:26:01,620
+Okay.
+
+727
+00:26:01,620 --> 00:26:02,201
+Okay.
+
+728
+00:26:02,201 --> 00:26:03,765
+I would keep it at this so
+
+729
+00:26:03,765 --> 00:26:05,429
+we can see all of the buttons as well.
+
+730
+00:26:05,429 --> 00:26:05,965
+Yeah.
+
+731
+00:26:05,965 --> 00:26:07,768
+So when you are selecting a
+
+732
+00:26:07,768 --> 00:26:11,673
+cell, the first button would
+
+733
+00:26:11,673 --> 00:26:15,258
+save the whole notebook and
+
+734
+00:26:15,258 --> 00:26:16,780
+also create the checkpoints, like
+
+735
+00:26:16,780 --> 00:26:18,382
+a backup that you can go back into it.
+
+736
+00:26:19,444 --> 00:26:20,986
+You can add a new cell
+
+737
+00:26:22,127 --> 00:26:24,122
+below the cell that has been
+
+738
+00:26:24,122 --> 00:26:25,987
+select it, you can cut a cell
+
+739
+00:26:25,987 --> 00:26:27,189
+and like paste it somewhere
+
+740
+00:26:27,189 --> 00:26:28,874
+else to the code that you, if you want,
+
+741
+00:26:28,874 --> 00:26:30,578
+you can copy a cell, you
+
+742
+00:26:30,578 --> 00:26:33,365
+can paste a cell, of course, you can run a cell.
+
+743
+00:26:33,365 --> 00:26:34,447
+And if it's a code one,
+
+744
+00:26:34,447 --> 00:26:35,991
+it would run the code.
+
+745
+00:26:35,991 --> 00:26:37,214
+And if it's a Markdown one,
+
+746
+00:26:37,214 --> 00:26:40,963
+it would just render the Markdown.
+
+747
+00:26:40,963 --> 00:26:42,605
+and this guy is for
+
+748
+00:26:42,605 --> 00:26:44,326
+interrupting the kernel and it means
+
+749
+00:26:44,326 --> 00:26:46,028
+that let's say you have
+
+750
+00:26:46,028 --> 00:26:47,890
+a computationally heavy function
+
+751
+00:26:47,890 --> 00:26:48,771
+or like when you're
+
+752
+00:26:48,771 --> 00:26:50,152
+doing something computationally heavy
+
+753
+00:26:50,152 --> 00:26:51,674
+heavy and the code is a
+
+754
+00:26:51,674 --> 00:26:52,895
+stock you can just interrupt it
+
+755
+00:26:52,895 --> 00:26:55,258
+so the the computation would pause
+
+756
+00:26:55,258 --> 00:26:56,659
+and the command is not
+
+757
+00:26:56,659 --> 00:27:00,143
+run completely you can restart the kernel
+
+758
+00:27:00,143 --> 00:27:03,086
+and also run and if you want
+
+759
+00:27:03,086 --> 00:27:04,727
+to run some of the some of
+
+760
+00:27:04,727 --> 00:27:07,951
+the cells again or you can
+
+761
+00:27:07,951 --> 00:27:10,413
+restart the kernel and run all of the cells
+
+762
+00:27:11,423 --> 00:27:13,025
+So just to show you, I
+
+763
+00:27:13,025 --> 00:27:14,748
+would select another cell.
+
+764
+00:27:14,748 --> 00:27:15,950
+And when I'm selecting a
+
+765
+00:27:15,950 --> 00:27:17,572
+cell, there is also this button
+
+766
+00:27:17,572 --> 00:27:20,556
+that it shows what is the cell type.
+
+767
+00:27:20,556 --> 00:27:23,220
+At the moment, by default, is a code one.
+
+768
+00:27:23,220 --> 00:27:24,682
+I can go ahead and, for
+
+769
+00:27:24,682 --> 00:27:26,084
+example, change it to Markdown.
+
+770
+00:27:26,084 --> 00:27:28,969
+And when it's Markdown, I
+
+771
+00:27:28,969 --> 00:27:30,531
+can write anything in Markdown.
+
+772
+00:27:30,531 --> 00:27:32,073
+So for example, I can say
+
+773
+00:27:32,073 --> 00:27:34,697
+this is a large heading.
+
+774
+00:27:36,094 --> 00:27:40,339
+And, ... for example, ... sorry,
+
+775
+00:27:40,339 --> 00:27:44,243
+this is a second heading and,
+
+776
+00:27:44,243 --> 00:27:48,228
+... this is a normal text.
+
+777
+00:27:49,990 --> 00:27:50,871
+... or I can like,
+
+778
+00:27:50,871 --> 00:27:54,875
+for example, writing bold, bold, a bold text,
+
+779
+00:27:54,875 --> 00:27:56,377
+or I can write, for
+
+780
+00:27:56,377 --> 00:27:58,519
+example, equations as well, like X
+
+781
+00:27:58,519 --> 00:28:03,705
+equals to, I don't know, Sigma_i.
+
+782
+00:28:05,490 --> 00:28:09,835
+or y to the power of i, let's say, plus 1.
+
+783
+00:28:12,078 --> 00:28:13,820
+And I can go ahead and run this.
+
+784
+00:28:13,820 --> 00:28:15,001
+And because it's a markdown,
+
+785
+00:28:15,001 --> 00:28:17,123
+it will just render the markdown.
+
+786
+00:28:17,123 --> 00:28:18,125
+So there is a heading,
+
+787
+00:28:18,125 --> 00:28:20,427
+the second heading, and the normal text.
+
+788
+00:28:20,427 --> 00:28:25,874
+So rendering means showing what
+
+789
+00:28:25,874 --> 00:28:27,496
+you mean by this syntax, right?
+
+790
+00:28:27,496 --> 00:28:28,076
+Exactly.
+
+791
+00:28:28,076 --> 00:28:29,478
+It's like the view mode.
+
+792
+00:28:29,478 --> 00:28:32,153
+Exactly, like the view mode for that, yeah.
+
+793
+00:28:32,153 --> 00:28:33,896
+... so now you can see like
+
+794
+00:28:33,896 --> 00:28:35,399
+why it can be powerful because
+
+795
+00:28:35,399 --> 00:28:36,821
+you can like add the equations
+
+796
+00:28:36,821 --> 00:28:38,123
+that you want to do before,
+
+797
+00:28:38,123 --> 00:28:39,946
+like doing like the coding.
+
+798
+00:28:39,946 --> 00:28:41,329
+And then when someone is
+
+799
+00:28:41,329 --> 00:28:44,174
+following the code or your Jupyter notebook,
+
+800
+00:28:44,174 --> 00:28:45,015
+they can see what are
+
+801
+00:28:45,015 --> 00:28:46,297
+the equations and they don't
+
+802
+00:28:46,297 --> 00:28:47,840
+have to like finding the code.
+
+803
+00:28:49,342 --> 00:28:49,723
+...
+
+804
+00:28:50,918 --> 00:28:51,198
+Yes.
+
+805
+00:28:52,359 --> 00:28:53,500
+Okay.
+
+806
+00:28:53,500 --> 00:28:54,982
+If I go back, actually
+
+807
+00:28:54,982 --> 00:28:57,104
+another, maybe something else that
+
+808
+00:28:57,104 --> 00:28:59,125
+it can be useful here is
+
+809
+00:28:59,125 --> 00:29:03,589
+this third button on the left, on the sidebar,
+
+810
+00:29:03,589 --> 00:29:04,971
+which is just a table of
+
+811
+00:29:04,971 --> 00:29:05,972
+content, as I mentioned, like
+
+812
+00:29:05,972 --> 00:29:07,413
+there are some books entirely
+
+813
+00:29:07,413 --> 00:29:08,254
+written in Jupyter.
+
+814
+00:29:08,254 --> 00:29:10,456
+So it would just show the heading
+
+815
+00:29:10,456 --> 00:29:11,557
+so you can see, and then
+
+816
+00:29:11,557 --> 00:29:12,778
+when you click on the, for
+
+817
+00:29:12,778 --> 00:29:13,779
+example, the second heading, it
+
+818
+00:29:13,779 --> 00:29:15,961
+would directly go that side.
+
+819
+00:29:15,961 --> 00:29:17,142
+I've never actually used this,
+
+820
+00:29:17,142 --> 00:29:17,983
+but I can see if you're
+
+821
+00:29:17,983 --> 00:29:19,444
+writing a full book in Jupyter,
+
+822
+00:29:19,444 --> 00:29:21,360
+then this will be useful.
+
+823
+00:29:21,360 --> 00:29:22,962
+Also for doing some assignments,
+
+824
+00:29:22,962 --> 00:29:24,925
+I would say this is very useful.
+
+825
+00:29:24,925 --> 00:29:26,167
+But yeah, OK.
+
+826
+00:29:26,167 --> 00:29:27,970
+Anything, [illegible].
+
+827
+00:29:27,970 --> 00:29:29,933
+So yeah, I guess now you
+
+828
+00:29:29,933 --> 00:29:31,235
+have a better idea.
+
+829
+00:29:31,235 --> 00:29:32,978
+And now you understand the
+
+830
+00:29:32,978 --> 00:29:34,821
+interface, at least the JupyterLab,
+
+831
+00:29:34,821 --> 00:29:35,422
+a bit better.
+
+832
+00:29:35,422 --> 00:29:38,546
+So if I go back to the course page,
+
+833
+00:29:38,546 --> 00:29:40,690
+I guess we covered the
+
+834
+00:29:40,690 --> 00:29:43,922
+navigation and what are the buttons.
+
+835
+00:29:43,922 --> 00:29:46,866
+And I guess people can
+
+836
+00:29:46,866 --> 00:29:48,248
+learn the shortcuts and so on
+
+837
+00:29:48,248 --> 00:29:50,211
+if they end up using JupyterLab more.
+
+838
+00:29:51,072 --> 00:29:51,894
+I guess this is something
+
+839
+00:29:51,894 --> 00:29:54,437
+that you would eventually learn,
+
+840
+00:29:54,437 --> 00:29:55,879
+but don't push yourself.
+
+841
+00:29:55,879 --> 00:29:58,663
+And also, if you prefer
+
+842
+00:29:58,663 --> 00:29:59,885
+a different interface, then this
+
+843
+00:29:59,885 --> 00:30:01,067
+is completely useless.
+
+844
+00:30:01,067 --> 00:30:02,529
+that's true so maybe actually
+
+845
+00:30:02,529 --> 00:30:03,910
+I can also use like I can
+
+846
+00:30:03,910 --> 00:30:06,494
+show very briefly the VS Code as well
+
+847
+00:30:06,494 --> 00:30:08,256
+so as I mentioned at the
+
+848
+00:30:08,256 --> 00:30:11,480
+at the moment ... we are using JupyterLab
+
+849
+00:30:11,480 --> 00:30:13,382
+as the notebook server and like
+
+850
+00:30:13,382 --> 00:30:15,224
+... we are using the browser
+
+851
+00:30:15,224 --> 00:30:17,567
+to interact with and create notebooks
+
+852
+00:30:17,567 --> 00:30:18,608
+and everything but this can be
+
+853
+00:30:18,608 --> 00:30:21,351
+done also in other tools ...
+
+854
+00:30:21,351 --> 00:30:23,073
+for example like in an IDE like
+
+855
+00:30:23,073 --> 00:30:25,596
+VS Code so if I open my
+
+856
+00:30:25,596 --> 00:30:28,240
+VS Code here, so my VS Code is
+
+857
+00:30:28,240 --> 00:30:31,003
+this like I hope you can see it
+
+858
+00:30:31,003 --> 00:30:33,688
+I would close this error for now.
+
+859
+00:30:34,610 --> 00:30:36,193
+Maybe I can increase the font a bit.
+
+860
+00:30:36,193 --> 00:30:36,374
+Yes.
+
+861
+00:30:37,275 --> 00:30:38,818
+So I'm inside the Jupyter demo
+
+862
+00:30:38,818 --> 00:30:42,205
+lab and this is the intro file that we created.
+
+863
+00:30:42,205 --> 00:30:44,329
+And as you can see, again,
+
+864
+00:30:44,329 --> 00:30:46,313
+I can like create a new code
+
+865
+00:30:46,313 --> 00:30:49,440
+cell or I can create a new markdown cell here.
+
+866
+00:30:49,440 --> 00:30:51,203
+So the interface is a bit different.
+
+867
+00:30:51,203 --> 00:30:52,726
+but you have the understanding
+
+868
+00:30:52,726 --> 00:30:55,010
+of what is the code cell and the markdown cell.
+
+869
+00:30:55,010 --> 00:30:56,873
+And for example, I can go
+
+870
+00:30:56,873 --> 00:30:59,618
+ahead and try to run a cell as well.
+
+871
+00:30:59,618 --> 00:31:01,722
+But in VS Code, it's capable
+
+872
+00:31:01,722 --> 00:31:06,530
+to show you the notebook, but to
+
+873
+00:31:06,530 --> 00:31:08,493
+be able to run the code or
+
+874
+00:31:08,493 --> 00:31:11,018
+the markdown codes to do the
+
+875
+00:31:11,018 --> 00:31:13,883
+rendering, you need an additional...
+
+876
+00:31:13,883 --> 00:31:16,106
+... plugin but if I go
+
+877
+00:31:16,106 --> 00:31:17,748
+ahead and I actually I guess
+
+878
+00:31:17,748 --> 00:31:20,131
+I have the plugin already installed
+
+879
+00:31:20,131 --> 00:31:23,295
+so maybe I can show you so if you
+
+880
+00:31:23,295 --> 00:31:24,157
+if you don't have the
+
+881
+00:31:24,157 --> 00:31:25,518
+plugin installed you have to go
+
+882
+00:31:25,518 --> 00:31:27,261
+here to the plugin tab
+
+883
+00:31:27,261 --> 00:31:30,425
+the extensions example search for
+
+884
+00:31:30,425 --> 00:31:34,230
+repeater the reason that it
+
+885
+00:31:34,230 --> 00:31:36,613
+has been installed is that
+
+886
+00:31:36,613 --> 00:31:38,335
+actually it wasn't installed but
+
+887
+00:31:38,335 --> 00:31:41,579
+it wasn't ... it wasn't really
+
+888
+00:31:41,579 --> 00:31:43,768
+all right you removed it but didn't update
+
+889
+00:31:43,768 --> 00:31:45,651
+Yes, I didn't close the VS Code.
+
+890
+00:31:45,651 --> 00:31:47,033
+Yeah, that was the reason.
+
+891
+00:31:47,033 --> 00:31:48,977
+And the reason is that, so
+
+892
+00:31:48,977 --> 00:31:50,599
+this is the Jupyter plugin.
+
+893
+00:31:50,599 --> 00:31:51,501
+And at the moment with
+
+894
+00:31:51,501 --> 00:31:52,643
+the latest version of VS
+
+895
+00:31:52,643 --> 00:31:54,486
+Code, the latest version of
+
+896
+00:31:54,486 --> 00:31:56,289
+Jupyter, which has been updated
+
+897
+00:31:56,289 --> 00:31:58,353
+two weeks ago, doesn't work.
+
+898
+00:31:58,353 --> 00:32:00,997
+So in order to be able
+
+899
+00:32:00,997 --> 00:32:02,580
+to use the Jupyter plugin with
+
+900
+00:32:02,580 --> 00:32:04,523
+the latest VS Code version, you
+
+901
+00:32:04,523 --> 00:32:07,548
+have to install a previous
+
+902
+00:32:07,548 --> 00:32:09,371
+version of Jupyter extension.
+
+903
+00:32:10,347 --> 00:32:12,610
+So if you haven't updated your VS Code,
+
+904
+00:32:12,610 --> 00:32:13,952
+go ahead and click on install
+
+905
+00:32:13,952 --> 00:32:14,994
+so you can install the
+
+906
+00:32:14,994 --> 00:32:17,237
+latest version of Jupyter extension.
+
+907
+00:32:17,237 --> 00:32:20,342
+And if you recently updated the VS Code,
+
+908
+00:32:20,342 --> 00:32:21,504
+you have to install the
+
+909
+00:32:22,445 --> 00:32:23,747
+previous version of Jupyter.
+
+910
+00:32:23,747 --> 00:32:25,489
+So to do that, you have
+
+911
+00:32:25,489 --> 00:32:27,252
+this setting button here.
+
+912
+00:32:27,252 --> 00:32:29,355
+So you would go here and
+
+913
+00:32:29,355 --> 00:32:31,238
+then go with the...
+
+914
+00:32:31,238 --> 00:32:33,603
+and install a specific version
+
+915
+00:32:33,603 --> 00:32:38,654
+and the 2025.7 for a month
+
+916
+00:32:38,654 --> 00:32:40,939
+of july would ... would work I
+
+917
+00:32:40,939 --> 00:32:42,823
+think I I used the one from three weeks ago
+
+918
+00:32:42,823 --> 00:32:44,586
+and that also worked it's
+
+919
+00:32:44,586 --> 00:32:46,711
+just the most recent work maybe
+
+920
+00:32:46,711 --> 00:32:48,094
+okay well then it's better to
+
+921
+00:32:48,094 --> 00:32:49,176
+go with the two months ago
+
+922
+00:32:49,176 --> 00:32:51,541
+OK, but maybe before
+
+923
+00:32:51,541 --> 00:32:53,485
+installing it completely, I can go
+
+924
+00:32:53,485 --> 00:32:56,451
+back to the code and show you what happens
+
+925
+00:32:56,451 --> 00:32:57,473
+if you try to install it
+
+926
+00:32:57,473 --> 00:32:59,617
+without to run the Jupyter
+
+927
+00:32:59,617 --> 00:33:01,280
+notebook without the extension.
+
+928
+00:33:01,280 --> 00:33:03,505
+So if I go back here and
+
+929
+00:33:03,505 --> 00:33:08,194
+if I try to, for example, run this Python code.
+
+930
+00:33:08,194 --> 00:33:10,679
+... it would suggest that this
+
+931
+00:33:10,679 --> 00:33:12,482
+is a Jupyter one and it
+
+932
+00:33:12,482 --> 00:33:14,105
+does it it's not allowed it
+
+933
+00:33:14,105 --> 00:33:15,948
+cannot run it without the extension
+
+934
+00:33:15,948 --> 00:33:16,810
+I do I don't use
+
+935
+00:33:16,810 --> 00:33:18,112
+the recommended version because it
+
+936
+00:33:18,112 --> 00:33:19,675
+would just install the latest
+
+937
+00:33:19,675 --> 00:33:20,977
+version so I would cancel this
+
+938
+00:33:21,799 --> 00:33:24,023
+go back to extension and
+
+939
+00:33:24,023 --> 00:33:25,646
+then install the previous version
+
+940
+00:33:27,972 --> 00:33:30,295
+so it's good that I installed it
+
+941
+00:33:30,295 --> 00:33:31,817
+before so it's already cached
+
+942
+00:33:31,817 --> 00:33:35,482
+I guess great so if I close
+
+943
+00:33:35,482 --> 00:33:39,748
+this and I now I try to run this it would ask
+
+944
+00:33:39,748 --> 00:33:42,412
+for the python kernel in which
+
+945
+00:33:42,412 --> 00:33:43,854
+I can use the code to find the one
+
+946
+00:33:43,854 --> 00:33:44,675
+that I created in my
+
+947
+00:33:44,675 --> 00:33:48,400
+conda environment and now I should
+
+948
+00:33:48,400 --> 00:33:49,922
+be able to run this guy
+
+949
+00:33:49,922 --> 00:33:52,325
+it's looking at the connecting to the kernel
+
+950
+00:33:54,128 --> 00:33:57,432
+And hopefully this should change.
+
+951
+00:33:58,454 --> 00:33:59,915
+It's a bit long for the
+
+952
+00:33:59,915 --> 00:34:02,198
+first time to starting the kernel,
+
+953
+00:34:02,198 --> 00:34:05,382
+but then it should be fine.
+
+954
+00:34:05,382 --> 00:34:06,464
+It should work.
+
+955
+00:34:06,464 --> 00:34:07,545
+It usually does, but this
+
+956
+00:34:07,545 --> 00:34:08,246
+is taking a while.
+
+957
+00:34:10,609 --> 00:34:12,431
+Yes, let's see.
+
+958
+00:34:12,431 --> 00:34:13,172
+Oh, well, I mean, we
+
+959
+00:34:13,172 --> 00:34:14,714
+already saw it running.
+
+960
+00:34:14,714 --> 00:34:17,118
+Should we just go to the exercise?
+
+961
+00:34:17,118 --> 00:34:18,820
+Oh, well, actually it's done.
+
+962
+00:34:18,820 --> 00:34:19,761
+This is already done.
+
+963
+00:34:19,761 --> 00:34:20,642
+So yeah, that's good.
+
+964
+00:34:22,326 --> 00:34:22,686
+Okay.
+
+965
+00:34:23,948 --> 00:34:25,729
+I guess you're a bit behind
+
+966
+00:34:25,729 --> 00:34:27,071
+the time, but yeah, we can go a bit.
+
+967
+00:34:27,931 --> 00:34:28,732
+I mean, it's fine.
+
+968
+00:34:28,732 --> 00:34:30,714
+We actually do have some extra time.
+
+969
+00:34:30,714 --> 00:34:31,455
+Okay.
+
+970
+00:34:31,455 --> 00:34:32,616
+So that's good.
+
+971
+00:34:32,616 --> 00:34:34,498
+So the next part is for
+
+972
+00:34:34,498 --> 00:34:36,500
+you to start working and
+
+973
+00:34:36,500 --> 00:34:37,721
+getting some hands-on experience
+
+974
+00:34:37,721 --> 00:34:40,083
+with the Jupyter Notebooks.
+
+975
+00:34:40,083 --> 00:34:41,204
+So this would be your
+
+976
+00:34:41,204 --> 00:34:42,586
+first computational notebook.
+
+977
+00:34:43,406 --> 00:34:45,388
+And in this exercise, you
+
+978
+00:34:45,388 --> 00:34:48,832
+are going to calculate the pi.
+
+979
+00:34:50,253 --> 00:34:51,354
+And...
+
+980
+00:34:52,971 --> 00:34:55,255
+In order to do that, we
+
+981
+00:34:55,255 --> 00:34:57,519
+are creating a square, like a
+
+982
+00:34:57,519 --> 00:34:58,862
+one by one square, and then
+
+983
+00:34:58,862 --> 00:35:02,068
+we are randomly throwing some darts into it.
+
+984
+00:35:02,068 --> 00:35:03,491
+And then by calculating the
+
+985
+00:35:03,491 --> 00:35:05,815
+area of the circle and also
+
+986
+00:35:05,815 --> 00:35:08,239
+the area of the square, we
+
+987
+00:35:08,239 --> 00:35:10,183
+are trying to estimate
+
+988
+00:35:10,183 --> 00:35:12,327
+... the pi ... of course
+
+989
+00:35:12,327 --> 00:35:15,413
+if you throw more dots ...
+
+990
+00:35:15,413 --> 00:35:17,276
+if you throw like infinity number
+
+991
+00:35:17,276 --> 00:35:19,641
+of dots the whole score should be covered
+
+992
+00:35:19,641 --> 00:35:21,063
+so the pi should be more
+
+993
+00:35:21,063 --> 00:35:23,608
+accurate so that's the whole
+
+994
+00:35:24,410 --> 00:35:26,133
+idea behind this exercise I guess
+
+995
+00:35:27,514 --> 00:35:29,238
+So I guess maybe we can
+
+996
+00:35:29,238 --> 00:35:31,283
+have 20 minutes or 15 minutes
+
+997
+00:35:31,283 --> 00:35:32,205
+to do the exercise.
+
+998
+00:35:32,205 --> 00:35:35,493
+Do you want to show the hint below?
+
+999
+00:35:35,493 --> 00:35:36,656
+Yes, exactly.
+
+1000
+00:35:36,656 --> 00:35:38,440
+So go ahead and run the
+
+1001
+00:35:38,440 --> 00:35:40,105
+JupyterLab on your time.
+
+1002
+00:35:40,105 --> 00:35:44,254
+But actually, there is a very useful
+
+1003
+00:35:44,254 --> 00:35:46,958
+int here so if I go
+
+1004
+00:35:46,958 --> 00:35:51,585
+back to my Jupyter notebook a JupyterLab
+
+1005
+00:35:51,585 --> 00:35:54,149
+and I would ... start a new launcher
+
+1006
+00:35:54,149 --> 00:35:55,110
+because I want to create a
+
+1007
+00:35:55,110 --> 00:35:56,412
+new file here I would start
+
+1008
+00:35:56,412 --> 00:35:58,515
+the launcher I would create a
+
+1009
+00:35:58,515 --> 00:36:00,898
+new notebook here always remember
+
+1010
+00:36:00,898 --> 00:36:03,823
+to rename your notebook first I
+
+1011
+00:36:03,823 --> 00:36:06,006
+would name it to pi
+
+1012
+00:36:06,006 --> 00:36:09,113
+And in the exercise, we
+
+1013
+00:36:09,113 --> 00:36:12,079
+have this code block that you can copy.
+
+1014
+00:36:12,079 --> 00:36:13,382
+And essentially what it does,
+
+1015
+00:36:13,382 --> 00:36:15,586
+it would create an iframe and
+
+1016
+00:36:15,586 --> 00:36:17,711
+show you this whole page
+
+1017
+00:36:17,711 --> 00:36:18,853
+inside the Jupyter Notebook.
+
+1018
+00:36:20,397 --> 00:36:21,840
+So if I will go here and
+
+1019
+00:36:21,840 --> 00:36:23,323
+copy and paste the code.
+
+1020
+00:36:24,467 --> 00:36:28,212
+And I would run this block of code.
+
+1021
+00:36:28,212 --> 00:36:29,994
+And as you can see, you
+
+1022
+00:36:29,994 --> 00:36:33,079
+see that powerful point of the
+
+1023
+00:36:33,079 --> 00:36:36,583
+Jupyter that I can render HTML5 here directly.
+
+1024
+00:36:36,583 --> 00:36:37,925
+So if you want to follow
+
+1025
+00:36:37,925 --> 00:36:39,087
+the exercise, you don't have
+
+1026
+00:36:39,087 --> 00:36:40,328
+to switch the tabs.
+
+1027
+00:36:40,328 --> 00:36:41,450
+You can just scroll here
+
+1028
+00:36:41,450 --> 00:36:43,372
+and follow the exercise very easily.
+
+1029
+00:36:47,378 --> 00:36:48,299
+OK.
+
+1030
+00:36:50,782 --> 00:36:52,905
+Maybe we can add.
+
+1031
+00:36:53,712 --> 00:36:54,975
+I mean, I think the
+
+1032
+00:36:54,975 --> 00:36:56,177
+instructions are pretty clear.
+
+1033
+00:36:56,177 --> 00:36:59,444
+It's mainly you create a notebook
+
+1034
+00:36:59,444 --> 00:37:02,030
+and then you need to figure out
+
+1035
+00:37:02,030 --> 00:37:03,854
+how to get a Markdown cell and
+
+1036
+00:37:03,854 --> 00:37:06,317
+how to get a Python code cell.
+
+1037
+00:37:06,317 --> 00:37:10,402
+and then copy and paste
+
+1038
+00:37:10,402 --> 00:37:12,424
+the things inside and see how it runs.
+
+1039
+00:37:12,424 --> 00:37:13,425
+So this is more about
+
+1040
+00:37:13,425 --> 00:37:15,267
+the interface than writing the code.
+
+1041
+00:37:15,267 --> 00:37:16,689
+The idea is not that you write the code.
+
+1042
+00:37:16,689 --> 00:37:17,650
+The idea is that you
+
+1043
+00:37:19,072 --> 00:37:23,977
+create the notebook and put the stuff inside.
+
+1044
+00:37:23,977 --> 00:37:27,762
+And if something went wrong,
+
+1045
+00:37:27,762 --> 00:37:28,923
+you can ask the question and
+
+1046
+00:37:28,923 --> 00:37:30,305
+we are here to help.
+
+1047
+00:37:30,305 --> 00:37:32,267
+So yeah, maybe we can
+
+1048
+00:37:32,267 --> 00:37:34,785
+set 15 minutes, [name], or...
+
+1049
+00:37:34,785 --> 00:37:38,028
+I mean, this actually, like
+
+1050
+00:37:38,028 --> 00:37:39,270
+if there's any problems, then it
+
+1051
+00:37:39,270 --> 00:37:39,910
+will take a while.
+
+1052
+00:37:39,910 --> 00:37:41,372
+So I would go with 20 minutes.
+
+1053
+00:37:41,372 --> 00:37:43,454
+20 minutes.
+
+1054
+00:37:43,454 --> 00:37:48,359
+Or let's say until the hour.
+
+1055
+00:37:48,359 --> 00:37:49,620
+So it's 19 minutes now.
+
+1056
+00:37:51,302 --> 00:37:51,602
+Okay.
+
+1057
+00:37:52,703 --> 00:37:54,445
+Good luck with the exercise.
+
+1058
+00:37:55,526 --> 00:37:56,947
+And remember, you can ask
+
+1059
+00:37:56,947 --> 00:37:57,908
+questions in the notebooks.
+
+1060
+00:37:58,929 --> 00:38:02,224
+Not in the notebook, in the...
+
+1061
+00:38:02,224 --> 00:38:03,466
+in the notes, in this
+
+1062
+00:38:04,327 --> 00:38:05,629
+Markdown notes that we have.
+
+1063
+00:38:07,031 --> 00:38:09,334
+You probably can ask questions
+
+1064
+00:38:09,334 --> 00:38:10,676
+in a Jupyter Notebook as well
+
+1065
+00:38:10,676 --> 00:38:12,679
+and get answers, but that's
+
+1066
+00:38:12,679 --> 00:38:13,461
+way more complicated.
+
+1067
+00:38:14,362 --> 00:38:16,044
+But in the sharing discussion,
+
+1068
+00:38:16,044 --> 00:38:17,527
+we would like to discuss it.
+
+1069
+00:38:17,527 --> 00:38:20,731
+It would be possible.
+
+1070
+00:38:20,731 --> 00:38:21,212
+Great.
+
+1071
+00:38:21,212 --> 00:38:22,153
+Good luck with the exercise.
+
+1072
+00:38:23,589 --> 00:38:26,172
+So I'll essentially do the
+
+1073
+00:38:26,172 --> 00:38:27,072
+exercise here quickly.
+
+1074
+00:38:27,072 --> 00:38:29,835
+So I'm using the JupyterLab
+
+1075
+00:38:29,835 --> 00:38:32,737
+interface we already showed and
+
+1076
+00:38:32,737 --> 00:38:34,619
+using exactly the same features
+
+1077
+00:38:34,619 --> 00:38:36,100
+that we already showed.
+
+1078
+00:38:36,100 --> 00:38:36,841
+Whoops.
+
+1079
+00:38:36,841 --> 00:38:37,642
+What is happening?
+
+1080
+00:38:37,642 --> 00:38:38,422
+Okay.
+
+1081
+00:38:38,422 --> 00:38:40,825
+To save the file, I need to click here,
+
+1082
+00:38:40,825 --> 00:38:42,407
+not press Control and S,
+
+1083
+00:38:42,407 --> 00:38:43,609
+because Control and S will try
+
+1084
+00:38:43,609 --> 00:38:44,430
+to save the website.
+
+1085
+00:38:45,451 --> 00:38:46,673
+So, okay.
+
+1086
+00:38:48,395 --> 00:38:51,459
+So I have this file called Python Notebook.
+
+1087
+00:38:52,881 --> 00:38:54,423
+And I'll just hide this part
+
+1088
+00:38:54,423 --> 00:38:56,365
+of the view, maybe zoom in a little bit.
+
+1089
+00:38:58,628 --> 00:38:59,970
+And then let's scroll down.
+
+1090
+00:38:59,970 --> 00:39:01,773
+So I have already started JupyterLab.
+
+1091
+00:39:03,555 --> 00:39:04,756
+Well, I don't need to do that one.
+
+1092
+00:39:04,756 --> 00:39:07,767
+I want to use this browser.
+
+1093
+00:39:07,767 --> 00:39:08,828
+And then I have done
+
+1094
+00:39:08,828 --> 00:39:10,690
+this, shown this webpage here.
+
+1095
+00:39:10,690 --> 00:39:12,891
+So going into the exercise
+
+1096
+00:39:12,891 --> 00:39:16,254
+itself, let's make a new cell first.
+
+1097
+00:39:17,856 --> 00:39:19,497
+And I need to turn this
+
+1098
+00:39:19,497 --> 00:39:20,578
+cell into a Markdown cell.
+
+1099
+00:39:20,578 --> 00:39:20,978
+Okay.
+
+1100
+00:39:20,978 --> 00:39:24,401
+So it's, I am partly
+
+1101
+00:39:24,401 --> 00:39:26,743
+using this interface because it's not
+
+1102
+00:39:26,743 --> 00:39:28,145
+the one I normally use and
+
+1103
+00:39:28,145 --> 00:39:29,566
+I don't know where things are.
+
+1104
+00:39:29,566 --> 00:39:31,728
+So I will have to also
+
+1105
+00:39:31,728 --> 00:39:33,990
+remember to explain what's happening.
+
+1106
+00:39:33,990 --> 00:39:34,350
+Okay.
+
+1107
+00:39:34,350 --> 00:39:35,751
+So run the Markdown cell and
+
+1108
+00:39:35,751 --> 00:39:37,298
+we get nice title.
+
+1109
+00:39:37,298 --> 00:39:38,639
+and we can paste in
+
+1110
+00:39:38,639 --> 00:39:41,983
+some interesting formulas that explain
+
+1111
+00:39:41,983 --> 00:39:42,784
+what we are doing.
+
+1112
+00:39:45,567 --> 00:39:47,749
+So this is how we calculate the area of,
+
+1113
+00:39:49,171 --> 00:39:50,512
+how we calculate pi from the
+
+1114
+00:39:50,512 --> 00:39:54,457
+area of a circle and the area of a square.
+
+1115
+00:39:55,418 --> 00:39:57,740
+And those are relative to
+
+1116
+00:39:57,740 --> 00:39:59,602
+the probabilities of hitting,
+
+1117
+00:39:59,602 --> 00:40:00,964
+well, the probability of hitting
+
+1118
+00:40:00,964 --> 00:40:02,766
+the square is one, but
+
+1119
+00:40:02,766 --> 00:40:03,747
+the probability of hitting the
+
+1120
+00:40:03,747 --> 00:40:07,572
+circle is relative to the,
+
+1121
+00:40:07,572 --> 00:40:11,116
+area of that circle okay so
+
+1122
+00:40:11,116 --> 00:40:13,198
+then ... we have one more thing
+
+1123
+00:40:13,198 --> 00:40:17,362
+we have the nice image ... I
+
+1124
+00:40:17,362 --> 00:40:19,024
+did not change it into a markdown cell
+
+1125
+00:40:19,024 --> 00:40:20,686
+and this is not proper python code
+
+1126
+00:40:20,686 --> 00:40:22,988
+so it's failing to run it
+
+1127
+00:40:22,988 --> 00:40:25,471
+let's change it to markdown and run it
+
+1128
+00:40:25,471 --> 00:40:26,472
+and by the way ...
+
+1129
+00:40:26,472 --> 00:40:28,054
+now I'm already defaulting to
+
+1130
+00:40:28,054 --> 00:40:29,755
+running it by pressing ctrl and
+
+1131
+00:40:29,755 --> 00:40:32,378
+enter so next time I will press
+
+1132
+00:40:32,378 --> 00:40:36,310
+here but it is the same thing
+
+1133
+00:40:36,310 --> 00:40:37,693
+So the first thing is we
+
+1134
+00:40:37,693 --> 00:40:38,716
+need to import the random
+
+1135
+00:40:38,716 --> 00:40:40,500
+module and the plotting module
+
+1136
+00:40:40,500 --> 00:40:41,342
+to create the plots.
+
+1137
+00:40:42,344 --> 00:40:43,988
+So let's create a new cell again.
+
+1138
+00:40:43,988 --> 00:40:46,193
+And now it's code, so I
+
+1139
+00:40:46,193 --> 00:40:46,935
+don't have to change it.
+
+1140
+00:40:47,937 --> 00:40:48,679
+Okay.
+
+1141
+00:40:48,679 --> 00:40:50,303
+And this is Python code specifically.
+
+1142
+00:40:51,667 --> 00:40:52,949
+Okay.
+
+1143
+00:40:54,491 --> 00:40:56,754
+I'm confused about what
+
+1144
+00:40:56,754 --> 00:40:58,657
+I'm scrolling because it's the same website.
+
+1145
+00:40:58,657 --> 00:40:59,758
+It's a website in a website.
+
+1146
+00:41:00,740 --> 00:41:01,100
+Okay.
+
+1147
+00:41:01,100 --> 00:41:02,482
+So we'll set number of points.
+
+1148
+00:41:02,482 --> 00:41:03,984
+Let's also take the comment.
+
+1149
+00:41:03,984 --> 00:41:04,345
+Why not?
+
+1150
+00:41:05,787 --> 00:41:06,067
+Okay.
+
+1151
+00:41:06,067 --> 00:41:08,911
+Setting the number of points to 1000.
+
+1152
+00:41:08,911 --> 00:41:12,055
+I think at this point I
+
+1153
+00:41:12,055 --> 00:41:13,417
+will not be scrolling up and down.
+
+1154
+00:41:13,417 --> 00:41:15,220
+I'll just look at the window
+
+1155
+00:41:15,220 --> 00:41:20,307
+on the side, which you do not see.
+
+1156
+00:41:23,628 --> 00:41:25,211
+So I'm here.
+
+1157
+00:41:25,211 --> 00:41:27,516
+So we'll create this or run.
+
+1158
+00:41:27,516 --> 00:41:31,824
+Add the code to actually
+
+1159
+00:41:31,824 --> 00:41:33,668
+create these random points and see
+
+1160
+00:41:33,668 --> 00:41:35,291
+if they are inside the circle.
+
+1161
+00:41:37,034 --> 00:41:37,435
+And run it.
+
+1162
+00:41:38,737 --> 00:41:39,920
+Okay, that didn't take very long.
+
+1163
+00:41:41,383 --> 00:41:44,368
+Then this one creates the plot.
+
+1164
+00:41:44,368 --> 00:41:45,920
+So it takes all of these
+
+1165
+00:41:45,920 --> 00:41:48,123
+coordinates and puts them,
+
+1166
+00:41:48,123 --> 00:41:49,484
+makes them visible on the, or
+
+1167
+00:41:49,484 --> 00:41:50,385
+draws them onto the plot.
+
+1168
+00:41:51,366 --> 00:41:52,588
+Let's run that.
+
+1169
+00:41:52,588 --> 00:41:54,230
+So here is the nice little plot.
+
+1170
+00:41:55,071 --> 00:41:58,715
+And it's only a quarter of the circle,
+
+1171
+00:41:58,715 --> 00:42:01,318
+or quarter of the whole
+
+1172
+00:42:01,318 --> 00:42:03,160
+dartboard here, but it is this
+
+1173
+00:42:03,160 --> 00:42:04,061
+quarter that we show here.
+
+1174
+00:42:05,603 --> 00:42:05,803
+Okay.
+
+1175
+00:42:07,365 --> 00:42:08,206
+And finally this one.
+
+1176
+00:42:10,529 --> 00:42:12,431
+So we compute pi by getting
+
+1177
+00:42:12,431 --> 00:42:16,109
+the fraction of the two areas, or the
+
+1178
+00:42:16,109 --> 00:42:17,871
+estimate of the fraction and
+
+1179
+00:42:17,871 --> 00:42:19,734
+then multiply that by four to get pi.
+
+1180
+00:42:20,816 --> 00:42:21,897
+So here we go.
+
+1181
+00:42:23,039 --> 00:42:24,341
+And that's not exactly pi,
+
+1182
+00:42:24,341 --> 00:42:25,422
+but it's also not the
+
+1183
+00:42:25,422 --> 00:42:28,146
+furthest possible thing away.
+
+1184
+00:42:28,146 --> 00:42:31,651
+So let's run this again, change
+
+1185
+00:42:31,651 --> 00:42:35,937
+add a few more points just to
+
+1186
+00:42:35,937 --> 00:42:37,239
+see if we get a more accurate way.
+
+1187
+00:42:38,361 --> 00:42:39,402
+Still doesn't take you very long,
+
+1188
+00:42:39,402 --> 00:42:40,443
+but this is starting to
+
+1189
+00:42:40,443 --> 00:42:43,348
+look like it's basically completely covered.
+
+1190
+00:42:44,870 --> 00:42:45,674
+Okay.
+
+1191
+00:42:45,674 --> 00:42:47,457
+and also pi is a little bit closer.
+
+1192
+00:42:48,298 --> 00:42:50,561
+Now I'm going to change that,
+
+1193
+00:42:50,561 --> 00:42:51,563
+and then I'm going to talk
+
+1194
+00:42:51,563 --> 00:42:53,225
+to you a little bit about something.
+
+1195
+00:42:53,225 --> 00:42:54,407
+I don't actually know what.
+
+1196
+00:42:55,369 --> 00:42:59,395
+And then I'm going to go, okay, run this.
+
+1197
+00:43:00,456 --> 00:43:00,657
+Wait.
+
+1198
+00:43:03,641 --> 00:43:05,845
+The mistake I was trying to
+
+1199
+00:43:05,845 --> 00:43:07,347
+make, it didn't happen.
+
+1200
+00:43:07,347 --> 00:43:08,629
+Okay.
+
+1201
+00:43:08,629 --> 00:43:10,351
+Now, this is not pi.
+
+1202
+00:43:11,493 --> 00:43:11,773
+Okay.
+
+1203
+00:43:12,595 --> 00:43:13,383
+So,
+
+1204
+00:43:13,383 --> 00:43:14,625
+This is probably the most
+
+1205
+00:43:14,625 --> 00:43:16,026
+common mistake anybody makes
+
+1206
+00:43:16,026 --> 00:43:19,351
+with Jupyter notebooks, right?
+
+1207
+00:43:19,351 --> 00:43:20,893
+So what did I do wrong?
+
+1208
+00:43:20,893 --> 00:43:25,279
+I changed the number of points,
+
+1209
+00:43:26,500 --> 00:43:27,422
+but then I didn't run
+
+1210
+00:43:27,422 --> 00:43:30,686
+this cell that generates the points.
+
+1211
+00:43:32,989 --> 00:43:38,020
+I didn't refresh the plot either, but then
+
+1212
+00:43:38,020 --> 00:43:39,842
+This depends on the number of
+
+1213
+00:43:39,842 --> 00:43:41,224
+hits and the number of points.
+
+1214
+00:43:41,224 --> 00:43:42,045
+So I changed the number of
+
+1215
+00:43:42,045 --> 00:43:43,587
+points, but I didn't recreate
+
+1216
+00:43:43,587 --> 00:43:45,189
+this number of hits.
+
+1217
+00:43:45,189 --> 00:43:46,371
+So the result is wrong.
+
+1218
+00:43:47,452 --> 00:43:50,096
+My solution is interrupt the
+
+1219
+00:43:50,096 --> 00:43:51,678
+kernel, press stop.
+
+1220
+00:43:52,639 --> 00:43:54,221
+Did it do it?
+
+1221
+00:43:54,221 --> 00:43:55,043
+Okay.
+
+1222
+00:43:55,043 --> 00:43:56,204
+Maybe it did.
+
+1223
+00:43:56,204 --> 00:43:56,645
+Okay.
+
+1224
+00:43:56,645 --> 00:43:58,527
+And then restart the kernel
+
+1225
+00:43:58,527 --> 00:43:59,328
+and run all cells.
+
+1226
+00:44:00,189 --> 00:44:01,291
+And then you can be sure
+
+1227
+00:44:01,291 --> 00:44:03,814
+that everything is running in order.
+
+1228
+00:44:06,678 --> 00:44:06,778
+Okay.
+
+1229
+00:44:07,923 --> 00:44:10,566
+there we are I made it a lot of dots
+
+1230
+00:44:10,566 --> 00:44:11,687
+so it took a while but
+
+1231
+00:44:11,687 --> 00:44:14,730
+well it's still not great this
+
+1232
+00:44:14,730 --> 00:44:17,293
+is it it's like close ish
+
+1233
+00:44:17,293 --> 00:44:22,959
+but not cool yeah anyway ... so yeah
+
+1234
+00:44:22,959 --> 00:44:24,301
+that is a common mistake
+
+1235
+00:44:24,301 --> 00:44:25,462
+I'm gonna change it back to
+
+1236
+00:44:25,462 --> 00:44:29,266
+the original and ... again run
+
+1237
+00:44:29,266 --> 00:44:33,070
+all cells restart and run all cells yeah so
+
+1238
+00:44:34,383 --> 00:44:36,206
+Yeah, so I just wanted to show
+
+1239
+00:44:36,206 --> 00:44:38,268
+that because it is essentially
+
+1240
+00:44:38,268 --> 00:44:39,730
+the most common mistake people make.
+
+1241
+00:44:39,730 --> 00:44:42,094
+And it is something that I
+
+1242
+00:44:42,094 --> 00:44:43,095
+really had to learn out of.
+
+1243
+00:44:45,218 --> 00:44:46,880
+But it is also a powerful
+
+1244
+00:44:46,880 --> 00:44:48,603
+thing that you can run things out of order.
+
+1245
+00:44:48,603 --> 00:44:50,686
+So you can use it as a scratch pad.
+
+1246
+00:44:50,686 --> 00:44:51,707
+You don't always have to
+
+1247
+00:44:51,707 --> 00:44:54,150
+run the whole thing to get
+
+1248
+00:44:54,150 --> 00:44:57,175
+the result or to change one thing.
+
+1249
+00:45:01,100 --> 00:45:03,830
+But it doesn't remember what the state of
+
+1250
+00:45:03,830 --> 00:45:05,392
+The notebook was after running
+
+1251
+00:45:05,392 --> 00:45:07,835
+cell number three, just remembers
+
+1252
+00:45:07,835 --> 00:45:08,616
+the current state.
+
+1253
+00:45:08,616 --> 00:45:09,678
+And if you change something,
+
+1254
+00:45:09,678 --> 00:45:11,520
+run some code, it changes the current state.
+
+1255
+00:45:12,842 --> 00:45:14,244
+Okay.
+
+1256
+00:45:14,244 --> 00:45:15,806
+So yeah, that is a bit
+
+1257
+00:45:15,806 --> 00:45:17,268
+of a complicated thing.
+
+1258
+00:45:17,268 --> 00:45:18,970
+It can be hard to debug,
+
+1259
+00:45:18,970 --> 00:45:23,336
+but the simplest way to get around it
+
+1260
+00:45:23,336 --> 00:45:25,940
+and avoid debugging it is to
+
+1261
+00:45:25,940 --> 00:45:27,502
+just kill the kernel and
+
+1262
+00:45:27,502 --> 00:45:29,044
+then run everything from the
+
+1263
+00:45:29,044 --> 00:45:29,645
+beginning to the end.
+
+1264
+00:45:31,507 --> 00:45:31,948
+Yeah.
+
+1265
+00:45:31,948 --> 00:45:32,048
+Yeah.
+
+1266
+00:45:32,922 --> 00:45:33,964
+Okay, but that was the
+
+1267
+00:45:33,964 --> 00:45:36,007
+exercise and also it's time for a break.
+
+1268
+00:45:38,071 --> 00:45:39,534
+So let's take a 10 minute
+
+1269
+00:45:39,534 --> 00:45:46,446
+break and see you back here at 18 past the hour.
+
+1270
+00:45:47,928 --> 00:45:49,851
+Yeah, that's all.
+
+1271
+00:45:51,066 --> 00:45:52,688
+I hope you had a good break.
+
+1272
+00:45:55,370 --> 00:45:57,572
+So I'm, okay, I'm still on
+
+1273
+00:45:57,572 --> 00:45:59,654
+the same page with the exercise.
+
+1274
+00:46:00,815 --> 00:46:07,462
+And we actually have, we
+
+1275
+00:46:07,462 --> 00:46:08,743
+have a full notebook here in
+
+1276
+00:46:08,743 --> 00:46:10,224
+case you are joining us now,
+
+1277
+00:46:11,245 --> 00:46:13,508
+or you were installing the
+
+1278
+00:46:13,508 --> 00:46:16,050
+content environment while we had
+
+1279
+00:46:16,050 --> 00:46:16,771
+the exercise time.
+
+1280
+00:46:18,332 --> 00:46:20,023
+So you can,
+
+1281
+00:46:20,023 --> 00:46:21,765
+You can continue from there or
+
+1282
+00:46:21,765 --> 00:46:22,786
+you can do the exercise
+
+1283
+00:46:22,786 --> 00:46:24,428
+and start listening when you're done.
+
+1284
+00:46:24,428 --> 00:46:25,169
+That's also fine.
+
+1285
+00:46:26,530 --> 00:46:28,152
+One thing I didn't mention is
+
+1286
+00:46:28,152 --> 00:46:30,074
+that, I mean, clearly this
+
+1287
+00:46:30,074 --> 00:46:31,075
+exercise is in Python.
+
+1288
+00:46:32,517 --> 00:46:33,738
+We already mentioned that you
+
+1289
+00:46:33,738 --> 00:46:35,941
+can do, you can use
+
+1290
+00:46:35,941 --> 00:46:37,202
+other languages than Python.
+
+1291
+00:46:37,202 --> 00:46:38,483
+You can use R and Julia
+
+1292
+00:46:38,483 --> 00:46:39,525
+and many others as well.
+
+1293
+00:46:40,726 --> 00:46:41,427
+So there's a list of
+
+1294
+00:46:41,427 --> 00:46:43,209
+supported kernels here.
+
+1295
+00:46:43,209 --> 00:46:44,410
+A kernel is essentially a
+
+1296
+00:46:45,591 --> 00:46:47,513
+way of connecting to a
+
+1297
+00:46:47,513 --> 00:46:49,403
+specific programming language.
+
+1298
+00:46:49,403 --> 00:46:51,025
+and running things from the notebook.
+
+1299
+00:46:53,669 --> 00:46:56,973
+And then yeah, our Markdown and Pluto.jl,
+
+1300
+00:46:58,114 --> 00:47:01,859
+Pluto or Julia is our
+
+1301
+00:47:01,859 --> 00:47:03,201
+other alternatives that are very
+
+1302
+00:47:03,201 --> 00:47:07,146
+similar to Jupyter notebooks.
+
+1303
+00:47:07,146 --> 00:47:09,690
+Okay, but yeah, so the main thing
+
+1304
+00:47:09,690 --> 00:47:11,853
+though from here is we
+
+1305
+00:47:11,853 --> 00:47:13,395
+have essentially packaged the
+
+1306
+00:47:13,395 --> 00:47:18,221
+entire story, the calculation of
+
+1307
+00:47:18,221 --> 00:47:19,491
+the value of pi
+
+1308
+00:47:19,491 --> 00:47:21,214
+And the code that actually
+
+1309
+00:47:21,214 --> 00:47:22,776
+does the calculation, the results,
+
+1310
+00:47:23,678 --> 00:47:27,003
+and all of the reasoning into one file,
+
+1311
+00:47:27,003 --> 00:47:29,046
+like one consistent thing that
+
+1312
+00:47:29,046 --> 00:47:30,729
+we can then send to,
+
+1313
+00:47:30,729 --> 00:47:33,974
+for example, our supervisor or the person
+
+1314
+00:47:33,974 --> 00:47:35,857
+who asked us to do this
+
+1315
+00:47:35,857 --> 00:47:38,682
+exercise for a course or
+
+1316
+00:47:38,682 --> 00:47:40,264
+whatever the situation happens to be.
+
+1317
+00:47:41,666 --> 00:47:42,948
+So that's really useful.
+
+1318
+00:47:44,471 --> 00:47:45,012
+Exactly.
+
+1319
+00:47:45,012 --> 00:47:45,753
+Okay.
+
+1320
+00:47:45,753 --> 00:47:45,853
+Yeah.
+
+1321
+00:47:48,482 --> 00:47:50,945
+Okay, but then there's a downside.
+
+1322
+00:47:50,945 --> 00:47:53,028
+So version control.
+
+1323
+00:47:53,028 --> 00:47:54,811
+And it's not actually that bad.
+
+1324
+00:47:54,811 --> 00:47:59,557
+So Jupyter notebooks are JSON files.
+
+1325
+00:47:59,557 --> 00:48:03,222
+Let's see, can I open this as a text file?
+
+1326
+00:48:04,123 --> 00:48:05,024
+Have I saved it?
+
+1327
+00:48:05,024 --> 00:48:05,525
+No.
+
+1328
+00:48:05,525 --> 00:48:06,386
+I guess you have to rename.
+
+1329
+00:48:06,386 --> 00:48:07,528
+There's this dot here.
+
+1330
+00:48:09,530 --> 00:48:11,153
+It is saved, right?
+
+1331
+00:48:11,153 --> 00:48:13,155
+Yeah, but the kernel is running.
+
+1332
+00:48:13,155 --> 00:48:14,197
+That's why you'd see that.
+
+1333
+00:48:14,197 --> 00:48:14,457
+Yeah.
+
+1334
+00:48:15,518 --> 00:48:17,085
+So, oh, right, that's,
+
+1335
+00:48:17,085 --> 00:48:18,487
+It's showing that there's a kernel.
+
+1336
+00:48:18,487 --> 00:48:19,148
+Okay.
+
+1337
+00:48:19,148 --> 00:48:21,832
+If I name it to JSON,
+
+1338
+00:48:21,832 --> 00:48:23,414
+which is standard for a JSON
+
+1339
+00:48:23,414 --> 00:48:26,418
+file, then I can open it.
+
+1340
+00:48:29,222 --> 00:48:33,909
+And this is not exactly what I wanted to.
+
+1341
+00:48:33,909 --> 00:48:34,950
+I mean, this contains all the
+
+1342
+00:48:34,950 --> 00:48:36,252
+cells and all the data, but
+
+1343
+00:48:37,394 --> 00:48:39,337
+let's do a pure text file.
+
+1344
+00:48:41,600 --> 00:48:46,279
+So we talked about Git a few weeks ago.
+
+1345
+00:48:46,279 --> 00:48:48,303
+a lot and we have used it all the time.
+
+1346
+00:48:48,303 --> 00:48:49,765
+Git is really good with text files.
+
+1347
+00:48:52,631 --> 00:48:53,873
+And this is a text file.
+
+1348
+00:48:55,195 --> 00:48:58,341
+So there's a collection of cells.
+
+1349
+00:48:58,341 --> 00:49:00,164
+It's a list.
+
+1350
+00:49:00,164 --> 00:49:02,128
+There's a cell type, execution
+
+1351
+00:49:02,128 --> 00:49:05,053
+count, which is displayed in the notebook.
+
+1352
+00:49:05,053 --> 00:49:07,157
+There's some metadata and
+
+1353
+00:49:08,503 --> 00:49:11,090
+the data, then there is out
+
+1354
+00:49:11,090 --> 00:49:12,534
+if there is an output, then
+
+1355
+00:49:12,534 --> 00:49:18,210
+this output so okay, somewhere here we have
+
+1356
+00:49:22,560 --> 00:49:25,725
+This is still a plain text output, I think.
+
+1357
+00:49:25,725 --> 00:49:26,907
+That's the image from the
+
+1358
+00:49:26,907 --> 00:49:29,151
+exercise that we imported.
+
+1359
+00:49:30,012 --> 00:49:31,374
+Okay, yes.
+
+1360
+00:49:31,374 --> 00:49:33,097
+So this is an image.
+
+1361
+00:49:33,097 --> 00:49:35,821
+This is not very nice text.
+
+1362
+00:49:35,821 --> 00:49:38,045
+It's actually a binary blob.
+
+1363
+00:49:38,045 --> 00:49:39,287
+But that wasn't actually the
+
+1364
+00:49:39,287 --> 00:49:40,108
+plot that we made.
+
+1365
+00:49:40,990 --> 00:49:43,854
+We finally get to an actual source code.
+
+1366
+00:49:43,854 --> 00:49:46,779
+This is a code cell.
+
+1367
+00:49:48,902 --> 00:49:50,984
+and here we have a code cell.
+
+1368
+00:49:50,984 --> 00:49:52,706
+So the output, this is
+
+1369
+00:49:52,706 --> 00:49:54,087
+source, where's the output?
+
+1370
+00:49:54,087 --> 00:49:54,548
+Okay, here.
+
+1371
+00:49:54,548 --> 00:49:57,171
+3.14.
+
+1372
+00:49:57,171 --> 00:49:57,411
+Okay.
+
+1373
+00:49:58,472 --> 00:49:59,713
+So this is an output.
+
+1374
+00:49:59,713 --> 00:50:02,296
+This is the actual source code.
+
+1375
+00:50:04,118 --> 00:50:05,539
+Interesting that it's not in order.
+
+1376
+00:50:06,480 --> 00:50:07,201
+Is it alphabetical?
+
+1377
+00:50:09,163 --> 00:50:10,164
+Yes, it is.
+
+1378
+00:50:10,164 --> 00:50:11,125
+Okay, it's alphabetical.
+
+1379
+00:50:12,046 --> 00:50:13,627
+That's right.
+
+1380
+00:50:13,627 --> 00:50:14,949
+Okay.
+
+1381
+00:50:14,949 --> 00:50:16,691
+So, I mean, it's text.
+
+1382
+00:50:16,691 --> 00:50:18,687
+You can version control this.
+
+1383
+00:50:18,687 --> 00:50:19,989
+might not be fun to look
+
+1384
+00:50:19,989 --> 00:50:21,231
+through this and try to figure
+
+1385
+00:50:21,231 --> 00:50:22,412
+out what's going on.
+
+1386
+00:50:22,412 --> 00:50:25,076
+And this image here is not
+
+1387
+00:50:25,076 --> 00:50:26,177
+going to look nice if you're
+
+1388
+00:50:26,177 --> 00:50:27,519
+trying to use Git directly.
+
+1389
+00:50:28,881 --> 00:50:29,863
+But it's not that bad.
+
+1390
+00:50:31,865 --> 00:50:33,968
+So let's turn it into a notebook.
+
+1391
+00:50:33,968 --> 00:50:35,350
+It's an IPython notebook.
+
+1392
+00:50:36,652 --> 00:50:38,154
+And open it.
+
+1393
+00:50:41,218 --> 00:50:42,500
+Okay, so...
+
+1394
+00:50:43,847 --> 00:50:46,150
+we have an extension called
+
+1395
+00:50:46,150 --> 00:50:48,994
+nbdime I guess we should yeah
+
+1396
+00:50:48,994 --> 00:50:51,298
+here's a link to it so ...
+
+1397
+00:50:51,298 --> 00:50:54,182
+this is the ... the lesson
+
+1398
+00:50:54,182 --> 00:50:56,465
+page again the lesson materials
+
+1399
+00:50:57,827 --> 00:51:00,110
+so there's an extension called nbdime
+
+1400
+00:51:00,110 --> 00:51:01,612
+that works with JupyterLab and
+
+1401
+00:51:01,612 --> 00:51:04,236
+that allows you to actually
+
+1402
+00:51:04,236 --> 00:51:07,741
+look at this look at
+
+1403
+00:51:07,741 --> 00:51:12,670
+these notebooks properly in a version control
+
+1404
+00:51:12,670 --> 00:51:13,291
+interface.
+
+1405
+00:51:13,291 --> 00:51:16,516
+So I mean, you can go here to the git tab.
+
+1406
+00:51:18,359 --> 00:51:21,224
+And look at this, these are all new files.
+
+1407
+00:51:21,224 --> 00:51:24,229
+So let's make a change.
+
+1408
+00:51:29,737 --> 00:51:30,719
+Or rather than make a
+
+1409
+00:51:30,719 --> 00:51:32,181
+comment first and then make a change.
+
+1410
+00:51:34,786 --> 00:51:36,148
+Okay, there's also a checkpoint
+
+1411
+00:51:36,148 --> 00:51:37,009
+file, which is nice.
+
+1412
+00:51:37,931 --> 00:51:39,453
+Like [name] mentioned earlier,
+
+1413
+00:51:41,408 --> 00:51:42,569
+Okay, and then I want to
+
+1414
+00:51:42,569 --> 00:51:44,972
+make a change to the actual content.
+
+1415
+00:51:44,972 --> 00:51:46,634
+So let's again go and
+
+1416
+00:51:46,634 --> 00:51:50,999
+increase the number of points.
+
+1417
+00:51:50,999 --> 00:51:52,341
+Now if I look at the change.
+
+1418
+00:51:56,366 --> 00:51:57,147
+Okay, I need to click
+
+1419
+00:51:57,147 --> 00:51:59,249
+this button, this with the plus and minus here.
+
+1420
+00:52:01,452 --> 00:52:05,517
+And maybe hide the version control section.
+
+1421
+00:52:05,517 --> 00:52:07,679
+So it looks nice.
+
+1422
+00:52:07,679 --> 00:52:10,028
+And it actually shows you which cell and
+
+1423
+00:52:10,028 --> 00:52:11,730
+what line on that cell and so on.
+
+1424
+00:52:11,730 --> 00:52:13,452
+It doesn't just look like a JSON file.
+
+1425
+00:52:15,735 --> 00:52:18,979
+Then we can also go ahead and execute.
+
+1426
+00:52:19,780 --> 00:52:20,882
+Did I execute this one?
+
+1427
+00:52:20,882 --> 00:52:21,322
+I think so.
+
+1428
+00:52:23,565 --> 00:52:23,805
+Okay.
+
+1429
+00:52:26,809 --> 00:52:28,171
+Whoop, there we have a new image as well.
+
+1430
+00:52:29,052 --> 00:52:31,274
+So if you just look at the text again,
+
+1431
+00:52:31,274 --> 00:52:32,977
+it will just show the entire
+
+1432
+00:52:32,977 --> 00:52:35,500
+binary blob as a difference, which is huge.
+
+1433
+00:52:36,821 --> 00:52:39,765
+If you look at the difference from here,
+
+1434
+00:52:41,972 --> 00:52:43,033
+I didn't save the file.
+
+1435
+00:52:44,975 --> 00:52:45,736
+Okay.
+
+1436
+00:52:45,736 --> 00:52:46,377
+Now, if you look at
+
+1437
+00:52:46,377 --> 00:52:48,419
+the difference from here, it
+
+1438
+00:52:48,419 --> 00:52:50,120
+shows that there's a change here.
+
+1439
+00:52:50,120 --> 00:52:51,162
+There's a change in this
+
+1440
+00:52:51,162 --> 00:52:52,463
+cell, but that's only output.
+
+1441
+00:52:53,864 --> 00:52:55,206
+So there's no actual changes
+
+1442
+00:52:55,206 --> 00:52:56,287
+here in the code itself.
+
+1443
+00:52:57,148 --> 00:52:57,568
+Same here.
+
+1444
+00:52:58,609 --> 00:52:59,790
+Outputs changed.
+
+1445
+00:53:02,914 --> 00:53:03,955
+I guess this doesn't look
+
+1446
+00:53:03,955 --> 00:53:09,546
+that great either, but well,
+
+1447
+00:53:09,546 --> 00:53:11,929
+You can actually see both images here.
+
+1448
+00:53:11,929 --> 00:53:13,931
+If you like zoom out,
+
+1449
+00:53:13,931 --> 00:53:14,972
+maybe it looks better.
+
+1450
+00:53:14,972 --> 00:53:15,292
+I don't know.
+
+1451
+00:53:16,834 --> 00:53:17,234
+Not really.
+
+1452
+00:53:20,398 --> 00:53:21,659
+I'm actually a bit disappointed
+
+1453
+00:53:21,659 --> 00:53:23,922
+by how it looks like right now.
+
+1454
+00:53:23,922 --> 00:53:25,223
+I'm used to it looking much better,
+
+1455
+00:53:26,124 --> 00:53:27,646
+but it shows that the
+
+1456
+00:53:27,646 --> 00:53:28,787
+picture is different and you can
+
+1457
+00:53:28,787 --> 00:53:31,249
+actually see a preview of both images.
+
+1458
+00:53:31,249 --> 00:53:33,712
+So that's much more useful
+
+1459
+00:53:33,712 --> 00:53:34,993
+than just saying the whole
+
+1460
+00:53:34,993 --> 00:53:36,455
+binary blob is different.
+
+1461
+00:53:36,455 --> 00:53:37,977
+And the output, there's an
+
+1462
+00:53:37,977 --> 00:53:39,198
+output here and it's different.
+
+1463
+00:53:41,760 --> 00:53:43,122
+Actually, here is only the
+
+1464
+00:53:43,122 --> 00:53:45,705
+run count that has changed in these two cells.
+
+1465
+00:53:47,247 --> 00:53:47,507
+Okay.
+
+1466
+00:53:48,629 --> 00:53:55,257
+So now we can go ahead and add to this.
+
+1467
+00:53:55,257 --> 00:54:00,263
+So what should we say?
+
+1468
+00:54:00,263 --> 00:54:07,613
+Increase the number of points.
+
+1469
+00:54:07,613 --> 00:54:07,953
+Okay.
+
+1470
+00:54:12,203 --> 00:54:17,889
+Okay, so next, going back
+
+1471
+00:54:17,889 --> 00:54:22,754
+to the materials, should I also
+
+1472
+00:54:22,754 --> 00:54:24,456
+show this in VS Code?
+
+1473
+00:54:24,456 --> 00:54:25,117
+If you look at the
+
+1474
+00:54:25,117 --> 00:54:26,478
+version control interface, if you're
+
+1475
+00:54:26,478 --> 00:54:27,800
+using VS Code, you will see
+
+1476
+00:54:27,800 --> 00:54:29,922
+that the Jupyter extension actually
+
+1477
+00:54:29,922 --> 00:54:31,063
+makes it look nice.
+
+1478
+00:54:34,487 --> 00:54:35,808
+So you can see the differences
+
+1479
+00:54:35,808 --> 00:54:36,349
+in a nice way.
+
+1480
+00:54:37,890 --> 00:54:40,654
+One other thing is GitHub.
+
+1481
+00:54:40,654 --> 00:54:42,997
+So we have been using that a lot as well.
+
+1482
+00:54:44,038 --> 00:54:45,620
+If you haven't done anything
+
+1483
+00:54:46,541 --> 00:54:51,367
+to make it look nice, then
+
+1484
+00:54:51,367 --> 00:54:53,149
+it will not look nice.
+
+1485
+00:54:53,149 --> 00:54:55,232
+So we can go ahead and
+
+1486
+00:54:55,232 --> 00:54:56,433
+look at the notebook.
+
+1487
+00:54:58,676 --> 00:55:00,738
+So this is actually the
+
+1488
+00:55:00,738 --> 00:55:03,021
+example, this is the solution
+
+1489
+00:55:03,021 --> 00:55:05,204
+to the exercise or the notebook
+
+1490
+00:55:05,204 --> 00:55:10,219
+where you can continue from for the next part.
+
+1491
+00:55:10,219 --> 00:55:11,501
+but this is now looking
+
+1492
+00:55:11,501 --> 00:55:13,944
+at the difference between two different comets.
+
+1493
+00:55:18,129 --> 00:55:20,372
+And this is not very useful.
+
+1494
+00:55:20,372 --> 00:55:21,354
+I mean, I see that the
+
+1495
+00:55:21,354 --> 00:55:23,977
+image is different, but it's
+
+1496
+00:55:23,977 --> 00:55:26,180
+not quite, not very nice to read.
+
+1497
+00:55:29,584 --> 00:55:32,768
+So there is a way of,
+
+1498
+00:55:32,768 --> 00:55:34,591
+there's a feature, a feature preview.
+
+1499
+00:55:34,591 --> 00:55:35,472
+So if you click on
+
+1500
+00:55:35,472 --> 00:55:39,037
+your profile, feature preview, there
+
+1501
+00:55:39,037 --> 00:55:40,392
+is this rich,
+
+1502
+00:55:40,392 --> 00:55:41,974
+Jupyter notebook diffs.
+
+1503
+00:55:42,935 --> 00:55:44,197
+If you enable that one, this
+
+1504
+00:55:44,197 --> 00:55:46,801
+has been in beta for, I don't know
+
+1505
+00:55:46,801 --> 00:55:49,104
+how long, or preview for, I
+
+1506
+00:55:49,104 --> 00:55:50,285
+don't know, as long as
+
+1507
+00:55:50,285 --> 00:55:51,908
+CodeRefinery has existed or
+
+1508
+00:55:51,908 --> 00:55:53,990
+something like that.
+
+1509
+00:55:53,990 --> 00:55:55,192
+So when you enable that and
+
+1510
+00:55:55,192 --> 00:55:59,638
+you reload the page, now it
+
+1511
+00:55:59,638 --> 00:56:01,541
+looks quite a bit better.
+
+1512
+00:56:03,063 --> 00:56:04,705
+So here we again have a
+
+1513
+00:56:06,668 --> 00:56:09,892
+better picture of what has changed on this.
+
+1514
+00:56:10,716 --> 00:56:12,858
+cells these code cells but
+
+1515
+00:56:12,858 --> 00:56:16,002
+also the images now actually
+
+1516
+00:56:16,002 --> 00:56:20,087
+display correctly so this is the old image
+
+1517
+00:56:20,087 --> 00:56:21,308
+and this is the new one
+
+1518
+00:56:21,308 --> 00:56:25,313
+after the commit some colors have changed
+
+1519
+00:56:25,313 --> 00:56:28,156
+and the size has changed yeah
+
+1520
+00:56:28,156 --> 00:56:32,181
+okay ... one downside though is that
+
+1521
+00:56:32,181 --> 00:56:33,883
+when git git remembers
+
+1522
+00:56:33,883 --> 00:56:35,865
+everything it remembers all of
+
+1523
+00:56:35,865 --> 00:56:38,408
+the previous versions so if
+
+1524
+00:56:38,408 --> 00:56:40,568
+you keep changing an image or
+
+1525
+00:56:40,568 --> 00:56:44,152
+a video and you commit
+
+1526
+00:56:44,152 --> 00:56:46,034
+those changes, you will keep
+
+1527
+00:56:46,034 --> 00:56:49,298
+actually all of the versions of that video.
+
+1528
+00:56:49,298 --> 00:56:50,640
+And if it's an image, maybe
+
+1529
+00:56:50,640 --> 00:56:51,661
+it's not that bad.
+
+1530
+00:56:51,661 --> 00:56:53,623
+If it's a video and it's a big one,
+
+1531
+00:56:53,623 --> 00:56:54,404
+it might take a lot of
+
+1532
+00:56:54,404 --> 00:56:56,126
+space and take a long time
+
+1533
+00:56:56,126 --> 00:56:59,349
+to then clone the repository or push and pull.
+
+1534
+00:57:01,632 --> 00:57:05,897
+So yeah, that might be then
+
+1535
+00:57:05,897 --> 00:57:07,439
+good to remove the image at
+
+1536
+00:57:07,439 --> 00:57:10,048
+some point, but okay.
+
+1537
+00:57:10,048 --> 00:57:12,613
+It works still pretty well.
+
+1538
+00:57:13,916 --> 00:57:15,059
+So we did this comparing
+
+1539
+00:57:15,059 --> 00:57:17,203
+notebooks locally already.
+
+1540
+00:57:19,087 --> 00:57:22,334
+And there is nbdime from the command line.
+
+1541
+00:57:23,817 --> 00:57:24,719
+I don't know, do I
+
+1542
+00:57:24,719 --> 00:57:26,363
+have actually these commands?
+
+1543
+00:57:28,608 --> 00:57:29,289
+Should we try?
+
+1544
+00:57:30,602 --> 00:57:32,224
+Yeah, but I guess the
+
+1545
+00:57:32,224 --> 00:57:34,266
+audience gets the idea that
+
+1546
+00:57:34,266 --> 00:57:35,808
+Jupyter Notebook works with
+
+1547
+00:57:35,808 --> 00:57:36,930
+version controlling, but there
+
+1548
+00:57:36,930 --> 00:57:37,711
+are some limitations.
+
+1549
+00:57:37,711 --> 00:57:39,853
+You also have to enable
+
+1550
+00:57:39,853 --> 00:57:42,156
+some feature or install a
+
+1551
+00:57:42,156 --> 00:57:44,038
+plugin or something like that.
+
+1552
+00:57:44,879 --> 00:57:46,001
+Yeah, you always essentially
+
+1553
+00:57:46,001 --> 00:57:48,223
+have to install something to make it work.
+
+1554
+00:57:48,223 --> 00:57:50,406
+And for VS Code, it's
+
+1555
+00:57:50,406 --> 00:57:52,489
+the same Jupyter plugin, which is nice.
+
+1556
+00:57:52,489 --> 00:57:58,095
+But it's interesting that for JupyterLab,
+
+1557
+00:57:58,095 --> 00:57:59,257
+you still need to install
+
+1558
+00:57:59,257 --> 00:58:00,623
+something to make it work.
+
+1559
+00:58:00,623 --> 00:58:01,984
+Like it doesn't work out of the box.
+
+1560
+00:58:03,566 --> 00:58:03,746
+Yeah.
+
+1561
+00:58:06,169 --> 00:58:10,233
+Okay.
+
+1562
+00:58:10,233 --> 00:58:10,594
+I guess.
+
+1563
+00:58:10,594 --> 00:58:11,234
+Yeah.
+
+1564
+00:58:12,536 --> 00:58:13,697
+Let's go on.
+
+1565
+00:58:13,697 --> 00:58:14,858
+You can go with the sharing.
+
+1566
+00:58:14,858 --> 00:58:15,659
+Yes.
+
+1567
+00:58:15,659 --> 00:58:16,720
+Yeah.
+
+1568
+00:58:16,720 --> 00:58:17,641
+So, but yeah, I mean,
+
+1569
+00:58:17,641 --> 00:58:19,823
+essentially you probably do want
+
+1570
+00:58:19,823 --> 00:58:23,387
+to enable those features in
+
+1571
+00:58:23,387 --> 00:58:25,530
+whatever editor and interface
+
+1572
+00:58:25,530 --> 00:58:27,211
+you're using, and especially if
+
+1573
+00:58:27,211 --> 00:58:27,812
+you're using GitHub.
+
+1574
+00:58:29,125 --> 00:58:30,787
+Okay, but yeah, then we'll
+
+1575
+00:58:30,787 --> 00:58:32,449
+talk about sharing notebooks.
+
+1576
+00:58:32,449 --> 00:58:34,891
+So we have talked a lot
+
+1577
+00:58:34,891 --> 00:58:36,132
+about sharing code and the
+
+1578
+00:58:36,132 --> 00:58:37,414
+upsides are essentially the same.
+
+1579
+00:58:38,995 --> 00:58:40,777
+But often it is also
+
+1580
+00:58:41,658 --> 00:58:44,802
+useful to specifically share notebooks
+
+1581
+00:58:44,802 --> 00:58:47,344
+for documentation and to show
+
+1582
+00:58:48,265 --> 00:58:51,569
+how to describe how the
+
+1583
+00:58:51,569 --> 00:58:56,634
+process works to generate your paper and so on.
+
+1584
+00:58:58,369 --> 00:59:01,172
+So there's a bunch of ways of doing that.
+
+1585
+00:59:01,172 --> 00:59:02,754
+And the simplest one is to
+
+1586
+00:59:02,754 --> 00:59:04,416
+put it on GitHub or GitLab
+
+1587
+00:59:04,416 --> 00:59:07,499
+or any interface like that and
+
+1588
+00:59:07,499 --> 00:59:08,300
+people can see it.
+
+1589
+00:59:10,703 --> 00:59:11,904
+You can turn it into a
+
+1590
+00:59:11,904 --> 00:59:15,128
+website that looks nicer and it's
+
+1591
+00:59:15,128 --> 00:59:16,309
+a bit easier to access.
+
+1592
+00:59:18,091 --> 00:59:20,434
+Those are essentially static options.
+
+1593
+00:59:20,434 --> 00:59:22,496
+So people cannot edit the code
+
+1594
+00:59:22,496 --> 00:59:23,698
+and they cannot run the code,
+
+1595
+00:59:23,698 --> 00:59:24,979
+but they can see the entire
+
+1596
+00:59:24,979 --> 00:59:27,208
+story and they can see the results.
+
+1597
+00:59:27,208 --> 00:59:29,111
+Those are nice ways of doing it.
+
+1598
+00:59:29,111 --> 00:59:30,353
+But then there's also ways
+
+1599
+00:59:30,353 --> 00:59:32,195
+of sharing it that make
+
+1600
+00:59:32,195 --> 00:59:34,719
+it actually dynamic where you can edit it.
+
+1601
+00:59:34,719 --> 00:59:36,221
+So we already talked about Binder
+
+1602
+00:59:36,221 --> 00:59:37,403
+and we showed you a couple
+
+1603
+00:59:37,403 --> 00:59:38,385
+of notebooks in Binder.
+
+1604
+00:59:42,731 --> 00:59:45,535
+JupyterLab supports sharing via
+
+1605
+00:59:45,535 --> 00:59:46,537
+Google Drive.
+
+1606
+00:59:46,537 --> 00:59:47,258
+Okay.
+
+1607
+00:59:47,258 --> 00:59:48,660
+I'm always surprised by that.
+
+1608
+00:59:48,660 --> 00:59:52,946
+That's a relatively new feature.
+
+1609
+00:59:53,753 --> 00:59:55,795
+And then there's a bunch of other options.
+
+1610
+00:59:55,795 --> 00:59:58,057
+There's JupyterLite and EGI Notebooks
+
+1611
+00:59:59,558 --> 01:00:00,999
+that helped you actually share
+
+1612
+01:00:00,999 --> 01:00:07,585
+a live version of the page or of the notebook.
+
+1613
+01:00:07,585 --> 01:00:07,825
+Okay.
+
+1614
+01:00:08,826 --> 01:00:13,270
+So one option that we might
+
+1615
+01:00:13,270 --> 01:00:15,812
+as well show you rather than
+
+1616
+01:00:15,812 --> 01:00:22,798
+just describe is, so here we have a file cell.
+
+1617
+01:00:23,925 --> 01:00:24,706
+What is happening?
+
+1618
+01:00:24,706 --> 01:00:25,047
+Okay.
+
+1619
+01:00:25,047 --> 01:00:27,050
+So we have the file selected here.
+
+1620
+01:00:27,050 --> 01:00:30,316
+We can export, save and
+
+1621
+01:00:31,258 --> 01:00:32,720
+export notebook as, and then we
+
+1622
+01:00:32,720 --> 01:00:34,684
+can save it as say HTML.
+
+1623
+01:00:37,348 --> 01:00:37,609
+Okay.
+
+1624
+01:00:38,450 --> 01:00:40,975
+This is going into downloads, I guess.
+
+1625
+01:00:40,975 --> 01:00:41,456
+That's fine.
+
+1626
+01:00:43,319 --> 01:00:44,661
+And we can open it.
+
+1627
+01:00:44,661 --> 01:00:47,226
+So, so now this is a,
+
+1628
+01:00:47,226 --> 01:00:49,305
+this is a website that you can send.
+
+1629
+01:00:49,305 --> 01:00:50,787
+You can put this on GitHub
+
+1630
+01:00:50,787 --> 01:00:53,571
+and people can open it on github.io,
+
+1631
+01:00:53,571 --> 01:00:55,715
+or you can just send it to people
+
+1632
+01:00:55,715 --> 01:00:56,716
+and they can open it
+
+1633
+01:00:56,716 --> 01:00:58,138
+without any editors and without
+
+1634
+01:00:58,138 --> 01:01:04,508
+any viewers, because it is just a website.
+
+1635
+01:01:04,508 --> 01:01:04,868
+Okay.
+
+1636
+01:01:08,394 --> 01:01:09,555
+But it's an HTML one,
+
+1637
+01:01:09,555 --> 01:01:11,198
+so you cannot actually run
+
+1638
+01:01:12,420 --> 01:01:14,663
+the Python code, right?
+
+1639
+01:01:14,663 --> 01:01:15,845
+You can just see... Yes, you
+
+1640
+01:01:15,845 --> 01:01:17,287
+cannot run the Python code.
+
+1641
+01:01:17,287 --> 01:01:19,545
+It's purely HTML.
+
+1642
+01:01:19,545 --> 01:01:23,030
+There's also Google Colab, Google
+
+1643
+01:01:23,030 --> 01:01:23,831
+Calc and so on.
+
+1644
+01:01:23,831 --> 01:01:25,854
+These are commercial offers
+
+1645
+01:01:25,854 --> 01:01:29,600
+with free plans, which means
+
+1646
+01:01:30,742 --> 01:01:34,447
+they are by commercial companies.
+
+1647
+01:01:35,769 --> 01:01:39,134
+And yeah, they are also
+
+1648
+01:01:39,134 --> 01:01:39,975
+pretty good options.
+
+1649
+01:01:41,417 --> 01:01:43,560
+So there's a lot of options
+
+1650
+01:01:43,560 --> 01:01:45,283
+and it depends on what you want.
+
+1651
+01:01:46,933 --> 01:01:52,740
+We are going to do this
+
+1652
+01:01:52,740 --> 01:01:53,681
+as an exercise, right?
+
+1653
+01:01:53,681 --> 01:01:53,862
+Yes.
+
+1654
+01:01:55,023 --> 01:01:56,205
+So we're going to have an
+
+1655
+01:01:56,205 --> 01:02:01,391
+exercise where we share a notebook on Binder.
+
+1656
+01:02:01,391 --> 01:02:04,014
+So to do that, though, what
+
+1657
+01:02:04,014 --> 01:02:05,416
+you need to do first is
+
+1658
+01:02:05,416 --> 01:02:08,400
+have a Git repository with a notebook.
+
+1659
+01:02:09,561 --> 01:02:11,604
+So if you didn't already,
+
+1660
+01:02:11,604 --> 01:02:12,765
+there was a button here
+
+1661
+01:02:12,765 --> 01:02:14,848
+to initialize repository.
+
+1662
+01:02:17,106 --> 01:02:23,554
+And then, I mean, if you
+
+1663
+01:02:23,554 --> 01:02:24,835
+were here in the first week,
+
+1664
+01:02:26,638 --> 01:02:28,800
+you know the steps to push
+
+1665
+01:02:28,800 --> 01:02:31,784
+the notebook to GitHub.
+
+1666
+01:02:34,327 --> 01:02:36,469
+And I'm wondering, should I show that?
+
+1667
+01:02:36,469 --> 01:02:37,911
+And how should I show that?
+
+1668
+01:02:39,033 --> 01:02:41,355
+Because I do not have the,
+
+1669
+01:02:42,196 --> 01:02:43,518
+there is no interface for it here.
+
+1670
+01:02:46,165 --> 01:02:47,767
+I don't think you can push it from there.
+
+1671
+01:02:48,687 --> 01:02:49,568
+I can open a terminal.
+
+1672
+01:02:50,489 --> 01:02:50,709
+Yes.
+
+1673
+01:02:54,053 --> 01:02:55,034
+And then I have to
+
+1674
+01:02:55,034 --> 01:02:57,316
+create a GitHub repository.
+
+1675
+01:03:09,268 --> 01:03:10,849
+And here it's important.
+
+1676
+01:03:10,849 --> 01:03:16,354
+So, ... by example, okay.
+
+1677
+01:03:16,354 --> 01:03:18,957
+So here it's important to, first of all,
+
+1678
+01:03:20,058 --> 01:03:21,620
+make it public if you're sharing it
+
+1679
+01:03:21,620 --> 01:03:25,223
+and start with no readme
+
+1680
+01:03:25,223 --> 01:03:27,125
+file, no gitignore and no
+
+1681
+01:03:27,125 --> 01:03:29,448
+license, essentially an empty repository.
+
+1682
+01:03:30,409 --> 01:03:32,391
+And the reason for that is
+
+1683
+01:03:33,212 --> 01:03:34,994
+that we already have files in
+
+1684
+01:03:34,994 --> 01:03:38,858
+this existing git repository.
+
+1685
+01:03:40,019 --> 01:03:40,860
+Actually, we can copy the
+
+1686
+01:03:40,860 --> 01:03:43,543
+commands from here, git remote add.
+
+1687
+01:03:45,008 --> 01:03:46,590
+So we already have files in here.
+
+1688
+01:03:46,590 --> 01:03:48,452
+So if you create any files
+
+1689
+01:03:48,452 --> 01:03:50,475
+in the remote repository, it
+
+1690
+01:03:50,475 --> 01:03:54,499
+will refuse to push.
+
+1691
+01:03:56,061 --> 01:03:58,204
+Okay, so I'm going to do
+
+1692
+01:03:58,204 --> 01:04:02,569
+this step and I probably should
+
+1693
+01:04:02,569 --> 01:04:03,510
+be a bit more explicit.
+
+1694
+01:04:03,510 --> 01:04:05,332
+So this is preparation for
+
+1695
+01:04:05,332 --> 01:04:07,495
+the exercise that you will also need to do,
+
+1696
+01:04:07,495 --> 01:04:09,638
+but I don't think it's 100%
+
+1697
+01:04:09,638 --> 01:04:11,400
+clear on the exercise page.
+
+1698
+01:04:12,721 --> 01:04:14,103
+So you need to have a
+
+1699
+01:04:15,079 --> 01:04:17,502
+Git repository that you push
+
+1700
+01:04:17,502 --> 01:04:18,944
+to GitHub and then you can
+
+1701
+01:04:18,944 --> 01:04:19,965
+do the binder exercise.
+
+1702
+01:04:21,967 --> 01:04:23,910
+And preferably the Git
+
+1703
+01:04:23,910 --> 01:04:25,692
+repository should have a notebook in it.
+
+1704
+01:04:25,692 --> 01:04:27,794
+So the exercise notebook is a
+
+1705
+01:04:27,794 --> 01:04:29,076
+good one to have.
+
+1706
+01:04:30,017 --> 01:04:31,799
+So I made a branch called main.
+
+1707
+01:04:31,799 --> 01:04:33,081
+I'm essentially, I'm just
+
+1708
+01:04:33,081 --> 01:04:34,963
+copying these commands from here
+
+1709
+01:04:34,963 --> 01:04:36,765
+and running them in a terminal.
+
+1710
+01:04:36,765 --> 01:04:38,648
+Another option is to use VS Code.
+
+1711
+01:04:38,648 --> 01:04:41,111
+There you can just publish to GitHub.
+
+1712
+01:04:41,111 --> 01:04:42,192
+There's a button that says
+
+1713
+01:04:42,192 --> 01:04:44,715
+publish to GitHub and that should work.
+
+1714
+01:04:46,753 --> 01:04:49,316
+Okay, so now I have a Git repository
+
+1715
+01:04:49,316 --> 01:04:50,799
+that I can actually push,
+
+1716
+01:04:52,681 --> 01:04:53,542
+where I can actually push
+
+1717
+01:04:53,542 --> 01:04:55,044
+the changes to GitHub.
+
+1718
+01:04:56,667 --> 01:04:59,891
+So if I reload this, I probably have it.
+
+1719
+01:04:59,891 --> 01:05:01,153
+Yes, I have the notebook here.
+
+1720
+01:05:02,354 --> 01:05:05,439
+And that is, so let's go to the exercise.
+
+1721
+01:05:05,439 --> 01:05:06,300
+That is essentially the
+
+1722
+01:05:06,300 --> 01:05:07,001
+starting point here.
+
+1723
+01:05:08,062 --> 01:05:13,838
+So first you create a repository.
+
+1724
+01:05:13,838 --> 01:05:15,520
+And then you need to add some files.
+
+1725
+01:05:15,520 --> 01:05:17,282
+So for Jupyter notebooks, R
+
+1726
+01:05:17,282 --> 01:05:18,643
+notebooks, it's a bit different.
+
+1727
+01:05:19,724 --> 01:05:20,625
+And after that, you should
+
+1728
+01:05:20,625 --> 01:05:22,488
+be able to launch it on Binder.
+
+1729
+01:05:22,488 --> 01:05:24,470
+So the exercise is to do
+
+1730
+01:05:24,470 --> 01:05:27,954
+these steps and to modify
+
+1731
+01:05:27,954 --> 01:05:30,276
+your notebook on Binder.
+
+1732
+01:05:31,117 --> 01:05:32,438
+I definitely shouldn't go any
+
+1733
+01:05:32,438 --> 01:05:34,180
+further in it because then I
+
+1734
+01:05:34,180 --> 01:05:35,342
+would be just doing the exercise.
+
+1735
+01:05:39,206 --> 01:05:40,527
+Is it clear?
+
+1736
+01:05:40,527 --> 01:05:41,849
+Because the reason I'm still
+
+1737
+01:05:41,849 --> 01:05:44,449
+talking is that I feel it's a bit unclear.
+
+1738
+01:05:44,449 --> 01:05:47,752
+I think it's clear.
+
+1739
+01:05:47,752 --> 01:05:49,074
+Yeah.
+
+1740
+01:05:49,074 --> 01:05:49,194
+Yeah.
+
+1741
+01:05:49,194 --> 01:05:50,535
+So follow the instructions here.
+
+1742
+01:05:50,535 --> 01:05:51,856
+And if you have any questions,
+
+1743
+01:05:51,856 --> 01:05:52,637
+then let us know.
+
+1744
+01:05:52,637 --> 01:05:53,738
+The end result is that
+
+1745
+01:05:53,738 --> 01:06:00,785
+your notebook should be on Binder.
+
+1746
+01:06:00,785 --> 01:06:02,687
+It should be online and in such a way
+
+1747
+01:06:02,687 --> 01:06:05,029
+that you can edit it and rerun things
+
+1748
+01:06:05,029 --> 01:06:05,790
+and fiddle around with
+
+1749
+01:06:05,790 --> 01:06:07,472
+things without actually having
+
+1750
+01:06:07,472 --> 01:06:11,576
+Jupyter yourself.
+
+1751
+01:06:11,576 --> 01:06:12,192
+Yeah.
+
+1752
+01:06:12,192 --> 01:06:18,040
+So we'll go for 12
+
+1753
+01:06:18,040 --> 01:06:20,043
+minutes enough because it says,
+
+1754
+01:06:20,043 --> 01:06:22,706
+let's say 15 minutes.
+
+1755
+01:06:24,309 --> 01:06:24,829
+Or 15.
+
+1756
+01:06:24,829 --> 01:06:27,753
+15 minutes, yeah.
+
+1757
+01:06:27,753 --> 01:06:28,000
+So it will be 55.
+
+1758
+01:06:28,707 --> 01:06:29,928
+Welcome back.
+
+1759
+01:06:33,832 --> 01:06:35,134
+Only two people have voted
+
+1760
+01:06:35,134 --> 01:06:36,836
+that they are done with the exercise.
+
+1761
+01:06:36,836 --> 01:06:41,921
+So okay, now this one more vote.
+
+1762
+01:06:44,644 --> 01:06:46,326
+If you have questions, or
+
+1763
+01:06:46,326 --> 01:06:48,448
+if you have trouble, let us know.
+
+1764
+01:06:50,811 --> 01:06:53,514
+But yes, so I think I
+
+1765
+01:06:53,514 --> 01:06:56,757
+will start going through the steps a bit.
+
+1766
+01:06:58,340 --> 01:06:58,782
+already.
+
+1767
+01:06:58,782 --> 01:07:01,333
+Oh, it takes forever to launch.
+
+1768
+01:07:01,333 --> 01:07:01,595
+Okay.
+
+1769
+01:07:01,595 --> 01:07:01,816
+Yes.
+
+1770
+01:07:02,659 --> 01:07:03,925
+It's building the environment for
+
+1771
+01:07:03,925 --> 01:07:04,608
+the first time.
+
+1772
+01:07:04,608 --> 01:07:08,164
+It does take a long time.
+
+1773
+01:07:10,237 --> 01:07:12,599
+let's see how quickly it happens
+
+1774
+01:07:12,599 --> 01:07:15,162
+for me and while I'm doing
+
+1775
+01:07:15,162 --> 01:07:18,405
+this you can also finish the exercise
+
+1776
+01:07:18,405 --> 01:07:21,869
+if you have if you're still
+
+1777
+01:07:21,869 --> 01:07:23,891
+in the middle of it okay
+
+1778
+01:07:23,891 --> 01:07:25,873
+so I'm going to actually move
+
+1779
+01:07:25,873 --> 01:07:31,098
+this window out of the shared
+
+1780
+01:07:31,098 --> 01:07:34,682
+area and we see our my
+
+1781
+01:07:35,823 --> 01:07:38,185
+repository with the notebook in it so
+
+1782
+01:07:39,397 --> 01:07:42,782
+And the first step was to create a file.
+
+1783
+01:07:42,782 --> 01:07:44,645
+So here, create a new file.
+
+1784
+01:07:45,506 --> 01:07:47,990
+It's called requirements.txt.
+
+1785
+01:07:47,990 --> 01:07:52,036
+I should be typing here, requirements.txt.
+
+1786
+01:07:54,820 --> 01:07:58,205
+So this is a relatively
+
+1787
+01:07:58,205 --> 01:08:00,248
+standard way of telling what
+
+1788
+01:08:00,248 --> 01:08:02,531
+Python packages a program needs.
+
+1789
+01:08:02,531 --> 01:08:04,574
+And what we need is matplotlib.
+
+1790
+01:08:05,736 --> 01:08:07,699
+And we're giving a specific version of it.
+
+1791
+01:08:09,417 --> 01:08:11,219
+And this is telling Binder
+
+1792
+01:08:11,219 --> 01:08:16,064
+and other programs also what
+
+1793
+01:08:16,064 --> 01:08:17,166
+Python packages we need.
+
+1794
+01:08:17,166 --> 01:08:18,807
+So there's different formats
+
+1795
+01:08:18,807 --> 01:08:20,169
+for different languages usually.
+
+1796
+01:08:21,771 --> 01:08:23,452
+Okay, let's commit to change.
+
+1797
+01:08:24,313 --> 01:08:26,075
+Create requirements.txt is actually
+
+1798
+01:08:26,075 --> 01:08:27,657
+a very good description.
+
+1799
+01:08:27,657 --> 01:08:28,398
+So let's keep it.
+
+1800
+01:08:31,241 --> 01:08:33,964
+And that is in fact enough
+
+1801
+01:08:33,964 --> 01:08:34,885
+to run it in Binder.
+
+1802
+01:08:35,742 --> 01:08:39,447
+So then I'll open mybinder.org.
+
+1803
+01:08:39,447 --> 01:08:41,150
+We'll move it to this window.
+
+1804
+01:08:41,150 --> 01:08:42,151
+Okay, good.
+
+1805
+01:08:43,954 --> 01:08:46,898
+And I need the repository URL,
+
+1806
+01:08:46,898 --> 01:08:48,480
+which I get by going to
+
+1807
+01:08:48,480 --> 01:08:51,965
+the repository, to the main folder.
+
+1808
+01:08:53,307 --> 01:09:00,057
+And actually it's probably this URL, right?
+
+1809
+01:09:00,057 --> 01:09:00,998
+Actually, not exactly.
+
+1810
+01:09:02,180 --> 01:09:04,244
+Yeah, it's
+
+1811
+01:09:04,244 --> 01:09:05,806
+without the tree and the main.
+
+1812
+01:09:05,806 --> 01:09:07,187
+So it's like this, I think.
+
+1813
+01:09:10,030 --> 01:09:11,852
+We're taking the main branch,
+
+1814
+01:09:12,672 --> 01:09:13,994
+so not writing anything here.
+
+1815
+01:09:14,915 --> 01:09:18,438
+And the file is actually
+
+1816
+01:09:18,438 --> 01:09:23,643
+called pi.ipynb, IPython notebook.
+
+1817
+01:09:24,965 --> 01:09:27,127
+Okay, and that creates this URL.
+
+1818
+01:09:28,548 --> 01:09:31,551
+There's also a badge for readme file.
+
+1819
+01:09:33,573 --> 01:09:37,637
+So we can copy that and
+
+1820
+01:09:37,637 --> 01:09:38,639
+create a readme file.
+
+1821
+01:09:41,241 --> 01:09:47,348
+Create a new file, readme.md.
+
+1822
+01:09:47,348 --> 01:09:49,130
+So markdown, md for markdown,
+
+1823
+01:09:50,111 --> 01:09:52,394
+which is also relatively standard,
+
+1824
+01:09:52,394 --> 01:09:53,855
+at least for GitHub and GitLab.
+
+1825
+01:09:54,936 --> 01:09:55,357
+Okay.
+
+1826
+01:09:55,357 --> 01:09:56,118
+Commit changes.
+
+1827
+01:09:57,639 --> 01:09:58,720
+And again, the description
+
+1828
+01:09:58,720 --> 01:10:00,082
+is actually pretty good.
+
+1829
+01:10:00,082 --> 01:10:02,905
+So the default one, create readme.markdown.
+
+1830
+01:10:03,931 --> 01:10:05,112
+Although the only thing we
+
+1831
+01:10:05,112 --> 01:10:07,254
+added there is this launch binder.
+
+1832
+01:10:07,254 --> 01:10:10,497
+So that actually is this
+
+1833
+01:10:10,497 --> 01:10:13,179
+link essentially or link to this URL.
+
+1834
+01:10:13,179 --> 01:10:15,641
+So we can go ahead and link here.
+
+1835
+01:10:19,445 --> 01:10:21,046
+So now it's actually, I
+
+1836
+01:10:21,046 --> 01:10:21,927
+don't know what's happening here.
+
+1837
+01:10:26,931 --> 01:10:30,234
+But it's essentially creating a,
+
+1838
+01:10:31,655 --> 01:10:34,289
+not exactly a virtual machine, a container.
+
+1839
+01:10:34,289 --> 01:10:36,631
+that can run the notebook and
+
+1840
+01:10:36,631 --> 01:10:38,272
+that then has the requirements,
+
+1841
+01:10:38,272 --> 01:10:40,474
+the Python packages installed that we need.
+
+1842
+01:10:42,356 --> 01:10:42,576
+Okay.
+
+1843
+01:10:43,957 --> 01:10:46,079
+That was surprisingly quick
+
+1844
+01:10:48,001 --> 01:10:50,864
+and it's displaying the notebook nicely.
+
+1845
+01:10:50,864 --> 01:10:53,686
+So let's run all the
+
+1846
+01:10:53,686 --> 01:10:55,468
+cells from beginning to the end.
+
+1847
+01:10:58,310 --> 01:11:00,692
+This might actually, yeah.
+
+1848
+01:11:00,692 --> 01:11:01,072
+Okay.
+
+1849
+01:11:01,072 --> 01:11:01,573
+It didn't work.
+
+1850
+01:11:02,774 --> 01:11:03,975
+This is interesting.
+
+1851
+01:11:07,600 --> 01:11:09,422
+It's also jumping around a bit.
+
+1852
+01:11:11,104 --> 01:11:11,945
+Oh, it's weird.
+
+1853
+01:11:11,945 --> 01:11:13,787
+It jumps around, but...
+
+1854
+01:11:13,787 --> 01:11:15,188
+Okay, that's better.
+
+1855
+01:11:15,188 --> 01:11:17,170
+So it was able to run everything else,
+
+1856
+01:11:17,170 --> 01:11:19,813
+but this one, matplotlib,
+
+1857
+01:11:19,813 --> 01:11:22,876
+the plotting library somehow fails.
+
+1858
+01:11:22,876 --> 01:11:24,618
+I think it's because the
+
+1859
+01:11:24,618 --> 01:11:27,381
+inline thing, or no?
+
+1860
+01:11:29,503 --> 01:11:30,364
+Oh, okay.
+
+1861
+01:11:30,364 --> 01:11:32,907
+This is a new version of NumPy.
+
+1862
+01:11:32,907 --> 01:11:34,229
+So we are using such an
+
+1863
+01:11:34,229 --> 01:11:36,591
+old version of matplotlib.
+
+1864
+01:11:36,591 --> 01:11:37,472
+Let's go back a bit.
+
+1865
+01:11:39,443 --> 01:11:41,286
+Yeah, yes, leave.
+
+1866
+01:11:42,328 --> 01:11:43,510
+So we're using such an
+
+1867
+01:11:43,510 --> 01:11:46,234
+old version of matplotlib that it actually,
+
+1868
+01:11:46,234 --> 01:11:47,676
+the current version of numpy
+
+1869
+01:11:47,676 --> 01:11:48,558
+doesn't work anymore.
+
+1870
+01:11:49,760 --> 01:11:51,002
+So we can try removing the
+
+1871
+01:11:51,002 --> 01:11:55,409
+version and I'll just keep update.requirements.txt.
+
+1872
+01:11:55,409 --> 01:11:56,891
+It is not a good description,
+
+1873
+01:11:56,891 --> 01:11:57,593
+but it's good enough.
+
+1874
+01:11:58,755 --> 01:11:59,015
+Okay.
+
+1875
+01:11:59,015 --> 01:12:01,920
+Somebody used matplotlib 3.10
+
+1876
+01:12:01,920 --> 01:12:02,861
+and it worked.
+
+1877
+01:12:02,861 --> 01:12:03,342
+That's nice.
+
+1878
+01:12:05,802 --> 01:12:07,664
+I'll just try that again and
+
+1879
+01:12:07,664 --> 01:12:10,929
+also then see what's next in the materials.
+
+1880
+01:12:10,929 --> 01:12:12,471
+So there was this optional
+
+1881
+01:12:12,471 --> 01:12:15,375
+exercise about looking at
+
+1882
+01:12:15,375 --> 01:12:18,098
+the activity repository and then
+
+1883
+01:12:18,098 --> 01:12:23,085
+one that mentions Python widgets
+
+1884
+01:12:24,267 --> 01:12:25,148
+or IPy widgets.
+
+1885
+01:12:27,191 --> 01:12:29,814
+So I will actually skip those
+
+1886
+01:12:29,814 --> 01:12:32,017
+and go directly to a section
+
+1887
+01:12:32,017 --> 01:12:33,419
+and the next section.
+
+1888
+01:12:35,422 --> 01:12:36,110
+So
+
+1889
+01:12:36,110 --> 01:12:38,292
+Next section is summary, but
+
+1890
+01:12:38,292 --> 01:12:39,693
+we'll go to examples of
+
+1891
+01:12:39,693 --> 01:12:42,256
+Jupyter features, an optional episode,
+
+1892
+01:12:42,256 --> 01:12:43,797
+and specifically from here,
+
+1893
+01:12:43,797 --> 01:12:45,739
+widgets for interactive data fitting.
+
+1894
+01:12:47,320 --> 01:12:49,542
+So I will, again, move this
+
+1895
+01:12:49,542 --> 01:12:50,703
+out of the screen share.
+
+1896
+01:12:52,025 --> 01:12:53,326
+And now we're in a binder window.
+
+1897
+01:12:53,326 --> 01:12:55,588
+So it's actually here, it's
+
+1898
+01:12:55,588 --> 01:13:00,152
+opening the binder exercise, the result.
+
+1899
+01:13:00,953 --> 01:13:03,535
+So I can try running everything again.
+
+1900
+01:13:07,970 --> 01:13:08,771
+Okay.
+
+1901
+01:13:08,771 --> 01:13:10,293
+And this time it works.
+
+1902
+01:13:10,293 --> 01:13:10,834
+Okay.
+
+1903
+01:13:10,834 --> 01:13:11,495
+So that's Binder.
+
+1904
+01:13:12,517 --> 01:13:14,500
+It looks exactly the same
+
+1905
+01:13:14,500 --> 01:13:17,344
+as JupyterLab, but the point is
+
+1906
+01:13:17,344 --> 01:13:19,707
+that it's not actually running on my laptop.
+
+1907
+01:13:19,707 --> 01:13:20,608
+So I don't have to
+
+1908
+01:13:20,608 --> 01:13:21,990
+have anything installed to run it.
+
+1909
+01:13:23,152 --> 01:13:25,315
+Anyone can go to this website
+
+1910
+01:13:25,315 --> 01:13:27,438
+and see my notebook and
+
+1911
+01:13:27,438 --> 01:13:30,263
+run it without having to install anything.
+
+1912
+01:13:30,263 --> 01:13:31,244
+It's a very useful way
+
+1913
+01:13:31,244 --> 01:13:32,145
+of sharing your results.
+
+1914
+01:13:34,088 --> 01:13:34,348
+Okay.
+
+1915
+01:13:35,891 --> 01:13:37,453
+So I'll also close this one.
+
+1916
+01:13:38,513 --> 01:13:39,174
+Yes, leave.
+
+1917
+01:13:40,536 --> 01:13:42,939
+And then we'll go to this,
+
+1918
+01:13:42,939 --> 01:13:45,122
+which is for interactive data fitting section.
+
+1919
+01:13:45,122 --> 01:13:47,185
+So this is in Jupyter/examples.
+
+1920
+01:13:49,167 --> 01:13:51,410
+Unless there's some questions.
+
+1921
+01:13:53,313 --> 01:13:55,436
+Okay, no, we're going well.
+
+1922
+01:13:55,436 --> 01:13:56,036
+Doing well.
+
+1923
+01:13:56,036 --> 01:13:59,421
+Okay, so let's create a,
+
+1924
+01:13:59,421 --> 01:14:02,946
+I think a completely new notebook.
+
+1925
+01:14:05,249 --> 01:14:06,651
+Oh, is it widgets or
+
+1926
+01:14:06,651 --> 01:14:08,453
+interactive data fitting?
+
+1927
+01:14:10,272 --> 01:14:12,397
+No, no, no, that it's,
+
+1928
+01:14:16,044 --> 01:14:17,888
+there's a separate part that
+
+1929
+01:14:17,888 --> 01:14:20,995
+introduces widgets and that seems
+
+1930
+01:14:20,995 --> 01:14:21,716
+to come later.
+
+1931
+01:14:21,716 --> 01:14:25,244
+Like are these, or did
+
+1932
+01:14:25,244 --> 01:14:28,230
+I skip something that I was supposed to?
+
+1933
+01:14:31,366 --> 01:14:33,228
+I also get confused.
+
+1934
+01:14:33,228 --> 01:14:36,892
+It should be... There's a
+
+1935
+01:14:36,892 --> 01:14:39,694
+widgets one inside the shell command.
+
+1936
+01:14:39,694 --> 01:14:41,076
+Okay, yes.
+
+1937
+01:14:41,076 --> 01:14:42,197
+So let's go back to
+
+1938
+01:14:42,197 --> 01:14:44,699
+the Jupyter Notebooks main page.
+
+1939
+01:14:44,699 --> 01:14:45,680
+And from there, go to
+
+1940
+01:14:45,680 --> 01:14:47,302
+shell commands, metrics, and widgets.
+
+1941
+01:14:48,123 --> 01:14:49,845
+And here it's relatively close
+
+1942
+01:14:49,845 --> 01:14:51,406
+to the bottom of the page.
+
+1943
+01:14:51,406 --> 01:14:52,787
+Well, actually here, halfway.
+
+1944
+01:14:53,728 --> 01:14:55,270
+So here's the widgets section.
+
+1945
+01:14:56,251 --> 01:14:59,314
+And the link, I will put it in the notes.
+
+1946
+01:15:04,002 --> 01:15:07,887
+No, that's the, okay, widgets here.
+
+1947
+01:15:07,887 --> 01:15:09,729
+Okay, so now it's in the notes.
+
+1948
+01:15:09,729 --> 01:15:10,911
+All right, sorry about that.
+
+1949
+01:15:10,911 --> 01:15:12,353
+We got confused about our own thing.
+
+1950
+01:15:13,154 --> 01:15:15,257
+Okay.
+
+1951
+01:15:15,257 --> 01:15:19,102
+I mean, mainly because widgets
+
+1952
+01:15:19,102 --> 01:15:21,545
+is late in the title of
+
+1953
+01:15:21,545 --> 01:15:24,128
+the page, which I should read the whole thing.
+
+1954
+01:15:25,229 --> 01:15:28,534
+Okay, so I'll create a new notebook.
+
+1955
+01:15:29,355 --> 01:15:32,659
+You can do it from here.
+
+1956
+01:15:33,668 --> 01:15:35,531
+from here, from the launcher,
+
+1957
+01:15:35,531 --> 01:15:38,695
+or you can right click and new notebook.
+
+1958
+01:15:40,097 --> 01:15:41,338
+And it's a Python 3 notebook.
+
+1959
+01:15:43,261 --> 01:15:44,543
+I'll close the extra one.
+
+1960
+01:15:44,543 --> 01:15:45,825
+It's untitled.
+
+1961
+01:15:45,825 --> 01:15:46,886
+Okay.
+
+1962
+01:15:46,886 --> 01:15:50,391
+Let's call it widget.ipynotebook.
+
+1963
+01:15:51,893 --> 01:15:52,133
+Okay.
+
+1964
+01:15:54,356 --> 01:15:56,739
+And if you're in the
+
+1965
+01:15:56,739 --> 01:15:58,962
+Code Refiner environment, you have
+
+1966
+01:15:58,962 --> 01:16:00,825
+the IPY widget installed.
+
+1967
+01:16:02,087 --> 01:16:03,068
+So this should run.
+
+1968
+01:16:04,077 --> 01:16:05,820
+It works.
+
+1969
+01:16:06,941 --> 01:16:08,323
+Otherwise, you need to install
+
+1970
+01:16:08,323 --> 01:16:10,286
+IPY widgets in your environment.
+
+1971
+01:16:11,628 --> 01:16:13,972
+And then to use the widget,
+
+1972
+01:16:15,835 --> 01:16:17,257
+we need to define a function.
+
+1973
+01:16:17,257 --> 01:16:18,999
+So we'll give a function
+
+1974
+01:16:18,999 --> 01:16:20,802
+with three arguments, X, Y, and S.
+
+1975
+01:16:22,244 --> 01:16:24,107
+And it just returns X, Y, and
+
+1976
+01:16:24,107 --> 01:16:26,270
+S. So it's a very simple function.
+
+1977
+01:16:26,270 --> 01:16:29,655
+But the point is, we will
+
+1978
+01:16:29,655 --> 01:16:32,700
+make a widget that allows you to change those
+
+1979
+01:16:33,558 --> 01:16:34,659
+those arguments.
+
+1980
+01:16:34,659 --> 01:16:36,381
+So we'll use the interact,
+
+1981
+01:16:38,042 --> 01:16:39,504
+which is this one that we imported.
+
+1982
+01:16:41,646 --> 01:16:43,047
+So the interact widget, we
+
+1983
+01:16:43,047 --> 01:16:44,709
+give it the function as a
+
+1984
+01:16:44,709 --> 01:16:47,632
+parameter, and then we give
+
+1985
+01:16:47,632 --> 01:16:49,714
+initial values to the parameters.
+
+1986
+01:16:49,714 --> 01:16:53,798
+So x equals true, y
+
+1987
+01:16:53,798 --> 01:16:57,661
+equals, whoops, equals 1.0, okay,
+
+1988
+01:16:58,842 --> 01:17:03,376
+comma, then s equals hello,
+
+1989
+01:17:03,376 --> 01:17:05,479
+Okay, I managed to write it correctly.
+
+1990
+01:17:05,479 --> 01:17:06,200
+Good.
+
+1991
+01:17:06,200 --> 01:17:08,043
+So now when we run this,
+
+1992
+01:17:08,043 --> 01:17:11,889
+it will give some widgets that
+
+1993
+01:17:11,889 --> 01:17:14,173
+you can use to adjust these parameters.
+
+1994
+01:17:14,173 --> 01:17:15,455
+So X is true.
+
+1995
+01:17:15,455 --> 01:17:16,376
+So it's a Boolean.
+
+1996
+01:17:16,376 --> 01:17:17,298
+It's either yes or no.
+
+1997
+01:17:19,661 --> 01:17:20,923
+And this, by the way, this
+
+1998
+01:17:20,923 --> 01:17:22,646
+part is the result of the function.
+
+1999
+01:17:22,646 --> 01:17:24,789
+So it just returns the parameters.
+
+2000
+01:17:24,789 --> 01:17:25,911
+So it looks like this.
+
+2001
+01:17:27,493 --> 01:17:28,555
+But if you send it a
+
+2002
+01:17:28,555 --> 01:17:30,718
+false, then it returns false.
+
+2003
+01:17:30,718 --> 01:17:32,468
+And otherwise, it returns true.
+
+2004
+01:17:32,468 --> 01:17:33,890
+okay you can this is
+
+2005
+01:17:33,890 --> 01:17:35,472
+a floating point number so you
+
+2006
+01:17:35,472 --> 01:17:39,818
+can change the value and this
+
+2007
+01:17:39,818 --> 01:17:41,260
+one is a string so it gives
+
+2008
+01:17:41,260 --> 01:17:45,645
+you a text box yeah so
+
+2009
+01:17:45,645 --> 01:17:47,107
+essentially the widget is like
+
+2010
+01:17:47,107 --> 01:17:48,769
+instead of like right changing the
+
+2011
+01:17:48,769 --> 01:17:51,893
+code you can play with the pi parameters
+
+2012
+01:17:51,893 --> 01:17:55,478
+and your ... the output
+
+2013
+01:17:55,478 --> 01:17:56,880
+with some widgets and like some
+
+2014
+01:17:56,880 --> 01:17:59,143
+buttons so it essentially it
+
+2015
+01:17:59,143 --> 01:18:01,831
+completely oh it runs the function
+
+2016
+01:18:01,831 --> 01:18:03,375
+with those parameters and then
+
+2017
+01:18:03,375 --> 01:18:04,217
+produces the results.
+
+2018
+01:18:04,217 --> 01:18:06,162
+So you can, yeah, you can show different,
+
+2019
+01:18:07,545 --> 01:18:10,051
+you can allow people to
+
+2020
+01:18:10,051 --> 01:18:11,635
+interact with the code in
+
+2021
+01:18:11,635 --> 01:18:12,938
+a more user-friendly way.
+
+2022
+01:18:14,690 --> 01:18:17,573
+So let's do another example,
+
+2023
+01:18:17,573 --> 01:18:19,535
+because we have a few minutes.
+
+2024
+01:18:19,535 --> 01:18:20,997
+Maybe we can do the pi
+
+2025
+01:18:20,997 --> 01:18:22,539
+one, actually, and, like, increase
+
+2026
+01:18:22,539 --> 01:18:25,742
+the number of the... Yeah.
+
+2027
+01:18:25,742 --> 01:18:27,745
+So this is actually, like,
+
+2028
+01:18:27,745 --> 01:18:29,927
+essentially next in the... Well,
+
+2029
+01:18:29,927 --> 01:18:31,169
+there's a few useful Magix
+
+2030
+01:18:31,169 --> 01:18:32,490
+commands, and then there's the
+
+2031
+01:18:32,490 --> 01:18:34,012
+playing around with the widget.
+
+2032
+01:18:34,012 --> 01:18:36,435
+So I'll essentially copy the
+
+2033
+01:18:36,435 --> 01:18:37,336
+code from there.
+
+2034
+01:18:40,659 --> 01:18:44,069
+So we get the interact.
+
+2035
+01:18:44,069 --> 01:18:45,812
+from widgets and we get
+
+2036
+01:18:45,812 --> 01:18:49,377
+widgets from widgets, API widgets.
+
+2037
+01:18:49,377 --> 01:18:50,238
+We also get random.
+
+2038
+01:18:52,181 --> 01:18:52,842
+Okay, run that.
+
+2039
+01:18:54,444 --> 01:18:57,769
+Actually, we also need matplotlib inline.
+
+2040
+01:18:58,591 --> 01:18:59,492
+We'll put it in a different
+
+2041
+01:18:59,492 --> 01:19:05,681
+cell so that we have this magic command on top.
+
+2042
+01:19:05,681 --> 01:19:06,603
+I don't know if that matters.
+
+2043
+01:19:07,444 --> 01:19:07,744
+It might.
+
+2044
+01:19:09,106 --> 01:19:10,377
+Okay, and then
+
+2045
+01:19:10,377 --> 01:19:13,060
+The rest is creating functions.
+
+2046
+01:19:14,481 --> 01:19:15,222
+Place this one here.
+
+2047
+01:19:16,143 --> 01:19:18,726
+So this is the throw darts, create plot
+
+2048
+01:19:18,726 --> 01:19:21,148
+and run the whole experiments,
+
+2049
+01:19:21,148 --> 01:19:22,710
+which means first throw darts
+
+2050
+01:19:22,710 --> 01:19:24,011
+and then create the plot and
+
+2051
+01:19:24,011 --> 01:19:25,833
+then print the value of pi.
+
+2052
+01:19:25,833 --> 01:19:28,256
+So this is the exercise we just, well,
+
+2053
+01:19:28,256 --> 01:19:28,996
+just did, we did an
+
+2054
+01:19:28,996 --> 01:19:33,121
+hour ago that calculates the value of pi.
+
+2055
+01:19:34,662 --> 01:19:37,926
+So we could run experiments
+
+2056
+01:19:37,926 --> 01:19:40,148
+with a hundred points
+
+2057
+01:19:41,174 --> 01:19:44,118
+or a thousand points and so on.
+
+2058
+01:19:45,440 --> 01:19:46,782
+So people can adjust it here,
+
+2059
+01:19:46,782 --> 01:19:49,786
+but using a widget, it looks nicer.
+
+2060
+01:19:50,587 --> 01:19:54,052
+So we previously used the interact widget,
+
+2061
+01:19:54,052 --> 01:19:56,556
+the interact function, and we
+
+2062
+01:19:56,556 --> 01:19:59,640
+can tell it the number of
+
+2063
+01:19:59,640 --> 01:20:02,204
+points equals give it starting value a hundred.
+
+2064
+01:20:03,266 --> 01:20:03,726
+Okay.
+
+2065
+01:20:03,726 --> 01:20:04,888
+And that gives you a nice widget.
+
+2066
+01:20:06,710 --> 01:20:07,131
+So
+
+2067
+01:20:10,064 --> 01:20:12,327
+Did it actually run though?
+
+2068
+01:20:14,551 --> 01:20:15,572
+I think it got an exception.
+
+2069
+01:20:15,572 --> 01:20:17,215
+And do you have to run that?
+
+2070
+01:20:17,215 --> 01:20:17,495
+Yeah.
+
+2071
+01:20:17,495 --> 01:20:17,855
+OK.
+
+2072
+01:20:17,855 --> 01:20:18,957
+Let's run that again.
+
+2073
+01:20:18,957 --> 01:20:20,199
+Yes.
+
+2074
+01:20:20,199 --> 01:20:24,966
+Because when it got 0, it got divided by 0.
+
+2075
+01:20:24,966 --> 01:20:25,186
+Yeah.
+
+2076
+01:20:26,007 --> 01:20:28,571
+So yeah, that is one of
+
+2077
+01:20:28,571 --> 01:20:29,753
+the points of the exercise, that
+
+2078
+01:20:29,753 --> 01:20:31,836
+there is a value that you
+
+2079
+01:20:31,836 --> 01:20:34,180
+can slide to, but that you shouldn't use.
+
+2080
+01:20:34,180 --> 01:20:38,802
+But it doesn't redo the image, does it?
+
+2081
+01:20:38,802 --> 01:20:39,943
+I'm adding a lot of points
+
+2082
+01:20:39,943 --> 01:20:42,166
+and it's not re-running, re-creating the plot.
+
+2083
+01:20:44,088 --> 01:20:44,908
+Oh, interesting.
+
+2084
+01:20:44,908 --> 01:20:46,370
+Did you restart the kernel already?
+
+2085
+01:20:46,370 --> 01:20:47,671
+Yes, I did.
+
+2086
+01:20:50,174 --> 01:20:51,876
+Restart the kernel.
+
+2087
+01:20:51,876 --> 01:20:52,717
+Restart, run.
+
+2088
+01:20:55,159 --> 01:20:56,040
+Okay.
+
+2089
+01:20:56,040 --> 01:20:57,962
+Well, let's see what happens if
+
+2090
+01:20:57,962 --> 01:21:00,164
+we make it an integer slider.
+
+2091
+01:21:00,164 --> 01:21:01,346
+So this is why we
+
+2092
+01:21:02,987 --> 01:21:05,630
+imported also these widgets because
+
+2093
+01:21:05,630 --> 01:21:07,996
+this gives a
+
+2094
+01:21:07,996 --> 01:21:09,678
+gives us some control of
+
+2095
+01:21:09,678 --> 01:21:13,241
+this number of points value.
+
+2096
+01:21:14,162 --> 01:21:17,484
+So we get integer slider in slider.
+
+2097
+01:21:18,806 --> 01:21:20,307
+And there we can give it
+
+2098
+01:21:20,307 --> 01:21:24,671
+a minimum, let's say minimum is
+
+2099
+01:21:24,671 --> 01:21:27,894
+100 points, we can say max
+
+2100
+01:21:27,894 --> 01:21:29,615
+is what 10,000 points.
+
+2101
+01:21:31,797 --> 01:21:35,841
+And we adjust it in steps of 100.
+
+2102
+01:21:36,862 --> 01:21:37,375
+Yeah,
+
+2103
+01:21:37,375 --> 01:21:39,498
+This is going off the page.
+
+2104
+01:21:39,498 --> 01:21:43,383
+Add some line breaks.
+
+2105
+01:21:45,406 --> 01:21:45,667
+Okay.
+
+2106
+01:21:46,568 --> 01:21:47,950
+And then the starting value
+
+2107
+01:21:47,950 --> 01:21:50,974
+is 1000 and it's again going off the page.
+
+2108
+01:21:52,116 --> 01:21:52,356
+Fine.
+
+2109
+01:21:54,359 --> 01:21:55,580
+It's not going off by that much.
+
+2110
+01:21:56,442 --> 01:21:57,984
+We could also do it like this.
+
+2111
+01:22:00,127 --> 01:22:01,929
+It looks a bit better and
+
+2112
+01:22:01,929 --> 01:22:03,612
+now you can see everything.
+
+2113
+01:22:03,612 --> 01:22:03,872
+Okay.
+
+2114
+01:22:05,725 --> 01:22:07,148
+So when we run this, we
+
+2115
+01:22:07,148 --> 01:22:08,209
+should get a better slider.
+
+2116
+01:22:08,209 --> 01:22:09,812
+Oh, now actually the plot is better.
+
+2117
+01:22:12,156 --> 01:22:13,178
+So you can adjust it.
+
+2118
+01:22:13,178 --> 01:22:13,379
+No.
+
+2119
+01:22:14,380 --> 01:22:14,541
+No.
+
+2120
+01:22:16,204 --> 01:22:17,185
+The plot is not changing.
+
+2121
+01:22:17,185 --> 01:22:18,167
+Oh, OK.
+
+2122
+01:22:19,009 --> 01:22:19,509
+I don't know why.
+
+2123
+01:22:20,351 --> 01:22:21,633
+Weird.
+
+2124
+01:22:21,633 --> 01:22:22,114
+That's weird.
+
+2125
+01:22:23,917 --> 01:22:25,439
+Can you stop the JupyterLab
+
+2126
+01:22:25,439 --> 01:22:26,299
+and start it again?
+
+2127
+01:22:26,299 --> 01:22:27,801
+Maybe that's the... Actually,
+
+2128
+01:22:27,801 --> 01:22:31,645
+so the maximum value in the nodes is 10,000.
+
+2129
+01:22:31,645 --> 01:22:33,967
+That is not going to
+
+2130
+01:22:33,967 --> 01:22:35,069
+solve the plot problem.
+
+2131
+01:22:35,970 --> 01:22:38,412
+Yeah, but I guess it's an
+
+2132
+01:22:38,412 --> 01:22:39,493
+issue with the JupyterLab.
+
+2133
+01:22:39,493 --> 01:22:43,417
+Can you maybe restart that as well?
+
+2134
+01:22:43,417 --> 01:22:44,679
+Restart JupyterLab.
+
+2135
+01:22:44,679 --> 01:22:45,780
+I can do that.
+
+2136
+01:22:47,522 --> 01:22:48,663
+So I have it in a
+
+2137
+01:22:48,663 --> 01:22:51,726
+terminal, so I'll just stop it from there.
+
+2138
+01:22:53,107 --> 01:22:53,788
+Restart.
+
+2139
+01:22:56,266 --> 01:22:57,447
+And it opens a new one.
+
+2140
+01:22:59,950 --> 01:23:00,070
+Okay.
+
+2141
+01:23:00,070 --> 01:23:01,412
+I'll leave the previous one.
+
+2142
+01:23:01,412 --> 01:23:01,933
+Okay.
+
+2143
+01:23:01,933 --> 01:23:04,015
+And now we have this widget file here.
+
+2144
+01:23:06,138 --> 01:23:06,738
+Okay.
+
+2145
+01:23:06,738 --> 01:23:08,220
+And we can try running everything.
+
+2146
+01:23:12,425 --> 01:23:13,947
+I mean, it's not that
+
+2147
+01:23:13,947 --> 01:23:16,510
+bad if matplotlib doesn't work
+
+2148
+01:23:16,510 --> 01:23:18,832
+perfectly with this, but it would
+
+2149
+01:23:18,832 --> 01:23:19,673
+be nice to see.
+
+2150
+01:23:20,595 --> 01:23:22,036
+There's one comment in the
+
+2151
+01:23:22,036 --> 01:23:25,260
+notes about the inline command.
+
+2152
+01:23:27,147 --> 01:23:34,280
+So restart and run.
+
+2153
+01:23:40,171 --> 01:23:41,553
+Okay, that actually fixes it.
+
+2154
+01:23:42,435 --> 01:23:42,836
+Interesting.
+
+2155
+01:23:42,836 --> 01:23:43,297
+Okay.
+
+2156
+01:23:44,218 --> 01:23:44,659
+Thank you.
+
+2157
+01:23:45,581 --> 01:23:46,643
+So it works better without
+
+2158
+01:23:46,643 --> 01:23:48,707
+the inline plots.
+
+2159
+01:23:48,707 --> 01:23:48,987
+All right.
+
+2160
+01:23:53,776 --> 01:23:55,278
+Okay, so yeah, that's something
+
+2161
+01:23:55,278 --> 01:23:56,098
+to play around with.
+
+2162
+01:23:56,098 --> 01:23:57,840
+That makes these pages
+
+2163
+01:23:57,840 --> 01:24:01,044
+even more interactive and easier to use
+
+2164
+01:24:01,044 --> 01:24:02,325
+for someone that doesn't
+
+2165
+01:24:02,325 --> 01:24:06,329
+actually write Python or any
+
+2166
+01:24:06,329 --> 01:24:07,551
+other, or some other programming
+
+2167
+01:24:07,551 --> 01:24:08,332
+language that you're using.
+
+2168
+01:24:09,733 --> 01:24:13,737
+So there's also rshiny, which
+
+2169
+01:24:13,737 --> 01:24:15,539
+I should, I can display this page.
+
+2170
+01:24:16,600 --> 01:24:19,383
+So rshiny is an alternative
+
+2171
+01:24:20,284 --> 01:24:23,003
+similar to ipyewidgets for R.
+
+2172
+01:24:23,003 --> 01:24:23,844
+notebooks.
+
+2173
+01:24:24,986 --> 01:24:25,887
+And there's a gallery of
+
+2174
+01:24:25,887 --> 01:24:28,851
+examples, nice ideas that you can look at.
+
+2175
+01:24:28,851 --> 01:24:31,094
+There's also other useful things
+
+2176
+01:24:31,094 --> 01:24:31,876
+here to look at.
+
+2177
+01:24:31,876 --> 01:24:36,742
+I didn't actually prepare to
+
+2178
+01:24:36,742 --> 01:24:40,087
+teach or check that they work on my system.
+
+2179
+01:24:40,087 --> 01:24:45,034
+But we do have a bit of extra time,
+
+2180
+01:24:45,034 --> 01:24:46,516
+we probably should just end
+
+2181
+01:24:46,516 --> 01:24:47,658
+early because we don't have
+
+2182
+01:24:47,658 --> 01:24:49,180
+that much extra time.
+
+2183
+01:24:51,455 --> 01:24:53,439
+If you have a very good question
+
+2184
+01:24:53,439 --> 01:24:55,963
+or even not that not such a good question,
+
+2185
+01:24:55,963 --> 01:24:57,386
+but something that's interesting
+
+2186
+01:24:57,386 --> 01:24:59,710
+to ask, then please ask it in the notes.
+
+2187
+01:25:00,592 --> 01:25:01,394
+I will.
+
+2188
+01:25:01,394 --> 01:25:01,734
+Whoops.
+
+2189
+01:25:01,734 --> 01:25:02,556
+What did I do?
+
+2190
+01:25:02,556 --> 01:25:02,776
+Okay.
+
+2191
+01:25:04,319 --> 01:25:07,024
+So I will move on to the summary page.
+
+2192
+01:25:08,066 --> 01:25:09,529
+So in Jupyter Notebooks, we
+
+2193
+01:25:09,529 --> 01:25:14,037
+have a summary page here and
+
+2194
+01:25:15,299 --> 01:25:17,422
+Yeah, there's some recommendations
+
+2195
+01:25:17,422 --> 01:25:18,504
+for longer notebooks.
+
+2196
+01:25:18,504 --> 01:25:20,206
+We have a question regarding
+
+2197
+01:25:20,206 --> 01:25:23,391
+the Jupyter rich diff on GitHub.
+
+2198
+01:25:23,391 --> 01:25:24,212
+Can you show it again?
+
+2199
+01:25:24,212 --> 01:25:27,537
+Yeah.
+
+2200
+01:25:27,537 --> 01:25:28,438
+Oh, so the question is
+
+2201
+01:25:28,438 --> 01:25:30,281
+essentially, can you show it again?
+
+2202
+01:25:32,303 --> 01:25:35,808
+So do we have a good example?
+
+2203
+01:25:35,808 --> 01:25:37,311
+I mean, we probably actually
+
+2204
+01:25:37,311 --> 01:25:43,480
+have just in my own repositories,
+
+2205
+01:25:43,480 --> 01:25:45,222
+the last one should be
+
+2206
+01:25:46,079 --> 01:25:47,241
+the pi_example.
+
+2207
+01:25:51,527 --> 01:25:54,792
+And then let's update requirements.
+
+2208
+01:25:54,792 --> 01:25:58,677
+Py, IPy-notebook, what's updated in this.
+
+2209
+01:25:58,677 --> 01:25:58,958
+Okay.
+
+2210
+01:25:59,879 --> 01:26:02,423
+So now we maybe have a diff of a notebook.
+
+2211
+01:26:03,484 --> 01:26:06,008
+Can you show the feature again to see?
+
+2212
+01:26:06,008 --> 01:26:06,269
+Yeah.
+
+2213
+01:26:07,591 --> 01:26:10,314
+So it was here in feature preview.
+
+2214
+01:26:11,276 --> 01:26:12,958
+There is this rich notebook diff.
+
+2215
+01:26:13,960 --> 01:26:15,462
+So if this is disabled...
+
+2216
+01:26:16,370 --> 01:26:19,774
+and I reload the page, then
+
+2217
+01:26:19,774 --> 01:26:22,937
+the diff of the notebook doesn't look as nice.
+
+2218
+01:26:22,937 --> 01:26:24,559
+Okay, now it doesn't show it at all.
+
+2219
+01:26:25,980 --> 01:26:27,802
+So now it's essentially, it
+
+2220
+01:26:27,802 --> 01:26:29,364
+looks like the diff of the
+
+2221
+01:26:29,364 --> 01:26:31,786
+text that's actually the notebook file.
+
+2222
+01:26:31,786 --> 01:26:33,969
+So it's a text file.
+
+2223
+01:26:33,969 --> 01:26:36,011
+It's a JSON text file.
+
+2224
+01:26:36,011 --> 01:26:38,954
+So it's not that easy
+
+2225
+01:26:38,954 --> 01:26:40,135
+to follow what's happening,
+
+2226
+01:26:40,135 --> 01:26:42,257
+especially the images, again, quite horrible.
+
+2227
+01:26:43,759 --> 01:26:43,879
+Yeah.
+
+2228
+01:26:45,597 --> 01:26:47,239
+Somehow the old image is bigger
+
+2229
+01:26:47,239 --> 01:26:48,621
+than the new one, even though
+
+2230
+01:26:48,621 --> 01:26:51,505
+the new one has more points.
+
+2231
+01:26:52,406 --> 01:26:53,688
+Oh, that was not the right button.
+
+2232
+01:26:55,210 --> 01:26:55,370
+Okay.
+
+2233
+01:26:56,592 --> 01:26:59,996
+So let's go again to click the profile,
+
+2234
+01:26:59,996 --> 01:27:02,740
+go to feature preview, and
+
+2235
+01:27:02,740 --> 01:27:08,668
+here you can enable rich Jupyter notebook diffs.
+
+2236
+01:27:11,990 --> 01:27:15,356
+and then the diffs of
+
+2237
+01:27:15,356 --> 01:27:19,863
+Jupyter notebooks will look a lot better.
+
+2238
+01:27:19,863 --> 01:27:20,625
+Okay, here we are.
+
+2239
+01:27:21,987 --> 01:27:23,049
+So that's a lot clearer.
+
+2240
+01:27:26,715 --> 01:27:26,815
+Okay.
+
+2241
+01:27:34,768 --> 01:27:36,053
+Now...
+
+2242
+01:27:36,053 --> 01:27:37,634
+This is the summary page that
+
+2243
+01:27:37,634 --> 01:27:38,415
+I am already on.
+
+2244
+01:27:38,415 --> 01:27:41,078
+Okay, so let's go through the summary.
+
+2245
+01:27:41,078 --> 01:27:42,919
+For some reason, my doorbell is ringing.
+
+2246
+01:27:42,919 --> 01:27:46,223
+It's ringing twice, so it
+
+2247
+01:27:46,223 --> 01:27:48,244
+might be important, but let's
+
+2248
+01:27:48,244 --> 01:27:48,825
+see what happens.
+
+2249
+01:27:52,388 --> 01:27:57,153
+So, we have talked
+
+2250
+01:27:57,153 --> 01:27:58,394
+about Jupyter, basically.
+
+2251
+01:27:58,394 --> 01:27:59,815
+We've gone through some interesting
+
+2252
+01:27:59,815 --> 01:28:01,257
+and useful features and there's
+
+2253
+01:28:01,257 --> 01:28:03,799
+all sorts of things.
+
+2254
+01:28:06,445 --> 01:28:10,330
+all sorts of details that make it useful.
+
+2255
+01:28:12,213 --> 01:28:13,935
+Like the fact that you can
+
+2256
+01:28:13,935 --> 01:28:15,537
+package it in a single file
+
+2257
+01:28:15,537 --> 01:28:16,739
+and easily send it around.
+
+2258
+01:28:17,560 --> 01:28:19,984
+And also that it shows all
+
+2259
+01:28:19,984 --> 01:28:22,247
+of the results very close to your code.
+
+2260
+01:28:22,247 --> 01:28:25,231
+It's very good for documentation and so on.
+
+2261
+01:28:26,593 --> 01:28:30,478
+And also those same things, partly,
+
+2262
+01:28:32,095 --> 01:28:34,679
+they create some problems, like
+
+2263
+01:28:34,679 --> 01:28:35,861
+the fact that you can execute
+
+2264
+01:28:35,861 --> 01:28:37,503
+the cells out of order,
+
+2265
+01:28:37,503 --> 01:28:40,668
+as things happen, sometimes in
+
+2266
+01:28:40,668 --> 01:28:44,174
+unexpected ways, that are
+
+2267
+01:28:44,174 --> 01:28:46,177
+important to remember.
+
+2268
+01:28:46,177 --> 01:28:47,519
+And I mean, basically, they
+
+2269
+01:28:47,519 --> 01:28:48,741
+will just cause problems, and
+
+2270
+01:28:48,741 --> 01:28:50,263
+you will debug those problems.
+
+2271
+01:28:50,263 --> 01:28:54,470
+And at some point, you will remember that,
+
+2272
+01:28:54,470 --> 01:28:55,772
+oh, well, maybe if I run
+
+2273
+01:28:55,772 --> 01:28:56,613
+it from the beginning to the
+
+2274
+01:28:56,613 --> 01:28:58,035
+end, and hopefully it will work and
+
+2275
+01:29:00,108 --> 01:29:01,130
+It's also very easy to
+
+2276
+01:29:01,130 --> 01:29:02,532
+write a Jupyter notebook, but if
+
+2277
+01:29:02,532 --> 01:29:03,513
+you run it from the beginning
+
+2278
+01:29:03,513 --> 01:29:05,096
+to the end, it will not work.
+
+2279
+01:29:05,096 --> 01:29:08,120
+So it's good to test that
+
+2280
+01:29:08,120 --> 01:29:08,681
+every now and then.
+
+2281
+01:29:11,065 --> 01:29:12,687
+But yeah, then there's a
+
+2282
+01:29:12,687 --> 01:29:15,552
+few, we went through a few
+
+2283
+01:29:15,552 --> 01:29:18,937
+different ways of sharing notebooks and,
+
+2284
+01:29:22,903 --> 01:29:24,545
+well, essentially we showed
+
+2285
+01:29:24,545 --> 01:29:26,228
+the binder thing, but there's
+
+2286
+01:29:26,228 --> 01:29:29,116
+plenty of other options, many different ways
+
+2287
+01:29:29,116 --> 01:29:31,979
+of sharing them and sending them to people.
+
+2288
+01:29:31,979 --> 01:29:35,222
+So yeah, I mean, it's one
+
+2289
+01:29:35,222 --> 01:29:39,145
+of those, it's a very useful way of coding
+
+2290
+01:29:39,145 --> 01:29:41,988
+and sharing code, but it also
+
+2291
+01:29:41,988 --> 01:29:44,610
+has its own downsides, especially
+
+2292
+01:29:44,610 --> 01:29:45,811
+if your code gets longer,
+
+2293
+01:29:45,811 --> 01:29:47,273
+then it's impossible to follow.
+
+2294
+01:29:48,274 --> 01:29:55,480
+So is there anything you want
+
+2295
+01:29:55,480 --> 01:29:57,402
+to bring up specifically?
+
+2296
+01:30:00,554 --> 01:30:02,136
+... I think everything was
+
+2297
+01:30:02,136 --> 01:30:03,859
+everything was fine and ...
+
+2298
+01:30:03,859 --> 01:30:05,060
+the main introduction was
+
+2299
+01:30:06,142 --> 01:30:09,386
+why Jupyter notebooks could be useful
+
+2300
+01:30:09,386 --> 01:30:11,789
+and why in some cases they
+
+2301
+01:30:11,789 --> 01:30:14,193
+are not the best so but the best solution
+
+2302
+01:30:15,615 --> 01:30:20,121
+so yeah yeah okay and of
+
+2303
+01:30:20,121 --> 01:30:21,603
+course it's it's also important
+
+2304
+01:30:21,603 --> 01:30:22,624
+to remember that there's other
+
+2305
+01:30:22,624 --> 01:30:25,782
+options so there's ...
+
+2306
+01:30:25,782 --> 01:30:27,545
+many different notebook alternatives,
+
+2307
+01:30:27,545 --> 01:30:28,646
+even though we only
+
+2308
+01:30:28,646 --> 01:30:31,150
+showed Jupyter notebooks and
+
+2309
+01:30:31,150 --> 01:30:32,012
+for different languages.
+
+2310
+01:30:34,415 --> 01:30:37,780
+And yeah, I mean, this is an example of,
+
+2311
+01:30:41,566 --> 01:30:42,788
+well, partly the kind of
+
+2312
+01:30:42,788 --> 01:30:44,270
+thing I was talking about
+
+2313
+01:30:44,270 --> 01:30:46,213
+where it gets complicated, but
+
+2314
+01:30:46,213 --> 01:30:51,742
+also you can take, when your
+
+2315
+01:30:51,742 --> 01:30:53,865
+code gets long and gets fancy,
+
+2316
+01:30:54,706 --> 01:30:56,609
+You can start taking parts
+
+2317
+01:30:56,609 --> 01:30:57,770
+out of the Jupyter notebook
+
+2318
+01:30:57,770 --> 01:30:59,773
+and putting them into your own module.
+
+2319
+01:31:00,654 --> 01:31:01,996
+And that is essentially how
+
+2320
+01:31:02,877 --> 01:31:04,139
+most modules are born in
+
+2321
+01:31:04,139 --> 01:31:08,385
+scientific coding or scientific software.
+
+2322
+01:31:08,385 --> 01:31:10,087
+So you start writing something
+
+2323
+01:31:10,087 --> 01:31:11,209
+and you notice that it
+
+2324
+01:31:11,209 --> 01:31:15,378
+starts getting complex enough that you want to
+
+2325
+01:31:15,378 --> 01:31:17,420
+actually take functional pieces
+
+2326
+01:31:17,420 --> 01:31:18,942
+and make them independent,
+
+2327
+01:31:18,942 --> 01:31:19,583
+make them modules.
+
+2328
+01:31:20,384 --> 01:31:23,608
+So that's something we'll talk
+
+2329
+01:31:23,608 --> 01:31:25,890
+more about in modular coding,
+
+2330
+01:31:25,890 --> 01:31:26,912
+but that's something that's
+
+2331
+01:31:26,912 --> 01:31:29,455
+very, very important, very useful
+
+2332
+01:31:29,455 --> 01:31:31,978
+for dealing with notebooks.
+
+2333
+01:31:36,403 --> 01:31:37,925
+All right.
+
+2334
+01:31:37,925 --> 01:31:39,286
+Thank you so much, [name]
+
+2335
+01:31:39,286 --> 01:31:41,209
+and [name], for today's session.
+
+2336
+01:31:42,650 --> 01:31:45,013
+I hope everyone who
+
+2337
+01:31:46,158 --> 01:31:48,461
+watched and followed until the
+
+2338
+01:31:48,461 --> 01:31:50,203
+end, got something out of this.
+
+2339
+01:31:51,704 --> 01:31:54,007
+We have added a feedback
+
+2340
+01:31:54,007 --> 01:31:56,570
+section in the very end of the notes.
+
+2341
+01:31:56,570 --> 01:31:59,053
+Maybe [name] can move there and show it.
+
+2342
+01:32:02,376 --> 01:32:03,237
+So if you go to our
+
+2343
+01:32:03,237 --> 01:32:05,920
+notes and then scroll all the
+
+2344
+01:32:05,920 --> 01:32:11,133
+way to the bottom, there's a small section
+
+2345
+01:32:11,133 --> 01:32:12,595
+So next week, we will
+
+2346
+01:32:12,595 --> 01:32:15,140
+actually be talking about automated
+
+2347
+01:32:15,140 --> 01:32:16,642
+testing and the week after
+
+2348
+01:32:16,642 --> 01:32:19,206
+will be modular code development.
+
+2349
+01:32:19,206 --> 01:32:22,151
+So if you have no idea what testing is
+
+2350
+01:32:22,151 --> 01:32:23,694
+and how to run it, and especially
+
+2351
+01:32:23,694 --> 01:32:25,717
+how to run it automatically,
+
+2352
+01:32:25,717 --> 01:32:28,982
+next week is the time and day for that.
+
+2353
+01:32:30,665 --> 01:32:32,783
+That basically means that
+
+2354
+01:32:32,783 --> 01:32:34,365
+You will learn how you
+
+2355
+01:32:34,365 --> 01:32:36,306
+may prevent yourself and others
+
+2356
+01:32:36,306 --> 01:32:37,588
+from breaking your running code.
+
+2357
+01:32:38,869 --> 01:32:40,811
+And we will have examples
+
+2358
+01:32:40,811 --> 01:32:42,032
+in the lesson materials for
+
+2359
+01:32:42,032 --> 01:32:44,214
+many different programming languages.
+
+2360
+01:32:44,214 --> 01:32:45,976
+So even if you don't code
+
+2361
+01:32:45,976 --> 01:32:47,978
+in Python, you might get
+
+2362
+01:32:47,978 --> 01:32:49,499
+something out from that lesson.
+
+2363
+01:32:50,680 --> 01:32:51,581
+And then we are asking,
+
+2364
+01:32:51,581 --> 01:32:53,403
+how was your feeling today
+
+2365
+01:32:53,403 --> 01:32:56,266
+about the speed, about the level
+
+2366
+01:32:56,266 --> 01:32:59,089
+of the lesson and the materials?
+
+2367
+01:32:59,089 --> 01:33:01,351
+Did we go through things
+
+2368
+01:33:01,351 --> 01:33:03,125
+too fast, too slow?
+
+2369
+01:33:03,125 --> 01:33:05,188
+Did it feel too basic,
+
+2370
+01:33:05,188 --> 01:33:07,331
+too advanced, or just right?
+
+2371
+01:33:08,813 --> 01:33:11,957
+And also, do you feel like
+
+2372
+01:33:11,957 --> 01:33:13,399
+you will have use for what
+
+2373
+01:33:13,399 --> 01:33:16,503
+you learned today in your work?
+
+2374
+01:33:16,503 --> 01:33:17,625
+In the very beginning, we
+
+2375
+01:33:17,625 --> 01:33:19,247
+discussed briefly how [name] and
+
+2376
+01:33:19,247 --> 01:33:21,450
+[name] also are using Jupyter
+
+2377
+01:33:21,450 --> 01:33:23,032
+in their daily life as
+
+2378
+01:33:23,032 --> 01:33:24,234
+research software engineers.
+
+2379
+01:33:25,435 --> 01:33:26,156
+And then if you have
+
+2380
+01:33:26,156 --> 01:33:29,621
+any specific things that you
+
+2381
+01:33:29,621 --> 01:33:32,251
+liked about today, please let us know as well.
+
+2382
+01:33:32,251 --> 01:33:34,533
+as well as if you have anything
+
+2383
+01:33:34,533 --> 01:33:37,396
+that you think we should improve
+
+2384
+01:33:37,396 --> 01:33:38,478
+for next time, because we
+
+2385
+01:33:38,478 --> 01:33:43,603
+are running these workshops like twice a year.
+
+2386
+01:33:43,603 --> 01:33:47,147
+So we always are curious on
+
+2387
+01:33:47,147 --> 01:33:52,853
+what we can do better to make it most useful
+
+2388
+01:33:52,853 --> 01:33:54,354
+for you as a researcher so
+
+2389
+01:33:54,354 --> 01:33:57,798
+that you can now go home and
+
+2390
+01:33:58,659 --> 01:33:59,960
+apply what you have learned
+
+2391
+01:33:59,960 --> 01:34:01,630
+to your own workflow.
+
+2392
+01:34:01,630 --> 01:34:03,552
+That is, of course, the wish.
+
+2393
+01:34:06,355 --> 01:34:08,197
+And with that, I think
+
+2394
+01:34:08,197 --> 01:34:10,179
+from our side, everything is said.
+
+2395
+01:34:10,179 --> 01:34:16,285
+Do you have any last words to share here?
+
+2396
+01:34:16,285 --> 01:34:25,875
+Not from my side.
+
+2397
+01:34:25,875 --> 01:34:27,296
+Yeah.
+
+2398
+01:34:27,296 --> 01:34:29,258
+I mean, a lot of this is,
+
+2399
+01:34:30,875 --> 01:34:34,538
+is relatively like, and if
+
+2400
+01:34:34,538 --> 01:34:35,619
+you have already used
+
+2401
+01:34:35,619 --> 01:34:37,401
+Jupyter Notebooks, especially like this is,
+
+2402
+01:34:38,202 --> 01:34:41,004
+this lesson might be relatively low level,
+
+2403
+01:34:41,004 --> 01:34:42,666
+but it is also something
+
+2404
+01:34:42,666 --> 01:34:47,010
+where a good amount of the
+
+2405
+01:34:47,010 --> 01:34:50,333
+mistakes and bugs that happen
+
+2406
+01:34:50,333 --> 01:34:52,255
+actually happen because of Jupyter features.
+
+2407
+01:34:52,255 --> 01:34:54,977
+So it's like when you
+
+2408
+01:34:54,977 --> 01:34:58,043
+actually run into them, it's good that you have
+
+2409
+01:34:58,043 --> 01:34:59,765
+some kind of memory like this
+
+2410
+01:34:59,765 --> 01:35:03,729
+is a thing that I should check.
+
+2411
+01:35:03,729 --> 01:35:04,550
+Yeah.
+
+2412
+01:35:04,550 --> 01:35:06,872
+And also know that the
+
+2413
+01:35:06,872 --> 01:35:09,535
+materials will stay available where they are.
+
+2414
+01:35:09,535 --> 01:35:12,418
+You are very welcome to share
+
+2415
+01:35:12,418 --> 01:35:16,522
+it also with your colleagues or
+
+2416
+01:35:16,522 --> 01:35:18,244
+come back to them later.
+
+2417
+01:35:18,244 --> 01:35:22,768
+And maybe at this time, I
+
+2418
+01:35:22,768 --> 01:35:27,524
+will also add the link to our chat.
+
+2419
+01:35:27,524 --> 01:35:30,347
+So in case you are now
+
+2420
+01:35:30,347 --> 01:35:33,971
+going out to work with these topics
+
+2421
+01:35:33,971 --> 01:35:36,894
+or also other topics from the workshop
+
+2422
+01:35:36,894 --> 01:35:39,216
+and you have any questions or
+
+2423
+01:35:39,216 --> 01:35:40,418
+would like to ask something
+
+2424
+01:35:40,418 --> 01:35:42,640
+more from the instructors, we're
+
+2425
+01:35:42,640 --> 01:35:44,722
+all usually hanging out in
+
+2426
+01:35:44,722 --> 01:35:47,825
+the CodeRefinery Zulip chat where
+
+2427
+01:35:47,825 --> 01:35:49,347
+you are very welcome to join.
+
+2428
+01:35:49,347 --> 01:35:51,049
+We have there one channel
+
+2429
+01:35:51,049 --> 01:35:53,311
+that is called Help where you
+
+2430
+01:35:53,311 --> 01:35:54,813
+can post all your questions and
+
+2431
+01:35:54,813 --> 01:35:57,075
+then you will have some
+
+2432
+01:35:57,916 --> 01:36:00,920
+multitude of people happy to
+
+2433
+01:36:00,920 --> 01:36:04,585
+help you with especially topics
+
+2434
+01:36:04,585 --> 01:36:05,666
+related to the workshop.
+
+2435
+01:36:13,878 --> 01:36:14,198
+All right.
+
+2436
+01:36:15,219 --> 01:36:17,843
+Then unless [name] has anything
+
+2437
+01:36:17,843 --> 01:36:19,806
+else to share at this point,
+
+2438
+01:36:20,627 --> 01:36:22,750
+I think we can close down the
+
+2439
+01:36:23,631 --> 01:36:27,076
+stream and hope to see you all again
+
+2440
+01:36:27,076 --> 01:36:29,239
+next week same time same
+
+2441
+01:36:29,239 --> 01:36:31,423
+place we'll again send an
+
+2442
+01:36:31,423 --> 01:36:33,366
+email with preparations and when
+
+2443
+01:36:33,366 --> 01:36:38,734
+the stream starts and have a good afternoon
+
+2444
+01:36:38,734 --> 01:36:39,916
+or whatever time it is where
+
+2445
+01:36:39,916 --> 01:36:42,720
+you are and rest of the week
+
+2446
+01:36:42,720 --> 01:36:46,165
+see you then bye bye thanks for joining
+
