@@ -498,6 +498,94 @@
     - stop: 02:38:54
 
 
+# Day 9
+- input: raw/day9-obs.mkv
+- schedule-sync: 00:11:34=11:00:00
+
+- output: out/day9-intro.mkv
+  title: 9.1 Day 9 intro and icebreaker
+  description: >
+    Introduction to the final day of CodeRefinery covering modular code
+    development. Includes recap of day 8 (automated testing), icebreaker
+    about programming languages, and overview of the day's structure.
+  time:
+    - start: 00:11:34
+    - -: Welcome and audio check
+    - 00:13:44: Recap of previous session (automated testing)
+    - 00:15:56: Icebreaker - programming languages discussion
+    - stop: 00:20:09
+
+- output: out/day9-modular-code-development.mkv
+  title: 9.2 Modular Code Development
+  description: >
+    In this live-coding demo session we take a Python script as
+    starting point which reads data, computes simple statistics, and
+    generates a plot. Together we then improve this code based on
+    suggestions from the audience to arrive at a more reusable code
+    with reusable components. We start in the Jupyter notebook, later
+    move to a Python script/module, introduce testing, and finally
+    introduce and motivate a command line interface to our code.
+
+    In this demonstration we use JupyterLab, Python, Pandas,
+    Matplotlib, pytest, and Click.  It is also a great demonstration
+    of pair programming.
+
+    Topics covered - functions vs. comments, eliminating code duplication,
+    Jupyter notebooks to Python scripts/modules, command-line interfaces,
+    testing integration, version control workflow, and pair programming
+    demonstration.
+
+    https://coderefinery.github.io/modular-type-along/
+  time:
+    - start: 00:20:09
+    - -: Introduction to modular code development
+    - 00:21:36: Example of non-modularized code ("curse of bad code design")
+    - 00:24:32: Overview of lesson structure (demo, exercise, live coding)
+    - 00:25:19: §Starting with an example code in a Notebook
+    - 00:28:38: Demo - Initial Jupyter notebook setup and walkthrough
+    - 00:39:23: Exercise introduction (discussion track + coding track)
+    - exercise: 00:41:50
+    - start: 01:01:00
+    - -: Post-exercise discussion of modular code concepts
+    - break: 01:11:55
+    - start: 01:22:15
+    - -: Live coding session begins: one possible solution
+    - 01:23:04: Addressing suggestions from coding track - replace comments with functions, remove redundant comments
+    - 01:23:45: Plotting also February and March data
+    - 01:30:12: Abstracting the plotting part into a function
+    - 01:41:20: Testing refactored code and need for Jupyter kernel restart
+    - 01:43:54: Small improvements: adding a function for the statistics
+    - 01:49:10: Towards functions without side-effects: adding a main() function
+    - 01:50:26: Further modularization - move from notebooks to scripts
+    - 01:54:08: Static code checking in IDEs
+    - 01:55:39: Further modularization - move from notebooks to scripts (continued)
+    - break: 02:18:13
+    - start: 02:27:32
+    - -: Post-break reflection on modular code development
+    - 02:28:22: Revisiting exercise and questions from discussion track
+    - 02:34:12: Questions from notes
+    - stop: 02:41:01
+
+
+- output: out/day9-outro.mkv
+  title: 9.3 Concluding remarks
+  description: >
+      The concluding remarks of the workshop.
+
+      Outro presentation (will be updated in the future):
+      https://github.com/coderefinery/workshop-outro/blob/master/README.md
+  time:
+    - start: 02:41:02
+    - -: Workshop wrap-up and thank yous
+    - 02:42:04: Acknowledging participants, team leaders, instructors, collaborative document answerers, and local partners
+    - 02:42:54: Feedback
+    - 02:45:14: Certificates
+    - 02:45:28: Support CodeRefinery and get-involved
+    - 02:46:35: Research Software Development and Nordic-RSE
+    - 02:48:48: Final thank you and goodbye
+    - stop: 02:49:13
+
+
 
 #- input: raw/day6-obs.mkv
 #- schedule-sync: 00:44=8:43:00
