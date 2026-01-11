@@ -1,0 +1,7372 @@
+1
+00:00:00,000 --> 00:00:01,461
+side of the document.
+
+2
+00:00:01,461 --> 00:00:03,488
+So I will now go into
+
+3
+00:00:03,488 --> 00:00:07,944
+the automated testing lesson here and I'll
+
+4
+00:00:11,029 --> 00:00:12,953
+With me here for this lesson,
+
+5
+00:00:12,953 --> 00:00:16,601
+I have [name] from CSC.
+
+6
+00:00:17,603 --> 00:00:18,264
+Hi, [name].
+
+7
+00:00:20,048 --> 00:00:20,168
+Hey.
+
+8
+00:00:20,168 --> 00:00:20,249
+Hey.
+
+9
+00:00:21,151 --> 00:00:25,279
+So automated testing is on the schedule.
+
+10
+00:00:25,279 --> 00:00:30,270
+And yeah, we have already here in the...
+
+11
+00:00:31,228 --> 00:00:34,853
+in the icebreaker questions, got
+
+12
+00:00:34,853 --> 00:00:36,034
+all of you participants to think
+
+13
+00:00:36,034 --> 00:00:39,139
+a little bit on what testing can be about.
+
+14
+00:00:39,139 --> 00:00:43,004
+So perhaps if I start with you, [name],
+
+15
+00:00:43,004 --> 00:00:47,309
+so what would you say
+
+16
+00:00:47,309 --> 00:00:49,813
+are the relevant cases for
+
+17
+00:00:49,813 --> 00:00:51,515
+using software testing?
+
+18
+00:00:52,677 --> 00:00:56,742
+Well, for me, I'd say there
+
+19
+00:00:56,742 --> 00:00:58,884
+are, several aspects to it.
+
+20
+00:01:00,686 --> 00:01:01,527
+First would be if I
+
+21
+00:01:01,527 --> 00:01:03,689
+implement a new feature, I would
+
+22
+00:01:03,689 --> 00:01:06,092
+want that to work as expected.
+
+23
+00:01:06,092 --> 00:01:10,237
+So I make sure that it does with tests.
+
+24
+00:01:10,237 --> 00:01:12,019
+And then I also want to make sure
+
+25
+00:01:12,019 --> 00:01:13,461
+that I haven't broken anything
+
+26
+00:01:13,461 --> 00:01:15,203
+that already exists.
+
+27
+00:01:15,203 --> 00:01:17,365
+So I'm going to test that.
+
+28
+00:01:17,365 --> 00:01:21,170
+And slightly related
+
+29
+00:01:21,170 --> 00:01:25,657
+to the first point is if you
+
+30
+00:01:25,657 --> 00:01:28,761
+start with a test or start thinking about
+
+31
+00:01:28,761 --> 00:01:31,405
+how you test things, then it
+
+32
+00:01:31,405 --> 00:01:33,108
+helps you also think about how
+
+33
+00:01:33,108 --> 00:01:35,671
+you want to organize your code
+
+34
+00:01:35,671 --> 00:01:36,833
+or how you want to develop the
+
+35
+00:01:36,833 --> 00:01:39,677
+code in the first place.
+
+36
+00:01:41,800 --> 00:01:42,481
+Yeah, thanks.
+
+37
+00:01:42,481 --> 00:01:45,487
+Those are all very relevant points.
+
+38
+00:01:45,487 --> 00:01:47,650
+And I think in particular,
+
+39
+00:01:47,650 --> 00:01:48,832
+the last thing you said is
+
+40
+00:01:48,832 --> 00:01:51,718
+that if you have testing in
+
+41
+00:01:51,718 --> 00:01:56,246
+mind while designing and implementing code,
+
+42
+00:01:57,107 --> 00:01:59,231
+then that's a good mechanism
+
+43
+00:02:00,273 --> 00:02:02,436
+to guide you when you write
+
+44
+00:02:02,436 --> 00:02:06,744
+the code in the first place.
+
+45
+00:02:08,158 --> 00:02:10,480
+Here are in less material here
+
+46
+00:02:10,480 --> 00:02:12,923
+or also some statements here.
+
+47
+00:02:12,923 --> 00:02:17,607
+So a very common thing is
+
+48
+00:02:17,607 --> 00:02:19,609
+that you do not start from scratch.
+
+49
+00:02:19,609 --> 00:02:24,994
+You are perhaps you're downloading
+
+50
+00:02:24,994 --> 00:02:27,476
+to try out some new code
+
+51
+00:02:27,476 --> 00:02:29,338
+and you find, oh, this is relevant for me.
+
+52
+00:02:30,419 --> 00:02:33,742
+And you might then need one
+
+53
+00:02:33,742 --> 00:02:36,880
+or two more features which are not available.
+
+54
+00:02:36,880 --> 00:02:39,885
+And you would like them to implement it.
+
+55
+00:02:39,885 --> 00:02:42,991
+And then it's very good if
+
+56
+00:02:42,991 --> 00:02:46,036
+you can soon establish that, okay,
+
+57
+00:02:46,036 --> 00:02:47,378
+this code is working.
+
+58
+00:02:47,378 --> 00:02:48,440
+It's working on my machine.
+
+59
+00:02:49,442 --> 00:02:51,345
+And if I now go ahead
+
+60
+00:02:51,345 --> 00:02:54,030
+and implement a feature A and a feature B,
+
+61
+00:02:55,172 --> 00:02:57,115
+then this will not interfere
+
+62
+00:02:57,115 --> 00:02:58,758
+with the already existing functionality.
+
+63
+00:03:01,623 --> 00:03:01,723
+Okay.
+
+64
+00:03:05,736 --> 00:03:07,961
+So during this lesson here,
+
+65
+00:03:08,923 --> 00:03:11,588
+we will have some demonstrations
+
+66
+00:03:12,871 --> 00:03:14,515
+and there will also be
+
+67
+00:03:14,515 --> 00:03:18,240
+exercises for the exercises.
+
+68
+00:03:18,240 --> 00:03:20,644
+we encourage you to work
+
+69
+00:03:20,644 --> 00:03:23,468
+primarily with Python and within
+
+70
+00:03:23,468 --> 00:03:26,212
+the CodeRefinery conda environment
+
+71
+00:03:26,212 --> 00:03:30,919
+you have a tool pi test available
+
+72
+00:03:30,919 --> 00:03:32,001
+and that's a framework
+
+73
+00:03:32,001 --> 00:03:36,247
+for performing testing working
+
+74
+00:03:36,247 --> 00:03:41,275
+with Python code bases there are similar
+
+75
+00:03:41,275 --> 00:03:43,078
+type of tools available for
+
+76
+00:03:43,078 --> 00:03:45,462
+other languages there are also tools
+
+77
+00:03:45,462 --> 00:03:47,626
+which are language agnostics that
+
+78
+00:03:47,626 --> 00:03:48,648
+can be used then for
+
+79
+00:03:48,648 --> 00:03:52,835
+for different languages and yeah
+
+80
+00:03:52,835 --> 00:03:54,558
+we will highlight a few of
+
+81
+00:03:54,558 --> 00:03:56,702
+these during the lesson
+
+82
+00:04:07,819 --> 00:04:12,444
+so one aspect of testing
+
+83
+00:04:12,444 --> 00:04:14,526
+is that we're working
+
+84
+00:04:14,526 --> 00:04:18,090
+here with software and computing
+
+85
+00:04:18,090 --> 00:04:19,252
+i can draw a little bit of
+
+86
+00:04:19,252 --> 00:04:21,734
+an analog to testing in in
+
+87
+00:04:21,734 --> 00:04:26,019
+the context of measurements
+
+88
+00:04:26,019 --> 00:04:27,801
+using physical devices those
+
+89
+00:04:27,801 --> 00:04:29,183
+could be mechanical measurements
+
+90
+00:04:29,183 --> 00:04:30,464
+could be electronic measurements
+
+91
+00:04:31,545 --> 00:04:37,857
+and within scientific research you could
+
+92
+00:04:37,857 --> 00:04:39,642
+it's clear that if you're, for instance,
+
+93
+00:04:39,642 --> 00:04:41,207
+in the physical sciences and
+
+94
+00:04:41,207 --> 00:04:45,800
+you have some detectors of, yeah,
+
+95
+00:04:45,800 --> 00:04:48,246
+that could be velocities,
+
+96
+00:04:48,246 --> 00:04:49,671
+could be positioning, if you
+
+97
+00:04:49,671 --> 00:04:51,323
+have a mechanical problem,
+
+98
+00:04:51,323 --> 00:04:52,764
+and could be, for instance,
+
+99
+00:04:52,764 --> 00:04:54,126
+in condensed matter physics or
+
+100
+00:04:54,966 --> 00:04:57,969
+chemistry, it could be measurements
+
+101
+00:04:57,969 --> 00:05:00,251
+of photo emission spectra and so forth.
+
+102
+00:05:01,272 --> 00:05:02,253
+And it's very important there
+
+103
+00:05:02,253 --> 00:05:04,776
+that you establish a base
+
+104
+00:05:04,776 --> 00:05:08,259
+case and to calibrate your detectors.
+
+105
+00:05:09,780 --> 00:05:13,244
+And where you are then in a regime
+
+106
+00:05:13,244 --> 00:05:16,767
+where you can be on firm
+
+107
+00:05:16,767 --> 00:05:18,689
+ground and perhaps have some
+
+108
+00:05:18,689 --> 00:05:20,030
+reference data also.
+
+109
+00:05:21,090 --> 00:05:22,633
+Once you have that, you can
+
+110
+00:05:22,633 --> 00:05:27,041
+then move into using your instrument,
+
+111
+00:05:27,041 --> 00:05:28,523
+be it a physical instrument or
+
+112
+00:05:28,523 --> 00:05:29,585
+be it a scientific code,
+
+113
+00:05:30,527 --> 00:05:32,570
+and then have reasonable confidence
+
+114
+00:05:32,570 --> 00:05:36,898
+in that your tool will do the
+
+115
+00:05:36,898 --> 00:05:39,242
+job also in this new situation.
+
+116
+00:05:39,242 --> 00:05:41,025
+And [name], what do you say?
+
+117
+00:05:41,025 --> 00:05:42,468
+Can one arrive to, let's
+
+118
+00:05:42,468 --> 00:05:45,393
+say, 100% confidence that things will work?
+
+119
+00:05:46,504 --> 00:05:48,347
+I would say no.
+
+120
+00:05:48,347 --> 00:05:50,350
+Because, well, the person who
+
+121
+00:05:50,350 --> 00:05:51,832
+wrote the tests, they also
+
+122
+00:05:51,832 --> 00:05:52,934
+had certain constraints.
+
+123
+00:05:52,934 --> 00:05:53,896
+For example, they were using
+
+124
+00:05:53,896 --> 00:05:55,658
+definitely a different or very
+
+125
+00:05:55,658 --> 00:05:56,980
+likely a different machine than
+
+126
+00:05:56,980 --> 00:05:58,042
+what you're using.
+
+127
+00:05:58,042 --> 00:06:01,127
+So they all of
+
+128
+00:06:01,127 --> 00:06:05,273
+the assurances they could
+
+129
+00:06:05,273 --> 00:06:07,557
+make are done through a specific
+
+130
+00:06:07,557 --> 00:06:08,919
+lens that may not sort
+
+131
+00:06:08,919 --> 00:06:10,942
+of completely overlap with your situation.
+
+132
+00:06:13,673 --> 00:06:15,355
+Yeah, precisely.
+
+133
+00:06:15,355 --> 00:06:18,660
+That's something that relates
+
+134
+00:06:18,660 --> 00:06:20,482
+to the concept.
+
+135
+00:06:20,482 --> 00:06:26,010
+It is known as code coverage.
+
+136
+00:06:29,615 --> 00:06:31,838
+We are trying to make a
+
+137
+00:06:31,838 --> 00:06:34,902
+code... Okay, in our sense,
+
+138
+00:06:34,902 --> 00:06:37,332
+code coverage would have...
+
+139
+00:06:37,332 --> 00:06:40,720
+is how much of the code base is tested.
+
+140
+00:06:40,720 --> 00:06:42,745
+But here also this, that how
+
+141
+00:06:42,745 --> 00:06:45,371
+much the tests will cover
+
+142
+00:06:45,371 --> 00:06:47,095
+the functionality of a code
+
+143
+00:06:47,095 --> 00:06:50,477
+and various use cases and various edge cases.
+
+144
+00:06:50,477 --> 00:06:53,480
+Yeah, and I'd say like coverage
+
+145
+00:06:53,480 --> 00:06:55,121
+is a useful metric, but
+
+146
+00:06:55,121 --> 00:06:58,985
+it's not infinitely strongly
+
+147
+00:06:58,985 --> 00:07:04,290
+correlated with those safety
+
+148
+00:07:04,290 --> 00:07:06,312
+or security or like confidence
+
+149
+00:07:06,312 --> 00:07:10,856
+that all of the code works
+
+150
+00:07:10,856 --> 00:07:12,077
+entirely as you would want it to.
+
+151
+00:07:13,579 --> 00:07:15,100
+But yeah, it's a start.
+
+152
+00:07:16,001 --> 00:07:17,042
+Yeah, yeah, right.
+
+153
+00:07:23,046 --> 00:07:25,028
+So here we have some examples
+
+154
+00:07:25,028 --> 00:07:31,115
+here in the lesson materials with some papers.
+
+155
+00:07:31,115 --> 00:07:33,457
+And I think this one here,
+
+156
+00:07:33,457 --> 00:07:34,478
+this you can check out here.
+
+157
+00:07:34,478 --> 00:07:35,980
+A scientist's nightmare.
+
+158
+00:07:35,980 --> 00:07:40,164
+Software problem leads to five retractions.
+
+159
+00:07:41,385 --> 00:07:42,667
+And that's quite interesting story.
+
+160
+00:07:42,667 --> 00:07:44,589
+So in brief, what happened here is
+
+161
+00:07:44,589 --> 00:07:47,011
+that some scripts were used
+
+162
+00:07:47,011 --> 00:07:49,374
+on different operating systems.
+
+163
+00:07:49,374 --> 00:07:51,987
+And when...
+
+164
+00:07:51,987 --> 00:07:53,409
+The original developer of the
+
+165
+00:07:53,409 --> 00:07:57,636
+tool had been running for his or hers computer.
+
+166
+00:07:57,636 --> 00:07:58,698
+Things were all working.
+
+167
+00:07:59,820 --> 00:08:01,883
+Then the code was being used
+
+168
+00:08:01,883 --> 00:08:03,486
+also by others and they
+
+169
+00:08:03,486 --> 00:08:06,471
+had other computers, other operating systems.
+
+170
+00:08:07,913 --> 00:08:09,656
+And some of the unexpected
+
+171
+00:08:09,656 --> 00:08:11,118
+things happened then.
+
+172
+00:08:11,118 --> 00:08:13,602
+So the way that the
+
+173
+00:08:13,602 --> 00:08:17,268
+program executed was not as intended.
+
+174
+00:08:19,645 --> 00:08:21,848
+And in this case, this
+
+175
+00:08:21,848 --> 00:08:24,030
+had rather severe consequences
+
+176
+00:08:24,030 --> 00:08:25,913
+because many people were using
+
+177
+00:08:25,913 --> 00:08:29,217
+this for over many years without noticing.
+
+178
+00:08:32,401 --> 00:08:33,362
+Have you ever experienced
+
+179
+00:08:33,362 --> 00:08:34,063
+something similar?
+
+180
+00:08:35,104 --> 00:08:36,085
+Or were you lucky?
+
+181
+00:08:40,330 --> 00:08:43,694
+No, not of that type, no.
+
+182
+00:08:45,757 --> 00:08:48,420
+That could rather be... My experience of...
+
+183
+00:08:50,543 --> 00:08:57,490
+of things going wrong with,
+
+184
+00:08:57,490 --> 00:08:59,112
+in connection to testing
+
+185
+00:08:59,112 --> 00:09:00,414
+would perhaps rather be that
+
+186
+00:09:01,294 --> 00:09:03,016
+the functionality that was implemented
+
+187
+00:09:03,016 --> 00:09:04,638
+in a program written by me
+
+188
+00:09:04,638 --> 00:09:08,102
+and my colleagues that perhaps
+
+189
+00:09:08,102 --> 00:09:09,864
+you didn't implement what you
+
+190
+00:09:09,864 --> 00:09:13,087
+had intended to implement.
+
+191
+00:09:13,087 --> 00:09:14,348
+So yeah, for us working
+
+192
+00:09:14,348 --> 00:09:19,062
+with physical models that would simply be that
+
+193
+00:09:19,062 --> 00:09:20,204
+We did not implement
+
+194
+00:09:20,204 --> 00:09:24,710
+the mathematical expressions as formulated.
+
+195
+00:09:24,710 --> 00:09:31,581
+It is also something that can be tested.
+
+196
+00:09:31,581 --> 00:09:32,983
+We will come very soon here
+
+197
+00:09:32,983 --> 00:09:35,446
+to various tests.
+
+198
+00:09:35,446 --> 00:09:38,531
+And I would say here, this
+
+199
+00:09:38,531 --> 00:09:40,774
+that I then encountered is that
+
+200
+00:09:42,176 --> 00:09:47,344
+we have complex numerical modeling where
+
+201
+00:09:47,344 --> 00:09:48,465
+naturally, you do
+
+202
+00:09:48,465 --> 00:09:49,707
+this on the computer because you
+
+203
+00:09:49,707 --> 00:09:52,530
+cannot do it with pen and paper and by hand.
+
+204
+00:09:52,530 --> 00:09:57,576
+Then if you can test and verify
+
+205
+00:09:57,576 --> 00:10:02,041
+that for the very small problems
+
+206
+00:10:02,041 --> 00:10:07,027
+where your calculation is of
+
+207
+00:10:07,027 --> 00:10:08,549
+a small problem size, you can
+
+208
+00:10:08,549 --> 00:10:10,682
+perhaps do it with pen and paper.
+
+209
+00:10:10,682 --> 00:10:12,244
+If you can then establish
+
+210
+00:10:12,244 --> 00:10:15,529
+that these are correct or things
+
+211
+00:10:15,529 --> 00:10:17,793
+are, let's say, you get it to a zero result
+
+212
+00:10:17,793 --> 00:10:19,335
+or something is invariant,
+
+213
+00:10:19,335 --> 00:10:21,879
+doesn't change over time, then
+
+214
+00:10:21,879 --> 00:10:24,102
+you can incrementally increase
+
+215
+00:10:24,102 --> 00:10:25,304
+the problem size going to
+
+216
+00:10:25,304 --> 00:10:29,149
+the real problems and you can
+
+217
+00:10:29,149 --> 00:10:30,892
+then build up this confidence
+
+218
+00:10:30,892 --> 00:10:33,496
+that your code will do the job.
+
+219
+00:10:34,357 --> 00:10:37,682
+But yet here, this is also a regime where
+
+220
+00:10:37,682 --> 00:10:39,725
+you cannot really arrive to
+
+221
+00:10:39,725 --> 00:10:44,372
+the full 100% confidence
+
+222
+00:10:44,372 --> 00:10:46,095
+... it is an asymptotic.
+
+223
+00:10:48,338 --> 00:10:49,299
+But it might be that
+
+224
+00:10:49,299 --> 00:10:51,202
+you cannot compare things because
+
+225
+00:10:51,202 --> 00:10:52,845
+you don't have a full reference case.
+
+226
+00:10:54,988 --> 00:10:55,929
+Okay.
+
+227
+00:10:58,854 --> 00:11:04,101
+So we can start here by example here.
+
+228
+00:11:04,101 --> 00:11:07,166
+So
+
+229
+00:11:08,412 --> 00:11:13,879
+We have a small snippet here of code.
+
+230
+00:11:14,860 --> 00:11:16,582
+This is here about
+
+231
+00:11:17,644 --> 00:11:19,766
+conversion of temperature from
+
+232
+00:11:19,766 --> 00:11:21,028
+the Fahrenheit to the
+
+233
+00:11:21,028 --> 00:11:23,771
+Celsius temperature scale.
+
+234
+00:11:23,771 --> 00:11:24,472
+As you can see here,
+
+235
+00:11:24,472 --> 00:11:26,415
+there are multiple tabs for
+
+236
+00:11:26,415 --> 00:11:29,719
+Python, C++, and also other languages.
+
+237
+00:11:33,163 --> 00:11:38,618
+And this now will illustrate
+
+238
+00:11:38,618 --> 00:11:41,602
+use of the pytest framework.
+
+239
+00:11:41,602 --> 00:11:43,785
+So I'll copy this code here.
+
+240
+00:11:43,785 --> 00:11:44,766
+You have a copy button up
+
+241
+00:11:44,766 --> 00:11:45,367
+to the right here.
+
+242
+00:11:47,509 --> 00:11:52,355
+And I call this source
+
+243
+00:11:52,355 --> 00:11:55,559
+code file Fahrenheit.py.
+
+244
+00:11:58,563 --> 00:12:00,746
+Copy and save.
+
+245
+00:12:04,210 --> 00:12:04,811
+And
+
+246
+00:12:07,288 --> 00:12:08,630
+And now I just run it.
+
+247
+00:12:08,630 --> 00:12:09,111
+pytest.
+
+248
+00:12:11,795 --> 00:12:13,036
+So I gave no arguments here.
+
+249
+00:12:14,178 --> 00:12:15,540
+So what happened here is
+
+250
+00:12:15,540 --> 00:12:17,603
+that pytest have looked here
+
+251
+00:12:17,603 --> 00:12:20,788
+in this directory and it has
+
+252
+00:12:20,788 --> 00:12:23,211
+picked up here in this source
+
+253
+00:12:23,211 --> 00:12:26,215
+code file a function definition
+
+254
+00:12:26,215 --> 00:12:29,580
+which starts with test underscore
+
+255
+00:12:29,580 --> 00:12:30,782
+and then Fahrenheit to Celsius.
+
+256
+00:12:32,665 --> 00:12:36,350
+So it will then
+
+257
+00:12:37,900 --> 00:12:38,881
+Execute this function.
+
+258
+00:12:40,083 --> 00:12:41,064
+And what you can see here
+
+259
+00:12:41,064 --> 00:12:44,428
+is that here is defined
+
+260
+00:12:44,428 --> 00:12:48,033
+an expected result, 37.7.
+
+261
+00:12:50,696 --> 00:12:52,338
+This temporary variable C here
+
+262
+00:12:52,338 --> 00:12:56,984
+is assigned from the call of this function,
+
+263
+00:12:56,984 --> 00:12:59,627
+where you call the function
+
+264
+00:12:59,627 --> 00:13:02,351
+with 100 degrees Fahrenheit.
+
+265
+00:13:03,672 --> 00:13:04,774
+And here, within here,
+
+266
+00:13:04,774 --> 00:13:06,316
+Fahrenheit to certain function, you
+
+267
+00:13:06,316 --> 00:13:07,870
+have the conversion then
+
+268
+00:13:07,870 --> 00:13:10,494
+from Fahrenheit to Celsius,
+
+269
+00:13:10,494 --> 00:13:12,056
+according to this formula.
+
+270
+00:13:16,923 --> 00:13:18,705
+In this test function, you
+
+271
+00:13:18,705 --> 00:13:20,908
+use an assert statement that
+
+272
+00:13:20,908 --> 00:13:24,674
+the absolute value of the
+
+273
+00:13:24,674 --> 00:13:27,137
+difference between the obtained
+
+274
+00:13:27,137 --> 00:13:28,839
+result from the function call
+
+275
+00:13:28,839 --> 00:13:31,303
+and the expected result should be
+
+276
+00:13:31,303 --> 00:13:33,506
+less than one part per million.
+
+277
+00:13:35,950 --> 00:13:38,534
+And yeah, indeed, that is what
+
+278
+00:13:38,534 --> 00:13:40,717
+came out and executed this function.
+
+279
+00:13:40,717 --> 00:13:42,800
+So all are good here.
+
+280
+00:13:54,657 --> 00:13:55,979
+So what can tests help you do?
+
+281
+00:13:55,979 --> 00:13:58,683
+I think we already touched
+
+282
+00:13:58,683 --> 00:14:00,986
+upon that right in the beginning of the lesson.
+
+283
+00:14:02,068 --> 00:14:05,012
+So preserving expected functionality,
+
+284
+00:14:06,173 --> 00:14:10,079
+You can help users to be confident
+
+285
+00:14:10,079 --> 00:14:10,801
+that the program has
+
+286
+00:14:10,801 --> 00:14:12,303
+been installed correctly and that
+
+287
+00:14:12,303 --> 00:14:13,285
+it is working.
+
+288
+00:14:14,867 --> 00:14:16,790
+You give developers, and that
+
+289
+00:14:16,790 --> 00:14:18,112
+can be yourself or could
+
+290
+00:14:18,112 --> 00:14:24,603
+be external people, the ability to
+
+291
+00:14:25,478 --> 00:14:28,401
+start out from something that
+
+292
+00:14:28,401 --> 00:14:29,702
+is working and then
+
+293
+00:14:29,702 --> 00:14:31,203
+you can add on features and
+
+294
+00:14:31,203 --> 00:14:32,344
+then you can check also that
+
+295
+00:14:32,344 --> 00:14:33,866
+the new stuff are not
+
+296
+00:14:33,866 --> 00:14:36,328
+breaking the already existing functionality.
+
+297
+00:14:41,112 --> 00:14:47,318
+So discussion, when would you say
+
+298
+00:14:47,318 --> 00:14:49,720
+that it's not really needed
+
+299
+00:14:49,720 --> 00:14:52,903
+to add the tests, [name]?
+
+300
+00:14:56,241 --> 00:14:56,862
+Sorry, come again.
+
+301
+00:14:56,862 --> 00:14:59,045
+I was looking at the document.
+
+302
+00:14:59,045 --> 00:14:59,907
+Yeah, okay.
+
+303
+00:14:59,907 --> 00:15:02,370
+So in what situations would
+
+304
+00:15:02,370 --> 00:15:04,353
+you say it's not necessary to
+
+305
+00:15:04,353 --> 00:15:06,757
+do any explicit tests?
+
+306
+00:15:07,638 --> 00:15:10,623
+So, well, there are also
+
+307
+00:15:10,623 --> 00:15:12,726
+some examples given here.
+
+308
+00:15:12,726 --> 00:15:15,089
+So since I mostly work in machine learning,
+
+309
+00:15:15,089 --> 00:15:16,672
+there are some things that
+
+310
+00:15:16,672 --> 00:15:19,196
+are difficult or impossible to test.
+
+311
+00:15:19,196 --> 00:15:22,701
+So testing an entire neural network,
+
+312
+00:15:22,701 --> 00:15:24,344
+That's difficult because
+
+313
+00:15:24,344 --> 00:15:26,287
+it's stochastic and it's a black box.
+
+314
+00:15:26,287 --> 00:15:30,394
+So, yeah, there I would say I don't bother.
+
+315
+00:15:30,394 --> 00:15:31,837
+Then I focus more on things
+
+316
+00:15:31,837 --> 00:15:35,944
+that I can test well, if
+
+317
+00:15:35,944 --> 00:15:37,186
+I implement a new metric, for
+
+318
+00:15:37,186 --> 00:15:40,091
+example, that then evaluates that model.
+
+319
+00:15:40,091 --> 00:15:41,533
+But
+
+320
+00:15:41,533 --> 00:15:44,021
+Yeah, that's one thing, things
+
+321
+00:15:44,021 --> 00:15:44,964
+that are difficult to test.
+
+322
+00:15:45,826 --> 00:15:47,411
+For the example, things that
+
+323
+00:15:47,411 --> 00:15:49,538
+are obviously correct, I
+
+324
+00:15:49,538 --> 00:15:51,183
+would say it's still very often,
+
+325
+00:15:53,450 --> 00:15:55,897
+it can be good to write a test.
+
+326
+00:15:57,396 --> 00:15:58,437
+it's not very high
+
+327
+00:15:58,437 --> 00:16:00,119
+priority, but still, it can be
+
+328
+00:16:00,119 --> 00:16:00,760
+useful to do that.
+
+329
+00:16:02,441 --> 00:16:04,383
+Because, well, I generally
+
+330
+00:16:04,383 --> 00:16:05,525
+don't trust myself very much.
+
+331
+00:16:05,525 --> 00:16:06,806
+So I think it's still useful
+
+332
+00:16:06,806 --> 00:16:10,730
+to, to write the test a to make sure
+
+333
+00:16:10,730 --> 00:16:12,873
+that you the code is correct,
+
+334
+00:16:12,873 --> 00:16:13,753
+but also to make sure that
+
+335
+00:16:13,753 --> 00:16:15,015
+you were thinking correctly.
+
+336
+00:16:20,140 --> 00:16:22,223
+Yeah, that's a good point.
+
+337
+00:16:22,223 --> 00:16:26,407
+And when it comes to this with so
+
+338
+00:16:27,720 --> 00:16:30,325
+It can happen that one thinks that,
+
+339
+00:16:30,325 --> 00:16:31,647
+okay, testing, that brings a
+
+340
+00:16:31,647 --> 00:16:32,829
+lot of overhead.
+
+341
+00:16:32,829 --> 00:16:34,232
+And that the
+
+342
+00:16:34,232 --> 00:16:36,135
+code you're working with is 10
+
+343
+00:16:36,135 --> 00:16:37,858
+lines of code, but the test
+
+344
+00:16:37,858 --> 00:16:40,223
+stuff would be 30 lines of code.
+
+345
+00:16:40,223 --> 00:16:42,827
+That seems like a rather
+
+346
+00:16:42,827 --> 00:16:45,652
+expensive and time-consuming thing.
+
+347
+00:16:45,652 --> 00:16:49,880
+However, it depends a little bit on...
+
+348
+00:16:50,856 --> 00:16:53,900
+workflow that that you get up
+
+349
+00:16:53,900 --> 00:16:56,664
+and started with because with pytest
+
+350
+00:16:56,664 --> 00:16:58,146
+and we'll also see a
+
+351
+00:16:58,146 --> 00:17:01,651
+program here called Catch2 for c++
+
+352
+00:17:01,651 --> 00:17:03,974
+code then you do
+
+353
+00:17:03,974 --> 00:17:07,419
+have this machinery implemented and
+
+354
+00:17:07,419 --> 00:17:10,363
+you can then relatively quickly
+
+355
+00:17:10,363 --> 00:17:13,948
+set up new tests and also to
+
+356
+00:17:13,948 --> 00:17:18,160
+run them in in a quasi-automated manner
+
+357
+00:17:18,160 --> 00:17:22,047
+So I really like pytest in
+
+358
+00:17:22,047 --> 00:17:23,911
+part because it does not
+
+359
+00:17:23,911 --> 00:17:25,153
+give you much overhead.
+
+360
+00:17:25,153 --> 00:17:26,676
+You saw earlier, you just
+
+361
+00:17:26,676 --> 00:17:28,359
+wrote a function that did the thing
+
+362
+00:17:28,359 --> 00:17:29,722
+and you did not even
+
+363
+00:17:29,722 --> 00:17:31,605
+import anything from pytest or anything.
+
+364
+00:17:31,605 --> 00:17:33,168
+You just wrote a code that
+
+365
+00:17:33,168 --> 00:17:34,190
+called what you were doing.
+
+366
+00:17:34,190 --> 00:17:34,911
+And that's it.
+
+367
+00:17:34,911 --> 00:17:36,254
+And you made an assertion,
+
+368
+00:17:36,254 --> 00:17:38,157
+which is also not really part of pytest.
+
+369
+00:17:38,157 --> 00:17:39,540
+It's just normal Python code.
+
+370
+00:17:39,540 --> 00:17:41,263
+And yeah, that's why I
+
+371
+00:17:41,263 --> 00:17:43,528
+really like pytest in that sense.
+
+372
+00:17:43,528 --> 00:17:44,550
+I prefer it over the other
+
+373
+00:17:44,550 --> 00:17:48,557
+testing suits in Python and also
+
+374
+00:17:48,557 --> 00:17:50,120
+for most other languages where
+
+375
+00:17:50,120 --> 00:17:51,483
+I'm aware of any.
+
+376
+00:17:53,928 --> 00:17:55,591
+Yeah, indeed.
+
+377
+00:17:55,591 --> 00:17:57,394
+It's neat that it's readily
+
+378
+00:17:57,394 --> 00:17:59,578
+available and not
+
+379
+00:17:59,578 --> 00:18:00,941
+difficult to install.
+
+380
+00:18:03,030 --> 00:18:06,254
+So we will soon move
+
+381
+00:18:06,254 --> 00:18:08,476
+into the first exercise.
+
+382
+00:18:08,476 --> 00:18:10,638
+However, before doing so, we
+
+383
+00:18:10,638 --> 00:18:20,630
+will go through here rather briefly,
+
+384
+00:18:20,630 --> 00:18:23,953
+but go through the various
+
+385
+00:18:23,953 --> 00:18:27,617
+tests and testing concepts
+
+386
+00:18:27,617 --> 00:18:29,625
+that are out there.
+
+387
+00:18:29,625 --> 00:18:31,968
+And this nomenclature can be
+
+388
+00:18:31,968 --> 00:18:33,209
+good to be acquainted with,
+
+389
+00:18:34,351 --> 00:18:36,293
+because otherwise you might
+
+390
+00:18:36,293 --> 00:18:40,077
+misunderstand what tests are
+
+391
+00:18:40,077 --> 00:18:41,559
+being run for a code.
+
+392
+00:18:42,981 --> 00:18:46,265
+So UNIS tests, those are
+
+393
+00:18:46,265 --> 00:18:48,988
+tests when you test a function at a time.
+
+394
+00:18:50,630 --> 00:18:52,292
+This can be...
+
+395
+00:18:53,520 --> 00:18:55,683
+good to work with when you
+
+396
+00:18:55,683 --> 00:18:58,386
+are starting to write a
+
+397
+00:18:58,386 --> 00:18:59,507
+whole program from scratch
+
+398
+00:18:59,507 --> 00:19:01,450
+or individual modules of a
+
+399
+00:19:01,450 --> 00:19:03,072
+program from scratch, because then
+
+400
+00:19:03,072 --> 00:19:06,616
+you can implement the tests one
+
+401
+00:19:06,616 --> 00:19:08,198
+at a time, or let's say
+
+402
+00:19:08,198 --> 00:19:10,401
+perhaps multiple tests at a time.
+
+403
+00:19:11,723 --> 00:19:13,545
+And this Fahrenheit to Celsius
+
+404
+00:19:13,545 --> 00:19:14,907
+code snippet is an example of
+
+405
+00:19:14,907 --> 00:19:18,431
+that where this small test case was,
+
+406
+00:19:19,542 --> 00:19:20,623
+We can presume that that
+
+407
+00:19:20,623 --> 00:19:23,947
+was written right after defining the function.
+
+408
+00:19:23,947 --> 00:19:25,208
+So you do it as you go.
+
+409
+00:19:29,213 --> 00:19:32,717
+Integrating tests are when you test
+
+410
+00:19:32,717 --> 00:19:34,679
+how the part of the
+
+411
+00:19:34,679 --> 00:19:35,700
+program is working together.
+
+412
+00:19:35,700 --> 00:19:38,824
+So you have like
+
+413
+00:19:38,824 --> 00:19:42,769
+10 big building blocks in your program.
+
+414
+00:19:42,769 --> 00:19:45,091
+You might want to see them
+
+415
+00:19:45,091 --> 00:19:47,402
+do this three times.
+
+416
+00:19:47,402 --> 00:19:49,244
+blocks, column A, B, C,
+
+417
+00:19:49,244 --> 00:19:51,626
+do they work together as they
+
+418
+00:19:51,626 --> 00:19:55,149
+should with the API, that
+
+419
+00:19:55,149 --> 00:19:56,751
+everything is matching with data types
+
+420
+00:19:56,751 --> 00:19:57,992
+and so forth, and also
+
+421
+00:19:57,992 --> 00:20:02,136
+then that the intended execution
+
+422
+00:20:02,136 --> 00:20:04,658
+is proceeding as intended.
+
+423
+00:20:06,380 --> 00:20:09,523
+M2M tests, that would, and
+
+424
+00:20:09,523 --> 00:20:10,864
+here certainly it depends a bit
+
+425
+00:20:10,864 --> 00:20:14,287
+on what program you're working with.
+
+426
+00:20:15,128 --> 00:20:18,294
+But it could be that that will involve,
+
+427
+00:20:18,294 --> 00:20:20,057
+the whole code base,
+
+428
+00:20:21,219 --> 00:20:25,467
+or that it would, in any
+
+429
+00:20:25,467 --> 00:20:26,989
+case, do some things, so to
+
+430
+00:20:26,989 --> 00:20:29,113
+say, from the very start to the very end.
+
+431
+00:20:29,113 --> 00:20:33,842
+And I'd say that this is something which,
+
+432
+00:20:35,745 --> 00:20:36,827
+if you have,
+
+433
+00:20:36,827 --> 00:20:40,120
+in scientific computing, numerical modeling,
+
+434
+00:20:40,120 --> 00:20:42,182
+some use cases where you,
+
+435
+00:20:42,182 --> 00:20:44,465
+you start with a set of input files
+
+436
+00:20:44,465 --> 00:20:45,346
+and then you crank it with
+
+437
+00:20:45,346 --> 00:20:50,332
+a program and you get a set of output files.
+
+438
+00:20:50,332 --> 00:20:51,494
+That situation is something
+
+439
+00:20:51,494 --> 00:20:53,036
+that lends itself very natural
+
+440
+00:20:53,036 --> 00:20:54,938
+for end-to-end tests.
+
+441
+00:20:56,199 --> 00:20:57,020
+If you, on the other
+
+442
+00:20:57,020 --> 00:20:58,082
+hand, have something which is
+
+443
+00:20:58,082 --> 00:21:01,426
+more, event driven
+
+444
+00:21:02,307 --> 00:21:05,891
+or user interaction type of program,
+
+445
+00:21:06,748 --> 00:21:08,490
+then it could be perhaps
+
+446
+00:21:09,512 --> 00:21:11,594
+much more challenging to
+
+447
+00:21:11,594 --> 00:21:13,016
+set up end-to-end tests
+
+448
+00:21:13,016 --> 00:21:17,342
+that are representative for how
+
+449
+00:21:17,342 --> 00:21:19,405
+the program is used.
+
+450
+00:21:21,908 --> 00:21:24,692
+Regression tests are something
+
+451
+00:21:24,692 --> 00:21:27,075
+that relates a bit to end-to-end tests.
+
+452
+00:21:28,076 --> 00:21:29,738
+So what is rather common is
+
+453
+00:21:29,738 --> 00:21:32,222
+that you set up some reference
+
+454
+00:21:32,222 --> 00:21:34,865
+cases where you are then
+
+455
+00:21:36,499 --> 00:21:39,825
+confident that, okay, the program
+
+456
+00:21:39,825 --> 00:21:43,932
+did for given input produce the right results.
+
+457
+00:21:45,014 --> 00:21:47,018
+And perhaps the confidence in
+
+458
+00:21:47,018 --> 00:21:49,883
+these right results are both
+
+459
+00:21:49,883 --> 00:21:51,005
+in that the program was, I
+
+460
+00:21:51,005 --> 00:21:53,108
+mean, written in a correct manner,
+
+461
+00:21:53,108 --> 00:21:55,813
+but also that you compare with,
+
+462
+00:21:55,813 --> 00:21:57,055
+completely other programs that
+
+463
+00:21:57,055 --> 00:21:59,760
+are perhaps implementing
+
+464
+00:21:59,760 --> 00:22:01,778
+similar functionality.
+
+465
+00:22:01,778 --> 00:22:02,580
+That could be, so to
+
+466
+00:22:02,580 --> 00:22:04,925
+say, among your colleagues
+
+467
+00:22:04,925 --> 00:22:08,212
+or the science community could
+
+468
+00:22:08,212 --> 00:22:09,435
+be also from your, let's
+
+469
+00:22:09,435 --> 00:22:12,441
+say, rival research group that are
+
+470
+00:22:12,441 --> 00:22:17,492
+trying to do similar stuff also.
+
+471
+00:22:20,188 --> 00:22:22,152
+So these were a few of them.
+
+472
+00:22:22,152 --> 00:22:24,457
+Then we have test-driven development.
+
+473
+00:22:24,457 --> 00:22:29,168
+And [name], what can that be about?
+
+474
+00:22:29,168 --> 00:22:32,775
+So, well, normally you
+
+475
+00:22:32,775 --> 00:22:36,083
+just start thinking about your
+
+476
+00:22:36,083 --> 00:22:38,428
+fantabulous new software that you
+
+477
+00:22:38,428 --> 00:22:39,510
+want to write.
+
+478
+00:22:39,510 --> 00:22:42,032
+and don't think as much about
+
+479
+00:22:42,032 --> 00:22:44,454
+how that all of that
+
+480
+00:22:44,454 --> 00:22:46,456
+that what you're writing is
+
+481
+00:22:46,456 --> 00:22:47,637
+being used and
+
+482
+00:22:47,637 --> 00:22:50,960
+test-driven development is one way
+
+483
+00:22:50,960 --> 00:22:53,042
+where you can try and invert
+
+484
+00:22:53,042 --> 00:22:54,383
+that where you first think about
+
+485
+00:22:54,383 --> 00:22:55,904
+how it's used because you
+
+486
+00:22:55,904 --> 00:22:57,566
+first write the test that
+
+487
+00:22:57,566 --> 00:22:59,828
+uses the software that you're
+
+488
+00:22:59,828 --> 00:23:03,151
+about to write and yeah then
+
+489
+00:23:03,151 --> 00:23:05,232
+continue developing that
+
+490
+00:23:05,232 --> 00:23:09,396
+and continue testing it until the test
+
+491
+00:23:09,396 --> 00:23:11,640
+passes.
+
+492
+00:23:11,640 --> 00:23:13,002
+Yeah, that can be a
+
+493
+00:23:13,002 --> 00:23:15,826
+useful approach for some problems.
+
+494
+00:23:15,826 --> 00:23:17,509
+It's certainly not a universal
+
+495
+00:23:17,509 --> 00:23:19,672
+solution to all problems.
+
+496
+00:23:19,672 --> 00:23:20,714
+But yeah, it can be
+
+497
+00:23:20,714 --> 00:23:25,021
+an interesting approach to have
+
+498
+00:23:25,021 --> 00:23:27,524
+a different viewpoint on
+
+499
+00:23:27,524 --> 00:23:29,568
+how to make software.
+
+500
+00:23:31,090 --> 00:23:31,691
+Yeah.
+
+501
+00:23:33,595 --> 00:23:36,783
+that's yeah indeed and
+
+502
+00:23:36,783 --> 00:23:41,636
+and sometimes and and if
+
+503
+00:23:41,636 --> 00:23:42,779
+if some of you in the
+
+504
+00:23:42,779 --> 00:23:44,183
+audience here perhaps you're working
+
+505
+00:23:44,183 --> 00:23:47,030
+at private companies and and
+
+506
+00:23:49,542 --> 00:23:51,964
+What we can often see is,
+
+507
+00:23:51,964 --> 00:23:54,066
+comparing a little bit
+
+508
+00:23:54,066 --> 00:23:56,929
+the situation in academia and
+
+509
+00:23:56,929 --> 00:23:59,871
+in corporate settings, you often have,
+
+510
+00:24:01,333 --> 00:24:02,574
+you have larger
+
+511
+00:24:02,574 --> 00:24:04,696
+teams in companies and
+
+512
+00:24:05,576 --> 00:24:08,879
+test-driven development is sometimes,
+
+513
+00:24:08,879 --> 00:24:09,900
+I know it from my own
+
+514
+00:24:09,900 --> 00:24:12,102
+experience, where we have in
+
+515
+00:24:12,102 --> 00:24:14,905
+a unit or department where
+
+516
+00:24:14,905 --> 00:24:18,688
+you have some engineers who are
+
+517
+00:24:19,630 --> 00:24:21,192
+Really, for instance, they
+
+518
+00:24:21,192 --> 00:24:23,695
+write the specifications for some
+
+519
+00:24:23,695 --> 00:24:27,179
+program, and then they also write the tests.
+
+520
+00:24:28,080 --> 00:24:29,641
+And these people themselves
+
+521
+00:24:29,641 --> 00:24:31,704
+will perhaps not then work for the code base,
+
+522
+00:24:31,704 --> 00:24:32,885
+but that will then be done
+
+523
+00:24:32,885 --> 00:24:34,146
+by other members of the team.
+
+524
+00:24:37,310 --> 00:24:39,773
+So this is, it's clear here.
+
+525
+00:24:39,773 --> 00:24:41,455
+If you want to do all
+
+526
+00:24:41,455 --> 00:24:44,718
+of these various things, all
+
+527
+00:24:44,718 --> 00:24:46,961
+different tests, it helps
+
+528
+00:24:46,961 --> 00:24:48,843
+if you are a large team.
+
+529
+00:24:50,292 --> 00:24:52,194
+But usually in a scientific, well,
+
+530
+00:24:52,194 --> 00:24:53,435
+it depends a little bit
+
+531
+00:24:53,435 --> 00:24:55,057
+more on the context, but as a PhD student,
+
+532
+00:24:55,057 --> 00:24:56,418
+for example, then you are
+
+533
+00:24:56,418 --> 00:24:58,380
+probably mostly writing or like
+
+534
+00:24:58,380 --> 00:24:59,761
+working on your own.
+
+535
+00:24:59,761 --> 00:25:01,122
+And then you are the same person
+
+536
+00:25:01,122 --> 00:25:02,003
+who writes the test will
+
+537
+00:25:02,003 --> 00:25:04,285
+also write the code itself oftentimes.
+
+538
+00:25:05,767 --> 00:25:07,448
+Yeah, yeah, indeed.
+
+539
+00:25:09,110 --> 00:25:09,730
+Great.
+
+540
+00:25:11,452 --> 00:25:14,535
+So continuous integration, code coverage,
+
+541
+00:25:14,535 --> 00:25:16,237
+we will come to that a
+
+542
+00:25:16,237 --> 00:25:20,329
+bit later and we'll define what these are then.
+
+543
+00:25:20,329 --> 00:25:25,014
+So I think now, in the interest of time,
+
+544
+00:25:25,014 --> 00:25:28,398
+that we will move now into
+
+545
+00:25:28,398 --> 00:25:30,660
+what will be the first exercise for today.
+
+546
+00:25:31,981 --> 00:25:36,426
+So we go here to the
+
+547
+00:25:36,426 --> 00:25:38,689
+next section of the lesson here.
+
+548
+00:25:38,689 --> 00:25:43,153
+So what you will do here
+
+549
+00:25:43,153 --> 00:25:45,976
+is that you will get some
+
+550
+00:25:45,976 --> 00:25:50,201
+hands-on practice on testing
+
+551
+00:25:51,295 --> 00:25:53,318
+some functions locally.
+
+552
+00:25:55,100 --> 00:25:57,523
+And testing locally is, I would say,
+
+553
+00:25:57,523 --> 00:25:59,806
+that's the base case
+
+554
+00:25:59,806 --> 00:26:01,668
+where you can do everything
+
+555
+00:26:01,668 --> 00:26:02,890
+on your local computer.
+
+556
+00:26:03,891 --> 00:26:05,774
+Then in, real
+
+557
+00:26:05,774 --> 00:26:07,936
+life, you will often then do
+
+558
+00:26:07,936 --> 00:26:10,860
+testing on various services such
+
+559
+00:26:10,860 --> 00:26:12,442
+as GitHub and GitLab.
+
+560
+00:26:16,438 --> 00:26:19,101
+so we will just very
+
+561
+00:26:19,101 --> 00:26:20,803
+briefly introduce the exercise and
+
+562
+00:26:20,803 --> 00:26:23,806
+and perhaps have some posted
+
+563
+00:26:23,806 --> 00:26:26,108
+it into the share document yes
+
+564
+00:26:26,108 --> 00:26:29,592
+i see the link is here and
+
+565
+00:26:29,592 --> 00:26:33,817
+there are two tests here testing
+
+566
+00:26:35,118 --> 00:26:37,841
+local one and local two
+
+567
+00:26:39,222 --> 00:26:41,852
+and then the suggestion is that
+
+568
+00:26:41,852 --> 00:26:43,654
+you can get started with
+
+569
+00:26:43,654 --> 00:26:46,297
+this minimal example, local one.
+
+570
+00:26:48,180 --> 00:26:50,903
+And some of you might be
+
+571
+00:26:50,903 --> 00:26:52,245
+able to do it rather swiftly,
+
+572
+00:26:52,245 --> 00:26:55,228
+and then you can move on to the other example.
+
+573
+00:26:56,510 --> 00:26:58,052
+So the instructions can be
+
+574
+00:26:58,052 --> 00:27:00,955
+found here in the lesson material,
+
+575
+00:27:00,955 --> 00:27:04,780
+and you will be using PyTests.
+
+576
+00:27:04,780 --> 00:27:06,142
+And you will work both with
+
+577
+00:27:06,142 --> 00:27:11,940
+a code that will pass the test and with tests
+
+578
+00:27:11,940 --> 00:27:14,908
+that limit code that break the tests.
+
+579
+00:27:18,518 --> 00:27:22,750
+So are there any more
+
+580
+00:27:22,750 --> 00:27:24,154
+instructions that we would like
+
+581
+00:27:24,154 --> 00:27:25,798
+to give [name] or?
+
+582
+00:27:26,638 --> 00:27:28,101
+Well, yeah.
+
+583
+00:27:28,101 --> 00:27:30,405
+So implement the function,
+
+584
+00:27:30,405 --> 00:27:31,747
+implement the test for the function.
+
+585
+00:27:31,747 --> 00:27:34,131
+The function is adding two
+
+586
+00:27:34,131 --> 00:27:36,595
+numbers together or two anythings,
+
+587
+00:27:36,595 --> 00:27:39,120
+two Python objects.
+
+588
+00:27:40,061 --> 00:27:42,646
+And yeah, then test it.
+
+589
+00:27:44,088 --> 00:27:46,112
+Not much more to it, I think.
+
+590
+00:27:46,112 --> 00:27:48,315
+And then for the other
+
+591
+00:27:48,315 --> 00:27:50,018
+one, what's important is that you
+
+592
+00:27:50,018 --> 00:27:54,545
+are now, so the function is the same.
+
+593
+00:27:54,545 --> 00:27:55,707
+You're adding a new test
+
+594
+00:27:55,707 --> 00:27:59,753
+for what happens if you try
+
+595
+00:27:59,753 --> 00:28:01,015
+and add floating point numbers.
+
+596
+00:28:01,015 --> 00:28:01,836
+There might be something,
+
+597
+00:28:03,198 --> 00:28:06,483
+some special considerations, but yeah.
+
+598
+00:28:08,505 --> 00:28:11,168
+Yes, indeed, that adds
+
+599
+00:28:11,168 --> 00:28:14,151
+some extra complications to it
+
+600
+00:28:14,151 --> 00:28:17,074
+that one will need to deal with.
+
+601
+00:28:19,036 --> 00:28:24,782
+So with that, you are then
+
+602
+00:28:24,782 --> 00:28:27,084
+welcome to start up the exercise.
+
+603
+00:28:27,084 --> 00:28:31,289
+And it's now 34 past the full hour.
+
+604
+00:28:31,289 --> 00:28:33,050
+So we will reconvene here at
+
+605
+00:28:33,050 --> 00:28:37,415
+54 past the full hour.
+
+606
+00:28:39,825 --> 00:28:41,000
+Bye for now.
+
+607
+00:28:41,000 --> 00:28:46,410
+Welcome back, everyone.
+
+608
+00:28:47,723 --> 00:28:50,508
+so we hope that you have
+
+609
+00:28:50,508 --> 00:28:53,012
+now been able to to work
+
+610
+00:28:53,012 --> 00:28:55,917
+work through the first exercise
+
+611
+00:28:55,917 --> 00:28:58,642
+and perhaps also the second one
+
+612
+00:28:59,804 --> 00:29:01,948
+so there are a few questions
+
+613
+00:29:01,948 --> 00:29:03,370
+that were posed in the
+
+614
+00:29:03,370 --> 00:29:05,253
+collaborative document and we would
+
+615
+00:29:05,253 --> 00:29:09,441
+to highlight some of of
+
+616
+00:29:09,441 --> 00:29:13,306
+them and yeah first one here is about
+
+617
+00:29:13,306 --> 00:29:16,009
+how to avoid that the
+
+618
+00:29:16,009 --> 00:29:18,913
+execution of the tests will not interrupt.
+
+619
+00:29:20,374 --> 00:29:22,737
+And so a good practice is
+
+620
+00:29:22,737 --> 00:29:26,742
+to put each assert in its own test function.
+
+621
+00:29:26,742 --> 00:29:28,224
+I think this might depend also
+
+622
+00:29:28,224 --> 00:29:29,385
+a bit on which testing
+
+623
+00:29:29,385 --> 00:29:32,389
+framework that you're using that
+
+624
+00:29:32,389 --> 00:29:36,934
+might also be language specific.
+
+625
+00:29:39,091 --> 00:29:40,733
+So second question here is
+
+626
+00:29:40,733 --> 00:29:46,379
+about testing in, yeah, for
+
+627
+00:29:46,379 --> 00:29:48,301
+machine learning, deep learning models.
+
+628
+00:29:54,808 --> 00:30:05,881
+So, yeah, okay, one thing
+
+629
+00:30:05,881 --> 00:30:07,778
+to learn from this,
+
+630
+00:30:07,778 --> 00:30:09,320
+discussion here the question and
+
+631
+00:30:09,320 --> 00:30:16,209
+answer is that for something
+
+632
+00:30:16,209 --> 00:30:18,872
+like a big deep learning model
+
+633
+00:30:18,872 --> 00:30:20,134
+that can take a long time
+
+634
+00:30:20,134 --> 00:30:22,877
+to train you might want to do the testing
+
+635
+00:30:22,877 --> 00:30:25,000
+for smaller cases
+
+636
+00:30:25,000 --> 00:30:27,202
+and and it might be that
+
+637
+00:30:27,202 --> 00:30:29,065
+it's just too expensive if you
+
+638
+00:30:29,065 --> 00:30:30,867
+need to to run the
+
+639
+00:30:32,247 --> 00:30:34,850
+the full training and then
+
+640
+00:30:34,850 --> 00:30:38,093
+validation with test data.
+
+641
+00:30:41,436 --> 00:30:43,218
+It's not just a problem of expense,
+
+642
+00:30:43,218 --> 00:30:45,320
+but also the model sort
+
+643
+00:30:45,320 --> 00:30:49,424
+of, it's a statistical problem usually.
+
+644
+00:30:49,424 --> 00:30:53,268
+And so, or it's, yeah, you don't have like,
+
+645
+00:30:53,268 --> 00:30:55,531
+it's often not
+
+646
+00:30:55,531 --> 00:30:56,652
+deterministic in the sense that
+
+647
+00:30:56,652 --> 00:30:59,134
+when you train a model twice,
+
+648
+00:30:59,134 --> 00:31:00,115
+it will not give you the
+
+649
+00:31:00,115 --> 00:31:01,897
+exact same answer probably.
+
+650
+00:31:01,897 --> 00:31:05,923
+And so that is then difficult to check.
+
+651
+00:31:05,923 --> 00:31:07,385
+Even more difficult, well, you've
+
+652
+00:31:07,385 --> 00:31:08,287
+done the exercise now for
+
+653
+00:31:08,287 --> 00:31:09,388
+your floating point numbers, it's
+
+654
+00:31:09,388 --> 00:31:10,590
+even more difficult then for
+
+655
+00:31:10,590 --> 00:31:13,735
+the floating point numbers.
+
+656
+00:31:13,735 --> 00:31:15,197
+Because if you have a language model,
+
+657
+00:31:15,197 --> 00:31:17,000
+comparing two sentences that
+
+658
+00:31:17,000 --> 00:31:18,903
+it produced can be tricky.
+
+659
+00:31:20,385 --> 00:31:20,625
+Yeah.
+
+660
+00:31:23,830 --> 00:31:25,032
+At least in the context of testing.
+
+661
+00:31:28,297 --> 00:31:29,659
+Yes, yes, indeed.
+
+662
+00:31:36,743 --> 00:31:38,985
+Yeah, and the question number
+
+663
+00:31:38,985 --> 00:31:41,447
+five here, how the testing works.
+
+664
+00:31:43,029 --> 00:31:44,690
+And the key here is that
+
+665
+00:31:46,512 --> 00:31:49,555
+you need to check up on what,
+
+666
+00:31:49,555 --> 00:31:51,196
+or the keyword
+
+667
+00:31:51,196 --> 00:31:53,999
+constructs in the respective framework.
+
+668
+00:31:53,999 --> 00:31:56,822
+So for pytest, it's test underscore.
+
+669
+00:31:56,822 --> 00:32:04,148
+And sometimes you need to...
+
+670
+00:32:04,148 --> 00:32:06,171
+use some other construct to and
+
+671
+00:32:06,171 --> 00:32:07,193
+or to regular start the
+
+672
+00:32:07,193 --> 00:32:11,499
+tests with with macros so
+
+673
+00:32:14,043 --> 00:32:17,929
+yeah you you simply need to follow
+
+674
+00:32:17,929 --> 00:32:19,050
+that syntax and and we will
+
+675
+00:32:19,050 --> 00:32:20,793
+see a bit later here one example
+
+676
+00:32:20,793 --> 00:32:22,455
+of how that is done with
+
+677
+00:32:22,455 --> 00:32:26,241
+catch two for c plus plus code snippets
+
+678
+00:32:27,672 --> 00:32:32,077
+So we will now proceed to
+
+679
+00:32:33,519 --> 00:32:35,422
+talk a bit about automated testing.
+
+680
+00:32:37,624 --> 00:32:39,407
+So the outset here is that
+
+681
+00:32:40,728 --> 00:32:43,071
+we would like to explore how
+
+682
+00:32:43,071 --> 00:32:45,454
+we could implement automated testing
+
+683
+00:32:45,454 --> 00:32:49,079
+that will run, for instance,
+
+684
+00:32:49,079 --> 00:32:50,400
+on each time that we push
+
+685
+00:32:50,400 --> 00:32:51,722
+changes to a repository.
+
+686
+00:32:53,508 --> 00:32:55,470
+And yeah, here's a little
+
+687
+00:32:55,470 --> 00:32:57,973
+bit of question that we can keep in mind.
+
+688
+00:32:57,973 --> 00:33:00,676
+So why is it good to
+
+689
+00:33:00,676 --> 00:33:05,041
+auto close issues with commit messages?
+
+690
+00:33:06,422 --> 00:33:08,945
+And yeah, you will see that in a minute.
+
+691
+00:33:11,869 --> 00:33:14,792
+So this part now will be
+
+692
+00:33:14,792 --> 00:33:18,997
+run as a demonstration and we
+
+693
+00:33:18,997 --> 00:33:20,558
+will then make use of
+
+694
+00:33:20,558 --> 00:33:22,941
+the so-called GitHub actions
+
+695
+00:33:24,592 --> 00:33:26,755
+There's also the GitLab
+
+696
+00:33:26,755 --> 00:33:29,719
+continuous integration framework.
+
+697
+00:33:31,382 --> 00:33:33,124
+And in addition to these
+
+698
+00:33:33,124 --> 00:33:35,688
+services, there are multiple of these around.
+
+699
+00:33:38,251 --> 00:33:42,818
+So what I will do now is
+
+700
+00:33:42,818 --> 00:33:46,383
+that I will set up a new
+
+701
+00:33:46,383 --> 00:33:54,376
+Git repository with some starting coding.
+
+702
+00:33:54,376 --> 00:33:58,119
+And I will configure tests to
+
+703
+00:33:58,119 --> 00:34:00,402
+be run as a GitHub action.
+
+704
+00:34:03,625 --> 00:34:04,926
+We will see that this
+
+705
+00:34:04,926 --> 00:34:09,050
+code will contain some bugs.
+
+706
+00:34:10,071 --> 00:34:11,572
+We will not notice it at first,
+
+707
+00:34:11,572 --> 00:34:13,734
+but when we start to run,
+
+708
+00:34:13,734 --> 00:34:14,735
+all parts of the code, you'll
+
+709
+00:34:14,735 --> 00:34:16,056
+see that, oh, here's something
+
+710
+00:34:16,056 --> 00:34:17,317
+which is not working.
+
+711
+00:34:17,317 --> 00:34:19,820
+And that will then be caught
+
+712
+00:34:19,820 --> 00:34:22,442
+by the tests being run on GitHub.
+
+713
+00:34:24,295 --> 00:34:29,865
+What one then can do is,
+
+714
+00:34:31,387 --> 00:34:34,112
+and this is also very important
+
+715
+00:34:34,112 --> 00:34:34,874
+in the context of
+
+716
+00:34:34,874 --> 00:34:36,837
+collaborative code development, is
+
+717
+00:34:36,837 --> 00:34:38,219
+that, you make a note
+
+718
+00:34:38,219 --> 00:34:40,043
+of it so that you don't forget it.
+
+719
+00:34:40,043 --> 00:34:42,767
+And one inbuilt functionality to do
+
+720
+00:34:42,767 --> 00:34:43,929
+that here is to use
+
+721
+00:34:43,929 --> 00:34:46,975
+the GitHub issues functionality.
+
+722
+00:34:46,975 --> 00:34:48,818
+So report a bug as an issue.
+
+723
+00:34:50,705 --> 00:34:54,430
+then someone that can be yourself
+
+724
+00:34:54,430 --> 00:34:55,671
+or could be one of your
+
+725
+00:34:55,671 --> 00:34:58,455
+your colleagues can spot this issue
+
+726
+00:34:59,696 --> 00:35:01,839
+and work out and okay how
+
+727
+00:35:01,839 --> 00:35:05,303
+can I fix this and then go ahead and fix it
+
+728
+00:35:05,303 --> 00:35:07,586
+and then contribute this fix
+
+729
+00:35:08,847 --> 00:35:10,670
+in a feature bronze and and and
+
+730
+00:35:10,670 --> 00:35:12,612
+you push it to the GitHub repo
+
+731
+00:35:14,785 --> 00:35:17,108
+And as you will see then, if
+
+732
+00:35:17,108 --> 00:35:19,231
+I set up this automated testing machinery
+
+733
+00:35:19,231 --> 00:35:21,134
+as a GitHub action, then the
+
+734
+00:35:21,134 --> 00:35:25,579
+tests will be run directly after pushing
+
+735
+00:35:26,521 --> 00:35:27,782
+so that this,
+
+736
+00:35:27,782 --> 00:35:29,505
+the code fix will then be
+
+737
+00:35:31,848 --> 00:35:33,130
+tested to see whether it
+
+738
+00:35:33,130 --> 00:35:36,183
+then have resolved the bug.
+
+739
+00:35:36,183 --> 00:35:38,986
+And if that is affirmative,
+
+740
+00:35:38,986 --> 00:35:40,568
+then one can then go ahead
+
+741
+00:35:40,568 --> 00:35:42,930
+and merge in this new code.
+
+742
+00:35:42,930 --> 00:35:43,711
+And you have the answer to
+
+743
+00:35:43,711 --> 00:35:46,854
+say, improve the program by
+
+744
+00:35:46,854 --> 00:35:47,575
+correcting the bike.
+
+745
+00:35:49,717 --> 00:35:52,621
+So let's get started.
+
+746
+00:35:56,164 --> 00:36:05,194
+So I will go to my GitHub and I will
+
+747
+00:36:06,575 --> 00:36:12,422
+Now I have already a copy of this,
+
+748
+00:36:12,422 --> 00:36:13,804
+but I'll create another
+
+749
+00:36:13,804 --> 00:36:15,466
+example here, another repo.
+
+750
+00:36:17,508 --> 00:36:22,854
+So I call this repo example
+
+751
+00:36:22,854 --> 00:36:25,317
+dash ci for continuous integration.
+
+752
+00:36:28,081 --> 00:36:29,142
+It's a public repo.
+
+753
+00:36:31,745 --> 00:36:34,168
+And yeah, I just go with the defaults.
+
+754
+00:36:38,198 --> 00:36:44,967
+And here is, yeah, SSH URL for cloning it.
+
+755
+00:36:44,967 --> 00:36:47,490
+So I copy the URL.
+
+756
+00:36:50,634 --> 00:36:59,025
+Then I go here and I clone it.
+
+757
+00:37:06,683 --> 00:37:08,748
+and here in the terminal
+
+758
+00:37:08,748 --> 00:37:10,732
+window it reports an oh you
+
+759
+00:37:10,732 --> 00:37:12,737
+have cloned a empty repository
+
+760
+00:37:14,180 --> 00:37:16,546
+but that's perfectly fine so i
+
+761
+00:37:16,546 --> 00:37:21,498
+see it into the directory does
+
+762
+00:37:21,498 --> 00:37:25,587
+only include the dot git directory
+
+763
+00:37:41,513 --> 00:37:42,834
+So here are the code
+
+764
+00:37:42,834 --> 00:37:44,656
+snippets that we'll work with, and
+
+765
+00:37:44,656 --> 00:37:47,459
+these are in Python.
+
+766
+00:37:47,459 --> 00:37:50,682
+So in this file, functions.py,
+
+767
+00:37:52,564 --> 00:37:55,086
+we have some simple arithmetic functions.
+
+768
+00:37:56,948 --> 00:37:58,930
+So I create this source
+
+769
+00:37:58,930 --> 00:38:04,235
+code file, functions.py, paste the
+
+770
+00:38:04,235 --> 00:38:07,318
+code, save it.
+
+771
+00:38:09,830 --> 00:38:11,652
+Then we will have another
+
+772
+00:38:11,652 --> 00:38:15,135
+code snippet, test underscore functions.
+
+773
+00:38:17,137 --> 00:38:22,042
+And here is where we
+
+774
+00:38:22,042 --> 00:38:23,803
+have then the definition of the tests.
+
+775
+00:38:26,065 --> 00:38:28,328
+So I'll put that in
+
+776
+00:38:28,328 --> 00:38:33,152
+another source code file,
+
+777
+00:38:33,152 --> 00:38:38,217
+test underscore functions, py.
+
+778
+00:38:39,783 --> 00:38:42,046
+I paste it and save it.
+
+779
+00:38:42,046 --> 00:38:43,027
+And as you can see here,
+
+780
+00:38:44,750 --> 00:38:48,315
+this red block here is Python code,
+
+781
+00:38:48,315 --> 00:38:50,177
+which has been commented out
+
+782
+00:38:50,177 --> 00:38:52,601
+and that we will activate later.
+
+783
+00:38:59,270 --> 00:38:59,710
+Let's see.
+
+784
+00:38:59,710 --> 00:39:03,115
+The git status is that we
+
+785
+00:39:03,115 --> 00:39:04,617
+have two new files here, which
+
+786
+00:39:04,617 --> 00:39:05,679
+are untracked so far.
+
+787
+00:39:07,281 --> 00:39:08,102
+We will add them.
+
+788
+00:39:09,753 --> 00:39:11,435
+Get add functions.
+
+789
+00:39:11,435 --> 00:39:13,398
+Get add test functions.
+
+790
+00:39:22,690 --> 00:39:24,573
+I call this added functions.
+
+791
+00:39:27,176 --> 00:39:27,997
+And tests.
+
+792
+00:39:30,861 --> 00:39:31,322
+Commit.
+
+793
+00:39:34,766 --> 00:39:35,187
+And push.
+
+794
+00:39:42,389 --> 00:39:44,454
+So, okay, now I already
+
+795
+00:39:44,454 --> 00:39:47,100
+contributed this to the instance
+
+796
+00:39:47,100 --> 00:39:48,925
+of the Git repo on GitHub.
+
+797
+00:39:49,987 --> 00:39:52,433
+We could also then, independent
+
+798
+00:39:52,433 --> 00:39:57,906
+of this one, we can test the code locally.
+
+799
+00:39:57,906 --> 00:39:59,149
+So pytest.
+
+800
+00:40:01,070 --> 00:40:02,032
+Let's see what it finds.
+
+801
+00:40:03,153 --> 00:40:03,634
+Yeah, okay.
+
+802
+00:40:03,634 --> 00:40:04,395
+It goes into the
+
+803
+00:40:04,395 --> 00:40:07,240
+test.FindChainSourceCode file, picks up
+
+804
+00:40:07,240 --> 00:40:10,165
+these test definitions and executes them.
+
+805
+00:40:10,165 --> 00:40:12,429
+So one test was executed and
+
+806
+00:40:12,429 --> 00:40:14,472
+that one test passed.
+
+807
+00:40:22,185 --> 00:40:25,390
+So now we will enable automated testing.
+
+808
+00:40:26,467 --> 00:40:30,072
+So I will now go, as you
+
+809
+00:40:30,072 --> 00:40:32,615
+can see, there are tabs here for
+
+810
+00:40:32,615 --> 00:40:35,339
+how to do that on various platforms.
+
+811
+00:40:35,339 --> 00:40:39,284
+So also for GitLab and for, yeah,
+
+812
+00:40:39,284 --> 00:40:40,586
+and for GitHub and for
+
+813
+00:40:40,586 --> 00:40:46,313
+R. The most straightforward thing is
+
+814
+00:40:46,313 --> 00:40:47,975
+to use the GUI.
+
+815
+00:40:47,975 --> 00:40:50,339
+So what I'll do when I go
+
+816
+00:40:50,339 --> 00:40:51,360
+to my GitHub page is to
+
+817
+00:40:51,360 --> 00:40:53,723
+click this Python applications button.
+
+818
+00:40:59,272 --> 00:41:00,534
+So I'll do that.
+
+819
+00:41:09,171 --> 00:41:09,972
+Go to actions.
+
+820
+00:41:15,443 --> 00:41:16,665
+Scroll down a bit and
+
+821
+00:41:16,665 --> 00:41:19,390
+then press the configure button.
+
+822
+00:41:27,807 --> 00:41:31,091
+Now there are a few things here that,
+
+823
+00:41:31,091 --> 00:41:31,932
+yeah, as you can see here,
+
+824
+00:41:31,932 --> 00:41:34,955
+what is coming up here as
+
+825
+00:41:34,955 --> 00:41:40,001
+a template is this within the.GitHub
+
+826
+00:41:40,001 --> 00:41:42,103
+and workflows directory is
+
+827
+00:41:42,103 --> 00:41:44,406
+then templated here, a YAML
+
+828
+00:41:44,406 --> 00:41:46,027
+file, Python dash app.
+
+829
+00:41:50,012 --> 00:41:51,013
+In the lesson material,
+
+830
+00:41:53,592 --> 00:41:59,360
+we have some stuff that we
+
+831
+00:41:59,360 --> 00:42:00,601
+would like to add in here.
+
+832
+00:42:01,543 --> 00:42:06,189
+So I will copy in those lines of code from,
+
+833
+00:42:06,189 --> 00:42:08,192
+I do it from another window,
+
+834
+00:42:08,192 --> 00:42:09,654
+not shown here on the stream.
+
+835
+00:42:12,978 --> 00:42:17,364
+So I will here put
+
+836
+00:42:17,364 --> 00:42:20,769
+these permissions here, contents read,
+
+837
+00:42:20,769 --> 00:42:23,312
+and I add a line here, pulled.
+
+838
+00:42:24,676 --> 00:42:30,884
+Request.
+
+839
+00:42:30,884 --> 00:42:34,068
+Write.
+
+840
+00:42:34,068 --> 00:42:36,412
+So what this YAML file is about is
+
+841
+00:42:36,412 --> 00:42:44,743
+that it's in a, yeah,
+
+842
+00:42:45,864 --> 00:42:50,050
+within this YAML format, it
+
+843
+00:42:50,050 --> 00:42:52,253
+is a specification on what actions
+
+844
+00:42:52,253 --> 00:42:54,075
+that are to be run automatically.
+
+845
+00:42:56,030 --> 00:42:58,113
+Another thing we need to add
+
+846
+00:42:58,113 --> 00:43:01,158
+is we would like to augment here.
+
+847
+00:43:01,158 --> 00:43:07,327
+So after this pip
+
+848
+00:43:07,327 --> 00:43:11,232
+install flake8-pytest, we'll also
+
+849
+00:43:11,232 --> 00:43:17,802
+then add pytest-coverage.cout.
+
+850
+00:43:20,127 --> 00:43:21,849
+And I think there was
+
+851
+00:43:21,849 --> 00:43:23,351
+earlier a question about how
+
+852
+00:43:23,351 --> 00:43:25,634
+to measure coverage and this is a
+
+853
+00:43:25,634 --> 00:43:27,136
+way to do it automatically.
+
+854
+00:43:27,136 --> 00:43:29,159
+There's existing tools and you
+
+855
+00:43:29,159 --> 00:43:30,801
+don't need to worry about that yourself.
+
+856
+00:43:33,844 --> 00:43:34,646
+Yes.
+
+857
+00:43:35,467 --> 00:43:37,549
+That's right.
+
+858
+00:43:37,549 --> 00:43:40,573
+So there are these tools that
+
+859
+00:43:40,573 --> 00:43:42,355
+can do it for you.
+
+860
+00:43:48,063 --> 00:43:50,367
+But obviously it's also
+
+861
+00:43:50,367 --> 00:43:51,789
+good if you bring in also
+
+862
+00:43:51,789 --> 00:43:54,493
+your your own insights into what
+
+863
+00:43:54,493 --> 00:43:57,098
+things are the most important to test
+
+864
+00:43:57,098 --> 00:43:58,319
+because I think the the
+
+865
+00:43:58,319 --> 00:44:02,386
+coverage testing here is
+
+866
+00:44:03,928 --> 00:44:05,951
+simply keeping track of how
+
+867
+00:44:06,793 --> 00:44:09,196
+which lines of code are
+
+868
+00:44:09,196 --> 00:44:11,500
+being touched while executing the
+
+869
+00:44:11,500 --> 00:44:16,628
+tests so it's a metric with this
+
+870
+00:44:18,987 --> 00:44:20,849
+Yeah, it's simply telling you
+
+871
+00:44:20,849 --> 00:44:22,831
+in terms of lines of code
+
+872
+00:44:22,831 --> 00:44:24,933
+where you have been traversed
+
+873
+00:44:24,933 --> 00:44:27,076
+by using the runway test,
+
+874
+00:44:27,076 --> 00:44:29,759
+but doesn't say anything about
+
+875
+00:44:29,759 --> 00:44:33,162
+how, central or this
+
+876
+00:44:33,162 --> 00:44:34,564
+part of the code for the
+
+877
+00:44:34,564 --> 00:44:35,605
+functionality of the program.
+
+878
+00:44:38,889 --> 00:44:39,710
+Okay.
+
+879
+00:44:39,710 --> 00:44:41,211
+Then I add here at the
+
+880
+00:44:41,211 --> 00:44:45,636
+end, this coverage report thingy and
+
+881
+00:44:47,877 --> 00:44:49,399
+Yes, I think we are done with that.
+
+882
+00:44:50,981 --> 00:44:52,663
+Now I, in order to see
+
+883
+00:44:52,663 --> 00:44:55,065
+the commit button here, I need
+
+884
+00:44:55,065 --> 00:44:58,309
+to just increase the size temporarily here.
+
+885
+00:45:00,652 --> 00:45:02,314
+Now you don't see it on stream,
+
+886
+00:45:02,314 --> 00:45:03,615
+but I commit the changes
+
+887
+00:45:05,337 --> 00:45:08,281
+with the default commit message
+
+888
+00:45:08,281 --> 00:45:10,223
+and I commit directly to the main branch.
+
+889
+00:45:16,379 --> 00:45:19,262
+So I now resize the window back.
+
+890
+00:45:24,408 --> 00:45:27,792
+And yeah, so what we see now is
+
+891
+00:45:27,792 --> 00:45:31,697
+that in the last commit message
+
+892
+00:45:31,697 --> 00:45:35,121
+is that we created this Python-app.yml file.
+
+893
+00:45:36,122 --> 00:45:40,026
+And here, this little status
+
+894
+00:45:41,308 --> 00:45:44,091
+symbol here, where it says that the tests are
+
+895
+00:45:46,231 --> 00:45:48,994
+or some action is pending
+
+896
+00:45:50,016 --> 00:45:53,520
+it's here just like red brownish color
+
+897
+00:45:53,520 --> 00:45:58,426
+and if we rephrase reload
+
+898
+00:45:58,426 --> 00:46:02,472
+the page let's see what happens ah okay
+
+899
+00:46:02,472 --> 00:46:06,076
+so here we have we have
+
+900
+00:46:06,076 --> 00:46:09,801
+a green little hook here and
+
+901
+00:46:10,662 --> 00:46:12,885
+yeah it tells us success here
+
+902
+00:46:12,885 --> 00:46:13,926
+that's a good thing
+
+903
+00:46:25,415 --> 00:46:28,480
+This was step four here
+
+904
+00:46:28,480 --> 00:46:30,362
+in the lesson material.
+
+905
+00:46:30,362 --> 00:46:31,484
+Verify that the tests
+
+906
+00:46:31,484 --> 00:46:32,526
+have automatically been run.
+
+907
+00:46:37,533 --> 00:46:40,137
+So now we will start with...
+
+908
+00:46:41,059 --> 00:46:43,402
+So now we have the base set up here.
+
+909
+00:46:44,965 --> 00:46:48,009
+And this last thing, we did
+
+910
+00:46:48,009 --> 00:46:50,693
+it on the GitHub instance
+
+911
+00:46:50,693 --> 00:46:51,895
+of the Git repository.
+
+912
+00:46:53,242 --> 00:46:55,205
+So we don't have it locally yet.
+
+913
+00:46:55,205 --> 00:47:00,993
+So I go to my terminal and I type git pull.
+
+914
+00:47:05,219 --> 00:47:10,186
+So now, yeah, this Python-app.yaml
+
+915
+00:47:10,186 --> 00:47:12,269
+file was then pulled in here.
+
+916
+00:47:12,269 --> 00:47:13,591
+So now we have it here also.
+
+917
+00:47:18,238 --> 00:47:18,979
+So...
+
+918
+00:47:20,647 --> 00:47:22,910
+We will now look into
+
+919
+00:47:22,910 --> 00:47:27,577
+this test underscore functions file.
+
+920
+00:47:27,577 --> 00:47:36,029
+So we already had, so here, yeah,
+
+921
+00:47:36,029 --> 00:47:38,793
+I removed the, the, the
+
+922
+00:47:38,793 --> 00:47:41,256
+Python highlighting app is to
+
+923
+00:47:41,256 --> 00:47:43,159
+have more clear colors on the, on the screen.
+
+924
+00:47:48,102 --> 00:47:49,885
+There is here definitions
+
+925
+00:47:51,006 --> 00:47:52,088
+for further tests.
+
+926
+00:47:52,088 --> 00:47:55,593
+So now for a start, we
+
+927
+00:47:55,593 --> 00:47:57,816
+remove the comments here so that
+
+928
+00:47:57,816 --> 00:47:59,178
+you have a test definition
+
+929
+00:47:59,178 --> 00:48:02,502
+also to test subtraction.
+
+930
+00:48:04,665 --> 00:48:05,266
+We save this.
+
+931
+00:48:08,671 --> 00:48:11,976
+And git status.
+
+932
+00:48:11,976 --> 00:48:13,097
+Yeah, we have changed this file.
+
+933
+00:48:14,740 --> 00:48:16,422
+We add it.
+
+934
+00:48:18,646 --> 00:48:21,951
+And then write in the
+
+935
+00:48:21,951 --> 00:48:27,681
+commit message, added test or subtraction.
+
+936
+00:48:31,327 --> 00:48:31,647
+Save.
+
+937
+00:48:33,110 --> 00:48:33,490
+Push.
+
+938
+00:48:37,817 --> 00:48:40,061
+Then let's go to the GitHub page.
+
+939
+00:48:43,667 --> 00:48:44,468
+Reload.
+
+940
+00:48:47,553 --> 00:48:51,397
+So latest commit added test of subtraction.
+
+941
+00:48:54,040 --> 00:48:55,202
+It's pending.
+
+942
+00:48:59,627 --> 00:49:01,449
+And yeah, this, this one
+
+943
+00:49:01,449 --> 00:49:05,393
+should be fast, but yeah.
+
+944
+00:49:05,393 --> 00:49:05,754
+Okay.
+
+945
+00:49:05,754 --> 00:49:06,194
+Now it's wrong.
+
+946
+00:49:08,156 --> 00:49:09,077
+And now we can see it.
+
+947
+00:49:09,077 --> 00:49:12,261
+There's a, it's a red X here.
+
+948
+00:49:14,047 --> 00:49:16,409
+So press that one.
+
+949
+00:49:16,409 --> 00:49:18,571
+And yeah, all tests have failed.
+
+950
+00:49:20,253 --> 00:49:21,214
+Click details.
+
+951
+00:49:24,677 --> 00:49:25,318
+And here you can see.
+
+952
+00:49:26,219 --> 00:49:33,366
+So we have, yeah, the
+
+953
+00:49:33,366 --> 00:49:40,473
+assertion was that the test would yield
+
+954
+00:49:40,473 --> 00:49:43,137
+that it would return minus one.
+
+955
+00:49:43,137 --> 00:49:45,080
+However, we obtained five.
+
+956
+00:49:45,080 --> 00:49:47,064
+So it was therefore not fulfilled.
+
+957
+00:49:48,466 --> 00:49:48,786
+Okay.
+
+958
+00:49:50,249 --> 00:49:51,491
+We could have obtained that
+
+959
+00:49:51,491 --> 00:49:53,574
+also locally with PyChess, but now
+
+960
+00:49:53,574 --> 00:49:54,816
+we did it here on GitHub.
+
+961
+00:49:56,999 --> 00:49:59,664
+So go back here to the
+
+962
+00:49:59,664 --> 00:50:02,067
+main page for the repo on GitHub,
+
+963
+00:50:02,067 --> 00:50:04,571
+and then go to issues.
+
+964
+00:50:06,254 --> 00:50:07,476
+Then create a new issue.
+
+965
+00:50:10,763 --> 00:50:16,730
+And right then, subtraction is
+
+966
+00:50:16,730 --> 00:50:19,192
+not working properly.
+
+967
+00:50:23,737 --> 00:50:25,139
+And then I create it.
+
+968
+00:50:30,685 --> 00:50:31,606
+OK.
+
+969
+00:50:31,606 --> 00:50:34,729
+So in this case, I think
+
+970
+00:50:34,729 --> 00:50:36,451
+I already spotted in the code
+
+971
+00:50:36,451 --> 00:50:38,273
+where it goes wrong.
+
+972
+00:50:39,147 --> 00:50:43,273
+Let's presume now that I'm stuck here.
+
+973
+00:50:43,273 --> 00:50:44,715
+I need help from someone
+
+974
+00:50:44,715 --> 00:50:46,337
+and I've spotted the error and
+
+975
+00:50:47,399 --> 00:50:48,981
+I reported it as an issue.
+
+976
+00:50:48,981 --> 00:50:50,643
+And now, yeah, my colleague
+
+977
+00:50:50,643 --> 00:50:53,948
+[name] will see what he could do about it.
+
+978
+00:50:55,910 --> 00:50:57,413
+[name], could you switch to my screen?
+
+979
+00:51:00,957 --> 00:51:01,779
+Thank you.
+
+980
+00:51:01,779 --> 00:51:05,644
+Well, that's not quite right, I think.
+
+981
+00:51:10,096 --> 00:51:11,298
+Yeah, there you go.
+
+982
+00:51:11,298 --> 00:51:15,626
+So I just, I forked the repository.
+
+983
+00:51:15,626 --> 00:51:18,230
+I should sync it.
+
+984
+00:51:18,230 --> 00:51:19,052
+I'm probably a little bit
+
+985
+00:51:19,052 --> 00:51:20,514
+behind because I did it earlier.
+
+986
+00:51:20,514 --> 00:51:21,236
+So let's do that.
+
+987
+00:51:22,818 --> 00:51:26,986
+And here we go.
+
+988
+00:51:26,986 --> 00:51:35,040
+And then I, well, I also already, so
+
+989
+00:51:39,307 --> 00:51:40,569
+OK, so now I have
+
+990
+00:51:40,569 --> 00:51:45,135
+everything locally that [name] has.
+
+991
+00:51:45,135 --> 00:51:47,559
+Let's run the tests again locally.
+
+992
+00:51:48,480 --> 00:51:49,782
+Of course, one should, of
+
+993
+00:51:49,782 --> 00:51:53,567
+course, do that as well.
+
+994
+00:51:59,055 --> 00:52:00,237
+Let's check now again.
+
+995
+00:52:01,619 --> 00:52:03,582
+Oh, yeah, so we see tests have failed.
+
+996
+00:52:04,904 --> 00:52:06,546
+Why might that be?
+
+997
+00:52:07,994 --> 00:52:10,457
+And I can look at the test.
+
+998
+00:52:11,999 --> 00:52:13,682
+So I can see the test makes sense.
+
+999
+00:52:14,523 --> 00:52:16,926
+2 minus 3 should indeed be minus 1.
+
+1000
+00:52:17,967 --> 00:52:21,893
+Then look at the code that
+
+1001
+00:52:21,893 --> 00:52:22,974
+is being run,.
+
+1002
+00:52:24,296 --> 00:52:24,817
+Subtract.
+
+1003
+00:52:24,817 --> 00:52:27,921
+So, oh, this is a plus 2.
+
+1004
+00:52:27,921 --> 00:52:30,104
+I found the mistake.
+
+1005
+00:52:32,868 --> 00:52:36,853
+So I've
+
+1006
+00:52:38,605 --> 00:52:39,627
+made a change.
+
+1007
+00:52:39,627 --> 00:52:43,213
+So let's run the test again.
+
+1008
+00:52:43,213 --> 00:52:44,696
+And now it passes.
+
+1009
+00:52:45,978 --> 00:52:46,299
+Hooray.
+
+1010
+00:52:46,299 --> 00:52:56,517
+Then let's add our change and commit.
+
+1011
+00:52:56,517 --> 00:52:57,399
+Now, what should I write
+
+1012
+00:52:57,399 --> 00:52:59,803
+as a commit message here?
+
+1013
+00:53:00,728 --> 00:53:03,393
+It's a moment here.
+
+1014
+00:53:03,393 --> 00:53:05,837
+So now, which branch are you
+
+1015
+00:53:05,837 --> 00:53:06,558
+in for the moment?
+
+1016
+00:53:07,600 --> 00:53:09,003
+So I'm, I believe, still
+
+1017
+00:53:09,003 --> 00:53:10,405
+in the main branch.
+
+1018
+00:53:10,405 --> 00:53:11,047
+Yeah.
+
+1019
+00:53:11,047 --> 00:53:14,733
+But I am... Yeah,
+
+1020
+00:53:14,733 --> 00:53:16,917
+I could have made a branch for that fix.
+
+1021
+00:53:16,917 --> 00:53:18,600
+But I am on my own fork.
+
+1022
+00:53:18,600 --> 00:53:20,243
+So I'm not on... Yes.
+
+1023
+00:53:20,243 --> 00:53:20,924
+Yeah, yeah.
+
+1024
+00:53:20,924 --> 00:53:21,846
+Right, right.
+
+1025
+00:53:21,846 --> 00:53:22,367
+Yes.
+
+1026
+00:53:22,367 --> 00:53:22,447
+Yeah.
+
+1027
+00:53:22,447 --> 00:53:24,113
+So I could not directly
+
+1028
+00:53:24,113 --> 00:53:26,561
+commit to [name]'s repository.
+
+1029
+00:53:26,561 --> 00:53:29,611
+But since it's my own copy of it, I can.
+
+1030
+00:53:31,638 --> 00:53:31,798
+Yeah.
+
+1031
+00:53:32,960 --> 00:53:36,805
+So, well, I'm about to do
+
+1032
+00:53:36,805 --> 00:53:37,806
+that, but first I would need
+
+1033
+00:53:37,806 --> 00:53:38,687
+to commit my changes.
+
+1034
+00:53:40,669 --> 00:53:45,515
+So, yeah, fixed subtraction,.
+
+1035
+00:53:47,597 --> 00:53:49,560
+Should I write something about
+
+1036
+00:53:49,560 --> 00:53:50,761
+that I fixed an issue or
+
+1037
+00:53:50,761 --> 00:53:52,884
+should I put that in the pull request message?
+
+1038
+00:53:55,927 --> 00:53:57,509
+So, here you tested
+
+1039
+00:53:57,509 --> 00:53:59,732
+it locally and you saw that it worked.
+
+1040
+00:54:00,813 --> 00:54:02,896
+So then I'd say,
+
+1041
+00:54:02,896 --> 00:54:04,298
+you could go ahead now
+
+1042
+00:54:04,298 --> 00:54:08,265
+and write then with the,
+
+1043
+00:54:10,949 --> 00:54:13,393
+yeah, with the square, square
+
+1044
+00:54:13,393 --> 00:54:17,680
+symbol fixes and then number
+
+1045
+00:54:17,680 --> 00:54:19,663
+one, because it was issue number one.
+
+1046
+00:54:20,585 --> 00:54:20,986
+Okay.
+
+1047
+00:54:20,986 --> 00:54:25,473
+the most important one all right yeah
+
+1048
+00:54:25,473 --> 00:54:29,740
+so yeah so this fixes or closes
+
+1049
+00:54:29,740 --> 00:54:32,204
+or close and then probably
+
+1050
+00:54:32,204 --> 00:54:34,428
+an hour issue we'll do some
+
+1051
+00:54:34,428 --> 00:54:36,531
+magic then on GitHub
+
+1052
+00:54:37,355 --> 00:54:39,819
+let's switch to back to GitHub
+
+1053
+00:54:39,819 --> 00:54:40,780
+and we can see here
+
+1054
+00:54:42,483 --> 00:54:43,825
+when I cloned the when i
+
+1055
+00:54:43,825 --> 00:54:46,829
+forked the repository it also copied
+
+1056
+00:54:46,829 --> 00:54:48,532
+for example all of those GitHub actions
+
+1057
+00:54:48,532 --> 00:54:49,613
+so you don't need to
+
+1058
+00:54:49,613 --> 00:54:52,217
+reset them just because
+
+1059
+00:54:52,217 --> 00:54:53,259
+you've walked something and they
+
+1060
+00:54:53,259 --> 00:54:55,542
+are they come with your fork
+
+1061
+00:54:58,006 --> 00:54:59,909
+yeah because those that the ml
+
+1062
+00:54:59,909 --> 00:55:02,653
+file is included in the GitHub
+
+1063
+00:55:04,473 --> 00:55:04,653
+Yeah.
+
+1064
+00:55:04,653 --> 00:55:06,896
+And so you can also see the nice thing is,
+
+1065
+00:55:06,896 --> 00:55:08,177
+well, I wouldn't have had
+
+1066
+00:55:08,177 --> 00:55:10,279
+to remember to locally test anything.
+
+1067
+00:55:10,279 --> 00:55:12,402
+If I push it, it gets tested automatically.
+
+1068
+00:55:12,402 --> 00:55:13,583
+You don't need to, you set it
+
+1069
+00:55:13,583 --> 00:55:15,265
+once and then you
+
+1070
+00:55:15,265 --> 00:55:16,927
+forget about it because then
+
+1071
+00:55:16,927 --> 00:55:17,848
+whenever a test fails, you
+
+1072
+00:55:17,848 --> 00:55:19,089
+would probably get an email from GitHub.
+
+1073
+00:55:20,190 --> 00:55:20,571
+Yes.
+
+1074
+00:55:20,571 --> 00:55:20,831
+Yeah.
+
+1075
+00:55:20,831 --> 00:55:21,432
+You're right.
+
+1076
+00:55:21,432 --> 00:55:28,239
+Yeah.
+
+1077
+00:55:28,239 --> 00:55:33,585
+So see, we can see success tests have,
+
+1078
+00:55:35,354 --> 00:55:35,975
+Completed.
+
+1079
+00:55:41,522 --> 00:55:43,705
+Yeah, it seems to look fine.
+
+1080
+00:55:43,705 --> 00:55:46,209
+And now I, of course, want
+
+1081
+00:55:46,209 --> 00:55:51,636
+to make a pull request to
+
+1082
+00:55:51,636 --> 00:55:58,946
+contribute back to the original repository.
+
+1083
+00:56:01,029 --> 00:56:01,670
+Where is that?
+
+1084
+00:56:01,670 --> 00:56:03,893
+Do I have to be taller?
+
+1085
+00:56:04,953 --> 00:56:07,337
+contribute open pull request.
+
+1086
+00:56:08,359 --> 00:56:10,423
+Sorry, you probably don't see that.
+
+1087
+00:56:10,423 --> 00:56:11,004
+Let's come back.
+
+1088
+00:56:16,434 --> 00:56:19,920
+this, yeah, we will
+
+1089
+00:56:19,920 --> 00:56:22,144
+just use the commit message as the title.
+
+1090
+00:56:22,144 --> 00:56:23,486
+I don't think we need anything further.
+
+1091
+00:56:23,486 --> 00:56:26,792
+And then yeah, we create the pull request.
+
+1092
+00:56:31,042 --> 00:56:32,845
+And yeah, let's switch back
+
+1093
+00:56:32,845 --> 00:56:35,009
+to [name]'s screen.
+
+1094
+00:56:47,650 --> 00:56:53,160
+So we now see the repo on my GitHub.
+
+1095
+00:56:53,160 --> 00:56:55,243
+And I press refresh.
+
+1096
+00:56:58,379 --> 00:57:01,624
+and okay it didn't throw up like
+
+1097
+00:57:01,624 --> 00:57:03,286
+that but with the color
+
+1098
+00:57:03,286 --> 00:57:05,429
+but I can see here yeah issues
+
+1099
+00:57:05,429 --> 00:57:07,713
+we have one still then here
+
+1100
+00:57:07,713 --> 00:57:11,058
+pull requests one I click here
+
+1101
+00:57:11,899 --> 00:57:13,862
+and yeah then i'll see it
+
+1102
+00:57:13,862 --> 00:57:16,205
+fix subtraction fixes error number
+
+1103
+00:57:16,205 --> 00:57:21,433
+one or issue number one and
+
+1104
+00:57:21,433 --> 00:57:27,762
+old but I say pound once yeah okay
+
+1105
+00:57:32,905 --> 00:57:35,929
+prove the workflows to run like this.
+
+1106
+00:57:38,933 --> 00:57:44,059
+so they you see here,
+
+1107
+00:57:44,059 --> 00:57:44,820
+there, there, there are a
+
+1108
+00:57:44,820 --> 00:57:46,081
+few tests being run here.
+
+1109
+00:57:46,081 --> 00:57:48,184
+So, what's running here,
+
+1110
+00:57:48,184 --> 00:57:49,946
+but that's the, the spice test
+
+1111
+00:57:49,946 --> 00:57:51,468
+stuff that was, that we had
+
+1112
+00:57:51,468 --> 00:57:52,870
+set up with the actions.
+
+1113
+00:57:54,332 --> 00:57:59,318
+then here, Oh,
+
+1114
+00:58:00,547 --> 00:58:01,969
+What happened there?
+
+1115
+00:58:01,969 --> 00:58:02,990
+What happened there?
+
+1116
+00:58:02,990 --> 00:58:17,545
+Okay.
+
+1117
+00:58:21,450 --> 00:58:23,652
+Well, if you look on this part here,
+
+1118
+00:58:24,644 --> 00:58:26,787
+So the test case for
+
+1119
+00:58:26,787 --> 00:58:29,991
+addition and subtraction, each
+
+1120
+00:58:29,991 --> 00:58:32,454
+of these passed.
+
+1121
+00:58:32,454 --> 00:58:34,277
+So that thing is fine.
+
+1122
+00:58:35,078 --> 00:58:37,501
+But now here's for the Calvert thing.
+
+1123
+00:58:46,873 --> 00:58:48,475
+Something is not working here.
+
+1124
+00:58:56,032 --> 00:58:59,958
+Then I don't know what we are missing.
+
+1125
+00:59:03,282 --> 00:59:04,865
+Yeah, if you spot something,
+
+1126
+00:59:04,865 --> 00:59:07,869
+you're very welcome to write
+
+1127
+00:59:07,869 --> 00:59:08,890
+in the shared document.
+
+1128
+00:59:15,460 --> 00:59:21,128
+But so the coverage report...
+
+1129
+00:59:27,267 --> 00:59:28,929
+Well, at least there are no conflicts.
+
+1130
+00:59:28,929 --> 00:59:29,570
+That's good news.
+
+1131
+00:59:38,923 --> 00:59:40,506
+Yeah, there was some
+
+1132
+00:59:40,506 --> 00:59:45,372
+typo when I added it in the Jaml file.
+
+1133
+00:59:50,600 --> 00:59:52,262
+I think that...
+
+1134
+00:59:54,149 --> 00:59:55,150
+I think right now is not
+
+1135
+00:59:55,150 --> 00:59:56,512
+the time to error check for
+
+1136
+00:59:56,512 --> 00:59:58,355
+where it goes wrong, but I
+
+1137
+00:59:58,355 --> 01:00:00,457
+would presume it was in the YAML file.
+
+1138
+01:00:00,457 --> 01:00:02,861
+But we can observe here that
+
+1139
+01:00:02,861 --> 01:00:05,905
+we have no conflicts with the base bronze.
+
+1140
+01:00:07,507 --> 01:00:13,174
+And therefore, I feel, so to
+
+1141
+01:00:13,174 --> 01:00:15,738
+say, happy to merge this.
+
+1142
+01:00:17,420 --> 01:00:19,082
+Confirm the merge, and then
+
+1143
+01:00:19,082 --> 01:00:19,903
+the code is merged.
+
+1144
+01:00:25,621 --> 01:00:27,424
+And now refreshing here, we can see
+
+1145
+01:00:27,424 --> 01:00:28,926
+that both the issue and
+
+1146
+01:00:28,926 --> 01:00:30,488
+the pull requests are,
+
+1147
+01:00:30,488 --> 01:00:31,830
+we don't have any open on these.
+
+1148
+01:00:33,052 --> 01:00:37,979
+And I say, what happened now,
+
+1149
+01:00:37,979 --> 01:00:38,900
+okay, we don't know specifically
+
+1150
+01:00:38,900 --> 01:00:39,962
+what went wrong here with
+
+1151
+01:00:39,962 --> 01:00:41,764
+the coverage thingy, but I
+
+1152
+01:00:41,764 --> 01:00:43,547
+say that something like this
+
+1153
+01:00:43,547 --> 01:00:47,613
+is happening not so seldom, I would say.
+
+1154
+01:00:47,613 --> 01:00:48,414
+In the sense, you have
+
+1155
+01:00:48,414 --> 01:00:51,218
+the testing in place, but you
+
+1156
+01:00:51,218 --> 01:00:54,042
+don't have clean termination of everything.
+
+1157
+01:00:55,709 --> 01:00:59,795
+and yeah I do think of course
+
+1158
+01:00:59,795 --> 01:01:00,896
+if you have clean termination
+
+1159
+01:01:00,896 --> 01:01:02,258
+of all the tests but if
+
+1160
+01:01:02,258 --> 01:01:04,281
+something happens like this here
+
+1161
+01:01:04,281 --> 01:01:05,863
+then yeah perhaps you
+
+1162
+01:01:05,863 --> 01:01:07,165
+could nevertheless go ahead and merge
+
+1163
+01:01:08,226 --> 01:01:08,947
+as long as what
+
+1164
+01:01:08,947 --> 01:01:10,890
+you're doing and then you might
+
+1165
+01:01:10,890 --> 01:01:16,738
+then get back to it and then next day
+
+1166
+01:01:17,900 --> 01:01:22,226
+great we could perhaps we
+
+1167
+01:01:22,226 --> 01:01:24,068
+will have a break shortly and
+
+1168
+01:01:24,068 --> 01:01:26,191
+and perhaps then then we could revisit
+
+1169
+01:01:27,132 --> 01:01:28,955
+what happened and and get back
+
+1170
+01:01:28,955 --> 01:01:32,459
+to you on that point later
+
+1171
+01:01:32,459 --> 01:01:34,382
+but now it's high time that
+
+1172
+01:01:34,382 --> 01:01:37,866
+we will have the break and
+
+1173
+01:01:40,190 --> 01:01:43,364
+it's let's see how much time
+
+1174
+01:01:43,364 --> 01:01:45,247
+I think originally it was 10 minutes.
+
+1175
+01:01:45,247 --> 01:01:45,648
+Yes.
+
+1176
+01:01:45,648 --> 01:01:47,070
+So let's go for that.
+
+1177
+01:01:47,070 --> 01:01:50,376
+It's now 28 past the full hour.
+
+1178
+01:01:50,376 --> 01:01:51,819
+So then let's reconvene at
+
+1179
+01:01:51,819 --> 01:01:55,345
+38 after the full hour.
+
+1180
+01:01:56,000 --> 01:02:04,041
+Welcome back after the break.
+
+1181
+01:02:06,405 --> 01:02:10,912
+So right before we went into the break,
+
+1182
+01:02:10,912 --> 01:02:13,537
+we noticed that this automated
+
+1183
+01:02:13,537 --> 01:02:17,864
+test for my Gitria, that it failed.
+
+1184
+01:02:18,873 --> 01:02:21,657
+Turned out that just refreshing
+
+1185
+01:02:21,657 --> 01:02:25,161
+the web page and to look on
+
+1186
+01:02:25,161 --> 01:02:27,244
+the test being run then after
+
+1187
+01:02:27,244 --> 01:02:28,085
+the merge of the code,
+
+1188
+01:02:29,587 --> 01:02:32,431
+then everything was smooth.
+
+1189
+01:02:32,431 --> 01:02:34,053
+So what might have happened is simply
+
+1190
+01:02:34,053 --> 01:02:36,837
+that it failed on this
+
+1191
+01:02:36,837 --> 01:02:38,419
+particular instance when it ran
+
+1192
+01:02:38,419 --> 01:02:40,822
+the tests at first.
+
+1193
+01:02:40,822 --> 01:02:42,965
+And it can be good to be
+
+1194
+01:02:42,965 --> 01:02:47,952
+aware of that this can happen.
+
+1195
+01:02:49,586 --> 01:02:51,369
+so with that I think we
+
+1196
+01:02:51,369 --> 01:02:54,354
+can conclude the part on automated testing
+
+1197
+01:02:54,354 --> 01:02:58,761
+and we will now move into test design
+
+1198
+01:02:58,761 --> 01:03:04,269
+so [name] please go ahead yeah
+
+1199
+01:03:04,269 --> 01:03:06,273
+so this comes also with
+
+1200
+01:03:06,273 --> 01:03:09,017
+an exercise that's which you
+
+1201
+01:03:09,017 --> 01:03:11,140
+will also spend at least
+
+1202
+01:03:11,140 --> 01:03:16,569
+well say 20 minutes with it's mostly about
+
+1203
+01:03:16,569 --> 01:03:19,192
+So different types, like
+
+1204
+01:03:19,192 --> 01:03:20,012
+different scenarios.
+
+1205
+01:03:20,953 --> 01:03:22,315
+There are different kinds of functions
+
+1206
+01:03:22,315 --> 01:03:25,338
+and classes or general code
+
+1207
+01:03:25,338 --> 01:03:26,178
+that you might want to test.
+
+1208
+01:03:28,060 --> 01:03:31,344
+And yeah, we have in
+
+1209
+01:03:31,344 --> 01:03:33,646
+total 10 different scenarios that
+
+1210
+01:03:33,646 --> 01:03:35,107
+you can look at.
+
+1211
+01:03:35,107 --> 01:03:37,249
+The first five or so are
+
+1212
+01:03:38,991 --> 01:03:41,113
+on the simpler side.
+
+1213
+01:03:41,113 --> 01:03:45,037
+And the later ones are a bit more complex.
+
+1214
+01:03:45,037 --> 01:03:46,399
+So I would recommend during
+
+1215
+01:03:46,399 --> 01:03:49,383
+the exercise that you start with
+
+1216
+01:03:49,383 --> 01:03:50,745
+a simple one and then
+
+1217
+01:03:52,187 --> 01:03:53,670
+go into the more complex ones
+
+1218
+01:03:53,670 --> 01:03:54,851
+when you've done a simpler one.
+
+1219
+01:03:56,814 --> 01:03:58,577
+Yeah, so there are, I
+
+1220
+01:03:58,577 --> 01:04:00,079
+won't go through all of
+
+1221
+01:04:00,079 --> 01:04:04,485
+the ones, but yeah.
+
+1222
+01:04:04,485 --> 01:04:06,829
+So the first one is just simple.
+
+1223
+01:04:06,829 --> 01:04:09,813
+Number comes in, number goes out.
+
+1224
+01:04:11,379 --> 01:04:14,145
+with a mathematical function, essentially.
+
+1225
+01:04:14,145 --> 01:04:15,950
+Then the second one would
+
+1226
+01:04:15,950 --> 01:04:21,963
+be like on strings and a number.
+
+1227
+01:04:21,963 --> 01:04:23,908
+So for example, counting words,
+
+1228
+01:04:23,908 --> 01:04:25,592
+then you have files.
+
+1229
+01:04:25,592 --> 01:04:26,975
+So files are always interesting.
+
+1230
+01:04:28,372 --> 01:04:29,854
+Then we have, I believe,
+
+1231
+01:04:29,854 --> 01:04:31,816
+random, oh, no, this is external dependency.
+
+1232
+01:04:31,816 --> 01:04:33,118
+So this is for something
+
+1233
+01:04:33,118 --> 01:04:36,482
+when you imagine the code
+
+1234
+01:04:36,482 --> 01:04:38,364
+that you're writing interfaces with
+
+1235
+01:04:38,364 --> 01:04:39,986
+some hardware, for
+
+1236
+01:04:39,986 --> 01:04:41,608
+example, a sensor that is
+
+1237
+01:04:41,608 --> 01:04:44,191
+not present necessarily while you're testing.
+
+1238
+01:04:44,191 --> 01:04:45,893
+So you'd have to find some
+
+1239
+01:04:45,893 --> 01:04:47,475
+way around still testing your
+
+1240
+01:04:47,475 --> 01:04:49,257
+software or your code, even
+
+1241
+01:04:49,257 --> 01:04:51,440
+when that hardware is not present.
+
+1242
+01:04:51,440 --> 01:04:55,005
+Then you have something mutable,
+
+1243
+01:04:55,005 --> 01:04:58,389
+so you can have side effects
+
+1244
+01:04:58,389 --> 01:04:59,691
+and you have to make
+
+1245
+01:04:59,691 --> 01:05:03,035
+sure everything still works as expected.
+
+1246
+01:05:04,017 --> 01:05:09,164
+Then the more complex ones start.
+
+1247
+01:05:09,164 --> 01:05:10,525
+I won't go through all of them,
+
+1248
+01:05:10,525 --> 01:05:11,947
+but there's also some random
+
+1249
+01:05:11,947 --> 01:05:13,770
+numbers and some more interesting
+
+1250
+01:05:13,770 --> 01:05:14,711
+things to explore.
+
+1251
+01:05:14,711 --> 01:05:16,714
+And yeah, if you have
+
+1252
+01:05:16,714 --> 01:05:19,258
+any questions, then just reach
+
+1253
+01:05:19,258 --> 01:05:21,302
+out in the collaborative document.
+
+1254
+01:05:21,302 --> 01:05:23,706
+And I'd say then, yeah,
+
+1255
+01:05:23,706 --> 01:05:25,128
+start with the exercises.
+
+1256
+01:05:25,128 --> 01:05:27,472
+You have 20 minutes from now.
+
+1257
+01:05:27,472 --> 01:05:30,557
+And yeah, so it's 42 past
+
+1258
+01:05:30,557 --> 01:05:31,358
+the full hour now.
+
+1259
+01:05:31,358 --> 01:05:33,883
+So we'll see you two past
+
+1260
+01:05:34,764 --> 01:05:36,006
+the next full hour.
+
+1261
+01:05:38,150 --> 01:05:38,911
+Have fun.
+
+1262
+01:05:38,911 --> 01:05:39,031
+Bye.
+
+1263
+01:05:40,000 --> 01:05:40,108
+Yeah, thanks.
+
+1264
+01:05:40,108 --> 01:05:41,670
+Yeah, welcome back.
+
+1265
+01:05:41,670 --> 01:05:44,413
+So, yeah, there were two questions.
+
+1266
+01:05:45,975 --> 01:05:47,117
+I think we'll get to them
+
+1267
+01:05:47,117 --> 01:05:47,918
+for the second one.
+
+1268
+01:05:48,739 --> 01:05:50,841
+Generally, well, the testing
+
+1269
+01:05:50,841 --> 01:05:52,563
+frameworks provide facilities for
+
+1270
+01:05:52,563 --> 01:05:54,206
+that usually, but you can,
+
+1271
+01:05:54,206 --> 01:05:55,647
+in Python at least, also
+
+1272
+01:05:55,647 --> 01:05:58,471
+just handle the exception that
+
+1273
+01:05:58,471 --> 01:06:00,574
+you're expecting and not any
+
+1274
+01:06:00,574 --> 01:06:01,755
+of the other ones.
+
+1275
+01:06:01,755 --> 01:06:02,376
+That would...
+
+1276
+01:06:02,376 --> 01:06:04,420
+At least should achieve that
+
+1277
+01:06:04,420 --> 01:06:06,204
+what you're looking for.
+
+1278
+01:06:06,204 --> 01:06:09,170
+But yeah, let's go on
+
+1279
+01:06:09,170 --> 01:06:10,552
+since we're already quite late.
+
+1280
+01:06:12,136 --> 01:06:16,304
+So next would be, we'll go back.
+
+1281
+01:06:16,304 --> 01:06:18,168
+So because for now, until
+
+1282
+01:06:18,168 --> 01:06:19,971
+now, we've mostly talked about
+
+1283
+01:06:19,971 --> 01:06:22,356
+Python and pytest.
+
+1284
+01:06:22,356 --> 01:06:25,320
+And we promised that we would
+
+1285
+01:06:25,320 --> 01:06:27,483
+also at least take a brief
+
+1286
+01:06:27,483 --> 01:06:30,447
+look at some other frameworks.
+
+1287
+01:06:30,447 --> 01:06:32,830
+So yeah, let's look at C++.
+
+1288
+01:06:32,830 --> 01:06:35,274
+And we'll be using Catch2.
+
+1289
+01:06:38,538 --> 01:06:41,803
+So yeah, we are going back
+
+1290
+01:06:41,803 --> 01:06:43,084
+to this example where we're trying
+
+1291
+01:06:43,084 --> 01:06:43,906
+to add two numbers.
+
+1292
+01:06:44,727 --> 01:06:51,536
+And yeah, let's look at how that works.
+
+1293
+01:06:52,815 --> 01:07:02,833
+Right.
+
+1294
+01:07:03,635 --> 01:07:07,061
+So I have this minimal example.
+
+1295
+01:07:10,753 --> 01:07:15,498
+The example is, yeah, you can,
+
+1296
+01:07:16,780 --> 01:07:18,762
+I won't type it out again, but
+
+1297
+01:07:18,762 --> 01:07:22,286
+so we need to include these
+
+1298
+01:07:22,286 --> 01:07:26,171
+macros that Catch2 provides, so.
+
+1299
+01:07:26,171 --> 01:07:30,716
+Then there is most of, so
+
+1300
+01:07:30,716 --> 01:07:32,758
+this here is the actual,
+
+1301
+01:07:32,758 --> 01:07:34,381
+function that we're implementing
+
+1302
+01:07:34,381 --> 01:07:38,749
+so it takes a number and
+
+1303
+01:07:38,749 --> 01:07:43,117
+a number could be yeah different things
+
+1304
+01:07:44,059 --> 01:07:47,225
+and then yeah the function name
+
+1305
+01:07:47,225 --> 01:07:50,190
+and we add them together like so
+
+1306
+01:07:50,190 --> 01:07:52,734
+And after that comes our test case.
+
+1307
+01:07:52,734 --> 01:07:55,599
+So we have this, well,
+
+1308
+01:07:55,599 --> 01:07:56,781
+here, the integer test.
+
+1309
+01:07:58,924 --> 01:08:02,911
+[name], you can
+
+1310
+01:08:02,911 --> 01:08:06,517
+explain what does this add in square brackets?
+
+1311
+01:08:06,517 --> 01:08:07,078
+What does that do?
+
+1312
+01:08:12,427 --> 01:08:13,869
+Yes, I think...
+
+1313
+01:08:17,292 --> 01:08:18,614
+Yeah, good question.
+
+1314
+01:08:18,614 --> 01:08:20,537
+I don't know if it's a label
+
+1315
+01:08:20,537 --> 01:08:21,719
+or if it's a keyword here.
+
+1316
+01:08:22,880 --> 01:08:33,896
+Yeah, so add this also here,
+
+1317
+01:08:33,896 --> 01:08:36,761
+the name of the function that we have defined.
+
+1318
+01:08:36,761 --> 01:08:39,104
+And then here in the test
+
+1319
+01:08:39,104 --> 01:08:43,451
+case, we have the int test.
+
+1320
+01:08:43,451 --> 01:08:44,993
+that's int for integer.
+
+1321
+01:08:46,295 --> 01:08:46,455
+Yeah.
+
+1322
+01:08:47,667 --> 01:08:50,131
+Yeah, but so test case, in any case,
+
+1323
+01:08:50,131 --> 01:08:52,495
+is a macro that is provided
+
+1324
+01:08:52,495 --> 01:08:54,298
+by this include statement.
+
+1325
+01:08:54,298 --> 01:08:58,846
+And this requires also, comes
+
+1326
+01:08:58,846 --> 01:09:01,831
+out of that include.
+
+1327
+01:09:01,831 --> 01:09:04,295
+And yeah, so whatever's in there
+
+1328
+01:09:04,295 --> 01:09:08,001
+is just a parameter to this macro.
+
+1329
+01:09:08,001 --> 01:09:10,585
+and in this require we
+
+1330
+01:09:10,585 --> 01:09:12,708
+then call our function with some parameters
+
+1331
+01:09:12,708 --> 01:09:14,531
+and it works very similar
+
+1332
+01:09:14,531 --> 01:09:15,893
+to this assert that you saw earlier
+
+1333
+01:09:15,893 --> 01:09:19,979
+in in pi test so
+
+1334
+01:09:19,979 --> 01:09:22,723
+that's that's our code and then
+
+1335
+01:09:22,723 --> 01:09:24,866
+catch two is very integrated
+
+1336
+01:09:24,866 --> 01:09:30,555
+with cmake so we're not
+
+1337
+01:09:30,555 --> 01:09:32,037
+sure how familiar you are with
+
+1338
+01:09:32,037 --> 01:09:34,461
+cmake i'm i'm not very familiar with it i
+
+1339
+01:09:34,461 --> 01:09:37,546
+tend to avoid those kinds of things.
+
+1340
+01:09:37,546 --> 01:09:38,407
+And in Python, you don't
+
+1341
+01:09:38,407 --> 01:09:39,268
+really need them usually.
+
+1342
+01:09:40,871 --> 01:09:43,715
+But yeah, so CMake is
+
+1343
+01:09:45,017 --> 01:09:45,938
+in the broadest terms,
+
+1344
+01:09:45,938 --> 01:09:48,422
+we could call it a build system.
+
+1345
+01:09:48,422 --> 01:09:51,266
+So you can use it, especially
+
+1346
+01:09:51,266 --> 01:09:54,711
+for compiled languages to build
+
+1347
+01:09:54,711 --> 01:09:58,677
+and build the binaries or
+
+1348
+01:09:58,677 --> 01:10:00,279
+Well, it's a bit more powerful
+
+1349
+01:10:00,279 --> 01:10:01,880
+than that, but you can sort
+
+1350
+01:10:01,880 --> 01:10:04,323
+of use it to take your
+
+1351
+01:10:04,323 --> 01:10:07,225
+code and generate something from it.
+
+1352
+01:10:07,225 --> 01:10:09,267
+And in our case, so most of the time,
+
+1353
+01:10:09,267 --> 01:10:10,629
+that's just compiling it to
+
+1354
+01:10:10,629 --> 01:10:12,230
+the binaries that you can then execute,
+
+1355
+01:10:12,230 --> 01:10:13,151
+but you can also use it
+
+1356
+01:10:13,151 --> 01:10:15,313
+when you're in conjunction with
+
+1357
+01:10:15,313 --> 01:10:19,878
+Catch2 to run tests, for example.
+
+1358
+01:10:19,878 --> 01:10:23,922
+And so this is how the...
+
+1359
+01:10:23,922 --> 01:10:26,766
+our CMakeLists file would look like.
+
+1360
+01:10:26,766 --> 01:10:27,927
+So this is the description
+
+1361
+01:10:27,927 --> 01:10:29,389
+of the project and what is
+
+1362
+01:10:30,230 --> 01:10:34,276
+supposed to happen when you, how
+
+1363
+01:10:34,276 --> 01:10:36,619
+you build it and whatever that means.
+
+1364
+01:10:36,619 --> 01:10:39,723
+So first is some preamble.
+
+1365
+01:10:41,004 --> 01:10:43,327
+And then what we're doing here
+
+1366
+01:10:43,327 --> 01:10:46,872
+is we tell CMake to download Catch2.
+
+1367
+01:10:46,872 --> 01:10:49,676
+And so you don't need to
+
+1368
+01:10:49,676 --> 01:10:51,659
+install it yourself first,
+
+1369
+01:10:51,659 --> 01:10:54,684
+which I have also done, but
+
+1370
+01:10:54,684 --> 01:10:56,346
+it's not strictly necessary
+
+1371
+01:10:56,346 --> 01:10:57,668
+because you can put
+
+1372
+01:10:57,668 --> 01:10:59,130
+that in there and then CMake
+
+1373
+01:10:59,130 --> 01:11:00,452
+will do that for you.
+
+1374
+01:11:02,435 --> 01:11:08,424
+Then we do, so this part
+
+1375
+01:11:08,424 --> 01:11:09,586
+down here, that is also
+
+1376
+01:11:09,586 --> 01:11:13,872
+basically provided or
+
+1377
+01:11:13,872 --> 01:11:15,515
+Catch tool understands this.
+
+1378
+01:11:16,476 --> 01:11:18,500
+So enable testing, then we
+
+1379
+01:11:18,500 --> 01:11:20,924
+add an executable, which, so
+
+1380
+01:11:20,924 --> 01:11:22,827
+this is example here.
+
+1381
+01:11:22,827 --> 01:11:23,689
+It will also tell that
+
+1382
+01:11:23,689 --> 01:11:25,953
+to compile that executable.
+
+1383
+01:11:25,953 --> 01:11:28,797
+And then example CPP is the
+
+1384
+01:11:28,797 --> 01:11:32,063
+source code for that executable.
+
+1385
+01:11:32,063 --> 01:11:33,906
+And then you have to
+
+1386
+01:11:34,808 --> 01:11:36,852
+link the libraries from catch to
+
+1387
+01:11:36,852 --> 01:11:39,176
+that you would need to run the tests
+
+1388
+01:11:39,176 --> 01:11:41,580
+and do all of the things
+
+1389
+01:11:41,580 --> 01:11:44,045
+that the testing that, for
+
+1390
+01:11:44,045 --> 01:11:45,227
+example, in the in the other
+
+1391
+01:11:45,227 --> 01:11:47,652
+scenario, or in the other lab
+
+1392
+01:11:47,652 --> 01:11:48,894
+for the other other language pi
+
+1393
+01:11:48,894 --> 01:11:51,739
+test would do and
+
+1394
+01:11:51,739 --> 01:11:54,124
+Yeah, then we would need it
+
+1395
+01:11:54,124 --> 01:11:59,796
+to catch to how it finds
+
+1396
+01:11:59,796 --> 01:12:00,718
+the test that we're running.
+
+1397
+01:12:00,718 --> 01:12:04,466
+So now, how does one run that?
+
+1398
+01:12:04,466 --> 01:12:09,377
+So you can see in the description here.
+
+1399
+01:12:10,622 --> 01:12:11,724
+You run the test, that's a
+
+1400
+01:12:11,724 --> 01:12:13,707
+little bit more complicated again.
+
+1401
+01:12:13,707 --> 01:12:15,229
+In Python, you just run pytest.
+
+1402
+01:12:18,113 --> 01:12:21,418
+For Catch2, you would need to run this.
+
+1403
+01:12:22,479 --> 01:12:23,621
+So, and again, I'm not
+
+1404
+01:12:23,621 --> 01:12:24,763
+too familiar with CMAC.
+
+1405
+01:12:24,763 --> 01:12:28,829
+So this will prepare
+
+1406
+01:12:28,829 --> 01:12:31,453
+all of the stuff that is
+
+1407
+01:12:31,453 --> 01:12:33,775
+just there for the testing.
+
+1408
+01:12:33,775 --> 01:12:34,958
+itself.
+
+1409
+01:12:34,958 --> 01:12:36,581
+And now in order to
+
+1410
+01:12:36,581 --> 01:12:41,612
+compile the actual executable
+
+1411
+01:12:41,612 --> 01:12:43,576
+binaries, so.
+
+1412
+01:12:44,799 --> 01:12:46,963
+And that takes already, I
+
+1413
+01:12:46,963 --> 01:12:48,106
+think, unbearably long.
+
+1414
+01:12:50,010 --> 01:12:51,332
+Why is that?
+
+1415
+01:12:51,332 --> 01:12:52,776
+Why does it take long time here?
+
+1416
+01:12:52,776 --> 01:12:54,970
+Because our code is very short.
+
+1417
+01:12:54,970 --> 01:12:58,975
+Yeah, well, I would suspect
+
+1418
+01:12:58,975 --> 01:13:00,937
+that our code is very short,
+
+1419
+01:13:00,937 --> 01:13:03,860
+but the Catch2 test, the Catch2
+
+1420
+01:13:03,860 --> 01:13:06,203
+code is not very short.
+
+1421
+01:13:06,203 --> 01:13:08,346
+It can do probably a lot
+
+1422
+01:13:08,346 --> 01:13:10,829
+more than we are currently asking of it.
+
+1423
+01:13:10,829 --> 01:13:12,671
+And yeah, it's
+
+1424
+01:13:12,671 --> 01:13:14,072
+more relatively complex.
+
+1425
+01:13:15,494 --> 01:13:16,615
+Yeah, yeah, exactly.
+
+1426
+01:13:16,615 --> 01:13:17,897
+No, so indeed.
+
+1427
+01:13:17,897 --> 01:13:18,898
+So here.
+
+1428
+01:13:18,898 --> 01:13:21,643
+as defined in this CMakeList.txt,
+
+1429
+01:13:22,484 --> 01:13:26,892
+we are fetching the Catch2 framework,
+
+1430
+01:13:27,814 --> 01:13:28,956
+which then is now then
+
+1431
+01:13:28,956 --> 01:13:31,139
+also built together with
+
+1432
+01:13:31,139 --> 01:13:33,083
+our specific application code.
+
+1433
+01:13:34,165 --> 01:13:35,287
+This is one workflow.
+
+1434
+01:13:35,287 --> 01:13:37,731
+One could also have
+
+1435
+01:13:37,731 --> 01:13:38,372
+you could have
+
+1436
+01:13:38,372 --> 01:13:40,876
+a standalone installation or catch
+
+1437
+01:13:40,876 --> 01:13:43,720
+two on your computer.
+
+1438
+01:13:43,720 --> 01:13:45,583
+And then instead of building
+
+1439
+01:13:45,583 --> 01:13:48,508
+it each time, you could then link to it.
+
+1440
+01:13:49,309 --> 01:13:51,873
+And I will include statements
+
+1441
+01:13:51,873 --> 01:13:54,036
+while you are building your specific code.
+
+1442
+01:13:54,838 --> 01:13:55,378
+Okay.
+
+1443
+01:13:55,378 --> 01:13:59,164
+So if I did it again, does it cache it?
+
+1444
+01:14:02,590 --> 01:14:02,810
+No.
+
+1445
+01:14:06,283 --> 01:14:08,090
+Yeah, well, if you would add it here,
+
+1446
+01:14:08,090 --> 01:14:13,128
+that example.cc source
+
+1447
+01:14:13,128 --> 01:14:15,236
+code file here, but everything
+
+1448
+01:14:15,236 --> 01:14:18,167
+else, including the fetched code for
+
+1449
+01:14:19,294 --> 01:14:22,420
+For the cats too, then,
+
+1450
+01:14:22,420 --> 01:14:23,682
+yeah, CMake will then figure out
+
+1451
+01:14:23,682 --> 01:14:25,806
+that it will need to recompile
+
+1452
+01:14:25,806 --> 01:14:26,908
+only the source code file
+
+1453
+01:14:26,908 --> 01:14:28,310
+that they have changed.
+
+1454
+01:14:28,310 --> 01:14:31,216
+So in that regard, it is cats.
+
+1455
+01:14:31,216 --> 01:14:32,799
+But still, this is just local
+
+1456
+01:14:33,780 --> 01:14:36,565
+fetch code to be used
+
+1457
+01:14:36,565 --> 01:14:38,028
+within this directory here.
+
+1458
+01:14:39,443 --> 01:14:41,249
+OK, so you can see I
+
+1459
+01:14:41,249 --> 01:14:42,212
+just made a trivial change
+
+1460
+01:14:42,212 --> 01:14:44,138
+that goes significantly faster.
+
+1461
+01:14:44,940 --> 01:14:46,184
+Yeah.
+
+1462
+01:14:46,184 --> 01:14:49,093
+OK, so we've built everything now.
+
+1463
+01:14:50,036 --> 01:14:52,926
+And we build it into the build directory.
+
+1464
+01:14:52,926 --> 01:14:56,455
+And so now we run it.
+
+1465
+01:14:56,455 --> 01:14:58,440
+And I believe that is the CTest command,
+
+1466
+01:14:58,440 --> 01:14:59,744
+which you can see that
+
+1467
+01:14:59,744 --> 01:15:01,047
+also goes relatively quickly.
+
+1468
+01:15:01,909 --> 01:15:06,241
+And yeah, one test passed.
+
+1469
+01:15:07,304 --> 01:15:09,770
+Hooray.
+
+1470
+01:15:10,746 --> 01:15:11,367
+Yeah.
+
+1471
+01:15:11,367 --> 01:15:14,251
+So, since we're already quite late,
+
+1472
+01:15:14,251 --> 01:15:15,973
+we had a more complex example
+
+1473
+01:15:15,973 --> 01:15:17,855
+for that as well, but I would suggest
+
+1474
+01:15:17,855 --> 01:15:21,400
+that we skip that and,
+
+1475
+01:15:21,400 --> 01:15:25,024
+move on to our next point
+
+1476
+01:15:25,024 --> 01:15:29,670
+in the agenda, which
+
+1477
+01:15:29,670 --> 01:15:31,573
+is some conclusions.
+
+1478
+01:15:33,836 --> 01:15:35,618
+yeah.
+
+1479
+01:15:38,910 --> 01:15:39,591
+What would you say?
+
+1480
+01:15:39,591 --> 01:15:43,358
+What's the main takeaway, [name]?
+
+1481
+01:15:47,385 --> 01:15:49,308
+So yeah, one main takeaway
+
+1482
+01:15:49,308 --> 01:15:54,978
+is that testing is good and it's important.
+
+1483
+01:15:56,089 --> 01:15:59,552
+Often there is a bit of
+
+1484
+01:15:59,552 --> 01:16:02,395
+a learning curve for these tools.
+
+1485
+01:16:02,395 --> 01:16:04,197
+So pytest, which are mainly
+
+1486
+01:16:04,197 --> 01:16:08,101
+used here, is rather smooth
+
+1487
+01:16:08,101 --> 01:16:08,922
+to get started with.
+
+1488
+01:16:09,923 --> 01:16:13,146
+For compiling with this, yeah,
+
+1489
+01:16:13,146 --> 01:16:16,289
+certainly it can be a bit more involved.
+
+1490
+01:16:16,289 --> 01:16:19,533
+So it's a little bit a
+
+1491
+01:16:19,533 --> 01:16:21,214
+question of mindset here that
+
+1492
+01:16:21,214 --> 01:16:24,037
+you simply need to...
+
+1493
+01:16:25,654 --> 01:16:27,296
+you need to figure out
+
+1494
+01:16:27,296 --> 01:16:29,859
+for yourself whether,
+
+1495
+01:16:29,859 --> 01:16:31,761
+is the code that I'm working here now,
+
+1496
+01:16:31,761 --> 01:16:32,662
+is it something, let's
+
+1497
+01:16:32,662 --> 01:16:35,085
+say, something major, something that
+
+1498
+01:16:35,085 --> 01:16:36,447
+I and colleagues will use over
+
+1499
+01:16:36,447 --> 01:16:38,810
+many months of time or even years?
+
+1500
+01:16:39,891 --> 01:16:40,872
+Yes.
+
+1501
+01:16:40,872 --> 01:16:43,836
+If that's so, then it's worth
+
+1502
+01:16:43,836 --> 01:16:46,078
+the effort to get going with testing.
+
+1503
+01:16:48,181 --> 01:16:54,108
+Automated testing really helps because
+
+1504
+01:16:55,624 --> 01:16:57,532
+that enables you to have
+
+1505
+01:16:57,532 --> 01:16:59,481
+the tests being run without
+
+1506
+01:16:59,481 --> 01:17:02,012
+you having to monitor it automatically.
+
+1507
+01:17:03,197 --> 01:17:06,272
+This is a large convenience factor here.
+
+1508
+01:17:06,272 --> 01:17:06,773
+Yeah.
+
+1509
+01:17:06,773 --> 01:17:08,536
+I would also point out there,
+
+1510
+01:17:08,536 --> 01:17:11,400
+so we used mostly pytest and
+
+1511
+01:17:12,562 --> 01:17:13,945
+for the most part, it was
+
+1512
+01:17:13,945 --> 01:17:16,208
+almost invisible.
+
+1513
+01:17:16,208 --> 01:17:19,474
+The only thing that, or depending on
+
+1514
+01:17:19,474 --> 01:17:20,816
+how you solve the exercise or
+
+1515
+01:17:20,816 --> 01:17:22,298
+how you approach them, you may
+
+1516
+01:17:22,298 --> 01:17:25,824
+be only used pytest by calling pytest.
+
+1517
+01:17:25,824 --> 01:17:28,428
+But there are also additional features
+
+1518
+01:17:28,428 --> 01:17:30,472
+that you can use inside of
+
+1519
+01:17:30,472 --> 01:17:32,074
+the tests while you're writing them.
+
+1520
+01:17:32,074 --> 01:17:33,036
+For example,
+
+1521
+01:17:33,036 --> 01:17:36,679
+when you are testing
+
+1522
+01:17:37,860 --> 01:17:39,862
+floating point numbers, then you
+
+1523
+01:17:39,862 --> 01:17:41,584
+can use pi tests.
+
+1524
+01:17:43,445 --> 01:17:46,028
+It offers some facilities to
+
+1525
+01:17:46,028 --> 01:17:48,950
+set the tolerance, which might be
+
+1526
+01:17:48,950 --> 01:17:50,011
+a little bit more
+
+1527
+01:17:50,011 --> 01:17:54,876
+robust than just checking
+
+1528
+01:17:54,876 --> 01:17:57,418
+the absolute difference
+
+1529
+01:17:57,418 --> 01:18:01,442
+between the output and what
+
+1530
+01:18:01,442 --> 01:18:02,803
+you were expecting.
+
+1531
+01:18:02,803 --> 01:18:05,767
+And it offers some more of those things.
+
+1532
+01:18:05,767 --> 01:18:09,071
+And one thing you might want
+
+1533
+01:18:09,071 --> 01:18:10,152
+to look at is that we
+
+1534
+01:18:10,152 --> 01:18:11,173
+didn't discuss our fixtures.
+
+1535
+01:18:12,375 --> 01:18:16,339
+And yeah, so there's a little
+
+1536
+01:18:16,339 --> 01:18:19,423
+bit more to pytest than we showed.
+
+1537
+01:18:19,423 --> 01:18:21,005
+But yeah, I think the
+
+1538
+01:18:21,005 --> 01:18:23,408
+nice thing about pytest is that it
+
+1539
+01:18:23,408 --> 01:18:24,770
+It provides a relatively
+
+1540
+01:18:24,770 --> 01:18:26,632
+smooth on-ramp, very much
+
+1541
+01:18:26,632 --> 01:18:31,358
+unlike something like Catch2.
+
+1542
+01:18:31,358 --> 01:18:33,260
+I was mostly exposed to
+
+1543
+01:18:33,260 --> 01:18:37,305
+it in preparation for this lesson today.
+
+1544
+01:18:37,305 --> 01:18:39,428
+And I would say I'm
+
+1545
+01:18:40,629 --> 01:18:42,591
+not very comfortable with it yet.
+
+1546
+01:18:42,591 --> 01:18:43,292
+I would need to spend a
+
+1547
+01:18:43,292 --> 01:18:44,073
+lot more time to actually
+
+1548
+01:18:44,073 --> 01:18:45,375
+understand everything that's going on there.
+
+1549
+01:18:47,337 --> 01:18:47,978
+Yeah.
+
+1550
+01:18:47,978 --> 01:18:50,662
+but yeah and I would
+
+1551
+01:18:50,662 --> 01:18:52,506
+say I i use pytest quite a
+
+1552
+01:18:52,506 --> 01:18:53,728
+lot and I would yeah
+
+1553
+01:18:53,728 --> 01:18:55,671
+recommend pick pick find one that
+
+1554
+01:18:55,671 --> 01:18:57,133
+you find a framework that you like
+
+1555
+01:18:57,133 --> 01:19:04,686
+and and launch yeah and
+
+1556
+01:19:04,686 --> 01:19:07,691
+as we talked about earlier
+
+1557
+01:19:07,691 --> 01:19:12,396
+also so your your code is one thing
+
+1558
+01:19:12,396 --> 01:19:14,399
+that you need to,
+
+1559
+01:19:14,399 --> 01:19:15,660
+as a developer of code, you
+
+1560
+01:19:15,660 --> 01:19:17,462
+naturally have a responsibility
+
+1561
+01:19:17,462 --> 01:19:20,046
+for its functionality, but then
+
+1562
+01:19:20,046 --> 01:19:24,551
+there's always an environment in form of,
+
+1563
+01:19:24,551 --> 01:19:25,372
+running on different
+
+1564
+01:19:25,372 --> 01:19:27,555
+computers and running on
+
+1565
+01:19:27,555 --> 01:19:29,818
+different operating systems.
+
+1566
+01:19:29,818 --> 01:19:32,561
+And there, a common thing is
+
+1567
+01:19:32,561 --> 01:19:36,827
+that then, you need to
+
+1568
+01:19:36,827 --> 01:19:38,589
+be ready to, to,
+
+1569
+01:19:40,273 --> 01:19:43,297
+to work with the available resources.
+
+1570
+01:19:43,297 --> 01:19:45,681
+And things can happen.
+
+1571
+01:19:45,681 --> 01:19:47,243
+So just because the program
+
+1572
+01:19:47,243 --> 01:19:48,786
+is working perfectly fine on
+
+1573
+01:19:48,786 --> 01:19:52,231
+your personal computer doesn't
+
+1574
+01:19:52,231 --> 01:19:55,035
+necessarily imply that a
+
+1575
+01:19:56,056 --> 01:19:59,742
+code might flawlessly work on
+
+1576
+01:20:00,583 --> 01:20:01,624
+some other system.
+
+1577
+01:20:04,348 --> 01:20:05,330
+So in particular
+
+1578
+01:20:05,330 --> 01:20:07,513
+for codes, which are rather
+
+1579
+01:20:08,640 --> 01:20:10,783
+where you have worked through all of,
+
+1580
+01:20:10,783 --> 01:20:16,570
+the more obvious bugs
+
+1581
+01:20:16,570 --> 01:20:18,653
+or things that you're wrong
+
+1582
+01:20:18,653 --> 01:20:22,578
+while developing it, then it's
+
+1583
+01:20:22,578 --> 01:20:24,941
+important to be aware of
+
+1584
+01:20:24,941 --> 01:20:27,665
+that unexpected things could happen
+
+1585
+01:20:27,665 --> 01:20:29,427
+if the environment changes.
+
+1586
+01:20:29,427 --> 01:20:30,789
+you upgrade your
+
+1587
+01:20:30,789 --> 01:20:33,032
+operating system or if you're
+
+1588
+01:20:33,032 --> 01:20:33,973
+on another computer.
+
+1589
+01:20:36,737 --> 01:20:39,420
+And it's clear that for some of these,
+
+1590
+01:20:43,545 --> 01:20:46,949
+without having a testing
+
+1591
+01:20:46,949 --> 01:20:50,454
+framework available, it would
+
+1592
+01:20:50,454 --> 01:20:53,517
+be rather challenging to actually
+
+1593
+01:20:53,517 --> 01:20:57,943
+test these things.
+
+1594
+01:20:57,943 --> 01:20:58,744
+Because if you have a
+
+1595
+01:20:58,744 --> 01:21:01,487
+large program, you cannot, let's
+
+1596
+01:21:01,487 --> 01:21:05,087
+say, devote the time to try things out.
+
+1597
+01:21:05,087 --> 01:21:07,932
+just on your own and by optical inspection,
+
+1598
+01:21:07,932 --> 01:21:09,395
+because that would be much
+
+1599
+01:21:09,395 --> 01:21:10,317
+too time consuming.
+
+1600
+01:21:10,317 --> 01:21:11,058
+So if you then have a
+
+1601
+01:21:12,020 --> 01:21:13,303
+test suite delivered with a
+
+1602
+01:21:13,303 --> 01:21:16,028
+program, then it's a good habit
+
+1603
+01:21:16,028 --> 01:21:19,936
+to just start that thing up as
+
+1604
+01:21:19,936 --> 01:21:23,182
+soon as you are installing
+
+1605
+01:21:23,182 --> 01:21:24,885
+or building a program.
+
+1606
+01:21:27,328 --> 01:21:29,091
+I would also not underestimate
+
+1607
+01:21:29,091 --> 01:21:34,800
+the documentation effect testing has.
+
+1608
+01:21:34,800 --> 01:21:41,991
+It can be really useful to see tests
+
+1609
+01:21:41,991 --> 01:21:44,815
+and you, well, at
+
+1610
+01:21:44,815 --> 01:21:46,458
+some point you'll publish software
+
+1611
+01:21:46,458 --> 01:21:49,823
+or you're writing the software, not
+
+1612
+01:21:49,823 --> 01:21:51,165
+well, for the most part,
+
+1613
+01:21:51,165 --> 01:21:52,566
+not because only you are
+
+1614
+01:21:52,566 --> 01:21:54,829
+using it, but eventually someone
+
+1615
+01:21:54,829 --> 01:21:56,311
+else will also be using it.
+
+1616
+01:21:56,311 --> 01:21:58,234
+And that other person then needs to,
+
+1617
+01:21:58,234 --> 01:22:00,076
+to some extent, understand
+
+1618
+01:22:00,076 --> 01:22:00,516
+what's happening.
+
+1619
+01:22:01,398 --> 01:22:04,161
+And tests can be very useful for that.
+
+1620
+01:22:04,161 --> 01:22:06,884
+And also, I'm pretty sure that
+
+1621
+01:22:06,884 --> 01:22:08,807
+that is happening because that's
+
+1622
+01:22:08,807 --> 01:22:11,010
+going to happen because future you
+
+1623
+01:22:11,010 --> 01:22:12,992
+is not the same person as you, of course.
+
+1624
+01:22:13,813 --> 01:22:15,916
+And yeah, so future you
+
+1625
+01:22:15,916 --> 01:22:16,957
+will be then grateful that
+
+1626
+01:22:16,957 --> 01:22:19,340
+you've written tests in the past.
+
+1627
+01:22:20,974 --> 01:22:21,274
+Yeah.
+
+1628
+01:22:22,736 --> 01:22:23,217
+Yeah.
+
+1629
+01:22:23,217 --> 01:22:26,942
+And here one can naturally,
+
+1630
+01:22:26,942 --> 01:22:28,765
+reduce efforts that you devote
+
+1631
+01:22:28,765 --> 01:22:32,590
+to your product so that material
+
+1632
+01:22:32,590 --> 01:22:34,573
+which go into tests can also
+
+1633
+01:22:34,573 --> 01:22:36,255
+be used like examples.
+
+1634
+01:22:36,255 --> 01:22:37,897
+And examples then also
+
+1635
+01:22:37,897 --> 01:22:41,923
+is part of the documentation of a code.
+
+1636
+01:22:43,845 --> 01:22:44,887
+Yeah.
+
+1637
+01:22:44,887 --> 01:22:48,598
+And that's very much
+
+1638
+01:22:48,598 --> 01:22:52,282
+how some large projects are working.
+
+1639
+01:22:52,282 --> 01:22:53,563
+So if you look under the
+
+1640
+01:22:53,563 --> 01:22:56,846
+hood in the source code, you will see that,
+
+1641
+01:22:57,787 --> 01:22:58,989
+okay, sometimes just like a
+
+1642
+01:22:58,989 --> 01:23:01,111
+directory is called like examples
+
+1643
+01:23:01,111 --> 01:23:02,492
+and then it's directly called tests.
+
+1644
+01:23:03,793 --> 01:23:04,975
+But it could also be that
+
+1645
+01:23:04,975 --> 01:23:06,436
+it's intermixed.
+
+1646
+01:23:06,436 --> 01:23:08,138
+So you have the set of examples
+
+1647
+01:23:08,138 --> 01:23:09,779
+and you can also have then
+
+1648
+01:23:09,779 --> 01:23:11,501
+have the scripts that can
+
+1649
+01:23:13,243 --> 01:23:18,417
+run these example files and then
+
+1650
+01:23:18,417 --> 01:23:20,840
+you compare, if it's an end-to-end test
+
+1651
+01:23:20,840 --> 01:23:21,722
+or regression test, that you
+
+1652
+01:23:21,722 --> 01:23:24,406
+compare the output that you
+
+1653
+01:23:24,406 --> 01:23:27,009
+get with the expected reference output.
+
+1654
+01:23:28,211 --> 01:23:30,334
+Yeah, it just strikes me here now
+
+1655
+01:23:30,334 --> 01:23:34,080
+that one main reason why you then,
+
+1656
+01:23:35,221 --> 01:23:36,964
+after all, split,
+
+1657
+01:23:38,506 --> 01:23:39,167
+if it comes to, let's
+
+1658
+01:23:39,167 --> 01:23:41,550
+say, end-to-end testing, why you
+
+1659
+01:23:41,550 --> 01:23:45,433
+have, distinct set of input files
+
+1660
+01:23:45,433 --> 01:23:49,919
+for tests and for examples is that,
+
+1661
+01:23:51,462 --> 01:23:52,403
+yeah, there's a practical
+
+1662
+01:23:52,403 --> 01:23:54,646
+aspect of computation time.
+
+1663
+01:23:55,467 --> 01:23:59,753
+So when you have examples, for a code,
+
+1664
+01:23:59,753 --> 01:24:02,157
+you would like to have,
+
+1665
+01:24:02,157 --> 01:24:03,759
+some basic cases, but then
+
+1666
+01:24:03,759 --> 01:24:05,622
+also it's nice if you can
+
+1667
+01:24:05,622 --> 01:24:09,066
+have some, more real use cases.
+
+1668
+01:24:09,066 --> 01:24:12,071
+And those might be the annual
+
+1669
+01:24:12,071 --> 01:24:14,394
+size so that it takes time to execute them.
+
+1670
+01:24:16,011 --> 01:24:19,658
+And this then in contrast
+
+1671
+01:24:19,658 --> 01:24:22,282
+with a test suite, the test cases
+
+1672
+01:24:22,282 --> 01:24:23,745
+that you have here should
+
+1673
+01:24:23,745 --> 01:24:29,115
+ideally be possible to run
+
+1674
+01:24:29,115 --> 01:24:31,259
+them rather quickly.
+
+1675
+01:24:33,362 --> 01:24:34,885
+And that's in particular important
+
+1676
+01:24:34,885 --> 01:24:36,348
+if you set it up in
+
+1677
+01:24:36,348 --> 01:24:38,151
+an automated workflow so that the
+
+1678
+01:24:38,151 --> 01:24:40,395
+test suite is run
+
+1679
+01:24:40,395 --> 01:24:45,402
+for each pull request or each
+
+1680
+01:24:45,402 --> 01:24:46,303
+push to a repo.
+
+1681
+01:24:48,405 --> 01:24:50,829
+And clearly here, one can also
+
+1682
+01:24:51,750 --> 01:24:53,272
+do it a little bit in, so
+
+1683
+01:24:53,272 --> 01:24:57,818
+to say, you can do it in different sizes.
+
+1684
+01:24:57,818 --> 01:24:59,099
+So you can work with, let's
+
+1685
+01:25:00,121 --> 01:25:02,544
+say, the small test suite, and
+
+1686
+01:25:02,544 --> 01:25:04,146
+then the large test
+
+1687
+01:25:04,146 --> 01:25:05,809
+suite, and then you can
+
+1688
+01:25:05,809 --> 01:25:07,960
+run the big thing.
+
+1689
+01:25:07,960 --> 01:25:08,845
+not on a daily
+
+1690
+01:25:08,845 --> 01:25:11,217
+basis, but perhaps once
+
+1691
+01:25:11,217 --> 01:25:11,921
+every week or so.
+
+1692
+01:25:12,913 --> 01:25:15,217
+Yeah, that's a good point.
+
+1693
+01:25:15,217 --> 01:25:16,840
+That's another feature that
+
+1694
+01:25:16,840 --> 01:25:18,382
+these test suites also have
+
+1695
+01:25:18,382 --> 01:25:20,446
+that you can filter for tests.
+
+1696
+01:25:20,446 --> 01:25:21,407
+And this way, you can sort
+
+1697
+01:25:21,407 --> 01:25:24,252
+of select not test everything at once.
+
+1698
+01:25:24,252 --> 01:25:25,334
+Sometimes you only want to
+
+1699
+01:25:25,334 --> 01:25:27,117
+run a single test.
+
+1700
+01:25:27,117 --> 01:25:28,540
+Or in other situations, you want
+
+1701
+01:25:28,540 --> 01:25:30,663
+to run a certain subset of tests.
+
+1702
+01:25:30,663 --> 01:25:32,206
+And these test suites sort
+
+1703
+01:25:32,206 --> 01:25:34,069
+of usually provide some
+
+1704
+01:25:34,069 --> 01:25:37,014
+tools to do just that.
+
+1705
+01:25:38,344 --> 01:25:40,287
+Yeah.
+
+1706
+01:25:40,287 --> 01:25:42,531
+And some more words just
+
+1707
+01:25:42,531 --> 01:25:44,614
+if you are not testing currently
+
+1708
+01:25:44,614 --> 01:25:45,616
+how to get started.
+
+1709
+01:25:46,978 --> 01:25:49,843
+So I'd say, well, since
+
+1710
+01:25:49,843 --> 01:25:53,949
+you probably have an end-to-end test
+
+1711
+01:25:53,949 --> 01:25:55,692
+that you can
+
+1712
+01:25:55,692 --> 01:25:56,834
+do relatively quickly just
+
+1713
+01:25:56,834 --> 01:25:59,598
+from the documentation or
+
+1714
+01:25:59,598 --> 01:26:01,902
+something that you've already written.
+
+1715
+01:26:01,902 --> 01:26:03,064
+And then the next easiest
+
+1716
+01:26:03,064 --> 01:26:05,910
+tests are unit tests for small
+
+1717
+01:26:05,910 --> 01:26:09,518
+units of code that are in there
+
+1718
+01:26:09,518 --> 01:26:12,304
+if you have structured
+
+1719
+01:26:12,304 --> 01:26:13,547
+your code a little bit.
+
+1720
+01:26:14,388 --> 01:26:16,052
+And if you haven't, then that
+
+1721
+01:26:16,052 --> 01:26:17,816
+would be a
+
+1722
+01:26:17,816 --> 01:26:19,700
+good inspiration on
+
+1723
+01:26:19,700 --> 01:26:20,642
+how to structure your code.
+
+1724
+01:26:22,005 --> 01:26:22,205
+Yeah.
+
+1725
+01:26:25,864 --> 01:26:27,128
+Okay, great.
+
+1726
+01:26:27,128 --> 01:26:32,445
+No, I think we've covered
+
+1727
+01:26:32,445 --> 01:26:36,920
+the essentials now and I'm looking here on the
+
+1728
+01:26:38,065 --> 01:26:40,328
+collaborative document and I see yeah
+
+1729
+01:26:41,669 --> 01:26:42,650
+for the time being no
+
+1730
+01:26:42,650 --> 01:26:44,492
+further questions then as usual
+
+1731
+01:26:44,492 --> 01:26:48,837
+we have the the feedback block
+
+1732
+01:26:48,837 --> 01:26:51,220
+is here at the end of the document
+
+1733
+01:26:51,220 --> 01:26:52,742
+and I think we can now
+
+1734
+01:26:52,742 --> 01:26:55,185
+conclude this lesson and leave
+
+1735
+01:26:55,185 --> 01:26:56,506
+the word to [name] who will
+
+1736
+01:26:56,506 --> 01:26:58,689
+tell us about the program for
+
+1737
+01:26:58,689 --> 01:27:00,671
+for next week on modular
+
+1738
+01:27:00,671 --> 01:27:07,613
+code development yes thanks thank you both
+
+1739
+01:27:07,613 --> 01:27:09,816
+for this session.
+
+1740
+01:27:09,816 --> 01:27:11,098
+So we hope that you
+
+1741
+01:27:11,098 --> 01:27:13,742
+could take something from today's
+
+1742
+01:27:13,742 --> 01:27:16,707
+session to your own workflow
+
+1743
+01:27:16,707 --> 01:27:18,970
+and learn something new.
+
+1744
+01:27:18,970 --> 01:27:20,853
+Please give us feedback.
+
+1745
+01:27:20,853 --> 01:27:21,975
+It's in the very bottom
+
+1746
+01:27:21,975 --> 01:27:23,637
+of the notes document.
+
+1747
+01:27:24,899 --> 01:27:27,824
+Something about the speed, the
+
+1748
+01:27:27,824 --> 01:27:30,528
+level of the session today.
+
+1749
+01:27:30,528 --> 01:27:32,911
+If you will use if you
+
+1750
+01:27:32,911 --> 01:27:33,853
+think that you will use what
+
+1751
+01:27:33,853 --> 01:27:34,734
+you have learned today.
+
+1752
+01:27:34,734 --> 01:27:36,840
+And if you have anything
+
+1753
+01:27:36,840 --> 01:27:39,043
+one good thing about today
+
+1754
+01:27:39,043 --> 01:27:40,826
+and one thing that we
+
+1755
+01:27:40,826 --> 01:27:42,668
+should look into improving for the
+
+1756
+01:27:42,668 --> 01:27:44,611
+next time we are having these workshops.
+
+1757
+01:27:44,611 --> 01:27:47,094
+We're currently running these twice a year,
+
+1758
+01:27:47,094 --> 01:27:49,798
+so there will be definitely options
+
+1759
+01:27:49,798 --> 01:27:51,761
+for us to update either
+
+1760
+01:27:51,761 --> 01:27:54,264
+materials or the way we run this workshop.
+
+1761
+01:27:55,166 --> 01:27:56,267
+So please let us know.
+
+1762
+01:27:57,749 --> 01:27:59,652
+And you can also still ask
+
+1763
+01:27:59,652 --> 01:28:02,254
+questions in the very bottom of the document.
+
+1764
+01:28:02,254 --> 01:28:05,078
+Or I also put the link or
+
+1765
+01:28:05,078 --> 01:28:08,183
+we also put the link to our Zulip chat,
+
+1766
+01:28:08,183 --> 01:28:09,224
+which is the place where
+
+1767
+01:28:09,224 --> 01:28:11,427
+the CodeRefinery community hangs out
+
+1768
+01:28:11,427 --> 01:28:15,413
+and discusses, well, all kinds
+
+1769
+01:28:15,413 --> 01:28:17,035
+of topics also like the
+
+1770
+01:28:17,035 --> 01:28:19,839
+organization of the workshop happens there.
+
+1771
+01:28:19,839 --> 01:28:22,223
+So if you're curious on joining us,
+
+1772
+01:28:22,223 --> 01:28:23,625
+for example, or just if
+
+1773
+01:28:23,625 --> 01:28:25,628
+you have any further questions
+
+1774
+01:28:25,628 --> 01:28:27,170
+regarding the materials of this
+
+1775
+01:28:27,170 --> 01:28:29,093
+workshop, you can join us there.
+
+1776
+01:28:29,093 --> 01:28:31,316
+We have a help channel and you can
+
+1777
+01:28:32,123 --> 01:28:37,291
+like, yeah, discuss and ask more there.
+
+1778
+01:28:38,853 --> 01:28:39,774
+Then thank you also to
+
+1779
+01:28:39,774 --> 01:28:41,857
+[name] for the streaming today.
+
+1780
+01:28:41,857 --> 01:28:43,740
+All the helpers behind the
+
+1781
+01:28:43,740 --> 01:28:46,044
+scenes, I think [name] and
+
+1782
+01:28:46,044 --> 01:28:48,227
+[name] have been active in
+
+1783
+01:28:48,227 --> 01:28:49,909
+the collaborative notes.
+
+1784
+01:28:49,909 --> 01:28:51,191
+And of course, to you for
+
+1785
+01:28:51,191 --> 01:28:53,174
+asking all the questions that you
+
+1786
+01:28:53,174 --> 01:28:56,219
+had via our document.
+
+1787
+01:28:56,219 --> 01:28:57,781
+Next week, we'll meet same
+
+1788
+01:28:57,781 --> 01:29:00,245
+time, same place for a
+
+1789
+01:29:00,245 --> 01:29:02,548
+modular code development lesson
+
+1790
+01:29:02,548 --> 01:29:05,172
+And this lesson is really there
+
+1791
+01:29:05,172 --> 01:29:07,316
+to tie it all together.
+
+1792
+01:29:07,316 --> 01:29:10,341
+So we will revisit most of
+
+1793
+01:29:10,341 --> 01:29:11,924
+the topics of this whole
+
+1794
+01:29:11,924 --> 01:29:13,506
+workshop, of this whole workshop
+
+1795
+01:29:13,506 --> 01:29:15,069
+series as it was this time,
+
+1796
+01:29:16,291 --> 01:29:19,476
+and apply them to an example.
+
+1797
+01:29:19,476 --> 01:29:21,019
+Currently, if you look from
+
+1798
+01:29:21,019 --> 01:29:23,143
+the schedule at the materials,
+
+1799
+01:29:23,143 --> 01:29:24,184
+it's all in Python.
+
+1800
+01:29:24,184 --> 01:29:25,386
+We are working on adding
+
+1801
+01:29:25,386 --> 01:29:28,502
+the same examples also for R.
+
+1802
+01:29:28,502 --> 01:29:31,167
+So, and also don't worry if
+
+1803
+01:29:31,167 --> 01:29:32,730
+those are not your languages.
+
+1804
+01:29:32,730 --> 01:29:36,437
+I think that even by following
+
+1805
+01:29:36,437 --> 01:29:38,241
+and looking how it works in Python
+
+1806
+01:29:38,241 --> 01:29:39,483
+or R, you can get also
+
+1807
+01:29:39,483 --> 01:29:40,645
+something if you are, for
+
+1808
+01:29:40,645 --> 01:29:42,669
+example, coding in Julia or so.
+
+1809
+01:29:43,771 --> 01:29:44,713
+So it's more about the
+
+1810
+01:29:44,713 --> 01:29:46,356
+topic than the language itself.
+
+1811
+01:29:48,500 --> 01:29:50,865
+And yes.
+
+1812
+01:29:52,853 --> 01:29:54,735
+And if you have any
+
+1813
+01:29:54,735 --> 01:29:57,379
+other feedback about the whole workshop
+
+1814
+01:29:57,379 --> 01:29:58,700
+or anything that happened
+
+1815
+01:30:00,022 --> 01:30:01,383
+in these sessions, we're also
+
+1816
+01:30:01,383 --> 01:30:04,507
+very happy to hear about that.
+
+1817
+01:30:05,709 --> 01:30:08,492
+Thank you so much also to our instructors.
+
+1818
+01:30:09,633 --> 01:30:10,014
+Well done.
+
+1819
+01:30:12,217 --> 01:30:13,799
+And I don't know, do we
+
+1820
+01:30:13,799 --> 01:30:17,443
+have any last things to say for today?
+
+1821
+01:30:20,697 --> 01:30:23,111
+Yeah, well, I could probably just say that.
+
+1822
+01:30:23,111 --> 01:30:24,700
+So as you might have
+
+1823
+01:30:24,700 --> 01:30:28,260
+noticed for this testing lesson,
+
+1824
+01:30:29,623 --> 01:30:31,526
+It's rather extensive, so just
+
+1825
+01:30:31,526 --> 01:30:33,388
+a lot of material in there
+
+1826
+01:30:33,388 --> 01:30:38,154
+that we didn't have time to address.
+
+1827
+01:30:38,154 --> 01:30:41,519
+In particular, there are, I
+
+1828
+01:30:41,519 --> 01:30:42,640
+mean, the different examples
+
+1829
+01:30:42,640 --> 01:30:43,602
+in various languages.
+
+1830
+01:30:43,602 --> 01:30:45,645
+So if you're interested in
+
+1831
+01:30:45,645 --> 01:30:47,467
+these, we very much encourage you
+
+1832
+01:30:47,467 --> 01:30:49,850
+to go and have a look on these.
+
+1833
+01:30:49,850 --> 01:30:51,953
+And then there are template
+
+1834
+01:30:51,953 --> 01:30:56,339
+solutions for many of these in
+
+1835
+01:30:56,339 --> 01:30:57,200
+many of the languages.
+
+1836
+01:31:02,732 --> 01:31:05,535
+All right, then we'll give you
+
+1837
+01:31:05,535 --> 01:31:08,819
+the last two minutes until half past
+
+1838
+01:31:08,819 --> 01:31:10,161
+for filling in the feedback
+
+1839
+01:31:11,082 --> 01:31:14,205
+and preparing for whatever next meetings
+
+1840
+01:31:14,205 --> 01:31:17,509
+or courses you'll have and
+
+1841
+01:31:17,509 --> 01:31:19,011
+wish you good rest of the day
+
+1842
+01:31:19,011 --> 01:31:20,613
+and the week and see you next week.
+
+1843
+01:31:22,715 --> 01:31:23,136
+Bye bye.
+
