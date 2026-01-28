@@ -1,0 +1,428 @@
+1
+00:00:00,000 --> 00:00:10,000
+Hello, and welcome to another low-quality HPC Kitchen video. Today, we're talking about data management, and as you can see, data management is different from data storage.
+
+2
+00:00:10,000 --> 00:00:17,000
+So, people may think that the only question of data is where do you put it and do you have enough space, but it's much more than that.
+
+3
+00:00:17,000 --> 00:00:25,000
+So, data management is more about the organization and the control of it. This becomes much more important as you get larger.
+
+4
+00:00:25,000 --> 00:00:29,260
+So when you're alone maybe you can keep track of your data or what's in a
+
+5
+00:00:29,260 --> 00:00:33,700
+kitchen but as you get more people involved and people are coming and going
+
+6
+00:00:33,700 --> 00:00:38,260
+and there's more projects and more data it can become a lot harder. So let's talk
+
+7
+00:00:38,260 --> 00:00:44,680
+about what this can be. So just as a reminder some of our jargon is data is
+
+8
+00:00:44,680 --> 00:00:48,940
+the ingredients that go into cooking. There's also a different type of data
+
+9
+00:00:48,940 --> 00:00:54,940
+which is code or in this case cookbooks. It's like data because it takes up some
+
+10
+00:00:54,940 --> 00:01:00,420
+space, but it's managed differently because it's actually instructions and not just something to
+
+11
+00:01:00,420 --> 00:01:08,140
+be used. Okay, let's look at some common problems we have. So first off, stuff can be disorganized
+
+12
+00:01:08,140 --> 00:01:14,620
+and you can't find it. So for example, have you ever had someone else come in your kitchen and
+
+13
+00:01:14,620 --> 00:01:19,280
+use it, and then they're trying to be nice and put stuff away and clean it up, but you can't
+
+14
+00:01:19,280 --> 00:01:29,660
+find things anymore and that's [oh it's cats is trying to eat some data] and you can't find
+
+15
+00:01:29,660 --> 00:01:38,080
+stuff anymore. This is a bit of a problem as you're alone it's easy, as the number of people
+
+16
+00:01:38,080 --> 00:01:43,340
+grows it becomes a little bit harder, and computers can be much worse because you can have far more
+
+17
+00:01:43,340 --> 00:01:48,620
+files on a computer than you can have things in a kitchen, and our minds are designed to think about
+
+18
+00:01:48,620 --> 00:01:52,460
+3d spaces like this and not about file system hierarchies.
+
+19
+00:01:54,140 --> 00:01:58,780
+Okay next up maybe we can't share things. So for example
+
+20
+00:02:01,580 --> 00:02:06,700
+imagine if you were working with people for cooking a meal but everyone had their own space
+
+21
+00:02:06,700 --> 00:02:12,460
+and it's locked away and the only way you could share something is if you ask them to give it to
+
+22
+00:02:12,460 --> 00:02:19,020
+you and then they had to pick it up and hand it to you. So this is what happens when everyone's
+
+23
+00:02:19,020 --> 00:02:24,860
+files are on their own computer or own home directory or things like that. So basically
+
+24
+00:02:24,860 --> 00:02:29,900
+it makes it harder to know what others are doing and to work together overall. So it's important
+
+25
+00:02:29,900 --> 00:02:34,860
+to have these shared spaces where we store things and there's rules for how things are used.
+
+26
+00:02:34,860 --> 00:02:48,440
+[Okay CATS is still very data-hungry right now] Let's see so, that's one thing.
+
+27
+00:02:48,440 --> 00:02:54,400
+But also things can be so that way you can't [no CATS!]
+
+28
+00:02:54,400 --> 00:03:04,700
+[okay yeah] Things can be so that maybe you can't share it because of other reasons.
+
+29
+00:03:04,700 --> 00:03:11,780
+Let's take for example our own private cookbooks. So if I add my family recipe,
+
+30
+00:03:11,780 --> 00:03:16,680
+my secret family recipes, into my own cookbooks then I can't share the rest of
+
+31
+00:03:16,680 --> 00:03:21,980
+my recipes with someone if they ask for it because, well, it has secret data mixed
+
+32
+00:03:21,980 --> 00:03:26,780
+in with data that should be shareable. And this is also the same for data. So
+
+33
+00:03:26,780 --> 00:03:33,120
+it's important to keep stuff organized early on so that way you can share later.
+
+34
+00:03:33,120 --> 00:03:36,240
+And it's always easier to do the organization earlier than later.
+
+35
+00:03:37,520 --> 00:03:39,920
+Next up, maybe you can't interpret things.
+
+36
+00:03:39,920 --> 00:03:43,440
+So for example, there's different unlabeled containers here.
+
+37
+00:03:43,440 --> 00:03:47,360
+So this is not a chemistry laboratory, so this is not the worst possible thing.
+
+38
+00:03:48,400 --> 00:03:50,800
+And I can look in and see what it is there.
+
+39
+00:03:50,800 --> 00:03:52,960
+But do I know, am I allowed to use it?
+
+40
+00:03:52,960 --> 00:03:55,360
+So is this being saved for some other project?
+
+41
+00:03:55,360 --> 00:03:58,560
+Or if I was doing a research project and there's something that looks useful,
+
+42
+00:03:58,560 --> 00:04:02,640
+but I don't know the full story behind where it came from and how it was collected,
+
+43
+00:04:02,640 --> 00:04:07,360
+maybe I can't use it in my articles to actually produce something new, and that's not good.
+
+44
+00:04:08,880 --> 00:04:14,000
+Next up, things can have different names or otherwise be non-standardized. Have you ever
+
+45
+00:04:14,000 --> 00:04:19,440
+had a recipe that comes from a different country, different continent, whatever,
+
+46
+00:04:19,440 --> 00:04:23,840
+and even if it's in a language you understand, the names they use for some things
+
+47
+00:04:23,840 --> 00:04:27,840
+are slightly different, or some of the standards they use are slightly different,
+
+48
+00:04:27,840 --> 00:04:33,200
+and you can't interpret it in your own work. So this can happen all the time in research.
+
+49
+00:04:33,200 --> 00:04:38,720
+Someone can have data, it's like a nice CSV file that has whatever is needed or whatever format
+
+50
+00:04:38,720 --> 00:04:44,880
+it may be, but since you don't know the details about what's going on with it, you can't really
+
+51
+00:04:44,880 --> 00:04:51,600
+use it. And this is not good. So this standardization and
+
+52
+00:04:51,600 --> 00:04:55,900
+So reporting, documentation is really important.
+
+53
+00:04:56,440 --> 00:04:59,160
+Next up, and this is mainly a kitchen thing,
+
+54
+00:04:59,640 --> 00:05:02,220
+but food can expire because you forget about it.
+
+55
+00:05:02,220 --> 00:05:04,420
+You have it and lose it, and it makes food waste.
+
+56
+00:05:04,980 --> 00:05:08,620
+So my solution is whenever I get new food in the fridge,
+
+57
+00:05:08,940 --> 00:05:12,540
+I sort the new food and the old food by expiration date.
+
+58
+00:05:12,540 --> 00:05:16,100
+So that way, all the food that's expiring soonest is in the front.
+
+59
+00:05:16,580 --> 00:05:18,860
+And then, well, first off, it's easy to cook
+
+60
+00:05:18,860 --> 00:05:20,320
+because you don't have to decide what to do.
+
+61
+00:05:20,320 --> 00:05:26,180
+but I start at the beginning and just work my way through, and I hardly ever had food go bad
+
+62
+00:05:26,180 --> 00:05:32,980
+anymore. And well, I don't know what the metaphor is here, but the idea is that you can't just will
+
+63
+00:05:32,980 --> 00:05:38,060
+your way into better data usage. You need structures and things like that to arrange
+
+64
+00:05:38,060 --> 00:05:42,240
+the system so that it promotes the outcome you want, which for me is not wasting food.
+
+65
+00:05:43,760 --> 00:05:48,720
+Okay, another thing. Let's say you have roommates or something, and they move out and they leave
+
+66
+00:05:48,720 --> 00:05:54,580
+stuff behind. Who knows what that stuff is? I mean if it's food it's labeled but let's say you have
+
+67
+00:05:54,580 --> 00:06:00,180
+these unlabeled things or whatever. You might get in a case where you don't know what it is or you
+
+68
+00:06:00,180 --> 00:06:04,640
+don't know if you're allowed to use it because you don't know who it belongs to and then well it
+
+69
+00:06:04,640 --> 00:06:09,960
+becomes a waste. The same can very often happen with research data where someone goes and works
+
+70
+00:06:09,960 --> 00:06:14,920
+and collects a lot of data but they don't document it well and then they leave and then it's sort of
+
+71
+00:06:14,920 --> 00:06:21,720
+lost. Another big thing can be code not being reproducible. If you cook something really nice
+
+72
+00:06:21,720 --> 00:06:28,680
+but you don't write it down then well maybe you can't do it again and well for food that's fine
+
+73
+00:06:28,680 --> 00:06:35,700
+maybe it's a nice mystery meal. I like this kind of thing but for research if you can't reproduce
+
+74
+00:06:35,700 --> 00:06:40,500
+what you've done that's really bad because that means you can't publish on it and it's not science
+
+75
+00:06:40,500 --> 00:06:41,560
+if it's not reproducible.
+
+76
+00:06:41,800 --> 00:06:44,260
+So you really need to keep track of this really well.
+
+77
+00:06:45,420 --> 00:06:47,720
+Maybe another final thing is archiving things.
+
+78
+00:06:48,060 --> 00:06:49,560
+Let's say you have a really good recipe
+
+79
+00:06:49,560 --> 00:06:52,100
+and you want to not lose it.
+
+80
+00:06:52,380 --> 00:06:54,080
+You can write it down and leave it in your kitchen,
+
+81
+00:06:54,080 --> 00:06:55,120
+but it might get lost.
+
+82
+00:06:55,500 --> 00:06:58,200
+But if you would say, write it on a blog somewhere
+
+83
+00:06:58,200 --> 00:07:00,320
+or submit it to a recipe site,
+
+84
+00:07:00,440 --> 00:07:02,720
+it's much less likely to get lost forever.
+
+85
+00:07:03,180 --> 00:07:05,580
+It might even be easier for you to find it in the future
+
+86
+00:07:05,580 --> 00:07:08,360
+when you can't find the paper you had written it down on
+
+87
+00:07:08,360 --> 00:07:14,520
+the file on your computer or whatever it may be. And the lesson here is that sharing data
+
+88
+00:07:14,520 --> 00:07:21,320
+and archiving it publicly as open data is really useful to make sure that you don't lose data,
+
+89
+00:07:21,320 --> 00:07:26,920
+but also makes it useful to other people. So those are some of the main problems and
+
+90
+00:07:26,920 --> 00:07:33,560
+how it relates to research. And what are some of the main patterns we saw? So first off,
+
+91
+00:07:33,560 --> 00:07:37,560
+there's the shared storage space and standard organization is really important.
+
+92
+00:07:37,560 --> 00:07:42,520
+There needs to be different places where stuff belongs. For example, have you ever seen a
+
+93
+00:07:42,520 --> 00:07:46,920
+commercial kitchen and all the different cabinets have labels of what should go in there? There's
+
+94
+00:07:46,920 --> 00:07:50,920
+lots of people working there so they need to have the structure in order to keep it organized.
+
+95
+00:07:52,200 --> 00:07:56,520
+There should be clear ownership and usage rights for everything so that way
+
+96
+00:07:56,520 --> 00:08:01,480
+you can use it if you need to or know who to ask about it if you need more information.
+
+97
+00:08:01,480 --> 00:08:07,920
+Someone should tell everyone the standards and everyone must know that they're expected to
+
+98
+00:08:07,920 --> 00:08:15,320
+actually follow it. Many of these things aren't really hard but they need time, and time something
+
+99
+00:08:15,320 --> 00:08:22,700
+that is always in short supply in academia.  People are always rushing to complete their next
+
+100
+00:08:22,700 --> 00:08:27,240
+paper and maybe they say well, I don't have time to do this properly right now, or someone may always
+
+101
+00:08:27,240 --> 00:08:31,720
+be rushed: "Okay, I need to make my next meal. I don't have time to clean the kitchen before I
+
+102
+00:08:31,720 --> 00:08:38,860
+start and get stuff organized again." So in the kitchen, that's not a big deal, perhaps. But in
+
+103
+00:08:38,860 --> 00:08:45,320
+research, it can really pile up and you can make things much worse for yourself in the future. So I
+
+104
+00:08:45,320 --> 00:08:50,020
+think the lesson for us all is that we need to have time to do this. Supervisors need to make
+
+105
+00:08:50,020 --> 00:08:55,320
+sure people have time and have the expectation to do this properly. Delegate it where it's necessary.
+
+106
+00:08:55,320 --> 00:09:03,800
+and then we need to make sure that we know what we should do and to ask and be given time if it's
+
+107
+00:09:03,800 --> 00:09:10,660
+needed. So with that being said, thank you very much and I might see you in the next one. Bye!
+

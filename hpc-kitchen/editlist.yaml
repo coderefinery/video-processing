@@ -1,0 +1,309 @@
+- workshop_description: >-
+    Playlist: https://www.youtube.com/playlist?list=PLZLVmS9rf3nNDHRo1Baz_JVQWDI0mTYyB
+
+# Intro
+- output: out/hpc-kitchen-intro.mkv
+  input: raw/hpc-kitchen-intro.mkv
+  title: "HPC kitchen [intro]: computing vs cooking"
+  description: >-
+    Advanced computing resources like HPC (high-performance computing)
+    clusters may seem intimidating, but really all the pieces are the
+    same as a normal computer.  The difference is you have to be able
+    to use and coordinate all the resources.  This sets you an the
+    path by introducing you to a metaphor relating computing to
+    cooking.
+
+    CATS joins for your entertainment.  A bit more commentary is in
+    the subtitles.
+
+    Further commentary:
+
+    * Can having more burners allow you to cook pasta faster?  No.  Maybe you can cook more at once, but 4 burners doesn't make an 8-minute pasta take 2 minutes.  If you need a batch bigger than one burner, there are different ways to have multiple cooks work together on it.
+
+    * The "processor", "core", "cpu" terminology sometimes gets messy and people use the words inconsistently.
+
+    * Process vs thread (technical, not needed now): Update from the video: A watcher suggested threads are "extra arms".  They can do something else, but they have to stay within your same kitchen.  They have the same resources as the person. A process is the smallest thing that can share memory/counter space, and it can have multiple threads that are doing things sharing counter space (normal processes/cooks don't share memory/counter space).  Threads are the smallest unit that can be scheduled onto a stove.
+
+    * The storage and memory hierarchies (small and fast vs large and slow) is very important to scientific computing.  Memory hierarchy is usually managed by itself (for real high-performance stuff you need to care though), but you often need to think about the storage hierarchy even for "normal" problems.
+
+    * To get the most efficiency out of either a kitchen or a computer cluster, all of these things need to work together.  Data available, pipelined to the processor on time, cooks working together, no wasted resources anywhere.  This is hard, but is most important at larger scales and you have a chance to grow into it.
+
+    * There are different ways to have the cooks share burners.  We'll talk about this later in a video on parallelism.
+
+    * What about cost-efficiency?  Everyone needs a basic kitchen (bigger or smaller), but for people with really big, intermittent projects, it's better to invest in one big shared kitchen (with an shared allocation system... we'll talk about this later) and focus on its quality and support.  We also care about the environment, and the server computers and data center are more energy-efficient (and can sometimes even reuse waste heat)!
+
+    * You don't have to have the biggest problems to use a cluster.  Plenty of people run single-core jobs in parallel on clusters, because it makes sense for them.  Don't feel gatekept out of the cluster if some of these doesn't apply to you.
+
+  time:
+    - start: 00:00
+    - 00:30: Why this video?  To help people understand computer clusters, so that they can use them better.
+    - 01:01: Processors (stoves)
+    - 01:14: Cores (stove burners)
+    - 01:30: Processes/threads (the cooks)
+    - 01:51: Laptop vs desktop CPU (hotplate vs stove) and relative power
+    - 02:45: GPUs (food truck that cooks hundreds of chickens at once)
+    - 03:40: Data (ingredients)
+    - 04:25: CATS tries to eat the camera
+    - 04:25: Memory (counter space)
+    - 04:55: Storage (shelves, etc)
+    - 06:00: Code (recipes)
+    - 06:28: Server computer (industrial kitchen)
+    - 07:20: Computer cluster (bunch of industrial kitchens in a building)
+    - 07:50: To use the cluster, you need to be able to tell your code how to use all these resources
+    - 08:35: Using the cluster is like becoming the manager of all the cooks
+    - 09:00: ... and it's a different kind of job, but one you have help for.
+    - stop: 99:00
+
+# data storage
+- output: out/hpc-kitchen-storage-hierarchy.mkv
+  input: raw/hpc-kitchen-storage-hierarchy-raw.mkv
+  title: "HPC kitchen [data storage]: understanding how data is stored and moved"
+  description: >-
+    It's all about data these days, but where does it all go?  How do understand what we have?  We compare storage in a HPC cluster (or really, anywhere) to storage of food in a kitchen.  We'll see how the hierarchy of size vs speed goes and how we access data on different servers.  This doesn't teach details about storage but prepares you to learn details in a future course.
+
+    Extra points/commentary:
+
+    * Paths look like this: "/mnt/scratch/mydept/myproject/".  The first "/" is the root of the filesystem, and everything is under it.
+
+    * This "forward slash" path system is comment to Unix systems, which means Mac and Linux.  Even if you don't use them, it's good to know (and you might someday).  On Unix, everything is under "/", there are no drive letters.  So you need to learn where the various mounts are.
+
+    * Mounting network file servers is really cool and really convenient: it means you don't have to transfer data around all the time.  The disadvantge is that every access of every file has the latency and bandwidth limits of whatever the file server is.  So it's best used for small things and not high-performance access.  Of course unless it's designed for that, like the cluster filesystems are.
+
+    * Often, in large centrally-managed organizations, all the data stays on various file servers and everything is mounted around.  So really, "everything" becomes a network mount, except the local operating system
+
+    * The hierarchy is in many forms: size vs backups, size vs performance, etc.
+
+    CATS gave a good performance on the first take, so that's what you get (no revisions).
+
+  time:
+    - start: 00:00
+    - 00:00: Counter vs shelf space
+    - 00:30: Why do we have a storage hierarchy?
+    - 01:21: 'Jargon: File (data), Filesystem (structure that organizes a disk into files and directories), Path (text string that identifies files), Mount (a file path that serves as a "portal" into a different filesystem, for example a physical disk in the computer or a network file server)'
+    - 02:24: A typical hierarchy
+    - 05:26: Example of storage hierarchy in the kitchen
+    - 07:12: Transferring data
+    - 08:11: Mounting data from one system to another
+    - 10:32: Working directory
+    - 12:10: What's next?  Make a mental map of your own organization's storage systems.
+    - stop: 99:00
+
+
+# storage-performance
+- output: out/hpc-kitchen-storage-performance.mkv
+  input: raw/hpc-kitchen-storage-performance-raw.mkv
+  title: "HPC kitchen [storage-performance]: understanding the speed of data access and transfer"
+  description: >-
+    When using supercomputers, data movement can actually be what slows you down surprisingly often.  A modern GPU can easily pull in data faster than it can be delivered from storage, if you don't preprocess it well.  In this video, we go over the basic aspects of storage performance... with food.
+
+    Extra commentary:
+
+    * There are plenty of complexities here.  Plenty of other things can go wrong, and there are little subtleties.  Take the time to learn more ask for help.
+
+    * Many programs that deal with lots of data have their storage formats and/or data loaders that will help with these problems.  Before you make your own solution, learn what the proper solutions are and use those!
+
+    CATS was active during the first take, so that's what you get (no revisions).
+
+  time:
+    - start: 00:00
+    - 00:00: What happens when you are missing an ingredient while cooking?
+    - 00:32: Computing performance is about data, too (not just processor speed)
+    - 01:18: Bandwidth vs latency
+    - 05:52: Common problems
+    - 06:06: Resource starvation (data doesn't arrive fast enough)
+    - 06:42: Small files
+    - 08:39: Random access
+    - 09:56: Wrap up, you are the manager who needs to handle these things
+    - stop: 99:00
+
+
+# parallel
+- output: out/
+  input: raw/
+  title: "HPC kitchen [parallel]: methods to run on multiple processors"
+  description: >-
+    Running programs in parallel: that's what everyone thinks they want to use a cluster for.  But there are actually different ways this can work, and you need to be able to distinguish between them, so that you can run them properly.  This broadly explains what these methods are, so that you can understand later technical documentation.
+
+    Extra commentary/corrections:
+
+    * All of these parallelization methods can be combined, if you are advanced enough and need it.  It has to be done in the code.
+
+    * These are hard topics and require going deep into the code.  Ask for help!
+
+    CATS helps, of course.
+
+  time:
+    - start: 00:00
+    - 00:06: "Example: 8 minute pasta in 2 minutes with 4 burners?"
+    - 00:34: We have to have processes work together
+    - 01:05: Jargon
+    - 02:52: Embarrassingly parallel (just run it multiple times separately)
+    - 03:53: Array jobs
+    - 05:00: Shared memory (OpenMP)
+    - 06:25: Message passing (MPI)
+    - 07:30: GPUs
+    - 07:57: "Common problem: requesting more resources than you can use"
+    - 08:32: "Common problem: starting big instead of starting small and scaling up"
+    - 09:25: In-code parallelization is complex
+    - 10:33: You become the manager of the cooks, not only a cook.
+    - stop: 99:00
+
+
+# slurm
+- output: out/
+  input: raw/
+  title: "HPC kitchen [slurm]: the Slurm job scheduler spreads tasks to the cluster"
+  description: >-
+    We have talked about running stuff in parallel, but how does it get connected to hardware (processors, memory)?  If we have one cluster for everyone, how do people share?  That's what this is all about.
+
+    Extra commentary / corrections:
+
+    * Slurm is the system that allocates resources, but you don't need to know details: for basic use, follow your local instructions.
+
+    * For the most part, you will see the instructions for your own cluster, which will say what options are needed.
+
+    * This is the point where you really need command line and shell scripting, because you have to automate all of the steps you use.
+
+  time:
+    - start: 00:00
+    - 00:06: Buy everyone a big kitchen, or share one really nice one?
+    - 00:45: Slurm is the resource allocator
+    - 01:11: Batch jobs
+    - 01:44: "Reserveable resources: (CPUs, memory, GPUs, etc.) × time"
+    - 02:05: Jargon
+    - 02:30: "First: priority calculation"
+    - 02:50: "Second: forward allocate in priority order"
+    - 03:30: "Third: Backfilling"
+    - 04:13: Heterogenous (non-uniform resource use) jobs
+    - 05:13: Big jobs are hard to schedule
+    - 05:38: Array jobs
+    - 07:18: When does my job run?
+    - 08:09: "Summary: you become a manager and need to handle all of these resource requests."
+    - stop: 99:00
+
+
+- output: out/containers.mkv
+  input: raw/containers.mkv
+  title: "HPC kitchen [containers/environments]: Moving code around"
+  description: >-
+
+    When you go to a different kitchen to cook, everything is
+    different and it slows you down.  This is a worse problem for
+    computers, which don't have a brain and thus the recipe has to be
+    exact.  As you get farther and farther into scientific coding,
+    you'll see how hard of a difficulty this "installing software and
+    making it work" is.  Environments and containers solve this problem.
+
+    More notes:
+
+    * This metaphor is by no means perfect - containers are much more
+    complex than a box containing some objects.  Still, the main
+    idea of "create your standard tools from a manifest,
+    reproducible" still stands.
+
+    * Operating system containers: Apptainer (formerly Singularity)
+    for HPC kind of work.  Docker and similar are often used for
+    services and has problems running on clusters.
+
+    * For Python virtual environments handle Python dependencies and
+    Conda environments handle Python + compiled dependencies well.
+    Conda is made for the complexities of scientific code (and can
+    also be used for non-Python code too).
+
+
+  time:
+    - start: 00:00
+    - 00:05: "Cooking in another kitchen: everything is different"
+    - 00:50: Working with no dependencies (why this is a bad idea)
+    - 01:25: Containers let you transport code dependencies
+    - 02:02: Creating a container from a manifest/definition.
+    - 03:15: Types of containers
+    - 03:20: Operating system containers (e.g. Singularity, Apptainer, Docker)
+    - 03:50: Software dependenciy containers (e.g. Python virtual environments, Conda environments)
+    - 05:10: Updating containers
+    - 06:05: Why recreating from scratch is so important
+    - 07:00: What's next?
+    - stop: 99:00
+
+
+# how to learn
+- output: out/how-to-learn.mkv
+  input: raw/how-to-learn/how-to-learn-1.mkv
+  title: "HPC kitchen [how-to-learn]: Don't give up in learning computing"
+  description: >-
+
+    This is more of a fireside chat, to encourage you not to give up
+    in learning computing.  It can often feel there is so much to
+    learn and it's almost impossible.  It can also feel like you can't
+    do it yourself.  Well, most people don't - all learning is somehow
+    collaborative.  Take the time to work together to share skills.
+    Take the time to follow others even in practical computing skills,
+    not just academic.  And help others.
+
+  time:
+    - start: 00:00
+    - 0:08: Books don't make practical skills alone
+    - 1:37: What can you do?  Work in groups.
+    - 2:59: When I was learning Linux and stuff
+    - 4:05: Follow other projects
+    - 4:28: Don't give up, don't go by yourself
+    - stop: 99:00
+
+
+# data-management
+- output: out/data-management.mkv
+  input: raw/data-management-5.mkv
+  title: "HPC kitchen [data-management]: Data management is as important as data storage"
+  description: >-
+
+    People may think that getting a big enough storage space for your
+    data is all you need.  There's far more than that.  It's easy for
+    data (and kitchens) to become a huge mess without some care.  It's
+    even worse when you work together.  Unfortunately, it's far too
+    common for people to be too rushed to organize their stuff well,
+    leading to worse problems down the line.  Take care of your data
+    and you data will t̶a̶k̶e̶ ̶c̶a̶r̶e̶ ̶o̶f̶ be valuable to you.
+
+    Extra comments:
+
+    * This is only a small view into all the ways that data management
+    can go wrong.  I can't tell you the solution to your problem,
+    but you are smart and once you realize it, you can probably find
+    the solution for you.
+
+    * Don't forget about the safety of storage.  If you have your data
+    somewhere that isn't backed up, there's a high chance of losing it
+    someday.  It's best to use professionally managed systems when you
+    can.
+
+  time:
+    - start: 00:00
+    - 0:04: Data management isn't just data storage
+    - 0:40: Reminder our jargon in our HPC metaphor
+    - 0:01: "Common problem: disorganization with multiple people"
+    - 1:53: "Common problem: can't share data when collaborating"
+    - 3:00: "Common problem: can't share because of confidential data mixed with shareable"
+    - 3:37: "Common problem: can't interpert the data"
+    - 4:08: "Common problem: non-standardization"
+    - 4:56: "Common problem: no long-term management"
+    - 5:44: "Common problem: Unclear permissions, not documented"
+    - 6:16: "Common problem: Code not reproducible"
+    - 6:45: "Common problem: not archiving things"
+    - 7:23: Examining the patterns and common solutions (clear organization, clear usage rights, tell everyone the standards, )
+    - 8:10: The biggest barrier is time and short-term rush.  We need to work together on this
+    - 8:44: We must have time to do data management well, supervisors need to give us time to do this
+    - stop: 99:00
+
+
+
+
+# template
+#- output: out/
+#  input: raw/
+#  title: "HPC kitchen [short]: DESCRIPTION"
+#  description: >-
+#    .
+#
+#  time:
+#    - start: 00:00
+#    - stop: 99:00
